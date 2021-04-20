@@ -23,7 +23,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "test"
-// 		foo, err := yandex.LookupMdbPostgresqlCluster(ctx, &yandex.LookupMdbPostgresqlClusterArgs{
+// 		foo, err := yandex.GetMdbPostgresqlCluster(ctx, &yandex.GetMdbPostgresqlClusterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -34,8 +34,8 @@ import (
 // 	})
 // }
 // ```
-func LookupMdbPostgresqlCluster(ctx *pulumi.Context, args *LookupMdbPostgresqlClusterArgs, opts ...pulumi.InvokeOption) (*LookupMdbPostgresqlClusterResult, error) {
-	var rv LookupMdbPostgresqlClusterResult
+func GetMdbPostgresqlCluster(ctx *pulumi.Context, args *GetMdbPostgresqlClusterArgs, opts ...pulumi.InvokeOption) (*GetMdbPostgresqlClusterResult, error) {
+	var rv GetMdbPostgresqlClusterResult
 	err := ctx.Invoke("yandex:index/getMdbPostgresqlCluster:getMdbPostgresqlCluster", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -44,7 +44,7 @@ func LookupMdbPostgresqlCluster(ctx *pulumi.Context, args *LookupMdbPostgresqlCl
 }
 
 // A collection of arguments for invoking getMdbPostgresqlCluster.
-type LookupMdbPostgresqlClusterArgs struct {
+type GetMdbPostgresqlClusterArgs struct {
 	// The ID of the PostgreSQL cluster.
 	ClusterId *string `pulumi:"clusterId"`
 	// Description of the PostgreSQL cluster.
@@ -56,7 +56,7 @@ type LookupMdbPostgresqlClusterArgs struct {
 }
 
 // A collection of values returned by getMdbPostgresqlCluster.
-type LookupMdbPostgresqlClusterResult struct {
+type GetMdbPostgresqlClusterResult struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Configuration of the PostgreSQL cluster. The structure is documented below.
 	Config GetMdbPostgresqlClusterConfig `pulumi:"config"`

@@ -82,7 +82,6 @@ from .mdb_clickhouse_cluster import *
 from .mdb_kafka_cluster import *
 from .mdb_mongodb_cluster import *
 from .mdb_mysql_cluster import *
-from .mdb_postgresql_cluster import *
 from .mdb_redis_cluster import *
 from .mdb_sql_server_cluster import *
 from .message_queue import *
@@ -195,8 +194,6 @@ def _register_module():
                 return MdbMongodbCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbMysqlCluster:MdbMysqlCluster":
                 return MdbMysqlCluster(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "yandex:index/mdbPostgresqlCluster:MdbPostgresqlCluster":
-                return MdbPostgresqlCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbRedisCluster:MdbRedisCluster":
                 return MdbRedisCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbSqlServerCluster:MdbSqlServerCluster":
@@ -273,7 +270,6 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/mdbKafkaCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbMongodbCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbMysqlCluster", _module_instance)
-    pulumi.runtime.register_resource_module("yandex", "index/mdbPostgresqlCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbRedisCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbSqlServerCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/messageQueue", _module_instance)

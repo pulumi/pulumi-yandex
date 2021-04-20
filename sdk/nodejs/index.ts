@@ -84,7 +84,6 @@ export * from "./mdbClickhouseCluster";
 export * from "./mdbKafkaCluster";
 export * from "./mdbMongodbCluster";
 export * from "./mdbMysqlCluster";
-export * from "./mdbPostgresqlCluster";
 export * from "./mdbRedisCluster";
 export * from "./mdbSqlServerCluster";
 export * from "./messageQueue";
@@ -151,7 +150,6 @@ import { MdbClickhouseCluster } from "./mdbClickhouseCluster";
 import { MdbKafkaCluster } from "./mdbKafkaCluster";
 import { MdbMongodbCluster } from "./mdbMongodbCluster";
 import { MdbMysqlCluster } from "./mdbMysqlCluster";
-import { MdbPostgresqlCluster } from "./mdbPostgresqlCluster";
 import { MdbRedisCluster } from "./mdbRedisCluster";
 import { MdbSqlServerCluster } from "./mdbSqlServerCluster";
 import { MessageQueue } from "./messageQueue";
@@ -248,8 +246,6 @@ const _module = {
                 return new MdbMongodbCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbMysqlCluster:MdbMysqlCluster":
                 return new MdbMysqlCluster(name, <any>undefined, { urn })
-            case "yandex:index/mdbPostgresqlCluster:MdbPostgresqlCluster":
-                return new MdbPostgresqlCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbRedisCluster:MdbRedisCluster":
                 return new MdbRedisCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbSqlServerCluster:MdbSqlServerCluster":
@@ -326,7 +322,6 @@ pulumi.runtime.registerResourceModule("yandex", "index/mdbClickhouseCluster", _m
 pulumi.runtime.registerResourceModule("yandex", "index/mdbKafkaCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMongodbCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMysqlCluster", _module)
-pulumi.runtime.registerResourceModule("yandex", "index/mdbPostgresqlCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbRedisCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbSqlServerCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/messageQueue", _module)

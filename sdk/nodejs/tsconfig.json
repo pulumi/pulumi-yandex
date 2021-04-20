@@ -95,7 +95,6 @@
         "mdbKafkaCluster.ts",
         "mdbMongodbCluster.ts",
         "mdbMysqlCluster.ts",
-        "mdbPostgresqlCluster.ts",
         "mdbRedisCluster.ts",
         "mdbSqlServerCluster.ts",
         "messageQueue.ts",
