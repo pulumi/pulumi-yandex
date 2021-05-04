@@ -27,6 +27,8 @@ type KubernetesCluster struct {
 	// It should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be
 	// set up for this CIDR blocks in node subnets.
 	ClusterIpv4Range pulumi.StringOutput `pulumi:"clusterIpv4Range"`
+	// Identical to clusterIpv4Range but for IPv6 protocol.
+	ClusterIpv6Range pulumi.StringOutput `pulumi:"clusterIpv6Range"`
 	// (Computed) The Kubernetes cluster creation timestamp.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// A description of the Kubernetes cluster.
@@ -40,6 +42,8 @@ type KubernetesCluster struct {
 	KmsProvider KubernetesClusterKmsProviderPtrOutput `pulumi:"kmsProvider"`
 	// A set of key/value label pairs to assign to the Kubernetes cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+	LogGroupId pulumi.StringOutput `pulumi:"logGroupId"`
 	// Kubernetes master configuration options. The structure is documented below.
 	Master KubernetesClusterMasterOutput `pulumi:"master"`
 	// Name of a specific Kubernetes cluster.
@@ -63,6 +67,8 @@ type KubernetesCluster struct {
 	// IP addresses will be allocated from. It should not overlap with any subnet in the network
 	// the Kubernetes cluster located in.
 	ServiceIpv4Range pulumi.StringOutput `pulumi:"serviceIpv4Range"`
+	// Identical to serviceIpv4Range but for IPv6 protocol.
+	ServiceIpv6Range pulumi.StringOutput `pulumi:"serviceIpv6Range"`
 	// (Computed)Status of the Kubernetes cluster.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -112,6 +118,8 @@ type kubernetesClusterState struct {
 	// It should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be
 	// set up for this CIDR blocks in node subnets.
 	ClusterIpv4Range *string `pulumi:"clusterIpv4Range"`
+	// Identical to clusterIpv4Range but for IPv6 protocol.
+	ClusterIpv6Range *string `pulumi:"clusterIpv6Range"`
 	// (Computed) The Kubernetes cluster creation timestamp.
 	CreatedAt *string `pulumi:"createdAt"`
 	// A description of the Kubernetes cluster.
@@ -125,6 +133,8 @@ type kubernetesClusterState struct {
 	KmsProvider *KubernetesClusterKmsProvider `pulumi:"kmsProvider"`
 	// A set of key/value label pairs to assign to the Kubernetes cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+	LogGroupId *string `pulumi:"logGroupId"`
 	// Kubernetes master configuration options. The structure is documented below.
 	Master *KubernetesClusterMaster `pulumi:"master"`
 	// Name of a specific Kubernetes cluster.
@@ -148,6 +158,8 @@ type kubernetesClusterState struct {
 	// IP addresses will be allocated from. It should not overlap with any subnet in the network
 	// the Kubernetes cluster located in.
 	ServiceIpv4Range *string `pulumi:"serviceIpv4Range"`
+	// Identical to serviceIpv4Range but for IPv6 protocol.
+	ServiceIpv6Range *string `pulumi:"serviceIpv6Range"`
 	// (Computed)Status of the Kubernetes cluster.
 	Status *string `pulumi:"status"`
 }
@@ -157,6 +169,8 @@ type KubernetesClusterState struct {
 	// It should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be
 	// set up for this CIDR blocks in node subnets.
 	ClusterIpv4Range pulumi.StringPtrInput
+	// Identical to clusterIpv4Range but for IPv6 protocol.
+	ClusterIpv6Range pulumi.StringPtrInput
 	// (Computed) The Kubernetes cluster creation timestamp.
 	CreatedAt pulumi.StringPtrInput
 	// A description of the Kubernetes cluster.
@@ -170,6 +184,8 @@ type KubernetesClusterState struct {
 	KmsProvider KubernetesClusterKmsProviderPtrInput
 	// A set of key/value label pairs to assign to the Kubernetes cluster.
 	Labels pulumi.StringMapInput
+	// Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+	LogGroupId pulumi.StringPtrInput
 	// Kubernetes master configuration options. The structure is documented below.
 	Master KubernetesClusterMasterPtrInput
 	// Name of a specific Kubernetes cluster.
@@ -193,6 +209,8 @@ type KubernetesClusterState struct {
 	// IP addresses will be allocated from. It should not overlap with any subnet in the network
 	// the Kubernetes cluster located in.
 	ServiceIpv4Range pulumi.StringPtrInput
+	// Identical to serviceIpv4Range but for IPv6 protocol.
+	ServiceIpv6Range pulumi.StringPtrInput
 	// (Computed)Status of the Kubernetes cluster.
 	Status pulumi.StringPtrInput
 }
@@ -206,6 +224,8 @@ type kubernetesClusterArgs struct {
 	// It should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be
 	// set up for this CIDR blocks in node subnets.
 	ClusterIpv4Range *string `pulumi:"clusterIpv4Range"`
+	// Identical to clusterIpv4Range but for IPv6 protocol.
+	ClusterIpv6Range *string `pulumi:"clusterIpv6Range"`
 	// A description of the Kubernetes cluster.
 	Description *string `pulumi:"description"`
 	// The ID of the folder that the Kubernetes cluster belongs to.
@@ -238,6 +258,8 @@ type kubernetesClusterArgs struct {
 	// IP addresses will be allocated from. It should not overlap with any subnet in the network
 	// the Kubernetes cluster located in.
 	ServiceIpv4Range *string `pulumi:"serviceIpv4Range"`
+	// Identical to serviceIpv4Range but for IPv6 protocol.
+	ServiceIpv6Range *string `pulumi:"serviceIpv6Range"`
 }
 
 // The set of arguments for constructing a KubernetesCluster resource.
@@ -246,6 +268,8 @@ type KubernetesClusterArgs struct {
 	// It should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be
 	// set up for this CIDR blocks in node subnets.
 	ClusterIpv4Range pulumi.StringPtrInput
+	// Identical to clusterIpv4Range but for IPv6 protocol.
+	ClusterIpv6Range pulumi.StringPtrInput
 	// A description of the Kubernetes cluster.
 	Description pulumi.StringPtrInput
 	// The ID of the folder that the Kubernetes cluster belongs to.
@@ -278,6 +302,8 @@ type KubernetesClusterArgs struct {
 	// IP addresses will be allocated from. It should not overlap with any subnet in the network
 	// the Kubernetes cluster located in.
 	ServiceIpv4Range pulumi.StringPtrInput
+	// Identical to serviceIpv4Range but for IPv6 protocol.
+	ServiceIpv6Range pulumi.StringPtrInput
 }
 
 func (KubernetesClusterArgs) ElementType() reflect.Type {

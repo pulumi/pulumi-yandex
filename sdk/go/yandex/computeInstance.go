@@ -34,7 +34,7 @@ type ComputeInstance struct {
 	// The ID of the folder that the resource belongs to. If it
 	// is not provided, the default provider folder is used.
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
-	// The fully qualified DNS name of this instance.
+	// DNS record FQDN (must have a dot at the end).
 	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
 	// Host name for the instance. This field is used to generate the instance `fqdn` value.
 	// The host name must be unique within the network and region. If not specified, the host name will be equal
@@ -121,7 +121,7 @@ type computeInstanceState struct {
 	// The ID of the folder that the resource belongs to. If it
 	// is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
-	// The fully qualified DNS name of this instance.
+	// DNS record FQDN (must have a dot at the end).
 	Fqdn *string `pulumi:"fqdn"`
 	// Host name for the instance. This field is used to generate the instance `fqdn` value.
 	// The host name must be unique within the network and region. If not specified, the host name will be equal
@@ -171,7 +171,7 @@ type ComputeInstanceState struct {
 	// The ID of the folder that the resource belongs to. If it
 	// is not provided, the default provider folder is used.
 	FolderId pulumi.StringPtrInput
-	// The fully qualified DNS name of this instance.
+	// DNS record FQDN (must have a dot at the end).
 	Fqdn pulumi.StringPtrInput
 	// Host name for the instance. This field is used to generate the instance `fqdn` value.
 	// The host name must be unique within the network and region. If not specified, the host name will be equal

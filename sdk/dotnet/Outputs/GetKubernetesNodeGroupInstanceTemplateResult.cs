@@ -29,6 +29,7 @@ namespace Pulumi.Yandex.Outputs
         /// An array with the network interfaces that will be attached to the instance. The structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult> NetworkInterfaces;
+        public readonly Outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult? PlacementPolicy;
         /// <summary>
         /// The ID of the hardware platform configuration for the instance.
         /// </summary>
@@ -49,6 +50,8 @@ namespace Pulumi.Yandex.Outputs
 
             ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult> networkInterfaces,
 
+            Outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult? placementPolicy,
+
             string platformId,
 
             Outputs.GetKubernetesNodeGroupInstanceTemplateResourcesResult resources,
@@ -59,6 +62,7 @@ namespace Pulumi.Yandex.Outputs
             Metadata = metadata;
             Nat = nat;
             NetworkInterfaces = networkInterfaces;
+            PlacementPolicy = placementPolicy;
             PlatformId = platformId;
             Resources = resources;
             SchedulingPolicy = schedulingPolicy;

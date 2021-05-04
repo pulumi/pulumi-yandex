@@ -87,6 +87,10 @@ namespace Pulumi.Yandex
         public readonly string Description;
         public readonly string FolderId;
         /// <summary>
+        /// A list of IDs of the host groups hosting VMs of the cluster.
+        /// </summary>
+        public readonly ImmutableArray<string> HostGroupIds;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -126,6 +130,8 @@ namespace Pulumi.Yandex
 
             string folderId,
 
+            ImmutableArray<string> hostGroupIds,
+
             string id,
 
             ImmutableDictionary<string, string> labels,
@@ -146,6 +152,7 @@ namespace Pulumi.Yandex
             CreatedAt = createdAt;
             Description = description;
             FolderId = folderId;
+            HostGroupIds = hostGroupIds;
             Id = id;
             Labels = labels;
             Name = name;

@@ -196,6 +196,12 @@ namespace Pulumi.Yandex
         public Output<string> FolderId { get; private set; } = null!;
 
         /// <summary>
+        /// A list of host group IDs to place VMs of the cluster on.
+        /// </summary>
+        [Output("hostGroupIds")]
+        public Output<ImmutableArray<string>> HostGroupIds { get; private set; } = null!;
+
+        /// <summary>
         /// A set of key/value label pairs to assign to the Data Proc cluster.
         /// </summary>
         [Output("labels")]
@@ -208,7 +214,7 @@ namespace Pulumi.Yandex
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Security group ids, to which cluster belongs.
+        /// A list of security group IDs that the cluster belongs to.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
@@ -301,6 +307,18 @@ namespace Pulumi.Yandex
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
+        [Input("hostGroupIds")]
+        private InputList<string>? _hostGroupIds;
+
+        /// <summary>
+        /// A list of host group IDs to place VMs of the cluster on.
+        /// </summary>
+        public InputList<string> HostGroupIds
+        {
+            get => _hostGroupIds ?? (_hostGroupIds = new InputList<string>());
+            set => _hostGroupIds = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -323,7 +341,7 @@ namespace Pulumi.Yandex
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// Security group ids, to which cluster belongs.
+        /// A list of security group IDs that the cluster belongs to.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -387,6 +405,18 @@ namespace Pulumi.Yandex
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
+        [Input("hostGroupIds")]
+        private InputList<string>? _hostGroupIds;
+
+        /// <summary>
+        /// A list of host group IDs to place VMs of the cluster on.
+        /// </summary>
+        public InputList<string> HostGroupIds
+        {
+            get => _hostGroupIds ?? (_hostGroupIds = new InputList<string>());
+            set => _hostGroupIds = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -409,7 +439,7 @@ namespace Pulumi.Yandex
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// Security group ids, to which cluster belongs.
+        /// A list of security group IDs that the cluster belongs to.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {

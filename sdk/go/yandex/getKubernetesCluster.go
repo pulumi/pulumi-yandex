@@ -32,6 +32,8 @@ type LookupKubernetesClusterResult struct {
 	ClusterId string `pulumi:"clusterId"`
 	// IP range for allocating pod addresses.
 	ClusterIpv4Range string `pulumi:"clusterIpv4Range"`
+	// Identical to clusterIpv4Range but for the IPv6 protocol.
+	ClusterIpv6Range string `pulumi:"clusterIpv6Range"`
 	// The Kubernetes cluster creation timestamp.
 	CreatedAt string `pulumi:"createdAt"`
 	// A description of the Kubernetes cluster.
@@ -45,6 +47,8 @@ type LookupKubernetesClusterResult struct {
 	KmsProvider GetKubernetesClusterKmsProvider `pulumi:"kmsProvider"`
 	// A set of key/value label pairs to assign to the Kubernetes cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+	LogGroupId string `pulumi:"logGroupId"`
 	// Kubernetes master configuration options. The structure is documented below.
 	Master GetKubernetesClusterMaster `pulumi:"master"`
 	Name   string                     `pulumi:"name"`
@@ -63,8 +67,10 @@ type LookupKubernetesClusterResult struct {
 	// for Kubernetes cluster. Selected service account should have `edit` role on the folder where the Kubernetes
 	// cluster will be located and on the folder where selected network resides.
 	ServiceAccountId string `pulumi:"serviceAccountId"`
-	// IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from
+	// IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from.
 	ServiceIpv4Range string `pulumi:"serviceIpv4Range"`
+	// Identical to serviceIpv4Range but for the IPv6 protocol.
+	ServiceIpv6Range string `pulumi:"serviceIpv6Range"`
 	// Status of the Kubernetes cluster.
 	Status string `pulumi:"status"`
 }

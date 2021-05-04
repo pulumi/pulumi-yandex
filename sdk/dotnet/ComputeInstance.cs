@@ -106,7 +106,7 @@ namespace Pulumi.Yandex
         public Output<string> FolderId { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified DNS name of this instance.
+        /// DNS record FQDN (must have a dot at the end).
         /// </summary>
         [Output("fqdn")]
         public Output<string> Fqdn { get; private set; } = null!;
@@ -415,7 +415,7 @@ namespace Pulumi.Yandex
         public Input<string>? FolderId { get; set; }
 
         /// <summary>
-        /// The fully qualified DNS name of this instance.
+        /// DNS record FQDN (must have a dot at the end).
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }

@@ -34,11 +34,13 @@ type DataprocCluster struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
+	// A list of host group IDs to place VMs of the cluster on.
+	HostGroupIds pulumi.StringArrayOutput `pulumi:"hostGroupIds"`
 	// A set of key/value label pairs to assign to the Data Proc cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the Data Proc subcluster.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Security group ids, to which cluster belongs.
+	// A list of security group IDs that the cluster belongs to.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
 	ServiceAccountId pulumi.StringOutput `pulumi:"serviceAccountId"`
@@ -94,11 +96,13 @@ type dataprocClusterState struct {
 	Description *string `pulumi:"description"`
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
+	// A list of host group IDs to place VMs of the cluster on.
+	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// A set of key/value label pairs to assign to the Data Proc cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the Data Proc subcluster.
 	Name *string `pulumi:"name"`
-	// Security group ids, to which cluster belongs.
+	// A list of security group IDs that the cluster belongs to.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
@@ -120,11 +124,13 @@ type DataprocClusterState struct {
 	Description pulumi.StringPtrInput
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
 	FolderId pulumi.StringPtrInput
+	// A list of host group IDs to place VMs of the cluster on.
+	HostGroupIds pulumi.StringArrayInput
 	// A set of key/value label pairs to assign to the Data Proc cluster.
 	Labels pulumi.StringMapInput
 	// Name of the Data Proc subcluster.
 	Name pulumi.StringPtrInput
-	// Security group ids, to which cluster belongs.
+	// A list of security group IDs that the cluster belongs to.
 	SecurityGroupIds pulumi.StringArrayInput
 	// Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
 	ServiceAccountId pulumi.StringPtrInput
@@ -147,11 +153,13 @@ type dataprocClusterArgs struct {
 	Description *string `pulumi:"description"`
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
+	// A list of host group IDs to place VMs of the cluster on.
+	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// A set of key/value label pairs to assign to the Data Proc cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the Data Proc subcluster.
 	Name *string `pulumi:"name"`
-	// Security group ids, to which cluster belongs.
+	// A list of security group IDs that the cluster belongs to.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
 	ServiceAccountId string `pulumi:"serviceAccountId"`
@@ -171,11 +179,13 @@ type DataprocClusterArgs struct {
 	Description pulumi.StringPtrInput
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
 	FolderId pulumi.StringPtrInput
+	// A list of host group IDs to place VMs of the cluster on.
+	HostGroupIds pulumi.StringArrayInput
 	// A set of key/value label pairs to assign to the Data Proc cluster.
 	Labels pulumi.StringMapInput
 	// Name of the Data Proc subcluster.
 	Name pulumi.StringPtrInput
-	// Security group ids, to which cluster belongs.
+	// A list of security group IDs that the cluster belongs to.
 	SecurityGroupIds pulumi.StringArrayInput
 	// Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
 	ServiceAccountId pulumi.StringInput

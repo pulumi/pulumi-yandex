@@ -52,6 +52,9 @@ namespace Pulumi.Yandex.Inputs
             set => _networkInterfaces = value;
         }
 
+        [Input("placementPolicy")]
+        public Input<Inputs.KubernetesNodeGroupInstanceTemplatePlacementPolicyGetArgs>? PlacementPolicy { get; set; }
+
         /// <summary>
         /// The ID of the hardware platform configuration for the node group compute instances.
         /// </summary>

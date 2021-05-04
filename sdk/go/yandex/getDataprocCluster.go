@@ -62,6 +62,8 @@ type LookupDataprocClusterResult struct {
 	// Description of the Data Proc cluster.
 	Description string `pulumi:"description"`
 	FolderId    string `pulumi:"folderId"`
+	// A list of IDs of the host groups hosting VMs of the cluster.
+	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs assigned to the Data Proc cluster.

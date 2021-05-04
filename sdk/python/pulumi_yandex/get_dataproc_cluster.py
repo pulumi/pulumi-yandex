@@ -20,7 +20,7 @@ class GetDataprocClusterResult:
     """
     A collection of values returned by getDataprocCluster.
     """
-    def __init__(__self__, bucket=None, cluster_config=None, cluster_id=None, created_at=None, description=None, folder_id=None, id=None, labels=None, name=None, security_group_ids=None, service_account_id=None, ui_proxy=None, zone_id=None):
+    def __init__(__self__, bucket=None, cluster_config=None, cluster_id=None, created_at=None, description=None, folder_id=None, host_group_ids=None, id=None, labels=None, name=None, security_group_ids=None, service_account_id=None, ui_proxy=None, zone_id=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -39,6 +39,9 @@ class GetDataprocClusterResult:
         if folder_id and not isinstance(folder_id, str):
             raise TypeError("Expected argument 'folder_id' to be a str")
         pulumi.set(__self__, "folder_id", folder_id)
+        if host_group_ids and not isinstance(host_group_ids, list):
+            raise TypeError("Expected argument 'host_group_ids' to be a list")
+        pulumi.set(__self__, "host_group_ids", host_group_ids)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -102,6 +105,14 @@ class GetDataprocClusterResult:
     @pulumi.getter(name="folderId")
     def folder_id(self) -> str:
         return pulumi.get(self, "folder_id")
+
+    @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> Sequence[str]:
+        """
+        A list of IDs of the host groups hosting VMs of the cluster.
+        """
+        return pulumi.get(self, "host_group_ids")
 
     @property
     @pulumi.getter
@@ -169,6 +180,7 @@ class AwaitableGetDataprocClusterResult(GetDataprocClusterResult):
             created_at=self.created_at,
             description=self.description,
             folder_id=self.folder_id,
+            host_group_ids=self.host_group_ids,
             id=self.id,
             labels=self.labels,
             name=self.name,
@@ -214,6 +226,7 @@ def get_dataproc_cluster(cluster_id: Optional[str] = None,
         created_at=__ret__.created_at,
         description=__ret__.description,
         folder_id=__ret__.folder_id,
+        host_group_ids=__ret__.host_group_ids,
         id=__ret__.id,
         labels=__ret__.labels,
         name=__ret__.name,

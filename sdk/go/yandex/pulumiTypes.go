@@ -5192,7 +5192,9 @@ func (o ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArrayOutput) Index
 }
 
 type ComputeInstanceNetworkInterface struct {
-	Index *int `pulumi:"index"`
+	// List of configurations for creating ipv4 DNS records. The structure is documented below.
+	DnsRecords []ComputeInstanceNetworkInterfaceDnsRecord `pulumi:"dnsRecords"`
+	Index      *int                                       `pulumi:"index"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned from the specified subnet.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -5203,9 +5205,13 @@ type ComputeInstanceNetworkInterface struct {
 	Ipv6 *bool `pulumi:"ipv6"`
 	// The private IPv6 address to assign to the instance.
 	Ipv6Address *string `pulumi:"ipv6Address"`
-	MacAddress  *string `pulumi:"macAddress"`
+	// List of configurations for creating ipv6 DNS records. The structure is documented below.
+	Ipv6DnsRecords []ComputeInstanceNetworkInterfaceIpv6DnsRecord `pulumi:"ipv6DnsRecords"`
+	MacAddress     *string                                        `pulumi:"macAddress"`
 	// Provide a public address, for instance, to access the internet over NAT.
 	Nat *bool `pulumi:"nat"`
+	// List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+	NatDnsRecords []ComputeInstanceNetworkInterfaceNatDnsRecord `pulumi:"natDnsRecords"`
 	// Provide a public address, for instance, to access the internet over NAT. Address should be already reserved in web UI.
 	NatIpAddress *string `pulumi:"natIpAddress"`
 	NatIpVersion *string `pulumi:"natIpVersion"`
@@ -5229,7 +5235,9 @@ type ComputeInstanceNetworkInterfaceInput interface {
 }
 
 type ComputeInstanceNetworkInterfaceArgs struct {
-	Index pulumi.IntPtrInput `pulumi:"index"`
+	// List of configurations for creating ipv4 DNS records. The structure is documented below.
+	DnsRecords ComputeInstanceNetworkInterfaceDnsRecordArrayInput `pulumi:"dnsRecords"`
+	Index      pulumi.IntPtrInput                                 `pulumi:"index"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned from the specified subnet.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
@@ -5240,9 +5248,13 @@ type ComputeInstanceNetworkInterfaceArgs struct {
 	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
 	// The private IPv6 address to assign to the instance.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
-	MacAddress  pulumi.StringPtrInput `pulumi:"macAddress"`
+	// List of configurations for creating ipv6 DNS records. The structure is documented below.
+	Ipv6DnsRecords ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput `pulumi:"ipv6DnsRecords"`
+	MacAddress     pulumi.StringPtrInput                                  `pulumi:"macAddress"`
 	// Provide a public address, for instance, to access the internet over NAT.
 	Nat pulumi.BoolPtrInput `pulumi:"nat"`
+	// List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+	NatDnsRecords ComputeInstanceNetworkInterfaceNatDnsRecordArrayInput `pulumi:"natDnsRecords"`
 	// Provide a public address, for instance, to access the internet over NAT. Address should be already reserved in web UI.
 	NatIpAddress pulumi.StringPtrInput `pulumi:"natIpAddress"`
 	NatIpVersion pulumi.StringPtrInput `pulumi:"natIpVersion"`
@@ -5305,6 +5317,13 @@ func (o ComputeInstanceNetworkInterfaceOutput) ToComputeInstanceNetworkInterface
 	return o
 }
 
+// List of configurations for creating ipv4 DNS records. The structure is documented below.
+func (o ComputeInstanceNetworkInterfaceOutput) DnsRecords() ComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterface) []ComputeInstanceNetworkInterfaceDnsRecord {
+		return v.DnsRecords
+	}).(ComputeInstanceNetworkInterfaceDnsRecordArrayOutput)
+}
+
 func (o ComputeInstanceNetworkInterfaceOutput) Index() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceNetworkInterface) *int { return v.Index }).(pulumi.IntPtrOutput)
 }
@@ -5331,6 +5350,13 @@ func (o ComputeInstanceNetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOut
 	return o.ApplyT(func(v ComputeInstanceNetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
+// List of configurations for creating ipv6 DNS records. The structure is documented below.
+func (o ComputeInstanceNetworkInterfaceOutput) Ipv6DnsRecords() ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterface) []ComputeInstanceNetworkInterfaceIpv6DnsRecord {
+		return v.Ipv6DnsRecords
+	}).(ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput)
+}
+
 func (o ComputeInstanceNetworkInterfaceOutput) MacAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceNetworkInterface) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
 }
@@ -5338,6 +5364,13 @@ func (o ComputeInstanceNetworkInterfaceOutput) MacAddress() pulumi.StringPtrOutp
 // Provide a public address, for instance, to access the internet over NAT.
 func (o ComputeInstanceNetworkInterfaceOutput) Nat() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceNetworkInterface) *bool { return v.Nat }).(pulumi.BoolPtrOutput)
+}
+
+// List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+func (o ComputeInstanceNetworkInterfaceOutput) NatDnsRecords() ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterface) []ComputeInstanceNetworkInterfaceNatDnsRecord {
+		return v.NatDnsRecords
+	}).(ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput)
 }
 
 // Provide a public address, for instance, to access the internet over NAT. Address should be already reserved in web UI.
@@ -5379,6 +5412,378 @@ func (o ComputeInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Com
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeInstanceNetworkInterface {
 		return vs[0].([]ComputeInstanceNetworkInterface)[vs[1].(int)]
 	}).(ComputeInstanceNetworkInterfaceOutput)
+}
+
+type ComputeInstanceNetworkInterfaceDnsRecord struct {
+	// DNS zone ID (if not set, private zone used).
+	DnsZoneId *string `pulumi:"dnsZoneId"`
+	// DNS record FQDN (must have a dot at the end).
+	Fqdn string `pulumi:"fqdn"`
+	// When set to true, also create a PTR DNS record.
+	Ptr *bool `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl *int `pulumi:"ttl"`
+}
+
+// ComputeInstanceNetworkInterfaceDnsRecordInput is an input type that accepts ComputeInstanceNetworkInterfaceDnsRecordArgs and ComputeInstanceNetworkInterfaceDnsRecordOutput values.
+// You can construct a concrete instance of `ComputeInstanceNetworkInterfaceDnsRecordInput` via:
+//
+//          ComputeInstanceNetworkInterfaceDnsRecordArgs{...}
+type ComputeInstanceNetworkInterfaceDnsRecordInput interface {
+	pulumi.Input
+
+	ToComputeInstanceNetworkInterfaceDnsRecordOutput() ComputeInstanceNetworkInterfaceDnsRecordOutput
+	ToComputeInstanceNetworkInterfaceDnsRecordOutputWithContext(context.Context) ComputeInstanceNetworkInterfaceDnsRecordOutput
+}
+
+type ComputeInstanceNetworkInterfaceDnsRecordArgs struct {
+	// DNS zone ID (if not set, private zone used).
+	DnsZoneId pulumi.StringPtrInput `pulumi:"dnsZoneId"`
+	// DNS record FQDN (must have a dot at the end).
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// When set to true, also create a PTR DNS record.
+	Ptr pulumi.BoolPtrInput `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (ComputeInstanceNetworkInterfaceDnsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeInstanceNetworkInterfaceDnsRecord)(nil)).Elem()
+}
+
+func (i ComputeInstanceNetworkInterfaceDnsRecordArgs) ToComputeInstanceNetworkInterfaceDnsRecordOutput() ComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return i.ToComputeInstanceNetworkInterfaceDnsRecordOutputWithContext(context.Background())
+}
+
+func (i ComputeInstanceNetworkInterfaceDnsRecordArgs) ToComputeInstanceNetworkInterfaceDnsRecordOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceNetworkInterfaceDnsRecordOutput)
+}
+
+// ComputeInstanceNetworkInterfaceDnsRecordArrayInput is an input type that accepts ComputeInstanceNetworkInterfaceDnsRecordArray and ComputeInstanceNetworkInterfaceDnsRecordArrayOutput values.
+// You can construct a concrete instance of `ComputeInstanceNetworkInterfaceDnsRecordArrayInput` via:
+//
+//          ComputeInstanceNetworkInterfaceDnsRecordArray{ ComputeInstanceNetworkInterfaceDnsRecordArgs{...} }
+type ComputeInstanceNetworkInterfaceDnsRecordArrayInput interface {
+	pulumi.Input
+
+	ToComputeInstanceNetworkInterfaceDnsRecordArrayOutput() ComputeInstanceNetworkInterfaceDnsRecordArrayOutput
+	ToComputeInstanceNetworkInterfaceDnsRecordArrayOutputWithContext(context.Context) ComputeInstanceNetworkInterfaceDnsRecordArrayOutput
+}
+
+type ComputeInstanceNetworkInterfaceDnsRecordArray []ComputeInstanceNetworkInterfaceDnsRecordInput
+
+func (ComputeInstanceNetworkInterfaceDnsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeInstanceNetworkInterfaceDnsRecord)(nil)).Elem()
+}
+
+func (i ComputeInstanceNetworkInterfaceDnsRecordArray) ToComputeInstanceNetworkInterfaceDnsRecordArrayOutput() ComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return i.ToComputeInstanceNetworkInterfaceDnsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeInstanceNetworkInterfaceDnsRecordArray) ToComputeInstanceNetworkInterfaceDnsRecordArrayOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceNetworkInterfaceDnsRecordArrayOutput)
+}
+
+type ComputeInstanceNetworkInterfaceDnsRecordOutput struct{ *pulumi.OutputState }
+
+func (ComputeInstanceNetworkInterfaceDnsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeInstanceNetworkInterfaceDnsRecord)(nil)).Elem()
+}
+
+func (o ComputeInstanceNetworkInterfaceDnsRecordOutput) ToComputeInstanceNetworkInterfaceDnsRecordOutput() ComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return o
+}
+
+func (o ComputeInstanceNetworkInterfaceDnsRecordOutput) ToComputeInstanceNetworkInterfaceDnsRecordOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return o
+}
+
+// DNS zone ID (if not set, private zone used).
+func (o ComputeInstanceNetworkInterfaceDnsRecordOutput) DnsZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceDnsRecord) *string { return v.DnsZoneId }).(pulumi.StringPtrOutput)
+}
+
+// DNS record FQDN (must have a dot at the end).
+func (o ComputeInstanceNetworkInterfaceDnsRecordOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceDnsRecord) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// When set to true, also create a PTR DNS record.
+func (o ComputeInstanceNetworkInterfaceDnsRecordOutput) Ptr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceDnsRecord) *bool { return v.Ptr }).(pulumi.BoolPtrOutput)
+}
+
+// DNS record TTL. in seconds
+func (o ComputeInstanceNetworkInterfaceDnsRecordOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceDnsRecord) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type ComputeInstanceNetworkInterfaceDnsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeInstanceNetworkInterfaceDnsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeInstanceNetworkInterfaceDnsRecord)(nil)).Elem()
+}
+
+func (o ComputeInstanceNetworkInterfaceDnsRecordArrayOutput) ToComputeInstanceNetworkInterfaceDnsRecordArrayOutput() ComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return o
+}
+
+func (o ComputeInstanceNetworkInterfaceDnsRecordArrayOutput) ToComputeInstanceNetworkInterfaceDnsRecordArrayOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return o
+}
+
+func (o ComputeInstanceNetworkInterfaceDnsRecordArrayOutput) Index(i pulumi.IntInput) ComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeInstanceNetworkInterfaceDnsRecord {
+		return vs[0].([]ComputeInstanceNetworkInterfaceDnsRecord)[vs[1].(int)]
+	}).(ComputeInstanceNetworkInterfaceDnsRecordOutput)
+}
+
+type ComputeInstanceNetworkInterfaceIpv6DnsRecord struct {
+	// DNS zone ID (if not set, private zone used).
+	DnsZoneId *string `pulumi:"dnsZoneId"`
+	// DNS record FQDN (must have a dot at the end).
+	Fqdn string `pulumi:"fqdn"`
+	// When set to true, also create a PTR DNS record.
+	Ptr *bool `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl *int `pulumi:"ttl"`
+}
+
+// ComputeInstanceNetworkInterfaceIpv6DnsRecordInput is an input type that accepts ComputeInstanceNetworkInterfaceIpv6DnsRecordArgs and ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput values.
+// You can construct a concrete instance of `ComputeInstanceNetworkInterfaceIpv6DnsRecordInput` via:
+//
+//          ComputeInstanceNetworkInterfaceIpv6DnsRecordArgs{...}
+type ComputeInstanceNetworkInterfaceIpv6DnsRecordInput interface {
+	pulumi.Input
+
+	ToComputeInstanceNetworkInterfaceIpv6DnsRecordOutput() ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput
+	ToComputeInstanceNetworkInterfaceIpv6DnsRecordOutputWithContext(context.Context) ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput
+}
+
+type ComputeInstanceNetworkInterfaceIpv6DnsRecordArgs struct {
+	// DNS zone ID (if not set, private zone used).
+	DnsZoneId pulumi.StringPtrInput `pulumi:"dnsZoneId"`
+	// DNS record FQDN (must have a dot at the end).
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// When set to true, also create a PTR DNS record.
+	Ptr pulumi.BoolPtrInput `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (ComputeInstanceNetworkInterfaceIpv6DnsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeInstanceNetworkInterfaceIpv6DnsRecord)(nil)).Elem()
+}
+
+func (i ComputeInstanceNetworkInterfaceIpv6DnsRecordArgs) ToComputeInstanceNetworkInterfaceIpv6DnsRecordOutput() ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return i.ToComputeInstanceNetworkInterfaceIpv6DnsRecordOutputWithContext(context.Background())
+}
+
+func (i ComputeInstanceNetworkInterfaceIpv6DnsRecordArgs) ToComputeInstanceNetworkInterfaceIpv6DnsRecordOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput)
+}
+
+// ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput is an input type that accepts ComputeInstanceNetworkInterfaceIpv6DnsRecordArray and ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput values.
+// You can construct a concrete instance of `ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput` via:
+//
+//          ComputeInstanceNetworkInterfaceIpv6DnsRecordArray{ ComputeInstanceNetworkInterfaceIpv6DnsRecordArgs{...} }
+type ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput interface {
+	pulumi.Input
+
+	ToComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput() ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput
+	ToComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutputWithContext(context.Context) ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput
+}
+
+type ComputeInstanceNetworkInterfaceIpv6DnsRecordArray []ComputeInstanceNetworkInterfaceIpv6DnsRecordInput
+
+func (ComputeInstanceNetworkInterfaceIpv6DnsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeInstanceNetworkInterfaceIpv6DnsRecord)(nil)).Elem()
+}
+
+func (i ComputeInstanceNetworkInterfaceIpv6DnsRecordArray) ToComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput() ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return i.ToComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeInstanceNetworkInterfaceIpv6DnsRecordArray) ToComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput)
+}
+
+type ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput struct{ *pulumi.OutputState }
+
+func (ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeInstanceNetworkInterfaceIpv6DnsRecord)(nil)).Elem()
+}
+
+func (o ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) ToComputeInstanceNetworkInterfaceIpv6DnsRecordOutput() ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return o
+}
+
+func (o ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) ToComputeInstanceNetworkInterfaceIpv6DnsRecordOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return o
+}
+
+// DNS zone ID (if not set, private zone used).
+func (o ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) DnsZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceIpv6DnsRecord) *string { return v.DnsZoneId }).(pulumi.StringPtrOutput)
+}
+
+// DNS record FQDN (must have a dot at the end).
+func (o ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceIpv6DnsRecord) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// When set to true, also create a PTR DNS record.
+func (o ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) Ptr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceIpv6DnsRecord) *bool { return v.Ptr }).(pulumi.BoolPtrOutput)
+}
+
+// DNS record TTL. in seconds
+func (o ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceIpv6DnsRecord) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeInstanceNetworkInterfaceIpv6DnsRecord)(nil)).Elem()
+}
+
+func (o ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput) ToComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput() ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return o
+}
+
+func (o ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput) ToComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return o
+}
+
+func (o ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput) Index(i pulumi.IntInput) ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeInstanceNetworkInterfaceIpv6DnsRecord {
+		return vs[0].([]ComputeInstanceNetworkInterfaceIpv6DnsRecord)[vs[1].(int)]
+	}).(ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput)
+}
+
+type ComputeInstanceNetworkInterfaceNatDnsRecord struct {
+	// DNS zone ID (if not set, private zone used).
+	DnsZoneId *string `pulumi:"dnsZoneId"`
+	// DNS record FQDN (must have a dot at the end).
+	Fqdn string `pulumi:"fqdn"`
+	// When set to true, also create a PTR DNS record.
+	Ptr *bool `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl *int `pulumi:"ttl"`
+}
+
+// ComputeInstanceNetworkInterfaceNatDnsRecordInput is an input type that accepts ComputeInstanceNetworkInterfaceNatDnsRecordArgs and ComputeInstanceNetworkInterfaceNatDnsRecordOutput values.
+// You can construct a concrete instance of `ComputeInstanceNetworkInterfaceNatDnsRecordInput` via:
+//
+//          ComputeInstanceNetworkInterfaceNatDnsRecordArgs{...}
+type ComputeInstanceNetworkInterfaceNatDnsRecordInput interface {
+	pulumi.Input
+
+	ToComputeInstanceNetworkInterfaceNatDnsRecordOutput() ComputeInstanceNetworkInterfaceNatDnsRecordOutput
+	ToComputeInstanceNetworkInterfaceNatDnsRecordOutputWithContext(context.Context) ComputeInstanceNetworkInterfaceNatDnsRecordOutput
+}
+
+type ComputeInstanceNetworkInterfaceNatDnsRecordArgs struct {
+	// DNS zone ID (if not set, private zone used).
+	DnsZoneId pulumi.StringPtrInput `pulumi:"dnsZoneId"`
+	// DNS record FQDN (must have a dot at the end).
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// When set to true, also create a PTR DNS record.
+	Ptr pulumi.BoolPtrInput `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (ComputeInstanceNetworkInterfaceNatDnsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeInstanceNetworkInterfaceNatDnsRecord)(nil)).Elem()
+}
+
+func (i ComputeInstanceNetworkInterfaceNatDnsRecordArgs) ToComputeInstanceNetworkInterfaceNatDnsRecordOutput() ComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return i.ToComputeInstanceNetworkInterfaceNatDnsRecordOutputWithContext(context.Background())
+}
+
+func (i ComputeInstanceNetworkInterfaceNatDnsRecordArgs) ToComputeInstanceNetworkInterfaceNatDnsRecordOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceNetworkInterfaceNatDnsRecordOutput)
+}
+
+// ComputeInstanceNetworkInterfaceNatDnsRecordArrayInput is an input type that accepts ComputeInstanceNetworkInterfaceNatDnsRecordArray and ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput values.
+// You can construct a concrete instance of `ComputeInstanceNetworkInterfaceNatDnsRecordArrayInput` via:
+//
+//          ComputeInstanceNetworkInterfaceNatDnsRecordArray{ ComputeInstanceNetworkInterfaceNatDnsRecordArgs{...} }
+type ComputeInstanceNetworkInterfaceNatDnsRecordArrayInput interface {
+	pulumi.Input
+
+	ToComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput() ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput
+	ToComputeInstanceNetworkInterfaceNatDnsRecordArrayOutputWithContext(context.Context) ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput
+}
+
+type ComputeInstanceNetworkInterfaceNatDnsRecordArray []ComputeInstanceNetworkInterfaceNatDnsRecordInput
+
+func (ComputeInstanceNetworkInterfaceNatDnsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeInstanceNetworkInterfaceNatDnsRecord)(nil)).Elem()
+}
+
+func (i ComputeInstanceNetworkInterfaceNatDnsRecordArray) ToComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput() ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return i.ToComputeInstanceNetworkInterfaceNatDnsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeInstanceNetworkInterfaceNatDnsRecordArray) ToComputeInstanceNetworkInterfaceNatDnsRecordArrayOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput)
+}
+
+type ComputeInstanceNetworkInterfaceNatDnsRecordOutput struct{ *pulumi.OutputState }
+
+func (ComputeInstanceNetworkInterfaceNatDnsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeInstanceNetworkInterfaceNatDnsRecord)(nil)).Elem()
+}
+
+func (o ComputeInstanceNetworkInterfaceNatDnsRecordOutput) ToComputeInstanceNetworkInterfaceNatDnsRecordOutput() ComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return o
+}
+
+func (o ComputeInstanceNetworkInterfaceNatDnsRecordOutput) ToComputeInstanceNetworkInterfaceNatDnsRecordOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return o
+}
+
+// DNS zone ID (if not set, private zone used).
+func (o ComputeInstanceNetworkInterfaceNatDnsRecordOutput) DnsZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceNatDnsRecord) *string { return v.DnsZoneId }).(pulumi.StringPtrOutput)
+}
+
+// DNS record FQDN (must have a dot at the end).
+func (o ComputeInstanceNetworkInterfaceNatDnsRecordOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceNatDnsRecord) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// When set to true, also create a PTR DNS record.
+func (o ComputeInstanceNetworkInterfaceNatDnsRecordOutput) Ptr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceNatDnsRecord) *bool { return v.Ptr }).(pulumi.BoolPtrOutput)
+}
+
+// DNS record TTL. in seconds
+func (o ComputeInstanceNetworkInterfaceNatDnsRecordOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceNetworkInterfaceNatDnsRecord) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeInstanceNetworkInterfaceNatDnsRecord)(nil)).Elem()
+}
+
+func (o ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput) ToComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput() ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return o
+}
+
+func (o ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput) ToComputeInstanceNetworkInterfaceNatDnsRecordArrayOutputWithContext(ctx context.Context) ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return o
+}
+
+func (o ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput) Index(i pulumi.IntInput) ComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeInstanceNetworkInterfaceNatDnsRecord {
+		return vs[0].([]ComputeInstanceNetworkInterfaceNatDnsRecord)[vs[1].(int)]
+	}).(ComputeInstanceNetworkInterfaceNatDnsRecordOutput)
 }
 
 type ComputeInstancePlacementPolicy struct {
@@ -9718,6 +10123,7 @@ type KubernetesNodeGroupInstanceTemplate struct {
 	Nat *bool `pulumi:"nat"`
 	// An array with the network interfaces that will be attached to the instance. The structure is documented below.
 	NetworkInterfaces []KubernetesNodeGroupInstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
+	PlacementPolicy   *KubernetesNodeGroupInstanceTemplatePlacementPolicy   `pulumi:"placementPolicy"`
 	// The ID of the hardware platform configuration for the node group compute instances.
 	PlatformId *string                                       `pulumi:"platformId"`
 	Resources  *KubernetesNodeGroupInstanceTemplateResources `pulumi:"resources"`
@@ -9751,6 +10157,7 @@ type KubernetesNodeGroupInstanceTemplateArgs struct {
 	Nat pulumi.BoolPtrInput `pulumi:"nat"`
 	// An array with the network interfaces that will be attached to the instance. The structure is documented below.
 	NetworkInterfaces KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	PlacementPolicy   KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput    `pulumi:"placementPolicy"`
 	// The ID of the hardware platform configuration for the node group compute instances.
 	PlatformId pulumi.StringPtrInput                                `pulumi:"platformId"`
 	Resources  KubernetesNodeGroupInstanceTemplateResourcesPtrInput `pulumi:"resources"`
@@ -9865,6 +10272,12 @@ func (o KubernetesNodeGroupInstanceTemplateOutput) NetworkInterfaces() Kubernete
 	}).(KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput)
 }
 
+func (o KubernetesNodeGroupInstanceTemplateOutput) PlacementPolicy() KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplatePlacementPolicy {
+		return v.PlacementPolicy
+	}).(KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
+}
+
 // The ID of the hardware platform configuration for the node group compute instances.
 func (o KubernetesNodeGroupInstanceTemplateOutput) PlatformId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplate) *string { return v.PlatformId }).(pulumi.StringPtrOutput)
@@ -9945,6 +10358,15 @@ func (o KubernetesNodeGroupInstanceTemplatePtrOutput) NetworkInterfaces() Kubern
 		}
 		return v.NetworkInterfaces
 	}).(KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput)
+}
+
+func (o KubernetesNodeGroupInstanceTemplatePtrOutput) PlacementPolicy() KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplatePlacementPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.PlacementPolicy
+	}).(KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
 }
 
 // The ID of the hardware platform configuration for the node group compute instances.
@@ -10241,6 +10663,134 @@ func (o KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput) Index(i 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesNodeGroupInstanceTemplateNetworkInterface {
 		return vs[0].([]KubernetesNodeGroupInstanceTemplateNetworkInterface)[vs[1].(int)]
 	}).(KubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput)
+}
+
+type KubernetesNodeGroupInstanceTemplatePlacementPolicy struct {
+	PlacementGroupId string `pulumi:"placementGroupId"`
+}
+
+// KubernetesNodeGroupInstanceTemplatePlacementPolicyInput is an input type that accepts KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs and KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput values.
+// You can construct a concrete instance of `KubernetesNodeGroupInstanceTemplatePlacementPolicyInput` via:
+//
+//          KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs{...}
+type KubernetesNodeGroupInstanceTemplatePlacementPolicyInput interface {
+	pulumi.Input
+
+	ToKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput() KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput
+	ToKubernetesNodeGroupInstanceTemplatePlacementPolicyOutputWithContext(context.Context) KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput
+}
+
+type KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs struct {
+	PlacementGroupId pulumi.StringInput `pulumi:"placementGroupId"`
+}
+
+func (KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesNodeGroupInstanceTemplatePlacementPolicy)(nil)).Elem()
+}
+
+func (i KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput() KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return i.ToKubernetesNodeGroupInstanceTemplatePlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput)
+}
+
+func (i KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return i.ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput).ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx)
+}
+
+// KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput is an input type that accepts KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs, KubernetesNodeGroupInstanceTemplatePlacementPolicyPtr and KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput values.
+// You can construct a concrete instance of `KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput` via:
+//
+//          KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput
+	ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(context.Context) KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput
+}
+
+type kubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs
+
+func KubernetesNodeGroupInstanceTemplatePlacementPolicyPtr(v *KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput {
+	return (*kubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType)(v)
+}
+
+func (*kubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesNodeGroupInstanceTemplatePlacementPolicy)(nil)).Elem()
+}
+
+func (i *kubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return i.ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
+}
+
+type KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesNodeGroupInstanceTemplatePlacementPolicy)(nil)).Elem()
+}
+
+func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput() KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return o
+}
+
+func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return o
+}
+
+func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o.ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplatePlacementPolicy) *KubernetesNodeGroupInstanceTemplatePlacementPolicy {
+		return &v
+	}).(KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
+}
+func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) PlacementGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplatePlacementPolicy) string { return v.PlacementGroupId }).(pulumi.StringOutput)
+}
+
+type KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesNodeGroupInstanceTemplatePlacementPolicy)(nil)).Elem()
+}
+
+func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o
+}
+
+func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o
+}
+
+func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) Elem() KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplatePlacementPolicy) KubernetesNodeGroupInstanceTemplatePlacementPolicy {
+		return *v
+	}).(KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput)
+}
+
+func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) PlacementGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplatePlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PlacementGroupId
+	}).(pulumi.StringPtrOutput)
 }
 
 type KubernetesNodeGroupInstanceTemplateResources struct {
@@ -30949,6 +31499,8 @@ func (o GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArrayOutput) In
 }
 
 type GetComputeInstanceNetworkInterface struct {
+	// List of configurations for creating ipv4 DNS records. The structure is documented below.
+	DnsRecords []GetComputeInstanceNetworkInterfaceDnsRecord `pulumi:"dnsRecords"`
 	// The index of the network interface, generated by the server.
 	Index int `pulumi:"index"`
 	// The assignd private IP address to the network interface.
@@ -30957,10 +31509,14 @@ type GetComputeInstanceNetworkInterface struct {
 	Ipv4        bool   `pulumi:"ipv4"`
 	Ipv6        bool   `pulumi:"ipv6"`
 	Ipv6Address string `pulumi:"ipv6Address"`
+	// List of configurations for creating ipv6 DNS records. The structure is documented below.
+	Ipv6DnsRecords []GetComputeInstanceNetworkInterfaceIpv6DnsRecord `pulumi:"ipv6DnsRecords"`
 	// MAC address that is assigned to the network interface.
 	MacAddress string `pulumi:"macAddress"`
 	// Assigned for the instance's public address that is used to access the internet over NAT.
 	Nat bool `pulumi:"nat"`
+	// List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+	NatDnsRecords []GetComputeInstanceNetworkInterfaceNatDnsRecord `pulumi:"natDnsRecords"`
 	// Public IP address of the instance.
 	NatIpAddress string `pulumi:"natIpAddress"`
 	// IP version for the public address.
@@ -30983,6 +31539,8 @@ type GetComputeInstanceNetworkInterfaceInput interface {
 }
 
 type GetComputeInstanceNetworkInterfaceArgs struct {
+	// List of configurations for creating ipv4 DNS records. The structure is documented below.
+	DnsRecords GetComputeInstanceNetworkInterfaceDnsRecordArrayInput `pulumi:"dnsRecords"`
 	// The index of the network interface, generated by the server.
 	Index pulumi.IntInput `pulumi:"index"`
 	// The assignd private IP address to the network interface.
@@ -30991,10 +31549,14 @@ type GetComputeInstanceNetworkInterfaceArgs struct {
 	Ipv4        pulumi.BoolInput   `pulumi:"ipv4"`
 	Ipv6        pulumi.BoolInput   `pulumi:"ipv6"`
 	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// List of configurations for creating ipv6 DNS records. The structure is documented below.
+	Ipv6DnsRecords GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput `pulumi:"ipv6DnsRecords"`
 	// MAC address that is assigned to the network interface.
 	MacAddress pulumi.StringInput `pulumi:"macAddress"`
 	// Assigned for the instance's public address that is used to access the internet over NAT.
 	Nat pulumi.BoolInput `pulumi:"nat"`
+	// List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+	NatDnsRecords GetComputeInstanceNetworkInterfaceNatDnsRecordArrayInput `pulumi:"natDnsRecords"`
 	// Public IP address of the instance.
 	NatIpAddress pulumi.StringInput `pulumi:"natIpAddress"`
 	// IP version for the public address.
@@ -31056,6 +31618,13 @@ func (o GetComputeInstanceNetworkInterfaceOutput) ToGetComputeInstanceNetworkInt
 	return o
 }
 
+// List of configurations for creating ipv4 DNS records. The structure is documented below.
+func (o GetComputeInstanceNetworkInterfaceOutput) DnsRecords() GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterface) []GetComputeInstanceNetworkInterfaceDnsRecord {
+		return v.DnsRecords
+	}).(GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput)
+}
+
 // The index of the network interface, generated by the server.
 func (o GetComputeInstanceNetworkInterfaceOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v GetComputeInstanceNetworkInterface) int { return v.Index }).(pulumi.IntOutput)
@@ -31079,6 +31648,13 @@ func (o GetComputeInstanceNetworkInterfaceOutput) Ipv6Address() pulumi.StringOut
 	return o.ApplyT(func(v GetComputeInstanceNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
+// List of configurations for creating ipv6 DNS records. The structure is documented below.
+func (o GetComputeInstanceNetworkInterfaceOutput) Ipv6DnsRecords() GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterface) []GetComputeInstanceNetworkInterfaceIpv6DnsRecord {
+		return v.Ipv6DnsRecords
+	}).(GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput)
+}
+
 // MAC address that is assigned to the network interface.
 func (o GetComputeInstanceNetworkInterfaceOutput) MacAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceNetworkInterface) string { return v.MacAddress }).(pulumi.StringOutput)
@@ -31087,6 +31663,13 @@ func (o GetComputeInstanceNetworkInterfaceOutput) MacAddress() pulumi.StringOutp
 // Assigned for the instance's public address that is used to access the internet over NAT.
 func (o GetComputeInstanceNetworkInterfaceOutput) Nat() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetComputeInstanceNetworkInterface) bool { return v.Nat }).(pulumi.BoolOutput)
+}
+
+// List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+func (o GetComputeInstanceNetworkInterfaceOutput) NatDnsRecords() GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterface) []GetComputeInstanceNetworkInterfaceNatDnsRecord {
+		return v.NatDnsRecords
+	}).(GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput)
 }
 
 // Public IP address of the instance.
@@ -31127,6 +31710,378 @@ func (o GetComputeInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetComputeInstanceNetworkInterface {
 		return vs[0].([]GetComputeInstanceNetworkInterface)[vs[1].(int)]
 	}).(GetComputeInstanceNetworkInterfaceOutput)
+}
+
+type GetComputeInstanceNetworkInterfaceDnsRecord struct {
+	// DNS zone ID (if not set, private zone is used).
+	DnsZoneId string `pulumi:"dnsZoneId"`
+	// DNS record FQDN.
+	Fqdn string `pulumi:"fqdn"`
+	// When set to true, also create a TR DNS record.
+	Ptr bool `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl int `pulumi:"ttl"`
+}
+
+// GetComputeInstanceNetworkInterfaceDnsRecordInput is an input type that accepts GetComputeInstanceNetworkInterfaceDnsRecordArgs and GetComputeInstanceNetworkInterfaceDnsRecordOutput values.
+// You can construct a concrete instance of `GetComputeInstanceNetworkInterfaceDnsRecordInput` via:
+//
+//          GetComputeInstanceNetworkInterfaceDnsRecordArgs{...}
+type GetComputeInstanceNetworkInterfaceDnsRecordInput interface {
+	pulumi.Input
+
+	ToGetComputeInstanceNetworkInterfaceDnsRecordOutput() GetComputeInstanceNetworkInterfaceDnsRecordOutput
+	ToGetComputeInstanceNetworkInterfaceDnsRecordOutputWithContext(context.Context) GetComputeInstanceNetworkInterfaceDnsRecordOutput
+}
+
+type GetComputeInstanceNetworkInterfaceDnsRecordArgs struct {
+	// DNS zone ID (if not set, private zone is used).
+	DnsZoneId pulumi.StringInput `pulumi:"dnsZoneId"`
+	// DNS record FQDN.
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// When set to true, also create a TR DNS record.
+	Ptr pulumi.BoolInput `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetComputeInstanceNetworkInterfaceDnsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetComputeInstanceNetworkInterfaceDnsRecord)(nil)).Elem()
+}
+
+func (i GetComputeInstanceNetworkInterfaceDnsRecordArgs) ToGetComputeInstanceNetworkInterfaceDnsRecordOutput() GetComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return i.ToGetComputeInstanceNetworkInterfaceDnsRecordOutputWithContext(context.Background())
+}
+
+func (i GetComputeInstanceNetworkInterfaceDnsRecordArgs) ToGetComputeInstanceNetworkInterfaceDnsRecordOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceNetworkInterfaceDnsRecordOutput)
+}
+
+// GetComputeInstanceNetworkInterfaceDnsRecordArrayInput is an input type that accepts GetComputeInstanceNetworkInterfaceDnsRecordArray and GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput values.
+// You can construct a concrete instance of `GetComputeInstanceNetworkInterfaceDnsRecordArrayInput` via:
+//
+//          GetComputeInstanceNetworkInterfaceDnsRecordArray{ GetComputeInstanceNetworkInterfaceDnsRecordArgs{...} }
+type GetComputeInstanceNetworkInterfaceDnsRecordArrayInput interface {
+	pulumi.Input
+
+	ToGetComputeInstanceNetworkInterfaceDnsRecordArrayOutput() GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput
+	ToGetComputeInstanceNetworkInterfaceDnsRecordArrayOutputWithContext(context.Context) GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput
+}
+
+type GetComputeInstanceNetworkInterfaceDnsRecordArray []GetComputeInstanceNetworkInterfaceDnsRecordInput
+
+func (GetComputeInstanceNetworkInterfaceDnsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetComputeInstanceNetworkInterfaceDnsRecord)(nil)).Elem()
+}
+
+func (i GetComputeInstanceNetworkInterfaceDnsRecordArray) ToGetComputeInstanceNetworkInterfaceDnsRecordArrayOutput() GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return i.ToGetComputeInstanceNetworkInterfaceDnsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GetComputeInstanceNetworkInterfaceDnsRecordArray) ToGetComputeInstanceNetworkInterfaceDnsRecordArrayOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput)
+}
+
+type GetComputeInstanceNetworkInterfaceDnsRecordOutput struct{ *pulumi.OutputState }
+
+func (GetComputeInstanceNetworkInterfaceDnsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetComputeInstanceNetworkInterfaceDnsRecord)(nil)).Elem()
+}
+
+func (o GetComputeInstanceNetworkInterfaceDnsRecordOutput) ToGetComputeInstanceNetworkInterfaceDnsRecordOutput() GetComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return o
+}
+
+func (o GetComputeInstanceNetworkInterfaceDnsRecordOutput) ToGetComputeInstanceNetworkInterfaceDnsRecordOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return o
+}
+
+// DNS zone ID (if not set, private zone is used).
+func (o GetComputeInstanceNetworkInterfaceDnsRecordOutput) DnsZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceDnsRecord) string { return v.DnsZoneId }).(pulumi.StringOutput)
+}
+
+// DNS record FQDN.
+func (o GetComputeInstanceNetworkInterfaceDnsRecordOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceDnsRecord) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// When set to true, also create a TR DNS record.
+func (o GetComputeInstanceNetworkInterfaceDnsRecordOutput) Ptr() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceDnsRecord) bool { return v.Ptr }).(pulumi.BoolOutput)
+}
+
+// DNS record TTL. in seconds
+func (o GetComputeInstanceNetworkInterfaceDnsRecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceDnsRecord) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetComputeInstanceNetworkInterfaceDnsRecord)(nil)).Elem()
+}
+
+func (o GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput) ToGetComputeInstanceNetworkInterfaceDnsRecordArrayOutput() GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return o
+}
+
+func (o GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput) ToGetComputeInstanceNetworkInterfaceDnsRecordArrayOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput {
+	return o
+}
+
+func (o GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput) Index(i pulumi.IntInput) GetComputeInstanceNetworkInterfaceDnsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetComputeInstanceNetworkInterfaceDnsRecord {
+		return vs[0].([]GetComputeInstanceNetworkInterfaceDnsRecord)[vs[1].(int)]
+	}).(GetComputeInstanceNetworkInterfaceDnsRecordOutput)
+}
+
+type GetComputeInstanceNetworkInterfaceIpv6DnsRecord struct {
+	// DNS zone ID (if not set, private zone is used).
+	DnsZoneId string `pulumi:"dnsZoneId"`
+	// DNS record FQDN.
+	Fqdn string `pulumi:"fqdn"`
+	// When set to true, also create a TR DNS record.
+	Ptr bool `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl int `pulumi:"ttl"`
+}
+
+// GetComputeInstanceNetworkInterfaceIpv6DnsRecordInput is an input type that accepts GetComputeInstanceNetworkInterfaceIpv6DnsRecordArgs and GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput values.
+// You can construct a concrete instance of `GetComputeInstanceNetworkInterfaceIpv6DnsRecordInput` via:
+//
+//          GetComputeInstanceNetworkInterfaceIpv6DnsRecordArgs{...}
+type GetComputeInstanceNetworkInterfaceIpv6DnsRecordInput interface {
+	pulumi.Input
+
+	ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput() GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput
+	ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordOutputWithContext(context.Context) GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput
+}
+
+type GetComputeInstanceNetworkInterfaceIpv6DnsRecordArgs struct {
+	// DNS zone ID (if not set, private zone is used).
+	DnsZoneId pulumi.StringInput `pulumi:"dnsZoneId"`
+	// DNS record FQDN.
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// When set to true, also create a TR DNS record.
+	Ptr pulumi.BoolInput `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetComputeInstanceNetworkInterfaceIpv6DnsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetComputeInstanceNetworkInterfaceIpv6DnsRecord)(nil)).Elem()
+}
+
+func (i GetComputeInstanceNetworkInterfaceIpv6DnsRecordArgs) ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput() GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return i.ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordOutputWithContext(context.Background())
+}
+
+func (i GetComputeInstanceNetworkInterfaceIpv6DnsRecordArgs) ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput)
+}
+
+// GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput is an input type that accepts GetComputeInstanceNetworkInterfaceIpv6DnsRecordArray and GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput values.
+// You can construct a concrete instance of `GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput` via:
+//
+//          GetComputeInstanceNetworkInterfaceIpv6DnsRecordArray{ GetComputeInstanceNetworkInterfaceIpv6DnsRecordArgs{...} }
+type GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput interface {
+	pulumi.Input
+
+	ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput() GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput
+	ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutputWithContext(context.Context) GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput
+}
+
+type GetComputeInstanceNetworkInterfaceIpv6DnsRecordArray []GetComputeInstanceNetworkInterfaceIpv6DnsRecordInput
+
+func (GetComputeInstanceNetworkInterfaceIpv6DnsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetComputeInstanceNetworkInterfaceIpv6DnsRecord)(nil)).Elem()
+}
+
+func (i GetComputeInstanceNetworkInterfaceIpv6DnsRecordArray) ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput() GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return i.ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GetComputeInstanceNetworkInterfaceIpv6DnsRecordArray) ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput)
+}
+
+type GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput struct{ *pulumi.OutputState }
+
+func (GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetComputeInstanceNetworkInterfaceIpv6DnsRecord)(nil)).Elem()
+}
+
+func (o GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput() GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return o
+}
+
+func (o GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return o
+}
+
+// DNS zone ID (if not set, private zone is used).
+func (o GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) DnsZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceIpv6DnsRecord) string { return v.DnsZoneId }).(pulumi.StringOutput)
+}
+
+// DNS record FQDN.
+func (o GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceIpv6DnsRecord) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// When set to true, also create a TR DNS record.
+func (o GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) Ptr() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceIpv6DnsRecord) bool { return v.Ptr }).(pulumi.BoolOutput)
+}
+
+// DNS record TTL. in seconds
+func (o GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceIpv6DnsRecord) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetComputeInstanceNetworkInterfaceIpv6DnsRecord)(nil)).Elem()
+}
+
+func (o GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput) ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput() GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return o
+}
+
+func (o GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput) ToGetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput {
+	return o
+}
+
+func (o GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput) Index(i pulumi.IntInput) GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetComputeInstanceNetworkInterfaceIpv6DnsRecord {
+		return vs[0].([]GetComputeInstanceNetworkInterfaceIpv6DnsRecord)[vs[1].(int)]
+	}).(GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput)
+}
+
+type GetComputeInstanceNetworkInterfaceNatDnsRecord struct {
+	// DNS zone ID (if not set, private zone is used).
+	DnsZoneId string `pulumi:"dnsZoneId"`
+	// DNS record FQDN.
+	Fqdn string `pulumi:"fqdn"`
+	// When set to true, also create a TR DNS record.
+	Ptr bool `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl int `pulumi:"ttl"`
+}
+
+// GetComputeInstanceNetworkInterfaceNatDnsRecordInput is an input type that accepts GetComputeInstanceNetworkInterfaceNatDnsRecordArgs and GetComputeInstanceNetworkInterfaceNatDnsRecordOutput values.
+// You can construct a concrete instance of `GetComputeInstanceNetworkInterfaceNatDnsRecordInput` via:
+//
+//          GetComputeInstanceNetworkInterfaceNatDnsRecordArgs{...}
+type GetComputeInstanceNetworkInterfaceNatDnsRecordInput interface {
+	pulumi.Input
+
+	ToGetComputeInstanceNetworkInterfaceNatDnsRecordOutput() GetComputeInstanceNetworkInterfaceNatDnsRecordOutput
+	ToGetComputeInstanceNetworkInterfaceNatDnsRecordOutputWithContext(context.Context) GetComputeInstanceNetworkInterfaceNatDnsRecordOutput
+}
+
+type GetComputeInstanceNetworkInterfaceNatDnsRecordArgs struct {
+	// DNS zone ID (if not set, private zone is used).
+	DnsZoneId pulumi.StringInput `pulumi:"dnsZoneId"`
+	// DNS record FQDN.
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// When set to true, also create a TR DNS record.
+	Ptr pulumi.BoolInput `pulumi:"ptr"`
+	// DNS record TTL. in seconds
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetComputeInstanceNetworkInterfaceNatDnsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetComputeInstanceNetworkInterfaceNatDnsRecord)(nil)).Elem()
+}
+
+func (i GetComputeInstanceNetworkInterfaceNatDnsRecordArgs) ToGetComputeInstanceNetworkInterfaceNatDnsRecordOutput() GetComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return i.ToGetComputeInstanceNetworkInterfaceNatDnsRecordOutputWithContext(context.Background())
+}
+
+func (i GetComputeInstanceNetworkInterfaceNatDnsRecordArgs) ToGetComputeInstanceNetworkInterfaceNatDnsRecordOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceNetworkInterfaceNatDnsRecordOutput)
+}
+
+// GetComputeInstanceNetworkInterfaceNatDnsRecordArrayInput is an input type that accepts GetComputeInstanceNetworkInterfaceNatDnsRecordArray and GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput values.
+// You can construct a concrete instance of `GetComputeInstanceNetworkInterfaceNatDnsRecordArrayInput` via:
+//
+//          GetComputeInstanceNetworkInterfaceNatDnsRecordArray{ GetComputeInstanceNetworkInterfaceNatDnsRecordArgs{...} }
+type GetComputeInstanceNetworkInterfaceNatDnsRecordArrayInput interface {
+	pulumi.Input
+
+	ToGetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput() GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput
+	ToGetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutputWithContext(context.Context) GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput
+}
+
+type GetComputeInstanceNetworkInterfaceNatDnsRecordArray []GetComputeInstanceNetworkInterfaceNatDnsRecordInput
+
+func (GetComputeInstanceNetworkInterfaceNatDnsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetComputeInstanceNetworkInterfaceNatDnsRecord)(nil)).Elem()
+}
+
+func (i GetComputeInstanceNetworkInterfaceNatDnsRecordArray) ToGetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput() GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return i.ToGetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GetComputeInstanceNetworkInterfaceNatDnsRecordArray) ToGetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput)
+}
+
+type GetComputeInstanceNetworkInterfaceNatDnsRecordOutput struct{ *pulumi.OutputState }
+
+func (GetComputeInstanceNetworkInterfaceNatDnsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetComputeInstanceNetworkInterfaceNatDnsRecord)(nil)).Elem()
+}
+
+func (o GetComputeInstanceNetworkInterfaceNatDnsRecordOutput) ToGetComputeInstanceNetworkInterfaceNatDnsRecordOutput() GetComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return o
+}
+
+func (o GetComputeInstanceNetworkInterfaceNatDnsRecordOutput) ToGetComputeInstanceNetworkInterfaceNatDnsRecordOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return o
+}
+
+// DNS zone ID (if not set, private zone is used).
+func (o GetComputeInstanceNetworkInterfaceNatDnsRecordOutput) DnsZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceNatDnsRecord) string { return v.DnsZoneId }).(pulumi.StringOutput)
+}
+
+// DNS record FQDN.
+func (o GetComputeInstanceNetworkInterfaceNatDnsRecordOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceNatDnsRecord) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// When set to true, also create a TR DNS record.
+func (o GetComputeInstanceNetworkInterfaceNatDnsRecordOutput) Ptr() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceNatDnsRecord) bool { return v.Ptr }).(pulumi.BoolOutput)
+}
+
+// DNS record TTL. in seconds
+func (o GetComputeInstanceNetworkInterfaceNatDnsRecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetComputeInstanceNetworkInterfaceNatDnsRecord) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetComputeInstanceNetworkInterfaceNatDnsRecord)(nil)).Elem()
+}
+
+func (o GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput) ToGetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput() GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return o
+}
+
+func (o GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput) ToGetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutputWithContext(ctx context.Context) GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput {
+	return o
+}
+
+func (o GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput) Index(i pulumi.IntInput) GetComputeInstanceNetworkInterfaceNatDnsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetComputeInstanceNetworkInterfaceNatDnsRecord {
+		return vs[0].([]GetComputeInstanceNetworkInterfaceNatDnsRecord)[vs[1].(int)]
+	}).(GetComputeInstanceNetworkInterfaceNatDnsRecordOutput)
 }
 
 type GetComputeInstancePlacementPolicy struct {
@@ -33151,6 +34106,7 @@ type GetKubernetesNodeGroupInstanceTemplate struct {
 	Nat bool `pulumi:"nat"`
 	// An array with the network interfaces that will be attached to the instance. The structure is documented below.
 	NetworkInterfaces []GetKubernetesNodeGroupInstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
+	PlacementPolicy   *GetKubernetesNodeGroupInstanceTemplatePlacementPolicy   `pulumi:"placementPolicy"`
 	// The ID of the hardware platform configuration for the instance.
 	PlatformId string                                          `pulumi:"platformId"`
 	Resources  GetKubernetesNodeGroupInstanceTemplateResources `pulumi:"resources"`
@@ -33178,6 +34134,7 @@ type GetKubernetesNodeGroupInstanceTemplateArgs struct {
 	Nat pulumi.BoolInput `pulumi:"nat"`
 	// An array with the network interfaces that will be attached to the instance. The structure is documented below.
 	NetworkInterfaces GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	PlacementPolicy   GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput    `pulumi:"placementPolicy"`
 	// The ID of the hardware platform configuration for the instance.
 	PlatformId pulumi.StringInput                                   `pulumi:"platformId"`
 	Resources  GetKubernetesNodeGroupInstanceTemplateResourcesInput `pulumi:"resources"`
@@ -33233,6 +34190,12 @@ func (o GetKubernetesNodeGroupInstanceTemplateOutput) NetworkInterfaces() GetKub
 	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplate) []GetKubernetesNodeGroupInstanceTemplateNetworkInterface {
 		return v.NetworkInterfaces
 	}).(GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput)
+}
+
+func (o GetKubernetesNodeGroupInstanceTemplateOutput) PlacementPolicy() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplate) *GetKubernetesNodeGroupInstanceTemplatePlacementPolicy {
+		return v.PlacementPolicy
+	}).(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
 }
 
 // The ID of the hardware platform configuration for the instance.
@@ -33427,6 +34390,134 @@ func (o GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput) Index
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesNodeGroupInstanceTemplateNetworkInterface {
 		return vs[0].([]GetKubernetesNodeGroupInstanceTemplateNetworkInterface)[vs[1].(int)]
 	}).(GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput)
+}
+
+type GetKubernetesNodeGroupInstanceTemplatePlacementPolicy struct {
+	PlacementGroupId string `pulumi:"placementGroupId"`
+}
+
+// GetKubernetesNodeGroupInstanceTemplatePlacementPolicyInput is an input type that accepts GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs and GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput values.
+// You can construct a concrete instance of `GetKubernetesNodeGroupInstanceTemplatePlacementPolicyInput` via:
+//
+//          GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs{...}
+type GetKubernetesNodeGroupInstanceTemplatePlacementPolicyInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput
+	ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutputWithContext(context.Context) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput
+}
+
+type GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs struct {
+	PlacementGroupId pulumi.StringInput `pulumi:"placementGroupId"`
+}
+
+func (GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplatePlacementPolicy)(nil)).Elem()
+}
+
+func (i GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return i.ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutputWithContext(ctx context.Context) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput)
+}
+
+func (i GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return i.ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput).ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx)
+}
+
+// GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput is an input type that accepts GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs, GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtr and GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput values.
+// You can construct a concrete instance of `GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput` via:
+//
+//          GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput
+	ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(context.Context) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput
+}
+
+type getKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs
+
+func GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtr(v *GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput {
+	return (*getKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType)(v)
+}
+
+func (*getKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesNodeGroupInstanceTemplatePlacementPolicy)(nil)).Elem()
+}
+
+func (i *getKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return i.ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrType) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
+}
+
+type GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplatePlacementPolicy)(nil)).Elem()
+}
+
+func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return o
+}
+
+func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutputWithContext(ctx context.Context) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return o
+}
+
+func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o.ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplatePlacementPolicy) *GetKubernetesNodeGroupInstanceTemplatePlacementPolicy {
+		return &v
+	}).(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
+}
+func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) PlacementGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplatePlacementPolicy) string { return v.PlacementGroupId }).(pulumi.StringOutput)
+}
+
+type GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesNodeGroupInstanceTemplatePlacementPolicy)(nil)).Elem()
+}
+
+func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o
+}
+
+func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
+	return o
+}
+
+func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) Elem() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
+	return o.ApplyT(func(v *GetKubernetesNodeGroupInstanceTemplatePlacementPolicy) GetKubernetesNodeGroupInstanceTemplatePlacementPolicy {
+		return *v
+	}).(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput)
+}
+
+func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) PlacementGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubernetesNodeGroupInstanceTemplatePlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PlacementGroupId
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetKubernetesNodeGroupInstanceTemplateResources struct {
@@ -44541,6 +45632,12 @@ func init() {
 	pulumi.RegisterOutputType(ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArrayOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceDnsRecordOutput{})
+	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceDnsRecordArrayOutput{})
+	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceIpv6DnsRecordOutput{})
+	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput{})
+	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceNatDnsRecordOutput{})
+	pulumi.RegisterOutputType(ComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput{})
 	pulumi.RegisterOutputType(ComputeInstancePlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ComputeInstancePlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceResourcesOutput{})
@@ -44602,6 +45699,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateBootDiskPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput{})
+	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateResourcesOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateResourcesPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateSchedulingPolicyOutput{})
@@ -44857,6 +45956,12 @@ func init() {
 	pulumi.RegisterOutputType(GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceDnsRecordOutput{})
+	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceDnsRecordArrayOutput{})
+	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceIpv6DnsRecordOutput{})
+	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayOutput{})
+	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceNatDnsRecordOutput{})
+	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetComputeInstancePlacementPolicyOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceResourcesOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceSchedulingPolicyOutput{})
@@ -44892,6 +45997,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesNodeGroupInstanceTemplateBootDiskOutput{})
 	pulumi.RegisterOutputType(GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetKubernetesNodeGroupInstanceTemplateResourcesOutput{})
 	pulumi.RegisterOutputType(GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyOutput{})
 	pulumi.RegisterOutputType(GetKubernetesNodeGroupMaintenancePolicyOutput{})

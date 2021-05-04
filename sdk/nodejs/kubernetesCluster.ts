@@ -143,6 +143,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly clusterIpv4Range!: pulumi.Output<string>;
     /**
+     * Identical to clusterIpv4Range but for IPv6 protocol.
+     */
+    public readonly clusterIpv6Range!: pulumi.Output<string>;
+    /**
      * (Computed) The Kubernetes cluster creation timestamp.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -167,6 +171,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * A set of key/value label pairs to assign to the Kubernetes cluster.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+     */
+    public /*out*/ readonly logGroupId!: pulumi.Output<string>;
     /**
      * Kubernetes master configuration options. The structure is documented below.
      */
@@ -209,6 +217,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly serviceIpv4Range!: pulumi.Output<string>;
     /**
+     * Identical to serviceIpv4Range but for IPv6 protocol.
+     */
+    public readonly serviceIpv6Range!: pulumi.Output<string>;
+    /**
      * (Computed)Status of the Kubernetes cluster.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -227,12 +239,14 @@ export class KubernetesCluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as KubernetesClusterState | undefined;
             inputs["clusterIpv4Range"] = state ? state.clusterIpv4Range : undefined;
+            inputs["clusterIpv6Range"] = state ? state.clusterIpv6Range : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
             inputs["health"] = state ? state.health : undefined;
             inputs["kmsProvider"] = state ? state.kmsProvider : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["logGroupId"] = state ? state.logGroupId : undefined;
             inputs["master"] = state ? state.master : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkId"] = state ? state.networkId : undefined;
@@ -242,6 +256,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
             inputs["serviceIpv4Range"] = state ? state.serviceIpv4Range : undefined;
+            inputs["serviceIpv6Range"] = state ? state.serviceIpv6Range : undefined;
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as KubernetesClusterArgs | undefined;
@@ -258,6 +273,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["clusterIpv4Range"] = args ? args.clusterIpv4Range : undefined;
+            inputs["clusterIpv6Range"] = args ? args.clusterIpv6Range : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
             inputs["kmsProvider"] = args ? args.kmsProvider : undefined;
@@ -271,8 +287,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             inputs["serviceIpv4Range"] = args ? args.serviceIpv4Range : undefined;
+            inputs["serviceIpv6Range"] = args ? args.serviceIpv6Range : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["health"] = undefined /*out*/;
+            inputs["logGroupId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -292,6 +310,10 @@ export interface KubernetesClusterState {
      * set up for this CIDR blocks in node subnets.
      */
     readonly clusterIpv4Range?: pulumi.Input<string>;
+    /**
+     * Identical to clusterIpv4Range but for IPv6 protocol.
+     */
+    readonly clusterIpv6Range?: pulumi.Input<string>;
     /**
      * (Computed) The Kubernetes cluster creation timestamp.
      */
@@ -317,6 +339,10 @@ export interface KubernetesClusterState {
      * A set of key/value label pairs to assign to the Kubernetes cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+     */
+    readonly logGroupId?: pulumi.Input<string>;
     /**
      * Kubernetes master configuration options. The structure is documented below.
      */
@@ -359,6 +385,10 @@ export interface KubernetesClusterState {
      */
     readonly serviceIpv4Range?: pulumi.Input<string>;
     /**
+     * Identical to serviceIpv4Range but for IPv6 protocol.
+     */
+    readonly serviceIpv6Range?: pulumi.Input<string>;
+    /**
      * (Computed)Status of the Kubernetes cluster.
      */
     readonly status?: pulumi.Input<string>;
@@ -374,6 +404,10 @@ export interface KubernetesClusterArgs {
      * set up for this CIDR blocks in node subnets.
      */
     readonly clusterIpv4Range?: pulumi.Input<string>;
+    /**
+     * Identical to clusterIpv4Range but for IPv6 protocol.
+     */
+    readonly clusterIpv6Range?: pulumi.Input<string>;
     /**
      * A description of the Kubernetes cluster.
      */
@@ -432,4 +466,8 @@ export interface KubernetesClusterArgs {
      * the Kubernetes cluster located in.
      */
     readonly serviceIpv4Range?: pulumi.Input<string>;
+    /**
+     * Identical to serviceIpv4Range but for IPv6 protocol.
+     */
+    readonly serviceIpv6Range?: pulumi.Input<string>;
 }

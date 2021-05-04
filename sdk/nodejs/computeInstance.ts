@@ -98,7 +98,7 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     public readonly folderId!: pulumi.Output<string>;
     /**
-     * The fully qualified DNS name of this instance.
+     * DNS record FQDN (must have a dot at the end).
      */
     public /*out*/ readonly fqdn!: pulumi.Output<string>;
     /**
@@ -260,7 +260,7 @@ export interface ComputeInstanceState {
      */
     readonly folderId?: pulumi.Input<string>;
     /**
-     * The fully qualified DNS name of this instance.
+     * DNS record FQDN (must have a dot at the end).
      */
     readonly fqdn?: pulumi.Input<string>;
     /**

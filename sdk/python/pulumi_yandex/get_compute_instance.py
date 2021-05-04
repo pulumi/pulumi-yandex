@@ -116,7 +116,7 @@ class GetComputeInstanceResult:
     @pulumi.getter
     def fqdn(self) -> str:
         """
-        FQDN of the instance.
+        DNS record FQDN.
         """
         return pulumi.get(self, "fqdn")
 
