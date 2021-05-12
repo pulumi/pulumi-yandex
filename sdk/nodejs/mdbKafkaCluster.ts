@@ -299,6 +299,10 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly health!: pulumi.Output<string>;
     /**
+     * A list of IDs of the host groups to place VMs of the cluster on.
+     */
+    public readonly hostGroupIds!: pulumi.Output<string[] | undefined>;
+    /**
      * A host of the Kafka cluster. The structure is documented below.
      */
     public /*out*/ readonly hosts!: pulumi.Output<outputs.MdbKafkaClusterHost[]>;
@@ -352,6 +356,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
             inputs["environment"] = state ? state.environment : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
             inputs["health"] = state ? state.health : undefined;
+            inputs["hostGroupIds"] = state ? state.hostGroupIds : undefined;
             inputs["hosts"] = state ? state.hosts : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -373,6 +378,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
+            inputs["hostGroupIds"] = args ? args.hostGroupIds : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkId"] = args ? args.networkId : undefined;
@@ -420,6 +426,10 @@ export interface MdbKafkaClusterState {
      * Health of the host.
      */
     readonly health?: pulumi.Input<string>;
+    /**
+     * A list of IDs of the host groups to place VMs of the cluster on.
+     */
+    readonly hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A host of the Kafka cluster. The structure is documented below.
      */
@@ -476,6 +486,10 @@ export interface MdbKafkaClusterArgs {
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
     readonly folderId?: pulumi.Input<string>;
+    /**
+     * A list of IDs of the host groups to place VMs of the cluster on.
+     */
+    readonly hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A set of key/value label pairs to assign to the Kafka cluster.
      */

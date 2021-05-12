@@ -20,6 +20,7 @@ class DataprocClusterArgs:
                  bucket: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -32,9 +33,10 @@ class DataprocClusterArgs:
         :param pulumi.Input[str] bucket: Name of the Object Storage bucket to use for Data Proc jobs. Data Proc Agent saves output of job driver's process to specified bucket. In order for this to work service account (specified by the `service_account_id` argument) should be given permission to create objects within this bucket.
         :param pulumi.Input[str] description: Description of the Data Proc cluster.
         :param pulumi.Input[str] folder_id: ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of host group IDs to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Data Proc cluster.
         :param pulumi.Input[str] name: Name of the Data Proc subcluster.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which cluster belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs that the cluster belongs to.
         :param pulumi.Input[bool] ui_proxy: Whether to enable UI Proxy feature.
         :param pulumi.Input[str] zone_id: ID of the availability zone to create cluster in. If it is not provided, the default provider zone is used.
         """
@@ -46,6 +48,8 @@ class DataprocClusterArgs:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
+        if host_group_ids is not None:
+            pulumi.set(__self__, "host_group_ids", host_group_ids)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -118,6 +122,18 @@ class DataprocClusterArgs:
         pulumi.set(self, "folder_id", value)
 
     @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of host group IDs to place VMs of the cluster on.
+        """
+        return pulumi.get(self, "host_group_ids")
+
+    @host_group_ids.setter
+    def host_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_group_ids", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -145,7 +161,7 @@ class DataprocClusterArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Security group ids, to which cluster belongs.
+        A list of security group IDs that the cluster belongs to.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -186,6 +202,7 @@ class _DataprocClusterState:
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -200,9 +217,10 @@ class _DataprocClusterState:
                * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
         :param pulumi.Input[str] description: Description of the Data Proc cluster.
         :param pulumi.Input[str] folder_id: ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of host group IDs to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Data Proc cluster.
         :param pulumi.Input[str] name: Name of the Data Proc subcluster.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which cluster belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs that the cluster belongs to.
         :param pulumi.Input[str] service_account_id: Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
         :param pulumi.Input[bool] ui_proxy: Whether to enable UI Proxy feature.
         :param pulumi.Input[str] zone_id: ID of the availability zone to create cluster in. If it is not provided, the default provider zone is used.
@@ -217,6 +235,8 @@ class _DataprocClusterState:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
+        if host_group_ids is not None:
+            pulumi.set(__self__, "host_group_ids", host_group_ids)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -292,6 +312,18 @@ class _DataprocClusterState:
         pulumi.set(self, "folder_id", value)
 
     @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of host group IDs to place VMs of the cluster on.
+        """
+        return pulumi.get(self, "host_group_ids")
+
+    @host_group_ids.setter
+    def host_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_group_ids", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -319,7 +351,7 @@ class _DataprocClusterState:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Security group ids, to which cluster belongs.
+        A list of security group IDs that the cluster belongs to.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -373,6 +405,7 @@ class DataprocCluster(pulumi.CustomResource):
                  cluster_config: Optional[pulumi.Input[pulumi.InputType['DataprocClusterClusterConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -477,9 +510,10 @@ class DataprocCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DataprocClusterClusterConfigArgs']] cluster_config: Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
         :param pulumi.Input[str] description: Description of the Data Proc cluster.
         :param pulumi.Input[str] folder_id: ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of host group IDs to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Data Proc cluster.
         :param pulumi.Input[str] name: Name of the Data Proc subcluster.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which cluster belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs that the cluster belongs to.
         :param pulumi.Input[str] service_account_id: Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
         :param pulumi.Input[bool] ui_proxy: Whether to enable UI Proxy feature.
         :param pulumi.Input[str] zone_id: ID of the availability zone to create cluster in. If it is not provided, the default provider zone is used.
@@ -600,6 +634,7 @@ class DataprocCluster(pulumi.CustomResource):
                  cluster_config: Optional[pulumi.Input[pulumi.InputType['DataprocClusterClusterConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -624,6 +659,7 @@ class DataprocCluster(pulumi.CustomResource):
             __props__.__dict__["cluster_config"] = cluster_config
             __props__.__dict__["description"] = description
             __props__.__dict__["folder_id"] = folder_id
+            __props__.__dict__["host_group_ids"] = host_group_ids
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["security_group_ids"] = security_group_ids
@@ -648,6 +684,7 @@ class DataprocCluster(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
+            host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -667,9 +704,10 @@ class DataprocCluster(pulumi.CustomResource):
                * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
         :param pulumi.Input[str] description: Description of the Data Proc cluster.
         :param pulumi.Input[str] folder_id: ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of host group IDs to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Data Proc cluster.
         :param pulumi.Input[str] name: Name of the Data Proc subcluster.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which cluster belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs that the cluster belongs to.
         :param pulumi.Input[str] service_account_id: Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
         :param pulumi.Input[bool] ui_proxy: Whether to enable UI Proxy feature.
         :param pulumi.Input[str] zone_id: ID of the availability zone to create cluster in. If it is not provided, the default provider zone is used.
@@ -683,6 +721,7 @@ class DataprocCluster(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
         __props__.__dict__["folder_id"] = folder_id
+        __props__.__dict__["host_group_ids"] = host_group_ids
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["security_group_ids"] = security_group_ids
@@ -733,6 +772,14 @@ class DataprocCluster(pulumi.CustomResource):
         return pulumi.get(self, "folder_id")
 
     @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of host group IDs to place VMs of the cluster on.
+        """
+        return pulumi.get(self, "host_group_ids")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
@@ -752,7 +799,7 @@ class DataprocCluster(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Security group ids, to which cluster belongs.
+        A list of security group IDs that the cluster belongs to.
         """
         return pulumi.get(self, "security_group_ids")
 

@@ -21,7 +21,7 @@ class GetMdbKafkaClusterResult:
     """
     A collection of values returned by getMdbKafkaCluster.
     """
-    def __init__(__self__, cluster_id=None, config=None, created_at=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, name=None, network_id=None, security_group_ids=None, status=None, subnet_ids=None, topics=None, users=None):
+    def __init__(__self__, cluster_id=None, config=None, created_at=None, description=None, environment=None, folder_id=None, health=None, host_group_ids=None, hosts=None, id=None, labels=None, name=None, network_id=None, security_group_ids=None, status=None, subnet_ids=None, topics=None, users=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -43,6 +43,9 @@ class GetMdbKafkaClusterResult:
         if health and not isinstance(health, str):
             raise TypeError("Expected argument 'health' to be a str")
         pulumi.set(__self__, "health", health)
+        if host_group_ids and not isinstance(host_group_ids, list):
+            raise TypeError("Expected argument 'host_group_ids' to be a list")
+        pulumi.set(__self__, "host_group_ids", host_group_ids)
         if hosts and not isinstance(hosts, list):
             raise TypeError("Expected argument 'hosts' to be a list")
         pulumi.set(__self__, "hosts", hosts)
@@ -123,6 +126,14 @@ class GetMdbKafkaClusterResult:
         Health of the host.
         """
         return pulumi.get(self, "health")
+
+    @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> Sequence[str]:
+        """
+        A list of IDs of the host groups hosting VMs of the cluster.
+        """
+        return pulumi.get(self, "host_group_ids")
 
     @property
     @pulumi.getter
@@ -215,6 +226,7 @@ class AwaitableGetMdbKafkaClusterResult(GetMdbKafkaClusterResult):
             environment=self.environment,
             folder_id=self.folder_id,
             health=self.health,
+            host_group_ids=self.host_group_ids,
             hosts=self.hosts,
             id=self.id,
             labels=self.labels,
@@ -279,6 +291,7 @@ def get_mdb_kafka_cluster(cluster_id: Optional[str] = None,
         environment=__ret__.environment,
         folder_id=__ret__.folder_id,
         health=__ret__.health,
+        host_group_ids=__ret__.host_group_ids,
         hosts=__ret__.hosts,
         id=__ret__.id,
         labels=__ret__.labels,

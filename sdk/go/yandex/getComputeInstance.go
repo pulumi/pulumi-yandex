@@ -65,7 +65,7 @@ type LookupComputeInstanceResult struct {
 	// Description of the boot disk.
 	Description string `pulumi:"description"`
 	FolderId    string `pulumi:"folderId"`
-	// FQDN of the instance.
+	// DNS record FQDN.
 	Fqdn string `pulumi:"fqdn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string `pulumi:"id"`

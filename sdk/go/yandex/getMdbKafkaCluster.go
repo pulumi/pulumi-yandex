@@ -74,6 +74,8 @@ type LookupMdbKafkaClusterResult struct {
 	FolderId    string `pulumi:"folderId"`
 	// Health of the host.
 	Health string `pulumi:"health"`
+	// A list of IDs of the host groups hosting VMs of the cluster.
+	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// A host of the Kafka cluster. The structure is documented below.
 	Hosts []GetMdbKafkaClusterHost `pulumi:"hosts"`
 	// The provider-assigned unique ID for this managed resource.

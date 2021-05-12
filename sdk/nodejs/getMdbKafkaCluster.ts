@@ -100,6 +100,10 @@ export interface GetMdbKafkaClusterResult {
      */
     readonly health: string;
     /**
+     * A list of IDs of the host groups hosting VMs of the cluster.
+     */
+    readonly hostGroupIds: string[];
+    /**
      * A host of the Kafka cluster. The structure is documented below.
      */
     readonly hosts: outputs.GetMdbKafkaClusterHost[];

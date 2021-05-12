@@ -73,6 +73,10 @@ export interface GetDataprocClusterResult {
     readonly description: string;
     readonly folderId: string;
     /**
+     * A list of IDs of the host groups hosting VMs of the cluster.
+     */
+    readonly hostGroupIds: string[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

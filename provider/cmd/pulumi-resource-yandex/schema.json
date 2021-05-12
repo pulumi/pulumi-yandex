@@ -1745,6 +1745,18 @@
         },
         "yandex:index/ComputeInstanceNetworkInterface:ComputeInstanceNetworkInterface": {
             "properties": {
+                "dnsRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/ComputeInstanceNetworkInterfaceDnsRecord:ComputeInstanceNetworkInterfaceDnsRecord"
+                    },
+                    "description": "List of configurations for creating ipv4 DNS records. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "index": {
                     "type": "integer",
                     "language": {
@@ -1789,6 +1801,18 @@
                         }
                     }
                 },
+                "ipv6DnsRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/ComputeInstanceNetworkInterfaceIpv6DnsRecord:ComputeInstanceNetworkInterfaceIpv6DnsRecord"
+                    },
+                    "description": "List of configurations for creating ipv6 DNS records. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "macAddress": {
                     "type": "string",
                     "language": {
@@ -1800,6 +1824,18 @@
                 "nat": {
                     "type": "boolean",
                     "description": "Provide a public address, for instance, to access the internet over NAT.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "natDnsRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/ComputeInstanceNetworkInterfaceNatDnsRecord:ComputeInstanceNetworkInterfaceNatDnsRecord"
+                    },
+                    "description": "List of configurations for creating ipv4 NAT DNS records. The structure is documented below.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1865,6 +1901,138 @@
                     ]
                 }
             }
+        },
+        "yandex:index/ComputeInstanceNetworkInterfaceDnsRecord:ComputeInstanceNetworkInterfaceDnsRecord": {
+            "properties": {
+                "dnsZoneId": {
+                    "type": "string",
+                    "description": "DNS zone ID (if not set, private zone used).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fqdn": {
+                    "type": "string",
+                    "description": "DNS record FQDN (must have a dot at the end).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ptr": {
+                    "type": "boolean",
+                    "description": "When set to true, also create a PTR DNS record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "DNS record TTL. in seconds\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "fqdn"
+            ]
+        },
+        "yandex:index/ComputeInstanceNetworkInterfaceIpv6DnsRecord:ComputeInstanceNetworkInterfaceIpv6DnsRecord": {
+            "properties": {
+                "dnsZoneId": {
+                    "type": "string",
+                    "description": "DNS zone ID (if not set, private zone used).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fqdn": {
+                    "type": "string",
+                    "description": "DNS record FQDN (must have a dot at the end).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ptr": {
+                    "type": "boolean",
+                    "description": "When set to true, also create a PTR DNS record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "DNS record TTL. in seconds\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "fqdn"
+            ]
+        },
+        "yandex:index/ComputeInstanceNetworkInterfaceNatDnsRecord:ComputeInstanceNetworkInterfaceNatDnsRecord": {
+            "properties": {
+                "dnsZoneId": {
+                    "type": "string",
+                    "description": "DNS zone ID (if not set, private zone used).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fqdn": {
+                    "type": "string",
+                    "description": "DNS record FQDN (must have a dot at the end).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ptr": {
+                    "type": "boolean",
+                    "description": "When set to true, also create a PTR DNS record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "DNS record TTL. in seconds\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "fqdn"
+            ]
         },
         "yandex:index/ComputeInstancePlacementPolicy:ComputeInstancePlacementPolicy": {
             "properties": {
@@ -2993,6 +3161,14 @@
                         }
                     }
                 },
+                "placementPolicy": {
+                    "$ref": "#/types/yandex:index/KubernetesNodeGroupInstanceTemplatePlacementPolicy:KubernetesNodeGroupInstanceTemplatePlacementPolicy",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "platformId": {
                     "type": "string",
                     "description": "The ID of the hardware platform configuration for the node group compute instances.\n",
@@ -3105,6 +3281,22 @@
             "type": "object",
             "required": [
                 "subnetIds"
+            ]
+        },
+        "yandex:index/KubernetesNodeGroupInstanceTemplatePlacementPolicy:KubernetesNodeGroupInstanceTemplatePlacementPolicy": {
+            "properties": {
+                "placementGroupId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "placementGroupId"
             ]
         },
         "yandex:index/KubernetesNodeGroupInstanceTemplateResources:KubernetesNodeGroupInstanceTemplateResources": {
@@ -10227,6 +10419,18 @@
         },
         "yandex:index/getComputeInstanceNetworkInterface:getComputeInstanceNetworkInterface": {
             "properties": {
+                "dnsRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/getComputeInstanceNetworkInterfaceDnsRecord:getComputeInstanceNetworkInterfaceDnsRecord"
+                    },
+                    "description": "List of configurations for creating ipv4 DNS records. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "index": {
                     "type": "integer",
                     "description": "The index of the network interface, generated by the server.\n",
@@ -10270,6 +10474,18 @@
                         }
                     }
                 },
+                "ipv6DnsRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/getComputeInstanceNetworkInterfaceIpv6DnsRecord:getComputeInstanceNetworkInterfaceIpv6DnsRecord"
+                    },
+                    "description": "List of configurations for creating ipv6 DNS records. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "macAddress": {
                     "type": "string",
                     "description": "MAC address that is assigned to the network interface.\n",
@@ -10282,6 +10498,18 @@
                 "nat": {
                     "type": "boolean",
                     "description": "Assigned for the instance's public address that is used to access the internet over NAT.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "natDnsRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/getComputeInstanceNetworkInterfaceNatDnsRecord:getComputeInstanceNetworkInterfaceNatDnsRecord"
+                    },
+                    "description": "List of configurations for creating ipv4 NAT DNS records. The structure is documented below.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10330,17 +10558,176 @@
             },
             "type": "object",
             "required": [
+                "dnsRecords",
                 "index",
                 "ipAddress",
                 "ipv4",
                 "ipv6",
                 "ipv6Address",
+                "ipv6DnsRecords",
                 "macAddress",
                 "nat",
+                "natDnsRecords",
                 "natIpAddress",
                 "natIpVersion",
                 "securityGroupIds",
                 "subnetId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getComputeInstanceNetworkInterfaceDnsRecord:getComputeInstanceNetworkInterfaceDnsRecord": {
+            "properties": {
+                "dnsZoneId": {
+                    "type": "string",
+                    "description": "DNS zone ID (if not set, private zone is used).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fqdn": {
+                    "type": "string",
+                    "description": "DNS record FQDN.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ptr": {
+                    "type": "boolean",
+                    "description": "When set to true, also create a TR DNS record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "DNS record TTL. in seconds\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "dnsZoneId",
+                "fqdn",
+                "ptr",
+                "ttl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getComputeInstanceNetworkInterfaceIpv6DnsRecord:getComputeInstanceNetworkInterfaceIpv6DnsRecord": {
+            "properties": {
+                "dnsZoneId": {
+                    "type": "string",
+                    "description": "DNS zone ID (if not set, private zone is used).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fqdn": {
+                    "type": "string",
+                    "description": "DNS record FQDN.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ptr": {
+                    "type": "boolean",
+                    "description": "When set to true, also create a TR DNS record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "DNS record TTL. in seconds\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "dnsZoneId",
+                "fqdn",
+                "ptr",
+                "ttl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getComputeInstanceNetworkInterfaceNatDnsRecord:getComputeInstanceNetworkInterfaceNatDnsRecord": {
+            "properties": {
+                "dnsZoneId": {
+                    "type": "string",
+                    "description": "DNS zone ID (if not set, private zone is used).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fqdn": {
+                    "type": "string",
+                    "description": "DNS record FQDN.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ptr": {
+                    "type": "boolean",
+                    "description": "When set to true, also create a TR DNS record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "DNS record TTL. in seconds\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "dnsZoneId",
+                "fqdn",
+                "ptr",
+                "ttl"
             ],
             "language": {
                 "nodejs": {
@@ -11490,6 +11877,14 @@
                         }
                     }
                 },
+                "placementPolicy": {
+                    "$ref": "#/types/yandex:index/getKubernetesNodeGroupInstanceTemplatePlacementPolicy:getKubernetesNodeGroupInstanceTemplatePlacementPolicy",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "platformId": {
                     "type": "string",
                     "description": "The ID of the hardware platform configuration for the instance.\n",
@@ -11606,6 +12001,27 @@
                 "nat",
                 "securityGroupIds",
                 "subnetIds"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getKubernetesNodeGroupInstanceTemplatePlacementPolicy:getKubernetesNodeGroupInstanceTemplatePlacementPolicy": {
+            "properties": {
+                "placementGroupId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "placementGroupId"
             ],
             "language": {
                 "nodejs": {
@@ -17895,7 +18311,7 @@
                 },
                 "fqdn": {
                     "type": "string",
-                    "description": "The fully qualified DNS name of this instance.\n"
+                    "description": "DNS record FQDN (must have a dot at the end).\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -18091,7 +18507,7 @@
                     },
                     "fqdn": {
                         "type": "string",
-                        "description": "The fully qualified DNS name of this instance.\n"
+                        "description": "DNS record FQDN (must have a dot at the end).\n"
                     },
                     "hostname": {
                         "type": "string",
@@ -18891,6 +19307,13 @@
                     "type": "string",
                     "description": "ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.\n"
                 },
+                "hostGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of host group IDs to place VMs of the cluster on.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -18907,7 +19330,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Security group ids, to which cluster belongs.\n"
+                    "description": "A list of security group IDs that the cluster belongs to.\n"
                 },
                 "serviceAccountId": {
                     "type": "string",
@@ -18947,6 +19370,13 @@
                     "type": "string",
                     "description": "ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.\n"
                 },
+                "hostGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of host group IDs to place VMs of the cluster on.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -18963,7 +19393,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Security group ids, to which cluster belongs.\n"
+                    "description": "A list of security group IDs that the cluster belongs to.\n"
                 },
                 "serviceAccountId": {
                     "type": "string",
@@ -19005,6 +19435,13 @@
                         "type": "string",
                         "description": "ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.\n"
                     },
+                    "hostGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of host group IDs to place VMs of the cluster on.\n"
+                    },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
@@ -19021,7 +19458,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Security group ids, to which cluster belongs.\n"
+                        "description": "A list of security group IDs that the cluster belongs to.\n"
                     },
                     "serviceAccountId": {
                         "type": "string",
@@ -20788,6 +21225,10 @@
                     "type": "string",
                     "description": "CIDR block. IP range for allocating pod addresses.\nIt should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be\nset up for this CIDR blocks in node subnets.\n"
                 },
+                "clusterIpv6Range": {
+                    "type": "string",
+                    "description": "Identical to cluster_ipv4_range but for IPv6 protocol.\n"
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "(Computed) The Kubernetes cluster creation timestamp.\n"
@@ -20815,6 +21256,10 @@
                     },
                     "description": "A set of key/value label pairs to assign to the Kubernetes cluster.\n"
                 },
+                "logGroupId": {
+                    "type": "string",
+                    "description": "Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.\n"
+                },
                 "master": {
                     "$ref": "#/types/yandex:index/KubernetesClusterMaster:KubernetesClusterMaster",
                     "description": "Kubernetes master configuration options. The structure is documented below.\n"
@@ -20851,6 +21296,10 @@
                     "type": "string",
                     "description": "CIDR block. IP range Kubernetes service Kubernetes cluster\nIP addresses will be allocated from. It should not overlap with any subnet in the network\nthe Kubernetes cluster located in.\n"
                 },
+                "serviceIpv6Range": {
+                    "type": "string",
+                    "description": "Identical to service_ipv4_range but for IPv6 protocol.\n"
+                },
                 "status": {
                     "type": "string",
                     "description": "(Computed)Status of the Kubernetes cluster.\n"
@@ -20858,11 +21307,13 @@
             },
             "required": [
                 "clusterIpv4Range",
+                "clusterIpv6Range",
                 "createdAt",
                 "description",
                 "folderId",
                 "health",
                 "labels",
+                "logGroupId",
                 "master",
                 "name",
                 "networkId",
@@ -20870,12 +21321,17 @@
                 "releaseChannel",
                 "serviceAccountId",
                 "serviceIpv4Range",
+                "serviceIpv6Range",
                 "status"
             ],
             "inputProperties": {
                 "clusterIpv4Range": {
                     "type": "string",
                     "description": "CIDR block. IP range for allocating pod addresses.\nIt should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be\nset up for this CIDR blocks in node subnets.\n"
+                },
+                "clusterIpv6Range": {
+                    "type": "string",
+                    "description": "Identical to cluster_ipv4_range but for IPv6 protocol.\n"
                 },
                 "description": {
                     "type": "string",
@@ -20931,6 +21387,10 @@
                 "serviceIpv4Range": {
                     "type": "string",
                     "description": "CIDR block. IP range Kubernetes service Kubernetes cluster\nIP addresses will be allocated from. It should not overlap with any subnet in the network\nthe Kubernetes cluster located in.\n"
+                },
+                "serviceIpv6Range": {
+                    "type": "string",
+                    "description": "Identical to service_ipv4_range but for IPv6 protocol.\n"
                 }
             },
             "requiredInputs": [
@@ -20945,6 +21405,10 @@
                     "clusterIpv4Range": {
                         "type": "string",
                         "description": "CIDR block. IP range for allocating pod addresses.\nIt should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be\nset up for this CIDR blocks in node subnets.\n"
+                    },
+                    "clusterIpv6Range": {
+                        "type": "string",
+                        "description": "Identical to cluster_ipv4_range but for IPv6 protocol.\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -20972,6 +21436,10 @@
                             "type": "string"
                         },
                         "description": "A set of key/value label pairs to assign to the Kubernetes cluster.\n"
+                    },
+                    "logGroupId": {
+                        "type": "string",
+                        "description": "Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.\n"
                     },
                     "master": {
                         "$ref": "#/types/yandex:index/KubernetesClusterMaster:KubernetesClusterMaster",
@@ -21008,6 +21476,10 @@
                     "serviceIpv4Range": {
                         "type": "string",
                         "description": "CIDR block. IP range Kubernetes service Kubernetes cluster\nIP addresses will be allocated from. It should not overlap with any subnet in the network\nthe Kubernetes cluster located in.\n"
+                    },
+                    "serviceIpv6Range": {
+                        "type": "string",
+                        "description": "Identical to service_ipv4_range but for IPv6 protocol.\n"
                     },
                     "status": {
                         "type": "string",
@@ -21985,6 +22457,13 @@
                     "type": "string",
                     "description": "Health of the host.\n"
                 },
+                "hostGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of IDs of the host groups to place VMs of the cluster on.\n"
+                },
                 "hosts": {
                     "type": "array",
                     "items": {
@@ -22066,6 +22545,13 @@
                     "type": "string",
                     "description": "The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.\n"
                 },
+                "hostGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of IDs of the host groups to place VMs of the cluster on.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -22139,6 +22625,13 @@
                     "health": {
                         "type": "string",
                         "description": "Health of the host.\n"
+                    },
+                    "hostGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of IDs of the host groups to place VMs of the cluster on.\n"
                     },
                     "hosts": {
                         "type": "array",
@@ -25684,7 +26177,7 @@
                     },
                     "fqdn": {
                         "type": "string",
-                        "description": "FQDN of the instance.\n"
+                        "description": "DNS record FQDN.\n"
                     },
                     "id": {
                         "type": "string",
@@ -26224,6 +26717,13 @@
                     "folderId": {
                         "type": "string"
                     },
+                    "hostGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of IDs of the host groups hosting VMs of the cluster.\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -26266,6 +26766,7 @@
                     "createdAt",
                     "description",
                     "folderId",
+                    "hostGroupIds",
                     "labels",
                     "name",
                     "securityGroupIds",
@@ -26926,6 +27427,10 @@
                         "type": "string",
                         "description": "IP range for allocating pod addresses.\n"
                     },
+                    "clusterIpv6Range": {
+                        "type": "string",
+                        "description": "Identical to cluster_ipv4_range but for the IPv6 protocol.\n"
+                    },
                     "createdAt": {
                         "type": "string",
                         "description": "The Kubernetes cluster creation timestamp.\n"
@@ -26955,6 +27460,10 @@
                             "type": "string"
                         },
                         "description": "A set of key/value label pairs to assign to the Kubernetes cluster.\n"
+                    },
+                    "logGroupId": {
+                        "type": "string",
+                        "description": "Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.\n"
                     },
                     "master": {
                         "$ref": "#/types/yandex:index/getKubernetesClusterMaster:getKubernetesClusterMaster",
@@ -26989,7 +27498,11 @@
                     },
                     "serviceIpv4Range": {
                         "type": "string",
-                        "description": "IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from\n"
+                        "description": "IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from.\n"
+                    },
+                    "serviceIpv6Range": {
+                        "type": "string",
+                        "description": "Identical to service_ipv4_range but for the IPv6 protocol.\n"
                     },
                     "status": {
                         "type": "string",
@@ -27000,12 +27513,14 @@
                 "required": [
                     "clusterId",
                     "clusterIpv4Range",
+                    "clusterIpv6Range",
                     "createdAt",
                     "description",
                     "folderId",
                     "health",
                     "kmsProvider",
                     "labels",
+                    "logGroupId",
                     "master",
                     "name",
                     "networkId",
@@ -27015,6 +27530,7 @@
                     "releaseChannel",
                     "serviceAccountId",
                     "serviceIpv4Range",
+                    "serviceIpv6Range",
                     "status",
                     "id"
                 ]
@@ -27576,6 +28092,13 @@
                         "type": "string",
                         "description": "Health of the host.\n"
                     },
+                    "hostGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of IDs of the host groups hosting VMs of the cluster.\n"
+                    },
                     "hosts": {
                         "type": "array",
                         "items": {
@@ -27643,6 +28166,7 @@
                     "folderId",
                     "health",
                     "hosts",
+                    "hostGroupIds",
                     "labels",
                     "name",
                     "networkId",

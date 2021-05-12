@@ -36,6 +36,8 @@ type MdbKafkaCluster struct {
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// Health of the host.
 	Health pulumi.StringOutput `pulumi:"health"`
+	// A list of IDs of the host groups to place VMs of the cluster on.
+	HostGroupIds pulumi.StringArrayOutput `pulumi:"hostGroupIds"`
 	// A host of the Kafka cluster. The structure is documented below.
 	Hosts MdbKafkaClusterHostArrayOutput `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Kafka cluster.
@@ -103,6 +105,8 @@ type mdbKafkaClusterState struct {
 	FolderId *string `pulumi:"folderId"`
 	// Health of the host.
 	Health *string `pulumi:"health"`
+	// A list of IDs of the host groups to place VMs of the cluster on.
+	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// A host of the Kafka cluster. The structure is documented below.
 	Hosts []MdbKafkaClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Kafka cluster.
@@ -136,6 +140,8 @@ type MdbKafkaClusterState struct {
 	FolderId pulumi.StringPtrInput
 	// Health of the host.
 	Health pulumi.StringPtrInput
+	// A list of IDs of the host groups to place VMs of the cluster on.
+	HostGroupIds pulumi.StringArrayInput
 	// A host of the Kafka cluster. The structure is documented below.
 	Hosts MdbKafkaClusterHostArrayInput
 	// A set of key/value label pairs to assign to the Kafka cluster.
@@ -169,6 +175,8 @@ type mdbKafkaClusterArgs struct {
 	Environment *string `pulumi:"environment"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
+	// A list of IDs of the host groups to place VMs of the cluster on.
+	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// A set of key/value label pairs to assign to the Kafka cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the topic.
@@ -194,6 +202,8 @@ type MdbKafkaClusterArgs struct {
 	Environment pulumi.StringPtrInput
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId pulumi.StringPtrInput
+	// A list of IDs of the host groups to place VMs of the cluster on.
+	HostGroupIds pulumi.StringArrayInput
 	// A set of key/value label pairs to assign to the Kafka cluster.
 	Labels pulumi.StringMapInput
 	// The name of the topic.

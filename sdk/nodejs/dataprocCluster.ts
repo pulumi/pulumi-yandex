@@ -156,6 +156,10 @@ export class DataprocCluster extends pulumi.CustomResource {
      */
     public readonly folderId!: pulumi.Output<string>;
     /**
+     * A list of host group IDs to place VMs of the cluster on.
+     */
+    public readonly hostGroupIds!: pulumi.Output<string[] | undefined>;
+    /**
      * A set of key/value label pairs to assign to the Data Proc cluster.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -164,7 +168,7 @@ export class DataprocCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Security group ids, to which cluster belongs.
+     * A list of security group IDs that the cluster belongs to.
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -198,6 +202,7 @@ export class DataprocCluster extends pulumi.CustomResource {
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
+            inputs["hostGroupIds"] = state ? state.hostGroupIds : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -216,6 +221,7 @@ export class DataprocCluster extends pulumi.CustomResource {
             inputs["clusterConfig"] = args ? args.clusterConfig : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
+            inputs["hostGroupIds"] = args ? args.hostGroupIds : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
@@ -257,6 +263,10 @@ export interface DataprocClusterState {
      */
     readonly folderId?: pulumi.Input<string>;
     /**
+     * A list of host group IDs to place VMs of the cluster on.
+     */
+    readonly hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * A set of key/value label pairs to assign to the Data Proc cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -265,7 +275,7 @@ export interface DataprocClusterState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Security group ids, to which cluster belongs.
+     * A list of security group IDs that the cluster belongs to.
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -303,6 +313,10 @@ export interface DataprocClusterArgs {
      */
     readonly folderId?: pulumi.Input<string>;
     /**
+     * A list of host group IDs to place VMs of the cluster on.
+     */
+    readonly hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * A set of key/value label pairs to assign to the Data Proc cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -311,7 +325,7 @@ export interface DataprocClusterArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Security group ids, to which cluster belongs.
+     * A list of security group IDs that the cluster belongs to.
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

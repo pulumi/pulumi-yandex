@@ -20,13 +20,16 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, cluster_id=None, cluster_ipv4_range=None, created_at=None, description=None, folder_id=None, health=None, id=None, kms_provider=None, labels=None, master=None, name=None, network_id=None, network_policy_provider=None, node_ipv4_cidr_mask_size=None, node_service_account_id=None, release_channel=None, service_account_id=None, service_ipv4_range=None, status=None):
+    def __init__(__self__, cluster_id=None, cluster_ipv4_range=None, cluster_ipv6_range=None, created_at=None, description=None, folder_id=None, health=None, id=None, kms_provider=None, labels=None, log_group_id=None, master=None, name=None, network_id=None, network_policy_provider=None, node_ipv4_cidr_mask_size=None, node_service_account_id=None, release_channel=None, service_account_id=None, service_ipv4_range=None, service_ipv6_range=None, status=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_ipv4_range and not isinstance(cluster_ipv4_range, str):
             raise TypeError("Expected argument 'cluster_ipv4_range' to be a str")
         pulumi.set(__self__, "cluster_ipv4_range", cluster_ipv4_range)
+        if cluster_ipv6_range and not isinstance(cluster_ipv6_range, str):
+            raise TypeError("Expected argument 'cluster_ipv6_range' to be a str")
+        pulumi.set(__self__, "cluster_ipv6_range", cluster_ipv6_range)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -48,6 +51,9 @@ class GetKubernetesClusterResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if log_group_id and not isinstance(log_group_id, str):
+            raise TypeError("Expected argument 'log_group_id' to be a str")
+        pulumi.set(__self__, "log_group_id", log_group_id)
         if master and not isinstance(master, dict):
             raise TypeError("Expected argument 'master' to be a dict")
         pulumi.set(__self__, "master", master)
@@ -75,6 +81,9 @@ class GetKubernetesClusterResult:
         if service_ipv4_range and not isinstance(service_ipv4_range, str):
             raise TypeError("Expected argument 'service_ipv4_range' to be a str")
         pulumi.set(__self__, "service_ipv4_range", service_ipv4_range)
+        if service_ipv6_range and not isinstance(service_ipv6_range, str):
+            raise TypeError("Expected argument 'service_ipv6_range' to be a str")
+        pulumi.set(__self__, "service_ipv6_range", service_ipv6_range)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -91,6 +100,14 @@ class GetKubernetesClusterResult:
         IP range for allocating pod addresses.
         """
         return pulumi.get(self, "cluster_ipv4_range")
+
+    @property
+    @pulumi.getter(name="clusterIpv6Range")
+    def cluster_ipv6_range(self) -> str:
+        """
+        Identical to cluster_ipv4_range but for the IPv6 protocol.
+        """
+        return pulumi.get(self, "cluster_ipv6_range")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -144,6 +161,14 @@ class GetKubernetesClusterResult:
         A set of key/value label pairs to assign to the Kubernetes cluster.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="logGroupId")
+    def log_group_id(self) -> str:
+        """
+        Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+        """
+        return pulumi.get(self, "log_group_id")
 
     @property
     @pulumi.getter
@@ -213,9 +238,17 @@ class GetKubernetesClusterResult:
     @pulumi.getter(name="serviceIpv4Range")
     def service_ipv4_range(self) -> str:
         """
-        IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from
+        IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from.
         """
         return pulumi.get(self, "service_ipv4_range")
+
+    @property
+    @pulumi.getter(name="serviceIpv6Range")
+    def service_ipv6_range(self) -> str:
+        """
+        Identical to service_ipv4_range but for the IPv6 protocol.
+        """
+        return pulumi.get(self, "service_ipv6_range")
 
     @property
     @pulumi.getter
@@ -234,6 +267,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
         return GetKubernetesClusterResult(
             cluster_id=self.cluster_id,
             cluster_ipv4_range=self.cluster_ipv4_range,
+            cluster_ipv6_range=self.cluster_ipv6_range,
             created_at=self.created_at,
             description=self.description,
             folder_id=self.folder_id,
@@ -241,6 +275,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             id=self.id,
             kms_provider=self.kms_provider,
             labels=self.labels,
+            log_group_id=self.log_group_id,
             master=self.master,
             name=self.name,
             network_id=self.network_id,
@@ -250,6 +285,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             release_channel=self.release_channel,
             service_account_id=self.service_account_id,
             service_ipv4_range=self.service_ipv4_range,
+            service_ipv6_range=self.service_ipv6_range,
             status=self.status)
 
 
@@ -278,6 +314,7 @@ def get_kubernetes_cluster(cluster_id: Optional[str] = None,
     return AwaitableGetKubernetesClusterResult(
         cluster_id=__ret__.cluster_id,
         cluster_ipv4_range=__ret__.cluster_ipv4_range,
+        cluster_ipv6_range=__ret__.cluster_ipv6_range,
         created_at=__ret__.created_at,
         description=__ret__.description,
         folder_id=__ret__.folder_id,
@@ -285,6 +322,7 @@ def get_kubernetes_cluster(cluster_id: Optional[str] = None,
         id=__ret__.id,
         kms_provider=__ret__.kms_provider,
         labels=__ret__.labels,
+        log_group_id=__ret__.log_group_id,
         master=__ret__.master,
         name=__ret__.name,
         network_id=__ret__.network_id,
@@ -294,4 +332,5 @@ def get_kubernetes_cluster(cluster_id: Optional[str] = None,
         release_channel=__ret__.release_channel,
         service_account_id=__ret__.service_account_id,
         service_ipv4_range=__ret__.service_ipv4_range,
+        service_ipv6_range=__ret__.service_ipv6_range,
         status=__ret__.status)

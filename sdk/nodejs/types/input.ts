@@ -686,6 +686,10 @@ export interface ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
 }
 
 export interface ComputeInstanceNetworkInterface {
+    /**
+     * List of configurations for creating ipv4 DNS records. The structure is documented below.
+     */
+    dnsRecords?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterfaceDnsRecord>[]>;
     index?: pulumi.Input<number>;
     /**
      * The private IP address to assign to the instance. If
@@ -705,11 +709,19 @@ export interface ComputeInstanceNetworkInterface {
      * The private IPv6 address to assign to the instance.
      */
     ipv6Address?: pulumi.Input<string>;
+    /**
+     * List of configurations for creating ipv6 DNS records. The structure is documented below.
+     */
+    ipv6DnsRecords?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterfaceIpv6DnsRecord>[]>;
     macAddress?: pulumi.Input<string>;
     /**
      * Provide a public address, for instance, to access the internet over NAT.
      */
     nat?: pulumi.Input<boolean>;
+    /**
+     * List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+     */
+    natDnsRecords?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterfaceNatDnsRecord>[]>;
     /**
      * Provide a public address, for instance, to access the internet over NAT. Address should be already reserved in web UI.
      */
@@ -725,6 +737,63 @@ export interface ComputeInstanceNetworkInterface {
      * created.
      */
     subnetId: pulumi.Input<string>;
+}
+
+export interface ComputeInstanceNetworkInterfaceDnsRecord {
+    /**
+     * DNS zone ID (if not set, private zone used).
+     */
+    dnsZoneId?: pulumi.Input<string>;
+    /**
+     * DNS record FQDN (must have a dot at the end).
+     */
+    fqdn: pulumi.Input<string>;
+    /**
+     * When set to true, also create a PTR DNS record.
+     */
+    ptr?: pulumi.Input<boolean>;
+    /**
+     * DNS record TTL. in seconds
+     */
+    ttl?: pulumi.Input<number>;
+}
+
+export interface ComputeInstanceNetworkInterfaceIpv6DnsRecord {
+    /**
+     * DNS zone ID (if not set, private zone used).
+     */
+    dnsZoneId?: pulumi.Input<string>;
+    /**
+     * DNS record FQDN (must have a dot at the end).
+     */
+    fqdn: pulumi.Input<string>;
+    /**
+     * When set to true, also create a PTR DNS record.
+     */
+    ptr?: pulumi.Input<boolean>;
+    /**
+     * DNS record TTL. in seconds
+     */
+    ttl?: pulumi.Input<number>;
+}
+
+export interface ComputeInstanceNetworkInterfaceNatDnsRecord {
+    /**
+     * DNS zone ID (if not set, private zone used).
+     */
+    dnsZoneId?: pulumi.Input<string>;
+    /**
+     * DNS record FQDN (must have a dot at the end).
+     */
+    fqdn: pulumi.Input<string>;
+    /**
+     * When set to true, also create a PTR DNS record.
+     */
+    ptr?: pulumi.Input<boolean>;
+    /**
+     * DNS record TTL. in seconds
+     */
+    ttl?: pulumi.Input<number>;
 }
 
 export interface ComputeInstancePlacementPolicy {
@@ -1294,6 +1363,7 @@ export interface KubernetesNodeGroupInstanceTemplate {
      * An array with the network interfaces that will be attached to the instance. The structure is documented below.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplateNetworkInterface>[]>;
+    placementPolicy?: pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplatePlacementPolicy>;
     /**
      * The ID of the hardware platform configuration for the node group compute instances.
      */
@@ -1329,6 +1399,10 @@ export interface KubernetesNodeGroupInstanceTemplateNetworkInterface {
      * The IDs of the subnets.
      */
     subnetIds: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface KubernetesNodeGroupInstanceTemplatePlacementPolicy {
+    placementGroupId: pulumi.Input<string>;
 }
 
 export interface KubernetesNodeGroupInstanceTemplateResources {

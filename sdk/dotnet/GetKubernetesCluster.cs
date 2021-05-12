@@ -54,6 +54,10 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly string ClusterIpv4Range;
         /// <summary>
+        /// Identical to cluster_ipv4_range but for the IPv6 protocol.
+        /// </summary>
+        public readonly string ClusterIpv6Range;
+        /// <summary>
         /// The Kubernetes cluster creation timestamp.
         /// </summary>
         public readonly string CreatedAt;
@@ -78,6 +82,10 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the Kubernetes cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+        /// </summary>
+        public readonly string LogGroupId;
         /// <summary>
         /// Kubernetes master configuration options. The structure is documented below.
         /// </summary>
@@ -111,9 +119,13 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly string ServiceAccountId;
         /// <summary>
-        /// IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from
+        /// IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from.
         /// </summary>
         public readonly string ServiceIpv4Range;
+        /// <summary>
+        /// Identical to service_ipv4_range but for the IPv6 protocol.
+        /// </summary>
+        public readonly string ServiceIpv6Range;
         /// <summary>
         /// Status of the Kubernetes cluster.
         /// </summary>
@@ -124,6 +136,8 @@ namespace Pulumi.Yandex
             string clusterId,
 
             string clusterIpv4Range,
+
+            string clusterIpv6Range,
 
             string createdAt,
 
@@ -138,6 +152,8 @@ namespace Pulumi.Yandex
             Outputs.GetKubernetesClusterKmsProviderResult kmsProvider,
 
             ImmutableDictionary<string, string> labels,
+
+            string logGroupId,
 
             Outputs.GetKubernetesClusterMasterResult master,
 
@@ -157,10 +173,13 @@ namespace Pulumi.Yandex
 
             string serviceIpv4Range,
 
+            string serviceIpv6Range,
+
             string status)
         {
             ClusterId = clusterId;
             ClusterIpv4Range = clusterIpv4Range;
+            ClusterIpv6Range = clusterIpv6Range;
             CreatedAt = createdAt;
             Description = description;
             FolderId = folderId;
@@ -168,6 +187,7 @@ namespace Pulumi.Yandex
             Id = id;
             KmsProvider = kmsProvider;
             Labels = labels;
+            LogGroupId = logGroupId;
             Master = master;
             Name = name;
             NetworkId = networkId;
@@ -177,6 +197,7 @@ namespace Pulumi.Yandex
             ReleaseChannel = releaseChannel;
             ServiceAccountId = serviceAccountId;
             ServiceIpv4Range = serviceIpv4Range;
+            ServiceIpv6Range = serviceIpv6Range;
             Status = status;
         }
     }

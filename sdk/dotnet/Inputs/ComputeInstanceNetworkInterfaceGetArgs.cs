@@ -12,6 +12,18 @@ namespace Pulumi.Yandex.Inputs
 
     public sealed class ComputeInstanceNetworkInterfaceGetArgs : Pulumi.ResourceArgs
     {
+        [Input("dnsRecords")]
+        private InputList<Inputs.ComputeInstanceNetworkInterfaceDnsRecordGetArgs>? _dnsRecords;
+
+        /// <summary>
+        /// List of configurations for creating ipv4 DNS records. The structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ComputeInstanceNetworkInterfaceDnsRecordGetArgs> DnsRecords
+        {
+            get => _dnsRecords ?? (_dnsRecords = new InputList<Inputs.ComputeInstanceNetworkInterfaceDnsRecordGetArgs>());
+            set => _dnsRecords = value;
+        }
+
         [Input("index")]
         public Input<int>? Index { get; set; }
 
@@ -41,6 +53,18 @@ namespace Pulumi.Yandex.Inputs
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }
 
+        [Input("ipv6DnsRecords")]
+        private InputList<Inputs.ComputeInstanceNetworkInterfaceIpv6DnsRecordGetArgs>? _ipv6DnsRecords;
+
+        /// <summary>
+        /// List of configurations for creating ipv6 DNS records. The structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ComputeInstanceNetworkInterfaceIpv6DnsRecordGetArgs> Ipv6DnsRecords
+        {
+            get => _ipv6DnsRecords ?? (_ipv6DnsRecords = new InputList<Inputs.ComputeInstanceNetworkInterfaceIpv6DnsRecordGetArgs>());
+            set => _ipv6DnsRecords = value;
+        }
+
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 
@@ -49,6 +73,18 @@ namespace Pulumi.Yandex.Inputs
         /// </summary>
         [Input("nat")]
         public Input<bool>? Nat { get; set; }
+
+        [Input("natDnsRecords")]
+        private InputList<Inputs.ComputeInstanceNetworkInterfaceNatDnsRecordGetArgs>? _natDnsRecords;
+
+        /// <summary>
+        /// List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ComputeInstanceNetworkInterfaceNatDnsRecordGetArgs> NatDnsRecords
+        {
+            get => _natDnsRecords ?? (_natDnsRecords = new InputList<Inputs.ComputeInstanceNetworkInterfaceNatDnsRecordGetArgs>());
+            set => _natDnsRecords = value;
+        }
 
         /// <summary>
         /// Provide a public address, for instance, to access the internet over NAT. Address should be already reserved in web UI.

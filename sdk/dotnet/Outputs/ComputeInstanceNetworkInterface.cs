@@ -13,6 +13,10 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class ComputeInstanceNetworkInterface
     {
+        /// <summary>
+        /// List of configurations for creating ipv4 DNS records. The structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ComputeInstanceNetworkInterfaceDnsRecord> DnsRecords;
         public readonly int? Index;
         /// <summary>
         /// The private IP address to assign to the instance. If
@@ -32,11 +36,19 @@ namespace Pulumi.Yandex.Outputs
         /// The private IPv6 address to assign to the instance.
         /// </summary>
         public readonly string? Ipv6Address;
+        /// <summary>
+        /// List of configurations for creating ipv6 DNS records. The structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ComputeInstanceNetworkInterfaceIpv6DnsRecord> Ipv6DnsRecords;
         public readonly string? MacAddress;
         /// <summary>
         /// Provide a public address, for instance, to access the internet over NAT.
         /// </summary>
         public readonly bool? Nat;
+        /// <summary>
+        /// List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ComputeInstanceNetworkInterfaceNatDnsRecord> NatDnsRecords;
         /// <summary>
         /// Provide a public address, for instance, to access the internet over NAT. Address should be already reserved in web UI.
         /// </summary>
@@ -55,6 +67,8 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private ComputeInstanceNetworkInterface(
+            ImmutableArray<Outputs.ComputeInstanceNetworkInterfaceDnsRecord> dnsRecords,
+
             int? index,
 
             string? ipAddress,
@@ -65,9 +79,13 @@ namespace Pulumi.Yandex.Outputs
 
             string? ipv6Address,
 
+            ImmutableArray<Outputs.ComputeInstanceNetworkInterfaceIpv6DnsRecord> ipv6DnsRecords,
+
             string? macAddress,
 
             bool? nat,
+
+            ImmutableArray<Outputs.ComputeInstanceNetworkInterfaceNatDnsRecord> natDnsRecords,
 
             string? natIpAddress,
 
@@ -77,13 +95,16 @@ namespace Pulumi.Yandex.Outputs
 
             string subnetId)
         {
+            DnsRecords = dnsRecords;
             Index = index;
             IpAddress = ipAddress;
             Ipv4 = ipv4;
             Ipv6 = ipv6;
             Ipv6Address = ipv6Address;
+            Ipv6DnsRecords = ipv6DnsRecords;
             MacAddress = macAddress;
             Nat = nat;
+            NatDnsRecords = natDnsRecords;
             NatIpAddress = natIpAddress;
             NatIpVersion = natIpVersion;
             SecurityGroupIds = securityGroupIds;

@@ -41,6 +41,9 @@ __all__ = [
     'ComputeInstanceGroupScalePolicyTestAutoScale',
     'ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule',
     'ComputeInstanceNetworkInterface',
+    'ComputeInstanceNetworkInterfaceDnsRecord',
+    'ComputeInstanceNetworkInterfaceIpv6DnsRecord',
+    'ComputeInstanceNetworkInterfaceNatDnsRecord',
     'ComputeInstancePlacementPolicy',
     'ComputeInstanceResources',
     'ComputeInstanceSchedulingPolicy',
@@ -72,6 +75,7 @@ __all__ = [
     'KubernetesNodeGroupInstanceTemplate',
     'KubernetesNodeGroupInstanceTemplateBootDisk',
     'KubernetesNodeGroupInstanceTemplateNetworkInterface',
+    'KubernetesNodeGroupInstanceTemplatePlacementPolicy',
     'KubernetesNodeGroupInstanceTemplateResources',
     'KubernetesNodeGroupInstanceTemplateSchedulingPolicy',
     'KubernetesNodeGroupMaintenancePolicy',
@@ -206,6 +210,9 @@ __all__ = [
     'GetComputeInstanceGroupScalePolicyTestAutoScaleResult',
     'GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleResult',
     'GetComputeInstanceNetworkInterfaceResult',
+    'GetComputeInstanceNetworkInterfaceDnsRecordResult',
+    'GetComputeInstanceNetworkInterfaceIpv6DnsRecordResult',
+    'GetComputeInstanceNetworkInterfaceNatDnsRecordResult',
     'GetComputeInstancePlacementPolicyResult',
     'GetComputeInstanceResourcesResult',
     'GetComputeInstanceSchedulingPolicyResult',
@@ -235,6 +242,7 @@ __all__ = [
     'GetKubernetesNodeGroupInstanceTemplateResult',
     'GetKubernetesNodeGroupInstanceTemplateBootDiskResult',
     'GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult',
+    'GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult',
     'GetKubernetesNodeGroupInstanceTemplateResourcesResult',
     'GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyResult',
     'GetKubernetesNodeGroupMaintenancePolicyResult',
@@ -2801,12 +2809,18 @@ class ComputeInstanceNetworkInterface(dict):
         suggest = None
         if key == "subnetId":
             suggest = "subnet_id"
+        elif key == "dnsRecords":
+            suggest = "dns_records"
         elif key == "ipAddress":
             suggest = "ip_address"
         elif key == "ipv6Address":
             suggest = "ipv6_address"
+        elif key == "ipv6DnsRecords":
+            suggest = "ipv6_dns_records"
         elif key == "macAddress":
             suggest = "mac_address"
+        elif key == "natDnsRecords":
+            suggest = "nat_dns_records"
         elif key == "natIpAddress":
             suggest = "nat_ip_address"
         elif key == "natIpVersion":
@@ -2827,13 +2841,16 @@ class ComputeInstanceNetworkInterface(dict):
 
     def __init__(__self__, *,
                  subnet_id: str,
+                 dns_records: Optional[Sequence['outputs.ComputeInstanceNetworkInterfaceDnsRecord']] = None,
                  index: Optional[int] = None,
                  ip_address: Optional[str] = None,
                  ipv4: Optional[bool] = None,
                  ipv6: Optional[bool] = None,
                  ipv6_address: Optional[str] = None,
+                 ipv6_dns_records: Optional[Sequence['outputs.ComputeInstanceNetworkInterfaceIpv6DnsRecord']] = None,
                  mac_address: Optional[str] = None,
                  nat: Optional[bool] = None,
+                 nat_dns_records: Optional[Sequence['outputs.ComputeInstanceNetworkInterfaceNatDnsRecord']] = None,
                  nat_ip_address: Optional[str] = None,
                  nat_ip_version: Optional[str] = None,
                  security_group_ids: Optional[Sequence[str]] = None):
@@ -2841,17 +2858,22 @@ class ComputeInstanceNetworkInterface(dict):
         :param str subnet_id: ID of the subnet to attach this
                interface to. The subnet must exist in the same zone where this instance will be
                created.
+        :param Sequence['ComputeInstanceNetworkInterfaceDnsRecordArgs'] dns_records: List of configurations for creating ipv4 DNS records. The structure is documented below.
         :param str ip_address: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned from the specified subnet.
         :param bool ipv4: Allocate an IPv4 address for the interface. The default value is `true`.
         :param bool ipv6: If true, allocate an IPv6 address for the interface.
                The address will be automatically assigned from the specified subnet.
         :param str ipv6_address: The private IPv6 address to assign to the instance.
+        :param Sequence['ComputeInstanceNetworkInterfaceIpv6DnsRecordArgs'] ipv6_dns_records: List of configurations for creating ipv6 DNS records. The structure is documented below.
         :param bool nat: Provide a public address, for instance, to access the internet over NAT.
+        :param Sequence['ComputeInstanceNetworkInterfaceNatDnsRecordArgs'] nat_dns_records: List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
         :param str nat_ip_address: Provide a public address, for instance, to access the internet over NAT. Address should be already reserved in web UI.
         :param Sequence[str] security_group_ids: Security group ids for network interface.
         """
         pulumi.set(__self__, "subnet_id", subnet_id)
+        if dns_records is not None:
+            pulumi.set(__self__, "dns_records", dns_records)
         if index is not None:
             pulumi.set(__self__, "index", index)
         if ip_address is not None:
@@ -2862,10 +2884,14 @@ class ComputeInstanceNetworkInterface(dict):
             pulumi.set(__self__, "ipv6", ipv6)
         if ipv6_address is not None:
             pulumi.set(__self__, "ipv6_address", ipv6_address)
+        if ipv6_dns_records is not None:
+            pulumi.set(__self__, "ipv6_dns_records", ipv6_dns_records)
         if mac_address is not None:
             pulumi.set(__self__, "mac_address", mac_address)
         if nat is not None:
             pulumi.set(__self__, "nat", nat)
+        if nat_dns_records is not None:
+            pulumi.set(__self__, "nat_dns_records", nat_dns_records)
         if nat_ip_address is not None:
             pulumi.set(__self__, "nat_ip_address", nat_ip_address)
         if nat_ip_version is not None:
@@ -2882,6 +2908,14 @@ class ComputeInstanceNetworkInterface(dict):
         created.
         """
         return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="dnsRecords")
+    def dns_records(self) -> Optional[Sequence['outputs.ComputeInstanceNetworkInterfaceDnsRecord']]:
+        """
+        List of configurations for creating ipv4 DNS records. The structure is documented below.
+        """
+        return pulumi.get(self, "dns_records")
 
     @property
     @pulumi.getter
@@ -2923,6 +2957,14 @@ class ComputeInstanceNetworkInterface(dict):
         return pulumi.get(self, "ipv6_address")
 
     @property
+    @pulumi.getter(name="ipv6DnsRecords")
+    def ipv6_dns_records(self) -> Optional[Sequence['outputs.ComputeInstanceNetworkInterfaceIpv6DnsRecord']]:
+        """
+        List of configurations for creating ipv6 DNS records. The structure is documented below.
+        """
+        return pulumi.get(self, "ipv6_dns_records")
+
+    @property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> Optional[str]:
         return pulumi.get(self, "mac_address")
@@ -2934,6 +2976,14 @@ class ComputeInstanceNetworkInterface(dict):
         Provide a public address, for instance, to access the internet over NAT.
         """
         return pulumi.get(self, "nat")
+
+    @property
+    @pulumi.getter(name="natDnsRecords")
+    def nat_dns_records(self) -> Optional[Sequence['outputs.ComputeInstanceNetworkInterfaceNatDnsRecord']]:
+        """
+        List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+        """
+        return pulumi.get(self, "nat_dns_records")
 
     @property
     @pulumi.getter(name="natIpAddress")
@@ -2955,6 +3005,219 @@ class ComputeInstanceNetworkInterface(dict):
         Security group ids for network interface.
         """
         return pulumi.get(self, "security_group_ids")
+
+
+@pulumi.output_type
+class ComputeInstanceNetworkInterfaceDnsRecord(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsZoneId":
+            suggest = "dns_zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComputeInstanceNetworkInterfaceDnsRecord. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComputeInstanceNetworkInterfaceDnsRecord.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComputeInstanceNetworkInterfaceDnsRecord.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdn: str,
+                 dns_zone_id: Optional[str] = None,
+                 ptr: Optional[bool] = None,
+                 ttl: Optional[int] = None):
+        """
+        :param str fqdn: DNS record FQDN (must have a dot at the end).
+        :param str dns_zone_id: DNS zone ID (if not set, private zone used).
+        :param bool ptr: When set to true, also create a PTR DNS record.
+        :param int ttl: DNS record TTL. in seconds
+        """
+        pulumi.set(__self__, "fqdn", fqdn)
+        if dns_zone_id is not None:
+            pulumi.set(__self__, "dns_zone_id", dns_zone_id)
+        if ptr is not None:
+            pulumi.set(__self__, "ptr", ptr)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        """
+        DNS record FQDN (must have a dot at the end).
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="dnsZoneId")
+    def dns_zone_id(self) -> Optional[str]:
+        """
+        DNS zone ID (if not set, private zone used).
+        """
+        return pulumi.get(self, "dns_zone_id")
+
+    @property
+    @pulumi.getter
+    def ptr(self) -> Optional[bool]:
+        """
+        When set to true, also create a PTR DNS record.
+        """
+        return pulumi.get(self, "ptr")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[int]:
+        """
+        DNS record TTL. in seconds
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class ComputeInstanceNetworkInterfaceIpv6DnsRecord(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsZoneId":
+            suggest = "dns_zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComputeInstanceNetworkInterfaceIpv6DnsRecord. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComputeInstanceNetworkInterfaceIpv6DnsRecord.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComputeInstanceNetworkInterfaceIpv6DnsRecord.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdn: str,
+                 dns_zone_id: Optional[str] = None,
+                 ptr: Optional[bool] = None,
+                 ttl: Optional[int] = None):
+        """
+        :param str fqdn: DNS record FQDN (must have a dot at the end).
+        :param str dns_zone_id: DNS zone ID (if not set, private zone used).
+        :param bool ptr: When set to true, also create a PTR DNS record.
+        :param int ttl: DNS record TTL. in seconds
+        """
+        pulumi.set(__self__, "fqdn", fqdn)
+        if dns_zone_id is not None:
+            pulumi.set(__self__, "dns_zone_id", dns_zone_id)
+        if ptr is not None:
+            pulumi.set(__self__, "ptr", ptr)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        """
+        DNS record FQDN (must have a dot at the end).
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="dnsZoneId")
+    def dns_zone_id(self) -> Optional[str]:
+        """
+        DNS zone ID (if not set, private zone used).
+        """
+        return pulumi.get(self, "dns_zone_id")
+
+    @property
+    @pulumi.getter
+    def ptr(self) -> Optional[bool]:
+        """
+        When set to true, also create a PTR DNS record.
+        """
+        return pulumi.get(self, "ptr")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[int]:
+        """
+        DNS record TTL. in seconds
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class ComputeInstanceNetworkInterfaceNatDnsRecord(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsZoneId":
+            suggest = "dns_zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComputeInstanceNetworkInterfaceNatDnsRecord. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComputeInstanceNetworkInterfaceNatDnsRecord.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComputeInstanceNetworkInterfaceNatDnsRecord.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdn: str,
+                 dns_zone_id: Optional[str] = None,
+                 ptr: Optional[bool] = None,
+                 ttl: Optional[int] = None):
+        """
+        :param str fqdn: DNS record FQDN (must have a dot at the end).
+        :param str dns_zone_id: DNS zone ID (if not set, private zone used).
+        :param bool ptr: When set to true, also create a PTR DNS record.
+        :param int ttl: DNS record TTL. in seconds
+        """
+        pulumi.set(__self__, "fqdn", fqdn)
+        if dns_zone_id is not None:
+            pulumi.set(__self__, "dns_zone_id", dns_zone_id)
+        if ptr is not None:
+            pulumi.set(__self__, "ptr", ptr)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        """
+        DNS record FQDN (must have a dot at the end).
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="dnsZoneId")
+    def dns_zone_id(self) -> Optional[str]:
+        """
+        DNS zone ID (if not set, private zone used).
+        """
+        return pulumi.get(self, "dns_zone_id")
+
+    @property
+    @pulumi.getter
+    def ptr(self) -> Optional[bool]:
+        """
+        When set to true, also create a PTR DNS record.
+        """
+        return pulumi.get(self, "ptr")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[int]:
+        """
+        DNS record TTL. in seconds
+        """
+        return pulumi.get(self, "ttl")
 
 
 @pulumi.output_type
@@ -4531,6 +4794,8 @@ class KubernetesNodeGroupInstanceTemplate(dict):
             suggest = "boot_disk"
         elif key == "networkInterfaces":
             suggest = "network_interfaces"
+        elif key == "placementPolicy":
+            suggest = "placement_policy"
         elif key == "platformId":
             suggest = "platform_id"
         elif key == "schedulingPolicy":
@@ -4552,6 +4817,7 @@ class KubernetesNodeGroupInstanceTemplate(dict):
                  metadata: Optional[Mapping[str, str]] = None,
                  nat: Optional[bool] = None,
                  network_interfaces: Optional[Sequence['outputs.KubernetesNodeGroupInstanceTemplateNetworkInterface']] = None,
+                 placement_policy: Optional['outputs.KubernetesNodeGroupInstanceTemplatePlacementPolicy'] = None,
                  platform_id: Optional[str] = None,
                  resources: Optional['outputs.KubernetesNodeGroupInstanceTemplateResources'] = None,
                  scheduling_policy: Optional['outputs.KubernetesNodeGroupInstanceTemplateSchedulingPolicy'] = None):
@@ -4575,6 +4841,8 @@ class KubernetesNodeGroupInstanceTemplate(dict):
             pulumi.set(__self__, "nat", nat)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if platform_id is not None:
             pulumi.set(__self__, "platform_id", platform_id)
         if resources is not None:
@@ -4617,6 +4885,11 @@ class KubernetesNodeGroupInstanceTemplate(dict):
         An array with the network interfaces that will be attached to the instance. The structure is documented below.
         """
         return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional['outputs.KubernetesNodeGroupInstanceTemplatePlacementPolicy']:
+        return pulumi.get(self, "placement_policy")
 
     @property
     @pulumi.getter(name="platformId")
@@ -4730,6 +5003,35 @@ class KubernetesNodeGroupInstanceTemplateNetworkInterface(dict):
         Security group ids for network interface.
         """
         return pulumi.get(self, "security_group_ids")
+
+
+@pulumi.output_type
+class KubernetesNodeGroupInstanceTemplatePlacementPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "placementGroupId":
+            suggest = "placement_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesNodeGroupInstanceTemplatePlacementPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesNodeGroupInstanceTemplatePlacementPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesNodeGroupInstanceTemplatePlacementPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 placement_group_id: str):
+        pulumi.set(__self__, "placement_group_id", placement_group_id)
+
+    @property
+    @pulumi.getter(name="placementGroupId")
+    def placement_group_id(self) -> str:
+        return pulumi.get(self, "placement_group_id")
 
 
 @pulumi.output_type
@@ -13823,39 +14125,56 @@ class GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleResult(dict):
 @pulumi.output_type
 class GetComputeInstanceNetworkInterfaceResult(dict):
     def __init__(__self__, *,
+                 dns_records: Sequence['outputs.GetComputeInstanceNetworkInterfaceDnsRecordResult'],
                  index: int,
                  ip_address: str,
                  ipv4: bool,
                  ipv6: bool,
                  ipv6_address: str,
+                 ipv6_dns_records: Sequence['outputs.GetComputeInstanceNetworkInterfaceIpv6DnsRecordResult'],
                  mac_address: str,
                  nat: bool,
+                 nat_dns_records: Sequence['outputs.GetComputeInstanceNetworkInterfaceNatDnsRecordResult'],
                  nat_ip_address: str,
                  nat_ip_version: str,
                  security_group_ids: Sequence[str],
                  subnet_id: str):
         """
+        :param Sequence['GetComputeInstanceNetworkInterfaceDnsRecordArgs'] dns_records: List of configurations for creating ipv4 DNS records. The structure is documented below.
         :param int index: The index of the network interface, generated by the server.
         :param str ip_address: The assignd private IP address to the network interface.
         :param bool ipv4: Show if IPv4 address is assigned to the network interface.
+        :param Sequence['GetComputeInstanceNetworkInterfaceIpv6DnsRecordArgs'] ipv6_dns_records: List of configurations for creating ipv6 DNS records. The structure is documented below.
         :param str mac_address: MAC address that is assigned to the network interface.
         :param bool nat: Assigned for the instance's public address that is used to access the internet over NAT.
+        :param Sequence['GetComputeInstanceNetworkInterfaceNatDnsRecordArgs'] nat_dns_records: List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
         :param str nat_ip_address: Public IP address of the instance.
         :param str nat_ip_version: IP version for the public address.
         :param Sequence[str] security_group_ids: Security group ids for network interface.
         :param str subnet_id: ID of the subnet to attach this interface to. The subnet must reside in the same zone where this instance was created.
         """
+        pulumi.set(__self__, "dns_records", dns_records)
         pulumi.set(__self__, "index", index)
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ipv4", ipv4)
         pulumi.set(__self__, "ipv6", ipv6)
         pulumi.set(__self__, "ipv6_address", ipv6_address)
+        pulumi.set(__self__, "ipv6_dns_records", ipv6_dns_records)
         pulumi.set(__self__, "mac_address", mac_address)
         pulumi.set(__self__, "nat", nat)
+        pulumi.set(__self__, "nat_dns_records", nat_dns_records)
         pulumi.set(__self__, "nat_ip_address", nat_ip_address)
         pulumi.set(__self__, "nat_ip_version", nat_ip_version)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter(name="dnsRecords")
+    def dns_records(self) -> Sequence['outputs.GetComputeInstanceNetworkInterfaceDnsRecordResult']:
+        """
+        List of configurations for creating ipv4 DNS records. The structure is documented below.
+        """
+        return pulumi.get(self, "dns_records")
 
     @property
     @pulumi.getter
@@ -13892,6 +14211,14 @@ class GetComputeInstanceNetworkInterfaceResult(dict):
         return pulumi.get(self, "ipv6_address")
 
     @property
+    @pulumi.getter(name="ipv6DnsRecords")
+    def ipv6_dns_records(self) -> Sequence['outputs.GetComputeInstanceNetworkInterfaceIpv6DnsRecordResult']:
+        """
+        List of configurations for creating ipv6 DNS records. The structure is documented below.
+        """
+        return pulumi.get(self, "ipv6_dns_records")
+
+    @property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> str:
         """
@@ -13906,6 +14233,14 @@ class GetComputeInstanceNetworkInterfaceResult(dict):
         Assigned for the instance's public address that is used to access the internet over NAT.
         """
         return pulumi.get(self, "nat")
+
+    @property
+    @pulumi.getter(name="natDnsRecords")
+    def nat_dns_records(self) -> Sequence['outputs.GetComputeInstanceNetworkInterfaceNatDnsRecordResult']:
+        """
+        List of configurations for creating ipv4 NAT DNS records. The structure is documented below.
+        """
+        return pulumi.get(self, "nat_dns_records")
 
     @property
     @pulumi.getter(name="natIpAddress")
@@ -13938,6 +14273,159 @@ class GetComputeInstanceNetworkInterfaceResult(dict):
         ID of the subnet to attach this interface to. The subnet must reside in the same zone where this instance was created.
         """
         return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetComputeInstanceNetworkInterfaceDnsRecordResult(dict):
+    def __init__(__self__, *,
+                 dns_zone_id: str,
+                 fqdn: str,
+                 ptr: bool,
+                 ttl: int):
+        """
+        :param str dns_zone_id: DNS zone ID (if not set, private zone is used).
+        :param str fqdn: DNS record FQDN.
+        :param bool ptr: When set to true, also create a TR DNS record.
+        :param int ttl: DNS record TTL. in seconds
+        """
+        pulumi.set(__self__, "dns_zone_id", dns_zone_id)
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "ptr", ptr)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="dnsZoneId")
+    def dns_zone_id(self) -> str:
+        """
+        DNS zone ID (if not set, private zone is used).
+        """
+        return pulumi.get(self, "dns_zone_id")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        """
+        DNS record FQDN.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter
+    def ptr(self) -> bool:
+        """
+        When set to true, also create a TR DNS record.
+        """
+        return pulumi.get(self, "ptr")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> int:
+        """
+        DNS record TTL. in seconds
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class GetComputeInstanceNetworkInterfaceIpv6DnsRecordResult(dict):
+    def __init__(__self__, *,
+                 dns_zone_id: str,
+                 fqdn: str,
+                 ptr: bool,
+                 ttl: int):
+        """
+        :param str dns_zone_id: DNS zone ID (if not set, private zone is used).
+        :param str fqdn: DNS record FQDN.
+        :param bool ptr: When set to true, also create a TR DNS record.
+        :param int ttl: DNS record TTL. in seconds
+        """
+        pulumi.set(__self__, "dns_zone_id", dns_zone_id)
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "ptr", ptr)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="dnsZoneId")
+    def dns_zone_id(self) -> str:
+        """
+        DNS zone ID (if not set, private zone is used).
+        """
+        return pulumi.get(self, "dns_zone_id")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        """
+        DNS record FQDN.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter
+    def ptr(self) -> bool:
+        """
+        When set to true, also create a TR DNS record.
+        """
+        return pulumi.get(self, "ptr")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> int:
+        """
+        DNS record TTL. in seconds
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class GetComputeInstanceNetworkInterfaceNatDnsRecordResult(dict):
+    def __init__(__self__, *,
+                 dns_zone_id: str,
+                 fqdn: str,
+                 ptr: bool,
+                 ttl: int):
+        """
+        :param str dns_zone_id: DNS zone ID (if not set, private zone is used).
+        :param str fqdn: DNS record FQDN.
+        :param bool ptr: When set to true, also create a TR DNS record.
+        :param int ttl: DNS record TTL. in seconds
+        """
+        pulumi.set(__self__, "dns_zone_id", dns_zone_id)
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "ptr", ptr)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="dnsZoneId")
+    def dns_zone_id(self) -> str:
+        """
+        DNS zone ID (if not set, private zone is used).
+        """
+        return pulumi.get(self, "dns_zone_id")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        """
+        DNS record FQDN.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter
+    def ptr(self) -> bool:
+        """
+        When set to true, also create a TR DNS record.
+        """
+        return pulumi.get(self, "ptr")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> int:
+        """
+        DNS record TTL. in seconds
+        """
+        return pulumi.get(self, "ttl")
 
 
 @pulumi.output_type
@@ -14891,7 +15379,8 @@ class GetKubernetesNodeGroupInstanceTemplateResult(dict):
                  network_interfaces: Sequence['outputs.GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult'],
                  platform_id: str,
                  resources: 'outputs.GetKubernetesNodeGroupInstanceTemplateResourcesResult',
-                 scheduling_policy: 'outputs.GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyResult'):
+                 scheduling_policy: 'outputs.GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyResult',
+                 placement_policy: Optional['outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult'] = None):
         """
         :param 'GetKubernetesNodeGroupInstanceTemplateBootDiskArgs' boot_disk: The specifications for boot disks that will be attached to the instance. The structure is documented below.
         :param Mapping[str, str] metadata: The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
@@ -14907,6 +15396,8 @@ class GetKubernetesNodeGroupInstanceTemplateResult(dict):
         pulumi.set(__self__, "platform_id", platform_id)
         pulumi.set(__self__, "resources", resources)
         pulumi.set(__self__, "scheduling_policy", scheduling_policy)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
 
     @property
     @pulumi.getter(name="bootDisk")
@@ -14960,6 +15451,11 @@ class GetKubernetesNodeGroupInstanceTemplateResult(dict):
         The scheduling policy for the instances in node group. The structure is documented below.
         """
         return pulumi.get(self, "scheduling_policy")
+
+    @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional['outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult']:
+        return pulumi.get(self, "placement_policy")
 
 
 @pulumi.output_type
@@ -15029,6 +15525,18 @@ class GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult(dict):
         The IDs of the subnets.
         """
         return pulumi.get(self, "subnet_ids")
+
+
+@pulumi.output_type
+class GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult(dict):
+    def __init__(__self__, *,
+                 placement_group_id: str):
+        pulumi.set(__self__, "placement_group_id", placement_group_id)
+
+    @property
+    @pulumi.getter(name="placementGroupId")
+    def placement_group_id(self) -> str:
+        return pulumi.get(self, "placement_group_id")
 
 
 @pulumi.output_type

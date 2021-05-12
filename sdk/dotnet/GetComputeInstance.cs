@@ -98,7 +98,7 @@ namespace Pulumi.Yandex
         public readonly string Description;
         public readonly string FolderId;
         /// <summary>
-        /// FQDN of the instance.
+        /// DNS record FQDN.
         /// </summary>
         public readonly string Fqdn;
         /// <summary>

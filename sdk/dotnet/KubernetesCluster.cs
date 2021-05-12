@@ -163,6 +163,12 @@ namespace Pulumi.Yandex
         public Output<string> ClusterIpv4Range { get; private set; } = null!;
 
         /// <summary>
+        /// Identical to cluster_ipv4_range but for IPv6 protocol.
+        /// </summary>
+        [Output("clusterIpv6Range")]
+        public Output<string> ClusterIpv6Range { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) The Kubernetes cluster creation timestamp.
         /// </summary>
         [Output("createdAt")]
@@ -198,6 +204,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+        /// </summary>
+        [Output("logGroupId")]
+        public Output<string> LogGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Kubernetes master configuration options. The structure is documented below.
@@ -259,6 +271,12 @@ namespace Pulumi.Yandex
         public Output<string> ServiceIpv4Range { get; private set; } = null!;
 
         /// <summary>
+        /// Identical to service_ipv4_range but for IPv6 protocol.
+        /// </summary>
+        [Output("serviceIpv6Range")]
+        public Output<string> ServiceIpv6Range { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed)Status of the Kubernetes cluster.
         /// </summary>
         [Output("status")]
@@ -317,6 +335,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("clusterIpv4Range")]
         public Input<string>? ClusterIpv4Range { get; set; }
+
+        /// <summary>
+        /// Identical to cluster_ipv4_range but for IPv6 protocol.
+        /// </summary>
+        [Input("clusterIpv6Range")]
+        public Input<string>? ClusterIpv6Range { get; set; }
 
         /// <summary>
         /// A description of the Kubernetes cluster.
@@ -408,6 +432,12 @@ namespace Pulumi.Yandex
         [Input("serviceIpv4Range")]
         public Input<string>? ServiceIpv4Range { get; set; }
 
+        /// <summary>
+        /// Identical to service_ipv4_range but for IPv6 protocol.
+        /// </summary>
+        [Input("serviceIpv6Range")]
+        public Input<string>? ServiceIpv6Range { get; set; }
+
         public KubernetesClusterArgs()
         {
         }
@@ -422,6 +452,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("clusterIpv4Range")]
         public Input<string>? ClusterIpv4Range { get; set; }
+
+        /// <summary>
+        /// Identical to cluster_ipv4_range but for IPv6 protocol.
+        /// </summary>
+        [Input("clusterIpv6Range")]
+        public Input<string>? ClusterIpv6Range { get; set; }
 
         /// <summary>
         /// (Computed) The Kubernetes cluster creation timestamp.
@@ -465,6 +501,12 @@ namespace Pulumi.Yandex
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+        /// </summary>
+        [Input("logGroupId")]
+        public Input<string>? LogGroupId { get; set; }
 
         /// <summary>
         /// Kubernetes master configuration options. The structure is documented below.
@@ -524,6 +566,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("serviceIpv4Range")]
         public Input<string>? ServiceIpv4Range { get; set; }
+
+        /// <summary>
+        /// Identical to service_ipv4_range but for IPv6 protocol.
+        /// </summary>
+        [Input("serviceIpv6Range")]
+        public Input<string>? ServiceIpv6Range { get; set; }
 
         /// <summary>
         /// (Computed)Status of the Kubernetes cluster.

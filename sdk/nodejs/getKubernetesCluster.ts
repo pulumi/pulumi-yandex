@@ -65,6 +65,10 @@ export interface GetKubernetesClusterResult {
      */
     readonly clusterIpv4Range: string;
     /**
+     * Identical to clusterIpv4Range but for the IPv6 protocol.
+     */
+    readonly clusterIpv6Range: string;
+    /**
      * The Kubernetes cluster creation timestamp.
      */
     readonly createdAt: string;
@@ -89,6 +93,10 @@ export interface GetKubernetesClusterResult {
      * A set of key/value label pairs to assign to the Kubernetes cluster.
      */
     readonly labels: {[key: string]: string};
+    /**
+     * Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+     */
+    readonly logGroupId: string;
     /**
      * Kubernetes master configuration options. The structure is documented below.
      */
@@ -122,9 +130,13 @@ export interface GetKubernetesClusterResult {
      */
     readonly serviceAccountId: string;
     /**
-     * IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from
+     * IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from.
      */
     readonly serviceIpv4Range: string;
+    /**
+     * Identical to serviceIpv4Range but for the IPv6 protocol.
+     */
+    readonly serviceIpv6Range: string;
     /**
      * Status of the Kubernetes cluster.
      */

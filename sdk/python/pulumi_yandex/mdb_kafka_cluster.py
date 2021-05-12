@@ -20,6 +20,7 @@ class MdbKafkaClusterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -33,6 +34,7 @@ class MdbKafkaClusterArgs:
         :param pulumi.Input[str] description: Description of the Kafka cluster.
         :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
@@ -47,6 +49,8 @@ class MdbKafkaClusterArgs:
             pulumi.set(__self__, "environment", environment)
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
+        if host_group_ids is not None:
+            pulumi.set(__self__, "host_group_ids", host_group_ids)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -119,6 +123,18 @@ class MdbKafkaClusterArgs:
     @folder_id.setter
     def folder_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "folder_id", value)
+
+    @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IDs of the host groups to place VMs of the cluster on.
+        """
+        return pulumi.get(self, "host_group_ids")
+
+    @host_group_ids.setter
+    def host_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_group_ids", value)
 
     @property
     @pulumi.getter
@@ -199,6 +215,7 @@ class _MdbKafkaClusterState:
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  health: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterHostArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -216,6 +233,7 @@ class _MdbKafkaClusterState:
         :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         :param pulumi.Input[str] health: Health of the host.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterHostArgs']]] hosts: A host of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
         :param pulumi.Input[str] name: The name of the topic.
@@ -238,6 +256,8 @@ class _MdbKafkaClusterState:
             pulumi.set(__self__, "folder_id", folder_id)
         if health is not None:
             pulumi.set(__self__, "health", health)
+        if host_group_ids is not None:
+            pulumi.set(__self__, "host_group_ids", host_group_ids)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
         if labels is not None:
@@ -328,6 +348,18 @@ class _MdbKafkaClusterState:
     @health.setter
     def health(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "health", value)
+
+    @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IDs of the host groups to place VMs of the cluster on.
+        """
+        return pulumi.get(self, "host_group_ids")
+
+    @host_group_ids.setter
+    def host_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_group_ids", value)
 
     @property
     @pulumi.getter
@@ -445,6 +477,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -471,6 +504,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the Kafka cluster.
         :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[str] network_id: ID of the network, to which the Kafka cluster belongs.
@@ -515,6 +549,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -540,6 +575,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["environment"] = environment
             __props__.__dict__["folder_id"] = folder_id
+            __props__.__dict__["host_group_ids"] = host_group_ids
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if network_id is None and not opts.urn:
@@ -569,6 +605,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
             environment: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             health: Optional[pulumi.Input[str]] = None,
+            host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterHostArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -591,6 +628,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         :param pulumi.Input[str] health: Health of the host.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterHostArgs']]]] hosts: A host of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
         :param pulumi.Input[str] name: The name of the topic.
@@ -611,6 +649,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         __props__.__dict__["environment"] = environment
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["health"] = health
+        __props__.__dict__["host_group_ids"] = host_group_ids
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -669,6 +708,14 @@ class MdbKafkaCluster(pulumi.CustomResource):
         Health of the host.
         """
         return pulumi.get(self, "health")
+
+    @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of IDs of the host groups to place VMs of the cluster on.
+        """
+        return pulumi.get(self, "host_group_ids")
 
     @property
     @pulumi.getter

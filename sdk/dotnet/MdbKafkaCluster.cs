@@ -61,6 +61,12 @@ namespace Pulumi.Yandex
         public Output<string> Health { get; private set; } = null!;
 
         /// <summary>
+        /// A list of IDs of the host groups to place VMs of the cluster on.
+        /// </summary>
+        [Output("hostGroupIds")]
+        public Output<ImmutableArray<string>> HostGroupIds { get; private set; } = null!;
+
+        /// <summary>
         /// A host of the Kafka cluster. The structure is documented below.
         /// </summary>
         [Output("hosts")]
@@ -182,6 +188,18 @@ namespace Pulumi.Yandex
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
+        [Input("hostGroupIds")]
+        private InputList<string>? _hostGroupIds;
+
+        /// <summary>
+        /// A list of IDs of the host groups to place VMs of the cluster on.
+        /// </summary>
+        public InputList<string> HostGroupIds
+        {
+            get => _hostGroupIds ?? (_hostGroupIds = new InputList<string>());
+            set => _hostGroupIds = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -292,6 +310,18 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("health")]
         public Input<string>? Health { get; set; }
+
+        [Input("hostGroupIds")]
+        private InputList<string>? _hostGroupIds;
+
+        /// <summary>
+        /// A list of IDs of the host groups to place VMs of the cluster on.
+        /// </summary>
+        public InputList<string> HostGroupIds
+        {
+            get => _hostGroupIds ?? (_hostGroupIds = new InputList<string>());
+            set => _hostGroupIds = value;
+        }
 
         [Input("hosts")]
         private InputList<Inputs.MdbKafkaClusterHostGetArgs>? _hosts;

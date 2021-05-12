@@ -331,7 +331,7 @@ class _ComputeInstanceState:
         :param pulumi.Input[str] description: Description of the boot disk.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
-        :param pulumi.Input[str] fqdn: The fully qualified DNS name of this instance.
+        :param pulumi.Input[str] fqdn: DNS record FQDN (must have a dot at the end).
         :param pulumi.Input[str] hostname: Host name for the instance. This field is used to generate the instance `fqdn` value. 
                The host name must be unique within the network and region. If not specified, the host name will be equal
                to `id` of the instance and `fqdn` will be `<id>.auto.internal`.
@@ -457,7 +457,7 @@ class _ComputeInstanceState:
     @pulumi.getter
     def fqdn(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified DNS name of this instance.
+        DNS record FQDN (must have a dot at the end).
         """
         return pulumi.get(self, "fqdn")
 
@@ -895,7 +895,7 @@ class ComputeInstance(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the boot disk.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
-        :param pulumi.Input[str] fqdn: The fully qualified DNS name of this instance.
+        :param pulumi.Input[str] fqdn: DNS record FQDN (must have a dot at the end).
         :param pulumi.Input[str] hostname: Host name for the instance. This field is used to generate the instance `fqdn` value. 
                The host name must be unique within the network and region. If not specified, the host name will be equal
                to `id` of the instance and `fqdn` will be `<id>.auto.internal`.
@@ -986,7 +986,7 @@ class ComputeInstance(pulumi.CustomResource):
     @pulumi.getter
     def fqdn(self) -> pulumi.Output[str]:
         """
-        The fully qualified DNS name of this instance.
+        DNS record FQDN (must have a dot at the end).
         """
         return pulumi.get(self, "fqdn")
 

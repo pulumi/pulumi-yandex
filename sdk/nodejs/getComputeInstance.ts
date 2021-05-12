@@ -81,7 +81,7 @@ export interface GetComputeInstanceResult {
     readonly description: string;
     readonly folderId: string;
     /**
-     * FQDN of the instance.
+     * DNS record FQDN.
      */
     readonly fqdn: string;
     /**
