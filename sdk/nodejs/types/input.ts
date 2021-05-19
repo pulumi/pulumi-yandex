@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface AlbTargetGroupTarget {
+    /**
+     * IP address of the target.
+     */
+    ipAddress: pulumi.Input<string>;
+    /**
+     * ID of the subnet that targets are connected to.
+     * All targets in the target group must be connected to the same subnet within a single availability zone.
+     */
+    subnetId: pulumi.Input<string>;
+}
+
 export interface ComputeDiskDiskPlacementPolicy {
     /**
      * Specifies Disk Placement Group id.
@@ -1387,6 +1399,14 @@ export interface KubernetesNodeGroupInstanceTemplateBootDisk {
 }
 
 export interface KubernetesNodeGroupInstanceTemplateNetworkInterface {
+    /**
+     * Allocate an IPv4 address for the interface. The default value is `true`.
+     */
+    ipv4?: pulumi.Input<boolean>;
+    /**
+     * If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
+     */
+    ipv6?: pulumi.Input<boolean>;
     /**
      * A public address that can be used to access the internet over NAT.
      */

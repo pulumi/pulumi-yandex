@@ -9,6 +9,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'AlbTargetGroupTargetArgs',
     'ComputeDiskDiskPlacementPolicyArgs',
     'ComputeInstanceBootDiskArgs',
     'ComputeInstanceBootDiskInitializeParamsArgs',
@@ -194,6 +195,45 @@ __all__ = [
     'GetMdbKafkaClusterUserPermissionArgs',
     'GetMdbMysqlClusterAccessArgs',
 ]
+
+@pulumi.input_type
+class AlbTargetGroupTargetArgs:
+    def __init__(__self__, *,
+                 ip_address: pulumi.Input[str],
+                 subnet_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip_address: IP address of the target.
+        :param pulumi.Input[str] subnet_id: ID of the subnet that targets are connected to.
+               All targets in the target group must be connected to the same subnet within a single availability zone.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[str]:
+        """
+        IP address of the target.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[str]:
+        """
+        ID of the subnet that targets are connected to.
+        All targets in the target group must be connected to the same subnet within a single availability zone.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subnet_id", value)
+
 
 @pulumi.input_type
 class ComputeDiskDiskPlacementPolicyArgs:
@@ -4728,14 +4768,22 @@ class KubernetesNodeGroupInstanceTemplateBootDiskArgs:
 class KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs:
     def __init__(__self__, *,
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 ipv4: Optional[pulumi.Input[bool]] = None,
+                 ipv6: Optional[pulumi.Input[bool]] = None,
                  nat: Optional[pulumi.Input[bool]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: The IDs of the subnets.
+        :param pulumi.Input[bool] ipv4: Allocate an IPv4 address for the interface. The default value is `true`.
+        :param pulumi.Input[bool] ipv6: If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
         :param pulumi.Input[bool] nat: A public address that can be used to access the internet over NAT.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids for network interface.
         """
         pulumi.set(__self__, "subnet_ids", subnet_ids)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
         if nat is not None:
             pulumi.set(__self__, "nat", nat)
         if security_group_ids is not None:
@@ -4752,6 +4800,30 @@ class KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs:
     @subnet_ids.setter
     def subnet_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "subnet_ids", value)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allocate an IPv4 address for the interface. The default value is `true`.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv4", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv6", value)
 
     @property
     @pulumi.getter

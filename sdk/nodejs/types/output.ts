@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface AlbTargetGroupTarget {
+    /**
+     * IP address of the target.
+     */
+    ipAddress: string;
+    /**
+     * ID of the subnet that targets are connected to.
+     * All targets in the target group must be connected to the same subnet within a single availability zone.
+     */
+    subnetId: string;
+}
+
 export interface ComputeDiskDiskPlacementPolicy {
     /**
      * Specifies Disk Placement Group id.
@@ -973,6 +985,11 @@ export interface FunctionTriggerObjectStorage {
 
 export interface FunctionTriggerTimer {
     cronExpression: string;
+}
+
+export interface GetAlbTargetGroupTarget {
+    ipAddress: string;
+    subnetId: string;
 }
 
 export interface GetComputeDiskDiskPlacementPolicy {
@@ -2088,6 +2105,14 @@ export interface GetKubernetesNodeGroupInstanceTemplateBootDisk {
 }
 
 export interface GetKubernetesNodeGroupInstanceTemplateNetworkInterface {
+    /**
+     * Indicates whether the IPv4 address has been assigned.
+     */
+    ipv4: boolean;
+    /**
+     * Indicates whether the IPv6 address has been assigned.
+     */
+    ipv6: boolean;
     /**
      * A public address that can be used to access the internet over NAT.
      */
@@ -4204,9 +4229,17 @@ export interface KubernetesNodeGroupInstanceTemplateBootDisk {
 
 export interface KubernetesNodeGroupInstanceTemplateNetworkInterface {
     /**
+     * Allocate an IPv4 address for the interface. The default value is `true`.
+     */
+    ipv4?: boolean;
+    /**
+     * If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
+     */
+    ipv6: boolean;
+    /**
      * A public address that can be used to access the internet over NAT.
      */
-    nat?: boolean;
+    nat: boolean;
     /**
      * Security group ids for network interface.
      */

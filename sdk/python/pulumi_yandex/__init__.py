@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .alb_target_group import *
 from .api_gateway import *
 from .compute_disk import *
 from .compute_disk_placement_group import *
@@ -21,6 +22,7 @@ from .dns_zone import *
 from .function import *
 from .function_iam_binding import *
 from .function_trigger import *
+from .get_alb_target_group import *
 from .get_api_gateway import *
 from .get_client_config import *
 from .get_compute_disk import *
@@ -120,7 +122,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "yandex:index/apiGateway:ApiGateway":
+            if typ == "yandex:index/albTargetGroup:AlbTargetGroup":
+                return AlbTargetGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/apiGateway:ApiGateway":
                 return ApiGateway(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/computeDisk:ComputeDisk":
                 return ComputeDisk(name, pulumi.ResourceOptions(urn=urn))
@@ -233,6 +237,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("yandex", "index/albTargetGroup", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/apiGateway", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/computeDisk", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/computeDiskPlacementGroup", _module_instance)

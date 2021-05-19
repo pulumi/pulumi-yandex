@@ -10,6 +10,115 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AlbTargetGroupTarget struct {
+	// IP address of the target.
+	IpAddress string `pulumi:"ipAddress"`
+	// ID of the subnet that targets are connected to.
+	// All targets in the target group must be connected to the same subnet within a single availability zone.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// AlbTargetGroupTargetInput is an input type that accepts AlbTargetGroupTargetArgs and AlbTargetGroupTargetOutput values.
+// You can construct a concrete instance of `AlbTargetGroupTargetInput` via:
+//
+//          AlbTargetGroupTargetArgs{...}
+type AlbTargetGroupTargetInput interface {
+	pulumi.Input
+
+	ToAlbTargetGroupTargetOutput() AlbTargetGroupTargetOutput
+	ToAlbTargetGroupTargetOutputWithContext(context.Context) AlbTargetGroupTargetOutput
+}
+
+type AlbTargetGroupTargetArgs struct {
+	// IP address of the target.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// ID of the subnet that targets are connected to.
+	// All targets in the target group must be connected to the same subnet within a single availability zone.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (AlbTargetGroupTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbTargetGroupTarget)(nil)).Elem()
+}
+
+func (i AlbTargetGroupTargetArgs) ToAlbTargetGroupTargetOutput() AlbTargetGroupTargetOutput {
+	return i.ToAlbTargetGroupTargetOutputWithContext(context.Background())
+}
+
+func (i AlbTargetGroupTargetArgs) ToAlbTargetGroupTargetOutputWithContext(ctx context.Context) AlbTargetGroupTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbTargetGroupTargetOutput)
+}
+
+// AlbTargetGroupTargetArrayInput is an input type that accepts AlbTargetGroupTargetArray and AlbTargetGroupTargetArrayOutput values.
+// You can construct a concrete instance of `AlbTargetGroupTargetArrayInput` via:
+//
+//          AlbTargetGroupTargetArray{ AlbTargetGroupTargetArgs{...} }
+type AlbTargetGroupTargetArrayInput interface {
+	pulumi.Input
+
+	ToAlbTargetGroupTargetArrayOutput() AlbTargetGroupTargetArrayOutput
+	ToAlbTargetGroupTargetArrayOutputWithContext(context.Context) AlbTargetGroupTargetArrayOutput
+}
+
+type AlbTargetGroupTargetArray []AlbTargetGroupTargetInput
+
+func (AlbTargetGroupTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbTargetGroupTarget)(nil)).Elem()
+}
+
+func (i AlbTargetGroupTargetArray) ToAlbTargetGroupTargetArrayOutput() AlbTargetGroupTargetArrayOutput {
+	return i.ToAlbTargetGroupTargetArrayOutputWithContext(context.Background())
+}
+
+func (i AlbTargetGroupTargetArray) ToAlbTargetGroupTargetArrayOutputWithContext(ctx context.Context) AlbTargetGroupTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbTargetGroupTargetArrayOutput)
+}
+
+type AlbTargetGroupTargetOutput struct{ *pulumi.OutputState }
+
+func (AlbTargetGroupTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbTargetGroupTarget)(nil)).Elem()
+}
+
+func (o AlbTargetGroupTargetOutput) ToAlbTargetGroupTargetOutput() AlbTargetGroupTargetOutput {
+	return o
+}
+
+func (o AlbTargetGroupTargetOutput) ToAlbTargetGroupTargetOutputWithContext(ctx context.Context) AlbTargetGroupTargetOutput {
+	return o
+}
+
+// IP address of the target.
+func (o AlbTargetGroupTargetOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbTargetGroupTarget) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// ID of the subnet that targets are connected to.
+// All targets in the target group must be connected to the same subnet within a single availability zone.
+func (o AlbTargetGroupTargetOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbTargetGroupTarget) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type AlbTargetGroupTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbTargetGroupTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbTargetGroupTarget)(nil)).Elem()
+}
+
+func (o AlbTargetGroupTargetArrayOutput) ToAlbTargetGroupTargetArrayOutput() AlbTargetGroupTargetArrayOutput {
+	return o
+}
+
+func (o AlbTargetGroupTargetArrayOutput) ToAlbTargetGroupTargetArrayOutputWithContext(ctx context.Context) AlbTargetGroupTargetArrayOutput {
+	return o
+}
+
+func (o AlbTargetGroupTargetArrayOutput) Index(i pulumi.IntInput) AlbTargetGroupTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbTargetGroupTarget {
+		return vs[0].([]AlbTargetGroupTarget)[vs[1].(int)]
+	}).(AlbTargetGroupTargetOutput)
+}
+
 type ComputeDiskDiskPlacementPolicy struct {
 	// Specifies Disk Placement Group id.
 	DiskPlacementGroupId string `pulumi:"diskPlacementGroupId"`
@@ -10551,6 +10660,10 @@ func (o KubernetesNodeGroupInstanceTemplateBootDiskPtrOutput) Type() pulumi.Stri
 }
 
 type KubernetesNodeGroupInstanceTemplateNetworkInterface struct {
+	// Allocate an IPv4 address for the interface. The default value is `true`.
+	Ipv4 *bool `pulumi:"ipv4"`
+	// If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
+	Ipv6 *bool `pulumi:"ipv6"`
 	// A public address that can be used to access the internet over NAT.
 	Nat *bool `pulumi:"nat"`
 	// Security group ids for network interface.
@@ -10571,6 +10684,10 @@ type KubernetesNodeGroupInstanceTemplateNetworkInterfaceInput interface {
 }
 
 type KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs struct {
+	// Allocate an IPv4 address for the interface. The default value is `true`.
+	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
+	// If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
 	// A public address that can be used to access the internet over NAT.
 	Nat pulumi.BoolPtrInput `pulumi:"nat"`
 	// Security group ids for network interface.
@@ -10628,6 +10745,16 @@ func (o KubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput) ToKubernetesN
 
 func (o KubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput) ToKubernetesNodeGroupInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput {
 	return o
+}
+
+// Allocate an IPv4 address for the interface. The default value is `true`.
+func (o KubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplateNetworkInterface) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
+}
+
+// If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
+func (o KubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplateNetworkInterface) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
 }
 
 // A public address that can be used to access the internet over NAT.
@@ -27940,6 +28067,106 @@ func (o YdbDatabaseDedicatedStorageConfigPtrOutput) StorageTypeId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAlbTargetGroupTarget struct {
+	IpAddress string `pulumi:"ipAddress"`
+	SubnetId  string `pulumi:"subnetId"`
+}
+
+// GetAlbTargetGroupTargetInput is an input type that accepts GetAlbTargetGroupTargetArgs and GetAlbTargetGroupTargetOutput values.
+// You can construct a concrete instance of `GetAlbTargetGroupTargetInput` via:
+//
+//          GetAlbTargetGroupTargetArgs{...}
+type GetAlbTargetGroupTargetInput interface {
+	pulumi.Input
+
+	ToGetAlbTargetGroupTargetOutput() GetAlbTargetGroupTargetOutput
+	ToGetAlbTargetGroupTargetOutputWithContext(context.Context) GetAlbTargetGroupTargetOutput
+}
+
+type GetAlbTargetGroupTargetArgs struct {
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	SubnetId  pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetAlbTargetGroupTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbTargetGroupTarget)(nil)).Elem()
+}
+
+func (i GetAlbTargetGroupTargetArgs) ToGetAlbTargetGroupTargetOutput() GetAlbTargetGroupTargetOutput {
+	return i.ToGetAlbTargetGroupTargetOutputWithContext(context.Background())
+}
+
+func (i GetAlbTargetGroupTargetArgs) ToGetAlbTargetGroupTargetOutputWithContext(ctx context.Context) GetAlbTargetGroupTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbTargetGroupTargetOutput)
+}
+
+// GetAlbTargetGroupTargetArrayInput is an input type that accepts GetAlbTargetGroupTargetArray and GetAlbTargetGroupTargetArrayOutput values.
+// You can construct a concrete instance of `GetAlbTargetGroupTargetArrayInput` via:
+//
+//          GetAlbTargetGroupTargetArray{ GetAlbTargetGroupTargetArgs{...} }
+type GetAlbTargetGroupTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbTargetGroupTargetArrayOutput() GetAlbTargetGroupTargetArrayOutput
+	ToGetAlbTargetGroupTargetArrayOutputWithContext(context.Context) GetAlbTargetGroupTargetArrayOutput
+}
+
+type GetAlbTargetGroupTargetArray []GetAlbTargetGroupTargetInput
+
+func (GetAlbTargetGroupTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbTargetGroupTarget)(nil)).Elem()
+}
+
+func (i GetAlbTargetGroupTargetArray) ToGetAlbTargetGroupTargetArrayOutput() GetAlbTargetGroupTargetArrayOutput {
+	return i.ToGetAlbTargetGroupTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbTargetGroupTargetArray) ToGetAlbTargetGroupTargetArrayOutputWithContext(ctx context.Context) GetAlbTargetGroupTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbTargetGroupTargetArrayOutput)
+}
+
+type GetAlbTargetGroupTargetOutput struct{ *pulumi.OutputState }
+
+func (GetAlbTargetGroupTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbTargetGroupTarget)(nil)).Elem()
+}
+
+func (o GetAlbTargetGroupTargetOutput) ToGetAlbTargetGroupTargetOutput() GetAlbTargetGroupTargetOutput {
+	return o
+}
+
+func (o GetAlbTargetGroupTargetOutput) ToGetAlbTargetGroupTargetOutputWithContext(ctx context.Context) GetAlbTargetGroupTargetOutput {
+	return o
+}
+
+func (o GetAlbTargetGroupTargetOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbTargetGroupTarget) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetAlbTargetGroupTargetOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbTargetGroupTarget) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetAlbTargetGroupTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbTargetGroupTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbTargetGroupTarget)(nil)).Elem()
+}
+
+func (o GetAlbTargetGroupTargetArrayOutput) ToGetAlbTargetGroupTargetArrayOutput() GetAlbTargetGroupTargetArrayOutput {
+	return o
+}
+
+func (o GetAlbTargetGroupTargetArrayOutput) ToGetAlbTargetGroupTargetArrayOutputWithContext(ctx context.Context) GetAlbTargetGroupTargetArrayOutput {
+	return o
+}
+
+func (o GetAlbTargetGroupTargetArrayOutput) Index(i pulumi.IntInput) GetAlbTargetGroupTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbTargetGroupTarget {
+		return vs[0].([]GetAlbTargetGroupTarget)[vs[1].(int)]
+	}).(GetAlbTargetGroupTargetOutput)
+}
+
 type GetComputeDiskDiskPlacementPolicy struct {
 	DiskPlacementGroupId string `pulumi:"diskPlacementGroupId"`
 }
@@ -34278,6 +34505,10 @@ func (o GetKubernetesNodeGroupInstanceTemplateBootDiskOutput) Type() pulumi.Stri
 }
 
 type GetKubernetesNodeGroupInstanceTemplateNetworkInterface struct {
+	// Indicates whether the IPv4 address has been assigned.
+	Ipv4 bool `pulumi:"ipv4"`
+	// Indicates whether the IPv6 address has been assigned.
+	Ipv6 bool `pulumi:"ipv6"`
 	// A public address that can be used to access the internet over NAT.
 	Nat bool `pulumi:"nat"`
 	// Security group ids for network interface.
@@ -34298,6 +34529,10 @@ type GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceInput interface {
 }
 
 type GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs struct {
+	// Indicates whether the IPv4 address has been assigned.
+	Ipv4 pulumi.BoolInput `pulumi:"ipv4"`
+	// Indicates whether the IPv6 address has been assigned.
+	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
 	// A public address that can be used to access the internet over NAT.
 	Nat pulumi.BoolInput `pulumi:"nat"`
 	// Security group ids for network interface.
@@ -34355,6 +34590,16 @@ func (o GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput) ToGetKuber
 
 func (o GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput) ToGetKubernetesNodeGroupInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput {
 	return o
+}
+
+// Indicates whether the IPv4 address has been assigned.
+func (o GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput) Ipv4() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplateNetworkInterface) bool { return v.Ipv4 }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the IPv6 address has been assigned.
+func (o GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput) Ipv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplateNetworkInterface) bool { return v.Ipv6 }).(pulumi.BoolOutput)
 }
 
 // A public address that can be used to access the internet over NAT.
@@ -45571,6 +45816,8 @@ func (o GetYdbDatabaseDedicatedStorageConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 func init() {
+	pulumi.RegisterOutputType(AlbTargetGroupTargetOutput{})
+	pulumi.RegisterOutputType(AlbTargetGroupTargetArrayOutput{})
 	pulumi.RegisterOutputType(ComputeDiskDiskPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ComputeDiskDiskPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceBootDiskOutput{})
@@ -45905,6 +46152,8 @@ func init() {
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedStorageConfigOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetAlbTargetGroupTargetOutput{})
+	pulumi.RegisterOutputType(GetAlbTargetGroupTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetComputeDiskDiskPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceBootDiskOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceBootDiskInitializeParamOutput{})

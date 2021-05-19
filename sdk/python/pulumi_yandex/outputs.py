@@ -10,6 +10,7 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'AlbTargetGroupTarget',
     'ComputeDiskDiskPlacementPolicy',
     'ComputeInstanceBootDisk',
     'ComputeInstanceBootDiskInitializeParams',
@@ -178,6 +179,7 @@ __all__ = [
     'YdbDatabaseDedicatedScalePolicy',
     'YdbDatabaseDedicatedScalePolicyFixedScale',
     'YdbDatabaseDedicatedStorageConfig',
+    'GetAlbTargetGroupTargetResult',
     'GetComputeDiskDiskPlacementPolicyResult',
     'GetComputeInstanceBootDiskResult',
     'GetComputeInstanceBootDiskInitializeParamResult',
@@ -344,6 +346,56 @@ __all__ = [
     'GetYdbDatabaseDedicatedScalePolicyFixedScaleResult',
     'GetYdbDatabaseDedicatedStorageConfigResult',
 ]
+
+@pulumi.output_type
+class AlbTargetGroupTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlbTargetGroupTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlbTargetGroupTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlbTargetGroupTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_address: str,
+                 subnet_id: str):
+        """
+        :param str ip_address: IP address of the target.
+        :param str subnet_id: ID of the subnet that targets are connected to.
+               All targets in the target group must be connected to the same subnet within a single availability zone.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        IP address of the target.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        ID of the subnet that targets are connected to.
+        All targets in the target group must be connected to the same subnet within a single availability zone.
+        """
+        return pulumi.get(self, "subnet_id")
+
 
 @pulumi.output_type
 class ComputeDiskDiskPlacementPolicy(dict):
@@ -4967,14 +5019,22 @@ class KubernetesNodeGroupInstanceTemplateNetworkInterface(dict):
 
     def __init__(__self__, *,
                  subnet_ids: Sequence[str],
+                 ipv4: Optional[bool] = None,
+                 ipv6: Optional[bool] = None,
                  nat: Optional[bool] = None,
                  security_group_ids: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] subnet_ids: The IDs of the subnets.
+        :param bool ipv4: Allocate an IPv4 address for the interface. The default value is `true`.
+        :param bool ipv6: If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
         :param bool nat: A public address that can be used to access the internet over NAT.
         :param Sequence[str] security_group_ids: Security group ids for network interface.
         """
         pulumi.set(__self__, "subnet_ids", subnet_ids)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
         if nat is not None:
             pulumi.set(__self__, "nat", nat)
         if security_group_ids is not None:
@@ -4987,6 +5047,22 @@ class KubernetesNodeGroupInstanceTemplateNetworkInterface(dict):
         The IDs of the subnets.
         """
         return pulumi.get(self, "subnet_ids")
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[bool]:
+        """
+        Allocate an IPv4 address for the interface. The default value is `true`.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[bool]:
+        """
+        If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
+        """
+        return pulumi.get(self, "ipv6")
 
     @property
     @pulumi.getter
@@ -12346,6 +12422,25 @@ class YdbDatabaseDedicatedStorageConfig(dict):
 
 
 @pulumi.output_type
+class GetAlbTargetGroupTargetResult(dict):
+    def __init__(__self__, *,
+                 ip_address: str,
+                 subnet_id: str):
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
 class GetComputeDiskDiskPlacementPolicyResult(dict):
     def __init__(__self__, *,
                  disk_placement_group_id: str):
@@ -15490,17 +15585,39 @@ class GetKubernetesNodeGroupInstanceTemplateBootDiskResult(dict):
 @pulumi.output_type
 class GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult(dict):
     def __init__(__self__, *,
+                 ipv4: bool,
+                 ipv6: bool,
                  nat: bool,
                  security_group_ids: Sequence[str],
                  subnet_ids: Sequence[str]):
         """
+        :param bool ipv4: Indicates whether the IPv4 address has been assigned.
+        :param bool ipv6: Indicates whether the IPv6 address has been assigned.
         :param bool nat: A public address that can be used to access the internet over NAT.
         :param Sequence[str] security_group_ids: Security group ids for network interface.
         :param Sequence[str] subnet_ids: The IDs of the subnets.
         """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
         pulumi.set(__self__, "nat", nat)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> bool:
+        """
+        Indicates whether the IPv4 address has been assigned.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> bool:
+        """
+        Indicates whether the IPv6 address has been assigned.
+        """
+        return pulumi.get(self, "ipv6")
 
     @property
     @pulumi.getter

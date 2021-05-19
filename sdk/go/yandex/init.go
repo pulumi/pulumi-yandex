@@ -20,6 +20,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "yandex:index/albTargetGroup:AlbTargetGroup":
+		r = &AlbTargetGroup{}
 	case "yandex:index/apiGateway:ApiGateway":
 		r = &ApiGateway{}
 	case "yandex:index/computeDisk:ComputeDisk":
@@ -159,6 +161,11 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/albTargetGroup",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/apiGateway",

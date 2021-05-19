@@ -1308,6 +1308,8 @@ github.com/yandex-cloud/terraform-provider-yandex v0.56.0 h1:KG2TOLaZ4R/X2GI0El6
 github.com/yandex-cloud/terraform-provider-yandex v0.56.0/go.mod h1:tXtPzeglNECvyAPIYVVwF8go5PCswUTz3WsMwGf2x8M=
 github.com/yandex-cloud/terraform-provider-yandex v0.57.0 h1:bXCN8XpuxuFeTvX+NCW6vYknNtethU2QfsqGmbut6Bs=
 github.com/yandex-cloud/terraform-provider-yandex v0.57.0/go.mod h1:Z8WfwWFWbPmsCrSWlUIH3h3IZVyJ1D/Z0fL6ODRGVug=
+github.com/yandex-cloud/terraform-provider-yandex v0.58.0 h1:iHWSPzPSsEy0QNqH2uqDOR9oX9XUD/f1ynFoH8f9tMQ=
+github.com/yandex-cloud/terraform-provider-yandex v0.58.0/go.mod h1:Z8WfwWFWbPmsCrSWlUIH3h3IZVyJ1D/Z0fL6ODRGVug=
 github.com/yudai/gojsondiff v1.0.0 h1:27cbfqXLVEJ1o8I6v3y9lg8Ydm53EKqHXAOMxEGlCOA=
 github.com/yudai/gojsondiff v1.0.0/go.mod h1:AY32+k2cwILAkW1fbgxQ5mUmMiZFgLIV+FBNExI05xg=
 github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 h1:BHyfKlQyqbsFN5p3IfnEUduWvb9is428/nNb5L3U01M=

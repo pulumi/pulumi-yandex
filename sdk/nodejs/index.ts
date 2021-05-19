@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./albTargetGroup";
 export * from "./apiGateway";
 export * from "./computeDisk";
 export * from "./computeDiskPlacementGroup";
@@ -23,6 +24,7 @@ export * from "./dnsZone";
 export * from "./function";
 export * from "./functionIamBinding";
 export * from "./functionTrigger";
+export * from "./getAlbTargetGroup";
 export * from "./getApiGateway";
 export * from "./getClientConfig";
 export * from "./getComputeDisk";
@@ -113,6 +115,7 @@ export {
 };
 
 // Import resources to register:
+import { AlbTargetGroup } from "./albTargetGroup";
 import { ApiGateway } from "./apiGateway";
 import { ComputeDisk } from "./computeDisk";
 import { ComputeDiskPlacementGroup } from "./computeDiskPlacementGroup";
@@ -172,6 +175,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "yandex:index/albTargetGroup:AlbTargetGroup":
+                return new AlbTargetGroup(name, <any>undefined, { urn })
             case "yandex:index/apiGateway:ApiGateway":
                 return new ApiGateway(name, <any>undefined, { urn })
             case "yandex:index/computeDisk:ComputeDisk":
@@ -285,6 +290,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("yandex", "index/albTargetGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/apiGateway", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeDisk", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeDiskPlacementGroup", _module)
