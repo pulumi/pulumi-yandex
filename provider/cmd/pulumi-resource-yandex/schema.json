@@ -77,6 +77,33 @@
         }
     },
     "types": {
+        "yandex:index/AlbTargetGroupTarget:AlbTargetGroupTarget": {
+            "properties": {
+                "ipAddress": {
+                    "type": "string",
+                    "description": "IP address of the target.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "ID of the subnet that targets are connected to.\nAll targets in the target group must be connected to the same subnet within a single availability zone.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddress",
+                "subnetId"
+            ]
+        },
         "yandex:index/ComputeDiskDiskPlacementPolicy:ComputeDiskDiskPlacementPolicy": {
             "properties": {
                 "diskPlacementGroupId": {
@@ -3244,6 +3271,24 @@
         },
         "yandex:index/KubernetesNodeGroupInstanceTemplateNetworkInterface:KubernetesNodeGroupInstanceTemplateNetworkInterface": {
             "properties": {
+                "ipv4": {
+                    "type": "boolean",
+                    "description": "Allocate an IPv4 address for the interface. The default value is `true`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipv6": {
+                    "type": "boolean",
+                    "description": "If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "nat": {
                     "type": "boolean",
                     "description": "A public address that can be used to access the internet over NAT.\n",
@@ -3281,7 +3326,16 @@
             "type": "object",
             "required": [
                 "subnetIds"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ipv6",
+                        "nat",
+                        "subnetIds"
+                    ]
+                }
+            }
         },
         "yandex:index/KubernetesNodeGroupInstanceTemplatePlacementPolicy:KubernetesNodeGroupInstanceTemplatePlacementPolicy": {
             "properties": {
@@ -8587,6 +8641,36 @@
                 "storageTypeId"
             ]
         },
+        "yandex:index/getAlbTargetGroupTarget:getAlbTargetGroupTarget": {
+            "properties": {
+                "ipAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddress",
+                "subnetId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "yandex:index/getComputeDiskDiskPlacementPolicy:getComputeDiskDiskPlacementPolicy": {
             "properties": {
                 "diskPlacementGroupId": {
@@ -11962,6 +12046,24 @@
         },
         "yandex:index/getKubernetesNodeGroupInstanceTemplateNetworkInterface:getKubernetesNodeGroupInstanceTemplateNetworkInterface": {
             "properties": {
+                "ipv4": {
+                    "type": "boolean",
+                    "description": "Indicates whether the IPv4 address has been assigned.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipv6": {
+                    "type": "boolean",
+                    "description": "Indicates whether the IPv6 address has been assigned.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "nat": {
                     "type": "boolean",
                     "description": "A public address that can be used to access the internet over NAT.\n",
@@ -11998,6 +12100,8 @@
             },
             "type": "object",
             "required": [
+                "ipv4",
+                "ipv6",
                 "nat",
                 "securityGroupIds",
                 "subnetIds"
@@ -17669,6 +17773,110 @@
         }
     },
     "resources": {
+        "yandex:index/albTargetGroup:AlbTargetGroup": {
+            "description": "Creates a target group in the specified folder and adds the specified targets to it.\nFor more information, see [the official documentation](https://cloud.yandex.com/en/docs/application-load-balancer/concepts/target-group).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst foo = new yandex.AlbTargetGroup(\"foo\", {\n    targets: [\n        {\n            address: yandex_compute_instance_my_instance_1.networkInterface.0.ipAddress,\n            subnetId: yandex_vpc_subnet_my_subnet.id,\n        },\n        {\n            address: yandex_compute_instance_my_instance_2.networkInterface.0.ipAddress,\n            subnetId: yandex_vpc_subnet_my_subnet.id,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nfoo = yandex.AlbTargetGroup(\"foo\", targets=[\n    yandex.AlbTargetGroupTargetArgs(\n        address=yandex_compute_instance[\"my-instance-1\"][\"network_interface\"][0][\"ip_address\"],\n        subnet_id=yandex_vpc_subnet[\"my-subnet\"][\"id\"],\n    ),\n    yandex.AlbTargetGroupTargetArgs(\n        address=yandex_compute_instance[\"my-instance-2\"][\"network_interface\"][0][\"ip_address\"],\n        subnet_id=yandex_vpc_subnet[\"my-subnet\"][\"id\"],\n    ),\n])\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Yandex.AlbTargetGroup(\"foo\", new Yandex.AlbTargetGroupArgs\n        {\n            Targets = \n            {\n                new Yandex.Inputs.AlbTargetGroupTargetArgs\n                {\n                    Address = yandex_compute_instance.My_instance_1.Network_interface[0].Ip_address,\n                    SubnetId = yandex_vpc_subnet.My_subnet.Id,\n                },\n                new Yandex.Inputs.AlbTargetGroupTargetArgs\n                {\n                    Address = yandex_compute_instance.My_instance_2.Network_interface[0].Ip_address,\n                    SubnetId = yandex_vpc_subnet.My_subnet.Id,\n                },\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA target group can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/albTargetGroup:AlbTargetGroup default target_group_id\n```\n\n ",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The target group creation timestamp.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of the target group. Provide this property when\nyou create the resource.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "The ID of the folder to which the resource belongs.\nIf omitted, the provider folder is used.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels to assign to this target group. A list of key/value pairs.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the target group. Provided by the client when the target group is created.\n"
+                },
+                "targets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/AlbTargetGroupTarget:AlbTargetGroupTarget"
+                    },
+                    "description": "A Target resource. The structure is documented below.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "folderId",
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of the target group. Provide this property when\nyou create the resource.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "The ID of the folder to which the resource belongs.\nIf omitted, the provider folder is used.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels to assign to this target group. A list of key/value pairs.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the target group. Provided by the client when the target group is created.\n"
+                },
+                "targets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/AlbTargetGroupTarget:AlbTargetGroupTarget"
+                    },
+                    "description": "A Target resource. The structure is documented below.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AlbTargetGroup resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The target group creation timestamp.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "An optional description of the target group. Provide this property when\nyou create the resource.\n"
+                    },
+                    "folderId": {
+                        "type": "string",
+                        "description": "The ID of the folder to which the resource belongs.\nIf omitted, the provider folder is used.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels to assign to this target group. A list of key/value pairs.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the target group. Provided by the client when the target group is created.\n"
+                    },
+                    "targets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/yandex:index/AlbTargetGroupTarget:AlbTargetGroupTarget"
+                        },
+                        "description": "A Target resource. The structure is documented below.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "yandex:index/apiGateway:ApiGateway": {
             "properties": {
                 "createdAt": {
@@ -25725,6 +25933,73 @@
         }
     },
     "functions": {
+        "yandex:index/getAlbTargetGroup:getAlbTargetGroup": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getAlbTargetGroup.\n",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "folderId": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "targetGroupId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAlbTargetGroup.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "folderId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "targetGroupId": {
+                        "type": "string"
+                    },
+                    "targets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/yandex:index/getAlbTargetGroupTarget:getAlbTargetGroupTarget"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createdAt",
+                    "description",
+                    "folderId",
+                    "labels",
+                    "name",
+                    "targets",
+                    "targetGroupId",
+                    "id"
+                ]
+            }
+        },
         "yandex:index/getApiGateway:getApiGateway": {
             "inputs": {
                 "description": "A collection of arguments for invoking getApiGateway.\n",

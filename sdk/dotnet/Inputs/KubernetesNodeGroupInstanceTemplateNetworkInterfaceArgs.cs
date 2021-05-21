@@ -13,6 +13,18 @@ namespace Pulumi.Yandex.Inputs
     public sealed class KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Allocate an IPv4 address for the interface. The default value is `true`.
+        /// </summary>
+        [Input("ipv4")]
+        public Input<bool>? Ipv4 { get; set; }
+
+        /// <summary>
+        /// If true, allocate an IPv6 address for the interface. The address will be automatically assigned from the specified subnet.
+        /// </summary>
+        [Input("ipv6")]
+        public Input<bool>? Ipv6 { get; set; }
+
+        /// <summary>
         /// A public address that can be used to access the internet over NAT.
         /// </summary>
         [Input("nat")]

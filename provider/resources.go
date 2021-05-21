@@ -78,6 +78,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:   "yandex-cloud",
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
+			"yandex_alb_target_group":                      {Tok: makeResource(mainMod, "AlbTargetGroup")},
 			"yandex_api_gateway":                           {Tok: makeResource(mainMod, "ApiGateway")},
 			"yandex_compute_disk":                          {Tok: makeResource(mainMod, "ComputeDisk")},
 			"yandex_compute_disk_placement_group":          {Tok: makeResource(mainMod, "ComputeDiskPlacementGroup")},
@@ -140,7 +141,8 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_ydb_database_serverless":            {Tok: makeResource(mainMod, "YdbDatabaseServerless")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"yandex_api_gateway": {Tok: makeDataSource(mainMod, "getApiGateway")},
+			"yandex_alb_target_group": {Tok: makeDataSource(mainMod, "getAlbTargetGroup")},
+			"yandex_api_gateway":      {Tok: makeDataSource(mainMod, "getApiGateway")},
 			"yandex_client_config": {
 				Tok: makeDataSource(mainMod, "getClientConfig"),
 				Docs: &tfbridge.DocInfo{

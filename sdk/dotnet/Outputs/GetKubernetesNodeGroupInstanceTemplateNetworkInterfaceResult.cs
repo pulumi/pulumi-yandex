@@ -14,6 +14,14 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult
     {
         /// <summary>
+        /// Indicates whether the IPv4 address has been assigned.
+        /// </summary>
+        public readonly bool Ipv4;
+        /// <summary>
+        /// Indicates whether the IPv6 address has been assigned.
+        /// </summary>
+        public readonly bool Ipv6;
+        /// <summary>
         /// A public address that can be used to access the internet over NAT.
         /// </summary>
         public readonly bool Nat;
@@ -28,12 +36,18 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult(
+            bool ipv4,
+
+            bool ipv6,
+
             bool nat,
 
             ImmutableArray<string> securityGroupIds,
 
             ImmutableArray<string> subnetIds)
         {
+            Ipv4 = ipv4;
+            Ipv6 = ipv6;
             Nat = nat;
             SecurityGroupIds = securityGroupIds;
             SubnetIds = subnetIds;

@@ -13,6 +13,7 @@
         "strict": true
     },
     "files": [
+        "albTargetGroup.ts",
         "apiGateway.ts",
         "computeDisk.ts",
         "computeDiskPlacementGroup.ts",
@@ -33,6 +34,7 @@
         "function.ts",
         "functionIamBinding.ts",
         "functionTrigger.ts",
+        "getAlbTargetGroup.ts",
         "getApiGateway.ts",
         "getClientConfig.ts",
         "getComputeDisk.ts",
