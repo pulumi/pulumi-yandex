@@ -94,6 +94,7 @@ export interface GetMdbRedisClusterResult {
      * A set of key/value label pairs to assign to the Redis cluster.
      */
     readonly labels: {[key: string]: string};
+    readonly maintenanceWindow: outputs.GetMdbRedisClusterMaintenanceWindow;
     readonly name: string;
     /**
      * ID of the network, to which the Redis cluster belongs.

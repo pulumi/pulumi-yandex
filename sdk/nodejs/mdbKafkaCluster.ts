@@ -30,6 +30,7 @@ import * as utilities from "./utilities";
  *         kafka: {
  *             kafkaConfig: {
  *                 compressionType: "COMPRESSION_TYPE_ZSTD",
+ *                 defaultReplicationFactor: 1,
  *                 logFlushIntervalMessages: 1024,
  *                 logFlushIntervalMs: 1000,
  *                 logFlushSchedulerIntervalMs: 1000,
@@ -39,6 +40,7 @@ import * as utilities from "./utilities";
  *                 logRetentionMinutes: 10080,
  *                 logRetentionMs: 86400000,
  *                 logSegmentBytes: 134217728,
+ *                 numPartitions: 10,
  *             },
  *             resources: {
  *                 diskSize: 32,
@@ -52,7 +54,7 @@ import * as utilities from "./utilities";
  *     },
  *     environment: "PRESTABLE",
  *     networkId: fooVpcNetwork.id,
- *     subnetId: [fooVpcSubnet.id],
+ *     subnetIds: [fooVpcSubnet.id],
  *     topics: [
  *         {
  *             name: "input",
@@ -141,6 +143,7 @@ import * as utilities from "./utilities";
  *         kafka: {
  *             kafkaConfig: {
  *                 compressionType: "COMPRESSION_TYPE_ZSTD",
+ *                 defaultReplicationFactor: 6,
  *                 logFlushIntervalMessages: 1024,
  *                 logFlushIntervalMs: 1000,
  *                 logFlushSchedulerIntervalMs: 1000,
@@ -150,6 +153,7 @@ import * as utilities from "./utilities";
  *                 logRetentionMinutes: 10080,
  *                 logRetentionMs: 86400000,
  *                 logSegmentBytes: 134217728,
+ *                 numPartitions: 10,
  *             },
  *             resources: {
  *                 diskSize: 128,
@@ -174,7 +178,7 @@ import * as utilities from "./utilities";
  *     },
  *     environment: "PRESTABLE",
  *     networkId: fooVpcNetwork.id,
- *     subnetId: [
+ *     subnetIds: [
  *         fooVpcSubnet.id,
  *         bar.id,
  *         baz.id,
@@ -327,6 +331,9 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
      * For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * IDs of the subnets, to which the Kafka cluster belongs.
+     */
     public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
      * A topic of the Kafka cluster. The structure is documented below.
@@ -455,6 +462,9 @@ export interface MdbKafkaClusterState {
      * For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
      */
     readonly status?: pulumi.Input<string>;
+    /**
+     * IDs of the subnets, to which the Kafka cluster belongs.
+     */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A topic of the Kafka cluster. The structure is documented below.
@@ -506,6 +516,9 @@ export interface MdbKafkaClusterArgs {
      * Security group ids, to which the Kafka cluster belongs.
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IDs of the subnets, to which the Kafka cluster belongs.
+     */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A topic of the Kafka cluster. The structure is documented below.

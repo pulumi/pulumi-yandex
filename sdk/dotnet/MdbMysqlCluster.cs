@@ -148,6 +148,12 @@ namespace Pulumi.Yandex
     ///                     Name = "db_name",
     ///                 },
     ///             },
+    ///             MaintenanceWindow = new Yandex.Inputs.MdbMysqlClusterMaintenanceWindowArgs
+    ///             {
+    ///                 Type = "WEEKLY",
+    ///                 Day = "SAT",
+    ///                 Hour = 12,
+    ///             },
     ///             Users = 
     ///             {
     ///                 new Yandex.Inputs.MdbMysqlClusterUserArgs
@@ -225,6 +231,10 @@ namespace Pulumi.Yandex
     ///                 {
     ///                     Name = "db_name",
     ///                 },
+    ///             },
+    ///             MaintenanceWindow = new Yandex.Inputs.MdbMysqlClusterMaintenanceWindowArgs
+    ///             {
+    ///                 Type = "ANYTIME",
     ///             },
     ///             Users = 
     ///             {
@@ -682,6 +692,12 @@ namespace Pulumi.Yandex
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Maintenance policy of the MySQL cluster. The structure is documented below.
+        /// </summary>
+        [Output("maintenanceWindow")]
+        public Output<Outputs.MdbMysqlClusterMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
+
+        /// <summary>
         /// MySQL cluster config. Detail info in "MySQL config" section (documented below).
         /// </summary>
         [Output("mysqlConfig")]
@@ -854,6 +870,12 @@ namespace Pulumi.Yandex
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Maintenance policy of the MySQL cluster. The structure is documented below.
+        /// </summary>
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbMysqlClusterMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
+
         [Input("mysqlConfig")]
         private InputMap<string>? _mysqlConfig;
 
@@ -1011,6 +1033,12 @@ namespace Pulumi.Yandex
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Maintenance policy of the MySQL cluster. The structure is documented below.
+        /// </summary>
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbMysqlClusterMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         [Input("mysqlConfig")]
         private InputMap<string>? _mysqlConfig;

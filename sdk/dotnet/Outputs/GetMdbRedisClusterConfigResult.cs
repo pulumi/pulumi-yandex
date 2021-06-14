@@ -14,9 +14,25 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetMdbRedisClusterConfigResult
     {
         /// <summary>
+        /// Number of databases (changing requires redis-server restart).
+        /// </summary>
+        public readonly int Databases;
+        /// <summary>
         /// Redis key eviction policy for a dataset that reaches maximum memory.
         /// </summary>
         public readonly string MaxmemoryPolicy;
+        /// <summary>
+        /// Select the events that Redis will notify among a set of classes.
+        /// </summary>
+        public readonly string NotifyKeyspaceEvents;
+        /// <summary>
+        /// Log slow queries below this number in microseconds.
+        /// </summary>
+        public readonly int SlowlogLogSlowerThan;
+        /// <summary>
+        /// Slow queries log length.
+        /// </summary>
+        public readonly int SlowlogMaxLen;
         /// <summary>
         /// Close the connection after a client is idle for N seconds.
         /// </summary>
@@ -28,13 +44,25 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetMdbRedisClusterConfigResult(
+            int databases,
+
             string maxmemoryPolicy,
+
+            string notifyKeyspaceEvents,
+
+            int slowlogLogSlowerThan,
+
+            int slowlogMaxLen,
 
             int timeout,
 
             string version)
         {
+            Databases = databases;
             MaxmemoryPolicy = maxmemoryPolicy;
+            NotifyKeyspaceEvents = notifyKeyspaceEvents;
+            SlowlogLogSlowerThan = slowlogLogSlowerThan;
+            SlowlogMaxLen = slowlogMaxLen;
             Timeout = timeout;
             Version = version;
         }

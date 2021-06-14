@@ -14,6 +14,10 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetDataprocClusterClusterConfigSubclusterSpecResult
     {
         /// <summary>
+        /// Optional autoscaling configuration for compute subclusters.
+        /// </summary>
+        public readonly Outputs.GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigResult AutoscalingConfig;
+        /// <summary>
         /// Number of hosts within Data Proc subcluster.
         /// </summary>
         public readonly int HostsCount;
@@ -40,6 +44,8 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetDataprocClusterClusterConfigSubclusterSpecResult(
+            Outputs.GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigResult autoscalingConfig,
+
             int hostsCount,
 
             string id,
@@ -52,6 +58,7 @@ namespace Pulumi.Yandex.Outputs
 
             string subnetId)
         {
+            AutoscalingConfig = autoscalingConfig;
             HostsCount = hostsCount;
             Id = id;
             Name = name;

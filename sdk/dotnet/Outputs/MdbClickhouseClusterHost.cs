@@ -30,7 +30,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string? SubnetId;
         /// <summary>
-        /// Type of the model.
+        /// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
         /// </summary>
         public readonly string Type;
         /// <summary>

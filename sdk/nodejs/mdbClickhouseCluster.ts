@@ -151,6 +151,9 @@ import * as utilities from "./utilities";
  *         type: "CLICKHOUSE",
  *         zone: "ru-central1-a",
  *     }],
+ *     maintenanceWindow: {
+ *         type: "ANYTIME",
+ *     },
  *     mlModels: [{
  *         name: "test_model",
  *         type: "ML_MODEL_TYPE_CATBOOST",
@@ -470,7 +473,7 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
      */
     public readonly formatSchemas!: pulumi.Output<outputs.MdbClickhouseClusterFormatSchema[] | undefined>;
     /**
-     * Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+     * Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
      * For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
      */
     public /*out*/ readonly health!: pulumi.Output<string>;
@@ -481,7 +484,8 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
     /**
      * A set of key/value label pairs to assign to the ClickHouse cluster.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly maintenanceWindow!: pulumi.Output<outputs.MdbClickhouseClusterMaintenanceWindow>;
     /**
      * A group of machine learning models. The structure is documented below
      */
@@ -497,7 +501,7 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
      * ID of the service account used for access to Yandex Object Storage.
      */
@@ -515,7 +519,7 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
      */
     public readonly sqlUserManagement!: pulumi.Output<boolean>;
     /**
-     * Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+     * Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
      * For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -560,6 +564,7 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
             inputs["health"] = state ? state.health : undefined;
             inputs["hosts"] = state ? state.hosts : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             inputs["mlModels"] = state ? state.mlModels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkId"] = state ? state.networkId : undefined;
@@ -599,6 +604,7 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
             inputs["formatSchemas"] = args ? args.formatSchemas : undefined;
             inputs["hosts"] = args ? args.hosts : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["mlModels"] = args ? args.mlModels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkId"] = args ? args.networkId : undefined;
@@ -672,7 +678,7 @@ export interface MdbClickhouseClusterState {
      */
     readonly formatSchemas?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterFormatSchema>[]>;
     /**
-     * Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+     * Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
      * For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
      */
     readonly health?: pulumi.Input<string>;
@@ -684,6 +690,7 @@ export interface MdbClickhouseClusterState {
      * A set of key/value label pairs to assign to the ClickHouse cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly maintenanceWindow?: pulumi.Input<inputs.MdbClickhouseClusterMaintenanceWindow>;
     /**
      * A group of machine learning models. The structure is documented below
      */
@@ -717,7 +724,7 @@ export interface MdbClickhouseClusterState {
      */
     readonly sqlUserManagement?: pulumi.Input<boolean>;
     /**
-     * Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+     * Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
      * For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
      */
     readonly status?: pulumi.Input<string>;
@@ -789,6 +796,7 @@ export interface MdbClickhouseClusterArgs {
      * A set of key/value label pairs to assign to the ClickHouse cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly maintenanceWindow?: pulumi.Input<inputs.MdbClickhouseClusterMaintenanceWindow>;
     /**
      * A group of machine learning models. The structure is documented below
      */

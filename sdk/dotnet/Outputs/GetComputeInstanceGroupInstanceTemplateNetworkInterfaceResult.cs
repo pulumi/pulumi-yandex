@@ -18,10 +18,18 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordResult> DnsRecords;
         /// <summary>
+        /// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+        /// </summary>
+        public readonly string IpAddress;
+        /// <summary>
         /// Is IPv4 address assigned.
         /// </summary>
         public readonly bool Ipv4;
         public readonly bool Ipv6;
+        /// <summary>
+        /// Manual set static IPv6 address.
+        /// </summary>
+        public readonly string Ipv6Address;
         /// <summary>
         /// List of ipv6 dns records.  The structure is documented below.
         /// </summary>
@@ -51,9 +59,13 @@ namespace Pulumi.Yandex.Outputs
         private GetComputeInstanceGroupInstanceTemplateNetworkInterfaceResult(
             ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordResult> dnsRecords,
 
+            string ipAddress,
+
             bool ipv4,
 
             bool ipv6,
+
+            string ipv6Address,
 
             ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordResult> ipv6DnsRecords,
 
@@ -68,8 +80,10 @@ namespace Pulumi.Yandex.Outputs
             ImmutableArray<string> subnetIds)
         {
             DnsRecords = dnsRecords;
+            IpAddress = ipAddress;
             Ipv4 = ipv4;
             Ipv6 = ipv6;
+            Ipv6Address = ipv6Address;
             Ipv6DnsRecords = ipv6DnsRecords;
             Nat = nat;
             NatDnsRecords = natDnsRecords;

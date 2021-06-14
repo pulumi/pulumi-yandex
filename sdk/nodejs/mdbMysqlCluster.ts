@@ -88,6 +88,11 @@ import * as utilities from "./utilities";
  *     databases: [{
  *         name: "db_name",
  *     }],
+ *     maintenanceWindow: {
+ *         type: "WEEKLY",
+ *         day: "SAT",
+ *         hour: 12,
+ *     },
  *     users: [{
  *         name: "user_name",
  *         password: "your_password",
@@ -133,6 +138,9 @@ import * as utilities from "./utilities";
  *     databases: [{
  *         name: "db_name",
  *     }],
+ *     maintenanceWindow: {
+ *         type: "ANYTIME",
+ *     },
  *     users: [{
  *         name: "user_name",
  *         password: "your_password",
@@ -537,6 +545,10 @@ export class MdbMysqlCluster extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Maintenance policy of the MySQL cluster. The structure is documented below.
+     */
+    public readonly maintenanceWindow!: pulumi.Output<outputs.MdbMysqlClusterMaintenanceWindow>;
+    /**
      * MySQL cluster config. Detail info in "MySQL config" section (documented below).
      */
     public readonly mysqlConfig!: pulumi.Output<{[key: string]: string}>;
@@ -597,6 +609,7 @@ export class MdbMysqlCluster extends pulumi.CustomResource {
             inputs["health"] = state ? state.health : undefined;
             inputs["hosts"] = state ? state.hosts : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             inputs["mysqlConfig"] = state ? state.mysqlConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkId"] = state ? state.networkId : undefined;
@@ -638,6 +651,7 @@ export class MdbMysqlCluster extends pulumi.CustomResource {
             inputs["folderId"] = args ? args.folderId : undefined;
             inputs["hosts"] = args ? args.hosts : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["mysqlConfig"] = args ? args.mysqlConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkId"] = args ? args.networkId : undefined;
@@ -706,6 +720,10 @@ export interface MdbMysqlClusterState {
      * A set of key/value label pairs to assign to the MySQL cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Maintenance policy of the MySQL cluster. The structure is documented below.
+     */
+    readonly maintenanceWindow?: pulumi.Input<inputs.MdbMysqlClusterMaintenanceWindow>;
     /**
      * MySQL cluster config. Detail info in "MySQL config" section (documented below).
      */
@@ -785,6 +803,10 @@ export interface MdbMysqlClusterArgs {
      * A set of key/value label pairs to assign to the MySQL cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Maintenance policy of the MySQL cluster. The structure is documented below.
+     */
+    readonly maintenanceWindow?: pulumi.Input<inputs.MdbMysqlClusterMaintenanceWindow>;
     /**
      * MySQL cluster config. Detail info in "MySQL config" section (documented below).
      */

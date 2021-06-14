@@ -30,7 +30,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string? Role;
         /// <summary>
-        /// IDs of the subnets, to which the Kafka cluster belongs.
+        /// The ID of the subnet, to which the host belongs.
         /// </summary>
         public readonly string? SubnetId;
         /// <summary>

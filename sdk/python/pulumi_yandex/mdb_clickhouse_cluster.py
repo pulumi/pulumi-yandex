@@ -29,6 +29,7 @@ class MdbClickhouseClusterArgs:
                  folder_id: Optional[pulumi.Input[str]] = None,
                  format_schemas: Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterFormatSchemaArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input['MdbClickhouseClusterMaintenanceWindowArgs']] = None,
                  ml_models: Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterMlModelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -90,6 +91,8 @@ class MdbClickhouseClusterArgs:
             pulumi.set(__self__, "format_schemas", format_schemas)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if ml_models is not None:
             pulumi.set(__self__, "ml_models", ml_models)
         if name is not None:
@@ -278,6 +281,15 @@ class MdbClickhouseClusterArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MdbClickhouseClusterMaintenanceWindowArgs']]:
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MdbClickhouseClusterMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
     @pulumi.getter(name="mlModels")
     def ml_models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterMlModelArgs']]]]:
         """
@@ -416,6 +428,7 @@ class _MdbClickhouseClusterState:
                  health: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterHostArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input['MdbClickhouseClusterMaintenanceWindowArgs']] = None,
                  ml_models: Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterMlModelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -442,7 +455,7 @@ class _MdbClickhouseClusterState:
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterFormatSchemaArgs']]] format_schemas: A set of protobuf or capnproto format schemas. The structure is documented below.
-        :param pulumi.Input[str] health: Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+        :param pulumi.Input[str] health: Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
                For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         :param pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterHostArgs']]] hosts: A host of the ClickHouse cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the ClickHouse cluster.
@@ -454,7 +467,7 @@ class _MdbClickhouseClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterShardGroupArgs']]] shard_groups: A group of clickhouse shards. The structure is documented below.
         :param pulumi.Input[bool] sql_database_management: Grants `admin` user database management permission.
         :param pulumi.Input[bool] sql_user_management: Enables `admin` user with user management permission.
-        :param pulumi.Input[str] status: Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+        :param pulumi.Input[str] status: Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
                For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         :param pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterUserArgs']]] users: A user of the ClickHouse cluster. The structure is documented below.
         :param pulumi.Input[str] version: Version of the ClickHouse server software.
@@ -490,6 +503,8 @@ class _MdbClickhouseClusterState:
             pulumi.set(__self__, "hosts", hosts)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if ml_models is not None:
             pulumi.set(__self__, "ml_models", ml_models)
         if name is not None:
@@ -661,7 +676,7 @@ class _MdbClickhouseClusterState:
     @pulumi.getter
     def health(self) -> Optional[pulumi.Input[str]]:
         """
-        Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+        Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
         For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         """
         return pulumi.get(self, "health")
@@ -693,6 +708,15 @@ class _MdbClickhouseClusterState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MdbClickhouseClusterMaintenanceWindowArgs']]:
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MdbClickhouseClusterMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
 
     @property
     @pulumi.getter(name="mlModels")
@@ -794,7 +818,7 @@ class _MdbClickhouseClusterState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+        Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
         For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         """
         return pulumi.get(self, "status")
@@ -858,6 +882,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
                  format_schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterFormatSchemaArgs']]]]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbClickhouseClusterMaintenanceWindowArgs']]] = None,
                  ml_models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterMlModelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -1015,6 +1040,9 @@ class MdbClickhouseCluster(pulumi.CustomResource):
                 type="CLICKHOUSE",
                 zone="ru-central1-a",
             )],
+            maintenance_window=yandex.MdbClickhouseClusterMaintenanceWindowArgs(
+                type="ANYTIME",
+            ),
             ml_models=[yandex.MdbClickhouseClusterMlModelArgs(
                 name="test_model",
                 type="ML_MODEL_TYPE_CATBOOST",
@@ -1428,6 +1456,9 @@ class MdbClickhouseCluster(pulumi.CustomResource):
                 type="CLICKHOUSE",
                 zone="ru-central1-a",
             )],
+            maintenance_window=yandex.MdbClickhouseClusterMaintenanceWindowArgs(
+                type="ANYTIME",
+            ),
             ml_models=[yandex.MdbClickhouseClusterMlModelArgs(
                 name="test_model",
                 type="ML_MODEL_TYPE_CATBOOST",
@@ -1691,6 +1722,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
                  format_schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterFormatSchemaArgs']]]]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbClickhouseClusterMaintenanceWindowArgs']]] = None,
                  ml_models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterMlModelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -1733,6 +1765,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'hosts'")
             __props__.__dict__["hosts"] = hosts
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["ml_models"] = ml_models
             __props__.__dict__["name"] = name
             if network_id is None and not opts.urn:
@@ -1774,6 +1807,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
             health: Optional[pulumi.Input[str]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterHostArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbClickhouseClusterMaintenanceWindowArgs']]] = None,
             ml_models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterMlModelArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
@@ -1805,7 +1839,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterFormatSchemaArgs']]]] format_schemas: A set of protobuf or capnproto format schemas. The structure is documented below.
-        :param pulumi.Input[str] health: Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+        :param pulumi.Input[str] health: Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
                For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterHostArgs']]]] hosts: A host of the ClickHouse cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the ClickHouse cluster.
@@ -1817,7 +1851,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterShardGroupArgs']]]] shard_groups: A group of clickhouse shards. The structure is documented below.
         :param pulumi.Input[bool] sql_database_management: Grants `admin` user database management permission.
         :param pulumi.Input[bool] sql_user_management: Enables `admin` user with user management permission.
-        :param pulumi.Input[str] status: Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+        :param pulumi.Input[str] status: Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
                For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterUserArgs']]]] users: A user of the ClickHouse cluster. The structure is documented below.
         :param pulumi.Input[str] version: Version of the ClickHouse server software.
@@ -1842,6 +1876,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
         __props__.__dict__["health"] = health
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["maintenance_window"] = maintenance_window
         __props__.__dict__["ml_models"] = ml_models
         __props__.__dict__["name"] = name
         __props__.__dict__["network_id"] = network_id
@@ -1954,7 +1989,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
     @pulumi.getter
     def health(self) -> pulumi.Output[str]:
         """
-        Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+        Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
         For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         """
         return pulumi.get(self, "health")
@@ -1969,11 +2004,16 @@ class MdbClickhouseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A set of key/value label pairs to assign to the ClickHouse cluster.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Output['outputs.MdbClickhouseClusterMaintenanceWindow']:
+        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter(name="mlModels")
@@ -2001,7 +2041,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A set of ids of security groups assigned to hosts of the cluster.
         """
@@ -2043,7 +2083,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+        Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
         For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         """
         return pulumi.get(self, "status")

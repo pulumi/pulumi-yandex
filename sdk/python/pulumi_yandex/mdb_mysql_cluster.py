@@ -28,6 +28,7 @@ class MdbMysqlClusterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs']] = None,
                  mysql_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  restore: Optional[pulumi.Input['MdbMysqlClusterRestoreArgs']] = None,
@@ -48,6 +49,7 @@ class MdbMysqlClusterArgs:
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the MySQL cluster.
+        :param pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs'] maintenance_window: Maintenance policy of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] mysql_config: MySQL cluster config. Detail info in "MySQL config" section (documented below).
         :param pulumi.Input[str] name: The name of the database.
         :param pulumi.Input['MdbMysqlClusterRestoreArgs'] restore: The cluster will be created from the specified backup. The structure is documented below.
@@ -72,6 +74,8 @@ class MdbMysqlClusterArgs:
             pulumi.set(__self__, "folder_id", folder_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if mysql_config is not None:
             pulumi.set(__self__, "mysql_config", mysql_config)
         if name is not None:
@@ -239,6 +243,18 @@ class MdbMysqlClusterArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs']]:
+        """
+        Maintenance policy of the MySQL cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
     @pulumi.getter(name="mysqlConfig")
     def mysql_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -301,6 +317,7 @@ class _MdbMysqlClusterState:
                  health: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['MdbMysqlClusterHostArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs']] = None,
                  mysql_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -324,6 +341,7 @@ class _MdbMysqlClusterState:
         :param pulumi.Input[str] health: Aggregated health of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['MdbMysqlClusterHostArgs']]] hosts: A host of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the MySQL cluster.
+        :param pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs'] maintenance_window: Maintenance policy of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] mysql_config: MySQL cluster config. Detail info in "MySQL config" section (documented below).
         :param pulumi.Input[str] name: The name of the database.
         :param pulumi.Input[str] network_id: ID of the network, to which the MySQL cluster uses.
@@ -356,6 +374,8 @@ class _MdbMysqlClusterState:
             pulumi.set(__self__, "hosts", hosts)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if mysql_config is not None:
             pulumi.set(__self__, "mysql_config", mysql_config)
         if name is not None:
@@ -509,6 +529,18 @@ class _MdbMysqlClusterState:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs']]:
+        """
+        Maintenance policy of the MySQL cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
     @pulumi.getter(name="mysqlConfig")
     def mysql_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -631,6 +663,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbMysqlClusterMaintenanceWindowArgs']]] = None,
                  mysql_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -719,6 +752,11 @@ class MdbMysqlCluster(pulumi.CustomResource):
             databases=[yandex.MdbMysqlClusterDatabaseArgs(
                 name="db_name",
             )],
+            maintenance_window=yandex.MdbMysqlClusterMaintenanceWindowArgs(
+                type="WEEKLY",
+                day="SAT",
+                hour=12,
+            ),
             users=[yandex.MdbMysqlClusterUserArgs(
                 name="user_name",
                 password="your_password",
@@ -762,6 +800,9 @@ class MdbMysqlCluster(pulumi.CustomResource):
             databases=[yandex.MdbMysqlClusterDatabaseArgs(
                 name="db_name",
             )],
+            maintenance_window=yandex.MdbMysqlClusterMaintenanceWindowArgs(
+                type="ANYTIME",
+            ),
             users=[yandex.MdbMysqlClusterUserArgs(
                 name="user_name",
                 password="your_password",
@@ -1101,6 +1142,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
                is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterHostArgs']]]] hosts: A host of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the MySQL cluster.
+        :param pulumi.Input[pulumi.InputType['MdbMysqlClusterMaintenanceWindowArgs']] maintenance_window: Maintenance policy of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] mysql_config: MySQL cluster config. Detail info in "MySQL config" section (documented below).
         :param pulumi.Input[str] name: The name of the database.
         :param pulumi.Input[str] network_id: ID of the network, to which the MySQL cluster uses.
@@ -1195,6 +1237,11 @@ class MdbMysqlCluster(pulumi.CustomResource):
             databases=[yandex.MdbMysqlClusterDatabaseArgs(
                 name="db_name",
             )],
+            maintenance_window=yandex.MdbMysqlClusterMaintenanceWindowArgs(
+                type="WEEKLY",
+                day="SAT",
+                hour=12,
+            ),
             users=[yandex.MdbMysqlClusterUserArgs(
                 name="user_name",
                 password="your_password",
@@ -1238,6 +1285,9 @@ class MdbMysqlCluster(pulumi.CustomResource):
             databases=[yandex.MdbMysqlClusterDatabaseArgs(
                 name="db_name",
             )],
+            maintenance_window=yandex.MdbMysqlClusterMaintenanceWindowArgs(
+                type="ANYTIME",
+            ),
             users=[yandex.MdbMysqlClusterUserArgs(
                 name="user_name",
                 password="your_password",
@@ -1589,6 +1639,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbMysqlClusterMaintenanceWindowArgs']]] = None,
                  mysql_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -1624,6 +1675,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'hosts'")
             __props__.__dict__["hosts"] = hosts
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["mysql_config"] = mysql_config
             __props__.__dict__["name"] = name
             if network_id is None and not opts.urn:
@@ -1664,6 +1716,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
             health: Optional[pulumi.Input[str]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterHostArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbMysqlClusterMaintenanceWindowArgs']]] = None,
             mysql_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
@@ -1692,6 +1745,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
         :param pulumi.Input[str] health: Aggregated health of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterHostArgs']]]] hosts: A host of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the MySQL cluster.
+        :param pulumi.Input[pulumi.InputType['MdbMysqlClusterMaintenanceWindowArgs']] maintenance_window: Maintenance policy of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] mysql_config: MySQL cluster config. Detail info in "MySQL config" section (documented below).
         :param pulumi.Input[str] name: The name of the database.
         :param pulumi.Input[str] network_id: ID of the network, to which the MySQL cluster uses.
@@ -1717,6 +1771,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
         __props__.__dict__["health"] = health
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["maintenance_window"] = maintenance_window
         __props__.__dict__["mysql_config"] = mysql_config
         __props__.__dict__["name"] = name
         __props__.__dict__["network_id"] = network_id
@@ -1816,6 +1871,14 @@ class MdbMysqlCluster(pulumi.CustomResource):
         A set of key/value label pairs to assign to the MySQL cluster.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Output['outputs.MdbMysqlClusterMaintenanceWindow']:
+        """
+        Maintenance policy of the MySQL cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter(name="mysqlConfig")

@@ -132,6 +132,7 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the ClickHouse cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        public readonly Outputs.GetMdbClickhouseClusterMaintenanceWindowResult MaintenanceWindow;
         /// <summary>
         /// A group of machine learning models. The structure is documented below.
         /// </summary>
@@ -207,6 +208,8 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
+            Outputs.GetMdbClickhouseClusterMaintenanceWindowResult maintenanceWindow,
+
             ImmutableArray<Outputs.GetMdbClickhouseClusterMlModelResult> mlModels,
 
             string name,
@@ -246,6 +249,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
+            MaintenanceWindow = maintenanceWindow;
             MlModels = mlModels;
             Name = name;
             NetworkId = networkId;

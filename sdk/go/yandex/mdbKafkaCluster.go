@@ -14,6 +14,297 @@ import (
 // Manages a Kafka cluster within the Yandex.Cloud. For more information, see
 // [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts).
 //
+// ## Example Usage
+//
+// Example of creating a Single Node Kafka.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooVpcNetwork, err := yandex.NewVpcNetwork(ctx, "fooVpcNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooVpcSubnet, err := yandex.NewVpcSubnet(ctx, "fooVpcSubnet", &yandex.VpcSubnetArgs{
+// 			NetworkId: fooVpcNetwork.ID(),
+// 			V4CidrBlocks: pulumi.StringArray{
+// 				pulumi.String("10.5.0.0/24"),
+// 			},
+// 			Zone: pulumi.String("ru-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = yandex.NewMdbKafkaCluster(ctx, "fooMdbKafkaCluster", &yandex.MdbKafkaClusterArgs{
+// 			Config: &yandex.MdbKafkaClusterConfigArgs{
+// 				AssignPublicIp: pulumi.Bool(false),
+// 				BrokersCount:   pulumi.Int(1),
+// 				Kafka: &yandex.MdbKafkaClusterConfigKafkaArgs{
+// 					KafkaConfig: &yandex.MdbKafkaClusterConfigKafkaKafkaConfigArgs{
+// 						CompressionType:             pulumi.String("COMPRESSION_TYPE_ZSTD"),
+// 						DefaultReplicationFactor:    pulumi.Int(1),
+// 						LogFlushIntervalMessages:    pulumi.Int(1024),
+// 						LogFlushIntervalMs:          pulumi.Int(1000),
+// 						LogFlushSchedulerIntervalMs: pulumi.Int(1000),
+// 						LogPreallocate:              pulumi.Bool(true),
+// 						LogRetentionBytes:           pulumi.Int(1073741824),
+// 						LogRetentionHours:           pulumi.Int(168),
+// 						LogRetentionMinutes:         pulumi.Int(10080),
+// 						LogRetentionMs:              pulumi.Int(86400000),
+// 						LogSegmentBytes:             pulumi.Int(134217728),
+// 						NumPartitions:               pulumi.Int(10),
+// 					},
+// 					Resources: &yandex.MdbKafkaClusterConfigKafkaResourcesArgs{
+// 						DiskSize:         pulumi.Int(32),
+// 						DiskTypeId:       pulumi.String("network-ssd"),
+// 						ResourcePresetId: pulumi.String("s2.micro"),
+// 					},
+// 				},
+// 				UnmanagedTopics: pulumi.Bool(false),
+// 				Version:         pulumi.String("2.6"),
+// 				Zones: pulumi.StringArray{
+// 					pulumi.String("ru-central1-a"),
+// 				},
+// 			},
+// 			Environment: pulumi.String("PRESTABLE"),
+// 			NetworkId:   fooVpcNetwork.ID(),
+// 			SubnetIds: pulumi.StringArray{
+// 				fooVpcSubnet.ID(),
+// 			},
+// 			Topics: yandex.MdbKafkaClusterTopicArray{
+// 				&yandex.MdbKafkaClusterTopicArgs{
+// 					Name:              pulumi.String("input"),
+// 					Partitions:        pulumi.Int(2),
+// 					ReplicationFactor: pulumi.Int(1),
+// 					TopicConfig: &yandex.MdbKafkaClusterTopicTopicConfigArgs{
+// 						CompressionType:    pulumi.String("COMPRESSION_TYPE_LZ4"),
+// 						DeleteRetentionMs:  pulumi.Int(86400000),
+// 						FileDeleteDelayMs:  pulumi.Int(60000),
+// 						FlushMessages:      pulumi.Int(128),
+// 						FlushMs:            pulumi.Int(1000),
+// 						MaxMessageBytes:    pulumi.Int(1048588),
+// 						MinCompactionLagMs: pulumi.Int(0),
+// 						MinInsyncReplicas:  pulumi.Int(1),
+// 						Preallocate:        pulumi.Bool(true),
+// 						RetentionBytes:     pulumi.Int(10737418240),
+// 						RetentionMs:        pulumi.Int(604800000),
+// 						SegmentBytes:       pulumi.Int(268435456),
+// 					},
+// 				},
+// 				&yandex.MdbKafkaClusterTopicArgs{
+// 					Name:              pulumi.String("output"),
+// 					Partitions:        pulumi.Int(6),
+// 					ReplicationFactor: pulumi.Int(1),
+// 					TopicConfig: &yandex.MdbKafkaClusterTopicTopicConfigArgs{
+// 						CompressionType: pulumi.String("COMPRESSION_TYPE_GZIP"),
+// 						MaxMessageBytes: pulumi.Int(1048588),
+// 						Preallocate:     pulumi.Bool(false),
+// 						SegmentBytes:    pulumi.Int(536870912),
+// 					},
+// 				},
+// 			},
+// 			Users: yandex.MdbKafkaClusterUserArray{
+// 				&yandex.MdbKafkaClusterUserArgs{
+// 					Name:     pulumi.String("producer-application"),
+// 					Password: pulumi.String("password"),
+// 					Permissions: yandex.MdbKafkaClusterUserPermissionArray{
+// 						&yandex.MdbKafkaClusterUserPermissionArgs{
+// 							Role:      pulumi.String("ACCESS_ROLE_PRODUCER"),
+// 							TopicName: pulumi.String("input"),
+// 						},
+// 					},
+// 				},
+// 				&yandex.MdbKafkaClusterUserArgs{
+// 					Name:     pulumi.String("worker"),
+// 					Password: pulumi.String(""),
+// 					Permissions: yandex.MdbKafkaClusterUserPermissionArray{
+// 						&yandex.MdbKafkaClusterUserPermissionArgs{
+// 							Role:      pulumi.String("ACCESS_ROLE_CONSUMER"),
+// 							TopicName: pulumi.String("input"),
+// 						},
+// 						&yandex.MdbKafkaClusterUserPermissionArgs{
+// 							Role:      pulumi.String("ACCESS_ROLE_PRODUCER"),
+// 							TopicName: pulumi.String("output"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Example of creating a HA Kafka Cluster with two brokers per AZ (6 brokers + 3 zk)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooVpcNetwork, err := yandex.NewVpcNetwork(ctx, "fooVpcNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooVpcSubnet, err := yandex.NewVpcSubnet(ctx, "fooVpcSubnet", &yandex.VpcSubnetArgs{
+// 			NetworkId: fooVpcNetwork.ID(),
+// 			V4CidrBlocks: pulumi.StringArray{
+// 				pulumi.String("10.1.0.0/24"),
+// 			},
+// 			Zone: pulumi.String("ru-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bar, err := yandex.NewVpcSubnet(ctx, "bar", &yandex.VpcSubnetArgs{
+// 			NetworkId: fooVpcNetwork.ID(),
+// 			V4CidrBlocks: pulumi.StringArray{
+// 				pulumi.String("10.2.0.0/24"),
+// 			},
+// 			Zone: pulumi.String("ru-central1-b"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		baz, err := yandex.NewVpcSubnet(ctx, "baz", &yandex.VpcSubnetArgs{
+// 			NetworkId: fooVpcNetwork.ID(),
+// 			V4CidrBlocks: pulumi.StringArray{
+// 				pulumi.String("10.3.0.0/24"),
+// 			},
+// 			Zone: pulumi.String("ru-central1-c"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = yandex.NewMdbKafkaCluster(ctx, "fooMdbKafkaCluster", &yandex.MdbKafkaClusterArgs{
+// 			Config: &yandex.MdbKafkaClusterConfigArgs{
+// 				AssignPublicIp: pulumi.Bool(true),
+// 				BrokersCount:   pulumi.Int(2),
+// 				Kafka: &yandex.MdbKafkaClusterConfigKafkaArgs{
+// 					KafkaConfig: &yandex.MdbKafkaClusterConfigKafkaKafkaConfigArgs{
+// 						CompressionType:             pulumi.String("COMPRESSION_TYPE_ZSTD"),
+// 						DefaultReplicationFactor:    pulumi.Int(6),
+// 						LogFlushIntervalMessages:    pulumi.Int(1024),
+// 						LogFlushIntervalMs:          pulumi.Int(1000),
+// 						LogFlushSchedulerIntervalMs: pulumi.Int(1000),
+// 						LogPreallocate:              pulumi.Bool(true),
+// 						LogRetentionBytes:           pulumi.Int(1073741824),
+// 						LogRetentionHours:           pulumi.Int(168),
+// 						LogRetentionMinutes:         pulumi.Int(10080),
+// 						LogRetentionMs:              pulumi.Int(86400000),
+// 						LogSegmentBytes:             pulumi.Int(134217728),
+// 						NumPartitions:               pulumi.Int(10),
+// 					},
+// 					Resources: &yandex.MdbKafkaClusterConfigKafkaResourcesArgs{
+// 						DiskSize:         pulumi.Int(128),
+// 						DiskTypeId:       pulumi.String("network-ssd"),
+// 						ResourcePresetId: pulumi.String("s2.medium"),
+// 					},
+// 				},
+// 				UnmanagedTopics: pulumi.Bool(false),
+// 				Version:         pulumi.String("2.6"),
+// 				Zones: pulumi.StringArray{
+// 					pulumi.String("ru-central1-a"),
+// 					pulumi.String("ru-central1-b"),
+// 					pulumi.String("ru-central1-c"),
+// 				},
+// 				Zookeeper: &yandex.MdbKafkaClusterConfigZookeeperArgs{
+// 					Resources: &yandex.MdbKafkaClusterConfigZookeeperResourcesArgs{
+// 						DiskSize:         pulumi.Int(20),
+// 						DiskTypeId:       pulumi.String("network-ssd"),
+// 						ResourcePresetId: pulumi.String("s2.micro"),
+// 					},
+// 				},
+// 			},
+// 			Environment: pulumi.String("PRESTABLE"),
+// 			NetworkId:   fooVpcNetwork.ID(),
+// 			SubnetIds: pulumi.StringArray{
+// 				fooVpcSubnet.ID(),
+// 				bar.ID(),
+// 				baz.ID(),
+// 			},
+// 			Topics: yandex.MdbKafkaClusterTopicArray{
+// 				&yandex.MdbKafkaClusterTopicArgs{
+// 					Name:              pulumi.String("input"),
+// 					Partitions:        pulumi.Int(2),
+// 					ReplicationFactor: pulumi.Int(1),
+// 					TopicConfig: &yandex.MdbKafkaClusterTopicTopicConfigArgs{
+// 						CompressionType:    pulumi.String("COMPRESSION_TYPE_LZ4"),
+// 						DeleteRetentionMs:  pulumi.Int(86400000),
+// 						FileDeleteDelayMs:  pulumi.Int(60000),
+// 						FlushMessages:      pulumi.Int(128),
+// 						FlushMs:            pulumi.Int(1000),
+// 						MaxMessageBytes:    pulumi.Int(1048588),
+// 						MinCompactionLagMs: pulumi.Int(0),
+// 						MinInsyncReplicas:  pulumi.Int(1),
+// 						Preallocate:        pulumi.Bool(true),
+// 						RetentionBytes:     pulumi.Int(10737418240),
+// 						RetentionMs:        pulumi.Int(604800000),
+// 						SegmentBytes:       pulumi.Int(268435456),
+// 					},
+// 				},
+// 				&yandex.MdbKafkaClusterTopicArgs{
+// 					Name:              pulumi.String("output"),
+// 					Partitions:        pulumi.Int(6),
+// 					ReplicationFactor: pulumi.Int(1),
+// 					TopicConfig: &yandex.MdbKafkaClusterTopicTopicConfigArgs{
+// 						CompressionType: pulumi.String("COMPRESSION_TYPE_GZIP"),
+// 						MaxMessageBytes: pulumi.Int(1048588),
+// 						Preallocate:     pulumi.Bool(false),
+// 						SegmentBytes:    pulumi.Int(536870912),
+// 					},
+// 				},
+// 			},
+// 			Users: yandex.MdbKafkaClusterUserArray{
+// 				&yandex.MdbKafkaClusterUserArgs{
+// 					Name:     pulumi.String("producer-application"),
+// 					Password: pulumi.String("password"),
+// 					Permissions: yandex.MdbKafkaClusterUserPermissionArray{
+// 						&yandex.MdbKafkaClusterUserPermissionArgs{
+// 							Role:      pulumi.String("ACCESS_ROLE_PRODUCER"),
+// 							TopicName: pulumi.String("input"),
+// 						},
+// 					},
+// 				},
+// 				&yandex.MdbKafkaClusterUserArgs{
+// 					Name:     pulumi.String("worker"),
+// 					Password: pulumi.String(""),
+// 					Permissions: yandex.MdbKafkaClusterUserPermissionArray{
+// 						&yandex.MdbKafkaClusterUserPermissionArgs{
+// 							Role:      pulumi.String("ACCESS_ROLE_CONSUMER"),
+// 							TopicName: pulumi.String("input"),
+// 						},
+// 						&yandex.MdbKafkaClusterUserPermissionArgs{
+// 							Role:      pulumi.String("ACCESS_ROLE_PRODUCER"),
+// 							TopicName: pulumi.String("output"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // A cluster can be imported using the `id` of the resource, e.g.
@@ -50,7 +341,8 @@ type MdbKafkaCluster struct {
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
 	// For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
-	Status    pulumi.StringOutput      `pulumi:"status"`
+	Status pulumi.StringOutput `pulumi:"status"`
+	// IDs of the subnets, to which the Kafka cluster belongs.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A topic of the Kafka cluster. The structure is documented below.
 	Topics MdbKafkaClusterTopicArrayOutput `pulumi:"topics"`
@@ -119,7 +411,8 @@ type mdbKafkaClusterState struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
 	// For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
-	Status    *string  `pulumi:"status"`
+	Status *string `pulumi:"status"`
+	// IDs of the subnets, to which the Kafka cluster belongs.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A topic of the Kafka cluster. The structure is documented below.
 	Topics []MdbKafkaClusterTopic `pulumi:"topics"`
@@ -154,7 +447,8 @@ type MdbKafkaClusterState struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
 	// For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
-	Status    pulumi.StringPtrInput
+	Status pulumi.StringPtrInput
+	// IDs of the subnets, to which the Kafka cluster belongs.
 	SubnetIds pulumi.StringArrayInput
 	// A topic of the Kafka cluster. The structure is documented below.
 	Topics MdbKafkaClusterTopicArrayInput
@@ -185,7 +479,8 @@ type mdbKafkaClusterArgs struct {
 	NetworkId string `pulumi:"networkId"`
 	// Security group ids, to which the Kafka cluster belongs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	SubnetIds        []string `pulumi:"subnetIds"`
+	// IDs of the subnets, to which the Kafka cluster belongs.
+	SubnetIds []string `pulumi:"subnetIds"`
 	// A topic of the Kafka cluster. The structure is documented below.
 	Topics []MdbKafkaClusterTopic `pulumi:"topics"`
 	// A user of the Kafka cluster. The structure is documented below.
@@ -212,7 +507,8 @@ type MdbKafkaClusterArgs struct {
 	NetworkId pulumi.StringInput
 	// Security group ids, to which the Kafka cluster belongs.
 	SecurityGroupIds pulumi.StringArrayInput
-	SubnetIds        pulumi.StringArrayInput
+	// IDs of the subnets, to which the Kafka cluster belongs.
+	SubnetIds pulumi.StringArrayInput
 	// A topic of the Kafka cluster. The structure is documented below.
 	Topics MdbKafkaClusterTopicArrayInput
 	// A user of the Kafka cluster. The structure is documented below.

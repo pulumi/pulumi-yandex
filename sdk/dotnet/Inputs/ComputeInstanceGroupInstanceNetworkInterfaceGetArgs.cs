@@ -19,7 +19,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<int>? Index { get; set; }
 
         /// <summary>
-        /// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+        /// Manual set static IP address.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -33,6 +33,9 @@ namespace Pulumi.Yandex.Inputs
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
 
+        /// <summary>
+        /// Manual set static IPv6 address.
+        /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }
 

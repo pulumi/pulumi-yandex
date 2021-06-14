@@ -79,6 +79,8 @@ func Provider() tfbridge.ProviderInfo {
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"yandex_alb_target_group":                      {Tok: makeResource(mainMod, "AlbTargetGroup")},
+			"yandex_alb_backend_group":                     {Tok: makeResource(mainMod, "AlbBackendGroup")},
+			"yandex_alb_http_router":                       {Tok: makeResource(mainMod, "AlbHttpRouter")},
 			"yandex_api_gateway":                           {Tok: makeResource(mainMod, "ApiGateway")},
 			"yandex_compute_disk":                          {Tok: makeResource(mainMod, "ComputeDisk")},
 			"yandex_compute_disk_placement_group":          {Tok: makeResource(mainMod, "ComputeDiskPlacementGroup")},
@@ -137,12 +139,15 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_vpc_route_table":                    {Tok: makeResource(mainMod, "VpcRouteTable")},
 			"yandex_vpc_security_group":                 {Tok: makeResource(mainMod, "VpcSecurityGroup")},
 			"yandex_vpc_subnet":                         {Tok: makeResource(mainMod, "VpcSubnet")},
+			"yandex_vpc_default_security_group":         {Tok: makeResource(mainMod, "VpcDefaultSecurityGroup")},
 			"yandex_ydb_database_dedicated":             {Tok: makeResource(mainMod, "YdbDatabaseDedicated")},
 			"yandex_ydb_database_serverless":            {Tok: makeResource(mainMod, "YdbDatabaseServerless")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"yandex_alb_target_group": {Tok: makeDataSource(mainMod, "getAlbTargetGroup")},
-			"yandex_api_gateway":      {Tok: makeDataSource(mainMod, "getApiGateway")},
+			"yandex_alb_target_group":  {Tok: makeDataSource(mainMod, "getAlbTargetGroup")},
+			"yandex_alb_backend_group": {Tok: makeDataSource(mainMod, "getAlbBackendGroup")},
+			"yandex_alb_http_router":   {Tok: makeDataSource(mainMod, "getAlbHttpRouter")},
+			"yandex_api_gateway":       {Tok: makeDataSource(mainMod, "getApiGateway")},
 			"yandex_client_config": {
 				Tok: makeDataSource(mainMod, "getClientConfig"),
 				Docs: &tfbridge.DocInfo{

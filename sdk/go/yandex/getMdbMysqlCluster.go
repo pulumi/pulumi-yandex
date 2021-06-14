@@ -84,6 +84,8 @@ type LookupMdbMysqlClusterResult struct {
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the MySQL cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Maintenance window settings of the MySQL cluster. The structure is documented below.
+	MaintenanceWindow GetMdbMysqlClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// MySQL cluster config.
 	MysqlConfig map[string]string `pulumi:"mysqlConfig"`
 	// The name of the database.

@@ -90,7 +90,6 @@ namespace Pulumi.Yandex
     ///             ZoneId = "ru-central1-b",
     ///             ClusterConfig = new Yandex.Inputs.DataprocClusterClusterConfigArgs
     ///             {
-    ///                 VersionId = "1.0",
     ///                 Hadoop = new Yandex.Inputs.DataprocClusterClusterConfigHadoopArgs
     ///                 {
     ///                     Services = 
@@ -121,7 +120,7 @@ namespace Pulumi.Yandex
     ///                         {
     ///                             ResourcePresetId = "s2.small",
     ///                             DiskTypeId = "network-hdd",
-    ///                             DiskSize = 16,
+    ///                             DiskSize = 20,
     ///                         },
     ///                         SubnetId = fooVpcSubnet.Id,
     ///                         HostsCount = 1,
@@ -134,10 +133,45 @@ namespace Pulumi.Yandex
     ///                         {
     ///                             ResourcePresetId = "s2.small",
     ///                             DiskTypeId = "network-hdd",
-    ///                             DiskSize = 16,
+    ///                             DiskSize = 20,
     ///                         },
     ///                         SubnetId = fooVpcSubnet.Id,
     ///                         HostsCount = 2,
+    ///                     },
+    ///                     new Yandex.Inputs.DataprocClusterClusterConfigSubclusterSpecArgs
+    ///                     {
+    ///                         Name = "compute",
+    ///                         Role = "COMPUTENODE",
+    ///                         Resources = new Yandex.Inputs.DataprocClusterClusterConfigSubclusterSpecResourcesArgs
+    ///                         {
+    ///                             ResourcePresetId = "s2.small",
+    ///                             DiskTypeId = "network-hdd",
+    ///                             DiskSize = 20,
+    ///                         },
+    ///                         SubnetId = fooVpcSubnet.Id,
+    ///                         HostsCount = 2,
+    ///                     },
+    ///                     new Yandex.Inputs.DataprocClusterClusterConfigSubclusterSpecArgs
+    ///                     {
+    ///                         Name = "compute_autoscaling",
+    ///                         Role = "COMPUTENODE",
+    ///                         Resources = new Yandex.Inputs.DataprocClusterClusterConfigSubclusterSpecResourcesArgs
+    ///                         {
+    ///                             ResourcePresetId = "s2.small",
+    ///                             DiskTypeId = "network-hdd",
+    ///                             DiskSize = 20,
+    ///                         },
+    ///                         SubnetId = fooVpcSubnet.Id,
+    ///                         HostsCount = 2,
+    ///                         AutoscalingConfig = new Yandex.Inputs.DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs
+    ///                         {
+    ///                             MaxHostsCount = 10,
+    ///                             MeasurementDuration = 60,
+    ///                             WarmupDuration = 60,
+    ///                             StabilizationDuration = 120,
+    ///                             Preemptible = false,
+    ///                             DecommissionTimeout = 60,
+    ///                         },
     ///                     },
     ///                 },
     ///             },

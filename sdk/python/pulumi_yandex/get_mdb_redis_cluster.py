@@ -20,7 +20,7 @@ class GetMdbRedisClusterResult:
     """
     A collection of values returned by getMdbRedisCluster.
     """
-    def __init__(__self__, cluster_id=None, config=None, created_at=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, tls_enabled=None):
+    def __init__(__self__, cluster_id=None, config=None, created_at=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, tls_enabled=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -51,6 +51,9 @@ class GetMdbRedisClusterResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if maintenance_window and not isinstance(maintenance_window, dict):
+            raise TypeError("Expected argument 'maintenance_window' to be a dict")
+        pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -148,6 +151,11 @@ class GetMdbRedisClusterResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> 'outputs.GetMdbRedisClusterMaintenanceWindowResult':
+        return pulumi.get(self, "maintenance_window")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
@@ -217,6 +225,7 @@ class AwaitableGetMdbRedisClusterResult(GetMdbRedisClusterResult):
             hosts=self.hosts,
             id=self.id,
             labels=self.labels,
+            maintenance_window=self.maintenance_window,
             name=self.name,
             network_id=self.network_id,
             resources=self.resources,
@@ -270,6 +279,7 @@ def get_mdb_redis_cluster(cluster_id: Optional[str] = None,
         hosts=__ret__.hosts,
         id=__ret__.id,
         labels=__ret__.labels,
+        maintenance_window=__ret__.maintenance_window,
         name=__ret__.name,
         network_id=__ret__.network_id,
         resources=__ret__.resources,

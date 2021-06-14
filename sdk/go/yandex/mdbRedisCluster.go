@@ -54,6 +54,9 @@ import (
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 				},
 // 			},
+// 			MaintenanceWindow: &yandex.MdbRedisClusterMaintenanceWindowArgs{
+// 				Type: pulumi.String("ANYTIME"),
+// 			},
 // 			NetworkId: fooVpcNetwork.ID(),
 // 			Resources: &yandex.MdbRedisClusterResourcesArgs{
 // 				DiskSize:         pulumi.Int(16),
@@ -179,7 +182,8 @@ type MdbRedisCluster struct {
 	// A host of the Redis cluster. The structure is documented below.
 	Hosts MdbRedisClusterHostArrayOutput `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Redis cluster.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels            pulumi.StringMapOutput                 `pulumi:"labels"`
+	MaintenanceWindow MdbRedisClusterMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// Name of the Redis cluster. Provided by the client when the cluster is created.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ID of the network, to which the Redis cluster belongs.
@@ -258,7 +262,8 @@ type mdbRedisClusterState struct {
 	// A host of the Redis cluster. The structure is documented below.
 	Hosts []MdbRedisClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Redis cluster.
-	Labels map[string]string `pulumi:"labels"`
+	Labels            map[string]string                 `pulumi:"labels"`
+	MaintenanceWindow *MdbRedisClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Name of the Redis cluster. Provided by the client when the cluster is created.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the Redis cluster belongs.
@@ -294,7 +299,8 @@ type MdbRedisClusterState struct {
 	// A host of the Redis cluster. The structure is documented below.
 	Hosts MdbRedisClusterHostArrayInput
 	// A set of key/value label pairs to assign to the Redis cluster.
-	Labels pulumi.StringMapInput
+	Labels            pulumi.StringMapInput
+	MaintenanceWindow MdbRedisClusterMaintenanceWindowPtrInput
 	// Name of the Redis cluster. Provided by the client when the cluster is created.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the Redis cluster belongs.
@@ -329,7 +335,8 @@ type mdbRedisClusterArgs struct {
 	// A host of the Redis cluster. The structure is documented below.
 	Hosts []MdbRedisClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Redis cluster.
-	Labels map[string]string `pulumi:"labels"`
+	Labels            map[string]string                 `pulumi:"labels"`
+	MaintenanceWindow *MdbRedisClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Name of the Redis cluster. Provided by the client when the cluster is created.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the Redis cluster belongs.
@@ -358,7 +365,8 @@ type MdbRedisClusterArgs struct {
 	// A host of the Redis cluster. The structure is documented below.
 	Hosts MdbRedisClusterHostArrayInput
 	// A set of key/value label pairs to assign to the Redis cluster.
-	Labels pulumi.StringMapInput
+	Labels            pulumi.StringMapInput
+	MaintenanceWindow MdbRedisClusterMaintenanceWindowPtrInput
 	// Name of the Redis cluster. Provided by the client when the cluster is created.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the Redis cluster belongs.
