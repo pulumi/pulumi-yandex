@@ -37,7 +37,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// IDs of the subnets, to which the Kafka cluster belongs.
+        /// The ID of the subnet, to which the host belongs.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }

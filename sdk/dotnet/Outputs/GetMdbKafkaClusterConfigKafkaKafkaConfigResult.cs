@@ -15,6 +15,7 @@ namespace Pulumi.Yandex.Outputs
     {
         public readonly bool? AutoCreateTopicsEnable;
         public readonly string? CompressionType;
+        public readonly int? DefaultReplicationFactor;
         public readonly int? LogFlushIntervalMessages;
         public readonly int? LogFlushIntervalMs;
         public readonly int? LogFlushSchedulerIntervalMs;
@@ -24,6 +25,7 @@ namespace Pulumi.Yandex.Outputs
         public readonly int? LogRetentionMinutes;
         public readonly int? LogRetentionMs;
         public readonly int? LogSegmentBytes;
+        public readonly int? NumPartitions;
         public readonly int? SocketReceiveBufferBytes;
         public readonly int? SocketSendBufferBytes;
 
@@ -32,6 +34,8 @@ namespace Pulumi.Yandex.Outputs
             bool? autoCreateTopicsEnable,
 
             string? compressionType,
+
+            int? defaultReplicationFactor,
 
             int? logFlushIntervalMessages,
 
@@ -51,12 +55,15 @@ namespace Pulumi.Yandex.Outputs
 
             int? logSegmentBytes,
 
+            int? numPartitions,
+
             int? socketReceiveBufferBytes,
 
             int? socketSendBufferBytes)
         {
             AutoCreateTopicsEnable = autoCreateTopicsEnable;
             CompressionType = compressionType;
+            DefaultReplicationFactor = defaultReplicationFactor;
             LogFlushIntervalMessages = logFlushIntervalMessages;
             LogFlushIntervalMs = logFlushIntervalMs;
             LogFlushSchedulerIntervalMs = logFlushSchedulerIntervalMs;
@@ -66,6 +73,7 @@ namespace Pulumi.Yandex.Outputs
             LogRetentionMinutes = logRetentionMinutes;
             LogRetentionMs = logRetentionMs;
             LogSegmentBytes = logSegmentBytes;
+            NumPartitions = numPartitions;
             SocketReceiveBufferBytes = socketReceiveBufferBytes;
             SocketSendBufferBytes = socketSendBufferBytes;
         }

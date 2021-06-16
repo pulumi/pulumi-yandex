@@ -38,6 +38,7 @@ class MdbKafkaClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: IDs of the subnets, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterTopicArgs']]] topics: A topic of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterUserArgs']]] users: A user of the Kafka cluster. The structure is documented below.
         """
@@ -175,6 +176,9 @@ class MdbKafkaClusterArgs:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IDs of the subnets, to which the Kafka cluster belongs.
+        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -241,6 +245,7 @@ class _MdbKafkaClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
         :param pulumi.Input[str] status: Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
                For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: IDs of the subnets, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterTopicArgs']]] topics: A topic of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterUserArgs']]] users: A user of the Kafka cluster. The structure is documented below.
         """
@@ -437,6 +442,9 @@ class _MdbKafkaClusterState:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IDs of the subnets, to which the Kafka cluster belongs.
+        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -490,6 +498,233 @@ class MdbKafkaCluster(pulumi.CustomResource):
         Manages a Kafka cluster within the Yandex.Cloud. For more information, see
         [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts).
 
+        ## Example Usage
+
+        Example of creating a Single Node Kafka.
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        foo_vpc_network = yandex.VpcNetwork("fooVpcNetwork")
+        foo_vpc_subnet = yandex.VpcSubnet("fooVpcSubnet",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.5.0.0/24"],
+            zone="ru-central1-a")
+        foo_mdb_kafka_cluster = yandex.MdbKafkaCluster("fooMdbKafkaCluster",
+            config=yandex.MdbKafkaClusterConfigArgs(
+                assign_public_ip=False,
+                brokers_count=1,
+                kafka=yandex.MdbKafkaClusterConfigKafkaArgs(
+                    kafka_config=yandex.MdbKafkaClusterConfigKafkaKafkaConfigArgs(
+                        compression_type="COMPRESSION_TYPE_ZSTD",
+                        default_replication_factor=1,
+                        log_flush_interval_messages=1024,
+                        log_flush_interval_ms=1000,
+                        log_flush_scheduler_interval_ms=1000,
+                        log_preallocate=True,
+                        log_retention_bytes=1073741824,
+                        log_retention_hours=168,
+                        log_retention_minutes=10080,
+                        log_retention_ms=86400000,
+                        log_segment_bytes=134217728,
+                        num_partitions=10,
+                    ),
+                    resources=yandex.MdbKafkaClusterConfigKafkaResourcesArgs(
+                        disk_size=32,
+                        disk_type_id="network-ssd",
+                        resource_preset_id="s2.micro",
+                    ),
+                ),
+                unmanaged_topics=False,
+                version="2.6",
+                zones=["ru-central1-a"],
+            ),
+            environment="PRESTABLE",
+            network_id=foo_vpc_network.id,
+            subnet_ids=[foo_vpc_subnet.id],
+            topics=[
+                yandex.MdbKafkaClusterTopicArgs(
+                    name="input",
+                    partitions=2,
+                    replication_factor=1,
+                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
+                        compression_type="COMPRESSION_TYPE_LZ4",
+                        delete_retention_ms=86400000,
+                        file_delete_delay_ms=60000,
+                        flush_messages=128,
+                        flush_ms=1000,
+                        max_message_bytes=1048588,
+                        min_compaction_lag_ms=0,
+                        min_insync_replicas=1,
+                        preallocate=True,
+                        retention_bytes=10737418240,
+                        retention_ms=604800000,
+                        segment_bytes=268435456,
+                    ),
+                ),
+                yandex.MdbKafkaClusterTopicArgs(
+                    name="output",
+                    partitions=6,
+                    replication_factor=1,
+                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
+                        compression_type="COMPRESSION_TYPE_GZIP",
+                        max_message_bytes=1048588,
+                        preallocate=False,
+                        segment_bytes=536870912,
+                    ),
+                ),
+            ],
+            users=[
+                yandex.MdbKafkaClusterUserArgs(
+                    name="producer-application",
+                    password="password",
+                    permissions=[yandex.MdbKafkaClusterUserPermissionArgs(
+                        role="ACCESS_ROLE_PRODUCER",
+                        topic_name="input",
+                    )],
+                ),
+                yandex.MdbKafkaClusterUserArgs(
+                    name="worker",
+                    password="",
+                    permissions=[
+                        yandex.MdbKafkaClusterUserPermissionArgs(
+                            role="ACCESS_ROLE_CONSUMER",
+                            topic_name="input",
+                        ),
+                        yandex.MdbKafkaClusterUserPermissionArgs(
+                            role="ACCESS_ROLE_PRODUCER",
+                            topic_name="output",
+                        ),
+                    ],
+                ),
+            ])
+        ```
+
+        Example of creating a HA Kafka Cluster with two brokers per AZ (6 brokers + 3 zk)
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        foo_vpc_network = yandex.VpcNetwork("fooVpcNetwork")
+        foo_vpc_subnet = yandex.VpcSubnet("fooVpcSubnet",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.1.0.0/24"],
+            zone="ru-central1-a")
+        bar = yandex.VpcSubnet("bar",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.2.0.0/24"],
+            zone="ru-central1-b")
+        baz = yandex.VpcSubnet("baz",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.3.0.0/24"],
+            zone="ru-central1-c")
+        foo_mdb_kafka_cluster = yandex.MdbKafkaCluster("fooMdbKafkaCluster",
+            config=yandex.MdbKafkaClusterConfigArgs(
+                assign_public_ip=True,
+                brokers_count=2,
+                kafka=yandex.MdbKafkaClusterConfigKafkaArgs(
+                    kafka_config=yandex.MdbKafkaClusterConfigKafkaKafkaConfigArgs(
+                        compression_type="COMPRESSION_TYPE_ZSTD",
+                        default_replication_factor=6,
+                        log_flush_interval_messages=1024,
+                        log_flush_interval_ms=1000,
+                        log_flush_scheduler_interval_ms=1000,
+                        log_preallocate=True,
+                        log_retention_bytes=1073741824,
+                        log_retention_hours=168,
+                        log_retention_minutes=10080,
+                        log_retention_ms=86400000,
+                        log_segment_bytes=134217728,
+                        num_partitions=10,
+                    ),
+                    resources=yandex.MdbKafkaClusterConfigKafkaResourcesArgs(
+                        disk_size=128,
+                        disk_type_id="network-ssd",
+                        resource_preset_id="s2.medium",
+                    ),
+                ),
+                unmanaged_topics=False,
+                version="2.6",
+                zones=[
+                    "ru-central1-a",
+                    "ru-central1-b",
+                    "ru-central1-c",
+                ],
+                zookeeper=yandex.MdbKafkaClusterConfigZookeeperArgs(
+                    resources=yandex.MdbKafkaClusterConfigZookeeperResourcesArgs(
+                        disk_size=20,
+                        disk_type_id="network-ssd",
+                        resource_preset_id="s2.micro",
+                    ),
+                ),
+            ),
+            environment="PRESTABLE",
+            network_id=foo_vpc_network.id,
+            subnet_ids=[
+                foo_vpc_subnet.id,
+                bar.id,
+                baz.id,
+            ],
+            topics=[
+                yandex.MdbKafkaClusterTopicArgs(
+                    name="input",
+                    partitions=2,
+                    replication_factor=1,
+                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
+                        compression_type="COMPRESSION_TYPE_LZ4",
+                        delete_retention_ms=86400000,
+                        file_delete_delay_ms=60000,
+                        flush_messages=128,
+                        flush_ms=1000,
+                        max_message_bytes=1048588,
+                        min_compaction_lag_ms=0,
+                        min_insync_replicas=1,
+                        preallocate=True,
+                        retention_bytes=10737418240,
+                        retention_ms=604800000,
+                        segment_bytes=268435456,
+                    ),
+                ),
+                yandex.MdbKafkaClusterTopicArgs(
+                    name="output",
+                    partitions=6,
+                    replication_factor=1,
+                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
+                        compression_type="COMPRESSION_TYPE_GZIP",
+                        max_message_bytes=1048588,
+                        preallocate=False,
+                        segment_bytes=536870912,
+                    ),
+                ),
+            ],
+            users=[
+                yandex.MdbKafkaClusterUserArgs(
+                    name="producer-application",
+                    password="password",
+                    permissions=[yandex.MdbKafkaClusterUserPermissionArgs(
+                        role="ACCESS_ROLE_PRODUCER",
+                        topic_name="input",
+                    )],
+                ),
+                yandex.MdbKafkaClusterUserArgs(
+                    name="worker",
+                    password="",
+                    permissions=[
+                        yandex.MdbKafkaClusterUserPermissionArgs(
+                            role="ACCESS_ROLE_CONSUMER",
+                            topic_name="input",
+                        ),
+                        yandex.MdbKafkaClusterUserPermissionArgs(
+                            role="ACCESS_ROLE_PRODUCER",
+                            topic_name="output",
+                        ),
+                    ],
+                ),
+            ])
+        ```
+
         ## Import
 
         A cluster can be imported using the `id` of the resource, e.g.
@@ -509,6 +744,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[str] network_id: ID of the network, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: IDs of the subnets, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterTopicArgs']]]] topics: A topic of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterUserArgs']]]] users: A user of the Kafka cluster. The structure is documented below.
         """
@@ -521,6 +757,233 @@ class MdbKafkaCluster(pulumi.CustomResource):
         """
         Manages a Kafka cluster within the Yandex.Cloud. For more information, see
         [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts).
+
+        ## Example Usage
+
+        Example of creating a Single Node Kafka.
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        foo_vpc_network = yandex.VpcNetwork("fooVpcNetwork")
+        foo_vpc_subnet = yandex.VpcSubnet("fooVpcSubnet",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.5.0.0/24"],
+            zone="ru-central1-a")
+        foo_mdb_kafka_cluster = yandex.MdbKafkaCluster("fooMdbKafkaCluster",
+            config=yandex.MdbKafkaClusterConfigArgs(
+                assign_public_ip=False,
+                brokers_count=1,
+                kafka=yandex.MdbKafkaClusterConfigKafkaArgs(
+                    kafka_config=yandex.MdbKafkaClusterConfigKafkaKafkaConfigArgs(
+                        compression_type="COMPRESSION_TYPE_ZSTD",
+                        default_replication_factor=1,
+                        log_flush_interval_messages=1024,
+                        log_flush_interval_ms=1000,
+                        log_flush_scheduler_interval_ms=1000,
+                        log_preallocate=True,
+                        log_retention_bytes=1073741824,
+                        log_retention_hours=168,
+                        log_retention_minutes=10080,
+                        log_retention_ms=86400000,
+                        log_segment_bytes=134217728,
+                        num_partitions=10,
+                    ),
+                    resources=yandex.MdbKafkaClusterConfigKafkaResourcesArgs(
+                        disk_size=32,
+                        disk_type_id="network-ssd",
+                        resource_preset_id="s2.micro",
+                    ),
+                ),
+                unmanaged_topics=False,
+                version="2.6",
+                zones=["ru-central1-a"],
+            ),
+            environment="PRESTABLE",
+            network_id=foo_vpc_network.id,
+            subnet_ids=[foo_vpc_subnet.id],
+            topics=[
+                yandex.MdbKafkaClusterTopicArgs(
+                    name="input",
+                    partitions=2,
+                    replication_factor=1,
+                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
+                        compression_type="COMPRESSION_TYPE_LZ4",
+                        delete_retention_ms=86400000,
+                        file_delete_delay_ms=60000,
+                        flush_messages=128,
+                        flush_ms=1000,
+                        max_message_bytes=1048588,
+                        min_compaction_lag_ms=0,
+                        min_insync_replicas=1,
+                        preallocate=True,
+                        retention_bytes=10737418240,
+                        retention_ms=604800000,
+                        segment_bytes=268435456,
+                    ),
+                ),
+                yandex.MdbKafkaClusterTopicArgs(
+                    name="output",
+                    partitions=6,
+                    replication_factor=1,
+                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
+                        compression_type="COMPRESSION_TYPE_GZIP",
+                        max_message_bytes=1048588,
+                        preallocate=False,
+                        segment_bytes=536870912,
+                    ),
+                ),
+            ],
+            users=[
+                yandex.MdbKafkaClusterUserArgs(
+                    name="producer-application",
+                    password="password",
+                    permissions=[yandex.MdbKafkaClusterUserPermissionArgs(
+                        role="ACCESS_ROLE_PRODUCER",
+                        topic_name="input",
+                    )],
+                ),
+                yandex.MdbKafkaClusterUserArgs(
+                    name="worker",
+                    password="",
+                    permissions=[
+                        yandex.MdbKafkaClusterUserPermissionArgs(
+                            role="ACCESS_ROLE_CONSUMER",
+                            topic_name="input",
+                        ),
+                        yandex.MdbKafkaClusterUserPermissionArgs(
+                            role="ACCESS_ROLE_PRODUCER",
+                            topic_name="output",
+                        ),
+                    ],
+                ),
+            ])
+        ```
+
+        Example of creating a HA Kafka Cluster with two brokers per AZ (6 brokers + 3 zk)
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        foo_vpc_network = yandex.VpcNetwork("fooVpcNetwork")
+        foo_vpc_subnet = yandex.VpcSubnet("fooVpcSubnet",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.1.0.0/24"],
+            zone="ru-central1-a")
+        bar = yandex.VpcSubnet("bar",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.2.0.0/24"],
+            zone="ru-central1-b")
+        baz = yandex.VpcSubnet("baz",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.3.0.0/24"],
+            zone="ru-central1-c")
+        foo_mdb_kafka_cluster = yandex.MdbKafkaCluster("fooMdbKafkaCluster",
+            config=yandex.MdbKafkaClusterConfigArgs(
+                assign_public_ip=True,
+                brokers_count=2,
+                kafka=yandex.MdbKafkaClusterConfigKafkaArgs(
+                    kafka_config=yandex.MdbKafkaClusterConfigKafkaKafkaConfigArgs(
+                        compression_type="COMPRESSION_TYPE_ZSTD",
+                        default_replication_factor=6,
+                        log_flush_interval_messages=1024,
+                        log_flush_interval_ms=1000,
+                        log_flush_scheduler_interval_ms=1000,
+                        log_preallocate=True,
+                        log_retention_bytes=1073741824,
+                        log_retention_hours=168,
+                        log_retention_minutes=10080,
+                        log_retention_ms=86400000,
+                        log_segment_bytes=134217728,
+                        num_partitions=10,
+                    ),
+                    resources=yandex.MdbKafkaClusterConfigKafkaResourcesArgs(
+                        disk_size=128,
+                        disk_type_id="network-ssd",
+                        resource_preset_id="s2.medium",
+                    ),
+                ),
+                unmanaged_topics=False,
+                version="2.6",
+                zones=[
+                    "ru-central1-a",
+                    "ru-central1-b",
+                    "ru-central1-c",
+                ],
+                zookeeper=yandex.MdbKafkaClusterConfigZookeeperArgs(
+                    resources=yandex.MdbKafkaClusterConfigZookeeperResourcesArgs(
+                        disk_size=20,
+                        disk_type_id="network-ssd",
+                        resource_preset_id="s2.micro",
+                    ),
+                ),
+            ),
+            environment="PRESTABLE",
+            network_id=foo_vpc_network.id,
+            subnet_ids=[
+                foo_vpc_subnet.id,
+                bar.id,
+                baz.id,
+            ],
+            topics=[
+                yandex.MdbKafkaClusterTopicArgs(
+                    name="input",
+                    partitions=2,
+                    replication_factor=1,
+                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
+                        compression_type="COMPRESSION_TYPE_LZ4",
+                        delete_retention_ms=86400000,
+                        file_delete_delay_ms=60000,
+                        flush_messages=128,
+                        flush_ms=1000,
+                        max_message_bytes=1048588,
+                        min_compaction_lag_ms=0,
+                        min_insync_replicas=1,
+                        preallocate=True,
+                        retention_bytes=10737418240,
+                        retention_ms=604800000,
+                        segment_bytes=268435456,
+                    ),
+                ),
+                yandex.MdbKafkaClusterTopicArgs(
+                    name="output",
+                    partitions=6,
+                    replication_factor=1,
+                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
+                        compression_type="COMPRESSION_TYPE_GZIP",
+                        max_message_bytes=1048588,
+                        preallocate=False,
+                        segment_bytes=536870912,
+                    ),
+                ),
+            ],
+            users=[
+                yandex.MdbKafkaClusterUserArgs(
+                    name="producer-application",
+                    password="password",
+                    permissions=[yandex.MdbKafkaClusterUserPermissionArgs(
+                        role="ACCESS_ROLE_PRODUCER",
+                        topic_name="input",
+                    )],
+                ),
+                yandex.MdbKafkaClusterUserArgs(
+                    name="worker",
+                    password="",
+                    permissions=[
+                        yandex.MdbKafkaClusterUserPermissionArgs(
+                            role="ACCESS_ROLE_CONSUMER",
+                            topic_name="input",
+                        ),
+                        yandex.MdbKafkaClusterUserPermissionArgs(
+                            role="ACCESS_ROLE_PRODUCER",
+                            topic_name="output",
+                        ),
+                    ],
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -636,6 +1099,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
         :param pulumi.Input[str] status: Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
                For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: IDs of the subnets, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterTopicArgs']]]] topics: A topic of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterUserArgs']]]] users: A user of the Kafka cluster. The structure is documented below.
         """
@@ -769,6 +1233,9 @@ class MdbKafkaCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        IDs of the subnets, to which the Kafka cluster belongs.
+        """
         return pulumi.get(self, "subnet_ids")
 
     @property

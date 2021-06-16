@@ -4,6 +4,276 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface AlbBackendGroupGrpcBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: outputs.AlbBackendGroupGrpcBackendHealthcheck;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: outputs.AlbBackendGroupGrpcBackendLoadBalancingConfig;
+    /**
+     * Name of the backend.
+     */
+    name: string;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: number;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds: string[];
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: outputs.AlbBackendGroupGrpcBackendTls;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: number;
+}
+
+export interface AlbBackendGroupGrpcBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    grpcHealthcheck?: outputs.AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: number;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: number;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: outputs.AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck;
+    /**
+     * Interval between health checks.
+     */
+    interval: string;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: number;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: outputs.AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout: string;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: number;
+}
+
+export interface AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: string;
+}
+
+export interface AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+    /**
+     * "Host" HTTP header value.
+     */
+    host?: string;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: boolean;
+    /**
+     * HTTP path.
+     */
+    path: string;
+}
+
+export interface AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+    /**
+     * Text to search in reply.
+     */
+    receive?: string;
+    /**
+     * Message to send. If empty, it's a connect-only health check.
+     */
+    send?: string;
+}
+
+export interface AlbBackendGroupGrpcBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: boolean;
+}
+
+export interface AlbBackendGroupGrpcBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+     */
+    sni?: string;
+    validationContext?: outputs.AlbBackendGroupGrpcBackendTlsValidationContext;
+}
+
+export interface AlbBackendGroupGrpcBackendTlsValidationContext {
+    trustedCaBytes?: string;
+    trustedCaId?: string;
+}
+
+export interface AlbBackendGroupHttpBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: outputs.AlbBackendGroupHttpBackendHealthcheck;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: boolean;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: outputs.AlbBackendGroupHttpBackendLoadBalancingConfig;
+    /**
+     * Name of the backend.
+     */
+    name: string;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: number;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds: string[];
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: outputs.AlbBackendGroupHttpBackendTls;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: number;
+}
+
+export interface AlbBackendGroupHttpBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    grpcHealthcheck?: outputs.AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: number;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: number;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: outputs.AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck;
+    /**
+     * Interval between health checks.
+     */
+    interval: string;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: number;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: outputs.AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout: string;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: number;
+}
+
+export interface AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: string;
+}
+
+export interface AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+    /**
+     * "Host" HTTP header value.
+     */
+    host?: string;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: boolean;
+    /**
+     * HTTP path.
+     */
+    path: string;
+}
+
+export interface AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+    /**
+     * Text to search in reply.
+     */
+    receive?: string;
+    /**
+     * Message to send. If empty, it's a connect-only health check.
+     */
+    send?: string;
+}
+
+export interface AlbBackendGroupHttpBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: boolean;
+}
+
+export interface AlbBackendGroupHttpBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+     */
+    sni?: string;
+    validationContext?: outputs.AlbBackendGroupHttpBackendTlsValidationContext;
+}
+
+export interface AlbBackendGroupHttpBackendTlsValidationContext {
+    trustedCaBytes?: string;
+    trustedCaId?: string;
+}
+
 export interface AlbTargetGroupTarget {
     /**
      * IP address of the target.
@@ -206,7 +476,7 @@ export interface ComputeInstanceGroupInstanceNetworkInterface {
      */
     index: number;
     /**
-     * The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+     * Manual set static IP address.
      */
     ipAddress: string;
     /**
@@ -214,6 +484,9 @@ export interface ComputeInstanceGroupInstanceNetworkInterface {
      */
     ipv4: boolean;
     ipv6: boolean;
+    /**
+     * Manual set static IPv6 address.
+     */
     ipv6Address: string;
     /**
      * The MAC address assigned to the network interface.
@@ -358,10 +631,18 @@ export interface ComputeInstanceGroupInstanceTemplateNetworkInterface {
      */
     dnsRecords?: outputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecord[];
     /**
+     * Manual set static IP address.
+     */
+    ipAddress: string;
+    /**
      * True if IPv4 address allocated for the network interface.
      */
     ipv4?: boolean;
     ipv6: boolean;
+    /**
+     * Manual set static IPv6 address.
+     */
+    ipv6Address: string;
     /**
      * List of ipv6 dns records.  The structure is documented below.
      */
@@ -891,6 +1172,10 @@ export interface DataprocClusterClusterConfigHadoop {
 
 export interface DataprocClusterClusterConfigSubclusterSpec {
     /**
+     * Autoscaling configuration for compute subclusters.
+     */
+    autoscalingConfig?: outputs.DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig;
+    /**
      * Number of hosts within Data Proc subcluster.
      */
     hostsCount: number;
@@ -914,6 +1199,37 @@ export interface DataprocClusterClusterConfigSubclusterSpec {
      * The ID of the subnet, to which hosts of the subcluster belong. Subnets of all the subclusters must belong to the same VPC network.
      */
     subnetId: string;
+}
+
+export interface DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
+    /**
+     * Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+     */
+    cpuUtilizationTarget?: number;
+    /**
+     * Timeout to gracefully decommission nodes during downscaling. In seconds.
+     */
+    decommissionTimeout?: number;
+    /**
+     * Maximum number of nodes in autoscaling subclusters.
+     */
+    maxHostsCount: number;
+    /**
+     * Time in seconds allotted for averaging metrics.
+     */
+    measurementDuration?: number;
+    /**
+     * Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+     */
+    preemptible?: boolean;
+    /**
+     * Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+     */
+    stabilizationDuration?: number;
+    /**
+     * The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+     */
+    warmupDuration?: number;
 }
 
 export interface DataprocClusterClusterConfigSubclusterSpecResources {
@@ -985,6 +1301,113 @@ export interface FunctionTriggerObjectStorage {
 
 export interface FunctionTriggerTimer {
     cronExpression: string;
+}
+
+export interface GetAlbBackendGroupGrpcBackend {
+    healthcheck: outputs.GetAlbBackendGroupGrpcBackendHealthcheck;
+    loadBalancingConfig: outputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfig;
+    name: string;
+    port: number;
+    targetGroupIds: string[];
+    tls: outputs.GetAlbBackendGroupGrpcBackendTls;
+    weight: number;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheck {
+    grpcHealthcheck: outputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck;
+    healthcheckPort: number;
+    healthyThreshold: number;
+    httpHealthcheck: outputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck;
+    interval: string;
+    intervalJitterPercent: number;
+    streamHealthcheck: outputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck;
+    timeout: string;
+    unhealthyThreshold: number;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+    serviceName: string;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+    host: string;
+    http2: boolean;
+    path: string;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+    receive: string;
+    send: string;
+}
+
+export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
+    localityAwareRoutingPercent: number;
+    panicThreshold: number;
+    strictLocality: boolean;
+}
+
+export interface GetAlbBackendGroupGrpcBackendTls {
+    sni: string;
+    validationContext: outputs.GetAlbBackendGroupGrpcBackendTlsValidationContext;
+}
+
+export interface GetAlbBackendGroupGrpcBackendTlsValidationContext {
+    trustedCaBytes: string;
+    trustedCaId: string;
+}
+
+export interface GetAlbBackendGroupHttpBackend {
+    healthcheck: outputs.GetAlbBackendGroupHttpBackendHealthcheck;
+    http2: boolean;
+    loadBalancingConfig: outputs.GetAlbBackendGroupHttpBackendLoadBalancingConfig;
+    name: string;
+    port: number;
+    targetGroupIds: string[];
+    tls: outputs.GetAlbBackendGroupHttpBackendTls;
+    weight: number;
+}
+
+export interface GetAlbBackendGroupHttpBackendHealthcheck {
+    grpcHealthcheck: outputs.GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck;
+    healthcheckPort: number;
+    healthyThreshold: number;
+    httpHealthcheck: outputs.GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck;
+    interval: string;
+    intervalJitterPercent: number;
+    streamHealthcheck: outputs.GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck;
+    timeout: string;
+    unhealthyThreshold: number;
+}
+
+export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+    serviceName: string;
+}
+
+export interface GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+    host: string;
+    http2: boolean;
+    path: string;
+}
+
+export interface GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+    receive: string;
+    send: string;
+}
+
+export interface GetAlbBackendGroupHttpBackendLoadBalancingConfig {
+    localityAwareRoutingPercent: number;
+    panicThreshold: number;
+    strictLocality: boolean;
+}
+
+export interface GetAlbBackendGroupHttpBackendTls {
+    sni: string;
+    validationContext: outputs.GetAlbBackendGroupHttpBackendTlsValidationContext;
+}
+
+export interface GetAlbBackendGroupHttpBackendTlsValidationContext {
+    trustedCaBytes: string;
+    trustedCaId: string;
 }
 
 export interface GetAlbTargetGroupTarget {
@@ -1175,6 +1598,9 @@ export interface GetComputeInstanceGroupInstanceNetworkInterface {
      */
     ipv4: boolean;
     ipv6: boolean;
+    /**
+     * Manual set static IPv6 address.
+     */
     ipv6Address: string;
     /**
      * The MAC address assigned to the network interface.
@@ -1300,10 +1726,18 @@ export interface GetComputeInstanceGroupInstanceTemplateNetworkInterface {
      */
     dnsRecords: outputs.GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecord[];
     /**
+     * The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+     */
+    ipAddress: string;
+    /**
      * Is IPv4 address assigned.
      */
     ipv4: boolean;
     ipv6: boolean;
+    /**
+     * Manual set static IPv6 address.
+     */
+    ipv6Address: string;
     /**
      * List of ipv6 dns records.  The structure is documented below.
      */
@@ -1820,6 +2254,10 @@ export interface GetDataprocClusterClusterConfigHadoop {
 
 export interface GetDataprocClusterClusterConfigSubclusterSpec {
     /**
+     * Optional autoscaling configuration for compute subclusters.
+     */
+    autoscalingConfig: outputs.GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig;
+    /**
      * Number of hosts within Data Proc subcluster.
      */
     hostsCount: number;
@@ -1843,6 +2281,37 @@ export interface GetDataprocClusterClusterConfigSubclusterSpec {
      * The ID of the subnet, to which hosts of the subcluster belong.
      */
     subnetId: string;
+}
+
+export interface GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
+    /**
+     * Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+     */
+    cpuUtilizationTarget: number;
+    /**
+     * Timeout to gracefully decommission nodes during downscaling. In seconds.
+     */
+    decommissionTimeout: number;
+    /**
+     * Maximum number of nodes in autoscaling subclusters.
+     */
+    maxHostsCount: number;
+    /**
+     * Time in seconds allotted for averaging metrics.
+     */
+    measurementDuration: number;
+    /**
+     * Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+     */
+    preemptible: boolean;
+    /**
+     * Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+     */
+    stabilizationDuration: number;
+    /**
+     * The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+     */
+    warmupDuration: number;
 }
 
 export interface GetDataprocClusterClusterConfigSubclusterSpecResources {
@@ -2563,6 +3032,9 @@ export interface GetMdbClickhouseClusterClickhouseResources {
 }
 
 export interface GetMdbClickhouseClusterCloudStorage {
+    /**
+     * (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
+     */
     enabled: boolean;
 }
 
@@ -2579,7 +3051,7 @@ export interface GetMdbClickhouseClusterFormatSchema {
      */
     name: string;
     /**
-     * Type of the model.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: string;
     /**
@@ -2606,7 +3078,7 @@ export interface GetMdbClickhouseClusterHost {
      */
     subnetId: string;
     /**
-     * Type of the model.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: string;
     /**
@@ -2615,13 +3087,28 @@ export interface GetMdbClickhouseClusterHost {
     zone: string;
 }
 
+export interface GetMdbClickhouseClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day: string;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
+}
+
 export interface GetMdbClickhouseClusterMlModel {
     /**
      * The name of the ClickHouse cluster.
      */
     name: string;
     /**
-     * Type of the model.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: string;
     /**
@@ -3137,6 +3624,7 @@ export interface GetMdbKafkaClusterConfigKafka {
 export interface GetMdbKafkaClusterConfigKafkaKafkaConfig {
     autoCreateTopicsEnable?: boolean;
     compressionType?: string;
+    defaultReplicationFactor?: number;
     logFlushIntervalMessages?: number;
     logFlushIntervalMs?: number;
     logFlushSchedulerIntervalMs?: number;
@@ -3146,6 +3634,7 @@ export interface GetMdbKafkaClusterConfigKafkaKafkaConfig {
     logRetentionMinutes?: number;
     logRetentionMs?: number;
     logSegmentBytes?: number;
+    numPartitions?: number;
     socketReceiveBufferBytes?: number;
     socketSendBufferBytes?: number;
 }
@@ -3433,6 +3922,21 @@ export interface GetMdbMysqlClusterHost {
     zone: string;
 }
 
+export interface GetMdbMysqlClusterMaintenanceWindow {
+    /**
+     * Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+     */
+    day: string;
+    /**
+     * Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+     */
+    hour: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
+}
+
 export interface GetMdbMysqlClusterResources {
     /**
      * Volume of the storage available to a MySQL host, in gigabytes.
@@ -3704,9 +4208,25 @@ export interface GetMdbPostgresqlClusterUserPermission {
 
 export interface GetMdbRedisClusterConfig {
     /**
+     * Number of databases (changing requires redis-server restart).
+     */
+    databases: number;
+    /**
      * Redis key eviction policy for a dataset that reaches maximum memory.
      */
     maxmemoryPolicy: string;
+    /**
+     * Select the events that Redis will notify among a set of classes.
+     */
+    notifyKeyspaceEvents: string;
+    /**
+     * Log slow queries below this number in microseconds.
+     */
+    slowlogLogSlowerThan: number;
+    /**
+     * Slow queries log length.
+     */
+    slowlogMaxLen: number;
     /**
      * Close the connection after a client is idle for N seconds.
      */
@@ -3735,6 +4255,21 @@ export interface GetMdbRedisClusterHost {
      * The availability zone where the Redis host will be created.
      */
     zone: string;
+}
+
+export interface GetMdbRedisClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day: string;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
 }
 
 export interface GetMdbRedisClusterResources {
@@ -4744,7 +5279,7 @@ export interface MdbClickhouseClusterFormatSchema {
      */
     name: string;
     /**
-     * Type of the model.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: string;
     /**
@@ -4771,7 +5306,7 @@ export interface MdbClickhouseClusterHost {
      */
     subnetId: string;
     /**
-     * Type of the model.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: string;
     /**
@@ -4781,13 +5316,28 @@ export interface MdbClickhouseClusterHost {
     zone: string;
 }
 
+export interface MdbClickhouseClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day?: string;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour?: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
+}
+
 export interface MdbClickhouseClusterMlModel {
     /**
      * Graphite rollup configuration name.
      */
     name: string;
     /**
-     * Type of the model.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: string;
     /**
@@ -5308,6 +5858,7 @@ export interface MdbKafkaClusterConfigKafka {
 export interface MdbKafkaClusterConfigKafkaKafkaConfig {
     autoCreateTopicsEnable?: boolean;
     compressionType?: string;
+    defaultReplicationFactor?: number;
     logFlushIntervalMessages?: number;
     logFlushIntervalMs?: number;
     logFlushSchedulerIntervalMs?: number;
@@ -5317,6 +5868,7 @@ export interface MdbKafkaClusterConfigKafkaKafkaConfig {
     logRetentionMinutes?: number;
     logRetentionMs?: number;
     logSegmentBytes?: number;
+    numPartitions?: number;
     socketReceiveBufferBytes?: number;
     socketSendBufferBytes?: number;
 }
@@ -5372,7 +5924,7 @@ export interface MdbKafkaClusterHost {
      */
     role: string;
     /**
-     * IDs of the subnets, to which the Kafka cluster belongs.
+     * The ID of the subnet, to which the host belongs.
      */
     subnetId: string;
     /**
@@ -5607,6 +6159,21 @@ export interface MdbMysqlClusterHost {
     zone: string;
 }
 
+export interface MdbMysqlClusterMaintenanceWindow {
+    /**
+     * Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+     */
+    day?: string;
+    /**
+     * Hour of the day in UTC (in `HH` format). Allowed value is between 0 and 23.
+     */
+    hour?: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
+}
+
 export interface MdbMysqlClusterResources {
     /**
      * Volume of the storage available to a MySQL host, in gigabytes.
@@ -5694,14 +6261,30 @@ export interface MdbMysqlClusterUserPermission {
 
 export interface MdbRedisClusterConfig {
     /**
+     * Number of databases (changing requires redis-server restart).
+     */
+    databases: number;
+    /**
      * Redis key eviction policy for a dataset that reaches maximum memory.
      * Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
      */
     maxmemoryPolicy: string;
     /**
+     * Select the events that Redis will notify among a set of classes.
+     */
+    notifyKeyspaceEvents: string;
+    /**
      * Password for the Redis cluster.
      */
     password: string;
+    /**
+     * Log slow queries below this number in microseconds.
+     */
+    slowlogLogSlowerThan: number;
+    /**
+     * Slow queries log length.
+     */
+    slowlogMaxLen: number;
     /**
      * Close the connection after a client is idle for N seconds.
      */
@@ -5731,6 +6314,21 @@ export interface MdbRedisClusterHost {
      * For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
      */
     zone: string;
+}
+
+export interface MdbRedisClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day?: string;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour?: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
 }
 
 export interface MdbRedisClusterResources {
@@ -6008,6 +6606,52 @@ export interface VpcAddressExternalIpv4Address {
      * - Zone for allocating address.
      */
     zoneId: string;
+}
+
+export interface VpcDefaultSecurityGroupEgress {
+    /**
+     * Description of the security group.
+     */
+    description?: string;
+    fromPort?: number;
+    /**
+     * Id of the security group.
+     */
+    id: string;
+    /**
+     * Labels to assign to this security group.
+     */
+    labels?: {[key: string]: string};
+    port?: number;
+    predefinedTarget?: string;
+    protocol: string;
+    securityGroupId?: string;
+    toPort?: number;
+    v4CidrBlocks?: string[];
+    v6CidrBlocks?: string[];
+}
+
+export interface VpcDefaultSecurityGroupIngress {
+    /**
+     * Description of the security group.
+     */
+    description?: string;
+    fromPort?: number;
+    /**
+     * Id of the security group.
+     */
+    id: string;
+    /**
+     * Labels to assign to this security group.
+     */
+    labels?: {[key: string]: string};
+    port?: number;
+    predefinedTarget?: string;
+    protocol: string;
+    securityGroupId?: string;
+    toPort?: number;
+    v4CidrBlocks?: string[];
+    v6CidrBlocks?: string[];
 }
 
 export interface VpcRouteTableStaticRoute {

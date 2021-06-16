@@ -53,7 +53,6 @@ import * as utilities from "./utilities";
  *     serviceAccountId: dataprocIamServiceAccount.id,
  *     zoneId: "ru-central1-b",
  *     clusterConfig: {
- *         versionId: "1.0",
  *         hadoop: {
  *             services: [
  *                 "HDFS",
@@ -75,7 +74,7 @@ import * as utilities from "./utilities";
  *                 resources: {
  *                     resourcePresetId: "s2.small",
  *                     diskTypeId: "network-hdd",
- *                     diskSize: 16,
+ *                     diskSize: 20,
  *                 },
  *                 subnetId: fooVpcSubnet.id,
  *                 hostsCount: 1,
@@ -86,10 +85,40 @@ import * as utilities from "./utilities";
  *                 resources: {
  *                     resourcePresetId: "s2.small",
  *                     diskTypeId: "network-hdd",
- *                     diskSize: 16,
+ *                     diskSize: 20,
  *                 },
  *                 subnetId: fooVpcSubnet.id,
  *                 hostsCount: 2,
+ *             },
+ *             {
+ *                 name: "compute",
+ *                 role: "COMPUTENODE",
+ *                 resources: {
+ *                     resourcePresetId: "s2.small",
+ *                     diskTypeId: "network-hdd",
+ *                     diskSize: 20,
+ *                 },
+ *                 subnetId: fooVpcSubnet.id,
+ *                 hostsCount: 2,
+ *             },
+ *             {
+ *                 name: "compute_autoscaling",
+ *                 role: "COMPUTENODE",
+ *                 resources: {
+ *                     resourcePresetId: "s2.small",
+ *                     diskTypeId: "network-hdd",
+ *                     diskSize: 20,
+ *                 },
+ *                 subnetId: fooVpcSubnet.id,
+ *                 hostsCount: 2,
+ *                 autoscalingConfig: {
+ *                     maxHostsCount: 10,
+ *                     measurementDuration: 60,
+ *                     warmupDuration: 60,
+ *                     stabilizationDuration: 120,
+ *                     preemptible: false,
+ *                     decommissionTimeout: 60,
+ *                 },
  *             },
  *         ],
  *     },

@@ -20,6 +20,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "yandex:index/albBackendGroup:AlbBackendGroup":
+		r = &AlbBackendGroup{}
+	case "yandex:index/albHttpRouter:AlbHttpRouter":
+		r = &AlbHttpRouter{}
 	case "yandex:index/albTargetGroup:AlbTargetGroup":
 		r = &AlbTargetGroup{}
 	case "yandex:index/apiGateway:ApiGateway":
@@ -118,6 +122,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StorageObject{}
 	case "yandex:index/vpcAddress:VpcAddress":
 		r = &VpcAddress{}
+	case "yandex:index/vpcDefaultSecurityGroup:VpcDefaultSecurityGroup":
+		r = &VpcDefaultSecurityGroup{}
 	case "yandex:index/vpcNetwork:VpcNetwork":
 		r = &VpcNetwork{}
 	case "yandex:index/vpcRouteTable:VpcRouteTable":
@@ -161,6 +167,16 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/albBackendGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/albHttpRouter",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/albTargetGroup",
@@ -404,6 +420,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/vpcAddress",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/vpcDefaultSecurityGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

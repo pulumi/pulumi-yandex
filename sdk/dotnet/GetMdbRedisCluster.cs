@@ -109,6 +109,7 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the Redis cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        public readonly Outputs.GetMdbRedisClusterMaintenanceWindowResult MaintenanceWindow;
         public readonly string Name;
         /// <summary>
         /// ID of the network, to which the Redis cluster belongs.
@@ -157,6 +158,8 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
+            Outputs.GetMdbRedisClusterMaintenanceWindowResult maintenanceWindow,
+
             string name,
 
             string networkId,
@@ -181,6 +184,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
+            MaintenanceWindow = maintenanceWindow;
             Name = name;
             NetworkId = networkId;
             Resources = resources;

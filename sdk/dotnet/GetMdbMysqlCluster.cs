@@ -151,6 +151,10 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
+        /// Maintenance window settings of the MySQL cluster. The structure is documented below.
+        /// </summary>
+        public readonly Outputs.GetMdbMysqlClusterMaintenanceWindowResult MaintenanceWindow;
+        /// <summary>
         /// MySQL cluster config.
         /// </summary>
         public readonly ImmutableDictionary<string, string> MysqlConfig;
@@ -209,6 +213,8 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string>? labels,
 
+            Outputs.GetMdbMysqlClusterMaintenanceWindowResult maintenanceWindow,
+
             ImmutableDictionary<string, string> mysqlConfig,
 
             string name,
@@ -237,6 +243,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
+            MaintenanceWindow = maintenanceWindow;
             MysqlConfig = mysqlConfig;
             Name = name;
             NetworkId = networkId;

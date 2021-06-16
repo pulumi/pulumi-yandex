@@ -260,8 +260,7 @@ class VpcAddress(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a address within the Yandex.Cloud. For more information, see
-        [the official documentation](https://cloud.yandex.com/docs/vpc/concepts/address).
+        Manages a address within the Yandex.Cloud. You can only create a reserved (static) address via this resource. An ephemeral address could be obtained via implicit creation at a compute instance creation only. For more information, see [the official documentation](https://cloud.yandex.com/docs/vpc/concepts/address).
 
         * How-to Guides
             * [Cloud Networking](https://cloud.yandex.com/docs/vpc/)
@@ -316,8 +315,7 @@ class VpcAddress(pulumi.CustomResource):
                  args: Optional[VpcAddressArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a address within the Yandex.Cloud. For more information, see
-        [the official documentation](https://cloud.yandex.com/docs/vpc/concepts/address).
+        Manages a address within the Yandex.Cloud. You can only create a reserved (static) address via this resource. An ephemeral address could be obtained via implicit creation at a compute instance creation only. For more information, see [the official documentation](https://cloud.yandex.com/docs/vpc/concepts/address).
 
         * How-to Guides
             * [Cloud Networking](https://cloud.yandex.com/docs/vpc/)

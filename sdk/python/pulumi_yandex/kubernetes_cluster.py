@@ -675,7 +675,7 @@ class KubernetesCluster(pulumi.CustomResource):
             master=yandex.KubernetesClusterMasterArgs(
                 maintenance_policy={
                     "autoUpgrade": True,
-                    "maintenanceWindow": [{
+                    "maintenance_window": [{
                         "duration": "3h",
                         "startTime": "15:00",
                     }],
@@ -708,7 +708,7 @@ class KubernetesCluster(pulumi.CustomResource):
             master=yandex.KubernetesClusterMasterArgs(
                 maintenance_policy={
                     "autoUpgrade": True,
-                    "maintenanceWindow": [
+                    "maintenance_window": [
                         {
                             "day": "monday",
                             "duration": "3h",
@@ -809,7 +809,7 @@ class KubernetesCluster(pulumi.CustomResource):
             master=yandex.KubernetesClusterMasterArgs(
                 maintenance_policy={
                     "autoUpgrade": True,
-                    "maintenanceWindow": [{
+                    "maintenance_window": [{
                         "duration": "3h",
                         "startTime": "15:00",
                     }],
@@ -842,7 +842,7 @@ class KubernetesCluster(pulumi.CustomResource):
             master=yandex.KubernetesClusterMasterArgs(
                 maintenance_policy={
                     "autoUpgrade": True,
-                    "maintenanceWindow": [
+                    "maintenance_window": [
                         {
                             "day": "monday",
                             "duration": "3h",

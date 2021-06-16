@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./albBackendGroup";
+export * from "./albHttpRouter";
 export * from "./albTargetGroup";
 export * from "./apiGateway";
 export * from "./computeDisk";
@@ -24,6 +26,8 @@ export * from "./dnsZone";
 export * from "./function";
 export * from "./functionIamBinding";
 export * from "./functionTrigger";
+export * from "./getAlbBackendGroup";
+export * from "./getAlbHttpRouter";
 export * from "./getAlbTargetGroup";
 export * from "./getApiGateway";
 export * from "./getClientConfig";
@@ -98,6 +102,7 @@ export * from "./resourcemanagerFolderIamPolicy";
 export * from "./storageBucket";
 export * from "./storageObject";
 export * from "./vpcAddress";
+export * from "./vpcDefaultSecurityGroup";
 export * from "./vpcNetwork";
 export * from "./vpcRouteTable";
 export * from "./vpcSecurityGroup";
@@ -115,6 +120,8 @@ export {
 };
 
 // Import resources to register:
+import { AlbBackendGroup } from "./albBackendGroup";
+import { AlbHttpRouter } from "./albHttpRouter";
 import { AlbTargetGroup } from "./albTargetGroup";
 import { ApiGateway } from "./apiGateway";
 import { ComputeDisk } from "./computeDisk";
@@ -164,6 +171,7 @@ import { ResourcemanagerFolderIamPolicy } from "./resourcemanagerFolderIamPolicy
 import { StorageBucket } from "./storageBucket";
 import { StorageObject } from "./storageObject";
 import { VpcAddress } from "./vpcAddress";
+import { VpcDefaultSecurityGroup } from "./vpcDefaultSecurityGroup";
 import { VpcNetwork } from "./vpcNetwork";
 import { VpcRouteTable } from "./vpcRouteTable";
 import { VpcSecurityGroup } from "./vpcSecurityGroup";
@@ -175,6 +183,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "yandex:index/albBackendGroup:AlbBackendGroup":
+                return new AlbBackendGroup(name, <any>undefined, { urn })
+            case "yandex:index/albHttpRouter:AlbHttpRouter":
+                return new AlbHttpRouter(name, <any>undefined, { urn })
             case "yandex:index/albTargetGroup:AlbTargetGroup":
                 return new AlbTargetGroup(name, <any>undefined, { urn })
             case "yandex:index/apiGateway:ApiGateway":
@@ -273,6 +285,8 @@ const _module = {
                 return new StorageObject(name, <any>undefined, { urn })
             case "yandex:index/vpcAddress:VpcAddress":
                 return new VpcAddress(name, <any>undefined, { urn })
+            case "yandex:index/vpcDefaultSecurityGroup:VpcDefaultSecurityGroup":
+                return new VpcDefaultSecurityGroup(name, <any>undefined, { urn })
             case "yandex:index/vpcNetwork:VpcNetwork":
                 return new VpcNetwork(name, <any>undefined, { urn })
             case "yandex:index/vpcRouteTable:VpcRouteTable":
@@ -290,6 +304,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("yandex", "index/albBackendGroup", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/albHttpRouter", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/albTargetGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/apiGateway", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeDisk", _module)
@@ -339,6 +355,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolderIamP
 pulumi.runtime.registerResourceModule("yandex", "index/storageBucket", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/storageObject", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcAddress", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/vpcDefaultSecurityGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcNetwork", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcRouteTable", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcSecurityGroup", _module)

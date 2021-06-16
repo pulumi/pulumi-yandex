@@ -14,14 +14,30 @@ namespace Pulumi.Yandex.Outputs
     public sealed class MdbRedisClusterConfig
     {
         /// <summary>
+        /// Number of databases (changing requires redis-server restart).
+        /// </summary>
+        public readonly int? Databases;
+        /// <summary>
         /// Redis key eviction policy for a dataset that reaches maximum memory.
         /// Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
         /// </summary>
         public readonly string? MaxmemoryPolicy;
         /// <summary>
+        /// Select the events that Redis will notify among a set of classes.
+        /// </summary>
+        public readonly string? NotifyKeyspaceEvents;
+        /// <summary>
         /// Password for the Redis cluster.
         /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// Log slow queries below this number in microseconds.
+        /// </summary>
+        public readonly int? SlowlogLogSlowerThan;
+        /// <summary>
+        /// Slow queries log length.
+        /// </summary>
+        public readonly int? SlowlogMaxLen;
         /// <summary>
         /// Close the connection after a client is idle for N seconds.
         /// </summary>
@@ -33,16 +49,28 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private MdbRedisClusterConfig(
+            int? databases,
+
             string? maxmemoryPolicy,
 
+            string? notifyKeyspaceEvents,
+
             string password,
+
+            int? slowlogLogSlowerThan,
+
+            int? slowlogMaxLen,
 
             int? timeout,
 
             string version)
         {
+            Databases = databases;
             MaxmemoryPolicy = maxmemoryPolicy;
+            NotifyKeyspaceEvents = notifyKeyspaceEvents;
             Password = password;
+            SlowlogLogSlowerThan = slowlogLogSlowerThan;
+            SlowlogMaxLen = slowlogMaxLen;
             Timeout = timeout;
             Version = version;
         }

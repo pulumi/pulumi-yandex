@@ -13,6 +13,12 @@ namespace Pulumi.Yandex.Inputs
     public sealed class MdbRedisClusterConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Number of databases (changing requires redis-server restart).
+        /// </summary>
+        [Input("databases")]
+        public Input<int>? Databases { get; set; }
+
+        /// <summary>
         /// Redis key eviction policy for a dataset that reaches maximum memory.
         /// Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
         /// </summary>
@@ -20,10 +26,28 @@ namespace Pulumi.Yandex.Inputs
         public Input<string>? MaxmemoryPolicy { get; set; }
 
         /// <summary>
+        /// Select the events that Redis will notify among a set of classes.
+        /// </summary>
+        [Input("notifyKeyspaceEvents")]
+        public Input<string>? NotifyKeyspaceEvents { get; set; }
+
+        /// <summary>
         /// Password for the Redis cluster.
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
+
+        /// <summary>
+        /// Log slow queries below this number in microseconds.
+        /// </summary>
+        [Input("slowlogLogSlowerThan")]
+        public Input<int>? SlowlogLogSlowerThan { get; set; }
+
+        /// <summary>
+        /// Slow queries log length.
+        /// </summary>
+        [Input("slowlogMaxLen")]
+        public Input<int>? SlowlogMaxLen { get; set; }
 
         /// <summary>
         /// Close the connection after a client is idle for N seconds.

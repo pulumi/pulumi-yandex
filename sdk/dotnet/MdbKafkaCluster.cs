@@ -13,6 +13,323 @@ namespace Pulumi.Yandex
     /// Manages a Kafka cluster within the Yandex.Cloud. For more information, see
     /// [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts).
     /// 
+    /// ## Example Usage
+    /// 
+    /// Example of creating a Single Node Kafka.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Yandex = Pulumi.Yandex;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooVpcNetwork = new Yandex.VpcNetwork("fooVpcNetwork", new Yandex.VpcNetworkArgs
+    ///         {
+    ///         });
+    ///         var fooVpcSubnet = new Yandex.VpcSubnet("fooVpcSubnet", new Yandex.VpcSubnetArgs
+    ///         {
+    ///             NetworkId = fooVpcNetwork.Id,
+    ///             V4CidrBlocks = 
+    ///             {
+    ///                 "10.5.0.0/24",
+    ///             },
+    ///             Zone = "ru-central1-a",
+    ///         });
+    ///         var fooMdbKafkaCluster = new Yandex.MdbKafkaCluster("fooMdbKafkaCluster", new Yandex.MdbKafkaClusterArgs
+    ///         {
+    ///             Config = new Yandex.Inputs.MdbKafkaClusterConfigArgs
+    ///             {
+    ///                 AssignPublicIp = false,
+    ///                 BrokersCount = 1,
+    ///                 Kafka = new Yandex.Inputs.MdbKafkaClusterConfigKafkaArgs
+    ///                 {
+    ///                     KafkaConfig = new Yandex.Inputs.MdbKafkaClusterConfigKafkaKafkaConfigArgs
+    ///                     {
+    ///                         CompressionType = "COMPRESSION_TYPE_ZSTD",
+    ///                         DefaultReplicationFactor = 1,
+    ///                         LogFlushIntervalMessages = 1024,
+    ///                         LogFlushIntervalMs = 1000,
+    ///                         LogFlushSchedulerIntervalMs = 1000,
+    ///                         LogPreallocate = true,
+    ///                         LogRetentionBytes = 1073741824,
+    ///                         LogRetentionHours = 168,
+    ///                         LogRetentionMinutes = 10080,
+    ///                         LogRetentionMs = 86400000,
+    ///                         LogSegmentBytes = 134217728,
+    ///                         NumPartitions = 10,
+    ///                     },
+    ///                     Resources = new Yandex.Inputs.MdbKafkaClusterConfigKafkaResourcesArgs
+    ///                     {
+    ///                         DiskSize = 32,
+    ///                         DiskTypeId = "network-ssd",
+    ///                         ResourcePresetId = "s2.micro",
+    ///                     },
+    ///                 },
+    ///                 UnmanagedTopics = false,
+    ///                 Version = "2.6",
+    ///                 Zones = 
+    ///                 {
+    ///                     "ru-central1-a",
+    ///                 },
+    ///             },
+    ///             Environment = "PRESTABLE",
+    ///             NetworkId = fooVpcNetwork.Id,
+    ///             SubnetIds = 
+    ///             {
+    ///                 fooVpcSubnet.Id,
+    ///             },
+    ///             Topics = 
+    ///             {
+    ///                 new Yandex.Inputs.MdbKafkaClusterTopicArgs
+    ///                 {
+    ///                     Name = "input",
+    ///                     Partitions = 2,
+    ///                     ReplicationFactor = 1,
+    ///                     TopicConfig = new Yandex.Inputs.MdbKafkaClusterTopicTopicConfigArgs
+    ///                     {
+    ///                         CompressionType = "COMPRESSION_TYPE_LZ4",
+    ///                         DeleteRetentionMs = 86400000,
+    ///                         FileDeleteDelayMs = 60000,
+    ///                         FlushMessages = 128,
+    ///                         FlushMs = 1000,
+    ///                         MaxMessageBytes = 1048588,
+    ///                         MinCompactionLagMs = 0,
+    ///                         MinInsyncReplicas = 1,
+    ///                         Preallocate = true,
+    ///                         RetentionBytes = 10737418240,
+    ///                         RetentionMs = 604800000,
+    ///                         SegmentBytes = 268435456,
+    ///                     },
+    ///                 },
+    ///                 new Yandex.Inputs.MdbKafkaClusterTopicArgs
+    ///                 {
+    ///                     Name = "output",
+    ///                     Partitions = 6,
+    ///                     ReplicationFactor = 1,
+    ///                     TopicConfig = new Yandex.Inputs.MdbKafkaClusterTopicTopicConfigArgs
+    ///                     {
+    ///                         CompressionType = "COMPRESSION_TYPE_GZIP",
+    ///                         MaxMessageBytes = 1048588,
+    ///                         Preallocate = false,
+    ///                         SegmentBytes = 536870912,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Users = 
+    ///             {
+    ///                 new Yandex.Inputs.MdbKafkaClusterUserArgs
+    ///                 {
+    ///                     Name = "producer-application",
+    ///                     Password = "password",
+    ///                     Permissions = 
+    ///                     {
+    ///                         new Yandex.Inputs.MdbKafkaClusterUserPermissionArgs
+    ///                         {
+    ///                             Role = "ACCESS_ROLE_PRODUCER",
+    ///                             TopicName = "input",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Yandex.Inputs.MdbKafkaClusterUserArgs
+    ///                 {
+    ///                     Name = "worker",
+    ///                     Password = "",
+    ///                     Permissions = 
+    ///                     {
+    ///                         new Yandex.Inputs.MdbKafkaClusterUserPermissionArgs
+    ///                         {
+    ///                             Role = "ACCESS_ROLE_CONSUMER",
+    ///                             TopicName = "input",
+    ///                         },
+    ///                         new Yandex.Inputs.MdbKafkaClusterUserPermissionArgs
+    ///                         {
+    ///                             Role = "ACCESS_ROLE_PRODUCER",
+    ///                             TopicName = "output",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Example of creating a HA Kafka Cluster with two brokers per AZ (6 brokers + 3 zk)
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Yandex = Pulumi.Yandex;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooVpcNetwork = new Yandex.VpcNetwork("fooVpcNetwork", new Yandex.VpcNetworkArgs
+    ///         {
+    ///         });
+    ///         var fooVpcSubnet = new Yandex.VpcSubnet("fooVpcSubnet", new Yandex.VpcSubnetArgs
+    ///         {
+    ///             NetworkId = fooVpcNetwork.Id,
+    ///             V4CidrBlocks = 
+    ///             {
+    ///                 "10.1.0.0/24",
+    ///             },
+    ///             Zone = "ru-central1-a",
+    ///         });
+    ///         var bar = new Yandex.VpcSubnet("bar", new Yandex.VpcSubnetArgs
+    ///         {
+    ///             NetworkId = fooVpcNetwork.Id,
+    ///             V4CidrBlocks = 
+    ///             {
+    ///                 "10.2.0.0/24",
+    ///             },
+    ///             Zone = "ru-central1-b",
+    ///         });
+    ///         var baz = new Yandex.VpcSubnet("baz", new Yandex.VpcSubnetArgs
+    ///         {
+    ///             NetworkId = fooVpcNetwork.Id,
+    ///             V4CidrBlocks = 
+    ///             {
+    ///                 "10.3.0.0/24",
+    ///             },
+    ///             Zone = "ru-central1-c",
+    ///         });
+    ///         var fooMdbKafkaCluster = new Yandex.MdbKafkaCluster("fooMdbKafkaCluster", new Yandex.MdbKafkaClusterArgs
+    ///         {
+    ///             Config = new Yandex.Inputs.MdbKafkaClusterConfigArgs
+    ///             {
+    ///                 AssignPublicIp = true,
+    ///                 BrokersCount = 2,
+    ///                 Kafka = new Yandex.Inputs.MdbKafkaClusterConfigKafkaArgs
+    ///                 {
+    ///                     KafkaConfig = new Yandex.Inputs.MdbKafkaClusterConfigKafkaKafkaConfigArgs
+    ///                     {
+    ///                         CompressionType = "COMPRESSION_TYPE_ZSTD",
+    ///                         DefaultReplicationFactor = 6,
+    ///                         LogFlushIntervalMessages = 1024,
+    ///                         LogFlushIntervalMs = 1000,
+    ///                         LogFlushSchedulerIntervalMs = 1000,
+    ///                         LogPreallocate = true,
+    ///                         LogRetentionBytes = 1073741824,
+    ///                         LogRetentionHours = 168,
+    ///                         LogRetentionMinutes = 10080,
+    ///                         LogRetentionMs = 86400000,
+    ///                         LogSegmentBytes = 134217728,
+    ///                         NumPartitions = 10,
+    ///                     },
+    ///                     Resources = new Yandex.Inputs.MdbKafkaClusterConfigKafkaResourcesArgs
+    ///                     {
+    ///                         DiskSize = 128,
+    ///                         DiskTypeId = "network-ssd",
+    ///                         ResourcePresetId = "s2.medium",
+    ///                     },
+    ///                 },
+    ///                 UnmanagedTopics = false,
+    ///                 Version = "2.6",
+    ///                 Zones = 
+    ///                 {
+    ///                     "ru-central1-a",
+    ///                     "ru-central1-b",
+    ///                     "ru-central1-c",
+    ///                 },
+    ///                 Zookeeper = new Yandex.Inputs.MdbKafkaClusterConfigZookeeperArgs
+    ///                 {
+    ///                     Resources = new Yandex.Inputs.MdbKafkaClusterConfigZookeeperResourcesArgs
+    ///                     {
+    ///                         DiskSize = 20,
+    ///                         DiskTypeId = "network-ssd",
+    ///                         ResourcePresetId = "s2.micro",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Environment = "PRESTABLE",
+    ///             NetworkId = fooVpcNetwork.Id,
+    ///             SubnetIds = 
+    ///             {
+    ///                 fooVpcSubnet.Id,
+    ///                 bar.Id,
+    ///                 baz.Id,
+    ///             },
+    ///             Topics = 
+    ///             {
+    ///                 new Yandex.Inputs.MdbKafkaClusterTopicArgs
+    ///                 {
+    ///                     Name = "input",
+    ///                     Partitions = 2,
+    ///                     ReplicationFactor = 1,
+    ///                     TopicConfig = new Yandex.Inputs.MdbKafkaClusterTopicTopicConfigArgs
+    ///                     {
+    ///                         CompressionType = "COMPRESSION_TYPE_LZ4",
+    ///                         DeleteRetentionMs = 86400000,
+    ///                         FileDeleteDelayMs = 60000,
+    ///                         FlushMessages = 128,
+    ///                         FlushMs = 1000,
+    ///                         MaxMessageBytes = 1048588,
+    ///                         MinCompactionLagMs = 0,
+    ///                         MinInsyncReplicas = 1,
+    ///                         Preallocate = true,
+    ///                         RetentionBytes = 10737418240,
+    ///                         RetentionMs = 604800000,
+    ///                         SegmentBytes = 268435456,
+    ///                     },
+    ///                 },
+    ///                 new Yandex.Inputs.MdbKafkaClusterTopicArgs
+    ///                 {
+    ///                     Name = "output",
+    ///                     Partitions = 6,
+    ///                     ReplicationFactor = 1,
+    ///                     TopicConfig = new Yandex.Inputs.MdbKafkaClusterTopicTopicConfigArgs
+    ///                     {
+    ///                         CompressionType = "COMPRESSION_TYPE_GZIP",
+    ///                         MaxMessageBytes = 1048588,
+    ///                         Preallocate = false,
+    ///                         SegmentBytes = 536870912,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Users = 
+    ///             {
+    ///                 new Yandex.Inputs.MdbKafkaClusterUserArgs
+    ///                 {
+    ///                     Name = "producer-application",
+    ///                     Password = "password",
+    ///                     Permissions = 
+    ///                     {
+    ///                         new Yandex.Inputs.MdbKafkaClusterUserPermissionArgs
+    ///                         {
+    ///                             Role = "ACCESS_ROLE_PRODUCER",
+    ///                             TopicName = "input",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Yandex.Inputs.MdbKafkaClusterUserArgs
+    ///                 {
+    ///                     Name = "worker",
+    ///                     Password = "",
+    ///                     Permissions = 
+    ///                     {
+    ///                         new Yandex.Inputs.MdbKafkaClusterUserPermissionArgs
+    ///                         {
+    ///                             Role = "ACCESS_ROLE_CONSUMER",
+    ///                             TopicName = "input",
+    ///                         },
+    ///                         new Yandex.Inputs.MdbKafkaClusterUserPermissionArgs
+    ///                         {
+    ///                             Role = "ACCESS_ROLE_PRODUCER",
+    ///                             TopicName = "output",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A cluster can be imported using the `id` of the resource, e.g.
@@ -103,6 +420,9 @@ namespace Pulumi.Yandex
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// IDs of the subnets, to which the Kafka cluster belongs.
+        /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
@@ -238,6 +558,10 @@ namespace Pulumi.Yandex
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// IDs of the subnets, to which the Kafka cluster belongs.
+        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
@@ -380,6 +704,10 @@ namespace Pulumi.Yandex
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// IDs of the subnets, to which the Kafka cluster belongs.
+        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());

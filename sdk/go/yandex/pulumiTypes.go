@@ -10,6 +10,2751 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AlbBackendGroupGrpcBackend struct {
+	// Healthcheck specification that will be used by this backend. Structure is documented below.
+	Healthcheck *AlbBackendGroupGrpcBackendHealthcheck `pulumi:"healthcheck"`
+	// Load Balancing Config specification that will be used by this backend. Structure is documented below.
+	LoadBalancingConfig *AlbBackendGroupGrpcBackendLoadBalancingConfig `pulumi:"loadBalancingConfig"`
+	// Name of the backend.
+	Name string `pulumi:"name"`
+	// Port for incoming traffic.
+	Port *int `pulumi:"port"`
+	// References target groups for the backend.
+	TargetGroupIds []string `pulumi:"targetGroupIds"`
+	// Tls specification that will be used by this backend. Structure is documented below.
+	Tls *AlbBackendGroupGrpcBackendTls `pulumi:"tls"`
+	// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+	Weight *int `pulumi:"weight"`
+}
+
+// AlbBackendGroupGrpcBackendInput is an input type that accepts AlbBackendGroupGrpcBackendArgs and AlbBackendGroupGrpcBackendOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendInput` via:
+//
+//          AlbBackendGroupGrpcBackendArgs{...}
+type AlbBackendGroupGrpcBackendInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendOutput() AlbBackendGroupGrpcBackendOutput
+	ToAlbBackendGroupGrpcBackendOutputWithContext(context.Context) AlbBackendGroupGrpcBackendOutput
+}
+
+type AlbBackendGroupGrpcBackendArgs struct {
+	// Healthcheck specification that will be used by this backend. Structure is documented below.
+	Healthcheck AlbBackendGroupGrpcBackendHealthcheckPtrInput `pulumi:"healthcheck"`
+	// Load Balancing Config specification that will be used by this backend. Structure is documented below.
+	LoadBalancingConfig AlbBackendGroupGrpcBackendLoadBalancingConfigPtrInput `pulumi:"loadBalancingConfig"`
+	// Name of the backend.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port for incoming traffic.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// References target groups for the backend.
+	TargetGroupIds pulumi.StringArrayInput `pulumi:"targetGroupIds"`
+	// Tls specification that will be used by this backend. Structure is documented below.
+	Tls AlbBackendGroupGrpcBackendTlsPtrInput `pulumi:"tls"`
+	// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (AlbBackendGroupGrpcBackendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackend)(nil)).Elem()
+}
+
+func (i AlbBackendGroupGrpcBackendArgs) ToAlbBackendGroupGrpcBackendOutput() AlbBackendGroupGrpcBackendOutput {
+	return i.ToAlbBackendGroupGrpcBackendOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendArgs) ToAlbBackendGroupGrpcBackendOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendOutput)
+}
+
+// AlbBackendGroupGrpcBackendArrayInput is an input type that accepts AlbBackendGroupGrpcBackendArray and AlbBackendGroupGrpcBackendArrayOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendArrayInput` via:
+//
+//          AlbBackendGroupGrpcBackendArray{ AlbBackendGroupGrpcBackendArgs{...} }
+type AlbBackendGroupGrpcBackendArrayInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendArrayOutput() AlbBackendGroupGrpcBackendArrayOutput
+	ToAlbBackendGroupGrpcBackendArrayOutputWithContext(context.Context) AlbBackendGroupGrpcBackendArrayOutput
+}
+
+type AlbBackendGroupGrpcBackendArray []AlbBackendGroupGrpcBackendInput
+
+func (AlbBackendGroupGrpcBackendArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbBackendGroupGrpcBackend)(nil)).Elem()
+}
+
+func (i AlbBackendGroupGrpcBackendArray) ToAlbBackendGroupGrpcBackendArrayOutput() AlbBackendGroupGrpcBackendArrayOutput {
+	return i.ToAlbBackendGroupGrpcBackendArrayOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendArray) ToAlbBackendGroupGrpcBackendArrayOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendArrayOutput)
+}
+
+type AlbBackendGroupGrpcBackendOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackend)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendOutput) ToAlbBackendGroupGrpcBackendOutput() AlbBackendGroupGrpcBackendOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendOutput) ToAlbBackendGroupGrpcBackendOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendOutput {
+	return o
+}
+
+// Healthcheck specification that will be used by this backend. Structure is documented below.
+func (o AlbBackendGroupGrpcBackendOutput) Healthcheck() AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackend) *AlbBackendGroupGrpcBackendHealthcheck { return v.Healthcheck }).(AlbBackendGroupGrpcBackendHealthcheckPtrOutput)
+}
+
+// Load Balancing Config specification that will be used by this backend. Structure is documented below.
+func (o AlbBackendGroupGrpcBackendOutput) LoadBalancingConfig() AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackend) *AlbBackendGroupGrpcBackendLoadBalancingConfig {
+		return v.LoadBalancingConfig
+	}).(AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput)
+}
+
+// Name of the backend.
+func (o AlbBackendGroupGrpcBackendOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackend) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Port for incoming traffic.
+func (o AlbBackendGroupGrpcBackendOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackend) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// References target groups for the backend.
+func (o AlbBackendGroupGrpcBackendOutput) TargetGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackend) []string { return v.TargetGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Tls specification that will be used by this backend. Structure is documented below.
+func (o AlbBackendGroupGrpcBackendOutput) Tls() AlbBackendGroupGrpcBackendTlsPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackend) *AlbBackendGroupGrpcBackendTls { return v.Tls }).(AlbBackendGroupGrpcBackendTlsPtrOutput)
+}
+
+// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+func (o AlbBackendGroupGrpcBackendOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackend) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbBackendGroupGrpcBackend)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendArrayOutput) ToAlbBackendGroupGrpcBackendArrayOutput() AlbBackendGroupGrpcBackendArrayOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendArrayOutput) ToAlbBackendGroupGrpcBackendArrayOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendArrayOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendArrayOutput) Index(i pulumi.IntInput) AlbBackendGroupGrpcBackendOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbBackendGroupGrpcBackend {
+		return vs[0].([]AlbBackendGroupGrpcBackend)[vs[1].(int)]
+	}).(AlbBackendGroupGrpcBackendOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheck struct {
+	// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	GrpcHealthcheck *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck `pulumi:"grpcHealthcheck"`
+	// Optional alternative port for health checking.
+	HealthcheckPort *int `pulumi:"healthcheckPort"`
+	// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+	HealthyThreshold *int `pulumi:"healthyThreshold"`
+	// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	HttpHealthcheck *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck `pulumi:"httpHealthcheck"`
+	// Interval between health checks.
+	Interval string `pulumi:"interval"`
+	// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+	IntervalJitterPercent *float64 `pulumi:"intervalJitterPercent"`
+	// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	StreamHealthcheck *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck `pulumi:"streamHealthcheck"`
+	// Time to wait for a health check response.
+	Timeout string `pulumi:"timeout"`
+	// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
+}
+
+// AlbBackendGroupGrpcBackendHealthcheckInput is an input type that accepts AlbBackendGroupGrpcBackendHealthcheckArgs and AlbBackendGroupGrpcBackendHealthcheckOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendHealthcheckInput` via:
+//
+//          AlbBackendGroupGrpcBackendHealthcheckArgs{...}
+type AlbBackendGroupGrpcBackendHealthcheckInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckOutput
+	ToAlbBackendGroupGrpcBackendHealthcheckOutputWithContext(context.Context) AlbBackendGroupGrpcBackendHealthcheckOutput
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckArgs struct {
+	// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	GrpcHealthcheck AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrInput `pulumi:"grpcHealthcheck"`
+	// Optional alternative port for health checking.
+	HealthcheckPort pulumi.IntPtrInput `pulumi:"healthcheckPort"`
+	// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
+	// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	HttpHealthcheck AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrInput `pulumi:"httpHealthcheck"`
+	// Interval between health checks.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+	IntervalJitterPercent pulumi.Float64PtrInput `pulumi:"intervalJitterPercent"`
+	// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	StreamHealthcheck AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrInput `pulumi:"streamHealthcheck"`
+	// Time to wait for a health check response.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
+}
+
+func (AlbBackendGroupGrpcBackendHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheck)(nil)).Elem()
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckOutput)
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckOutput).ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupGrpcBackendHealthcheckPtrInput is an input type that accepts AlbBackendGroupGrpcBackendHealthcheckArgs, AlbBackendGroupGrpcBackendHealthcheckPtr and AlbBackendGroupGrpcBackendHealthcheckPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendHealthcheckPtrInput` via:
+//
+//          AlbBackendGroupGrpcBackendHealthcheckArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupGrpcBackendHealthcheckPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckPtrOutput
+	ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(context.Context) AlbBackendGroupGrpcBackendHealthcheckPtrOutput
+}
+
+type albBackendGroupGrpcBackendHealthcheckPtrType AlbBackendGroupGrpcBackendHealthcheckArgs
+
+func AlbBackendGroupGrpcBackendHealthcheckPtr(v *AlbBackendGroupGrpcBackendHealthcheckArgs) AlbBackendGroupGrpcBackendHealthcheckPtrInput {
+	return (*albBackendGroupGrpcBackendHealthcheckPtrType)(v)
+}
+
+func (*albBackendGroupGrpcBackendHealthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendHealthcheck)(nil)).Elem()
+}
+
+func (i *albBackendGroupGrpcBackendHealthcheckPtrType) ToAlbBackendGroupGrpcBackendHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupGrpcBackendHealthcheckPtrType) ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
+	return o.ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) *AlbBackendGroupGrpcBackendHealthcheck {
+		return &v
+	}).(AlbBackendGroupGrpcBackendHealthcheckPtrOutput)
+}
+
+// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) GrpcHealthcheck() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+		return v.GrpcHealthcheck
+	}).(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput)
+}
+
+// Optional alternative port for health checking.
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) HealthcheckPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) *int { return v.HealthcheckPort }).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) HttpHealthcheck() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+		return v.HttpHealthcheck
+	}).(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput)
+}
+
+// Interval between health checks.
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) IntervalJitterPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) *float64 { return v.IntervalJitterPercent }).(pulumi.Float64PtrOutput)
+}
+
+// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) StreamHealthcheck() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+		return v.StreamHealthcheck
+	}).(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput)
+}
+
+// Time to wait for a health check response.
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+func (o AlbBackendGroupGrpcBackendHealthcheckOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendHealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) ToAlbBackendGroupGrpcBackendHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) Elem() AlbBackendGroupGrpcBackendHealthcheckOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) AlbBackendGroupGrpcBackendHealthcheck { return *v }).(AlbBackendGroupGrpcBackendHealthcheckOutput)
+}
+
+// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) GrpcHealthcheck() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcHealthcheck
+	}).(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput)
+}
+
+// Optional alternative port for health checking.
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) HealthcheckPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthcheckPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) HttpHealthcheck() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHealthcheck
+	}).(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput)
+}
+
+// Interval between health checks.
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) IntervalJitterPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalJitterPercent
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) StreamHealthcheck() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+		if v == nil {
+			return nil
+		}
+		return v.StreamHealthcheck
+	}).(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput)
+}
+
+// Time to wait for a health check response.
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UnhealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck struct {
+	// Service name for grpc.health.v1.HealthCheckRequest message.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput is an input type that accepts AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs and AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput` via:
+//
+//          AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs{...}
+type AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput
+	ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutputWithContext(context.Context) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs struct {
+	// Service name for grpc.health.v1.HealthCheckRequest message.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput)
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput).ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrInput is an input type that accepts AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs, AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtr and AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrInput` via:
+//
+//          AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput
+	ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(context.Context) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput
+}
+
+type albBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrType AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs
+
+func AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtr(v *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrInput {
+	return (*albBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrType)(v)
+}
+
+func (*albBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (i *albBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrType) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrType) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o.ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+		return &v
+	}).(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput)
+}
+
+// Service name for grpc.health.v1.HealthCheckRequest message.
+func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput) Elem() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+		return *v
+	}).(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput)
+}
+
+// Service name for grpc.health.v1.HealthCheckRequest message.
+func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck struct {
+	// "Host" HTTP header value.
+	Host *string `pulumi:"host"`
+	// If set, health checks will use HTTP2.
+	Http2 *bool `pulumi:"http2"`
+	// HTTP path.
+	Path string `pulumi:"path"`
+}
+
+// AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput is an input type that accepts AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs and AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput` via:
+//
+//          AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs{...}
+type AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput
+	ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutputWithContext(context.Context) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs struct {
+	// "Host" HTTP header value.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// If set, health checks will use HTTP2.
+	Http2 pulumi.BoolPtrInput `pulumi:"http2"`
+	// HTTP path.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput)
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput).ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrInput is an input type that accepts AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs, AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtr and AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrInput` via:
+//
+//          AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput
+	ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(context.Context) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput
+}
+
+type albBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrType AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs
+
+func AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtr(v *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrInput {
+	return (*albBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrType)(v)
+}
+
+func (*albBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (i *albBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrType) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrType) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o.ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+		return &v
+	}).(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput)
+}
+
+// "Host" HTTP header value.
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// If set, health checks will use HTTP2.
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) Http2() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) *bool { return v.Http2 }).(pulumi.BoolPtrOutput)
+}
+
+// HTTP path.
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput) Elem() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+		return *v
+	}).(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput)
+}
+
+// "Host" HTTP header value.
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, health checks will use HTTP2.
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput) Http2() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Http2
+	}).(pulumi.BoolPtrOutput)
+}
+
+// HTTP path.
+func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck struct {
+	// Text to search in reply.
+	Receive *string `pulumi:"receive"`
+	// Message to send. If empty, it's a connect-only health check.
+	Send *string `pulumi:"send"`
+}
+
+// AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput is an input type that accepts AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs and AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput` via:
+//
+//          AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs{...}
+type AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput
+	ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutputWithContext(context.Context) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs struct {
+	// Text to search in reply.
+	Receive pulumi.StringPtrInput `pulumi:"receive"`
+	// Message to send. If empty, it's a connect-only health check.
+	Send pulumi.StringPtrInput `pulumi:"send"`
+}
+
+func (AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput)
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput).ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrInput is an input type that accepts AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs, AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtr and AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrInput` via:
+//
+//          AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput
+	ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(context.Context) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput
+}
+
+type albBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrType AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs
+
+func AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtr(v *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrInput {
+	return (*albBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrType)(v)
+}
+
+func (*albBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (i *albBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrType) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrType) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o.ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+		return &v
+	}).(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput)
+}
+
+// Text to search in reply.
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) Receive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) *string { return v.Receive }).(pulumi.StringPtrOutput)
+}
+
+// Message to send. If empty, it's a connect-only health check.
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) Send() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) *string { return v.Send }).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput) Elem() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+		return *v
+	}).(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput)
+}
+
+// Text to search in reply.
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput) Receive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Receive
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message to send. If empty, it's a connect-only health check.
+func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput) Send() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Send
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendLoadBalancingConfig struct {
+	// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+	LocalityAwareRoutingPercent *int `pulumi:"localityAwareRoutingPercent"`
+	// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+	PanicThreshold *int `pulumi:"panicThreshold"`
+	// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+	StrictLocality *bool `pulumi:"strictLocality"`
+}
+
+// AlbBackendGroupGrpcBackendLoadBalancingConfigInput is an input type that accepts AlbBackendGroupGrpcBackendLoadBalancingConfigArgs and AlbBackendGroupGrpcBackendLoadBalancingConfigOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendLoadBalancingConfigInput` via:
+//
+//          AlbBackendGroupGrpcBackendLoadBalancingConfigArgs{...}
+type AlbBackendGroupGrpcBackendLoadBalancingConfigInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendLoadBalancingConfigOutput() AlbBackendGroupGrpcBackendLoadBalancingConfigOutput
+	ToAlbBackendGroupGrpcBackendLoadBalancingConfigOutputWithContext(context.Context) AlbBackendGroupGrpcBackendLoadBalancingConfigOutput
+}
+
+type AlbBackendGroupGrpcBackendLoadBalancingConfigArgs struct {
+	// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+	LocalityAwareRoutingPercent pulumi.IntPtrInput `pulumi:"localityAwareRoutingPercent"`
+	// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+	PanicThreshold pulumi.IntPtrInput `pulumi:"panicThreshold"`
+	// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+	StrictLocality pulumi.BoolPtrInput `pulumi:"strictLocality"`
+}
+
+func (AlbBackendGroupGrpcBackendLoadBalancingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (i AlbBackendGroupGrpcBackendLoadBalancingConfigArgs) ToAlbBackendGroupGrpcBackendLoadBalancingConfigOutput() AlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return i.ToAlbBackendGroupGrpcBackendLoadBalancingConfigOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendLoadBalancingConfigArgs) ToAlbBackendGroupGrpcBackendLoadBalancingConfigOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendLoadBalancingConfigOutput)
+}
+
+func (i AlbBackendGroupGrpcBackendLoadBalancingConfigArgs) ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput() AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendLoadBalancingConfigArgs) ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendLoadBalancingConfigOutput).ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupGrpcBackendLoadBalancingConfigPtrInput is an input type that accepts AlbBackendGroupGrpcBackendLoadBalancingConfigArgs, AlbBackendGroupGrpcBackendLoadBalancingConfigPtr and AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendLoadBalancingConfigPtrInput` via:
+//
+//          AlbBackendGroupGrpcBackendLoadBalancingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupGrpcBackendLoadBalancingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput() AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput
+	ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(context.Context) AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput
+}
+
+type albBackendGroupGrpcBackendLoadBalancingConfigPtrType AlbBackendGroupGrpcBackendLoadBalancingConfigArgs
+
+func AlbBackendGroupGrpcBackendLoadBalancingConfigPtr(v *AlbBackendGroupGrpcBackendLoadBalancingConfigArgs) AlbBackendGroupGrpcBackendLoadBalancingConfigPtrInput {
+	return (*albBackendGroupGrpcBackendLoadBalancingConfigPtrType)(v)
+}
+
+func (*albBackendGroupGrpcBackendLoadBalancingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (i *albBackendGroupGrpcBackendLoadBalancingConfigPtrType) ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput() AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupGrpcBackendLoadBalancingConfigPtrType) ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendLoadBalancingConfigOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ToAlbBackendGroupGrpcBackendLoadBalancingConfigOutput() AlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ToAlbBackendGroupGrpcBackendLoadBalancingConfigOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput() AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
+	return o.ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendLoadBalancingConfig) *AlbBackendGroupGrpcBackendLoadBalancingConfig {
+		return &v
+	}).(AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput)
+}
+
+// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) LocalityAwareRoutingPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendLoadBalancingConfig) *int { return v.LocalityAwareRoutingPercent }).(pulumi.IntPtrOutput)
+}
+
+// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) PanicThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendLoadBalancingConfig) *int { return v.PanicThreshold }).(pulumi.IntPtrOutput)
+}
+
+// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) StrictLocality() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendLoadBalancingConfig) *bool { return v.StrictLocality }).(pulumi.BoolPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput) ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput() AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput) ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput) Elem() AlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendLoadBalancingConfig) AlbBackendGroupGrpcBackendLoadBalancingConfig {
+		return *v
+	}).(AlbBackendGroupGrpcBackendLoadBalancingConfigOutput)
+}
+
+// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput) LocalityAwareRoutingPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendLoadBalancingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalityAwareRoutingPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput) PanicThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendLoadBalancingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PanicThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+func (o AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput) StrictLocality() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendLoadBalancingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictLocality
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendTls struct {
+	// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+	// * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+	// * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+	Sni               *string                                         `pulumi:"sni"`
+	ValidationContext *AlbBackendGroupGrpcBackendTlsValidationContext `pulumi:"validationContext"`
+}
+
+// AlbBackendGroupGrpcBackendTlsInput is an input type that accepts AlbBackendGroupGrpcBackendTlsArgs and AlbBackendGroupGrpcBackendTlsOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendTlsInput` via:
+//
+//          AlbBackendGroupGrpcBackendTlsArgs{...}
+type AlbBackendGroupGrpcBackendTlsInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendTlsOutput() AlbBackendGroupGrpcBackendTlsOutput
+	ToAlbBackendGroupGrpcBackendTlsOutputWithContext(context.Context) AlbBackendGroupGrpcBackendTlsOutput
+}
+
+type AlbBackendGroupGrpcBackendTlsArgs struct {
+	// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+	// * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+	// * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+	Sni               pulumi.StringPtrInput                                  `pulumi:"sni"`
+	ValidationContext AlbBackendGroupGrpcBackendTlsValidationContextPtrInput `pulumi:"validationContext"`
+}
+
+func (AlbBackendGroupGrpcBackendTlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendTls)(nil)).Elem()
+}
+
+func (i AlbBackendGroupGrpcBackendTlsArgs) ToAlbBackendGroupGrpcBackendTlsOutput() AlbBackendGroupGrpcBackendTlsOutput {
+	return i.ToAlbBackendGroupGrpcBackendTlsOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendTlsArgs) ToAlbBackendGroupGrpcBackendTlsOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendTlsOutput)
+}
+
+func (i AlbBackendGroupGrpcBackendTlsArgs) ToAlbBackendGroupGrpcBackendTlsPtrOutput() AlbBackendGroupGrpcBackendTlsPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendTlsArgs) ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendTlsOutput).ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupGrpcBackendTlsPtrInput is an input type that accepts AlbBackendGroupGrpcBackendTlsArgs, AlbBackendGroupGrpcBackendTlsPtr and AlbBackendGroupGrpcBackendTlsPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendTlsPtrInput` via:
+//
+//          AlbBackendGroupGrpcBackendTlsArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupGrpcBackendTlsPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendTlsPtrOutput() AlbBackendGroupGrpcBackendTlsPtrOutput
+	ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(context.Context) AlbBackendGroupGrpcBackendTlsPtrOutput
+}
+
+type albBackendGroupGrpcBackendTlsPtrType AlbBackendGroupGrpcBackendTlsArgs
+
+func AlbBackendGroupGrpcBackendTlsPtr(v *AlbBackendGroupGrpcBackendTlsArgs) AlbBackendGroupGrpcBackendTlsPtrInput {
+	return (*albBackendGroupGrpcBackendTlsPtrType)(v)
+}
+
+func (*albBackendGroupGrpcBackendTlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendTls)(nil)).Elem()
+}
+
+func (i *albBackendGroupGrpcBackendTlsPtrType) ToAlbBackendGroupGrpcBackendTlsPtrOutput() AlbBackendGroupGrpcBackendTlsPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupGrpcBackendTlsPtrType) ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendTlsPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendTlsOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendTlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendTls)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendTlsOutput) ToAlbBackendGroupGrpcBackendTlsOutput() AlbBackendGroupGrpcBackendTlsOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendTlsOutput) ToAlbBackendGroupGrpcBackendTlsOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendTlsOutput) ToAlbBackendGroupGrpcBackendTlsPtrOutput() AlbBackendGroupGrpcBackendTlsPtrOutput {
+	return o.ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupGrpcBackendTlsOutput) ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendTls) *AlbBackendGroupGrpcBackendTls {
+		return &v
+	}).(AlbBackendGroupGrpcBackendTlsPtrOutput)
+}
+
+// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+// * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+// * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+func (o AlbBackendGroupGrpcBackendTlsOutput) Sni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendTls) *string { return v.Sni }).(pulumi.StringPtrOutput)
+}
+
+func (o AlbBackendGroupGrpcBackendTlsOutput) ValidationContext() AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendTls) *AlbBackendGroupGrpcBackendTlsValidationContext {
+		return v.ValidationContext
+	}).(AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendTlsPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendTlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendTls)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendTlsPtrOutput) ToAlbBackendGroupGrpcBackendTlsPtrOutput() AlbBackendGroupGrpcBackendTlsPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendTlsPtrOutput) ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendTlsPtrOutput) Elem() AlbBackendGroupGrpcBackendTlsOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendTls) AlbBackendGroupGrpcBackendTls { return *v }).(AlbBackendGroupGrpcBackendTlsOutput)
+}
+
+// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+// * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+// * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+func (o AlbBackendGroupGrpcBackendTlsPtrOutput) Sni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendTls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sni
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlbBackendGroupGrpcBackendTlsPtrOutput) ValidationContext() AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendTls) *AlbBackendGroupGrpcBackendTlsValidationContext {
+		if v == nil {
+			return nil
+		}
+		return v.ValidationContext
+	}).(AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendTlsValidationContext struct {
+	TrustedCaBytes *string `pulumi:"trustedCaBytes"`
+	TrustedCaId    *string `pulumi:"trustedCaId"`
+}
+
+// AlbBackendGroupGrpcBackendTlsValidationContextInput is an input type that accepts AlbBackendGroupGrpcBackendTlsValidationContextArgs and AlbBackendGroupGrpcBackendTlsValidationContextOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendTlsValidationContextInput` via:
+//
+//          AlbBackendGroupGrpcBackendTlsValidationContextArgs{...}
+type AlbBackendGroupGrpcBackendTlsValidationContextInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendTlsValidationContextOutput() AlbBackendGroupGrpcBackendTlsValidationContextOutput
+	ToAlbBackendGroupGrpcBackendTlsValidationContextOutputWithContext(context.Context) AlbBackendGroupGrpcBackendTlsValidationContextOutput
+}
+
+type AlbBackendGroupGrpcBackendTlsValidationContextArgs struct {
+	TrustedCaBytes pulumi.StringPtrInput `pulumi:"trustedCaBytes"`
+	TrustedCaId    pulumi.StringPtrInput `pulumi:"trustedCaId"`
+}
+
+func (AlbBackendGroupGrpcBackendTlsValidationContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (i AlbBackendGroupGrpcBackendTlsValidationContextArgs) ToAlbBackendGroupGrpcBackendTlsValidationContextOutput() AlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return i.ToAlbBackendGroupGrpcBackendTlsValidationContextOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendTlsValidationContextArgs) ToAlbBackendGroupGrpcBackendTlsValidationContextOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendTlsValidationContextOutput)
+}
+
+func (i AlbBackendGroupGrpcBackendTlsValidationContextArgs) ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutput() AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupGrpcBackendTlsValidationContextArgs) ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendTlsValidationContextOutput).ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupGrpcBackendTlsValidationContextPtrInput is an input type that accepts AlbBackendGroupGrpcBackendTlsValidationContextArgs, AlbBackendGroupGrpcBackendTlsValidationContextPtr and AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupGrpcBackendTlsValidationContextPtrInput` via:
+//
+//          AlbBackendGroupGrpcBackendTlsValidationContextArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupGrpcBackendTlsValidationContextPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutput() AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput
+	ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(context.Context) AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput
+}
+
+type albBackendGroupGrpcBackendTlsValidationContextPtrType AlbBackendGroupGrpcBackendTlsValidationContextArgs
+
+func AlbBackendGroupGrpcBackendTlsValidationContextPtr(v *AlbBackendGroupGrpcBackendTlsValidationContextArgs) AlbBackendGroupGrpcBackendTlsValidationContextPtrInput {
+	return (*albBackendGroupGrpcBackendTlsValidationContextPtrType)(v)
+}
+
+func (*albBackendGroupGrpcBackendTlsValidationContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (i *albBackendGroupGrpcBackendTlsValidationContextPtrType) ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutput() AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return i.ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupGrpcBackendTlsValidationContextPtrType) ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendTlsValidationContextOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendTlsValidationContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupGrpcBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextOutput) ToAlbBackendGroupGrpcBackendTlsValidationContextOutput() AlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextOutput) ToAlbBackendGroupGrpcBackendTlsValidationContextOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextOutput) ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutput() AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return o.ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextOutput) ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendTlsValidationContext) *AlbBackendGroupGrpcBackendTlsValidationContext {
+		return &v
+	}).(AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput)
+}
+func (o AlbBackendGroupGrpcBackendTlsValidationContextOutput) TrustedCaBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendTlsValidationContext) *string { return v.TrustedCaBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextOutput) TrustedCaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupGrpcBackendTlsValidationContext) *string { return v.TrustedCaId }).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupGrpcBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput) ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutput() AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput) ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput) Elem() AlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendTlsValidationContext) AlbBackendGroupGrpcBackendTlsValidationContext {
+		return *v
+	}).(AlbBackendGroupGrpcBackendTlsValidationContextOutput)
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput) TrustedCaBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendTlsValidationContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustedCaBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput) TrustedCaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendTlsValidationContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustedCaId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupHttpBackend struct {
+	// Healthcheck specification that will be used by this backend. Structure is documented below.
+	Healthcheck *AlbBackendGroupHttpBackendHealthcheck `pulumi:"healthcheck"`
+	// If set, health checks will use HTTP2.
+	Http2 *bool `pulumi:"http2"`
+	// Load Balancing Config specification that will be used by this backend. Structure is documented below.
+	LoadBalancingConfig *AlbBackendGroupHttpBackendLoadBalancingConfig `pulumi:"loadBalancingConfig"`
+	// Name of the backend.
+	Name string `pulumi:"name"`
+	// Port for incoming traffic.
+	Port *int `pulumi:"port"`
+	// References target groups for the backend.
+	TargetGroupIds []string `pulumi:"targetGroupIds"`
+	// Tls specification that will be used by this backend. Structure is documented below.
+	Tls *AlbBackendGroupHttpBackendTls `pulumi:"tls"`
+	// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+	Weight *int `pulumi:"weight"`
+}
+
+// AlbBackendGroupHttpBackendInput is an input type that accepts AlbBackendGroupHttpBackendArgs and AlbBackendGroupHttpBackendOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendInput` via:
+//
+//          AlbBackendGroupHttpBackendArgs{...}
+type AlbBackendGroupHttpBackendInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendOutput() AlbBackendGroupHttpBackendOutput
+	ToAlbBackendGroupHttpBackendOutputWithContext(context.Context) AlbBackendGroupHttpBackendOutput
+}
+
+type AlbBackendGroupHttpBackendArgs struct {
+	// Healthcheck specification that will be used by this backend. Structure is documented below.
+	Healthcheck AlbBackendGroupHttpBackendHealthcheckPtrInput `pulumi:"healthcheck"`
+	// If set, health checks will use HTTP2.
+	Http2 pulumi.BoolPtrInput `pulumi:"http2"`
+	// Load Balancing Config specification that will be used by this backend. Structure is documented below.
+	LoadBalancingConfig AlbBackendGroupHttpBackendLoadBalancingConfigPtrInput `pulumi:"loadBalancingConfig"`
+	// Name of the backend.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port for incoming traffic.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// References target groups for the backend.
+	TargetGroupIds pulumi.StringArrayInput `pulumi:"targetGroupIds"`
+	// Tls specification that will be used by this backend. Structure is documented below.
+	Tls AlbBackendGroupHttpBackendTlsPtrInput `pulumi:"tls"`
+	// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (AlbBackendGroupHttpBackendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackend)(nil)).Elem()
+}
+
+func (i AlbBackendGroupHttpBackendArgs) ToAlbBackendGroupHttpBackendOutput() AlbBackendGroupHttpBackendOutput {
+	return i.ToAlbBackendGroupHttpBackendOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendArgs) ToAlbBackendGroupHttpBackendOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendOutput)
+}
+
+// AlbBackendGroupHttpBackendArrayInput is an input type that accepts AlbBackendGroupHttpBackendArray and AlbBackendGroupHttpBackendArrayOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendArrayInput` via:
+//
+//          AlbBackendGroupHttpBackendArray{ AlbBackendGroupHttpBackendArgs{...} }
+type AlbBackendGroupHttpBackendArrayInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendArrayOutput() AlbBackendGroupHttpBackendArrayOutput
+	ToAlbBackendGroupHttpBackendArrayOutputWithContext(context.Context) AlbBackendGroupHttpBackendArrayOutput
+}
+
+type AlbBackendGroupHttpBackendArray []AlbBackendGroupHttpBackendInput
+
+func (AlbBackendGroupHttpBackendArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbBackendGroupHttpBackend)(nil)).Elem()
+}
+
+func (i AlbBackendGroupHttpBackendArray) ToAlbBackendGroupHttpBackendArrayOutput() AlbBackendGroupHttpBackendArrayOutput {
+	return i.ToAlbBackendGroupHttpBackendArrayOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendArray) ToAlbBackendGroupHttpBackendArrayOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendArrayOutput)
+}
+
+type AlbBackendGroupHttpBackendOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackend)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendOutput) ToAlbBackendGroupHttpBackendOutput() AlbBackendGroupHttpBackendOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendOutput) ToAlbBackendGroupHttpBackendOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendOutput {
+	return o
+}
+
+// Healthcheck specification that will be used by this backend. Structure is documented below.
+func (o AlbBackendGroupHttpBackendOutput) Healthcheck() AlbBackendGroupHttpBackendHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackend) *AlbBackendGroupHttpBackendHealthcheck { return v.Healthcheck }).(AlbBackendGroupHttpBackendHealthcheckPtrOutput)
+}
+
+// If set, health checks will use HTTP2.
+func (o AlbBackendGroupHttpBackendOutput) Http2() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackend) *bool { return v.Http2 }).(pulumi.BoolPtrOutput)
+}
+
+// Load Balancing Config specification that will be used by this backend. Structure is documented below.
+func (o AlbBackendGroupHttpBackendOutput) LoadBalancingConfig() AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackend) *AlbBackendGroupHttpBackendLoadBalancingConfig {
+		return v.LoadBalancingConfig
+	}).(AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput)
+}
+
+// Name of the backend.
+func (o AlbBackendGroupHttpBackendOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackend) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Port for incoming traffic.
+func (o AlbBackendGroupHttpBackendOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackend) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// References target groups for the backend.
+func (o AlbBackendGroupHttpBackendOutput) TargetGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackend) []string { return v.TargetGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Tls specification that will be used by this backend. Structure is documented below.
+func (o AlbBackendGroupHttpBackendOutput) Tls() AlbBackendGroupHttpBackendTlsPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackend) *AlbBackendGroupHttpBackendTls { return v.Tls }).(AlbBackendGroupHttpBackendTlsPtrOutput)
+}
+
+// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+func (o AlbBackendGroupHttpBackendOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackend) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbBackendGroupHttpBackend)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendArrayOutput) ToAlbBackendGroupHttpBackendArrayOutput() AlbBackendGroupHttpBackendArrayOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendArrayOutput) ToAlbBackendGroupHttpBackendArrayOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendArrayOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendArrayOutput) Index(i pulumi.IntInput) AlbBackendGroupHttpBackendOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbBackendGroupHttpBackend {
+		return vs[0].([]AlbBackendGroupHttpBackend)[vs[1].(int)]
+	}).(AlbBackendGroupHttpBackendOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheck struct {
+	// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	GrpcHealthcheck *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck `pulumi:"grpcHealthcheck"`
+	// Optional alternative port for health checking.
+	HealthcheckPort *int `pulumi:"healthcheckPort"`
+	// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+	HealthyThreshold *int `pulumi:"healthyThreshold"`
+	// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	HttpHealthcheck *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck `pulumi:"httpHealthcheck"`
+	// Interval between health checks.
+	Interval string `pulumi:"interval"`
+	// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+	IntervalJitterPercent *float64 `pulumi:"intervalJitterPercent"`
+	// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	StreamHealthcheck *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck `pulumi:"streamHealthcheck"`
+	// Time to wait for a health check response.
+	Timeout string `pulumi:"timeout"`
+	// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
+}
+
+// AlbBackendGroupHttpBackendHealthcheckInput is an input type that accepts AlbBackendGroupHttpBackendHealthcheckArgs and AlbBackendGroupHttpBackendHealthcheckOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendHealthcheckInput` via:
+//
+//          AlbBackendGroupHttpBackendHealthcheckArgs{...}
+type AlbBackendGroupHttpBackendHealthcheckInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckOutput
+	ToAlbBackendGroupHttpBackendHealthcheckOutputWithContext(context.Context) AlbBackendGroupHttpBackendHealthcheckOutput
+}
+
+type AlbBackendGroupHttpBackendHealthcheckArgs struct {
+	// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	GrpcHealthcheck AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrInput `pulumi:"grpcHealthcheck"`
+	// Optional alternative port for health checking.
+	HealthcheckPort pulumi.IntPtrInput `pulumi:"healthcheckPort"`
+	// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
+	// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	HttpHealthcheck AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrInput `pulumi:"httpHealthcheck"`
+	// Interval between health checks.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+	IntervalJitterPercent pulumi.Float64PtrInput `pulumi:"intervalJitterPercent"`
+	// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	StreamHealthcheck AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrInput `pulumi:"streamHealthcheck"`
+	// Time to wait for a health check response.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
+}
+
+func (AlbBackendGroupHttpBackendHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheck)(nil)).Elem()
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckOutput)
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckOutput).ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupHttpBackendHealthcheckPtrInput is an input type that accepts AlbBackendGroupHttpBackendHealthcheckArgs, AlbBackendGroupHttpBackendHealthcheckPtr and AlbBackendGroupHttpBackendHealthcheckPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendHealthcheckPtrInput` via:
+//
+//          AlbBackendGroupHttpBackendHealthcheckArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupHttpBackendHealthcheckPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckPtrOutput
+	ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(context.Context) AlbBackendGroupHttpBackendHealthcheckPtrOutput
+}
+
+type albBackendGroupHttpBackendHealthcheckPtrType AlbBackendGroupHttpBackendHealthcheckArgs
+
+func AlbBackendGroupHttpBackendHealthcheckPtr(v *AlbBackendGroupHttpBackendHealthcheckArgs) AlbBackendGroupHttpBackendHealthcheckPtrInput {
+	return (*albBackendGroupHttpBackendHealthcheckPtrType)(v)
+}
+
+func (*albBackendGroupHttpBackendHealthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendHealthcheck)(nil)).Elem()
+}
+
+func (i *albBackendGroupHttpBackendHealthcheckPtrType) ToAlbBackendGroupHttpBackendHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupHttpBackendHealthcheckPtrType) ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckPtrOutput {
+	return o.ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) *AlbBackendGroupHttpBackendHealthcheck {
+		return &v
+	}).(AlbBackendGroupHttpBackendHealthcheckPtrOutput)
+}
+
+// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) GrpcHealthcheck() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+		return v.GrpcHealthcheck
+	}).(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput)
+}
+
+// Optional alternative port for health checking.
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) HealthcheckPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) *int { return v.HealthcheckPort }).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) HttpHealthcheck() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+		return v.HttpHealthcheck
+	}).(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput)
+}
+
+// Interval between health checks.
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) IntervalJitterPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) *float64 { return v.IntervalJitterPercent }).(pulumi.Float64PtrOutput)
+}
+
+// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) StreamHealthcheck() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+		return v.StreamHealthcheck
+	}).(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput)
+}
+
+// Time to wait for a health check response.
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+func (o AlbBackendGroupHttpBackendHealthcheckOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendHealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) ToAlbBackendGroupHttpBackendHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) Elem() AlbBackendGroupHttpBackendHealthcheckOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) AlbBackendGroupHttpBackendHealthcheck { return *v }).(AlbBackendGroupHttpBackendHealthcheckOutput)
+}
+
+// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) GrpcHealthcheck() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcHealthcheck
+	}).(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput)
+}
+
+// Optional alternative port for health checking.
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) HealthcheckPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthcheckPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) HttpHealthcheck() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHealthcheck
+	}).(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput)
+}
+
+// Interval between health checks.
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) IntervalJitterPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalJitterPercent
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) StreamHealthcheck() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+		if v == nil {
+			return nil
+		}
+		return v.StreamHealthcheck
+	}).(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput)
+}
+
+// Time to wait for a health check response.
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UnhealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck struct {
+	// Service name for grpc.health.v1.HealthCheckRequest message.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput is an input type that accepts AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs and AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput` via:
+//
+//          AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs{...}
+type AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput
+	ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutputWithContext(context.Context) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput
+}
+
+type AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs struct {
+	// Service name for grpc.health.v1.HealthCheckRequest message.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput)
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput).ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrInput is an input type that accepts AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs, AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtr and AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrInput` via:
+//
+//          AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput
+	ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(context.Context) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput
+}
+
+type albBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrType AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs
+
+func AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtr(v *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrInput {
+	return (*albBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrType)(v)
+}
+
+func (*albBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (i *albBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrType) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrType) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o.ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck) *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+		return &v
+	}).(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput)
+}
+
+// Service name for grpc.health.v1.HealthCheckRequest message.
+func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput) Elem() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+		return *v
+	}).(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput)
+}
+
+// Service name for grpc.health.v1.HealthCheckRequest message.
+func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck struct {
+	// "Host" HTTP header value.
+	Host *string `pulumi:"host"`
+	// If set, health checks will use HTTP2.
+	Http2 *bool `pulumi:"http2"`
+	// HTTP path.
+	Path string `pulumi:"path"`
+}
+
+// AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput is an input type that accepts AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs and AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput` via:
+//
+//          AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs{...}
+type AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput
+	ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutputWithContext(context.Context) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput
+}
+
+type AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs struct {
+	// "Host" HTTP header value.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// If set, health checks will use HTTP2.
+	Http2 pulumi.BoolPtrInput `pulumi:"http2"`
+	// HTTP path.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput)
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput).ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrInput is an input type that accepts AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs, AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtr and AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrInput` via:
+//
+//          AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput
+	ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(context.Context) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput
+}
+
+type albBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrType AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs
+
+func AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtr(v *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrInput {
+	return (*albBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrType)(v)
+}
+
+func (*albBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (i *albBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrType) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrType) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o.ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+		return &v
+	}).(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput)
+}
+
+// "Host" HTTP header value.
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// If set, health checks will use HTTP2.
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) Http2() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) *bool { return v.Http2 }).(pulumi.BoolPtrOutput)
+}
+
+// HTTP path.
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput) Elem() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+		return *v
+	}).(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput)
+}
+
+// "Host" HTTP header value.
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, health checks will use HTTP2.
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput) Http2() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Http2
+	}).(pulumi.BoolPtrOutput)
+}
+
+// HTTP path.
+func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck struct {
+	// Text to search in reply.
+	Receive *string `pulumi:"receive"`
+	// Message to send. If empty, it's a connect-only health check.
+	Send *string `pulumi:"send"`
+}
+
+// AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput is an input type that accepts AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs and AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput` via:
+//
+//          AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs{...}
+type AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput
+	ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutputWithContext(context.Context) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput
+}
+
+type AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs struct {
+	// Text to search in reply.
+	Receive pulumi.StringPtrInput `pulumi:"receive"`
+	// Message to send. If empty, it's a connect-only health check.
+	Send pulumi.StringPtrInput `pulumi:"send"`
+}
+
+func (AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput)
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput).ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrInput is an input type that accepts AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs, AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtr and AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrInput` via:
+//
+//          AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput
+	ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(context.Context) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput
+}
+
+type albBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrType AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs
+
+func AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtr(v *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrInput {
+	return (*albBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrType)(v)
+}
+
+func (*albBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (i *albBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrType) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrType) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o.ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+		return &v
+	}).(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput)
+}
+
+// Text to search in reply.
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) Receive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) *string { return v.Receive }).(pulumi.StringPtrOutput)
+}
+
+// Message to send. If empty, it's a connect-only health check.
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) Send() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) *string { return v.Send }).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput) Elem() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+		return *v
+	}).(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput)
+}
+
+// Text to search in reply.
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput) Receive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Receive
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message to send. If empty, it's a connect-only health check.
+func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput) Send() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Send
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendLoadBalancingConfig struct {
+	// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+	LocalityAwareRoutingPercent *int `pulumi:"localityAwareRoutingPercent"`
+	// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+	PanicThreshold *int `pulumi:"panicThreshold"`
+	// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+	StrictLocality *bool `pulumi:"strictLocality"`
+}
+
+// AlbBackendGroupHttpBackendLoadBalancingConfigInput is an input type that accepts AlbBackendGroupHttpBackendLoadBalancingConfigArgs and AlbBackendGroupHttpBackendLoadBalancingConfigOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendLoadBalancingConfigInput` via:
+//
+//          AlbBackendGroupHttpBackendLoadBalancingConfigArgs{...}
+type AlbBackendGroupHttpBackendLoadBalancingConfigInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendLoadBalancingConfigOutput() AlbBackendGroupHttpBackendLoadBalancingConfigOutput
+	ToAlbBackendGroupHttpBackendLoadBalancingConfigOutputWithContext(context.Context) AlbBackendGroupHttpBackendLoadBalancingConfigOutput
+}
+
+type AlbBackendGroupHttpBackendLoadBalancingConfigArgs struct {
+	// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+	LocalityAwareRoutingPercent pulumi.IntPtrInput `pulumi:"localityAwareRoutingPercent"`
+	// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+	PanicThreshold pulumi.IntPtrInput `pulumi:"panicThreshold"`
+	// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+	StrictLocality pulumi.BoolPtrInput `pulumi:"strictLocality"`
+}
+
+func (AlbBackendGroupHttpBackendLoadBalancingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (i AlbBackendGroupHttpBackendLoadBalancingConfigArgs) ToAlbBackendGroupHttpBackendLoadBalancingConfigOutput() AlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return i.ToAlbBackendGroupHttpBackendLoadBalancingConfigOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendLoadBalancingConfigArgs) ToAlbBackendGroupHttpBackendLoadBalancingConfigOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendLoadBalancingConfigOutput)
+}
+
+func (i AlbBackendGroupHttpBackendLoadBalancingConfigArgs) ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput() AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendLoadBalancingConfigArgs) ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendLoadBalancingConfigOutput).ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupHttpBackendLoadBalancingConfigPtrInput is an input type that accepts AlbBackendGroupHttpBackendLoadBalancingConfigArgs, AlbBackendGroupHttpBackendLoadBalancingConfigPtr and AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendLoadBalancingConfigPtrInput` via:
+//
+//          AlbBackendGroupHttpBackendLoadBalancingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupHttpBackendLoadBalancingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput() AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput
+	ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(context.Context) AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput
+}
+
+type albBackendGroupHttpBackendLoadBalancingConfigPtrType AlbBackendGroupHttpBackendLoadBalancingConfigArgs
+
+func AlbBackendGroupHttpBackendLoadBalancingConfigPtr(v *AlbBackendGroupHttpBackendLoadBalancingConfigArgs) AlbBackendGroupHttpBackendLoadBalancingConfigPtrInput {
+	return (*albBackendGroupHttpBackendLoadBalancingConfigPtrType)(v)
+}
+
+func (*albBackendGroupHttpBackendLoadBalancingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (i *albBackendGroupHttpBackendLoadBalancingConfigPtrType) ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput() AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupHttpBackendLoadBalancingConfigPtrType) ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendLoadBalancingConfigOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendLoadBalancingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigOutput) ToAlbBackendGroupHttpBackendLoadBalancingConfigOutput() AlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigOutput) ToAlbBackendGroupHttpBackendLoadBalancingConfigOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigOutput) ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput() AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
+	return o.ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigOutput) ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendLoadBalancingConfig) *AlbBackendGroupHttpBackendLoadBalancingConfig {
+		return &v
+	}).(AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput)
+}
+
+// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigOutput) LocalityAwareRoutingPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendLoadBalancingConfig) *int { return v.LocalityAwareRoutingPercent }).(pulumi.IntPtrOutput)
+}
+
+// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigOutput) PanicThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendLoadBalancingConfig) *int { return v.PanicThreshold }).(pulumi.IntPtrOutput)
+}
+
+// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigOutput) StrictLocality() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendLoadBalancingConfig) *bool { return v.StrictLocality }).(pulumi.BoolPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput) ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput() AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput) ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput) Elem() AlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendLoadBalancingConfig) AlbBackendGroupHttpBackendLoadBalancingConfig {
+		return *v
+	}).(AlbBackendGroupHttpBackendLoadBalancingConfigOutput)
+}
+
+// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput) LocalityAwareRoutingPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendLoadBalancingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalityAwareRoutingPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput) PanicThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendLoadBalancingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PanicThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+func (o AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput) StrictLocality() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendLoadBalancingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictLocality
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendTls struct {
+	// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+	// * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+	// * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+	Sni               *string                                         `pulumi:"sni"`
+	ValidationContext *AlbBackendGroupHttpBackendTlsValidationContext `pulumi:"validationContext"`
+}
+
+// AlbBackendGroupHttpBackendTlsInput is an input type that accepts AlbBackendGroupHttpBackendTlsArgs and AlbBackendGroupHttpBackendTlsOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendTlsInput` via:
+//
+//          AlbBackendGroupHttpBackendTlsArgs{...}
+type AlbBackendGroupHttpBackendTlsInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendTlsOutput() AlbBackendGroupHttpBackendTlsOutput
+	ToAlbBackendGroupHttpBackendTlsOutputWithContext(context.Context) AlbBackendGroupHttpBackendTlsOutput
+}
+
+type AlbBackendGroupHttpBackendTlsArgs struct {
+	// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+	// * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+	// * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+	Sni               pulumi.StringPtrInput                                  `pulumi:"sni"`
+	ValidationContext AlbBackendGroupHttpBackendTlsValidationContextPtrInput `pulumi:"validationContext"`
+}
+
+func (AlbBackendGroupHttpBackendTlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendTls)(nil)).Elem()
+}
+
+func (i AlbBackendGroupHttpBackendTlsArgs) ToAlbBackendGroupHttpBackendTlsOutput() AlbBackendGroupHttpBackendTlsOutput {
+	return i.ToAlbBackendGroupHttpBackendTlsOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendTlsArgs) ToAlbBackendGroupHttpBackendTlsOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendTlsOutput)
+}
+
+func (i AlbBackendGroupHttpBackendTlsArgs) ToAlbBackendGroupHttpBackendTlsPtrOutput() AlbBackendGroupHttpBackendTlsPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendTlsArgs) ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendTlsOutput).ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupHttpBackendTlsPtrInput is an input type that accepts AlbBackendGroupHttpBackendTlsArgs, AlbBackendGroupHttpBackendTlsPtr and AlbBackendGroupHttpBackendTlsPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendTlsPtrInput` via:
+//
+//          AlbBackendGroupHttpBackendTlsArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupHttpBackendTlsPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendTlsPtrOutput() AlbBackendGroupHttpBackendTlsPtrOutput
+	ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(context.Context) AlbBackendGroupHttpBackendTlsPtrOutput
+}
+
+type albBackendGroupHttpBackendTlsPtrType AlbBackendGroupHttpBackendTlsArgs
+
+func AlbBackendGroupHttpBackendTlsPtr(v *AlbBackendGroupHttpBackendTlsArgs) AlbBackendGroupHttpBackendTlsPtrInput {
+	return (*albBackendGroupHttpBackendTlsPtrType)(v)
+}
+
+func (*albBackendGroupHttpBackendTlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendTls)(nil)).Elem()
+}
+
+func (i *albBackendGroupHttpBackendTlsPtrType) ToAlbBackendGroupHttpBackendTlsPtrOutput() AlbBackendGroupHttpBackendTlsPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupHttpBackendTlsPtrType) ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendTlsPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendTlsOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendTlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendTls)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendTlsOutput) ToAlbBackendGroupHttpBackendTlsOutput() AlbBackendGroupHttpBackendTlsOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendTlsOutput) ToAlbBackendGroupHttpBackendTlsOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendTlsOutput) ToAlbBackendGroupHttpBackendTlsPtrOutput() AlbBackendGroupHttpBackendTlsPtrOutput {
+	return o.ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupHttpBackendTlsOutput) ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendTls) *AlbBackendGroupHttpBackendTls {
+		return &v
+	}).(AlbBackendGroupHttpBackendTlsPtrOutput)
+}
+
+// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+// * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+// * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+func (o AlbBackendGroupHttpBackendTlsOutput) Sni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendTls) *string { return v.Sni }).(pulumi.StringPtrOutput)
+}
+
+func (o AlbBackendGroupHttpBackendTlsOutput) ValidationContext() AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendTls) *AlbBackendGroupHttpBackendTlsValidationContext {
+		return v.ValidationContext
+	}).(AlbBackendGroupHttpBackendTlsValidationContextPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendTlsPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendTlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendTls)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendTlsPtrOutput) ToAlbBackendGroupHttpBackendTlsPtrOutput() AlbBackendGroupHttpBackendTlsPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendTlsPtrOutput) ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendTlsPtrOutput) Elem() AlbBackendGroupHttpBackendTlsOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendTls) AlbBackendGroupHttpBackendTls { return *v }).(AlbBackendGroupHttpBackendTlsOutput)
+}
+
+// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+// * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+// * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+func (o AlbBackendGroupHttpBackendTlsPtrOutput) Sni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendTls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sni
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlbBackendGroupHttpBackendTlsPtrOutput) ValidationContext() AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendTls) *AlbBackendGroupHttpBackendTlsValidationContext {
+		if v == nil {
+			return nil
+		}
+		return v.ValidationContext
+	}).(AlbBackendGroupHttpBackendTlsValidationContextPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendTlsValidationContext struct {
+	TrustedCaBytes *string `pulumi:"trustedCaBytes"`
+	TrustedCaId    *string `pulumi:"trustedCaId"`
+}
+
+// AlbBackendGroupHttpBackendTlsValidationContextInput is an input type that accepts AlbBackendGroupHttpBackendTlsValidationContextArgs and AlbBackendGroupHttpBackendTlsValidationContextOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendTlsValidationContextInput` via:
+//
+//          AlbBackendGroupHttpBackendTlsValidationContextArgs{...}
+type AlbBackendGroupHttpBackendTlsValidationContextInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendTlsValidationContextOutput() AlbBackendGroupHttpBackendTlsValidationContextOutput
+	ToAlbBackendGroupHttpBackendTlsValidationContextOutputWithContext(context.Context) AlbBackendGroupHttpBackendTlsValidationContextOutput
+}
+
+type AlbBackendGroupHttpBackendTlsValidationContextArgs struct {
+	TrustedCaBytes pulumi.StringPtrInput `pulumi:"trustedCaBytes"`
+	TrustedCaId    pulumi.StringPtrInput `pulumi:"trustedCaId"`
+}
+
+func (AlbBackendGroupHttpBackendTlsValidationContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (i AlbBackendGroupHttpBackendTlsValidationContextArgs) ToAlbBackendGroupHttpBackendTlsValidationContextOutput() AlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return i.ToAlbBackendGroupHttpBackendTlsValidationContextOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendTlsValidationContextArgs) ToAlbBackendGroupHttpBackendTlsValidationContextOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendTlsValidationContextOutput)
+}
+
+func (i AlbBackendGroupHttpBackendTlsValidationContextArgs) ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutput() AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(context.Background())
+}
+
+func (i AlbBackendGroupHttpBackendTlsValidationContextArgs) ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendTlsValidationContextOutput).ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(ctx)
+}
+
+// AlbBackendGroupHttpBackendTlsValidationContextPtrInput is an input type that accepts AlbBackendGroupHttpBackendTlsValidationContextArgs, AlbBackendGroupHttpBackendTlsValidationContextPtr and AlbBackendGroupHttpBackendTlsValidationContextPtrOutput values.
+// You can construct a concrete instance of `AlbBackendGroupHttpBackendTlsValidationContextPtrInput` via:
+//
+//          AlbBackendGroupHttpBackendTlsValidationContextArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbBackendGroupHttpBackendTlsValidationContextPtrInput interface {
+	pulumi.Input
+
+	ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutput() AlbBackendGroupHttpBackendTlsValidationContextPtrOutput
+	ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(context.Context) AlbBackendGroupHttpBackendTlsValidationContextPtrOutput
+}
+
+type albBackendGroupHttpBackendTlsValidationContextPtrType AlbBackendGroupHttpBackendTlsValidationContextArgs
+
+func AlbBackendGroupHttpBackendTlsValidationContextPtr(v *AlbBackendGroupHttpBackendTlsValidationContextArgs) AlbBackendGroupHttpBackendTlsValidationContextPtrInput {
+	return (*albBackendGroupHttpBackendTlsValidationContextPtrType)(v)
+}
+
+func (*albBackendGroupHttpBackendTlsValidationContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (i *albBackendGroupHttpBackendTlsValidationContextPtrType) ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutput() AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return i.ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(context.Background())
+}
+
+func (i *albBackendGroupHttpBackendTlsValidationContextPtrType) ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupHttpBackendTlsValidationContextPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendTlsValidationContextOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendTlsValidationContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbBackendGroupHttpBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextOutput) ToAlbBackendGroupHttpBackendTlsValidationContextOutput() AlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextOutput) ToAlbBackendGroupHttpBackendTlsValidationContextOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextOutput) ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutput() AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return o.ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(context.Background())
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextOutput) ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendTlsValidationContext) *AlbBackendGroupHttpBackendTlsValidationContext {
+		return &v
+	}).(AlbBackendGroupHttpBackendTlsValidationContextPtrOutput)
+}
+func (o AlbBackendGroupHttpBackendTlsValidationContextOutput) TrustedCaBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendTlsValidationContext) *string { return v.TrustedCaBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextOutput) TrustedCaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbBackendGroupHttpBackendTlsValidationContext) *string { return v.TrustedCaId }).(pulumi.StringPtrOutput)
+}
+
+type AlbBackendGroupHttpBackendTlsValidationContextPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbBackendGroupHttpBackendTlsValidationContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbBackendGroupHttpBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextPtrOutput) ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutput() AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextPtrOutput) ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
+	return o
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextPtrOutput) Elem() AlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendTlsValidationContext) AlbBackendGroupHttpBackendTlsValidationContext {
+		return *v
+	}).(AlbBackendGroupHttpBackendTlsValidationContextOutput)
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextPtrOutput) TrustedCaBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendTlsValidationContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustedCaBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlbBackendGroupHttpBackendTlsValidationContextPtrOutput) TrustedCaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendTlsValidationContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustedCaId
+	}).(pulumi.StringPtrOutput)
+}
+
 type AlbTargetGroupTarget struct {
 	// IP address of the target.
 	IpAddress string `pulumi:"ipAddress"`
@@ -1608,11 +4353,12 @@ func (o ComputeInstanceGroupInstanceArrayOutput) Index(i pulumi.IntInput) Comput
 type ComputeInstanceGroupInstanceNetworkInterface struct {
 	// The index of the network interface as generated by the server.
 	Index *int `pulumi:"index"`
-	// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+	// Manual set static IP address.
 	IpAddress *string `pulumi:"ipAddress"`
 	// True if IPv4 address allocated for the network interface.
-	Ipv4        *bool   `pulumi:"ipv4"`
-	Ipv6        *bool   `pulumi:"ipv6"`
+	Ipv4 *bool `pulumi:"ipv4"`
+	Ipv6 *bool `pulumi:"ipv6"`
+	// Manual set static IPv6 address.
 	Ipv6Address *string `pulumi:"ipv6Address"`
 	// The MAC address assigned to the network interface.
 	MacAddress *string `pulumi:"macAddress"`
@@ -1640,11 +4386,12 @@ type ComputeInstanceGroupInstanceNetworkInterfaceInput interface {
 type ComputeInstanceGroupInstanceNetworkInterfaceArgs struct {
 	// The index of the network interface as generated by the server.
 	Index pulumi.IntPtrInput `pulumi:"index"`
-	// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+	// Manual set static IP address.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// True if IPv4 address allocated for the network interface.
-	Ipv4        pulumi.BoolPtrInput   `pulumi:"ipv4"`
-	Ipv6        pulumi.BoolPtrInput   `pulumi:"ipv6"`
+	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+	// Manual set static IPv6 address.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 	// The MAC address assigned to the network interface.
 	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
@@ -1714,7 +4461,7 @@ func (o ComputeInstanceGroupInstanceNetworkInterfaceOutput) Index() pulumi.IntPt
 	return o.ApplyT(func(v ComputeInstanceGroupInstanceNetworkInterface) *int { return v.Index }).(pulumi.IntPtrOutput)
 }
 
-// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+// Manual set static IP address.
 func (o ComputeInstanceGroupInstanceNetworkInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceGroupInstanceNetworkInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
@@ -1728,6 +4475,7 @@ func (o ComputeInstanceGroupInstanceNetworkInterfaceOutput) Ipv6() pulumi.BoolPt
 	return o.ApplyT(func(v ComputeInstanceGroupInstanceNetworkInterface) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
 }
 
+// Manual set static IPv6 address.
 func (o ComputeInstanceGroupInstanceNetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceGroupInstanceNetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
@@ -2626,9 +5374,13 @@ func (o ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrOutput) T
 type ComputeInstanceGroupInstanceTemplateNetworkInterface struct {
 	// List of dns records.  The structure is documented below.
 	DnsRecords []ComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecord `pulumi:"dnsRecords"`
+	// Manual set static IP address.
+	IpAddress *string `pulumi:"ipAddress"`
 	// True if IPv4 address allocated for the network interface.
 	Ipv4 *bool `pulumi:"ipv4"`
 	Ipv6 *bool `pulumi:"ipv6"`
+	// Manual set static IPv6 address.
+	Ipv6Address *string `pulumi:"ipv6Address"`
 	// List of ipv6 dns records.  The structure is documented below.
 	Ipv6DnsRecords []ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord `pulumi:"ipv6DnsRecords"`
 	// A public address that can be used to access the internet over NAT.
@@ -2657,9 +5409,13 @@ type ComputeInstanceGroupInstanceTemplateNetworkInterfaceInput interface {
 type ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs struct {
 	// List of dns records.  The structure is documented below.
 	DnsRecords ComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArrayInput `pulumi:"dnsRecords"`
+	// Manual set static IP address.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// True if IPv4 address allocated for the network interface.
 	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
 	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+	// Manual set static IPv6 address.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 	// List of ipv6 dns records.  The structure is documented below.
 	Ipv6DnsRecords ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArrayInput `pulumi:"ipv6DnsRecords"`
 	// A public address that can be used to access the internet over NAT.
@@ -2732,6 +5488,11 @@ func (o ComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) DnsRecords()
 	}).(ComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArrayOutput)
 }
 
+// Manual set static IP address.
+func (o ComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateNetworkInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
 // True if IPv4 address allocated for the network interface.
 func (o ComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) Ipv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateNetworkInterface) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
@@ -2739,6 +5500,11 @@ func (o ComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) Ipv4() pulum
 
 func (o ComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) Ipv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateNetworkInterface) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Manual set static IPv6 address.
+func (o ComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateNetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
 // List of ipv6 dns records.  The structure is documented below.
@@ -6812,6 +9578,8 @@ func (o DataprocClusterClusterConfigHadoopPtrOutput) SshPublicKeys() pulumi.Stri
 }
 
 type DataprocClusterClusterConfigSubclusterSpec struct {
+	// Autoscaling configuration for compute subclusters.
+	AutoscalingConfig *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// Number of hosts within Data Proc subcluster.
 	HostsCount int `pulumi:"hostsCount"`
 	// (Computed) ID of a new Data Proc cluster.
@@ -6838,6 +9606,8 @@ type DataprocClusterClusterConfigSubclusterSpecInput interface {
 }
 
 type DataprocClusterClusterConfigSubclusterSpecArgs struct {
+	// Autoscaling configuration for compute subclusters.
+	AutoscalingConfig DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
 	// Number of hosts within Data Proc subcluster.
 	HostsCount pulumi.IntInput `pulumi:"hostsCount"`
 	// (Computed) ID of a new Data Proc cluster.
@@ -6903,6 +9673,13 @@ func (o DataprocClusterClusterConfigSubclusterSpecOutput) ToDataprocClusterClust
 	return o
 }
 
+// Autoscaling configuration for compute subclusters.
+func (o DataprocClusterClusterConfigSubclusterSpecOutput) AutoscalingConfig() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpec) *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
+		return v.AutoscalingConfig
+	}).(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput)
+}
+
 // Number of hosts within Data Proc subcluster.
 func (o DataprocClusterClusterConfigSubclusterSpecOutput) HostsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpec) int { return v.HostsCount }).(pulumi.IntOutput)
@@ -6953,6 +9730,257 @@ func (o DataprocClusterClusterConfigSubclusterSpecArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataprocClusterClusterConfigSubclusterSpec {
 		return vs[0].([]DataprocClusterClusterConfigSubclusterSpec)[vs[1].(int)]
 	}).(DataprocClusterClusterConfigSubclusterSpecOutput)
+}
+
+type DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig struct {
+	// Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+	CpuUtilizationTarget *float64 `pulumi:"cpuUtilizationTarget"`
+	// Timeout to gracefully decommission nodes during downscaling. In seconds.
+	DecommissionTimeout *int `pulumi:"decommissionTimeout"`
+	// Maximum number of nodes in autoscaling subclusters.
+	MaxHostsCount int `pulumi:"maxHostsCount"`
+	// Time in seconds allotted for averaging metrics.
+	MeasurementDuration *int `pulumi:"measurementDuration"`
+	// Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+	Preemptible *bool `pulumi:"preemptible"`
+	// Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+	StabilizationDuration *int `pulumi:"stabilizationDuration"`
+	// The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+	WarmupDuration *int `pulumi:"warmupDuration"`
+}
+
+// DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigInput is an input type that accepts DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs and DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput values.
+// You can construct a concrete instance of `DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigInput` via:
+//
+//          DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs{...}
+type DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput
+	ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutputWithContext(context.Context) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput
+}
+
+type DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs struct {
+	// Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+	CpuUtilizationTarget pulumi.Float64PtrInput `pulumi:"cpuUtilizationTarget"`
+	// Timeout to gracefully decommission nodes during downscaling. In seconds.
+	DecommissionTimeout pulumi.IntPtrInput `pulumi:"decommissionTimeout"`
+	// Maximum number of nodes in autoscaling subclusters.
+	MaxHostsCount pulumi.IntInput `pulumi:"maxHostsCount"`
+	// Time in seconds allotted for averaging metrics.
+	MeasurementDuration pulumi.IntPtrInput `pulumi:"measurementDuration"`
+	// Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
+	// Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+	StabilizationDuration pulumi.IntPtrInput `pulumi:"stabilizationDuration"`
+	// The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+	WarmupDuration pulumi.IntPtrInput `pulumi:"warmupDuration"`
+}
+
+func (DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig)(nil)).Elem()
+}
+
+func (i DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return i.ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutputWithContext(ctx context.Context) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput)
+}
+
+func (i DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
+	return i.ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput).ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(ctx)
+}
+
+// DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrInput is an input type that accepts DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs, DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtr and DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput values.
+// You can construct a concrete instance of `DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrInput` via:
+//
+//          DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput
+	ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(context.Context) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput
+}
+
+type dataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrType DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs
+
+func DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtr(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrInput {
+	return (*dataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrType)(v)
+}
+
+func (*dataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig)(nil)).Elem()
+}
+
+func (i *dataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrType) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
+	return i.ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrType) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput)
+}
+
+type DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig)(nil)).Elem()
+}
+
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return o
+}
+
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutputWithContext(ctx context.Context) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return o
+}
+
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
+	return o.ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
+		return &v
+	}).(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput)
+}
+
+// Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) CpuUtilizationTarget() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *float64 {
+		return v.CpuUtilizationTarget
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Timeout to gracefully decommission nodes during downscaling. In seconds.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) DecommissionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *int { return v.DecommissionTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of nodes in autoscaling subclusters.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) MaxHostsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) int { return v.MaxHostsCount }).(pulumi.IntOutput)
+}
+
+// Time in seconds allotted for averaging metrics.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) MeasurementDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *int { return v.MeasurementDuration }).(pulumi.IntPtrOutput)
+}
+
+// Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+}
+
+// Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) StabilizationDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *int {
+		return v.StabilizationDuration
+	}).(pulumi.IntPtrOutput)
+}
+
+// The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) WarmupDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *int { return v.WarmupDuration }).(pulumi.IntPtrOutput)
+}
+
+type DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig)(nil)).Elem()
+}
+
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) Elem() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return o.ApplyT(func(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
+		return *v
+	}).(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput)
+}
+
+// Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) CpuUtilizationTarget() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CpuUtilizationTarget
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Timeout to gracefully decommission nodes during downscaling. In seconds.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) DecommissionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DecommissionTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of nodes in autoscaling subclusters.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) MaxHostsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxHostsCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time in seconds allotted for averaging metrics.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) MeasurementDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MeasurementDuration
+	}).(pulumi.IntPtrOutput)
+}
+
+// Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) StabilizationDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StabilizationDuration
+	}).(pulumi.IntPtrOutput)
+}
+
+// The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) WarmupDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WarmupDuration
+	}).(pulumi.IntPtrOutput)
 }
 
 type DataprocClusterClusterConfigSubclusterSpecResources struct {
@@ -16184,7 +19212,7 @@ func (o MdbClickhouseClusterDatabaseArrayOutput) Index(i pulumi.IntInput) MdbCli
 type MdbClickhouseClusterFormatSchema struct {
 	// Graphite rollup configuration name.
 	Name string `pulumi:"name"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type string `pulumi:"type"`
 	// Model file URL. You can only use models stored in Yandex Object Storage.
 	Uri string `pulumi:"uri"`
@@ -16204,7 +19232,7 @@ type MdbClickhouseClusterFormatSchemaInput interface {
 type MdbClickhouseClusterFormatSchemaArgs struct {
 	// Graphite rollup configuration name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Model file URL. You can only use models stored in Yandex Object Storage.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -16266,7 +19294,7 @@ func (o MdbClickhouseClusterFormatSchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterFormatSchema) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type of the model.
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 func (o MdbClickhouseClusterFormatSchemaOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterFormatSchema) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -16305,7 +19333,7 @@ type MdbClickhouseClusterHost struct {
 	ShardName *string `pulumi:"shardName"`
 	// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
 	SubnetId *string `pulumi:"subnetId"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type string `pulumi:"type"`
 	// The availability zone where the ClickHouse host will be created.
 	// For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
@@ -16332,7 +19360,7 @@ type MdbClickhouseClusterHostArgs struct {
 	ShardName pulumi.StringPtrInput `pulumi:"shardName"`
 	// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The availability zone where the ClickHouse host will be created.
 	// For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
@@ -16410,7 +19438,7 @@ func (o MdbClickhouseClusterHostOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterHost) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Type of the model.
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 func (o MdbClickhouseClusterHostOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterHost) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -16441,10 +19469,179 @@ func (o MdbClickhouseClusterHostArrayOutput) Index(i pulumi.IntInput) MdbClickho
 	}).(MdbClickhouseClusterHostOutput)
 }
 
+type MdbClickhouseClusterMaintenanceWindow struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day *string `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour *int `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type string `pulumi:"type"`
+}
+
+// MdbClickhouseClusterMaintenanceWindowInput is an input type that accepts MdbClickhouseClusterMaintenanceWindowArgs and MdbClickhouseClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `MdbClickhouseClusterMaintenanceWindowInput` via:
+//
+//          MdbClickhouseClusterMaintenanceWindowArgs{...}
+type MdbClickhouseClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToMdbClickhouseClusterMaintenanceWindowOutput() MdbClickhouseClusterMaintenanceWindowOutput
+	ToMdbClickhouseClusterMaintenanceWindowOutputWithContext(context.Context) MdbClickhouseClusterMaintenanceWindowOutput
+}
+
+type MdbClickhouseClusterMaintenanceWindowArgs struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day pulumi.StringPtrInput `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MdbClickhouseClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbClickhouseClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i MdbClickhouseClusterMaintenanceWindowArgs) ToMdbClickhouseClusterMaintenanceWindowOutput() MdbClickhouseClusterMaintenanceWindowOutput {
+	return i.ToMdbClickhouseClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i MdbClickhouseClusterMaintenanceWindowArgs) ToMdbClickhouseClusterMaintenanceWindowOutputWithContext(ctx context.Context) MdbClickhouseClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterMaintenanceWindowOutput)
+}
+
+func (i MdbClickhouseClusterMaintenanceWindowArgs) ToMdbClickhouseClusterMaintenanceWindowPtrOutput() MdbClickhouseClusterMaintenanceWindowPtrOutput {
+	return i.ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i MdbClickhouseClusterMaintenanceWindowArgs) ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterMaintenanceWindowOutput).ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// MdbClickhouseClusterMaintenanceWindowPtrInput is an input type that accepts MdbClickhouseClusterMaintenanceWindowArgs, MdbClickhouseClusterMaintenanceWindowPtr and MdbClickhouseClusterMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `MdbClickhouseClusterMaintenanceWindowPtrInput` via:
+//
+//          MdbClickhouseClusterMaintenanceWindowArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbClickhouseClusterMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToMdbClickhouseClusterMaintenanceWindowPtrOutput() MdbClickhouseClusterMaintenanceWindowPtrOutput
+	ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(context.Context) MdbClickhouseClusterMaintenanceWindowPtrOutput
+}
+
+type mdbClickhouseClusterMaintenanceWindowPtrType MdbClickhouseClusterMaintenanceWindowArgs
+
+func MdbClickhouseClusterMaintenanceWindowPtr(v *MdbClickhouseClusterMaintenanceWindowArgs) MdbClickhouseClusterMaintenanceWindowPtrInput {
+	return (*mdbClickhouseClusterMaintenanceWindowPtrType)(v)
+}
+
+func (*mdbClickhouseClusterMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbClickhouseClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *mdbClickhouseClusterMaintenanceWindowPtrType) ToMdbClickhouseClusterMaintenanceWindowPtrOutput() MdbClickhouseClusterMaintenanceWindowPtrOutput {
+	return i.ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbClickhouseClusterMaintenanceWindowPtrType) ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterMaintenanceWindowPtrOutput)
+}
+
+type MdbClickhouseClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (MdbClickhouseClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbClickhouseClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MdbClickhouseClusterMaintenanceWindowOutput) ToMdbClickhouseClusterMaintenanceWindowOutput() MdbClickhouseClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o MdbClickhouseClusterMaintenanceWindowOutput) ToMdbClickhouseClusterMaintenanceWindowOutputWithContext(ctx context.Context) MdbClickhouseClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o MdbClickhouseClusterMaintenanceWindowOutput) ToMdbClickhouseClusterMaintenanceWindowPtrOutput() MdbClickhouseClusterMaintenanceWindowPtrOutput {
+	return o.ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o MdbClickhouseClusterMaintenanceWindowOutput) ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v MdbClickhouseClusterMaintenanceWindow) *MdbClickhouseClusterMaintenanceWindow {
+		return &v
+	}).(MdbClickhouseClusterMaintenanceWindowPtrOutput)
+}
+
+// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+func (o MdbClickhouseClusterMaintenanceWindowOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbClickhouseClusterMaintenanceWindow) *string { return v.Day }).(pulumi.StringPtrOutput)
+}
+
+// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+func (o MdbClickhouseClusterMaintenanceWindowOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MdbClickhouseClusterMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o MdbClickhouseClusterMaintenanceWindowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbClickhouseClusterMaintenanceWindow) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MdbClickhouseClusterMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbClickhouseClusterMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbClickhouseClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MdbClickhouseClusterMaintenanceWindowPtrOutput) ToMdbClickhouseClusterMaintenanceWindowPtrOutput() MdbClickhouseClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MdbClickhouseClusterMaintenanceWindowPtrOutput) ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MdbClickhouseClusterMaintenanceWindowPtrOutput) Elem() MdbClickhouseClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v *MdbClickhouseClusterMaintenanceWindow) MdbClickhouseClusterMaintenanceWindow { return *v }).(MdbClickhouseClusterMaintenanceWindowOutput)
+}
+
+// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+func (o MdbClickhouseClusterMaintenanceWindowPtrOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbClickhouseClusterMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+func (o MdbClickhouseClusterMaintenanceWindowPtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbClickhouseClusterMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o MdbClickhouseClusterMaintenanceWindowPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbClickhouseClusterMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type MdbClickhouseClusterMlModel struct {
 	// Graphite rollup configuration name.
 	Name string `pulumi:"name"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type string `pulumi:"type"`
 	// Model file URL. You can only use models stored in Yandex Object Storage.
 	Uri string `pulumi:"uri"`
@@ -16464,7 +19661,7 @@ type MdbClickhouseClusterMlModelInput interface {
 type MdbClickhouseClusterMlModelArgs struct {
 	// Graphite rollup configuration name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Model file URL. You can only use models stored in Yandex Object Storage.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -16526,7 +19723,7 @@ func (o MdbClickhouseClusterMlModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterMlModel) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type of the model.
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 func (o MdbClickhouseClusterMlModelOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterMlModel) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -19620,6 +22817,7 @@ func (o MdbKafkaClusterConfigKafkaPtrOutput) Resources() MdbKafkaClusterConfigKa
 type MdbKafkaClusterConfigKafkaKafkaConfig struct {
 	AutoCreateTopicsEnable      *bool   `pulumi:"autoCreateTopicsEnable"`
 	CompressionType             *string `pulumi:"compressionType"`
+	DefaultReplicationFactor    *int    `pulumi:"defaultReplicationFactor"`
 	LogFlushIntervalMessages    *int    `pulumi:"logFlushIntervalMessages"`
 	LogFlushIntervalMs          *int    `pulumi:"logFlushIntervalMs"`
 	LogFlushSchedulerIntervalMs *int    `pulumi:"logFlushSchedulerIntervalMs"`
@@ -19629,6 +22827,7 @@ type MdbKafkaClusterConfigKafkaKafkaConfig struct {
 	LogRetentionMinutes         *int    `pulumi:"logRetentionMinutes"`
 	LogRetentionMs              *int    `pulumi:"logRetentionMs"`
 	LogSegmentBytes             *int    `pulumi:"logSegmentBytes"`
+	NumPartitions               *int    `pulumi:"numPartitions"`
 	SocketReceiveBufferBytes    *int    `pulumi:"socketReceiveBufferBytes"`
 	SocketSendBufferBytes       *int    `pulumi:"socketSendBufferBytes"`
 }
@@ -19647,6 +22846,7 @@ type MdbKafkaClusterConfigKafkaKafkaConfigInput interface {
 type MdbKafkaClusterConfigKafkaKafkaConfigArgs struct {
 	AutoCreateTopicsEnable      pulumi.BoolPtrInput   `pulumi:"autoCreateTopicsEnable"`
 	CompressionType             pulumi.StringPtrInput `pulumi:"compressionType"`
+	DefaultReplicationFactor    pulumi.IntPtrInput    `pulumi:"defaultReplicationFactor"`
 	LogFlushIntervalMessages    pulumi.IntPtrInput    `pulumi:"logFlushIntervalMessages"`
 	LogFlushIntervalMs          pulumi.IntPtrInput    `pulumi:"logFlushIntervalMs"`
 	LogFlushSchedulerIntervalMs pulumi.IntPtrInput    `pulumi:"logFlushSchedulerIntervalMs"`
@@ -19656,6 +22856,7 @@ type MdbKafkaClusterConfigKafkaKafkaConfigArgs struct {
 	LogRetentionMinutes         pulumi.IntPtrInput    `pulumi:"logRetentionMinutes"`
 	LogRetentionMs              pulumi.IntPtrInput    `pulumi:"logRetentionMs"`
 	LogSegmentBytes             pulumi.IntPtrInput    `pulumi:"logSegmentBytes"`
+	NumPartitions               pulumi.IntPtrInput    `pulumi:"numPartitions"`
 	SocketReceiveBufferBytes    pulumi.IntPtrInput    `pulumi:"socketReceiveBufferBytes"`
 	SocketSendBufferBytes       pulumi.IntPtrInput    `pulumi:"socketSendBufferBytes"`
 }
@@ -19744,6 +22945,10 @@ func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) CompressionType() pulumi.St
 	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+}
+
 func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMessages() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogFlushIntervalMessages }).(pulumi.IntPtrOutput)
 }
@@ -19778,6 +22983,10 @@ func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMs() pulumi.Int
 
 func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogSegmentBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogSegmentBytes }).(pulumi.IntPtrOutput)
+}
+
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) NumPartitions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.NumPartitions }).(pulumi.IntPtrOutput)
 }
 
 func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketReceiveBufferBytes() pulumi.IntPtrOutput {
@@ -19822,6 +23031,15 @@ func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) CompressionType() pulumi
 		}
 		return v.CompressionType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultReplicationFactor
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMessages() pulumi.IntPtrOutput {
@@ -19902,6 +23120,15 @@ func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogSegmentBytes() pulumi
 			return nil
 		}
 		return v.LogSegmentBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) NumPartitions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumPartitions
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -20401,7 +23628,7 @@ type MdbKafkaClusterHost struct {
 	Name *string `pulumi:"name"`
 	// The role type to grant to the topic.
 	Role *string `pulumi:"role"`
-	// IDs of the subnets, to which the Kafka cluster belongs.
+	// The ID of the subnet, to which the host belongs.
 	SubnetId *string `pulumi:"subnetId"`
 	// The availability zone where the Kafka host was created.
 	ZoneId *string `pulumi:"zoneId"`
@@ -20427,7 +23654,7 @@ type MdbKafkaClusterHostArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The role type to grant to the topic.
 	Role pulumi.StringPtrInput `pulumi:"role"`
-	// IDs of the subnets, to which the Kafka cluster belongs.
+	// The ID of the subnet, to which the host belongs.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 	// The availability zone where the Kafka host was created.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -20504,7 +23731,7 @@ func (o MdbKafkaClusterHostOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MdbKafkaClusterHost) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// IDs of the subnets, to which the Kafka cluster belongs.
+// The ID of the subnet, to which the host belongs.
 func (o MdbKafkaClusterHostOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MdbKafkaClusterHost) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -22829,6 +26056,175 @@ func (o MdbMysqlClusterHostArrayOutput) Index(i pulumi.IntInput) MdbMysqlCluster
 	}).(MdbMysqlClusterHostOutput)
 }
 
+type MdbMysqlClusterMaintenanceWindow struct {
+	// Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+	Day *string `pulumi:"day"`
+	// Hour of the day in UTC (in `HH` format). Allowed value is between 0 and 23.
+	Hour *int `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type string `pulumi:"type"`
+}
+
+// MdbMysqlClusterMaintenanceWindowInput is an input type that accepts MdbMysqlClusterMaintenanceWindowArgs and MdbMysqlClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `MdbMysqlClusterMaintenanceWindowInput` via:
+//
+//          MdbMysqlClusterMaintenanceWindowArgs{...}
+type MdbMysqlClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToMdbMysqlClusterMaintenanceWindowOutput() MdbMysqlClusterMaintenanceWindowOutput
+	ToMdbMysqlClusterMaintenanceWindowOutputWithContext(context.Context) MdbMysqlClusterMaintenanceWindowOutput
+}
+
+type MdbMysqlClusterMaintenanceWindowArgs struct {
+	// Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+	Day pulumi.StringPtrInput `pulumi:"day"`
+	// Hour of the day in UTC (in `HH` format). Allowed value is between 0 and 23.
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MdbMysqlClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbMysqlClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i MdbMysqlClusterMaintenanceWindowArgs) ToMdbMysqlClusterMaintenanceWindowOutput() MdbMysqlClusterMaintenanceWindowOutput {
+	return i.ToMdbMysqlClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i MdbMysqlClusterMaintenanceWindowArgs) ToMdbMysqlClusterMaintenanceWindowOutputWithContext(ctx context.Context) MdbMysqlClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterMaintenanceWindowOutput)
+}
+
+func (i MdbMysqlClusterMaintenanceWindowArgs) ToMdbMysqlClusterMaintenanceWindowPtrOutput() MdbMysqlClusterMaintenanceWindowPtrOutput {
+	return i.ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i MdbMysqlClusterMaintenanceWindowArgs) ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMysqlClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterMaintenanceWindowOutput).ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// MdbMysqlClusterMaintenanceWindowPtrInput is an input type that accepts MdbMysqlClusterMaintenanceWindowArgs, MdbMysqlClusterMaintenanceWindowPtr and MdbMysqlClusterMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `MdbMysqlClusterMaintenanceWindowPtrInput` via:
+//
+//          MdbMysqlClusterMaintenanceWindowArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbMysqlClusterMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToMdbMysqlClusterMaintenanceWindowPtrOutput() MdbMysqlClusterMaintenanceWindowPtrOutput
+	ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(context.Context) MdbMysqlClusterMaintenanceWindowPtrOutput
+}
+
+type mdbMysqlClusterMaintenanceWindowPtrType MdbMysqlClusterMaintenanceWindowArgs
+
+func MdbMysqlClusterMaintenanceWindowPtr(v *MdbMysqlClusterMaintenanceWindowArgs) MdbMysqlClusterMaintenanceWindowPtrInput {
+	return (*mdbMysqlClusterMaintenanceWindowPtrType)(v)
+}
+
+func (*mdbMysqlClusterMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbMysqlClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *mdbMysqlClusterMaintenanceWindowPtrType) ToMdbMysqlClusterMaintenanceWindowPtrOutput() MdbMysqlClusterMaintenanceWindowPtrOutput {
+	return i.ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbMysqlClusterMaintenanceWindowPtrType) ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMysqlClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterMaintenanceWindowPtrOutput)
+}
+
+type MdbMysqlClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (MdbMysqlClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbMysqlClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MdbMysqlClusterMaintenanceWindowOutput) ToMdbMysqlClusterMaintenanceWindowOutput() MdbMysqlClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o MdbMysqlClusterMaintenanceWindowOutput) ToMdbMysqlClusterMaintenanceWindowOutputWithContext(ctx context.Context) MdbMysqlClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o MdbMysqlClusterMaintenanceWindowOutput) ToMdbMysqlClusterMaintenanceWindowPtrOutput() MdbMysqlClusterMaintenanceWindowPtrOutput {
+	return o.ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o MdbMysqlClusterMaintenanceWindowOutput) ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMysqlClusterMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v MdbMysqlClusterMaintenanceWindow) *MdbMysqlClusterMaintenanceWindow {
+		return &v
+	}).(MdbMysqlClusterMaintenanceWindowPtrOutput)
+}
+
+// Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+func (o MdbMysqlClusterMaintenanceWindowOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbMysqlClusterMaintenanceWindow) *string { return v.Day }).(pulumi.StringPtrOutput)
+}
+
+// Hour of the day in UTC (in `HH` format). Allowed value is between 0 and 23.
+func (o MdbMysqlClusterMaintenanceWindowOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MdbMysqlClusterMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o MdbMysqlClusterMaintenanceWindowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbMysqlClusterMaintenanceWindow) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MdbMysqlClusterMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbMysqlClusterMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbMysqlClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MdbMysqlClusterMaintenanceWindowPtrOutput) ToMdbMysqlClusterMaintenanceWindowPtrOutput() MdbMysqlClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MdbMysqlClusterMaintenanceWindowPtrOutput) ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMysqlClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MdbMysqlClusterMaintenanceWindowPtrOutput) Elem() MdbMysqlClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v *MdbMysqlClusterMaintenanceWindow) MdbMysqlClusterMaintenanceWindow { return *v }).(MdbMysqlClusterMaintenanceWindowOutput)
+}
+
+// Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+func (o MdbMysqlClusterMaintenanceWindowPtrOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbMysqlClusterMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hour of the day in UTC (in `HH` format). Allowed value is between 0 and 23.
+func (o MdbMysqlClusterMaintenanceWindowPtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbMysqlClusterMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o MdbMysqlClusterMaintenanceWindowPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbMysqlClusterMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type MdbMysqlClusterResources struct {
 	// Volume of the storage available to a MySQL host, in gigabytes.
 	DiskSize int `pulumi:"diskSize"`
@@ -23596,11 +26992,19 @@ func (o MdbMysqlClusterUserPermissionArrayOutput) Index(i pulumi.IntInput) MdbMy
 }
 
 type MdbRedisClusterConfig struct {
+	// Number of databases (changing requires redis-server restart).
+	Databases *int `pulumi:"databases"`
 	// Redis key eviction policy for a dataset that reaches maximum memory.
 	// Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
 	MaxmemoryPolicy *string `pulumi:"maxmemoryPolicy"`
+	// Select the events that Redis will notify among a set of classes.
+	NotifyKeyspaceEvents *string `pulumi:"notifyKeyspaceEvents"`
 	// Password for the Redis cluster.
 	Password string `pulumi:"password"`
+	// Log slow queries below this number in microseconds.
+	SlowlogLogSlowerThan *int `pulumi:"slowlogLogSlowerThan"`
+	// Slow queries log length.
+	SlowlogMaxLen *int `pulumi:"slowlogMaxLen"`
 	// Close the connection after a client is idle for N seconds.
 	Timeout *int `pulumi:"timeout"`
 	// Version of Redis (either 5.0 or 6.0).
@@ -23619,11 +27023,19 @@ type MdbRedisClusterConfigInput interface {
 }
 
 type MdbRedisClusterConfigArgs struct {
+	// Number of databases (changing requires redis-server restart).
+	Databases pulumi.IntPtrInput `pulumi:"databases"`
 	// Redis key eviction policy for a dataset that reaches maximum memory.
 	// Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
 	MaxmemoryPolicy pulumi.StringPtrInput `pulumi:"maxmemoryPolicy"`
+	// Select the events that Redis will notify among a set of classes.
+	NotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"notifyKeyspaceEvents"`
 	// Password for the Redis cluster.
 	Password pulumi.StringInput `pulumi:"password"`
+	// Log slow queries below this number in microseconds.
+	SlowlogLogSlowerThan pulumi.IntPtrInput `pulumi:"slowlogLogSlowerThan"`
+	// Slow queries log length.
+	SlowlogMaxLen pulumi.IntPtrInput `pulumi:"slowlogMaxLen"`
 	// Close the connection after a client is idle for N seconds.
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 	// Version of Redis (either 5.0 or 6.0).
@@ -23707,15 +27119,35 @@ func (o MdbRedisClusterConfigOutput) ToMdbRedisClusterConfigPtrOutputWithContext
 	}).(MdbRedisClusterConfigPtrOutput)
 }
 
+// Number of databases (changing requires redis-server restart).
+func (o MdbRedisClusterConfigOutput) Databases() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MdbRedisClusterConfig) *int { return v.Databases }).(pulumi.IntPtrOutput)
+}
+
 // Redis key eviction policy for a dataset that reaches maximum memory.
 // Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
 func (o MdbRedisClusterConfigOutput) MaxmemoryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MdbRedisClusterConfig) *string { return v.MaxmemoryPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Select the events that Redis will notify among a set of classes.
+func (o MdbRedisClusterConfigOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbRedisClusterConfig) *string { return v.NotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
+}
+
 // Password for the Redis cluster.
 func (o MdbRedisClusterConfigOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbRedisClusterConfig) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Log slow queries below this number in microseconds.
+func (o MdbRedisClusterConfigOutput) SlowlogLogSlowerThan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MdbRedisClusterConfig) *int { return v.SlowlogLogSlowerThan }).(pulumi.IntPtrOutput)
+}
+
+// Slow queries log length.
+func (o MdbRedisClusterConfigOutput) SlowlogMaxLen() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MdbRedisClusterConfig) *int { return v.SlowlogMaxLen }).(pulumi.IntPtrOutput)
 }
 
 // Close the connection after a client is idle for N seconds.
@@ -23746,6 +27178,16 @@ func (o MdbRedisClusterConfigPtrOutput) Elem() MdbRedisClusterConfigOutput {
 	return o.ApplyT(func(v *MdbRedisClusterConfig) MdbRedisClusterConfig { return *v }).(MdbRedisClusterConfigOutput)
 }
 
+// Number of databases (changing requires redis-server restart).
+func (o MdbRedisClusterConfigPtrOutput) Databases() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbRedisClusterConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Databases
+	}).(pulumi.IntPtrOutput)
+}
+
 // Redis key eviction policy for a dataset that reaches maximum memory.
 // Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
 func (o MdbRedisClusterConfigPtrOutput) MaxmemoryPolicy() pulumi.StringPtrOutput {
@@ -23757,6 +27199,16 @@ func (o MdbRedisClusterConfigPtrOutput) MaxmemoryPolicy() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Select the events that Redis will notify among a set of classes.
+func (o MdbRedisClusterConfigPtrOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbRedisClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyKeyspaceEvents
+	}).(pulumi.StringPtrOutput)
+}
+
 // Password for the Redis cluster.
 func (o MdbRedisClusterConfigPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MdbRedisClusterConfig) *string {
@@ -23765,6 +27217,26 @@ func (o MdbRedisClusterConfigPtrOutput) Password() pulumi.StringPtrOutput {
 		}
 		return &v.Password
 	}).(pulumi.StringPtrOutput)
+}
+
+// Log slow queries below this number in microseconds.
+func (o MdbRedisClusterConfigPtrOutput) SlowlogLogSlowerThan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbRedisClusterConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SlowlogLogSlowerThan
+	}).(pulumi.IntPtrOutput)
+}
+
+// Slow queries log length.
+func (o MdbRedisClusterConfigPtrOutput) SlowlogMaxLen() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbRedisClusterConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SlowlogMaxLen
+	}).(pulumi.IntPtrOutput)
 }
 
 // Close the connection after a client is idle for N seconds.
@@ -23915,6 +27387,175 @@ func (o MdbRedisClusterHostArrayOutput) Index(i pulumi.IntInput) MdbRedisCluster
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbRedisClusterHost {
 		return vs[0].([]MdbRedisClusterHost)[vs[1].(int)]
 	}).(MdbRedisClusterHostOutput)
+}
+
+type MdbRedisClusterMaintenanceWindow struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day *string `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour *int `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type string `pulumi:"type"`
+}
+
+// MdbRedisClusterMaintenanceWindowInput is an input type that accepts MdbRedisClusterMaintenanceWindowArgs and MdbRedisClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `MdbRedisClusterMaintenanceWindowInput` via:
+//
+//          MdbRedisClusterMaintenanceWindowArgs{...}
+type MdbRedisClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToMdbRedisClusterMaintenanceWindowOutput() MdbRedisClusterMaintenanceWindowOutput
+	ToMdbRedisClusterMaintenanceWindowOutputWithContext(context.Context) MdbRedisClusterMaintenanceWindowOutput
+}
+
+type MdbRedisClusterMaintenanceWindowArgs struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day pulumi.StringPtrInput `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MdbRedisClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbRedisClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i MdbRedisClusterMaintenanceWindowArgs) ToMdbRedisClusterMaintenanceWindowOutput() MdbRedisClusterMaintenanceWindowOutput {
+	return i.ToMdbRedisClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i MdbRedisClusterMaintenanceWindowArgs) ToMdbRedisClusterMaintenanceWindowOutputWithContext(ctx context.Context) MdbRedisClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterMaintenanceWindowOutput)
+}
+
+func (i MdbRedisClusterMaintenanceWindowArgs) ToMdbRedisClusterMaintenanceWindowPtrOutput() MdbRedisClusterMaintenanceWindowPtrOutput {
+	return i.ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i MdbRedisClusterMaintenanceWindowArgs) ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbRedisClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterMaintenanceWindowOutput).ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// MdbRedisClusterMaintenanceWindowPtrInput is an input type that accepts MdbRedisClusterMaintenanceWindowArgs, MdbRedisClusterMaintenanceWindowPtr and MdbRedisClusterMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `MdbRedisClusterMaintenanceWindowPtrInput` via:
+//
+//          MdbRedisClusterMaintenanceWindowArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbRedisClusterMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToMdbRedisClusterMaintenanceWindowPtrOutput() MdbRedisClusterMaintenanceWindowPtrOutput
+	ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(context.Context) MdbRedisClusterMaintenanceWindowPtrOutput
+}
+
+type mdbRedisClusterMaintenanceWindowPtrType MdbRedisClusterMaintenanceWindowArgs
+
+func MdbRedisClusterMaintenanceWindowPtr(v *MdbRedisClusterMaintenanceWindowArgs) MdbRedisClusterMaintenanceWindowPtrInput {
+	return (*mdbRedisClusterMaintenanceWindowPtrType)(v)
+}
+
+func (*mdbRedisClusterMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbRedisClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *mdbRedisClusterMaintenanceWindowPtrType) ToMdbRedisClusterMaintenanceWindowPtrOutput() MdbRedisClusterMaintenanceWindowPtrOutput {
+	return i.ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbRedisClusterMaintenanceWindowPtrType) ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbRedisClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterMaintenanceWindowPtrOutput)
+}
+
+type MdbRedisClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (MdbRedisClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbRedisClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MdbRedisClusterMaintenanceWindowOutput) ToMdbRedisClusterMaintenanceWindowOutput() MdbRedisClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o MdbRedisClusterMaintenanceWindowOutput) ToMdbRedisClusterMaintenanceWindowOutputWithContext(ctx context.Context) MdbRedisClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o MdbRedisClusterMaintenanceWindowOutput) ToMdbRedisClusterMaintenanceWindowPtrOutput() MdbRedisClusterMaintenanceWindowPtrOutput {
+	return o.ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o MdbRedisClusterMaintenanceWindowOutput) ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbRedisClusterMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v MdbRedisClusterMaintenanceWindow) *MdbRedisClusterMaintenanceWindow {
+		return &v
+	}).(MdbRedisClusterMaintenanceWindowPtrOutput)
+}
+
+// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+func (o MdbRedisClusterMaintenanceWindowOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbRedisClusterMaintenanceWindow) *string { return v.Day }).(pulumi.StringPtrOutput)
+}
+
+// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+func (o MdbRedisClusterMaintenanceWindowOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MdbRedisClusterMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o MdbRedisClusterMaintenanceWindowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbRedisClusterMaintenanceWindow) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MdbRedisClusterMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbRedisClusterMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbRedisClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MdbRedisClusterMaintenanceWindowPtrOutput) ToMdbRedisClusterMaintenanceWindowPtrOutput() MdbRedisClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MdbRedisClusterMaintenanceWindowPtrOutput) ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbRedisClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MdbRedisClusterMaintenanceWindowPtrOutput) Elem() MdbRedisClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v *MdbRedisClusterMaintenanceWindow) MdbRedisClusterMaintenanceWindow { return *v }).(MdbRedisClusterMaintenanceWindowOutput)
+}
+
+// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+func (o MdbRedisClusterMaintenanceWindowPtrOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbRedisClusterMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+func (o MdbRedisClusterMaintenanceWindowPtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbRedisClusterMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o MdbRedisClusterMaintenanceWindowPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbRedisClusterMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type MdbRedisClusterResources struct {
@@ -26778,6 +30419,332 @@ func (o VpcAddressExternalIpv4AddressPtrOutput) ZoneId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type VpcDefaultSecurityGroupEgress struct {
+	// Description of the security group.
+	Description *string `pulumi:"description"`
+	FromPort    *int    `pulumi:"fromPort"`
+	// Id of the security group.
+	Id *string `pulumi:"id"`
+	// Labels to assign to this security group.
+	Labels           map[string]string `pulumi:"labels"`
+	Port             *int              `pulumi:"port"`
+	PredefinedTarget *string           `pulumi:"predefinedTarget"`
+	Protocol         string            `pulumi:"protocol"`
+	SecurityGroupId  *string           `pulumi:"securityGroupId"`
+	ToPort           *int              `pulumi:"toPort"`
+	V4CidrBlocks     []string          `pulumi:"v4CidrBlocks"`
+	V6CidrBlocks     []string          `pulumi:"v6CidrBlocks"`
+}
+
+// VpcDefaultSecurityGroupEgressInput is an input type that accepts VpcDefaultSecurityGroupEgressArgs and VpcDefaultSecurityGroupEgressOutput values.
+// You can construct a concrete instance of `VpcDefaultSecurityGroupEgressInput` via:
+//
+//          VpcDefaultSecurityGroupEgressArgs{...}
+type VpcDefaultSecurityGroupEgressInput interface {
+	pulumi.Input
+
+	ToVpcDefaultSecurityGroupEgressOutput() VpcDefaultSecurityGroupEgressOutput
+	ToVpcDefaultSecurityGroupEgressOutputWithContext(context.Context) VpcDefaultSecurityGroupEgressOutput
+}
+
+type VpcDefaultSecurityGroupEgressArgs struct {
+	// Description of the security group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	FromPort    pulumi.IntPtrInput    `pulumi:"fromPort"`
+	// Id of the security group.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Labels to assign to this security group.
+	Labels           pulumi.StringMapInput   `pulumi:"labels"`
+	Port             pulumi.IntPtrInput      `pulumi:"port"`
+	PredefinedTarget pulumi.StringPtrInput   `pulumi:"predefinedTarget"`
+	Protocol         pulumi.StringInput      `pulumi:"protocol"`
+	SecurityGroupId  pulumi.StringPtrInput   `pulumi:"securityGroupId"`
+	ToPort           pulumi.IntPtrInput      `pulumi:"toPort"`
+	V4CidrBlocks     pulumi.StringArrayInput `pulumi:"v4CidrBlocks"`
+	V6CidrBlocks     pulumi.StringArrayInput `pulumi:"v6CidrBlocks"`
+}
+
+func (VpcDefaultSecurityGroupEgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcDefaultSecurityGroupEgress)(nil)).Elem()
+}
+
+func (i VpcDefaultSecurityGroupEgressArgs) ToVpcDefaultSecurityGroupEgressOutput() VpcDefaultSecurityGroupEgressOutput {
+	return i.ToVpcDefaultSecurityGroupEgressOutputWithContext(context.Background())
+}
+
+func (i VpcDefaultSecurityGroupEgressArgs) ToVpcDefaultSecurityGroupEgressOutputWithContext(ctx context.Context) VpcDefaultSecurityGroupEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcDefaultSecurityGroupEgressOutput)
+}
+
+// VpcDefaultSecurityGroupEgressArrayInput is an input type that accepts VpcDefaultSecurityGroupEgressArray and VpcDefaultSecurityGroupEgressArrayOutput values.
+// You can construct a concrete instance of `VpcDefaultSecurityGroupEgressArrayInput` via:
+//
+//          VpcDefaultSecurityGroupEgressArray{ VpcDefaultSecurityGroupEgressArgs{...} }
+type VpcDefaultSecurityGroupEgressArrayInput interface {
+	pulumi.Input
+
+	ToVpcDefaultSecurityGroupEgressArrayOutput() VpcDefaultSecurityGroupEgressArrayOutput
+	ToVpcDefaultSecurityGroupEgressArrayOutputWithContext(context.Context) VpcDefaultSecurityGroupEgressArrayOutput
+}
+
+type VpcDefaultSecurityGroupEgressArray []VpcDefaultSecurityGroupEgressInput
+
+func (VpcDefaultSecurityGroupEgressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcDefaultSecurityGroupEgress)(nil)).Elem()
+}
+
+func (i VpcDefaultSecurityGroupEgressArray) ToVpcDefaultSecurityGroupEgressArrayOutput() VpcDefaultSecurityGroupEgressArrayOutput {
+	return i.ToVpcDefaultSecurityGroupEgressArrayOutputWithContext(context.Background())
+}
+
+func (i VpcDefaultSecurityGroupEgressArray) ToVpcDefaultSecurityGroupEgressArrayOutputWithContext(ctx context.Context) VpcDefaultSecurityGroupEgressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcDefaultSecurityGroupEgressArrayOutput)
+}
+
+type VpcDefaultSecurityGroupEgressOutput struct{ *pulumi.OutputState }
+
+func (VpcDefaultSecurityGroupEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcDefaultSecurityGroupEgress)(nil)).Elem()
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) ToVpcDefaultSecurityGroupEgressOutput() VpcDefaultSecurityGroupEgressOutput {
+	return o
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) ToVpcDefaultSecurityGroupEgressOutputWithContext(ctx context.Context) VpcDefaultSecurityGroupEgressOutput {
+	return o
+}
+
+// Description of the security group.
+func (o VpcDefaultSecurityGroupEgressOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) FromPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) *int { return v.FromPort }).(pulumi.IntPtrOutput)
+}
+
+// Id of the security group.
+func (o VpcDefaultSecurityGroupEgressOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Labels to assign to this security group.
+func (o VpcDefaultSecurityGroupEgressOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) PredefinedTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) *string { return v.PredefinedTarget }).(pulumi.StringPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) ToPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) *int { return v.ToPort }).(pulumi.IntPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) V4CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) []string { return v.V4CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+func (o VpcDefaultSecurityGroupEgressOutput) V6CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupEgress) []string { return v.V6CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+type VpcDefaultSecurityGroupEgressArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcDefaultSecurityGroupEgressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcDefaultSecurityGroupEgress)(nil)).Elem()
+}
+
+func (o VpcDefaultSecurityGroupEgressArrayOutput) ToVpcDefaultSecurityGroupEgressArrayOutput() VpcDefaultSecurityGroupEgressArrayOutput {
+	return o
+}
+
+func (o VpcDefaultSecurityGroupEgressArrayOutput) ToVpcDefaultSecurityGroupEgressArrayOutputWithContext(ctx context.Context) VpcDefaultSecurityGroupEgressArrayOutput {
+	return o
+}
+
+func (o VpcDefaultSecurityGroupEgressArrayOutput) Index(i pulumi.IntInput) VpcDefaultSecurityGroupEgressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcDefaultSecurityGroupEgress {
+		return vs[0].([]VpcDefaultSecurityGroupEgress)[vs[1].(int)]
+	}).(VpcDefaultSecurityGroupEgressOutput)
+}
+
+type VpcDefaultSecurityGroupIngress struct {
+	// Description of the security group.
+	Description *string `pulumi:"description"`
+	FromPort    *int    `pulumi:"fromPort"`
+	// Id of the security group.
+	Id *string `pulumi:"id"`
+	// Labels to assign to this security group.
+	Labels           map[string]string `pulumi:"labels"`
+	Port             *int              `pulumi:"port"`
+	PredefinedTarget *string           `pulumi:"predefinedTarget"`
+	Protocol         string            `pulumi:"protocol"`
+	SecurityGroupId  *string           `pulumi:"securityGroupId"`
+	ToPort           *int              `pulumi:"toPort"`
+	V4CidrBlocks     []string          `pulumi:"v4CidrBlocks"`
+	V6CidrBlocks     []string          `pulumi:"v6CidrBlocks"`
+}
+
+// VpcDefaultSecurityGroupIngressInput is an input type that accepts VpcDefaultSecurityGroupIngressArgs and VpcDefaultSecurityGroupIngressOutput values.
+// You can construct a concrete instance of `VpcDefaultSecurityGroupIngressInput` via:
+//
+//          VpcDefaultSecurityGroupIngressArgs{...}
+type VpcDefaultSecurityGroupIngressInput interface {
+	pulumi.Input
+
+	ToVpcDefaultSecurityGroupIngressOutput() VpcDefaultSecurityGroupIngressOutput
+	ToVpcDefaultSecurityGroupIngressOutputWithContext(context.Context) VpcDefaultSecurityGroupIngressOutput
+}
+
+type VpcDefaultSecurityGroupIngressArgs struct {
+	// Description of the security group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	FromPort    pulumi.IntPtrInput    `pulumi:"fromPort"`
+	// Id of the security group.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Labels to assign to this security group.
+	Labels           pulumi.StringMapInput   `pulumi:"labels"`
+	Port             pulumi.IntPtrInput      `pulumi:"port"`
+	PredefinedTarget pulumi.StringPtrInput   `pulumi:"predefinedTarget"`
+	Protocol         pulumi.StringInput      `pulumi:"protocol"`
+	SecurityGroupId  pulumi.StringPtrInput   `pulumi:"securityGroupId"`
+	ToPort           pulumi.IntPtrInput      `pulumi:"toPort"`
+	V4CidrBlocks     pulumi.StringArrayInput `pulumi:"v4CidrBlocks"`
+	V6CidrBlocks     pulumi.StringArrayInput `pulumi:"v6CidrBlocks"`
+}
+
+func (VpcDefaultSecurityGroupIngressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcDefaultSecurityGroupIngress)(nil)).Elem()
+}
+
+func (i VpcDefaultSecurityGroupIngressArgs) ToVpcDefaultSecurityGroupIngressOutput() VpcDefaultSecurityGroupIngressOutput {
+	return i.ToVpcDefaultSecurityGroupIngressOutputWithContext(context.Background())
+}
+
+func (i VpcDefaultSecurityGroupIngressArgs) ToVpcDefaultSecurityGroupIngressOutputWithContext(ctx context.Context) VpcDefaultSecurityGroupIngressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcDefaultSecurityGroupIngressOutput)
+}
+
+// VpcDefaultSecurityGroupIngressArrayInput is an input type that accepts VpcDefaultSecurityGroupIngressArray and VpcDefaultSecurityGroupIngressArrayOutput values.
+// You can construct a concrete instance of `VpcDefaultSecurityGroupIngressArrayInput` via:
+//
+//          VpcDefaultSecurityGroupIngressArray{ VpcDefaultSecurityGroupIngressArgs{...} }
+type VpcDefaultSecurityGroupIngressArrayInput interface {
+	pulumi.Input
+
+	ToVpcDefaultSecurityGroupIngressArrayOutput() VpcDefaultSecurityGroupIngressArrayOutput
+	ToVpcDefaultSecurityGroupIngressArrayOutputWithContext(context.Context) VpcDefaultSecurityGroupIngressArrayOutput
+}
+
+type VpcDefaultSecurityGroupIngressArray []VpcDefaultSecurityGroupIngressInput
+
+func (VpcDefaultSecurityGroupIngressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcDefaultSecurityGroupIngress)(nil)).Elem()
+}
+
+func (i VpcDefaultSecurityGroupIngressArray) ToVpcDefaultSecurityGroupIngressArrayOutput() VpcDefaultSecurityGroupIngressArrayOutput {
+	return i.ToVpcDefaultSecurityGroupIngressArrayOutputWithContext(context.Background())
+}
+
+func (i VpcDefaultSecurityGroupIngressArray) ToVpcDefaultSecurityGroupIngressArrayOutputWithContext(ctx context.Context) VpcDefaultSecurityGroupIngressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcDefaultSecurityGroupIngressArrayOutput)
+}
+
+type VpcDefaultSecurityGroupIngressOutput struct{ *pulumi.OutputState }
+
+func (VpcDefaultSecurityGroupIngressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcDefaultSecurityGroupIngress)(nil)).Elem()
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) ToVpcDefaultSecurityGroupIngressOutput() VpcDefaultSecurityGroupIngressOutput {
+	return o
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) ToVpcDefaultSecurityGroupIngressOutputWithContext(ctx context.Context) VpcDefaultSecurityGroupIngressOutput {
+	return o
+}
+
+// Description of the security group.
+func (o VpcDefaultSecurityGroupIngressOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) FromPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) *int { return v.FromPort }).(pulumi.IntPtrOutput)
+}
+
+// Id of the security group.
+func (o VpcDefaultSecurityGroupIngressOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Labels to assign to this security group.
+func (o VpcDefaultSecurityGroupIngressOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) PredefinedTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) *string { return v.PredefinedTarget }).(pulumi.StringPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) ToPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) *int { return v.ToPort }).(pulumi.IntPtrOutput)
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) V4CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) []string { return v.V4CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+func (o VpcDefaultSecurityGroupIngressOutput) V6CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpcDefaultSecurityGroupIngress) []string { return v.V6CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+type VpcDefaultSecurityGroupIngressArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcDefaultSecurityGroupIngressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcDefaultSecurityGroupIngress)(nil)).Elem()
+}
+
+func (o VpcDefaultSecurityGroupIngressArrayOutput) ToVpcDefaultSecurityGroupIngressArrayOutput() VpcDefaultSecurityGroupIngressArrayOutput {
+	return o
+}
+
+func (o VpcDefaultSecurityGroupIngressArrayOutput) ToVpcDefaultSecurityGroupIngressArrayOutputWithContext(ctx context.Context) VpcDefaultSecurityGroupIngressArrayOutput {
+	return o
+}
+
+func (o VpcDefaultSecurityGroupIngressArrayOutput) Index(i pulumi.IntInput) VpcDefaultSecurityGroupIngressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcDefaultSecurityGroupIngress {
+		return vs[0].([]VpcDefaultSecurityGroupIngress)[vs[1].(int)]
+	}).(VpcDefaultSecurityGroupIngressOutput)
+}
+
 type VpcRouteTableStaticRoute struct {
 	// Route prefix in CIDR notation.
 	DestinationPrefix *string `pulumi:"destinationPrefix"`
@@ -28067,6 +32034,1158 @@ func (o YdbDatabaseDedicatedStorageConfigPtrOutput) StorageTypeId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAlbBackendGroupGrpcBackend struct {
+	Healthcheck         GetAlbBackendGroupGrpcBackendHealthcheck         `pulumi:"healthcheck"`
+	LoadBalancingConfig GetAlbBackendGroupGrpcBackendLoadBalancingConfig `pulumi:"loadBalancingConfig"`
+	Name                string                                           `pulumi:"name"`
+	Port                int                                              `pulumi:"port"`
+	TargetGroupIds      []string                                         `pulumi:"targetGroupIds"`
+	Tls                 GetAlbBackendGroupGrpcBackendTls                 `pulumi:"tls"`
+	Weight              int                                              `pulumi:"weight"`
+}
+
+// GetAlbBackendGroupGrpcBackendInput is an input type that accepts GetAlbBackendGroupGrpcBackendArgs and GetAlbBackendGroupGrpcBackendOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupGrpcBackendInput` via:
+//
+//          GetAlbBackendGroupGrpcBackendArgs{...}
+type GetAlbBackendGroupGrpcBackendInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupGrpcBackendOutput() GetAlbBackendGroupGrpcBackendOutput
+	ToGetAlbBackendGroupGrpcBackendOutputWithContext(context.Context) GetAlbBackendGroupGrpcBackendOutput
+}
+
+type GetAlbBackendGroupGrpcBackendArgs struct {
+	Healthcheck         GetAlbBackendGroupGrpcBackendHealthcheckInput         `pulumi:"healthcheck"`
+	LoadBalancingConfig GetAlbBackendGroupGrpcBackendLoadBalancingConfigInput `pulumi:"loadBalancingConfig"`
+	Name                pulumi.StringInput                                    `pulumi:"name"`
+	Port                pulumi.IntInput                                       `pulumi:"port"`
+	TargetGroupIds      pulumi.StringArrayInput                               `pulumi:"targetGroupIds"`
+	Tls                 GetAlbBackendGroupGrpcBackendTlsInput                 `pulumi:"tls"`
+	Weight              pulumi.IntInput                                       `pulumi:"weight"`
+}
+
+func (GetAlbBackendGroupGrpcBackendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackend)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupGrpcBackendArgs) ToGetAlbBackendGroupGrpcBackendOutput() GetAlbBackendGroupGrpcBackendOutput {
+	return i.ToGetAlbBackendGroupGrpcBackendOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupGrpcBackendArgs) ToGetAlbBackendGroupGrpcBackendOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupGrpcBackendOutput)
+}
+
+// GetAlbBackendGroupGrpcBackendArrayInput is an input type that accepts GetAlbBackendGroupGrpcBackendArray and GetAlbBackendGroupGrpcBackendArrayOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupGrpcBackendArrayInput` via:
+//
+//          GetAlbBackendGroupGrpcBackendArray{ GetAlbBackendGroupGrpcBackendArgs{...} }
+type GetAlbBackendGroupGrpcBackendArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupGrpcBackendArrayOutput() GetAlbBackendGroupGrpcBackendArrayOutput
+	ToGetAlbBackendGroupGrpcBackendArrayOutputWithContext(context.Context) GetAlbBackendGroupGrpcBackendArrayOutput
+}
+
+type GetAlbBackendGroupGrpcBackendArray []GetAlbBackendGroupGrpcBackendInput
+
+func (GetAlbBackendGroupGrpcBackendArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbBackendGroupGrpcBackend)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupGrpcBackendArray) ToGetAlbBackendGroupGrpcBackendArrayOutput() GetAlbBackendGroupGrpcBackendArrayOutput {
+	return i.ToGetAlbBackendGroupGrpcBackendArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupGrpcBackendArray) ToGetAlbBackendGroupGrpcBackendArrayOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupGrpcBackendArrayOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupGrpcBackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackend)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupGrpcBackendOutput) ToGetAlbBackendGroupGrpcBackendOutput() GetAlbBackendGroupGrpcBackendOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendOutput) ToGetAlbBackendGroupGrpcBackendOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendOutput) Healthcheck() GetAlbBackendGroupGrpcBackendHealthcheckOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) GetAlbBackendGroupGrpcBackendHealthcheck { return v.Healthcheck }).(GetAlbBackendGroupGrpcBackendHealthcheckOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendOutput) LoadBalancingConfig() GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
+		return v.LoadBalancingConfig
+	}).(GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendOutput) TargetGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) []string { return v.TargetGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendOutput) Tls() GetAlbBackendGroupGrpcBackendTlsOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) GetAlbBackendGroupGrpcBackendTls { return v.Tls }).(GetAlbBackendGroupGrpcBackendTlsOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupGrpcBackendArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbBackendGroupGrpcBackend)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupGrpcBackendArrayOutput) ToGetAlbBackendGroupGrpcBackendArrayOutput() GetAlbBackendGroupGrpcBackendArrayOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendArrayOutput) ToGetAlbBackendGroupGrpcBackendArrayOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendArrayOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendArrayOutput) Index(i pulumi.IntInput) GetAlbBackendGroupGrpcBackendOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbBackendGroupGrpcBackend {
+		return vs[0].([]GetAlbBackendGroupGrpcBackend)[vs[1].(int)]
+	}).(GetAlbBackendGroupGrpcBackendOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheck struct {
+	GrpcHealthcheck       GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck   `pulumi:"grpcHealthcheck"`
+	HealthcheckPort       int                                                       `pulumi:"healthcheckPort"`
+	HealthyThreshold      int                                                       `pulumi:"healthyThreshold"`
+	HttpHealthcheck       GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck   `pulumi:"httpHealthcheck"`
+	Interval              string                                                    `pulumi:"interval"`
+	IntervalJitterPercent float64                                                   `pulumi:"intervalJitterPercent"`
+	StreamHealthcheck     GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck `pulumi:"streamHealthcheck"`
+	Timeout               string                                                    `pulumi:"timeout"`
+	UnhealthyThreshold    int                                                       `pulumi:"unhealthyThreshold"`
+}
+
+// GetAlbBackendGroupGrpcBackendHealthcheckInput is an input type that accepts GetAlbBackendGroupGrpcBackendHealthcheckArgs and GetAlbBackendGroupGrpcBackendHealthcheckOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupGrpcBackendHealthcheckInput` via:
+//
+//          GetAlbBackendGroupGrpcBackendHealthcheckArgs{...}
+type GetAlbBackendGroupGrpcBackendHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupGrpcBackendHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckOutput
+	ToGetAlbBackendGroupGrpcBackendHealthcheckOutputWithContext(context.Context) GetAlbBackendGroupGrpcBackendHealthcheckOutput
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckArgs struct {
+	GrpcHealthcheck       GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput   `pulumi:"grpcHealthcheck"`
+	HealthcheckPort       pulumi.IntInput                                                `pulumi:"healthcheckPort"`
+	HealthyThreshold      pulumi.IntInput                                                `pulumi:"healthyThreshold"`
+	HttpHealthcheck       GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput   `pulumi:"httpHealthcheck"`
+	Interval              pulumi.StringInput                                             `pulumi:"interval"`
+	IntervalJitterPercent pulumi.Float64Input                                            `pulumi:"intervalJitterPercent"`
+	StreamHealthcheck     GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput `pulumi:"streamHealthcheck"`
+	Timeout               pulumi.StringInput                                             `pulumi:"timeout"`
+	UnhealthyThreshold    pulumi.IntInput                                                `pulumi:"unhealthyThreshold"`
+}
+
+func (GetAlbBackendGroupGrpcBackendHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheck)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupGrpcBackendHealthcheckArgs) ToGetAlbBackendGroupGrpcBackendHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckOutput {
+	return i.ToGetAlbBackendGroupGrpcBackendHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupGrpcBackendHealthcheckArgs) ToGetAlbBackendGroupGrpcBackendHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupGrpcBackendHealthcheckOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupGrpcBackendHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheck)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) ToGetAlbBackendGroupGrpcBackendHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) ToGetAlbBackendGroupGrpcBackendHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) GrpcHealthcheck() GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+		return v.GrpcHealthcheck
+	}).(GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) HealthcheckPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) int { return v.HealthcheckPort }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) HttpHealthcheck() GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+		return v.HttpHealthcheck
+	}).(GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) IntervalJitterPercent() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) float64 { return v.IntervalJitterPercent }).(pulumi.Float64Output)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) StreamHealthcheck() GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+		return v.StreamHealthcheck
+	}).(GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck struct {
+	ServiceName string `pulumi:"serviceName"`
+}
+
+// GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput is an input type that accepts GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs and GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput` via:
+//
+//          GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs{...}
+type GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput
+	ToGetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutputWithContext(context.Context) GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs struct {
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs) ToGetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return i.ToGetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs) ToGetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ToGetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ToGetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck struct {
+	Host  string `pulumi:"host"`
+	Http2 bool   `pulumi:"http2"`
+	Path  string `pulumi:"path"`
+}
+
+// GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput is an input type that accepts GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs and GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput` via:
+//
+//          GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs{...}
+type GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput
+	ToGetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutputWithContext(context.Context) GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs struct {
+	Host  pulumi.StringInput `pulumi:"host"`
+	Http2 pulumi.BoolInput   `pulumi:"http2"`
+	Path  pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) ToGetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return i.ToGetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) ToGetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ToGetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ToGetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) Http2() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) bool { return v.Http2 }).(pulumi.BoolOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck struct {
+	Receive string `pulumi:"receive"`
+	Send    string `pulumi:"send"`
+}
+
+// GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput is an input type that accepts GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs and GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput` via:
+//
+//          GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs{...}
+type GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput
+	ToGetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutputWithContext(context.Context) GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs struct {
+	Receive pulumi.StringInput `pulumi:"receive"`
+	Send    pulumi.StringInput `pulumi:"send"`
+}
+
+func (GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) ToGetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return i.ToGetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) ToGetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ToGetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput() GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ToGetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) Receive() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) string { return v.Receive }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) Send() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) string { return v.Send }).(pulumi.StringOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendLoadBalancingConfig struct {
+	LocalityAwareRoutingPercent int  `pulumi:"localityAwareRoutingPercent"`
+	PanicThreshold              int  `pulumi:"panicThreshold"`
+	StrictLocality              bool `pulumi:"strictLocality"`
+}
+
+// GetAlbBackendGroupGrpcBackendLoadBalancingConfigInput is an input type that accepts GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs and GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupGrpcBackendLoadBalancingConfigInput` via:
+//
+//          GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs{...}
+type GetAlbBackendGroupGrpcBackendLoadBalancingConfigInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput() GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput
+	ToGetAlbBackendGroupGrpcBackendLoadBalancingConfigOutputWithContext(context.Context) GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput
+}
+
+type GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs struct {
+	LocalityAwareRoutingPercent pulumi.IntInput  `pulumi:"localityAwareRoutingPercent"`
+	PanicThreshold              pulumi.IntInput  `pulumi:"panicThreshold"`
+	StrictLocality              pulumi.BoolInput `pulumi:"strictLocality"`
+}
+
+func (GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs) ToGetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput() GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return i.ToGetAlbBackendGroupGrpcBackendLoadBalancingConfigOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs) ToGetAlbBackendGroupGrpcBackendLoadBalancingConfigOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ToGetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput() GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ToGetAlbBackendGroupGrpcBackendLoadBalancingConfigOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) LocalityAwareRoutingPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendLoadBalancingConfig) int { return v.LocalityAwareRoutingPercent }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) PanicThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendLoadBalancingConfig) int { return v.PanicThreshold }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) StrictLocality() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendLoadBalancingConfig) bool { return v.StrictLocality }).(pulumi.BoolOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendTls struct {
+	Sni               string                                            `pulumi:"sni"`
+	ValidationContext GetAlbBackendGroupGrpcBackendTlsValidationContext `pulumi:"validationContext"`
+}
+
+// GetAlbBackendGroupGrpcBackendTlsInput is an input type that accepts GetAlbBackendGroupGrpcBackendTlsArgs and GetAlbBackendGroupGrpcBackendTlsOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupGrpcBackendTlsInput` via:
+//
+//          GetAlbBackendGroupGrpcBackendTlsArgs{...}
+type GetAlbBackendGroupGrpcBackendTlsInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupGrpcBackendTlsOutput() GetAlbBackendGroupGrpcBackendTlsOutput
+	ToGetAlbBackendGroupGrpcBackendTlsOutputWithContext(context.Context) GetAlbBackendGroupGrpcBackendTlsOutput
+}
+
+type GetAlbBackendGroupGrpcBackendTlsArgs struct {
+	Sni               pulumi.StringInput                                     `pulumi:"sni"`
+	ValidationContext GetAlbBackendGroupGrpcBackendTlsValidationContextInput `pulumi:"validationContext"`
+}
+
+func (GetAlbBackendGroupGrpcBackendTlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendTls)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupGrpcBackendTlsArgs) ToGetAlbBackendGroupGrpcBackendTlsOutput() GetAlbBackendGroupGrpcBackendTlsOutput {
+	return i.ToGetAlbBackendGroupGrpcBackendTlsOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupGrpcBackendTlsArgs) ToGetAlbBackendGroupGrpcBackendTlsOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendTlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupGrpcBackendTlsOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendTlsOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupGrpcBackendTlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendTls)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupGrpcBackendTlsOutput) ToGetAlbBackendGroupGrpcBackendTlsOutput() GetAlbBackendGroupGrpcBackendTlsOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendTlsOutput) ToGetAlbBackendGroupGrpcBackendTlsOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendTlsOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendTlsOutput) Sni() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendTls) string { return v.Sni }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendTlsOutput) ValidationContext() GetAlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendTls) GetAlbBackendGroupGrpcBackendTlsValidationContext {
+		return v.ValidationContext
+	}).(GetAlbBackendGroupGrpcBackendTlsValidationContextOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendTlsValidationContext struct {
+	TrustedCaBytes string `pulumi:"trustedCaBytes"`
+	TrustedCaId    string `pulumi:"trustedCaId"`
+}
+
+// GetAlbBackendGroupGrpcBackendTlsValidationContextInput is an input type that accepts GetAlbBackendGroupGrpcBackendTlsValidationContextArgs and GetAlbBackendGroupGrpcBackendTlsValidationContextOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupGrpcBackendTlsValidationContextInput` via:
+//
+//          GetAlbBackendGroupGrpcBackendTlsValidationContextArgs{...}
+type GetAlbBackendGroupGrpcBackendTlsValidationContextInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupGrpcBackendTlsValidationContextOutput() GetAlbBackendGroupGrpcBackendTlsValidationContextOutput
+	ToGetAlbBackendGroupGrpcBackendTlsValidationContextOutputWithContext(context.Context) GetAlbBackendGroupGrpcBackendTlsValidationContextOutput
+}
+
+type GetAlbBackendGroupGrpcBackendTlsValidationContextArgs struct {
+	TrustedCaBytes pulumi.StringInput `pulumi:"trustedCaBytes"`
+	TrustedCaId    pulumi.StringInput `pulumi:"trustedCaId"`
+}
+
+func (GetAlbBackendGroupGrpcBackendTlsValidationContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupGrpcBackendTlsValidationContextArgs) ToGetAlbBackendGroupGrpcBackendTlsValidationContextOutput() GetAlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return i.ToGetAlbBackendGroupGrpcBackendTlsValidationContextOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupGrpcBackendTlsValidationContextArgs) ToGetAlbBackendGroupGrpcBackendTlsValidationContextOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupGrpcBackendTlsValidationContextOutput)
+}
+
+type GetAlbBackendGroupGrpcBackendTlsValidationContextOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupGrpcBackendTlsValidationContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupGrpcBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupGrpcBackendTlsValidationContextOutput) ToGetAlbBackendGroupGrpcBackendTlsValidationContextOutput() GetAlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendTlsValidationContextOutput) ToGetAlbBackendGroupGrpcBackendTlsValidationContextOutputWithContext(ctx context.Context) GetAlbBackendGroupGrpcBackendTlsValidationContextOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupGrpcBackendTlsValidationContextOutput) TrustedCaBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendTlsValidationContext) string { return v.TrustedCaBytes }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupGrpcBackendTlsValidationContextOutput) TrustedCaId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendTlsValidationContext) string { return v.TrustedCaId }).(pulumi.StringOutput)
+}
+
+type GetAlbBackendGroupHttpBackend struct {
+	Healthcheck         GetAlbBackendGroupHttpBackendHealthcheck         `pulumi:"healthcheck"`
+	Http2               bool                                             `pulumi:"http2"`
+	LoadBalancingConfig GetAlbBackendGroupHttpBackendLoadBalancingConfig `pulumi:"loadBalancingConfig"`
+	Name                string                                           `pulumi:"name"`
+	Port                int                                              `pulumi:"port"`
+	TargetGroupIds      []string                                         `pulumi:"targetGroupIds"`
+	Tls                 GetAlbBackendGroupHttpBackendTls                 `pulumi:"tls"`
+	Weight              int                                              `pulumi:"weight"`
+}
+
+// GetAlbBackendGroupHttpBackendInput is an input type that accepts GetAlbBackendGroupHttpBackendArgs and GetAlbBackendGroupHttpBackendOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupHttpBackendInput` via:
+//
+//          GetAlbBackendGroupHttpBackendArgs{...}
+type GetAlbBackendGroupHttpBackendInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupHttpBackendOutput() GetAlbBackendGroupHttpBackendOutput
+	ToGetAlbBackendGroupHttpBackendOutputWithContext(context.Context) GetAlbBackendGroupHttpBackendOutput
+}
+
+type GetAlbBackendGroupHttpBackendArgs struct {
+	Healthcheck         GetAlbBackendGroupHttpBackendHealthcheckInput         `pulumi:"healthcheck"`
+	Http2               pulumi.BoolInput                                      `pulumi:"http2"`
+	LoadBalancingConfig GetAlbBackendGroupHttpBackendLoadBalancingConfigInput `pulumi:"loadBalancingConfig"`
+	Name                pulumi.StringInput                                    `pulumi:"name"`
+	Port                pulumi.IntInput                                       `pulumi:"port"`
+	TargetGroupIds      pulumi.StringArrayInput                               `pulumi:"targetGroupIds"`
+	Tls                 GetAlbBackendGroupHttpBackendTlsInput                 `pulumi:"tls"`
+	Weight              pulumi.IntInput                                       `pulumi:"weight"`
+}
+
+func (GetAlbBackendGroupHttpBackendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackend)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupHttpBackendArgs) ToGetAlbBackendGroupHttpBackendOutput() GetAlbBackendGroupHttpBackendOutput {
+	return i.ToGetAlbBackendGroupHttpBackendOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupHttpBackendArgs) ToGetAlbBackendGroupHttpBackendOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupHttpBackendOutput)
+}
+
+// GetAlbBackendGroupHttpBackendArrayInput is an input type that accepts GetAlbBackendGroupHttpBackendArray and GetAlbBackendGroupHttpBackendArrayOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupHttpBackendArrayInput` via:
+//
+//          GetAlbBackendGroupHttpBackendArray{ GetAlbBackendGroupHttpBackendArgs{...} }
+type GetAlbBackendGroupHttpBackendArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupHttpBackendArrayOutput() GetAlbBackendGroupHttpBackendArrayOutput
+	ToGetAlbBackendGroupHttpBackendArrayOutputWithContext(context.Context) GetAlbBackendGroupHttpBackendArrayOutput
+}
+
+type GetAlbBackendGroupHttpBackendArray []GetAlbBackendGroupHttpBackendInput
+
+func (GetAlbBackendGroupHttpBackendArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbBackendGroupHttpBackend)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupHttpBackendArray) ToGetAlbBackendGroupHttpBackendArrayOutput() GetAlbBackendGroupHttpBackendArrayOutput {
+	return i.ToGetAlbBackendGroupHttpBackendArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupHttpBackendArray) ToGetAlbBackendGroupHttpBackendArrayOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupHttpBackendArrayOutput)
+}
+
+type GetAlbBackendGroupHttpBackendOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupHttpBackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackend)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) ToGetAlbBackendGroupHttpBackendOutput() GetAlbBackendGroupHttpBackendOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) ToGetAlbBackendGroupHttpBackendOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) Healthcheck() GetAlbBackendGroupHttpBackendHealthcheckOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) GetAlbBackendGroupHttpBackendHealthcheck { return v.Healthcheck }).(GetAlbBackendGroupHttpBackendHealthcheckOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) Http2() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) bool { return v.Http2 }).(pulumi.BoolOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) LoadBalancingConfig() GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) GetAlbBackendGroupHttpBackendLoadBalancingConfig {
+		return v.LoadBalancingConfig
+	}).(GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) TargetGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) []string { return v.TargetGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) Tls() GetAlbBackendGroupHttpBackendTlsOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) GetAlbBackendGroupHttpBackendTls { return v.Tls }).(GetAlbBackendGroupHttpBackendTlsOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetAlbBackendGroupHttpBackendArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupHttpBackendArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbBackendGroupHttpBackend)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupHttpBackendArrayOutput) ToGetAlbBackendGroupHttpBackendArrayOutput() GetAlbBackendGroupHttpBackendArrayOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendArrayOutput) ToGetAlbBackendGroupHttpBackendArrayOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendArrayOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendArrayOutput) Index(i pulumi.IntInput) GetAlbBackendGroupHttpBackendOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbBackendGroupHttpBackend {
+		return vs[0].([]GetAlbBackendGroupHttpBackend)[vs[1].(int)]
+	}).(GetAlbBackendGroupHttpBackendOutput)
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheck struct {
+	GrpcHealthcheck       GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck   `pulumi:"grpcHealthcheck"`
+	HealthcheckPort       int                                                       `pulumi:"healthcheckPort"`
+	HealthyThreshold      int                                                       `pulumi:"healthyThreshold"`
+	HttpHealthcheck       GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck   `pulumi:"httpHealthcheck"`
+	Interval              string                                                    `pulumi:"interval"`
+	IntervalJitterPercent float64                                                   `pulumi:"intervalJitterPercent"`
+	StreamHealthcheck     GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck `pulumi:"streamHealthcheck"`
+	Timeout               string                                                    `pulumi:"timeout"`
+	UnhealthyThreshold    int                                                       `pulumi:"unhealthyThreshold"`
+}
+
+// GetAlbBackendGroupHttpBackendHealthcheckInput is an input type that accepts GetAlbBackendGroupHttpBackendHealthcheckArgs and GetAlbBackendGroupHttpBackendHealthcheckOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupHttpBackendHealthcheckInput` via:
+//
+//          GetAlbBackendGroupHttpBackendHealthcheckArgs{...}
+type GetAlbBackendGroupHttpBackendHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupHttpBackendHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckOutput
+	ToGetAlbBackendGroupHttpBackendHealthcheckOutputWithContext(context.Context) GetAlbBackendGroupHttpBackendHealthcheckOutput
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckArgs struct {
+	GrpcHealthcheck       GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput   `pulumi:"grpcHealthcheck"`
+	HealthcheckPort       pulumi.IntInput                                                `pulumi:"healthcheckPort"`
+	HealthyThreshold      pulumi.IntInput                                                `pulumi:"healthyThreshold"`
+	HttpHealthcheck       GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput   `pulumi:"httpHealthcheck"`
+	Interval              pulumi.StringInput                                             `pulumi:"interval"`
+	IntervalJitterPercent pulumi.Float64Input                                            `pulumi:"intervalJitterPercent"`
+	StreamHealthcheck     GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput `pulumi:"streamHealthcheck"`
+	Timeout               pulumi.StringInput                                             `pulumi:"timeout"`
+	UnhealthyThreshold    pulumi.IntInput                                                `pulumi:"unhealthyThreshold"`
+}
+
+func (GetAlbBackendGroupHttpBackendHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheck)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupHttpBackendHealthcheckArgs) ToGetAlbBackendGroupHttpBackendHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckOutput {
+	return i.ToGetAlbBackendGroupHttpBackendHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupHttpBackendHealthcheckArgs) ToGetAlbBackendGroupHttpBackendHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupHttpBackendHealthcheckOutput)
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupHttpBackendHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheck)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) ToGetAlbBackendGroupHttpBackendHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) ToGetAlbBackendGroupHttpBackendHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) GrpcHealthcheck() GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+		return v.GrpcHealthcheck
+	}).(GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) HealthcheckPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) int { return v.HealthcheckPort }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) HttpHealthcheck() GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+		return v.HttpHealthcheck
+	}).(GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) IntervalJitterPercent() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) float64 { return v.IntervalJitterPercent }).(pulumi.Float64Output)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) StreamHealthcheck() GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+		return v.StreamHealthcheck
+	}).(GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck struct {
+	ServiceName string `pulumi:"serviceName"`
+}
+
+// GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput is an input type that accepts GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs and GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput` via:
+//
+//          GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs{...}
+type GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput
+	ToGetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutputWithContext(context.Context) GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs struct {
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs) ToGetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return i.ToGetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs) ToGetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput)
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ToGetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ToGetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck struct {
+	Host  string `pulumi:"host"`
+	Http2 bool   `pulumi:"http2"`
+	Path  string `pulumi:"path"`
+}
+
+// GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput is an input type that accepts GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs and GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput` via:
+//
+//          GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs{...}
+type GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput
+	ToGetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutputWithContext(context.Context) GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs struct {
+	Host  pulumi.StringInput `pulumi:"host"`
+	Http2 pulumi.BoolInput   `pulumi:"http2"`
+	Path  pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) ToGetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return i.ToGetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) ToGetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput)
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ToGetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ToGetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) Http2() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) bool { return v.Http2 }).(pulumi.BoolOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck struct {
+	Receive string `pulumi:"receive"`
+	Send    string `pulumi:"send"`
+}
+
+// GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput is an input type that accepts GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs and GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput` via:
+//
+//          GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs{...}
+type GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput
+	ToGetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutputWithContext(context.Context) GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs struct {
+	Receive pulumi.StringInput `pulumi:"receive"`
+	Send    pulumi.StringInput `pulumi:"send"`
+}
+
+func (GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) ToGetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return i.ToGetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) ToGetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput)
+}
+
+type GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ToGetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput() GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ToGetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) Receive() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) string { return v.Receive }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) Send() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) string { return v.Send }).(pulumi.StringOutput)
+}
+
+type GetAlbBackendGroupHttpBackendLoadBalancingConfig struct {
+	LocalityAwareRoutingPercent int  `pulumi:"localityAwareRoutingPercent"`
+	PanicThreshold              int  `pulumi:"panicThreshold"`
+	StrictLocality              bool `pulumi:"strictLocality"`
+}
+
+// GetAlbBackendGroupHttpBackendLoadBalancingConfigInput is an input type that accepts GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs and GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupHttpBackendLoadBalancingConfigInput` via:
+//
+//          GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs{...}
+type GetAlbBackendGroupHttpBackendLoadBalancingConfigInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupHttpBackendLoadBalancingConfigOutput() GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput
+	ToGetAlbBackendGroupHttpBackendLoadBalancingConfigOutputWithContext(context.Context) GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput
+}
+
+type GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs struct {
+	LocalityAwareRoutingPercent pulumi.IntInput  `pulumi:"localityAwareRoutingPercent"`
+	PanicThreshold              pulumi.IntInput  `pulumi:"panicThreshold"`
+	StrictLocality              pulumi.BoolInput `pulumi:"strictLocality"`
+}
+
+func (GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs) ToGetAlbBackendGroupHttpBackendLoadBalancingConfigOutput() GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return i.ToGetAlbBackendGroupHttpBackendLoadBalancingConfigOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs) ToGetAlbBackendGroupHttpBackendLoadBalancingConfigOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput)
+}
+
+type GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendLoadBalancingConfig)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) ToGetAlbBackendGroupHttpBackendLoadBalancingConfigOutput() GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) ToGetAlbBackendGroupHttpBackendLoadBalancingConfigOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) LocalityAwareRoutingPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendLoadBalancingConfig) int { return v.LocalityAwareRoutingPercent }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) PanicThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendLoadBalancingConfig) int { return v.PanicThreshold }).(pulumi.IntOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) StrictLocality() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendLoadBalancingConfig) bool { return v.StrictLocality }).(pulumi.BoolOutput)
+}
+
+type GetAlbBackendGroupHttpBackendTls struct {
+	Sni               string                                            `pulumi:"sni"`
+	ValidationContext GetAlbBackendGroupHttpBackendTlsValidationContext `pulumi:"validationContext"`
+}
+
+// GetAlbBackendGroupHttpBackendTlsInput is an input type that accepts GetAlbBackendGroupHttpBackendTlsArgs and GetAlbBackendGroupHttpBackendTlsOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupHttpBackendTlsInput` via:
+//
+//          GetAlbBackendGroupHttpBackendTlsArgs{...}
+type GetAlbBackendGroupHttpBackendTlsInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupHttpBackendTlsOutput() GetAlbBackendGroupHttpBackendTlsOutput
+	ToGetAlbBackendGroupHttpBackendTlsOutputWithContext(context.Context) GetAlbBackendGroupHttpBackendTlsOutput
+}
+
+type GetAlbBackendGroupHttpBackendTlsArgs struct {
+	Sni               pulumi.StringInput                                     `pulumi:"sni"`
+	ValidationContext GetAlbBackendGroupHttpBackendTlsValidationContextInput `pulumi:"validationContext"`
+}
+
+func (GetAlbBackendGroupHttpBackendTlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendTls)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupHttpBackendTlsArgs) ToGetAlbBackendGroupHttpBackendTlsOutput() GetAlbBackendGroupHttpBackendTlsOutput {
+	return i.ToGetAlbBackendGroupHttpBackendTlsOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupHttpBackendTlsArgs) ToGetAlbBackendGroupHttpBackendTlsOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendTlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupHttpBackendTlsOutput)
+}
+
+type GetAlbBackendGroupHttpBackendTlsOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupHttpBackendTlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendTls)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupHttpBackendTlsOutput) ToGetAlbBackendGroupHttpBackendTlsOutput() GetAlbBackendGroupHttpBackendTlsOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendTlsOutput) ToGetAlbBackendGroupHttpBackendTlsOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendTlsOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendTlsOutput) Sni() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendTls) string { return v.Sni }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendTlsOutput) ValidationContext() GetAlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendTls) GetAlbBackendGroupHttpBackendTlsValidationContext {
+		return v.ValidationContext
+	}).(GetAlbBackendGroupHttpBackendTlsValidationContextOutput)
+}
+
+type GetAlbBackendGroupHttpBackendTlsValidationContext struct {
+	TrustedCaBytes string `pulumi:"trustedCaBytes"`
+	TrustedCaId    string `pulumi:"trustedCaId"`
+}
+
+// GetAlbBackendGroupHttpBackendTlsValidationContextInput is an input type that accepts GetAlbBackendGroupHttpBackendTlsValidationContextArgs and GetAlbBackendGroupHttpBackendTlsValidationContextOutput values.
+// You can construct a concrete instance of `GetAlbBackendGroupHttpBackendTlsValidationContextInput` via:
+//
+//          GetAlbBackendGroupHttpBackendTlsValidationContextArgs{...}
+type GetAlbBackendGroupHttpBackendTlsValidationContextInput interface {
+	pulumi.Input
+
+	ToGetAlbBackendGroupHttpBackendTlsValidationContextOutput() GetAlbBackendGroupHttpBackendTlsValidationContextOutput
+	ToGetAlbBackendGroupHttpBackendTlsValidationContextOutputWithContext(context.Context) GetAlbBackendGroupHttpBackendTlsValidationContextOutput
+}
+
+type GetAlbBackendGroupHttpBackendTlsValidationContextArgs struct {
+	TrustedCaBytes pulumi.StringInput `pulumi:"trustedCaBytes"`
+	TrustedCaId    pulumi.StringInput `pulumi:"trustedCaId"`
+}
+
+func (GetAlbBackendGroupHttpBackendTlsValidationContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (i GetAlbBackendGroupHttpBackendTlsValidationContextArgs) ToGetAlbBackendGroupHttpBackendTlsValidationContextOutput() GetAlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return i.ToGetAlbBackendGroupHttpBackendTlsValidationContextOutputWithContext(context.Background())
+}
+
+func (i GetAlbBackendGroupHttpBackendTlsValidationContextArgs) ToGetAlbBackendGroupHttpBackendTlsValidationContextOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbBackendGroupHttpBackendTlsValidationContextOutput)
+}
+
+type GetAlbBackendGroupHttpBackendTlsValidationContextOutput struct{ *pulumi.OutputState }
+
+func (GetAlbBackendGroupHttpBackendTlsValidationContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbBackendGroupHttpBackendTlsValidationContext)(nil)).Elem()
+}
+
+func (o GetAlbBackendGroupHttpBackendTlsValidationContextOutput) ToGetAlbBackendGroupHttpBackendTlsValidationContextOutput() GetAlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendTlsValidationContextOutput) ToGetAlbBackendGroupHttpBackendTlsValidationContextOutputWithContext(ctx context.Context) GetAlbBackendGroupHttpBackendTlsValidationContextOutput {
+	return o
+}
+
+func (o GetAlbBackendGroupHttpBackendTlsValidationContextOutput) TrustedCaBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendTlsValidationContext) string { return v.TrustedCaBytes }).(pulumi.StringOutput)
+}
+
+func (o GetAlbBackendGroupHttpBackendTlsValidationContextOutput) TrustedCaId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendTlsValidationContext) string { return v.TrustedCaId }).(pulumi.StringOutput)
+}
+
 type GetAlbTargetGroupTarget struct {
 	IpAddress string `pulumi:"ipAddress"`
 	SubnetId  string `pulumi:"subnetId"`
@@ -29123,8 +34242,9 @@ type GetComputeInstanceGroupInstanceNetworkInterface struct {
 	// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
 	IpAddress string `pulumi:"ipAddress"`
 	// Is IPv4 address assigned.
-	Ipv4        bool   `pulumi:"ipv4"`
-	Ipv6        bool   `pulumi:"ipv6"`
+	Ipv4 bool `pulumi:"ipv4"`
+	Ipv6 bool `pulumi:"ipv6"`
+	// Manual set static IPv6 address.
 	Ipv6Address string `pulumi:"ipv6Address"`
 	// The MAC address assigned to the network interface.
 	MacAddress string `pulumi:"macAddress"`
@@ -29155,8 +34275,9 @@ type GetComputeInstanceGroupInstanceNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// Is IPv4 address assigned.
-	Ipv4        pulumi.BoolInput   `pulumi:"ipv4"`
-	Ipv6        pulumi.BoolInput   `pulumi:"ipv6"`
+	Ipv4 pulumi.BoolInput `pulumi:"ipv4"`
+	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
+	// Manual set static IPv6 address.
 	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
 	// The MAC address assigned to the network interface.
 	MacAddress pulumi.StringInput `pulumi:"macAddress"`
@@ -29240,6 +34361,7 @@ func (o GetComputeInstanceGroupInstanceNetworkInterfaceOutput) Ipv6() pulumi.Boo
 	return o.ApplyT(func(v GetComputeInstanceGroupInstanceNetworkInterface) bool { return v.Ipv6 }).(pulumi.BoolOutput)
 }
 
+// Manual set static IPv6 address.
 func (o GetComputeInstanceGroupInstanceNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceGroupInstanceNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
@@ -29644,9 +34766,13 @@ func (o GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsOutput) T
 type GetComputeInstanceGroupInstanceTemplateNetworkInterface struct {
 	// List of dns records.  The structure is documented below.
 	DnsRecords []GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecord `pulumi:"dnsRecords"`
+	// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+	IpAddress string `pulumi:"ipAddress"`
 	// Is IPv4 address assigned.
 	Ipv4 bool `pulumi:"ipv4"`
 	Ipv6 bool `pulumi:"ipv6"`
+	// Manual set static IPv6 address.
+	Ipv6Address string `pulumi:"ipv6Address"`
 	// List of ipv6 dns records.  The structure is documented below.
 	Ipv6DnsRecords []GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord `pulumi:"ipv6DnsRecords"`
 	// The instance's public address for accessing the internet over NAT.
@@ -29675,9 +34801,13 @@ type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceInput interface {
 type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs struct {
 	// List of dns records.  The structure is documented below.
 	DnsRecords GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArrayInput `pulumi:"dnsRecords"`
+	// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// Is IPv4 address assigned.
 	Ipv4 pulumi.BoolInput `pulumi:"ipv4"`
 	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
+	// Manual set static IPv6 address.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
 	// List of ipv6 dns records.  The structure is documented below.
 	Ipv6DnsRecords GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArrayInput `pulumi:"ipv6DnsRecords"`
 	// The instance's public address for accessing the internet over NAT.
@@ -29750,6 +34880,11 @@ func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) DnsRecord
 	}).(GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArrayOutput)
 }
 
+// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterface) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
 // Is IPv4 address assigned.
 func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) Ipv4() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterface) bool { return v.Ipv4 }).(pulumi.BoolOutput)
@@ -29757,6 +34892,11 @@ func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) Ipv4() pu
 
 func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) Ipv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterface) bool { return v.Ipv6 }).(pulumi.BoolOutput)
+}
+
+// Manual set static IPv6 address.
+func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 // List of ipv6 dns records.  The structure is documented below.
@@ -32746,6 +37886,8 @@ func (o GetDataprocClusterClusterConfigHadoopOutput) SshPublicKeys() pulumi.Stri
 }
 
 type GetDataprocClusterClusterConfigSubclusterSpec struct {
+	// Optional autoscaling configuration for compute subclusters.
+	AutoscalingConfig GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// Number of hosts within Data Proc subcluster.
 	HostsCount int `pulumi:"hostsCount"`
 	// ID of the Data Proc subcluster.
@@ -32772,6 +37914,8 @@ type GetDataprocClusterClusterConfigSubclusterSpecInput interface {
 }
 
 type GetDataprocClusterClusterConfigSubclusterSpecArgs struct {
+	// Optional autoscaling configuration for compute subclusters.
+	AutoscalingConfig GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigInput `pulumi:"autoscalingConfig"`
 	// Number of hosts within Data Proc subcluster.
 	HostsCount pulumi.IntInput `pulumi:"hostsCount"`
 	// ID of the Data Proc subcluster.
@@ -32837,6 +37981,13 @@ func (o GetDataprocClusterClusterConfigSubclusterSpecOutput) ToGetDataprocCluste
 	return o
 }
 
+// Optional autoscaling configuration for compute subclusters.
+func (o GetDataprocClusterClusterConfigSubclusterSpecOutput) AutoscalingConfig() GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return o.ApplyT(func(v GetDataprocClusterClusterConfigSubclusterSpec) GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
+		return v.AutoscalingConfig
+	}).(GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput)
+}
+
 // Number of hosts within Data Proc subcluster.
 func (o GetDataprocClusterClusterConfigSubclusterSpecOutput) HostsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDataprocClusterClusterConfigSubclusterSpec) int { return v.HostsCount }).(pulumi.IntOutput)
@@ -32887,6 +38038,120 @@ func (o GetDataprocClusterClusterConfigSubclusterSpecArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataprocClusterClusterConfigSubclusterSpec {
 		return vs[0].([]GetDataprocClusterClusterConfigSubclusterSpec)[vs[1].(int)]
 	}).(GetDataprocClusterClusterConfigSubclusterSpecOutput)
+}
+
+type GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig struct {
+	// Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+	CpuUtilizationTarget float64 `pulumi:"cpuUtilizationTarget"`
+	// Timeout to gracefully decommission nodes during downscaling. In seconds.
+	DecommissionTimeout int `pulumi:"decommissionTimeout"`
+	// Maximum number of nodes in autoscaling subclusters.
+	MaxHostsCount int `pulumi:"maxHostsCount"`
+	// Time in seconds allotted for averaging metrics.
+	MeasurementDuration int `pulumi:"measurementDuration"`
+	// Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+	Preemptible bool `pulumi:"preemptible"`
+	// Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+	StabilizationDuration int `pulumi:"stabilizationDuration"`
+	// The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+	WarmupDuration int `pulumi:"warmupDuration"`
+}
+
+// GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigInput is an input type that accepts GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs and GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput values.
+// You can construct a concrete instance of `GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigInput` via:
+//
+//          GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs{...}
+type GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToGetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput() GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput
+	ToGetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutputWithContext(context.Context) GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput
+}
+
+type GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs struct {
+	// Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+	CpuUtilizationTarget pulumi.Float64Input `pulumi:"cpuUtilizationTarget"`
+	// Timeout to gracefully decommission nodes during downscaling. In seconds.
+	DecommissionTimeout pulumi.IntInput `pulumi:"decommissionTimeout"`
+	// Maximum number of nodes in autoscaling subclusters.
+	MaxHostsCount pulumi.IntInput `pulumi:"maxHostsCount"`
+	// Time in seconds allotted for averaging metrics.
+	MeasurementDuration pulumi.IntInput `pulumi:"measurementDuration"`
+	// Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
+	// Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+	StabilizationDuration pulumi.IntInput `pulumi:"stabilizationDuration"`
+	// The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+	WarmupDuration pulumi.IntInput `pulumi:"warmupDuration"`
+}
+
+func (GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig)(nil)).Elem()
+}
+
+func (i GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs) ToGetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput() GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return i.ToGetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs) ToGetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutputWithContext(ctx context.Context) GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput)
+}
+
+type GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig)(nil)).Elem()
+}
+
+func (o GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ToGetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput() GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return o
+}
+
+func (o GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ToGetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutputWithContext(ctx context.Context) GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
+	return o
+}
+
+// Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+func (o GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) CpuUtilizationTarget() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) float64 {
+		return v.CpuUtilizationTarget
+	}).(pulumi.Float64Output)
+}
+
+// Timeout to gracefully decommission nodes during downscaling. In seconds.
+func (o GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) DecommissionTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) int {
+		return v.DecommissionTimeout
+	}).(pulumi.IntOutput)
+}
+
+// Maximum number of nodes in autoscaling subclusters.
+func (o GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) MaxHostsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) int { return v.MaxHostsCount }).(pulumi.IntOutput)
+}
+
+// Time in seconds allotted for averaging metrics.
+func (o GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) MeasurementDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) int {
+		return v.MeasurementDuration
+	}).(pulumi.IntOutput)
+}
+
+// Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+func (o GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) Preemptible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+// Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+func (o GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) StabilizationDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) int {
+		return v.StabilizationDuration
+	}).(pulumi.IntOutput)
+}
+
+// The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+func (o GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) WarmupDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) int { return v.WarmupDuration }).(pulumi.IntOutput)
 }
 
 type GetDataprocClusterClusterConfigSubclusterSpecResources struct {
@@ -37688,6 +42953,7 @@ func (o GetMdbClickhouseClusterClickhouseResourcesOutput) ResourcePresetId() pul
 }
 
 type GetMdbClickhouseClusterCloudStorage struct {
+	// (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -37703,6 +42969,7 @@ type GetMdbClickhouseClusterCloudStorageInput interface {
 }
 
 type GetMdbClickhouseClusterCloudStorageArgs struct {
+	// (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -37732,6 +42999,7 @@ func (o GetMdbClickhouseClusterCloudStorageOutput) ToGetMdbClickhouseClusterClou
 	return o
 }
 
+// (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
 func (o GetMdbClickhouseClusterCloudStorageOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMdbClickhouseClusterCloudStorage) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -37836,7 +43104,7 @@ func (o GetMdbClickhouseClusterDatabaseArrayOutput) Index(i pulumi.IntInput) Get
 type GetMdbClickhouseClusterFormatSchema struct {
 	// The name of the ClickHouse cluster.
 	Name string `pulumi:"name"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type string `pulumi:"type"`
 	// Model file URL. You can only use models stored in Yandex Object Storage.
 	Uri string `pulumi:"uri"`
@@ -37856,7 +43124,7 @@ type GetMdbClickhouseClusterFormatSchemaInput interface {
 type GetMdbClickhouseClusterFormatSchemaArgs struct {
 	// The name of the ClickHouse cluster.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Model file URL. You can only use models stored in Yandex Object Storage.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -37918,7 +43186,7 @@ func (o GetMdbClickhouseClusterFormatSchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbClickhouseClusterFormatSchema) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type of the model.
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 func (o GetMdbClickhouseClusterFormatSchemaOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbClickhouseClusterFormatSchema) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -37957,7 +43225,7 @@ type GetMdbClickhouseClusterHost struct {
 	ShardName string `pulumi:"shardName"`
 	// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
 	SubnetId string `pulumi:"subnetId"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type string `pulumi:"type"`
 	// The availability zone where the ClickHouse host will be created.
 	Zone string `pulumi:"zone"`
@@ -37983,7 +43251,7 @@ type GetMdbClickhouseClusterHostArgs struct {
 	ShardName pulumi.StringInput `pulumi:"shardName"`
 	// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The availability zone where the ClickHouse host will be created.
 	Zone pulumi.StringInput `pulumi:"zone"`
@@ -38060,7 +43328,7 @@ func (o GetMdbClickhouseClusterHostOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbClickhouseClusterHost) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Type of the model.
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 func (o GetMdbClickhouseClusterHostOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbClickhouseClusterHost) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -38090,10 +43358,80 @@ func (o GetMdbClickhouseClusterHostArrayOutput) Index(i pulumi.IntInput) GetMdbC
 	}).(GetMdbClickhouseClusterHostOutput)
 }
 
+type GetMdbClickhouseClusterMaintenanceWindow struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day string `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour int `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type string `pulumi:"type"`
+}
+
+// GetMdbClickhouseClusterMaintenanceWindowInput is an input type that accepts GetMdbClickhouseClusterMaintenanceWindowArgs and GetMdbClickhouseClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetMdbClickhouseClusterMaintenanceWindowInput` via:
+//
+//          GetMdbClickhouseClusterMaintenanceWindowArgs{...}
+type GetMdbClickhouseClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetMdbClickhouseClusterMaintenanceWindowOutput() GetMdbClickhouseClusterMaintenanceWindowOutput
+	ToGetMdbClickhouseClusterMaintenanceWindowOutputWithContext(context.Context) GetMdbClickhouseClusterMaintenanceWindowOutput
+}
+
+type GetMdbClickhouseClusterMaintenanceWindowArgs struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day pulumi.StringInput `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour pulumi.IntInput `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetMdbClickhouseClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbClickhouseClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetMdbClickhouseClusterMaintenanceWindowArgs) ToGetMdbClickhouseClusterMaintenanceWindowOutput() GetMdbClickhouseClusterMaintenanceWindowOutput {
+	return i.ToGetMdbClickhouseClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetMdbClickhouseClusterMaintenanceWindowArgs) ToGetMdbClickhouseClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbClickhouseClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbClickhouseClusterMaintenanceWindowOutput)
+}
+
+type GetMdbClickhouseClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetMdbClickhouseClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbClickhouseClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetMdbClickhouseClusterMaintenanceWindowOutput) ToGetMdbClickhouseClusterMaintenanceWindowOutput() GetMdbClickhouseClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetMdbClickhouseClusterMaintenanceWindowOutput) ToGetMdbClickhouseClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbClickhouseClusterMaintenanceWindowOutput {
+	return o
+}
+
+// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+func (o GetMdbClickhouseClusterMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbClickhouseClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+func (o GetMdbClickhouseClusterMaintenanceWindowOutput) Hour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbClickhouseClusterMaintenanceWindow) int { return v.Hour }).(pulumi.IntOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o GetMdbClickhouseClusterMaintenanceWindowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbClickhouseClusterMaintenanceWindow) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type GetMdbClickhouseClusterMlModel struct {
 	// The name of the ClickHouse cluster.
 	Name string `pulumi:"name"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type string `pulumi:"type"`
 	// Model file URL. You can only use models stored in Yandex Object Storage.
 	Uri string `pulumi:"uri"`
@@ -38113,7 +43451,7 @@ type GetMdbClickhouseClusterMlModelInput interface {
 type GetMdbClickhouseClusterMlModelArgs struct {
 	// The name of the ClickHouse cluster.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Type of the model.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Model file URL. You can only use models stored in Yandex Object Storage.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -38175,7 +43513,7 @@ func (o GetMdbClickhouseClusterMlModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbClickhouseClusterMlModel) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type of the model.
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 func (o GetMdbClickhouseClusterMlModelOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbClickhouseClusterMlModel) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -39854,6 +45192,7 @@ func (o GetMdbKafkaClusterConfigKafkaOutput) Resources() GetMdbKafkaClusterConfi
 type GetMdbKafkaClusterConfigKafkaKafkaConfig struct {
 	AutoCreateTopicsEnable      *bool   `pulumi:"autoCreateTopicsEnable"`
 	CompressionType             *string `pulumi:"compressionType"`
+	DefaultReplicationFactor    *int    `pulumi:"defaultReplicationFactor"`
 	LogFlushIntervalMessages    *int    `pulumi:"logFlushIntervalMessages"`
 	LogFlushIntervalMs          *int    `pulumi:"logFlushIntervalMs"`
 	LogFlushSchedulerIntervalMs *int    `pulumi:"logFlushSchedulerIntervalMs"`
@@ -39863,6 +45202,7 @@ type GetMdbKafkaClusterConfigKafkaKafkaConfig struct {
 	LogRetentionMinutes         *int    `pulumi:"logRetentionMinutes"`
 	LogRetentionMs              *int    `pulumi:"logRetentionMs"`
 	LogSegmentBytes             *int    `pulumi:"logSegmentBytes"`
+	NumPartitions               *int    `pulumi:"numPartitions"`
 	SocketReceiveBufferBytes    *int    `pulumi:"socketReceiveBufferBytes"`
 	SocketSendBufferBytes       *int    `pulumi:"socketSendBufferBytes"`
 }
@@ -39881,6 +45221,7 @@ type GetMdbKafkaClusterConfigKafkaKafkaConfigInput interface {
 type GetMdbKafkaClusterConfigKafkaKafkaConfigArgs struct {
 	AutoCreateTopicsEnable      pulumi.BoolPtrInput   `pulumi:"autoCreateTopicsEnable"`
 	CompressionType             pulumi.StringPtrInput `pulumi:"compressionType"`
+	DefaultReplicationFactor    pulumi.IntPtrInput    `pulumi:"defaultReplicationFactor"`
 	LogFlushIntervalMessages    pulumi.IntPtrInput    `pulumi:"logFlushIntervalMessages"`
 	LogFlushIntervalMs          pulumi.IntPtrInput    `pulumi:"logFlushIntervalMs"`
 	LogFlushSchedulerIntervalMs pulumi.IntPtrInput    `pulumi:"logFlushSchedulerIntervalMs"`
@@ -39890,6 +45231,7 @@ type GetMdbKafkaClusterConfigKafkaKafkaConfigArgs struct {
 	LogRetentionMinutes         pulumi.IntPtrInput    `pulumi:"logRetentionMinutes"`
 	LogRetentionMs              pulumi.IntPtrInput    `pulumi:"logRetentionMs"`
 	LogSegmentBytes             pulumi.IntPtrInput    `pulumi:"logSegmentBytes"`
+	NumPartitions               pulumi.IntPtrInput    `pulumi:"numPartitions"`
 	SocketReceiveBufferBytes    pulumi.IntPtrInput    `pulumi:"socketReceiveBufferBytes"`
 	SocketSendBufferBytes       pulumi.IntPtrInput    `pulumi:"socketSendBufferBytes"`
 }
@@ -39978,6 +45320,10 @@ func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) CompressionType() pulumi
 	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+}
+
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMessages() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogFlushIntervalMessages }).(pulumi.IntPtrOutput)
 }
@@ -40012,6 +45358,10 @@ func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMs() pulumi.
 
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogSegmentBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogSegmentBytes }).(pulumi.IntPtrOutput)
+}
+
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) NumPartitions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.NumPartitions }).(pulumi.IntPtrOutput)
 }
 
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketReceiveBufferBytes() pulumi.IntPtrOutput {
@@ -40056,6 +45406,15 @@ func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) CompressionType() pul
 		}
 		return v.CompressionType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultReplicationFactor
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMessages() pulumi.IntPtrOutput {
@@ -40136,6 +45495,15 @@ func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogSegmentBytes() pul
 			return nil
 		}
 		return v.LogSegmentBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) NumPartitions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumPartitions
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -42400,6 +47768,76 @@ func (o GetMdbMysqlClusterHostArrayOutput) Index(i pulumi.IntInput) GetMdbMysqlC
 	}).(GetMdbMysqlClusterHostOutput)
 }
 
+type GetMdbMysqlClusterMaintenanceWindow struct {
+	// Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+	Day string `pulumi:"day"`
+	// Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+	Hour int `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type string `pulumi:"type"`
+}
+
+// GetMdbMysqlClusterMaintenanceWindowInput is an input type that accepts GetMdbMysqlClusterMaintenanceWindowArgs and GetMdbMysqlClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetMdbMysqlClusterMaintenanceWindowInput` via:
+//
+//          GetMdbMysqlClusterMaintenanceWindowArgs{...}
+type GetMdbMysqlClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetMdbMysqlClusterMaintenanceWindowOutput() GetMdbMysqlClusterMaintenanceWindowOutput
+	ToGetMdbMysqlClusterMaintenanceWindowOutputWithContext(context.Context) GetMdbMysqlClusterMaintenanceWindowOutput
+}
+
+type GetMdbMysqlClusterMaintenanceWindowArgs struct {
+	// Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+	Day pulumi.StringInput `pulumi:"day"`
+	// Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+	Hour pulumi.IntInput `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetMdbMysqlClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbMysqlClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetMdbMysqlClusterMaintenanceWindowArgs) ToGetMdbMysqlClusterMaintenanceWindowOutput() GetMdbMysqlClusterMaintenanceWindowOutput {
+	return i.ToGetMdbMysqlClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetMdbMysqlClusterMaintenanceWindowArgs) ToGetMdbMysqlClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbMysqlClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbMysqlClusterMaintenanceWindowOutput)
+}
+
+type GetMdbMysqlClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetMdbMysqlClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbMysqlClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetMdbMysqlClusterMaintenanceWindowOutput) ToGetMdbMysqlClusterMaintenanceWindowOutput() GetMdbMysqlClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetMdbMysqlClusterMaintenanceWindowOutput) ToGetMdbMysqlClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbMysqlClusterMaintenanceWindowOutput {
+	return o
+}
+
+// Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+func (o GetMdbMysqlClusterMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbMysqlClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+func (o GetMdbMysqlClusterMaintenanceWindowOutput) Hour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbMysqlClusterMaintenanceWindow) int { return v.Hour }).(pulumi.IntOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o GetMdbMysqlClusterMaintenanceWindowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbMysqlClusterMaintenanceWindow) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type GetMdbMysqlClusterResources struct {
 	// Volume of the storage available to a MySQL host, in gigabytes.
 	DiskSize int `pulumi:"diskSize"`
@@ -43880,8 +49318,16 @@ func (o GetMdbPostgresqlClusterUserPermissionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetMdbRedisClusterConfig struct {
+	// Number of databases (changing requires redis-server restart).
+	Databases int `pulumi:"databases"`
 	// Redis key eviction policy for a dataset that reaches maximum memory.
 	MaxmemoryPolicy string `pulumi:"maxmemoryPolicy"`
+	// Select the events that Redis will notify among a set of classes.
+	NotifyKeyspaceEvents string `pulumi:"notifyKeyspaceEvents"`
+	// Log slow queries below this number in microseconds.
+	SlowlogLogSlowerThan int `pulumi:"slowlogLogSlowerThan"`
+	// Slow queries log length.
+	SlowlogMaxLen int `pulumi:"slowlogMaxLen"`
 	// Close the connection after a client is idle for N seconds.
 	Timeout int `pulumi:"timeout"`
 	// Version of Redis (either 5.0 or 6.0).
@@ -43900,8 +49346,16 @@ type GetMdbRedisClusterConfigInput interface {
 }
 
 type GetMdbRedisClusterConfigArgs struct {
+	// Number of databases (changing requires redis-server restart).
+	Databases pulumi.IntInput `pulumi:"databases"`
 	// Redis key eviction policy for a dataset that reaches maximum memory.
 	MaxmemoryPolicy pulumi.StringInput `pulumi:"maxmemoryPolicy"`
+	// Select the events that Redis will notify among a set of classes.
+	NotifyKeyspaceEvents pulumi.StringInput `pulumi:"notifyKeyspaceEvents"`
+	// Log slow queries below this number in microseconds.
+	SlowlogLogSlowerThan pulumi.IntInput `pulumi:"slowlogLogSlowerThan"`
+	// Slow queries log length.
+	SlowlogMaxLen pulumi.IntInput `pulumi:"slowlogMaxLen"`
 	// Close the connection after a client is idle for N seconds.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
 	// Version of Redis (either 5.0 or 6.0).
@@ -43934,9 +49388,29 @@ func (o GetMdbRedisClusterConfigOutput) ToGetMdbRedisClusterConfigOutputWithCont
 	return o
 }
 
+// Number of databases (changing requires redis-server restart).
+func (o GetMdbRedisClusterConfigOutput) Databases() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbRedisClusterConfig) int { return v.Databases }).(pulumi.IntOutput)
+}
+
 // Redis key eviction policy for a dataset that reaches maximum memory.
 func (o GetMdbRedisClusterConfigOutput) MaxmemoryPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbRedisClusterConfig) string { return v.MaxmemoryPolicy }).(pulumi.StringOutput)
+}
+
+// Select the events that Redis will notify among a set of classes.
+func (o GetMdbRedisClusterConfigOutput) NotifyKeyspaceEvents() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbRedisClusterConfig) string { return v.NotifyKeyspaceEvents }).(pulumi.StringOutput)
+}
+
+// Log slow queries below this number in microseconds.
+func (o GetMdbRedisClusterConfigOutput) SlowlogLogSlowerThan() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbRedisClusterConfig) int { return v.SlowlogLogSlowerThan }).(pulumi.IntOutput)
+}
+
+// Slow queries log length.
+func (o GetMdbRedisClusterConfigOutput) SlowlogMaxLen() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbRedisClusterConfig) int { return v.SlowlogMaxLen }).(pulumi.IntOutput)
 }
 
 // Close the connection after a client is idle for N seconds.
@@ -44074,6 +49548,76 @@ func (o GetMdbRedisClusterHostArrayOutput) Index(i pulumi.IntInput) GetMdbRedisC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMdbRedisClusterHost {
 		return vs[0].([]GetMdbRedisClusterHost)[vs[1].(int)]
 	}).(GetMdbRedisClusterHostOutput)
+}
+
+type GetMdbRedisClusterMaintenanceWindow struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day string `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour int `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type string `pulumi:"type"`
+}
+
+// GetMdbRedisClusterMaintenanceWindowInput is an input type that accepts GetMdbRedisClusterMaintenanceWindowArgs and GetMdbRedisClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetMdbRedisClusterMaintenanceWindowInput` via:
+//
+//          GetMdbRedisClusterMaintenanceWindowArgs{...}
+type GetMdbRedisClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetMdbRedisClusterMaintenanceWindowOutput() GetMdbRedisClusterMaintenanceWindowOutput
+	ToGetMdbRedisClusterMaintenanceWindowOutputWithContext(context.Context) GetMdbRedisClusterMaintenanceWindowOutput
+}
+
+type GetMdbRedisClusterMaintenanceWindowArgs struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day pulumi.StringInput `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour pulumi.IntInput `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetMdbRedisClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbRedisClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetMdbRedisClusterMaintenanceWindowArgs) ToGetMdbRedisClusterMaintenanceWindowOutput() GetMdbRedisClusterMaintenanceWindowOutput {
+	return i.ToGetMdbRedisClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetMdbRedisClusterMaintenanceWindowArgs) ToGetMdbRedisClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbRedisClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbRedisClusterMaintenanceWindowOutput)
+}
+
+type GetMdbRedisClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetMdbRedisClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbRedisClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetMdbRedisClusterMaintenanceWindowOutput) ToGetMdbRedisClusterMaintenanceWindowOutput() GetMdbRedisClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetMdbRedisClusterMaintenanceWindowOutput) ToGetMdbRedisClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbRedisClusterMaintenanceWindowOutput {
+	return o
+}
+
+// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+func (o GetMdbRedisClusterMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbRedisClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+func (o GetMdbRedisClusterMaintenanceWindowOutput) Hour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbRedisClusterMaintenanceWindow) int { return v.Hour }).(pulumi.IntOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o GetMdbRedisClusterMaintenanceWindowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbRedisClusterMaintenanceWindow) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetMdbRedisClusterResources struct {
@@ -45816,6 +51360,38 @@ func (o GetYdbDatabaseDedicatedStorageConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 func init() {
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendArrayOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendHealthcheckOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendLoadBalancingConfigOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendTlsOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendTlsPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendTlsValidationContextOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendArrayOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendHealthcheckOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendLoadBalancingConfigOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendTlsOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendTlsPtrOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendTlsValidationContextOutput{})
+	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendTlsValidationContextPtrOutput{})
 	pulumi.RegisterOutputType(AlbTargetGroupTargetOutput{})
 	pulumi.RegisterOutputType(AlbTargetGroupTargetArrayOutput{})
 	pulumi.RegisterOutputType(ComputeDiskDiskPlacementPolicyOutput{})
@@ -45899,6 +51475,8 @@ func init() {
 	pulumi.RegisterOutputType(DataprocClusterClusterConfigHadoopPtrOutput{})
 	pulumi.RegisterOutputType(DataprocClusterClusterConfigSubclusterSpecOutput{})
 	pulumi.RegisterOutputType(DataprocClusterClusterConfigSubclusterSpecArrayOutput{})
+	pulumi.RegisterOutputType(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataprocClusterClusterConfigSubclusterSpecResourcesOutput{})
 	pulumi.RegisterOutputType(FunctionContentOutput{})
 	pulumi.RegisterOutputType(FunctionContentPtrOutput{})
@@ -46016,6 +51594,8 @@ func init() {
 	pulumi.RegisterOutputType(MdbClickhouseClusterFormatSchemaArrayOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterHostOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(MdbClickhouseClusterMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(MdbClickhouseClusterMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterMlModelOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterMlModelArrayOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterShardGroupOutput{})
@@ -46078,6 +51658,8 @@ func init() {
 	pulumi.RegisterOutputType(MdbMysqlClusterDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterHostOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(MdbMysqlClusterMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(MdbMysqlClusterMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterResourcesOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterRestoreOutput{})
@@ -46092,6 +51674,8 @@ func init() {
 	pulumi.RegisterOutputType(MdbRedisClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterHostOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(MdbRedisClusterMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(MdbRedisClusterMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterResourcesOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterBackupWindowStartOutput{})
@@ -46134,6 +51718,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageBucketWebsitePtrOutput{})
 	pulumi.RegisterOutputType(VpcAddressExternalIpv4AddressOutput{})
 	pulumi.RegisterOutputType(VpcAddressExternalIpv4AddressPtrOutput{})
+	pulumi.RegisterOutputType(VpcDefaultSecurityGroupEgressOutput{})
+	pulumi.RegisterOutputType(VpcDefaultSecurityGroupEgressArrayOutput{})
+	pulumi.RegisterOutputType(VpcDefaultSecurityGroupIngressOutput{})
+	pulumi.RegisterOutputType(VpcDefaultSecurityGroupIngressArrayOutput{})
 	pulumi.RegisterOutputType(VpcRouteTableStaticRouteOutput{})
 	pulumi.RegisterOutputType(VpcRouteTableStaticRouteArrayOutput{})
 	pulumi.RegisterOutputType(VpcSecurityGroupEgressOutput{})
@@ -46152,6 +51740,24 @@ func init() {
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedStorageConfigOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendTlsOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendTlsValidationContextOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendTlsOutput{})
+	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendTlsValidationContextOutput{})
 	pulumi.RegisterOutputType(GetAlbTargetGroupTargetOutput{})
 	pulumi.RegisterOutputType(GetAlbTargetGroupTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetComputeDiskDiskPlacementPolicyOutput{})
@@ -46220,6 +51826,7 @@ func init() {
 	pulumi.RegisterOutputType(GetDataprocClusterClusterConfigHadoopOutput{})
 	pulumi.RegisterOutputType(GetDataprocClusterClusterConfigSubclusterSpecOutput{})
 	pulumi.RegisterOutputType(GetDataprocClusterClusterConfigSubclusterSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(GetDataprocClusterClusterConfigSubclusterSpecResourcesOutput{})
 	pulumi.RegisterOutputType(GetFunctionTriggerDlqOutput{})
 	pulumi.RegisterOutputType(GetFunctionTriggerFunctionOutput{})
@@ -46297,6 +51904,7 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterFormatSchemaArrayOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterHostOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(GetMdbClickhouseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterMlModelOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterMlModelArrayOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterShardGroupOutput{})
@@ -46347,6 +51955,7 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbMysqlClusterDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetMdbMysqlClusterHostOutput{})
 	pulumi.RegisterOutputType(GetMdbMysqlClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(GetMdbMysqlClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetMdbMysqlClusterResourcesOutput{})
 	pulumi.RegisterOutputType(GetMdbMysqlClusterUserOutput{})
 	pulumi.RegisterOutputType(GetMdbMysqlClusterUserArrayOutput{})
@@ -46372,6 +51981,7 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbRedisClusterConfigOutput{})
 	pulumi.RegisterOutputType(GetMdbRedisClusterHostOutput{})
 	pulumi.RegisterOutputType(GetMdbRedisClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(GetMdbRedisClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetMdbRedisClusterResourcesOutput{})
 	pulumi.RegisterOutputType(GetMdbSqlserverClusterBackupWindowStartOutput{})
 	pulumi.RegisterOutputType(GetMdbSqlserverClusterBackupWindowStartArrayOutput{})

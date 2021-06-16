@@ -3,6 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .alb_backend_group import *
+from .alb_http_router import *
 from .alb_target_group import *
 from .api_gateway import *
 from .compute_disk import *
@@ -22,6 +24,8 @@ from .dns_zone import *
 from .function import *
 from .function_iam_binding import *
 from .function_trigger import *
+from .get_alb_backend_group import *
+from .get_alb_http_router import *
 from .get_alb_target_group import *
 from .get_api_gateway import *
 from .get_client_config import *
@@ -96,6 +100,7 @@ from .resourcemanager_folder_iam_policy import *
 from .storage_bucket import *
 from .storage_object import *
 from .vpc_address import *
+from .vpc_default_security_group import *
 from .vpc_network import *
 from .vpc_route_table import *
 from .vpc_security_group import *
@@ -122,7 +127,11 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "yandex:index/albTargetGroup:AlbTargetGroup":
+            if typ == "yandex:index/albBackendGroup:AlbBackendGroup":
+                return AlbBackendGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/albHttpRouter:AlbHttpRouter":
+                return AlbHttpRouter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/albTargetGroup:AlbTargetGroup":
                 return AlbTargetGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/apiGateway:ApiGateway":
                 return ApiGateway(name, pulumi.ResourceOptions(urn=urn))
@@ -220,6 +229,8 @@ def _register_module():
                 return StorageObject(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/vpcAddress:VpcAddress":
                 return VpcAddress(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/vpcDefaultSecurityGroup:VpcDefaultSecurityGroup":
+                return VpcDefaultSecurityGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/vpcNetwork:VpcNetwork":
                 return VpcNetwork(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/vpcRouteTable:VpcRouteTable":
@@ -237,6 +248,8 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("yandex", "index/albBackendGroup", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/albHttpRouter", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/albTargetGroup", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/apiGateway", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/computeDisk", _module_instance)
@@ -286,6 +299,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/storageBucket", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/storageObject", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/vpcAddress", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/vpcDefaultSecurityGroup", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/vpcNetwork", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/vpcRouteTable", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/vpcSecurityGroup", _module_instance)

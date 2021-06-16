@@ -212,6 +212,10 @@ namespace Pulumi.Yandex
     ///                     Zone = "ru-central1-a",
     ///                 },
     ///             },
+    ///             MaintenanceWindow = new Yandex.Inputs.MdbClickhouseClusterMaintenanceWindowArgs
+    ///             {
+    ///                 Type = "ANYTIME",
+    ///             },
     ///             MlModels = 
     ///             {
     ///                 new Yandex.Inputs.MdbClickhouseClusterMlModelArgs
@@ -653,7 +657,7 @@ namespace Pulumi.Yandex
         public Output<ImmutableArray<Outputs.MdbClickhouseClusterFormatSchema>> FormatSchemas { get; private set; } = null!;
 
         /// <summary>
-        /// Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+        /// Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
         /// For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         /// </summary>
         [Output("health")]
@@ -669,7 +673,10 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the ClickHouse cluster.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("maintenanceWindow")]
+        public Output<Outputs.MdbClickhouseClusterMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
         /// A group of machine learning models. The structure is documented below
@@ -720,7 +727,7 @@ namespace Pulumi.Yandex
         public Output<bool> SqlUserManagement { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+        /// Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
         /// For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         /// </summary>
         [Output("status")]
@@ -889,6 +896,9 @@ namespace Pulumi.Yandex
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbClickhouseClusterMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         [Input("mlModels")]
         private InputList<Inputs.MdbClickhouseClusterMlModelArgs>? _mlModels;
@@ -1070,7 +1080,7 @@ namespace Pulumi.Yandex
         }
 
         /// <summary>
-        /// Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+        /// Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
         /// For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         /// </summary>
         [Input("health")]
@@ -1099,6 +1109,9 @@ namespace Pulumi.Yandex
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbClickhouseClusterMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         [Input("mlModels")]
         private InputList<Inputs.MdbClickhouseClusterMlModelGetArgs>? _mlModels;
@@ -1167,7 +1180,7 @@ namespace Pulumi.Yandex
         public Input<bool>? SqlUserManagement { get; set; }
 
         /// <summary>
-        /// Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+        /// Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
         /// For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
         /// </summary>
         [Input("status")]

@@ -115,6 +115,7 @@ export interface GetMdbClickhouseClusterResult {
      * A set of key/value label pairs to assign to the ClickHouse cluster.
      */
     readonly labels: {[key: string]: string};
+    readonly maintenanceWindow: outputs.GetMdbClickhouseClusterMaintenanceWindow;
     /**
      * A group of machine learning models. The structure is documented below.
      */

@@ -83,7 +83,8 @@ type LookupMdbClickhouseClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the ClickHouse cluster.
-	Labels map[string]string `pulumi:"labels"`
+	Labels            map[string]string                        `pulumi:"labels"`
+	MaintenanceWindow GetMdbClickhouseClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// A group of machine learning models. The structure is documented below.
 	MlModels []GetMdbClickhouseClusterMlModel `pulumi:"mlModels"`
 	// Graphite rollup configuration name.

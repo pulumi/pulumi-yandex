@@ -18,7 +18,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly int? Index;
         /// <summary>
-        /// The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+        /// Manual set static IP address.
         /// </summary>
         public readonly string? IpAddress;
         /// <summary>
@@ -26,6 +26,9 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly bool? Ipv4;
         public readonly bool? Ipv6;
+        /// <summary>
+        /// Manual set static IPv6 address.
+        /// </summary>
         public readonly string? Ipv6Address;
         /// <summary>
         /// The MAC address assigned to the network interface.

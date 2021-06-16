@@ -13,6 +13,12 @@ namespace Pulumi.Yandex.Inputs
     public sealed class DataprocClusterClusterConfigSubclusterSpecGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Autoscaling configuration for compute subclusters.
+        /// </summary>
+        [Input("autoscalingConfig")]
+        public Input<Inputs.DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigGetArgs>? AutoscalingConfig { get; set; }
+
+        /// <summary>
         /// Number of hosts within Data Proc subcluster.
         /// </summary>
         [Input("hostsCount", required: true)]

@@ -184,6 +184,9 @@ import (
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 				},
 // 			},
+// 			MaintenanceWindow: &yandex.MdbClickhouseClusterMaintenanceWindowArgs{
+// 				Type: pulumi.String("ANYTIME"),
+// 			},
 // 			MlModels: yandex.MdbClickhouseClusterMlModelArray{
 // 				&yandex.MdbClickhouseClusterMlModelArgs{
 // 					Name: pulumi.String("test_model"),
@@ -542,13 +545,14 @@ type MdbClickhouseCluster struct {
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// A set of protobuf or capnproto format schemas. The structure is documented below.
 	FormatSchemas MdbClickhouseClusterFormatSchemaArrayOutput `pulumi:"formatSchemas"`
-	// Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+	// Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
 	// For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
 	Health pulumi.StringOutput `pulumi:"health"`
 	// A host of the ClickHouse cluster. The structure is documented below.
 	Hosts MdbClickhouseClusterHostArrayOutput `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the ClickHouse cluster.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels            pulumi.StringMapOutput                      `pulumi:"labels"`
+	MaintenanceWindow MdbClickhouseClusterMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// A group of machine learning models. The structure is documented below
 	MlModels MdbClickhouseClusterMlModelArrayOutput `pulumi:"mlModels"`
 	// Graphite rollup configuration name.
@@ -565,7 +569,7 @@ type MdbClickhouseCluster struct {
 	SqlDatabaseManagement pulumi.BoolOutput `pulumi:"sqlDatabaseManagement"`
 	// Enables `admin` user with user management permission.
 	SqlUserManagement pulumi.BoolOutput `pulumi:"sqlUserManagement"`
-	// Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+	// Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
 	// For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A user of the ClickHouse cluster. The structure is documented below.
@@ -641,13 +645,14 @@ type mdbClickhouseClusterState struct {
 	FolderId *string `pulumi:"folderId"`
 	// A set of protobuf or capnproto format schemas. The structure is documented below.
 	FormatSchemas []MdbClickhouseClusterFormatSchema `pulumi:"formatSchemas"`
-	// Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+	// Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
 	// For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
 	Health *string `pulumi:"health"`
 	// A host of the ClickHouse cluster. The structure is documented below.
 	Hosts []MdbClickhouseClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the ClickHouse cluster.
-	Labels map[string]string `pulumi:"labels"`
+	Labels            map[string]string                      `pulumi:"labels"`
+	MaintenanceWindow *MdbClickhouseClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// A group of machine learning models. The structure is documented below
 	MlModels []MdbClickhouseClusterMlModel `pulumi:"mlModels"`
 	// Graphite rollup configuration name.
@@ -664,7 +669,7 @@ type mdbClickhouseClusterState struct {
 	SqlDatabaseManagement *bool `pulumi:"sqlDatabaseManagement"`
 	// Enables `admin` user with user management permission.
 	SqlUserManagement *bool `pulumi:"sqlUserManagement"`
-	// Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+	// Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
 	// For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
 	Status *string `pulumi:"status"`
 	// A user of the ClickHouse cluster. The structure is documented below.
@@ -700,13 +705,14 @@ type MdbClickhouseClusterState struct {
 	FolderId pulumi.StringPtrInput
 	// A set of protobuf or capnproto format schemas. The structure is documented below.
 	FormatSchemas MdbClickhouseClusterFormatSchemaArrayInput
-	// Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
+	// Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
 	// For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
 	Health pulumi.StringPtrInput
 	// A host of the ClickHouse cluster. The structure is documented below.
 	Hosts MdbClickhouseClusterHostArrayInput
 	// A set of key/value label pairs to assign to the ClickHouse cluster.
-	Labels pulumi.StringMapInput
+	Labels            pulumi.StringMapInput
+	MaintenanceWindow MdbClickhouseClusterMaintenanceWindowPtrInput
 	// A group of machine learning models. The structure is documented below
 	MlModels MdbClickhouseClusterMlModelArrayInput
 	// Graphite rollup configuration name.
@@ -723,7 +729,7 @@ type MdbClickhouseClusterState struct {
 	SqlDatabaseManagement pulumi.BoolPtrInput
 	// Enables `admin` user with user management permission.
 	SqlUserManagement pulumi.BoolPtrInput
-	// Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
+	// Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
 	// For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
 	Status pulumi.StringPtrInput
 	// A user of the ClickHouse cluster. The structure is documented below.
@@ -764,7 +770,8 @@ type mdbClickhouseClusterArgs struct {
 	// A host of the ClickHouse cluster. The structure is documented below.
 	Hosts []MdbClickhouseClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the ClickHouse cluster.
-	Labels map[string]string `pulumi:"labels"`
+	Labels            map[string]string                      `pulumi:"labels"`
+	MaintenanceWindow *MdbClickhouseClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// A group of machine learning models. The structure is documented below
 	MlModels []MdbClickhouseClusterMlModel `pulumi:"mlModels"`
 	// Graphite rollup configuration name.
@@ -816,7 +823,8 @@ type MdbClickhouseClusterArgs struct {
 	// A host of the ClickHouse cluster. The structure is documented below.
 	Hosts MdbClickhouseClusterHostArrayInput
 	// A set of key/value label pairs to assign to the ClickHouse cluster.
-	Labels pulumi.StringMapInput
+	Labels            pulumi.StringMapInput
+	MaintenanceWindow MdbClickhouseClusterMaintenanceWindowPtrInput
 	// A group of machine learning models. The structure is documented below
 	MlModels MdbClickhouseClusterMlModelArrayInput
 	// Graphite rollup configuration name.

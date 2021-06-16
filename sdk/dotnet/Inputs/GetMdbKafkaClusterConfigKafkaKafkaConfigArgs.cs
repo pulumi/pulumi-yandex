@@ -18,6 +18,9 @@ namespace Pulumi.Yandex.Inputs
         [Input("compressionType")]
         public string? CompressionType { get; set; }
 
+        [Input("defaultReplicationFactor")]
+        public int? DefaultReplicationFactor { get; set; }
+
         [Input("logFlushIntervalMessages")]
         public int? LogFlushIntervalMessages { get; set; }
 
@@ -44,6 +47,9 @@ namespace Pulumi.Yandex.Inputs
 
         [Input("logSegmentBytes")]
         public int? LogSegmentBytes { get; set; }
+
+        [Input("numPartitions")]
+        public int? NumPartitions { get; set; }
 
         [Input("socketReceiveBufferBytes")]
         public int? SocketReceiveBufferBytes { get; set; }

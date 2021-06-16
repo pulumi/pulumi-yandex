@@ -120,6 +120,10 @@ export interface GetMdbMysqlClusterResult {
      */
     readonly labels?: {[key: string]: string};
     /**
+     * Maintenance window settings of the MySQL cluster. The structure is documented below.
+     */
+    readonly maintenanceWindow: outputs.GetMdbMysqlClusterMaintenanceWindow;
+    /**
      * MySQL cluster config.
      */
     readonly mysqlConfig: {[key: string]: string};

@@ -25,6 +25,12 @@ namespace Pulumi.Yandex.Inputs
         }
 
         /// <summary>
+        /// Manual set static IP address.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
         /// True if IPv4 address allocated for the network interface.
         /// </summary>
         [Input("ipv4")]
@@ -32,6 +38,12 @@ namespace Pulumi.Yandex.Inputs
 
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
+
+        /// <summary>
+        /// Manual set static IPv6 address.
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
 
         [Input("ipv6DnsRecords")]
         private InputList<Inputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordGetArgs>? _ipv6DnsRecords;

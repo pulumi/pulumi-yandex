@@ -26,6 +26,9 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly bool Ipv4;
         public readonly bool Ipv6;
+        /// <summary>
+        /// Manual set static IPv6 address.
+        /// </summary>
         public readonly string Ipv6Address;
         /// <summary>
         /// The MAC address assigned to the network interface.

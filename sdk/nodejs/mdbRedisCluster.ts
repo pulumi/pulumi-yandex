@@ -33,6 +33,9 @@ import * as utilities from "./utilities";
  *         subnetId: fooVpcSubnet.id,
  *         zone: "ru-central1-a",
  *     }],
+ *     maintenanceWindow: {
+ *         type: "ANYTIME",
+ *     },
  *     networkId: fooVpcNetwork.id,
  *     resources: {
  *         diskSize: 16,
@@ -165,6 +168,7 @@ export class MdbRedisCluster extends pulumi.CustomResource {
      * A set of key/value label pairs to assign to the Redis cluster.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly maintenanceWindow!: pulumi.Output<outputs.MdbRedisClusterMaintenanceWindow>;
     /**
      * Name of the Redis cluster. Provided by the client when the cluster is created.
      */
@@ -216,6 +220,7 @@ export class MdbRedisCluster extends pulumi.CustomResource {
             inputs["health"] = state ? state.health : undefined;
             inputs["hosts"] = state ? state.hosts : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkId"] = state ? state.networkId : undefined;
             inputs["resources"] = state ? state.resources : undefined;
@@ -246,6 +251,7 @@ export class MdbRedisCluster extends pulumi.CustomResource {
             inputs["folderId"] = args ? args.folderId : undefined;
             inputs["hosts"] = args ? args.hosts : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkId"] = args ? args.networkId : undefined;
             inputs["resources"] = args ? args.resources : undefined;
@@ -301,6 +307,7 @@ export interface MdbRedisClusterState {
      * A set of key/value label pairs to assign to the Redis cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly maintenanceWindow?: pulumi.Input<inputs.MdbRedisClusterMaintenanceWindow>;
     /**
      * Name of the Redis cluster. Provided by the client when the cluster is created.
      */
@@ -361,6 +368,7 @@ export interface MdbRedisClusterArgs {
      * A set of key/value label pairs to assign to the Redis cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly maintenanceWindow?: pulumi.Input<inputs.MdbRedisClusterMaintenanceWindow>;
     /**
      * Name of the Redis cluster. Provided by the client when the cluster is created.
      */

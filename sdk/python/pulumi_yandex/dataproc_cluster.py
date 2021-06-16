@@ -453,7 +453,6 @@ class DataprocCluster(pulumi.CustomResource):
             service_account_id=dataproc_iam_service_account.id,
             zone_id="ru-central1-b",
             cluster_config=yandex.DataprocClusterClusterConfigArgs(
-                version_id="1.0",
                 hadoop=yandex.DataprocClusterClusterConfigHadoopArgs(
                     services=[
                         "HDFS",
@@ -475,7 +474,7 @@ class DataprocCluster(pulumi.CustomResource):
                         resources=yandex.DataprocClusterClusterConfigSubclusterSpecResourcesArgs(
                             resource_preset_id="s2.small",
                             disk_type_id="network-hdd",
-                            disk_size=16,
+                            disk_size=20,
                         ),
                         subnet_id=foo_vpc_subnet.id,
                         hosts_count=1,
@@ -486,10 +485,40 @@ class DataprocCluster(pulumi.CustomResource):
                         resources=yandex.DataprocClusterClusterConfigSubclusterSpecResourcesArgs(
                             resource_preset_id="s2.small",
                             disk_type_id="network-hdd",
-                            disk_size=16,
+                            disk_size=20,
                         ),
                         subnet_id=foo_vpc_subnet.id,
                         hosts_count=2,
+                    ),
+                    yandex.DataprocClusterClusterConfigSubclusterSpecArgs(
+                        name="compute",
+                        role="COMPUTENODE",
+                        resources=yandex.DataprocClusterClusterConfigSubclusterSpecResourcesArgs(
+                            resource_preset_id="s2.small",
+                            disk_type_id="network-hdd",
+                            disk_size=20,
+                        ),
+                        subnet_id=foo_vpc_subnet.id,
+                        hosts_count=2,
+                    ),
+                    yandex.DataprocClusterClusterConfigSubclusterSpecArgs(
+                        name="compute_autoscaling",
+                        role="COMPUTENODE",
+                        resources=yandex.DataprocClusterClusterConfigSubclusterSpecResourcesArgs(
+                            resource_preset_id="s2.small",
+                            disk_type_id="network-hdd",
+                            disk_size=20,
+                        ),
+                        subnet_id=foo_vpc_subnet.id,
+                        hosts_count=2,
+                        autoscaling_config=yandex.DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs(
+                            max_hosts_count=10,
+                            measurement_duration=60,
+                            warmup_duration=60,
+                            stabilization_duration=120,
+                            preemptible=False,
+                            decommission_timeout=60,
+                        ),
                     ),
                 ],
             ),
@@ -564,7 +593,6 @@ class DataprocCluster(pulumi.CustomResource):
             service_account_id=dataproc_iam_service_account.id,
             zone_id="ru-central1-b",
             cluster_config=yandex.DataprocClusterClusterConfigArgs(
-                version_id="1.0",
                 hadoop=yandex.DataprocClusterClusterConfigHadoopArgs(
                     services=[
                         "HDFS",
@@ -586,7 +614,7 @@ class DataprocCluster(pulumi.CustomResource):
                         resources=yandex.DataprocClusterClusterConfigSubclusterSpecResourcesArgs(
                             resource_preset_id="s2.small",
                             disk_type_id="network-hdd",
-                            disk_size=16,
+                            disk_size=20,
                         ),
                         subnet_id=foo_vpc_subnet.id,
                         hosts_count=1,
@@ -597,10 +625,40 @@ class DataprocCluster(pulumi.CustomResource):
                         resources=yandex.DataprocClusterClusterConfigSubclusterSpecResourcesArgs(
                             resource_preset_id="s2.small",
                             disk_type_id="network-hdd",
-                            disk_size=16,
+                            disk_size=20,
                         ),
                         subnet_id=foo_vpc_subnet.id,
                         hosts_count=2,
+                    ),
+                    yandex.DataprocClusterClusterConfigSubclusterSpecArgs(
+                        name="compute",
+                        role="COMPUTENODE",
+                        resources=yandex.DataprocClusterClusterConfigSubclusterSpecResourcesArgs(
+                            resource_preset_id="s2.small",
+                            disk_type_id="network-hdd",
+                            disk_size=20,
+                        ),
+                        subnet_id=foo_vpc_subnet.id,
+                        hosts_count=2,
+                    ),
+                    yandex.DataprocClusterClusterConfigSubclusterSpecArgs(
+                        name="compute_autoscaling",
+                        role="COMPUTENODE",
+                        resources=yandex.DataprocClusterClusterConfigSubclusterSpecResourcesArgs(
+                            resource_preset_id="s2.small",
+                            disk_type_id="network-hdd",
+                            disk_size=20,
+                        ),
+                        subnet_id=foo_vpc_subnet.id,
+                        hosts_count=2,
+                        autoscaling_config=yandex.DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs(
+                            max_hosts_count=10,
+                            measurement_duration=60,
+                            warmup_duration=60,
+                            stabilization_duration=120,
+                            preemptible=False,
+                            decommission_timeout=60,
+                        ),
                     ),
                 ],
             ),

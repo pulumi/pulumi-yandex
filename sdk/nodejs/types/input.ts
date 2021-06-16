@@ -4,6 +4,276 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface AlbBackendGroupGrpcBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: pulumi.Input<inputs.AlbBackendGroupGrpcBackendHealthcheck>;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: pulumi.Input<inputs.AlbBackendGroupGrpcBackendLoadBalancingConfig>;
+    /**
+     * Name of the backend.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: pulumi.Input<inputs.AlbBackendGroupGrpcBackendTls>;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface AlbBackendGroupGrpcBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    grpcHealthcheck?: pulumi.Input<inputs.AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck>;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: pulumi.Input<number>;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: pulumi.Input<number>;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: pulumi.Input<inputs.AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck>;
+    /**
+     * Interval between health checks.
+     */
+    interval: pulumi.Input<string>;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: pulumi.Input<number>;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: pulumi.Input<inputs.AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck>;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout: pulumi.Input<string>;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: pulumi.Input<number>;
+}
+
+export interface AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+    /**
+     * "Host" HTTP header value.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: pulumi.Input<boolean>;
+    /**
+     * HTTP path.
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+    /**
+     * Text to search in reply.
+     */
+    receive?: pulumi.Input<string>;
+    /**
+     * Message to send. If empty, it's a connect-only health check.
+     */
+    send?: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupGrpcBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: pulumi.Input<number>;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: pulumi.Input<number>;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: pulumi.Input<boolean>;
+}
+
+export interface AlbBackendGroupGrpcBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+     */
+    sni?: pulumi.Input<string>;
+    validationContext?: pulumi.Input<inputs.AlbBackendGroupGrpcBackendTlsValidationContext>;
+}
+
+export interface AlbBackendGroupGrpcBackendTlsValidationContext {
+    trustedCaBytes?: pulumi.Input<string>;
+    trustedCaId?: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupHttpBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: pulumi.Input<inputs.AlbBackendGroupHttpBackendHealthcheck>;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: pulumi.Input<boolean>;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: pulumi.Input<inputs.AlbBackendGroupHttpBackendLoadBalancingConfig>;
+    /**
+     * Name of the backend.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: pulumi.Input<inputs.AlbBackendGroupHttpBackendTls>;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface AlbBackendGroupHttpBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    grpcHealthcheck?: pulumi.Input<inputs.AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck>;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: pulumi.Input<number>;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: pulumi.Input<number>;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: pulumi.Input<inputs.AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck>;
+    /**
+     * Interval between health checks.
+     */
+    interval: pulumi.Input<string>;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: pulumi.Input<number>;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: pulumi.Input<inputs.AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck>;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout: pulumi.Input<string>;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: pulumi.Input<number>;
+}
+
+export interface AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+    /**
+     * "Host" HTTP header value.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: pulumi.Input<boolean>;
+    /**
+     * HTTP path.
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+    /**
+     * Text to search in reply.
+     */
+    receive?: pulumi.Input<string>;
+    /**
+     * Message to send. If empty, it's a connect-only health check.
+     */
+    send?: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupHttpBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: pulumi.Input<number>;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: pulumi.Input<number>;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: pulumi.Input<boolean>;
+}
+
+export interface AlbBackendGroupHttpBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+     */
+    sni?: pulumi.Input<string>;
+    validationContext?: pulumi.Input<inputs.AlbBackendGroupHttpBackendTlsValidationContext>;
+}
+
+export interface AlbBackendGroupHttpBackendTlsValidationContext {
+    trustedCaBytes?: pulumi.Input<string>;
+    trustedCaId?: pulumi.Input<string>;
+}
+
 export interface AlbTargetGroupTarget {
     /**
      * IP address of the target.
@@ -206,7 +476,7 @@ export interface ComputeInstanceGroupInstanceNetworkInterface {
      */
     index?: pulumi.Input<number>;
     /**
-     * The private IP address to assign to the instance. If empty, the address is automatically assigned from the specified subnet.
+     * Manual set static IP address.
      */
     ipAddress?: pulumi.Input<string>;
     /**
@@ -214,6 +484,9 @@ export interface ComputeInstanceGroupInstanceNetworkInterface {
      */
     ipv4?: pulumi.Input<boolean>;
     ipv6?: pulumi.Input<boolean>;
+    /**
+     * Manual set static IPv6 address.
+     */
     ipv6Address?: pulumi.Input<string>;
     /**
      * The MAC address assigned to the network interface.
@@ -358,10 +631,18 @@ export interface ComputeInstanceGroupInstanceTemplateNetworkInterface {
      */
     dnsRecords?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecord>[]>;
     /**
+     * Manual set static IP address.
+     */
+    ipAddress?: pulumi.Input<string>;
+    /**
      * True if IPv4 address allocated for the network interface.
      */
     ipv4?: pulumi.Input<boolean>;
     ipv6?: pulumi.Input<boolean>;
+    /**
+     * Manual set static IPv6 address.
+     */
+    ipv6Address?: pulumi.Input<string>;
     /**
      * List of ipv6 dns records.  The structure is documented below.
      */
@@ -891,6 +1172,10 @@ export interface DataprocClusterClusterConfigHadoop {
 
 export interface DataprocClusterClusterConfigSubclusterSpec {
     /**
+     * Autoscaling configuration for compute subclusters.
+     */
+    autoscalingConfig?: pulumi.Input<inputs.DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig>;
+    /**
      * Number of hosts within Data Proc subcluster.
      */
     hostsCount: pulumi.Input<number>;
@@ -914,6 +1199,37 @@ export interface DataprocClusterClusterConfigSubclusterSpec {
      * The ID of the subnet, to which hosts of the subcluster belong. Subnets of all the subclusters must belong to the same VPC network.
      */
     subnetId: pulumi.Input<string>;
+}
+
+export interface DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
+    /**
+     * Defines an autoscaling rule based on the average CPU utilization of the instance group. If not set default autoscaling metric will be used.
+     */
+    cpuUtilizationTarget?: pulumi.Input<number>;
+    /**
+     * Timeout to gracefully decommission nodes during downscaling. In seconds.
+     */
+    decommissionTimeout?: pulumi.Input<number>;
+    /**
+     * Maximum number of nodes in autoscaling subclusters.
+     */
+    maxHostsCount: pulumi.Input<number>;
+    /**
+     * Time in seconds allotted for averaging metrics.
+     */
+    measurementDuration?: pulumi.Input<number>;
+    /**
+     * Bool flag -- whether to use preemptible compute instances. Preemptible instances are stopped at least once every 24 hours, and can be stopped at any time if their resources are needed by Compute. For more information, see [Preemptible Virtual Machines](https://cloud.yandex.com/docs/compute/concepts/preemptible-vm).
+     */
+    preemptible?: pulumi.Input<boolean>;
+    /**
+     * Minimum amount of time in seconds allotted for monitoring before Instance Groups can reduce the number of instances in the group. During this time, the group size doesn't decrease, even if the new metric values indicate that it should.
+     */
+    stabilizationDuration?: pulumi.Input<number>;
+    /**
+     * The warmup time of the instance in seconds. During this time, traffic is sent to the instance, but instance metrics are not collected.
+     */
+    warmupDuration?: pulumi.Input<number>;
 }
 
 export interface DataprocClusterClusterConfigSubclusterSpecResources {
@@ -987,6 +1303,113 @@ export interface FunctionTriggerTimer {
     cronExpression: pulumi.Input<string>;
 }
 
+export interface GetAlbBackendGroupGrpcBackend {
+    healthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheck;
+    loadBalancingConfig?: inputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfig;
+    name?: string;
+    port?: number;
+    targetGroupIds?: string[];
+    tls?: inputs.GetAlbBackendGroupGrpcBackendTls;
+    weight?: number;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheck {
+    grpcHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck;
+    healthcheckPort?: number;
+    healthyThreshold?: number;
+    httpHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck;
+    interval?: string;
+    intervalJitterPercent?: number;
+    streamHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck;
+    timeout?: string;
+    unhealthyThreshold?: number;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+    serviceName?: string;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+    host?: string;
+    http2?: boolean;
+    path?: string;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+    receive?: string;
+    send?: string;
+}
+
+export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
+    localityAwareRoutingPercent?: number;
+    panicThreshold?: number;
+    strictLocality?: boolean;
+}
+
+export interface GetAlbBackendGroupGrpcBackendTls {
+    sni?: string;
+    validationContext?: inputs.GetAlbBackendGroupGrpcBackendTlsValidationContext;
+}
+
+export interface GetAlbBackendGroupGrpcBackendTlsValidationContext {
+    trustedCaBytes?: string;
+    trustedCaId?: string;
+}
+
+export interface GetAlbBackendGroupHttpBackend {
+    healthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheck;
+    http2?: boolean;
+    loadBalancingConfig?: inputs.GetAlbBackendGroupHttpBackendLoadBalancingConfig;
+    name?: string;
+    port?: number;
+    targetGroupIds?: string[];
+    tls?: inputs.GetAlbBackendGroupHttpBackendTls;
+    weight?: number;
+}
+
+export interface GetAlbBackendGroupHttpBackendHealthcheck {
+    grpcHealthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck;
+    healthcheckPort?: number;
+    healthyThreshold?: number;
+    httpHealthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck;
+    interval?: string;
+    intervalJitterPercent?: number;
+    streamHealthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck;
+    timeout?: string;
+    unhealthyThreshold?: number;
+}
+
+export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+    serviceName?: string;
+}
+
+export interface GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+    host?: string;
+    http2?: boolean;
+    path?: string;
+}
+
+export interface GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+    receive?: string;
+    send?: string;
+}
+
+export interface GetAlbBackendGroupHttpBackendLoadBalancingConfig {
+    localityAwareRoutingPercent?: number;
+    panicThreshold?: number;
+    strictLocality?: boolean;
+}
+
+export interface GetAlbBackendGroupHttpBackendTls {
+    sni?: string;
+    validationContext?: inputs.GetAlbBackendGroupHttpBackendTlsValidationContext;
+}
+
+export interface GetAlbBackendGroupHttpBackendTlsValidationContext {
+    trustedCaBytes?: string;
+    trustedCaId?: string;
+}
+
 export interface GetComputeDiskDiskPlacementPolicy {
     diskPlacementGroupId: string;
 }
@@ -1018,6 +1441,9 @@ export interface GetIamPolicyBinding {
 }
 
 export interface GetMdbClickhouseClusterCloudStorage {
+    /**
+     * (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
+     */
     enabled: boolean;
 }
 
@@ -1066,6 +1492,7 @@ export interface GetMdbKafkaClusterConfigKafka {
 export interface GetMdbKafkaClusterConfigKafkaKafkaConfig {
     autoCreateTopicsEnable?: boolean;
     compressionType?: string;
+    defaultReplicationFactor?: number;
     logFlushIntervalMessages?: number;
     logFlushIntervalMs?: number;
     logFlushSchedulerIntervalMs?: number;
@@ -1075,6 +1502,7 @@ export interface GetMdbKafkaClusterConfigKafkaKafkaConfig {
     logRetentionMinutes?: number;
     logRetentionMs?: number;
     logSegmentBytes?: number;
+    numPartitions?: number;
     socketReceiveBufferBytes?: number;
     socketSendBufferBytes?: number;
 }
@@ -1915,7 +2343,7 @@ export interface MdbClickhouseClusterFormatSchema {
      */
     name: pulumi.Input<string>;
     /**
-     * Type of the model.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: pulumi.Input<string>;
     /**
@@ -1942,7 +2370,7 @@ export interface MdbClickhouseClusterHost {
      */
     subnetId?: pulumi.Input<string>;
     /**
-     * Type of the model.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: pulumi.Input<string>;
     /**
@@ -1952,13 +2380,28 @@ export interface MdbClickhouseClusterHost {
     zone: pulumi.Input<string>;
 }
 
+export interface MdbClickhouseClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day?: pulumi.Input<string>;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour?: pulumi.Input<number>;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface MdbClickhouseClusterMlModel {
     /**
      * Graphite rollup configuration name.
      */
     name: pulumi.Input<string>;
     /**
-     * Type of the model.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: pulumi.Input<string>;
     /**
@@ -2479,6 +2922,7 @@ export interface MdbKafkaClusterConfigKafka {
 export interface MdbKafkaClusterConfigKafkaKafkaConfig {
     autoCreateTopicsEnable?: pulumi.Input<boolean>;
     compressionType?: pulumi.Input<string>;
+    defaultReplicationFactor?: pulumi.Input<number>;
     logFlushIntervalMessages?: pulumi.Input<number>;
     logFlushIntervalMs?: pulumi.Input<number>;
     logFlushSchedulerIntervalMs?: pulumi.Input<number>;
@@ -2488,6 +2932,7 @@ export interface MdbKafkaClusterConfigKafkaKafkaConfig {
     logRetentionMinutes?: pulumi.Input<number>;
     logRetentionMs?: pulumi.Input<number>;
     logSegmentBytes?: pulumi.Input<number>;
+    numPartitions?: pulumi.Input<number>;
     socketReceiveBufferBytes?: pulumi.Input<number>;
     socketSendBufferBytes?: pulumi.Input<number>;
 }
@@ -2543,7 +2988,7 @@ export interface MdbKafkaClusterHost {
      */
     role?: pulumi.Input<string>;
     /**
-     * IDs of the subnets, to which the Kafka cluster belongs.
+     * The ID of the subnet, to which the host belongs.
      */
     subnetId?: pulumi.Input<string>;
     /**
@@ -2778,6 +3223,21 @@ export interface MdbMysqlClusterHost {
     zone: pulumi.Input<string>;
 }
 
+export interface MdbMysqlClusterMaintenanceWindow {
+    /**
+     * Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+     */
+    day?: pulumi.Input<string>;
+    /**
+     * Hour of the day in UTC (in `HH` format). Allowed value is between 0 and 23.
+     */
+    hour?: pulumi.Input<number>;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface MdbMysqlClusterResources {
     /**
      * Volume of the storage available to a MySQL host, in gigabytes.
@@ -2865,14 +3325,30 @@ export interface MdbMysqlClusterUserPermission {
 
 export interface MdbRedisClusterConfig {
     /**
+     * Number of databases (changing requires redis-server restart).
+     */
+    databases?: pulumi.Input<number>;
+    /**
      * Redis key eviction policy for a dataset that reaches maximum memory.
      * Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
      */
     maxmemoryPolicy?: pulumi.Input<string>;
     /**
+     * Select the events that Redis will notify among a set of classes.
+     */
+    notifyKeyspaceEvents?: pulumi.Input<string>;
+    /**
      * Password for the Redis cluster.
      */
     password: pulumi.Input<string>;
+    /**
+     * Log slow queries below this number in microseconds.
+     */
+    slowlogLogSlowerThan?: pulumi.Input<number>;
+    /**
+     * Slow queries log length.
+     */
+    slowlogMaxLen?: pulumi.Input<number>;
     /**
      * Close the connection after a client is idle for N seconds.
      */
@@ -2902,6 +3378,21 @@ export interface MdbRedisClusterHost {
      * For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
      */
     zone: pulumi.Input<string>;
+}
+
+export interface MdbRedisClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day?: pulumi.Input<string>;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour?: pulumi.Input<number>;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: pulumi.Input<string>;
 }
 
 export interface MdbRedisClusterResources {
@@ -3179,6 +3670,52 @@ export interface VpcAddressExternalIpv4Address {
      * - Zone for allocating address.
      */
     zoneId?: pulumi.Input<string>;
+}
+
+export interface VpcDefaultSecurityGroupEgress {
+    /**
+     * Description of the security group.
+     */
+    description?: pulumi.Input<string>;
+    fromPort?: pulumi.Input<number>;
+    /**
+     * Id of the security group.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Labels to assign to this security group.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    port?: pulumi.Input<number>;
+    predefinedTarget?: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
+    toPort?: pulumi.Input<number>;
+    v4CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    v6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface VpcDefaultSecurityGroupIngress {
+    /**
+     * Description of the security group.
+     */
+    description?: pulumi.Input<string>;
+    fromPort?: pulumi.Input<number>;
+    /**
+     * Id of the security group.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Labels to assign to this security group.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    port?: pulumi.Input<number>;
+    predefinedTarget?: pulumi.Input<string>;
+    protocol: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
+    toPort?: pulumi.Input<number>;
+    v4CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    v6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface VpcRouteTableStaticRoute {

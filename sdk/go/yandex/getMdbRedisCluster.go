@@ -72,8 +72,9 @@ type LookupMdbRedisClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the Redis cluster.
-	Labels map[string]string `pulumi:"labels"`
-	Name   string            `pulumi:"name"`
+	Labels            map[string]string                   `pulumi:"labels"`
+	MaintenanceWindow GetMdbRedisClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
+	Name              string                              `pulumi:"name"`
 	// ID of the network, to which the Redis cluster belongs.
 	NetworkId string `pulumi:"networkId"`
 	// Resources allocated to hosts of the Redis cluster. The structure is documented below.

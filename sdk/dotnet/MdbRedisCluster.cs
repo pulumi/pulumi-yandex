@@ -53,6 +53,10 @@ namespace Pulumi.Yandex
     ///                     Zone = "ru-central1-a",
     ///                 },
     ///             },
+    ///             MaintenanceWindow = new Yandex.Inputs.MdbRedisClusterMaintenanceWindowArgs
+    ///             {
+    ///                 Type = "ANYTIME",
+    ///             },
     ///             NetworkId = fooVpcNetwork.Id,
     ///             Resources = new Yandex.Inputs.MdbRedisClusterResourcesArgs
     ///             {
@@ -208,6 +212,9 @@ namespace Pulumi.Yandex
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        [Output("maintenanceWindow")]
+        public Output<Outputs.MdbRedisClusterMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
+
         /// <summary>
         /// Name of the Redis cluster. Provided by the client when the cluster is created.
         /// </summary>
@@ -346,6 +353,9 @@ namespace Pulumi.Yandex
             set => _labels = value;
         }
 
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbRedisClusterMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
+
         /// <summary>
         /// Name of the Redis cluster. Provided by the client when the cluster is created.
         /// </summary>
@@ -456,6 +466,9 @@ namespace Pulumi.Yandex
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbRedisClusterMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// Name of the Redis cluster. Provided by the client when the cluster is created.

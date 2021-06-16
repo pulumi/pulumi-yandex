@@ -21,7 +21,7 @@ class GetMdbMysqlClusterResult:
     """
     A collection of values returned by getMdbMysqlCluster.
     """
-    def __init__(__self__, access=None, backup_window_start=None, cluster_id=None, created_at=None, databases=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, mysql_config=None, name=None, network_id=None, resources=None, security_group_ids=None, status=None, users=None, version=None):
+    def __init__(__self__, access=None, backup_window_start=None, cluster_id=None, created_at=None, databases=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, mysql_config=None, name=None, network_id=None, resources=None, security_group_ids=None, status=None, users=None, version=None):
         if access and not isinstance(access, dict):
             raise TypeError("Expected argument 'access' to be a dict")
         pulumi.set(__self__, "access", access)
@@ -58,6 +58,9 @@ class GetMdbMysqlClusterResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if maintenance_window and not isinstance(maintenance_window, dict):
+            raise TypeError("Expected argument 'maintenance_window' to be a dict")
+        pulumi.set(__self__, "maintenance_window", maintenance_window)
         if mysql_config and not isinstance(mysql_config, dict):
             raise TypeError("Expected argument 'mysql_config' to be a dict")
         pulumi.set(__self__, "mysql_config", mysql_config)
@@ -171,6 +174,14 @@ class GetMdbMysqlClusterResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> 'outputs.GetMdbMysqlClusterMaintenanceWindowResult':
+        """
+        Maintenance window settings of the MySQL cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @property
     @pulumi.getter(name="mysqlConfig")
     def mysql_config(self) -> Mapping[str, str]:
         """
@@ -253,6 +264,7 @@ class AwaitableGetMdbMysqlClusterResult(GetMdbMysqlClusterResult):
             hosts=self.hosts,
             id=self.id,
             labels=self.labels,
+            maintenance_window=self.maintenance_window,
             mysql_config=self.mysql_config,
             name=self.name,
             network_id=self.network_id,
@@ -321,6 +333,7 @@ def get_mdb_mysql_cluster(access: Optional[pulumi.InputType['GetMdbMysqlClusterA
         hosts=__ret__.hosts,
         id=__ret__.id,
         labels=__ret__.labels,
+        maintenance_window=__ret__.maintenance_window,
         mysql_config=__ret__.mysql_config,
         name=__ret__.name,
         network_id=__ret__.network_id,

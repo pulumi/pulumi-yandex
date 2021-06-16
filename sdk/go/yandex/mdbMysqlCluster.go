@@ -144,6 +144,11 @@ import (
 // 					Name: pulumi.String("db_name"),
 // 				},
 // 			},
+// 			MaintenanceWindow: &yandex.MdbMysqlClusterMaintenanceWindowArgs{
+// 				Type: pulumi.String("WEEKLY"),
+// 				Day:  pulumi.String("SAT"),
+// 				Hour: pulumi.Int(12),
+// 			},
 // 			Users: yandex.MdbMysqlClusterUserArray{
 // 				&yandex.MdbMysqlClusterUserArgs{
 // 					Name:     pulumi.String("user_name"),
@@ -216,6 +221,9 @@ import (
 // 				&yandex.MdbMysqlClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name"),
 // 				},
+// 			},
+// 			MaintenanceWindow: &yandex.MdbMysqlClusterMaintenanceWindowArgs{
+// 				Type: pulumi.String("ANYTIME"),
 // 			},
 // 			Users: yandex.MdbMysqlClusterUserArray{
 // 				&yandex.MdbMysqlClusterUserArgs{
@@ -616,6 +624,8 @@ type MdbMysqlCluster struct {
 	Hosts MdbMysqlClusterHostArrayOutput `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the MySQL cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Maintenance policy of the MySQL cluster. The structure is documented below.
+	MaintenanceWindow MdbMysqlClusterMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig pulumi.StringMapOutput `pulumi:"mysqlConfig"`
 	// The name of the database.
@@ -709,6 +719,8 @@ type mdbMysqlClusterState struct {
 	Hosts []MdbMysqlClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the MySQL cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Maintenance policy of the MySQL cluster. The structure is documented below.
+	MaintenanceWindow *MdbMysqlClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig map[string]string `pulumi:"mysqlConfig"`
 	// The name of the database.
@@ -753,6 +765,8 @@ type MdbMysqlClusterState struct {
 	Hosts MdbMysqlClusterHostArrayInput
 	// A set of key/value label pairs to assign to the MySQL cluster.
 	Labels pulumi.StringMapInput
+	// Maintenance policy of the MySQL cluster. The structure is documented below.
+	MaintenanceWindow MdbMysqlClusterMaintenanceWindowPtrInput
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig pulumi.StringMapInput
 	// The name of the database.
@@ -797,6 +811,8 @@ type mdbMysqlClusterArgs struct {
 	Hosts []MdbMysqlClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the MySQL cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Maintenance policy of the MySQL cluster. The structure is documented below.
+	MaintenanceWindow *MdbMysqlClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig map[string]string `pulumi:"mysqlConfig"`
 	// The name of the database.
@@ -836,6 +852,8 @@ type MdbMysqlClusterArgs struct {
 	Hosts MdbMysqlClusterHostArrayInput
 	// A set of key/value label pairs to assign to the MySQL cluster.
 	Labels pulumi.StringMapInput
+	// Maintenance policy of the MySQL cluster. The structure is documented below.
+	MaintenanceWindow MdbMysqlClusterMaintenanceWindowPtrInput
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig pulumi.StringMapInput
 	// The name of the database.
