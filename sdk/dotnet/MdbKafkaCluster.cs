@@ -135,7 +135,7 @@ namespace Pulumi.Yandex
     ///                 new Yandex.Inputs.MdbKafkaClusterUserArgs
     ///                 {
     ///                     Name = "worker",
-    ///                     Password = "",
+    ///                     Password = "password",
     ///                     Permissions = 
     ///                     {
     ///                         new Yandex.Inputs.MdbKafkaClusterUserPermissionArgs
@@ -308,7 +308,7 @@ namespace Pulumi.Yandex
     ///                 new Yandex.Inputs.MdbKafkaClusterUserArgs
     ///                 {
     ///                     Name = "worker",
-    ///                     Password = "",
+    ///                     Password = "password",
     ///                     Permissions = 
     ///                     {
     ///                         new Yandex.Inputs.MdbKafkaClusterUserPermissionArgs

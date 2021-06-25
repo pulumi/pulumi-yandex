@@ -13,8 +13,17 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckResult
     {
+        /// <summary>
+        /// Optional "Host" HTTP header value.
+        /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// If set, health checks will use HTTP2.
+        /// </summary>
         public readonly bool Http2;
+        /// <summary>
+        /// HTTP path.
+        /// </summary>
         public readonly string Path;
 
         [OutputConstructor]

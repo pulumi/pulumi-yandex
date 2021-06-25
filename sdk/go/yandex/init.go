@@ -26,6 +26,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlbHttpRouter{}
 	case "yandex:index/albTargetGroup:AlbTargetGroup":
 		r = &AlbTargetGroup{}
+	case "yandex:index/albVirtualHost:AlbVirtualHost":
+		r = &AlbVirtualHost{}
 	case "yandex:index/apiGateway:ApiGateway":
 		r = &ApiGateway{}
 	case "yandex:index/computeDisk:ComputeDisk":
@@ -94,6 +96,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LbTargetGroup{}
 	case "yandex:index/mdbClickhouseCluster:MdbClickhouseCluster":
 		r = &MdbClickhouseCluster{}
+	case "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
+		r = &MdbElasticSearchCluster{}
 	case "yandex:index/mdbKafkaCluster:MdbKafkaCluster":
 		r = &MdbKafkaCluster{}
 	case "yandex:index/mdbMongodbCluster:MdbMongodbCluster":
@@ -180,6 +184,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/albTargetGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/albVirtualHost",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -350,6 +359,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/mdbClickhouseCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/mdbElasticSearchCluster",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

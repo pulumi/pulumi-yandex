@@ -586,7 +586,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                 ),
                 yandex.MdbKafkaClusterUserArgs(
                     name="worker",
-                    password="",
+                    password="password",
                     permissions=[
                         yandex.MdbKafkaClusterUserPermissionArgs(
                             role="ACCESS_ROLE_CONSUMER",
@@ -710,7 +710,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                 ),
                 yandex.MdbKafkaClusterUserArgs(
                     name="worker",
-                    password="",
+                    password="password",
                     permissions=[
                         yandex.MdbKafkaClusterUserPermissionArgs(
                             role="ACCESS_ROLE_CONSUMER",
@@ -846,7 +846,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                 ),
                 yandex.MdbKafkaClusterUserArgs(
                     name="worker",
-                    password="",
+                    password="password",
                     permissions=[
                         yandex.MdbKafkaClusterUserPermissionArgs(
                             role="ACCESS_ROLE_CONSUMER",
@@ -970,7 +970,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                 ),
                 yandex.MdbKafkaClusterUserArgs(
                     name="worker",
-                    password="",
+                    password="password",
                     permissions=[
                         yandex.MdbKafkaClusterUserPermissionArgs(
                             role="ACCESS_ROLE_CONSUMER",

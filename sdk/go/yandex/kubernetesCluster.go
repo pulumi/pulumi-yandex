@@ -50,6 +50,9 @@ type KubernetesCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the cluster network.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
+	// (Optional) Network Implementation options. The structure is documented below.
+	// ---
+	NetworkImplementation KubernetesClusterNetworkImplementationPtrOutput `pulumi:"networkImplementation"`
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider pulumi.StringPtrOutput `pulumi:"networkPolicyProvider"`
 	// Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
@@ -141,6 +144,9 @@ type kubernetesClusterState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the cluster network.
 	NetworkId *string `pulumi:"networkId"`
+	// (Optional) Network Implementation options. The structure is documented below.
+	// ---
+	NetworkImplementation *KubernetesClusterNetworkImplementation `pulumi:"networkImplementation"`
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider *string `pulumi:"networkPolicyProvider"`
 	// Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
@@ -192,6 +198,9 @@ type KubernetesClusterState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the cluster network.
 	NetworkId pulumi.StringPtrInput
+	// (Optional) Network Implementation options. The structure is documented below.
+	// ---
+	NetworkImplementation KubernetesClusterNetworkImplementationPtrInput
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider pulumi.StringPtrInput
 	// Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
@@ -241,6 +250,9 @@ type kubernetesClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the cluster network.
 	NetworkId string `pulumi:"networkId"`
+	// (Optional) Network Implementation options. The structure is documented below.
+	// ---
+	NetworkImplementation *KubernetesClusterNetworkImplementation `pulumi:"networkImplementation"`
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider *string `pulumi:"networkPolicyProvider"`
 	// Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
@@ -285,6 +297,9 @@ type KubernetesClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the cluster network.
 	NetworkId pulumi.StringInput
+	// (Optional) Network Implementation options. The structure is documented below.
+	// ---
+	NetworkImplementation KubernetesClusterNetworkImplementationPtrInput
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider pulumi.StringPtrInput
 	// Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.

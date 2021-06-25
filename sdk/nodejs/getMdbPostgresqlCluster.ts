@@ -104,6 +104,10 @@ export interface GetMdbPostgresqlClusterResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * Maintenance window settings of the PostgreSQL cluster. The structure is documented below.
+     */
+    readonly maintenanceWindow: outputs.GetMdbPostgresqlClusterMaintenanceWindow;
+    /**
      * Name of the database extension. For more information on available extensions see [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/operations/cluster-extensions).
      */
     readonly name: string;

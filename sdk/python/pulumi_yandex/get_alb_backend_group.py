@@ -58,11 +58,17 @@ class GetAlbBackendGroupResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Creation timestamp of this backend group.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Description of the backend group.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -73,11 +79,17 @@ class GetAlbBackendGroupResult:
     @property
     @pulumi.getter(name="grpcBackends")
     def grpc_backends(self) -> Sequence['outputs.GetAlbBackendGroupGrpcBackendResult']:
+        """
+        Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        """
         return pulumi.get(self, "grpc_backends")
 
     @property
     @pulumi.getter(name="httpBackends")
     def http_backends(self) -> Sequence['outputs.GetAlbBackendGroupHttpBackendResult']:
+        """
+        Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        """
         return pulumi.get(self, "http_backends")
 
     @property
@@ -91,11 +103,17 @@ class GetAlbBackendGroupResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
+        """
+        Labels to assign to this backend group.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the backend.
+        """
         return pulumi.get(self, "name")
 
 
@@ -125,7 +143,26 @@ def get_alb_backend_group(backend_group_id: Optional[str] = None,
                           name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlbBackendGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information about a Yandex Application Load Balancer Backend Group. For more information, see
+    [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_alb_backend_group(backend_group_id="my-backend-group-id")
+    ```
+
+    This data source is used to define [Application Load Balancer Backend Groups] that can be used by other resources.
+
+
+    :param str backend_group_id: Backend Group ID.
+    :param str description: Description of the backend group.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param Sequence[pulumi.InputType['GetAlbBackendGroupGrpcBackendArgs']] grpc_backends: Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+    :param Sequence[pulumi.InputType['GetAlbBackendGroupHttpBackendArgs']] http_backends: Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+    :param Mapping[str, str] labels: Labels to assign to this backend group.
+    :param str name: - Name of the Backend Group.
     """
     __args__ = dict()
     __args__['backendGroupId'] = backend_group_id

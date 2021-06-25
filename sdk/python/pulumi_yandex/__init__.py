@@ -6,6 +6,7 @@
 from .alb_backend_group import *
 from .alb_http_router import *
 from .alb_target_group import *
+from .alb_virtual_host import *
 from .api_gateway import *
 from .compute_disk import *
 from .compute_disk_placement_group import *
@@ -27,6 +28,7 @@ from .function_trigger import *
 from .get_alb_backend_group import *
 from .get_alb_http_router import *
 from .get_alb_target_group import *
+from .get_alb_virtual_host import *
 from .get_api_gateway import *
 from .get_client_config import *
 from .get_compute_disk import *
@@ -53,6 +55,7 @@ from .get_kubernetes_node_group import *
 from .get_lb_network_load_balancer import *
 from .get_lb_target_group import *
 from .get_mdb_clickhouse_cluster import *
+from .get_mdb_elastic_search_cluster import *
 from .get_mdb_kafka_cluster import *
 from .get_mdb_mongodb_cluster import *
 from .get_mdb_mysql_cluster import *
@@ -85,6 +88,7 @@ from .kubernetes_node_group import *
 from .lb_network_load_balancer import *
 from .lb_target_group import *
 from .mdb_clickhouse_cluster import *
+from .mdb_elastic_search_cluster import *
 from .mdb_kafka_cluster import *
 from .mdb_mongodb_cluster import *
 from .mdb_mysql_cluster import *
@@ -133,6 +137,8 @@ def _register_module():
                 return AlbHttpRouter(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/albTargetGroup:AlbTargetGroup":
                 return AlbTargetGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/albVirtualHost:AlbVirtualHost":
+                return AlbVirtualHost(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/apiGateway:ApiGateway":
                 return ApiGateway(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/computeDisk:ComputeDisk":
@@ -201,6 +207,8 @@ def _register_module():
                 return LbTargetGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbClickhouseCluster:MdbClickhouseCluster":
                 return MdbClickhouseCluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
+                return MdbElasticSearchCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbKafkaCluster:MdbKafkaCluster":
                 return MdbKafkaCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbMongodbCluster:MdbMongodbCluster":
@@ -251,6 +259,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/albBackendGroup", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/albHttpRouter", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/albTargetGroup", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/albVirtualHost", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/apiGateway", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/computeDisk", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/computeDiskPlacementGroup", _module_instance)
@@ -285,6 +294,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/lbNetworkLoadBalancer", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/lbTargetGroup", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbClickhouseCluster", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/mdbElasticSearchCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbKafkaCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbMongodbCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbMysqlCluster", _module_instance)

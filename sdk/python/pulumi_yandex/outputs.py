@@ -27,6 +27,20 @@ __all__ = [
     'AlbBackendGroupHttpBackendTls',
     'AlbBackendGroupHttpBackendTlsValidationContext',
     'AlbTargetGroupTarget',
+    'AlbVirtualHostModifyRequestHeader',
+    'AlbVirtualHostModifyResponseHeader',
+    'AlbVirtualHostRoute',
+    'AlbVirtualHostRouteGrpcRoute',
+    'AlbVirtualHostRouteGrpcRouteGrpcMatch',
+    'AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn',
+    'AlbVirtualHostRouteGrpcRouteGrpcRouteAction',
+    'AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction',
+    'AlbVirtualHostRouteHttpRoute',
+    'AlbVirtualHostRouteHttpRouteDirectResponseAction',
+    'AlbVirtualHostRouteHttpRouteHttpMatch',
+    'AlbVirtualHostRouteHttpRouteHttpMatchPath',
+    'AlbVirtualHostRouteHttpRouteHttpRouteAction',
+    'AlbVirtualHostRouteHttpRouteRedirectAction',
     'ComputeDiskDiskPlacementPolicy',
     'ComputeInstanceBootDisk',
     'ComputeInstanceBootDiskInitializeParams',
@@ -87,6 +101,8 @@ __all__ = [
     'KubernetesClusterMasterRegionalLocation',
     'KubernetesClusterMasterVersionInfo',
     'KubernetesClusterMasterZonal',
+    'KubernetesClusterNetworkImplementation',
+    'KubernetesClusterNetworkImplementationCilium',
     'KubernetesNodeGroupAllocationPolicy',
     'KubernetesNodeGroupAllocationPolicyLocation',
     'KubernetesNodeGroupDeployPolicy',
@@ -137,6 +153,12 @@ __all__ = [
     'MdbClickhouseClusterUserSettings',
     'MdbClickhouseClusterZookeeper',
     'MdbClickhouseClusterZookeeperResources',
+    'MdbElasticSearchClusterConfig',
+    'MdbElasticSearchClusterConfigDataNode',
+    'MdbElasticSearchClusterConfigDataNodeResources',
+    'MdbElasticSearchClusterConfigMasterNode',
+    'MdbElasticSearchClusterConfigMasterNodeResources',
+    'MdbElasticSearchClusterHost',
     'MdbKafkaClusterConfig',
     'MdbKafkaClusterConfigKafka',
     'MdbKafkaClusterConfigKafkaKafkaConfig',
@@ -153,6 +175,7 @@ __all__ = [
     'MdbMongodbClusterClusterConfigBackupWindowStart',
     'MdbMongodbClusterDatabase',
     'MdbMongodbClusterHost',
+    'MdbMongodbClusterMaintenanceWindow',
     'MdbMongodbClusterResources',
     'MdbMongodbClusterUser',
     'MdbMongodbClusterUserPermission',
@@ -218,6 +241,20 @@ __all__ = [
     'GetAlbBackendGroupHttpBackendTlsResult',
     'GetAlbBackendGroupHttpBackendTlsValidationContextResult',
     'GetAlbTargetGroupTargetResult',
+    'GetAlbVirtualHostModifyRequestHeaderResult',
+    'GetAlbVirtualHostModifyResponseHeaderResult',
+    'GetAlbVirtualHostRouteResult',
+    'GetAlbVirtualHostRouteGrpcRouteResult',
+    'GetAlbVirtualHostRouteGrpcRouteGrpcMatchResult',
+    'GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnResult',
+    'GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionResult',
+    'GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionResult',
+    'GetAlbVirtualHostRouteHttpRouteResult',
+    'GetAlbVirtualHostRouteHttpRouteDirectResponseActionResult',
+    'GetAlbVirtualHostRouteHttpRouteHttpMatchResult',
+    'GetAlbVirtualHostRouteHttpRouteHttpMatchPathResult',
+    'GetAlbVirtualHostRouteHttpRouteHttpRouteActionResult',
+    'GetAlbVirtualHostRouteHttpRouteRedirectActionResult',
     'GetComputeDiskDiskPlacementPolicyResult',
     'GetComputeInstanceBootDiskResult',
     'GetComputeInstanceBootDiskInitializeParamResult',
@@ -277,6 +314,8 @@ __all__ = [
     'GetKubernetesClusterMasterRegionalResult',
     'GetKubernetesClusterMasterVersionInfoResult',
     'GetKubernetesClusterMasterZonalResult',
+    'GetKubernetesClusterNetworkImplementationResult',
+    'GetKubernetesClusterNetworkImplementationCiliumResult',
     'GetKubernetesNodeGroupAllocationPolicyResult',
     'GetKubernetesNodeGroupAllocationPolicyLocationResult',
     'GetKubernetesNodeGroupDeployPolicyResult',
@@ -327,6 +366,12 @@ __all__ = [
     'GetMdbClickhouseClusterUserSettingsResult',
     'GetMdbClickhouseClusterZookeeperResult',
     'GetMdbClickhouseClusterZookeeperResourcesResult',
+    'GetMdbElasticSearchClusterConfigResult',
+    'GetMdbElasticSearchClusterConfigDataNodeResult',
+    'GetMdbElasticSearchClusterConfigDataNodeResourcesResult',
+    'GetMdbElasticSearchClusterConfigMasterNodeResult',
+    'GetMdbElasticSearchClusterConfigMasterNodeResourcesResult',
+    'GetMdbElasticSearchClusterHostResult',
     'GetMdbKafkaClusterConfigResult',
     'GetMdbKafkaClusterConfigKafkaResult',
     'GetMdbKafkaClusterConfigKafkaKafkaConfigResult',
@@ -343,6 +388,7 @@ __all__ = [
     'GetMdbMongodbClusterClusterConfigBackupWindowStartResult',
     'GetMdbMongodbClusterDatabaseResult',
     'GetMdbMongodbClusterHostResult',
+    'GetMdbMongodbClusterMaintenanceWindowResult',
     'GetMdbMongodbClusterResourcesResult',
     'GetMdbMongodbClusterUserResult',
     'GetMdbMongodbClusterUserPermissionResult',
@@ -364,6 +410,7 @@ __all__ = [
     'GetMdbPostgresqlClusterDatabaseResult',
     'GetMdbPostgresqlClusterDatabaseExtensionResult',
     'GetMdbPostgresqlClusterHostResult',
+    'GetMdbPostgresqlClusterMaintenanceWindowResult',
     'GetMdbPostgresqlClusterUserResult',
     'GetMdbPostgresqlClusterUserPermissionResult',
     'GetMdbRedisClusterConfigResult',
@@ -1471,6 +1518,835 @@ class AlbTargetGroupTarget(dict):
         All targets in the target group must be connected to the same subnet within a single availability zone.
         """
         return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class AlbVirtualHostModifyRequestHeader(dict):
+    def __init__(__self__, *,
+                 append: Optional[str] = None,
+                 name: Optional[str] = None,
+                 remove: Optional[bool] = None,
+                 replace: Optional[str] = None):
+        """
+        :param str append: Append string to the header value.
+        :param str name: name of the route.
+        :param bool remove: If set, remove the header.
+        :param str replace: New value for a header. Header values support the following 
+               [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+        """
+        if append is not None:
+            pulumi.set(__self__, "append", append)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if remove is not None:
+            pulumi.set(__self__, "remove", remove)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter
+    def append(self) -> Optional[str]:
+        """
+        Append string to the header value.
+        """
+        return pulumi.get(self, "append")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the route.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def remove(self) -> Optional[bool]:
+        """
+        If set, remove the header.
+        """
+        return pulumi.get(self, "remove")
+
+    @property
+    @pulumi.getter
+    def replace(self) -> Optional[str]:
+        """
+        New value for a header. Header values support the following 
+        [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+        """
+        return pulumi.get(self, "replace")
+
+
+@pulumi.output_type
+class AlbVirtualHostModifyResponseHeader(dict):
+    def __init__(__self__, *,
+                 append: Optional[str] = None,
+                 name: Optional[str] = None,
+                 remove: Optional[bool] = None,
+                 replace: Optional[str] = None):
+        """
+        :param str append: Append string to the header value.
+        :param str name: name of the route.
+        :param bool remove: If set, remove the header.
+        :param str replace: New value for a header. Header values support the following 
+               [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+        """
+        if append is not None:
+            pulumi.set(__self__, "append", append)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if remove is not None:
+            pulumi.set(__self__, "remove", remove)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter
+    def append(self) -> Optional[str]:
+        """
+        Append string to the header value.
+        """
+        return pulumi.get(self, "append")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the route.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def remove(self) -> Optional[bool]:
+        """
+        If set, remove the header.
+        """
+        return pulumi.get(self, "remove")
+
+    @property
+    @pulumi.getter
+    def replace(self) -> Optional[str]:
+        """
+        New value for a header. Header values support the following 
+        [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+        """
+        return pulumi.get(self, "replace")
+
+
+@pulumi.output_type
+class AlbVirtualHostRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grpcRoute":
+            suggest = "grpc_route"
+        elif key == "httpRoute":
+            suggest = "http_route"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlbVirtualHostRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlbVirtualHostRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlbVirtualHostRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 grpc_route: Optional['outputs.AlbVirtualHostRouteGrpcRoute'] = None,
+                 http_route: Optional['outputs.AlbVirtualHostRouteHttpRoute'] = None,
+                 name: Optional[str] = None):
+        """
+        :param 'AlbVirtualHostRouteGrpcRouteArgs' grpc_route: GRPC route resource. The structure is documented below.
+        :param 'AlbVirtualHostRouteHttpRouteArgs' http_route: HTTP route resource. The structure is documented below.
+        :param str name: name of the route.
+        """
+        if grpc_route is not None:
+            pulumi.set(__self__, "grpc_route", grpc_route)
+        if http_route is not None:
+            pulumi.set(__self__, "http_route", http_route)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="grpcRoute")
+    def grpc_route(self) -> Optional['outputs.AlbVirtualHostRouteGrpcRoute']:
+        """
+        GRPC route resource. The structure is documented below.
+        """
+        return pulumi.get(self, "grpc_route")
+
+    @property
+    @pulumi.getter(name="httpRoute")
+    def http_route(self) -> Optional['outputs.AlbVirtualHostRouteHttpRoute']:
+        """
+        HTTP route resource. The structure is documented below.
+        """
+        return pulumi.get(self, "http_route")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the route.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteGrpcRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grpcMatches":
+            suggest = "grpc_matches"
+        elif key == "grpcRouteAction":
+            suggest = "grpc_route_action"
+        elif key == "grpcStatusResponseAction":
+            suggest = "grpc_status_response_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlbVirtualHostRouteGrpcRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlbVirtualHostRouteGrpcRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlbVirtualHostRouteGrpcRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 grpc_matches: Optional[Sequence['outputs.AlbVirtualHostRouteGrpcRouteGrpcMatch']] = None,
+                 grpc_route_action: Optional['outputs.AlbVirtualHostRouteGrpcRouteGrpcRouteAction'] = None,
+                 grpc_status_response_action: Optional['outputs.AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction'] = None):
+        """
+        :param Sequence['AlbVirtualHostRouteGrpcRouteGrpcMatchArgs'] grpc_matches: Checks "/" prefix by default. The structure is documented below.
+        :param 'AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs' grpc_route_action: GRPC route action resource. The structure is documented below.
+        :param 'AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs' grpc_status_response_action: GRPC status response action resource. The structure is documented below.
+        """
+        if grpc_matches is not None:
+            pulumi.set(__self__, "grpc_matches", grpc_matches)
+        if grpc_route_action is not None:
+            pulumi.set(__self__, "grpc_route_action", grpc_route_action)
+        if grpc_status_response_action is not None:
+            pulumi.set(__self__, "grpc_status_response_action", grpc_status_response_action)
+
+    @property
+    @pulumi.getter(name="grpcMatches")
+    def grpc_matches(self) -> Optional[Sequence['outputs.AlbVirtualHostRouteGrpcRouteGrpcMatch']]:
+        """
+        Checks "/" prefix by default. The structure is documented below.
+        """
+        return pulumi.get(self, "grpc_matches")
+
+    @property
+    @pulumi.getter(name="grpcRouteAction")
+    def grpc_route_action(self) -> Optional['outputs.AlbVirtualHostRouteGrpcRouteGrpcRouteAction']:
+        """
+        GRPC route action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "grpc_route_action")
+
+    @property
+    @pulumi.getter(name="grpcStatusResponseAction")
+    def grpc_status_response_action(self) -> Optional['outputs.AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction']:
+        """
+        GRPC status response action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "grpc_status_response_action")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteGrpcRouteGrpcMatch(dict):
+    def __init__(__self__, *,
+                 fqmn: Optional['outputs.AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn'] = None):
+        """
+        :param 'AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs' fqmn: If not set, all services/methods are assumed. The structure is documented below.
+        """
+        if fqmn is not None:
+            pulumi.set(__self__, "fqmn", fqmn)
+
+    @property
+    @pulumi.getter
+    def fqmn(self) -> Optional['outputs.AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn']:
+        """
+        If not set, all services/methods are assumed. The structure is documented below.
+        """
+        return pulumi.get(self, "fqmn")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None):
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteGrpcRouteGrpcRouteAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendGroupId":
+            suggest = "backend_group_id"
+        elif key == "autoHostRewrite":
+            suggest = "auto_host_rewrite"
+        elif key == "hostRewrite":
+            suggest = "host_rewrite"
+        elif key == "idleTimeout":
+            suggest = "idle_timeout"
+        elif key == "maxTimeout":
+            suggest = "max_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlbVirtualHostRouteGrpcRouteGrpcRouteAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlbVirtualHostRouteGrpcRouteGrpcRouteAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlbVirtualHostRouteGrpcRouteGrpcRouteAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backend_group_id: str,
+                 auto_host_rewrite: Optional[bool] = None,
+                 host_rewrite: Optional[str] = None,
+                 idle_timeout: Optional[str] = None,
+                 max_timeout: Optional[str] = None):
+        """
+        :param str backend_group_id: Backend group to route requests.
+        :param bool auto_host_rewrite: If set, will automatically rewrite host.
+        :param str host_rewrite: Host rewrite specifier.
+        :param str idle_timeout: Specifies the idle timeout (time without any data transfer for the active request) for the
+               route. It is useful for streaming scenarios - one should set idle_timeout to something meaningful and max_timeout
+               to the maximum time the stream is allowed to be alive. If not specified, there is no
+               per-route idle timeout.
+        :param str max_timeout: Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 
+               60 seconds.
+        """
+        pulumi.set(__self__, "backend_group_id", backend_group_id)
+        if auto_host_rewrite is not None:
+            pulumi.set(__self__, "auto_host_rewrite", auto_host_rewrite)
+        if host_rewrite is not None:
+            pulumi.set(__self__, "host_rewrite", host_rewrite)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+        if max_timeout is not None:
+            pulumi.set(__self__, "max_timeout", max_timeout)
+
+    @property
+    @pulumi.getter(name="backendGroupId")
+    def backend_group_id(self) -> str:
+        """
+        Backend group to route requests.
+        """
+        return pulumi.get(self, "backend_group_id")
+
+    @property
+    @pulumi.getter(name="autoHostRewrite")
+    def auto_host_rewrite(self) -> Optional[bool]:
+        """
+        If set, will automatically rewrite host.
+        """
+        return pulumi.get(self, "auto_host_rewrite")
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> Optional[str]:
+        """
+        Host rewrite specifier.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[str]:
+        """
+        Specifies the idle timeout (time without any data transfer for the active request) for the
+        route. It is useful for streaming scenarios - one should set idle_timeout to something meaningful and max_timeout
+        to the maximum time the stream is allowed to be alive. If not specified, there is no
+        per-route idle timeout.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @property
+    @pulumi.getter(name="maxTimeout")
+    def max_timeout(self) -> Optional[str]:
+        """
+        Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 
+        60 seconds.
+        """
+        return pulumi.get(self, "max_timeout")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction(dict):
+    def __init__(__self__, *,
+                 status: Optional[str] = None):
+        """
+        :param str status: The status of the response. Supported values are: ok, invalid_argumet, not_found, 
+               permission_denied, unauthenticated, unimplemented, internal, unavailable.
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The status of the response. Supported values are: ok, invalid_argumet, not_found, 
+        permission_denied, unauthenticated, unimplemented, internal, unavailable.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteHttpRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "directResponseAction":
+            suggest = "direct_response_action"
+        elif key == "httpMatches":
+            suggest = "http_matches"
+        elif key == "httpRouteAction":
+            suggest = "http_route_action"
+        elif key == "redirectAction":
+            suggest = "redirect_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlbVirtualHostRouteHttpRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlbVirtualHostRouteHttpRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlbVirtualHostRouteHttpRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 direct_response_action: Optional['outputs.AlbVirtualHostRouteHttpRouteDirectResponseAction'] = None,
+                 http_matches: Optional[Sequence['outputs.AlbVirtualHostRouteHttpRouteHttpMatch']] = None,
+                 http_route_action: Optional['outputs.AlbVirtualHostRouteHttpRouteHttpRouteAction'] = None,
+                 redirect_action: Optional['outputs.AlbVirtualHostRouteHttpRouteRedirectAction'] = None):
+        """
+        :param 'AlbVirtualHostRouteHttpRouteDirectResponseActionArgs' direct_response_action: Direct response action resource. The structure is documented below.
+        :param Sequence['AlbVirtualHostRouteHttpRouteHttpMatchArgs'] http_matches: Checks "/" prefix by default. The structure is documented below.
+        :param 'AlbVirtualHostRouteHttpRouteHttpRouteActionArgs' http_route_action: HTTP route action resource. The structure is documented below.
+        :param 'AlbVirtualHostRouteHttpRouteRedirectActionArgs' redirect_action: Redirect action resource. The structure is documented below.
+        """
+        if direct_response_action is not None:
+            pulumi.set(__self__, "direct_response_action", direct_response_action)
+        if http_matches is not None:
+            pulumi.set(__self__, "http_matches", http_matches)
+        if http_route_action is not None:
+            pulumi.set(__self__, "http_route_action", http_route_action)
+        if redirect_action is not None:
+            pulumi.set(__self__, "redirect_action", redirect_action)
+
+    @property
+    @pulumi.getter(name="directResponseAction")
+    def direct_response_action(self) -> Optional['outputs.AlbVirtualHostRouteHttpRouteDirectResponseAction']:
+        """
+        Direct response action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "direct_response_action")
+
+    @property
+    @pulumi.getter(name="httpMatches")
+    def http_matches(self) -> Optional[Sequence['outputs.AlbVirtualHostRouteHttpRouteHttpMatch']]:
+        """
+        Checks "/" prefix by default. The structure is documented below.
+        """
+        return pulumi.get(self, "http_matches")
+
+    @property
+    @pulumi.getter(name="httpRouteAction")
+    def http_route_action(self) -> Optional['outputs.AlbVirtualHostRouteHttpRouteHttpRouteAction']:
+        """
+        HTTP route action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "http_route_action")
+
+    @property
+    @pulumi.getter(name="redirectAction")
+    def redirect_action(self) -> Optional['outputs.AlbVirtualHostRouteHttpRouteRedirectAction']:
+        """
+        Redirect action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "redirect_action")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteHttpRouteDirectResponseAction(dict):
+    def __init__(__self__, *,
+                 body: Optional[str] = None,
+                 status: Optional[int] = None):
+        """
+        :param str body: Response body text.
+        :param int status: The status of the response. Supported values are: ok, invalid_argumet, not_found, 
+               permission_denied, unauthenticated, unimplemented, internal, unavailable.
+        """
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def body(self) -> Optional[str]:
+        """
+        Response body text.
+        """
+        return pulumi.get(self, "body")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[int]:
+        """
+        The status of the response. Supported values are: ok, invalid_argumet, not_found, 
+        permission_denied, unauthenticated, unimplemented, internal, unavailable.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteHttpRouteHttpMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpMethods":
+            suggest = "http_methods"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlbVirtualHostRouteHttpRouteHttpMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlbVirtualHostRouteHttpRouteHttpMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlbVirtualHostRouteHttpRouteHttpMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_methods: Optional[Sequence[Any]] = None,
+                 path: Optional['outputs.AlbVirtualHostRouteHttpRouteHttpMatchPath'] = None):
+        """
+        :param Sequence[Any] http_methods: List of methods(strings).
+        :param 'AlbVirtualHostRouteHttpRouteHttpMatchPathArgs' path: If not set, '/' is assumed. The structure is documented below.
+        """
+        if http_methods is not None:
+            pulumi.set(__self__, "http_methods", http_methods)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="httpMethods")
+    def http_methods(self) -> Optional[Sequence[Any]]:
+        """
+        List of methods(strings).
+        """
+        return pulumi.get(self, "http_methods")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional['outputs.AlbVirtualHostRouteHttpRouteHttpMatchPath']:
+        """
+        If not set, '/' is assumed. The structure is documented below.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteHttpRouteHttpMatchPath(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 prefix: Optional[str] = None):
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteHttpRouteHttpRouteAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendGroupId":
+            suggest = "backend_group_id"
+        elif key == "autoHostRewrite":
+            suggest = "auto_host_rewrite"
+        elif key == "hostRewrite":
+            suggest = "host_rewrite"
+        elif key == "idleTimeout":
+            suggest = "idle_timeout"
+        elif key == "prefixRewrite":
+            suggest = "prefix_rewrite"
+        elif key == "upgradeTypes":
+            suggest = "upgrade_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlbVirtualHostRouteHttpRouteHttpRouteAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlbVirtualHostRouteHttpRouteHttpRouteAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlbVirtualHostRouteHttpRouteHttpRouteAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backend_group_id: str,
+                 auto_host_rewrite: Optional[bool] = None,
+                 host_rewrite: Optional[str] = None,
+                 idle_timeout: Optional[str] = None,
+                 prefix_rewrite: Optional[str] = None,
+                 timeout: Optional[str] = None,
+                 upgrade_types: Optional[Sequence[str]] = None):
+        """
+        :param str backend_group_id: Backend group to route requests.
+        :param bool auto_host_rewrite: If set, will automatically rewrite host.
+        :param str host_rewrite: Host rewrite specifier.
+        :param str idle_timeout: Specifies the idle timeout (time without any data transfer for the active request) for the
+               route. It is useful for streaming scenarios - one should set idle_timeout to something meaningful and max_timeout
+               to the maximum time the stream is allowed to be alive. If not specified, there is no
+               per-route idle timeout.
+        :param str prefix_rewrite: If not empty, matched path prefix will be replaced by this value.
+        :param str timeout: Specifies the request timeout (overall time request processing is allowed to take) for the 
+               route. If not set, default is 60 seconds.
+        :param Sequence[str] upgrade_types: List of upgrade types. Only specified upgrade types will be allowed. For example, 
+               "websocket".
+        """
+        pulumi.set(__self__, "backend_group_id", backend_group_id)
+        if auto_host_rewrite is not None:
+            pulumi.set(__self__, "auto_host_rewrite", auto_host_rewrite)
+        if host_rewrite is not None:
+            pulumi.set(__self__, "host_rewrite", host_rewrite)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+        if prefix_rewrite is not None:
+            pulumi.set(__self__, "prefix_rewrite", prefix_rewrite)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if upgrade_types is not None:
+            pulumi.set(__self__, "upgrade_types", upgrade_types)
+
+    @property
+    @pulumi.getter(name="backendGroupId")
+    def backend_group_id(self) -> str:
+        """
+        Backend group to route requests.
+        """
+        return pulumi.get(self, "backend_group_id")
+
+    @property
+    @pulumi.getter(name="autoHostRewrite")
+    def auto_host_rewrite(self) -> Optional[bool]:
+        """
+        If set, will automatically rewrite host.
+        """
+        return pulumi.get(self, "auto_host_rewrite")
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> Optional[str]:
+        """
+        Host rewrite specifier.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[str]:
+        """
+        Specifies the idle timeout (time without any data transfer for the active request) for the
+        route. It is useful for streaming scenarios - one should set idle_timeout to something meaningful and max_timeout
+        to the maximum time the stream is allowed to be alive. If not specified, there is no
+        per-route idle timeout.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @property
+    @pulumi.getter(name="prefixRewrite")
+    def prefix_rewrite(self) -> Optional[str]:
+        """
+        If not empty, matched path prefix will be replaced by this value.
+        """
+        return pulumi.get(self, "prefix_rewrite")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[str]:
+        """
+        Specifies the request timeout (overall time request processing is allowed to take) for the 
+        route. If not set, default is 60 seconds.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="upgradeTypes")
+    def upgrade_types(self) -> Optional[Sequence[str]]:
+        """
+        List of upgrade types. Only specified upgrade types will be allowed. For example, 
+        "websocket".
+        """
+        return pulumi.get(self, "upgrade_types")
+
+
+@pulumi.output_type
+class AlbVirtualHostRouteHttpRouteRedirectAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "removeQuery":
+            suggest = "remove_query"
+        elif key == "replaceHost":
+            suggest = "replace_host"
+        elif key == "replacePath":
+            suggest = "replace_path"
+        elif key == "replacePort":
+            suggest = "replace_port"
+        elif key == "replacePrefix":
+            suggest = "replace_prefix"
+        elif key == "replaceScheme":
+            suggest = "replace_scheme"
+        elif key == "responseCode":
+            suggest = "response_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlbVirtualHostRouteHttpRouteRedirectAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlbVirtualHostRouteHttpRouteRedirectAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlbVirtualHostRouteHttpRouteRedirectAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 remove_query: Optional[bool] = None,
+                 replace_host: Optional[str] = None,
+                 replace_path: Optional[str] = None,
+                 replace_port: Optional[int] = None,
+                 replace_prefix: Optional[str] = None,
+                 replace_scheme: Optional[str] = None,
+                 response_code: Optional[str] = None):
+        """
+        :param str replace_host: Replaces hostname.
+        :param str replace_path: Replace path.
+        :param int replace_port: Replaces port.
+        :param str replace_prefix: Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/> 
+               redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+        :param str replace_scheme: Replaces scheme. If the original scheme is `http` or `https`, will also remove the 
+               80 or 443 port, if present.
+        :param str response_code: The HTTP status code to use in the redirect response. Supported values are: 
+               moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+        """
+        if remove_query is not None:
+            pulumi.set(__self__, "remove_query", remove_query)
+        if replace_host is not None:
+            pulumi.set(__self__, "replace_host", replace_host)
+        if replace_path is not None:
+            pulumi.set(__self__, "replace_path", replace_path)
+        if replace_port is not None:
+            pulumi.set(__self__, "replace_port", replace_port)
+        if replace_prefix is not None:
+            pulumi.set(__self__, "replace_prefix", replace_prefix)
+        if replace_scheme is not None:
+            pulumi.set(__self__, "replace_scheme", replace_scheme)
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
+
+    @property
+    @pulumi.getter(name="removeQuery")
+    def remove_query(self) -> Optional[bool]:
+        return pulumi.get(self, "remove_query")
+
+    @property
+    @pulumi.getter(name="replaceHost")
+    def replace_host(self) -> Optional[str]:
+        """
+        Replaces hostname.
+        """
+        return pulumi.get(self, "replace_host")
+
+    @property
+    @pulumi.getter(name="replacePath")
+    def replace_path(self) -> Optional[str]:
+        """
+        Replace path.
+        """
+        return pulumi.get(self, "replace_path")
+
+    @property
+    @pulumi.getter(name="replacePort")
+    def replace_port(self) -> Optional[int]:
+        """
+        Replaces port.
+        """
+        return pulumi.get(self, "replace_port")
+
+    @property
+    @pulumi.getter(name="replacePrefix")
+    def replace_prefix(self) -> Optional[str]:
+        """
+        Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/> 
+        redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+        """
+        return pulumi.get(self, "replace_prefix")
+
+    @property
+    @pulumi.getter(name="replaceScheme")
+    def replace_scheme(self) -> Optional[str]:
+        """
+        Replaces scheme. If the original scheme is `http` or `https`, will also remove the 
+        80 or 443 port, if present.
+        """
+        return pulumi.get(self, "replace_scheme")
+
+    @property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> Optional[str]:
+        """
+        The HTTP status code to use in the redirect response. Supported values are: 
+        moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+        """
+        return pulumi.get(self, "response_code")
 
 
 @pulumi.output_type
@@ -5962,6 +6838,31 @@ class KubernetesClusterMasterZonal(dict):
 
 
 @pulumi.output_type
+class KubernetesClusterNetworkImplementation(dict):
+    def __init__(__self__, *,
+                 cilium: Optional['outputs.KubernetesClusterNetworkImplementationCilium'] = None):
+        """
+        :param 'KubernetesClusterNetworkImplementationCiliumArgs' cilium: (Optional) Cilium network implementation configuration. No options exist.
+        """
+        if cilium is not None:
+            pulumi.set(__self__, "cilium", cilium)
+
+    @property
+    @pulumi.getter
+    def cilium(self) -> Optional['outputs.KubernetesClusterNetworkImplementationCilium']:
+        """
+        (Optional) Cilium network implementation configuration. No options exist.
+        """
+        return pulumi.get(self, "cilium")
+
+
+@pulumi.output_type
+class KubernetesClusterNetworkImplementationCilium(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
 class KubernetesNodeGroupAllocationPolicy(dict):
     def __init__(__self__, *,
                  locations: Optional[Sequence['outputs.KubernetesNodeGroupAllocationPolicyLocation']] = None):
@@ -6083,6 +6984,8 @@ class KubernetesNodeGroupInstanceTemplate(dict):
         suggest = None
         if key == "bootDisk":
             suggest = "boot_disk"
+        elif key == "networkAccelerationType":
+            suggest = "network_acceleration_type"
         elif key == "networkInterfaces":
             suggest = "network_interfaces"
         elif key == "placementPolicy":
@@ -6107,6 +7010,7 @@ class KubernetesNodeGroupInstanceTemplate(dict):
                  boot_disk: Optional['outputs.KubernetesNodeGroupInstanceTemplateBootDisk'] = None,
                  metadata: Optional[Mapping[str, str]] = None,
                  nat: Optional[bool] = None,
+                 network_acceleration_type: Optional[str] = None,
                  network_interfaces: Optional[Sequence['outputs.KubernetesNodeGroupInstanceTemplateNetworkInterface']] = None,
                  placement_policy: Optional['outputs.KubernetesNodeGroupInstanceTemplatePlacementPolicy'] = None,
                  platform_id: Optional[str] = None,
@@ -6120,6 +7024,7 @@ class KubernetesNodeGroupInstanceTemplate(dict):
                * `resources.0.core_fraction` - Baseline core performance as a percent.
                * `resources.0.gpus` - Number of GPU cores allocated to the instance.
         :param bool nat: A public address that can be used to access the internet over NAT.
+        :param str network_acceleration_type: Type of network acceleration. Values: `standard`, `software_accelerated`.
         :param Sequence['KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs'] network_interfaces: An array with the network interfaces that will be attached to the instance. The structure is documented below.
         :param str platform_id: The ID of the hardware platform configuration for the node group compute instances.
         :param 'KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs' scheduling_policy: The scheduling policy for the instances in node group. The structure is documented below.
@@ -6130,6 +7035,8 @@ class KubernetesNodeGroupInstanceTemplate(dict):
             pulumi.set(__self__, "metadata", metadata)
         if nat is not None:
             pulumi.set(__self__, "nat", nat)
+        if network_acceleration_type is not None:
+            pulumi.set(__self__, "network_acceleration_type", network_acceleration_type)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if placement_policy is not None:
@@ -6168,6 +7075,14 @@ class KubernetesNodeGroupInstanceTemplate(dict):
         A public address that can be used to access the internet over NAT.
         """
         return pulumi.get(self, "nat")
+
+    @property
+    @pulumi.getter(name="networkAccelerationType")
+    def network_acceleration_type(self) -> Optional[str]:
+        """
+        Type of network acceleration. Values: `standard`, `software_accelerated`.
+        """
+        return pulumi.get(self, "network_acceleration_type")
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -10183,6 +11098,353 @@ class MdbClickhouseClusterZookeeperResources(dict):
 
 
 @pulumi.output_type
+class MdbElasticSearchClusterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminPassword":
+            suggest = "admin_password"
+        elif key == "dataNode":
+            suggest = "data_node"
+        elif key == "masterNode":
+            suggest = "master_node"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MdbElasticSearchClusterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MdbElasticSearchClusterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MdbElasticSearchClusterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_password: str,
+                 data_node: 'outputs.MdbElasticSearchClusterConfigDataNode',
+                 edition: Optional[str] = None,
+                 master_node: Optional['outputs.MdbElasticSearchClusterConfigMasterNode'] = None,
+                 plugins: Optional[Sequence[str]] = None,
+                 version: Optional[str] = None):
+        """
+        :param str admin_password: Password for admin user of Elasticsearch.
+        :param 'MdbElasticSearchClusterConfigDataNodeArgs' data_node: Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+        :param str edition: Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+        :param 'MdbElasticSearchClusterConfigMasterNodeArgs' master_node: Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+        :param Sequence[str] plugins: A set of Elasticsearch plugins to install.
+        :param str version: Version of Elasticsearch.
+        """
+        pulumi.set(__self__, "admin_password", admin_password)
+        pulumi.set(__self__, "data_node", data_node)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
+        if master_node is not None:
+            pulumi.set(__self__, "master_node", master_node)
+        if plugins is not None:
+            pulumi.set(__self__, "plugins", plugins)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="adminPassword")
+    def admin_password(self) -> str:
+        """
+        Password for admin user of Elasticsearch.
+        """
+        return pulumi.get(self, "admin_password")
+
+    @property
+    @pulumi.getter(name="dataNode")
+    def data_node(self) -> 'outputs.MdbElasticSearchClusterConfigDataNode':
+        """
+        Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+        """
+        return pulumi.get(self, "data_node")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[str]:
+        """
+        Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+        """
+        return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter(name="masterNode")
+    def master_node(self) -> Optional['outputs.MdbElasticSearchClusterConfigMasterNode']:
+        """
+        Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        return pulumi.get(self, "master_node")
+
+    @property
+    @pulumi.getter
+    def plugins(self) -> Optional[Sequence[str]]:
+        """
+        A set of Elasticsearch plugins to install.
+        """
+        return pulumi.get(self, "plugins")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of Elasticsearch.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class MdbElasticSearchClusterConfigDataNode(dict):
+    def __init__(__self__, *,
+                 resources: 'outputs.MdbElasticSearchClusterConfigDataNodeResources'):
+        """
+        :param 'MdbElasticSearchClusterConfigDataNodeResourcesArgs' resources: Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> 'outputs.MdbElasticSearchClusterConfigDataNodeResources':
+        """
+        Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class MdbElasticSearchClusterConfigDataNodeResources(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSize":
+            suggest = "disk_size"
+        elif key == "diskTypeId":
+            suggest = "disk_type_id"
+        elif key == "resourcePresetId":
+            suggest = "resource_preset_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MdbElasticSearchClusterConfigDataNodeResources. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MdbElasticSearchClusterConfigDataNodeResources.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MdbElasticSearchClusterConfigDataNodeResources.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size: int,
+                 disk_type_id: str,
+                 resource_preset_id: str):
+        """
+        :param int disk_size: Volume of the storage available to a host, in gigabytes.
+        :param str disk_type_id: Type of the storage of Elasticsearch hosts.
+        """
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        """
+        Volume of the storage available to a host, in gigabytes.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> str:
+        """
+        Type of the storage of Elasticsearch hosts.
+        """
+        return pulumi.get(self, "disk_type_id")
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> str:
+        return pulumi.get(self, "resource_preset_id")
+
+
+@pulumi.output_type
+class MdbElasticSearchClusterConfigMasterNode(dict):
+    def __init__(__self__, *,
+                 resources: 'outputs.MdbElasticSearchClusterConfigMasterNodeResources'):
+        """
+        :param 'MdbElasticSearchClusterConfigMasterNodeResourcesArgs' resources: Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> 'outputs.MdbElasticSearchClusterConfigMasterNodeResources':
+        """
+        Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class MdbElasticSearchClusterConfigMasterNodeResources(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSize":
+            suggest = "disk_size"
+        elif key == "diskTypeId":
+            suggest = "disk_type_id"
+        elif key == "resourcePresetId":
+            suggest = "resource_preset_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MdbElasticSearchClusterConfigMasterNodeResources. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MdbElasticSearchClusterConfigMasterNodeResources.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MdbElasticSearchClusterConfigMasterNodeResources.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size: int,
+                 disk_type_id: str,
+                 resource_preset_id: str):
+        """
+        :param int disk_size: Volume of the storage available to a host, in gigabytes.
+        :param str disk_type_id: Type of the storage of Elasticsearch hosts.
+        """
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        """
+        Volume of the storage available to a host, in gigabytes.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> str:
+        """
+        Type of the storage of Elasticsearch hosts.
+        """
+        return pulumi.get(self, "disk_type_id")
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> str:
+        return pulumi.get(self, "resource_preset_id")
+
+
+@pulumi.output_type
+class MdbElasticSearchClusterHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignPublicIp":
+            suggest = "assign_public_ip"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MdbElasticSearchClusterHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MdbElasticSearchClusterHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MdbElasticSearchClusterHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 type: str,
+                 zone: str,
+                 assign_public_ip: Optional[bool] = None,
+                 fqdn: Optional[str] = None,
+                 subnet_id: Optional[str] = None):
+        """
+        :param str name: User defined host name.
+        :param str type: The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+        :param str zone: The availability zone where the Elasticsearch host will be created.
+               For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
+        :param bool assign_public_ip: Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+        :param str fqdn: The fully qualified domain name of the host.
+        :param str subnet_id: The ID of the subnet, to which the host belongs. The subnet must
+               be a part of the network to which the cluster belongs.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone", zone)
+        if assign_public_ip is not None:
+            pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        User defined host name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        The availability zone where the Elasticsearch host will be created.
+        For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
+        """
+        return pulumi.get(self, "zone")
+
+    @property
+    @pulumi.getter(name="assignPublicIp")
+    def assign_public_ip(self) -> Optional[bool]:
+        """
+        Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "assign_public_ip")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[str]:
+        """
+        The fully qualified domain name of the host.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[str]:
+        """
+        The ID of the subnet, to which the host belongs. The subnet must
+        be a part of the network to which the cluster belongs.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
 class MdbKafkaClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11252,7 +12514,7 @@ class MdbMongodbClusterHost(dict):
         :param str name: The fully qualified domain name of the host. Computed on server side.
         :param str role: The role of the cluster (either PRIMARY or SECONDARY).
         :param str shard_name: The name of the shard to which the host belongs.
-        :param str type: type of mongo daemon which runs on this host (mongod, mongos or monogcfg). Defaults to mongod.
+        :param str type: Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
         """
         pulumi.set(__self__, "subnet_id", subnet_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -11331,9 +12593,51 @@ class MdbMongodbClusterHost(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        type of mongo daemon which runs on this host (mongod, mongos or monogcfg). Defaults to mongod.
+        Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class MdbMongodbClusterMaintenanceWindow(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 day: Optional[str] = None,
+                 hour: Optional[int] = None):
+        """
+        :param str type: Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        :param str day: Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+        :param int hour: Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+        """
+        pulumi.set(__self__, "type", type)
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[str]:
+        """
+        Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def hour(self) -> Optional[int]:
+        """
+        Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+        """
+        return pulumi.get(self, "hour")
 
 
 @pulumi.output_type
@@ -14136,6 +15440,15 @@ class GetAlbBackendGroupGrpcBackendResult(dict):
                  target_group_ids: Sequence[str],
                  tls: 'outputs.GetAlbBackendGroupGrpcBackendTlsResult',
                  weight: int):
+        """
+        :param 'GetAlbBackendGroupGrpcBackendHealthcheckArgs' healthcheck: Healthcheck specification that will be used by this backend. Structure is documented below.
+        :param 'GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs' load_balancing_config: Load Balancing Config specification that will be used by this backend. Structure is documented below.
+        :param str name: - Name of the Backend Group.
+        :param int port: Port for incoming traffic.
+        :param Sequence[str] target_group_ids: References target groups for the backend.
+        :param 'GetAlbBackendGroupGrpcBackendTlsArgs' tls: Tls specification that will be used by this backend. Structure is documented below.
+        :param int weight: Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+        """
         pulumi.set(__self__, "healthcheck", healthcheck)
         pulumi.set(__self__, "load_balancing_config", load_balancing_config)
         pulumi.set(__self__, "name", name)
@@ -14147,36 +15460,57 @@ class GetAlbBackendGroupGrpcBackendResult(dict):
     @property
     @pulumi.getter
     def healthcheck(self) -> 'outputs.GetAlbBackendGroupGrpcBackendHealthcheckResult':
+        """
+        Healthcheck specification that will be used by this backend. Structure is documented below.
+        """
         return pulumi.get(self, "healthcheck")
 
     @property
     @pulumi.getter(name="loadBalancingConfig")
     def load_balancing_config(self) -> 'outputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfigResult':
+        """
+        Load Balancing Config specification that will be used by this backend. Structure is documented below.
+        """
         return pulumi.get(self, "load_balancing_config")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        - Name of the Backend Group.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port for incoming traffic.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="targetGroupIds")
     def target_group_ids(self) -> Sequence[str]:
+        """
+        References target groups for the backend.
+        """
         return pulumi.get(self, "target_group_ids")
 
     @property
     @pulumi.getter
     def tls(self) -> 'outputs.GetAlbBackendGroupGrpcBackendTlsResult':
+        """
+        Tls specification that will be used by this backend. Structure is documented below.
+        """
         return pulumi.get(self, "tls")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -14192,6 +15526,17 @@ class GetAlbBackendGroupGrpcBackendHealthcheckResult(dict):
                  stream_healthcheck: 'outputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckResult',
                  timeout: str,
                  unhealthy_threshold: int):
+        """
+        :param 'GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs' grpc_healthcheck: Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param int healthcheck_port: Optional alternative port for health checking.
+        :param int healthy_threshold: Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+        :param 'GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs' http_healthcheck: Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param str interval: Interval between health checks.
+        :param float interval_jitter_percent: An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * interval_jitter_percent / 100) will be added to the wait time.
+        :param 'GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs' stream_healthcheck: Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param str timeout: Time to wait for a health check response.
+        :param int unhealthy_threshold: Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+        """
         pulumi.set(__self__, "grpc_healthcheck", grpc_healthcheck)
         pulumi.set(__self__, "healthcheck_port", healthcheck_port)
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
@@ -14205,46 +15550,73 @@ class GetAlbBackendGroupGrpcBackendHealthcheckResult(dict):
     @property
     @pulumi.getter(name="grpcHealthcheck")
     def grpc_healthcheck(self) -> 'outputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckResult':
+        """
+        Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
         return pulumi.get(self, "grpc_healthcheck")
 
     @property
     @pulumi.getter(name="healthcheckPort")
     def healthcheck_port(self) -> int:
+        """
+        Optional alternative port for health checking.
+        """
         return pulumi.get(self, "healthcheck_port")
 
     @property
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> int:
+        """
+        Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+        """
         return pulumi.get(self, "healthy_threshold")
 
     @property
     @pulumi.getter(name="httpHealthcheck")
     def http_healthcheck(self) -> 'outputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckResult':
+        """
+        Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
         return pulumi.get(self, "http_healthcheck")
 
     @property
     @pulumi.getter
     def interval(self) -> str:
+        """
+        Interval between health checks.
+        """
         return pulumi.get(self, "interval")
 
     @property
     @pulumi.getter(name="intervalJitterPercent")
     def interval_jitter_percent(self) -> float:
+        """
+        An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * interval_jitter_percent / 100) will be added to the wait time.
+        """
         return pulumi.get(self, "interval_jitter_percent")
 
     @property
     @pulumi.getter(name="streamHealthcheck")
     def stream_healthcheck(self) -> 'outputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckResult':
+        """
+        Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
         return pulumi.get(self, "stream_healthcheck")
 
     @property
     @pulumi.getter
     def timeout(self) -> str:
+        """
+        Time to wait for a health check response.
+        """
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> int:
+        """
+        Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+        """
         return pulumi.get(self, "unhealthy_threshold")
 
 
@@ -14252,11 +15624,17 @@ class GetAlbBackendGroupGrpcBackendHealthcheckResult(dict):
 class GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckResult(dict):
     def __init__(__self__, *,
                  service_name: str):
+        """
+        :param str service_name: Optional service name for grpc.health.v1.HealthCheckRequest message.
+        """
         pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Optional service name for grpc.health.v1.HealthCheckRequest message.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -14266,6 +15644,11 @@ class GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckResult(dict):
                  host: str,
                  http2: bool,
                  path: str):
+        """
+        :param str host: Optional "Host" HTTP header value.
+        :param bool http2: If set, health checks will use HTTP2.
+        :param str path: HTTP path.
+        """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "http2", http2)
         pulumi.set(__self__, "path", path)
@@ -14273,16 +15656,25 @@ class GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckResult(dict):
     @property
     @pulumi.getter
     def host(self) -> str:
+        """
+        Optional "Host" HTTP header value.
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def http2(self) -> bool:
+        """
+        If set, health checks will use HTTP2.
+        """
         return pulumi.get(self, "http2")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        HTTP path.
+        """
         return pulumi.get(self, "path")
 
 
@@ -14291,17 +15683,27 @@ class GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckResult(dict):
     def __init__(__self__, *,
                  receive: str,
                  send: str):
+        """
+        :param str receive: Optional text to search in reply.
+        :param str send: Optional message to send. If empty, it's a connect-only health check.
+        """
         pulumi.set(__self__, "receive", receive)
         pulumi.set(__self__, "send", send)
 
     @property
     @pulumi.getter
     def receive(self) -> str:
+        """
+        Optional text to search in reply.
+        """
         return pulumi.get(self, "receive")
 
     @property
     @pulumi.getter
     def send(self) -> str:
+        """
+        Optional message to send. If empty, it's a connect-only health check.
+        """
         return pulumi.get(self, "send")
 
 
@@ -14311,6 +15713,11 @@ class GetAlbBackendGroupGrpcBackendLoadBalancingConfigResult(dict):
                  locality_aware_routing_percent: int,
                  panic_threshold: int,
                  strict_locality: bool):
+        """
+        :param int locality_aware_routing_percent: Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+        :param int panic_threshold: If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+        :param bool strict_locality: If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+        """
         pulumi.set(__self__, "locality_aware_routing_percent", locality_aware_routing_percent)
         pulumi.set(__self__, "panic_threshold", panic_threshold)
         pulumi.set(__self__, "strict_locality", strict_locality)
@@ -14318,16 +15725,25 @@ class GetAlbBackendGroupGrpcBackendLoadBalancingConfigResult(dict):
     @property
     @pulumi.getter(name="localityAwareRoutingPercent")
     def locality_aware_routing_percent(self) -> int:
+        """
+        Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+        """
         return pulumi.get(self, "locality_aware_routing_percent")
 
     @property
     @pulumi.getter(name="panicThreshold")
     def panic_threshold(self) -> int:
+        """
+        If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+        """
         return pulumi.get(self, "panic_threshold")
 
     @property
     @pulumi.getter(name="strictLocality")
     def strict_locality(self) -> bool:
+        """
+        If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+        """
         return pulumi.get(self, "strict_locality")
 
 
@@ -14336,12 +15752,22 @@ class GetAlbBackendGroupGrpcBackendTlsResult(dict):
     def __init__(__self__, *,
                  sni: str,
                  validation_context: 'outputs.GetAlbBackendGroupGrpcBackendTlsValidationContextResult'):
+        """
+        :param str sni: [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+               * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+               * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+        """
         pulumi.set(__self__, "sni", sni)
         pulumi.set(__self__, "validation_context", validation_context)
 
     @property
     @pulumi.getter
     def sni(self) -> str:
+        """
+        [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+        * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+        * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+        """
         return pulumi.get(self, "sni")
 
     @property
@@ -14380,6 +15806,16 @@ class GetAlbBackendGroupHttpBackendResult(dict):
                  target_group_ids: Sequence[str],
                  tls: 'outputs.GetAlbBackendGroupHttpBackendTlsResult',
                  weight: int):
+        """
+        :param 'GetAlbBackendGroupHttpBackendHealthcheckArgs' healthcheck: Healthcheck specification that will be used by this backend. Structure is documented below.
+        :param bool http2: If set, health checks will use HTTP2.
+        :param 'GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs' load_balancing_config: Load Balancing Config specification that will be used by this backend. Structure is documented below.
+        :param str name: - Name of the Backend Group.
+        :param int port: Port for incoming traffic.
+        :param Sequence[str] target_group_ids: References target groups for the backend.
+        :param 'GetAlbBackendGroupHttpBackendTlsArgs' tls: Tls specification that will be used by this backend. Structure is documented below.
+        :param int weight: Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+        """
         pulumi.set(__self__, "healthcheck", healthcheck)
         pulumi.set(__self__, "http2", http2)
         pulumi.set(__self__, "load_balancing_config", load_balancing_config)
@@ -14392,41 +15828,65 @@ class GetAlbBackendGroupHttpBackendResult(dict):
     @property
     @pulumi.getter
     def healthcheck(self) -> 'outputs.GetAlbBackendGroupHttpBackendHealthcheckResult':
+        """
+        Healthcheck specification that will be used by this backend. Structure is documented below.
+        """
         return pulumi.get(self, "healthcheck")
 
     @property
     @pulumi.getter
     def http2(self) -> bool:
+        """
+        If set, health checks will use HTTP2.
+        """
         return pulumi.get(self, "http2")
 
     @property
     @pulumi.getter(name="loadBalancingConfig")
     def load_balancing_config(self) -> 'outputs.GetAlbBackendGroupHttpBackendLoadBalancingConfigResult':
+        """
+        Load Balancing Config specification that will be used by this backend. Structure is documented below.
+        """
         return pulumi.get(self, "load_balancing_config")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        - Name of the Backend Group.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port for incoming traffic.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="targetGroupIds")
     def target_group_ids(self) -> Sequence[str]:
+        """
+        References target groups for the backend.
+        """
         return pulumi.get(self, "target_group_ids")
 
     @property
     @pulumi.getter
     def tls(self) -> 'outputs.GetAlbBackendGroupHttpBackendTlsResult':
+        """
+        Tls specification that will be used by this backend. Structure is documented below.
+        """
         return pulumi.get(self, "tls")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -14442,6 +15902,17 @@ class GetAlbBackendGroupHttpBackendHealthcheckResult(dict):
                  stream_healthcheck: 'outputs.GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckResult',
                  timeout: str,
                  unhealthy_threshold: int):
+        """
+        :param 'GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs' grpc_healthcheck: Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param int healthcheck_port: Optional alternative port for health checking.
+        :param int healthy_threshold: Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+        :param 'GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs' http_healthcheck: Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param str interval: Interval between health checks.
+        :param float interval_jitter_percent: An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * interval_jitter_percent / 100) will be added to the wait time.
+        :param 'GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs' stream_healthcheck: Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param str timeout: Time to wait for a health check response.
+        :param int unhealthy_threshold: Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+        """
         pulumi.set(__self__, "grpc_healthcheck", grpc_healthcheck)
         pulumi.set(__self__, "healthcheck_port", healthcheck_port)
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
@@ -14455,46 +15926,73 @@ class GetAlbBackendGroupHttpBackendHealthcheckResult(dict):
     @property
     @pulumi.getter(name="grpcHealthcheck")
     def grpc_healthcheck(self) -> 'outputs.GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckResult':
+        """
+        Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
         return pulumi.get(self, "grpc_healthcheck")
 
     @property
     @pulumi.getter(name="healthcheckPort")
     def healthcheck_port(self) -> int:
+        """
+        Optional alternative port for health checking.
+        """
         return pulumi.get(self, "healthcheck_port")
 
     @property
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> int:
+        """
+        Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+        """
         return pulumi.get(self, "healthy_threshold")
 
     @property
     @pulumi.getter(name="httpHealthcheck")
     def http_healthcheck(self) -> 'outputs.GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckResult':
+        """
+        Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
         return pulumi.get(self, "http_healthcheck")
 
     @property
     @pulumi.getter
     def interval(self) -> str:
+        """
+        Interval between health checks.
+        """
         return pulumi.get(self, "interval")
 
     @property
     @pulumi.getter(name="intervalJitterPercent")
     def interval_jitter_percent(self) -> float:
+        """
+        An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * interval_jitter_percent / 100) will be added to the wait time.
+        """
         return pulumi.get(self, "interval_jitter_percent")
 
     @property
     @pulumi.getter(name="streamHealthcheck")
     def stream_healthcheck(self) -> 'outputs.GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckResult':
+        """
+        Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
         return pulumi.get(self, "stream_healthcheck")
 
     @property
     @pulumi.getter
     def timeout(self) -> str:
+        """
+        Time to wait for a health check response.
+        """
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> int:
+        """
+        Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+        """
         return pulumi.get(self, "unhealthy_threshold")
 
 
@@ -14502,11 +16000,17 @@ class GetAlbBackendGroupHttpBackendHealthcheckResult(dict):
 class GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckResult(dict):
     def __init__(__self__, *,
                  service_name: str):
+        """
+        :param str service_name: Optional service name for grpc.health.v1.HealthCheckRequest message.
+        """
         pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Optional service name for grpc.health.v1.HealthCheckRequest message.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -14516,6 +16020,11 @@ class GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckResult(dict):
                  host: str,
                  http2: bool,
                  path: str):
+        """
+        :param str host: Optional "Host" HTTP header value.
+        :param bool http2: If set, health checks will use HTTP2.
+        :param str path: HTTP path.
+        """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "http2", http2)
         pulumi.set(__self__, "path", path)
@@ -14523,16 +16032,25 @@ class GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckResult(dict):
     @property
     @pulumi.getter
     def host(self) -> str:
+        """
+        Optional "Host" HTTP header value.
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def http2(self) -> bool:
+        """
+        If set, health checks will use HTTP2.
+        """
         return pulumi.get(self, "http2")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        HTTP path.
+        """
         return pulumi.get(self, "path")
 
 
@@ -14541,17 +16059,27 @@ class GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckResult(dict):
     def __init__(__self__, *,
                  receive: str,
                  send: str):
+        """
+        :param str receive: Optional text to search in reply.
+        :param str send: Optional message to send. If empty, it's a connect-only health check.
+        """
         pulumi.set(__self__, "receive", receive)
         pulumi.set(__self__, "send", send)
 
     @property
     @pulumi.getter
     def receive(self) -> str:
+        """
+        Optional text to search in reply.
+        """
         return pulumi.get(self, "receive")
 
     @property
     @pulumi.getter
     def send(self) -> str:
+        """
+        Optional message to send. If empty, it's a connect-only health check.
+        """
         return pulumi.get(self, "send")
 
 
@@ -14561,6 +16089,11 @@ class GetAlbBackendGroupHttpBackendLoadBalancingConfigResult(dict):
                  locality_aware_routing_percent: int,
                  panic_threshold: int,
                  strict_locality: bool):
+        """
+        :param int locality_aware_routing_percent: Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+        :param int panic_threshold: If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+        :param bool strict_locality: If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+        """
         pulumi.set(__self__, "locality_aware_routing_percent", locality_aware_routing_percent)
         pulumi.set(__self__, "panic_threshold", panic_threshold)
         pulumi.set(__self__, "strict_locality", strict_locality)
@@ -14568,16 +16101,25 @@ class GetAlbBackendGroupHttpBackendLoadBalancingConfigResult(dict):
     @property
     @pulumi.getter(name="localityAwareRoutingPercent")
     def locality_aware_routing_percent(self) -> int:
+        """
+        Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+        """
         return pulumi.get(self, "locality_aware_routing_percent")
 
     @property
     @pulumi.getter(name="panicThreshold")
     def panic_threshold(self) -> int:
+        """
+        If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+        """
         return pulumi.get(self, "panic_threshold")
 
     @property
     @pulumi.getter(name="strictLocality")
     def strict_locality(self) -> bool:
+        """
+        If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+        """
         return pulumi.get(self, "strict_locality")
 
 
@@ -14586,12 +16128,22 @@ class GetAlbBackendGroupHttpBackendTlsResult(dict):
     def __init__(__self__, *,
                  sni: str,
                  validation_context: 'outputs.GetAlbBackendGroupHttpBackendTlsValidationContextResult'):
+        """
+        :param str sni: [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+               * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+               * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+        """
         pulumi.set(__self__, "sni", sni)
         pulumi.set(__self__, "validation_context", validation_context)
 
     @property
     @pulumi.getter
     def sni(self) -> str:
+        """
+        [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+        * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+        * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+        """
         return pulumi.get(self, "sni")
 
     @property
@@ -14636,6 +16188,629 @@ class GetAlbTargetGroupTargetResult(dict):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
         return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostModifyRequestHeaderResult(dict):
+    def __init__(__self__, *,
+                 append: str,
+                 name: str,
+                 remove: bool,
+                 replace: str):
+        """
+        :param str append: Append string to the header value.
+        :param str name: Name of the Virtual Host.
+        :param bool remove: If set, remove the header.
+        :param str replace: New value for a header. Header values support the following
+               [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+               .
+        """
+        pulumi.set(__self__, "append", append)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "remove", remove)
+        pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter
+    def append(self) -> str:
+        """
+        Append string to the header value.
+        """
+        return pulumi.get(self, "append")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the Virtual Host.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def remove(self) -> bool:
+        """
+        If set, remove the header.
+        """
+        return pulumi.get(self, "remove")
+
+    @property
+    @pulumi.getter
+    def replace(self) -> str:
+        """
+        New value for a header. Header values support the following
+        [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+        .
+        """
+        return pulumi.get(self, "replace")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostModifyResponseHeaderResult(dict):
+    def __init__(__self__, *,
+                 append: str,
+                 name: str,
+                 remove: bool,
+                 replace: str):
+        """
+        :param str append: Append string to the header value.
+        :param str name: Name of the Virtual Host.
+        :param bool remove: If set, remove the header.
+        :param str replace: New value for a header. Header values support the following
+               [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+               .
+        """
+        pulumi.set(__self__, "append", append)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "remove", remove)
+        pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter
+    def append(self) -> str:
+        """
+        Append string to the header value.
+        """
+        return pulumi.get(self, "append")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the Virtual Host.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def remove(self) -> bool:
+        """
+        If set, remove the header.
+        """
+        return pulumi.get(self, "remove")
+
+    @property
+    @pulumi.getter
+    def replace(self) -> str:
+        """
+        New value for a header. Header values support the following
+        [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+        .
+        """
+        return pulumi.get(self, "replace")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteResult(dict):
+    def __init__(__self__, *,
+                 grpc_route: 'outputs.GetAlbVirtualHostRouteGrpcRouteResult',
+                 http_route: 'outputs.GetAlbVirtualHostRouteHttpRouteResult',
+                 name: str):
+        """
+        :param 'GetAlbVirtualHostRouteGrpcRouteArgs' grpc_route: GRPC route resource. The structure is documented below.
+        :param 'GetAlbVirtualHostRouteHttpRouteArgs' http_route: HTTP route resource. The structure is documented below.
+        :param str name: Name of the Virtual Host.
+        """
+        pulumi.set(__self__, "grpc_route", grpc_route)
+        pulumi.set(__self__, "http_route", http_route)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="grpcRoute")
+    def grpc_route(self) -> 'outputs.GetAlbVirtualHostRouteGrpcRouteResult':
+        """
+        GRPC route resource. The structure is documented below.
+        """
+        return pulumi.get(self, "grpc_route")
+
+    @property
+    @pulumi.getter(name="httpRoute")
+    def http_route(self) -> 'outputs.GetAlbVirtualHostRouteHttpRouteResult':
+        """
+        HTTP route resource. The structure is documented below.
+        """
+        return pulumi.get(self, "http_route")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the Virtual Host.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteGrpcRouteResult(dict):
+    def __init__(__self__, *,
+                 grpc_matches: Sequence['outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchResult'],
+                 grpc_route_action: 'outputs.GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionResult',
+                 grpc_status_response_action: 'outputs.GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionResult'):
+        """
+        :param Sequence['GetAlbVirtualHostRouteGrpcRouteGrpcMatchArgs'] grpc_matches: Checks "/" prefix by default. The structure is documented below.
+        :param 'GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs' grpc_route_action: GRPC route action resource. The structure is documented below.
+        :param 'GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs' grpc_status_response_action: (Required) GRPC status response action resource. The structure is documented below.
+        """
+        pulumi.set(__self__, "grpc_matches", grpc_matches)
+        pulumi.set(__self__, "grpc_route_action", grpc_route_action)
+        pulumi.set(__self__, "grpc_status_response_action", grpc_status_response_action)
+
+    @property
+    @pulumi.getter(name="grpcMatches")
+    def grpc_matches(self) -> Sequence['outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchResult']:
+        """
+        Checks "/" prefix by default. The structure is documented below.
+        """
+        return pulumi.get(self, "grpc_matches")
+
+    @property
+    @pulumi.getter(name="grpcRouteAction")
+    def grpc_route_action(self) -> 'outputs.GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionResult':
+        """
+        GRPC route action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "grpc_route_action")
+
+    @property
+    @pulumi.getter(name="grpcStatusResponseAction")
+    def grpc_status_response_action(self) -> 'outputs.GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionResult':
+        """
+        (Required) GRPC status response action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "grpc_status_response_action")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteGrpcRouteGrpcMatchResult(dict):
+    def __init__(__self__, *,
+                 fqmn: 'outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnResult'):
+        """
+        :param 'GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs' fqmn: If not set, all services/methods are assumed. The structure is documented below.
+        """
+        pulumi.set(__self__, "fqmn", fqmn)
+
+    @property
+    @pulumi.getter
+    def fqmn(self) -> 'outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnResult':
+        """
+        If not set, all services/methods are assumed. The structure is documented below.
+        """
+        return pulumi.get(self, "fqmn")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnResult(dict):
+    def __init__(__self__, *,
+                 exact: str,
+                 prefix: str):
+        pulumi.set(__self__, "exact", exact)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> str:
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionResult(dict):
+    def __init__(__self__, *,
+                 auto_host_rewrite: bool,
+                 backend_group_id: str,
+                 host_rewrite: str,
+                 idle_timeout: str,
+                 max_timeout: str):
+        """
+        :param bool auto_host_rewrite: If set, will automatically rewrite host.
+        :param str backend_group_id: Backend group to route requests.
+        :param str host_rewrite: Host rewrite specifier.
+        :param str idle_timeout: Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+               is useful for streaming scenarios - one should set idle_timeout to something meaningful and max_timeout to the maximum
+               time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+        :param str max_timeout: Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 60
+               seconds.
+        """
+        pulumi.set(__self__, "auto_host_rewrite", auto_host_rewrite)
+        pulumi.set(__self__, "backend_group_id", backend_group_id)
+        pulumi.set(__self__, "host_rewrite", host_rewrite)
+        pulumi.set(__self__, "idle_timeout", idle_timeout)
+        pulumi.set(__self__, "max_timeout", max_timeout)
+
+    @property
+    @pulumi.getter(name="autoHostRewrite")
+    def auto_host_rewrite(self) -> bool:
+        """
+        If set, will automatically rewrite host.
+        """
+        return pulumi.get(self, "auto_host_rewrite")
+
+    @property
+    @pulumi.getter(name="backendGroupId")
+    def backend_group_id(self) -> str:
+        """
+        Backend group to route requests.
+        """
+        return pulumi.get(self, "backend_group_id")
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> str:
+        """
+        Host rewrite specifier.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> str:
+        """
+        Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+        is useful for streaming scenarios - one should set idle_timeout to something meaningful and max_timeout to the maximum
+        time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @property
+    @pulumi.getter(name="maxTimeout")
+    def max_timeout(self) -> str:
+        """
+        Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 60
+        seconds.
+        """
+        return pulumi.get(self, "max_timeout")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionResult(dict):
+    def __init__(__self__, *,
+                 status: str):
+        """
+        :param str status: The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+               unauthenticated, unimplemented, internal, unavailable.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+        unauthenticated, unimplemented, internal, unavailable.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteHttpRouteResult(dict):
+    def __init__(__self__, *,
+                 direct_response_action: 'outputs.GetAlbVirtualHostRouteHttpRouteDirectResponseActionResult',
+                 http_matches: Sequence['outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchResult'],
+                 http_route_action: 'outputs.GetAlbVirtualHostRouteHttpRouteHttpRouteActionResult',
+                 redirect_action: 'outputs.GetAlbVirtualHostRouteHttpRouteRedirectActionResult'):
+        """
+        :param 'GetAlbVirtualHostRouteHttpRouteDirectResponseActionArgs' direct_response_action: (Required) Direct response action resource. The structure is documented below.
+        :param Sequence['GetAlbVirtualHostRouteHttpRouteHttpMatchArgs'] http_matches: Checks "/" prefix by default. The structure is documented below.
+        :param 'GetAlbVirtualHostRouteHttpRouteHttpRouteActionArgs' http_route_action: HTTP route action resource. The structure is documented below.
+        :param 'GetAlbVirtualHostRouteHttpRouteRedirectActionArgs' redirect_action: Redirect action resource. The structure is documented below.
+        """
+        pulumi.set(__self__, "direct_response_action", direct_response_action)
+        pulumi.set(__self__, "http_matches", http_matches)
+        pulumi.set(__self__, "http_route_action", http_route_action)
+        pulumi.set(__self__, "redirect_action", redirect_action)
+
+    @property
+    @pulumi.getter(name="directResponseAction")
+    def direct_response_action(self) -> 'outputs.GetAlbVirtualHostRouteHttpRouteDirectResponseActionResult':
+        """
+        (Required) Direct response action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "direct_response_action")
+
+    @property
+    @pulumi.getter(name="httpMatches")
+    def http_matches(self) -> Sequence['outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchResult']:
+        """
+        Checks "/" prefix by default. The structure is documented below.
+        """
+        return pulumi.get(self, "http_matches")
+
+    @property
+    @pulumi.getter(name="httpRouteAction")
+    def http_route_action(self) -> 'outputs.GetAlbVirtualHostRouteHttpRouteHttpRouteActionResult':
+        """
+        HTTP route action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "http_route_action")
+
+    @property
+    @pulumi.getter(name="redirectAction")
+    def redirect_action(self) -> 'outputs.GetAlbVirtualHostRouteHttpRouteRedirectActionResult':
+        """
+        Redirect action resource. The structure is documented below.
+        """
+        return pulumi.get(self, "redirect_action")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteHttpRouteDirectResponseActionResult(dict):
+    def __init__(__self__, *,
+                 body: str,
+                 status: int):
+        """
+        :param str body: Response body text.
+        :param int status: The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+               unauthenticated, unimplemented, internal, unavailable.
+        """
+        pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def body(self) -> str:
+        """
+        Response body text.
+        """
+        return pulumi.get(self, "body")
+
+    @property
+    @pulumi.getter
+    def status(self) -> int:
+        """
+        The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+        unauthenticated, unimplemented, internal, unavailable.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteHttpRouteHttpMatchResult(dict):
+    def __init__(__self__, *,
+                 http_methods: Sequence[Any],
+                 path: 'outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchPathResult'):
+        """
+        :param Sequence[Any] http_methods: List of methods(strings).
+        :param 'GetAlbVirtualHostRouteHttpRouteHttpMatchPathArgs' path: If not set, '/' is assumed. The structure is documented below.
+        """
+        pulumi.set(__self__, "http_methods", http_methods)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="httpMethods")
+    def http_methods(self) -> Sequence[Any]:
+        """
+        List of methods(strings).
+        """
+        return pulumi.get(self, "http_methods")
+
+    @property
+    @pulumi.getter
+    def path(self) -> 'outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchPathResult':
+        """
+        If not set, '/' is assumed. The structure is documented below.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteHttpRouteHttpMatchPathResult(dict):
+    def __init__(__self__, *,
+                 exact: str,
+                 prefix: str):
+        pulumi.set(__self__, "exact", exact)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> str:
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteHttpRouteHttpRouteActionResult(dict):
+    def __init__(__self__, *,
+                 auto_host_rewrite: bool,
+                 backend_group_id: str,
+                 host_rewrite: str,
+                 idle_timeout: str,
+                 prefix_rewrite: str,
+                 timeout: str,
+                 upgrade_types: Sequence[str]):
+        """
+        :param bool auto_host_rewrite: If set, will automatically rewrite host.
+        :param str backend_group_id: Backend group to route requests.
+        :param str host_rewrite: Host rewrite specifier.
+        :param str idle_timeout: Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+               is useful for streaming scenarios - one should set idle_timeout to something meaningful and max_timeout to the maximum
+               time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+        :param str prefix_rewrite: If not empty, matched path prefix will be replaced by this value.
+        :param str timeout: Specifies the request timeout (overall time request processing is allowed to take) for the route. If not
+               set, default is 60 seconds.
+        :param Sequence[str] upgrade_types: List of upgrade types. Only specified upgrade types will be allowed. For example,
+               "websocket".
+        """
+        pulumi.set(__self__, "auto_host_rewrite", auto_host_rewrite)
+        pulumi.set(__self__, "backend_group_id", backend_group_id)
+        pulumi.set(__self__, "host_rewrite", host_rewrite)
+        pulumi.set(__self__, "idle_timeout", idle_timeout)
+        pulumi.set(__self__, "prefix_rewrite", prefix_rewrite)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "upgrade_types", upgrade_types)
+
+    @property
+    @pulumi.getter(name="autoHostRewrite")
+    def auto_host_rewrite(self) -> bool:
+        """
+        If set, will automatically rewrite host.
+        """
+        return pulumi.get(self, "auto_host_rewrite")
+
+    @property
+    @pulumi.getter(name="backendGroupId")
+    def backend_group_id(self) -> str:
+        """
+        Backend group to route requests.
+        """
+        return pulumi.get(self, "backend_group_id")
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> str:
+        """
+        Host rewrite specifier.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> str:
+        """
+        Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+        is useful for streaming scenarios - one should set idle_timeout to something meaningful and max_timeout to the maximum
+        time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @property
+    @pulumi.getter(name="prefixRewrite")
+    def prefix_rewrite(self) -> str:
+        """
+        If not empty, matched path prefix will be replaced by this value.
+        """
+        return pulumi.get(self, "prefix_rewrite")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> str:
+        """
+        Specifies the request timeout (overall time request processing is allowed to take) for the route. If not
+        set, default is 60 seconds.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="upgradeTypes")
+    def upgrade_types(self) -> Sequence[str]:
+        """
+        List of upgrade types. Only specified upgrade types will be allowed. For example,
+        "websocket".
+        """
+        return pulumi.get(self, "upgrade_types")
+
+
+@pulumi.output_type
+class GetAlbVirtualHostRouteHttpRouteRedirectActionResult(dict):
+    def __init__(__self__, *,
+                 remove_query: bool,
+                 replace_host: str,
+                 replace_path: str,
+                 replace_port: int,
+                 replace_prefix: str,
+                 replace_scheme: str,
+                 response_code: str):
+        """
+        :param str replace_host: Replaces hostname.
+        :param str replace_path: Replace path.
+        :param int replace_port: Replaces port.
+        :param str replace_prefix: Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+               redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+        :param str replace_scheme: Replaces scheme. If the original scheme is `http` or `https`, will also remove the 80 or 443 port,
+               if present.
+        :param str response_code: The HTTP status code to use in the redirect response. Supported values are:
+               moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+        """
+        pulumi.set(__self__, "remove_query", remove_query)
+        pulumi.set(__self__, "replace_host", replace_host)
+        pulumi.set(__self__, "replace_path", replace_path)
+        pulumi.set(__self__, "replace_port", replace_port)
+        pulumi.set(__self__, "replace_prefix", replace_prefix)
+        pulumi.set(__self__, "replace_scheme", replace_scheme)
+        pulumi.set(__self__, "response_code", response_code)
+
+    @property
+    @pulumi.getter(name="removeQuery")
+    def remove_query(self) -> bool:
+        return pulumi.get(self, "remove_query")
+
+    @property
+    @pulumi.getter(name="replaceHost")
+    def replace_host(self) -> str:
+        """
+        Replaces hostname.
+        """
+        return pulumi.get(self, "replace_host")
+
+    @property
+    @pulumi.getter(name="replacePath")
+    def replace_path(self) -> str:
+        """
+        Replace path.
+        """
+        return pulumi.get(self, "replace_path")
+
+    @property
+    @pulumi.getter(name="replacePort")
+    def replace_port(self) -> int:
+        """
+        Replaces port.
+        """
+        return pulumi.get(self, "replace_port")
+
+    @property
+    @pulumi.getter(name="replacePrefix")
+    def replace_prefix(self) -> str:
+        """
+        Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+        redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+        """
+        return pulumi.get(self, "replace_prefix")
+
+    @property
+    @pulumi.getter(name="replaceScheme")
+    def replace_scheme(self) -> str:
+        """
+        Replaces scheme. If the original scheme is `http` or `https`, will also remove the 80 or 443 port,
+        if present.
+        """
+        return pulumi.get(self, "replace_scheme")
+
+    @property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> str:
+        """
+        The HTTP status code to use in the redirect response. Supported values are:
+        moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+        """
+        return pulumi.get(self, "response_code")
 
 
 @pulumi.output_type
@@ -15601,24 +17776,28 @@ class GetComputeInstanceGroupInstanceTemplateNetworkInterfaceResult(dict):
 @pulumi.output_type
 class GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordResult(dict):
     def __init__(__self__, *,
-                 dns_zone: str,
+                 dns_zone_id: str,
                  fqdn: str,
                  ptr: bool,
                  ttl: int):
         """
+        :param str dns_zone_id: DNS zone id (if not set, private zone is used).
         :param str fqdn: The Fully Qualified Domain Name.
         :param bool ptr: When set to true, also create PTR DNS record.
         :param int ttl: DNS record TTL.
         """
-        pulumi.set(__self__, "dns_zone", dns_zone)
+        pulumi.set(__self__, "dns_zone_id", dns_zone_id)
         pulumi.set(__self__, "fqdn", fqdn)
         pulumi.set(__self__, "ptr", ptr)
         pulumi.set(__self__, "ttl", ttl)
 
     @property
-    @pulumi.getter(name="dnsZone")
-    def dns_zone(self) -> str:
-        return pulumi.get(self, "dns_zone")
+    @pulumi.getter(name="dnsZoneId")
+    def dns_zone_id(self) -> str:
+        """
+        DNS zone id (if not set, private zone is used).
+        """
+        return pulumi.get(self, "dns_zone_id")
 
     @property
     @pulumi.getter
@@ -15648,24 +17827,28 @@ class GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordResult(dic
 @pulumi.output_type
 class GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordResult(dict):
     def __init__(__self__, *,
-                 dns_zone: str,
+                 dns_zone_id: str,
                  fqdn: str,
                  ptr: bool,
                  ttl: int):
         """
+        :param str dns_zone_id: DNS zone id (if not set, private zone is used).
         :param str fqdn: The Fully Qualified Domain Name.
         :param bool ptr: When set to true, also create PTR DNS record.
         :param int ttl: DNS record TTL.
         """
-        pulumi.set(__self__, "dns_zone", dns_zone)
+        pulumi.set(__self__, "dns_zone_id", dns_zone_id)
         pulumi.set(__self__, "fqdn", fqdn)
         pulumi.set(__self__, "ptr", ptr)
         pulumi.set(__self__, "ttl", ttl)
 
     @property
-    @pulumi.getter(name="dnsZone")
-    def dns_zone(self) -> str:
-        return pulumi.get(self, "dns_zone")
+    @pulumi.getter(name="dnsZoneId")
+    def dns_zone_id(self) -> str:
+        """
+        DNS zone id (if not set, private zone is used).
+        """
+        return pulumi.get(self, "dns_zone_id")
 
     @property
     @pulumi.getter
@@ -15695,24 +17878,28 @@ class GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordResult
 @pulumi.output_type
 class GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordResult(dict):
     def __init__(__self__, *,
-                 dns_zone: str,
+                 dns_zone_id: str,
                  fqdn: str,
                  ptr: bool,
                  ttl: int):
         """
+        :param str dns_zone_id: DNS zone id (if not set, private zone is used).
         :param str fqdn: The Fully Qualified Domain Name.
         :param bool ptr: When set to true, also create PTR DNS record.
         :param int ttl: DNS record TTL.
         """
-        pulumi.set(__self__, "dns_zone", dns_zone)
+        pulumi.set(__self__, "dns_zone_id", dns_zone_id)
         pulumi.set(__self__, "fqdn", fqdn)
         pulumi.set(__self__, "ptr", ptr)
         pulumi.set(__self__, "ttl", ttl)
 
     @property
-    @pulumi.getter(name="dnsZone")
-    def dns_zone(self) -> str:
-        return pulumi.get(self, "dns_zone")
+    @pulumi.getter(name="dnsZoneId")
+    def dns_zone_id(self) -> str:
+        """
+        DNS zone id (if not set, private zone is used).
+        """
+        return pulumi.get(self, "dns_zone_id")
 
     @property
     @pulumi.getter
@@ -17709,6 +19896,36 @@ class GetKubernetesClusterMasterZonalResult(dict):
 
 
 @pulumi.output_type
+class GetKubernetesClusterNetworkImplementationResult(dict):
+    def __init__(__self__, *,
+                 cilium: 'outputs.GetKubernetesClusterNetworkImplementationCiliumResult'):
+        """
+        :param 'GetKubernetesClusterNetworkImplementationCiliumArgs' cilium: Cilium network implementation configuration. No options exist.
+        """
+        pulumi.set(__self__, "cilium", cilium)
+
+    @property
+    @pulumi.getter
+    def cilium(self) -> 'outputs.GetKubernetesClusterNetworkImplementationCiliumResult':
+        """
+        Cilium network implementation configuration. No options exist.
+        """
+        return pulumi.get(self, "cilium")
+
+
+@pulumi.output_type
+class GetKubernetesClusterNetworkImplementationCiliumResult(dict):
+    def __init__(__self__, *,
+                 routing_mode: str):
+        pulumi.set(__self__, "routing_mode", routing_mode)
+
+    @property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> str:
+        return pulumi.get(self, "routing_mode")
+
+
+@pulumi.output_type
 class GetKubernetesNodeGroupAllocationPolicyResult(dict):
     def __init__(__self__, *,
                  locations: Sequence['outputs.GetKubernetesNodeGroupAllocationPolicyLocationResult']):
@@ -17790,6 +20007,7 @@ class GetKubernetesNodeGroupInstanceTemplateResult(dict):
                  boot_disk: 'outputs.GetKubernetesNodeGroupInstanceTemplateBootDiskResult',
                  metadata: Mapping[str, str],
                  nat: bool,
+                 network_acceleration_type: str,
                  network_interfaces: Sequence['outputs.GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult'],
                  platform_id: str,
                  resources: 'outputs.GetKubernetesNodeGroupInstanceTemplateResourcesResult',
@@ -17799,6 +20017,7 @@ class GetKubernetesNodeGroupInstanceTemplateResult(dict):
         :param 'GetKubernetesNodeGroupInstanceTemplateBootDiskArgs' boot_disk: The specifications for boot disks that will be attached to the instance. The structure is documented below.
         :param Mapping[str, str] metadata: The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
         :param bool nat: A public address that can be used to access the internet over NAT.
+        :param str network_acceleration_type: Type of network acceleration. Values: `standard`, `software_accelerated`.
         :param Sequence['GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs'] network_interfaces: An array with the network interfaces that will be attached to the instance. The structure is documented below.
         :param str platform_id: The ID of the hardware platform configuration for the instance.
         :param 'GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs' scheduling_policy: The scheduling policy for the instances in node group. The structure is documented below.
@@ -17806,6 +20025,7 @@ class GetKubernetesNodeGroupInstanceTemplateResult(dict):
         pulumi.set(__self__, "boot_disk", boot_disk)
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "nat", nat)
+        pulumi.set(__self__, "network_acceleration_type", network_acceleration_type)
         pulumi.set(__self__, "network_interfaces", network_interfaces)
         pulumi.set(__self__, "platform_id", platform_id)
         pulumi.set(__self__, "resources", resources)
@@ -17836,6 +20056,14 @@ class GetKubernetesNodeGroupInstanceTemplateResult(dict):
         A public address that can be used to access the internet over NAT.
         """
         return pulumi.get(self, "nat")
+
+    @property
+    @pulumi.getter(name="networkAccelerationType")
+    def network_acceleration_type(self) -> str:
+        """
+        Type of network acceleration. Values: `standard`, `software_accelerated`.
+        """
+        return pulumi.get(self, "network_acceleration_type")
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -20877,6 +23105,256 @@ class GetMdbClickhouseClusterZookeeperResourcesResult(dict):
 
 
 @pulumi.output_type
+class GetMdbElasticSearchClusterConfigResult(dict):
+    def __init__(__self__, *,
+                 admin_password: str,
+                 data_node: 'outputs.GetMdbElasticSearchClusterConfigDataNodeResult',
+                 edition: str,
+                 master_node: 'outputs.GetMdbElasticSearchClusterConfigMasterNodeResult',
+                 plugins: Sequence[str],
+                 version: str):
+        """
+        :param 'GetMdbElasticSearchClusterConfigDataNodeArgs' data_node: Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+        :param str edition: Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+        :param 'GetMdbElasticSearchClusterConfigMasterNodeArgs' master_node: Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+        :param Sequence[str] plugins: A set of requested Elasticsearch plugins.
+        :param str version: Version of Elasticsearch.
+        """
+        pulumi.set(__self__, "admin_password", admin_password)
+        pulumi.set(__self__, "data_node", data_node)
+        pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "master_node", master_node)
+        pulumi.set(__self__, "plugins", plugins)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="adminPassword")
+    def admin_password(self) -> str:
+        return pulumi.get(self, "admin_password")
+
+    @property
+    @pulumi.getter(name="dataNode")
+    def data_node(self) -> 'outputs.GetMdbElasticSearchClusterConfigDataNodeResult':
+        """
+        Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+        """
+        return pulumi.get(self, "data_node")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+        """
+        return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter(name="masterNode")
+    def master_node(self) -> 'outputs.GetMdbElasticSearchClusterConfigMasterNodeResult':
+        """
+        Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        return pulumi.get(self, "master_node")
+
+    @property
+    @pulumi.getter
+    def plugins(self) -> Sequence[str]:
+        """
+        A set of requested Elasticsearch plugins.
+        """
+        return pulumi.get(self, "plugins")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of Elasticsearch.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetMdbElasticSearchClusterConfigDataNodeResult(dict):
+    def __init__(__self__, *,
+                 resources: 'outputs.GetMdbElasticSearchClusterConfigDataNodeResourcesResult'):
+        """
+        :param 'GetMdbElasticSearchClusterConfigDataNodeResourcesArgs' resources: Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> 'outputs.GetMdbElasticSearchClusterConfigDataNodeResourcesResult':
+        """
+        Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetMdbElasticSearchClusterConfigDataNodeResourcesResult(dict):
+    def __init__(__self__, *,
+                 disk_size: int,
+                 disk_type_id: str,
+                 resource_preset_id: str):
+        """
+        :param int disk_size: Volume of the storage available to a Elasticsearch host, in gigabytes.
+        :param str disk_type_id: Type of the storage of Elasticsearch hosts.
+        """
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        """
+        Volume of the storage available to a Elasticsearch host, in gigabytes.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> str:
+        """
+        Type of the storage of Elasticsearch hosts.
+        """
+        return pulumi.get(self, "disk_type_id")
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> str:
+        return pulumi.get(self, "resource_preset_id")
+
+
+@pulumi.output_type
+class GetMdbElasticSearchClusterConfigMasterNodeResult(dict):
+    def __init__(__self__, *,
+                 resources: 'outputs.GetMdbElasticSearchClusterConfigMasterNodeResourcesResult'):
+        """
+        :param 'GetMdbElasticSearchClusterConfigMasterNodeResourcesArgs' resources: Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> 'outputs.GetMdbElasticSearchClusterConfigMasterNodeResourcesResult':
+        """
+        Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetMdbElasticSearchClusterConfigMasterNodeResourcesResult(dict):
+    def __init__(__self__, *,
+                 disk_size: int,
+                 disk_type_id: str,
+                 resource_preset_id: str):
+        """
+        :param int disk_size: Volume of the storage available to a Elasticsearch host, in gigabytes.
+        :param str disk_type_id: Type of the storage of Elasticsearch hosts.
+        """
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        """
+        Volume of the storage available to a Elasticsearch host, in gigabytes.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> str:
+        """
+        Type of the storage of Elasticsearch hosts.
+        """
+        return pulumi.get(self, "disk_type_id")
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> str:
+        return pulumi.get(self, "resource_preset_id")
+
+
+@pulumi.output_type
+class GetMdbElasticSearchClusterHostResult(dict):
+    def __init__(__self__, *,
+                 assign_public_ip: bool,
+                 fqdn: str,
+                 name: str,
+                 subnet_id: str,
+                 type: str,
+                 zone: str):
+        """
+        :param bool assign_public_ip: Sets whether the host should get a public IP address on creation.
+        :param str fqdn: The fully qualified domain name of the host.
+        :param str name: The name of the Elasticsearch cluster.
+        :param str subnet_id: The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
+        :param str type: The type of the host to be deployed. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/hosts-roles).
+        :param str zone: The availability zone where the Elasticsearch host will be created.
+        """
+        pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="assignPublicIp")
+    def assign_public_ip(self) -> bool:
+        """
+        Sets whether the host should get a public IP address on creation.
+        """
+        return pulumi.get(self, "assign_public_ip")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        """
+        The fully qualified domain name of the host.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Elasticsearch cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the host to be deployed. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/hosts-roles).
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        The availability zone where the Elasticsearch host will be created.
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
 class GetMdbKafkaClusterConfigResult(dict):
     def __init__(__self__, *,
                  kafka: 'outputs.GetMdbKafkaClusterConfigKafkaResult',
@@ -21654,7 +24132,7 @@ class GetMdbMongodbClusterHostResult(dict):
         :param str shard_name: The name of the shard to which the host belongs.
         :param str subnet_id: The ID of the subnet, to which the host belongs. The subnet must
                be a part of the network to which the cluster belongs.
-        :param str type: type of mongo demon which runs on this host (mongod, mongos or monogcfg).
+        :param str type: Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
         :param str zone_id: The availability zone where the MongoDB host will be created.
         """
         pulumi.set(__self__, "assign_public_ip", assign_public_ip)
@@ -21719,7 +24197,7 @@ class GetMdbMongodbClusterHostResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        type of mongo demon which runs on this host (mongod, mongos or monogcfg).
+        Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
         """
         return pulumi.get(self, "type")
 
@@ -21730,6 +24208,46 @@ class GetMdbMongodbClusterHostResult(dict):
         The availability zone where the MongoDB host will be created.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetMdbMongodbClusterMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 day: str,
+                 hour: int,
+                 type: str):
+        """
+        :param str day: Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+        :param int hour: Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+        :param str type: Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "hour", hour)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        """
+        Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def hour(self) -> int:
+        """
+        Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+        """
+        return pulumi.get(self, "hour")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -22622,6 +25140,46 @@ class GetMdbPostgresqlClusterHostResult(dict):
         The availability zone where the PostgreSQL host will be created.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class GetMdbPostgresqlClusterMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 day: str,
+                 hour: int,
+                 type: str):
+        """
+        :param str day: Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+        :param int hour: Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+        :param str type: Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "hour", hour)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        """
+        Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def hour(self) -> int:
+        """
+        Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+        """
+        return pulumi.get(self, "hour")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

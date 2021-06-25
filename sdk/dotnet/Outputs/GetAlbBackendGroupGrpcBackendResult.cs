@@ -13,12 +13,33 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetAlbBackendGroupGrpcBackendResult
     {
+        /// <summary>
+        /// Healthcheck specification that will be used by this backend. Structure is documented below.
+        /// </summary>
         public readonly Outputs.GetAlbBackendGroupGrpcBackendHealthcheckResult Healthcheck;
+        /// <summary>
+        /// Load Balancing Config specification that will be used by this backend. Structure is documented below.
+        /// </summary>
         public readonly Outputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfigResult LoadBalancingConfig;
+        /// <summary>
+        /// - Name of the Backend Group.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Port for incoming traffic.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// References target groups for the backend.
+        /// </summary>
         public readonly ImmutableArray<string> TargetGroupIds;
+        /// <summary>
+        /// Tls specification that will be used by this backend. Structure is documented below.
+        /// </summary>
         public readonly Outputs.GetAlbBackendGroupGrpcBackendTlsResult Tls;
+        /// <summary>
+        /// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+        /// </summary>
         public readonly int Weight;
 
         [OutputConstructor]

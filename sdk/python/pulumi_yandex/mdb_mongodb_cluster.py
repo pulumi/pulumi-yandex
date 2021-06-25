@@ -26,6 +26,7 @@ class MdbMongodbClusterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input['MdbMongodbClusterMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -60,6 +61,8 @@ class MdbMongodbClusterArgs:
             pulumi.set(__self__, "folder_id", folder_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if security_group_ids is not None:
@@ -199,6 +202,15 @@ class MdbMongodbClusterArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MdbMongodbClusterMaintenanceWindowArgs']]:
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MdbMongodbClusterMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -236,6 +248,7 @@ class _MdbMongodbClusterState:
                  health: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['MdbMongodbClusterHostArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input['MdbMongodbClusterMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  resources: Optional[pulumi.Input['MdbMongodbClusterResourcesArgs']] = None,
@@ -285,6 +298,8 @@ class _MdbMongodbClusterState:
             pulumi.set(__self__, "hosts", hosts)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_id is not None:
@@ -422,6 +437,15 @@ class _MdbMongodbClusterState:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MdbMongodbClusterMaintenanceWindowArgs']]:
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MdbMongodbClusterMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -520,6 +544,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMongodbClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbMongodbClusterMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  resources: Optional[pulumi.Input[pulumi.InputType['MdbMongodbClusterResourcesArgs']]] = None,
@@ -558,6 +583,9 @@ class MdbMongodbCluster(pulumi.CustomResource):
             labels={
                 "test_key": "test_value",
             },
+            maintenance_window=yandex.MdbMongodbClusterMaintenanceWindowArgs(
+                type="ANYTIME",
+            ),
             network_id=foo_vpc_network.id,
             resources=yandex.MdbMongodbClusterResourcesArgs(
                 disk_size=16,
@@ -636,6 +664,9 @@ class MdbMongodbCluster(pulumi.CustomResource):
             labels={
                 "test_key": "test_value",
             },
+            maintenance_window=yandex.MdbMongodbClusterMaintenanceWindowArgs(
+                type="ANYTIME",
+            ),
             network_id=foo_vpc_network.id,
             resources=yandex.MdbMongodbClusterResourcesArgs(
                 disk_size=16,
@@ -682,6 +713,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMongodbClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbMongodbClusterMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  resources: Optional[pulumi.Input[pulumi.InputType['MdbMongodbClusterResourcesArgs']]] = None,
@@ -715,6 +747,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'hosts'")
             __props__.__dict__["hosts"] = hosts
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
             if network_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_id'")
@@ -750,6 +783,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
             health: Optional[pulumi.Input[str]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMongodbClusterHostArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbMongodbClusterMaintenanceWindowArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
             resources: Optional[pulumi.Input[pulumi.InputType['MdbMongodbClusterResourcesArgs']]] = None,
@@ -798,6 +832,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
         __props__.__dict__["health"] = health
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["maintenance_window"] = maintenance_window
         __props__.__dict__["name"] = name
         __props__.__dict__["network_id"] = network_id
         __props__.__dict__["resources"] = resources
@@ -887,6 +922,11 @@ class MdbMongodbCluster(pulumi.CustomResource):
         A set of key/value label pairs to assign to the MongoDB cluster.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Output['outputs.MdbMongodbClusterMaintenanceWindow']:
+        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter

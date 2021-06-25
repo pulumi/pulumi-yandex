@@ -26,6 +26,7 @@ class KubernetesClusterArgs:
                  kms_provider: Optional[pulumi.Input['KubernetesClusterKmsProviderArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_implementation: Optional[pulumi.Input['KubernetesClusterNetworkImplementationArgs']] = None,
                  network_policy_provider: Optional[pulumi.Input[str]] = None,
                  node_ipv4_cidr_mask_size: Optional[pulumi.Input[int]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
@@ -50,6 +51,8 @@ class KubernetesClusterArgs:
         :param pulumi.Input['KubernetesClusterKmsProviderArgs'] kms_provider: cluster KMS provider parameters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kubernetes cluster.
         :param pulumi.Input[str] name: Name of a specific Kubernetes cluster.
+        :param pulumi.Input['KubernetesClusterNetworkImplementationArgs'] network_implementation: (Optional) Network Implementation options. The structure is documented below.
+               ---
         :param pulumi.Input[str] network_policy_provider: Network policy provider for the cluster. Possible values: `CALICO`.
         :param pulumi.Input[int] node_ipv4_cidr_mask_size: Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
         :param pulumi.Input[str] release_channel: Cluster release channel.
@@ -76,6 +79,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_implementation is not None:
+            pulumi.set(__self__, "network_implementation", network_implementation)
         if network_policy_provider is not None:
             pulumi.set(__self__, "network_policy_provider", network_policy_provider)
         if node_ipv4_cidr_mask_size is not None:
@@ -226,6 +231,19 @@ class KubernetesClusterArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkImplementation")
+    def network_implementation(self) -> Optional[pulumi.Input['KubernetesClusterNetworkImplementationArgs']]:
+        """
+        (Optional) Network Implementation options. The structure is documented below.
+        ---
+        """
+        return pulumi.get(self, "network_implementation")
+
+    @network_implementation.setter
+    def network_implementation(self, value: Optional[pulumi.Input['KubernetesClusterNetworkImplementationArgs']]):
+        pulumi.set(self, "network_implementation", value)
+
+    @property
     @pulumi.getter(name="networkPolicyProvider")
     def network_policy_provider(self) -> Optional[pulumi.Input[str]]:
         """
@@ -303,6 +321,7 @@ class _KubernetesClusterState:
                  master: Optional[pulumi.Input['KubernetesClusterMasterArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
+                 network_implementation: Optional[pulumi.Input['KubernetesClusterNetworkImplementationArgs']] = None,
                  network_policy_provider: Optional[pulumi.Input[str]] = None,
                  node_ipv4_cidr_mask_size: Optional[pulumi.Input[int]] = None,
                  node_service_account_id: Optional[pulumi.Input[str]] = None,
@@ -328,6 +347,8 @@ class _KubernetesClusterState:
         :param pulumi.Input['KubernetesClusterMasterArgs'] master: Kubernetes master configuration options. The structure is documented below.
         :param pulumi.Input[str] name: Name of a specific Kubernetes cluster.
         :param pulumi.Input[str] network_id: The ID of the cluster network.
+        :param pulumi.Input['KubernetesClusterNetworkImplementationArgs'] network_implementation: (Optional) Network Implementation options. The structure is documented below.
+               ---
         :param pulumi.Input[str] network_policy_provider: Network policy provider for the cluster. Possible values: `CALICO`.
         :param pulumi.Input[int] node_ipv4_cidr_mask_size: Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
         :param pulumi.Input[str] node_service_account_id: Service account to be used by the worker nodes of the Kubernetes cluster
@@ -366,6 +387,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "name", name)
         if network_id is not None:
             pulumi.set(__self__, "network_id", network_id)
+        if network_implementation is not None:
+            pulumi.set(__self__, "network_implementation", network_implementation)
         if network_policy_provider is not None:
             pulumi.set(__self__, "network_policy_provider", network_policy_provider)
         if node_ipv4_cidr_mask_size is not None:
@@ -531,6 +554,19 @@ class _KubernetesClusterState:
         pulumi.set(self, "network_id", value)
 
     @property
+    @pulumi.getter(name="networkImplementation")
+    def network_implementation(self) -> Optional[pulumi.Input['KubernetesClusterNetworkImplementationArgs']]:
+        """
+        (Optional) Network Implementation options. The structure is documented below.
+        ---
+        """
+        return pulumi.get(self, "network_implementation")
+
+    @network_implementation.setter
+    def network_implementation(self, value: Optional[pulumi.Input['KubernetesClusterNetworkImplementationArgs']]):
+        pulumi.set(self, "network_implementation", value)
+
+    @property
     @pulumi.getter(name="networkPolicyProvider")
     def network_policy_provider(self) -> Optional[pulumi.Input[str]]:
         """
@@ -646,6 +682,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  master: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMasterArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
+                 network_implementation: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNetworkImplementationArgs']]] = None,
                  network_policy_provider: Optional[pulumi.Input[str]] = None,
                  node_ipv4_cidr_mask_size: Optional[pulumi.Input[int]] = None,
                  node_service_account_id: Optional[pulumi.Input[str]] = None,
@@ -769,6 +806,8 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KubernetesClusterMasterArgs']] master: Kubernetes master configuration options. The structure is documented below.
         :param pulumi.Input[str] name: Name of a specific Kubernetes cluster.
         :param pulumi.Input[str] network_id: The ID of the cluster network.
+        :param pulumi.Input[pulumi.InputType['KubernetesClusterNetworkImplementationArgs']] network_implementation: (Optional) Network Implementation options. The structure is documented below.
+               ---
         :param pulumi.Input[str] network_policy_provider: Network policy provider for the cluster. Possible values: `CALICO`.
         :param pulumi.Input[int] node_ipv4_cidr_mask_size: Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
         :param pulumi.Input[str] node_service_account_id: Service account to be used by the worker nodes of the Kubernetes cluster
@@ -913,6 +952,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  master: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMasterArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
+                 network_implementation: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNetworkImplementationArgs']]] = None,
                  network_policy_provider: Optional[pulumi.Input[str]] = None,
                  node_ipv4_cidr_mask_size: Optional[pulumi.Input[int]] = None,
                  node_service_account_id: Optional[pulumi.Input[str]] = None,
@@ -945,6 +985,7 @@ class KubernetesCluster(pulumi.CustomResource):
             if network_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_id'")
             __props__.__dict__["network_id"] = network_id
+            __props__.__dict__["network_implementation"] = network_implementation
             __props__.__dict__["network_policy_provider"] = network_policy_provider
             __props__.__dict__["node_ipv4_cidr_mask_size"] = node_ipv4_cidr_mask_size
             if node_service_account_id is None and not opts.urn:
@@ -982,6 +1023,7 @@ class KubernetesCluster(pulumi.CustomResource):
             master: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterMasterArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
+            network_implementation: Optional[pulumi.Input[pulumi.InputType['KubernetesClusterNetworkImplementationArgs']]] = None,
             network_policy_provider: Optional[pulumi.Input[str]] = None,
             node_ipv4_cidr_mask_size: Optional[pulumi.Input[int]] = None,
             node_service_account_id: Optional[pulumi.Input[str]] = None,
@@ -1012,6 +1054,8 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KubernetesClusterMasterArgs']] master: Kubernetes master configuration options. The structure is documented below.
         :param pulumi.Input[str] name: Name of a specific Kubernetes cluster.
         :param pulumi.Input[str] network_id: The ID of the cluster network.
+        :param pulumi.Input[pulumi.InputType['KubernetesClusterNetworkImplementationArgs']] network_implementation: (Optional) Network Implementation options. The structure is documented below.
+               ---
         :param pulumi.Input[str] network_policy_provider: Network policy provider for the cluster. Possible values: `CALICO`.
         :param pulumi.Input[int] node_ipv4_cidr_mask_size: Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
         :param pulumi.Input[str] node_service_account_id: Service account to be used by the worker nodes of the Kubernetes cluster
@@ -1042,6 +1086,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["master"] = master
         __props__.__dict__["name"] = name
         __props__.__dict__["network_id"] = network_id
+        __props__.__dict__["network_implementation"] = network_implementation
         __props__.__dict__["network_policy_provider"] = network_policy_provider
         __props__.__dict__["node_ipv4_cidr_mask_size"] = node_ipv4_cidr_mask_size
         __props__.__dict__["node_service_account_id"] = node_service_account_id
@@ -1150,6 +1195,15 @@ class KubernetesCluster(pulumi.CustomResource):
         The ID of the cluster network.
         """
         return pulumi.get(self, "network_id")
+
+    @property
+    @pulumi.getter(name="networkImplementation")
+    def network_implementation(self) -> pulumi.Output[Optional['outputs.KubernetesClusterNetworkImplementation']]:
+        """
+        (Optional) Network Implementation options. The structure is documented below.
+        ---
+        """
+        return pulumi.get(self, "network_implementation")
 
     @property
     @pulumi.getter(name="networkPolicyProvider")

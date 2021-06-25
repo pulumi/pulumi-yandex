@@ -230,6 +230,13 @@ namespace Pulumi.Yandex
         public Output<string> NetworkId { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional) Network Implementation options. The structure is documented below.
+        /// ---
+        /// </summary>
+        [Output("networkImplementation")]
+        public Output<Outputs.KubernetesClusterNetworkImplementation?> NetworkImplementation { get; private set; } = null!;
+
+        /// <summary>
         /// Network policy provider for the cluster. Possible values: `CALICO`.
         /// </summary>
         [Output("networkPolicyProvider")]
@@ -392,6 +399,13 @@ namespace Pulumi.Yandex
         public Input<string> NetworkId { get; set; } = null!;
 
         /// <summary>
+        /// (Optional) Network Implementation options. The structure is documented below.
+        /// ---
+        /// </summary>
+        [Input("networkImplementation")]
+        public Input<Inputs.KubernetesClusterNetworkImplementationArgs>? NetworkImplementation { get; set; }
+
+        /// <summary>
         /// Network policy provider for the cluster. Possible values: `CALICO`.
         /// </summary>
         [Input("networkPolicyProvider")]
@@ -525,6 +539,13 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
+
+        /// <summary>
+        /// (Optional) Network Implementation options. The structure is documented below.
+        /// ---
+        /// </summary>
+        [Input("networkImplementation")]
+        public Input<Inputs.KubernetesClusterNetworkImplementationGetArgs>? NetworkImplementation { get; set; }
 
         /// <summary>
         /// Network policy provider for the cluster. Possible values: `CALICO`.

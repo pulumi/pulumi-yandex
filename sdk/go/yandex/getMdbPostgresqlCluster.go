@@ -77,6 +77,8 @@ type GetMdbPostgresqlClusterResult struct {
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the PostgreSQL cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Maintenance window settings of the PostgreSQL cluster. The structure is documented below.
+	MaintenanceWindow GetMdbPostgresqlClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Name of the database extension. For more information on available extensions see [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/operations/cluster-extensions).
 	Name string `pulumi:"name"`
 	// ID of the network, to which the PostgreSQL cluster belongs.

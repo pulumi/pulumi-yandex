@@ -13,6 +13,11 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetAlbBackendGroupHttpBackendTlsResult
     {
+        /// <summary>
+        /// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+        /// * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+        /// * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+        /// </summary>
         public readonly string Sni;
         public readonly Outputs.GetAlbBackendGroupHttpBackendTlsValidationContextResult ValidationContext;
 

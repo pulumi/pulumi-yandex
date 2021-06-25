@@ -2864,6 +2864,2274 @@ func (o AlbTargetGroupTargetArrayOutput) Index(i pulumi.IntInput) AlbTargetGroup
 	}).(AlbTargetGroupTargetOutput)
 }
 
+type AlbVirtualHostModifyRequestHeader struct {
+	// Append string to the header value.
+	Append *string `pulumi:"append"`
+	// name of the route.
+	Name *string `pulumi:"name"`
+	// If set, remove the header.
+	Remove *bool `pulumi:"remove"`
+	// New value for a header. Header values support the following
+	// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+	Replace *string `pulumi:"replace"`
+}
+
+// AlbVirtualHostModifyRequestHeaderInput is an input type that accepts AlbVirtualHostModifyRequestHeaderArgs and AlbVirtualHostModifyRequestHeaderOutput values.
+// You can construct a concrete instance of `AlbVirtualHostModifyRequestHeaderInput` via:
+//
+//          AlbVirtualHostModifyRequestHeaderArgs{...}
+type AlbVirtualHostModifyRequestHeaderInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostModifyRequestHeaderOutput() AlbVirtualHostModifyRequestHeaderOutput
+	ToAlbVirtualHostModifyRequestHeaderOutputWithContext(context.Context) AlbVirtualHostModifyRequestHeaderOutput
+}
+
+type AlbVirtualHostModifyRequestHeaderArgs struct {
+	// Append string to the header value.
+	Append pulumi.StringPtrInput `pulumi:"append"`
+	// name of the route.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If set, remove the header.
+	Remove pulumi.BoolPtrInput `pulumi:"remove"`
+	// New value for a header. Header values support the following
+	// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+	Replace pulumi.StringPtrInput `pulumi:"replace"`
+}
+
+func (AlbVirtualHostModifyRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostModifyRequestHeader)(nil)).Elem()
+}
+
+func (i AlbVirtualHostModifyRequestHeaderArgs) ToAlbVirtualHostModifyRequestHeaderOutput() AlbVirtualHostModifyRequestHeaderOutput {
+	return i.ToAlbVirtualHostModifyRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostModifyRequestHeaderArgs) ToAlbVirtualHostModifyRequestHeaderOutputWithContext(ctx context.Context) AlbVirtualHostModifyRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostModifyRequestHeaderOutput)
+}
+
+// AlbVirtualHostModifyRequestHeaderArrayInput is an input type that accepts AlbVirtualHostModifyRequestHeaderArray and AlbVirtualHostModifyRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `AlbVirtualHostModifyRequestHeaderArrayInput` via:
+//
+//          AlbVirtualHostModifyRequestHeaderArray{ AlbVirtualHostModifyRequestHeaderArgs{...} }
+type AlbVirtualHostModifyRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostModifyRequestHeaderArrayOutput() AlbVirtualHostModifyRequestHeaderArrayOutput
+	ToAlbVirtualHostModifyRequestHeaderArrayOutputWithContext(context.Context) AlbVirtualHostModifyRequestHeaderArrayOutput
+}
+
+type AlbVirtualHostModifyRequestHeaderArray []AlbVirtualHostModifyRequestHeaderInput
+
+func (AlbVirtualHostModifyRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostModifyRequestHeader)(nil)).Elem()
+}
+
+func (i AlbVirtualHostModifyRequestHeaderArray) ToAlbVirtualHostModifyRequestHeaderArrayOutput() AlbVirtualHostModifyRequestHeaderArrayOutput {
+	return i.ToAlbVirtualHostModifyRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostModifyRequestHeaderArray) ToAlbVirtualHostModifyRequestHeaderArrayOutputWithContext(ctx context.Context) AlbVirtualHostModifyRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostModifyRequestHeaderArrayOutput)
+}
+
+type AlbVirtualHostModifyRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostModifyRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostModifyRequestHeader)(nil)).Elem()
+}
+
+func (o AlbVirtualHostModifyRequestHeaderOutput) ToAlbVirtualHostModifyRequestHeaderOutput() AlbVirtualHostModifyRequestHeaderOutput {
+	return o
+}
+
+func (o AlbVirtualHostModifyRequestHeaderOutput) ToAlbVirtualHostModifyRequestHeaderOutputWithContext(ctx context.Context) AlbVirtualHostModifyRequestHeaderOutput {
+	return o
+}
+
+// Append string to the header value.
+func (o AlbVirtualHostModifyRequestHeaderOutput) Append() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostModifyRequestHeader) *string { return v.Append }).(pulumi.StringPtrOutput)
+}
+
+// name of the route.
+func (o AlbVirtualHostModifyRequestHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostModifyRequestHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// If set, remove the header.
+func (o AlbVirtualHostModifyRequestHeaderOutput) Remove() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostModifyRequestHeader) *bool { return v.Remove }).(pulumi.BoolPtrOutput)
+}
+
+// New value for a header. Header values support the following
+// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+func (o AlbVirtualHostModifyRequestHeaderOutput) Replace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostModifyRequestHeader) *string { return v.Replace }).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostModifyRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostModifyRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostModifyRequestHeader)(nil)).Elem()
+}
+
+func (o AlbVirtualHostModifyRequestHeaderArrayOutput) ToAlbVirtualHostModifyRequestHeaderArrayOutput() AlbVirtualHostModifyRequestHeaderArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostModifyRequestHeaderArrayOutput) ToAlbVirtualHostModifyRequestHeaderArrayOutputWithContext(ctx context.Context) AlbVirtualHostModifyRequestHeaderArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostModifyRequestHeaderArrayOutput) Index(i pulumi.IntInput) AlbVirtualHostModifyRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbVirtualHostModifyRequestHeader {
+		return vs[0].([]AlbVirtualHostModifyRequestHeader)[vs[1].(int)]
+	}).(AlbVirtualHostModifyRequestHeaderOutput)
+}
+
+type AlbVirtualHostModifyResponseHeader struct {
+	// Append string to the header value.
+	Append *string `pulumi:"append"`
+	// name of the route.
+	Name *string `pulumi:"name"`
+	// If set, remove the header.
+	Remove *bool `pulumi:"remove"`
+	// New value for a header. Header values support the following
+	// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+	Replace *string `pulumi:"replace"`
+}
+
+// AlbVirtualHostModifyResponseHeaderInput is an input type that accepts AlbVirtualHostModifyResponseHeaderArgs and AlbVirtualHostModifyResponseHeaderOutput values.
+// You can construct a concrete instance of `AlbVirtualHostModifyResponseHeaderInput` via:
+//
+//          AlbVirtualHostModifyResponseHeaderArgs{...}
+type AlbVirtualHostModifyResponseHeaderInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostModifyResponseHeaderOutput() AlbVirtualHostModifyResponseHeaderOutput
+	ToAlbVirtualHostModifyResponseHeaderOutputWithContext(context.Context) AlbVirtualHostModifyResponseHeaderOutput
+}
+
+type AlbVirtualHostModifyResponseHeaderArgs struct {
+	// Append string to the header value.
+	Append pulumi.StringPtrInput `pulumi:"append"`
+	// name of the route.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If set, remove the header.
+	Remove pulumi.BoolPtrInput `pulumi:"remove"`
+	// New value for a header. Header values support the following
+	// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+	Replace pulumi.StringPtrInput `pulumi:"replace"`
+}
+
+func (AlbVirtualHostModifyResponseHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostModifyResponseHeader)(nil)).Elem()
+}
+
+func (i AlbVirtualHostModifyResponseHeaderArgs) ToAlbVirtualHostModifyResponseHeaderOutput() AlbVirtualHostModifyResponseHeaderOutput {
+	return i.ToAlbVirtualHostModifyResponseHeaderOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostModifyResponseHeaderArgs) ToAlbVirtualHostModifyResponseHeaderOutputWithContext(ctx context.Context) AlbVirtualHostModifyResponseHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostModifyResponseHeaderOutput)
+}
+
+// AlbVirtualHostModifyResponseHeaderArrayInput is an input type that accepts AlbVirtualHostModifyResponseHeaderArray and AlbVirtualHostModifyResponseHeaderArrayOutput values.
+// You can construct a concrete instance of `AlbVirtualHostModifyResponseHeaderArrayInput` via:
+//
+//          AlbVirtualHostModifyResponseHeaderArray{ AlbVirtualHostModifyResponseHeaderArgs{...} }
+type AlbVirtualHostModifyResponseHeaderArrayInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostModifyResponseHeaderArrayOutput() AlbVirtualHostModifyResponseHeaderArrayOutput
+	ToAlbVirtualHostModifyResponseHeaderArrayOutputWithContext(context.Context) AlbVirtualHostModifyResponseHeaderArrayOutput
+}
+
+type AlbVirtualHostModifyResponseHeaderArray []AlbVirtualHostModifyResponseHeaderInput
+
+func (AlbVirtualHostModifyResponseHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostModifyResponseHeader)(nil)).Elem()
+}
+
+func (i AlbVirtualHostModifyResponseHeaderArray) ToAlbVirtualHostModifyResponseHeaderArrayOutput() AlbVirtualHostModifyResponseHeaderArrayOutput {
+	return i.ToAlbVirtualHostModifyResponseHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostModifyResponseHeaderArray) ToAlbVirtualHostModifyResponseHeaderArrayOutputWithContext(ctx context.Context) AlbVirtualHostModifyResponseHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostModifyResponseHeaderArrayOutput)
+}
+
+type AlbVirtualHostModifyResponseHeaderOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostModifyResponseHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostModifyResponseHeader)(nil)).Elem()
+}
+
+func (o AlbVirtualHostModifyResponseHeaderOutput) ToAlbVirtualHostModifyResponseHeaderOutput() AlbVirtualHostModifyResponseHeaderOutput {
+	return o
+}
+
+func (o AlbVirtualHostModifyResponseHeaderOutput) ToAlbVirtualHostModifyResponseHeaderOutputWithContext(ctx context.Context) AlbVirtualHostModifyResponseHeaderOutput {
+	return o
+}
+
+// Append string to the header value.
+func (o AlbVirtualHostModifyResponseHeaderOutput) Append() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostModifyResponseHeader) *string { return v.Append }).(pulumi.StringPtrOutput)
+}
+
+// name of the route.
+func (o AlbVirtualHostModifyResponseHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostModifyResponseHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// If set, remove the header.
+func (o AlbVirtualHostModifyResponseHeaderOutput) Remove() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostModifyResponseHeader) *bool { return v.Remove }).(pulumi.BoolPtrOutput)
+}
+
+// New value for a header. Header values support the following
+// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+func (o AlbVirtualHostModifyResponseHeaderOutput) Replace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostModifyResponseHeader) *string { return v.Replace }).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostModifyResponseHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostModifyResponseHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostModifyResponseHeader)(nil)).Elem()
+}
+
+func (o AlbVirtualHostModifyResponseHeaderArrayOutput) ToAlbVirtualHostModifyResponseHeaderArrayOutput() AlbVirtualHostModifyResponseHeaderArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostModifyResponseHeaderArrayOutput) ToAlbVirtualHostModifyResponseHeaderArrayOutputWithContext(ctx context.Context) AlbVirtualHostModifyResponseHeaderArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostModifyResponseHeaderArrayOutput) Index(i pulumi.IntInput) AlbVirtualHostModifyResponseHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbVirtualHostModifyResponseHeader {
+		return vs[0].([]AlbVirtualHostModifyResponseHeader)[vs[1].(int)]
+	}).(AlbVirtualHostModifyResponseHeaderOutput)
+}
+
+type AlbVirtualHostRoute struct {
+	// GRPC route resource. The structure is documented below.
+	GrpcRoute *AlbVirtualHostRouteGrpcRoute `pulumi:"grpcRoute"`
+	// HTTP route resource. The structure is documented below.
+	HttpRoute *AlbVirtualHostRouteHttpRoute `pulumi:"httpRoute"`
+	// name of the route.
+	Name *string `pulumi:"name"`
+}
+
+// AlbVirtualHostRouteInput is an input type that accepts AlbVirtualHostRouteArgs and AlbVirtualHostRouteOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteInput` via:
+//
+//          AlbVirtualHostRouteArgs{...}
+type AlbVirtualHostRouteInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteOutput() AlbVirtualHostRouteOutput
+	ToAlbVirtualHostRouteOutputWithContext(context.Context) AlbVirtualHostRouteOutput
+}
+
+type AlbVirtualHostRouteArgs struct {
+	// GRPC route resource. The structure is documented below.
+	GrpcRoute AlbVirtualHostRouteGrpcRoutePtrInput `pulumi:"grpcRoute"`
+	// HTTP route resource. The structure is documented below.
+	HttpRoute AlbVirtualHostRouteHttpRoutePtrInput `pulumi:"httpRoute"`
+	// name of the route.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AlbVirtualHostRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRoute)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteArgs) ToAlbVirtualHostRouteOutput() AlbVirtualHostRouteOutput {
+	return i.ToAlbVirtualHostRouteOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteArgs) ToAlbVirtualHostRouteOutputWithContext(ctx context.Context) AlbVirtualHostRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteOutput)
+}
+
+// AlbVirtualHostRouteArrayInput is an input type that accepts AlbVirtualHostRouteArray and AlbVirtualHostRouteArrayOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteArrayInput` via:
+//
+//          AlbVirtualHostRouteArray{ AlbVirtualHostRouteArgs{...} }
+type AlbVirtualHostRouteArrayInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteArrayOutput() AlbVirtualHostRouteArrayOutput
+	ToAlbVirtualHostRouteArrayOutputWithContext(context.Context) AlbVirtualHostRouteArrayOutput
+}
+
+type AlbVirtualHostRouteArray []AlbVirtualHostRouteInput
+
+func (AlbVirtualHostRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostRoute)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteArray) ToAlbVirtualHostRouteArrayOutput() AlbVirtualHostRouteArrayOutput {
+	return i.ToAlbVirtualHostRouteArrayOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteArray) ToAlbVirtualHostRouteArrayOutputWithContext(ctx context.Context) AlbVirtualHostRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteArrayOutput)
+}
+
+type AlbVirtualHostRouteOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRoute)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteOutput) ToAlbVirtualHostRouteOutput() AlbVirtualHostRouteOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteOutput) ToAlbVirtualHostRouteOutputWithContext(ctx context.Context) AlbVirtualHostRouteOutput {
+	return o
+}
+
+// GRPC route resource. The structure is documented below.
+func (o AlbVirtualHostRouteOutput) GrpcRoute() AlbVirtualHostRouteGrpcRoutePtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRoute) *AlbVirtualHostRouteGrpcRoute { return v.GrpcRoute }).(AlbVirtualHostRouteGrpcRoutePtrOutput)
+}
+
+// HTTP route resource. The structure is documented below.
+func (o AlbVirtualHostRouteOutput) HttpRoute() AlbVirtualHostRouteHttpRoutePtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRoute) *AlbVirtualHostRouteHttpRoute { return v.HttpRoute }).(AlbVirtualHostRouteHttpRoutePtrOutput)
+}
+
+// name of the route.
+func (o AlbVirtualHostRouteOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRoute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostRoute)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteArrayOutput) ToAlbVirtualHostRouteArrayOutput() AlbVirtualHostRouteArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteArrayOutput) ToAlbVirtualHostRouteArrayOutputWithContext(ctx context.Context) AlbVirtualHostRouteArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteArrayOutput) Index(i pulumi.IntInput) AlbVirtualHostRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbVirtualHostRoute {
+		return vs[0].([]AlbVirtualHostRoute)[vs[1].(int)]
+	}).(AlbVirtualHostRouteOutput)
+}
+
+type AlbVirtualHostRouteGrpcRoute struct {
+	// Checks "/" prefix by default. The structure is documented below.
+	GrpcMatches []AlbVirtualHostRouteGrpcRouteGrpcMatch `pulumi:"grpcMatches"`
+	// GRPC route action resource. The structure is documented below.
+	GrpcRouteAction *AlbVirtualHostRouteGrpcRouteGrpcRouteAction `pulumi:"grpcRouteAction"`
+	// GRPC status response action resource. The structure is documented below.
+	GrpcStatusResponseAction *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction `pulumi:"grpcStatusResponseAction"`
+}
+
+// AlbVirtualHostRouteGrpcRouteInput is an input type that accepts AlbVirtualHostRouteGrpcRouteArgs and AlbVirtualHostRouteGrpcRouteOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRouteInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteArgs{...}
+type AlbVirtualHostRouteGrpcRouteInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRouteOutput() AlbVirtualHostRouteGrpcRouteOutput
+	ToAlbVirtualHostRouteGrpcRouteOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRouteOutput
+}
+
+type AlbVirtualHostRouteGrpcRouteArgs struct {
+	// Checks "/" prefix by default. The structure is documented below.
+	GrpcMatches AlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput `pulumi:"grpcMatches"`
+	// GRPC route action resource. The structure is documented below.
+	GrpcRouteAction AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrInput `pulumi:"grpcRouteAction"`
+	// GRPC status response action resource. The structure is documented below.
+	GrpcStatusResponseAction AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrInput `pulumi:"grpcStatusResponseAction"`
+}
+
+func (AlbVirtualHostRouteGrpcRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRoute)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteGrpcRouteArgs) ToAlbVirtualHostRouteGrpcRouteOutput() AlbVirtualHostRouteGrpcRouteOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteArgs) ToAlbVirtualHostRouteGrpcRouteOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteOutput)
+}
+
+func (i AlbVirtualHostRouteGrpcRouteArgs) ToAlbVirtualHostRouteGrpcRoutePtrOutput() AlbVirtualHostRouteGrpcRoutePtrOutput {
+	return i.ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteArgs) ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteOutput).ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(ctx)
+}
+
+// AlbVirtualHostRouteGrpcRoutePtrInput is an input type that accepts AlbVirtualHostRouteGrpcRouteArgs, AlbVirtualHostRouteGrpcRoutePtr and AlbVirtualHostRouteGrpcRoutePtrOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRoutePtrInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbVirtualHostRouteGrpcRoutePtrInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRoutePtrOutput() AlbVirtualHostRouteGrpcRoutePtrOutput
+	ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRoutePtrOutput
+}
+
+type albVirtualHostRouteGrpcRoutePtrType AlbVirtualHostRouteGrpcRouteArgs
+
+func AlbVirtualHostRouteGrpcRoutePtr(v *AlbVirtualHostRouteGrpcRouteArgs) AlbVirtualHostRouteGrpcRoutePtrInput {
+	return (*albVirtualHostRouteGrpcRoutePtrType)(v)
+}
+
+func (*albVirtualHostRouteGrpcRoutePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteGrpcRoute)(nil)).Elem()
+}
+
+func (i *albVirtualHostRouteGrpcRoutePtrType) ToAlbVirtualHostRouteGrpcRoutePtrOutput() AlbVirtualHostRouteGrpcRoutePtrOutput {
+	return i.ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(context.Background())
+}
+
+func (i *albVirtualHostRouteGrpcRoutePtrType) ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRoutePtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRoute)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRouteOutput) ToAlbVirtualHostRouteGrpcRouteOutput() AlbVirtualHostRouteGrpcRouteOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteOutput) ToAlbVirtualHostRouteGrpcRouteOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteOutput) ToAlbVirtualHostRouteGrpcRoutePtrOutput() AlbVirtualHostRouteGrpcRoutePtrOutput {
+	return o.ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(context.Background())
+}
+
+func (o AlbVirtualHostRouteGrpcRouteOutput) ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRoutePtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRoute) *AlbVirtualHostRouteGrpcRoute {
+		return &v
+	}).(AlbVirtualHostRouteGrpcRoutePtrOutput)
+}
+
+// Checks "/" prefix by default. The structure is documented below.
+func (o AlbVirtualHostRouteGrpcRouteOutput) GrpcMatches() AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRoute) []AlbVirtualHostRouteGrpcRouteGrpcMatch { return v.GrpcMatches }).(AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput)
+}
+
+// GRPC route action resource. The structure is documented below.
+func (o AlbVirtualHostRouteGrpcRouteOutput) GrpcRouteAction() AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRoute) *AlbVirtualHostRouteGrpcRouteGrpcRouteAction {
+		return v.GrpcRouteAction
+	}).(AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput)
+}
+
+// GRPC status response action resource. The structure is documented below.
+func (o AlbVirtualHostRouteGrpcRouteOutput) GrpcStatusResponseAction() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRoute) *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
+		return v.GrpcStatusResponseAction
+	}).(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRoutePtrOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRoutePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteGrpcRoute)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRoutePtrOutput) ToAlbVirtualHostRouteGrpcRoutePtrOutput() AlbVirtualHostRouteGrpcRoutePtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRoutePtrOutput) ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRoutePtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRoutePtrOutput) Elem() AlbVirtualHostRouteGrpcRouteOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRoute) AlbVirtualHostRouteGrpcRoute { return *v }).(AlbVirtualHostRouteGrpcRouteOutput)
+}
+
+// Checks "/" prefix by default. The structure is documented below.
+func (o AlbVirtualHostRouteGrpcRoutePtrOutput) GrpcMatches() AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRoute) []AlbVirtualHostRouteGrpcRouteGrpcMatch {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcMatches
+	}).(AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput)
+}
+
+// GRPC route action resource. The structure is documented below.
+func (o AlbVirtualHostRouteGrpcRoutePtrOutput) GrpcRouteAction() AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRoute) *AlbVirtualHostRouteGrpcRouteGrpcRouteAction {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcRouteAction
+	}).(AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput)
+}
+
+// GRPC status response action resource. The structure is documented below.
+func (o AlbVirtualHostRouteGrpcRoutePtrOutput) GrpcStatusResponseAction() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRoute) *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcStatusResponseAction
+	}).(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcMatch struct {
+	// If not set, all services/methods are assumed. The structure is documented below.
+	Fqmn *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn `pulumi:"fqmn"`
+}
+
+// AlbVirtualHostRouteGrpcRouteGrpcMatchInput is an input type that accepts AlbVirtualHostRouteGrpcRouteGrpcMatchArgs and AlbVirtualHostRouteGrpcRouteGrpcMatchOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRouteGrpcMatchInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteGrpcMatchArgs{...}
+type AlbVirtualHostRouteGrpcRouteGrpcMatchInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRouteGrpcMatchOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchOutput
+	ToAlbVirtualHostRouteGrpcRouteGrpcMatchOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchOutput
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcMatchArgs struct {
+	// If not set, all services/methods are assumed. The structure is documented below.
+	Fqmn AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrInput `pulumi:"fqmn"`
+}
+
+func (AlbVirtualHostRouteGrpcRouteGrpcMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcMatch)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcMatchArgs) ToAlbVirtualHostRouteGrpcRouteGrpcMatchOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcMatchOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcMatchArgs) ToAlbVirtualHostRouteGrpcRouteGrpcMatchOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcMatchOutput)
+}
+
+// AlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput is an input type that accepts AlbVirtualHostRouteGrpcRouteGrpcMatchArray and AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteGrpcMatchArray{ AlbVirtualHostRouteGrpcRouteGrpcMatchArgs{...} }
+type AlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput
+	ToAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcMatchArray []AlbVirtualHostRouteGrpcRouteGrpcMatchInput
+
+func (AlbVirtualHostRouteGrpcRouteGrpcMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostRouteGrpcRouteGrpcMatch)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcMatchArray) ToAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcMatchArray) ToAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcMatchOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRouteGrpcMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcMatch)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return o
+}
+
+// If not set, all services/methods are assumed. The structure is documented below.
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchOutput) Fqmn() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcMatch) *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
+		return v.Fqmn
+	}).(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostRouteGrpcRouteGrpcMatch)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput) Index(i pulumi.IntInput) AlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbVirtualHostRouteGrpcRouteGrpcMatch {
+		return vs[0].([]AlbVirtualHostRouteGrpcRouteGrpcMatch)[vs[1].(int)]
+	}).(AlbVirtualHostRouteGrpcRouteGrpcMatchOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn struct {
+	Exact  *string `pulumi:"exact"`
+	Prefix *string `pulumi:"prefix"`
+}
+
+// AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnInput is an input type that accepts AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs and AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs{...}
+type AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput
+	ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs struct {
+	Exact  pulumi.StringPtrInput `pulumi:"exact"`
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+}
+
+func (AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput)
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput).ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(ctx)
+}
+
+// AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrInput is an input type that accepts AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs, AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtr and AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput
+	ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput
+}
+
+type albVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrType AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs
+
+func AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtr(v *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrInput {
+	return (*albVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrType)(v)
+}
+
+func (*albVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn)(nil)).Elem()
+}
+
+func (i *albVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrType) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(context.Background())
+}
+
+func (i *albVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrType) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
+	return o.ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(context.Background())
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
+		return &v
+	}).(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput)
+}
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput) Elem() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
+		return *v
+	}).(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput)
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcRouteAction struct {
+	// If set, will automatically rewrite host.
+	AutoHostRewrite *bool `pulumi:"autoHostRewrite"`
+	// Backend group to route requests.
+	BackendGroupId string `pulumi:"backendGroupId"`
+	// Host rewrite specifier.
+	HostRewrite *string `pulumi:"hostRewrite"`
+	// Specifies the idle timeout (time without any data transfer for the active request) for the
+	// route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+	// to the maximum time the stream is allowed to be alive. If not specified, there is no
+	// per-route idle timeout.
+	IdleTimeout *string `pulumi:"idleTimeout"`
+	// Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is
+	// 60 seconds.
+	MaxTimeout *string `pulumi:"maxTimeout"`
+}
+
+// AlbVirtualHostRouteGrpcRouteGrpcRouteActionInput is an input type that accepts AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs and AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRouteGrpcRouteActionInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs{...}
+type AlbVirtualHostRouteGrpcRouteGrpcRouteActionInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput() AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput
+	ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs struct {
+	// If set, will automatically rewrite host.
+	AutoHostRewrite pulumi.BoolPtrInput `pulumi:"autoHostRewrite"`
+	// Backend group to route requests.
+	BackendGroupId pulumi.StringInput `pulumi:"backendGroupId"`
+	// Host rewrite specifier.
+	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
+	// Specifies the idle timeout (time without any data transfer for the active request) for the
+	// route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+	// to the maximum time the stream is allowed to be alive. If not specified, there is no
+	// per-route idle timeout.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+	// Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is
+	// 60 seconds.
+	MaxTimeout pulumi.StringPtrInput `pulumi:"maxTimeout"`
+}
+
+func (AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcRouteAction)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput() AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput)
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput).ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(ctx)
+}
+
+// AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrInput is an input type that accepts AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs, AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtr and AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput
+	ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput
+}
+
+type albVirtualHostRouteGrpcRouteGrpcRouteActionPtrType AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs
+
+func AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtr(v *AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs) AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrInput {
+	return (*albVirtualHostRouteGrpcRouteGrpcRouteActionPtrType)(v)
+}
+
+func (*albVirtualHostRouteGrpcRouteGrpcRouteActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteGrpcRouteGrpcRouteAction)(nil)).Elem()
+}
+
+func (i *albVirtualHostRouteGrpcRouteGrpcRouteActionPtrType) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i *albVirtualHostRouteGrpcRouteGrpcRouteActionPtrType) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcRouteAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput() AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return o.ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *AlbVirtualHostRouteGrpcRouteGrpcRouteAction {
+		return &v
+	}).(AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput)
+}
+
+// If set, will automatically rewrite host.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) AutoHostRewrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *bool { return v.AutoHostRewrite }).(pulumi.BoolPtrOutput)
+}
+
+// Backend group to route requests.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) BackendGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcRouteAction) string { return v.BackendGroupId }).(pulumi.StringOutput)
+}
+
+// Host rewrite specifier.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the idle timeout (time without any data transfer for the active request) for the
+// route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+// to the maximum time the stream is allowed to be alive. If not specified, there is no
+// per-route idle timeout.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is
+// 60 seconds.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) MaxTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *string { return v.MaxTimeout }).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteGrpcRouteGrpcRouteAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) Elem() AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcRouteAction) AlbVirtualHostRouteGrpcRouteGrpcRouteAction {
+		return *v
+	}).(AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput)
+}
+
+// If set, will automatically rewrite host.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) AutoHostRewrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoHostRewrite
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Backend group to route requests.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) BackendGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BackendGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Host rewrite specifier.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the idle timeout (time without any data transfer for the active request) for the
+// route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+// to the maximum time the stream is allowed to be alive. If not specified, there is no
+// per-route idle timeout.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is
+// 60 seconds.
+func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) MaxTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction struct {
+	// The status of the response. Supported values are: ok, invalid_argumet, not_found,
+	// permission_denied, unauthenticated, unimplemented, internal, unavailable.
+	Status *string `pulumi:"status"`
+}
+
+// AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionInput is an input type that accepts AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs and AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs{...}
+type AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput
+	ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs struct {
+	// The status of the response. Supported values are: ok, invalid_argumet, not_found,
+	// permission_denied, unauthenticated, unimplemented, internal, unavailable.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput)
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput).ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(ctx)
+}
+
+// AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrInput is an input type that accepts AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs, AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtr and AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrInput` via:
+//
+//          AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput
+	ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(context.Context) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput
+}
+
+type albVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrType AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs
+
+func AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtr(v *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrInput {
+	return (*albVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrType)(v)
+}
+
+func (*albVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction)(nil)).Elem()
+}
+
+func (i *albVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrType) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return i.ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(context.Background())
+}
+
+func (i *albVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrType) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return o.ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(context.Background())
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction) *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
+		return &v
+	}).(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput)
+}
+
+// The status of the response. Supported values are: ok, invalid_argumet, not_found,
+// permission_denied, unauthenticated, unimplemented, internal, unavailable.
+func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput) Elem() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
+		return *v
+	}).(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput)
+}
+
+// The status of the response. Supported values are: ok, invalid_argumet, not_found,
+// permission_denied, unauthenticated, unimplemented, internal, unavailable.
+func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRoute struct {
+	// Direct response action resource. The structure is documented below.
+	DirectResponseAction *AlbVirtualHostRouteHttpRouteDirectResponseAction `pulumi:"directResponseAction"`
+	// Checks "/" prefix by default. The structure is documented below.
+	HttpMatches []AlbVirtualHostRouteHttpRouteHttpMatch `pulumi:"httpMatches"`
+	// HTTP route action resource. The structure is documented below.
+	HttpRouteAction *AlbVirtualHostRouteHttpRouteHttpRouteAction `pulumi:"httpRouteAction"`
+	// Redirect action resource. The structure is documented below.
+	RedirectAction *AlbVirtualHostRouteHttpRouteRedirectAction `pulumi:"redirectAction"`
+}
+
+// AlbVirtualHostRouteHttpRouteInput is an input type that accepts AlbVirtualHostRouteHttpRouteArgs and AlbVirtualHostRouteHttpRouteOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteArgs{...}
+type AlbVirtualHostRouteHttpRouteInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteOutput() AlbVirtualHostRouteHttpRouteOutput
+	ToAlbVirtualHostRouteHttpRouteOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteOutput
+}
+
+type AlbVirtualHostRouteHttpRouteArgs struct {
+	// Direct response action resource. The structure is documented below.
+	DirectResponseAction AlbVirtualHostRouteHttpRouteDirectResponseActionPtrInput `pulumi:"directResponseAction"`
+	// Checks "/" prefix by default. The structure is documented below.
+	HttpMatches AlbVirtualHostRouteHttpRouteHttpMatchArrayInput `pulumi:"httpMatches"`
+	// HTTP route action resource. The structure is documented below.
+	HttpRouteAction AlbVirtualHostRouteHttpRouteHttpRouteActionPtrInput `pulumi:"httpRouteAction"`
+	// Redirect action resource. The structure is documented below.
+	RedirectAction AlbVirtualHostRouteHttpRouteRedirectActionPtrInput `pulumi:"redirectAction"`
+}
+
+func (AlbVirtualHostRouteHttpRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRoute)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteHttpRouteArgs) ToAlbVirtualHostRouteHttpRouteOutput() AlbVirtualHostRouteHttpRouteOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteArgs) ToAlbVirtualHostRouteHttpRouteOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteOutput)
+}
+
+func (i AlbVirtualHostRouteHttpRouteArgs) ToAlbVirtualHostRouteHttpRoutePtrOutput() AlbVirtualHostRouteHttpRoutePtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteArgs) ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteOutput).ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(ctx)
+}
+
+// AlbVirtualHostRouteHttpRoutePtrInput is an input type that accepts AlbVirtualHostRouteHttpRouteArgs, AlbVirtualHostRouteHttpRoutePtr and AlbVirtualHostRouteHttpRoutePtrOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRoutePtrInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbVirtualHostRouteHttpRoutePtrInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRoutePtrOutput() AlbVirtualHostRouteHttpRoutePtrOutput
+	ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(context.Context) AlbVirtualHostRouteHttpRoutePtrOutput
+}
+
+type albVirtualHostRouteHttpRoutePtrType AlbVirtualHostRouteHttpRouteArgs
+
+func AlbVirtualHostRouteHttpRoutePtr(v *AlbVirtualHostRouteHttpRouteArgs) AlbVirtualHostRouteHttpRoutePtrInput {
+	return (*albVirtualHostRouteHttpRoutePtrType)(v)
+}
+
+func (*albVirtualHostRouteHttpRoutePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRoute)(nil)).Elem()
+}
+
+func (i *albVirtualHostRouteHttpRoutePtrType) ToAlbVirtualHostRouteHttpRoutePtrOutput() AlbVirtualHostRouteHttpRoutePtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(context.Background())
+}
+
+func (i *albVirtualHostRouteHttpRoutePtrType) ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRoutePtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRoute)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteOutput) ToAlbVirtualHostRouteHttpRouteOutput() AlbVirtualHostRouteHttpRouteOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteOutput) ToAlbVirtualHostRouteHttpRouteOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteOutput) ToAlbVirtualHostRouteHttpRoutePtrOutput() AlbVirtualHostRouteHttpRoutePtrOutput {
+	return o.ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(context.Background())
+}
+
+func (o AlbVirtualHostRouteHttpRouteOutput) ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRoutePtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRoute) *AlbVirtualHostRouteHttpRoute {
+		return &v
+	}).(AlbVirtualHostRouteHttpRoutePtrOutput)
+}
+
+// Direct response action resource. The structure is documented below.
+func (o AlbVirtualHostRouteHttpRouteOutput) DirectResponseAction() AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRoute) *AlbVirtualHostRouteHttpRouteDirectResponseAction {
+		return v.DirectResponseAction
+	}).(AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput)
+}
+
+// Checks "/" prefix by default. The structure is documented below.
+func (o AlbVirtualHostRouteHttpRouteOutput) HttpMatches() AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRoute) []AlbVirtualHostRouteHttpRouteHttpMatch { return v.HttpMatches }).(AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput)
+}
+
+// HTTP route action resource. The structure is documented below.
+func (o AlbVirtualHostRouteHttpRouteOutput) HttpRouteAction() AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRoute) *AlbVirtualHostRouteHttpRouteHttpRouteAction {
+		return v.HttpRouteAction
+	}).(AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput)
+}
+
+// Redirect action resource. The structure is documented below.
+func (o AlbVirtualHostRouteHttpRouteOutput) RedirectAction() AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRoute) *AlbVirtualHostRouteHttpRouteRedirectAction {
+		return v.RedirectAction
+	}).(AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRoutePtrOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRoutePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRoute)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRoutePtrOutput) ToAlbVirtualHostRouteHttpRoutePtrOutput() AlbVirtualHostRouteHttpRoutePtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRoutePtrOutput) ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRoutePtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRoutePtrOutput) Elem() AlbVirtualHostRouteHttpRouteOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRoute) AlbVirtualHostRouteHttpRoute { return *v }).(AlbVirtualHostRouteHttpRouteOutput)
+}
+
+// Direct response action resource. The structure is documented below.
+func (o AlbVirtualHostRouteHttpRoutePtrOutput) DirectResponseAction() AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRoute) *AlbVirtualHostRouteHttpRouteDirectResponseAction {
+		if v == nil {
+			return nil
+		}
+		return v.DirectResponseAction
+	}).(AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput)
+}
+
+// Checks "/" prefix by default. The structure is documented below.
+func (o AlbVirtualHostRouteHttpRoutePtrOutput) HttpMatches() AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRoute) []AlbVirtualHostRouteHttpRouteHttpMatch {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMatches
+	}).(AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput)
+}
+
+// HTTP route action resource. The structure is documented below.
+func (o AlbVirtualHostRouteHttpRoutePtrOutput) HttpRouteAction() AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRoute) *AlbVirtualHostRouteHttpRouteHttpRouteAction {
+		if v == nil {
+			return nil
+		}
+		return v.HttpRouteAction
+	}).(AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput)
+}
+
+// Redirect action resource. The structure is documented below.
+func (o AlbVirtualHostRouteHttpRoutePtrOutput) RedirectAction() AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRoute) *AlbVirtualHostRouteHttpRouteRedirectAction {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectAction
+	}).(AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteDirectResponseAction struct {
+	// Response body text.
+	Body *string `pulumi:"body"`
+	// The status of the response. Supported values are: ok, invalid_argumet, not_found,
+	// permission_denied, unauthenticated, unimplemented, internal, unavailable.
+	Status *int `pulumi:"status"`
+}
+
+// AlbVirtualHostRouteHttpRouteDirectResponseActionInput is an input type that accepts AlbVirtualHostRouteHttpRouteDirectResponseActionArgs and AlbVirtualHostRouteHttpRouteDirectResponseActionOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteDirectResponseActionInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteDirectResponseActionArgs{...}
+type AlbVirtualHostRouteHttpRouteDirectResponseActionInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteDirectResponseActionOutput() AlbVirtualHostRouteHttpRouteDirectResponseActionOutput
+	ToAlbVirtualHostRouteHttpRouteDirectResponseActionOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteDirectResponseActionOutput
+}
+
+type AlbVirtualHostRouteHttpRouteDirectResponseActionArgs struct {
+	// Response body text.
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// The status of the response. Supported values are: ok, invalid_argumet, not_found,
+	// permission_denied, unauthenticated, unimplemented, internal, unavailable.
+	Status pulumi.IntPtrInput `pulumi:"status"`
+}
+
+func (AlbVirtualHostRouteHttpRouteDirectResponseActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteDirectResponseAction)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteHttpRouteDirectResponseActionArgs) ToAlbVirtualHostRouteHttpRouteDirectResponseActionOutput() AlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteDirectResponseActionOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteDirectResponseActionArgs) ToAlbVirtualHostRouteHttpRouteDirectResponseActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteDirectResponseActionOutput)
+}
+
+func (i AlbVirtualHostRouteHttpRouteDirectResponseActionArgs) ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput() AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteDirectResponseActionArgs) ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteDirectResponseActionOutput).ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(ctx)
+}
+
+// AlbVirtualHostRouteHttpRouteDirectResponseActionPtrInput is an input type that accepts AlbVirtualHostRouteHttpRouteDirectResponseActionArgs, AlbVirtualHostRouteHttpRouteDirectResponseActionPtr and AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteDirectResponseActionPtrInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteDirectResponseActionArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbVirtualHostRouteHttpRouteDirectResponseActionPtrInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput() AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput
+	ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput
+}
+
+type albVirtualHostRouteHttpRouteDirectResponseActionPtrType AlbVirtualHostRouteHttpRouteDirectResponseActionArgs
+
+func AlbVirtualHostRouteHttpRouteDirectResponseActionPtr(v *AlbVirtualHostRouteHttpRouteDirectResponseActionArgs) AlbVirtualHostRouteHttpRouteDirectResponseActionPtrInput {
+	return (*albVirtualHostRouteHttpRouteDirectResponseActionPtrType)(v)
+}
+
+func (*albVirtualHostRouteHttpRouteDirectResponseActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRouteDirectResponseAction)(nil)).Elem()
+}
+
+func (i *albVirtualHostRouteHttpRouteDirectResponseActionPtrType) ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput() AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(context.Background())
+}
+
+func (i *albVirtualHostRouteHttpRouteDirectResponseActionPtrType) ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteDirectResponseActionOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteDirectResponseAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ToAlbVirtualHostRouteHttpRouteDirectResponseActionOutput() AlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ToAlbVirtualHostRouteHttpRouteDirectResponseActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput() AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return o.ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(context.Background())
+}
+
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteDirectResponseAction) *AlbVirtualHostRouteHttpRouteDirectResponseAction {
+		return &v
+	}).(AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput)
+}
+
+// Response body text.
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteDirectResponseAction) *string { return v.Body }).(pulumi.StringPtrOutput)
+}
+
+// The status of the response. Supported values are: ok, invalid_argumet, not_found,
+// permission_denied, unauthenticated, unimplemented, internal, unavailable.
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteDirectResponseAction) *int { return v.Status }).(pulumi.IntPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRouteDirectResponseAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput) ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput() AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput) ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput) Elem() AlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteDirectResponseAction) AlbVirtualHostRouteHttpRouteDirectResponseAction {
+		return *v
+	}).(AlbVirtualHostRouteHttpRouteDirectResponseActionOutput)
+}
+
+// Response body text.
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteDirectResponseAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+// The status of the response. Supported values are: ok, invalid_argumet, not_found,
+// permission_denied, unauthenticated, unimplemented, internal, unavailable.
+func (o AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteDirectResponseAction) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteHttpMatch struct {
+	// List of methods(strings).
+	HttpMethods []interface{} `pulumi:"httpMethods"`
+	// If not set, '/' is assumed. The structure is documented below.
+	Path *AlbVirtualHostRouteHttpRouteHttpMatchPath `pulumi:"path"`
+}
+
+// AlbVirtualHostRouteHttpRouteHttpMatchInput is an input type that accepts AlbVirtualHostRouteHttpRouteHttpMatchArgs and AlbVirtualHostRouteHttpRouteHttpMatchOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteHttpMatchInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteHttpMatchArgs{...}
+type AlbVirtualHostRouteHttpRouteHttpMatchInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteHttpMatchOutput() AlbVirtualHostRouteHttpRouteHttpMatchOutput
+	ToAlbVirtualHostRouteHttpRouteHttpMatchOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteHttpMatchOutput
+}
+
+type AlbVirtualHostRouteHttpRouteHttpMatchArgs struct {
+	// List of methods(strings).
+	HttpMethods pulumi.ArrayInput `pulumi:"httpMethods"`
+	// If not set, '/' is assumed. The structure is documented below.
+	Path AlbVirtualHostRouteHttpRouteHttpMatchPathPtrInput `pulumi:"path"`
+}
+
+func (AlbVirtualHostRouteHttpRouteHttpMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpMatch)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpMatchArgs) ToAlbVirtualHostRouteHttpRouteHttpMatchOutput() AlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteHttpMatchOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpMatchArgs) ToAlbVirtualHostRouteHttpRouteHttpMatchOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteHttpMatchOutput)
+}
+
+// AlbVirtualHostRouteHttpRouteHttpMatchArrayInput is an input type that accepts AlbVirtualHostRouteHttpRouteHttpMatchArray and AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteHttpMatchArrayInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteHttpMatchArray{ AlbVirtualHostRouteHttpRouteHttpMatchArgs{...} }
+type AlbVirtualHostRouteHttpRouteHttpMatchArrayInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput() AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput
+	ToAlbVirtualHostRouteHttpRouteHttpMatchArrayOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput
+}
+
+type AlbVirtualHostRouteHttpRouteHttpMatchArray []AlbVirtualHostRouteHttpRouteHttpMatchInput
+
+func (AlbVirtualHostRouteHttpRouteHttpMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostRouteHttpRouteHttpMatch)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpMatchArray) ToAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput() AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteHttpMatchArrayOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpMatchArray) ToAlbVirtualHostRouteHttpRouteHttpMatchArrayOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteHttpMatchOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteHttpMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpMatch)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchOutput() AlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return o
+}
+
+// List of methods(strings).
+func (o AlbVirtualHostRouteHttpRouteHttpMatchOutput) HttpMethods() pulumi.ArrayOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpMatch) []interface{} { return v.HttpMethods }).(pulumi.ArrayOutput)
+}
+
+// If not set, '/' is assumed. The structure is documented below.
+func (o AlbVirtualHostRouteHttpRouteHttpMatchOutput) Path() AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpMatch) *AlbVirtualHostRouteHttpRouteHttpMatchPath {
+		return v.Path
+	}).(AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbVirtualHostRouteHttpRouteHttpMatch)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput() AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchArrayOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput) Index(i pulumi.IntInput) AlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbVirtualHostRouteHttpRouteHttpMatch {
+		return vs[0].([]AlbVirtualHostRouteHttpRouteHttpMatch)[vs[1].(int)]
+	}).(AlbVirtualHostRouteHttpRouteHttpMatchOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteHttpMatchPath struct {
+	Exact  *string `pulumi:"exact"`
+	Prefix *string `pulumi:"prefix"`
+}
+
+// AlbVirtualHostRouteHttpRouteHttpMatchPathInput is an input type that accepts AlbVirtualHostRouteHttpRouteHttpMatchPathArgs and AlbVirtualHostRouteHttpRouteHttpMatchPathOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteHttpMatchPathInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteHttpMatchPathArgs{...}
+type AlbVirtualHostRouteHttpRouteHttpMatchPathInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteHttpMatchPathOutput() AlbVirtualHostRouteHttpRouteHttpMatchPathOutput
+	ToAlbVirtualHostRouteHttpRouteHttpMatchPathOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteHttpMatchPathOutput
+}
+
+type AlbVirtualHostRouteHttpRouteHttpMatchPathArgs struct {
+	Exact  pulumi.StringPtrInput `pulumi:"exact"`
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+}
+
+func (AlbVirtualHostRouteHttpRouteHttpMatchPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpMatchPath)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpMatchPathArgs) ToAlbVirtualHostRouteHttpRouteHttpMatchPathOutput() AlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteHttpMatchPathOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpMatchPathArgs) ToAlbVirtualHostRouteHttpRouteHttpMatchPathOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteHttpMatchPathOutput)
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpMatchPathArgs) ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput() AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpMatchPathArgs) ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteHttpMatchPathOutput).ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(ctx)
+}
+
+// AlbVirtualHostRouteHttpRouteHttpMatchPathPtrInput is an input type that accepts AlbVirtualHostRouteHttpRouteHttpMatchPathArgs, AlbVirtualHostRouteHttpRouteHttpMatchPathPtr and AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteHttpMatchPathPtrInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteHttpMatchPathArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbVirtualHostRouteHttpRouteHttpMatchPathPtrInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput() AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput
+	ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput
+}
+
+type albVirtualHostRouteHttpRouteHttpMatchPathPtrType AlbVirtualHostRouteHttpRouteHttpMatchPathArgs
+
+func AlbVirtualHostRouteHttpRouteHttpMatchPathPtr(v *AlbVirtualHostRouteHttpRouteHttpMatchPathArgs) AlbVirtualHostRouteHttpRouteHttpMatchPathPtrInput {
+	return (*albVirtualHostRouteHttpRouteHttpMatchPathPtrType)(v)
+}
+
+func (*albVirtualHostRouteHttpRouteHttpMatchPathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRouteHttpMatchPath)(nil)).Elem()
+}
+
+func (i *albVirtualHostRouteHttpRouteHttpMatchPathPtrType) ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput() AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(context.Background())
+}
+
+func (i *albVirtualHostRouteHttpRouteHttpMatchPathPtrType) ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteHttpMatchPathOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpMatchPath)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchPathOutput() AlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchPathOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput() AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
+	return o.ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(context.Background())
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpMatchPath) *AlbVirtualHostRouteHttpRouteHttpMatchPath {
+		return &v
+	}).(AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput)
+}
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpMatchPath) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpMatchPath) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRouteHttpMatchPath)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput() AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput) Elem() AlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpMatchPath) AlbVirtualHostRouteHttpRouteHttpMatchPath {
+		return *v
+	}).(AlbVirtualHostRouteHttpRouteHttpMatchPathOutput)
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpMatchPath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpMatchPath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteHttpRouteAction struct {
+	// If set, will automatically rewrite host.
+	AutoHostRewrite *bool `pulumi:"autoHostRewrite"`
+	// Backend group to route requests.
+	BackendGroupId string `pulumi:"backendGroupId"`
+	// Host rewrite specifier.
+	HostRewrite *string `pulumi:"hostRewrite"`
+	// Specifies the idle timeout (time without any data transfer for the active request) for the
+	// route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+	// to the maximum time the stream is allowed to be alive. If not specified, there is no
+	// per-route idle timeout.
+	IdleTimeout *string `pulumi:"idleTimeout"`
+	// If not empty, matched path prefix will be replaced by this value.
+	PrefixRewrite *string `pulumi:"prefixRewrite"`
+	// Specifies the request timeout (overall time request processing is allowed to take) for the
+	// route. If not set, default is 60 seconds.
+	Timeout *string `pulumi:"timeout"`
+	// List of upgrade types. Only specified upgrade types will be allowed. For example,
+	// "websocket".
+	UpgradeTypes []string `pulumi:"upgradeTypes"`
+}
+
+// AlbVirtualHostRouteHttpRouteHttpRouteActionInput is an input type that accepts AlbVirtualHostRouteHttpRouteHttpRouteActionArgs and AlbVirtualHostRouteHttpRouteHttpRouteActionOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteHttpRouteActionInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteHttpRouteActionArgs{...}
+type AlbVirtualHostRouteHttpRouteHttpRouteActionInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteHttpRouteActionOutput() AlbVirtualHostRouteHttpRouteHttpRouteActionOutput
+	ToAlbVirtualHostRouteHttpRouteHttpRouteActionOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteHttpRouteActionOutput
+}
+
+type AlbVirtualHostRouteHttpRouteHttpRouteActionArgs struct {
+	// If set, will automatically rewrite host.
+	AutoHostRewrite pulumi.BoolPtrInput `pulumi:"autoHostRewrite"`
+	// Backend group to route requests.
+	BackendGroupId pulumi.StringInput `pulumi:"backendGroupId"`
+	// Host rewrite specifier.
+	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
+	// Specifies the idle timeout (time without any data transfer for the active request) for the
+	// route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+	// to the maximum time the stream is allowed to be alive. If not specified, there is no
+	// per-route idle timeout.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+	// If not empty, matched path prefix will be replaced by this value.
+	PrefixRewrite pulumi.StringPtrInput `pulumi:"prefixRewrite"`
+	// Specifies the request timeout (overall time request processing is allowed to take) for the
+	// route. If not set, default is 60 seconds.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// List of upgrade types. Only specified upgrade types will be allowed. For example,
+	// "websocket".
+	UpgradeTypes pulumi.StringArrayInput `pulumi:"upgradeTypes"`
+}
+
+func (AlbVirtualHostRouteHttpRouteHttpRouteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpRouteAction)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpRouteActionArgs) ToAlbVirtualHostRouteHttpRouteHttpRouteActionOutput() AlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteHttpRouteActionOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpRouteActionArgs) ToAlbVirtualHostRouteHttpRouteHttpRouteActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteHttpRouteActionOutput)
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpRouteActionArgs) ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput() AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteHttpRouteActionArgs) ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteHttpRouteActionOutput).ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(ctx)
+}
+
+// AlbVirtualHostRouteHttpRouteHttpRouteActionPtrInput is an input type that accepts AlbVirtualHostRouteHttpRouteHttpRouteActionArgs, AlbVirtualHostRouteHttpRouteHttpRouteActionPtr and AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteHttpRouteActionPtrInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteHttpRouteActionArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbVirtualHostRouteHttpRouteHttpRouteActionPtrInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput() AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput
+	ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput
+}
+
+type albVirtualHostRouteHttpRouteHttpRouteActionPtrType AlbVirtualHostRouteHttpRouteHttpRouteActionArgs
+
+func AlbVirtualHostRouteHttpRouteHttpRouteActionPtr(v *AlbVirtualHostRouteHttpRouteHttpRouteActionArgs) AlbVirtualHostRouteHttpRouteHttpRouteActionPtrInput {
+	return (*albVirtualHostRouteHttpRouteHttpRouteActionPtrType)(v)
+}
+
+func (*albVirtualHostRouteHttpRouteHttpRouteActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRouteHttpRouteAction)(nil)).Elem()
+}
+
+func (i *albVirtualHostRouteHttpRouteHttpRouteActionPtrType) ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput() AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i *albVirtualHostRouteHttpRouteHttpRouteActionPtrType) ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteHttpRouteActionOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpRouteAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ToAlbVirtualHostRouteHttpRouteHttpRouteActionOutput() AlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ToAlbVirtualHostRouteHttpRouteHttpRouteActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput() AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return o.ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpRouteAction) *AlbVirtualHostRouteHttpRouteHttpRouteAction {
+		return &v
+	}).(AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput)
+}
+
+// If set, will automatically rewrite host.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) AutoHostRewrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpRouteAction) *bool { return v.AutoHostRewrite }).(pulumi.BoolPtrOutput)
+}
+
+// Backend group to route requests.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) BackendGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpRouteAction) string { return v.BackendGroupId }).(pulumi.StringOutput)
+}
+
+// Host rewrite specifier.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpRouteAction) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the idle timeout (time without any data transfer for the active request) for the
+// route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+// to the maximum time the stream is allowed to be alive. If not specified, there is no
+// per-route idle timeout.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpRouteAction) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// If not empty, matched path prefix will be replaced by this value.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpRouteAction) *string { return v.PrefixRewrite }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the request timeout (overall time request processing is allowed to take) for the
+// route. If not set, default is 60 seconds.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpRouteAction) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// List of upgrade types. Only specified upgrade types will be allowed. For example,
+// "websocket".
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) UpgradeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpRouteAction) []string { return v.UpgradeTypes }).(pulumi.StringArrayOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRouteHttpRouteAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput() AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) Elem() AlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpRouteAction) AlbVirtualHostRouteHttpRouteHttpRouteAction {
+		return *v
+	}).(AlbVirtualHostRouteHttpRouteHttpRouteActionOutput)
+}
+
+// If set, will automatically rewrite host.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) AutoHostRewrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpRouteAction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoHostRewrite
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Backend group to route requests.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) BackendGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BackendGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Host rewrite specifier.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the idle timeout (time without any data transfer for the active request) for the
+// route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+// to the maximum time the stream is allowed to be alive. If not specified, there is no
+// per-route idle timeout.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// If not empty, matched path prefix will be replaced by this value.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the request timeout (overall time request processing is allowed to take) for the
+// route. If not set, default is 60 seconds.
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of upgrade types. Only specified upgrade types will be allowed. For example,
+// "websocket".
+func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) UpgradeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpRouteAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UpgradeTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteRedirectAction struct {
+	RemoveQuery *bool `pulumi:"removeQuery"`
+	// Replaces hostname.
+	ReplaceHost *string `pulumi:"replaceHost"`
+	// Replace path.
+	ReplacePath *string `pulumi:"replacePath"`
+	// Replaces port.
+	ReplacePort *int `pulumi:"replacePort"`
+	// Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+	// redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+	ReplacePrefix *string `pulumi:"replacePrefix"`
+	// Replaces scheme. If the original scheme is `http` or `https`, will also remove the
+	// 80 or 443 port, if present.
+	ReplaceScheme *string `pulumi:"replaceScheme"`
+	// The HTTP status code to use in the redirect response. Supported values are:
+	// moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+	ResponseCode *string `pulumi:"responseCode"`
+}
+
+// AlbVirtualHostRouteHttpRouteRedirectActionInput is an input type that accepts AlbVirtualHostRouteHttpRouteRedirectActionArgs and AlbVirtualHostRouteHttpRouteRedirectActionOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteRedirectActionInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteRedirectActionArgs{...}
+type AlbVirtualHostRouteHttpRouteRedirectActionInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteRedirectActionOutput() AlbVirtualHostRouteHttpRouteRedirectActionOutput
+	ToAlbVirtualHostRouteHttpRouteRedirectActionOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteRedirectActionOutput
+}
+
+type AlbVirtualHostRouteHttpRouteRedirectActionArgs struct {
+	RemoveQuery pulumi.BoolPtrInput `pulumi:"removeQuery"`
+	// Replaces hostname.
+	ReplaceHost pulumi.StringPtrInput `pulumi:"replaceHost"`
+	// Replace path.
+	ReplacePath pulumi.StringPtrInput `pulumi:"replacePath"`
+	// Replaces port.
+	ReplacePort pulumi.IntPtrInput `pulumi:"replacePort"`
+	// Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+	// redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+	ReplacePrefix pulumi.StringPtrInput `pulumi:"replacePrefix"`
+	// Replaces scheme. If the original scheme is `http` or `https`, will also remove the
+	// 80 or 443 port, if present.
+	ReplaceScheme pulumi.StringPtrInput `pulumi:"replaceScheme"`
+	// The HTTP status code to use in the redirect response. Supported values are:
+	// moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+	ResponseCode pulumi.StringPtrInput `pulumi:"responseCode"`
+}
+
+func (AlbVirtualHostRouteHttpRouteRedirectActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteRedirectAction)(nil)).Elem()
+}
+
+func (i AlbVirtualHostRouteHttpRouteRedirectActionArgs) ToAlbVirtualHostRouteHttpRouteRedirectActionOutput() AlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteRedirectActionOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteRedirectActionArgs) ToAlbVirtualHostRouteHttpRouteRedirectActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteRedirectActionOutput)
+}
+
+func (i AlbVirtualHostRouteHttpRouteRedirectActionArgs) ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutput() AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (i AlbVirtualHostRouteHttpRouteRedirectActionArgs) ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteRedirectActionOutput).ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(ctx)
+}
+
+// AlbVirtualHostRouteHttpRouteRedirectActionPtrInput is an input type that accepts AlbVirtualHostRouteHttpRouteRedirectActionArgs, AlbVirtualHostRouteHttpRouteRedirectActionPtr and AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput values.
+// You can construct a concrete instance of `AlbVirtualHostRouteHttpRouteRedirectActionPtrInput` via:
+//
+//          AlbVirtualHostRouteHttpRouteRedirectActionArgs{...}
+//
+//  or:
+//
+//          nil
+type AlbVirtualHostRouteHttpRouteRedirectActionPtrInput interface {
+	pulumi.Input
+
+	ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutput() AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput
+	ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(context.Context) AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput
+}
+
+type albVirtualHostRouteHttpRouteRedirectActionPtrType AlbVirtualHostRouteHttpRouteRedirectActionArgs
+
+func AlbVirtualHostRouteHttpRouteRedirectActionPtr(v *AlbVirtualHostRouteHttpRouteRedirectActionArgs) AlbVirtualHostRouteHttpRouteRedirectActionPtrInput {
+	return (*albVirtualHostRouteHttpRouteRedirectActionPtrType)(v)
+}
+
+func (*albVirtualHostRouteHttpRouteRedirectActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRouteRedirectAction)(nil)).Elem()
+}
+
+func (i *albVirtualHostRouteHttpRouteRedirectActionPtrType) ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutput() AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return i.ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (i *albVirtualHostRouteHttpRouteRedirectActionPtrType) ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteRedirectActionOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteRedirectActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbVirtualHostRouteHttpRouteRedirectAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ToAlbVirtualHostRouteHttpRouteRedirectActionOutput() AlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ToAlbVirtualHostRouteHttpRouteRedirectActionOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutput() AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return o.ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *AlbVirtualHostRouteHttpRouteRedirectAction {
+		return &v
+	}).(AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput)
+}
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) RemoveQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *bool { return v.RemoveQuery }).(pulumi.BoolPtrOutput)
+}
+
+// Replaces hostname.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplaceHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *string { return v.ReplaceHost }).(pulumi.StringPtrOutput)
+}
+
+// Replace path.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplacePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *string { return v.ReplacePath }).(pulumi.StringPtrOutput)
+}
+
+// Replaces port.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplacePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *int { return v.ReplacePort }).(pulumi.IntPtrOutput)
+}
+
+// Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+// redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplacePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *string { return v.ReplacePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Replaces scheme. If the original scheme is `http` or `https`, will also remove the
+// 80 or 443 port, if present.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplaceScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *string { return v.ReplaceScheme }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code to use in the redirect response. Supported values are:
+// moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *string { return v.ResponseCode }).(pulumi.StringPtrOutput)
+}
+
+type AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput struct{ *pulumi.OutputState }
+
+func (AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlbVirtualHostRouteHttpRouteRedirectAction)(nil)).Elem()
+}
+
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutput() AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
+	return o
+}
+
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) Elem() AlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteRedirectAction) AlbVirtualHostRouteHttpRouteRedirectAction {
+		return *v
+	}).(AlbVirtualHostRouteHttpRouteRedirectActionOutput)
+}
+
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) RemoveQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteRedirectAction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemoveQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Replaces hostname.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ReplaceHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteRedirectAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplaceHost
+	}).(pulumi.StringPtrOutput)
+}
+
+// Replace path.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ReplacePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteRedirectAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplacePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Replaces port.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ReplacePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteRedirectAction) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplacePort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+// redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ReplacePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteRedirectAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplacePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Replaces scheme. If the original scheme is `http` or `https`, will also remove the
+// 80 or 443 port, if present.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ReplaceScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteRedirectAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplaceScheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code to use in the redirect response. Supported values are:
+// moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteRedirectAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseCode
+	}).(pulumi.StringPtrOutput)
+}
+
 type ComputeDiskDiskPlacementPolicy struct {
 	// Specifies Disk Placement Group id.
 	DiskPlacementGroupId string `pulumi:"diskPlacementGroupId"`
@@ -12850,6 +15118,253 @@ func (o KubernetesClusterMasterZonalPtrOutput) Zone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type KubernetesClusterNetworkImplementation struct {
+	// (Optional) Cilium network implementation configuration. No options exist.
+	Cilium *KubernetesClusterNetworkImplementationCilium `pulumi:"cilium"`
+}
+
+// KubernetesClusterNetworkImplementationInput is an input type that accepts KubernetesClusterNetworkImplementationArgs and KubernetesClusterNetworkImplementationOutput values.
+// You can construct a concrete instance of `KubernetesClusterNetworkImplementationInput` via:
+//
+//          KubernetesClusterNetworkImplementationArgs{...}
+type KubernetesClusterNetworkImplementationInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNetworkImplementationOutput() KubernetesClusterNetworkImplementationOutput
+	ToKubernetesClusterNetworkImplementationOutputWithContext(context.Context) KubernetesClusterNetworkImplementationOutput
+}
+
+type KubernetesClusterNetworkImplementationArgs struct {
+	// (Optional) Cilium network implementation configuration. No options exist.
+	Cilium KubernetesClusterNetworkImplementationCiliumPtrInput `pulumi:"cilium"`
+}
+
+func (KubernetesClusterNetworkImplementationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNetworkImplementation)(nil)).Elem()
+}
+
+func (i KubernetesClusterNetworkImplementationArgs) ToKubernetesClusterNetworkImplementationOutput() KubernetesClusterNetworkImplementationOutput {
+	return i.ToKubernetesClusterNetworkImplementationOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNetworkImplementationArgs) ToKubernetesClusterNetworkImplementationOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkImplementationOutput)
+}
+
+func (i KubernetesClusterNetworkImplementationArgs) ToKubernetesClusterNetworkImplementationPtrOutput() KubernetesClusterNetworkImplementationPtrOutput {
+	return i.ToKubernetesClusterNetworkImplementationPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNetworkImplementationArgs) ToKubernetesClusterNetworkImplementationPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkImplementationOutput).ToKubernetesClusterNetworkImplementationPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterNetworkImplementationPtrInput is an input type that accepts KubernetesClusterNetworkImplementationArgs, KubernetesClusterNetworkImplementationPtr and KubernetesClusterNetworkImplementationPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterNetworkImplementationPtrInput` via:
+//
+//          KubernetesClusterNetworkImplementationArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesClusterNetworkImplementationPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNetworkImplementationPtrOutput() KubernetesClusterNetworkImplementationPtrOutput
+	ToKubernetesClusterNetworkImplementationPtrOutputWithContext(context.Context) KubernetesClusterNetworkImplementationPtrOutput
+}
+
+type kubernetesClusterNetworkImplementationPtrType KubernetesClusterNetworkImplementationArgs
+
+func KubernetesClusterNetworkImplementationPtr(v *KubernetesClusterNetworkImplementationArgs) KubernetesClusterNetworkImplementationPtrInput {
+	return (*kubernetesClusterNetworkImplementationPtrType)(v)
+}
+
+func (*kubernetesClusterNetworkImplementationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterNetworkImplementation)(nil)).Elem()
+}
+
+func (i *kubernetesClusterNetworkImplementationPtrType) ToKubernetesClusterNetworkImplementationPtrOutput() KubernetesClusterNetworkImplementationPtrOutput {
+	return i.ToKubernetesClusterNetworkImplementationPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterNetworkImplementationPtrType) ToKubernetesClusterNetworkImplementationPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkImplementationPtrOutput)
+}
+
+type KubernetesClusterNetworkImplementationOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNetworkImplementationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNetworkImplementation)(nil)).Elem()
+}
+
+func (o KubernetesClusterNetworkImplementationOutput) ToKubernetesClusterNetworkImplementationOutput() KubernetesClusterNetworkImplementationOutput {
+	return o
+}
+
+func (o KubernetesClusterNetworkImplementationOutput) ToKubernetesClusterNetworkImplementationOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationOutput {
+	return o
+}
+
+func (o KubernetesClusterNetworkImplementationOutput) ToKubernetesClusterNetworkImplementationPtrOutput() KubernetesClusterNetworkImplementationPtrOutput {
+	return o.ToKubernetesClusterNetworkImplementationPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterNetworkImplementationOutput) ToKubernetesClusterNetworkImplementationPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterNetworkImplementation) *KubernetesClusterNetworkImplementation {
+		return &v
+	}).(KubernetesClusterNetworkImplementationPtrOutput)
+}
+
+// (Optional) Cilium network implementation configuration. No options exist.
+func (o KubernetesClusterNetworkImplementationOutput) Cilium() KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterNetworkImplementation) *KubernetesClusterNetworkImplementationCilium {
+		return v.Cilium
+	}).(KubernetesClusterNetworkImplementationCiliumPtrOutput)
+}
+
+type KubernetesClusterNetworkImplementationPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNetworkImplementationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterNetworkImplementation)(nil)).Elem()
+}
+
+func (o KubernetesClusterNetworkImplementationPtrOutput) ToKubernetesClusterNetworkImplementationPtrOutput() KubernetesClusterNetworkImplementationPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterNetworkImplementationPtrOutput) ToKubernetesClusterNetworkImplementationPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterNetworkImplementationPtrOutput) Elem() KubernetesClusterNetworkImplementationOutput {
+	return o.ApplyT(func(v *KubernetesClusterNetworkImplementation) KubernetesClusterNetworkImplementation { return *v }).(KubernetesClusterNetworkImplementationOutput)
+}
+
+// (Optional) Cilium network implementation configuration. No options exist.
+func (o KubernetesClusterNetworkImplementationPtrOutput) Cilium() KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterNetworkImplementation) *KubernetesClusterNetworkImplementationCilium {
+		if v == nil {
+			return nil
+		}
+		return v.Cilium
+	}).(KubernetesClusterNetworkImplementationCiliumPtrOutput)
+}
+
+type KubernetesClusterNetworkImplementationCilium struct {
+}
+
+// KubernetesClusterNetworkImplementationCiliumInput is an input type that accepts KubernetesClusterNetworkImplementationCiliumArgs and KubernetesClusterNetworkImplementationCiliumOutput values.
+// You can construct a concrete instance of `KubernetesClusterNetworkImplementationCiliumInput` via:
+//
+//          KubernetesClusterNetworkImplementationCiliumArgs{...}
+type KubernetesClusterNetworkImplementationCiliumInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNetworkImplementationCiliumOutput() KubernetesClusterNetworkImplementationCiliumOutput
+	ToKubernetesClusterNetworkImplementationCiliumOutputWithContext(context.Context) KubernetesClusterNetworkImplementationCiliumOutput
+}
+
+type KubernetesClusterNetworkImplementationCiliumArgs struct {
+}
+
+func (KubernetesClusterNetworkImplementationCiliumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNetworkImplementationCilium)(nil)).Elem()
+}
+
+func (i KubernetesClusterNetworkImplementationCiliumArgs) ToKubernetesClusterNetworkImplementationCiliumOutput() KubernetesClusterNetworkImplementationCiliumOutput {
+	return i.ToKubernetesClusterNetworkImplementationCiliumOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNetworkImplementationCiliumArgs) ToKubernetesClusterNetworkImplementationCiliumOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationCiliumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkImplementationCiliumOutput)
+}
+
+func (i KubernetesClusterNetworkImplementationCiliumArgs) ToKubernetesClusterNetworkImplementationCiliumPtrOutput() KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return i.ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNetworkImplementationCiliumArgs) ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkImplementationCiliumOutput).ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterNetworkImplementationCiliumPtrInput is an input type that accepts KubernetesClusterNetworkImplementationCiliumArgs, KubernetesClusterNetworkImplementationCiliumPtr and KubernetesClusterNetworkImplementationCiliumPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterNetworkImplementationCiliumPtrInput` via:
+//
+//          KubernetesClusterNetworkImplementationCiliumArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesClusterNetworkImplementationCiliumPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNetworkImplementationCiliumPtrOutput() KubernetesClusterNetworkImplementationCiliumPtrOutput
+	ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(context.Context) KubernetesClusterNetworkImplementationCiliumPtrOutput
+}
+
+type kubernetesClusterNetworkImplementationCiliumPtrType KubernetesClusterNetworkImplementationCiliumArgs
+
+func KubernetesClusterNetworkImplementationCiliumPtr(v *KubernetesClusterNetworkImplementationCiliumArgs) KubernetesClusterNetworkImplementationCiliumPtrInput {
+	return (*kubernetesClusterNetworkImplementationCiliumPtrType)(v)
+}
+
+func (*kubernetesClusterNetworkImplementationCiliumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterNetworkImplementationCilium)(nil)).Elem()
+}
+
+func (i *kubernetesClusterNetworkImplementationCiliumPtrType) ToKubernetesClusterNetworkImplementationCiliumPtrOutput() KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return i.ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterNetworkImplementationCiliumPtrType) ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNetworkImplementationCiliumPtrOutput)
+}
+
+type KubernetesClusterNetworkImplementationCiliumOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNetworkImplementationCiliumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNetworkImplementationCilium)(nil)).Elem()
+}
+
+func (o KubernetesClusterNetworkImplementationCiliumOutput) ToKubernetesClusterNetworkImplementationCiliumOutput() KubernetesClusterNetworkImplementationCiliumOutput {
+	return o
+}
+
+func (o KubernetesClusterNetworkImplementationCiliumOutput) ToKubernetesClusterNetworkImplementationCiliumOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationCiliumOutput {
+	return o
+}
+
+func (o KubernetesClusterNetworkImplementationCiliumOutput) ToKubernetesClusterNetworkImplementationCiliumPtrOutput() KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return o.ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterNetworkImplementationCiliumOutput) ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterNetworkImplementationCilium) *KubernetesClusterNetworkImplementationCilium {
+		return &v
+	}).(KubernetesClusterNetworkImplementationCiliumPtrOutput)
+}
+
+type KubernetesClusterNetworkImplementationCiliumPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNetworkImplementationCiliumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterNetworkImplementationCilium)(nil)).Elem()
+}
+
+func (o KubernetesClusterNetworkImplementationCiliumPtrOutput) ToKubernetesClusterNetworkImplementationCiliumPtrOutput() KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterNetworkImplementationCiliumPtrOutput) ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationCiliumPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterNetworkImplementationCiliumPtrOutput) Elem() KubernetesClusterNetworkImplementationCiliumOutput {
+	return o.ApplyT(func(v *KubernetesClusterNetworkImplementationCilium) KubernetesClusterNetworkImplementationCilium {
+		return *v
+	}).(KubernetesClusterNetworkImplementationCiliumOutput)
+}
+
 type KubernetesNodeGroupAllocationPolicy struct {
 	// Repeated field, that specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
 	Locations []KubernetesNodeGroupAllocationPolicyLocation `pulumi:"locations"`
@@ -13258,6 +15773,8 @@ type KubernetesNodeGroupInstanceTemplate struct {
 	//
 	// Deprecated: The 'nat' field has been deprecated. Please use 'nat under network_interface' instead.
 	Nat *bool `pulumi:"nat"`
+	// Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+	NetworkAccelerationType *string `pulumi:"networkAccelerationType"`
 	// An array with the network interfaces that will be attached to the instance. The structure is documented below.
 	NetworkInterfaces []KubernetesNodeGroupInstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
 	PlacementPolicy   *KubernetesNodeGroupInstanceTemplatePlacementPolicy   `pulumi:"placementPolicy"`
@@ -13292,6 +15809,8 @@ type KubernetesNodeGroupInstanceTemplateArgs struct {
 	//
 	// Deprecated: The 'nat' field has been deprecated. Please use 'nat under network_interface' instead.
 	Nat pulumi.BoolPtrInput `pulumi:"nat"`
+	// Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+	NetworkAccelerationType pulumi.StringPtrInput `pulumi:"networkAccelerationType"`
 	// An array with the network interfaces that will be attached to the instance. The structure is documented below.
 	NetworkInterfaces KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 	PlacementPolicy   KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput    `pulumi:"placementPolicy"`
@@ -13402,6 +15921,11 @@ func (o KubernetesNodeGroupInstanceTemplateOutput) Nat() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplate) *bool { return v.Nat }).(pulumi.BoolPtrOutput)
 }
 
+// Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+func (o KubernetesNodeGroupInstanceTemplateOutput) NetworkAccelerationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplate) *string { return v.NetworkAccelerationType }).(pulumi.StringPtrOutput)
+}
+
 // An array with the network interfaces that will be attached to the instance. The structure is documented below.
 func (o KubernetesNodeGroupInstanceTemplateOutput) NetworkInterfaces() KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplate) []KubernetesNodeGroupInstanceTemplateNetworkInterface {
@@ -13485,6 +16009,16 @@ func (o KubernetesNodeGroupInstanceTemplatePtrOutput) Nat() pulumi.BoolPtrOutput
 		}
 		return v.Nat
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+func (o KubernetesNodeGroupInstanceTemplatePtrOutput) NetworkAccelerationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkAccelerationType
+	}).(pulumi.StringPtrOutput)
 }
 
 // An array with the network interfaces that will be attached to the instance. The structure is documented below.
@@ -22419,6 +24953,980 @@ func (o MdbClickhouseClusterZookeeperResourcesPtrOutput) ResourcePresetId() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type MdbElasticSearchClusterConfig struct {
+	// Password for admin user of Elasticsearch.
+	AdminPassword string `pulumi:"adminPassword"`
+	// Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+	DataNode MdbElasticSearchClusterConfigDataNode `pulumi:"dataNode"`
+	// Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+	Edition *string `pulumi:"edition"`
+	// Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+	MasterNode *MdbElasticSearchClusterConfigMasterNode `pulumi:"masterNode"`
+	// A set of Elasticsearch plugins to install.
+	Plugins []string `pulumi:"plugins"`
+	// Version of Elasticsearch.
+	Version *string `pulumi:"version"`
+}
+
+// MdbElasticSearchClusterConfigInput is an input type that accepts MdbElasticSearchClusterConfigArgs and MdbElasticSearchClusterConfigOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigInput` via:
+//
+//          MdbElasticSearchClusterConfigArgs{...}
+type MdbElasticSearchClusterConfigInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigOutput() MdbElasticSearchClusterConfigOutput
+	ToMdbElasticSearchClusterConfigOutputWithContext(context.Context) MdbElasticSearchClusterConfigOutput
+}
+
+type MdbElasticSearchClusterConfigArgs struct {
+	// Password for admin user of Elasticsearch.
+	AdminPassword pulumi.StringInput `pulumi:"adminPassword"`
+	// Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+	DataNode MdbElasticSearchClusterConfigDataNodeInput `pulumi:"dataNode"`
+	// Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+	Edition pulumi.StringPtrInput `pulumi:"edition"`
+	// Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+	MasterNode MdbElasticSearchClusterConfigMasterNodePtrInput `pulumi:"masterNode"`
+	// A set of Elasticsearch plugins to install.
+	Plugins pulumi.StringArrayInput `pulumi:"plugins"`
+	// Version of Elasticsearch.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (MdbElasticSearchClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfig)(nil)).Elem()
+}
+
+func (i MdbElasticSearchClusterConfigArgs) ToMdbElasticSearchClusterConfigOutput() MdbElasticSearchClusterConfigOutput {
+	return i.ToMdbElasticSearchClusterConfigOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigArgs) ToMdbElasticSearchClusterConfigOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigOutput)
+}
+
+func (i MdbElasticSearchClusterConfigArgs) ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput {
+	return i.ToMdbElasticSearchClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigArgs) ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigOutput).ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx)
+}
+
+// MdbElasticSearchClusterConfigPtrInput is an input type that accepts MdbElasticSearchClusterConfigArgs, MdbElasticSearchClusterConfigPtr and MdbElasticSearchClusterConfigPtrOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigPtrInput` via:
+//
+//          MdbElasticSearchClusterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbElasticSearchClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput
+	ToMdbElasticSearchClusterConfigPtrOutputWithContext(context.Context) MdbElasticSearchClusterConfigPtrOutput
+}
+
+type mdbElasticSearchClusterConfigPtrType MdbElasticSearchClusterConfigArgs
+
+func MdbElasticSearchClusterConfigPtr(v *MdbElasticSearchClusterConfigArgs) MdbElasticSearchClusterConfigPtrInput {
+	return (*mdbElasticSearchClusterConfigPtrType)(v)
+}
+
+func (*mdbElasticSearchClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfig)(nil)).Elem()
+}
+
+func (i *mdbElasticSearchClusterConfigPtrType) ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput {
+	return i.ToMdbElasticSearchClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbElasticSearchClusterConfigPtrType) ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigPtrOutput)
+}
+
+type MdbElasticSearchClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfig)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigOutput() MdbElasticSearchClusterConfigOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput {
+	return o.ToMdbElasticSearchClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigPtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfig) *MdbElasticSearchClusterConfig {
+		return &v
+	}).(MdbElasticSearchClusterConfigPtrOutput)
+}
+
+// Password for admin user of Elasticsearch.
+func (o MdbElasticSearchClusterConfigOutput) AdminPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfig) string { return v.AdminPassword }).(pulumi.StringOutput)
+}
+
+// Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+func (o MdbElasticSearchClusterConfigOutput) DataNode() MdbElasticSearchClusterConfigDataNodeOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfig) MdbElasticSearchClusterConfigDataNode { return v.DataNode }).(MdbElasticSearchClusterConfigDataNodeOutput)
+}
+
+// Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+func (o MdbElasticSearchClusterConfigOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfig) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+func (o MdbElasticSearchClusterConfigOutput) MasterNode() MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfig) *MdbElasticSearchClusterConfigMasterNode { return v.MasterNode }).(MdbElasticSearchClusterConfigMasterNodePtrOutput)
+}
+
+// A set of Elasticsearch plugins to install.
+func (o MdbElasticSearchClusterConfigOutput) Plugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfig) []string { return v.Plugins }).(pulumi.StringArrayOutput)
+}
+
+// Version of Elasticsearch.
+func (o MdbElasticSearchClusterConfigOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type MdbElasticSearchClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfig)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigPtrOutput) ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigPtrOutput) ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigPtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigPtrOutput) Elem() MdbElasticSearchClusterConfigOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) MdbElasticSearchClusterConfig { return *v }).(MdbElasticSearchClusterConfigOutput)
+}
+
+// Password for admin user of Elasticsearch.
+func (o MdbElasticSearchClusterConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+func (o MdbElasticSearchClusterConfigPtrOutput) DataNode() MdbElasticSearchClusterConfigDataNodePtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *MdbElasticSearchClusterConfigDataNode {
+		if v == nil {
+			return nil
+		}
+		return &v.DataNode
+	}).(MdbElasticSearchClusterConfigDataNodePtrOutput)
+}
+
+// Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+func (o MdbElasticSearchClusterConfigPtrOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Edition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+func (o MdbElasticSearchClusterConfigPtrOutput) MasterNode() MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *MdbElasticSearchClusterConfigMasterNode {
+		if v == nil {
+			return nil
+		}
+		return v.MasterNode
+	}).(MdbElasticSearchClusterConfigMasterNodePtrOutput)
+}
+
+// A set of Elasticsearch plugins to install.
+func (o MdbElasticSearchClusterConfigPtrOutput) Plugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Plugins
+	}).(pulumi.StringArrayOutput)
+}
+
+// Version of Elasticsearch.
+func (o MdbElasticSearchClusterConfigPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type MdbElasticSearchClusterConfigDataNode struct {
+	// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+	Resources MdbElasticSearchClusterConfigDataNodeResources `pulumi:"resources"`
+}
+
+// MdbElasticSearchClusterConfigDataNodeInput is an input type that accepts MdbElasticSearchClusterConfigDataNodeArgs and MdbElasticSearchClusterConfigDataNodeOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigDataNodeInput` via:
+//
+//          MdbElasticSearchClusterConfigDataNodeArgs{...}
+type MdbElasticSearchClusterConfigDataNodeInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigDataNodeOutput() MdbElasticSearchClusterConfigDataNodeOutput
+	ToMdbElasticSearchClusterConfigDataNodeOutputWithContext(context.Context) MdbElasticSearchClusterConfigDataNodeOutput
+}
+
+type MdbElasticSearchClusterConfigDataNodeArgs struct {
+	// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+	Resources MdbElasticSearchClusterConfigDataNodeResourcesInput `pulumi:"resources"`
+}
+
+func (MdbElasticSearchClusterConfigDataNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfigDataNode)(nil)).Elem()
+}
+
+func (i MdbElasticSearchClusterConfigDataNodeArgs) ToMdbElasticSearchClusterConfigDataNodeOutput() MdbElasticSearchClusterConfigDataNodeOutput {
+	return i.ToMdbElasticSearchClusterConfigDataNodeOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigDataNodeArgs) ToMdbElasticSearchClusterConfigDataNodeOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeOutput)
+}
+
+func (i MdbElasticSearchClusterConfigDataNodeArgs) ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput {
+	return i.ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigDataNodeArgs) ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeOutput).ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx)
+}
+
+// MdbElasticSearchClusterConfigDataNodePtrInput is an input type that accepts MdbElasticSearchClusterConfigDataNodeArgs, MdbElasticSearchClusterConfigDataNodePtr and MdbElasticSearchClusterConfigDataNodePtrOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigDataNodePtrInput` via:
+//
+//          MdbElasticSearchClusterConfigDataNodeArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbElasticSearchClusterConfigDataNodePtrInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput
+	ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput
+}
+
+type mdbElasticSearchClusterConfigDataNodePtrType MdbElasticSearchClusterConfigDataNodeArgs
+
+func MdbElasticSearchClusterConfigDataNodePtr(v *MdbElasticSearchClusterConfigDataNodeArgs) MdbElasticSearchClusterConfigDataNodePtrInput {
+	return (*mdbElasticSearchClusterConfigDataNodePtrType)(v)
+}
+
+func (*mdbElasticSearchClusterConfigDataNodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfigDataNode)(nil)).Elem()
+}
+
+func (i *mdbElasticSearchClusterConfigDataNodePtrType) ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput {
+	return i.ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(context.Background())
+}
+
+func (i *mdbElasticSearchClusterConfigDataNodePtrType) ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodePtrOutput)
+}
+
+type MdbElasticSearchClusterConfigDataNodeOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigDataNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfigDataNode)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeOutput) ToMdbElasticSearchClusterConfigDataNodeOutput() MdbElasticSearchClusterConfigDataNodeOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeOutput) ToMdbElasticSearchClusterConfigDataNodeOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeOutput) ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput {
+	return o.ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(context.Background())
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeOutput) ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNode) *MdbElasticSearchClusterConfigDataNode {
+		return &v
+	}).(MdbElasticSearchClusterConfigDataNodePtrOutput)
+}
+
+// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+func (o MdbElasticSearchClusterConfigDataNodeOutput) Resources() MdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNode) MdbElasticSearchClusterConfigDataNodeResources {
+		return v.Resources
+	}).(MdbElasticSearchClusterConfigDataNodeResourcesOutput)
+}
+
+type MdbElasticSearchClusterConfigDataNodePtrOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigDataNodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfigDataNode)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigDataNodePtrOutput) ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigDataNodePtrOutput) ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigDataNodePtrOutput) Elem() MdbElasticSearchClusterConfigDataNodeOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNode) MdbElasticSearchClusterConfigDataNode { return *v }).(MdbElasticSearchClusterConfigDataNodeOutput)
+}
+
+// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+func (o MdbElasticSearchClusterConfigDataNodePtrOutput) Resources() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNode) *MdbElasticSearchClusterConfigDataNodeResources {
+		if v == nil {
+			return nil
+		}
+		return &v.Resources
+	}).(MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput)
+}
+
+type MdbElasticSearchClusterConfigDataNodeResources struct {
+	// Volume of the storage available to a host, in gigabytes.
+	DiskSize int `pulumi:"diskSize"`
+	// Type of the storage of Elasticsearch hosts.
+	DiskTypeId       string `pulumi:"diskTypeId"`
+	ResourcePresetId string `pulumi:"resourcePresetId"`
+}
+
+// MdbElasticSearchClusterConfigDataNodeResourcesInput is an input type that accepts MdbElasticSearchClusterConfigDataNodeResourcesArgs and MdbElasticSearchClusterConfigDataNodeResourcesOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigDataNodeResourcesInput` via:
+//
+//          MdbElasticSearchClusterConfigDataNodeResourcesArgs{...}
+type MdbElasticSearchClusterConfigDataNodeResourcesInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigDataNodeResourcesOutput() MdbElasticSearchClusterConfigDataNodeResourcesOutput
+	ToMdbElasticSearchClusterConfigDataNodeResourcesOutputWithContext(context.Context) MdbElasticSearchClusterConfigDataNodeResourcesOutput
+}
+
+type MdbElasticSearchClusterConfigDataNodeResourcesArgs struct {
+	// Volume of the storage available to a host, in gigabytes.
+	DiskSize pulumi.IntInput `pulumi:"diskSize"`
+	// Type of the storage of Elasticsearch hosts.
+	DiskTypeId       pulumi.StringInput `pulumi:"diskTypeId"`
+	ResourcePresetId pulumi.StringInput `pulumi:"resourcePresetId"`
+}
+
+func (MdbElasticSearchClusterConfigDataNodeResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodeResources)(nil)).Elem()
+}
+
+func (i MdbElasticSearchClusterConfigDataNodeResourcesArgs) ToMdbElasticSearchClusterConfigDataNodeResourcesOutput() MdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return i.ToMdbElasticSearchClusterConfigDataNodeResourcesOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigDataNodeResourcesArgs) ToMdbElasticSearchClusterConfigDataNodeResourcesOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeResourcesOutput)
+}
+
+func (i MdbElasticSearchClusterConfigDataNodeResourcesArgs) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
+	return i.ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigDataNodeResourcesArgs) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeResourcesOutput).ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx)
+}
+
+// MdbElasticSearchClusterConfigDataNodeResourcesPtrInput is an input type that accepts MdbElasticSearchClusterConfigDataNodeResourcesArgs, MdbElasticSearchClusterConfigDataNodeResourcesPtr and MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigDataNodeResourcesPtrInput` via:
+//
+//          MdbElasticSearchClusterConfigDataNodeResourcesArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbElasticSearchClusterConfigDataNodeResourcesPtrInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput
+	ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput
+}
+
+type mdbElasticSearchClusterConfigDataNodeResourcesPtrType MdbElasticSearchClusterConfigDataNodeResourcesArgs
+
+func MdbElasticSearchClusterConfigDataNodeResourcesPtr(v *MdbElasticSearchClusterConfigDataNodeResourcesArgs) MdbElasticSearchClusterConfigDataNodeResourcesPtrInput {
+	return (*mdbElasticSearchClusterConfigDataNodeResourcesPtrType)(v)
+}
+
+func (*mdbElasticSearchClusterConfigDataNodeResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfigDataNodeResources)(nil)).Elem()
+}
+
+func (i *mdbElasticSearchClusterConfigDataNodeResourcesPtrType) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
+	return i.ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbElasticSearchClusterConfigDataNodeResourcesPtrType) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput)
+}
+
+type MdbElasticSearchClusterConfigDataNodeResourcesOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigDataNodeResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodeResources)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesOutput() MdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
+	return o.ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNodeResources) *MdbElasticSearchClusterConfigDataNodeResources {
+		return &v
+	}).(MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput)
+}
+
+// Volume of the storage available to a host, in gigabytes.
+func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNodeResources) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+// Type of the storage of Elasticsearch hosts.
+func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) DiskTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNodeResources) string { return v.DiskTypeId }).(pulumi.StringOutput)
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ResourcePresetId() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNodeResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
+}
+
+type MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfigDataNodeResources)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) Elem() MdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNodeResources) MdbElasticSearchClusterConfigDataNodeResources {
+		return *v
+	}).(MdbElasticSearchClusterConfigDataNodeResourcesOutput)
+}
+
+// Volume of the storage available to a host, in gigabytes.
+func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNodeResources) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the storage of Elasticsearch hosts.
+func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNodeResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskTypeId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNodeResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourcePresetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type MdbElasticSearchClusterConfigMasterNode struct {
+	// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+	Resources MdbElasticSearchClusterConfigMasterNodeResources `pulumi:"resources"`
+}
+
+// MdbElasticSearchClusterConfigMasterNodeInput is an input type that accepts MdbElasticSearchClusterConfigMasterNodeArgs and MdbElasticSearchClusterConfigMasterNodeOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigMasterNodeInput` via:
+//
+//          MdbElasticSearchClusterConfigMasterNodeArgs{...}
+type MdbElasticSearchClusterConfigMasterNodeInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigMasterNodeOutput() MdbElasticSearchClusterConfigMasterNodeOutput
+	ToMdbElasticSearchClusterConfigMasterNodeOutputWithContext(context.Context) MdbElasticSearchClusterConfigMasterNodeOutput
+}
+
+type MdbElasticSearchClusterConfigMasterNodeArgs struct {
+	// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+	Resources MdbElasticSearchClusterConfigMasterNodeResourcesInput `pulumi:"resources"`
+}
+
+func (MdbElasticSearchClusterConfigMasterNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNode)(nil)).Elem()
+}
+
+func (i MdbElasticSearchClusterConfigMasterNodeArgs) ToMdbElasticSearchClusterConfigMasterNodeOutput() MdbElasticSearchClusterConfigMasterNodeOutput {
+	return i.ToMdbElasticSearchClusterConfigMasterNodeOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigMasterNodeArgs) ToMdbElasticSearchClusterConfigMasterNodeOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigMasterNodeOutput)
+}
+
+func (i MdbElasticSearchClusterConfigMasterNodeArgs) ToMdbElasticSearchClusterConfigMasterNodePtrOutput() MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return i.ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigMasterNodeArgs) ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigMasterNodeOutput).ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(ctx)
+}
+
+// MdbElasticSearchClusterConfigMasterNodePtrInput is an input type that accepts MdbElasticSearchClusterConfigMasterNodeArgs, MdbElasticSearchClusterConfigMasterNodePtr and MdbElasticSearchClusterConfigMasterNodePtrOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigMasterNodePtrInput` via:
+//
+//          MdbElasticSearchClusterConfigMasterNodeArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbElasticSearchClusterConfigMasterNodePtrInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigMasterNodePtrOutput() MdbElasticSearchClusterConfigMasterNodePtrOutput
+	ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(context.Context) MdbElasticSearchClusterConfigMasterNodePtrOutput
+}
+
+type mdbElasticSearchClusterConfigMasterNodePtrType MdbElasticSearchClusterConfigMasterNodeArgs
+
+func MdbElasticSearchClusterConfigMasterNodePtr(v *MdbElasticSearchClusterConfigMasterNodeArgs) MdbElasticSearchClusterConfigMasterNodePtrInput {
+	return (*mdbElasticSearchClusterConfigMasterNodePtrType)(v)
+}
+
+func (*mdbElasticSearchClusterConfigMasterNodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfigMasterNode)(nil)).Elem()
+}
+
+func (i *mdbElasticSearchClusterConfigMasterNodePtrType) ToMdbElasticSearchClusterConfigMasterNodePtrOutput() MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return i.ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(context.Background())
+}
+
+func (i *mdbElasticSearchClusterConfigMasterNodePtrType) ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigMasterNodePtrOutput)
+}
+
+type MdbElasticSearchClusterConfigMasterNodeOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigMasterNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNode)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeOutput) ToMdbElasticSearchClusterConfigMasterNodeOutput() MdbElasticSearchClusterConfigMasterNodeOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeOutput) ToMdbElasticSearchClusterConfigMasterNodeOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodeOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeOutput) ToMdbElasticSearchClusterConfigMasterNodePtrOutput() MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return o.ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(context.Background())
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeOutput) ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigMasterNode) *MdbElasticSearchClusterConfigMasterNode {
+		return &v
+	}).(MdbElasticSearchClusterConfigMasterNodePtrOutput)
+}
+
+// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+func (o MdbElasticSearchClusterConfigMasterNodeOutput) Resources() MdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigMasterNode) MdbElasticSearchClusterConfigMasterNodeResources {
+		return v.Resources
+	}).(MdbElasticSearchClusterConfigMasterNodeResourcesOutput)
+}
+
+type MdbElasticSearchClusterConfigMasterNodePtrOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigMasterNodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfigMasterNode)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodePtrOutput) ToMdbElasticSearchClusterConfigMasterNodePtrOutput() MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodePtrOutput) ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodePtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodePtrOutput) Elem() MdbElasticSearchClusterConfigMasterNodeOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigMasterNode) MdbElasticSearchClusterConfigMasterNode { return *v }).(MdbElasticSearchClusterConfigMasterNodeOutput)
+}
+
+// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+func (o MdbElasticSearchClusterConfigMasterNodePtrOutput) Resources() MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigMasterNode) *MdbElasticSearchClusterConfigMasterNodeResources {
+		if v == nil {
+			return nil
+		}
+		return &v.Resources
+	}).(MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput)
+}
+
+type MdbElasticSearchClusterConfigMasterNodeResources struct {
+	// Volume of the storage available to a host, in gigabytes.
+	DiskSize int `pulumi:"diskSize"`
+	// Type of the storage of Elasticsearch hosts.
+	DiskTypeId       string `pulumi:"diskTypeId"`
+	ResourcePresetId string `pulumi:"resourcePresetId"`
+}
+
+// MdbElasticSearchClusterConfigMasterNodeResourcesInput is an input type that accepts MdbElasticSearchClusterConfigMasterNodeResourcesArgs and MdbElasticSearchClusterConfigMasterNodeResourcesOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigMasterNodeResourcesInput` via:
+//
+//          MdbElasticSearchClusterConfigMasterNodeResourcesArgs{...}
+type MdbElasticSearchClusterConfigMasterNodeResourcesInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigMasterNodeResourcesOutput() MdbElasticSearchClusterConfigMasterNodeResourcesOutput
+	ToMdbElasticSearchClusterConfigMasterNodeResourcesOutputWithContext(context.Context) MdbElasticSearchClusterConfigMasterNodeResourcesOutput
+}
+
+type MdbElasticSearchClusterConfigMasterNodeResourcesArgs struct {
+	// Volume of the storage available to a host, in gigabytes.
+	DiskSize pulumi.IntInput `pulumi:"diskSize"`
+	// Type of the storage of Elasticsearch hosts.
+	DiskTypeId       pulumi.StringInput `pulumi:"diskTypeId"`
+	ResourcePresetId pulumi.StringInput `pulumi:"resourcePresetId"`
+}
+
+func (MdbElasticSearchClusterConfigMasterNodeResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNodeResources)(nil)).Elem()
+}
+
+func (i MdbElasticSearchClusterConfigMasterNodeResourcesArgs) ToMdbElasticSearchClusterConfigMasterNodeResourcesOutput() MdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return i.ToMdbElasticSearchClusterConfigMasterNodeResourcesOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigMasterNodeResourcesArgs) ToMdbElasticSearchClusterConfigMasterNodeResourcesOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigMasterNodeResourcesOutput)
+}
+
+func (i MdbElasticSearchClusterConfigMasterNodeResourcesArgs) ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput() MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
+	return i.ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterConfigMasterNodeResourcesArgs) ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigMasterNodeResourcesOutput).ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(ctx)
+}
+
+// MdbElasticSearchClusterConfigMasterNodeResourcesPtrInput is an input type that accepts MdbElasticSearchClusterConfigMasterNodeResourcesArgs, MdbElasticSearchClusterConfigMasterNodeResourcesPtr and MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterConfigMasterNodeResourcesPtrInput` via:
+//
+//          MdbElasticSearchClusterConfigMasterNodeResourcesArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbElasticSearchClusterConfigMasterNodeResourcesPtrInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput() MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput
+	ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(context.Context) MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput
+}
+
+type mdbElasticSearchClusterConfigMasterNodeResourcesPtrType MdbElasticSearchClusterConfigMasterNodeResourcesArgs
+
+func MdbElasticSearchClusterConfigMasterNodeResourcesPtr(v *MdbElasticSearchClusterConfigMasterNodeResourcesArgs) MdbElasticSearchClusterConfigMasterNodeResourcesPtrInput {
+	return (*mdbElasticSearchClusterConfigMasterNodeResourcesPtrType)(v)
+}
+
+func (*mdbElasticSearchClusterConfigMasterNodeResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfigMasterNodeResources)(nil)).Elem()
+}
+
+func (i *mdbElasticSearchClusterConfigMasterNodeResourcesPtrType) ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput() MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
+	return i.ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbElasticSearchClusterConfigMasterNodeResourcesPtrType) ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput)
+}
+
+type MdbElasticSearchClusterConfigMasterNodeResourcesOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigMasterNodeResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNodeResources)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesOutput) ToMdbElasticSearchClusterConfigMasterNodeResourcesOutput() MdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesOutput) ToMdbElasticSearchClusterConfigMasterNodeResourcesOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesOutput) ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput() MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
+	return o.ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesOutput) ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigMasterNodeResources) *MdbElasticSearchClusterConfigMasterNodeResources {
+		return &v
+	}).(MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput)
+}
+
+// Volume of the storage available to a host, in gigabytes.
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigMasterNodeResources) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+// Type of the storage of Elasticsearch hosts.
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesOutput) DiskTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigMasterNodeResources) string { return v.DiskTypeId }).(pulumi.StringOutput)
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesOutput) ResourcePresetId() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterConfigMasterNodeResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
+}
+
+type MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbElasticSearchClusterConfigMasterNodeResources)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput) ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput() MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput) ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput) Elem() MdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigMasterNodeResources) MdbElasticSearchClusterConfigMasterNodeResources {
+		return *v
+	}).(MdbElasticSearchClusterConfigMasterNodeResourcesOutput)
+}
+
+// Volume of the storage available to a host, in gigabytes.
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigMasterNodeResources) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the storage of Elasticsearch hosts.
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigMasterNodeResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskTypeId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigMasterNodeResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourcePresetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type MdbElasticSearchClusterHost struct {
+	// Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+	AssignPublicIp *bool `pulumi:"assignPublicIp"`
+	// The fully qualified domain name of the host.
+	Fqdn *string `pulumi:"fqdn"`
+	// User defined host name.
+	Name string `pulumi:"name"`
+	// The ID of the subnet, to which the host belongs. The subnet must
+	// be a part of the network to which the cluster belongs.
+	SubnetId *string `pulumi:"subnetId"`
+	// The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+	Type string `pulumi:"type"`
+	// The availability zone where the Elasticsearch host will be created.
+	// For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
+	Zone string `pulumi:"zone"`
+}
+
+// MdbElasticSearchClusterHostInput is an input type that accepts MdbElasticSearchClusterHostArgs and MdbElasticSearchClusterHostOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterHostInput` via:
+//
+//          MdbElasticSearchClusterHostArgs{...}
+type MdbElasticSearchClusterHostInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterHostOutput() MdbElasticSearchClusterHostOutput
+	ToMdbElasticSearchClusterHostOutputWithContext(context.Context) MdbElasticSearchClusterHostOutput
+}
+
+type MdbElasticSearchClusterHostArgs struct {
+	// Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+	AssignPublicIp pulumi.BoolPtrInput `pulumi:"assignPublicIp"`
+	// The fully qualified domain name of the host.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+	// User defined host name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the subnet, to which the host belongs. The subnet must
+	// be a part of the network to which the cluster belongs.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+	// The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The availability zone where the Elasticsearch host will be created.
+	// For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (MdbElasticSearchClusterHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterHost)(nil)).Elem()
+}
+
+func (i MdbElasticSearchClusterHostArgs) ToMdbElasticSearchClusterHostOutput() MdbElasticSearchClusterHostOutput {
+	return i.ToMdbElasticSearchClusterHostOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterHostArgs) ToMdbElasticSearchClusterHostOutputWithContext(ctx context.Context) MdbElasticSearchClusterHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterHostOutput)
+}
+
+// MdbElasticSearchClusterHostArrayInput is an input type that accepts MdbElasticSearchClusterHostArray and MdbElasticSearchClusterHostArrayOutput values.
+// You can construct a concrete instance of `MdbElasticSearchClusterHostArrayInput` via:
+//
+//          MdbElasticSearchClusterHostArray{ MdbElasticSearchClusterHostArgs{...} }
+type MdbElasticSearchClusterHostArrayInput interface {
+	pulumi.Input
+
+	ToMdbElasticSearchClusterHostArrayOutput() MdbElasticSearchClusterHostArrayOutput
+	ToMdbElasticSearchClusterHostArrayOutputWithContext(context.Context) MdbElasticSearchClusterHostArrayOutput
+}
+
+type MdbElasticSearchClusterHostArray []MdbElasticSearchClusterHostInput
+
+func (MdbElasticSearchClusterHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MdbElasticSearchClusterHost)(nil)).Elem()
+}
+
+func (i MdbElasticSearchClusterHostArray) ToMdbElasticSearchClusterHostArrayOutput() MdbElasticSearchClusterHostArrayOutput {
+	return i.ToMdbElasticSearchClusterHostArrayOutputWithContext(context.Background())
+}
+
+func (i MdbElasticSearchClusterHostArray) ToMdbElasticSearchClusterHostArrayOutputWithContext(ctx context.Context) MdbElasticSearchClusterHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterHostArrayOutput)
+}
+
+type MdbElasticSearchClusterHostOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbElasticSearchClusterHost)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterHostOutput) ToMdbElasticSearchClusterHostOutput() MdbElasticSearchClusterHostOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterHostOutput) ToMdbElasticSearchClusterHostOutputWithContext(ctx context.Context) MdbElasticSearchClusterHostOutput {
+	return o
+}
+
+// Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+func (o MdbElasticSearchClusterHostOutput) AssignPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterHost) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// The fully qualified domain name of the host.
+func (o MdbElasticSearchClusterHostOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterHost) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// User defined host name.
+func (o MdbElasticSearchClusterHostOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterHost) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the subnet, to which the host belongs. The subnet must
+// be a part of the network to which the cluster belongs.
+func (o MdbElasticSearchClusterHostOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterHost) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+func (o MdbElasticSearchClusterHostOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterHost) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The availability zone where the Elasticsearch host will be created.
+// For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
+func (o MdbElasticSearchClusterHostOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbElasticSearchClusterHost) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type MdbElasticSearchClusterHostArrayOutput struct{ *pulumi.OutputState }
+
+func (MdbElasticSearchClusterHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MdbElasticSearchClusterHost)(nil)).Elem()
+}
+
+func (o MdbElasticSearchClusterHostArrayOutput) ToMdbElasticSearchClusterHostArrayOutput() MdbElasticSearchClusterHostArrayOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterHostArrayOutput) ToMdbElasticSearchClusterHostArrayOutputWithContext(ctx context.Context) MdbElasticSearchClusterHostArrayOutput {
+	return o
+}
+
+func (o MdbElasticSearchClusterHostArrayOutput) Index(i pulumi.IntInput) MdbElasticSearchClusterHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbElasticSearchClusterHost {
+		return vs[0].([]MdbElasticSearchClusterHost)[vs[1].(int)]
+	}).(MdbElasticSearchClusterHostOutput)
+}
+
 type MdbKafkaClusterConfig struct {
 	// Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
 	AssignPublicIp *bool `pulumi:"assignPublicIp"`
@@ -24996,7 +28504,7 @@ type MdbMongodbClusterHost struct {
 	// The ID of the subnet, to which the host belongs. The subnet must
 	// be a part of the network to which the cluster belongs.
 	SubnetId string `pulumi:"subnetId"`
-	// type of mongo daemon which runs on this host (mongod, mongos or monogcfg). Defaults to mongod.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type *string `pulumi:"type"`
 	// The availability zone where the MongoDB host will be created.
 	// For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
@@ -25028,7 +28536,7 @@ type MdbMongodbClusterHostArgs struct {
 	// The ID of the subnet, to which the host belongs. The subnet must
 	// be a part of the network to which the cluster belongs.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// type of mongo daemon which runs on this host (mongod, mongos or monogcfg). Defaults to mongod.
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The availability zone where the MongoDB host will be created.
 	// For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
@@ -25117,7 +28625,7 @@ func (o MdbMongodbClusterHostOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbMongodbClusterHost) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// type of mongo daemon which runs on this host (mongod, mongos or monogcfg). Defaults to mongod.
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 func (o MdbMongodbClusterHostOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MdbMongodbClusterHost) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -25146,6 +28654,175 @@ func (o MdbMongodbClusterHostArrayOutput) Index(i pulumi.IntInput) MdbMongodbClu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbMongodbClusterHost {
 		return vs[0].([]MdbMongodbClusterHost)[vs[1].(int)]
 	}).(MdbMongodbClusterHostOutput)
+}
+
+type MdbMongodbClusterMaintenanceWindow struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day *string `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour *int `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type string `pulumi:"type"`
+}
+
+// MdbMongodbClusterMaintenanceWindowInput is an input type that accepts MdbMongodbClusterMaintenanceWindowArgs and MdbMongodbClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `MdbMongodbClusterMaintenanceWindowInput` via:
+//
+//          MdbMongodbClusterMaintenanceWindowArgs{...}
+type MdbMongodbClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToMdbMongodbClusterMaintenanceWindowOutput() MdbMongodbClusterMaintenanceWindowOutput
+	ToMdbMongodbClusterMaintenanceWindowOutputWithContext(context.Context) MdbMongodbClusterMaintenanceWindowOutput
+}
+
+type MdbMongodbClusterMaintenanceWindowArgs struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day pulumi.StringPtrInput `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MdbMongodbClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbMongodbClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i MdbMongodbClusterMaintenanceWindowArgs) ToMdbMongodbClusterMaintenanceWindowOutput() MdbMongodbClusterMaintenanceWindowOutput {
+	return i.ToMdbMongodbClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i MdbMongodbClusterMaintenanceWindowArgs) ToMdbMongodbClusterMaintenanceWindowOutputWithContext(ctx context.Context) MdbMongodbClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterMaintenanceWindowOutput)
+}
+
+func (i MdbMongodbClusterMaintenanceWindowArgs) ToMdbMongodbClusterMaintenanceWindowPtrOutput() MdbMongodbClusterMaintenanceWindowPtrOutput {
+	return i.ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i MdbMongodbClusterMaintenanceWindowArgs) ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMongodbClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterMaintenanceWindowOutput).ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// MdbMongodbClusterMaintenanceWindowPtrInput is an input type that accepts MdbMongodbClusterMaintenanceWindowArgs, MdbMongodbClusterMaintenanceWindowPtr and MdbMongodbClusterMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `MdbMongodbClusterMaintenanceWindowPtrInput` via:
+//
+//          MdbMongodbClusterMaintenanceWindowArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbMongodbClusterMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToMdbMongodbClusterMaintenanceWindowPtrOutput() MdbMongodbClusterMaintenanceWindowPtrOutput
+	ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(context.Context) MdbMongodbClusterMaintenanceWindowPtrOutput
+}
+
+type mdbMongodbClusterMaintenanceWindowPtrType MdbMongodbClusterMaintenanceWindowArgs
+
+func MdbMongodbClusterMaintenanceWindowPtr(v *MdbMongodbClusterMaintenanceWindowArgs) MdbMongodbClusterMaintenanceWindowPtrInput {
+	return (*mdbMongodbClusterMaintenanceWindowPtrType)(v)
+}
+
+func (*mdbMongodbClusterMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbMongodbClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *mdbMongodbClusterMaintenanceWindowPtrType) ToMdbMongodbClusterMaintenanceWindowPtrOutput() MdbMongodbClusterMaintenanceWindowPtrOutput {
+	return i.ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbMongodbClusterMaintenanceWindowPtrType) ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMongodbClusterMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterMaintenanceWindowPtrOutput)
+}
+
+type MdbMongodbClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (MdbMongodbClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbMongodbClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MdbMongodbClusterMaintenanceWindowOutput) ToMdbMongodbClusterMaintenanceWindowOutput() MdbMongodbClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o MdbMongodbClusterMaintenanceWindowOutput) ToMdbMongodbClusterMaintenanceWindowOutputWithContext(ctx context.Context) MdbMongodbClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o MdbMongodbClusterMaintenanceWindowOutput) ToMdbMongodbClusterMaintenanceWindowPtrOutput() MdbMongodbClusterMaintenanceWindowPtrOutput {
+	return o.ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o MdbMongodbClusterMaintenanceWindowOutput) ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMongodbClusterMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v MdbMongodbClusterMaintenanceWindow) *MdbMongodbClusterMaintenanceWindow {
+		return &v
+	}).(MdbMongodbClusterMaintenanceWindowPtrOutput)
+}
+
+// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+func (o MdbMongodbClusterMaintenanceWindowOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbMongodbClusterMaintenanceWindow) *string { return v.Day }).(pulumi.StringPtrOutput)
+}
+
+// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+func (o MdbMongodbClusterMaintenanceWindowOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MdbMongodbClusterMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o MdbMongodbClusterMaintenanceWindowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbMongodbClusterMaintenanceWindow) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MdbMongodbClusterMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbMongodbClusterMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbMongodbClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MdbMongodbClusterMaintenanceWindowPtrOutput) ToMdbMongodbClusterMaintenanceWindowPtrOutput() MdbMongodbClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MdbMongodbClusterMaintenanceWindowPtrOutput) ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMongodbClusterMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MdbMongodbClusterMaintenanceWindowPtrOutput) Elem() MdbMongodbClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v *MdbMongodbClusterMaintenanceWindow) MdbMongodbClusterMaintenanceWindow { return *v }).(MdbMongodbClusterMaintenanceWindowOutput)
+}
+
+// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+func (o MdbMongodbClusterMaintenanceWindowPtrOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbMongodbClusterMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+func (o MdbMongodbClusterMaintenanceWindowPtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbMongodbClusterMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o MdbMongodbClusterMaintenanceWindowPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbMongodbClusterMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type MdbMongodbClusterResources struct {
@@ -32035,13 +35712,20 @@ func (o YdbDatabaseDedicatedStorageConfigPtrOutput) StorageTypeId() pulumi.Strin
 }
 
 type GetAlbBackendGroupGrpcBackend struct {
-	Healthcheck         GetAlbBackendGroupGrpcBackendHealthcheck         `pulumi:"healthcheck"`
+	// Healthcheck specification that will be used by this backend. Structure is documented below.
+	Healthcheck GetAlbBackendGroupGrpcBackendHealthcheck `pulumi:"healthcheck"`
+	// Load Balancing Config specification that will be used by this backend. Structure is documented below.
 	LoadBalancingConfig GetAlbBackendGroupGrpcBackendLoadBalancingConfig `pulumi:"loadBalancingConfig"`
-	Name                string                                           `pulumi:"name"`
-	Port                int                                              `pulumi:"port"`
-	TargetGroupIds      []string                                         `pulumi:"targetGroupIds"`
-	Tls                 GetAlbBackendGroupGrpcBackendTls                 `pulumi:"tls"`
-	Weight              int                                              `pulumi:"weight"`
+	// - Name of the Backend Group.
+	Name string `pulumi:"name"`
+	// Port for incoming traffic.
+	Port int `pulumi:"port"`
+	// References target groups for the backend.
+	TargetGroupIds []string `pulumi:"targetGroupIds"`
+	// Tls specification that will be used by this backend. Structure is documented below.
+	Tls GetAlbBackendGroupGrpcBackendTls `pulumi:"tls"`
+	// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+	Weight int `pulumi:"weight"`
 }
 
 // GetAlbBackendGroupGrpcBackendInput is an input type that accepts GetAlbBackendGroupGrpcBackendArgs and GetAlbBackendGroupGrpcBackendOutput values.
@@ -32056,13 +35740,20 @@ type GetAlbBackendGroupGrpcBackendInput interface {
 }
 
 type GetAlbBackendGroupGrpcBackendArgs struct {
-	Healthcheck         GetAlbBackendGroupGrpcBackendHealthcheckInput         `pulumi:"healthcheck"`
+	// Healthcheck specification that will be used by this backend. Structure is documented below.
+	Healthcheck GetAlbBackendGroupGrpcBackendHealthcheckInput `pulumi:"healthcheck"`
+	// Load Balancing Config specification that will be used by this backend. Structure is documented below.
 	LoadBalancingConfig GetAlbBackendGroupGrpcBackendLoadBalancingConfigInput `pulumi:"loadBalancingConfig"`
-	Name                pulumi.StringInput                                    `pulumi:"name"`
-	Port                pulumi.IntInput                                       `pulumi:"port"`
-	TargetGroupIds      pulumi.StringArrayInput                               `pulumi:"targetGroupIds"`
-	Tls                 GetAlbBackendGroupGrpcBackendTlsInput                 `pulumi:"tls"`
-	Weight              pulumi.IntInput                                       `pulumi:"weight"`
+	// - Name of the Backend Group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port for incoming traffic.
+	Port pulumi.IntInput `pulumi:"port"`
+	// References target groups for the backend.
+	TargetGroupIds pulumi.StringArrayInput `pulumi:"targetGroupIds"`
+	// Tls specification that will be used by this backend. Structure is documented below.
+	Tls GetAlbBackendGroupGrpcBackendTlsInput `pulumi:"tls"`
+	// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (GetAlbBackendGroupGrpcBackendArgs) ElementType() reflect.Type {
@@ -32116,32 +35807,39 @@ func (o GetAlbBackendGroupGrpcBackendOutput) ToGetAlbBackendGroupGrpcBackendOutp
 	return o
 }
 
+// Healthcheck specification that will be used by this backend. Structure is documented below.
 func (o GetAlbBackendGroupGrpcBackendOutput) Healthcheck() GetAlbBackendGroupGrpcBackendHealthcheckOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) GetAlbBackendGroupGrpcBackendHealthcheck { return v.Healthcheck }).(GetAlbBackendGroupGrpcBackendHealthcheckOutput)
 }
 
+// Load Balancing Config specification that will be used by this backend. Structure is documented below.
 func (o GetAlbBackendGroupGrpcBackendOutput) LoadBalancingConfig() GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
 		return v.LoadBalancingConfig
 	}).(GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput)
 }
 
+// - Name of the Backend Group.
 func (o GetAlbBackendGroupGrpcBackendOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Port for incoming traffic.
 func (o GetAlbBackendGroupGrpcBackendOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// References target groups for the backend.
 func (o GetAlbBackendGroupGrpcBackendOutput) TargetGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) []string { return v.TargetGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// Tls specification that will be used by this backend. Structure is documented below.
 func (o GetAlbBackendGroupGrpcBackendOutput) Tls() GetAlbBackendGroupGrpcBackendTlsOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) GetAlbBackendGroupGrpcBackendTls { return v.Tls }).(GetAlbBackendGroupGrpcBackendTlsOutput)
 }
 
+// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
 func (o GetAlbBackendGroupGrpcBackendOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackend) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -32167,15 +35865,24 @@ func (o GetAlbBackendGroupGrpcBackendArrayOutput) Index(i pulumi.IntInput) GetAl
 }
 
 type GetAlbBackendGroupGrpcBackendHealthcheck struct {
-	GrpcHealthcheck       GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck   `pulumi:"grpcHealthcheck"`
-	HealthcheckPort       int                                                       `pulumi:"healthcheckPort"`
-	HealthyThreshold      int                                                       `pulumi:"healthyThreshold"`
-	HttpHealthcheck       GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck   `pulumi:"httpHealthcheck"`
-	Interval              string                                                    `pulumi:"interval"`
-	IntervalJitterPercent float64                                                   `pulumi:"intervalJitterPercent"`
-	StreamHealthcheck     GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck `pulumi:"streamHealthcheck"`
-	Timeout               string                                                    `pulumi:"timeout"`
-	UnhealthyThreshold    int                                                       `pulumi:"unhealthyThreshold"`
+	// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	GrpcHealthcheck GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck `pulumi:"grpcHealthcheck"`
+	// Optional alternative port for health checking.
+	HealthcheckPort int `pulumi:"healthcheckPort"`
+	// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	HttpHealthcheck GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck `pulumi:"httpHealthcheck"`
+	// Interval between health checks.
+	Interval string `pulumi:"interval"`
+	// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+	IntervalJitterPercent float64 `pulumi:"intervalJitterPercent"`
+	// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	StreamHealthcheck GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck `pulumi:"streamHealthcheck"`
+	// Time to wait for a health check response.
+	Timeout string `pulumi:"timeout"`
+	// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
 }
 
 // GetAlbBackendGroupGrpcBackendHealthcheckInput is an input type that accepts GetAlbBackendGroupGrpcBackendHealthcheckArgs and GetAlbBackendGroupGrpcBackendHealthcheckOutput values.
@@ -32190,15 +35897,24 @@ type GetAlbBackendGroupGrpcBackendHealthcheckInput interface {
 }
 
 type GetAlbBackendGroupGrpcBackendHealthcheckArgs struct {
-	GrpcHealthcheck       GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput   `pulumi:"grpcHealthcheck"`
-	HealthcheckPort       pulumi.IntInput                                                `pulumi:"healthcheckPort"`
-	HealthyThreshold      pulumi.IntInput                                                `pulumi:"healthyThreshold"`
-	HttpHealthcheck       GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput   `pulumi:"httpHealthcheck"`
-	Interval              pulumi.StringInput                                             `pulumi:"interval"`
-	IntervalJitterPercent pulumi.Float64Input                                            `pulumi:"intervalJitterPercent"`
-	StreamHealthcheck     GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput `pulumi:"streamHealthcheck"`
-	Timeout               pulumi.StringInput                                             `pulumi:"timeout"`
-	UnhealthyThreshold    pulumi.IntInput                                                `pulumi:"unhealthyThreshold"`
+	// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	GrpcHealthcheck GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput `pulumi:"grpcHealthcheck"`
+	// Optional alternative port for health checking.
+	HealthcheckPort pulumi.IntInput `pulumi:"healthcheckPort"`
+	// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	HttpHealthcheck GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput `pulumi:"httpHealthcheck"`
+	// Interval between health checks.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+	IntervalJitterPercent pulumi.Float64Input `pulumi:"intervalJitterPercent"`
+	// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	StreamHealthcheck GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput `pulumi:"streamHealthcheck"`
+	// Time to wait for a health check response.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
 }
 
 func (GetAlbBackendGroupGrpcBackendHealthcheckArgs) ElementType() reflect.Type {
@@ -32227,49 +35943,59 @@ func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) ToGetAlbBackendGroupGrpc
 	return o
 }
 
+// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) GrpcHealthcheck() GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
 		return v.GrpcHealthcheck
 	}).(GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput)
 }
 
+// Optional alternative port for health checking.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) HealthcheckPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) int { return v.HealthcheckPort }).(pulumi.IntOutput)
 }
 
+// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
+// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) HttpHealthcheck() GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
 		return v.HttpHealthcheck
 	}).(GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput)
 }
 
+// Interval between health checks.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) Interval() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) string { return v.Interval }).(pulumi.StringOutput)
 }
 
+// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) IntervalJitterPercent() pulumi.Float64Output {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) float64 { return v.IntervalJitterPercent }).(pulumi.Float64Output)
 }
 
+// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) StreamHealthcheck() GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
 		return v.StreamHealthcheck
 	}).(GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput)
 }
 
+// Time to wait for a health check response.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
+// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckOutput) UnhealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
 }
 
 type GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck struct {
+	// Optional service name for grpc.health.v1.HealthCheckRequest message.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -32285,6 +36011,7 @@ type GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput interface {
 }
 
 type GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs struct {
+	// Optional service name for grpc.health.v1.HealthCheckRequest message.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -32314,14 +36041,18 @@ func (o GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ToGetAlbB
 	return o
 }
 
+// Optional service name for grpc.health.v1.HealthCheckRequest message.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 type GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck struct {
-	Host  string `pulumi:"host"`
-	Http2 bool   `pulumi:"http2"`
-	Path  string `pulumi:"path"`
+	// Optional "Host" HTTP header value.
+	Host string `pulumi:"host"`
+	// If set, health checks will use HTTP2.
+	Http2 bool `pulumi:"http2"`
+	// HTTP path.
+	Path string `pulumi:"path"`
 }
 
 // GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput is an input type that accepts GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs and GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput values.
@@ -32336,9 +36067,12 @@ type GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput interface {
 }
 
 type GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs struct {
-	Host  pulumi.StringInput `pulumi:"host"`
-	Http2 pulumi.BoolInput   `pulumi:"http2"`
-	Path  pulumi.StringInput `pulumi:"path"`
+	// Optional "Host" HTTP header value.
+	Host pulumi.StringInput `pulumi:"host"`
+	// If set, health checks will use HTTP2.
+	Http2 pulumi.BoolInput `pulumi:"http2"`
+	// HTTP path.
+	Path pulumi.StringInput `pulumi:"path"`
 }
 
 func (GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs) ElementType() reflect.Type {
@@ -32367,21 +36101,26 @@ func (o GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ToGetAlbB
 	return o
 }
 
+// Optional "Host" HTTP header value.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// If set, health checks will use HTTP2.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) Http2() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) bool { return v.Http2 }).(pulumi.BoolOutput)
 }
 
+// HTTP path.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) string { return v.Path }).(pulumi.StringOutput)
 }
 
 type GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck struct {
+	// Optional text to search in reply.
 	Receive string `pulumi:"receive"`
-	Send    string `pulumi:"send"`
+	// Optional message to send. If empty, it's a connect-only health check.
+	Send string `pulumi:"send"`
 }
 
 // GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput is an input type that accepts GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs and GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput values.
@@ -32396,8 +36135,10 @@ type GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput interface {
 }
 
 type GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs struct {
+	// Optional text to search in reply.
 	Receive pulumi.StringInput `pulumi:"receive"`
-	Send    pulumi.StringInput `pulumi:"send"`
+	// Optional message to send. If empty, it's a connect-only health check.
+	Send pulumi.StringInput `pulumi:"send"`
 }
 
 func (GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs) ElementType() reflect.Type {
@@ -32426,18 +36167,23 @@ func (o GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ToGetAl
 	return o
 }
 
+// Optional text to search in reply.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) Receive() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) string { return v.Receive }).(pulumi.StringOutput)
 }
 
+// Optional message to send. If empty, it's a connect-only health check.
 func (o GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) Send() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) string { return v.Send }).(pulumi.StringOutput)
 }
 
 type GetAlbBackendGroupGrpcBackendLoadBalancingConfig struct {
-	LocalityAwareRoutingPercent int  `pulumi:"localityAwareRoutingPercent"`
-	PanicThreshold              int  `pulumi:"panicThreshold"`
-	StrictLocality              bool `pulumi:"strictLocality"`
+	// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+	LocalityAwareRoutingPercent int `pulumi:"localityAwareRoutingPercent"`
+	// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+	PanicThreshold int `pulumi:"panicThreshold"`
+	// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+	StrictLocality bool `pulumi:"strictLocality"`
 }
 
 // GetAlbBackendGroupGrpcBackendLoadBalancingConfigInput is an input type that accepts GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs and GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput values.
@@ -32452,9 +36198,12 @@ type GetAlbBackendGroupGrpcBackendLoadBalancingConfigInput interface {
 }
 
 type GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs struct {
-	LocalityAwareRoutingPercent pulumi.IntInput  `pulumi:"localityAwareRoutingPercent"`
-	PanicThreshold              pulumi.IntInput  `pulumi:"panicThreshold"`
-	StrictLocality              pulumi.BoolInput `pulumi:"strictLocality"`
+	// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+	LocalityAwareRoutingPercent pulumi.IntInput `pulumi:"localityAwareRoutingPercent"`
+	// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+	PanicThreshold pulumi.IntInput `pulumi:"panicThreshold"`
+	// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+	StrictLocality pulumi.BoolInput `pulumi:"strictLocality"`
 }
 
 func (GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs) ElementType() reflect.Type {
@@ -32483,19 +36232,25 @@ func (o GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ToGetAlbBackendG
 	return o
 }
 
+// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
 func (o GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) LocalityAwareRoutingPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendLoadBalancingConfig) int { return v.LocalityAwareRoutingPercent }).(pulumi.IntOutput)
 }
 
+// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
 func (o GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) PanicThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendLoadBalancingConfig) int { return v.PanicThreshold }).(pulumi.IntOutput)
 }
 
+// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
 func (o GetAlbBackendGroupGrpcBackendLoadBalancingConfigOutput) StrictLocality() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendLoadBalancingConfig) bool { return v.StrictLocality }).(pulumi.BoolOutput)
 }
 
 type GetAlbBackendGroupGrpcBackendTls struct {
+	// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+	// * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+	// * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
 	Sni               string                                            `pulumi:"sni"`
 	ValidationContext GetAlbBackendGroupGrpcBackendTlsValidationContext `pulumi:"validationContext"`
 }
@@ -32512,6 +36267,9 @@ type GetAlbBackendGroupGrpcBackendTlsInput interface {
 }
 
 type GetAlbBackendGroupGrpcBackendTlsArgs struct {
+	// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+	// * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+	// * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
 	Sni               pulumi.StringInput                                     `pulumi:"sni"`
 	ValidationContext GetAlbBackendGroupGrpcBackendTlsValidationContextInput `pulumi:"validationContext"`
 }
@@ -32542,6 +36300,9 @@ func (o GetAlbBackendGroupGrpcBackendTlsOutput) ToGetAlbBackendGroupGrpcBackendT
 	return o
 }
 
+// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+// * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+// * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
 func (o GetAlbBackendGroupGrpcBackendTlsOutput) Sni() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupGrpcBackendTls) string { return v.Sni }).(pulumi.StringOutput)
 }
@@ -32608,14 +36369,22 @@ func (o GetAlbBackendGroupGrpcBackendTlsValidationContextOutput) TrustedCaId() p
 }
 
 type GetAlbBackendGroupHttpBackend struct {
-	Healthcheck         GetAlbBackendGroupHttpBackendHealthcheck         `pulumi:"healthcheck"`
-	Http2               bool                                             `pulumi:"http2"`
+	// Healthcheck specification that will be used by this backend. Structure is documented below.
+	Healthcheck GetAlbBackendGroupHttpBackendHealthcheck `pulumi:"healthcheck"`
+	// If set, health checks will use HTTP2.
+	Http2 bool `pulumi:"http2"`
+	// Load Balancing Config specification that will be used by this backend. Structure is documented below.
 	LoadBalancingConfig GetAlbBackendGroupHttpBackendLoadBalancingConfig `pulumi:"loadBalancingConfig"`
-	Name                string                                           `pulumi:"name"`
-	Port                int                                              `pulumi:"port"`
-	TargetGroupIds      []string                                         `pulumi:"targetGroupIds"`
-	Tls                 GetAlbBackendGroupHttpBackendTls                 `pulumi:"tls"`
-	Weight              int                                              `pulumi:"weight"`
+	// - Name of the Backend Group.
+	Name string `pulumi:"name"`
+	// Port for incoming traffic.
+	Port int `pulumi:"port"`
+	// References target groups for the backend.
+	TargetGroupIds []string `pulumi:"targetGroupIds"`
+	// Tls specification that will be used by this backend. Structure is documented below.
+	Tls GetAlbBackendGroupHttpBackendTls `pulumi:"tls"`
+	// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+	Weight int `pulumi:"weight"`
 }
 
 // GetAlbBackendGroupHttpBackendInput is an input type that accepts GetAlbBackendGroupHttpBackendArgs and GetAlbBackendGroupHttpBackendOutput values.
@@ -32630,14 +36399,22 @@ type GetAlbBackendGroupHttpBackendInput interface {
 }
 
 type GetAlbBackendGroupHttpBackendArgs struct {
-	Healthcheck         GetAlbBackendGroupHttpBackendHealthcheckInput         `pulumi:"healthcheck"`
-	Http2               pulumi.BoolInput                                      `pulumi:"http2"`
+	// Healthcheck specification that will be used by this backend. Structure is documented below.
+	Healthcheck GetAlbBackendGroupHttpBackendHealthcheckInput `pulumi:"healthcheck"`
+	// If set, health checks will use HTTP2.
+	Http2 pulumi.BoolInput `pulumi:"http2"`
+	// Load Balancing Config specification that will be used by this backend. Structure is documented below.
 	LoadBalancingConfig GetAlbBackendGroupHttpBackendLoadBalancingConfigInput `pulumi:"loadBalancingConfig"`
-	Name                pulumi.StringInput                                    `pulumi:"name"`
-	Port                pulumi.IntInput                                       `pulumi:"port"`
-	TargetGroupIds      pulumi.StringArrayInput                               `pulumi:"targetGroupIds"`
-	Tls                 GetAlbBackendGroupHttpBackendTlsInput                 `pulumi:"tls"`
-	Weight              pulumi.IntInput                                       `pulumi:"weight"`
+	// - Name of the Backend Group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port for incoming traffic.
+	Port pulumi.IntInput `pulumi:"port"`
+	// References target groups for the backend.
+	TargetGroupIds pulumi.StringArrayInput `pulumi:"targetGroupIds"`
+	// Tls specification that will be used by this backend. Structure is documented below.
+	Tls GetAlbBackendGroupHttpBackendTlsInput `pulumi:"tls"`
+	// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (GetAlbBackendGroupHttpBackendArgs) ElementType() reflect.Type {
@@ -32691,36 +36468,44 @@ func (o GetAlbBackendGroupHttpBackendOutput) ToGetAlbBackendGroupHttpBackendOutp
 	return o
 }
 
+// Healthcheck specification that will be used by this backend. Structure is documented below.
 func (o GetAlbBackendGroupHttpBackendOutput) Healthcheck() GetAlbBackendGroupHttpBackendHealthcheckOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) GetAlbBackendGroupHttpBackendHealthcheck { return v.Healthcheck }).(GetAlbBackendGroupHttpBackendHealthcheckOutput)
 }
 
+// If set, health checks will use HTTP2.
 func (o GetAlbBackendGroupHttpBackendOutput) Http2() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) bool { return v.Http2 }).(pulumi.BoolOutput)
 }
 
+// Load Balancing Config specification that will be used by this backend. Structure is documented below.
 func (o GetAlbBackendGroupHttpBackendOutput) LoadBalancingConfig() GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) GetAlbBackendGroupHttpBackendLoadBalancingConfig {
 		return v.LoadBalancingConfig
 	}).(GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput)
 }
 
+// - Name of the Backend Group.
 func (o GetAlbBackendGroupHttpBackendOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Port for incoming traffic.
 func (o GetAlbBackendGroupHttpBackendOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// References target groups for the backend.
 func (o GetAlbBackendGroupHttpBackendOutput) TargetGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) []string { return v.TargetGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// Tls specification that will be used by this backend. Structure is documented below.
 func (o GetAlbBackendGroupHttpBackendOutput) Tls() GetAlbBackendGroupHttpBackendTlsOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) GetAlbBackendGroupHttpBackendTls { return v.Tls }).(GetAlbBackendGroupHttpBackendTlsOutput)
 }
 
+// Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
 func (o GetAlbBackendGroupHttpBackendOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackend) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -32746,15 +36531,24 @@ func (o GetAlbBackendGroupHttpBackendArrayOutput) Index(i pulumi.IntInput) GetAl
 }
 
 type GetAlbBackendGroupHttpBackendHealthcheck struct {
-	GrpcHealthcheck       GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck   `pulumi:"grpcHealthcheck"`
-	HealthcheckPort       int                                                       `pulumi:"healthcheckPort"`
-	HealthyThreshold      int                                                       `pulumi:"healthyThreshold"`
-	HttpHealthcheck       GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck   `pulumi:"httpHealthcheck"`
-	Interval              string                                                    `pulumi:"interval"`
-	IntervalJitterPercent float64                                                   `pulumi:"intervalJitterPercent"`
-	StreamHealthcheck     GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck `pulumi:"streamHealthcheck"`
-	Timeout               string                                                    `pulumi:"timeout"`
-	UnhealthyThreshold    int                                                       `pulumi:"unhealthyThreshold"`
+	// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	GrpcHealthcheck GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck `pulumi:"grpcHealthcheck"`
+	// Optional alternative port for health checking.
+	HealthcheckPort int `pulumi:"healthcheckPort"`
+	// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	HttpHealthcheck GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck `pulumi:"httpHealthcheck"`
+	// Interval between health checks.
+	Interval string `pulumi:"interval"`
+	// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+	IntervalJitterPercent float64 `pulumi:"intervalJitterPercent"`
+	// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	StreamHealthcheck GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck `pulumi:"streamHealthcheck"`
+	// Time to wait for a health check response.
+	Timeout string `pulumi:"timeout"`
+	// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
 }
 
 // GetAlbBackendGroupHttpBackendHealthcheckInput is an input type that accepts GetAlbBackendGroupHttpBackendHealthcheckArgs and GetAlbBackendGroupHttpBackendHealthcheckOutput values.
@@ -32769,15 +36563,24 @@ type GetAlbBackendGroupHttpBackendHealthcheckInput interface {
 }
 
 type GetAlbBackendGroupHttpBackendHealthcheckArgs struct {
-	GrpcHealthcheck       GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput   `pulumi:"grpcHealthcheck"`
-	HealthcheckPort       pulumi.IntInput                                                `pulumi:"healthcheckPort"`
-	HealthyThreshold      pulumi.IntInput                                                `pulumi:"healthyThreshold"`
-	HttpHealthcheck       GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput   `pulumi:"httpHealthcheck"`
-	Interval              pulumi.StringInput                                             `pulumi:"interval"`
-	IntervalJitterPercent pulumi.Float64Input                                            `pulumi:"intervalJitterPercent"`
-	StreamHealthcheck     GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput `pulumi:"streamHealthcheck"`
-	Timeout               pulumi.StringInput                                             `pulumi:"timeout"`
-	UnhealthyThreshold    pulumi.IntInput                                                `pulumi:"unhealthyThreshold"`
+	// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	GrpcHealthcheck GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput `pulumi:"grpcHealthcheck"`
+	// Optional alternative port for health checking.
+	HealthcheckPort pulumi.IntInput `pulumi:"healthcheckPort"`
+	// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	HttpHealthcheck GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput `pulumi:"httpHealthcheck"`
+	// Interval between health checks.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+	IntervalJitterPercent pulumi.Float64Input `pulumi:"intervalJitterPercent"`
+	// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+	StreamHealthcheck GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput `pulumi:"streamHealthcheck"`
+	// Time to wait for a health check response.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
 }
 
 func (GetAlbBackendGroupHttpBackendHealthcheckArgs) ElementType() reflect.Type {
@@ -32806,49 +36609,59 @@ func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) ToGetAlbBackendGroupHttp
 	return o
 }
 
+// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
 func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) GrpcHealthcheck() GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
 		return v.GrpcHealthcheck
 	}).(GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput)
 }
 
+// Optional alternative port for health checking.
 func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) HealthcheckPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) int { return v.HealthcheckPort }).(pulumi.IntOutput)
 }
 
+// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
 func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
+// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
 func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) HttpHealthcheck() GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
 		return v.HttpHealthcheck
 	}).(GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput)
 }
 
+// Interval between health checks.
 func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) Interval() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) string { return v.Interval }).(pulumi.StringOutput)
 }
 
+// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
 func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) IntervalJitterPercent() pulumi.Float64Output {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) float64 { return v.IntervalJitterPercent }).(pulumi.Float64Output)
 }
 
+// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
 func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) StreamHealthcheck() GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
 		return v.StreamHealthcheck
 	}).(GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput)
 }
 
+// Time to wait for a health check response.
 func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
+// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
 func (o GetAlbBackendGroupHttpBackendHealthcheckOutput) UnhealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
 }
 
 type GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck struct {
+	// Optional service name for grpc.health.v1.HealthCheckRequest message.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -32864,6 +36677,7 @@ type GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput interface {
 }
 
 type GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs struct {
+	// Optional service name for grpc.health.v1.HealthCheckRequest message.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -32893,14 +36707,18 @@ func (o GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ToGetAlbB
 	return o
 }
 
+// Optional service name for grpc.health.v1.HealthCheckRequest message.
 func (o GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 type GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck struct {
-	Host  string `pulumi:"host"`
-	Http2 bool   `pulumi:"http2"`
-	Path  string `pulumi:"path"`
+	// Optional "Host" HTTP header value.
+	Host string `pulumi:"host"`
+	// If set, health checks will use HTTP2.
+	Http2 bool `pulumi:"http2"`
+	// HTTP path.
+	Path string `pulumi:"path"`
 }
 
 // GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput is an input type that accepts GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs and GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput values.
@@ -32915,9 +36733,12 @@ type GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput interface {
 }
 
 type GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs struct {
-	Host  pulumi.StringInput `pulumi:"host"`
-	Http2 pulumi.BoolInput   `pulumi:"http2"`
-	Path  pulumi.StringInput `pulumi:"path"`
+	// Optional "Host" HTTP header value.
+	Host pulumi.StringInput `pulumi:"host"`
+	// If set, health checks will use HTTP2.
+	Http2 pulumi.BoolInput `pulumi:"http2"`
+	// HTTP path.
+	Path pulumi.StringInput `pulumi:"path"`
 }
 
 func (GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs) ElementType() reflect.Type {
@@ -32946,21 +36767,26 @@ func (o GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ToGetAlbB
 	return o
 }
 
+// Optional "Host" HTTP header value.
 func (o GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// If set, health checks will use HTTP2.
 func (o GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) Http2() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) bool { return v.Http2 }).(pulumi.BoolOutput)
 }
 
+// HTTP path.
 func (o GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) string { return v.Path }).(pulumi.StringOutput)
 }
 
 type GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck struct {
+	// Optional text to search in reply.
 	Receive string `pulumi:"receive"`
-	Send    string `pulumi:"send"`
+	// Optional message to send. If empty, it's a connect-only health check.
+	Send string `pulumi:"send"`
 }
 
 // GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput is an input type that accepts GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs and GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput values.
@@ -32975,8 +36801,10 @@ type GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput interface {
 }
 
 type GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs struct {
+	// Optional text to search in reply.
 	Receive pulumi.StringInput `pulumi:"receive"`
-	Send    pulumi.StringInput `pulumi:"send"`
+	// Optional message to send. If empty, it's a connect-only health check.
+	Send pulumi.StringInput `pulumi:"send"`
 }
 
 func (GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs) ElementType() reflect.Type {
@@ -33005,18 +36833,23 @@ func (o GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ToGetAl
 	return o
 }
 
+// Optional text to search in reply.
 func (o GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) Receive() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) string { return v.Receive }).(pulumi.StringOutput)
 }
 
+// Optional message to send. If empty, it's a connect-only health check.
 func (o GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) Send() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) string { return v.Send }).(pulumi.StringOutput)
 }
 
 type GetAlbBackendGroupHttpBackendLoadBalancingConfig struct {
-	LocalityAwareRoutingPercent int  `pulumi:"localityAwareRoutingPercent"`
-	PanicThreshold              int  `pulumi:"panicThreshold"`
-	StrictLocality              bool `pulumi:"strictLocality"`
+	// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+	LocalityAwareRoutingPercent int `pulumi:"localityAwareRoutingPercent"`
+	// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+	PanicThreshold int `pulumi:"panicThreshold"`
+	// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+	StrictLocality bool `pulumi:"strictLocality"`
 }
 
 // GetAlbBackendGroupHttpBackendLoadBalancingConfigInput is an input type that accepts GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs and GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput values.
@@ -33031,9 +36864,12 @@ type GetAlbBackendGroupHttpBackendLoadBalancingConfigInput interface {
 }
 
 type GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs struct {
-	LocalityAwareRoutingPercent pulumi.IntInput  `pulumi:"localityAwareRoutingPercent"`
-	PanicThreshold              pulumi.IntInput  `pulumi:"panicThreshold"`
-	StrictLocality              pulumi.BoolInput `pulumi:"strictLocality"`
+	// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+	LocalityAwareRoutingPercent pulumi.IntInput `pulumi:"localityAwareRoutingPercent"`
+	// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+	PanicThreshold pulumi.IntInput `pulumi:"panicThreshold"`
+	// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+	StrictLocality pulumi.BoolInput `pulumi:"strictLocality"`
 }
 
 func (GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs) ElementType() reflect.Type {
@@ -33062,19 +36898,25 @@ func (o GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) ToGetAlbBackendG
 	return o
 }
 
+// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
 func (o GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) LocalityAwareRoutingPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendLoadBalancingConfig) int { return v.LocalityAwareRoutingPercent }).(pulumi.IntOutput)
 }
 
+// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
 func (o GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) PanicThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendLoadBalancingConfig) int { return v.PanicThreshold }).(pulumi.IntOutput)
 }
 
+// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
 func (o GetAlbBackendGroupHttpBackendLoadBalancingConfigOutput) StrictLocality() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendLoadBalancingConfig) bool { return v.StrictLocality }).(pulumi.BoolOutput)
 }
 
 type GetAlbBackendGroupHttpBackendTls struct {
+	// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+	// * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+	// * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
 	Sni               string                                            `pulumi:"sni"`
 	ValidationContext GetAlbBackendGroupHttpBackendTlsValidationContext `pulumi:"validationContext"`
 }
@@ -33091,6 +36933,9 @@ type GetAlbBackendGroupHttpBackendTlsInput interface {
 }
 
 type GetAlbBackendGroupHttpBackendTlsArgs struct {
+	// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+	// * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+	// * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
 	Sni               pulumi.StringInput                                     `pulumi:"sni"`
 	ValidationContext GetAlbBackendGroupHttpBackendTlsValidationContextInput `pulumi:"validationContext"`
 }
@@ -33121,6 +36966,9 @@ func (o GetAlbBackendGroupHttpBackendTlsOutput) ToGetAlbBackendGroupHttpBackendT
 	return o
 }
 
+// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+// * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+// * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
 func (o GetAlbBackendGroupHttpBackendTlsOutput) Sni() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlbBackendGroupHttpBackendTls) string { return v.Sni }).(pulumi.StringOutput)
 }
@@ -33284,6 +37132,1307 @@ func (o GetAlbTargetGroupTargetArrayOutput) Index(i pulumi.IntInput) GetAlbTarge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbTargetGroupTarget {
 		return vs[0].([]GetAlbTargetGroupTarget)[vs[1].(int)]
 	}).(GetAlbTargetGroupTargetOutput)
+}
+
+type GetAlbVirtualHostModifyRequestHeader struct {
+	// Append string to the header value.
+	Append string `pulumi:"append"`
+	// Name of the Virtual Host.
+	Name string `pulumi:"name"`
+	// If set, remove the header.
+	Remove bool `pulumi:"remove"`
+	// New value for a header. Header values support the following
+	// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+	// .
+	Replace string `pulumi:"replace"`
+}
+
+// GetAlbVirtualHostModifyRequestHeaderInput is an input type that accepts GetAlbVirtualHostModifyRequestHeaderArgs and GetAlbVirtualHostModifyRequestHeaderOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostModifyRequestHeaderInput` via:
+//
+//          GetAlbVirtualHostModifyRequestHeaderArgs{...}
+type GetAlbVirtualHostModifyRequestHeaderInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostModifyRequestHeaderOutput() GetAlbVirtualHostModifyRequestHeaderOutput
+	ToGetAlbVirtualHostModifyRequestHeaderOutputWithContext(context.Context) GetAlbVirtualHostModifyRequestHeaderOutput
+}
+
+type GetAlbVirtualHostModifyRequestHeaderArgs struct {
+	// Append string to the header value.
+	Append pulumi.StringInput `pulumi:"append"`
+	// Name of the Virtual Host.
+	Name pulumi.StringInput `pulumi:"name"`
+	// If set, remove the header.
+	Remove pulumi.BoolInput `pulumi:"remove"`
+	// New value for a header. Header values support the following
+	// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+	// .
+	Replace pulumi.StringInput `pulumi:"replace"`
+}
+
+func (GetAlbVirtualHostModifyRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostModifyRequestHeader)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostModifyRequestHeaderArgs) ToGetAlbVirtualHostModifyRequestHeaderOutput() GetAlbVirtualHostModifyRequestHeaderOutput {
+	return i.ToGetAlbVirtualHostModifyRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostModifyRequestHeaderArgs) ToGetAlbVirtualHostModifyRequestHeaderOutputWithContext(ctx context.Context) GetAlbVirtualHostModifyRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostModifyRequestHeaderOutput)
+}
+
+// GetAlbVirtualHostModifyRequestHeaderArrayInput is an input type that accepts GetAlbVirtualHostModifyRequestHeaderArray and GetAlbVirtualHostModifyRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostModifyRequestHeaderArrayInput` via:
+//
+//          GetAlbVirtualHostModifyRequestHeaderArray{ GetAlbVirtualHostModifyRequestHeaderArgs{...} }
+type GetAlbVirtualHostModifyRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostModifyRequestHeaderArrayOutput() GetAlbVirtualHostModifyRequestHeaderArrayOutput
+	ToGetAlbVirtualHostModifyRequestHeaderArrayOutputWithContext(context.Context) GetAlbVirtualHostModifyRequestHeaderArrayOutput
+}
+
+type GetAlbVirtualHostModifyRequestHeaderArray []GetAlbVirtualHostModifyRequestHeaderInput
+
+func (GetAlbVirtualHostModifyRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostModifyRequestHeader)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostModifyRequestHeaderArray) ToGetAlbVirtualHostModifyRequestHeaderArrayOutput() GetAlbVirtualHostModifyRequestHeaderArrayOutput {
+	return i.ToGetAlbVirtualHostModifyRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostModifyRequestHeaderArray) ToGetAlbVirtualHostModifyRequestHeaderArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostModifyRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostModifyRequestHeaderArrayOutput)
+}
+
+type GetAlbVirtualHostModifyRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostModifyRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostModifyRequestHeader)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostModifyRequestHeaderOutput) ToGetAlbVirtualHostModifyRequestHeaderOutput() GetAlbVirtualHostModifyRequestHeaderOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostModifyRequestHeaderOutput) ToGetAlbVirtualHostModifyRequestHeaderOutputWithContext(ctx context.Context) GetAlbVirtualHostModifyRequestHeaderOutput {
+	return o
+}
+
+// Append string to the header value.
+func (o GetAlbVirtualHostModifyRequestHeaderOutput) Append() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostModifyRequestHeader) string { return v.Append }).(pulumi.StringOutput)
+}
+
+// Name of the Virtual Host.
+func (o GetAlbVirtualHostModifyRequestHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostModifyRequestHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If set, remove the header.
+func (o GetAlbVirtualHostModifyRequestHeaderOutput) Remove() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostModifyRequestHeader) bool { return v.Remove }).(pulumi.BoolOutput)
+}
+
+// New value for a header. Header values support the following
+// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+// .
+func (o GetAlbVirtualHostModifyRequestHeaderOutput) Replace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostModifyRequestHeader) string { return v.Replace }).(pulumi.StringOutput)
+}
+
+type GetAlbVirtualHostModifyRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostModifyRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostModifyRequestHeader)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostModifyRequestHeaderArrayOutput) ToGetAlbVirtualHostModifyRequestHeaderArrayOutput() GetAlbVirtualHostModifyRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostModifyRequestHeaderArrayOutput) ToGetAlbVirtualHostModifyRequestHeaderArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostModifyRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostModifyRequestHeaderArrayOutput) Index(i pulumi.IntInput) GetAlbVirtualHostModifyRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbVirtualHostModifyRequestHeader {
+		return vs[0].([]GetAlbVirtualHostModifyRequestHeader)[vs[1].(int)]
+	}).(GetAlbVirtualHostModifyRequestHeaderOutput)
+}
+
+type GetAlbVirtualHostModifyResponseHeader struct {
+	// Append string to the header value.
+	Append string `pulumi:"append"`
+	// Name of the Virtual Host.
+	Name string `pulumi:"name"`
+	// If set, remove the header.
+	Remove bool `pulumi:"remove"`
+	// New value for a header. Header values support the following
+	// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+	// .
+	Replace string `pulumi:"replace"`
+}
+
+// GetAlbVirtualHostModifyResponseHeaderInput is an input type that accepts GetAlbVirtualHostModifyResponseHeaderArgs and GetAlbVirtualHostModifyResponseHeaderOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostModifyResponseHeaderInput` via:
+//
+//          GetAlbVirtualHostModifyResponseHeaderArgs{...}
+type GetAlbVirtualHostModifyResponseHeaderInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostModifyResponseHeaderOutput() GetAlbVirtualHostModifyResponseHeaderOutput
+	ToGetAlbVirtualHostModifyResponseHeaderOutputWithContext(context.Context) GetAlbVirtualHostModifyResponseHeaderOutput
+}
+
+type GetAlbVirtualHostModifyResponseHeaderArgs struct {
+	// Append string to the header value.
+	Append pulumi.StringInput `pulumi:"append"`
+	// Name of the Virtual Host.
+	Name pulumi.StringInput `pulumi:"name"`
+	// If set, remove the header.
+	Remove pulumi.BoolInput `pulumi:"remove"`
+	// New value for a header. Header values support the following
+	// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+	// .
+	Replace pulumi.StringInput `pulumi:"replace"`
+}
+
+func (GetAlbVirtualHostModifyResponseHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostModifyResponseHeader)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostModifyResponseHeaderArgs) ToGetAlbVirtualHostModifyResponseHeaderOutput() GetAlbVirtualHostModifyResponseHeaderOutput {
+	return i.ToGetAlbVirtualHostModifyResponseHeaderOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostModifyResponseHeaderArgs) ToGetAlbVirtualHostModifyResponseHeaderOutputWithContext(ctx context.Context) GetAlbVirtualHostModifyResponseHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostModifyResponseHeaderOutput)
+}
+
+// GetAlbVirtualHostModifyResponseHeaderArrayInput is an input type that accepts GetAlbVirtualHostModifyResponseHeaderArray and GetAlbVirtualHostModifyResponseHeaderArrayOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostModifyResponseHeaderArrayInput` via:
+//
+//          GetAlbVirtualHostModifyResponseHeaderArray{ GetAlbVirtualHostModifyResponseHeaderArgs{...} }
+type GetAlbVirtualHostModifyResponseHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostModifyResponseHeaderArrayOutput() GetAlbVirtualHostModifyResponseHeaderArrayOutput
+	ToGetAlbVirtualHostModifyResponseHeaderArrayOutputWithContext(context.Context) GetAlbVirtualHostModifyResponseHeaderArrayOutput
+}
+
+type GetAlbVirtualHostModifyResponseHeaderArray []GetAlbVirtualHostModifyResponseHeaderInput
+
+func (GetAlbVirtualHostModifyResponseHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostModifyResponseHeader)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostModifyResponseHeaderArray) ToGetAlbVirtualHostModifyResponseHeaderArrayOutput() GetAlbVirtualHostModifyResponseHeaderArrayOutput {
+	return i.ToGetAlbVirtualHostModifyResponseHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostModifyResponseHeaderArray) ToGetAlbVirtualHostModifyResponseHeaderArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostModifyResponseHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostModifyResponseHeaderArrayOutput)
+}
+
+type GetAlbVirtualHostModifyResponseHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostModifyResponseHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostModifyResponseHeader)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostModifyResponseHeaderOutput) ToGetAlbVirtualHostModifyResponseHeaderOutput() GetAlbVirtualHostModifyResponseHeaderOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostModifyResponseHeaderOutput) ToGetAlbVirtualHostModifyResponseHeaderOutputWithContext(ctx context.Context) GetAlbVirtualHostModifyResponseHeaderOutput {
+	return o
+}
+
+// Append string to the header value.
+func (o GetAlbVirtualHostModifyResponseHeaderOutput) Append() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostModifyResponseHeader) string { return v.Append }).(pulumi.StringOutput)
+}
+
+// Name of the Virtual Host.
+func (o GetAlbVirtualHostModifyResponseHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostModifyResponseHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If set, remove the header.
+func (o GetAlbVirtualHostModifyResponseHeaderOutput) Remove() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostModifyResponseHeader) bool { return v.Remove }).(pulumi.BoolOutput)
+}
+
+// New value for a header. Header values support the following
+// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+// .
+func (o GetAlbVirtualHostModifyResponseHeaderOutput) Replace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostModifyResponseHeader) string { return v.Replace }).(pulumi.StringOutput)
+}
+
+type GetAlbVirtualHostModifyResponseHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostModifyResponseHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostModifyResponseHeader)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostModifyResponseHeaderArrayOutput) ToGetAlbVirtualHostModifyResponseHeaderArrayOutput() GetAlbVirtualHostModifyResponseHeaderArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostModifyResponseHeaderArrayOutput) ToGetAlbVirtualHostModifyResponseHeaderArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostModifyResponseHeaderArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostModifyResponseHeaderArrayOutput) Index(i pulumi.IntInput) GetAlbVirtualHostModifyResponseHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbVirtualHostModifyResponseHeader {
+		return vs[0].([]GetAlbVirtualHostModifyResponseHeader)[vs[1].(int)]
+	}).(GetAlbVirtualHostModifyResponseHeaderOutput)
+}
+
+type GetAlbVirtualHostRoute struct {
+	// GRPC route resource. The structure is documented below.
+	GrpcRoute GetAlbVirtualHostRouteGrpcRoute `pulumi:"grpcRoute"`
+	// HTTP route resource. The structure is documented below.
+	HttpRoute GetAlbVirtualHostRouteHttpRoute `pulumi:"httpRoute"`
+	// Name of the Virtual Host.
+	Name string `pulumi:"name"`
+}
+
+// GetAlbVirtualHostRouteInput is an input type that accepts GetAlbVirtualHostRouteArgs and GetAlbVirtualHostRouteOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteInput` via:
+//
+//          GetAlbVirtualHostRouteArgs{...}
+type GetAlbVirtualHostRouteInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteOutput() GetAlbVirtualHostRouteOutput
+	ToGetAlbVirtualHostRouteOutputWithContext(context.Context) GetAlbVirtualHostRouteOutput
+}
+
+type GetAlbVirtualHostRouteArgs struct {
+	// GRPC route resource. The structure is documented below.
+	GrpcRoute GetAlbVirtualHostRouteGrpcRouteInput `pulumi:"grpcRoute"`
+	// HTTP route resource. The structure is documented below.
+	HttpRoute GetAlbVirtualHostRouteHttpRouteInput `pulumi:"httpRoute"`
+	// Name of the Virtual Host.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAlbVirtualHostRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRoute)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteArgs) ToGetAlbVirtualHostRouteOutput() GetAlbVirtualHostRouteOutput {
+	return i.ToGetAlbVirtualHostRouteOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteArgs) ToGetAlbVirtualHostRouteOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteOutput)
+}
+
+// GetAlbVirtualHostRouteArrayInput is an input type that accepts GetAlbVirtualHostRouteArray and GetAlbVirtualHostRouteArrayOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteArrayInput` via:
+//
+//          GetAlbVirtualHostRouteArray{ GetAlbVirtualHostRouteArgs{...} }
+type GetAlbVirtualHostRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteArrayOutput() GetAlbVirtualHostRouteArrayOutput
+	ToGetAlbVirtualHostRouteArrayOutputWithContext(context.Context) GetAlbVirtualHostRouteArrayOutput
+}
+
+type GetAlbVirtualHostRouteArray []GetAlbVirtualHostRouteInput
+
+func (GetAlbVirtualHostRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostRoute)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteArray) ToGetAlbVirtualHostRouteArrayOutput() GetAlbVirtualHostRouteArrayOutput {
+	return i.ToGetAlbVirtualHostRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteArray) ToGetAlbVirtualHostRouteArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteArrayOutput)
+}
+
+type GetAlbVirtualHostRouteOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRoute)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteOutput) ToGetAlbVirtualHostRouteOutput() GetAlbVirtualHostRouteOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteOutput) ToGetAlbVirtualHostRouteOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteOutput {
+	return o
+}
+
+// GRPC route resource. The structure is documented below.
+func (o GetAlbVirtualHostRouteOutput) GrpcRoute() GetAlbVirtualHostRouteGrpcRouteOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRoute) GetAlbVirtualHostRouteGrpcRoute { return v.GrpcRoute }).(GetAlbVirtualHostRouteGrpcRouteOutput)
+}
+
+// HTTP route resource. The structure is documented below.
+func (o GetAlbVirtualHostRouteOutput) HttpRoute() GetAlbVirtualHostRouteHttpRouteOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRoute) GetAlbVirtualHostRouteHttpRoute { return v.HttpRoute }).(GetAlbVirtualHostRouteHttpRouteOutput)
+}
+
+// Name of the Virtual Host.
+func (o GetAlbVirtualHostRouteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRoute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAlbVirtualHostRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostRoute)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteArrayOutput) ToGetAlbVirtualHostRouteArrayOutput() GetAlbVirtualHostRouteArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteArrayOutput) ToGetAlbVirtualHostRouteArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteArrayOutput) Index(i pulumi.IntInput) GetAlbVirtualHostRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbVirtualHostRoute {
+		return vs[0].([]GetAlbVirtualHostRoute)[vs[1].(int)]
+	}).(GetAlbVirtualHostRouteOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRoute struct {
+	// Checks "/" prefix by default. The structure is documented below.
+	GrpcMatches []GetAlbVirtualHostRouteGrpcRouteGrpcMatch `pulumi:"grpcMatches"`
+	// GRPC route action resource. The structure is documented below.
+	GrpcRouteAction GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction `pulumi:"grpcRouteAction"`
+	// (Required) GRPC status response action resource. The structure is documented below.
+	GrpcStatusResponseAction GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction `pulumi:"grpcStatusResponseAction"`
+}
+
+// GetAlbVirtualHostRouteGrpcRouteInput is an input type that accepts GetAlbVirtualHostRouteGrpcRouteArgs and GetAlbVirtualHostRouteGrpcRouteOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteGrpcRouteInput` via:
+//
+//          GetAlbVirtualHostRouteGrpcRouteArgs{...}
+type GetAlbVirtualHostRouteGrpcRouteInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteGrpcRouteOutput() GetAlbVirtualHostRouteGrpcRouteOutput
+	ToGetAlbVirtualHostRouteGrpcRouteOutputWithContext(context.Context) GetAlbVirtualHostRouteGrpcRouteOutput
+}
+
+type GetAlbVirtualHostRouteGrpcRouteArgs struct {
+	// Checks "/" prefix by default. The structure is documented below.
+	GrpcMatches GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput `pulumi:"grpcMatches"`
+	// GRPC route action resource. The structure is documented below.
+	GrpcRouteAction GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionInput `pulumi:"grpcRouteAction"`
+	// (Required) GRPC status response action resource. The structure is documented below.
+	GrpcStatusResponseAction GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionInput `pulumi:"grpcStatusResponseAction"`
+}
+
+func (GetAlbVirtualHostRouteGrpcRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRoute)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteArgs) ToGetAlbVirtualHostRouteGrpcRouteOutput() GetAlbVirtualHostRouteGrpcRouteOutput {
+	return i.ToGetAlbVirtualHostRouteGrpcRouteOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteArgs) ToGetAlbVirtualHostRouteGrpcRouteOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteGrpcRouteOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteGrpcRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRoute)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteOutput) ToGetAlbVirtualHostRouteGrpcRouteOutput() GetAlbVirtualHostRouteGrpcRouteOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteOutput) ToGetAlbVirtualHostRouteGrpcRouteOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteOutput {
+	return o
+}
+
+// Checks "/" prefix by default. The structure is documented below.
+func (o GetAlbVirtualHostRouteGrpcRouteOutput) GrpcMatches() GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRoute) []GetAlbVirtualHostRouteGrpcRouteGrpcMatch {
+		return v.GrpcMatches
+	}).(GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput)
+}
+
+// GRPC route action resource. The structure is documented below.
+func (o GetAlbVirtualHostRouteGrpcRouteOutput) GrpcRouteAction() GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRoute) GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction {
+		return v.GrpcRouteAction
+	}).(GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput)
+}
+
+// (Required) GRPC status response action resource. The structure is documented below.
+func (o GetAlbVirtualHostRouteGrpcRouteOutput) GrpcStatusResponseAction() GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRoute) GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
+		return v.GrpcStatusResponseAction
+	}).(GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatch struct {
+	// If not set, all services/methods are assumed. The structure is documented below.
+	Fqmn GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmn `pulumi:"fqmn"`
+}
+
+// GetAlbVirtualHostRouteGrpcRouteGrpcMatchInput is an input type that accepts GetAlbVirtualHostRouteGrpcRouteGrpcMatchArgs and GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteGrpcRouteGrpcMatchInput` via:
+//
+//          GetAlbVirtualHostRouteGrpcRouteGrpcMatchArgs{...}
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput() GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchOutputWithContext(context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchArgs struct {
+	// If not set, all services/methods are assumed. The structure is documented below.
+	Fqmn GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnInput `pulumi:"fqmn"`
+}
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcMatch)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcMatchArgs) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput() GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return i.ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcMatchArgs) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput)
+}
+
+// GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput is an input type that accepts GetAlbVirtualHostRouteGrpcRouteGrpcMatchArray and GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput` via:
+//
+//          GetAlbVirtualHostRouteGrpcRouteGrpcMatchArray{ GetAlbVirtualHostRouteGrpcRouteGrpcMatchArgs{...} }
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput() GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutputWithContext(context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchArray []GetAlbVirtualHostRouteGrpcRouteGrpcMatchInput
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostRouteGrpcRouteGrpcMatch)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcMatchArray) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput() GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return i.ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcMatchArray) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcMatch)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput() GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return o
+}
+
+// If not set, all services/methods are assumed. The structure is documented below.
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput) Fqmn() GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRouteGrpcMatch) GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
+		return v.Fqmn
+	}).(GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostRouteGrpcRouteGrpcMatch)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput() GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput) Index(i pulumi.IntInput) GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbVirtualHostRouteGrpcRouteGrpcMatch {
+		return vs[0].([]GetAlbVirtualHostRouteGrpcRouteGrpcMatch)[vs[1].(int)]
+	}).(GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmn struct {
+	Exact  string `pulumi:"exact"`
+	Prefix string `pulumi:"prefix"`
+}
+
+// GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnInput is an input type that accepts GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs and GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnInput` via:
+//
+//          GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs{...}
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput() GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutputWithContext(context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs struct {
+	Exact  pulumi.StringInput `pulumi:"exact"`
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+}
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmn)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput() GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return i.ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmn)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput() GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) Exact() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) string { return v.Exact }).(pulumi.StringOutput)
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction struct {
+	// If set, will automatically rewrite host.
+	AutoHostRewrite bool `pulumi:"autoHostRewrite"`
+	// Backend group to route requests.
+	BackendGroupId string `pulumi:"backendGroupId"`
+	// Host rewrite specifier.
+	HostRewrite string `pulumi:"hostRewrite"`
+	// Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+	// is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout to the maximum
+	// time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+	IdleTimeout string `pulumi:"idleTimeout"`
+	// Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 60
+	// seconds.
+	MaxTimeout string `pulumi:"maxTimeout"`
+}
+
+// GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionInput is an input type that accepts GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs and GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionInput` via:
+//
+//          GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs{...}
+type GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput() GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutputWithContext(context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs struct {
+	// If set, will automatically rewrite host.
+	AutoHostRewrite pulumi.BoolInput `pulumi:"autoHostRewrite"`
+	// Backend group to route requests.
+	BackendGroupId pulumi.StringInput `pulumi:"backendGroupId"`
+	// Host rewrite specifier.
+	HostRewrite pulumi.StringInput `pulumi:"hostRewrite"`
+	// Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+	// is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout to the maximum
+	// time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
+	// Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 60
+	// seconds.
+	MaxTimeout pulumi.StringInput `pulumi:"maxTimeout"`
+}
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs) ToGetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput() GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return i.ToGetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs) ToGetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput() GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
+	return o
+}
+
+// If set, will automatically rewrite host.
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) AutoHostRewrite() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction) bool { return v.AutoHostRewrite }).(pulumi.BoolOutput)
+}
+
+// Backend group to route requests.
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) BackendGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction) string { return v.BackendGroupId }).(pulumi.StringOutput)
+}
+
+// Host rewrite specifier.
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) HostRewrite() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction) string { return v.HostRewrite }).(pulumi.StringOutput)
+}
+
+// Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+// is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout to the maximum
+// time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction) string { return v.IdleTimeout }).(pulumi.StringOutput)
+}
+
+// Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 60
+// seconds.
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) MaxTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction) string { return v.MaxTimeout }).(pulumi.StringOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction struct {
+	// The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+	// unauthenticated, unimplemented, internal, unavailable.
+	Status string `pulumi:"status"`
+}
+
+// GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionInput is an input type that accepts GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs and GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionInput` via:
+//
+//          GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs{...}
+type GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput() GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput
+	ToGetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutputWithContext(context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs struct {
+	// The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+	// unauthenticated, unimplemented, internal, unavailable.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs) ToGetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput() GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return i.ToGetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs) ToGetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput)
+}
+
+type GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput() GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ToGetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
+	return o
+}
+
+// The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+// unauthenticated, unimplemented, internal, unavailable.
+func (o GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRoute struct {
+	// (Required) Direct response action resource. The structure is documented below.
+	DirectResponseAction GetAlbVirtualHostRouteHttpRouteDirectResponseAction `pulumi:"directResponseAction"`
+	// Checks "/" prefix by default. The structure is documented below.
+	HttpMatches []GetAlbVirtualHostRouteHttpRouteHttpMatch `pulumi:"httpMatches"`
+	// HTTP route action resource. The structure is documented below.
+	HttpRouteAction GetAlbVirtualHostRouteHttpRouteHttpRouteAction `pulumi:"httpRouteAction"`
+	// Redirect action resource. The structure is documented below.
+	RedirectAction GetAlbVirtualHostRouteHttpRouteRedirectAction `pulumi:"redirectAction"`
+}
+
+// GetAlbVirtualHostRouteHttpRouteInput is an input type that accepts GetAlbVirtualHostRouteHttpRouteArgs and GetAlbVirtualHostRouteHttpRouteOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteHttpRouteInput` via:
+//
+//          GetAlbVirtualHostRouteHttpRouteArgs{...}
+type GetAlbVirtualHostRouteHttpRouteInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteHttpRouteOutput() GetAlbVirtualHostRouteHttpRouteOutput
+	ToGetAlbVirtualHostRouteHttpRouteOutputWithContext(context.Context) GetAlbVirtualHostRouteHttpRouteOutput
+}
+
+type GetAlbVirtualHostRouteHttpRouteArgs struct {
+	// (Required) Direct response action resource. The structure is documented below.
+	DirectResponseAction GetAlbVirtualHostRouteHttpRouteDirectResponseActionInput `pulumi:"directResponseAction"`
+	// Checks "/" prefix by default. The structure is documented below.
+	HttpMatches GetAlbVirtualHostRouteHttpRouteHttpMatchArrayInput `pulumi:"httpMatches"`
+	// HTTP route action resource. The structure is documented below.
+	HttpRouteAction GetAlbVirtualHostRouteHttpRouteHttpRouteActionInput `pulumi:"httpRouteAction"`
+	// Redirect action resource. The structure is documented below.
+	RedirectAction GetAlbVirtualHostRouteHttpRouteRedirectActionInput `pulumi:"redirectAction"`
+}
+
+func (GetAlbVirtualHostRouteHttpRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRoute)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteArgs) ToGetAlbVirtualHostRouteHttpRouteOutput() GetAlbVirtualHostRouteHttpRouteOutput {
+	return i.ToGetAlbVirtualHostRouteHttpRouteOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteArgs) ToGetAlbVirtualHostRouteHttpRouteOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteHttpRouteOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteHttpRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRoute)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteOutput) ToGetAlbVirtualHostRouteHttpRouteOutput() GetAlbVirtualHostRouteHttpRouteOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteOutput) ToGetAlbVirtualHostRouteHttpRouteOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteOutput {
+	return o
+}
+
+// (Required) Direct response action resource. The structure is documented below.
+func (o GetAlbVirtualHostRouteHttpRouteOutput) DirectResponseAction() GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRoute) GetAlbVirtualHostRouteHttpRouteDirectResponseAction {
+		return v.DirectResponseAction
+	}).(GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput)
+}
+
+// Checks "/" prefix by default. The structure is documented below.
+func (o GetAlbVirtualHostRouteHttpRouteOutput) HttpMatches() GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRoute) []GetAlbVirtualHostRouteHttpRouteHttpMatch {
+		return v.HttpMatches
+	}).(GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput)
+}
+
+// HTTP route action resource. The structure is documented below.
+func (o GetAlbVirtualHostRouteHttpRouteOutput) HttpRouteAction() GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRoute) GetAlbVirtualHostRouteHttpRouteHttpRouteAction {
+		return v.HttpRouteAction
+	}).(GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput)
+}
+
+// Redirect action resource. The structure is documented below.
+func (o GetAlbVirtualHostRouteHttpRouteOutput) RedirectAction() GetAlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRoute) GetAlbVirtualHostRouteHttpRouteRedirectAction {
+		return v.RedirectAction
+	}).(GetAlbVirtualHostRouteHttpRouteRedirectActionOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteDirectResponseAction struct {
+	// Response body text.
+	Body string `pulumi:"body"`
+	// The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+	// unauthenticated, unimplemented, internal, unavailable.
+	Status int `pulumi:"status"`
+}
+
+// GetAlbVirtualHostRouteHttpRouteDirectResponseActionInput is an input type that accepts GetAlbVirtualHostRouteHttpRouteDirectResponseActionArgs and GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteHttpRouteDirectResponseActionInput` via:
+//
+//          GetAlbVirtualHostRouteHttpRouteDirectResponseActionArgs{...}
+type GetAlbVirtualHostRouteHttpRouteDirectResponseActionInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput() GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput
+	ToGetAlbVirtualHostRouteHttpRouteDirectResponseActionOutputWithContext(context.Context) GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput
+}
+
+type GetAlbVirtualHostRouteHttpRouteDirectResponseActionArgs struct {
+	// Response body text.
+	Body pulumi.StringInput `pulumi:"body"`
+	// The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+	// unauthenticated, unimplemented, internal, unavailable.
+	Status pulumi.IntInput `pulumi:"status"`
+}
+
+func (GetAlbVirtualHostRouteHttpRouteDirectResponseActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteDirectResponseAction)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteDirectResponseActionArgs) ToGetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput() GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return i.ToGetAlbVirtualHostRouteHttpRouteDirectResponseActionOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteDirectResponseActionArgs) ToGetAlbVirtualHostRouteHttpRouteDirectResponseActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteDirectResponseAction)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ToGetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput() GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ToGetAlbVirtualHostRouteHttpRouteDirectResponseActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
+	return o
+}
+
+// Response body text.
+func (o GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteDirectResponseAction) string { return v.Body }).(pulumi.StringOutput)
+}
+
+// The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+// unauthenticated, unimplemented, internal, unavailable.
+func (o GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteDirectResponseAction) int { return v.Status }).(pulumi.IntOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpMatch struct {
+	// List of methods(strings).
+	HttpMethods []interface{} `pulumi:"httpMethods"`
+	// If not set, '/' is assumed. The structure is documented below.
+	Path GetAlbVirtualHostRouteHttpRouteHttpMatchPath `pulumi:"path"`
+}
+
+// GetAlbVirtualHostRouteHttpRouteHttpMatchInput is an input type that accepts GetAlbVirtualHostRouteHttpRouteHttpMatchArgs and GetAlbVirtualHostRouteHttpRouteHttpMatchOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteHttpRouteHttpMatchInput` via:
+//
+//          GetAlbVirtualHostRouteHttpRouteHttpMatchArgs{...}
+type GetAlbVirtualHostRouteHttpRouteHttpMatchInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteHttpRouteHttpMatchOutput() GetAlbVirtualHostRouteHttpRouteHttpMatchOutput
+	ToGetAlbVirtualHostRouteHttpRouteHttpMatchOutputWithContext(context.Context) GetAlbVirtualHostRouteHttpRouteHttpMatchOutput
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpMatchArgs struct {
+	// List of methods(strings).
+	HttpMethods pulumi.ArrayInput `pulumi:"httpMethods"`
+	// If not set, '/' is assumed. The structure is documented below.
+	Path GetAlbVirtualHostRouteHttpRouteHttpMatchPathInput `pulumi:"path"`
+}
+
+func (GetAlbVirtualHostRouteHttpRouteHttpMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpMatch)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteHttpMatchArgs) ToGetAlbVirtualHostRouteHttpRouteHttpMatchOutput() GetAlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return i.ToGetAlbVirtualHostRouteHttpRouteHttpMatchOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteHttpMatchArgs) ToGetAlbVirtualHostRouteHttpRouteHttpMatchOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteHttpRouteHttpMatchOutput)
+}
+
+// GetAlbVirtualHostRouteHttpRouteHttpMatchArrayInput is an input type that accepts GetAlbVirtualHostRouteHttpRouteHttpMatchArray and GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteHttpRouteHttpMatchArrayInput` via:
+//
+//          GetAlbVirtualHostRouteHttpRouteHttpMatchArray{ GetAlbVirtualHostRouteHttpRouteHttpMatchArgs{...} }
+type GetAlbVirtualHostRouteHttpRouteHttpMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput() GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput
+	ToGetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutputWithContext(context.Context) GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpMatchArray []GetAlbVirtualHostRouteHttpRouteHttpMatchInput
+
+func (GetAlbVirtualHostRouteHttpRouteHttpMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostRouteHttpRouteHttpMatch)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteHttpMatchArray) ToGetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput() GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return i.ToGetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteHttpMatchArray) ToGetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpMatchOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteHttpRouteHttpMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpMatch)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchOutput) ToGetAlbVirtualHostRouteHttpRouteHttpMatchOutput() GetAlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchOutput) ToGetAlbVirtualHostRouteHttpRouteHttpMatchOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return o
+}
+
+// List of methods(strings).
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchOutput) HttpMethods() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpMatch) []interface{} { return v.HttpMethods }).(pulumi.ArrayOutput)
+}
+
+// If not set, '/' is assumed. The structure is documented below.
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchOutput) Path() GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpMatch) GetAlbVirtualHostRouteHttpRouteHttpMatchPath {
+		return v.Path
+	}).(GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbVirtualHostRouteHttpRouteHttpMatch)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput) ToGetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput() GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput) ToGetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput) Index(i pulumi.IntInput) GetAlbVirtualHostRouteHttpRouteHttpMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbVirtualHostRouteHttpRouteHttpMatch {
+		return vs[0].([]GetAlbVirtualHostRouteHttpRouteHttpMatch)[vs[1].(int)]
+	}).(GetAlbVirtualHostRouteHttpRouteHttpMatchOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpMatchPath struct {
+	Exact  string `pulumi:"exact"`
+	Prefix string `pulumi:"prefix"`
+}
+
+// GetAlbVirtualHostRouteHttpRouteHttpMatchPathInput is an input type that accepts GetAlbVirtualHostRouteHttpRouteHttpMatchPathArgs and GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteHttpRouteHttpMatchPathInput` via:
+//
+//          GetAlbVirtualHostRouteHttpRouteHttpMatchPathArgs{...}
+type GetAlbVirtualHostRouteHttpRouteHttpMatchPathInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput() GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput
+	ToGetAlbVirtualHostRouteHttpRouteHttpMatchPathOutputWithContext(context.Context) GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpMatchPathArgs struct {
+	Exact  pulumi.StringInput `pulumi:"exact"`
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+}
+
+func (GetAlbVirtualHostRouteHttpRouteHttpMatchPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpMatchPath)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteHttpMatchPathArgs) ToGetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput() GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return i.ToGetAlbVirtualHostRouteHttpRouteHttpMatchPathOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteHttpMatchPathArgs) ToGetAlbVirtualHostRouteHttpRouteHttpMatchPathOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpMatchPath)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ToGetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput() GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ToGetAlbVirtualHostRouteHttpRouteHttpMatchPathOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput) Exact() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpMatchPath) string { return v.Exact }).(pulumi.StringOutput)
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpMatchPath) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpRouteAction struct {
+	// If set, will automatically rewrite host.
+	AutoHostRewrite bool `pulumi:"autoHostRewrite"`
+	// Backend group to route requests.
+	BackendGroupId string `pulumi:"backendGroupId"`
+	// Host rewrite specifier.
+	HostRewrite string `pulumi:"hostRewrite"`
+	// Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+	// is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout to the maximum
+	// time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+	IdleTimeout string `pulumi:"idleTimeout"`
+	// If not empty, matched path prefix will be replaced by this value.
+	PrefixRewrite string `pulumi:"prefixRewrite"`
+	// Specifies the request timeout (overall time request processing is allowed to take) for the route. If not
+	// set, default is 60 seconds.
+	Timeout string `pulumi:"timeout"`
+	// List of upgrade types. Only specified upgrade types will be allowed. For example,
+	// "websocket".
+	UpgradeTypes []string `pulumi:"upgradeTypes"`
+}
+
+// GetAlbVirtualHostRouteHttpRouteHttpRouteActionInput is an input type that accepts GetAlbVirtualHostRouteHttpRouteHttpRouteActionArgs and GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteHttpRouteHttpRouteActionInput` via:
+//
+//          GetAlbVirtualHostRouteHttpRouteHttpRouteActionArgs{...}
+type GetAlbVirtualHostRouteHttpRouteHttpRouteActionInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput() GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput
+	ToGetAlbVirtualHostRouteHttpRouteHttpRouteActionOutputWithContext(context.Context) GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpRouteActionArgs struct {
+	// If set, will automatically rewrite host.
+	AutoHostRewrite pulumi.BoolInput `pulumi:"autoHostRewrite"`
+	// Backend group to route requests.
+	BackendGroupId pulumi.StringInput `pulumi:"backendGroupId"`
+	// Host rewrite specifier.
+	HostRewrite pulumi.StringInput `pulumi:"hostRewrite"`
+	// Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+	// is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout to the maximum
+	// time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
+	// If not empty, matched path prefix will be replaced by this value.
+	PrefixRewrite pulumi.StringInput `pulumi:"prefixRewrite"`
+	// Specifies the request timeout (overall time request processing is allowed to take) for the route. If not
+	// set, default is 60 seconds.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// List of upgrade types. Only specified upgrade types will be allowed. For example,
+	// "websocket".
+	UpgradeTypes pulumi.StringArrayInput `pulumi:"upgradeTypes"`
+}
+
+func (GetAlbVirtualHostRouteHttpRouteHttpRouteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpRouteAction)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteHttpRouteActionArgs) ToGetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput() GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return i.ToGetAlbVirtualHostRouteHttpRouteHttpRouteActionOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteHttpRouteActionArgs) ToGetAlbVirtualHostRouteHttpRouteHttpRouteActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpRouteAction)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ToGetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput() GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ToGetAlbVirtualHostRouteHttpRouteHttpRouteActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
+	return o
+}
+
+// If set, will automatically rewrite host.
+func (o GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) AutoHostRewrite() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpRouteAction) bool { return v.AutoHostRewrite }).(pulumi.BoolOutput)
+}
+
+// Backend group to route requests.
+func (o GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) BackendGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpRouteAction) string { return v.BackendGroupId }).(pulumi.StringOutput)
+}
+
+// Host rewrite specifier.
+func (o GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) HostRewrite() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpRouteAction) string { return v.HostRewrite }).(pulumi.StringOutput)
+}
+
+// Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+// is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout to the maximum
+// time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+func (o GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpRouteAction) string { return v.IdleTimeout }).(pulumi.StringOutput)
+}
+
+// If not empty, matched path prefix will be replaced by this value.
+func (o GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) PrefixRewrite() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpRouteAction) string { return v.PrefixRewrite }).(pulumi.StringOutput)
+}
+
+// Specifies the request timeout (overall time request processing is allowed to take) for the route. If not
+// set, default is 60 seconds.
+func (o GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpRouteAction) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// List of upgrade types. Only specified upgrade types will be allowed. For example,
+// "websocket".
+func (o GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput) UpgradeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteHttpRouteAction) []string { return v.UpgradeTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteRedirectAction struct {
+	RemoveQuery bool `pulumi:"removeQuery"`
+	// Replaces hostname.
+	ReplaceHost string `pulumi:"replaceHost"`
+	// Replace path.
+	ReplacePath string `pulumi:"replacePath"`
+	// Replaces port.
+	ReplacePort int `pulumi:"replacePort"`
+	// Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+	// redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+	ReplacePrefix string `pulumi:"replacePrefix"`
+	// Replaces scheme. If the original scheme is `http` or `https`, will also remove the 80 or 443 port,
+	// if present.
+	ReplaceScheme string `pulumi:"replaceScheme"`
+	// The HTTP status code to use in the redirect response. Supported values are:
+	// moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+	ResponseCode string `pulumi:"responseCode"`
+}
+
+// GetAlbVirtualHostRouteHttpRouteRedirectActionInput is an input type that accepts GetAlbVirtualHostRouteHttpRouteRedirectActionArgs and GetAlbVirtualHostRouteHttpRouteRedirectActionOutput values.
+// You can construct a concrete instance of `GetAlbVirtualHostRouteHttpRouteRedirectActionInput` via:
+//
+//          GetAlbVirtualHostRouteHttpRouteRedirectActionArgs{...}
+type GetAlbVirtualHostRouteHttpRouteRedirectActionInput interface {
+	pulumi.Input
+
+	ToGetAlbVirtualHostRouteHttpRouteRedirectActionOutput() GetAlbVirtualHostRouteHttpRouteRedirectActionOutput
+	ToGetAlbVirtualHostRouteHttpRouteRedirectActionOutputWithContext(context.Context) GetAlbVirtualHostRouteHttpRouteRedirectActionOutput
+}
+
+type GetAlbVirtualHostRouteHttpRouteRedirectActionArgs struct {
+	RemoveQuery pulumi.BoolInput `pulumi:"removeQuery"`
+	// Replaces hostname.
+	ReplaceHost pulumi.StringInput `pulumi:"replaceHost"`
+	// Replace path.
+	ReplacePath pulumi.StringInput `pulumi:"replacePath"`
+	// Replaces port.
+	ReplacePort pulumi.IntInput `pulumi:"replacePort"`
+	// Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+	// redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+	ReplacePrefix pulumi.StringInput `pulumi:"replacePrefix"`
+	// Replaces scheme. If the original scheme is `http` or `https`, will also remove the 80 or 443 port,
+	// if present.
+	ReplaceScheme pulumi.StringInput `pulumi:"replaceScheme"`
+	// The HTTP status code to use in the redirect response. Supported values are:
+	// moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+	ResponseCode pulumi.StringInput `pulumi:"responseCode"`
+}
+
+func (GetAlbVirtualHostRouteHttpRouteRedirectActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteRedirectAction)(nil)).Elem()
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteRedirectActionArgs) ToGetAlbVirtualHostRouteHttpRouteRedirectActionOutput() GetAlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return i.ToGetAlbVirtualHostRouteHttpRouteRedirectActionOutputWithContext(context.Background())
+}
+
+func (i GetAlbVirtualHostRouteHttpRouteRedirectActionArgs) ToGetAlbVirtualHostRouteHttpRouteRedirectActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbVirtualHostRouteHttpRouteRedirectActionOutput)
+}
+
+type GetAlbVirtualHostRouteHttpRouteRedirectActionOutput struct{ *pulumi.OutputState }
+
+func (GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteRedirectAction)(nil)).Elem()
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) ToGetAlbVirtualHostRouteHttpRouteRedirectActionOutput() GetAlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) ToGetAlbVirtualHostRouteHttpRouteRedirectActionOutputWithContext(ctx context.Context) GetAlbVirtualHostRouteHttpRouteRedirectActionOutput {
+	return o
+}
+
+func (o GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) RemoveQuery() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteRedirectAction) bool { return v.RemoveQuery }).(pulumi.BoolOutput)
+}
+
+// Replaces hostname.
+func (o GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplaceHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteRedirectAction) string { return v.ReplaceHost }).(pulumi.StringOutput)
+}
+
+// Replace path.
+func (o GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplacePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteRedirectAction) string { return v.ReplacePath }).(pulumi.StringOutput)
+}
+
+// Replaces port.
+func (o GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplacePort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteRedirectAction) int { return v.ReplacePort }).(pulumi.IntOutput)
+}
+
+// Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+// redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+func (o GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplacePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteRedirectAction) string { return v.ReplacePrefix }).(pulumi.StringOutput)
+}
+
+// Replaces scheme. If the original scheme is `http` or `https`, will also remove the 80 or 443 port,
+// if present.
+func (o GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) ReplaceScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteRedirectAction) string { return v.ReplaceScheme }).(pulumi.StringOutput)
+}
+
+// The HTTP status code to use in the redirect response. Supported values are:
+// moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+func (o GetAlbVirtualHostRouteHttpRouteRedirectActionOutput) ResponseCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbVirtualHostRouteHttpRouteRedirectAction) string { return v.ResponseCode }).(pulumi.StringOutput)
 }
 
 type GetComputeDiskDiskPlacementPolicy struct {
@@ -34954,7 +40103,8 @@ func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceArrayOutput) Inde
 }
 
 type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecord struct {
-	DnsZone string `pulumi:"dnsZone"`
+	// DNS zone id (if not set, private zone is used).
+	DnsZoneId string `pulumi:"dnsZoneId"`
 	// The Fully Qualified Domain Name.
 	Fqdn string `pulumi:"fqdn"`
 	// When set to true, also create PTR DNS record.
@@ -34975,7 +40125,8 @@ type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordInput inter
 }
 
 type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArgs struct {
-	DnsZone pulumi.StringInput `pulumi:"dnsZone"`
+	// DNS zone id (if not set, private zone is used).
+	DnsZoneId pulumi.StringInput `pulumi:"dnsZoneId"`
 	// The Fully Qualified Domain Name.
 	Fqdn pulumi.StringInput `pulumi:"fqdn"`
 	// When set to true, also create PTR DNS record.
@@ -35035,8 +40186,9 @@ func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordOutput) 
 	return o
 }
 
-func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordOutput) DnsZone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecord) string { return v.DnsZone }).(pulumi.StringOutput)
+// DNS zone id (if not set, private zone is used).
+func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordOutput) DnsZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecord) string { return v.DnsZoneId }).(pulumi.StringOutput)
 }
 
 // The Fully Qualified Domain Name.
@@ -35075,7 +40227,8 @@ func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArrayOut
 }
 
 type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord struct {
-	DnsZone string `pulumi:"dnsZone"`
+	// DNS zone id (if not set, private zone is used).
+	DnsZoneId string `pulumi:"dnsZoneId"`
 	// The Fully Qualified Domain Name.
 	Fqdn string `pulumi:"fqdn"`
 	// When set to true, also create PTR DNS record.
@@ -35096,7 +40249,8 @@ type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordInput i
 }
 
 type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArgs struct {
-	DnsZone pulumi.StringInput `pulumi:"dnsZone"`
+	// DNS zone id (if not set, private zone is used).
+	DnsZoneId pulumi.StringInput `pulumi:"dnsZoneId"`
 	// The Fully Qualified Domain Name.
 	Fqdn pulumi.StringInput `pulumi:"fqdn"`
 	// When set to true, also create PTR DNS record.
@@ -35156,8 +40310,11 @@ func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordOutp
 	return o
 }
 
-func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordOutput) DnsZone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord) string { return v.DnsZone }).(pulumi.StringOutput)
+// DNS zone id (if not set, private zone is used).
+func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordOutput) DnsZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord) string {
+		return v.DnsZoneId
+	}).(pulumi.StringOutput)
 }
 
 // The Fully Qualified Domain Name.
@@ -35196,7 +40353,8 @@ func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArra
 }
 
 type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord struct {
-	DnsZone string `pulumi:"dnsZone"`
+	// DNS zone id (if not set, private zone is used).
+	DnsZoneId string `pulumi:"dnsZoneId"`
 	// The Fully Qualified Domain Name.
 	Fqdn string `pulumi:"fqdn"`
 	// When set to true, also create PTR DNS record.
@@ -35217,7 +40375,8 @@ type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordInput in
 }
 
 type GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArgs struct {
-	DnsZone pulumi.StringInput `pulumi:"dnsZone"`
+	// DNS zone id (if not set, private zone is used).
+	DnsZoneId pulumi.StringInput `pulumi:"dnsZoneId"`
 	// The Fully Qualified Domain Name.
 	Fqdn pulumi.StringInput `pulumi:"fqdn"`
 	// When set to true, also create PTR DNS record.
@@ -35277,8 +40436,9 @@ func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordOutpu
 	return o
 }
 
-func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordOutput) DnsZone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord) string { return v.DnsZone }).(pulumi.StringOutput)
+// DNS zone id (if not set, private zone is used).
+func (o GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordOutput) DnsZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord) string { return v.DnsZoneId }).(pulumi.StringOutput)
 }
 
 // The Fully Qualified Domain Name.
@@ -39368,6 +44528,109 @@ func (o GetKubernetesClusterMasterZonalOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClusterMasterZonal) string { return v.Zone }).(pulumi.StringOutput)
 }
 
+type GetKubernetesClusterNetworkImplementation struct {
+	// Cilium network implementation configuration. No options exist.
+	Cilium GetKubernetesClusterNetworkImplementationCilium `pulumi:"cilium"`
+}
+
+// GetKubernetesClusterNetworkImplementationInput is an input type that accepts GetKubernetesClusterNetworkImplementationArgs and GetKubernetesClusterNetworkImplementationOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterNetworkImplementationInput` via:
+//
+//          GetKubernetesClusterNetworkImplementationArgs{...}
+type GetKubernetesClusterNetworkImplementationInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterNetworkImplementationOutput() GetKubernetesClusterNetworkImplementationOutput
+	ToGetKubernetesClusterNetworkImplementationOutputWithContext(context.Context) GetKubernetesClusterNetworkImplementationOutput
+}
+
+type GetKubernetesClusterNetworkImplementationArgs struct {
+	// Cilium network implementation configuration. No options exist.
+	Cilium GetKubernetesClusterNetworkImplementationCiliumInput `pulumi:"cilium"`
+}
+
+func (GetKubernetesClusterNetworkImplementationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterNetworkImplementation)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterNetworkImplementationArgs) ToGetKubernetesClusterNetworkImplementationOutput() GetKubernetesClusterNetworkImplementationOutput {
+	return i.ToGetKubernetesClusterNetworkImplementationOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterNetworkImplementationArgs) ToGetKubernetesClusterNetworkImplementationOutputWithContext(ctx context.Context) GetKubernetesClusterNetworkImplementationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterNetworkImplementationOutput)
+}
+
+type GetKubernetesClusterNetworkImplementationOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterNetworkImplementationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterNetworkImplementation)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterNetworkImplementationOutput) ToGetKubernetesClusterNetworkImplementationOutput() GetKubernetesClusterNetworkImplementationOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNetworkImplementationOutput) ToGetKubernetesClusterNetworkImplementationOutputWithContext(ctx context.Context) GetKubernetesClusterNetworkImplementationOutput {
+	return o
+}
+
+// Cilium network implementation configuration. No options exist.
+func (o GetKubernetesClusterNetworkImplementationOutput) Cilium() GetKubernetesClusterNetworkImplementationCiliumOutput {
+	return o.ApplyT(func(v GetKubernetesClusterNetworkImplementation) GetKubernetesClusterNetworkImplementationCilium {
+		return v.Cilium
+	}).(GetKubernetesClusterNetworkImplementationCiliumOutput)
+}
+
+type GetKubernetesClusterNetworkImplementationCilium struct {
+	RoutingMode string `pulumi:"routingMode"`
+}
+
+// GetKubernetesClusterNetworkImplementationCiliumInput is an input type that accepts GetKubernetesClusterNetworkImplementationCiliumArgs and GetKubernetesClusterNetworkImplementationCiliumOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterNetworkImplementationCiliumInput` via:
+//
+//          GetKubernetesClusterNetworkImplementationCiliumArgs{...}
+type GetKubernetesClusterNetworkImplementationCiliumInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterNetworkImplementationCiliumOutput() GetKubernetesClusterNetworkImplementationCiliumOutput
+	ToGetKubernetesClusterNetworkImplementationCiliumOutputWithContext(context.Context) GetKubernetesClusterNetworkImplementationCiliumOutput
+}
+
+type GetKubernetesClusterNetworkImplementationCiliumArgs struct {
+	RoutingMode pulumi.StringInput `pulumi:"routingMode"`
+}
+
+func (GetKubernetesClusterNetworkImplementationCiliumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterNetworkImplementationCilium)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterNetworkImplementationCiliumArgs) ToGetKubernetesClusterNetworkImplementationCiliumOutput() GetKubernetesClusterNetworkImplementationCiliumOutput {
+	return i.ToGetKubernetesClusterNetworkImplementationCiliumOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterNetworkImplementationCiliumArgs) ToGetKubernetesClusterNetworkImplementationCiliumOutputWithContext(ctx context.Context) GetKubernetesClusterNetworkImplementationCiliumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterNetworkImplementationCiliumOutput)
+}
+
+type GetKubernetesClusterNetworkImplementationCiliumOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterNetworkImplementationCiliumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterNetworkImplementationCilium)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterNetworkImplementationCiliumOutput) ToGetKubernetesClusterNetworkImplementationCiliumOutput() GetKubernetesClusterNetworkImplementationCiliumOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNetworkImplementationCiliumOutput) ToGetKubernetesClusterNetworkImplementationCiliumOutputWithContext(ctx context.Context) GetKubernetesClusterNetworkImplementationCiliumOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNetworkImplementationCiliumOutput) RoutingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClusterNetworkImplementationCilium) string { return v.RoutingMode }).(pulumi.StringOutput)
+}
+
 type GetKubernetesNodeGroupAllocationPolicy struct {
 	// Repeated field, that specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
 	Locations []GetKubernetesNodeGroupAllocationPolicyLocation `pulumi:"locations"`
@@ -39596,6 +44859,8 @@ type GetKubernetesNodeGroupInstanceTemplate struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// A public address that can be used to access the internet over NAT.
 	Nat bool `pulumi:"nat"`
+	// Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+	NetworkAccelerationType string `pulumi:"networkAccelerationType"`
 	// An array with the network interfaces that will be attached to the instance. The structure is documented below.
 	NetworkInterfaces []GetKubernetesNodeGroupInstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
 	PlacementPolicy   *GetKubernetesNodeGroupInstanceTemplatePlacementPolicy   `pulumi:"placementPolicy"`
@@ -39624,6 +44889,8 @@ type GetKubernetesNodeGroupInstanceTemplateArgs struct {
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// A public address that can be used to access the internet over NAT.
 	Nat pulumi.BoolInput `pulumi:"nat"`
+	// Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+	NetworkAccelerationType pulumi.StringInput `pulumi:"networkAccelerationType"`
 	// An array with the network interfaces that will be attached to the instance. The structure is documented below.
 	NetworkInterfaces GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 	PlacementPolicy   GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput    `pulumi:"placementPolicy"`
@@ -39675,6 +44942,11 @@ func (o GetKubernetesNodeGroupInstanceTemplateOutput) Metadata() pulumi.StringMa
 // A public address that can be used to access the internet over NAT.
 func (o GetKubernetesNodeGroupInstanceTemplateOutput) Nat() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplate) bool { return v.Nat }).(pulumi.BoolOutput)
+}
+
+// Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+func (o GetKubernetesNodeGroupInstanceTemplateOutput) NetworkAccelerationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplate) string { return v.NetworkAccelerationType }).(pulumi.StringOutput)
 }
 
 // An array with the network interfaces that will be attached to the instance. The structure is documented below.
@@ -45022,6 +50294,486 @@ func (o GetMdbClickhouseClusterZookeeperResourcesOutput) ResourcePresetId() pulu
 	return o.ApplyT(func(v GetMdbClickhouseClusterZookeeperResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
 }
 
+type GetMdbElasticSearchClusterConfig struct {
+	AdminPassword string `pulumi:"adminPassword"`
+	// Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+	DataNode GetMdbElasticSearchClusterConfigDataNode `pulumi:"dataNode"`
+	// Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+	Edition string `pulumi:"edition"`
+	// Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+	MasterNode GetMdbElasticSearchClusterConfigMasterNode `pulumi:"masterNode"`
+	// A set of requested Elasticsearch plugins.
+	Plugins []string `pulumi:"plugins"`
+	// Version of Elasticsearch.
+	Version string `pulumi:"version"`
+}
+
+// GetMdbElasticSearchClusterConfigInput is an input type that accepts GetMdbElasticSearchClusterConfigArgs and GetMdbElasticSearchClusterConfigOutput values.
+// You can construct a concrete instance of `GetMdbElasticSearchClusterConfigInput` via:
+//
+//          GetMdbElasticSearchClusterConfigArgs{...}
+type GetMdbElasticSearchClusterConfigInput interface {
+	pulumi.Input
+
+	ToGetMdbElasticSearchClusterConfigOutput() GetMdbElasticSearchClusterConfigOutput
+	ToGetMdbElasticSearchClusterConfigOutputWithContext(context.Context) GetMdbElasticSearchClusterConfigOutput
+}
+
+type GetMdbElasticSearchClusterConfigArgs struct {
+	AdminPassword pulumi.StringInput `pulumi:"adminPassword"`
+	// Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+	DataNode GetMdbElasticSearchClusterConfigDataNodeInput `pulumi:"dataNode"`
+	// Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+	Edition pulumi.StringInput `pulumi:"edition"`
+	// Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+	MasterNode GetMdbElasticSearchClusterConfigMasterNodeInput `pulumi:"masterNode"`
+	// A set of requested Elasticsearch plugins.
+	Plugins pulumi.StringArrayInput `pulumi:"plugins"`
+	// Version of Elasticsearch.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetMdbElasticSearchClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfig)(nil)).Elem()
+}
+
+func (i GetMdbElasticSearchClusterConfigArgs) ToGetMdbElasticSearchClusterConfigOutput() GetMdbElasticSearchClusterConfigOutput {
+	return i.ToGetMdbElasticSearchClusterConfigOutputWithContext(context.Background())
+}
+
+func (i GetMdbElasticSearchClusterConfigArgs) ToGetMdbElasticSearchClusterConfigOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbElasticSearchClusterConfigOutput)
+}
+
+type GetMdbElasticSearchClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMdbElasticSearchClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfig)(nil)).Elem()
+}
+
+func (o GetMdbElasticSearchClusterConfigOutput) ToGetMdbElasticSearchClusterConfigOutput() GetMdbElasticSearchClusterConfigOutput {
+	return o
+}
+
+func (o GetMdbElasticSearchClusterConfigOutput) ToGetMdbElasticSearchClusterConfigOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigOutput {
+	return o
+}
+
+func (o GetMdbElasticSearchClusterConfigOutput) AdminPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfig) string { return v.AdminPassword }).(pulumi.StringOutput)
+}
+
+// Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+func (o GetMdbElasticSearchClusterConfigOutput) DataNode() GetMdbElasticSearchClusterConfigDataNodeOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfig) GetMdbElasticSearchClusterConfigDataNode { return v.DataNode }).(GetMdbElasticSearchClusterConfigDataNodeOutput)
+}
+
+// Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+func (o GetMdbElasticSearchClusterConfigOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfig) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+func (o GetMdbElasticSearchClusterConfigOutput) MasterNode() GetMdbElasticSearchClusterConfigMasterNodeOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfig) GetMdbElasticSearchClusterConfigMasterNode {
+		return v.MasterNode
+	}).(GetMdbElasticSearchClusterConfigMasterNodeOutput)
+}
+
+// A set of requested Elasticsearch plugins.
+func (o GetMdbElasticSearchClusterConfigOutput) Plugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfig) []string { return v.Plugins }).(pulumi.StringArrayOutput)
+}
+
+// Version of Elasticsearch.
+func (o GetMdbElasticSearchClusterConfigOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfig) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetMdbElasticSearchClusterConfigDataNode struct {
+	// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+	Resources GetMdbElasticSearchClusterConfigDataNodeResources `pulumi:"resources"`
+}
+
+// GetMdbElasticSearchClusterConfigDataNodeInput is an input type that accepts GetMdbElasticSearchClusterConfigDataNodeArgs and GetMdbElasticSearchClusterConfigDataNodeOutput values.
+// You can construct a concrete instance of `GetMdbElasticSearchClusterConfigDataNodeInput` via:
+//
+//          GetMdbElasticSearchClusterConfigDataNodeArgs{...}
+type GetMdbElasticSearchClusterConfigDataNodeInput interface {
+	pulumi.Input
+
+	ToGetMdbElasticSearchClusterConfigDataNodeOutput() GetMdbElasticSearchClusterConfigDataNodeOutput
+	ToGetMdbElasticSearchClusterConfigDataNodeOutputWithContext(context.Context) GetMdbElasticSearchClusterConfigDataNodeOutput
+}
+
+type GetMdbElasticSearchClusterConfigDataNodeArgs struct {
+	// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+	Resources GetMdbElasticSearchClusterConfigDataNodeResourcesInput `pulumi:"resources"`
+}
+
+func (GetMdbElasticSearchClusterConfigDataNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfigDataNode)(nil)).Elem()
+}
+
+func (i GetMdbElasticSearchClusterConfigDataNodeArgs) ToGetMdbElasticSearchClusterConfigDataNodeOutput() GetMdbElasticSearchClusterConfigDataNodeOutput {
+	return i.ToGetMdbElasticSearchClusterConfigDataNodeOutputWithContext(context.Background())
+}
+
+func (i GetMdbElasticSearchClusterConfigDataNodeArgs) ToGetMdbElasticSearchClusterConfigDataNodeOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigDataNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbElasticSearchClusterConfigDataNodeOutput)
+}
+
+type GetMdbElasticSearchClusterConfigDataNodeOutput struct{ *pulumi.OutputState }
+
+func (GetMdbElasticSearchClusterConfigDataNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfigDataNode)(nil)).Elem()
+}
+
+func (o GetMdbElasticSearchClusterConfigDataNodeOutput) ToGetMdbElasticSearchClusterConfigDataNodeOutput() GetMdbElasticSearchClusterConfigDataNodeOutput {
+	return o
+}
+
+func (o GetMdbElasticSearchClusterConfigDataNodeOutput) ToGetMdbElasticSearchClusterConfigDataNodeOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigDataNodeOutput {
+	return o
+}
+
+// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+func (o GetMdbElasticSearchClusterConfigDataNodeOutput) Resources() GetMdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfigDataNode) GetMdbElasticSearchClusterConfigDataNodeResources {
+		return v.Resources
+	}).(GetMdbElasticSearchClusterConfigDataNodeResourcesOutput)
+}
+
+type GetMdbElasticSearchClusterConfigDataNodeResources struct {
+	// Volume of the storage available to a Elasticsearch host, in gigabytes.
+	DiskSize int `pulumi:"diskSize"`
+	// Type of the storage of Elasticsearch hosts.
+	DiskTypeId       string `pulumi:"diskTypeId"`
+	ResourcePresetId string `pulumi:"resourcePresetId"`
+}
+
+// GetMdbElasticSearchClusterConfigDataNodeResourcesInput is an input type that accepts GetMdbElasticSearchClusterConfigDataNodeResourcesArgs and GetMdbElasticSearchClusterConfigDataNodeResourcesOutput values.
+// You can construct a concrete instance of `GetMdbElasticSearchClusterConfigDataNodeResourcesInput` via:
+//
+//          GetMdbElasticSearchClusterConfigDataNodeResourcesArgs{...}
+type GetMdbElasticSearchClusterConfigDataNodeResourcesInput interface {
+	pulumi.Input
+
+	ToGetMdbElasticSearchClusterConfigDataNodeResourcesOutput() GetMdbElasticSearchClusterConfigDataNodeResourcesOutput
+	ToGetMdbElasticSearchClusterConfigDataNodeResourcesOutputWithContext(context.Context) GetMdbElasticSearchClusterConfigDataNodeResourcesOutput
+}
+
+type GetMdbElasticSearchClusterConfigDataNodeResourcesArgs struct {
+	// Volume of the storage available to a Elasticsearch host, in gigabytes.
+	DiskSize pulumi.IntInput `pulumi:"diskSize"`
+	// Type of the storage of Elasticsearch hosts.
+	DiskTypeId       pulumi.StringInput `pulumi:"diskTypeId"`
+	ResourcePresetId pulumi.StringInput `pulumi:"resourcePresetId"`
+}
+
+func (GetMdbElasticSearchClusterConfigDataNodeResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfigDataNodeResources)(nil)).Elem()
+}
+
+func (i GetMdbElasticSearchClusterConfigDataNodeResourcesArgs) ToGetMdbElasticSearchClusterConfigDataNodeResourcesOutput() GetMdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return i.ToGetMdbElasticSearchClusterConfigDataNodeResourcesOutputWithContext(context.Background())
+}
+
+func (i GetMdbElasticSearchClusterConfigDataNodeResourcesArgs) ToGetMdbElasticSearchClusterConfigDataNodeResourcesOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbElasticSearchClusterConfigDataNodeResourcesOutput)
+}
+
+type GetMdbElasticSearchClusterConfigDataNodeResourcesOutput struct{ *pulumi.OutputState }
+
+func (GetMdbElasticSearchClusterConfigDataNodeResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfigDataNodeResources)(nil)).Elem()
+}
+
+func (o GetMdbElasticSearchClusterConfigDataNodeResourcesOutput) ToGetMdbElasticSearchClusterConfigDataNodeResourcesOutput() GetMdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return o
+}
+
+func (o GetMdbElasticSearchClusterConfigDataNodeResourcesOutput) ToGetMdbElasticSearchClusterConfigDataNodeResourcesOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigDataNodeResourcesOutput {
+	return o
+}
+
+// Volume of the storage available to a Elasticsearch host, in gigabytes.
+func (o GetMdbElasticSearchClusterConfigDataNodeResourcesOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfigDataNodeResources) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+// Type of the storage of Elasticsearch hosts.
+func (o GetMdbElasticSearchClusterConfigDataNodeResourcesOutput) DiskTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfigDataNodeResources) string { return v.DiskTypeId }).(pulumi.StringOutput)
+}
+
+func (o GetMdbElasticSearchClusterConfigDataNodeResourcesOutput) ResourcePresetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfigDataNodeResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
+}
+
+type GetMdbElasticSearchClusterConfigMasterNode struct {
+	// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+	Resources GetMdbElasticSearchClusterConfigMasterNodeResources `pulumi:"resources"`
+}
+
+// GetMdbElasticSearchClusterConfigMasterNodeInput is an input type that accepts GetMdbElasticSearchClusterConfigMasterNodeArgs and GetMdbElasticSearchClusterConfigMasterNodeOutput values.
+// You can construct a concrete instance of `GetMdbElasticSearchClusterConfigMasterNodeInput` via:
+//
+//          GetMdbElasticSearchClusterConfigMasterNodeArgs{...}
+type GetMdbElasticSearchClusterConfigMasterNodeInput interface {
+	pulumi.Input
+
+	ToGetMdbElasticSearchClusterConfigMasterNodeOutput() GetMdbElasticSearchClusterConfigMasterNodeOutput
+	ToGetMdbElasticSearchClusterConfigMasterNodeOutputWithContext(context.Context) GetMdbElasticSearchClusterConfigMasterNodeOutput
+}
+
+type GetMdbElasticSearchClusterConfigMasterNodeArgs struct {
+	// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+	Resources GetMdbElasticSearchClusterConfigMasterNodeResourcesInput `pulumi:"resources"`
+}
+
+func (GetMdbElasticSearchClusterConfigMasterNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfigMasterNode)(nil)).Elem()
+}
+
+func (i GetMdbElasticSearchClusterConfigMasterNodeArgs) ToGetMdbElasticSearchClusterConfigMasterNodeOutput() GetMdbElasticSearchClusterConfigMasterNodeOutput {
+	return i.ToGetMdbElasticSearchClusterConfigMasterNodeOutputWithContext(context.Background())
+}
+
+func (i GetMdbElasticSearchClusterConfigMasterNodeArgs) ToGetMdbElasticSearchClusterConfigMasterNodeOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigMasterNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbElasticSearchClusterConfigMasterNodeOutput)
+}
+
+type GetMdbElasticSearchClusterConfigMasterNodeOutput struct{ *pulumi.OutputState }
+
+func (GetMdbElasticSearchClusterConfigMasterNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfigMasterNode)(nil)).Elem()
+}
+
+func (o GetMdbElasticSearchClusterConfigMasterNodeOutput) ToGetMdbElasticSearchClusterConfigMasterNodeOutput() GetMdbElasticSearchClusterConfigMasterNodeOutput {
+	return o
+}
+
+func (o GetMdbElasticSearchClusterConfigMasterNodeOutput) ToGetMdbElasticSearchClusterConfigMasterNodeOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigMasterNodeOutput {
+	return o
+}
+
+// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+func (o GetMdbElasticSearchClusterConfigMasterNodeOutput) Resources() GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfigMasterNode) GetMdbElasticSearchClusterConfigMasterNodeResources {
+		return v.Resources
+	}).(GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput)
+}
+
+type GetMdbElasticSearchClusterConfigMasterNodeResources struct {
+	// Volume of the storage available to a Elasticsearch host, in gigabytes.
+	DiskSize int `pulumi:"diskSize"`
+	// Type of the storage of Elasticsearch hosts.
+	DiskTypeId       string `pulumi:"diskTypeId"`
+	ResourcePresetId string `pulumi:"resourcePresetId"`
+}
+
+// GetMdbElasticSearchClusterConfigMasterNodeResourcesInput is an input type that accepts GetMdbElasticSearchClusterConfigMasterNodeResourcesArgs and GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput values.
+// You can construct a concrete instance of `GetMdbElasticSearchClusterConfigMasterNodeResourcesInput` via:
+//
+//          GetMdbElasticSearchClusterConfigMasterNodeResourcesArgs{...}
+type GetMdbElasticSearchClusterConfigMasterNodeResourcesInput interface {
+	pulumi.Input
+
+	ToGetMdbElasticSearchClusterConfigMasterNodeResourcesOutput() GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput
+	ToGetMdbElasticSearchClusterConfigMasterNodeResourcesOutputWithContext(context.Context) GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput
+}
+
+type GetMdbElasticSearchClusterConfigMasterNodeResourcesArgs struct {
+	// Volume of the storage available to a Elasticsearch host, in gigabytes.
+	DiskSize pulumi.IntInput `pulumi:"diskSize"`
+	// Type of the storage of Elasticsearch hosts.
+	DiskTypeId       pulumi.StringInput `pulumi:"diskTypeId"`
+	ResourcePresetId pulumi.StringInput `pulumi:"resourcePresetId"`
+}
+
+func (GetMdbElasticSearchClusterConfigMasterNodeResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfigMasterNodeResources)(nil)).Elem()
+}
+
+func (i GetMdbElasticSearchClusterConfigMasterNodeResourcesArgs) ToGetMdbElasticSearchClusterConfigMasterNodeResourcesOutput() GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return i.ToGetMdbElasticSearchClusterConfigMasterNodeResourcesOutputWithContext(context.Background())
+}
+
+func (i GetMdbElasticSearchClusterConfigMasterNodeResourcesArgs) ToGetMdbElasticSearchClusterConfigMasterNodeResourcesOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput)
+}
+
+type GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput struct{ *pulumi.OutputState }
+
+func (GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterConfigMasterNodeResources)(nil)).Elem()
+}
+
+func (o GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput) ToGetMdbElasticSearchClusterConfigMasterNodeResourcesOutput() GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return o
+}
+
+func (o GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput) ToGetMdbElasticSearchClusterConfigMasterNodeResourcesOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput {
+	return o
+}
+
+// Volume of the storage available to a Elasticsearch host, in gigabytes.
+func (o GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfigMasterNodeResources) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+// Type of the storage of Elasticsearch hosts.
+func (o GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput) DiskTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfigMasterNodeResources) string { return v.DiskTypeId }).(pulumi.StringOutput)
+}
+
+func (o GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput) ResourcePresetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterConfigMasterNodeResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
+}
+
+type GetMdbElasticSearchClusterHost struct {
+	// Sets whether the host should get a public IP address on creation.
+	AssignPublicIp bool `pulumi:"assignPublicIp"`
+	// The fully qualified domain name of the host.
+	Fqdn string `pulumi:"fqdn"`
+	// The name of the Elasticsearch cluster.
+	Name string `pulumi:"name"`
+	// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
+	SubnetId string `pulumi:"subnetId"`
+	// The type of the host to be deployed. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/hosts-roles).
+	Type string `pulumi:"type"`
+	// The availability zone where the Elasticsearch host will be created.
+	Zone string `pulumi:"zone"`
+}
+
+// GetMdbElasticSearchClusterHostInput is an input type that accepts GetMdbElasticSearchClusterHostArgs and GetMdbElasticSearchClusterHostOutput values.
+// You can construct a concrete instance of `GetMdbElasticSearchClusterHostInput` via:
+//
+//          GetMdbElasticSearchClusterHostArgs{...}
+type GetMdbElasticSearchClusterHostInput interface {
+	pulumi.Input
+
+	ToGetMdbElasticSearchClusterHostOutput() GetMdbElasticSearchClusterHostOutput
+	ToGetMdbElasticSearchClusterHostOutputWithContext(context.Context) GetMdbElasticSearchClusterHostOutput
+}
+
+type GetMdbElasticSearchClusterHostArgs struct {
+	// Sets whether the host should get a public IP address on creation.
+	AssignPublicIp pulumi.BoolInput `pulumi:"assignPublicIp"`
+	// The fully qualified domain name of the host.
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// The name of the Elasticsearch cluster.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// The type of the host to be deployed. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/hosts-roles).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The availability zone where the Elasticsearch host will be created.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetMdbElasticSearchClusterHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterHost)(nil)).Elem()
+}
+
+func (i GetMdbElasticSearchClusterHostArgs) ToGetMdbElasticSearchClusterHostOutput() GetMdbElasticSearchClusterHostOutput {
+	return i.ToGetMdbElasticSearchClusterHostOutputWithContext(context.Background())
+}
+
+func (i GetMdbElasticSearchClusterHostArgs) ToGetMdbElasticSearchClusterHostOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbElasticSearchClusterHostOutput)
+}
+
+// GetMdbElasticSearchClusterHostArrayInput is an input type that accepts GetMdbElasticSearchClusterHostArray and GetMdbElasticSearchClusterHostArrayOutput values.
+// You can construct a concrete instance of `GetMdbElasticSearchClusterHostArrayInput` via:
+//
+//          GetMdbElasticSearchClusterHostArray{ GetMdbElasticSearchClusterHostArgs{...} }
+type GetMdbElasticSearchClusterHostArrayInput interface {
+	pulumi.Input
+
+	ToGetMdbElasticSearchClusterHostArrayOutput() GetMdbElasticSearchClusterHostArrayOutput
+	ToGetMdbElasticSearchClusterHostArrayOutputWithContext(context.Context) GetMdbElasticSearchClusterHostArrayOutput
+}
+
+type GetMdbElasticSearchClusterHostArray []GetMdbElasticSearchClusterHostInput
+
+func (GetMdbElasticSearchClusterHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMdbElasticSearchClusterHost)(nil)).Elem()
+}
+
+func (i GetMdbElasticSearchClusterHostArray) ToGetMdbElasticSearchClusterHostArrayOutput() GetMdbElasticSearchClusterHostArrayOutput {
+	return i.ToGetMdbElasticSearchClusterHostArrayOutputWithContext(context.Background())
+}
+
+func (i GetMdbElasticSearchClusterHostArray) ToGetMdbElasticSearchClusterHostArrayOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbElasticSearchClusterHostArrayOutput)
+}
+
+type GetMdbElasticSearchClusterHostOutput struct{ *pulumi.OutputState }
+
+func (GetMdbElasticSearchClusterHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbElasticSearchClusterHost)(nil)).Elem()
+}
+
+func (o GetMdbElasticSearchClusterHostOutput) ToGetMdbElasticSearchClusterHostOutput() GetMdbElasticSearchClusterHostOutput {
+	return o
+}
+
+func (o GetMdbElasticSearchClusterHostOutput) ToGetMdbElasticSearchClusterHostOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterHostOutput {
+	return o
+}
+
+// Sets whether the host should get a public IP address on creation.
+func (o GetMdbElasticSearchClusterHostOutput) AssignPublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterHost) bool { return v.AssignPublicIp }).(pulumi.BoolOutput)
+}
+
+// The fully qualified domain name of the host.
+func (o GetMdbElasticSearchClusterHostOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterHost) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// The name of the Elasticsearch cluster.
+func (o GetMdbElasticSearchClusterHostOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterHost) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
+func (o GetMdbElasticSearchClusterHostOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterHost) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// The type of the host to be deployed. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/hosts-roles).
+func (o GetMdbElasticSearchClusterHostOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterHost) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The availability zone where the Elasticsearch host will be created.
+func (o GetMdbElasticSearchClusterHostOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbElasticSearchClusterHost) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetMdbElasticSearchClusterHostArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMdbElasticSearchClusterHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMdbElasticSearchClusterHost)(nil)).Elem()
+}
+
+func (o GetMdbElasticSearchClusterHostArrayOutput) ToGetMdbElasticSearchClusterHostArrayOutput() GetMdbElasticSearchClusterHostArrayOutput {
+	return o
+}
+
+func (o GetMdbElasticSearchClusterHostArrayOutput) ToGetMdbElasticSearchClusterHostArrayOutputWithContext(ctx context.Context) GetMdbElasticSearchClusterHostArrayOutput {
+	return o
+}
+
+func (o GetMdbElasticSearchClusterHostArrayOutput) Index(i pulumi.IntInput) GetMdbElasticSearchClusterHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMdbElasticSearchClusterHost {
+		return vs[0].([]GetMdbElasticSearchClusterHost)[vs[1].(int)]
+	}).(GetMdbElasticSearchClusterHostOutput)
+}
+
 type GetMdbKafkaClusterConfig struct {
 	// The flag that defines whether a public IP address is assigned to the node.
 	AssignPublicIp *bool `pulumi:"assignPublicIp"`
@@ -46997,7 +52749,7 @@ type GetMdbMongodbClusterHost struct {
 	// The ID of the subnet, to which the host belongs. The subnet must
 	// be a part of the network to which the cluster belongs.
 	SubnetId string `pulumi:"subnetId"`
-	// type of mongo demon which runs on this host (mongod, mongos or monogcfg).
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type string `pulumi:"type"`
 	// The availability zone where the MongoDB host will be created.
 	ZoneId string `pulumi:"zoneId"`
@@ -47028,7 +52780,7 @@ type GetMdbMongodbClusterHostArgs struct {
 	// The ID of the subnet, to which the host belongs. The subnet must
 	// be a part of the network to which the cluster belongs.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// type of mongo demon which runs on this host (mongod, mongos or monogcfg).
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The availability zone where the MongoDB host will be created.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -47116,7 +52868,7 @@ func (o GetMdbMongodbClusterHostOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbMongodbClusterHost) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// type of mongo demon which runs on this host (mongod, mongos or monogcfg).
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
 func (o GetMdbMongodbClusterHostOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbMongodbClusterHost) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -47144,6 +52896,76 @@ func (o GetMdbMongodbClusterHostArrayOutput) Index(i pulumi.IntInput) GetMdbMong
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMdbMongodbClusterHost {
 		return vs[0].([]GetMdbMongodbClusterHost)[vs[1].(int)]
 	}).(GetMdbMongodbClusterHostOutput)
+}
+
+type GetMdbMongodbClusterMaintenanceWindow struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day string `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour int `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type string `pulumi:"type"`
+}
+
+// GetMdbMongodbClusterMaintenanceWindowInput is an input type that accepts GetMdbMongodbClusterMaintenanceWindowArgs and GetMdbMongodbClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetMdbMongodbClusterMaintenanceWindowInput` via:
+//
+//          GetMdbMongodbClusterMaintenanceWindowArgs{...}
+type GetMdbMongodbClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetMdbMongodbClusterMaintenanceWindowOutput() GetMdbMongodbClusterMaintenanceWindowOutput
+	ToGetMdbMongodbClusterMaintenanceWindowOutputWithContext(context.Context) GetMdbMongodbClusterMaintenanceWindowOutput
+}
+
+type GetMdbMongodbClusterMaintenanceWindowArgs struct {
+	// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+	Day pulumi.StringInput `pulumi:"day"`
+	// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+	Hour pulumi.IntInput `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetMdbMongodbClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbMongodbClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetMdbMongodbClusterMaintenanceWindowArgs) ToGetMdbMongodbClusterMaintenanceWindowOutput() GetMdbMongodbClusterMaintenanceWindowOutput {
+	return i.ToGetMdbMongodbClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetMdbMongodbClusterMaintenanceWindowArgs) ToGetMdbMongodbClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbMongodbClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbMongodbClusterMaintenanceWindowOutput)
+}
+
+type GetMdbMongodbClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetMdbMongodbClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbMongodbClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetMdbMongodbClusterMaintenanceWindowOutput) ToGetMdbMongodbClusterMaintenanceWindowOutput() GetMdbMongodbClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetMdbMongodbClusterMaintenanceWindowOutput) ToGetMdbMongodbClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbMongodbClusterMaintenanceWindowOutput {
+	return o
+}
+
+// Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+func (o GetMdbMongodbClusterMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbMongodbClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+func (o GetMdbMongodbClusterMaintenanceWindowOutput) Hour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbMongodbClusterMaintenanceWindow) int { return v.Hour }).(pulumi.IntOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o GetMdbMongodbClusterMaintenanceWindowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbMongodbClusterMaintenanceWindow) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetMdbMongodbClusterResources struct {
@@ -49067,6 +54889,76 @@ func (o GetMdbPostgresqlClusterHostArrayOutput) Index(i pulumi.IntInput) GetMdbP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMdbPostgresqlClusterHost {
 		return vs[0].([]GetMdbPostgresqlClusterHost)[vs[1].(int)]
 	}).(GetMdbPostgresqlClusterHostOutput)
+}
+
+type GetMdbPostgresqlClusterMaintenanceWindow struct {
+	// Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+	Day string `pulumi:"day"`
+	// Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+	Hour int `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type string `pulumi:"type"`
+}
+
+// GetMdbPostgresqlClusterMaintenanceWindowInput is an input type that accepts GetMdbPostgresqlClusterMaintenanceWindowArgs and GetMdbPostgresqlClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetMdbPostgresqlClusterMaintenanceWindowInput` via:
+//
+//          GetMdbPostgresqlClusterMaintenanceWindowArgs{...}
+type GetMdbPostgresqlClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetMdbPostgresqlClusterMaintenanceWindowOutput() GetMdbPostgresqlClusterMaintenanceWindowOutput
+	ToGetMdbPostgresqlClusterMaintenanceWindowOutputWithContext(context.Context) GetMdbPostgresqlClusterMaintenanceWindowOutput
+}
+
+type GetMdbPostgresqlClusterMaintenanceWindowArgs struct {
+	// Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+	Day pulumi.StringInput `pulumi:"day"`
+	// Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+	Hour pulumi.IntInput `pulumi:"hour"`
+	// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetMdbPostgresqlClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbPostgresqlClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetMdbPostgresqlClusterMaintenanceWindowArgs) ToGetMdbPostgresqlClusterMaintenanceWindowOutput() GetMdbPostgresqlClusterMaintenanceWindowOutput {
+	return i.ToGetMdbPostgresqlClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetMdbPostgresqlClusterMaintenanceWindowArgs) ToGetMdbPostgresqlClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbPostgresqlClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbPostgresqlClusterMaintenanceWindowOutput)
+}
+
+type GetMdbPostgresqlClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetMdbPostgresqlClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbPostgresqlClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetMdbPostgresqlClusterMaintenanceWindowOutput) ToGetMdbPostgresqlClusterMaintenanceWindowOutput() GetMdbPostgresqlClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetMdbPostgresqlClusterMaintenanceWindowOutput) ToGetMdbPostgresqlClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetMdbPostgresqlClusterMaintenanceWindowOutput {
+	return o
+}
+
+// Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+func (o GetMdbPostgresqlClusterMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbPostgresqlClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+func (o GetMdbPostgresqlClusterMaintenanceWindowOutput) Hour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbPostgresqlClusterMaintenanceWindow) int { return v.Hour }).(pulumi.IntOutput)
+}
+
+// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+func (o GetMdbPostgresqlClusterMaintenanceWindowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbPostgresqlClusterMaintenanceWindow) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetMdbPostgresqlClusterUser struct {
@@ -51394,6 +57286,34 @@ func init() {
 	pulumi.RegisterOutputType(AlbBackendGroupHttpBackendTlsValidationContextPtrOutput{})
 	pulumi.RegisterOutputType(AlbTargetGroupTargetOutput{})
 	pulumi.RegisterOutputType(AlbTargetGroupTargetArrayOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostModifyRequestHeaderOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostModifyRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostModifyResponseHeaderOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostModifyResponseHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteArrayOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRouteOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRoutePtrOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRouteGrpcMatchOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRoutePtrOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteDirectResponseActionOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteHttpMatchOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteHttpMatchArrayOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteHttpMatchPathOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteHttpRouteActionOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteRedirectActionOutput{})
+	pulumi.RegisterOutputType(AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput{})
 	pulumi.RegisterOutputType(ComputeDiskDiskPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ComputeDiskDiskPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceBootDiskOutput{})
@@ -51512,6 +57432,10 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterMasterVersionInfoPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterMasterZonalOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterMasterZonalPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNetworkImplementationOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNetworkImplementationPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNetworkImplementationCiliumOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNetworkImplementationCiliumPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupAllocationPolicyLocationOutput{})
@@ -51612,6 +57536,18 @@ func init() {
 	pulumi.RegisterOutputType(MdbClickhouseClusterZookeeperPtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterZookeeperResourcesOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterZookeeperResourcesPtrOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigDataNodeOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigDataNodePtrOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigDataNodeResourcesOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigMasterNodeOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigMasterNodePtrOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigMasterNodeResourcesOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterHostOutput{})
+	pulumi.RegisterOutputType(MdbElasticSearchClusterHostArrayOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigKafkaOutput{})
@@ -51644,6 +57580,8 @@ func init() {
 	pulumi.RegisterOutputType(MdbMongodbClusterDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterHostOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(MdbMongodbClusterMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(MdbMongodbClusterMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterResourcesOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterUserOutput{})
@@ -51760,6 +57698,25 @@ func init() {
 	pulumi.RegisterOutputType(GetAlbBackendGroupHttpBackendTlsValidationContextOutput{})
 	pulumi.RegisterOutputType(GetAlbTargetGroupTargetOutput{})
 	pulumi.RegisterOutputType(GetAlbTargetGroupTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostModifyRequestHeaderOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostModifyRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostModifyResponseHeaderOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostModifyResponseHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteGrpcRouteOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteGrpcRouteGrpcMatchOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteHttpRouteOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteHttpRouteDirectResponseActionOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteHttpRouteHttpMatchOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteHttpRouteHttpMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteHttpRouteHttpMatchPathOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput{})
+	pulumi.RegisterOutputType(GetAlbVirtualHostRouteHttpRouteRedirectActionOutput{})
 	pulumi.RegisterOutputType(GetComputeDiskDiskPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceBootDiskOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceBootDiskInitializeParamOutput{})
@@ -51845,6 +57802,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClusterMasterRegionalOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterMasterVersionInfoOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterMasterZonalOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterNetworkImplementationOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterNetworkImplementationCiliumOutput{})
 	pulumi.RegisterOutputType(GetKubernetesNodeGroupAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(GetKubernetesNodeGroupAllocationPolicyLocationOutput{})
 	pulumi.RegisterOutputType(GetKubernetesNodeGroupAllocationPolicyLocationArrayOutput{})
@@ -51918,6 +57877,13 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterUserSettingsOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterZookeeperOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterZookeeperResourcesOutput{})
+	pulumi.RegisterOutputType(GetMdbElasticSearchClusterConfigOutput{})
+	pulumi.RegisterOutputType(GetMdbElasticSearchClusterConfigDataNodeOutput{})
+	pulumi.RegisterOutputType(GetMdbElasticSearchClusterConfigDataNodeResourcesOutput{})
+	pulumi.RegisterOutputType(GetMdbElasticSearchClusterConfigMasterNodeOutput{})
+	pulumi.RegisterOutputType(GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput{})
+	pulumi.RegisterOutputType(GetMdbElasticSearchClusterHostOutput{})
+	pulumi.RegisterOutputType(GetMdbElasticSearchClusterHostArrayOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaKafkaConfigOutput{})
@@ -51944,6 +57910,7 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbMongodbClusterDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetMdbMongodbClusterHostOutput{})
 	pulumi.RegisterOutputType(GetMdbMongodbClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(GetMdbMongodbClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetMdbMongodbClusterResourcesOutput{})
 	pulumi.RegisterOutputType(GetMdbMongodbClusterUserOutput{})
 	pulumi.RegisterOutputType(GetMdbMongodbClusterUserArrayOutput{})
@@ -51974,6 +57941,7 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbPostgresqlClusterDatabaseExtensionArrayOutput{})
 	pulumi.RegisterOutputType(GetMdbPostgresqlClusterHostOutput{})
 	pulumi.RegisterOutputType(GetMdbPostgresqlClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(GetMdbPostgresqlClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetMdbPostgresqlClusterUserOutput{})
 	pulumi.RegisterOutputType(GetMdbPostgresqlClusterUserArrayOutput{})
 	pulumi.RegisterOutputType(GetMdbPostgresqlClusterUserPermissionOutput{})

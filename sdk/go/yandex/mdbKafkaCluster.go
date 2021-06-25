@@ -123,7 +123,7 @@ import (
 // 				},
 // 				&yandex.MdbKafkaClusterUserArgs{
 // 					Name:     pulumi.String("worker"),
-// 					Password: pulumi.String(""),
+// 					Password: pulumi.String("password"),
 // 					Permissions: yandex.MdbKafkaClusterUserPermissionArray{
 // 						&yandex.MdbKafkaClusterUserPermissionArgs{
 // 							Role:      pulumi.String("ACCESS_ROLE_CONSUMER"),
@@ -283,7 +283,7 @@ import (
 // 				},
 // 				&yandex.MdbKafkaClusterUserArgs{
 // 					Name:     pulumi.String("worker"),
-// 					Password: pulumi.String(""),
+// 					Password: pulumi.String("password"),
 // 					Permissions: yandex.MdbKafkaClusterUserPermissionArray{
 // 						&yandex.MdbKafkaClusterUserPermissionArgs{
 // 							Role:      pulumi.String("ACCESS_ROLE_CONSUMER"),

@@ -188,6 +188,11 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly networkId!: pulumi.Output<string>;
     /**
+     * (Optional) Network Implementation options. The structure is documented below.
+     * ---
+     */
+    public readonly networkImplementation!: pulumi.Output<outputs.KubernetesClusterNetworkImplementation | undefined>;
+    /**
      * Network policy provider for the cluster. Possible values: `CALICO`.
      */
     public readonly networkPolicyProvider!: pulumi.Output<string | undefined>;
@@ -250,6 +255,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["master"] = state ? state.master : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkId"] = state ? state.networkId : undefined;
+            inputs["networkImplementation"] = state ? state.networkImplementation : undefined;
             inputs["networkPolicyProvider"] = state ? state.networkPolicyProvider : undefined;
             inputs["nodeIpv4CidrMaskSize"] = state ? state.nodeIpv4CidrMaskSize : undefined;
             inputs["nodeServiceAccountId"] = state ? state.nodeServiceAccountId : undefined;
@@ -281,6 +287,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             inputs["master"] = args ? args.master : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkId"] = args ? args.networkId : undefined;
+            inputs["networkImplementation"] = args ? args.networkImplementation : undefined;
             inputs["networkPolicyProvider"] = args ? args.networkPolicyProvider : undefined;
             inputs["nodeIpv4CidrMaskSize"] = args ? args.nodeIpv4CidrMaskSize : undefined;
             inputs["nodeServiceAccountId"] = args ? args.nodeServiceAccountId : undefined;
@@ -355,6 +362,11 @@ export interface KubernetesClusterState {
      * The ID of the cluster network.
      */
     readonly networkId?: pulumi.Input<string>;
+    /**
+     * (Optional) Network Implementation options. The structure is documented below.
+     * ---
+     */
+    readonly networkImplementation?: pulumi.Input<inputs.KubernetesClusterNetworkImplementation>;
     /**
      * Network policy provider for the cluster. Possible values: `CALICO`.
      */
@@ -437,6 +449,11 @@ export interface KubernetesClusterArgs {
      * The ID of the cluster network.
      */
     readonly networkId: pulumi.Input<string>;
+    /**
+     * (Optional) Network Implementation options. The structure is documented below.
+     * ---
+     */
+    readonly networkImplementation?: pulumi.Input<inputs.KubernetesClusterNetworkImplementation>;
     /**
      * Network policy provider for the cluster. Possible values: `CALICO`.
      */

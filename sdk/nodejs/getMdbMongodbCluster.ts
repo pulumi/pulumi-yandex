@@ -98,6 +98,7 @@ export interface GetMdbMongodbClusterResult {
      * A set of key/value label pairs to assign to the MongoDB cluster.
      */
     readonly labels: {[key: string]: string};
+    readonly maintenanceWindow: outputs.GetMdbMongodbClusterMaintenanceWindow;
     /**
      * The name of the database.
      */

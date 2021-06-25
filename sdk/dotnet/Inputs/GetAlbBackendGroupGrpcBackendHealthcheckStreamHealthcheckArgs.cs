@@ -12,9 +12,15 @@ namespace Pulumi.Yandex.Inputs
 
     public sealed class GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Optional text to search in reply.
+        /// </summary>
         [Input("receive", required: true)]
         public string Receive { get; set; } = null!;
 
+        /// <summary>
+        /// Optional message to send. If empty, it's a connect-only health check.
+        /// </summary>
         [Input("send", required: true)]
         public string Send { get; set; } = null!;
 

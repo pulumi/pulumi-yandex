@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Get information about a Yandex Application Load Balancer target group. For more information, see
+ * [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as yandex from "@pulumi/yandex";
+ *
+ * const foo = pulumi.output(yandex.getAlbTargetGroup({
+ *     targetGroupId: "my-target-group-id",
+ * }, { async: true }));
+ * ```
+ *
+ * This data source is used to define [Application Load Balancer Target Groups] that can be used by other resources.
+ */
 export function getAlbTargetGroup(args?: GetAlbTargetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetAlbTargetGroupResult> {
     args = args || {};
     if (!opts) {
@@ -26,9 +41,21 @@ export function getAlbTargetGroup(args?: GetAlbTargetGroupArgs, opts?: pulumi.In
  * A collection of arguments for invoking getAlbTargetGroup.
  */
 export interface GetAlbTargetGroupArgs {
+    /**
+     * Description of the target group.
+     */
     readonly description?: string;
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
     readonly folderId?: string;
+    /**
+     * - Name of the Target Group.
+     */
     readonly name?: string;
+    /**
+     * Target Group ID.
+     */
     readonly targetGroupId?: string;
 }
 
@@ -36,13 +63,24 @@ export interface GetAlbTargetGroupArgs {
  * A collection of values returned by getAlbTargetGroup.
  */
 export interface GetAlbTargetGroupResult {
+    /**
+     * Creation timestamp of this target group.
+     */
     readonly createdAt: string;
+    /**
+     * Description of the target group.
+     */
     readonly description: string;
     readonly folderId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Labels to assign to this target group.
+     * * `target.0.ip_address` - IP address of the target.
+     * * `target.0.subnet_id` - ID of the subnet that targets are connected to.
+     */
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly targetGroupId: string;

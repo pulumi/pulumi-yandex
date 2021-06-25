@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 export * from "./albBackendGroup";
 export * from "./albHttpRouter";
 export * from "./albTargetGroup";
+export * from "./albVirtualHost";
 export * from "./apiGateway";
 export * from "./computeDisk";
 export * from "./computeDiskPlacementGroup";
@@ -29,6 +30,7 @@ export * from "./functionTrigger";
 export * from "./getAlbBackendGroup";
 export * from "./getAlbHttpRouter";
 export * from "./getAlbTargetGroup";
+export * from "./getAlbVirtualHost";
 export * from "./getApiGateway";
 export * from "./getClientConfig";
 export * from "./getComputeDisk";
@@ -55,6 +57,7 @@ export * from "./getKubernetesNodeGroup";
 export * from "./getLbNetworkLoadBalancer";
 export * from "./getLbTargetGroup";
 export * from "./getMdbClickhouseCluster";
+export * from "./getMdbElasticSearchCluster";
 export * from "./getMdbKafkaCluster";
 export * from "./getMdbMongodbCluster";
 export * from "./getMdbMysqlCluster";
@@ -87,6 +90,7 @@ export * from "./kubernetesNodeGroup";
 export * from "./lbNetworkLoadBalancer";
 export * from "./lbTargetGroup";
 export * from "./mdbClickhouseCluster";
+export * from "./mdbElasticSearchCluster";
 export * from "./mdbKafkaCluster";
 export * from "./mdbMongodbCluster";
 export * from "./mdbMysqlCluster";
@@ -123,6 +127,7 @@ export {
 import { AlbBackendGroup } from "./albBackendGroup";
 import { AlbHttpRouter } from "./albHttpRouter";
 import { AlbTargetGroup } from "./albTargetGroup";
+import { AlbVirtualHost } from "./albVirtualHost";
 import { ApiGateway } from "./apiGateway";
 import { ComputeDisk } from "./computeDisk";
 import { ComputeDiskPlacementGroup } from "./computeDiskPlacementGroup";
@@ -157,6 +162,7 @@ import { KubernetesNodeGroup } from "./kubernetesNodeGroup";
 import { LbNetworkLoadBalancer } from "./lbNetworkLoadBalancer";
 import { LbTargetGroup } from "./lbTargetGroup";
 import { MdbClickhouseCluster } from "./mdbClickhouseCluster";
+import { MdbElasticSearchCluster } from "./mdbElasticSearchCluster";
 import { MdbKafkaCluster } from "./mdbKafkaCluster";
 import { MdbMongodbCluster } from "./mdbMongodbCluster";
 import { MdbMysqlCluster } from "./mdbMysqlCluster";
@@ -189,6 +195,8 @@ const _module = {
                 return new AlbHttpRouter(name, <any>undefined, { urn })
             case "yandex:index/albTargetGroup:AlbTargetGroup":
                 return new AlbTargetGroup(name, <any>undefined, { urn })
+            case "yandex:index/albVirtualHost:AlbVirtualHost":
+                return new AlbVirtualHost(name, <any>undefined, { urn })
             case "yandex:index/apiGateway:ApiGateway":
                 return new ApiGateway(name, <any>undefined, { urn })
             case "yandex:index/computeDisk:ComputeDisk":
@@ -257,6 +265,8 @@ const _module = {
                 return new LbTargetGroup(name, <any>undefined, { urn })
             case "yandex:index/mdbClickhouseCluster:MdbClickhouseCluster":
                 return new MdbClickhouseCluster(name, <any>undefined, { urn })
+            case "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
+                return new MdbElasticSearchCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbKafkaCluster:MdbKafkaCluster":
                 return new MdbKafkaCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbMongodbCluster:MdbMongodbCluster":
@@ -307,6 +317,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("yandex", "index/albBackendGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/albHttpRouter", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/albTargetGroup", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/albVirtualHost", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/apiGateway", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeDisk", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeDiskPlacementGroup", _module)
@@ -341,6 +352,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/kubernetesNodeGroup", _mo
 pulumi.runtime.registerResourceModule("yandex", "index/lbNetworkLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/lbTargetGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbClickhouseCluster", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/mdbElasticSearchCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbKafkaCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMongodbCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMysqlCluster", _module)

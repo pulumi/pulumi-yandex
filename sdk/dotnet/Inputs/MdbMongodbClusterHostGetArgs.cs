@@ -50,7 +50,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<string> SubnetId { get; set; } = null!;
 
         /// <summary>
-        /// type of mongo daemon which runs on this host (mongod, mongos or monogcfg). Defaults to mongod.
+        /// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

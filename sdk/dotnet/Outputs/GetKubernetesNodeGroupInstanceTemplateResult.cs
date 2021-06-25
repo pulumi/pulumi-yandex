@@ -26,6 +26,10 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly bool Nat;
         /// <summary>
+        /// Type of network acceleration. Values: `standard`, `software_accelerated`.
+        /// </summary>
+        public readonly string NetworkAccelerationType;
+        /// <summary>
         /// An array with the network interfaces that will be attached to the instance. The structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult> NetworkInterfaces;
@@ -48,6 +52,8 @@ namespace Pulumi.Yandex.Outputs
 
             bool nat,
 
+            string networkAccelerationType,
+
             ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult> networkInterfaces,
 
             Outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult? placementPolicy,
@@ -61,6 +67,7 @@ namespace Pulumi.Yandex.Outputs
             BootDisk = bootDisk;
             Metadata = metadata;
             Nat = nat;
+            NetworkAccelerationType = networkAccelerationType;
             NetworkInterfaces = networkInterfaces;
             PlacementPolicy = placementPolicy;
             PlatformId = platformId;

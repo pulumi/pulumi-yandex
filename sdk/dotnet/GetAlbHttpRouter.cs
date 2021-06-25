@@ -11,6 +11,29 @@ namespace Pulumi.Yandex
 {
     public static class GetAlbHttpRouter
     {
+        /// <summary>
+        /// Get information about a Yandex Application Load Balancer HTTP Router. For more information, see
+        /// [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var tf_router = Output.Create(Yandex.GetAlbHttpRouter.InvokeAsync(new Yandex.GetAlbHttpRouterArgs
+        ///         {
+        ///             HttpRouterId = "my-http-router-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Application Load Balancer HTTP Router] that can be used by other resources.
+        /// </summary>
         public static Task<GetAlbHttpRouterResult> InvokeAsync(GetAlbHttpRouterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlbHttpRouterResult>("yandex:index/getAlbHttpRouter:getAlbHttpRouter", args ?? new GetAlbHttpRouterArgs(), options.WithVersion());
     }
@@ -18,15 +41,27 @@ namespace Pulumi.Yandex
 
     public sealed class GetAlbHttpRouterArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Description of the HTTP Router.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
         [Input("folderId")]
         public string? FolderId { get; set; }
 
+        /// <summary>
+        /// HTTP Router ID.
+        /// </summary>
         [Input("httpRouterId")]
         public string? HttpRouterId { get; set; }
 
+        /// <summary>
+        /// - Name of the HTTP Router.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -39,7 +74,13 @@ namespace Pulumi.Yandex
     [OutputType]
     public sealed class GetAlbHttpRouterResult
     {
+        /// <summary>
+        /// Creation timestamp of this HTTP Router.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Description of the HTTP Router.
+        /// </summary>
         public readonly string Description;
         public readonly string FolderId;
         public readonly string HttpRouterId;
@@ -47,6 +88,9 @@ namespace Pulumi.Yandex
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Labels to assign to this HTTP Router.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
 
