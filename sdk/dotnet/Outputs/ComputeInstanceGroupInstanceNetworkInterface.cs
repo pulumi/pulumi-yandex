@@ -35,11 +35,11 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string? MacAddress;
         /// <summary>
-        /// A public address that can be used to access the internet over NAT.
+        /// Flag for using NAT.
         /// </summary>
         public readonly bool? Nat;
         /// <summary>
-        /// The public IP address of the instance.
+        /// A public address that can be used to access the internet over NAT. Use `variables` to set.
         /// </summary>
         public readonly string? NatIpAddress;
         /// <summary>

@@ -27,7 +27,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my_folder_id"
-// 		_, err := yandex.GetResourcemanagerFolder(ctx, &yandex.GetResourcemanagerFolderArgs{
+// 		_, err := yandex.LookupResourcemanagerFolder(ctx, &yandex.LookupResourcemanagerFolderArgs{
 // 			FolderId: &opt0,
 // 		}, nil)
 // 		if err != nil {

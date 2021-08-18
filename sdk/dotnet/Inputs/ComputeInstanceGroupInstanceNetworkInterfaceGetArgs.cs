@@ -46,13 +46,13 @@ namespace Pulumi.Yandex.Inputs
         public Input<string>? MacAddress { get; set; }
 
         /// <summary>
-        /// A public address that can be used to access the internet over NAT.
+        /// Flag for using NAT.
         /// </summary>
         [Input("nat")]
         public Input<bool>? Nat { get; set; }
 
         /// <summary>
-        /// The public IP address of the instance.
+        /// A public address that can be used to access the internet over NAT. Use `variables` to set.
         /// </summary>
         [Input("natIpAddress")]
         public Input<string>? NatIpAddress { get; set; }

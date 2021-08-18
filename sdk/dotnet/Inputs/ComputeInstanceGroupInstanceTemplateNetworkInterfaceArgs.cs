@@ -58,7 +58,7 @@ namespace Pulumi.Yandex.Inputs
         }
 
         /// <summary>
-        /// A public address that can be used to access the internet over NAT.
+        /// Flag for using NAT.
         /// </summary>
         [Input("nat")]
         public Input<bool>? Nat { get; set; }
@@ -74,6 +74,12 @@ namespace Pulumi.Yandex.Inputs
             get => _natDnsRecords ?? (_natDnsRecords = new InputList<Inputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArgs>());
             set => _natDnsRecords = value;
         }
+
+        /// <summary>
+        /// A public address that can be used to access the internet over NAT. Use `variables` to set.
+        /// </summary>
+        [Input("natIpAddress")]
+        public Input<string>? NatIpAddress { get; set; }
 
         /// <summary>
         /// The ID of the network.

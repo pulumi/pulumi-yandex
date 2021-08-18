@@ -71,6 +71,10 @@ export class StorageObject extends pulumi.CustomResource {
      */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     /**
+     * A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+     */
+    public readonly contentType!: pulumi.Output<string>;
+    /**
      * The name of the object once it is in the bucket.
      */
     public readonly key!: pulumi.Output<string>;
@@ -101,6 +105,7 @@ export class StorageObject extends pulumi.CustomResource {
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["content"] = state ? state.content : undefined;
             inputs["contentBase64"] = state ? state.contentBase64 : undefined;
+            inputs["contentType"] = state ? state.contentType : undefined;
             inputs["key"] = state ? state.key : undefined;
             inputs["secretKey"] = state ? state.secretKey : undefined;
             inputs["source"] = state ? state.source : undefined;
@@ -117,6 +122,7 @@ export class StorageObject extends pulumi.CustomResource {
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["content"] = args ? args.content : undefined;
             inputs["contentBase64"] = args ? args.contentBase64 : undefined;
+            inputs["contentType"] = args ? args.contentType : undefined;
             inputs["key"] = args ? args.key : undefined;
             inputs["secretKey"] = args ? args.secretKey : undefined;
             inputs["source"] = args ? args.source : undefined;
@@ -152,6 +158,10 @@ export interface StorageObjectState {
      * Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
      */
     readonly contentBase64?: pulumi.Input<string>;
+    /**
+     * A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+     */
+    readonly contentType?: pulumi.Input<string>;
     /**
      * The name of the object once it is in the bucket.
      */
@@ -190,6 +200,10 @@ export interface StorageObjectArgs {
      * Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
      */
     readonly contentBase64?: pulumi.Input<string>;
+    /**
+     * A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+     */
+    readonly contentType?: pulumi.Input<string>;
     /**
      * The name of the object once it is in the bucket.
      */

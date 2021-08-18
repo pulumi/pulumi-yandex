@@ -26,7 +26,10 @@ type LookupComputeInstanceGroupArgs struct {
 // A collection of values returned by getComputeInstanceGroup.
 type LookupComputeInstanceGroupResult struct {
 	// The allocation policy of the instance group by zone and region. The structure is documented below.
-	AllocationPolicy GetComputeInstanceGroupAllocationPolicy `pulumi:"allocationPolicy"`
+	AllocationPolicy         GetComputeInstanceGroupAllocationPolicy         `pulumi:"allocationPolicy"`
+	ApplicationBalancerState GetComputeInstanceGroupApplicationBalancerState `pulumi:"applicationBalancerState"`
+	// Application Load balancing (L7) specifications. The structure is documented below.
+	ApplicationLoadBalancer GetComputeInstanceGroupApplicationLoadBalancer `pulumi:"applicationLoadBalancer"`
 	// The instance group creation timestamp.
 	CreatedAt string `pulumi:"createdAt"`
 	// Flag that protects the instance group from accidental deletion.
@@ -35,7 +38,7 @@ type LookupComputeInstanceGroupResult struct {
 	DeployPolicy GetComputeInstanceGroupDeployPolicy `pulumi:"deployPolicy"`
 	// A description of the boot disk.
 	Description string `pulumi:"description"`
-	// The ID of the folder that the instance group belongs to.
+	// Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
 	FolderId string `pulumi:"folderId"`
 	// Health check specification. The structure is documented below.
 	HealthChecks []GetComputeInstanceGroupHealthCheck `pulumi:"healthChecks"`
@@ -56,6 +59,8 @@ type LookupComputeInstanceGroupResult struct {
 	LoadBalancer GetComputeInstanceGroupLoadBalancer `pulumi:"loadBalancer"`
 	// Information about which entities can be attached to this load balancer. The structure is documented below.
 	LoadBalancerState GetComputeInstanceGroupLoadBalancerState `pulumi:"loadBalancerState"`
+	// Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+	MaxCheckingHealthDuration int `pulumi:"maxCheckingHealthDuration"`
 	// The name of the managed instance.
 	Name string `pulumi:"name"`
 	// The scaling policy of the instance group. The structure is documented below.

@@ -274,6 +274,226 @@ export interface AlbBackendGroupHttpBackendTlsValidationContext {
     trustedCaId?: string;
 }
 
+export interface AlbLoadBalancerAllocationPolicy {
+    /**
+     * Unique set of locations. The structure is documented below.
+     */
+    locations: outputs.AlbLoadBalancerAllocationPolicyLocation[];
+}
+
+export interface AlbLoadBalancerAllocationPolicyLocation {
+    /**
+     * If set, will disable all L7 instances in the zone for request handling.
+     */
+    disableTraffic?: boolean;
+    /**
+     * Provided by the client or computed automatically.
+     */
+    subnetId: string;
+    /**
+     * ID of the zone that location is located at.
+     */
+    zoneId: string;
+}
+
+export interface AlbLoadBalancerListener {
+    /**
+     * Network endpoints (addresses and ports) of the listener. The structure is documented below.
+     */
+    endpoints?: outputs.AlbLoadBalancerListenerEndpoint[];
+    /**
+     * HTTP listener resource. The structure is documented below.
+     */
+    http?: outputs.AlbLoadBalancerListenerHttp;
+    /**
+     * name of SNI match.
+     */
+    name: string;
+    /**
+     * TLS listener resource. The structure is documented below.
+     */
+    tls?: outputs.AlbLoadBalancerListenerTls;
+}
+
+export interface AlbLoadBalancerListenerEndpoint {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    addresses: outputs.AlbLoadBalancerListenerEndpointAddress[];
+    /**
+     * One or more ports to listen on.
+     */
+    ports: number[];
+}
+
+export interface AlbLoadBalancerListenerEndpointAddress {
+    /**
+     * External IPv4 address. The structure is documented below.
+     */
+    externalIpv4Address?: outputs.AlbLoadBalancerListenerEndpointAddressExternalIpv4Address;
+    /**
+     * External IPv6 address. The structure is documented below.
+     */
+    externalIpv6Address?: outputs.AlbLoadBalancerListenerEndpointAddressExternalIpv6Address;
+    /**
+     * Internal IPv4 address. The structure is documented below.
+     */
+    internalIpv4Address?: outputs.AlbLoadBalancerListenerEndpointAddressInternalIpv4Address;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressExternalIpv4Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address: string;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressExternalIpv6Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address: string;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressInternalIpv4Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address: string;
+    /**
+     * Provided by the client or computed automatically.
+     */
+    subnetId: string;
+}
+
+export interface AlbLoadBalancerListenerHttp {
+    /**
+     * HTTP handler that sets plaintext HTTP router. The structure is documented below.
+     */
+    handler?: outputs.AlbLoadBalancerListenerHttpHandler;
+    /**
+     * Shortcut for adding http > https redirects. The structure is documented below.
+     */
+    redirects?: outputs.AlbLoadBalancerListenerHttpRedirects;
+}
+
+export interface AlbLoadBalancerListenerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: boolean;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: outputs.AlbLoadBalancerListenerHttpHandlerHttp2Options;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: string;
+}
+
+export interface AlbLoadBalancerListenerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: number;
+}
+
+export interface AlbLoadBalancerListenerHttpRedirects {
+    httpToHttps?: boolean;
+}
+
+export interface AlbLoadBalancerListenerTls {
+    /**
+     * TLS handler resource. The structure is documented below.
+     */
+    defaultHandler: outputs.AlbLoadBalancerListenerTlsDefaultHandler;
+    /**
+     * SNI match resource. The structure is documented below.
+     */
+    sniHandlers?: outputs.AlbLoadBalancerListenerTlsSniHandler[];
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandler {
+    /**
+     * Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+     * with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+     */
+    certificateIds: string[];
+    /**
+     * HTTP handler resource. The structure is documented below.
+     */
+    httpHandler?: outputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: boolean;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: outputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: string;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: number;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandler {
+    /**
+     * HTTP handler that sets plaintext HTTP router. The structure is documented below.
+     */
+    handler: outputs.AlbLoadBalancerListenerTlsSniHandlerHandler;
+    /**
+     * name of SNI match.
+     */
+    name: string;
+    serviceNames: string[];
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandler {
+    /**
+     * Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+     * with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+     */
+    certificateIds: string[];
+    /**
+     * HTTP handler resource. The structure is documented below.
+     */
+    httpHandler?: outputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: boolean;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: outputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: string;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: number;
+}
+
 export interface AlbTargetGroupTarget {
     /**
      * IP address of the target.
@@ -584,6 +804,30 @@ export interface ComputeInstanceGroupAllocationPolicy {
     zones: string[];
 }
 
+export interface ComputeInstanceGroupApplicationLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration?: number;
+    /**
+     * The status message of the instance.
+     */
+    statusMessage: string;
+    /**
+     * A description of the target group.
+     */
+    targetGroupDescription?: string;
+    targetGroupId: string;
+    /**
+     * A set of key/value label pairs.
+     */
+    targetGroupLabels?: {[key: string]: string};
+    /**
+     * The name of the target group.
+     */
+    targetGroupName?: string;
+}
+
 export interface ComputeInstanceGroupDeployPolicy {
     /**
      * The maximum number of instances that can be created at the same time.
@@ -724,11 +968,11 @@ export interface ComputeInstanceGroupInstanceNetworkInterface {
      */
     macAddress: string;
     /**
-     * A public address that can be used to access the internet over NAT.
+     * Flag for using NAT.
      */
     nat: boolean;
     /**
-     * The public IP address of the instance.
+     * A public address that can be used to access the internet over NAT. Use `variables` to set.
      */
     natIpAddress: string;
     /**
@@ -824,9 +1068,13 @@ export interface ComputeInstanceGroupInstanceTemplateBootDisk {
      */
     deviceName: string;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId?: string;
+    /**
      * Parameters for creating a disk alongside the instance. The structure is documented below.
      */
-    initializeParams: outputs.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams;
+    initializeParams?: outputs.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams;
     /**
      * The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
      */
@@ -879,13 +1127,17 @@ export interface ComputeInstanceGroupInstanceTemplateNetworkInterface {
      */
     ipv6DnsRecords?: outputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord[];
     /**
-     * A public address that can be used to access the internet over NAT.
+     * Flag for using NAT.
      */
     nat: boolean;
     /**
      * List of nat dns records.  The structure is documented below.
      */
     natDnsRecords?: outputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord[];
+    /**
+     * A public address that can be used to access the internet over NAT. Use `variables` to set.
+     */
+    natIpAddress?: string;
     /**
      * The ID of the network.
      */
@@ -1000,9 +1252,13 @@ export interface ComputeInstanceGroupInstanceTemplateSecondaryDisk {
      */
     deviceName?: string;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId?: string;
+    /**
      * Parameters for creating a disk alongside the instance. The structure is documented below.
      */
-    initializeParams: outputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams;
+    initializeParams?: outputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams;
     /**
      * The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
      */
@@ -1033,6 +1289,10 @@ export interface ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializePara
 }
 
 export interface ComputeInstanceGroupLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration?: number;
     /**
      * The status message of the instance.
      */
@@ -1110,6 +1370,10 @@ export interface ComputeInstanceGroupScalePolicyAutoScale {
 
 export interface ComputeInstanceGroupScalePolicyAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId?: string;
+    /**
      * A map of labels of metric.
      */
     labels?: {[key: string]: string};
@@ -1129,6 +1393,10 @@ export interface ComputeInstanceGroupScalePolicyAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: string;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service?: string;
     /**
      * Target metric value level.
      */
@@ -1184,6 +1452,10 @@ export interface ComputeInstanceGroupScalePolicyTestAutoScale {
 
 export interface ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId?: string;
+    /**
      * A map of labels of metric.
      */
     labels?: {[key: string]: string};
@@ -1203,6 +1475,10 @@ export interface ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: string;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service?: string;
     /**
      * Target metric value level.
      */
@@ -1486,6 +1762,12 @@ export interface FunctionPackage {
     bucketName: string;
     objectName: string;
     sha256?: string;
+}
+
+export interface FunctionScalingPolicyPolicy {
+    tag: string;
+    zoneInstancesLimit?: number;
+    zoneRequestsLimit?: number;
 }
 
 export interface FunctionTriggerDlq {
@@ -1804,6 +2086,107 @@ export interface GetAlbBackendGroupHttpBackendTlsValidationContext {
     trustedCaId: string;
 }
 
+export interface GetAlbLoadBalancerAllocationPolicy {
+    locations: outputs.GetAlbLoadBalancerAllocationPolicyLocation[];
+}
+
+export interface GetAlbLoadBalancerAllocationPolicyLocation {
+    disableTraffic: boolean;
+    subnetId: string;
+    zoneId: string;
+}
+
+export interface GetAlbLoadBalancerListener {
+    endpoints: outputs.GetAlbLoadBalancerListenerEndpoint[];
+    http?: outputs.GetAlbLoadBalancerListenerHttp;
+    name: string;
+    tls?: outputs.GetAlbLoadBalancerListenerTls;
+}
+
+export interface GetAlbLoadBalancerListenerEndpoint {
+    addresses: outputs.GetAlbLoadBalancerListenerEndpointAddress[];
+    ports: number[];
+}
+
+export interface GetAlbLoadBalancerListenerEndpointAddress {
+    externalIpv4Address: outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv4Address;
+    externalIpv6Address: outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv6Address;
+    internalIpv4Address: outputs.GetAlbLoadBalancerListenerEndpointAddressInternalIpv4Address;
+}
+
+export interface GetAlbLoadBalancerListenerEndpointAddressExternalIpv4Address {
+    address: string;
+}
+
+export interface GetAlbLoadBalancerListenerEndpointAddressExternalIpv6Address {
+    address: string;
+}
+
+export interface GetAlbLoadBalancerListenerEndpointAddressInternalIpv4Address {
+    address: string;
+    subnetId: string;
+}
+
+export interface GetAlbLoadBalancerListenerHttp {
+    handler?: outputs.GetAlbLoadBalancerListenerHttpHandler;
+    redirects?: outputs.GetAlbLoadBalancerListenerHttpRedirects;
+}
+
+export interface GetAlbLoadBalancerListenerHttpHandler {
+    allowHttp10?: boolean;
+    http2Options: outputs.GetAlbLoadBalancerListenerHttpHandlerHttp2Options;
+    httpRouterId: string;
+}
+
+export interface GetAlbLoadBalancerListenerHttpHandlerHttp2Options {
+    maxConcurrentStreams: number;
+}
+
+export interface GetAlbLoadBalancerListenerHttpRedirects {
+    httpToHttps: boolean;
+}
+
+export interface GetAlbLoadBalancerListenerTls {
+    defaultHandler: outputs.GetAlbLoadBalancerListenerTlsDefaultHandler;
+    sniHandlers: outputs.GetAlbLoadBalancerListenerTlsSniHandler[];
+}
+
+export interface GetAlbLoadBalancerListenerTlsDefaultHandler {
+    certificateIds: string[];
+    httpHandler?: outputs.GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler;
+}
+
+export interface GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
+    allowHttp10?: boolean;
+    http2Options: outputs.GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options;
+    httpRouterId: string;
+}
+
+export interface GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
+    maxConcurrentStreams: number;
+}
+
+export interface GetAlbLoadBalancerListenerTlsSniHandler {
+    handler: outputs.GetAlbLoadBalancerListenerTlsSniHandlerHandler;
+    name: string;
+    serviceNames: string[];
+}
+
+export interface GetAlbLoadBalancerListenerTlsSniHandlerHandler {
+    certificateIds: string[];
+    httpHandler?: outputs.GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler;
+}
+
+export interface GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
+    allowHttp10?: boolean;
+    http2Options: outputs.GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options;
+    httpRouterId: string;
+}
+
+export interface GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
+    maxConcurrentStreams: number;
+}
+
 export interface GetAlbTargetGroupTarget {
     ipAddress: string;
     subnetId: string;
@@ -2101,6 +2484,44 @@ export interface GetComputeInstanceGroupAllocationPolicy {
     zones: string[];
 }
 
+export interface GetComputeInstanceGroupApplicationBalancerState {
+    /**
+     * The status message of the target group.
+     */
+    statusMessage: string;
+    /**
+     * The ID of the target group.
+     */
+    targetGroupId: string;
+}
+
+export interface GetComputeInstanceGroupApplicationLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration: number;
+    /**
+     * The status message of the target group.
+     */
+    statusMessage: string;
+    /**
+     * A description of the target group.
+     */
+    targetGroupDescription: string;
+    /**
+     * The ID of the target group.
+     */
+    targetGroupId: string;
+    /**
+     * A set of key/value label pairs.
+     */
+    targetGroupLabels: {[key: string]: string};
+    /**
+     * The name of the target group.
+     */
+    targetGroupName: string;
+}
+
 export interface GetComputeInstanceGroupDeployPolicy {
     /**
      * The maximum number of instances that can be created at the same time.
@@ -2313,6 +2734,10 @@ export interface GetComputeInstanceGroupInstanceTemplateBootDisk {
      */
     deviceName: string;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId: string;
+    /**
      * The parameters used for creating a disk alongside the instance. The structure is documented below.
      */
     initializeParams: outputs.GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParams;
@@ -2375,6 +2800,10 @@ export interface GetComputeInstanceGroupInstanceTemplateNetworkInterface {
      * List of nat dns records.  The structure is documented below.
      */
     natDnsRecords: outputs.GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord[];
+    /**
+     * The public IP address of the instance.
+     */
+    natIpAddress: string;
     /**
      * The ID of the network.
      */
@@ -2477,6 +2906,10 @@ export interface GetComputeInstanceGroupInstanceTemplateSecondaryDisk {
      */
     deviceName: string;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId: string;
+    /**
      * The parameters used for creating a disk alongside the instance. The structure is documented below.
      */
     initializeParams: outputs.GetComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams;
@@ -2510,6 +2943,10 @@ export interface GetComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeP
 }
 
 export interface GetComputeInstanceGroupLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration: number;
     /**
      * The status message of the target group.
      */
@@ -2602,6 +3039,10 @@ export interface GetComputeInstanceGroupScalePolicyAutoScale {
 
 export interface GetComputeInstanceGroupScalePolicyAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId: string;
+    /**
      * A map of labels applied to this instance.
      * * `resources.0.memory` - The memory size allocated to the instance.
      * * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -2625,6 +3066,10 @@ export interface GetComputeInstanceGroupScalePolicyAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: string;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service: string;
     /**
      * Target metric value level.
      */
@@ -2680,6 +3125,10 @@ export interface GetComputeInstanceGroupScalePolicyTestAutoScale {
 
 export interface GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId: string;
+    /**
      * A map of labels applied to this instance.
      * * `resources.0.memory` - The memory size allocated to the instance.
      * * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -2703,6 +3152,10 @@ export interface GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: string;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service: string;
     /**
      * Target metric value level.
      */
@@ -2961,6 +3414,12 @@ export interface GetDataprocClusterClusterConfigSubclusterSpecResources {
      * The ID of the preset for computational resources available to a host. All available presets are listed in the [documentation](https://cloud.yandex.com/docs/data-proc/concepts/instance-types).
      */
     resourcePresetId: string;
+}
+
+export interface GetFunctionScalingPolicyPolicy {
+    tag: string;
+    zoneInstancesLimit?: number;
+    zoneRequestsLimit?: number;
 }
 
 export interface GetFunctionTriggerDlq {

@@ -18,9 +18,13 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string? DeviceName;
         /// <summary>
+        /// ID of the existing disk. To set use variables.
+        /// </summary>
+        public readonly string? DiskId;
+        /// <summary>
         /// Parameters for creating a disk alongside the instance. The structure is documented below.
         /// </summary>
-        public readonly Outputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams InitializeParams;
+        public readonly Outputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams? InitializeParams;
         /// <summary>
         /// The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
         /// </summary>
@@ -30,11 +34,14 @@ namespace Pulumi.Yandex.Outputs
         private ComputeInstanceGroupInstanceTemplateSecondaryDisk(
             string? deviceName,
 
-            Outputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams initializeParams,
+            string? diskId,
+
+            Outputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams? initializeParams,
 
             string? mode)
         {
             DeviceName = deviceName;
+            DiskId = diskId;
             InitializeParams = initializeParams;
             Mode = mode;
         }

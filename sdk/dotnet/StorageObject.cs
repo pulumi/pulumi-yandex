@@ -69,6 +69,12 @@ namespace Pulumi.Yandex
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
         /// <summary>
+        /// A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+        /// </summary>
+        [Output("contentType")]
+        public Output<string> ContentType { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the object once it is in the bucket.
         /// </summary>
         [Output("key")]
@@ -163,6 +169,12 @@ namespace Pulumi.Yandex
         public Input<string>? ContentBase64 { get; set; }
 
         /// <summary>
+        /// A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+        /// </summary>
+        [Input("contentType")]
+        public Input<string>? ContentType { get; set; }
+
+        /// <summary>
         /// The name of the object once it is in the bucket.
         /// </summary>
         [Input("key", required: true)]
@@ -216,6 +228,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
+
+        /// <summary>
+        /// A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+        /// </summary>
+        [Input("contentType")]
+        public Input<string>? ContentType { get; set; }
 
         /// <summary>
         /// The name of the object once it is in the bucket.

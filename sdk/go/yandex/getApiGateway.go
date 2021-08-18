@@ -31,9 +31,10 @@ type LookupApiGatewayResult struct {
 	Domain       string  `pulumi:"domain"`
 	FolderId     *string `pulumi:"folderId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string            `pulumi:"id"`
-	Labels     map[string]string `pulumi:"labels"`
-	LogGroupId string            `pulumi:"logGroupId"`
-	Name       *string           `pulumi:"name"`
-	Status     string            `pulumi:"status"`
+	Id          string            `pulumi:"id"`
+	Labels      map[string]string `pulumi:"labels"`
+	LogGroupId  string            `pulumi:"logGroupId"`
+	Name        *string           `pulumi:"name"`
+	Status      string            `pulumi:"status"`
+	UserDomains []string          `pulumi:"userDomains"`
 }

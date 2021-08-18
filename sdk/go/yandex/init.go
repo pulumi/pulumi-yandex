@@ -24,6 +24,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlbBackendGroup{}
 	case "yandex:index/albHttpRouter:AlbHttpRouter":
 		r = &AlbHttpRouter{}
+	case "yandex:index/albLoadBalancer:AlbLoadBalancer":
+		r = &AlbLoadBalancer{}
 	case "yandex:index/albTargetGroup:AlbTargetGroup":
 		r = &AlbTargetGroup{}
 	case "yandex:index/albVirtualHost:AlbVirtualHost":
@@ -62,6 +64,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Function{}
 	case "yandex:index/functionIamBinding:FunctionIamBinding":
 		r = &FunctionIamBinding{}
+	case "yandex:index/functionScalingPolicy:FunctionScalingPolicy":
+		r = &FunctionScalingPolicy{}
 	case "yandex:index/functionTrigger:FunctionTrigger":
 		r = &FunctionTrigger{}
 	case "yandex:index/iamServiceAccount:IamServiceAccount":
@@ -114,6 +118,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ResourcemanagerCloudIamBinding{}
 	case "yandex:index/resourcemanagerCloudIamMember:ResourcemanagerCloudIamMember":
 		r = &ResourcemanagerCloudIamMember{}
+	case "yandex:index/resourcemanagerFolder:ResourcemanagerFolder":
+		r = &ResourcemanagerFolder{}
 	case "yandex:index/resourcemanagerFolderIamBinding:ResourcemanagerFolderIamBinding":
 		r = &ResourcemanagerFolderIamBinding{}
 	case "yandex:index/resourcemanagerFolderIamMember:ResourcemanagerFolderIamMember":
@@ -134,6 +140,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VpcRouteTable{}
 	case "yandex:index/vpcSecurityGroup:VpcSecurityGroup":
 		r = &VpcSecurityGroup{}
+	case "yandex:index/vpcSecurityGroupRule:VpcSecurityGroupRule":
+		r = &VpcSecurityGroupRule{}
 	case "yandex:index/vpcSubnet:VpcSubnet":
 		r = &VpcSubnet{}
 	case "yandex:index/ydbDatabaseDedicated:YdbDatabaseDedicated":
@@ -179,6 +187,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/albHttpRouter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/albLoadBalancer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -274,6 +287,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/functionIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/functionScalingPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -408,6 +426,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"yandex",
+		"index/resourcemanagerFolder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
 		"index/resourcemanagerFolderIamBinding",
 		&module{version},
 	)
@@ -454,6 +477,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/vpcSecurityGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/vpcSecurityGroupRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

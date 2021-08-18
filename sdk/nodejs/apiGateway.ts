@@ -4,6 +4,56 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Allows management of [Yandex Cloud API Gateway](https://cloud.yandex.com/docs/api-gateway/).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as yandex from "@pulumi/yandex";
+ *
+ * const test_api_gateway = new yandex.ApiGateway("test-api-gateway", {
+ *     description: "any description",
+ *     labels: {
+ *         label: "label",
+ *         "empty-label": "",
+ *     },
+ *     spec: `openapi: "3.0.0"
+ * info:
+ *   version: 1.0.0
+ *   title: Test API
+ * paths:
+ *   /hello:
+ *     get:
+ *       summary: Say hello
+ *       operationId: hello
+ *       parameters:
+ *         - name: user
+ *           in: query
+ *           description: User name to appear in greetings
+ *           required: false
+ *           schema:
+ *             type: string
+ *             default: 'world'
+ *       responses:
+ *         '200':
+ *           description: Greeting
+ *           content:
+ *             'text/plain':
+ *               schema:
+ *                 type: "string"
+ *       x-yc-apigateway-integration:
+ *         type: dummy
+ *         http_code: 200
+ *         http_headers:
+ *           'Content-Type': "text/plain"
+ *         content:
+ *           'text/plain': "Hello again, {user}!\n"
+ * `,
+ * });
+ * ```
+ */
 export class ApiGateway extends pulumi.CustomResource {
     /**
      * Get an existing ApiGateway resource's state with the given name, ID, and optional extra
@@ -32,16 +82,43 @@ export class ApiGateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiGateway.__pulumiType;
     }
 
+    /**
+     * Creation timestamp of the Yandex Cloud API Gateway.
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Description of the Yandex Cloud API Gateway.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Default domain for the Yandex API Gateway. Generated at creation time.
+     */
     public /*out*/ readonly domain!: pulumi.Output<string>;
+    /**
+     * Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+     */
     public readonly folderId!: pulumi.Output<string>;
+    /**
+     * A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+     */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public /*out*/ readonly logGroupId!: pulumi.Output<string>;
+    /**
+     * Yandex Cloud API Gateway name used to define API Gateway.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * OpenAPI specification for Yandex API Gateway.
+     */
     public readonly spec!: pulumi.Output<string>;
-    public readonly specContentHash!: pulumi.Output<number | undefined>;
+    /**
+     * Status of the Yandex API Gateway.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * Set of user domains attached to Yandex API Gateway.
+     */
+    public /*out*/ readonly userDomains!: pulumi.Output<string[]>;
 
     /**
      * Create a ApiGateway resource with the given unique name, arguments, and options.
@@ -64,8 +141,8 @@ export class ApiGateway extends pulumi.CustomResource {
             inputs["logGroupId"] = state ? state.logGroupId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["spec"] = state ? state.spec : undefined;
-            inputs["specContentHash"] = state ? state.specContentHash : undefined;
             inputs["status"] = state ? state.status : undefined;
+            inputs["userDomains"] = state ? state.userDomains : undefined;
         } else {
             const args = argsOrState as ApiGatewayArgs | undefined;
             if ((!args || args.spec === undefined) && !opts.urn) {
@@ -76,11 +153,11 @@ export class ApiGateway extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["spec"] = args ? args.spec : undefined;
-            inputs["specContentHash"] = args ? args.specContentHash : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["domain"] = undefined /*out*/;
             inputs["logGroupId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
+            inputs["userDomains"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -93,26 +170,67 @@ export class ApiGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiGateway resources.
  */
 export interface ApiGatewayState {
+    /**
+     * Creation timestamp of the Yandex Cloud API Gateway.
+     */
     readonly createdAt?: pulumi.Input<string>;
+    /**
+     * Description of the Yandex Cloud API Gateway.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Default domain for the Yandex API Gateway. Generated at creation time.
+     */
     readonly domain?: pulumi.Input<string>;
+    /**
+     * Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+     */
     readonly folderId?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly logGroupId?: pulumi.Input<string>;
+    /**
+     * Yandex Cloud API Gateway name used to define API Gateway.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * OpenAPI specification for Yandex API Gateway.
+     */
     readonly spec?: pulumi.Input<string>;
-    readonly specContentHash?: pulumi.Input<number>;
+    /**
+     * Status of the Yandex API Gateway.
+     */
     readonly status?: pulumi.Input<string>;
+    /**
+     * Set of user domains attached to Yandex API Gateway.
+     */
+    readonly userDomains?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a ApiGateway resource.
  */
 export interface ApiGatewayArgs {
+    /**
+     * Description of the Yandex Cloud API Gateway.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+     */
     readonly folderId?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Yandex Cloud API Gateway name used to define API Gateway.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * OpenAPI specification for Yandex API Gateway.
+     */
     readonly spec: pulumi.Input<string>;
-    readonly specContentHash?: pulumi.Input<number>;
 }

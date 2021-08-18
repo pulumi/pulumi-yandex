@@ -161,8 +161,7 @@ namespace Pulumi.Yandex
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Type of disk to create. Provide this when creating a disk. 
-        /// One of `network-hdd` (default) or `network-ssd`.
+        /// Type of disk to create. Provide this when creating a disk.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -283,8 +282,7 @@ namespace Pulumi.Yandex
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// Type of disk to create. Provide this when creating a disk. 
-        /// One of `network-hdd` (default) or `network-ssd`.
+        /// Type of disk to create. Provide this when creating a disk.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -386,8 +384,7 @@ namespace Pulumi.Yandex
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Type of disk to create. Provide this when creating a disk. 
-        /// One of `network-hdd` (default) or `network-ssd`.
+        /// Type of disk to create. Provide this when creating a disk.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

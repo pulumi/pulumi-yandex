@@ -25,6 +25,26 @@ __all__ = [
     'AlbBackendGroupHttpBackendLoadBalancingConfigArgs',
     'AlbBackendGroupHttpBackendTlsArgs',
     'AlbBackendGroupHttpBackendTlsValidationContextArgs',
+    'AlbLoadBalancerAllocationPolicyArgs',
+    'AlbLoadBalancerAllocationPolicyLocationArgs',
+    'AlbLoadBalancerListenerArgs',
+    'AlbLoadBalancerListenerEndpointArgs',
+    'AlbLoadBalancerListenerEndpointAddressArgs',
+    'AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs',
+    'AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressArgs',
+    'AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressArgs',
+    'AlbLoadBalancerListenerHttpArgs',
+    'AlbLoadBalancerListenerHttpHandlerArgs',
+    'AlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs',
+    'AlbLoadBalancerListenerHttpRedirectsArgs',
+    'AlbLoadBalancerListenerTlsArgs',
+    'AlbLoadBalancerListenerTlsDefaultHandlerArgs',
+    'AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs',
+    'AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs',
+    'AlbLoadBalancerListenerTlsSniHandlerArgs',
+    'AlbLoadBalancerListenerTlsSniHandlerHandlerArgs',
+    'AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs',
+    'AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs',
     'AlbTargetGroupTargetArgs',
     'AlbVirtualHostModifyRequestHeaderArgs',
     'AlbVirtualHostModifyResponseHeaderArgs',
@@ -44,6 +64,7 @@ __all__ = [
     'ComputeInstanceBootDiskArgs',
     'ComputeInstanceBootDiskInitializeParamsArgs',
     'ComputeInstanceGroupAllocationPolicyArgs',
+    'ComputeInstanceGroupApplicationLoadBalancerArgs',
     'ComputeInstanceGroupDeployPolicyArgs',
     'ComputeInstanceGroupHealthCheckArgs',
     'ComputeInstanceGroupHealthCheckHttpOptionArgs',
@@ -85,6 +106,7 @@ __all__ = [
     'DataprocClusterClusterConfigSubclusterSpecResourcesArgs',
     'FunctionContentArgs',
     'FunctionPackageArgs',
+    'FunctionScalingPolicyPolicyArgs',
     'FunctionTriggerDlqArgs',
     'FunctionTriggerFunctionArgs',
     'FunctionTriggerIotArgs',
@@ -242,6 +264,7 @@ __all__ = [
     'GetComputeDiskDiskPlacementPolicyArgs',
     'GetComputeInstancePlacementPolicyArgs',
     'GetComputeInstanceSchedulingPolicyArgs',
+    'GetFunctionScalingPolicyPolicyArgs',
     'GetIamPolicyBindingArgs',
     'GetMdbClickhouseClusterCloudStorageArgs',
     'GetMdbKafkaClusterConfigArgs',
@@ -1281,6 +1304,784 @@ class AlbBackendGroupHttpBackendTlsValidationContextArgs:
     @trusted_ca_id.setter
     def trusted_ca_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "trusted_ca_id", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerAllocationPolicyArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerAllocationPolicyLocationArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerAllocationPolicyLocationArgs']]] locations: Unique set of locations. The structure is documented below.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerAllocationPolicyLocationArgs']]]:
+        """
+        Unique set of locations. The structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerAllocationPolicyLocationArgs']]]):
+        pulumi.set(self, "locations", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerAllocationPolicyLocationArgs:
+    def __init__(__self__, *,
+                 subnet_id: pulumi.Input[str],
+                 zone_id: pulumi.Input[str],
+                 disable_traffic: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] subnet_id: Provided by the client or computed automatically.
+        :param pulumi.Input[str] zone_id: ID of the zone that location is located at.
+        :param pulumi.Input[bool] disable_traffic: If set, will disable all L7 instances in the zone for request handling.
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+        if disable_traffic is not None:
+            pulumi.set(__self__, "disable_traffic", disable_traffic)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[str]:
+        """
+        Provided by the client or computed automatically.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subnet_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        ID of the zone that location is located at.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="disableTraffic")
+    def disable_traffic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, will disable all L7 instances in the zone for request handling.
+        """
+        return pulumi.get(self, "disable_traffic")
+
+    @disable_traffic.setter
+    def disable_traffic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_traffic", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointArgs']]]] = None,
+                 http: Optional[pulumi.Input['AlbLoadBalancerListenerHttpArgs']] = None,
+                 tls: Optional[pulumi.Input['AlbLoadBalancerListenerTlsArgs']] = None):
+        """
+        :param pulumi.Input[str] name: name of SNI match.
+        :param pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointArgs']]] endpoints: Network endpoints (addresses and ports) of the listener. The structure is documented below.
+        :param pulumi.Input['AlbLoadBalancerListenerHttpArgs'] http: HTTP listener resource. The structure is documented below.
+        :param pulumi.Input['AlbLoadBalancerListenerTlsArgs'] tls: TLS listener resource. The structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if tls is not None:
+            pulumi.set(__self__, "tls", tls)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        name of SNI match.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointArgs']]]]:
+        """
+        Network endpoints (addresses and ports) of the listener. The structure is documented below.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @endpoints.setter
+    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointArgs']]]]):
+        pulumi.set(self, "endpoints", value)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerHttpArgs']]:
+        """
+        HTTP listener resource. The structure is documented below.
+        """
+        return pulumi.get(self, "http")
+
+    @http.setter
+    def http(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerHttpArgs']]):
+        pulumi.set(self, "http", value)
+
+    @property
+    @pulumi.getter
+    def tls(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerTlsArgs']]:
+        """
+        TLS listener resource. The structure is documented below.
+        """
+        return pulumi.get(self, "tls")
+
+    @tls.setter
+    def tls(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerTlsArgs']]):
+        pulumi.set(self, "tls", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerEndpointArgs:
+    def __init__(__self__, *,
+                 addresses: pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointAddressArgs']]],
+                 ports: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointAddressArgs']]] addresses: Provided by the client or computed automatically.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more ports to listen on.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointAddressArgs']]]:
+        """
+        Provided by the client or computed automatically.
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointAddressArgs']]]):
+        pulumi.set(self, "addresses", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
+        """
+        One or more ports to listen on.
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        pulumi.set(self, "ports", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerEndpointAddressArgs:
+    def __init__(__self__, *,
+                 external_ipv4_address: Optional[pulumi.Input['AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs']] = None,
+                 external_ipv6_address: Optional[pulumi.Input['AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressArgs']] = None,
+                 internal_ipv4_address: Optional[pulumi.Input['AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressArgs']] = None):
+        """
+        :param pulumi.Input['AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs'] external_ipv4_address: External IPv4 address. The structure is documented below.
+        :param pulumi.Input['AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressArgs'] external_ipv6_address: External IPv6 address. The structure is documented below.
+        :param pulumi.Input['AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressArgs'] internal_ipv4_address: Internal IPv4 address. The structure is documented below.
+        """
+        if external_ipv4_address is not None:
+            pulumi.set(__self__, "external_ipv4_address", external_ipv4_address)
+        if external_ipv6_address is not None:
+            pulumi.set(__self__, "external_ipv6_address", external_ipv6_address)
+        if internal_ipv4_address is not None:
+            pulumi.set(__self__, "internal_ipv4_address", internal_ipv4_address)
+
+    @property
+    @pulumi.getter(name="externalIpv4Address")
+    def external_ipv4_address(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs']]:
+        """
+        External IPv4 address. The structure is documented below.
+        """
+        return pulumi.get(self, "external_ipv4_address")
+
+    @external_ipv4_address.setter
+    def external_ipv4_address(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs']]):
+        pulumi.set(self, "external_ipv4_address", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6Address")
+    def external_ipv6_address(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressArgs']]:
+        """
+        External IPv6 address. The structure is documented below.
+        """
+        return pulumi.get(self, "external_ipv6_address")
+
+    @external_ipv6_address.setter
+    def external_ipv6_address(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressArgs']]):
+        pulumi.set(self, "external_ipv6_address", value)
+
+    @property
+    @pulumi.getter(name="internalIpv4Address")
+    def internal_ipv4_address(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressArgs']]:
+        """
+        Internal IPv4 address. The structure is documented below.
+        """
+        return pulumi.get(self, "internal_ipv4_address")
+
+    @internal_ipv4_address.setter
+    def internal_ipv4_address(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressArgs']]):
+        pulumi.set(self, "internal_ipv4_address", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: Provided by the client or computed automatically.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provided by the client or computed automatically.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: Provided by the client or computed automatically.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provided by the client or computed automatically.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: Provided by the client or computed automatically.
+        :param pulumi.Input[str] subnet_id: Provided by the client or computed automatically.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provided by the client or computed automatically.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provided by the client or computed automatically.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnet_id", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerHttpArgs:
+    def __init__(__self__, *,
+                 handler: Optional[pulumi.Input['AlbLoadBalancerListenerHttpHandlerArgs']] = None,
+                 redirects: Optional[pulumi.Input['AlbLoadBalancerListenerHttpRedirectsArgs']] = None):
+        """
+        :param pulumi.Input['AlbLoadBalancerListenerHttpHandlerArgs'] handler: HTTP handler that sets plaintext HTTP router. The structure is documented below.
+        :param pulumi.Input['AlbLoadBalancerListenerHttpRedirectsArgs'] redirects: Shortcut for adding http > https redirects. The structure is documented below.
+        """
+        if handler is not None:
+            pulumi.set(__self__, "handler", handler)
+        if redirects is not None:
+            pulumi.set(__self__, "redirects", redirects)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerHttpHandlerArgs']]:
+        """
+        HTTP handler that sets plaintext HTTP router. The structure is documented below.
+        """
+        return pulumi.get(self, "handler")
+
+    @handler.setter
+    def handler(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerHttpHandlerArgs']]):
+        pulumi.set(self, "handler", value)
+
+    @property
+    @pulumi.getter
+    def redirects(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerHttpRedirectsArgs']]:
+        """
+        Shortcut for adding http > https redirects. The structure is documented below.
+        """
+        return pulumi.get(self, "redirects")
+
+    @redirects.setter
+    def redirects(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerHttpRedirectsArgs']]):
+        pulumi.set(self, "redirects", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerHttpHandlerArgs:
+    def __init__(__self__, *,
+                 allow_http10: Optional[pulumi.Input[bool]] = None,
+                 http2_options: Optional[pulumi.Input['AlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs']] = None,
+                 http_router_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_http10: If set, will enable only HTTP1 protocol with HTTP1.0 support.
+        :param pulumi.Input['AlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs'] http2_options: If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+        :param pulumi.Input[str] http_router_id: HTTP router id.
+        """
+        if allow_http10 is not None:
+            pulumi.set(__self__, "allow_http10", allow_http10)
+        if http2_options is not None:
+            pulumi.set(__self__, "http2_options", http2_options)
+        if http_router_id is not None:
+            pulumi.set(__self__, "http_router_id", http_router_id)
+
+    @property
+    @pulumi.getter(name="allowHttp10")
+    def allow_http10(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, will enable only HTTP1 protocol with HTTP1.0 support.
+        """
+        return pulumi.get(self, "allow_http10")
+
+    @allow_http10.setter
+    def allow_http10(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_http10", value)
+
+    @property
+    @pulumi.getter(name="http2Options")
+    def http2_options(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs']]:
+        """
+        If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+        """
+        return pulumi.get(self, "http2_options")
+
+    @http2_options.setter
+    def http2_options(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs']]):
+        pulumi.set(self, "http2_options", value)
+
+    @property
+    @pulumi.getter(name="httpRouterId")
+    def http_router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTTP router id.
+        """
+        return pulumi.get(self, "http_router_id")
+
+    @http_router_id.setter
+    def http_router_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_router_id", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs:
+    def __init__(__self__, *,
+                 max_concurrent_streams: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_concurrent_streams: Maximum number of concurrent streams.
+        """
+        if max_concurrent_streams is not None:
+            pulumi.set(__self__, "max_concurrent_streams", max_concurrent_streams)
+
+    @property
+    @pulumi.getter(name="maxConcurrentStreams")
+    def max_concurrent_streams(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent streams.
+        """
+        return pulumi.get(self, "max_concurrent_streams")
+
+    @max_concurrent_streams.setter
+    def max_concurrent_streams(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_streams", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerHttpRedirectsArgs:
+    def __init__(__self__, *,
+                 http_to_https: Optional[pulumi.Input[bool]] = None):
+        if http_to_https is not None:
+            pulumi.set(__self__, "http_to_https", http_to_https)
+
+    @property
+    @pulumi.getter(name="httpToHttps")
+    def http_to_https(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "http_to_https")
+
+    @http_to_https.setter
+    def http_to_https(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "http_to_https", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerTlsArgs:
+    def __init__(__self__, *,
+                 default_handler: pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerArgs'],
+                 sni_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerArgs']]]] = None):
+        """
+        :param pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerArgs'] default_handler: TLS handler resource. The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerArgs']]] sni_handlers: SNI match resource. The structure is documented below.
+        """
+        pulumi.set(__self__, "default_handler", default_handler)
+        if sni_handlers is not None:
+            pulumi.set(__self__, "sni_handlers", sni_handlers)
+
+    @property
+    @pulumi.getter(name="defaultHandler")
+    def default_handler(self) -> pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerArgs']:
+        """
+        TLS handler resource. The structure is documented below.
+        """
+        return pulumi.get(self, "default_handler")
+
+    @default_handler.setter
+    def default_handler(self, value: pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerArgs']):
+        pulumi.set(self, "default_handler", value)
+
+    @property
+    @pulumi.getter(name="sniHandlers")
+    def sni_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerArgs']]]]:
+        """
+        SNI match resource. The structure is documented below.
+        """
+        return pulumi.get(self, "sni_handlers")
+
+    @sni_handlers.setter
+    def sni_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerArgs']]]]):
+        pulumi.set(self, "sni_handlers", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerTlsDefaultHandlerArgs:
+    def __init__(__self__, *,
+                 certificate_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 http_handler: Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+               with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+        :param pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs'] http_handler: HTTP handler resource. The structure is documented below.
+        """
+        pulumi.set(__self__, "certificate_ids", certificate_ids)
+        if http_handler is not None:
+            pulumi.set(__self__, "http_handler", http_handler)
+
+    @property
+    @pulumi.getter(name="certificateIds")
+    def certificate_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+        with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+        """
+        return pulumi.get(self, "certificate_ids")
+
+    @certificate_ids.setter
+    def certificate_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "certificate_ids", value)
+
+    @property
+    @pulumi.getter(name="httpHandler")
+    def http_handler(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs']]:
+        """
+        HTTP handler resource. The structure is documented below.
+        """
+        return pulumi.get(self, "http_handler")
+
+    @http_handler.setter
+    def http_handler(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs']]):
+        pulumi.set(self, "http_handler", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs:
+    def __init__(__self__, *,
+                 allow_http10: Optional[pulumi.Input[bool]] = None,
+                 http2_options: Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs']] = None,
+                 http_router_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_http10: If set, will enable only HTTP1 protocol with HTTP1.0 support.
+        :param pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs'] http2_options: If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+        :param pulumi.Input[str] http_router_id: HTTP router id.
+        """
+        if allow_http10 is not None:
+            pulumi.set(__self__, "allow_http10", allow_http10)
+        if http2_options is not None:
+            pulumi.set(__self__, "http2_options", http2_options)
+        if http_router_id is not None:
+            pulumi.set(__self__, "http_router_id", http_router_id)
+
+    @property
+    @pulumi.getter(name="allowHttp10")
+    def allow_http10(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, will enable only HTTP1 protocol with HTTP1.0 support.
+        """
+        return pulumi.get(self, "allow_http10")
+
+    @allow_http10.setter
+    def allow_http10(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_http10", value)
+
+    @property
+    @pulumi.getter(name="http2Options")
+    def http2_options(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs']]:
+        """
+        If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+        """
+        return pulumi.get(self, "http2_options")
+
+    @http2_options.setter
+    def http2_options(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs']]):
+        pulumi.set(self, "http2_options", value)
+
+    @property
+    @pulumi.getter(name="httpRouterId")
+    def http_router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTTP router id.
+        """
+        return pulumi.get(self, "http_router_id")
+
+    @http_router_id.setter
+    def http_router_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_router_id", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs:
+    def __init__(__self__, *,
+                 max_concurrent_streams: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_concurrent_streams: Maximum number of concurrent streams.
+        """
+        if max_concurrent_streams is not None:
+            pulumi.set(__self__, "max_concurrent_streams", max_concurrent_streams)
+
+    @property
+    @pulumi.getter(name="maxConcurrentStreams")
+    def max_concurrent_streams(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent streams.
+        """
+        return pulumi.get(self, "max_concurrent_streams")
+
+    @max_concurrent_streams.setter
+    def max_concurrent_streams(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_streams", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerTlsSniHandlerArgs:
+    def __init__(__self__, *,
+                 handler: pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerArgs'],
+                 name: pulumi.Input[str],
+                 service_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerArgs'] handler: HTTP handler that sets plaintext HTTP router. The structure is documented below.
+        :param pulumi.Input[str] name: name of SNI match.
+        """
+        pulumi.set(__self__, "handler", handler)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service_names", service_names)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerArgs']:
+        """
+        HTTP handler that sets plaintext HTTP router. The structure is documented below.
+        """
+        return pulumi.get(self, "handler")
+
+    @handler.setter
+    def handler(self, value: pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerArgs']):
+        pulumi.set(self, "handler", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        name of SNI match.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serviceNames")
+    def service_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "service_names")
+
+    @service_names.setter
+    def service_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "service_names", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerTlsSniHandlerHandlerArgs:
+    def __init__(__self__, *,
+                 certificate_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 http_handler: Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+               with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+        :param pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs'] http_handler: HTTP handler resource. The structure is documented below.
+        """
+        pulumi.set(__self__, "certificate_ids", certificate_ids)
+        if http_handler is not None:
+            pulumi.set(__self__, "http_handler", http_handler)
+
+    @property
+    @pulumi.getter(name="certificateIds")
+    def certificate_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+        with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+        """
+        return pulumi.get(self, "certificate_ids")
+
+    @certificate_ids.setter
+    def certificate_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "certificate_ids", value)
+
+    @property
+    @pulumi.getter(name="httpHandler")
+    def http_handler(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs']]:
+        """
+        HTTP handler resource. The structure is documented below.
+        """
+        return pulumi.get(self, "http_handler")
+
+    @http_handler.setter
+    def http_handler(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs']]):
+        pulumi.set(self, "http_handler", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs:
+    def __init__(__self__, *,
+                 allow_http10: Optional[pulumi.Input[bool]] = None,
+                 http2_options: Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs']] = None,
+                 http_router_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_http10: If set, will enable only HTTP1 protocol with HTTP1.0 support.
+        :param pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs'] http2_options: If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+        :param pulumi.Input[str] http_router_id: HTTP router id.
+        """
+        if allow_http10 is not None:
+            pulumi.set(__self__, "allow_http10", allow_http10)
+        if http2_options is not None:
+            pulumi.set(__self__, "http2_options", http2_options)
+        if http_router_id is not None:
+            pulumi.set(__self__, "http_router_id", http_router_id)
+
+    @property
+    @pulumi.getter(name="allowHttp10")
+    def allow_http10(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, will enable only HTTP1 protocol with HTTP1.0 support.
+        """
+        return pulumi.get(self, "allow_http10")
+
+    @allow_http10.setter
+    def allow_http10(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_http10", value)
+
+    @property
+    @pulumi.getter(name="http2Options")
+    def http2_options(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs']]:
+        """
+        If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+        """
+        return pulumi.get(self, "http2_options")
+
+    @http2_options.setter
+    def http2_options(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs']]):
+        pulumi.set(self, "http2_options", value)
+
+    @property
+    @pulumi.getter(name="httpRouterId")
+    def http_router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTTP router id.
+        """
+        return pulumi.get(self, "http_router_id")
+
+    @http_router_id.setter
+    def http_router_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_router_id", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs:
+    def __init__(__self__, *,
+                 max_concurrent_streams: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_concurrent_streams: Maximum number of concurrent streams.
+        """
+        if max_concurrent_streams is not None:
+            pulumi.set(__self__, "max_concurrent_streams", max_concurrent_streams)
+
+    @property
+    @pulumi.getter(name="maxConcurrentStreams")
+    def max_concurrent_streams(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent streams.
+        """
+        return pulumi.get(self, "max_concurrent_streams")
+
+    @max_concurrent_streams.setter
+    def max_concurrent_streams(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_streams", value)
 
 
 @pulumi.input_type
@@ -2419,6 +3220,105 @@ class ComputeInstanceGroupAllocationPolicyArgs:
 
 
 @pulumi.input_type
+class ComputeInstanceGroupApplicationLoadBalancerArgs:
+    def __init__(__self__, *,
+                 max_opening_traffic_duration: Optional[pulumi.Input[int]] = None,
+                 status_message: Optional[pulumi.Input[str]] = None,
+                 target_group_description: Optional[pulumi.Input[str]] = None,
+                 target_group_id: Optional[pulumi.Input[str]] = None,
+                 target_group_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 target_group_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] max_opening_traffic_duration: Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        :param pulumi.Input[str] status_message: The status message of the instance.
+        :param pulumi.Input[str] target_group_description: A description of the target group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] target_group_labels: A set of key/value label pairs.
+        :param pulumi.Input[str] target_group_name: The name of the target group.
+        """
+        if max_opening_traffic_duration is not None:
+            pulumi.set(__self__, "max_opening_traffic_duration", max_opening_traffic_duration)
+        if status_message is not None:
+            pulumi.set(__self__, "status_message", status_message)
+        if target_group_description is not None:
+            pulumi.set(__self__, "target_group_description", target_group_description)
+        if target_group_id is not None:
+            pulumi.set(__self__, "target_group_id", target_group_id)
+        if target_group_labels is not None:
+            pulumi.set(__self__, "target_group_labels", target_group_labels)
+        if target_group_name is not None:
+            pulumi.set(__self__, "target_group_name", target_group_name)
+
+    @property
+    @pulumi.getter(name="maxOpeningTrafficDuration")
+    def max_opening_traffic_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        """
+        return pulumi.get(self, "max_opening_traffic_duration")
+
+    @max_opening_traffic_duration.setter
+    def max_opening_traffic_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_opening_traffic_duration", value)
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status message of the instance.
+        """
+        return pulumi.get(self, "status_message")
+
+    @status_message.setter
+    def status_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status_message", value)
+
+    @property
+    @pulumi.getter(name="targetGroupDescription")
+    def target_group_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the target group.
+        """
+        return pulumi.get(self, "target_group_description")
+
+    @target_group_description.setter
+    def target_group_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_group_description", value)
+
+    @property
+    @pulumi.getter(name="targetGroupId")
+    def target_group_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "target_group_id")
+
+    @target_group_id.setter
+    def target_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_group_id", value)
+
+    @property
+    @pulumi.getter(name="targetGroupLabels")
+    def target_group_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs.
+        """
+        return pulumi.get(self, "target_group_labels")
+
+    @target_group_labels.setter
+    def target_group_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "target_group_labels", value)
+
+    @property
+    @pulumi.getter(name="targetGroupName")
+    def target_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the target group.
+        """
+        return pulumi.get(self, "target_group_name")
+
+    @target_group_name.setter
+    def target_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_group_name", value)
+
+
+@pulumi.input_type
 class ComputeInstanceGroupDeployPolicyArgs:
     def __init__(__self__, *,
                  max_expansion: pulumi.Input[int],
@@ -2857,8 +3757,8 @@ class ComputeInstanceGroupInstanceNetworkInterfaceArgs:
         :param pulumi.Input[bool] ipv4: True if IPv4 address allocated for the network interface.
         :param pulumi.Input[str] ipv6_address: Manual set static IPv6 address.
         :param pulumi.Input[str] mac_address: The MAC address assigned to the network interface.
-        :param pulumi.Input[bool] nat: A public address that can be used to access the internet over NAT.
-        :param pulumi.Input[str] nat_ip_address: The public IP address of the instance.
+        :param pulumi.Input[bool] nat: Flag for using NAT.
+        :param pulumi.Input[str] nat_ip_address: A public address that can be used to access the internet over NAT. Use `variables` to set.
         :param pulumi.Input[str] nat_ip_version: The IP version for the public address.
         :param pulumi.Input[str] subnet_id: The ID of the subnet to attach this interface to. The subnet must reside in the same zone where this instance was created.
         """
@@ -2956,7 +3856,7 @@ class ComputeInstanceGroupInstanceNetworkInterfaceArgs:
     @pulumi.getter
     def nat(self) -> Optional[pulumi.Input[bool]]:
         """
-        A public address that can be used to access the internet over NAT.
+        Flag for using NAT.
         """
         return pulumi.get(self, "nat")
 
@@ -2968,7 +3868,7 @@ class ComputeInstanceGroupInstanceNetworkInterfaceArgs:
     @pulumi.getter(name="natIpAddress")
     def nat_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The public IP address of the instance.
+        A public address that can be used to access the internet over NAT. Use `variables` to set.
         """
         return pulumi.get(self, "nat_ip_address")
 
@@ -3268,31 +4168,24 @@ class ComputeInstanceGroupInstanceTemplateArgs:
 @pulumi.input_type
 class ComputeInstanceGroupInstanceTemplateBootDiskArgs:
     def __init__(__self__, *,
-                 initialize_params: pulumi.Input['ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs'],
                  device_name: Optional[pulumi.Input[str]] = None,
+                 disk_id: Optional[pulumi.Input[str]] = None,
+                 initialize_params: Optional[pulumi.Input['ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs']] = None,
                  mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs'] initialize_params: Parameters for creating a disk alongside the instance. The structure is documented below.
         :param pulumi.Input[str] device_name: This value can be used to reference the device under `/dev/disk/by-id/`.
+        :param pulumi.Input[str] disk_id: ID of the existing disk. To set use variables.
+        :param pulumi.Input['ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs'] initialize_params: Parameters for creating a disk alongside the instance. The structure is documented below.
         :param pulumi.Input[str] mode: The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
         """
-        pulumi.set(__self__, "initialize_params", initialize_params)
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if initialize_params is not None:
+            pulumi.set(__self__, "initialize_params", initialize_params)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
-
-    @property
-    @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> pulumi.Input['ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs']:
-        """
-        Parameters for creating a disk alongside the instance. The structure is documented below.
-        """
-        return pulumi.get(self, "initialize_params")
-
-    @initialize_params.setter
-    def initialize_params(self, value: pulumi.Input['ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs']):
-        pulumi.set(self, "initialize_params", value)
 
     @property
     @pulumi.getter(name="deviceName")
@@ -3305,6 +4198,30 @@ class ComputeInstanceGroupInstanceTemplateBootDiskArgs:
     @device_name.setter
     def device_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the existing disk. To set use variables.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_id", value)
+
+    @property
+    @pulumi.getter(name="initializeParams")
+    def initialize_params(self) -> Optional[pulumi.Input['ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs']]:
+        """
+        Parameters for creating a disk alongside the instance. The structure is documented below.
+        """
+        return pulumi.get(self, "initialize_params")
+
+    @initialize_params.setter
+    def initialize_params(self, value: Optional[pulumi.Input['ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs']]):
+        pulumi.set(self, "initialize_params", value)
 
     @property
     @pulumi.getter
@@ -3417,6 +4334,7 @@ class ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs:
                  ipv6_dns_records: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArgs']]]] = None,
                  nat: Optional[pulumi.Input[bool]] = None,
                  nat_dns_records: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArgs']]]] = None,
+                 nat_ip_address: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -3426,8 +4344,9 @@ class ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[bool] ipv4: True if IPv4 address allocated for the network interface.
         :param pulumi.Input[str] ipv6_address: Manual set static IPv6 address.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArgs']]] ipv6_dns_records: List of ipv6 dns records.  The structure is documented below.
-        :param pulumi.Input[bool] nat: A public address that can be used to access the internet over NAT.
+        :param pulumi.Input[bool] nat: Flag for using NAT.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArgs']]] nat_dns_records: List of nat dns records.  The structure is documented below.
+        :param pulumi.Input[str] nat_ip_address: A public address that can be used to access the internet over NAT. Use `variables` to set.
         :param pulumi.Input[str] network_id: The ID of the network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids for network interface.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: The ID of the subnets to attach this interface to.
@@ -3448,6 +4367,8 @@ class ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "nat", nat)
         if nat_dns_records is not None:
             pulumi.set(__self__, "nat_dns_records", nat_dns_records)
+        if nat_ip_address is not None:
+            pulumi.set(__self__, "nat_ip_address", nat_ip_address)
         if network_id is not None:
             pulumi.set(__self__, "network_id", network_id)
         if security_group_ids is not None:
@@ -3528,7 +4449,7 @@ class ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs:
     @pulumi.getter
     def nat(self) -> Optional[pulumi.Input[bool]]:
         """
-        A public address that can be used to access the internet over NAT.
+        Flag for using NAT.
         """
         return pulumi.get(self, "nat")
 
@@ -3547,6 +4468,18 @@ class ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs:
     @nat_dns_records.setter
     def nat_dns_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArgs']]]]):
         pulumi.set(self, "nat_dns_records", value)
+
+    @property
+    @pulumi.getter(name="natIpAddress")
+    def nat_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        A public address that can be used to access the internet over NAT. Use `variables` to set.
+        """
+        return pulumi.get(self, "nat_ip_address")
+
+    @nat_ip_address.setter
+    def nat_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nat_ip_address", value)
 
     @property
     @pulumi.getter(name="networkId")
@@ -3931,31 +4864,24 @@ class ComputeInstanceGroupInstanceTemplateSchedulingPolicyArgs:
 @pulumi.input_type
 class ComputeInstanceGroupInstanceTemplateSecondaryDiskArgs:
     def __init__(__self__, *,
-                 initialize_params: pulumi.Input['ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs'],
                  device_name: Optional[pulumi.Input[str]] = None,
+                 disk_id: Optional[pulumi.Input[str]] = None,
+                 initialize_params: Optional[pulumi.Input['ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs']] = None,
                  mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs'] initialize_params: Parameters for creating a disk alongside the instance. The structure is documented below.
         :param pulumi.Input[str] device_name: This value can be used to reference the device under `/dev/disk/by-id/`.
+        :param pulumi.Input[str] disk_id: ID of the existing disk. To set use variables.
+        :param pulumi.Input['ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs'] initialize_params: Parameters for creating a disk alongside the instance. The structure is documented below.
         :param pulumi.Input[str] mode: The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
         """
-        pulumi.set(__self__, "initialize_params", initialize_params)
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if initialize_params is not None:
+            pulumi.set(__self__, "initialize_params", initialize_params)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
-
-    @property
-    @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> pulumi.Input['ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs']:
-        """
-        Parameters for creating a disk alongside the instance. The structure is documented below.
-        """
-        return pulumi.get(self, "initialize_params")
-
-    @initialize_params.setter
-    def initialize_params(self, value: pulumi.Input['ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs']):
-        pulumi.set(self, "initialize_params", value)
 
     @property
     @pulumi.getter(name="deviceName")
@@ -3968,6 +4894,30 @@ class ComputeInstanceGroupInstanceTemplateSecondaryDiskArgs:
     @device_name.setter
     def device_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the existing disk. To set use variables.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_id", value)
+
+    @property
+    @pulumi.getter(name="initializeParams")
+    def initialize_params(self) -> Optional[pulumi.Input['ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs']]:
+        """
+        Parameters for creating a disk alongside the instance. The structure is documented below.
+        """
+        return pulumi.get(self, "initialize_params")
+
+    @initialize_params.setter
+    def initialize_params(self, value: Optional[pulumi.Input['ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs']]):
+        pulumi.set(self, "initialize_params", value)
 
     @property
     @pulumi.getter
@@ -4072,17 +5022,21 @@ class ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs:
 @pulumi.input_type
 class ComputeInstanceGroupLoadBalancerArgs:
     def __init__(__self__, *,
+                 max_opening_traffic_duration: Optional[pulumi.Input[int]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  target_group_description: Optional[pulumi.Input[str]] = None,
                  target_group_id: Optional[pulumi.Input[str]] = None,
                  target_group_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_group_name: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[int] max_opening_traffic_duration: Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
         :param pulumi.Input[str] status_message: The status message of the instance.
         :param pulumi.Input[str] target_group_description: A description of the target group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] target_group_labels: A set of key/value label pairs.
         :param pulumi.Input[str] target_group_name: The name of the target group.
         """
+        if max_opening_traffic_duration is not None:
+            pulumi.set(__self__, "max_opening_traffic_duration", max_opening_traffic_duration)
         if status_message is not None:
             pulumi.set(__self__, "status_message", status_message)
         if target_group_description is not None:
@@ -4093,6 +5047,18 @@ class ComputeInstanceGroupLoadBalancerArgs:
             pulumi.set(__self__, "target_group_labels", target_group_labels)
         if target_group_name is not None:
             pulumi.set(__self__, "target_group_name", target_group_name)
+
+    @property
+    @pulumi.getter(name="maxOpeningTrafficDuration")
+    def max_opening_traffic_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        """
+        return pulumi.get(self, "max_opening_traffic_duration")
+
+    @max_opening_traffic_duration.setter
+    def max_opening_traffic_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_opening_traffic_duration", value)
 
     @property
     @pulumi.getter(name="statusMessage")
@@ -4359,7 +5325,9 @@ class ComputeInstanceGroupScalePolicyAutoScaleCustomRuleArgs:
                  metric_type: pulumi.Input[str],
                  rule_type: pulumi.Input[str],
                  target: pulumi.Input[float],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 folder_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] metric_name: The name of metric.
         :param pulumi.Input[str] metric_type: Metric type, `GAUGE` or `COUNTER`.
@@ -4369,14 +5337,20 @@ class ComputeInstanceGroupScalePolicyAutoScaleCustomRuleArgs:
                This type of metric must have the `instance_id` label. `WORKLOAD` - This type means that the metric applies to instances in one availability zone.
                This type of metric must have the `zone_id` label.
         :param pulumi.Input[float] target: Target metric value level.
+        :param pulumi.Input[str] folder_id: Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels of metric.
+        :param pulumi.Input[str] service: Service of custom metric in Yandex Monitoring that should be used for scaling.
         """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "metric_type", metric_type)
         pulumi.set(__self__, "rule_type", rule_type)
         pulumi.set(__self__, "target", target)
+        if folder_id is not None:
+            pulumi.set(__self__, "folder_id", folder_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter(name="metricName")
@@ -4431,6 +5405,18 @@ class ComputeInstanceGroupScalePolicyAutoScaleCustomRuleArgs:
         pulumi.set(self, "target", value)
 
     @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+        """
+        return pulumi.get(self, "folder_id")
+
+    @folder_id.setter
+    def folder_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder_id", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -4441,6 +5427,18 @@ class ComputeInstanceGroupScalePolicyAutoScaleCustomRuleArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service of custom metric in Yandex Monitoring that should be used for scaling.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
 
 
 @pulumi.input_type
@@ -4615,7 +5613,9 @@ class ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArgs:
                  metric_type: pulumi.Input[str],
                  rule_type: pulumi.Input[str],
                  target: pulumi.Input[float],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 folder_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] metric_name: The name of metric.
         :param pulumi.Input[str] metric_type: Metric type, `GAUGE` or `COUNTER`.
@@ -4625,14 +5625,20 @@ class ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArgs:
                This type of metric must have the `instance_id` label. `WORKLOAD` - This type means that the metric applies to instances in one availability zone.
                This type of metric must have the `zone_id` label.
         :param pulumi.Input[float] target: Target metric value level.
+        :param pulumi.Input[str] folder_id: Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels of metric.
+        :param pulumi.Input[str] service: Service of custom metric in Yandex Monitoring that should be used for scaling.
         """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "metric_type", metric_type)
         pulumi.set(__self__, "rule_type", rule_type)
         pulumi.set(__self__, "target", target)
+        if folder_id is not None:
+            pulumi.set(__self__, "folder_id", folder_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter(name="metricName")
@@ -4687,6 +5693,18 @@ class ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArgs:
         pulumi.set(self, "target", value)
 
     @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+        """
+        return pulumi.get(self, "folder_id")
+
+    @folder_id.setter
+    def folder_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder_id", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -4697,6 +5715,18 @@ class ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service of custom metric in Yandex Monitoring that should be used for scaling.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
 
 
 @pulumi.input_type
@@ -5766,6 +6796,46 @@ class FunctionPackageArgs:
     @sha256.setter
     def sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256", value)
+
+
+@pulumi.input_type
+class FunctionScalingPolicyPolicyArgs:
+    def __init__(__self__, *,
+                 tag: pulumi.Input[str],
+                 zone_instances_limit: Optional[pulumi.Input[int]] = None,
+                 zone_requests_limit: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "tag", tag)
+        if zone_instances_limit is not None:
+            pulumi.set(__self__, "zone_instances_limit", zone_instances_limit)
+        if zone_requests_limit is not None:
+            pulumi.set(__self__, "zone_requests_limit", zone_requests_limit)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag", value)
+
+    @property
+    @pulumi.getter(name="zoneInstancesLimit")
+    def zone_instances_limit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "zone_instances_limit")
+
+    @zone_instances_limit.setter
+    def zone_instances_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "zone_instances_limit", value)
+
+    @property
+    @pulumi.getter(name="zoneRequestsLimit")
+    def zone_requests_limit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "zone_requests_limit")
+
+    @zone_requests_limit.setter
+    def zone_requests_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "zone_requests_limit", value)
 
 
 @pulumi.input_type
@@ -16519,6 +17589,46 @@ class GetComputeInstanceSchedulingPolicyArgs:
     @preemptible.setter
     def preemptible(self, value: Optional[bool]):
         pulumi.set(self, "preemptible", value)
+
+
+@pulumi.input_type
+class GetFunctionScalingPolicyPolicyArgs:
+    def __init__(__self__, *,
+                 tag: str,
+                 zone_instances_limit: Optional[int] = None,
+                 zone_requests_limit: Optional[int] = None):
+        pulumi.set(__self__, "tag", tag)
+        if zone_instances_limit is not None:
+            pulumi.set(__self__, "zone_instances_limit", zone_instances_limit)
+        if zone_requests_limit is not None:
+            pulumi.set(__self__, "zone_requests_limit", zone_requests_limit)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: str):
+        pulumi.set(self, "tag", value)
+
+    @property
+    @pulumi.getter(name="zoneInstancesLimit")
+    def zone_instances_limit(self) -> Optional[int]:
+        return pulumi.get(self, "zone_instances_limit")
+
+    @zone_instances_limit.setter
+    def zone_instances_limit(self, value: Optional[int]):
+        pulumi.set(self, "zone_instances_limit", value)
+
+    @property
+    @pulumi.getter(name="zoneRequestsLimit")
+    def zone_requests_limit(self) -> Optional[int]:
+        return pulumi.get(self, "zone_requests_limit")
+
+    @zone_requests_limit.setter
+    def zone_requests_limit(self, value: Optional[int]):
+        pulumi.set(self, "zone_requests_limit", value)
 
 
 @pulumi.input_type

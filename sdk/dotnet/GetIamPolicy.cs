@@ -13,7 +13,7 @@ namespace Pulumi.Yandex
     {
         /// <summary>
         /// Generates an [IAM] policy document that may be referenced by and applied to
-        /// other Yandex.Cloud Platform resources, such as the `yandex.getResourcemanagerFolder` resource. 
+        /// other Yandex.Cloud Platform resources, such as the `yandex.ResourcemanagerFolder` resource. 
         /// 
         /// 
         /// 

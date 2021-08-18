@@ -19,6 +19,7 @@ class StorageObjectArgs:
                  acl: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  content_base64: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
@@ -29,6 +30,7 @@ class StorageObjectArgs:
         :param pulumi.Input[str] acl: The [predefined ACL](https://cloud.yandex.com/docs/storage/concepts/acl#predefined_acls) to apply. Defaults to `private`.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
         :param pulumi.Input[str] secret_key: The secret key to use when applying changes. If omitted, `storage_secret_key` specified in config is used.
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content.
         """
@@ -42,6 +44,8 @@ class StorageObjectArgs:
             pulumi.set(__self__, "content", content)
         if content_base64 is not None:
             pulumi.set(__self__, "content_base64", content_base64)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
         if source is not None:
@@ -120,6 +124,18 @@ class StorageObjectArgs:
         pulumi.set(self, "content_base64", value)
 
     @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type", value)
+
+    @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -152,6 +168,7 @@ class _StorageObjectState:
                  bucket: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  content_base64: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
@@ -162,6 +179,7 @@ class _StorageObjectState:
         :param pulumi.Input[str] bucket: The name of the containing bucket.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[str] secret_key: The secret key to use when applying changes. If omitted, `storage_secret_key` specified in config is used.
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content.
@@ -176,6 +194,8 @@ class _StorageObjectState:
             pulumi.set(__self__, "content", content)
         if content_base64 is not None:
             pulumi.set(__self__, "content_base64", content_base64)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if secret_key is not None:
@@ -244,6 +264,18 @@ class _StorageObjectState:
         pulumi.set(self, "content_base64", value)
 
     @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type", value)
+
+    @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -290,6 +322,7 @@ class StorageObject(pulumi.CustomResource):
                  bucket: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  content_base64: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
@@ -318,6 +351,7 @@ class StorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: The name of the containing bucket.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[str] secret_key: The secret key to use when applying changes. If omitted, `storage_secret_key` specified in config is used.
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content.
@@ -365,6 +399,7 @@ class StorageObject(pulumi.CustomResource):
                  bucket: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  content_base64: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
@@ -387,6 +422,7 @@ class StorageObject(pulumi.CustomResource):
             __props__.__dict__["bucket"] = bucket
             __props__.__dict__["content"] = content
             __props__.__dict__["content_base64"] = content_base64
+            __props__.__dict__["content_type"] = content_type
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
@@ -407,6 +443,7 @@ class StorageObject(pulumi.CustomResource):
             bucket: Optional[pulumi.Input[str]] = None,
             content: Optional[pulumi.Input[str]] = None,
             content_base64: Optional[pulumi.Input[str]] = None,
+            content_type: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
             secret_key: Optional[pulumi.Input[str]] = None,
             source: Optional[pulumi.Input[str]] = None) -> 'StorageObject':
@@ -422,6 +459,7 @@ class StorageObject(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: The name of the containing bucket.
         :param pulumi.Input[str] content: Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         :param pulumi.Input[str] content_base64: Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[str] secret_key: The secret key to use when applying changes. If omitted, `storage_secret_key` specified in config is used.
         :param pulumi.Input[str] source: The path to a file that will be read and uploaded as raw bytes for the object content.
@@ -435,6 +473,7 @@ class StorageObject(pulumi.CustomResource):
         __props__.__dict__["bucket"] = bucket
         __props__.__dict__["content"] = content
         __props__.__dict__["content_base64"] = content_base64
+        __props__.__dict__["content_type"] = content_type
         __props__.__dict__["key"] = key
         __props__.__dict__["secret_key"] = secret_key
         __props__.__dict__["source"] = source
@@ -479,6 +518,14 @@ class StorageObject(pulumi.CustomResource):
         Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
         """
         return pulumi.get(self, "content_base64")
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> pulumi.Output[str]:
+        """
+        A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+        """
+        return pulumi.get(self, "content_type")
 
     @property
     @pulumi.getter

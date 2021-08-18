@@ -44,7 +44,7 @@ export class VpcDefaultSecurityGroup extends pulumi.CustomResource {
     /**
      * A list of egress rules. The structure is documented below.
      */
-    public readonly egresses!: pulumi.Output<outputs.VpcDefaultSecurityGroupEgress[] | undefined>;
+    public readonly egresses!: pulumi.Output<outputs.VpcDefaultSecurityGroupEgress[]>;
     /**
      * ID of the folder this security group belongs to.
      */
@@ -52,7 +52,7 @@ export class VpcDefaultSecurityGroup extends pulumi.CustomResource {
     /**
      * A list of ingress rules.
      */
-    public readonly ingresses!: pulumi.Output<outputs.VpcDefaultSecurityGroupIngress[] | undefined>;
+    public readonly ingresses!: pulumi.Output<outputs.VpcDefaultSecurityGroupIngress[]>;
     /**
      * Labels to assign to this security group.
      */

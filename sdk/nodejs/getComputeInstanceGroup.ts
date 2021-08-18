@@ -52,6 +52,11 @@ export interface GetComputeInstanceGroupResult {
      * The allocation policy of the instance group by zone and region. The structure is documented below.
      */
     readonly allocationPolicy: outputs.GetComputeInstanceGroupAllocationPolicy;
+    readonly applicationBalancerState: outputs.GetComputeInstanceGroupApplicationBalancerState;
+    /**
+     * Application Load balancing (L7) specifications. The structure is documented below.
+     */
+    readonly applicationLoadBalancer: outputs.GetComputeInstanceGroupApplicationLoadBalancer;
     /**
      * The instance group creation timestamp.
      */
@@ -69,7 +74,7 @@ export interface GetComputeInstanceGroupResult {
      */
     readonly description: string;
     /**
-     * The ID of the folder that the instance group belongs to.
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
      */
     readonly folderId: string;
     /**
@@ -105,6 +110,10 @@ export interface GetComputeInstanceGroupResult {
      * Information about which entities can be attached to this load balancer. The structure is documented below.
      */
     readonly loadBalancerState: outputs.GetComputeInstanceGroupLoadBalancerState;
+    /**
+     * Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    readonly maxCheckingHealthDuration: number;
     /**
      * The name of the managed instance.
      */

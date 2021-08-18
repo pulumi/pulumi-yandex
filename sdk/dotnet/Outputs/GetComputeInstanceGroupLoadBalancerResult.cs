@@ -14,6 +14,10 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetComputeInstanceGroupLoadBalancerResult
     {
         /// <summary>
+        /// Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        /// </summary>
+        public readonly int MaxOpeningTrafficDuration;
+        /// <summary>
         /// The status message of the target group.
         /// </summary>
         public readonly string StatusMessage;
@@ -36,6 +40,8 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetComputeInstanceGroupLoadBalancerResult(
+            int maxOpeningTrafficDuration,
+
             string statusMessage,
 
             string targetGroupDescription,
@@ -46,6 +52,7 @@ namespace Pulumi.Yandex.Outputs
 
             string targetGroupName)
         {
+            MaxOpeningTrafficDuration = maxOpeningTrafficDuration;
             StatusMessage = statusMessage;
             TargetGroupDescription = targetGroupDescription;
             TargetGroupId = targetGroupId;

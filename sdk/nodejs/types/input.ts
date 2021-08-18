@@ -274,6 +274,226 @@ export interface AlbBackendGroupHttpBackendTlsValidationContext {
     trustedCaId?: pulumi.Input<string>;
 }
 
+export interface AlbLoadBalancerAllocationPolicy {
+    /**
+     * Unique set of locations. The structure is documented below.
+     */
+    locations: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerAllocationPolicyLocation>[]>;
+}
+
+export interface AlbLoadBalancerAllocationPolicyLocation {
+    /**
+     * If set, will disable all L7 instances in the zone for request handling.
+     */
+    disableTraffic?: pulumi.Input<boolean>;
+    /**
+     * Provided by the client or computed automatically.
+     */
+    subnetId: pulumi.Input<string>;
+    /**
+     * ID of the zone that location is located at.
+     */
+    zoneId: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListener {
+    /**
+     * Network endpoints (addresses and ports) of the listener. The structure is documented below.
+     */
+    endpoints?: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListenerEndpoint>[]>;
+    /**
+     * HTTP listener resource. The structure is documented below.
+     */
+    http?: pulumi.Input<inputs.AlbLoadBalancerListenerHttp>;
+    /**
+     * name of SNI match.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * TLS listener resource. The structure is documented below.
+     */
+    tls?: pulumi.Input<inputs.AlbLoadBalancerListenerTls>;
+}
+
+export interface AlbLoadBalancerListenerEndpoint {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    addresses: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListenerEndpointAddress>[]>;
+    /**
+     * One or more ports to listen on.
+     */
+    ports: pulumi.Input<pulumi.Input<number>[]>;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddress {
+    /**
+     * External IPv4 address. The structure is documented below.
+     */
+    externalIpv4Address?: pulumi.Input<inputs.AlbLoadBalancerListenerEndpointAddressExternalIpv4Address>;
+    /**
+     * External IPv6 address. The structure is documented below.
+     */
+    externalIpv6Address?: pulumi.Input<inputs.AlbLoadBalancerListenerEndpointAddressExternalIpv6Address>;
+    /**
+     * Internal IPv4 address. The structure is documented below.
+     */
+    internalIpv4Address?: pulumi.Input<inputs.AlbLoadBalancerListenerEndpointAddressInternalIpv4Address>;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressExternalIpv4Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressExternalIpv6Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressInternalIpv4Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * Provided by the client or computed automatically.
+     */
+    subnetId?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerHttp {
+    /**
+     * HTTP handler that sets plaintext HTTP router. The structure is documented below.
+     */
+    handler?: pulumi.Input<inputs.AlbLoadBalancerListenerHttpHandler>;
+    /**
+     * Shortcut for adding http > https redirects. The structure is documented below.
+     */
+    redirects?: pulumi.Input<inputs.AlbLoadBalancerListenerHttpRedirects>;
+}
+
+export interface AlbLoadBalancerListenerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: pulumi.Input<boolean>;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: pulumi.Input<inputs.AlbLoadBalancerListenerHttpHandlerHttp2Options>;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: pulumi.Input<number>;
+}
+
+export interface AlbLoadBalancerListenerHttpRedirects {
+    httpToHttps?: pulumi.Input<boolean>;
+}
+
+export interface AlbLoadBalancerListenerTls {
+    /**
+     * TLS handler resource. The structure is documented below.
+     */
+    defaultHandler: pulumi.Input<inputs.AlbLoadBalancerListenerTlsDefaultHandler>;
+    /**
+     * SNI match resource. The structure is documented below.
+     */
+    sniHandlers?: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandler>[]>;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandler {
+    /**
+     * Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+     * with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+     */
+    certificateIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * HTTP handler resource. The structure is documented below.
+     */
+    httpHandler?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler>;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: pulumi.Input<boolean>;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options>;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: pulumi.Input<number>;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandler {
+    /**
+     * HTTP handler that sets plaintext HTTP router. The structure is documented below.
+     */
+    handler: pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandlerHandler>;
+    /**
+     * name of SNI match.
+     */
+    name: pulumi.Input<string>;
+    serviceNames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandler {
+    /**
+     * Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+     * with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+     */
+    certificateIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * HTTP handler resource. The structure is documented below.
+     */
+    httpHandler?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler>;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: pulumi.Input<boolean>;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options>;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: pulumi.Input<number>;
+}
+
 export interface AlbTargetGroupTarget {
     /**
      * IP address of the target.
@@ -584,6 +804,30 @@ export interface ComputeInstanceGroupAllocationPolicy {
     zones: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ComputeInstanceGroupApplicationLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration?: pulumi.Input<number>;
+    /**
+     * The status message of the instance.
+     */
+    statusMessage?: pulumi.Input<string>;
+    /**
+     * A description of the target group.
+     */
+    targetGroupDescription?: pulumi.Input<string>;
+    targetGroupId?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs.
+     */
+    targetGroupLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the target group.
+     */
+    targetGroupName?: pulumi.Input<string>;
+}
+
 export interface ComputeInstanceGroupDeployPolicy {
     /**
      * The maximum number of instances that can be created at the same time.
@@ -724,11 +968,11 @@ export interface ComputeInstanceGroupInstanceNetworkInterface {
      */
     macAddress?: pulumi.Input<string>;
     /**
-     * A public address that can be used to access the internet over NAT.
+     * Flag for using NAT.
      */
     nat?: pulumi.Input<boolean>;
     /**
-     * The public IP address of the instance.
+     * A public address that can be used to access the internet over NAT. Use `variables` to set.
      */
     natIpAddress?: pulumi.Input<string>;
     /**
@@ -824,9 +1068,13 @@ export interface ComputeInstanceGroupInstanceTemplateBootDisk {
      */
     deviceName?: pulumi.Input<string>;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId?: pulumi.Input<string>;
+    /**
      * Parameters for creating a disk alongside the instance. The structure is documented below.
      */
-    initializeParams: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams>;
+    initializeParams?: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams>;
     /**
      * The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
      */
@@ -879,13 +1127,17 @@ export interface ComputeInstanceGroupInstanceTemplateNetworkInterface {
      */
     ipv6DnsRecords?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord>[]>;
     /**
-     * A public address that can be used to access the internet over NAT.
+     * Flag for using NAT.
      */
     nat?: pulumi.Input<boolean>;
     /**
      * List of nat dns records.  The structure is documented below.
      */
     natDnsRecords?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord>[]>;
+    /**
+     * A public address that can be used to access the internet over NAT. Use `variables` to set.
+     */
+    natIpAddress?: pulumi.Input<string>;
     /**
      * The ID of the network.
      */
@@ -1000,9 +1252,13 @@ export interface ComputeInstanceGroupInstanceTemplateSecondaryDisk {
      */
     deviceName?: pulumi.Input<string>;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId?: pulumi.Input<string>;
+    /**
      * Parameters for creating a disk alongside the instance. The structure is documented below.
      */
-    initializeParams: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams>;
+    initializeParams?: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams>;
     /**
      * The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
      */
@@ -1033,6 +1289,10 @@ export interface ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializePara
 }
 
 export interface ComputeInstanceGroupLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration?: pulumi.Input<number>;
     /**
      * The status message of the instance.
      */
@@ -1110,6 +1370,10 @@ export interface ComputeInstanceGroupScalePolicyAutoScale {
 
 export interface ComputeInstanceGroupScalePolicyAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
      * A map of labels of metric.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1129,6 +1393,10 @@ export interface ComputeInstanceGroupScalePolicyAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: pulumi.Input<string>;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service?: pulumi.Input<string>;
     /**
      * Target metric value level.
      */
@@ -1184,6 +1452,10 @@ export interface ComputeInstanceGroupScalePolicyTestAutoScale {
 
 export interface ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
      * A map of labels of metric.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1203,6 +1475,10 @@ export interface ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: pulumi.Input<string>;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service?: pulumi.Input<string>;
     /**
      * Target metric value level.
      */
@@ -1486,6 +1762,12 @@ export interface FunctionPackage {
     bucketName: pulumi.Input<string>;
     objectName: pulumi.Input<string>;
     sha256?: pulumi.Input<string>;
+}
+
+export interface FunctionScalingPolicyPolicy {
+    tag: pulumi.Input<string>;
+    zoneInstancesLimit?: pulumi.Input<number>;
+    zoneRequestsLimit?: pulumi.Input<number>;
 }
 
 export interface FunctionTriggerDlq {
@@ -1817,6 +2099,12 @@ export interface GetComputeInstanceSchedulingPolicy {
      * (Optional) Specifies if the instance is preemptible. Defaults to false.
      */
     preemptible?: boolean;
+}
+
+export interface GetFunctionScalingPolicyPolicy {
+    tag?: string;
+    zoneInstancesLimit?: number;
+    zoneRequestsLimit?: number;
 }
 
 export interface GetIamPolicyBinding {

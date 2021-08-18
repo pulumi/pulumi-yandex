@@ -710,6 +710,547 @@
             },
             "type": "object"
         },
+        "yandex:index/AlbLoadBalancerAllocationPolicy:AlbLoadBalancerAllocationPolicy": {
+            "properties": {
+                "locations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/AlbLoadBalancerAllocationPolicyLocation:AlbLoadBalancerAllocationPolicyLocation"
+                    },
+                    "description": "Unique set of locations. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "locations"
+            ]
+        },
+        "yandex:index/AlbLoadBalancerAllocationPolicyLocation:AlbLoadBalancerAllocationPolicyLocation": {
+            "properties": {
+                "disableTraffic": {
+                    "type": "boolean",
+                    "description": "If set, will disable all L7 instances in the zone for request handling.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "Provided by the client or computed automatically.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "ID of the zone that location is located at.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "subnetId",
+                "zoneId"
+            ]
+        },
+        "yandex:index/AlbLoadBalancerListener:AlbLoadBalancerListener": {
+            "properties": {
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/AlbLoadBalancerListenerEndpoint:AlbLoadBalancerListenerEndpoint"
+                    },
+                    "description": "Network endpoints (addresses and ports) of the listener. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerHttp:AlbLoadBalancerListenerHttp",
+                    "description": "HTTP listener resource. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of SNI match.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tls": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerTls:AlbLoadBalancerListenerTls",
+                    "description": "TLS listener resource. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "yandex:index/AlbLoadBalancerListenerEndpoint:AlbLoadBalancerListenerEndpoint": {
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/AlbLoadBalancerListenerEndpointAddress:AlbLoadBalancerListenerEndpointAddress"
+                    },
+                    "description": "Provided by the client or computed automatically.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "One or more ports to listen on.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "addresses",
+                "ports"
+            ]
+        },
+        "yandex:index/AlbLoadBalancerListenerEndpointAddress:AlbLoadBalancerListenerEndpointAddress": {
+            "properties": {
+                "externalIpv4Address": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerEndpointAddressExternalIpv4Address:AlbLoadBalancerListenerEndpointAddressExternalIpv4Address",
+                    "description": "External IPv4 address. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "externalIpv6Address": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerEndpointAddressExternalIpv6Address:AlbLoadBalancerListenerEndpointAddressExternalIpv6Address",
+                    "description": "External IPv6 address. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "internalIpv4Address": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerEndpointAddressInternalIpv4Address:AlbLoadBalancerListenerEndpointAddressInternalIpv4Address",
+                    "description": "Internal IPv4 address. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/AlbLoadBalancerListenerEndpointAddressExternalIpv4Address:AlbLoadBalancerListenerEndpointAddressExternalIpv4Address": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "Provided by the client or computed automatically.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address"
+                    ]
+                }
+            }
+        },
+        "yandex:index/AlbLoadBalancerListenerEndpointAddressExternalIpv6Address:AlbLoadBalancerListenerEndpointAddressExternalIpv6Address": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "Provided by the client or computed automatically.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address"
+                    ]
+                }
+            }
+        },
+        "yandex:index/AlbLoadBalancerListenerEndpointAddressInternalIpv4Address:AlbLoadBalancerListenerEndpointAddressInternalIpv4Address": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "Provided by the client or computed automatically.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "Provided by the client or computed automatically.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address",
+                        "subnetId"
+                    ]
+                }
+            }
+        },
+        "yandex:index/AlbLoadBalancerListenerHttp:AlbLoadBalancerListenerHttp": {
+            "properties": {
+                "handler": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerHttpHandler:AlbLoadBalancerListenerHttpHandler",
+                    "description": "HTTP handler that sets plaintext HTTP router. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "redirects": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerHttpRedirects:AlbLoadBalancerListenerHttpRedirects",
+                    "description": "Shortcut for adding http \u003e https redirects. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/AlbLoadBalancerListenerHttpHandler:AlbLoadBalancerListenerHttpHandler": {
+            "properties": {
+                "allowHttp10": {
+                    "type": "boolean",
+                    "description": "If set, will enable only HTTP1 protocol with HTTP1.0 support.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http2Options": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerHttpHandlerHttp2Options:AlbLoadBalancerListenerHttpHandlerHttp2Options",
+                    "description": "If set, will enable HTTP2 protocol for the handler. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpRouterId": {
+                    "type": "string",
+                    "description": "HTTP router id.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/AlbLoadBalancerListenerHttpHandlerHttp2Options:AlbLoadBalancerListenerHttpHandlerHttp2Options": {
+            "properties": {
+                "maxConcurrentStreams": {
+                    "type": "integer",
+                    "description": "Maximum number of concurrent streams.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/AlbLoadBalancerListenerHttpRedirects:AlbLoadBalancerListenerHttpRedirects": {
+            "properties": {
+                "httpToHttps": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/AlbLoadBalancerListenerTls:AlbLoadBalancerListenerTls": {
+            "properties": {
+                "defaultHandler": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerTlsDefaultHandler:AlbLoadBalancerListenerTlsDefaultHandler",
+                    "description": "TLS handler resource. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sniHandlers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/AlbLoadBalancerListenerTlsSniHandler:AlbLoadBalancerListenerTlsSniHandler"
+                    },
+                    "description": "SNI match resource. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultHandler"
+            ]
+        },
+        "yandex:index/AlbLoadBalancerListenerTlsDefaultHandler:AlbLoadBalancerListenerTlsDefaultHandler": {
+            "properties": {
+                "certificateIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated\nwith the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpHandler": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler:AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler",
+                    "description": "HTTP handler resource. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateIds"
+            ]
+        },
+        "yandex:index/AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler:AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler": {
+            "properties": {
+                "allowHttp10": {
+                    "type": "boolean",
+                    "description": "If set, will enable only HTTP1 protocol with HTTP1.0 support.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http2Options": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options:AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options",
+                    "description": "If set, will enable HTTP2 protocol for the handler. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpRouterId": {
+                    "type": "string",
+                    "description": "HTTP router id.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options:AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options": {
+            "properties": {
+                "maxConcurrentStreams": {
+                    "type": "integer",
+                    "description": "Maximum number of concurrent streams.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/AlbLoadBalancerListenerTlsSniHandler:AlbLoadBalancerListenerTlsSniHandler": {
+            "properties": {
+                "handler": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerTlsSniHandlerHandler:AlbLoadBalancerListenerTlsSniHandlerHandler",
+                    "description": "HTTP handler that sets plaintext HTTP router. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of SNI match.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "handler",
+                "name",
+                "serviceNames"
+            ]
+        },
+        "yandex:index/AlbLoadBalancerListenerTlsSniHandlerHandler:AlbLoadBalancerListenerTlsSniHandlerHandler": {
+            "properties": {
+                "certificateIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated\nwith the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpHandler": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler:AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler",
+                    "description": "HTTP handler resource. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateIds"
+            ]
+        },
+        "yandex:index/AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler:AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler": {
+            "properties": {
+                "allowHttp10": {
+                    "type": "boolean",
+                    "description": "If set, will enable only HTTP1 protocol with HTTP1.0 support.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http2Options": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options:AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options",
+                    "description": "If set, will enable HTTP2 protocol for the handler. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpRouterId": {
+                    "type": "string",
+                    "description": "HTTP router id.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options:AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options": {
+            "properties": {
+                "maxConcurrentStreams": {
+                    "type": "integer",
+                    "description": "Maximum number of concurrent streams.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "yandex:index/AlbTargetGroupTarget:AlbTargetGroupTarget": {
             "properties": {
                 "ipAddress": {
@@ -1410,6 +1951,75 @@
                 "zones"
             ]
         },
+        "yandex:index/ComputeInstanceGroupApplicationLoadBalancer:ComputeInstanceGroupApplicationLoadBalancer": {
+            "properties": {
+                "maxOpeningTrafficDuration": {
+                    "type": "integer",
+                    "description": "Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusMessage": {
+                    "type": "string",
+                    "description": "The status message of the instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetGroupDescription": {
+                    "type": "string",
+                    "description": "A description of the target group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetGroupId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetGroupLabels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetGroupName": {
+                    "type": "string",
+                    "description": "The name of the target group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "statusMessage",
+                        "targetGroupId"
+                    ]
+                }
+            }
+        },
         "yandex:index/ComputeInstanceGroupDeployPolicy:ComputeInstanceGroupDeployPolicy": {
             "properties": {
                 "maxCreating": {
@@ -1741,7 +2351,7 @@
                 },
                 "nat": {
                     "type": "boolean",
-                    "description": "A public address that can be used to access the internet over NAT.\n",
+                    "description": "Flag for using NAT.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1750,7 +2360,7 @@
                 },
                 "natIpAddress": {
                     "type": "string",
-                    "description": "The public IP address of the instance.\n",
+                    "description": "A public address that can be used to access the internet over NAT. Use `variables` to set.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1966,6 +2576,15 @@
                         }
                     }
                 },
+                "diskId": {
+                    "type": "string",
+                    "description": "ID of the existing disk. To set use variables.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "initializeParams": {
                     "$ref": "#/types/yandex:index/ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams:ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams",
                     "description": "Parameters for creating a disk alongside the instance. The structure is documented below.\n",
@@ -1986,14 +2605,10 @@
                 }
             },
             "type": "object",
-            "required": [
-                "initializeParams"
-            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "deviceName",
-                        "initializeParams"
+                        "deviceName"
                     ]
                 }
             }
@@ -2120,7 +2735,7 @@
                 },
                 "nat": {
                     "type": "boolean",
-                    "description": "A public address that can be used to access the internet over NAT.\n",
+                    "description": "Flag for using NAT.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2133,6 +2748,15 @@
                         "$ref": "#/types/yandex:index/ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord:ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord"
                     },
                     "description": "List of nat dns records.  The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "natIpAddress": {
+                    "type": "string",
+                    "description": "A public address that can be used to access the internet over NAT. Use `variables` to set.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2441,6 +3065,15 @@
                         }
                     }
                 },
+                "diskId": {
+                    "type": "string",
+                    "description": "ID of the existing disk. To set use variables.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "initializeParams": {
                     "$ref": "#/types/yandex:index/ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams:ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams",
                     "description": "Parameters for creating a disk alongside the instance. The structure is documented below.\n",
@@ -2460,10 +3093,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "initializeParams"
-            ]
+            "type": "object"
         },
         "yandex:index/ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams:ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams": {
             "properties": {
@@ -2517,6 +3147,15 @@
         },
         "yandex:index/ComputeInstanceGroupLoadBalancer:ComputeInstanceGroupLoadBalancer": {
             "properties": {
+                "maxOpeningTrafficDuration": {
+                    "type": "integer",
+                    "description": "Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "statusMessage": {
                     "type": "string",
                     "description": "The status message of the instance.\n",
@@ -2703,6 +3342,15 @@
         },
         "yandex:index/ComputeInstanceGroupScalePolicyAutoScaleCustomRule:ComputeInstanceGroupScalePolicyAutoScaleCustomRule": {
             "properties": {
+                "folderId": {
+                    "type": "string",
+                    "description": "Folder ID of custom metric in Yandex Monitoring that should be used for scaling.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -2736,6 +3384,15 @@
                 "ruleType": {
                     "type": "string",
                     "description": "Rule type: `UTILIZATION` - This type means that the metric applies to one instance.\nFirst, Instance Groups calculates the average metric value for each instance,\nthen averages the values for instances in one availability zone.\nThis type of metric must have the `instance_id` label. `WORKLOAD` - This type means that the metric applies to instances in one availability zone.\nThis type of metric must have the `zone_id` label.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Service of custom metric in Yandex Monitoring that should be used for scaling.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2873,6 +3530,15 @@
         },
         "yandex:index/ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule:ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule": {
             "properties": {
+                "folderId": {
+                    "type": "string",
+                    "description": "Folder ID of custom metric in Yandex Monitoring that should be used for scaling.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -2906,6 +3572,15 @@
                 "ruleType": {
                     "type": "string",
                     "description": "Rule type: `UTILIZATION` - This type means that the metric applies to one instance.\nFirst, Instance Groups calculates the average metric value for each instance,\nthen averages the values for instances in one availability zone.\nThis type of metric must have the `instance_id` label. `WORKLOAD` - This type means that the metric applies to instances in one availability zone.\nThis type of metric must have the `zone_id` label.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Service of custom metric in Yandex Monitoring that should be used for scaling.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3676,6 +4351,38 @@
             "required": [
                 "bucketName",
                 "objectName"
+            ]
+        },
+        "yandex:index/FunctionScalingPolicyPolicy:FunctionScalingPolicyPolicy": {
+            "properties": {
+                "tag": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneInstancesLimit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneRequestsLimit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "tag"
             ]
         },
         "yandex:index/FunctionTriggerDlq:FunctionTriggerDlq": {
@@ -11375,6 +12082,623 @@
                 }
             }
         },
+        "yandex:index/getAlbLoadBalancerAllocationPolicy:getAlbLoadBalancerAllocationPolicy": {
+            "properties": {
+                "locations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/getAlbLoadBalancerAllocationPolicyLocation:getAlbLoadBalancerAllocationPolicyLocation"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "locations"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerAllocationPolicyLocation:getAlbLoadBalancerAllocationPolicyLocation": {
+            "properties": {
+                "disableTraffic": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "disableTraffic",
+                "subnetId",
+                "zoneId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListener:getAlbLoadBalancerListener": {
+            "properties": {
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerEndpoint:getAlbLoadBalancerListenerEndpoint"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerHttp:getAlbLoadBalancerListenerHttp",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tls": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerTls:getAlbLoadBalancerListenerTls",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoints",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerEndpoint:getAlbLoadBalancerListenerEndpoint": {
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerEndpointAddress:getAlbLoadBalancerListenerEndpointAddress"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "addresses",
+                "ports"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerEndpointAddress:getAlbLoadBalancerListenerEndpointAddress": {
+            "properties": {
+                "externalIpv4Address": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerEndpointAddressExternalIpv4Address:getAlbLoadBalancerListenerEndpointAddressExternalIpv4Address",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "externalIpv6Address": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerEndpointAddressExternalIpv6Address:getAlbLoadBalancerListenerEndpointAddressExternalIpv6Address",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "internalIpv4Address": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerEndpointAddressInternalIpv4Address:getAlbLoadBalancerListenerEndpointAddressInternalIpv4Address",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "externalIpv4Address",
+                "externalIpv6Address",
+                "internalIpv4Address"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerEndpointAddressExternalIpv4Address:getAlbLoadBalancerListenerEndpointAddressExternalIpv4Address": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "address"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerEndpointAddressExternalIpv6Address:getAlbLoadBalancerListenerEndpointAddressExternalIpv6Address": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "address"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerEndpointAddressInternalIpv4Address:getAlbLoadBalancerListenerEndpointAddressInternalIpv4Address": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "subnetId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerHttp:getAlbLoadBalancerListenerHttp": {
+            "properties": {
+                "handler": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerHttpHandler:getAlbLoadBalancerListenerHttpHandler",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "redirects": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerHttpRedirects:getAlbLoadBalancerListenerHttpRedirects",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/getAlbLoadBalancerListenerHttpHandler:getAlbLoadBalancerListenerHttpHandler": {
+            "properties": {
+                "allowHttp10": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http2Options": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerHttpHandlerHttp2Options:getAlbLoadBalancerListenerHttpHandlerHttp2Options",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpRouterId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "http2Options",
+                "httpRouterId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerHttpHandlerHttp2Options:getAlbLoadBalancerListenerHttpHandlerHttp2Options": {
+            "properties": {
+                "maxConcurrentStreams": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxConcurrentStreams"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerHttpRedirects:getAlbLoadBalancerListenerHttpRedirects": {
+            "properties": {
+                "httpToHttps": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "httpToHttps"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerTls:getAlbLoadBalancerListenerTls": {
+            "properties": {
+                "defaultHandler": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerTlsDefaultHandler:getAlbLoadBalancerListenerTlsDefaultHandler",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sniHandlers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerTlsSniHandler:getAlbLoadBalancerListenerTlsSniHandler"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultHandler",
+                "sniHandlers"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerTlsDefaultHandler:getAlbLoadBalancerListenerTlsDefaultHandler": {
+            "properties": {
+                "certificateIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpHandler": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler:getAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateIds"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler:getAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler": {
+            "properties": {
+                "allowHttp10": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http2Options": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options:getAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpRouterId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "http2Options",
+                "httpRouterId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options:getAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options": {
+            "properties": {
+                "maxConcurrentStreams": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxConcurrentStreams"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerTlsSniHandler:getAlbLoadBalancerListenerTlsSniHandler": {
+            "properties": {
+                "handler": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerTlsSniHandlerHandler:getAlbLoadBalancerListenerTlsSniHandlerHandler",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "handler",
+                "name",
+                "serviceNames"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerTlsSniHandlerHandler:getAlbLoadBalancerListenerTlsSniHandlerHandler": {
+            "properties": {
+                "certificateIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpHandler": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler:getAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateIds"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler:getAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler": {
+            "properties": {
+                "allowHttp10": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http2Options": {
+                    "$ref": "#/types/yandex:index/getAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options:getAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpRouterId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "http2Options",
+                "httpRouterId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options:getAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options": {
+            "properties": {
+                "maxConcurrentStreams": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxConcurrentStreams"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "yandex:index/getAlbTargetGroupTarget:getAlbTargetGroupTarget": {
             "properties": {
                 "ipAddress": {
@@ -12228,6 +13552,113 @@
                 }
             }
         },
+        "yandex:index/getComputeInstanceGroupApplicationBalancerState:getComputeInstanceGroupApplicationBalancerState": {
+            "properties": {
+                "statusMessage": {
+                    "type": "string",
+                    "description": "The status message of the target group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetGroupId": {
+                    "type": "string",
+                    "description": "The ID of the target group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "statusMessage",
+                "targetGroupId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getComputeInstanceGroupApplicationLoadBalancer:getComputeInstanceGroupApplicationLoadBalancer": {
+            "properties": {
+                "maxOpeningTrafficDuration": {
+                    "type": "integer",
+                    "description": "Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusMessage": {
+                    "type": "string",
+                    "description": "The status message of the target group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetGroupDescription": {
+                    "type": "string",
+                    "description": "A description of the target group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetGroupId": {
+                    "type": "string",
+                    "description": "The ID of the target group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetGroupLabels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetGroupName": {
+                    "type": "string",
+                    "description": "The name of the target group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxOpeningTrafficDuration",
+                "statusMessage",
+                "targetGroupDescription",
+                "targetGroupId",
+                "targetGroupLabels",
+                "targetGroupName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "yandex:index/getComputeInstanceGroupDeployPolicy:getComputeInstanceGroupDeployPolicy": {
             "properties": {
                 "maxCreating": {
@@ -12812,6 +14243,15 @@
                         }
                     }
                 },
+                "diskId": {
+                    "type": "string",
+                    "description": "ID of the existing disk. To set use variables.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "initializeParams": {
                     "$ref": "#/types/yandex:index/getComputeInstanceGroupInstanceTemplateBootDiskInitializeParams:getComputeInstanceGroupInstanceTemplateBootDiskInitializeParams",
                     "description": "The parameters used for creating a disk alongside the instance. The structure is documented below.\n",
@@ -12834,6 +14274,7 @@
             "type": "object",
             "required": [
                 "deviceName",
+                "diskId",
                 "initializeParams",
                 "mode"
             ],
@@ -12987,6 +14428,15 @@
                         }
                     }
                 },
+                "natIpAddress": {
+                    "type": "string",
+                    "description": "The public IP address of the instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "networkId": {
                     "type": "string",
                     "description": "The ID of the network.\n",
@@ -13031,6 +14481,7 @@
                 "ipv6DnsRecords",
                 "nat",
                 "natDnsRecords",
+                "natIpAddress",
                 "networkId",
                 "securityGroupIds",
                 "subnetIds"
@@ -13321,6 +14772,15 @@
                         }
                     }
                 },
+                "diskId": {
+                    "type": "string",
+                    "description": "ID of the existing disk. To set use variables.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "initializeParams": {
                     "$ref": "#/types/yandex:index/getComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams:getComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams",
                     "description": "The parameters used for creating a disk alongside the instance. The structure is documented below.\n",
@@ -13343,6 +14803,7 @@
             "type": "object",
             "required": [
                 "deviceName",
+                "diskId",
                 "initializeParams",
                 "mode"
             ],
@@ -13416,6 +14877,15 @@
         },
         "yandex:index/getComputeInstanceGroupLoadBalancer:getComputeInstanceGroupLoadBalancer": {
             "properties": {
+                "maxOpeningTrafficDuration": {
+                    "type": "integer",
+                    "description": "Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "statusMessage": {
                     "type": "string",
                     "description": "The status message of the target group.\n",
@@ -13467,6 +14937,7 @@
             },
             "type": "object",
             "required": [
+                "maxOpeningTrafficDuration",
                 "statusMessage",
                 "targetGroupDescription",
                 "targetGroupId",
@@ -13659,6 +15130,15 @@
         },
         "yandex:index/getComputeInstanceGroupScalePolicyAutoScaleCustomRule:getComputeInstanceGroupScalePolicyAutoScaleCustomRule": {
             "properties": {
+                "folderId": {
+                    "type": "string",
+                    "description": "Folder ID of custom metric in Yandex Monitoring that should be used for scaling.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -13698,6 +15178,15 @@
                         }
                     }
                 },
+                "service": {
+                    "type": "string",
+                    "description": "Service of custom metric in Yandex Monitoring that should be used for scaling.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "target": {
                     "type": "number",
                     "description": "Target metric value level.\n",
@@ -13710,10 +15199,12 @@
             },
             "type": "object",
             "required": [
+                "folderId",
                 "labels",
                 "metricName",
                 "metricType",
                 "ruleType",
+                "service",
                 "target"
             ],
             "language": {
@@ -13841,6 +15332,15 @@
         },
         "yandex:index/getComputeInstanceGroupScalePolicyTestAutoScaleCustomRule:getComputeInstanceGroupScalePolicyTestAutoScaleCustomRule": {
             "properties": {
+                "folderId": {
+                    "type": "string",
+                    "description": "Folder ID of custom metric in Yandex Monitoring that should be used for scaling.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -13880,6 +15380,15 @@
                         }
                     }
                 },
+                "service": {
+                    "type": "string",
+                    "description": "Service of custom metric in Yandex Monitoring that should be used for scaling.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "target": {
                     "type": "number",
                     "description": "Target metric value level.\n",
@@ -13892,10 +15401,12 @@
             },
             "type": "object",
             "required": [
+                "folderId",
                 "labels",
                 "metricName",
                 "metricType",
                 "ruleType",
+                "service",
                 "target"
             ],
             "language": {
@@ -14647,6 +16158,43 @@
                 "diskSize",
                 "diskTypeId",
                 "resourcePresetId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getFunctionScalingPolicyPolicy:getFunctionScalingPolicyPolicy": {
+            "properties": {
+                "tag": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneInstancesLimit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneRequestsLimit": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "tag"
             ],
             "language": {
                 "nodejs": {
@@ -22068,6 +23616,191 @@
                 "type": "object"
             }
         },
+        "yandex:index/albLoadBalancer:AlbLoadBalancer": {
+            "description": "Creates an Application Load Balancer in the specified folder. For more information, see\n[the official documentation](https://cloud.yandex.com/en/docs/application-load-balancer/concepts/application-load-balancer)\n.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst test_balancer = new yandex.AlbLoadBalancer(\"test-balancer\", {\n    networkId: yandex_vpc_network[\"test-network\"].id,\n    allocationPolicy: {\n        locations: [{\n            zoneId: \"ru-central1-a\",\n            subnetId: yandex_vpc_subnet[\"test-subnet\"].id,\n        }],\n    },\n    listeners: [{\n        name: \"my-listener\",\n        endpoints: [{\n            addresses: [{\n                externalIpv4Address: {},\n            }],\n            ports: [8080],\n        }],\n        http: {\n            handler: {\n                httpRouterId: yandex_alb_http_router[\"test-router\"].id,\n            },\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\ntest_balancer = yandex.AlbLoadBalancer(\"test-balancer\",\n    network_id=yandex_vpc_network[\"test-network\"][\"id\"],\n    allocation_policy=yandex.AlbLoadBalancerAllocationPolicyArgs(\n        locations=[yandex.AlbLoadBalancerAllocationPolicyLocationArgs(\n            zone_id=\"ru-central1-a\",\n            subnet_id=yandex_vpc_subnet[\"test-subnet\"][\"id\"],\n        )],\n    ),\n    listeners=[yandex.AlbLoadBalancerListenerArgs(\n        name=\"my-listener\",\n        endpoints=[yandex.AlbLoadBalancerListenerEndpointArgs(\n            addresses=[yandex.AlbLoadBalancerListenerEndpointAddressArgs(\n                external_ipv4_address={},\n            )],\n            ports=[8080],\n        )],\n        http=yandex.AlbLoadBalancerListenerHttpArgs(\n            handler=yandex.AlbLoadBalancerListenerHttpHandlerArgs(\n                http_router_id=yandex_alb_http_router[\"test-router\"][\"id\"],\n            ),\n        ),\n    )])\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test_balancer = new Yandex.AlbLoadBalancer(\"test-balancer\", new Yandex.AlbLoadBalancerArgs\n        {\n            NetworkId = yandex_vpc_network.Test_network.Id,\n            AllocationPolicy = new Yandex.Inputs.AlbLoadBalancerAllocationPolicyArgs\n            {\n                Locations = \n                {\n                    new Yandex.Inputs.AlbLoadBalancerAllocationPolicyLocationArgs\n                    {\n                        ZoneId = \"ru-central1-a\",\n                        SubnetId = yandex_vpc_subnet.Test_subnet.Id,\n                    },\n                },\n            },\n            Listeners = \n            {\n                new Yandex.Inputs.AlbLoadBalancerListenerArgs\n                {\n                    Name = \"my-listener\",\n                    Endpoints = \n                    {\n                        new Yandex.Inputs.AlbLoadBalancerListenerEndpointArgs\n                        {\n                            Addresses = \n                            {\n                                new Yandex.Inputs.AlbLoadBalancerListenerEndpointAddressArgs\n                                {\n                                    ExternalIpv4Address = ,\n                                },\n                            },\n                            Ports = \n                            {\n                                8080,\n                            },\n                        },\n                    },\n                    Http = new Yandex.Inputs.AlbLoadBalancerListenerHttpArgs\n                    {\n                        Handler = new Yandex.Inputs.AlbLoadBalancerListenerHttpHandlerArgs\n                        {\n                            HttpRouterId = yandex_alb_http_router.Test_router.Id,\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn Application Load Balancer can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/albLoadBalancer:AlbLoadBalancer default load_balancer_id\n```\n\n ",
+            "properties": {
+                "allocationPolicy": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerAllocationPolicy:AlbLoadBalancerAllocationPolicy",
+                    "description": "Allocation zones for the Load Balancer instance. The structure is documented below.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The Load Balancer creation timestamp.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of the Load Balancer.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "The ID of the folder to which the resource belongs. If omitted, the provider folder is used.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels to assign to this Load Balancer. A list of key/value pairs.\n"
+                },
+                "listeners": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/AlbLoadBalancerListener:AlbLoadBalancerListener"
+                    },
+                    "description": "List of listeners for the Load Balancer. The structure is documented below.\n"
+                },
+                "logGroupId": {
+                    "type": "string",
+                    "description": "Cloud log group used by the Load Balancer to store access logs.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of SNI match.\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "ID of the network that the Load Balancer is located at.\n"
+                },
+                "regionId": {
+                    "type": "string",
+                    "description": "ID of the region that the Load Balancer is located at.\n"
+                },
+                "securityGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of ID's of security groups attached to the Load Balancer.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the Load Balancer.\n"
+                }
+            },
+            "required": [
+                "allocationPolicy",
+                "createdAt",
+                "folderId",
+                "logGroupId",
+                "name",
+                "networkId",
+                "status"
+            ],
+            "inputProperties": {
+                "allocationPolicy": {
+                    "$ref": "#/types/yandex:index/AlbLoadBalancerAllocationPolicy:AlbLoadBalancerAllocationPolicy",
+                    "description": "Allocation zones for the Load Balancer instance. The structure is documented below.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of the Load Balancer.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "The ID of the folder to which the resource belongs. If omitted, the provider folder is used.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels to assign to this Load Balancer. A list of key/value pairs.\n"
+                },
+                "listeners": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/AlbLoadBalancerListener:AlbLoadBalancerListener"
+                    },
+                    "description": "List of listeners for the Load Balancer. The structure is documented below.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of SNI match.\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "ID of the network that the Load Balancer is located at.\n"
+                },
+                "regionId": {
+                    "type": "string",
+                    "description": "ID of the region that the Load Balancer is located at.\n"
+                },
+                "securityGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of ID's of security groups attached to the Load Balancer.\n"
+                }
+            },
+            "requiredInputs": [
+                "allocationPolicy",
+                "networkId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AlbLoadBalancer resources.\n",
+                "properties": {
+                    "allocationPolicy": {
+                        "$ref": "#/types/yandex:index/AlbLoadBalancerAllocationPolicy:AlbLoadBalancerAllocationPolicy",
+                        "description": "Allocation zones for the Load Balancer instance. The structure is documented below.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The Load Balancer creation timestamp.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "An optional description of the Load Balancer.\n"
+                    },
+                    "folderId": {
+                        "type": "string",
+                        "description": "The ID of the folder to which the resource belongs. If omitted, the provider folder is used.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels to assign to this Load Balancer. A list of key/value pairs.\n"
+                    },
+                    "listeners": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/yandex:index/AlbLoadBalancerListener:AlbLoadBalancerListener"
+                        },
+                        "description": "List of listeners for the Load Balancer. The structure is documented below.\n"
+                    },
+                    "logGroupId": {
+                        "type": "string",
+                        "description": "Cloud log group used by the Load Balancer to store access logs.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of SNI match.\n"
+                    },
+                    "networkId": {
+                        "type": "string",
+                        "description": "ID of the network that the Load Balancer is located at.\n"
+                    },
+                    "regionId": {
+                        "type": "string",
+                        "description": "ID of the region that the Load Balancer is located at.\n"
+                    },
+                    "securityGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of ID's of security groups attached to the Load Balancer.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the Load Balancer.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "yandex:index/albTargetGroup:AlbTargetGroup": {
             "description": "Creates a target group in the specified folder and adds the specified targets to it.\nFor more information, see [the official documentation](https://cloud.yandex.com/en/docs/application-load-balancer/concepts/target-group).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst foo = new yandex.AlbTargetGroup(\"foo\", {\n    targets: [\n        {\n            address: yandex_compute_instance_my_instance_1.networkInterface.0.ipAddress,\n            subnetId: yandex_vpc_subnet_my_subnet.id,\n        },\n        {\n            address: yandex_compute_instance_my_instance_2.networkInterface.0.ipAddress,\n            subnetId: yandex_vpc_subnet_my_subnet.id,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nfoo = yandex.AlbTargetGroup(\"foo\", targets=[\n    yandex.AlbTargetGroupTargetArgs(\n        address=yandex_compute_instance[\"my-instance-1\"][\"network_interface\"][0][\"ip_address\"],\n        subnet_id=yandex_vpc_subnet[\"my-subnet\"][\"id\"],\n    ),\n    yandex.AlbTargetGroupTargetArgs(\n        address=yandex_compute_instance[\"my-instance-2\"][\"network_interface\"][0][\"ip_address\"],\n        subnet_id=yandex_vpc_subnet[\"my-subnet\"][\"id\"],\n    ),\n])\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Yandex.AlbTargetGroup(\"foo\", new Yandex.AlbTargetGroupArgs\n        {\n            Targets = \n            {\n                new Yandex.Inputs.AlbTargetGroupTargetArgs\n                {\n                    Address = yandex_compute_instance.My_instance_1.Network_interface[0].Ip_address,\n                    SubnetId = yandex_vpc_subnet.My_subnet.Id,\n                },\n                new Yandex.Inputs.AlbTargetGroupTargetArgs\n                {\n                    Address = yandex_compute_instance.My_instance_2.Network_interface[0].Ip_address,\n                    SubnetId = yandex_vpc_subnet.My_subnet.Id,\n                },\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA target group can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/albTargetGroup:AlbTargetGroup default target_group_id\n```\n\n ",
             "properties": {
@@ -22298,39 +24031,52 @@
             }
         },
         "yandex:index/apiGateway:ApiGateway": {
+            "description": "Allows management of [Yandex Cloud API Gateway](https://cloud.yandex.com/docs/api-gateway/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst test_api_gateway = new yandex.ApiGateway(\"test-api-gateway\", {\n    description: \"any description\",\n    labels: {\n        label: \"label\",\n        \"empty-label\": \"\",\n    },\n    spec: `openapi: \"3.0.0\"\ninfo:\n  version: 1.0.0\n  title: Test API\npaths:\n  /hello:\n    get:\n      summary: Say hello\n      operationId: hello\n      parameters:\n        - name: user\n          in: query\n          description: User name to appear in greetings\n          required: false\n          schema:\n            type: string\n            default: 'world'\n      responses:\n        '200':\n          description: Greeting\n          content:\n            'text/plain':\n              schema:\n                type: \"string\"\n      x-yc-apigateway-integration:\n        type: dummy\n        http_code: 200\n        http_headers:\n          'Content-Type': \"text/plain\"\n        content:\n          'text/plain': \"Hello again, {user}!\\n\"\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\ntest_api_gateway = yandex.ApiGateway(\"test-api-gateway\",\n    description=\"any description\",\n    labels={\n        \"label\": \"label\",\n        \"empty-label\": \"\",\n    },\n    spec=\"\"\"openapi: \"3.0.0\"\ninfo:\n  version: 1.0.0\n  title: Test API\npaths:\n  /hello:\n    get:\n      summary: Say hello\n      operationId: hello\n      parameters:\n        - name: user\n          in: query\n          description: User name to appear in greetings\n          required: false\n          schema:\n            type: string\n            default: 'world'\n      responses:\n        '200':\n          description: Greeting\n          content:\n            'text/plain':\n              schema:\n                type: \"string\"\n      x-yc-apigateway-integration:\n        type: dummy\n        http_code: 200\n        http_headers:\n          'Content-Type': \"text/plain\"\n        content:\n          'text/plain': \"Hello again, {user}!\\n\"\n\"\"\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test_api_gateway = new Yandex.ApiGateway(\"test-api-gateway\", new Yandex.ApiGatewayArgs\n        {\n            Description = \"any description\",\n            Labels = \n            {\n                { \"label\", \"label\" },\n                { \"empty-label\", \"\" },\n            },\n            Spec = @\"openapi: \"\"3.0.0\"\"\ninfo:\n  version: 1.0.0\n  title: Test API\npaths:\n  /hello:\n    get:\n      summary: Say hello\n      operationId: hello\n      parameters:\n        - name: user\n          in: query\n          description: User name to appear in greetings\n          required: false\n          schema:\n            type: string\n            default: 'world'\n      responses:\n        '200':\n          description: Greeting\n          content:\n            'text/plain':\n              schema:\n                type: \"\"string\"\"\n      x-yc-apigateway-integration:\n        type: dummy\n        http_code: 200\n        http_headers:\n          'Content-Type': \"\"text/plain\"\"\n        content:\n          'text/plain': \"\"Hello again, {user}!\\n\"\"\n\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.NewApiGateway(ctx, \"test_api_gateway\", \u0026yandex.ApiGatewayArgs{\n\t\t\tDescription: pulumi.String(\"any description\"),\n\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\"label\":       pulumi.String(\"label\"),\n\t\t\t\t\"empty-label\": pulumi.String(\"\"),\n\t\t\t},\n\t\t\tSpec: pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v\", \"openapi: \\\"3.0.0\\\"\\n\", \"info:\\n\", \"  version: 1.0.0\\n\", \"  title: Test API\\n\", \"paths:\\n\", \"  /hello:\\n\", \"    get:\\n\", \"      summary: Say hello\\n\", \"      operationId: hello\\n\", \"      parameters:\\n\", \"        - name: user\\n\", \"          in: query\\n\", \"          description: User name to appear in greetings\\n\", \"          required: false\\n\", \"          schema:\\n\", \"            type: string\\n\", \"            default: 'world'\\n\", \"      responses:\\n\", \"        '200':\\n\", \"          description: Greeting\\n\", \"          content:\\n\", \"            'text/plain':\\n\", \"              schema:\\n\", \"                type: \\\"string\\\"\\n\", \"      x-yc-apigateway-integration:\\n\", \"        type: dummy\\n\", \"        http_code: 200\\n\", \"        http_headers:\\n\", \"          'Content-Type': \\\"text/plain\\\"\\n\", \"        content:\\n\", \"          'text/plain': \\\"Hello again, {user}!\\\\n\\\"\\n\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Creation timestamp of the Yandex Cloud API Gateway.\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description of the Yandex Cloud API Gateway.\n"
                 },
                 "domain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Default domain for the Yandex API Gateway. Generated at creation time.\n"
                 },
                 "folderId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A set of key/value label pairs to assign to the Yandex Cloud API Gateway.\n"
                 },
                 "logGroupId": {
                     "type": "string"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Yandex Cloud API Gateway name used to define API Gateway.\n"
                 },
                 "spec": {
-                    "type": "string"
-                },
-                "specContentHash": {
-                    "type": "integer"
+                    "type": "string",
+                    "description": "OpenAPI specification for Yandex API Gateway.\n"
                 },
                 "status": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Status of the Yandex API Gateway.\n"
+                },
+                "userDomains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of user domains attached to Yandex API Gateway.\n"
                 }
             },
             "required": [
@@ -22340,29 +24086,32 @@
                 "logGroupId",
                 "name",
                 "spec",
-                "status"
+                "status",
+                "userDomains"
             ],
             "inputProperties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description of the Yandex Cloud API Gateway.\n"
                 },
                 "folderId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A set of key/value label pairs to assign to the Yandex Cloud API Gateway.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Yandex Cloud API Gateway name used to define API Gateway.\n"
                 },
                 "spec": {
-                    "type": "string"
-                },
-                "specContentHash": {
-                    "type": "integer"
+                    "type": "string",
+                    "description": "OpenAPI specification for Yandex API Gateway.\n"
                 }
             },
             "requiredInputs": [
@@ -22372,37 +24121,49 @@
                 "description": "Input properties used for looking up and filtering ApiGateway resources.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Creation timestamp of the Yandex Cloud API Gateway.\n"
                     },
                     "description": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Description of the Yandex Cloud API Gateway.\n"
                     },
                     "domain": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Default domain for the Yandex API Gateway. Generated at creation time.\n"
                     },
                     "folderId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "A set of key/value label pairs to assign to the Yandex Cloud API Gateway.\n"
                     },
                     "logGroupId": {
                         "type": "string"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Yandex Cloud API Gateway name used to define API Gateway.\n"
                     },
                     "spec": {
-                        "type": "string"
-                    },
-                    "specContentHash": {
-                        "type": "integer"
+                        "type": "string",
+                        "description": "OpenAPI specification for Yandex API Gateway.\n"
                     },
                     "status": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Status of the Yandex API Gateway.\n"
+                    },
+                    "userDomains": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Set of user domains attached to Yandex API Gateway.\n"
                     }
                 },
                 "type": "object"
@@ -22462,7 +24223,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of disk to create. Provide this when creating a disk. \nOne of `network-hdd` (default) or `network-ssd`.\n"
+                    "description": "Type of disk to create. Provide this when creating a disk.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -22516,7 +24277,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of disk to create. Provide this when creating a disk. \nOne of `network-hdd` (default) or `network-ssd`.\n"
+                    "description": "Type of disk to create. Provide this when creating a disk.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -22577,7 +24338,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of disk to create. Provide this when creating a disk. \nOne of `network-hdd` (default) or `network-ssd`.\n"
+                        "description": "Type of disk to create. Provide this when creating a disk.\n"
                     },
                     "zone": {
                         "type": "string",
@@ -23216,6 +24977,10 @@
                     "$ref": "#/types/yandex:index/ComputeInstanceGroupAllocationPolicy:ComputeInstanceGroupAllocationPolicy",
                     "description": "The allocation policy of the instance group by zone and region. The structure is documented below.\n"
                 },
+                "applicationLoadBalancer": {
+                    "$ref": "#/types/yandex:index/ComputeInstanceGroupApplicationLoadBalancer:ComputeInstanceGroupApplicationLoadBalancer",
+                    "description": "Application Load balancing (L7) specifications. The structure is documented below.\n"
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "The instance group creation timestamp.\n"
@@ -23234,7 +24999,7 @@
                 },
                 "folderId": {
                     "type": "string",
-                    "description": "The ID of the folder that the resources belong to.\n"
+                    "description": "Folder ID of custom metric in Yandex Monitoring that should be used for scaling.\n"
                 },
                 "healthChecks": {
                     "type": "array",
@@ -23263,6 +25028,10 @@
                 "loadBalancer": {
                     "$ref": "#/types/yandex:index/ComputeInstanceGroupLoadBalancer:ComputeInstanceGroupLoadBalancer",
                     "description": "Load balancing specifications. The structure is documented below.\n"
+                },
+                "maxCheckingHealthDuration": {
+                    "type": "integer",
+                    "description": "Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.\n"
                 },
                 "name": {
                     "type": "string",
@@ -23305,6 +25074,10 @@
                     "$ref": "#/types/yandex:index/ComputeInstanceGroupAllocationPolicy:ComputeInstanceGroupAllocationPolicy",
                     "description": "The allocation policy of the instance group by zone and region. The structure is documented below.\n"
                 },
+                "applicationLoadBalancer": {
+                    "$ref": "#/types/yandex:index/ComputeInstanceGroupApplicationLoadBalancer:ComputeInstanceGroupApplicationLoadBalancer",
+                    "description": "Application Load balancing (L7) specifications. The structure is documented below.\n"
+                },
                 "deletionProtection": {
                     "type": "boolean",
                     "description": "Flag that protects the instance group from accidental deletion.\n"
@@ -23319,7 +25092,7 @@
                 },
                 "folderId": {
                     "type": "string",
-                    "description": "The ID of the folder that the resources belong to.\n"
+                    "description": "Folder ID of custom metric in Yandex Monitoring that should be used for scaling.\n"
                 },
                 "healthChecks": {
                     "type": "array",
@@ -23342,6 +25115,10 @@
                 "loadBalancer": {
                     "$ref": "#/types/yandex:index/ComputeInstanceGroupLoadBalancer:ComputeInstanceGroupLoadBalancer",
                     "description": "Load balancing specifications. The structure is documented below.\n"
+                },
+                "maxCheckingHealthDuration": {
+                    "type": "integer",
+                    "description": "Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.\n"
                 },
                 "name": {
                     "type": "string",
@@ -23377,6 +25154,10 @@
                         "$ref": "#/types/yandex:index/ComputeInstanceGroupAllocationPolicy:ComputeInstanceGroupAllocationPolicy",
                         "description": "The allocation policy of the instance group by zone and region. The structure is documented below.\n"
                     },
+                    "applicationLoadBalancer": {
+                        "$ref": "#/types/yandex:index/ComputeInstanceGroupApplicationLoadBalancer:ComputeInstanceGroupApplicationLoadBalancer",
+                        "description": "Application Load balancing (L7) specifications. The structure is documented below.\n"
+                    },
                     "createdAt": {
                         "type": "string",
                         "description": "The instance group creation timestamp.\n"
@@ -23395,7 +25176,7 @@
                     },
                     "folderId": {
                         "type": "string",
-                        "description": "The ID of the folder that the resources belong to.\n"
+                        "description": "Folder ID of custom metric in Yandex Monitoring that should be used for scaling.\n"
                     },
                     "healthChecks": {
                         "type": "array",
@@ -23424,6 +25205,10 @@
                     "loadBalancer": {
                         "$ref": "#/types/yandex:index/ComputeInstanceGroupLoadBalancer:ComputeInstanceGroupLoadBalancer",
                         "description": "Load balancing specifications. The structure is documented below.\n"
+                    },
+                    "maxCheckingHealthDuration": {
+                        "type": "integer",
+                        "description": "Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.\n"
                     },
                     "name": {
                         "type": "string",
@@ -24664,6 +26449,58 @@
                     },
                     "sleepAfter": {
                         "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "yandex:index/functionScalingPolicy:FunctionScalingPolicy": {
+            "description": "Allows management of [Yandex Cloud Function Scaling Policies](https://cloud.yandex.com/docs/functions/)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myScalingPolicy = new yandex.FunctionScalingPolicy(\"my_scaling_policy\", {\n    functionId: \"are1samplefunction11\",\n    policies: [\n        {\n            tag: \"$latest\",\n            zoneInstancesLimit: 3,\n            zoneRequestsLimit: 100,\n        },\n        {\n            tag: \"my_tag\",\n            zoneInstancesLimit: 4,\n            zoneRequestsLimit: 150,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_scaling_policy = yandex.FunctionScalingPolicy(\"myScalingPolicy\",\n    function_id=\"are1samplefunction11\",\n    policies=[\n        yandex.FunctionScalingPolicyPolicyArgs(\n            tag=\"$latest\",\n            zone_instances_limit=3,\n            zone_requests_limit=100,\n        ),\n        yandex.FunctionScalingPolicyPolicyArgs(\n            tag=\"my_tag\",\n            zone_instances_limit=4,\n            zone_requests_limit=150,\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myScalingPolicy = new Yandex.FunctionScalingPolicy(\"myScalingPolicy\", new Yandex.FunctionScalingPolicyArgs\n        {\n            FunctionId = \"are1samplefunction11\",\n            Policies = \n            {\n                new Yandex.Inputs.FunctionScalingPolicyPolicyArgs\n                {\n                    Tag = \"$latest\",\n                    ZoneInstancesLimit = 3,\n                    ZoneRequestsLimit = 100,\n                },\n                new Yandex.Inputs.FunctionScalingPolicyPolicyArgs\n                {\n                    Tag = \"my_tag\",\n                    ZoneInstancesLimit = 4,\n                    ZoneRequestsLimit = 150,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.NewFunctionScalingPolicy(ctx, \"myScalingPolicy\", \u0026yandex.FunctionScalingPolicyArgs{\n\t\t\tFunctionId: pulumi.String(\"are1samplefunction11\"),\n\t\t\tPolicies: yandex.FunctionScalingPolicyPolicyArray{\n\t\t\t\t\u0026yandex.FunctionScalingPolicyPolicyArgs{\n\t\t\t\t\tTag:                pulumi.String(fmt.Sprintf(\"%v%v\", \"$\", \"latest\")),\n\t\t\t\t\tZoneInstancesLimit: pulumi.Int(3),\n\t\t\t\t\tZoneRequestsLimit:  pulumi.Int(100),\n\t\t\t\t},\n\t\t\t\t\u0026yandex.FunctionScalingPolicyPolicyArgs{\n\t\t\t\t\tTag:                pulumi.String(\"my_tag\"),\n\t\t\t\t\tZoneInstancesLimit: pulumi.Int(4),\n\t\t\t\t\tZoneRequestsLimit:  pulumi.Int(150),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "functionId": {
+                    "type": "string",
+                    "description": "Yandex Cloud Function id used to define function\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/FunctionScalingPolicyPolicy:FunctionScalingPolicyPolicy"
+                    },
+                    "description": "list definition for Yandex Cloud Function scaling policies\n* `policy.#` - number of Yandex Cloud Function scaling policies\n* `policy.{num}.tag` - Yandex.Cloud Function version tag for Yandex Cloud Function scaling policy\n* `policy.{num}.zone_instances_limit` - max number of instances in one zone for Yandex.Cloud Function with tag\n* `policy.{num}.zone_requests_limit` - max number of requests in one zone for Yandex.Cloud Function with tag\n"
+                }
+            },
+            "required": [
+                "functionId"
+            ],
+            "inputProperties": {
+                "functionId": {
+                    "type": "string",
+                    "description": "Yandex Cloud Function id used to define function\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/yandex:index/FunctionScalingPolicyPolicy:FunctionScalingPolicyPolicy"
+                    },
+                    "description": "list definition for Yandex Cloud Function scaling policies\n* `policy.#` - number of Yandex Cloud Function scaling policies\n* `policy.{num}.tag` - Yandex.Cloud Function version tag for Yandex Cloud Function scaling policy\n* `policy.{num}.zone_instances_limit` - max number of instances in one zone for Yandex.Cloud Function with tag\n* `policy.{num}.zone_requests_limit` - max number of requests in one zone for Yandex.Cloud Function with tag\n"
+                }
+            },
+            "requiredInputs": [
+                "functionId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FunctionScalingPolicy resources.\n",
+                "properties": {
+                    "functionId": {
+                        "type": "string",
+                        "description": "Yandex Cloud Function id used to define function\n"
+                    },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/yandex:index/FunctionScalingPolicyPolicy:FunctionScalingPolicyPolicy"
+                        },
+                        "description": "list definition for Yandex Cloud Function scaling policies\n* `policy.#` - number of Yandex Cloud Function scaling policies\n* `policy.{num}.tag` - Yandex.Cloud Function version tag for Yandex Cloud Function scaling policy\n* `policy.{num}.zone_instances_limit` - max number of instances in one zone for Yandex.Cloud Function with tag\n* `policy.{num}.zone_requests_limit` - max number of requests in one zone for Yandex.Cloud Function with tag\n"
                     }
                 },
                 "type": "object"
@@ -28998,8 +30835,89 @@
                 "type": "object"
             }
         },
+        "yandex:index/resourcemanagerFolder:ResourcemanagerFolder": {
+            "description": "Allows creation and management of Cloud Folders for an existing Yandex Cloud. See https://cloud.yandex.ru/docs/resource-manager/concepts/resources-hierarchy for additional info.\nNote: deletion of folders may take up to 30 minutes as it requires a lot of communication between cloud services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst folder1 = new yandex.ResourcemanagerFolder(\"folder1\", {\n    cloudId: \"my_cloud_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nfolder1 = yandex.ResourcemanagerFolder(\"folder1\", cloud_id=\"my_cloud_id\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var folder1 = new Yandex.ResourcemanagerFolder(\"folder1\", new Yandex.ResourcemanagerFolderArgs\n        {\n            CloudId = \"my_cloud_id\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.NewResourcemanagerFolder(ctx, \"folder1\", \u0026yandex.ResourcemanagerFolderArgs{\n\t\t\tCloudId: pulumi.String(\"my_cloud_id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "cloudId": {
+                    "type": "string",
+                    "description": "Cloud that the resource belongs to. If value is omitted, the default provider Cloud ID is used.\n"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the Folder.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Folder.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Folder.\n"
+                }
+            },
+            "required": [
+                "cloudId",
+                "createdAt",
+                "name"
+            ],
+            "inputProperties": {
+                "cloudId": {
+                    "type": "string",
+                    "description": "Cloud that the resource belongs to. If value is omitted, the default provider Cloud ID is used.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the Folder.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Folder.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Folder.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ResourcemanagerFolder resources.\n",
+                "properties": {
+                    "cloudId": {
+                        "type": "string",
+                        "description": "Cloud that the resource belongs to. If value is omitted, the default provider Cloud ID is used.\n"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the Folder.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A set of key/value label pairs to assign to the Folder.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Folder.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "yandex:index/resourcemanagerFolderIamBinding:ResourcemanagerFolderIamBinding": {
-            "description": "Allows creation and management of a single binding within IAM policy for\nan existing Yandex Resource Manager folder.\n\n\u003e **Note:** This resource _must not_ be used in conjunction with\n   `yandex.ResourcemanagerFolderIamPolicy` or they will conflict over what your policy\n   should be.\n\n\u003e **Note:** When you delete `yandex.ResourcemanagerFolderIamBinding` resource,\n   the roles can be deleted from other users within the folder as well. Be careful!\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst project1 = pulumi.output(yandex.getResourcemanagerFolder({\n    folderId: \"some_folder_id\",\n}, { async: true }));\nconst admin = new yandex.ResourcemanagerFolderIamBinding(\"admin\", {\n    folderId: project1.id,\n    members: [\"userAccount:some_user_id\"],\n    role: \"editor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nproject1 = yandex.get_resourcemanager_folder(folder_id=\"some_folder_id\")\nadmin = yandex.ResourcemanagerFolderIamBinding(\"admin\",\n    folder_id=project1.id,\n    members=[\"userAccount:some_user_id\"],\n    role=\"editor\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            FolderId = \"some_folder_id\",\n        }));\n        var admin = new Yandex.ResourcemanagerFolderIamBinding(\"admin\", new Yandex.ResourcemanagerFolderIamBindingArgs\n        {\n            FolderId = project1.Apply(project1 =\u003e project1.Id),\n            Members = \n            {\n                \"userAccount:some_user_id\",\n            },\n            Role = \"editor\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"some_folder_id\"\n\t\tproject1, err := yandex.GetResourcemanagerFolder(ctx, \u0026yandex.GetResourcemanagerFolderArgs{\n\t\t\tFolderId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewResourcemanagerFolderIamBinding(ctx, \"admin\", \u0026yandex.ResourcemanagerFolderIamBindingArgs{\n\t\t\tFolderId: pulumi.String(project1.Id),\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"userAccount:some_user_id\"),\n\t\t\t},\n\t\t\tRole: pulumi.String(\"editor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nIAM binding imports use space-delimited identifiers; first the resource in question and then the role. These bindings can be imported using the `folder_id` and role, e.g.\n\n```sh\n $ pulumi import yandex:index/resourcemanagerFolderIamBinding:ResourcemanagerFolderIamBinding viewer \"folder_id viewer\"\n```\n\n ",
+            "description": "Allows creation and management of a single binding within IAM policy for\nan existing Yandex Resource Manager folder.\n\n\u003e **Note:** This resource _must not_ be used in conjunction with\n   `yandex.ResourcemanagerFolderIamPolicy` or they will conflict over what your policy\n   should be.\n\n\u003e **Note:** When you delete `yandex.ResourcemanagerFolderIamBinding` resource,\n   the roles can be deleted from other users within the folder as well. Be careful!\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst project1 = pulumi.output(yandex.getResourcemanagerFolder({\n    folderId: \"some_folder_id\",\n}, { async: true }));\nconst admin = new yandex.ResourcemanagerFolderIamBinding(\"admin\", {\n    folderId: project1.id,\n    members: [\"userAccount:some_user_id\"],\n    role: \"editor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nproject1 = yandex.get_resourcemanager_folder(folder_id=\"some_folder_id\")\nadmin = yandex.ResourcemanagerFolderIamBinding(\"admin\",\n    folder_id=project1.id,\n    members=[\"userAccount:some_user_id\"],\n    role=\"editor\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            FolderId = \"some_folder_id\",\n        }));\n        var admin = new Yandex.ResourcemanagerFolderIamBinding(\"admin\", new Yandex.ResourcemanagerFolderIamBindingArgs\n        {\n            FolderId = project1.Apply(project1 =\u003e project1.Id),\n            Members = \n            {\n                \"userAccount:some_user_id\",\n            },\n            Role = \"editor\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"some_folder_id\"\n\t\tproject1, err := yandex.LookupResourcemanagerFolder(ctx, \u0026yandex.LookupResourcemanagerFolderArgs{\n\t\t\tFolderId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewResourcemanagerFolderIamBinding(ctx, \"admin\", \u0026yandex.ResourcemanagerFolderIamBindingArgs{\n\t\t\tFolderId: pulumi.String(project1.Id),\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"userAccount:some_user_id\"),\n\t\t\t},\n\t\t\tRole: pulumi.String(\"editor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nIAM binding imports use space-delimited identifiers; first the resource in question and then the role. These bindings can be imported using the `folder_id` and role, e.g.\n\n```sh\n $ pulumi import yandex:index/resourcemanagerFolderIamBinding:ResourcemanagerFolderIamBinding viewer \"folder_id viewer\"\n```\n\n ",
             "properties": {
                 "folderId": {
                     "type": "string",
@@ -29076,7 +30994,7 @@
             }
         },
         "yandex:index/resourcemanagerFolderIamMember:ResourcemanagerFolderIamMember": {
-            "description": "Allows creation and management of a single member for a single binding within\nthe IAM policy for an existing Yandex Resource Manager folder.\n\n\u003e **Note:** This resource _must not_ be used in conjunction with\n   `yandex.ResourcemanagerFolderIamPolicy` or they will conflict over what your policy should be. Similarly, roles controlled by `yandex.ResourcemanagerFolderIamBinding`\n   should not be assigned using `yandex.ResourcemanagerFolderIamMember`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst department1 = pulumi.output(yandex.getResourcemanagerFolder({\n    folderId: \"some_folder_id\",\n}, { async: true }));\nconst admin = new yandex.ResourcemanagerFolderIamMember(\"admin\", {\n    folderId: yandex_resourcemanager_department1.name,\n    member: \"userAccount:user_id\",\n    role: \"editor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\ndepartment1 = yandex.get_resourcemanager_folder(folder_id=\"some_folder_id\")\nadmin = yandex.ResourcemanagerFolderIamMember(\"admin\",\n    folder_id=data[\"yandex_resourcemanager\"][\"department1\"][\"name\"],\n    member=\"userAccount:user_id\",\n    role=\"editor\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var department1 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            FolderId = \"some_folder_id\",\n        }));\n        var admin = new Yandex.ResourcemanagerFolderIamMember(\"admin\", new Yandex.ResourcemanagerFolderIamMemberArgs\n        {\n            FolderId = data.Yandex_resourcemanager.Department1.Name,\n            Member = \"userAccount:user_id\",\n            Role = \"editor\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"some_folder_id\"\n\t\t_, err := yandex.GetResourcemanagerFolder(ctx, \u0026yandex.GetResourcemanagerFolderArgs{\n\t\t\tFolderId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewResourcemanagerFolderIamMember(ctx, \"admin\", \u0026yandex.ResourcemanagerFolderIamMemberArgs{\n\t\t\tFolderId: pulumi.Any(data.Yandex_resourcemanager.Department1.Name),\n\t\t\tMember:   pulumi.String(\"userAccount:user_id\"),\n\t\t\tRole:     pulumi.String(\"editor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nIAM member imports use space-delimited identifiers; the resource in question, the role, and the account. This member resource can be imported using the `folder id`, role, and account, e.g.\n\n```sh\n $ pulumi import yandex:index/resourcemanagerFolderIamMember:ResourcemanagerFolderIamMember my_project \"folder_id viewer foo@example.com\"\n```\n\n ",
+            "description": "Allows creation and management of a single member for a single binding within\nthe IAM policy for an existing Yandex Resource Manager folder.\n\n\u003e **Note:** This resource _must not_ be used in conjunction with\n   `yandex.ResourcemanagerFolderIamPolicy` or they will conflict over what your policy should be. Similarly, roles controlled by `yandex.ResourcemanagerFolderIamBinding`\n   should not be assigned using `yandex.ResourcemanagerFolderIamMember`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst department1 = pulumi.output(yandex.getResourcemanagerFolder({\n    folderId: \"some_folder_id\",\n}, { async: true }));\nconst admin = new yandex.ResourcemanagerFolderIamMember(\"admin\", {\n    folderId: yandex_resourcemanager_department1.name,\n    member: \"userAccount:user_id\",\n    role: \"editor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\ndepartment1 = yandex.get_resourcemanager_folder(folder_id=\"some_folder_id\")\nadmin = yandex.ResourcemanagerFolderIamMember(\"admin\",\n    folder_id=data[\"yandex_resourcemanager\"][\"department1\"][\"name\"],\n    member=\"userAccount:user_id\",\n    role=\"editor\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var department1 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            FolderId = \"some_folder_id\",\n        }));\n        var admin = new Yandex.ResourcemanagerFolderIamMember(\"admin\", new Yandex.ResourcemanagerFolderIamMemberArgs\n        {\n            FolderId = data.Yandex_resourcemanager.Department1.Name,\n            Member = \"userAccount:user_id\",\n            Role = \"editor\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"some_folder_id\"\n\t\t_, err := yandex.LookupResourcemanagerFolder(ctx, \u0026yandex.LookupResourcemanagerFolderArgs{\n\t\t\tFolderId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewResourcemanagerFolderIamMember(ctx, \"admin\", \u0026yandex.ResourcemanagerFolderIamMemberArgs{\n\t\t\tFolderId: pulumi.Any(data.Yandex_resourcemanager.Department1.Name),\n\t\t\tMember:   pulumi.String(\"userAccount:user_id\"),\n\t\t\tRole:     pulumi.String(\"editor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nIAM member imports use space-delimited identifiers; the resource in question, the role, and the account. This member resource can be imported using the `folder id`, role, and account, e.g.\n\n```sh\n $ pulumi import yandex:index/resourcemanagerFolderIamMember:ResourcemanagerFolderIamMember my_project \"folder_id viewer foo@example.com\"\n```\n\n ",
             "properties": {
                 "folderId": {
                     "type": "string",
@@ -29144,7 +31062,7 @@
             }
         },
         "yandex:index/resourcemanagerFolderIamPolicy:ResourcemanagerFolderIamPolicy": {
-            "description": "Allows creation and management of the IAM policy for an existing Yandex Resource\nManager folder.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst project1 = pulumi.output(yandex.getResourcemanagerFolder({\n    folderId: \"my_folder_id\",\n}, { async: true }));\nconst admin = pulumi.output(yandex.getIamPolicy({\n    bindings: [{\n        members: [\"userAccount:some_user_id\"],\n        role: \"editor\",\n    }],\n}, { async: true }));\nconst folderAdminPolicy = new yandex.ResourcemanagerFolderIamPolicy(\"folder_admin_policy\", {\n    folderId: yandex_folder_project1.id,\n    policyData: admin.policyData,\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nproject1 = yandex.get_resourcemanager_folder(folder_id=\"my_folder_id\")\nadmin = yandex.get_iam_policy(bindings=[yandex.GetIamPolicyBindingArgs(\n    members=[\"userAccount:some_user_id\"],\n    role=\"editor\",\n)])\nfolder_admin_policy = yandex.ResourcemanagerFolderIamPolicy(\"folderAdminPolicy\",\n    folder_id=data[\"yandex_folder\"][\"project1\"][\"id\"],\n    policy_data=admin.policy_data)\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            FolderId = \"my_folder_id\",\n        }));\n        var admin = Output.Create(Yandex.GetIamPolicy.InvokeAsync(new Yandex.GetIamPolicyArgs\n        {\n            Bindings = \n            {\n                new Yandex.Inputs.GetIamPolicyBindingArgs\n                {\n                    Members = \n                    {\n                        \"userAccount:some_user_id\",\n                    },\n                    Role = \"editor\",\n                },\n            },\n        }));\n        var folderAdminPolicy = new Yandex.ResourcemanagerFolderIamPolicy(\"folderAdminPolicy\", new Yandex.ResourcemanagerFolderIamPolicyArgs\n        {\n            FolderId = data.Yandex_folder.Project1.Id,\n            PolicyData = admin.Apply(admin =\u003e admin.PolicyData),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"my_folder_id\"\n\t\t_, err := yandex.GetResourcemanagerFolder(ctx, \u0026yandex.GetResourcemanagerFolderArgs{\n\t\t\tFolderId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tadmin, err := yandex.GetIamPolicy(ctx, \u0026yandex.GetIamPolicyArgs{\n\t\t\tBindings: []yandex.GetIamPolicyBinding{\n\t\t\t\tyandex.GetIamPolicyBinding{\n\t\t\t\t\tMembers: []string{\n\t\t\t\t\t\t\"userAccount:some_user_id\",\n\t\t\t\t\t},\n\t\t\t\t\tRole: \"editor\",\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewResourcemanagerFolderIamPolicy(ctx, \"folderAdminPolicy\", \u0026yandex.ResourcemanagerFolderIamPolicyArgs{\n\t\t\tFolderId:   pulumi.Any(data.Yandex_folder.Project1.Id),\n\t\t\tPolicyData: pulumi.String(admin.PolicyData),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Allows creation and management of the IAM policy for an existing Yandex Resource\nManager folder.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst project1 = pulumi.output(yandex.getResourcemanagerFolder({\n    folderId: \"my_folder_id\",\n}, { async: true }));\nconst admin = pulumi.output(yandex.getIamPolicy({\n    bindings: [{\n        members: [\"userAccount:some_user_id\"],\n        role: \"editor\",\n    }],\n}, { async: true }));\nconst folderAdminPolicy = new yandex.ResourcemanagerFolderIamPolicy(\"folder_admin_policy\", {\n    folderId: yandex_folder_project1.id,\n    policyData: admin.policyData,\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nproject1 = yandex.get_resourcemanager_folder(folder_id=\"my_folder_id\")\nadmin = yandex.get_iam_policy(bindings=[yandex.GetIamPolicyBindingArgs(\n    members=[\"userAccount:some_user_id\"],\n    role=\"editor\",\n)])\nfolder_admin_policy = yandex.ResourcemanagerFolderIamPolicy(\"folderAdminPolicy\",\n    folder_id=data[\"yandex_folder\"][\"project1\"][\"id\"],\n    policy_data=admin.policy_data)\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            FolderId = \"my_folder_id\",\n        }));\n        var admin = Output.Create(Yandex.GetIamPolicy.InvokeAsync(new Yandex.GetIamPolicyArgs\n        {\n            Bindings = \n            {\n                new Yandex.Inputs.GetIamPolicyBindingArgs\n                {\n                    Members = \n                    {\n                        \"userAccount:some_user_id\",\n                    },\n                    Role = \"editor\",\n                },\n            },\n        }));\n        var folderAdminPolicy = new Yandex.ResourcemanagerFolderIamPolicy(\"folderAdminPolicy\", new Yandex.ResourcemanagerFolderIamPolicyArgs\n        {\n            FolderId = data.Yandex_folder.Project1.Id,\n            PolicyData = admin.Apply(admin =\u003e admin.PolicyData),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"my_folder_id\"\n\t\t_, err := yandex.LookupResourcemanagerFolder(ctx, \u0026yandex.LookupResourcemanagerFolderArgs{\n\t\t\tFolderId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tadmin, err := yandex.GetIamPolicy(ctx, \u0026yandex.GetIamPolicyArgs{\n\t\t\tBindings: []yandex.GetIamPolicyBinding{\n\t\t\t\tyandex.GetIamPolicyBinding{\n\t\t\t\t\tMembers: []string{\n\t\t\t\t\t\t\"userAccount:some_user_id\",\n\t\t\t\t\t},\n\t\t\t\t\tRole: \"editor\",\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewResourcemanagerFolderIamPolicy(ctx, \"folderAdminPolicy\", \u0026yandex.ResourcemanagerFolderIamPolicyArgs{\n\t\t\tFolderId:   pulumi.Any(data.Yandex_folder.Project1.Id),\n\t\t\tPolicyData: pulumi.String(admin.PolicyData),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "folderId": {
                     "type": "string",
@@ -29461,6 +31379,10 @@
                     "type": "string",
                     "description": "Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.\n"
                 },
+                "contentType": {
+                    "type": "string",
+                    "description": "A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.\n"
+                },
                 "key": {
                     "type": "string",
                     "description": "The name of the object once it is in the bucket.\n"
@@ -29476,6 +31398,7 @@
             },
             "required": [
                 "bucket",
+                "contentType",
                 "key"
             ],
             "inputProperties": {
@@ -29498,6 +31421,10 @@
                 "contentBase64": {
                     "type": "string",
                     "description": "Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.\n"
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.\n"
                 },
                 "key": {
                     "type": "string",
@@ -29538,6 +31465,10 @@
                     "contentBase64": {
                         "type": "string",
                         "description": "Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.\n"
+                    },
+                    "contentType": {
+                        "type": "string",
+                        "description": "A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.\n"
                     },
                     "key": {
                         "type": "string",
@@ -29718,7 +31649,9 @@
             },
             "required": [
                 "createdAt",
+                "egresses",
                 "folderId",
+                "ingresses",
                 "name",
                 "networkId",
                 "status"
@@ -30089,7 +32022,9 @@
             },
             "required": [
                 "createdAt",
+                "egresses",
                 "folderId",
+                "ingresses",
                 "name",
                 "networkId",
                 "status"
@@ -30183,6 +32118,198 @@
                     "status": {
                         "type": "string",
                         "description": "Status of this security group.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "yandex:index/vpcSecurityGroupRule:VpcSecurityGroupRule": {
+            "description": "Manages a single Secuirity Group Rule within the Yandex.Cloud. For more information, see the official documentation\nof [security groups](https://cloud.yandex.ru/docs/vpc/concepts/security-groups)\nand [security group rules](https://cloud.yandex.ru/docs/vpc/concepts/security-groups#rules).\n\n\u003e **NOTE:** There is another way to manage security group rules by `ingress` and `egress` arguments in yandex_vpc_security_group. Both ways are equivalent but not compatible now. Using in-line rules of yandex.VpcSecurityGroup with Security Group Rule resource at the same time will cause a conflict of rules configuration.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst lab_net = new yandex.VpcNetwork(\"lab-net\", {});\nconst group1 = new yandex.VpcSecurityGroup(\"group1\", {\n    description: \"description for my security group\",\n    networkId: lab_net.id,\n    labels: {\n        \"my-label\": \"my-label-value\",\n    },\n});\nconst rule1 = new yandex.VpcSecurityGroupRule(\"rule1\", {\n    securityGroupBinding: group1.id,\n    direction: \"ingress\",\n    description: \"rule1 description\",\n    v4CidrBlokcs: [\n        \"10.0.1.0/24\",\n        \"10.0.2.0/24\",\n    ],\n    port: 8080,\n    protocol: \"TCP\",\n});\nconst rule2 = new yandex.VpcSecurityGroupRule(\"rule2\", {\n    securityGroupBinding: group1.id,\n    direction: \"egress\",\n    description: \"rule2 description\",\n    v4CidrBlokcs: [\"10.0.1.0/24\"],\n    fromPort: 8090,\n    toPort: 8099,\n    protocol: \"UDP\",\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the rule.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "direction of the rule. Can be `ingress` (inbound) or `egress` (outbound).\n"
+                },
+                "fromPort": {
+                    "type": "integer",
+                    "description": "Minimum port number.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels to assign to this rule.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number (if applied to a single port).\n"
+                },
+                "predefinedTarget": {
+                    "type": "string",
+                    "description": "Special-purpose targets such as \"self_security_group\". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.\n"
+                },
+                "securityGroupBinding": {
+                    "type": "string",
+                    "description": "ID of the security group this rule belongs to.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "Target security group ID for this rule.\n"
+                },
+                "toPort": {
+                    "type": "integer",
+                    "description": "Maximum port number.\n"
+                },
+                "v4CidrBlocks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The blocks of IPv4 addresses for this rule.\n"
+                },
+                "v6CidrBlocks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The blocks of IPv6 addresses for this rule. `v6_cidr_blocks` argument is currently not supported. It will be available in the future.\n"
+                }
+            },
+            "required": [
+                "direction",
+                "securityGroupBinding"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the rule.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "direction of the rule. Can be `ingress` (inbound) or `egress` (outbound).\n"
+                },
+                "fromPort": {
+                    "type": "integer",
+                    "description": "Minimum port number.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels to assign to this rule.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number (if applied to a single port).\n"
+                },
+                "predefinedTarget": {
+                    "type": "string",
+                    "description": "Special-purpose targets such as \"self_security_group\". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.\n"
+                },
+                "securityGroupBinding": {
+                    "type": "string",
+                    "description": "ID of the security group this rule belongs to.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "Target security group ID for this rule.\n"
+                },
+                "toPort": {
+                    "type": "integer",
+                    "description": "Maximum port number.\n"
+                },
+                "v4CidrBlocks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The blocks of IPv4 addresses for this rule.\n"
+                },
+                "v6CidrBlocks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The blocks of IPv6 addresses for this rule. `v6_cidr_blocks` argument is currently not supported. It will be available in the future.\n"
+                }
+            },
+            "requiredInputs": [
+                "direction",
+                "securityGroupBinding"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VpcSecurityGroupRule resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the rule.\n"
+                    },
+                    "direction": {
+                        "type": "string",
+                        "description": "direction of the rule. Can be `ingress` (inbound) or `egress` (outbound).\n"
+                    },
+                    "fromPort": {
+                        "type": "integer",
+                        "description": "Minimum port number.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels to assign to this rule.\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "Port number (if applied to a single port).\n"
+                    },
+                    "predefinedTarget": {
+                        "type": "string",
+                        "description": "Special-purpose targets such as \"self_security_group\". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.\n"
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "description": "One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.\n"
+                    },
+                    "securityGroupBinding": {
+                        "type": "string",
+                        "description": "ID of the security group this rule belongs to.\n"
+                    },
+                    "securityGroupId": {
+                        "type": "string",
+                        "description": "Target security group ID for this rule.\n"
+                    },
+                    "toPort": {
+                        "type": "integer",
+                        "description": "Maximum port number.\n"
+                    },
+                    "v4CidrBlocks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The blocks of IPv4 addresses for this rule.\n"
+                    },
+                    "v6CidrBlocks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The blocks of IPv6 addresses for this rule. `v6_cidr_blocks` argument is currently not supported. It will be available in the future.\n"
                     }
                 },
                 "type": "object"
@@ -30932,6 +33059,94 @@
                 ]
             }
         },
+        "yandex:index/getAlbLoadBalancer:getAlbLoadBalancer": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getAlbLoadBalancer.\n",
+                "properties": {
+                    "loadBalancerId": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAlbLoadBalancer.\n",
+                "properties": {
+                    "allocationPolicy": {
+                        "$ref": "#/types/yandex:index/getAlbLoadBalancerAllocationPolicy:getAlbLoadBalancerAllocationPolicy"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "folderId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "listeners": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/yandex:index/getAlbLoadBalancerListener:getAlbLoadBalancerListener"
+                        }
+                    },
+                    "loadBalancerId": {
+                        "type": "string"
+                    },
+                    "logGroupId": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "networkId": {
+                        "type": "string"
+                    },
+                    "regionId": {
+                        "type": "string"
+                    },
+                    "securityGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "allocationPolicy",
+                    "createdAt",
+                    "description",
+                    "folderId",
+                    "labels",
+                    "listeners",
+                    "loadBalancerId",
+                    "logGroupId",
+                    "name",
+                    "networkId",
+                    "regionId",
+                    "securityGroupIds",
+                    "status",
+                    "id"
+                ]
+            }
+        },
         "yandex:index/getAlbTargetGroup:getAlbTargetGroup": {
             "description": "Get information about a Yandex Application Load Balancer target group. For more information, see\n[Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst foo = pulumi.output(yandex.getAlbTargetGroup({\n    targetGroupId: \"my-target-group-id\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nfoo = yandex.get_alb_target_group(target_group_id=\"my-target-group-id\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Yandex.GetAlbTargetGroup.InvokeAsync(new Yandex.GetAlbTargetGroupArgs\n        {\n            TargetGroupId = \"my-target-group-id\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"my-target-group-id\"\n\t\t_, err := yandex.LookupAlbTargetGroup(ctx, \u0026yandex.LookupAlbTargetGroupArgs{\n\t\t\tTargetGroupId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nThis data source is used to define [Application Load Balancer Target Groups] that can be used by other resources.\n",
             "inputs": {
@@ -31138,6 +33353,12 @@
                     },
                     "status": {
                         "type": "string"
+                    },
+                    "userDomains": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "type": "object",
@@ -31148,6 +33369,7 @@
                     "labels",
                     "logGroupId",
                     "status",
+                    "userDomains",
                     "id"
                 ]
             }
@@ -31656,6 +33878,13 @@
                         "$ref": "#/types/yandex:index/getComputeInstanceGroupAllocationPolicy:getComputeInstanceGroupAllocationPolicy",
                         "description": "The allocation policy of the instance group by zone and region. The structure is documented below.\n"
                     },
+                    "applicationBalancerState": {
+                        "$ref": "#/types/yandex:index/getComputeInstanceGroupApplicationBalancerState:getComputeInstanceGroupApplicationBalancerState"
+                    },
+                    "applicationLoadBalancer": {
+                        "$ref": "#/types/yandex:index/getComputeInstanceGroupApplicationLoadBalancer:getComputeInstanceGroupApplicationLoadBalancer",
+                        "description": "Application Load balancing (L7) specifications. The structure is documented below.\n"
+                    },
                     "createdAt": {
                         "type": "string",
                         "description": "The instance group creation timestamp.\n"
@@ -31674,7 +33903,7 @@
                     },
                     "folderId": {
                         "type": "string",
-                        "description": "The ID of the folder that the instance group belongs to.\n"
+                        "description": "Folder ID of custom metric in Yandex Monitoring that should be used for scaling.\n"
                     },
                     "healthChecks": {
                         "type": "array",
@@ -31716,6 +33945,10 @@
                         "$ref": "#/types/yandex:index/getComputeInstanceGroupLoadBalancerState:getComputeInstanceGroupLoadBalancerState",
                         "description": "Information about which entities can be attached to this load balancer. The structure is documented below.\n"
                     },
+                    "maxCheckingHealthDuration": {
+                        "type": "integer",
+                        "description": "Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the managed instance.\n"
@@ -31743,6 +33976,8 @@
                 "type": "object",
                 "required": [
                     "allocationPolicy",
+                    "applicationBalancerState",
+                    "applicationLoadBalancer",
                     "createdAt",
                     "deletionProtection",
                     "deployPolicy",
@@ -31755,6 +33990,7 @@
                     "labels",
                     "loadBalancer",
                     "loadBalancerState",
+                    "maxCheckingHealthDuration",
                     "name",
                     "scalePolicy",
                     "serviceAccountId",
@@ -32334,6 +34570,50 @@
                 ]
             }
         },
+        "yandex:index/getFunctionScalingPolicy:getFunctionScalingPolicy": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getFunctionScalingPolicy.\n",
+                "properties": {
+                    "functionId": {
+                        "type": "string"
+                    },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/yandex:index/getFunctionScalingPolicyPolicy:getFunctionScalingPolicyPolicy"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "functionId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFunctionScalingPolicy.\n",
+                "properties": {
+                    "functionId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/yandex:index/getFunctionScalingPolicyPolicy:getFunctionScalingPolicyPolicy"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "functionId",
+                    "policies",
+                    "id"
+                ]
+            }
+        },
         "yandex:index/getFunctionTrigger:getFunctionTrigger": {
             "description": "Get information about a Yandex Cloud Function Trigger. For more information about Yandex Cloud Functions, see \n[Yandex Cloud Functions](https://cloud.yandex.com/docs/functions/).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myTrigger = pulumi.output(yandex.getFunctionTrigger({\n    triggerId: \"are1sampletrigger11\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_trigger = yandex.get_function_trigger(trigger_id=\"are1sampletrigger11\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myTrigger = Output.Create(Yandex.GetFunctionTrigger.InvokeAsync(new Yandex.GetFunctionTriggerArgs\n        {\n            TriggerId = \"are1sampletrigger11\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"are1sampletrigger11\"\n\t\t_, err := yandex.LookupFunctionTrigger(ctx, \u0026yandex.LookupFunctionTriggerArgs{\n\t\t\tTriggerId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nThis data source is used to define [Yandex Cloud Functions Trigger](https://cloud.yandex.com/docs/functions/concepts/trigger) that can be used by other resources.\n",
             "inputs": {
@@ -32431,7 +34711,7 @@
             }
         },
         "yandex:index/getIamPolicy:getIamPolicy": {
-            "description": "Generates an [IAM] policy document that may be referenced by and applied to\nother Yandex.Cloud Platform resources, such as the `yandex.getResourcemanagerFolder` resource. \n\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst admin = pulumi.output(yandex.getIamPolicy({\n    bindings: [\n        {\n            members: [\"userAccount:user_id_1\"],\n            role: \"admin\",\n        },\n        {\n            members: [\"userAccount:user_id_2\"],\n            role: \"viewer\",\n        },\n    ],\n}, { async: true }));\n```\n\nThis data source is used to define [IAM] policies to apply to other resources.\nCurrently, defining a policy through a data source and referencing that policy\nfrom another resource is the only way to apply an IAM policy to a resource.\n",
+            "description": "Generates an [IAM] policy document that may be referenced by and applied to\nother Yandex.Cloud Platform resources, such as the `yandex.ResourcemanagerFolder` resource. \n\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst admin = pulumi.output(yandex.getIamPolicy({\n    bindings: [\n        {\n            members: [\"userAccount:user_id_1\"],\n            role: \"admin\",\n        },\n        {\n            members: [\"userAccount:user_id_2\"],\n            role: \"viewer\",\n        },\n    ],\n}, { async: true }));\n```\n\nThis data source is used to define [IAM] policies to apply to other resources.\nCurrently, defining a policy through a data source and referencing that policy\nfrom another resource is the only way to apply an IAM policy to a resource.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getIamPolicy.\n",
                 "properties": {
@@ -32475,7 +34755,7 @@
             }
         },
         "yandex:index/getIamRole:getIamRole": {
-            "description": "Generates an [IAM] role document that may be referenced by and applied to\nother Yandex.Cloud Platform resources, such as the `yandex.getResourcemanagerFolder` resource. For more information, see\n[the official documentation](https://cloud.yandex.ru/docs/iam/concepts/access-control/roles).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst admin = pulumi.output(yandex.getIamRole({\n    binding: [{\n        members: [\"userAccount:user_id_1\"],\n        role: \"admin\",\n    }],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nadmin = yandex.get_iam_role(binding=[{\n    \"members\": [\"userAccount:user_id_1\"],\n    \"role\": \"admin\",\n}])\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var admin = Output.Create(Yandex.GetIamRole.InvokeAsync(new Yandex.GetIamRoleArgs\n        {\n            Binding = \n            {\n                \n                {\n                    { \"members\", \n                    {\n                        \"userAccount:user_id_1\",\n                    } },\n                    { \"role\", \"admin\" },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.GetIamRole(ctx, \u0026yandex.GetIamRoleArgs{\n\t\t\tBinding: []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"members\": []string{\n\t\t\t\t\t\t\"userAccount:user_id_1\",\n\t\t\t\t\t},\n\t\t\t\t\t\"role\": \"admin\",\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nThis data source is used to define [IAM] roles in order to apply them to other resources.\nCurrently, defining a role through a data source and referencing that role\nfrom another resource is the only way to apply an IAM role to a resource.\n",
+            "description": "Generates an [IAM] role document that may be referenced by and applied to\nother Yandex.Cloud Platform resources, such as the `yandex.ResourcemanagerFolder` resource. For more information, see\n[the official documentation](https://cloud.yandex.ru/docs/iam/concepts/access-control/roles).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst admin = pulumi.output(yandex.getIamRole({\n    binding: [{\n        members: [\"userAccount:user_id_1\"],\n        role: \"admin\",\n    }],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nadmin = yandex.get_iam_role(binding=[{\n    \"members\": [\"userAccount:user_id_1\"],\n    \"role\": \"admin\",\n}])\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var admin = Output.Create(Yandex.GetIamRole.InvokeAsync(new Yandex.GetIamRoleArgs\n        {\n            Binding = \n            {\n                \n                {\n                    { \"members\", \n                    {\n                        \"userAccount:user_id_1\",\n                    } },\n                    { \"role\", \"admin\" },\n                },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.GetIamRole(ctx, \u0026yandex.GetIamRoleArgs{\n\t\t\tBinding: []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"members\": []string{\n\t\t\t\t\t\t\"userAccount:user_id_1\",\n\t\t\t\t\t},\n\t\t\t\t\t\"role\": \"admin\",\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nThis data source is used to define [IAM] roles in order to apply them to other resources.\nCurrently, defining a role through a data source and referencing that role\nfrom another resource is the only way to apply an IAM role to a resource.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getIamRole.\n",
                 "properties": {
@@ -34497,7 +36777,7 @@
             }
         },
         "yandex:index/getResourcemanagerFolder:getResourcemanagerFolder": {
-            "description": "Use this data source to get information about a Yandex Resource Manager Folder. For more information, see\n[the official documentation](https://cloud.yandex.ru/docs/resource-manager/concepts/resources-hierarchy#folder).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myFolder1 = pulumi.output(yandex.getResourcemanagerFolder({\n    folderId: \"folder_id_number_1\",\n}, { async: true }));\nconst myFolder2 = pulumi.output(yandex.getResourcemanagerFolder({\n    cloudId: \"some_cloud_id\",\n    name: \"folder_name\",\n}, { async: true }));\n\nexport const myFolder1Name = myFolder1.name!;\nexport const myFolder2CloudId = myFolder2.cloudId!;\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_folder1 = yandex.get_resourcemanager_folder(folder_id=\"folder_id_number_1\")\nmy_folder2 = yandex.get_resourcemanager_folder(cloud_id=\"some_cloud_id\",\n    name=\"folder_name\")\npulumi.export(\"myFolder1Name\", my_folder1.name)\npulumi.export(\"myFolder2CloudId\", my_folder2.cloud_id)\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myFolder1 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            FolderId = \"folder_id_number_1\",\n        }));\n        var myFolder2 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            CloudId = \"some_cloud_id\",\n            Name = \"folder_name\",\n        }));\n        this.MyFolder1Name = myFolder1.Apply(myFolder1 =\u003e myFolder1.Name);\n        this.MyFolder2CloudId = myFolder2.Apply(myFolder2 =\u003e myFolder2.CloudId);\n    }\n\n    [Output(\"myFolder1Name\")]\n    public Output\u003cstring\u003e MyFolder1Name { get; set; }\n    [Output(\"myFolder2CloudId\")]\n    public Output\u003cstring\u003e MyFolder2CloudId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"folder_id_number_1\"\n\t\tmyFolder1, err := yandex.GetResourcemanagerFolder(ctx, \u0026yandex.GetResourcemanagerFolderArgs{\n\t\t\tFolderId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\topt1 := \"some_cloud_id\"\n\t\topt2 := \"folder_name\"\n\t\tmyFolder2, err := yandex.GetResourcemanagerFolder(ctx, \u0026yandex.GetResourcemanagerFolderArgs{\n\t\t\tCloudId: \u0026opt1,\n\t\t\tName:    \u0026opt2,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"myFolder1Name\", myFolder1.Name)\n\t\tctx.Export(\"myFolder2CloudId\", myFolder2.CloudId)\n\t\treturn nil\n\t})\n}\n```\n",
+            "description": "Use this data source to get information about a Yandex Resource Manager Folder. For more information, see\n[the official documentation](https://cloud.yandex.ru/docs/resource-manager/concepts/resources-hierarchy#folder).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myFolder1 = pulumi.output(yandex.getResourcemanagerFolder({\n    folderId: \"folder_id_number_1\",\n}, { async: true }));\nconst myFolder2 = pulumi.output(yandex.getResourcemanagerFolder({\n    cloudId: \"some_cloud_id\",\n    name: \"folder_name\",\n}, { async: true }));\n\nexport const myFolder1Name = myFolder1.name!;\nexport const myFolder2CloudId = myFolder2.cloudId!;\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_folder1 = yandex.get_resourcemanager_folder(folder_id=\"folder_id_number_1\")\nmy_folder2 = yandex.get_resourcemanager_folder(cloud_id=\"some_cloud_id\",\n    name=\"folder_name\")\npulumi.export(\"myFolder1Name\", my_folder1.name)\npulumi.export(\"myFolder2CloudId\", my_folder2.cloud_id)\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myFolder1 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            FolderId = \"folder_id_number_1\",\n        }));\n        var myFolder2 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs\n        {\n            CloudId = \"some_cloud_id\",\n            Name = \"folder_name\",\n        }));\n        this.MyFolder1Name = myFolder1.Apply(myFolder1 =\u003e myFolder1.Name);\n        this.MyFolder2CloudId = myFolder2.Apply(myFolder2 =\u003e myFolder2.CloudId);\n    }\n\n    [Output(\"myFolder1Name\")]\n    public Output\u003cstring\u003e MyFolder1Name { get; set; }\n    [Output(\"myFolder2CloudId\")]\n    public Output\u003cstring\u003e MyFolder2CloudId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"folder_id_number_1\"\n\t\tmyFolder1, err := yandex.LookupResourcemanagerFolder(ctx, \u0026yandex.LookupResourcemanagerFolderArgs{\n\t\t\tFolderId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\topt1 := \"some_cloud_id\"\n\t\topt2 := \"folder_name\"\n\t\tmyFolder2, err := yandex.LookupResourcemanagerFolder(ctx, \u0026yandex.LookupResourcemanagerFolderArgs{\n\t\t\tCloudId: \u0026opt1,\n\t\t\tName:    \u0026opt2,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"myFolder1Name\", myFolder1.Name)\n\t\tctx.Export(\"myFolder2CloudId\", myFolder2.CloudId)\n\t\treturn nil\n\t})\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getResourcemanagerFolder.\n",
                 "properties": {
@@ -34893,6 +37173,98 @@
                     "networkId",
                     "securityGroupId",
                     "status",
+                    "id"
+                ]
+            }
+        },
+        "yandex:index/getVpcSecurityGroupRule:getVpcSecurityGroupRule": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcSecurityGroupRule.\n",
+                "properties": {
+                    "ruleId": {
+                        "type": "string"
+                    },
+                    "securityGroupBinding": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ruleId",
+                    "securityGroupBinding"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcSecurityGroupRule.\n",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "direction": {
+                        "type": "string"
+                    },
+                    "fromPort": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "port": {
+                        "type": "integer"
+                    },
+                    "predefinedTarget": {
+                        "type": "string"
+                    },
+                    "protocol": {
+                        "type": "string"
+                    },
+                    "ruleId": {
+                        "type": "string"
+                    },
+                    "securityGroupBinding": {
+                        "type": "string"
+                    },
+                    "securityGroupId": {
+                        "type": "string"
+                    },
+                    "toPort": {
+                        "type": "integer"
+                    },
+                    "v4CidrBlocks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "v6CidrBlocks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "direction",
+                    "fromPort",
+                    "labels",
+                    "port",
+                    "predefinedTarget",
+                    "protocol",
+                    "ruleId",
+                    "securityGroupBinding",
+                    "securityGroupId",
+                    "toPort",
+                    "v4CidrBlocks",
+                    "v6CidrBlocks",
                     "id"
                 ]
             }

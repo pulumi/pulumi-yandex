@@ -12,6 +12,12 @@ namespace Pulumi.Yandex.Inputs
 
     public sealed class ComputeInstanceGroupScalePolicyAutoScaleCustomRuleGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -45,6 +51,12 @@ namespace Pulumi.Yandex.Inputs
         /// </summary>
         [Input("ruleType", required: true)]
         public Input<string> RuleType { get; set; } = null!;
+
+        /// <summary>
+        /// Service of custom metric in Yandex Monitoring that should be used for scaling.
+        /// </summary>
+        [Input("service")]
+        public Input<string>? Service { get; set; }
 
         /// <summary>
         /// Target metric value level.

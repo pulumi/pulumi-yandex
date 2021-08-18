@@ -21,7 +21,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "folder_id_number_1"
-// 		myFolder1, err := yandex.GetResourcemanagerFolder(ctx, &yandex.GetResourcemanagerFolderArgs{
+// 		myFolder1, err := yandex.LookupResourcemanagerFolder(ctx, &yandex.LookupResourcemanagerFolderArgs{
 // 			FolderId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -29,7 +29,7 @@ import (
 // 		}
 // 		opt1 := "some_cloud_id"
 // 		opt2 := "folder_name"
-// 		myFolder2, err := yandex.GetResourcemanagerFolder(ctx, &yandex.GetResourcemanagerFolderArgs{
+// 		myFolder2, err := yandex.LookupResourcemanagerFolder(ctx, &yandex.LookupResourcemanagerFolderArgs{
 // 			CloudId: &opt1,
 // 			Name:    &opt2,
 // 		}, nil)
@@ -42,8 +42,8 @@ import (
 // 	})
 // }
 // ```
-func GetResourcemanagerFolder(ctx *pulumi.Context, args *GetResourcemanagerFolderArgs, opts ...pulumi.InvokeOption) (*GetResourcemanagerFolderResult, error) {
-	var rv GetResourcemanagerFolderResult
+func LookupResourcemanagerFolder(ctx *pulumi.Context, args *LookupResourcemanagerFolderArgs, opts ...pulumi.InvokeOption) (*LookupResourcemanagerFolderResult, error) {
+	var rv LookupResourcemanagerFolderResult
 	err := ctx.Invoke("yandex:index/getResourcemanagerFolder:getResourcemanagerFolder", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -52,7 +52,7 @@ func GetResourcemanagerFolder(ctx *pulumi.Context, args *GetResourcemanagerFolde
 }
 
 // A collection of arguments for invoking getResourcemanagerFolder.
-type GetResourcemanagerFolderArgs struct {
+type LookupResourcemanagerFolderArgs struct {
 	// Cloud that the resource belongs to. If value is omitted, the default provider cloud is used.
 	CloudId *string `pulumi:"cloudId"`
 	// ID of the folder.
@@ -64,7 +64,7 @@ type GetResourcemanagerFolderArgs struct {
 }
 
 // A collection of values returned by getResourcemanagerFolder.
-type GetResourcemanagerFolderResult struct {
+type LookupResourcemanagerFolderResult struct {
 	// ID of the cloud that contains the folder.
 	CloudId string `pulumi:"cloudId"`
 	// Folder creation timestamp.
