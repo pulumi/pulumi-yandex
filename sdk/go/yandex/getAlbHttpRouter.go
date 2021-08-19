@@ -7,6 +7,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get information about a Yandex Application Load Balancer HTTP Router. For more information, see
+// [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "my-http-router-id"
+// 		_, err := yandex.LookupAlbHttpRouter(ctx, &yandex.LookupAlbHttpRouterArgs{
+// 			HttpRouterId: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// This data source is used to define [Application Load Balancer HTTP Router] that can be used by other resources.
 func LookupAlbHttpRouter(ctx *pulumi.Context, args *LookupAlbHttpRouterArgs, opts ...pulumi.InvokeOption) (*LookupAlbHttpRouterResult, error) {
 	var rv LookupAlbHttpRouterResult
 	err := ctx.Invoke("yandex:index/getAlbHttpRouter:getAlbHttpRouter", args, &rv, opts...)
@@ -18,20 +44,27 @@ func LookupAlbHttpRouter(ctx *pulumi.Context, args *LookupAlbHttpRouterArgs, opt
 
 // A collection of arguments for invoking getAlbHttpRouter.
 type LookupAlbHttpRouterArgs struct {
-	Description  *string `pulumi:"description"`
-	FolderId     *string `pulumi:"folderId"`
+	// Description of the HTTP Router.
+	Description *string `pulumi:"description"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId *string `pulumi:"folderId"`
+	// HTTP Router ID.
 	HttpRouterId *string `pulumi:"httpRouterId"`
-	Name         *string `pulumi:"name"`
+	// - Name of the HTTP Router.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getAlbHttpRouter.
 type LookupAlbHttpRouterResult struct {
-	CreatedAt    string `pulumi:"createdAt"`
+	// Creation timestamp of this HTTP Router.
+	CreatedAt string `pulumi:"createdAt"`
+	// Description of the HTTP Router.
 	Description  string `pulumi:"description"`
 	FolderId     string `pulumi:"folderId"`
 	HttpRouterId string `pulumi:"httpRouterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string            `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Labels to assign to this HTTP Router.
 	Labels map[string]string `pulumi:"labels"`
 	Name   string            `pulumi:"name"`
 }

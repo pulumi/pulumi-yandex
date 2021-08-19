@@ -13,7 +13,7 @@ namespace Pulumi.Yandex
     {
         /// <summary>
         /// Generates an [IAM] role document that may be referenced by and applied to
-        /// other Yandex.Cloud Platform resources, such as the `yandex.getResourcemanagerFolder` resource. For more information, see
+        /// other Yandex.Cloud Platform resources, such as the `yandex.ResourcemanagerFolder` resource. For more information, see
         /// [the official documentation](https://cloud.yandex.ru/docs/iam/concepts/access-control/roles).
         /// 
         /// ```csharp

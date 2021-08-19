@@ -520,7 +520,7 @@ class VpcSecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def egresses(self) -> pulumi.Output[Optional[Sequence['outputs.VpcSecurityGroupEgress']]]:
+    def egresses(self) -> pulumi.Output[Sequence['outputs.VpcSecurityGroupEgress']]:
         """
         A list of egress rules. The structure is documented below.
         """
@@ -536,7 +536,7 @@ class VpcSecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ingresses(self) -> pulumi.Output[Optional[Sequence['outputs.VpcSecurityGroupIngress']]]:
+    def ingresses(self) -> pulumi.Output[Sequence['outputs.VpcSecurityGroupIngress']]:
         """
         A list of ingress rules.
         """

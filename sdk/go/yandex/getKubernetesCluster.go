@@ -54,6 +54,8 @@ type LookupKubernetesClusterResult struct {
 	Name   string                     `pulumi:"name"`
 	// The ID of the cluster network.
 	NetworkId string `pulumi:"networkId"`
+	// (Optional) Network Implementation options. The structure is documented below.
+	NetworkImplementation GetKubernetesClusterNetworkImplementation `pulumi:"networkImplementation"`
 	// Network policy provider for the cluster, if present. Possible values: `CALICO`.
 	NetworkPolicyProvider string `pulumi:"networkPolicyProvider"`
 	// Size of the masks that are assigned to each node in the cluster.

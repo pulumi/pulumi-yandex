@@ -107,6 +107,10 @@ export interface GetKubernetesClusterResult {
      */
     readonly networkId: string;
     /**
+     * (Optional) Network Implementation options. The structure is documented below.
+     */
+    readonly networkImplementation: outputs.GetKubernetesClusterNetworkImplementation;
+    /**
      * Network policy provider for the cluster, if present. Possible values: `CALICO`.
      */
     readonly networkPolicyProvider: string;

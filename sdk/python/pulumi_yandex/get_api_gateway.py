@@ -19,7 +19,7 @@ class GetApiGatewayResult:
     """
     A collection of values returned by getApiGateway.
     """
-    def __init__(__self__, api_gateway_id=None, created_at=None, description=None, domain=None, folder_id=None, id=None, labels=None, log_group_id=None, name=None, status=None):
+    def __init__(__self__, api_gateway_id=None, created_at=None, description=None, domain=None, folder_id=None, id=None, labels=None, log_group_id=None, name=None, status=None, user_domains=None):
         if api_gateway_id and not isinstance(api_gateway_id, str):
             raise TypeError("Expected argument 'api_gateway_id' to be a str")
         pulumi.set(__self__, "api_gateway_id", api_gateway_id)
@@ -50,6 +50,9 @@ class GetApiGatewayResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if user_domains and not isinstance(user_domains, list):
+            raise TypeError("Expected argument 'user_domains' to be a list")
+        pulumi.set(__self__, "user_domains", user_domains)
 
     @property
     @pulumi.getter(name="apiGatewayId")
@@ -104,6 +107,11 @@ class GetApiGatewayResult:
     def status(self) -> str:
         return pulumi.get(self, "status")
 
+    @property
+    @pulumi.getter(name="userDomains")
+    def user_domains(self) -> Sequence[str]:
+        return pulumi.get(self, "user_domains")
+
 
 class AwaitableGetApiGatewayResult(GetApiGatewayResult):
     # pylint: disable=using-constant-test
@@ -120,7 +128,8 @@ class AwaitableGetApiGatewayResult(GetApiGatewayResult):
             labels=self.labels,
             log_group_id=self.log_group_id,
             name=self.name,
-            status=self.status)
+            status=self.status,
+            user_domains=self.user_domains)
 
 
 def get_api_gateway(api_gateway_id: Optional[str] = None,
@@ -150,4 +159,5 @@ def get_api_gateway(api_gateway_id: Optional[str] = None,
         labels=__ret__.labels,
         log_group_id=__ret__.log_group_id,
         name=__ret__.name,
-        status=__ret__.status)
+        status=__ret__.status,
+        user_domains=__ret__.user_domains)

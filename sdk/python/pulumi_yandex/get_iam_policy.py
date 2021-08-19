@@ -70,7 +70,7 @@ def get_iam_policy(bindings: Optional[Sequence[pulumi.InputType['GetIamPolicyBin
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIamPolicyResult:
     """
     Generates an [IAM] policy document that may be referenced by and applied to
-    other Yandex.Cloud Platform resources, such as the `getResourcemanagerFolder` resource.
+    other Yandex.Cloud Platform resources, such as the `ResourcemanagerFolder` resource.
 
     This data source is used to define [IAM] policies to apply to other resources.
     Currently, defining a policy through a data source and referencing that policy

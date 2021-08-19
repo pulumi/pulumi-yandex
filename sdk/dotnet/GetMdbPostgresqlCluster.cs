@@ -120,6 +120,10 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Maintenance window settings of the PostgreSQL cluster. The structure is documented below.
+        /// </summary>
+        public readonly Outputs.GetMdbPostgresqlClusterMaintenanceWindowResult MaintenanceWindow;
+        /// <summary>
         /// Name of the database extension. For more information on available extensions see [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/operations/cluster-extensions).
         /// </summary>
         public readonly string Name;
@@ -164,6 +168,8 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
+            Outputs.GetMdbPostgresqlClusterMaintenanceWindowResult maintenanceWindow,
+
             string name,
 
             string networkId,
@@ -185,6 +191,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
+            MaintenanceWindow = maintenanceWindow;
             Name = name;
             NetworkId = networkId;
             SecurityGroupIds = securityGroupIds;

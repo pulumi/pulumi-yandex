@@ -9,38 +9,124 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Yandex
 {
+    /// <summary>
+    /// Allows management of [Yandex Cloud API Gateway](https://cloud.yandex.com/docs/api-gateway/).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Yandex = Pulumi.Yandex;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test_api_gateway = new Yandex.ApiGateway("test-api-gateway", new Yandex.ApiGatewayArgs
+    ///         {
+    ///             Description = "any description",
+    ///             Labels = 
+    ///             {
+    ///                 { "label", "label" },
+    ///                 { "empty-label", "" },
+    ///             },
+    ///             Spec = @"openapi: ""3.0.0""
+    /// info:
+    ///   version: 1.0.0
+    ///   title: Test API
+    /// paths:
+    ///   /hello:
+    ///     get:
+    ///       summary: Say hello
+    ///       operationId: hello
+    ///       parameters:
+    ///         - name: user
+    ///           in: query
+    ///           description: User name to appear in greetings
+    ///           required: false
+    ///           schema:
+    ///             type: string
+    ///             default: 'world'
+    ///       responses:
+    ///         '200':
+    ///           description: Greeting
+    ///           content:
+    ///             'text/plain':
+    ///               schema:
+    ///                 type: ""string""
+    ///       x-yc-apigateway-integration:
+    ///         type: dummy
+    ///         http_code: 200
+    ///         http_headers:
+    ///           'Content-Type': ""text/plain""
+    ///         content:
+    ///           'text/plain': ""Hello again, {user}!\n""
+    /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [YandexResourceType("yandex:index/apiGateway:ApiGateway")]
     public partial class ApiGateway : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Creation timestamp of the Yandex Cloud API Gateway.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Description of the Yandex Cloud API Gateway.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Default domain for the Yandex API Gateway. Generated at creation time.
+        /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
+        /// <summary>
+        /// Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+        /// </summary>
         [Output("folderId")]
         public Output<string> FolderId { get; private set; } = null!;
 
+        /// <summary>
+        /// A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         [Output("logGroupId")]
         public Output<string> LogGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// Yandex Cloud API Gateway name used to define API Gateway.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// OpenAPI specification for Yandex API Gateway.
+        /// </summary>
         [Output("spec")]
         public Output<string> Spec { get; private set; } = null!;
 
-        [Output("specContentHash")]
-        public Output<int?> SpecContentHash { get; private set; } = null!;
-
+        /// <summary>
+        /// Status of the Yandex API Gateway.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Set of user domains attached to Yandex API Gateway.
+        /// </summary>
+        [Output("userDomains")]
+        public Output<ImmutableArray<string>> UserDomains { get; private set; } = null!;
 
 
         /// <summary>
@@ -88,28 +174,41 @@ namespace Pulumi.Yandex
 
     public sealed class ApiGatewayArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Description of the Yandex Cloud API Gateway.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+        /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Yandex Cloud API Gateway name used to define API Gateway.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// OpenAPI specification for Yandex API Gateway.
+        /// </summary>
         [Input("spec", required: true)]
         public Input<string> Spec { get; set; } = null!;
-
-        [Input("specContentHash")]
-        public Input<int>? SpecContentHash { get; set; }
 
         public ApiGatewayArgs()
         {
@@ -118,20 +217,36 @@ namespace Pulumi.Yandex
 
     public sealed class ApiGatewayState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Creation timestamp of the Yandex Cloud API Gateway.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Description of the Yandex Cloud API Gateway.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Default domain for the Yandex API Gateway. Generated at creation time.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
+        /// <summary>
+        /// Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+        /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
@@ -141,17 +256,35 @@ namespace Pulumi.Yandex
         [Input("logGroupId")]
         public Input<string>? LogGroupId { get; set; }
 
+        /// <summary>
+        /// Yandex Cloud API Gateway name used to define API Gateway.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// OpenAPI specification for Yandex API Gateway.
+        /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }
 
-        [Input("specContentHash")]
-        public Input<int>? SpecContentHash { get; set; }
-
+        /// <summary>
+        /// Status of the Yandex API Gateway.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("userDomains")]
+        private InputList<string>? _userDomains;
+
+        /// <summary>
+        /// Set of user domains attached to Yandex API Gateway.
+        /// </summary>
+        public InputList<string> UserDomains
+        {
+            get => _userDomains ?? (_userDomains = new InputList<string>());
+            set => _userDomains = value;
+        }
 
         public ApiGatewayState()
         {

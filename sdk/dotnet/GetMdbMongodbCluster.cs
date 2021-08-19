@@ -113,6 +113,7 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the MongoDB cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        public readonly Outputs.GetMdbMongodbClusterMaintenanceWindowResult MaintenanceWindow;
         /// <summary>
         /// The name of the database.
         /// </summary>
@@ -166,6 +167,8 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
+            Outputs.GetMdbMongodbClusterMaintenanceWindowResult maintenanceWindow,
+
             string name,
 
             string networkId,
@@ -191,6 +194,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
+            MaintenanceWindow = maintenanceWindow;
             Name = name;
             NetworkId = networkId;
             Resources = resources;

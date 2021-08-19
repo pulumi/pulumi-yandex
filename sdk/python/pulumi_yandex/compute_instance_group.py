@@ -20,12 +20,14 @@ class ComputeInstanceGroupArgs:
                  instance_template: pulumi.Input['ComputeInstanceGroupInstanceTemplateArgs'],
                  scale_policy: pulumi.Input['ComputeInstanceGroupScalePolicyArgs'],
                  service_account_id: pulumi.Input[str],
+                 application_load_balancer: Optional[pulumi.Input['ComputeInstanceGroupApplicationLoadBalancerArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupHealthCheckArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancer: Optional[pulumi.Input['ComputeInstanceGroupLoadBalancerArgs']] = None,
+                 max_checking_health_duration: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -35,12 +37,14 @@ class ComputeInstanceGroupArgs:
         :param pulumi.Input['ComputeInstanceGroupInstanceTemplateArgs'] instance_template: The template for creating new instances. The structure is documented below.
         :param pulumi.Input['ComputeInstanceGroupScalePolicyArgs'] scale_policy: The scaling policy of the instance group. The structure is documented below.
         :param pulumi.Input[str] service_account_id: The ID of the service account authorized for this instance.
+        :param pulumi.Input['ComputeInstanceGroupApplicationLoadBalancerArgs'] application_load_balancer: Application Load balancing (L7) specifications. The structure is documented below.
         :param pulumi.Input[bool] deletion_protection: Flag that protects the instance group from accidental deletion.
         :param pulumi.Input[str] description: A description of the boot disk.
-        :param pulumi.Input[str] folder_id: The ID of the folder that the resources belong to.
+        :param pulumi.Input[str] folder_id: Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupHealthCheckArgs']]] health_checks: Health check specifications. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels of metric.
         :param pulumi.Input['ComputeInstanceGroupLoadBalancerArgs'] load_balancer: Load balancing specifications. The structure is documented below.
+        :param pulumi.Input[int] max_checking_health_duration: Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
         :param pulumi.Input[str] name: Name template of the instance.  
                In order to be unique it must contain at least one of instance unique placeholders:
                {instance.short_id}
@@ -56,6 +60,8 @@ class ComputeInstanceGroupArgs:
         pulumi.set(__self__, "instance_template", instance_template)
         pulumi.set(__self__, "scale_policy", scale_policy)
         pulumi.set(__self__, "service_account_id", service_account_id)
+        if application_load_balancer is not None:
+            pulumi.set(__self__, "application_load_balancer", application_load_balancer)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -68,6 +74,8 @@ class ComputeInstanceGroupArgs:
             pulumi.set(__self__, "labels", labels)
         if load_balancer is not None:
             pulumi.set(__self__, "load_balancer", load_balancer)
+        if max_checking_health_duration is not None:
+            pulumi.set(__self__, "max_checking_health_duration", max_checking_health_duration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if variables is not None:
@@ -134,6 +142,18 @@ class ComputeInstanceGroupArgs:
         pulumi.set(self, "service_account_id", value)
 
     @property
+    @pulumi.getter(name="applicationLoadBalancer")
+    def application_load_balancer(self) -> Optional[pulumi.Input['ComputeInstanceGroupApplicationLoadBalancerArgs']]:
+        """
+        Application Load balancing (L7) specifications. The structure is documented below.
+        """
+        return pulumi.get(self, "application_load_balancer")
+
+    @application_load_balancer.setter
+    def application_load_balancer(self, value: Optional[pulumi.Input['ComputeInstanceGroupApplicationLoadBalancerArgs']]):
+        pulumi.set(self, "application_load_balancer", value)
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -161,7 +181,7 @@ class ComputeInstanceGroupArgs:
     @pulumi.getter(name="folderId")
     def folder_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the folder that the resources belong to.
+        Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         """
         return pulumi.get(self, "folder_id")
 
@@ -206,6 +226,18 @@ class ComputeInstanceGroupArgs:
         pulumi.set(self, "load_balancer", value)
 
     @property
+    @pulumi.getter(name="maxCheckingHealthDuration")
+    def max_checking_health_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        """
+        return pulumi.get(self, "max_checking_health_duration")
+
+    @max_checking_health_duration.setter
+    def max_checking_health_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_checking_health_duration", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -241,6 +273,7 @@ class ComputeInstanceGroupArgs:
 class _ComputeInstanceGroupState:
     def __init__(__self__, *,
                  allocation_policy: Optional[pulumi.Input['ComputeInstanceGroupAllocationPolicyArgs']] = None,
+                 application_load_balancer: Optional[pulumi.Input['ComputeInstanceGroupApplicationLoadBalancerArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deploy_policy: Optional[pulumi.Input['ComputeInstanceGroupDeployPolicyArgs']] = None,
@@ -251,6 +284,7 @@ class _ComputeInstanceGroupState:
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupInstanceArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancer: Optional[pulumi.Input['ComputeInstanceGroupLoadBalancerArgs']] = None,
+                 max_checking_health_duration: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scale_policy: Optional[pulumi.Input['ComputeInstanceGroupScalePolicyArgs']] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
@@ -259,15 +293,17 @@ class _ComputeInstanceGroupState:
         """
         Input properties used for looking up and filtering ComputeInstanceGroup resources.
         :param pulumi.Input['ComputeInstanceGroupAllocationPolicyArgs'] allocation_policy: The allocation policy of the instance group by zone and region. The structure is documented below.
+        :param pulumi.Input['ComputeInstanceGroupApplicationLoadBalancerArgs'] application_load_balancer: Application Load balancing (L7) specifications. The structure is documented below.
         :param pulumi.Input[str] created_at: The instance group creation timestamp.
         :param pulumi.Input[bool] deletion_protection: Flag that protects the instance group from accidental deletion.
         :param pulumi.Input['ComputeInstanceGroupDeployPolicyArgs'] deploy_policy: The deployment policy of the instance group. The structure is documented below.
         :param pulumi.Input[str] description: A description of the boot disk.
-        :param pulumi.Input[str] folder_id: The ID of the folder that the resources belong to.
+        :param pulumi.Input[str] folder_id: Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupHealthCheckArgs']]] health_checks: Health check specifications. The structure is documented below.
         :param pulumi.Input['ComputeInstanceGroupInstanceTemplateArgs'] instance_template: The template for creating new instances. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels of metric.
         :param pulumi.Input['ComputeInstanceGroupLoadBalancerArgs'] load_balancer: Load balancing specifications. The structure is documented below.
+        :param pulumi.Input[int] max_checking_health_duration: Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
         :param pulumi.Input[str] name: Name template of the instance.  
                In order to be unique it must contain at least one of instance unique placeholders:
                {instance.short_id}
@@ -283,6 +319,8 @@ class _ComputeInstanceGroupState:
         """
         if allocation_policy is not None:
             pulumi.set(__self__, "allocation_policy", allocation_policy)
+        if application_load_balancer is not None:
+            pulumi.set(__self__, "application_load_balancer", application_load_balancer)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if deletion_protection is not None:
@@ -303,6 +341,8 @@ class _ComputeInstanceGroupState:
             pulumi.set(__self__, "labels", labels)
         if load_balancer is not None:
             pulumi.set(__self__, "load_balancer", load_balancer)
+        if max_checking_health_duration is not None:
+            pulumi.set(__self__, "max_checking_health_duration", max_checking_health_duration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scale_policy is not None:
@@ -325,6 +365,18 @@ class _ComputeInstanceGroupState:
     @allocation_policy.setter
     def allocation_policy(self, value: Optional[pulumi.Input['ComputeInstanceGroupAllocationPolicyArgs']]):
         pulumi.set(self, "allocation_policy", value)
+
+    @property
+    @pulumi.getter(name="applicationLoadBalancer")
+    def application_load_balancer(self) -> Optional[pulumi.Input['ComputeInstanceGroupApplicationLoadBalancerArgs']]:
+        """
+        Application Load balancing (L7) specifications. The structure is documented below.
+        """
+        return pulumi.get(self, "application_load_balancer")
+
+    @application_load_balancer.setter
+    def application_load_balancer(self, value: Optional[pulumi.Input['ComputeInstanceGroupApplicationLoadBalancerArgs']]):
+        pulumi.set(self, "application_load_balancer", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -378,7 +430,7 @@ class _ComputeInstanceGroupState:
     @pulumi.getter(name="folderId")
     def folder_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the folder that the resources belong to.
+        Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         """
         return pulumi.get(self, "folder_id")
 
@@ -442,6 +494,18 @@ class _ComputeInstanceGroupState:
     @load_balancer.setter
     def load_balancer(self, value: Optional[pulumi.Input['ComputeInstanceGroupLoadBalancerArgs']]):
         pulumi.set(self, "load_balancer", value)
+
+    @property
+    @pulumi.getter(name="maxCheckingHealthDuration")
+    def max_checking_health_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        """
+        return pulumi.get(self, "max_checking_health_duration")
+
+    @max_checking_health_duration.setter
+    def max_checking_health_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_checking_health_duration", value)
 
     @property
     @pulumi.getter
@@ -517,6 +581,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_policy: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupAllocationPolicyArgs']]] = None,
+                 application_load_balancer: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupApplicationLoadBalancerArgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deploy_policy: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupDeployPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -525,6 +590,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
                  instance_template: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupInstanceTemplateArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancer: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupLoadBalancerArgs']]] = None,
+                 max_checking_health_duration: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scale_policy: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupScalePolicyArgs']]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
@@ -596,14 +662,16 @@ class ComputeInstanceGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupAllocationPolicyArgs']] allocation_policy: The allocation policy of the instance group by zone and region. The structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupApplicationLoadBalancerArgs']] application_load_balancer: Application Load balancing (L7) specifications. The structure is documented below.
         :param pulumi.Input[bool] deletion_protection: Flag that protects the instance group from accidental deletion.
         :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupDeployPolicyArgs']] deploy_policy: The deployment policy of the instance group. The structure is documented below.
         :param pulumi.Input[str] description: A description of the boot disk.
-        :param pulumi.Input[str] folder_id: The ID of the folder that the resources belong to.
+        :param pulumi.Input[str] folder_id: Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceGroupHealthCheckArgs']]]] health_checks: Health check specifications. The structure is documented below.
         :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupInstanceTemplateArgs']] instance_template: The template for creating new instances. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels of metric.
         :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupLoadBalancerArgs']] load_balancer: Load balancing specifications. The structure is documented below.
+        :param pulumi.Input[int] max_checking_health_duration: Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
         :param pulumi.Input[str] name: Name template of the instance.  
                In order to be unique it must contain at least one of instance unique placeholders:
                {instance.short_id}
@@ -701,6 +769,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_policy: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupAllocationPolicyArgs']]] = None,
+                 application_load_balancer: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupApplicationLoadBalancerArgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deploy_policy: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupDeployPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -709,6 +778,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
                  instance_template: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupInstanceTemplateArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancer: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupLoadBalancerArgs']]] = None,
+                 max_checking_health_duration: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scale_policy: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupScalePolicyArgs']]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
@@ -728,6 +798,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
             if allocation_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'allocation_policy'")
             __props__.__dict__["allocation_policy"] = allocation_policy
+            __props__.__dict__["application_load_balancer"] = application_load_balancer
             __props__.__dict__["deletion_protection"] = deletion_protection
             if deploy_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'deploy_policy'")
@@ -740,6 +811,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
             __props__.__dict__["instance_template"] = instance_template
             __props__.__dict__["labels"] = labels
             __props__.__dict__["load_balancer"] = load_balancer
+            __props__.__dict__["max_checking_health_duration"] = max_checking_health_duration
             __props__.__dict__["name"] = name
             if scale_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'scale_policy'")
@@ -762,6 +834,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allocation_policy: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupAllocationPolicyArgs']]] = None,
+            application_load_balancer: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupApplicationLoadBalancerArgs']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             deploy_policy: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupDeployPolicyArgs']]] = None,
@@ -772,6 +845,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
             instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceGroupInstanceArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             load_balancer: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupLoadBalancerArgs']]] = None,
+            max_checking_health_duration: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             scale_policy: Optional[pulumi.Input[pulumi.InputType['ComputeInstanceGroupScalePolicyArgs']]] = None,
             service_account_id: Optional[pulumi.Input[str]] = None,
@@ -785,15 +859,17 @@ class ComputeInstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupAllocationPolicyArgs']] allocation_policy: The allocation policy of the instance group by zone and region. The structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupApplicationLoadBalancerArgs']] application_load_balancer: Application Load balancing (L7) specifications. The structure is documented below.
         :param pulumi.Input[str] created_at: The instance group creation timestamp.
         :param pulumi.Input[bool] deletion_protection: Flag that protects the instance group from accidental deletion.
         :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupDeployPolicyArgs']] deploy_policy: The deployment policy of the instance group. The structure is documented below.
         :param pulumi.Input[str] description: A description of the boot disk.
-        :param pulumi.Input[str] folder_id: The ID of the folder that the resources belong to.
+        :param pulumi.Input[str] folder_id: Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeInstanceGroupHealthCheckArgs']]]] health_checks: Health check specifications. The structure is documented below.
         :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupInstanceTemplateArgs']] instance_template: The template for creating new instances. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels of metric.
         :param pulumi.Input[pulumi.InputType['ComputeInstanceGroupLoadBalancerArgs']] load_balancer: Load balancing specifications. The structure is documented below.
+        :param pulumi.Input[int] max_checking_health_duration: Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
         :param pulumi.Input[str] name: Name template of the instance.  
                In order to be unique it must contain at least one of instance unique placeholders:
                {instance.short_id}
@@ -812,6 +888,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
         __props__ = _ComputeInstanceGroupState.__new__(_ComputeInstanceGroupState)
 
         __props__.__dict__["allocation_policy"] = allocation_policy
+        __props__.__dict__["application_load_balancer"] = application_load_balancer
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["deploy_policy"] = deploy_policy
@@ -822,6 +899,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
         __props__.__dict__["instances"] = instances
         __props__.__dict__["labels"] = labels
         __props__.__dict__["load_balancer"] = load_balancer
+        __props__.__dict__["max_checking_health_duration"] = max_checking_health_duration
         __props__.__dict__["name"] = name
         __props__.__dict__["scale_policy"] = scale_policy
         __props__.__dict__["service_account_id"] = service_account_id
@@ -836,6 +914,14 @@ class ComputeInstanceGroup(pulumi.CustomResource):
         The allocation policy of the instance group by zone and region. The structure is documented below.
         """
         return pulumi.get(self, "allocation_policy")
+
+    @property
+    @pulumi.getter(name="applicationLoadBalancer")
+    def application_load_balancer(self) -> pulumi.Output[Optional['outputs.ComputeInstanceGroupApplicationLoadBalancer']]:
+        """
+        Application Load balancing (L7) specifications. The structure is documented below.
+        """
+        return pulumi.get(self, "application_load_balancer")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -873,7 +959,7 @@ class ComputeInstanceGroup(pulumi.CustomResource):
     @pulumi.getter(name="folderId")
     def folder_id(self) -> pulumi.Output[str]:
         """
-        The ID of the folder that the resources belong to.
+        Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         """
         return pulumi.get(self, "folder_id")
 
@@ -913,6 +999,14 @@ class ComputeInstanceGroup(pulumi.CustomResource):
         Load balancing specifications. The structure is documented below.
         """
         return pulumi.get(self, "load_balancer")
+
+    @property
+    @pulumi.getter(name="maxCheckingHealthDuration")
+    def max_checking_health_duration(self) -> pulumi.Output[Optional[int]]:
+        """
+        Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        """
+        return pulumi.get(self, "max_checking_health_duration")
 
     @property
     @pulumi.getter

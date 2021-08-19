@@ -63,6 +63,10 @@ namespace Pulumi.Yandex
     ///             {
     ///                 { "test_key", "test_value" },
     ///             },
+    ///             MaintenanceWindow = new Yandex.Inputs.MdbMongodbClusterMaintenanceWindowArgs
+    ///             {
+    ///                 Type = "ANYTIME",
+    ///             },
     ///             NetworkId = fooVpcNetwork.Id,
     ///             Resources = new Yandex.Inputs.MdbMongodbClusterResourcesArgs
     ///             {
@@ -162,6 +166,9 @@ namespace Pulumi.Yandex
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("maintenanceWindow")]
+        public Output<Outputs.MdbMongodbClusterMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
         /// The fully qualified domain name of the host. Computed on server side.
@@ -319,6 +326,9 @@ namespace Pulumi.Yandex
             set => _labels = value;
         }
 
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbMongodbClusterMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
+
         /// <summary>
         /// The fully qualified domain name of the host. Computed on server side.
         /// </summary>
@@ -446,6 +456,9 @@ namespace Pulumi.Yandex
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbMongodbClusterMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// The fully qualified domain name of the host. Computed on server side.

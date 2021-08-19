@@ -13,6 +13,9 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckResult
     {
+        /// <summary>
+        /// Optional service name for grpc.health.v1.HealthCheckRequest message.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

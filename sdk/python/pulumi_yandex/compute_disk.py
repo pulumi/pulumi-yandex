@@ -44,8 +44,7 @@ class ComputeDiskArgs:
                the size value must not be less than the size of the source image
                or the size of the snapshot.
         :param pulumi.Input[str] snapshot_id: The source snapshot to use for disk creation.
-        :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk. 
-               One of `network-hdd` (default) or `network-ssd`.
+        :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk.
         :param pulumi.Input[str] zone: Availability zone where the disk will reside.
         """
         if description is not None:
@@ -178,8 +177,7 @@ class ComputeDiskArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of disk to create. Provide this when creating a disk. 
-        One of `network-hdd` (default) or `network-ssd`.
+        Type of disk to create. Provide this when creating a disk.
         """
         return pulumi.get(self, "type")
 
@@ -237,8 +235,7 @@ class _ComputeDiskState:
                or the size of the snapshot.
         :param pulumi.Input[str] snapshot_id: The source snapshot to use for disk creation.
         :param pulumi.Input[str] status: The status of the disk.
-        :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk. 
-               One of `network-hdd` (default) or `network-ssd`.
+        :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk.
         :param pulumi.Input[str] zone: Availability zone where the disk will reside.
         """
         if created_at is not None:
@@ -410,8 +407,7 @@ class _ComputeDiskState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of disk to create. Provide this when creating a disk. 
-        One of `network-hdd` (default) or `network-ssd`.
+        Type of disk to create. Provide this when creating a disk.
         """
         return pulumi.get(self, "type")
 
@@ -520,8 +516,7 @@ class ComputeDisk(pulumi.CustomResource):
                the size value must not be less than the size of the source image
                or the size of the snapshot.
         :param pulumi.Input[str] snapshot_id: The source snapshot to use for disk creation.
-        :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk. 
-               One of `network-hdd` (default) or `network-ssd`.
+        :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk.
         :param pulumi.Input[str] zone: Availability zone where the disk will reside.
         """
         ...
@@ -682,8 +677,7 @@ class ComputeDisk(pulumi.CustomResource):
                or the size of the snapshot.
         :param pulumi.Input[str] snapshot_id: The source snapshot to use for disk creation.
         :param pulumi.Input[str] status: The status of the disk.
-        :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk. 
-               One of `network-hdd` (default) or `network-ssd`.
+        :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk.
         :param pulumi.Input[str] zone: Availability zone where the disk will reside.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -803,8 +797,7 @@ class ComputeDisk(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        Type of disk to create. Provide this when creating a disk. 
-        One of `network-hdd` (default) or `network-ssd`.
+        Type of disk to create. Provide this when creating a disk.
         """
         return pulumi.get(self, "type")
 

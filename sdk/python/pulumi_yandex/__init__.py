@@ -5,7 +5,9 @@
 # Export this package's modules as members:
 from .alb_backend_group import *
 from .alb_http_router import *
+from .alb_load_balancer import *
 from .alb_target_group import *
+from .alb_virtual_host import *
 from .api_gateway import *
 from .compute_disk import *
 from .compute_disk_placement_group import *
@@ -23,10 +25,13 @@ from .dns_record_set import *
 from .dns_zone import *
 from .function import *
 from .function_iam_binding import *
+from .function_scaling_policy import *
 from .function_trigger import *
 from .get_alb_backend_group import *
 from .get_alb_http_router import *
+from .get_alb_load_balancer import *
 from .get_alb_target_group import *
+from .get_alb_virtual_host import *
 from .get_api_gateway import *
 from .get_client_config import *
 from .get_compute_disk import *
@@ -41,6 +46,7 @@ from .get_container_repository import *
 from .get_dataproc_cluster import *
 from .get_dns_zone import *
 from .get_function import *
+from .get_function_scaling_policy import *
 from .get_function_trigger import *
 from .get_iam_policy import *
 from .get_iam_role import *
@@ -53,6 +59,7 @@ from .get_kubernetes_node_group import *
 from .get_lb_network_load_balancer import *
 from .get_lb_target_group import *
 from .get_mdb_clickhouse_cluster import *
+from .get_mdb_elastic_search_cluster import *
 from .get_mdb_kafka_cluster import *
 from .get_mdb_mongodb_cluster import *
 from .get_mdb_mysql_cluster import *
@@ -66,6 +73,7 @@ from .get_vpc_address import *
 from .get_vpc_network import *
 from .get_vpc_route_table import *
 from .get_vpc_security_group import *
+from .get_vpc_security_group_rule import *
 from .get_vpc_subnet import *
 from .get_ydb_database_dedicated import *
 from .get_ydb_database_serverless import *
@@ -85,6 +93,7 @@ from .kubernetes_node_group import *
 from .lb_network_load_balancer import *
 from .lb_target_group import *
 from .mdb_clickhouse_cluster import *
+from .mdb_elastic_search_cluster import *
 from .mdb_kafka_cluster import *
 from .mdb_mongodb_cluster import *
 from .mdb_mysql_cluster import *
@@ -94,6 +103,7 @@ from .message_queue import *
 from .provider import *
 from .resourcemanager_cloud_iam_binding import *
 from .resourcemanager_cloud_iam_member import *
+from .resourcemanager_folder import *
 from .resourcemanager_folder_iam_binding import *
 from .resourcemanager_folder_iam_member import *
 from .resourcemanager_folder_iam_policy import *
@@ -104,6 +114,7 @@ from .vpc_default_security_group import *
 from .vpc_network import *
 from .vpc_route_table import *
 from .vpc_security_group import *
+from .vpc_security_group_rule import *
 from .vpc_subnet import *
 from .ydb_database_dedicated import *
 from .ydb_database_serverless import *
@@ -131,8 +142,12 @@ def _register_module():
                 return AlbBackendGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/albHttpRouter:AlbHttpRouter":
                 return AlbHttpRouter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/albLoadBalancer:AlbLoadBalancer":
+                return AlbLoadBalancer(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/albTargetGroup:AlbTargetGroup":
                 return AlbTargetGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/albVirtualHost:AlbVirtualHost":
+                return AlbVirtualHost(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/apiGateway:ApiGateway":
                 return ApiGateway(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/computeDisk:ComputeDisk":
@@ -167,6 +182,8 @@ def _register_module():
                 return Function(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/functionIamBinding:FunctionIamBinding":
                 return FunctionIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/functionScalingPolicy:FunctionScalingPolicy":
+                return FunctionScalingPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/functionTrigger:FunctionTrigger":
                 return FunctionTrigger(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/iamServiceAccount:IamServiceAccount":
@@ -201,6 +218,8 @@ def _register_module():
                 return LbTargetGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbClickhouseCluster:MdbClickhouseCluster":
                 return MdbClickhouseCluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
+                return MdbElasticSearchCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbKafkaCluster:MdbKafkaCluster":
                 return MdbKafkaCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbMongodbCluster:MdbMongodbCluster":
@@ -217,6 +236,8 @@ def _register_module():
                 return ResourcemanagerCloudIamBinding(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/resourcemanagerCloudIamMember:ResourcemanagerCloudIamMember":
                 return ResourcemanagerCloudIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/resourcemanagerFolder:ResourcemanagerFolder":
+                return ResourcemanagerFolder(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/resourcemanagerFolderIamBinding:ResourcemanagerFolderIamBinding":
                 return ResourcemanagerFolderIamBinding(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/resourcemanagerFolderIamMember:ResourcemanagerFolderIamMember":
@@ -237,6 +258,8 @@ def _register_module():
                 return VpcRouteTable(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/vpcSecurityGroup:VpcSecurityGroup":
                 return VpcSecurityGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/vpcSecurityGroupRule:VpcSecurityGroupRule":
+                return VpcSecurityGroupRule(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/vpcSubnet:VpcSubnet":
                 return VpcSubnet(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/ydbDatabaseDedicated:YdbDatabaseDedicated":
@@ -250,7 +273,9 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("yandex", "index/albBackendGroup", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/albHttpRouter", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/albLoadBalancer", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/albTargetGroup", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/albVirtualHost", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/apiGateway", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/computeDisk", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/computeDiskPlacementGroup", _module_instance)
@@ -268,6 +293,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/dnsZone", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/function", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/functionIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/functionScalingPolicy", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/functionTrigger", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/iamServiceAccount", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/iamServiceAccountApiKey", _module_instance)
@@ -285,6 +311,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/lbNetworkLoadBalancer", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/lbTargetGroup", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbClickhouseCluster", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/mdbElasticSearchCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbKafkaCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbMongodbCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbMysqlCluster", _module_instance)
@@ -293,6 +320,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/messageQueue", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/resourcemanagerCloudIamBinding", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/resourcemanagerCloudIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/resourcemanagerFolder", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/resourcemanagerFolderIamBinding", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/resourcemanagerFolderIamMember", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/resourcemanagerFolderIamPolicy", _module_instance)
@@ -303,6 +331,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/vpcNetwork", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/vpcRouteTable", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/vpcSecurityGroup", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/vpcSecurityGroupRule", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/vpcSubnet", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/ydbDatabaseDedicated", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/ydbDatabaseServerless", _module_instance)

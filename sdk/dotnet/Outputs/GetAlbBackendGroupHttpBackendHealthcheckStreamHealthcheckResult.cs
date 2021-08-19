@@ -13,7 +13,13 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckResult
     {
+        /// <summary>
+        /// Optional text to search in reply.
+        /// </summary>
         public readonly string Receive;
+        /// <summary>
+        /// Optional message to send. If empty, it's a connect-only health check.
+        /// </summary>
         public readonly string Send;
 
         [OutputConstructor]

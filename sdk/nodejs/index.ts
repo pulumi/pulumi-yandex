@@ -7,7 +7,9 @@ import * as utilities from "./utilities";
 // Export members:
 export * from "./albBackendGroup";
 export * from "./albHttpRouter";
+export * from "./albLoadBalancer";
 export * from "./albTargetGroup";
+export * from "./albVirtualHost";
 export * from "./apiGateway";
 export * from "./computeDisk";
 export * from "./computeDiskPlacementGroup";
@@ -25,10 +27,13 @@ export * from "./dnsRecordSet";
 export * from "./dnsZone";
 export * from "./function";
 export * from "./functionIamBinding";
+export * from "./functionScalingPolicy";
 export * from "./functionTrigger";
 export * from "./getAlbBackendGroup";
 export * from "./getAlbHttpRouter";
+export * from "./getAlbLoadBalancer";
 export * from "./getAlbTargetGroup";
+export * from "./getAlbVirtualHost";
 export * from "./getApiGateway";
 export * from "./getClientConfig";
 export * from "./getComputeDisk";
@@ -43,6 +48,7 @@ export * from "./getContainerRepository";
 export * from "./getDataprocCluster";
 export * from "./getDnsZone";
 export * from "./getFunction";
+export * from "./getFunctionScalingPolicy";
 export * from "./getFunctionTrigger";
 export * from "./getIamPolicy";
 export * from "./getIamRole";
@@ -55,6 +61,7 @@ export * from "./getKubernetesNodeGroup";
 export * from "./getLbNetworkLoadBalancer";
 export * from "./getLbTargetGroup";
 export * from "./getMdbClickhouseCluster";
+export * from "./getMdbElasticSearchCluster";
 export * from "./getMdbKafkaCluster";
 export * from "./getMdbMongodbCluster";
 export * from "./getMdbMysqlCluster";
@@ -68,6 +75,7 @@ export * from "./getVpcAddress";
 export * from "./getVpcNetwork";
 export * from "./getVpcRouteTable";
 export * from "./getVpcSecurityGroup";
+export * from "./getVpcSecurityGroupRule";
 export * from "./getVpcSubnet";
 export * from "./getYdbDatabaseDedicated";
 export * from "./getYdbDatabaseServerless";
@@ -87,6 +95,7 @@ export * from "./kubernetesNodeGroup";
 export * from "./lbNetworkLoadBalancer";
 export * from "./lbTargetGroup";
 export * from "./mdbClickhouseCluster";
+export * from "./mdbElasticSearchCluster";
 export * from "./mdbKafkaCluster";
 export * from "./mdbMongodbCluster";
 export * from "./mdbMysqlCluster";
@@ -96,6 +105,7 @@ export * from "./messageQueue";
 export * from "./provider";
 export * from "./resourcemanagerCloudIamBinding";
 export * from "./resourcemanagerCloudIamMember";
+export * from "./resourcemanagerFolder";
 export * from "./resourcemanagerFolderIamBinding";
 export * from "./resourcemanagerFolderIamMember";
 export * from "./resourcemanagerFolderIamPolicy";
@@ -106,6 +116,7 @@ export * from "./vpcDefaultSecurityGroup";
 export * from "./vpcNetwork";
 export * from "./vpcRouteTable";
 export * from "./vpcSecurityGroup";
+export * from "./vpcSecurityGroupRule";
 export * from "./vpcSubnet";
 export * from "./ydbDatabaseDedicated";
 export * from "./ydbDatabaseServerless";
@@ -122,7 +133,9 @@ export {
 // Import resources to register:
 import { AlbBackendGroup } from "./albBackendGroup";
 import { AlbHttpRouter } from "./albHttpRouter";
+import { AlbLoadBalancer } from "./albLoadBalancer";
 import { AlbTargetGroup } from "./albTargetGroup";
+import { AlbVirtualHost } from "./albVirtualHost";
 import { ApiGateway } from "./apiGateway";
 import { ComputeDisk } from "./computeDisk";
 import { ComputeDiskPlacementGroup } from "./computeDiskPlacementGroup";
@@ -140,6 +153,7 @@ import { DnsRecordSet } from "./dnsRecordSet";
 import { DnsZone } from "./dnsZone";
 import { Function } from "./function";
 import { FunctionIamBinding } from "./functionIamBinding";
+import { FunctionScalingPolicy } from "./functionScalingPolicy";
 import { FunctionTrigger } from "./functionTrigger";
 import { IamServiceAccount } from "./iamServiceAccount";
 import { IamServiceAccountApiKey } from "./iamServiceAccountApiKey";
@@ -157,6 +171,7 @@ import { KubernetesNodeGroup } from "./kubernetesNodeGroup";
 import { LbNetworkLoadBalancer } from "./lbNetworkLoadBalancer";
 import { LbTargetGroup } from "./lbTargetGroup";
 import { MdbClickhouseCluster } from "./mdbClickhouseCluster";
+import { MdbElasticSearchCluster } from "./mdbElasticSearchCluster";
 import { MdbKafkaCluster } from "./mdbKafkaCluster";
 import { MdbMongodbCluster } from "./mdbMongodbCluster";
 import { MdbMysqlCluster } from "./mdbMysqlCluster";
@@ -165,6 +180,7 @@ import { MdbSqlServerCluster } from "./mdbSqlServerCluster";
 import { MessageQueue } from "./messageQueue";
 import { ResourcemanagerCloudIamBinding } from "./resourcemanagerCloudIamBinding";
 import { ResourcemanagerCloudIamMember } from "./resourcemanagerCloudIamMember";
+import { ResourcemanagerFolder } from "./resourcemanagerFolder";
 import { ResourcemanagerFolderIamBinding } from "./resourcemanagerFolderIamBinding";
 import { ResourcemanagerFolderIamMember } from "./resourcemanagerFolderIamMember";
 import { ResourcemanagerFolderIamPolicy } from "./resourcemanagerFolderIamPolicy";
@@ -175,6 +191,7 @@ import { VpcDefaultSecurityGroup } from "./vpcDefaultSecurityGroup";
 import { VpcNetwork } from "./vpcNetwork";
 import { VpcRouteTable } from "./vpcRouteTable";
 import { VpcSecurityGroup } from "./vpcSecurityGroup";
+import { VpcSecurityGroupRule } from "./vpcSecurityGroupRule";
 import { VpcSubnet } from "./vpcSubnet";
 import { YdbDatabaseDedicated } from "./ydbDatabaseDedicated";
 import { YdbDatabaseServerless } from "./ydbDatabaseServerless";
@@ -187,8 +204,12 @@ const _module = {
                 return new AlbBackendGroup(name, <any>undefined, { urn })
             case "yandex:index/albHttpRouter:AlbHttpRouter":
                 return new AlbHttpRouter(name, <any>undefined, { urn })
+            case "yandex:index/albLoadBalancer:AlbLoadBalancer":
+                return new AlbLoadBalancer(name, <any>undefined, { urn })
             case "yandex:index/albTargetGroup:AlbTargetGroup":
                 return new AlbTargetGroup(name, <any>undefined, { urn })
+            case "yandex:index/albVirtualHost:AlbVirtualHost":
+                return new AlbVirtualHost(name, <any>undefined, { urn })
             case "yandex:index/apiGateway:ApiGateway":
                 return new ApiGateway(name, <any>undefined, { urn })
             case "yandex:index/computeDisk:ComputeDisk":
@@ -223,6 +244,8 @@ const _module = {
                 return new Function(name, <any>undefined, { urn })
             case "yandex:index/functionIamBinding:FunctionIamBinding":
                 return new FunctionIamBinding(name, <any>undefined, { urn })
+            case "yandex:index/functionScalingPolicy:FunctionScalingPolicy":
+                return new FunctionScalingPolicy(name, <any>undefined, { urn })
             case "yandex:index/functionTrigger:FunctionTrigger":
                 return new FunctionTrigger(name, <any>undefined, { urn })
             case "yandex:index/iamServiceAccount:IamServiceAccount":
@@ -257,6 +280,8 @@ const _module = {
                 return new LbTargetGroup(name, <any>undefined, { urn })
             case "yandex:index/mdbClickhouseCluster:MdbClickhouseCluster":
                 return new MdbClickhouseCluster(name, <any>undefined, { urn })
+            case "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
+                return new MdbElasticSearchCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbKafkaCluster:MdbKafkaCluster":
                 return new MdbKafkaCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbMongodbCluster:MdbMongodbCluster":
@@ -273,6 +298,8 @@ const _module = {
                 return new ResourcemanagerCloudIamBinding(name, <any>undefined, { urn })
             case "yandex:index/resourcemanagerCloudIamMember:ResourcemanagerCloudIamMember":
                 return new ResourcemanagerCloudIamMember(name, <any>undefined, { urn })
+            case "yandex:index/resourcemanagerFolder:ResourcemanagerFolder":
+                return new ResourcemanagerFolder(name, <any>undefined, { urn })
             case "yandex:index/resourcemanagerFolderIamBinding:ResourcemanagerFolderIamBinding":
                 return new ResourcemanagerFolderIamBinding(name, <any>undefined, { urn })
             case "yandex:index/resourcemanagerFolderIamMember:ResourcemanagerFolderIamMember":
@@ -293,6 +320,8 @@ const _module = {
                 return new VpcRouteTable(name, <any>undefined, { urn })
             case "yandex:index/vpcSecurityGroup:VpcSecurityGroup":
                 return new VpcSecurityGroup(name, <any>undefined, { urn })
+            case "yandex:index/vpcSecurityGroupRule:VpcSecurityGroupRule":
+                return new VpcSecurityGroupRule(name, <any>undefined, { urn })
             case "yandex:index/vpcSubnet:VpcSubnet":
                 return new VpcSubnet(name, <any>undefined, { urn })
             case "yandex:index/ydbDatabaseDedicated:YdbDatabaseDedicated":
@@ -306,7 +335,9 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("yandex", "index/albBackendGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/albHttpRouter", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/albLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/albTargetGroup", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/albVirtualHost", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/apiGateway", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeDisk", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeDiskPlacementGroup", _module)
@@ -324,6 +355,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/dnsRecordSet", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/dnsZone", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/function", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/functionIamBinding", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/functionScalingPolicy", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/functionTrigger", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/iamServiceAccount", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/iamServiceAccountApiKey", _module)
@@ -341,6 +373,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/kubernetesNodeGroup", _mo
 pulumi.runtime.registerResourceModule("yandex", "index/lbNetworkLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/lbTargetGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbClickhouseCluster", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/mdbElasticSearchCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbKafkaCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMongodbCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMysqlCluster", _module)
@@ -349,6 +382,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/mdbSqlServerCluster", _mo
 pulumi.runtime.registerResourceModule("yandex", "index/messageQueue", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerCloudIamBinding", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerCloudIamMember", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolder", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolderIamBinding", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolderIamMember", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolderIamPolicy", _module)
@@ -359,6 +393,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/vpcDefaultSecurityGroup",
 pulumi.runtime.registerResourceModule("yandex", "index/vpcNetwork", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcRouteTable", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcSecurityGroup", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/vpcSecurityGroupRule", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcSubnet", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/ydbDatabaseDedicated", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/ydbDatabaseServerless", _module)

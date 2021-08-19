@@ -18,6 +18,10 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string DeviceName;
         /// <summary>
+        /// ID of the existing disk. To set use variables.
+        /// </summary>
+        public readonly string DiskId;
+        /// <summary>
         /// The parameters used for creating a disk alongside the instance. The structure is documented below.
         /// </summary>
         public readonly Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsResult InitializeParams;
@@ -30,11 +34,14 @@ namespace Pulumi.Yandex.Outputs
         private GetComputeInstanceGroupInstanceTemplateBootDiskResult(
             string deviceName,
 
+            string diskId,
+
             Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsResult initializeParams,
 
             string mode)
         {
             DeviceName = deviceName;
+            DiskId = diskId;
             InitializeParams = initializeParams;
             Mode = mode;
         }

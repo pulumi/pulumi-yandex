@@ -103,6 +103,10 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
      */
     public readonly allocationPolicy!: pulumi.Output<outputs.ComputeInstanceGroupAllocationPolicy>;
     /**
+     * Application Load balancing (L7) specifications. The structure is documented below.
+     */
+    public readonly applicationLoadBalancer!: pulumi.Output<outputs.ComputeInstanceGroupApplicationLoadBalancer | undefined>;
+    /**
      * The instance group creation timestamp.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -119,7 +123,7 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the folder that the resources belong to.
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
      */
     public readonly folderId!: pulumi.Output<string>;
     /**
@@ -139,6 +143,10 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
      * Load balancing specifications. The structure is documented below.
      */
     public readonly loadBalancer!: pulumi.Output<outputs.ComputeInstanceGroupLoadBalancer | undefined>;
+    /**
+     * Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    public readonly maxCheckingHealthDuration!: pulumi.Output<number | undefined>;
     /**
      * Name template of the instance.  
      * In order to be unique it must contain at least one of instance unique placeholders:
@@ -181,6 +189,7 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ComputeInstanceGroupState | undefined;
             inputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
+            inputs["applicationLoadBalancer"] = state ? state.applicationLoadBalancer : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["deployPolicy"] = state ? state.deployPolicy : undefined;
@@ -191,6 +200,7 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
             inputs["instances"] = state ? state.instances : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["loadBalancer"] = state ? state.loadBalancer : undefined;
+            inputs["maxCheckingHealthDuration"] = state ? state.maxCheckingHealthDuration : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["scalePolicy"] = state ? state.scalePolicy : undefined;
             inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
@@ -214,6 +224,7 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
+            inputs["applicationLoadBalancer"] = args ? args.applicationLoadBalancer : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["deployPolicy"] = args ? args.deployPolicy : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -222,6 +233,7 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
             inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["loadBalancer"] = args ? args.loadBalancer : undefined;
+            inputs["maxCheckingHealthDuration"] = args ? args.maxCheckingHealthDuration : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["scalePolicy"] = args ? args.scalePolicy : undefined;
             inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
@@ -246,6 +258,10 @@ export interface ComputeInstanceGroupState {
      */
     readonly allocationPolicy?: pulumi.Input<inputs.ComputeInstanceGroupAllocationPolicy>;
     /**
+     * Application Load balancing (L7) specifications. The structure is documented below.
+     */
+    readonly applicationLoadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupApplicationLoadBalancer>;
+    /**
      * The instance group creation timestamp.
      */
     readonly createdAt?: pulumi.Input<string>;
@@ -262,7 +278,7 @@ export interface ComputeInstanceGroupState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The ID of the folder that the resources belong to.
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
      */
     readonly folderId?: pulumi.Input<string>;
     /**
@@ -282,6 +298,10 @@ export interface ComputeInstanceGroupState {
      * Load balancing specifications. The structure is documented below.
      */
     readonly loadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupLoadBalancer>;
+    /**
+     * Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    readonly maxCheckingHealthDuration?: pulumi.Input<number>;
     /**
      * Name template of the instance.  
      * In order to be unique it must contain at least one of instance unique placeholders:
@@ -320,6 +340,10 @@ export interface ComputeInstanceGroupArgs {
      */
     readonly allocationPolicy: pulumi.Input<inputs.ComputeInstanceGroupAllocationPolicy>;
     /**
+     * Application Load balancing (L7) specifications. The structure is documented below.
+     */
+    readonly applicationLoadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupApplicationLoadBalancer>;
+    /**
      * Flag that protects the instance group from accidental deletion.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
@@ -332,7 +356,7 @@ export interface ComputeInstanceGroupArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The ID of the folder that the resources belong to.
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
      */
     readonly folderId?: pulumi.Input<string>;
     /**
@@ -351,6 +375,10 @@ export interface ComputeInstanceGroupArgs {
      * Load balancing specifications. The structure is documented below.
      */
     readonly loadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupLoadBalancer>;
+    /**
+     * Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    readonly maxCheckingHealthDuration?: pulumi.Input<number>;
     /**
      * Name template of the instance.  
      * In order to be unique it must contain at least one of instance unique placeholders:

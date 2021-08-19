@@ -274,6 +274,226 @@ export interface AlbBackendGroupHttpBackendTlsValidationContext {
     trustedCaId?: pulumi.Input<string>;
 }
 
+export interface AlbLoadBalancerAllocationPolicy {
+    /**
+     * Unique set of locations. The structure is documented below.
+     */
+    locations: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerAllocationPolicyLocation>[]>;
+}
+
+export interface AlbLoadBalancerAllocationPolicyLocation {
+    /**
+     * If set, will disable all L7 instances in the zone for request handling.
+     */
+    disableTraffic?: pulumi.Input<boolean>;
+    /**
+     * Provided by the client or computed automatically.
+     */
+    subnetId: pulumi.Input<string>;
+    /**
+     * ID of the zone that location is located at.
+     */
+    zoneId: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListener {
+    /**
+     * Network endpoints (addresses and ports) of the listener. The structure is documented below.
+     */
+    endpoints?: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListenerEndpoint>[]>;
+    /**
+     * HTTP listener resource. The structure is documented below.
+     */
+    http?: pulumi.Input<inputs.AlbLoadBalancerListenerHttp>;
+    /**
+     * name of SNI match.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * TLS listener resource. The structure is documented below.
+     */
+    tls?: pulumi.Input<inputs.AlbLoadBalancerListenerTls>;
+}
+
+export interface AlbLoadBalancerListenerEndpoint {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    addresses: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListenerEndpointAddress>[]>;
+    /**
+     * One or more ports to listen on.
+     */
+    ports: pulumi.Input<pulumi.Input<number>[]>;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddress {
+    /**
+     * External IPv4 address. The structure is documented below.
+     */
+    externalIpv4Address?: pulumi.Input<inputs.AlbLoadBalancerListenerEndpointAddressExternalIpv4Address>;
+    /**
+     * External IPv6 address. The structure is documented below.
+     */
+    externalIpv6Address?: pulumi.Input<inputs.AlbLoadBalancerListenerEndpointAddressExternalIpv6Address>;
+    /**
+     * Internal IPv4 address. The structure is documented below.
+     */
+    internalIpv4Address?: pulumi.Input<inputs.AlbLoadBalancerListenerEndpointAddressInternalIpv4Address>;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressExternalIpv4Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressExternalIpv6Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressInternalIpv4Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * Provided by the client or computed automatically.
+     */
+    subnetId?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerHttp {
+    /**
+     * HTTP handler that sets plaintext HTTP router. The structure is documented below.
+     */
+    handler?: pulumi.Input<inputs.AlbLoadBalancerListenerHttpHandler>;
+    /**
+     * Shortcut for adding http > https redirects. The structure is documented below.
+     */
+    redirects?: pulumi.Input<inputs.AlbLoadBalancerListenerHttpRedirects>;
+}
+
+export interface AlbLoadBalancerListenerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: pulumi.Input<boolean>;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: pulumi.Input<inputs.AlbLoadBalancerListenerHttpHandlerHttp2Options>;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: pulumi.Input<number>;
+}
+
+export interface AlbLoadBalancerListenerHttpRedirects {
+    httpToHttps?: pulumi.Input<boolean>;
+}
+
+export interface AlbLoadBalancerListenerTls {
+    /**
+     * TLS handler resource. The structure is documented below.
+     */
+    defaultHandler: pulumi.Input<inputs.AlbLoadBalancerListenerTlsDefaultHandler>;
+    /**
+     * SNI match resource. The structure is documented below.
+     */
+    sniHandlers?: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandler>[]>;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandler {
+    /**
+     * Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+     * with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+     */
+    certificateIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * HTTP handler resource. The structure is documented below.
+     */
+    httpHandler?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler>;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: pulumi.Input<boolean>;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options>;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: pulumi.Input<number>;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandler {
+    /**
+     * HTTP handler that sets plaintext HTTP router. The structure is documented below.
+     */
+    handler: pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandlerHandler>;
+    /**
+     * name of SNI match.
+     */
+    name: pulumi.Input<string>;
+    serviceNames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandler {
+    /**
+     * Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+     * with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+     */
+    certificateIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * HTTP handler resource. The structure is documented below.
+     */
+    httpHandler?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler>;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: pulumi.Input<boolean>;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options>;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: pulumi.Input<string>;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: pulumi.Input<number>;
+}
+
 export interface AlbTargetGroupTarget {
     /**
      * IP address of the target.
@@ -284,6 +504,237 @@ export interface AlbTargetGroupTarget {
      * All targets in the target group must be connected to the same subnet within a single availability zone.
      */
     subnetId: pulumi.Input<string>;
+}
+
+export interface AlbVirtualHostModifyRequestHeader {
+    /**
+     * Append string to the header value.
+     */
+    append?: pulumi.Input<string>;
+    /**
+     * name of the route.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * If set, remove the header.
+     */
+    remove?: pulumi.Input<boolean>;
+    /**
+     * New value for a header. Header values support the following 
+     * [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+     */
+    replace?: pulumi.Input<string>;
+}
+
+export interface AlbVirtualHostModifyResponseHeader {
+    /**
+     * Append string to the header value.
+     */
+    append?: pulumi.Input<string>;
+    /**
+     * name of the route.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * If set, remove the header.
+     */
+    remove?: pulumi.Input<boolean>;
+    /**
+     * New value for a header. Header values support the following 
+     * [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+     */
+    replace?: pulumi.Input<string>;
+}
+
+export interface AlbVirtualHostRoute {
+    /**
+     * GRPC route resource. The structure is documented below.
+     */
+    grpcRoute?: pulumi.Input<inputs.AlbVirtualHostRouteGrpcRoute>;
+    /**
+     * HTTP route resource. The structure is documented below.
+     */
+    httpRoute?: pulumi.Input<inputs.AlbVirtualHostRouteHttpRoute>;
+    /**
+     * name of the route.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AlbVirtualHostRouteGrpcRoute {
+    /**
+     * Checks "/" prefix by default. The structure is documented below.
+     */
+    grpcMatches?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostRouteGrpcRouteGrpcMatch>[]>;
+    /**
+     * GRPC route action resource. The structure is documented below.
+     */
+    grpcRouteAction?: pulumi.Input<inputs.AlbVirtualHostRouteGrpcRouteGrpcRouteAction>;
+    /**
+     * GRPC status response action resource. The structure is documented below.
+     */
+    grpcStatusResponseAction?: pulumi.Input<inputs.AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction>;
+}
+
+export interface AlbVirtualHostRouteGrpcRouteGrpcMatch {
+    /**
+     * If not set, all services/methods are assumed. The structure is documented below.
+     */
+    fqmn?: pulumi.Input<inputs.AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn>;
+}
+
+export interface AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
+    exact?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string>;
+}
+
+export interface AlbVirtualHostRouteGrpcRouteGrpcRouteAction {
+    /**
+     * If set, will automatically rewrite host.
+     */
+    autoHostRewrite?: pulumi.Input<boolean>;
+    /**
+     * Backend group to route requests.
+     */
+    backendGroupId: pulumi.Input<string>;
+    /**
+     * Host rewrite specifier.
+     */
+    hostRewrite?: pulumi.Input<string>;
+    /**
+     * Specifies the idle timeout (time without any data transfer for the active request) for the
+     * route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+     * to the maximum time the stream is allowed to be alive. If not specified, there is no
+     * per-route idle timeout.
+     */
+    idleTimeout?: pulumi.Input<string>;
+    /**
+     * Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 
+     * 60 seconds.
+     */
+    maxTimeout?: pulumi.Input<string>;
+}
+
+export interface AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
+    /**
+     * The status of the response. Supported values are: ok, invalid_argumet, not_found, 
+     * permission_denied, unauthenticated, unimplemented, internal, unavailable.
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface AlbVirtualHostRouteHttpRoute {
+    /**
+     * Direct response action resource. The structure is documented below.
+     */
+    directResponseAction?: pulumi.Input<inputs.AlbVirtualHostRouteHttpRouteDirectResponseAction>;
+    /**
+     * Checks "/" prefix by default. The structure is documented below.
+     */
+    httpMatches?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostRouteHttpRouteHttpMatch>[]>;
+    /**
+     * HTTP route action resource. The structure is documented below.
+     */
+    httpRouteAction?: pulumi.Input<inputs.AlbVirtualHostRouteHttpRouteHttpRouteAction>;
+    /**
+     * Redirect action resource. The structure is documented below.
+     */
+    redirectAction?: pulumi.Input<inputs.AlbVirtualHostRouteHttpRouteRedirectAction>;
+}
+
+export interface AlbVirtualHostRouteHttpRouteDirectResponseAction {
+    /**
+     * Response body text.
+     */
+    body?: pulumi.Input<string>;
+    /**
+     * The status of the response. Supported values are: ok, invalid_argumet, not_found, 
+     * permission_denied, unauthenticated, unimplemented, internal, unavailable.
+     */
+    status?: pulumi.Input<number>;
+}
+
+export interface AlbVirtualHostRouteHttpRouteHttpMatch {
+    /**
+     * List of methods(strings).
+     */
+    httpMethods?: pulumi.Input<any[]>;
+    /**
+     * If not set, '/' is assumed. The structure is documented below.
+     */
+    path?: pulumi.Input<inputs.AlbVirtualHostRouteHttpRouteHttpMatchPath>;
+}
+
+export interface AlbVirtualHostRouteHttpRouteHttpMatchPath {
+    exact?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string>;
+}
+
+export interface AlbVirtualHostRouteHttpRouteHttpRouteAction {
+    /**
+     * If set, will automatically rewrite host.
+     */
+    autoHostRewrite?: pulumi.Input<boolean>;
+    /**
+     * Backend group to route requests.
+     */
+    backendGroupId: pulumi.Input<string>;
+    /**
+     * Host rewrite specifier.
+     */
+    hostRewrite?: pulumi.Input<string>;
+    /**
+     * Specifies the idle timeout (time without any data transfer for the active request) for the
+     * route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+     * to the maximum time the stream is allowed to be alive. If not specified, there is no
+     * per-route idle timeout.
+     */
+    idleTimeout?: pulumi.Input<string>;
+    /**
+     * If not empty, matched path prefix will be replaced by this value.
+     */
+    prefixRewrite?: pulumi.Input<string>;
+    /**
+     * Specifies the request timeout (overall time request processing is allowed to take) for the 
+     * route. If not set, default is 60 seconds.
+     */
+    timeout?: pulumi.Input<string>;
+    /**
+     * List of upgrade types. Only specified upgrade types will be allowed. For example, 
+     * "websocket".
+     */
+    upgradeTypes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AlbVirtualHostRouteHttpRouteRedirectAction {
+    removeQuery?: pulumi.Input<boolean>;
+    /**
+     * Replaces hostname.
+     */
+    replaceHost?: pulumi.Input<string>;
+    /**
+     * Replace path.
+     */
+    replacePath?: pulumi.Input<string>;
+    /**
+     * Replaces port.
+     */
+    replacePort?: pulumi.Input<number>;
+    /**
+     * Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/> 
+     * redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+     */
+    replacePrefix?: pulumi.Input<string>;
+    /**
+     * Replaces scheme. If the original scheme is `http` or `https`, will also remove the 
+     * 80 or 443 port, if present.
+     */
+    replaceScheme?: pulumi.Input<string>;
+    /**
+     * The HTTP status code to use in the redirect response. Supported values are: 
+     * moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+     */
+    responseCode?: pulumi.Input<string>;
 }
 
 export interface ComputeDiskDiskPlacementPolicy {
@@ -351,6 +802,30 @@ export interface ComputeInstanceGroupAllocationPolicy {
      * A list of availability zones.
      */
     zones: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ComputeInstanceGroupApplicationLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration?: pulumi.Input<number>;
+    /**
+     * The status message of the instance.
+     */
+    statusMessage?: pulumi.Input<string>;
+    /**
+     * A description of the target group.
+     */
+    targetGroupDescription?: pulumi.Input<string>;
+    targetGroupId?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs.
+     */
+    targetGroupLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the target group.
+     */
+    targetGroupName?: pulumi.Input<string>;
 }
 
 export interface ComputeInstanceGroupDeployPolicy {
@@ -493,11 +968,11 @@ export interface ComputeInstanceGroupInstanceNetworkInterface {
      */
     macAddress?: pulumi.Input<string>;
     /**
-     * A public address that can be used to access the internet over NAT.
+     * Flag for using NAT.
      */
     nat?: pulumi.Input<boolean>;
     /**
-     * The public IP address of the instance.
+     * A public address that can be used to access the internet over NAT. Use `variables` to set.
      */
     natIpAddress?: pulumi.Input<string>;
     /**
@@ -593,9 +1068,13 @@ export interface ComputeInstanceGroupInstanceTemplateBootDisk {
      */
     deviceName?: pulumi.Input<string>;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId?: pulumi.Input<string>;
+    /**
      * Parameters for creating a disk alongside the instance. The structure is documented below.
      */
-    initializeParams: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams>;
+    initializeParams?: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams>;
     /**
      * The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
      */
@@ -648,13 +1127,17 @@ export interface ComputeInstanceGroupInstanceTemplateNetworkInterface {
      */
     ipv6DnsRecords?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord>[]>;
     /**
-     * A public address that can be used to access the internet over NAT.
+     * Flag for using NAT.
      */
     nat?: pulumi.Input<boolean>;
     /**
      * List of nat dns records.  The structure is documented below.
      */
     natDnsRecords?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord>[]>;
+    /**
+     * A public address that can be used to access the internet over NAT. Use `variables` to set.
+     */
+    natIpAddress?: pulumi.Input<string>;
     /**
      * The ID of the network.
      */
@@ -769,9 +1252,13 @@ export interface ComputeInstanceGroupInstanceTemplateSecondaryDisk {
      */
     deviceName?: pulumi.Input<string>;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId?: pulumi.Input<string>;
+    /**
      * Parameters for creating a disk alongside the instance. The structure is documented below.
      */
-    initializeParams: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams>;
+    initializeParams?: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams>;
     /**
      * The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
      */
@@ -802,6 +1289,10 @@ export interface ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializePara
 }
 
 export interface ComputeInstanceGroupLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration?: pulumi.Input<number>;
     /**
      * The status message of the instance.
      */
@@ -879,6 +1370,10 @@ export interface ComputeInstanceGroupScalePolicyAutoScale {
 
 export interface ComputeInstanceGroupScalePolicyAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
      * A map of labels of metric.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -898,6 +1393,10 @@ export interface ComputeInstanceGroupScalePolicyAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: pulumi.Input<string>;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service?: pulumi.Input<string>;
     /**
      * Target metric value level.
      */
@@ -953,6 +1452,10 @@ export interface ComputeInstanceGroupScalePolicyTestAutoScale {
 
 export interface ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
      * A map of labels of metric.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -972,6 +1475,10 @@ export interface ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: pulumi.Input<string>;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service?: pulumi.Input<string>;
     /**
      * Target metric value level.
      */
@@ -1257,6 +1764,12 @@ export interface FunctionPackage {
     sha256?: pulumi.Input<string>;
 }
 
+export interface FunctionScalingPolicyPolicy {
+    tag: pulumi.Input<string>;
+    zoneInstancesLimit?: pulumi.Input<number>;
+    zoneRequestsLimit?: pulumi.Input<number>;
+}
+
 export interface FunctionTriggerDlq {
     queueId: pulumi.Input<string>;
     serviceAccountId: pulumi.Input<string>;
@@ -1304,49 +1817,129 @@ export interface FunctionTriggerTimer {
 }
 
 export interface GetAlbBackendGroupGrpcBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
     healthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheck;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
     loadBalancingConfig?: inputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfig;
+    /**
+     * - Name of the Backend Group.
+     */
     name?: string;
+    /**
+     * Port for incoming traffic.
+     */
     port?: number;
+    /**
+     * References target groups for the backend.
+     */
     targetGroupIds?: string[];
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
     tls?: inputs.GetAlbBackendGroupGrpcBackendTls;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
     weight?: number;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     grpcHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck;
+    /**
+     * Optional alternative port for health checking.
+     */
     healthcheckPort?: number;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
     healthyThreshold?: number;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     httpHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck;
+    /**
+     * Interval between health checks.
+     */
     interval?: string;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
     intervalJitterPercent?: number;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     streamHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck;
+    /**
+     * Time to wait for a health check response.
+     */
     timeout?: string;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
     unhealthyThreshold?: number;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     */
     serviceName?: string;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+    /**
+     * Optional "Host" HTTP header value.
+     */
     host?: string;
+    /**
+     * If set, health checks will use HTTP2.
+     */
     http2?: boolean;
+    /**
+     * HTTP path.
+     */
     path?: string;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+    /**
+     * Optional text to search in reply.
+     */
     receive?: string;
+    /**
+     * Optional message to send. If empty, it's a connect-only health check.
+     */
     send?: string;
 }
 
 export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
     localityAwareRoutingPercent?: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
     panicThreshold?: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
     strictLocality?: boolean;
 }
 
 export interface GetAlbBackendGroupGrpcBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+     */
     sni?: string;
     validationContext?: inputs.GetAlbBackendGroupGrpcBackendTlsValidationContext;
 }
@@ -1357,50 +1950,133 @@ export interface GetAlbBackendGroupGrpcBackendTlsValidationContext {
 }
 
 export interface GetAlbBackendGroupHttpBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
     healthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheck;
+    /**
+     * If set, health checks will use HTTP2.
+     */
     http2?: boolean;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
     loadBalancingConfig?: inputs.GetAlbBackendGroupHttpBackendLoadBalancingConfig;
+    /**
+     * - Name of the Backend Group.
+     */
     name?: string;
+    /**
+     * Port for incoming traffic.
+     */
     port?: number;
+    /**
+     * References target groups for the backend.
+     */
     targetGroupIds?: string[];
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
     tls?: inputs.GetAlbBackendGroupHttpBackendTls;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
     weight?: number;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     grpcHealthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck;
+    /**
+     * Optional alternative port for health checking.
+     */
     healthcheckPort?: number;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
     healthyThreshold?: number;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     httpHealthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck;
+    /**
+     * Interval between health checks.
+     */
     interval?: string;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
     intervalJitterPercent?: number;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     streamHealthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck;
+    /**
+     * Time to wait for a health check response.
+     */
     timeout?: string;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
     unhealthyThreshold?: number;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     */
     serviceName?: string;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+    /**
+     * Optional "Host" HTTP header value.
+     */
     host?: string;
+    /**
+     * If set, health checks will use HTTP2.
+     */
     http2?: boolean;
+    /**
+     * HTTP path.
+     */
     path?: string;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+    /**
+     * Optional text to search in reply.
+     */
     receive?: string;
+    /**
+     * Optional message to send. If empty, it's a connect-only health check.
+     */
     send?: string;
 }
 
 export interface GetAlbBackendGroupHttpBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
     localityAwareRoutingPercent?: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
     panicThreshold?: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
     strictLocality?: boolean;
 }
 
 export interface GetAlbBackendGroupHttpBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+     */
     sni?: string;
     validationContext?: inputs.GetAlbBackendGroupHttpBackendTlsValidationContext;
 }
@@ -1423,6 +2099,12 @@ export interface GetComputeInstanceSchedulingPolicy {
      * (Optional) Specifies if the instance is preemptible. Defaults to false.
      */
     preemptible?: boolean;
+}
+
+export interface GetFunctionScalingPolicyPolicy {
+    tag?: string;
+    zoneInstancesLimit?: number;
+    zoneRequestsLimit?: number;
 }
 
 export interface GetIamPolicyBinding {
@@ -1749,6 +2431,16 @@ export interface KubernetesClusterMasterZonal {
     zone?: pulumi.Input<string>;
 }
 
+export interface KubernetesClusterNetworkImplementation {
+    /**
+     * (Optional) Cilium network implementation configuration. No options exist.
+     */
+    cilium?: pulumi.Input<inputs.KubernetesClusterNetworkImplementationCilium>;
+}
+
+export interface KubernetesClusterNetworkImplementationCilium {
+}
+
 export interface KubernetesNodeGroupAllocationPolicy {
     /**
      * Repeated field, that specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
@@ -1799,6 +2491,10 @@ export interface KubernetesNodeGroupInstanceTemplate {
      * @deprecated The 'nat' field has been deprecated. Please use 'nat under network_interface' instead.
      */
     nat?: pulumi.Input<boolean>;
+    /**
+     * Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+     */
+    networkAccelerationType?: pulumi.Input<string>;
     /**
      * An array with the network interfaces that will be attached to the instance. The structure is documented below.
      */
@@ -2877,6 +3573,100 @@ export interface MdbClickhouseClusterZookeeperResources {
     resourcePresetId?: pulumi.Input<string>;
 }
 
+export interface MdbElasticSearchClusterConfig {
+    /**
+     * Password for admin user of Elasticsearch.
+     */
+    adminPassword: pulumi.Input<string>;
+    /**
+     * Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+     */
+    dataNode: pulumi.Input<inputs.MdbElasticSearchClusterConfigDataNode>;
+    /**
+     * Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+     */
+    edition?: pulumi.Input<string>;
+    /**
+     * Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+     */
+    masterNode?: pulumi.Input<inputs.MdbElasticSearchClusterConfigMasterNode>;
+    /**
+     * A set of Elasticsearch plugins to install.
+     */
+    plugins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Version of Elasticsearch.
+     */
+    version?: pulumi.Input<string>;
+}
+
+export interface MdbElasticSearchClusterConfigDataNode {
+    /**
+     * Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+     */
+    resources: pulumi.Input<inputs.MdbElasticSearchClusterConfigDataNodeResources>;
+}
+
+export interface MdbElasticSearchClusterConfigDataNodeResources {
+    /**
+     * Volume of the storage available to a host, in gigabytes.
+     */
+    diskSize: pulumi.Input<number>;
+    /**
+     * Type of the storage of Elasticsearch hosts.
+     */
+    diskTypeId: pulumi.Input<string>;
+    resourcePresetId: pulumi.Input<string>;
+}
+
+export interface MdbElasticSearchClusterConfigMasterNode {
+    /**
+     * Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+     */
+    resources: pulumi.Input<inputs.MdbElasticSearchClusterConfigMasterNodeResources>;
+}
+
+export interface MdbElasticSearchClusterConfigMasterNodeResources {
+    /**
+     * Volume of the storage available to a host, in gigabytes.
+     */
+    diskSize: pulumi.Input<number>;
+    /**
+     * Type of the storage of Elasticsearch hosts.
+     */
+    diskTypeId: pulumi.Input<string>;
+    resourcePresetId: pulumi.Input<string>;
+}
+
+export interface MdbElasticSearchClusterHost {
+    /**
+     * Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+     */
+    assignPublicIp?: pulumi.Input<boolean>;
+    /**
+     * The fully qualified domain name of the host.
+     */
+    fqdn?: pulumi.Input<string>;
+    /**
+     * User defined host name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The ID of the subnet, to which the host belongs. The subnet must
+     * be a part of the network to which the cluster belongs.
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The availability zone where the Elasticsearch host will be created.
+     * For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
+     */
+    zone: pulumi.Input<string>;
+}
+
 export interface MdbKafkaClusterConfig {
     /**
      * Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
@@ -3129,7 +3919,7 @@ export interface MdbMongodbClusterHost {
      */
     subnetId: pulumi.Input<string>;
     /**
-     * type of mongo daemon which runs on this host (mongod, mongos or monogcfg). Defaults to mongod.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type?: pulumi.Input<string>;
     /**
@@ -3137,6 +3927,21 @@ export interface MdbMongodbClusterHost {
      * For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
      */
     zoneId: pulumi.Input<string>;
+}
+
+export interface MdbMongodbClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day?: pulumi.Input<string>;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour?: pulumi.Input<number>;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: pulumi.Input<string>;
 }
 
 export interface MdbMongodbClusterResources {

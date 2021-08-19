@@ -11,19 +11,59 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Allows management of [Yandex Cloud API Gateway](https://cloud.yandex.com/docs/api-gateway/).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yandex.NewApiGateway(ctx, "test_api_gateway", &yandex.ApiGatewayArgs{
+// 			Description: pulumi.String("any description"),
+// 			Labels: pulumi.StringMap{
+// 				"label":       pulumi.String("label"),
+// 				"empty-label": pulumi.String(""),
+// 			},
+// 			Spec: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "openapi: \"3.0.0\"\n", "info:\n", "  version: 1.0.0\n", "  title: Test API\n", "paths:\n", "  /hello:\n", "    get:\n", "      summary: Say hello\n", "      operationId: hello\n", "      parameters:\n", "        - name: user\n", "          in: query\n", "          description: User name to appear in greetings\n", "          required: false\n", "          schema:\n", "            type: string\n", "            default: 'world'\n", "      responses:\n", "        '200':\n", "          description: Greeting\n", "          content:\n", "            'text/plain':\n", "              schema:\n", "                type: \"string\"\n", "      x-yc-apigateway-integration:\n", "        type: dummy\n", "        http_code: 200\n", "        http_headers:\n", "          'Content-Type': \"text/plain\"\n", "        content:\n", "          'text/plain': \"Hello again, {user}!\\n\"\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ApiGateway struct {
 	pulumi.CustomResourceState
 
-	CreatedAt       pulumi.StringOutput    `pulumi:"createdAt"`
-	Description     pulumi.StringPtrOutput `pulumi:"description"`
-	Domain          pulumi.StringOutput    `pulumi:"domain"`
-	FolderId        pulumi.StringOutput    `pulumi:"folderId"`
-	Labels          pulumi.StringMapOutput `pulumi:"labels"`
-	LogGroupId      pulumi.StringOutput    `pulumi:"logGroupId"`
-	Name            pulumi.StringOutput    `pulumi:"name"`
-	Spec            pulumi.StringOutput    `pulumi:"spec"`
-	SpecContentHash pulumi.IntPtrOutput    `pulumi:"specContentHash"`
-	Status          pulumi.StringOutput    `pulumi:"status"`
+	// Creation timestamp of the Yandex Cloud API Gateway.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Description of the Yandex Cloud API Gateway.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Default domain for the Yandex API Gateway. Generated at creation time.
+	Domain pulumi.StringOutput `pulumi:"domain"`
+	// Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+	FolderId pulumi.StringOutput `pulumi:"folderId"`
+	// A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+	Labels     pulumi.StringMapOutput `pulumi:"labels"`
+	LogGroupId pulumi.StringOutput    `pulumi:"logGroupId"`
+	// Yandex Cloud API Gateway name used to define API Gateway.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// OpenAPI specification for Yandex API Gateway.
+	Spec pulumi.StringOutput `pulumi:"spec"`
+	// Status of the Yandex API Gateway.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// Set of user domains attached to Yandex API Gateway.
+	UserDomains pulumi.StringArrayOutput `pulumi:"userDomains"`
 }
 
 // NewApiGateway registers a new resource with the given unique name, arguments, and options.
@@ -58,29 +98,47 @@ func GetApiGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiGateway resources.
 type apiGatewayState struct {
-	CreatedAt       *string           `pulumi:"createdAt"`
-	Description     *string           `pulumi:"description"`
-	Domain          *string           `pulumi:"domain"`
-	FolderId        *string           `pulumi:"folderId"`
-	Labels          map[string]string `pulumi:"labels"`
-	LogGroupId      *string           `pulumi:"logGroupId"`
-	Name            *string           `pulumi:"name"`
-	Spec            *string           `pulumi:"spec"`
-	SpecContentHash *int              `pulumi:"specContentHash"`
-	Status          *string           `pulumi:"status"`
+	// Creation timestamp of the Yandex Cloud API Gateway.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Description of the Yandex Cloud API Gateway.
+	Description *string `pulumi:"description"`
+	// Default domain for the Yandex API Gateway. Generated at creation time.
+	Domain *string `pulumi:"domain"`
+	// Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+	FolderId *string `pulumi:"folderId"`
+	// A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+	Labels     map[string]string `pulumi:"labels"`
+	LogGroupId *string           `pulumi:"logGroupId"`
+	// Yandex Cloud API Gateway name used to define API Gateway.
+	Name *string `pulumi:"name"`
+	// OpenAPI specification for Yandex API Gateway.
+	Spec *string `pulumi:"spec"`
+	// Status of the Yandex API Gateway.
+	Status *string `pulumi:"status"`
+	// Set of user domains attached to Yandex API Gateway.
+	UserDomains []string `pulumi:"userDomains"`
 }
 
 type ApiGatewayState struct {
-	CreatedAt       pulumi.StringPtrInput
-	Description     pulumi.StringPtrInput
-	Domain          pulumi.StringPtrInput
-	FolderId        pulumi.StringPtrInput
-	Labels          pulumi.StringMapInput
-	LogGroupId      pulumi.StringPtrInput
-	Name            pulumi.StringPtrInput
-	Spec            pulumi.StringPtrInput
-	SpecContentHash pulumi.IntPtrInput
-	Status          pulumi.StringPtrInput
+	// Creation timestamp of the Yandex Cloud API Gateway.
+	CreatedAt pulumi.StringPtrInput
+	// Description of the Yandex Cloud API Gateway.
+	Description pulumi.StringPtrInput
+	// Default domain for the Yandex API Gateway. Generated at creation time.
+	Domain pulumi.StringPtrInput
+	// Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+	FolderId pulumi.StringPtrInput
+	// A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+	Labels     pulumi.StringMapInput
+	LogGroupId pulumi.StringPtrInput
+	// Yandex Cloud API Gateway name used to define API Gateway.
+	Name pulumi.StringPtrInput
+	// OpenAPI specification for Yandex API Gateway.
+	Spec pulumi.StringPtrInput
+	// Status of the Yandex API Gateway.
+	Status pulumi.StringPtrInput
+	// Set of user domains attached to Yandex API Gateway.
+	UserDomains pulumi.StringArrayInput
 }
 
 func (ApiGatewayState) ElementType() reflect.Type {
@@ -88,22 +146,30 @@ func (ApiGatewayState) ElementType() reflect.Type {
 }
 
 type apiGatewayArgs struct {
-	Description     *string           `pulumi:"description"`
-	FolderId        *string           `pulumi:"folderId"`
-	Labels          map[string]string `pulumi:"labels"`
-	Name            *string           `pulumi:"name"`
-	Spec            string            `pulumi:"spec"`
-	SpecContentHash *int              `pulumi:"specContentHash"`
+	// Description of the Yandex Cloud API Gateway.
+	Description *string `pulumi:"description"`
+	// Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+	FolderId *string `pulumi:"folderId"`
+	// A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+	Labels map[string]string `pulumi:"labels"`
+	// Yandex Cloud API Gateway name used to define API Gateway.
+	Name *string `pulumi:"name"`
+	// OpenAPI specification for Yandex API Gateway.
+	Spec string `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a ApiGateway resource.
 type ApiGatewayArgs struct {
-	Description     pulumi.StringPtrInput
-	FolderId        pulumi.StringPtrInput
-	Labels          pulumi.StringMapInput
-	Name            pulumi.StringPtrInput
-	Spec            pulumi.StringInput
-	SpecContentHash pulumi.IntPtrInput
+	// Description of the Yandex Cloud API Gateway.
+	Description pulumi.StringPtrInput
+	// Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
+	FolderId pulumi.StringPtrInput
+	// A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
+	Labels pulumi.StringMapInput
+	// Yandex Cloud API Gateway name used to define API Gateway.
+	Name pulumi.StringPtrInput
+	// OpenAPI specification for Yandex API Gateway.
+	Spec pulumi.StringInput
 }
 
 func (ApiGatewayArgs) ElementType() reflect.Type {

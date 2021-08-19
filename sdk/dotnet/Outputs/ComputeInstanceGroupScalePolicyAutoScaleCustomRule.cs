@@ -14,6 +14,10 @@ namespace Pulumi.Yandex.Outputs
     public sealed class ComputeInstanceGroupScalePolicyAutoScaleCustomRule
     {
         /// <summary>
+        /// Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+        /// </summary>
+        public readonly string? FolderId;
+        /// <summary>
         /// A map of labels of metric.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
@@ -34,12 +38,18 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string RuleType;
         /// <summary>
+        /// Service of custom metric in Yandex Monitoring that should be used for scaling.
+        /// </summary>
+        public readonly string? Service;
+        /// <summary>
         /// Target metric value level.
         /// </summary>
         public readonly double Target;
 
         [OutputConstructor]
         private ComputeInstanceGroupScalePolicyAutoScaleCustomRule(
+            string? folderId,
+
             ImmutableDictionary<string, string>? labels,
 
             string metricName,
@@ -48,12 +58,16 @@ namespace Pulumi.Yandex.Outputs
 
             string ruleType,
 
+            string? service,
+
             double target)
         {
+            FolderId = folderId;
             Labels = labels;
             MetricName = metricName;
             MetricType = metricType;
             RuleType = ruleType;
+            Service = service;
             Target = target;
         }
     }

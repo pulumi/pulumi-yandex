@@ -49,11 +49,17 @@ class GetAlbTargetGroupResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Creation timestamp of this target group.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Description of the target group.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -72,6 +78,11 @@ class GetAlbTargetGroupResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
+        """
+        Labels to assign to this target group.
+        * `target.0.ip_address` - IP address of the target.
+        * `target.0.subnet_id` - ID of the subnet that targets are connected to.
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -112,7 +123,23 @@ def get_alb_target_group(description: Optional[str] = None,
                          target_group_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlbTargetGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information about a Yandex Application Load Balancer target group. For more information, see
+    [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_alb_target_group(target_group_id="my-target-group-id")
+    ```
+
+    This data source is used to define [Application Load Balancer Target Groups] that can be used by other resources.
+
+
+    :param str description: Description of the target group.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: - Name of the Target Group.
+    :param str target_group_id: Target Group ID.
     """
     __args__ = dict()
     __args__['description'] = description

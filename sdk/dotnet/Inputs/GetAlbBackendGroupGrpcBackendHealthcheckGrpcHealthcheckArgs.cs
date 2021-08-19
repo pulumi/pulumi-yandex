@@ -12,6 +12,9 @@ namespace Pulumi.Yandex.Inputs
 
     public sealed class GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Optional service name for grpc.health.v1.HealthCheckRequest message.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 

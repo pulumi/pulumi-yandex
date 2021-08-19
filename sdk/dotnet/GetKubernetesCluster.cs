@@ -96,6 +96,10 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly string NetworkId;
         /// <summary>
+        /// (Optional) Network Implementation options. The structure is documented below.
+        /// </summary>
+        public readonly Outputs.GetKubernetesClusterNetworkImplementationResult NetworkImplementation;
+        /// <summary>
         /// Network policy provider for the cluster, if present. Possible values: `CALICO`.
         /// </summary>
         public readonly string NetworkPolicyProvider;
@@ -161,6 +165,8 @@ namespace Pulumi.Yandex
 
             string networkId,
 
+            Outputs.GetKubernetesClusterNetworkImplementationResult networkImplementation,
+
             string networkPolicyProvider,
 
             int nodeIpv4CidrMaskSize,
@@ -191,6 +197,7 @@ namespace Pulumi.Yandex
             Master = master;
             Name = name;
             NetworkId = networkId;
+            NetworkImplementation = networkImplementation;
             NetworkPolicyProvider = networkPolicyProvider;
             NodeIpv4CidrMaskSize = nodeIpv4CidrMaskSize;
             NodeServiceAccountId = nodeServiceAccountId;

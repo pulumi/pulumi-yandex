@@ -81,6 +81,8 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_alb_target_group":                      {Tok: makeResource(mainMod, "AlbTargetGroup")},
 			"yandex_alb_backend_group":                     {Tok: makeResource(mainMod, "AlbBackendGroup")},
 			"yandex_alb_http_router":                       {Tok: makeResource(mainMod, "AlbHttpRouter")},
+			"yandex_alb_virtual_host":                      {Tok: makeResource(mainMod, "AlbVirtualHost")},
+			"yandex_alb_load_balancer":                     {Tok: makeResource(mainMod, "AlbLoadBalancer")},
 			"yandex_api_gateway":                           {Tok: makeResource(mainMod, "ApiGateway")},
 			"yandex_compute_disk":                          {Tok: makeResource(mainMod, "ComputeDisk")},
 			"yandex_compute_disk_placement_group":          {Tok: makeResource(mainMod, "ComputeDiskPlacementGroup")},
@@ -99,6 +101,7 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_function":                              {Tok: makeResource(mainMod, "Function")},
 			"yandex_function_iam_binding":                  {Tok: makeResource(mainMod, "FunctionIamBinding")},
 			"yandex_function_trigger":                      {Tok: makeResource(mainMod, "FunctionTrigger")},
+			"yandex_function_scaling_policy":               {Tok: makeResource(mainMod, "FunctionScalingPolicy")},
 			"yandex_iam_service_account":                   {Tok: makeResource(mainMod, "IamServiceAccount")},
 			"yandex_iam_service_account_api_key":           {Tok: makeResource(mainMod, "IamServiceAccountApiKey")},
 			"yandex_iam_service_account_iam_binding":       {Tok: makeResource(mainMod, "IamServiceAccountIamBinding")},
@@ -118,6 +121,7 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_mdb_kafka_cluster":                     {Tok: makeResource(mainMod, "MdbKafkaCluster")},
 			"yandex_mdb_mongodb_cluster":                   {Tok: makeResource(mainMod, "MdbMongodbCluster")},
 			"yandex_mdb_mysql_cluster":                     {Tok: makeResource(mainMod, "MdbMysqlCluster")},
+			"yandex_mdb_elasticsearch_cluster":             {Tok: makeResource(mainMod, "MdbElasticSearchCluster")},
 			//"yandex_mdb_postgresql_cluster": {
 			//	Tok: makeResource(mainMod, "MdbPostgresqlCluster"),
 			//	Docs: &tfbridge.DocInfo{
@@ -132,6 +136,7 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_resourcemanager_folder_iam_binding": {Tok: makeResource(mainMod, "ResourcemanagerFolderIamBinding")},
 			"yandex_resourcemanager_folder_iam_member":  {Tok: makeResource(mainMod, "ResourcemanagerFolderIamMember")},
 			"yandex_resourcemanager_folder_iam_policy":  {Tok: makeResource(mainMod, "ResourcemanagerFolderIamPolicy")},
+			"yandex_resourcemanager_folder":             {Tok: makeResource(mainMod, "ResourcemanagerFolder")},
 			"yandex_storage_bucket":                     {Tok: makeResource(mainMod, "StorageBucket")},
 			"yandex_storage_object":                     {Tok: makeResource(mainMod, "StorageObject")},
 			"yandex_vpc_address":                        {Tok: makeResource(mainMod, "VpcAddress")},
@@ -140,13 +145,36 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_vpc_security_group":                 {Tok: makeResource(mainMod, "VpcSecurityGroup")},
 			"yandex_vpc_subnet":                         {Tok: makeResource(mainMod, "VpcSubnet")},
 			"yandex_vpc_default_security_group":         {Tok: makeResource(mainMod, "VpcDefaultSecurityGroup")},
+			"yandex_vpc_security_group_rule":            {Tok: makeResource(mainMod, "VpcSecurityGroupRule")},
 			"yandex_ydb_database_dedicated":             {Tok: makeResource(mainMod, "YdbDatabaseDedicated")},
 			"yandex_ydb_database_serverless":            {Tok: makeResource(mainMod, "YdbDatabaseServerless")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"yandex_alb_target_group":  {Tok: makeDataSource(mainMod, "getAlbTargetGroup")},
-			"yandex_alb_backend_group": {Tok: makeDataSource(mainMod, "getAlbBackendGroup")},
-			"yandex_alb_http_router":   {Tok: makeDataSource(mainMod, "getAlbHttpRouter")},
+			"yandex_alb_target_group": {
+				Tok: makeDataSource(mainMod, "getAlbTargetGroup"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_alb_target_group.html.markdown",
+				},
+			},
+			"yandex_alb_backend_group": {
+				Tok: makeDataSource(mainMod, "getAlbBackendGroup"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_alb_backend_group.html.markdown",
+				},
+			},
+			"yandex_alb_http_router": {
+				Tok: makeDataSource(mainMod, "getAlbHttpRouter"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_alb_http_router.html.markdown",
+				},
+			},
+			"yandex_alb_virtual_host": {
+				Tok: makeDataSource(mainMod, "getAlbVirtualHost"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_alb_virtual_host.html.markdown",
+				},
+			},
+			"yandex_alb_load_balancer": {Tok: makeDataSource(mainMod, "getAlbLoadBalancer")},
 			"yandex_api_gateway":       {Tok: makeDataSource(mainMod, "getApiGateway")},
 			"yandex_client_config": {
 				Tok: makeDataSource(mainMod, "getClientConfig"),
@@ -232,6 +260,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_function_trigger.html.markdown",
 				},
 			},
+			"yandex_function_scaling_policy": {Tok: makeDataSource(mainMod, "getFunctionScalingPolicy")},
 			"yandex_iam_policy": {
 				Tok: makeDataSource(mainMod, "getIamPolicy"),
 				Docs: &tfbridge.DocInfo{
@@ -328,6 +357,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_mdb_redis_cluster.html.markdown",
 				},
 			},
+			"yandex_mdb_elasticsearch_cluster": {
+				Tok: makeDataSource(mainMod, "getMdbElasticSearchCluster"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_mdb_elasticsearch_cluster.html.markdown",
+				},
+			},
 			"yandex_mdb_sqlserver_cluster": {
 				Tok: makeDataSource(mainMod, "getMdbSqlserverCluster"),
 				Docs: &tfbridge.DocInfo{
@@ -383,6 +418,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_vpc_subnet.html.markdown",
 				},
 			},
+			"yandex_vpc_security_group_rule": {Tok: makeDataSource(mainMod, "getVpcSecurityGroupRule")},
 			"yandex_ydb_database_dedicated": {
 				Tok: makeDataSource(mainMod, "getYdbDatabaseDedicated"),
 				Docs: &tfbridge.DocInfo{
@@ -421,8 +457,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 		},
 	}

@@ -117,6 +117,12 @@ namespace Pulumi.Yandex
         public Output<Outputs.ComputeInstanceGroupAllocationPolicy> AllocationPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Application Load balancing (L7) specifications. The structure is documented below.
+        /// </summary>
+        [Output("applicationLoadBalancer")]
+        public Output<Outputs.ComputeInstanceGroupApplicationLoadBalancer?> ApplicationLoadBalancer { get; private set; } = null!;
+
+        /// <summary>
         /// The instance group creation timestamp.
         /// </summary>
         [Output("createdAt")]
@@ -141,7 +147,7 @@ namespace Pulumi.Yandex
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the folder that the resources belong to.
+        /// Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         /// </summary>
         [Output("folderId")]
         public Output<string> FolderId { get; private set; } = null!;
@@ -172,6 +178,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Output("loadBalancer")]
         public Output<Outputs.ComputeInstanceGroupLoadBalancer?> LoadBalancer { get; private set; } = null!;
+
+        /// <summary>
+        /// Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        /// </summary>
+        [Output("maxCheckingHealthDuration")]
+        public Output<int?> MaxCheckingHealthDuration { get; private set; } = null!;
 
         /// <summary>
         /// Name template of the instance.  
@@ -263,6 +275,12 @@ namespace Pulumi.Yandex
         public Input<Inputs.ComputeInstanceGroupAllocationPolicyArgs> AllocationPolicy { get; set; } = null!;
 
         /// <summary>
+        /// Application Load balancing (L7) specifications. The structure is documented below.
+        /// </summary>
+        [Input("applicationLoadBalancer")]
+        public Input<Inputs.ComputeInstanceGroupApplicationLoadBalancerArgs>? ApplicationLoadBalancer { get; set; }
+
+        /// <summary>
         /// Flag that protects the instance group from accidental deletion.
         /// </summary>
         [Input("deletionProtection")]
@@ -281,7 +299,7 @@ namespace Pulumi.Yandex
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the folder that the resources belong to.
+        /// Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
@@ -321,6 +339,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.ComputeInstanceGroupLoadBalancerArgs>? LoadBalancer { get; set; }
+
+        /// <summary>
+        /// Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        /// </summary>
+        [Input("maxCheckingHealthDuration")]
+        public Input<int>? MaxCheckingHealthDuration { get; set; }
 
         /// <summary>
         /// Name template of the instance.  
@@ -373,6 +397,12 @@ namespace Pulumi.Yandex
         public Input<Inputs.ComputeInstanceGroupAllocationPolicyGetArgs>? AllocationPolicy { get; set; }
 
         /// <summary>
+        /// Application Load balancing (L7) specifications. The structure is documented below.
+        /// </summary>
+        [Input("applicationLoadBalancer")]
+        public Input<Inputs.ComputeInstanceGroupApplicationLoadBalancerGetArgs>? ApplicationLoadBalancer { get; set; }
+
+        /// <summary>
         /// The instance group creation timestamp.
         /// </summary>
         [Input("createdAt")]
@@ -397,7 +427,7 @@ namespace Pulumi.Yandex
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the folder that the resources belong to.
+        /// Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
@@ -445,6 +475,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.ComputeInstanceGroupLoadBalancerGetArgs>? LoadBalancer { get; set; }
+
+        /// <summary>
+        /// Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        /// </summary>
+        [Input("maxCheckingHealthDuration")]
+        public Input<int>? MaxCheckingHealthDuration { get; set; }
 
         /// <summary>
         /// Name template of the instance.  

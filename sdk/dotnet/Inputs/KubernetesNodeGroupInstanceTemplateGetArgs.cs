@@ -40,6 +40,12 @@ namespace Pulumi.Yandex.Inputs
         [Input("nat")]
         public Input<bool>? Nat { get; set; }
 
+        /// <summary>
+        /// Type of network acceleration. Values: `standard`, `software_accelerated`.
+        /// </summary>
+        [Input("networkAccelerationType")]
+        public Input<string>? NetworkAccelerationType { get; set; }
+
         [Input("networkInterfaces")]
         private InputList<Inputs.KubernetesNodeGroupInstanceTemplateNetworkInterfaceGetArgs>? _networkInterfaces;
 

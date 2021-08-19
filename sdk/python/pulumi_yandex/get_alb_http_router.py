@@ -45,11 +45,17 @@ class GetAlbHttpRouterResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Creation timestamp of this HTTP Router.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Description of the HTTP Router.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -73,6 +79,9 @@ class GetAlbHttpRouterResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
+        """
+        Labels to assign to this HTTP Router.
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -102,7 +111,23 @@ def get_alb_http_router(description: Optional[str] = None,
                         name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlbHttpRouterResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information about a Yandex Application Load Balancer HTTP Router. For more information, see
+    [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    tf_router = yandex.get_alb_http_router(http_router_id="my-http-router-id")
+    ```
+
+    This data source is used to define [Application Load Balancer HTTP Router] that can be used by other resources.
+
+
+    :param str description: Description of the HTTP Router.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str http_router_id: HTTP Router ID.
+    :param str name: - Name of the HTTP Router.
     """
     __args__ = dict()
     __args__['description'] = description

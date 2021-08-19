@@ -20,7 +20,7 @@ class GetMdbMongodbClusterResult:
     """
     A collection of values returned by getMdbMongodbCluster.
     """
-    def __init__(__self__, cluster_config=None, cluster_id=None, created_at=None, databases=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, users=None):
+    def __init__(__self__, cluster_config=None, cluster_id=None, created_at=None, databases=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, users=None):
         if cluster_config and not isinstance(cluster_config, dict):
             raise TypeError("Expected argument 'cluster_config' to be a dict")
         pulumi.set(__self__, "cluster_config", cluster_config)
@@ -54,6 +54,9 @@ class GetMdbMongodbClusterResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if maintenance_window and not isinstance(maintenance_window, dict):
+            raise TypeError("Expected argument 'maintenance_window' to be a dict")
+        pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -159,6 +162,11 @@ class GetMdbMongodbClusterResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> 'outputs.GetMdbMongodbClusterMaintenanceWindowResult':
+        return pulumi.get(self, "maintenance_window")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -232,6 +240,7 @@ class AwaitableGetMdbMongodbClusterResult(GetMdbMongodbClusterResult):
             hosts=self.hosts,
             id=self.id,
             labels=self.labels,
+            maintenance_window=self.maintenance_window,
             name=self.name,
             network_id=self.network_id,
             resources=self.resources,
@@ -286,6 +295,7 @@ def get_mdb_mongodb_cluster(cluster_id: Optional[str] = None,
         hosts=__ret__.hosts,
         id=__ret__.id,
         labels=__ret__.labels,
+        maintenance_window=__ret__.maintenance_window,
         name=__ret__.name,
         network_id=__ret__.network_id,
         resources=__ret__.resources,

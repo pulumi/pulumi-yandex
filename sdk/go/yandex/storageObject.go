@@ -52,6 +52,8 @@ type StorageObject struct {
 	Content pulumi.StringPtrOutput `pulumi:"content"`
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
 	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
+	// A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in config is used.
@@ -105,6 +107,8 @@ type storageObjectState struct {
 	Content *string `pulumi:"content"`
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
 	ContentBase64 *string `pulumi:"contentBase64"`
+	// A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+	ContentType *string `pulumi:"contentType"`
 	// The name of the object once it is in the bucket.
 	Key *string `pulumi:"key"`
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in config is used.
@@ -124,6 +128,8 @@ type StorageObjectState struct {
 	Content pulumi.StringPtrInput
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
 	ContentBase64 pulumi.StringPtrInput
+	// A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+	ContentType pulumi.StringPtrInput
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringPtrInput
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in config is used.
@@ -147,6 +153,8 @@ type storageObjectArgs struct {
 	Content *string `pulumi:"content"`
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
 	ContentBase64 *string `pulumi:"contentBase64"`
+	// A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+	ContentType *string `pulumi:"contentType"`
 	// The name of the object once it is in the bucket.
 	Key string `pulumi:"key"`
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in config is used.
@@ -167,6 +175,8 @@ type StorageObjectArgs struct {
 	Content pulumi.StringPtrInput
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
 	ContentBase64 pulumi.StringPtrInput
+	// A standard MIME type describing the format of the object data, e.g. `application/octet-stream`. All Valid MIME Types are valid for this input.
+	ContentType pulumi.StringPtrInput
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringInput
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in config is used.

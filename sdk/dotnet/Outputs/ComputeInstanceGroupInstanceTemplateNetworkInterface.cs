@@ -35,13 +35,17 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord> Ipv6DnsRecords;
         /// <summary>
-        /// A public address that can be used to access the internet over NAT.
+        /// Flag for using NAT.
         /// </summary>
         public readonly bool? Nat;
         /// <summary>
         /// List of nat dns records.  The structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord> NatDnsRecords;
+        /// <summary>
+        /// A public address that can be used to access the internet over NAT. Use `variables` to set.
+        /// </summary>
+        public readonly string? NatIpAddress;
         /// <summary>
         /// The ID of the network.
         /// </summary>
@@ -73,6 +77,8 @@ namespace Pulumi.Yandex.Outputs
 
             ImmutableArray<Outputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord> natDnsRecords,
 
+            string? natIpAddress,
+
             string? networkId,
 
             ImmutableArray<string> securityGroupIds,
@@ -87,6 +93,7 @@ namespace Pulumi.Yandex.Outputs
             Ipv6DnsRecords = ipv6DnsRecords;
             Nat = nat;
             NatDnsRecords = natDnsRecords;
+            NatIpAddress = natIpAddress;
             NetworkId = networkId;
             SecurityGroupIds = securityGroupIds;
             SubnetIds = subnetIds;

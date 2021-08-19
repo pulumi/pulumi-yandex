@@ -13,8 +13,17 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetAlbBackendGroupHttpBackendLoadBalancingConfigResult
     {
+        /// <summary>
+        /// Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+        /// </summary>
         public readonly int LocalityAwareRoutingPercent;
+        /// <summary>
+        /// If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+        /// </summary>
         public readonly int PanicThreshold;
+        /// <summary>
+        /// If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+        /// </summary>
         public readonly bool StrictLocality;
 
         [OutputConstructor]

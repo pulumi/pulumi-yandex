@@ -13,6 +13,12 @@ namespace Pulumi.Yandex.Inputs
     public sealed class ComputeInstanceGroupLoadBalancerGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        /// </summary>
+        [Input("maxOpeningTrafficDuration")]
+        public Input<int>? MaxOpeningTrafficDuration { get; set; }
+
+        /// <summary>
         /// The status message of the instance.
         /// </summary>
         [Input("statusMessage")]

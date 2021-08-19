@@ -7,6 +7,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get information about a Yandex Application Load Balancer Backend Group. For more information, see
+// [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "my-backend-group-id"
+// 		_, err := yandex.LookupAlbBackendGroup(ctx, &yandex.LookupAlbBackendGroupArgs{
+// 			BackendGroupId: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// This data source is used to define [Application Load Balancer Backend Groups] that can be used by other resources.
 func LookupAlbBackendGroup(ctx *pulumi.Context, args *LookupAlbBackendGroupArgs, opts ...pulumi.InvokeOption) (*LookupAlbBackendGroupResult, error) {
 	var rv LookupAlbBackendGroupResult
 	err := ctx.Invoke("yandex:index/getAlbBackendGroup:getAlbBackendGroup", args, &rv, opts...)
@@ -18,25 +44,38 @@ func LookupAlbBackendGroup(ctx *pulumi.Context, args *LookupAlbBackendGroupArgs,
 
 // A collection of arguments for invoking getAlbBackendGroup.
 type LookupAlbBackendGroupArgs struct {
-	BackendGroupId *string                         `pulumi:"backendGroupId"`
-	Description    *string                         `pulumi:"description"`
-	FolderId       *string                         `pulumi:"folderId"`
-	GrpcBackends   []GetAlbBackendGroupGrpcBackend `pulumi:"grpcBackends"`
-	HttpBackends   []GetAlbBackendGroupHttpBackend `pulumi:"httpBackends"`
-	Labels         map[string]string               `pulumi:"labels"`
-	Name           *string                         `pulumi:"name"`
+	// Backend Group ID.
+	BackendGroupId *string `pulumi:"backendGroupId"`
+	// Description of the backend group.
+	Description *string `pulumi:"description"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId *string `pulumi:"folderId"`
+	// Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	GrpcBackends []GetAlbBackendGroupGrpcBackend `pulumi:"grpcBackends"`
+	// Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	HttpBackends []GetAlbBackendGroupHttpBackend `pulumi:"httpBackends"`
+	// Labels to assign to this backend group.
+	Labels map[string]string `pulumi:"labels"`
+	// - Name of the Backend Group.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getAlbBackendGroup.
 type LookupAlbBackendGroupResult struct {
-	BackendGroupId string                          `pulumi:"backendGroupId"`
-	CreatedAt      string                          `pulumi:"createdAt"`
-	Description    string                          `pulumi:"description"`
-	FolderId       string                          `pulumi:"folderId"`
-	GrpcBackends   []GetAlbBackendGroupGrpcBackend `pulumi:"grpcBackends"`
-	HttpBackends   []GetAlbBackendGroupHttpBackend `pulumi:"httpBackends"`
+	BackendGroupId string `pulumi:"backendGroupId"`
+	// Creation timestamp of this backend group.
+	CreatedAt string `pulumi:"createdAt"`
+	// Description of the backend group.
+	Description string `pulumi:"description"`
+	FolderId    string `pulumi:"folderId"`
+	// Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	GrpcBackends []GetAlbBackendGroupGrpcBackend `pulumi:"grpcBackends"`
+	// Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	HttpBackends []GetAlbBackendGroupHttpBackend `pulumi:"httpBackends"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string            `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Labels to assign to this backend group.
 	Labels map[string]string `pulumi:"labels"`
-	Name   string            `pulumi:"name"`
+	// Name of the backend.
+	Name string `pulumi:"name"`
 }

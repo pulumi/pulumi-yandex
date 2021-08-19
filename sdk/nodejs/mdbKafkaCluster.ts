@@ -98,7 +98,7 @@ import * as utilities from "./utilities";
  *         },
  *         {
  *             name: "worker",
- *             password: "",
+ *             password: "password",
  *             permissions: [
  *                 {
  *                     role: "ACCESS_ROLE_CONSUMER",
@@ -226,7 +226,7 @@ import * as utilities from "./utilities";
  *         },
  *         {
  *             name: "worker",
- *             password: "",
+ *             password: "password",
  *             permissions: [
  *                 {
  *                     role: "ACCESS_ROLE_CONSUMER",

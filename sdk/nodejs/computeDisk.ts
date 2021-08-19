@@ -139,8 +139,7 @@ export class ComputeDisk extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Type of disk to create. Provide this when creating a disk. 
-     * One of `network-hdd` (default) or `network-ssd`.
+     * Type of disk to create. Provide this when creating a disk.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -252,8 +251,7 @@ export interface ComputeDiskState {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * Type of disk to create. Provide this when creating a disk. 
-     * One of `network-hdd` (default) or `network-ssd`.
+     * Type of disk to create. Provide this when creating a disk.
      */
     readonly type?: pulumi.Input<string>;
     /**
@@ -308,8 +306,7 @@ export interface ComputeDiskArgs {
      */
     readonly snapshotId?: pulumi.Input<string>;
     /**
-     * Type of disk to create. Provide this when creating a disk. 
-     * One of `network-hdd` (default) or `network-ssd`.
+     * Type of disk to create. Provide this when creating a disk.
      */
     readonly type?: pulumi.Input<string>;
     /**

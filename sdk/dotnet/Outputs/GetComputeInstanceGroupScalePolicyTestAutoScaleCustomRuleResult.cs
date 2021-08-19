@@ -14,6 +14,10 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleResult
     {
         /// <summary>
+        /// Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+        /// </summary>
+        public readonly string FolderId;
+        /// <summary>
         /// A map of labels applied to this instance.
         /// * `resources.0.memory` - The memory size allocated to the instance.
         /// * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -38,12 +42,18 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string RuleType;
         /// <summary>
+        /// Service of custom metric in Yandex Monitoring that should be used for scaling.
+        /// </summary>
+        public readonly string Service;
+        /// <summary>
         /// Target metric value level.
         /// </summary>
         public readonly double Target;
 
         [OutputConstructor]
         private GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleResult(
+            string folderId,
+
             ImmutableDictionary<string, string> labels,
 
             string metricName,
@@ -52,12 +62,16 @@ namespace Pulumi.Yandex.Outputs
 
             string ruleType,
 
+            string service,
+
             double target)
         {
+            FolderId = folderId;
             Labels = labels;
             MetricName = metricName;
             MetricType = metricType;
             RuleType = ruleType;
+            Service = service;
             Target = target;
         }
     }

@@ -47,4 +47,5 @@ export interface GetApiGatewayResult {
     readonly logGroupId: string;
     readonly name?: string;
     readonly status: string;
+    readonly userDomains: string[];
 }

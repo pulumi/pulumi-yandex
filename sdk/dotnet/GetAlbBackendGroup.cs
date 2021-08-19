@@ -11,6 +11,29 @@ namespace Pulumi.Yandex
 {
     public static class GetAlbBackendGroup
     {
+        /// <summary>
+        /// Get information about a Yandex Application Load Balancer Backend Group. For more information, see
+        /// [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetAlbBackendGroup.InvokeAsync(new Yandex.GetAlbBackendGroupArgs
+        ///         {
+        ///             BackendGroupId = "my-backend-group-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Application Load Balancer Backend Groups] that can be used by other resources.
+        /// </summary>
         public static Task<GetAlbBackendGroupResult> InvokeAsync(GetAlbBackendGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlbBackendGroupResult>("yandex:index/getAlbBackendGroup:getAlbBackendGroup", args ?? new GetAlbBackendGroupArgs(), options.WithVersion());
     }
@@ -18,17 +41,30 @@ namespace Pulumi.Yandex
 
     public sealed class GetAlbBackendGroupArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Backend Group ID.
+        /// </summary>
         [Input("backendGroupId")]
         public string? BackendGroupId { get; set; }
 
+        /// <summary>
+        /// Description of the backend group.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
         [Input("folderId")]
         public string? FolderId { get; set; }
 
         [Input("grpcBackends")]
         private List<Inputs.GetAlbBackendGroupGrpcBackendArgs>? _grpcBackends;
+
+        /// <summary>
+        /// Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
         public List<Inputs.GetAlbBackendGroupGrpcBackendArgs> GrpcBackends
         {
             get => _grpcBackends ?? (_grpcBackends = new List<Inputs.GetAlbBackendGroupGrpcBackendArgs>());
@@ -37,6 +73,10 @@ namespace Pulumi.Yandex
 
         [Input("httpBackends")]
         private List<Inputs.GetAlbBackendGroupHttpBackendArgs>? _httpBackends;
+
+        /// <summary>
+        /// Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
         public List<Inputs.GetAlbBackendGroupHttpBackendArgs> HttpBackends
         {
             get => _httpBackends ?? (_httpBackends = new List<Inputs.GetAlbBackendGroupHttpBackendArgs>());
@@ -45,12 +85,19 @@ namespace Pulumi.Yandex
 
         [Input("labels")]
         private Dictionary<string, string>? _labels;
+
+        /// <summary>
+        /// Labels to assign to this backend group.
+        /// </summary>
         public Dictionary<string, string> Labels
         {
             get => _labels ?? (_labels = new Dictionary<string, string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// - Name of the Backend Group.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -64,16 +111,34 @@ namespace Pulumi.Yandex
     public sealed class GetAlbBackendGroupResult
     {
         public readonly string BackendGroupId;
+        /// <summary>
+        /// Creation timestamp of this backend group.
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Description of the backend group.
+        /// </summary>
         public readonly string Description;
         public readonly string FolderId;
+        /// <summary>
+        /// Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAlbBackendGroupGrpcBackendResult> GrpcBackends;
+        /// <summary>
+        /// Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAlbBackendGroupHttpBackendResult> HttpBackends;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Labels to assign to this backend group.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// Name of the backend.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

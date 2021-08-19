@@ -43,6 +43,10 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordResult> NatDnsRecords;
         /// <summary>
+        /// The public IP address of the instance.
+        /// </summary>
+        public readonly string NatIpAddress;
+        /// <summary>
         /// The ID of the network.
         /// </summary>
         public readonly string NetworkId;
@@ -73,6 +77,8 @@ namespace Pulumi.Yandex.Outputs
 
             ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordResult> natDnsRecords,
 
+            string natIpAddress,
+
             string networkId,
 
             ImmutableArray<string> securityGroupIds,
@@ -87,6 +93,7 @@ namespace Pulumi.Yandex.Outputs
             Ipv6DnsRecords = ipv6DnsRecords;
             Nat = nat;
             NatDnsRecords = natDnsRecords;
+            NatIpAddress = natIpAddress;
             NetworkId = networkId;
             SecurityGroupIds = securityGroupIds;
             SubnetIds = subnetIds;

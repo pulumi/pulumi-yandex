@@ -20,10 +20,16 @@ class GetComputeInstanceGroupResult:
     """
     A collection of values returned by getComputeInstanceGroup.
     """
-    def __init__(__self__, allocation_policy=None, created_at=None, deletion_protection=None, deploy_policy=None, description=None, folder_id=None, health_checks=None, id=None, instance_group_id=None, instance_template=None, instances=None, labels=None, load_balancer=None, load_balancer_state=None, name=None, scale_policy=None, service_account_id=None, status=None, variables=None):
+    def __init__(__self__, allocation_policy=None, application_balancer_state=None, application_load_balancer=None, created_at=None, deletion_protection=None, deploy_policy=None, description=None, folder_id=None, health_checks=None, id=None, instance_group_id=None, instance_template=None, instances=None, labels=None, load_balancer=None, load_balancer_state=None, max_checking_health_duration=None, name=None, scale_policy=None, service_account_id=None, status=None, variables=None):
         if allocation_policy and not isinstance(allocation_policy, dict):
             raise TypeError("Expected argument 'allocation_policy' to be a dict")
         pulumi.set(__self__, "allocation_policy", allocation_policy)
+        if application_balancer_state and not isinstance(application_balancer_state, dict):
+            raise TypeError("Expected argument 'application_balancer_state' to be a dict")
+        pulumi.set(__self__, "application_balancer_state", application_balancer_state)
+        if application_load_balancer and not isinstance(application_load_balancer, dict):
+            raise TypeError("Expected argument 'application_load_balancer' to be a dict")
+        pulumi.set(__self__, "application_load_balancer", application_load_balancer)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -63,6 +69,9 @@ class GetComputeInstanceGroupResult:
         if load_balancer_state and not isinstance(load_balancer_state, dict):
             raise TypeError("Expected argument 'load_balancer_state' to be a dict")
         pulumi.set(__self__, "load_balancer_state", load_balancer_state)
+        if max_checking_health_duration and not isinstance(max_checking_health_duration, int):
+            raise TypeError("Expected argument 'max_checking_health_duration' to be a int")
+        pulumi.set(__self__, "max_checking_health_duration", max_checking_health_duration)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -86,6 +95,19 @@ class GetComputeInstanceGroupResult:
         The allocation policy of the instance group by zone and region. The structure is documented below.
         """
         return pulumi.get(self, "allocation_policy")
+
+    @property
+    @pulumi.getter(name="applicationBalancerState")
+    def application_balancer_state(self) -> 'outputs.GetComputeInstanceGroupApplicationBalancerStateResult':
+        return pulumi.get(self, "application_balancer_state")
+
+    @property
+    @pulumi.getter(name="applicationLoadBalancer")
+    def application_load_balancer(self) -> 'outputs.GetComputeInstanceGroupApplicationLoadBalancerResult':
+        """
+        Application Load balancing (L7) specifications. The structure is documented below.
+        """
+        return pulumi.get(self, "application_load_balancer")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -123,7 +145,7 @@ class GetComputeInstanceGroupResult:
     @pulumi.getter(name="folderId")
     def folder_id(self) -> str:
         """
-        The ID of the folder that the instance group belongs to.
+        Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         """
         return pulumi.get(self, "folder_id")
 
@@ -193,6 +215,14 @@ class GetComputeInstanceGroupResult:
         return pulumi.get(self, "load_balancer_state")
 
     @property
+    @pulumi.getter(name="maxCheckingHealthDuration")
+    def max_checking_health_duration(self) -> int:
+        """
+        Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        """
+        return pulumi.get(self, "max_checking_health_duration")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -240,6 +270,8 @@ class AwaitableGetComputeInstanceGroupResult(GetComputeInstanceGroupResult):
             yield self
         return GetComputeInstanceGroupResult(
             allocation_policy=self.allocation_policy,
+            application_balancer_state=self.application_balancer_state,
+            application_load_balancer=self.application_load_balancer,
             created_at=self.created_at,
             deletion_protection=self.deletion_protection,
             deploy_policy=self.deploy_policy,
@@ -253,6 +285,7 @@ class AwaitableGetComputeInstanceGroupResult(GetComputeInstanceGroupResult):
             labels=self.labels,
             load_balancer=self.load_balancer,
             load_balancer_state=self.load_balancer_state,
+            max_checking_health_duration=self.max_checking_health_duration,
             name=self.name,
             scale_policy=self.scale_policy,
             service_account_id=self.service_account_id,
@@ -278,6 +311,8 @@ def get_compute_instance_group(instance_group_id: Optional[str] = None,
 
     return AwaitableGetComputeInstanceGroupResult(
         allocation_policy=__ret__.allocation_policy,
+        application_balancer_state=__ret__.application_balancer_state,
+        application_load_balancer=__ret__.application_load_balancer,
         created_at=__ret__.created_at,
         deletion_protection=__ret__.deletion_protection,
         deploy_policy=__ret__.deploy_policy,
@@ -291,6 +326,7 @@ def get_compute_instance_group(instance_group_id: Optional[str] = None,
         labels=__ret__.labels,
         load_balancer=__ret__.load_balancer,
         load_balancer_state=__ret__.load_balancer_state,
+        max_checking_health_duration=__ret__.max_checking_health_duration,
         name=__ret__.name,
         scale_policy=__ret__.scale_policy,
         service_account_id=__ret__.service_account_id,

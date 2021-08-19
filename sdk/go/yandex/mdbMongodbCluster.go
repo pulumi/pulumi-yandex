@@ -61,6 +61,9 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"test_key": pulumi.String("test_value"),
 // 			},
+// 			MaintenanceWindow: &yandex.MdbMongodbClusterMaintenanceWindowArgs{
+// 				Type: pulumi.String("ANYTIME"),
+// 			},
 // 			NetworkId: fooVpcNetwork.ID(),
 // 			Resources: &yandex.MdbMongodbClusterResourcesArgs{
 // 				DiskSize:         pulumi.Int(16),
@@ -117,7 +120,8 @@ type MdbMongodbCluster struct {
 	// A host of the MongoDB cluster. The structure is documented below.
 	Hosts MdbMongodbClusterHostArrayOutput `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the MongoDB cluster.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels            pulumi.StringMapOutput                   `pulumi:"labels"`
+	MaintenanceWindow MdbMongodbClusterMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// The fully qualified domain name of the host. Computed on server side.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ID of the network, to which the MongoDB cluster belongs.
@@ -205,7 +209,8 @@ type mdbMongodbClusterState struct {
 	// A host of the MongoDB cluster. The structure is documented below.
 	Hosts []MdbMongodbClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the MongoDB cluster.
-	Labels map[string]string `pulumi:"labels"`
+	Labels            map[string]string                   `pulumi:"labels"`
+	MaintenanceWindow *MdbMongodbClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The fully qualified domain name of the host. Computed on server side.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the MongoDB cluster belongs.
@@ -244,7 +249,8 @@ type MdbMongodbClusterState struct {
 	// A host of the MongoDB cluster. The structure is documented below.
 	Hosts MdbMongodbClusterHostArrayInput
 	// A set of key/value label pairs to assign to the MongoDB cluster.
-	Labels pulumi.StringMapInput
+	Labels            pulumi.StringMapInput
+	MaintenanceWindow MdbMongodbClusterMaintenanceWindowPtrInput
 	// The fully qualified domain name of the host. Computed on server side.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the MongoDB cluster belongs.
@@ -283,7 +289,8 @@ type mdbMongodbClusterArgs struct {
 	// A host of the MongoDB cluster. The structure is documented below.
 	Hosts []MdbMongodbClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the MongoDB cluster.
-	Labels map[string]string `pulumi:"labels"`
+	Labels            map[string]string                   `pulumi:"labels"`
+	MaintenanceWindow *MdbMongodbClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The fully qualified domain name of the host. Computed on server side.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the MongoDB cluster belongs.
@@ -314,7 +321,8 @@ type MdbMongodbClusterArgs struct {
 	// A host of the MongoDB cluster. The structure is documented below.
 	Hosts MdbMongodbClusterHostArrayInput
 	// A set of key/value label pairs to assign to the MongoDB cluster.
-	Labels pulumi.StringMapInput
+	Labels            pulumi.StringMapInput
+	MaintenanceWindow MdbMongodbClusterMaintenanceWindowPtrInput
 	// The fully qualified domain name of the host. Computed on server side.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the MongoDB cluster belongs.

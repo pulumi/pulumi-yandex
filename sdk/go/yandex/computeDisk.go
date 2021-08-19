@@ -126,7 +126,6 @@ type ComputeDisk struct {
 	// The status of the disk.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Type of disk to create. Provide this when creating a disk.
-	// One of `network-hdd` (default) or `network-ssd`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// Availability zone where the disk will reside.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -192,7 +191,6 @@ type computeDiskState struct {
 	// The status of the disk.
 	Status *string `pulumi:"status"`
 	// Type of disk to create. Provide this when creating a disk.
-	// One of `network-hdd` (default) or `network-ssd`.
 	Type *string `pulumi:"type"`
 	// Availability zone where the disk will reside.
 	Zone *string `pulumi:"zone"`
@@ -230,7 +228,6 @@ type ComputeDiskState struct {
 	// The status of the disk.
 	Status pulumi.StringPtrInput
 	// Type of disk to create. Provide this when creating a disk.
-	// One of `network-hdd` (default) or `network-ssd`.
 	Type pulumi.StringPtrInput
 	// Availability zone where the disk will reside.
 	Zone pulumi.StringPtrInput
@@ -267,7 +264,6 @@ type computeDiskArgs struct {
 	// The source snapshot to use for disk creation.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// Type of disk to create. Provide this when creating a disk.
-	// One of `network-hdd` (default) or `network-ssd`.
 	Type *string `pulumi:"type"`
 	// Availability zone where the disk will reside.
 	Zone *string `pulumi:"zone"`
@@ -301,7 +297,6 @@ type ComputeDiskArgs struct {
 	// The source snapshot to use for disk creation.
 	SnapshotId pulumi.StringPtrInput
 	// Type of disk to create. Provide this when creating a disk.
-	// One of `network-hdd` (default) or `network-ssd`.
 	Type pulumi.StringPtrInput
 	// Availability zone where the disk will reside.
 	Zone pulumi.StringPtrInput

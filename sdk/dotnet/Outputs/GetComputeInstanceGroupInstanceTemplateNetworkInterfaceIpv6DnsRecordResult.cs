@@ -13,7 +13,10 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordResult
     {
-        public readonly string DnsZone;
+        /// <summary>
+        /// DNS zone id (if not set, private zone is used).
+        /// </summary>
+        public readonly string DnsZoneId;
         /// <summary>
         /// The Fully Qualified Domain Name.
         /// </summary>
@@ -29,7 +32,7 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordResult(
-            string dnsZone,
+            string dnsZoneId,
 
             string fqdn,
 
@@ -37,7 +40,7 @@ namespace Pulumi.Yandex.Outputs
 
             int ttl)
         {
-            DnsZone = dnsZone;
+            DnsZoneId = dnsZoneId;
             Fqdn = fqdn;
             Ptr = ptr;
             Ttl = ttl;

@@ -274,6 +274,226 @@ export interface AlbBackendGroupHttpBackendTlsValidationContext {
     trustedCaId?: string;
 }
 
+export interface AlbLoadBalancerAllocationPolicy {
+    /**
+     * Unique set of locations. The structure is documented below.
+     */
+    locations: outputs.AlbLoadBalancerAllocationPolicyLocation[];
+}
+
+export interface AlbLoadBalancerAllocationPolicyLocation {
+    /**
+     * If set, will disable all L7 instances in the zone for request handling.
+     */
+    disableTraffic?: boolean;
+    /**
+     * Provided by the client or computed automatically.
+     */
+    subnetId: string;
+    /**
+     * ID of the zone that location is located at.
+     */
+    zoneId: string;
+}
+
+export interface AlbLoadBalancerListener {
+    /**
+     * Network endpoints (addresses and ports) of the listener. The structure is documented below.
+     */
+    endpoints?: outputs.AlbLoadBalancerListenerEndpoint[];
+    /**
+     * HTTP listener resource. The structure is documented below.
+     */
+    http?: outputs.AlbLoadBalancerListenerHttp;
+    /**
+     * name of SNI match.
+     */
+    name: string;
+    /**
+     * TLS listener resource. The structure is documented below.
+     */
+    tls?: outputs.AlbLoadBalancerListenerTls;
+}
+
+export interface AlbLoadBalancerListenerEndpoint {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    addresses: outputs.AlbLoadBalancerListenerEndpointAddress[];
+    /**
+     * One or more ports to listen on.
+     */
+    ports: number[];
+}
+
+export interface AlbLoadBalancerListenerEndpointAddress {
+    /**
+     * External IPv4 address. The structure is documented below.
+     */
+    externalIpv4Address?: outputs.AlbLoadBalancerListenerEndpointAddressExternalIpv4Address;
+    /**
+     * External IPv6 address. The structure is documented below.
+     */
+    externalIpv6Address?: outputs.AlbLoadBalancerListenerEndpointAddressExternalIpv6Address;
+    /**
+     * Internal IPv4 address. The structure is documented below.
+     */
+    internalIpv4Address?: outputs.AlbLoadBalancerListenerEndpointAddressInternalIpv4Address;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressExternalIpv4Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address: string;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressExternalIpv6Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address: string;
+}
+
+export interface AlbLoadBalancerListenerEndpointAddressInternalIpv4Address {
+    /**
+     * Provided by the client or computed automatically.
+     */
+    address: string;
+    /**
+     * Provided by the client or computed automatically.
+     */
+    subnetId: string;
+}
+
+export interface AlbLoadBalancerListenerHttp {
+    /**
+     * HTTP handler that sets plaintext HTTP router. The structure is documented below.
+     */
+    handler?: outputs.AlbLoadBalancerListenerHttpHandler;
+    /**
+     * Shortcut for adding http > https redirects. The structure is documented below.
+     */
+    redirects?: outputs.AlbLoadBalancerListenerHttpRedirects;
+}
+
+export interface AlbLoadBalancerListenerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: boolean;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: outputs.AlbLoadBalancerListenerHttpHandlerHttp2Options;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: string;
+}
+
+export interface AlbLoadBalancerListenerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: number;
+}
+
+export interface AlbLoadBalancerListenerHttpRedirects {
+    httpToHttps?: boolean;
+}
+
+export interface AlbLoadBalancerListenerTls {
+    /**
+     * TLS handler resource. The structure is documented below.
+     */
+    defaultHandler: outputs.AlbLoadBalancerListenerTlsDefaultHandler;
+    /**
+     * SNI match resource. The structure is documented below.
+     */
+    sniHandlers?: outputs.AlbLoadBalancerListenerTlsSniHandler[];
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandler {
+    /**
+     * Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+     * with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+     */
+    certificateIds: string[];
+    /**
+     * HTTP handler resource. The structure is documented below.
+     */
+    httpHandler?: outputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: boolean;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: outputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: string;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: number;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandler {
+    /**
+     * HTTP handler that sets plaintext HTTP router. The structure is documented below.
+     */
+    handler: outputs.AlbLoadBalancerListenerTlsSniHandlerHandler;
+    /**
+     * name of SNI match.
+     */
+    name: string;
+    serviceNames: string[];
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandler {
+    /**
+     * Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
+     * with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
+     */
+    certificateIds: string[];
+    /**
+     * HTTP handler resource. The structure is documented below.
+     */
+    httpHandler?: outputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
+    /**
+     * If set, will enable only HTTP1 protocol with HTTP1.0 support.
+     */
+    allowHttp10?: boolean;
+    /**
+     * If set, will enable HTTP2 protocol for the handler. The structure is documented below.
+     */
+    http2Options?: outputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options;
+    /**
+     * HTTP router id.
+     */
+    httpRouterId?: string;
+}
+
+export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
+    /**
+     * Maximum number of concurrent streams.
+     */
+    maxConcurrentStreams?: number;
+}
+
 export interface AlbTargetGroupTarget {
     /**
      * IP address of the target.
@@ -284,6 +504,237 @@ export interface AlbTargetGroupTarget {
      * All targets in the target group must be connected to the same subnet within a single availability zone.
      */
     subnetId: string;
+}
+
+export interface AlbVirtualHostModifyRequestHeader {
+    /**
+     * Append string to the header value.
+     */
+    append?: string;
+    /**
+     * name of the route.
+     */
+    name?: string;
+    /**
+     * If set, remove the header.
+     */
+    remove?: boolean;
+    /**
+     * New value for a header. Header values support the following 
+     * [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+     */
+    replace?: string;
+}
+
+export interface AlbVirtualHostModifyResponseHeader {
+    /**
+     * Append string to the header value.
+     */
+    append?: string;
+    /**
+     * name of the route.
+     */
+    name?: string;
+    /**
+     * If set, remove the header.
+     */
+    remove?: boolean;
+    /**
+     * New value for a header. Header values support the following 
+     * [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
+     */
+    replace?: string;
+}
+
+export interface AlbVirtualHostRoute {
+    /**
+     * GRPC route resource. The structure is documented below.
+     */
+    grpcRoute?: outputs.AlbVirtualHostRouteGrpcRoute;
+    /**
+     * HTTP route resource. The structure is documented below.
+     */
+    httpRoute?: outputs.AlbVirtualHostRouteHttpRoute;
+    /**
+     * name of the route.
+     */
+    name?: string;
+}
+
+export interface AlbVirtualHostRouteGrpcRoute {
+    /**
+     * Checks "/" prefix by default. The structure is documented below.
+     */
+    grpcMatches?: outputs.AlbVirtualHostRouteGrpcRouteGrpcMatch[];
+    /**
+     * GRPC route action resource. The structure is documented below.
+     */
+    grpcRouteAction?: outputs.AlbVirtualHostRouteGrpcRouteGrpcRouteAction;
+    /**
+     * GRPC status response action resource. The structure is documented below.
+     */
+    grpcStatusResponseAction?: outputs.AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction;
+}
+
+export interface AlbVirtualHostRouteGrpcRouteGrpcMatch {
+    /**
+     * If not set, all services/methods are assumed. The structure is documented below.
+     */
+    fqmn?: outputs.AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn;
+}
+
+export interface AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
+    exact?: string;
+    prefix?: string;
+}
+
+export interface AlbVirtualHostRouteGrpcRouteGrpcRouteAction {
+    /**
+     * If set, will automatically rewrite host.
+     */
+    autoHostRewrite?: boolean;
+    /**
+     * Backend group to route requests.
+     */
+    backendGroupId: string;
+    /**
+     * Host rewrite specifier.
+     */
+    hostRewrite?: string;
+    /**
+     * Specifies the idle timeout (time without any data transfer for the active request) for the
+     * route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+     * to the maximum time the stream is allowed to be alive. If not specified, there is no
+     * per-route idle timeout.
+     */
+    idleTimeout?: string;
+    /**
+     * Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 
+     * 60 seconds.
+     */
+    maxTimeout?: string;
+}
+
+export interface AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
+    /**
+     * The status of the response. Supported values are: ok, invalid_argumet, not_found, 
+     * permission_denied, unauthenticated, unimplemented, internal, unavailable.
+     */
+    status?: string;
+}
+
+export interface AlbVirtualHostRouteHttpRoute {
+    /**
+     * Direct response action resource. The structure is documented below.
+     */
+    directResponseAction?: outputs.AlbVirtualHostRouteHttpRouteDirectResponseAction;
+    /**
+     * Checks "/" prefix by default. The structure is documented below.
+     */
+    httpMatches?: outputs.AlbVirtualHostRouteHttpRouteHttpMatch[];
+    /**
+     * HTTP route action resource. The structure is documented below.
+     */
+    httpRouteAction?: outputs.AlbVirtualHostRouteHttpRouteHttpRouteAction;
+    /**
+     * Redirect action resource. The structure is documented below.
+     */
+    redirectAction?: outputs.AlbVirtualHostRouteHttpRouteRedirectAction;
+}
+
+export interface AlbVirtualHostRouteHttpRouteDirectResponseAction {
+    /**
+     * Response body text.
+     */
+    body?: string;
+    /**
+     * The status of the response. Supported values are: ok, invalid_argumet, not_found, 
+     * permission_denied, unauthenticated, unimplemented, internal, unavailable.
+     */
+    status?: number;
+}
+
+export interface AlbVirtualHostRouteHttpRouteHttpMatch {
+    /**
+     * List of methods(strings).
+     */
+    httpMethods?: any[];
+    /**
+     * If not set, '/' is assumed. The structure is documented below.
+     */
+    path?: outputs.AlbVirtualHostRouteHttpRouteHttpMatchPath;
+}
+
+export interface AlbVirtualHostRouteHttpRouteHttpMatchPath {
+    exact?: string;
+    prefix?: string;
+}
+
+export interface AlbVirtualHostRouteHttpRouteHttpRouteAction {
+    /**
+     * If set, will automatically rewrite host.
+     */
+    autoHostRewrite?: boolean;
+    /**
+     * Backend group to route requests.
+     */
+    backendGroupId: string;
+    /**
+     * Host rewrite specifier.
+     */
+    hostRewrite?: string;
+    /**
+     * Specifies the idle timeout (time without any data transfer for the active request) for the
+     * route. It is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout
+     * to the maximum time the stream is allowed to be alive. If not specified, there is no
+     * per-route idle timeout.
+     */
+    idleTimeout?: string;
+    /**
+     * If not empty, matched path prefix will be replaced by this value.
+     */
+    prefixRewrite?: string;
+    /**
+     * Specifies the request timeout (overall time request processing is allowed to take) for the 
+     * route. If not set, default is 60 seconds.
+     */
+    timeout?: string;
+    /**
+     * List of upgrade types. Only specified upgrade types will be allowed. For example, 
+     * "websocket".
+     */
+    upgradeTypes?: string[];
+}
+
+export interface AlbVirtualHostRouteHttpRouteRedirectAction {
+    removeQuery?: boolean;
+    /**
+     * Replaces hostname.
+     */
+    replaceHost?: string;
+    /**
+     * Replace path.
+     */
+    replacePath?: string;
+    /**
+     * Replaces port.
+     */
+    replacePort?: number;
+    /**
+     * Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/> 
+     * redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+     */
+    replacePrefix?: string;
+    /**
+     * Replaces scheme. If the original scheme is `http` or `https`, will also remove the 
+     * 80 or 443 port, if present.
+     */
+    replaceScheme?: string;
+    /**
+     * The HTTP status code to use in the redirect response. Supported values are: 
+     * moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+     */
+    responseCode?: string;
 }
 
 export interface ComputeDiskDiskPlacementPolicy {
@@ -351,6 +802,30 @@ export interface ComputeInstanceGroupAllocationPolicy {
      * A list of availability zones.
      */
     zones: string[];
+}
+
+export interface ComputeInstanceGroupApplicationLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration?: number;
+    /**
+     * The status message of the instance.
+     */
+    statusMessage: string;
+    /**
+     * A description of the target group.
+     */
+    targetGroupDescription?: string;
+    targetGroupId: string;
+    /**
+     * A set of key/value label pairs.
+     */
+    targetGroupLabels?: {[key: string]: string};
+    /**
+     * The name of the target group.
+     */
+    targetGroupName?: string;
 }
 
 export interface ComputeInstanceGroupDeployPolicy {
@@ -493,11 +968,11 @@ export interface ComputeInstanceGroupInstanceNetworkInterface {
      */
     macAddress: string;
     /**
-     * A public address that can be used to access the internet over NAT.
+     * Flag for using NAT.
      */
     nat: boolean;
     /**
-     * The public IP address of the instance.
+     * A public address that can be used to access the internet over NAT. Use `variables` to set.
      */
     natIpAddress: string;
     /**
@@ -593,9 +1068,13 @@ export interface ComputeInstanceGroupInstanceTemplateBootDisk {
      */
     deviceName: string;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId?: string;
+    /**
      * Parameters for creating a disk alongside the instance. The structure is documented below.
      */
-    initializeParams: outputs.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams;
+    initializeParams?: outputs.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams;
     /**
      * The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
      */
@@ -648,13 +1127,17 @@ export interface ComputeInstanceGroupInstanceTemplateNetworkInterface {
      */
     ipv6DnsRecords?: outputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord[];
     /**
-     * A public address that can be used to access the internet over NAT.
+     * Flag for using NAT.
      */
     nat: boolean;
     /**
      * List of nat dns records.  The structure is documented below.
      */
     natDnsRecords?: outputs.ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord[];
+    /**
+     * A public address that can be used to access the internet over NAT. Use `variables` to set.
+     */
+    natIpAddress?: string;
     /**
      * The ID of the network.
      */
@@ -769,9 +1252,13 @@ export interface ComputeInstanceGroupInstanceTemplateSecondaryDisk {
      */
     deviceName?: string;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId?: string;
+    /**
      * Parameters for creating a disk alongside the instance. The structure is documented below.
      */
-    initializeParams: outputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams;
+    initializeParams?: outputs.ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams;
     /**
      * The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
      */
@@ -802,6 +1289,10 @@ export interface ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializePara
 }
 
 export interface ComputeInstanceGroupLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration?: number;
     /**
      * The status message of the instance.
      */
@@ -879,6 +1370,10 @@ export interface ComputeInstanceGroupScalePolicyAutoScale {
 
 export interface ComputeInstanceGroupScalePolicyAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId?: string;
+    /**
      * A map of labels of metric.
      */
     labels?: {[key: string]: string};
@@ -898,6 +1393,10 @@ export interface ComputeInstanceGroupScalePolicyAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: string;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service?: string;
     /**
      * Target metric value level.
      */
@@ -953,6 +1452,10 @@ export interface ComputeInstanceGroupScalePolicyTestAutoScale {
 
 export interface ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId?: string;
+    /**
      * A map of labels of metric.
      */
     labels?: {[key: string]: string};
@@ -972,6 +1475,10 @@ export interface ComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: string;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service?: string;
     /**
      * Target metric value level.
      */
@@ -1257,6 +1764,12 @@ export interface FunctionPackage {
     sha256?: string;
 }
 
+export interface FunctionScalingPolicyPolicy {
+    tag: string;
+    zoneInstancesLimit?: number;
+    zoneRequestsLimit?: number;
+}
+
 export interface FunctionTriggerDlq {
     queueId: string;
     serviceAccountId: string;
@@ -1304,49 +1817,129 @@ export interface FunctionTriggerTimer {
 }
 
 export interface GetAlbBackendGroupGrpcBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
     healthcheck: outputs.GetAlbBackendGroupGrpcBackendHealthcheck;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
     loadBalancingConfig: outputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfig;
+    /**
+     * - Name of the Backend Group.
+     */
     name: string;
+    /**
+     * Port for incoming traffic.
+     */
     port: number;
+    /**
+     * References target groups for the backend.
+     */
     targetGroupIds: string[];
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
     tls: outputs.GetAlbBackendGroupGrpcBackendTls;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
     weight: number;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     grpcHealthcheck: outputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck;
+    /**
+     * Optional alternative port for health checking.
+     */
     healthcheckPort: number;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
     healthyThreshold: number;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     httpHealthcheck: outputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck;
+    /**
+     * Interval between health checks.
+     */
     interval: string;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
     intervalJitterPercent: number;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     streamHealthcheck: outputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck;
+    /**
+     * Time to wait for a health check response.
+     */
     timeout: string;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
     unhealthyThreshold: number;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     */
     serviceName: string;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+    /**
+     * Optional "Host" HTTP header value.
+     */
     host: string;
+    /**
+     * If set, health checks will use HTTP2.
+     */
     http2: boolean;
+    /**
+     * HTTP path.
+     */
     path: string;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+    /**
+     * Optional text to search in reply.
+     */
     receive: string;
+    /**
+     * Optional message to send. If empty, it's a connect-only health check.
+     */
     send: string;
 }
 
 export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
     localityAwareRoutingPercent: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
     panicThreshold: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
     strictLocality: boolean;
 }
 
 export interface GetAlbBackendGroupGrpcBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+     */
     sni: string;
     validationContext: outputs.GetAlbBackendGroupGrpcBackendTlsValidationContext;
 }
@@ -1357,50 +1950,133 @@ export interface GetAlbBackendGroupGrpcBackendTlsValidationContext {
 }
 
 export interface GetAlbBackendGroupHttpBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
     healthcheck: outputs.GetAlbBackendGroupHttpBackendHealthcheck;
+    /**
+     * If set, health checks will use HTTP2.
+     */
     http2: boolean;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
     loadBalancingConfig: outputs.GetAlbBackendGroupHttpBackendLoadBalancingConfig;
+    /**
+     * - Name of the Backend Group.
+     */
     name: string;
+    /**
+     * Port for incoming traffic.
+     */
     port: number;
+    /**
+     * References target groups for the backend.
+     */
     targetGroupIds: string[];
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
     tls: outputs.GetAlbBackendGroupHttpBackendTls;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
     weight: number;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     grpcHealthcheck: outputs.GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck;
+    /**
+     * Optional alternative port for health checking.
+     */
     healthcheckPort: number;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
     healthyThreshold: number;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     httpHealthcheck: outputs.GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck;
+    /**
+     * Interval between health checks.
+     */
     interval: string;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
     intervalJitterPercent: number;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
     streamHealthcheck: outputs.GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck;
+    /**
+     * Time to wait for a health check response.
+     */
     timeout: string;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
     unhealthyThreshold: number;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     */
     serviceName: string;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+    /**
+     * Optional "Host" HTTP header value.
+     */
     host: string;
+    /**
+     * If set, health checks will use HTTP2.
+     */
     http2: boolean;
+    /**
+     * HTTP path.
+     */
     path: string;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+    /**
+     * Optional text to search in reply.
+     */
     receive: string;
+    /**
+     * Optional message to send. If empty, it's a connect-only health check.
+     */
     send: string;
 }
 
 export interface GetAlbBackendGroupHttpBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
     localityAwareRoutingPercent: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
     panicThreshold: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
     strictLocality: boolean;
 }
 
 export interface GetAlbBackendGroupHttpBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+     */
     sni: string;
     validationContext: outputs.GetAlbBackendGroupHttpBackendTlsValidationContext;
 }
@@ -1410,9 +2086,341 @@ export interface GetAlbBackendGroupHttpBackendTlsValidationContext {
     trustedCaId: string;
 }
 
+export interface GetAlbLoadBalancerAllocationPolicy {
+    locations: outputs.GetAlbLoadBalancerAllocationPolicyLocation[];
+}
+
+export interface GetAlbLoadBalancerAllocationPolicyLocation {
+    disableTraffic: boolean;
+    subnetId: string;
+    zoneId: string;
+}
+
+export interface GetAlbLoadBalancerListener {
+    endpoints: outputs.GetAlbLoadBalancerListenerEndpoint[];
+    http?: outputs.GetAlbLoadBalancerListenerHttp;
+    name: string;
+    tls?: outputs.GetAlbLoadBalancerListenerTls;
+}
+
+export interface GetAlbLoadBalancerListenerEndpoint {
+    addresses: outputs.GetAlbLoadBalancerListenerEndpointAddress[];
+    ports: number[];
+}
+
+export interface GetAlbLoadBalancerListenerEndpointAddress {
+    externalIpv4Address: outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv4Address;
+    externalIpv6Address: outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv6Address;
+    internalIpv4Address: outputs.GetAlbLoadBalancerListenerEndpointAddressInternalIpv4Address;
+}
+
+export interface GetAlbLoadBalancerListenerEndpointAddressExternalIpv4Address {
+    address: string;
+}
+
+export interface GetAlbLoadBalancerListenerEndpointAddressExternalIpv6Address {
+    address: string;
+}
+
+export interface GetAlbLoadBalancerListenerEndpointAddressInternalIpv4Address {
+    address: string;
+    subnetId: string;
+}
+
+export interface GetAlbLoadBalancerListenerHttp {
+    handler?: outputs.GetAlbLoadBalancerListenerHttpHandler;
+    redirects?: outputs.GetAlbLoadBalancerListenerHttpRedirects;
+}
+
+export interface GetAlbLoadBalancerListenerHttpHandler {
+    allowHttp10?: boolean;
+    http2Options: outputs.GetAlbLoadBalancerListenerHttpHandlerHttp2Options;
+    httpRouterId: string;
+}
+
+export interface GetAlbLoadBalancerListenerHttpHandlerHttp2Options {
+    maxConcurrentStreams: number;
+}
+
+export interface GetAlbLoadBalancerListenerHttpRedirects {
+    httpToHttps: boolean;
+}
+
+export interface GetAlbLoadBalancerListenerTls {
+    defaultHandler: outputs.GetAlbLoadBalancerListenerTlsDefaultHandler;
+    sniHandlers: outputs.GetAlbLoadBalancerListenerTlsSniHandler[];
+}
+
+export interface GetAlbLoadBalancerListenerTlsDefaultHandler {
+    certificateIds: string[];
+    httpHandler?: outputs.GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler;
+}
+
+export interface GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
+    allowHttp10?: boolean;
+    http2Options: outputs.GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options;
+    httpRouterId: string;
+}
+
+export interface GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
+    maxConcurrentStreams: number;
+}
+
+export interface GetAlbLoadBalancerListenerTlsSniHandler {
+    handler: outputs.GetAlbLoadBalancerListenerTlsSniHandlerHandler;
+    name: string;
+    serviceNames: string[];
+}
+
+export interface GetAlbLoadBalancerListenerTlsSniHandlerHandler {
+    certificateIds: string[];
+    httpHandler?: outputs.GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler;
+}
+
+export interface GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
+    allowHttp10?: boolean;
+    http2Options: outputs.GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options;
+    httpRouterId: string;
+}
+
+export interface GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
+    maxConcurrentStreams: number;
+}
+
 export interface GetAlbTargetGroupTarget {
     ipAddress: string;
     subnetId: string;
+}
+
+export interface GetAlbVirtualHostModifyRequestHeader {
+    /**
+     * Append string to the header value.
+     */
+    append: string;
+    /**
+     * Name of the Virtual Host.
+     */
+    name: string;
+    /**
+     * If set, remove the header.
+     */
+    remove: boolean;
+    /**
+     * New value for a header. Header values support the following
+     * [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+     * .
+     */
+    replace: string;
+}
+
+export interface GetAlbVirtualHostModifyResponseHeader {
+    /**
+     * Append string to the header value.
+     */
+    append: string;
+    /**
+     * Name of the Virtual Host.
+     */
+    name: string;
+    /**
+     * If set, remove the header.
+     */
+    remove: boolean;
+    /**
+     * New value for a header. Header values support the following
+     * [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
+     * .
+     */
+    replace: string;
+}
+
+export interface GetAlbVirtualHostRoute {
+    /**
+     * GRPC route resource. The structure is documented below.
+     */
+    grpcRoute: outputs.GetAlbVirtualHostRouteGrpcRoute;
+    /**
+     * HTTP route resource. The structure is documented below.
+     */
+    httpRoute: outputs.GetAlbVirtualHostRouteHttpRoute;
+    /**
+     * Name of the Virtual Host.
+     */
+    name: string;
+}
+
+export interface GetAlbVirtualHostRouteGrpcRoute {
+    /**
+     * Checks "/" prefix by default. The structure is documented below.
+     */
+    grpcMatches: outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatch[];
+    /**
+     * GRPC route action resource. The structure is documented below.
+     */
+    grpcRouteAction: outputs.GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction;
+    /**
+     * (Required) GRPC status response action resource. The structure is documented below.
+     */
+    grpcStatusResponseAction: outputs.GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction;
+}
+
+export interface GetAlbVirtualHostRouteGrpcRouteGrpcMatch {
+    /**
+     * If not set, all services/methods are assumed. The structure is documented below.
+     */
+    fqmn: outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmn;
+}
+
+export interface GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
+    exact: string;
+    prefix: string;
+}
+
+export interface GetAlbVirtualHostRouteGrpcRouteGrpcRouteAction {
+    /**
+     * If set, will automatically rewrite host.
+     */
+    autoHostRewrite: boolean;
+    /**
+     * Backend group to route requests.
+     */
+    backendGroupId: string;
+    /**
+     * Host rewrite specifier.
+     */
+    hostRewrite: string;
+    /**
+     * Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+     * is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout to the maximum
+     * time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+     */
+    idleTimeout: string;
+    /**
+     * Lower timeout may be specified by the client (using grpc-timeout header). If not set, default is 60
+     * seconds.
+     */
+    maxTimeout: string;
+}
+
+export interface GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
+    /**
+     * The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+     * unauthenticated, unimplemented, internal, unavailable.
+     */
+    status: string;
+}
+
+export interface GetAlbVirtualHostRouteHttpRoute {
+    /**
+     * (Required) Direct response action resource. The structure is documented below.
+     */
+    directResponseAction: outputs.GetAlbVirtualHostRouteHttpRouteDirectResponseAction;
+    /**
+     * Checks "/" prefix by default. The structure is documented below.
+     */
+    httpMatches: outputs.GetAlbVirtualHostRouteHttpRouteHttpMatch[];
+    /**
+     * HTTP route action resource. The structure is documented below.
+     */
+    httpRouteAction: outputs.GetAlbVirtualHostRouteHttpRouteHttpRouteAction;
+    /**
+     * Redirect action resource. The structure is documented below.
+     */
+    redirectAction: outputs.GetAlbVirtualHostRouteHttpRouteRedirectAction;
+}
+
+export interface GetAlbVirtualHostRouteHttpRouteDirectResponseAction {
+    /**
+     * Response body text.
+     */
+    body: string;
+    /**
+     * The status of the response. Supported values are: ok, invalid_argumet, not_found, permission_denied,
+     * unauthenticated, unimplemented, internal, unavailable.
+     */
+    status: number;
+}
+
+export interface GetAlbVirtualHostRouteHttpRouteHttpMatch {
+    /**
+     * List of methods(strings).
+     */
+    httpMethods: any[];
+    /**
+     * If not set, '/' is assumed. The structure is documented below.
+     */
+    path: outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchPath;
+}
+
+export interface GetAlbVirtualHostRouteHttpRouteHttpMatchPath {
+    exact: string;
+    prefix: string;
+}
+
+export interface GetAlbVirtualHostRouteHttpRouteHttpRouteAction {
+    /**
+     * If set, will automatically rewrite host.
+     */
+    autoHostRewrite: boolean;
+    /**
+     * Backend group to route requests.
+     */
+    backendGroupId: string;
+    /**
+     * Host rewrite specifier.
+     */
+    hostRewrite: string;
+    /**
+     * Specifies the idle timeout (time without any data transfer for the active request) for the route. It
+     * is useful for streaming scenarios - one should set idleTimeout to something meaningful and maxTimeout to the maximum
+     * time the stream is allowed to be alive. If not specified, there is no per-route idle timeout.
+     */
+    idleTimeout: string;
+    /**
+     * If not empty, matched path prefix will be replaced by this value.
+     */
+    prefixRewrite: string;
+    /**
+     * Specifies the request timeout (overall time request processing is allowed to take) for the route. If not
+     * set, default is 60 seconds.
+     */
+    timeout: string;
+    /**
+     * List of upgrade types. Only specified upgrade types will be allowed. For example,
+     * "websocket".
+     */
+    upgradeTypes: string[];
+}
+
+export interface GetAlbVirtualHostRouteHttpRouteRedirectAction {
+    removeQuery: boolean;
+    /**
+     * Replaces hostname.
+     */
+    replaceHost: string;
+    /**
+     * Replace path.
+     */
+    replacePath: string;
+    /**
+     * Replaces port.
+     */
+    replacePort: number;
+    /**
+     * Replace only matched prefix. Example:<br/> match:{ prefix_match: "/some" } <br/>
+     * redirect: { replace_prefix: "/other" } <br/> will redirect "/something" to "/otherthing".
+     */
+    replacePrefix: string;
+    /**
+     * Replaces scheme. If the original scheme is `http` or `https`, will also remove the 80 or 443 port,
+     * if present.
+     */
+    replaceScheme: string;
+    /**
+     * The HTTP status code to use in the redirect response. Supported values are:
+     * moved_permanently, found, see_other, temporary_redirect, permanent_redirect.
+     */
+    responseCode: string;
 }
 
 export interface GetComputeDiskDiskPlacementPolicy {
@@ -1474,6 +2482,44 @@ export interface GetComputeInstanceGroupAllocationPolicy {
      * A list of availability zones.
      */
     zones: string[];
+}
+
+export interface GetComputeInstanceGroupApplicationBalancerState {
+    /**
+     * The status message of the target group.
+     */
+    statusMessage: string;
+    /**
+     * The ID of the target group.
+     */
+    targetGroupId: string;
+}
+
+export interface GetComputeInstanceGroupApplicationLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration: number;
+    /**
+     * The status message of the target group.
+     */
+    statusMessage: string;
+    /**
+     * A description of the target group.
+     */
+    targetGroupDescription: string;
+    /**
+     * The ID of the target group.
+     */
+    targetGroupId: string;
+    /**
+     * A set of key/value label pairs.
+     */
+    targetGroupLabels: {[key: string]: string};
+    /**
+     * The name of the target group.
+     */
+    targetGroupName: string;
 }
 
 export interface GetComputeInstanceGroupDeployPolicy {
@@ -1688,6 +2734,10 @@ export interface GetComputeInstanceGroupInstanceTemplateBootDisk {
      */
     deviceName: string;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId: string;
+    /**
      * The parameters used for creating a disk alongside the instance. The structure is documented below.
      */
     initializeParams: outputs.GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParams;
@@ -1751,6 +2801,10 @@ export interface GetComputeInstanceGroupInstanceTemplateNetworkInterface {
      */
     natDnsRecords: outputs.GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord[];
     /**
+     * The public IP address of the instance.
+     */
+    natIpAddress: string;
+    /**
      * The ID of the network.
      */
     networkId: string;
@@ -1765,7 +2819,10 @@ export interface GetComputeInstanceGroupInstanceTemplateNetworkInterface {
 }
 
 export interface GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecord {
-    dnsZone: string;
+    /**
+     * DNS zone id (if not set, private zone is used).
+     */
+    dnsZoneId: string;
     /**
      * The Fully Qualified Domain Name.
      */
@@ -1781,7 +2838,10 @@ export interface GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecor
 }
 
 export interface GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecord {
-    dnsZone: string;
+    /**
+     * DNS zone id (if not set, private zone is used).
+     */
+    dnsZoneId: string;
     /**
      * The Fully Qualified Domain Name.
      */
@@ -1797,7 +2857,10 @@ export interface GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsR
 }
 
 export interface GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecord {
-    dnsZone: string;
+    /**
+     * DNS zone id (if not set, private zone is used).
+     */
+    dnsZoneId: string;
     /**
      * The Fully Qualified Domain Name.
      */
@@ -1843,6 +2906,10 @@ export interface GetComputeInstanceGroupInstanceTemplateSecondaryDisk {
      */
     deviceName: string;
     /**
+     * ID of the existing disk. To set use variables.
+     */
+    diskId: string;
+    /**
      * The parameters used for creating a disk alongside the instance. The structure is documented below.
      */
     initializeParams: outputs.GetComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams;
@@ -1876,6 +2943,10 @@ export interface GetComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeP
 }
 
 export interface GetComputeInstanceGroupLoadBalancer {
+    /**
+     * Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+     */
+    maxOpeningTrafficDuration: number;
     /**
      * The status message of the target group.
      */
@@ -1968,6 +3039,10 @@ export interface GetComputeInstanceGroupScalePolicyAutoScale {
 
 export interface GetComputeInstanceGroupScalePolicyAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId: string;
+    /**
      * A map of labels applied to this instance.
      * * `resources.0.memory` - The memory size allocated to the instance.
      * * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -1991,6 +3066,10 @@ export interface GetComputeInstanceGroupScalePolicyAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: string;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service: string;
     /**
      * Target metric value level.
      */
@@ -2046,6 +3125,10 @@ export interface GetComputeInstanceGroupScalePolicyTestAutoScale {
 
 export interface GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
     /**
+     * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    folderId: string;
+    /**
      * A map of labels applied to this instance.
      * * `resources.0.memory` - The memory size allocated to the instance.
      * * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -2069,6 +3152,10 @@ export interface GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRule {
      * This type of metric must have the `zoneId` label.
      */
     ruleType: string;
+    /**
+     * Service of custom metric in Yandex Monitoring that should be used for scaling.
+     */
+    service: string;
     /**
      * Target metric value level.
      */
@@ -2329,6 +3416,12 @@ export interface GetDataprocClusterClusterConfigSubclusterSpecResources {
     resourcePresetId: string;
 }
 
+export interface GetFunctionScalingPolicyPolicy {
+    tag: string;
+    zoneInstancesLimit?: number;
+    zoneRequestsLimit?: number;
+}
+
 export interface GetFunctionTriggerDlq {
     queueId: string;
     serviceAccountId: string;
@@ -2504,6 +3597,17 @@ export interface GetKubernetesClusterMasterZonal {
     zone: string;
 }
 
+export interface GetKubernetesClusterNetworkImplementation {
+    /**
+     * Cilium network implementation configuration. No options exist.
+     */
+    cilium: outputs.GetKubernetesClusterNetworkImplementationCilium;
+}
+
+export interface GetKubernetesClusterNetworkImplementationCilium {
+    routingMode: string;
+}
+
 export interface GetKubernetesNodeGroupAllocationPolicy {
     /**
      * Repeated field, that specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
@@ -2546,6 +3650,10 @@ export interface GetKubernetesNodeGroupInstanceTemplate {
      * A public address that can be used to access the internet over NAT.
      */
     nat: boolean;
+    /**
+     * Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+     */
+    networkAccelerationType: string;
     /**
      * An array with the network interfaces that will be attached to the instance. The structure is documented below.
      */
@@ -3579,6 +4687,95 @@ export interface GetMdbClickhouseClusterZookeeperResources {
     resourcePresetId: string;
 }
 
+export interface GetMdbElasticSearchClusterConfig {
+    adminPassword: string;
+    /**
+     * Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+     */
+    dataNode: outputs.GetMdbElasticSearchClusterConfigDataNode;
+    /**
+     * Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+     */
+    edition: string;
+    /**
+     * Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+     */
+    masterNode: outputs.GetMdbElasticSearchClusterConfigMasterNode;
+    /**
+     * A set of requested Elasticsearch plugins.
+     */
+    plugins: string[];
+    /**
+     * Version of Elasticsearch.
+     */
+    version: string;
+}
+
+export interface GetMdbElasticSearchClusterConfigDataNode {
+    /**
+     * Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+     */
+    resources: outputs.GetMdbElasticSearchClusterConfigDataNodeResources;
+}
+
+export interface GetMdbElasticSearchClusterConfigDataNodeResources {
+    /**
+     * Volume of the storage available to a Elasticsearch host, in gigabytes.
+     */
+    diskSize: number;
+    /**
+     * Type of the storage of Elasticsearch hosts.
+     */
+    diskTypeId: string;
+    resourcePresetId: string;
+}
+
+export interface GetMdbElasticSearchClusterConfigMasterNode {
+    /**
+     * Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+     */
+    resources: outputs.GetMdbElasticSearchClusterConfigMasterNodeResources;
+}
+
+export interface GetMdbElasticSearchClusterConfigMasterNodeResources {
+    /**
+     * Volume of the storage available to a Elasticsearch host, in gigabytes.
+     */
+    diskSize: number;
+    /**
+     * Type of the storage of Elasticsearch hosts.
+     */
+    diskTypeId: string;
+    resourcePresetId: string;
+}
+
+export interface GetMdbElasticSearchClusterHost {
+    /**
+     * Sets whether the host should get a public IP address on creation.
+     */
+    assignPublicIp: boolean;
+    /**
+     * The fully qualified domain name of the host.
+     */
+    fqdn: string;
+    /**
+     * The name of the Elasticsearch cluster.
+     */
+    name: string;
+    /**
+     * The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
+     */
+    subnetId: string;
+    /**
+     * The type of the host to be deployed. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/hosts-roles).
+     */
+    type: string;
+    /**
+     * The availability zone where the Elasticsearch host will be created.
+     */
+    zone: string;
+}
+
 export interface GetMdbKafkaClusterConfig {
     /**
      * The flag that defines whether a public IP address is assigned to the node.
@@ -3831,13 +5028,28 @@ export interface GetMdbMongodbClusterHost {
      */
     subnetId: string;
     /**
-     * type of mongo demon which runs on this host (mongod, mongos or monogcfg).
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: string;
     /**
      * The availability zone where the MongoDB host will be created.
      */
     zoneId: string;
+}
+
+export interface GetMdbMongodbClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day: string;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
 }
 
 export interface GetMdbMongodbClusterResources {
@@ -4166,6 +5378,21 @@ export interface GetMdbPostgresqlClusterHost {
      * The availability zone where the PostgreSQL host will be created.
      */
     zone: string;
+}
+
+export interface GetMdbPostgresqlClusterMaintenanceWindow {
+    /**
+     * Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+     */
+    day: string;
+    /**
+     * Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+     */
+    hour: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
 }
 
 export interface GetMdbPostgresqlClusterUser {
@@ -4685,6 +5912,16 @@ export interface KubernetesClusterMasterZonal {
     zone: string;
 }
 
+export interface KubernetesClusterNetworkImplementation {
+    /**
+     * (Optional) Cilium network implementation configuration. No options exist.
+     */
+    cilium?: outputs.KubernetesClusterNetworkImplementationCilium;
+}
+
+export interface KubernetesClusterNetworkImplementationCilium {
+}
+
 export interface KubernetesNodeGroupAllocationPolicy {
     /**
      * Repeated field, that specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
@@ -4735,6 +5972,10 @@ export interface KubernetesNodeGroupInstanceTemplate {
      * @deprecated The 'nat' field has been deprecated. Please use 'nat under network_interface' instead.
      */
     nat: boolean;
+    /**
+     * Type of network acceleration. Values: `standard`, `softwareAccelerated`.
+     */
+    networkAccelerationType: string;
     /**
      * An array with the network interfaces that will be attached to the instance. The structure is documented below.
      */
@@ -5813,6 +7054,100 @@ export interface MdbClickhouseClusterZookeeperResources {
     resourcePresetId: string;
 }
 
+export interface MdbElasticSearchClusterConfig {
+    /**
+     * Password for admin user of Elasticsearch.
+     */
+    adminPassword: string;
+    /**
+     * Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
+     */
+    dataNode: outputs.MdbElasticSearchClusterConfigDataNode;
+    /**
+     * Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
+     */
+    edition: string;
+    /**
+     * Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
+     */
+    masterNode?: outputs.MdbElasticSearchClusterConfigMasterNode;
+    /**
+     * A set of Elasticsearch plugins to install.
+     */
+    plugins?: string[];
+    /**
+     * Version of Elasticsearch.
+     */
+    version: string;
+}
+
+export interface MdbElasticSearchClusterConfigDataNode {
+    /**
+     * Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+     */
+    resources: outputs.MdbElasticSearchClusterConfigDataNodeResources;
+}
+
+export interface MdbElasticSearchClusterConfigDataNodeResources {
+    /**
+     * Volume of the storage available to a host, in gigabytes.
+     */
+    diskSize: number;
+    /**
+     * Type of the storage of Elasticsearch hosts.
+     */
+    diskTypeId: string;
+    resourcePresetId: string;
+}
+
+export interface MdbElasticSearchClusterConfigMasterNode {
+    /**
+     * Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
+     */
+    resources: outputs.MdbElasticSearchClusterConfigMasterNodeResources;
+}
+
+export interface MdbElasticSearchClusterConfigMasterNodeResources {
+    /**
+     * Volume of the storage available to a host, in gigabytes.
+     */
+    diskSize: number;
+    /**
+     * Type of the storage of Elasticsearch hosts.
+     */
+    diskTypeId: string;
+    resourcePresetId: string;
+}
+
+export interface MdbElasticSearchClusterHost {
+    /**
+     * Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+     */
+    assignPublicIp?: boolean;
+    /**
+     * The fully qualified domain name of the host.
+     */
+    fqdn: string;
+    /**
+     * User defined host name.
+     */
+    name: string;
+    /**
+     * The ID of the subnet, to which the host belongs. The subnet must
+     * be a part of the network to which the cluster belongs.
+     */
+    subnetId: string;
+    /**
+     * The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+     */
+    type: string;
+    /**
+     * The availability zone where the Elasticsearch host will be created.
+     * For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
+     */
+    zone: string;
+}
+
 export interface MdbKafkaClusterConfig {
     /**
      * Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
@@ -6065,7 +7400,7 @@ export interface MdbMongodbClusterHost {
      */
     subnetId: string;
     /**
-     * type of mongo daemon which runs on this host (mongod, mongos or monogcfg). Defaults to mongod.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: string;
     /**
@@ -6073,6 +7408,21 @@ export interface MdbMongodbClusterHost {
      * For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
      */
     zoneId: string;
+}
+
+export interface MdbMongodbClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day?: string;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour?: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
 }
 
 export interface MdbMongodbClusterResources {

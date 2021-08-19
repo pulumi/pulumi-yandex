@@ -74,7 +74,8 @@ type LookupMdbMongodbClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the MongoDB cluster.
-	Labels map[string]string `pulumi:"labels"`
+	Labels            map[string]string                     `pulumi:"labels"`
+	MaintenanceWindow GetMdbMongodbClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The name of the database.
 	Name string `pulumi:"name"`
 	// ID of the network, to which the MongoDB cluster belongs.

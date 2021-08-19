@@ -40,6 +40,11 @@ namespace Pulumi.Yandex
         /// The allocation policy of the instance group by zone and region. The structure is documented below.
         /// </summary>
         public readonly Outputs.GetComputeInstanceGroupAllocationPolicyResult AllocationPolicy;
+        public readonly Outputs.GetComputeInstanceGroupApplicationBalancerStateResult ApplicationBalancerState;
+        /// <summary>
+        /// Application Load balancing (L7) specifications. The structure is documented below.
+        /// </summary>
+        public readonly Outputs.GetComputeInstanceGroupApplicationLoadBalancerResult ApplicationLoadBalancer;
         /// <summary>
         /// The instance group creation timestamp.
         /// </summary>
@@ -57,7 +62,7 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The ID of the folder that the instance group belongs to.
+        /// Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
         /// </summary>
         public readonly string FolderId;
         /// <summary>
@@ -94,6 +99,10 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly Outputs.GetComputeInstanceGroupLoadBalancerStateResult LoadBalancerState;
         /// <summary>
+        /// Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+        /// </summary>
+        public readonly int MaxCheckingHealthDuration;
+        /// <summary>
         /// The name of the managed instance.
         /// </summary>
         public readonly string Name;
@@ -117,6 +126,10 @@ namespace Pulumi.Yandex
         [OutputConstructor]
         private GetComputeInstanceGroupResult(
             Outputs.GetComputeInstanceGroupAllocationPolicyResult allocationPolicy,
+
+            Outputs.GetComputeInstanceGroupApplicationBalancerStateResult applicationBalancerState,
+
+            Outputs.GetComputeInstanceGroupApplicationLoadBalancerResult applicationLoadBalancer,
 
             string createdAt,
 
@@ -144,6 +157,8 @@ namespace Pulumi.Yandex
 
             Outputs.GetComputeInstanceGroupLoadBalancerStateResult loadBalancerState,
 
+            int maxCheckingHealthDuration,
+
             string name,
 
             Outputs.GetComputeInstanceGroupScalePolicyResult scalePolicy,
@@ -155,6 +170,8 @@ namespace Pulumi.Yandex
             ImmutableDictionary<string, string> variables)
         {
             AllocationPolicy = allocationPolicy;
+            ApplicationBalancerState = applicationBalancerState;
+            ApplicationLoadBalancer = applicationLoadBalancer;
             CreatedAt = createdAt;
             DeletionProtection = deletionProtection;
             DeployPolicy = deployPolicy;
@@ -168,6 +185,7 @@ namespace Pulumi.Yandex
             Labels = labels;
             LoadBalancer = loadBalancer;
             LoadBalancerState = loadBalancerState;
+            MaxCheckingHealthDuration = maxCheckingHealthDuration;
             Name = name;
             ScalePolicy = scalePolicy;
             ServiceAccountId = serviceAccountId;

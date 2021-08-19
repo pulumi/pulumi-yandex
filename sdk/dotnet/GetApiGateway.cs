@@ -49,6 +49,7 @@ namespace Pulumi.Yandex
         public readonly string LogGroupId;
         public readonly string? Name;
         public readonly string Status;
+        public readonly ImmutableArray<string> UserDomains;
 
         [OutputConstructor]
         private GetApiGatewayResult(
@@ -70,7 +71,9 @@ namespace Pulumi.Yandex
 
             string? name,
 
-            string status)
+            string status,
+
+            ImmutableArray<string> userDomains)
         {
             ApiGatewayId = apiGatewayId;
             CreatedAt = createdAt;
@@ -82,6 +85,7 @@ namespace Pulumi.Yandex
             LogGroupId = logGroupId;
             Name = name;
             Status = status;
+            UserDomains = userDomains;
         }
     }
 }

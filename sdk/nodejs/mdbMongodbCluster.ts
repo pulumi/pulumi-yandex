@@ -38,6 +38,9 @@ import * as utilities from "./utilities";
  *     labels: {
  *         test_key: "test_value",
  *     },
+ *     maintenanceWindow: {
+ *         type: "ANYTIME",
+ *     },
  *     networkId: fooVpcNetwork.id,
  *     resources: {
  *         diskSize: 16,
@@ -131,6 +134,7 @@ export class MdbMongodbCluster extends pulumi.CustomResource {
      * A set of key/value label pairs to assign to the MongoDB cluster.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly maintenanceWindow!: pulumi.Output<outputs.MdbMongodbClusterMaintenanceWindow>;
     /**
      * The fully qualified domain name of the host. Computed on server side.
      */
@@ -184,6 +188,7 @@ export class MdbMongodbCluster extends pulumi.CustomResource {
             inputs["health"] = state ? state.health : undefined;
             inputs["hosts"] = state ? state.hosts : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkId"] = state ? state.networkId : undefined;
             inputs["resources"] = state ? state.resources : undefined;
@@ -222,6 +227,7 @@ export class MdbMongodbCluster extends pulumi.CustomResource {
             inputs["folderId"] = args ? args.folderId : undefined;
             inputs["hosts"] = args ? args.hosts : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkId"] = args ? args.networkId : undefined;
             inputs["resources"] = args ? args.resources : undefined;
@@ -284,6 +290,7 @@ export interface MdbMongodbClusterState {
      * A set of key/value label pairs to assign to the MongoDB cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly maintenanceWindow?: pulumi.Input<inputs.MdbMongodbClusterMaintenanceWindow>;
     /**
      * The fully qualified domain name of the host. Computed on server side.
      */
@@ -352,6 +359,7 @@ export interface MdbMongodbClusterArgs {
      * A set of key/value label pairs to assign to the MongoDB cluster.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly maintenanceWindow?: pulumi.Input<inputs.MdbMongodbClusterMaintenanceWindow>;
     /**
      * The fully qualified domain name of the host. Computed on server side.
      */
