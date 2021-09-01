@@ -114,6 +114,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MdbSqlServerCluster{}
 	case "yandex:index/messageQueue:MessageQueue":
 		r = &MessageQueue{}
+	case "yandex:index/organizationManagerOrganizationIamBinding:OrganizationManagerOrganizationIamBinding":
+		r = &OrganizationManagerOrganizationIamBinding{}
+	case "yandex:index/organizationManagerOrganizationIamMember:OrganizationManagerOrganizationIamMember":
+		r = &OrganizationManagerOrganizationIamMember{}
 	case "yandex:index/resourcemanagerCloudIamBinding:ResourcemanagerCloudIamBinding":
 		r = &ResourcemanagerCloudIamBinding{}
 	case "yandex:index/resourcemanagerCloudIamMember:ResourcemanagerCloudIamMember":
@@ -412,6 +416,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/messageQueue",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/organizationManagerOrganizationIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/organizationManagerOrganizationIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

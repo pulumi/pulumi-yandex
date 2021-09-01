@@ -456,6 +456,10 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
      */
     public readonly databases!: pulumi.Output<outputs.MdbClickhouseClusterDatabase[] | undefined>;
     /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * Description of the shard group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -557,6 +561,7 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
             inputs["copySchemaOnNewHosts"] = state ? state.copySchemaOnNewHosts : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["databases"] = state ? state.databases : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["environment"] = state ? state.environment : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
@@ -598,6 +603,7 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
             inputs["cloudStorage"] = args ? args.cloudStorage : undefined;
             inputs["copySchemaOnNewHosts"] = args ? args.copySchemaOnNewHosts : undefined;
             inputs["databases"] = args ? args.databases : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
@@ -660,6 +666,10 @@ export interface MdbClickhouseClusterState {
      * A database of the ClickHouse cluster. The structure is documented below.
      */
     readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterDatabase>[]>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the shard group.
      */
@@ -771,6 +781,10 @@ export interface MdbClickhouseClusterArgs {
      * A database of the ClickHouse cluster. The structure is documented below.
      */
     readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterDatabase>[]>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the shard group.
      */

@@ -611,6 +611,8 @@ type MdbMysqlCluster struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// A database of the MySQL cluster. The structure is documented below.
 	Databases MdbMysqlClusterDatabaseArrayOutput `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the MySQL cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deployment environment of the MySQL cluster.
@@ -706,6 +708,8 @@ type mdbMysqlClusterState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// A database of the MySQL cluster. The structure is documented below.
 	Databases []MdbMysqlClusterDatabase `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the MySQL cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the MySQL cluster.
@@ -752,6 +756,8 @@ type MdbMysqlClusterState struct {
 	CreatedAt pulumi.StringPtrInput
 	// A database of the MySQL cluster. The structure is documented below.
 	Databases MdbMysqlClusterDatabaseArrayInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the MySQL cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the MySQL cluster.
@@ -800,6 +806,8 @@ type mdbMysqlClusterArgs struct {
 	BackupWindowStart *MdbMysqlClusterBackupWindowStart `pulumi:"backupWindowStart"`
 	// A database of the MySQL cluster. The structure is documented below.
 	Databases []MdbMysqlClusterDatabase `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the MySQL cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the MySQL cluster.
@@ -841,6 +849,8 @@ type MdbMysqlClusterArgs struct {
 	BackupWindowStart MdbMysqlClusterBackupWindowStartPtrInput
 	// A database of the MySQL cluster. The structure is documented below.
 	Databases MdbMysqlClusterDatabaseArrayInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the MySQL cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the MySQL cluster.

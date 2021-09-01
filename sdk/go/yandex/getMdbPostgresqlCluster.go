@@ -9,6 +9,7 @@ import (
 
 // Get information about a Yandex Managed PostgreSQL cluster. For more information, see
 // [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/).
+// [How to connect to the DB](https://cloud.yandex.com/en-ru/docs/managed-postgresql/quickstart#connect). To connect, use port 6432. The port number is not configurable.
 //
 // ## Example Usage
 //
@@ -46,7 +47,8 @@ func GetMdbPostgresqlCluster(ctx *pulumi.Context, args *GetMdbPostgresqlClusterA
 // A collection of arguments for invoking getMdbPostgresqlCluster.
 type GetMdbPostgresqlClusterArgs struct {
 	// The ID of the PostgreSQL cluster.
-	ClusterId *string `pulumi:"clusterId"`
+	ClusterId          *string `pulumi:"clusterId"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Description of the PostgreSQL cluster.
 	Description *string `pulumi:"description"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
@@ -63,7 +65,8 @@ type GetMdbPostgresqlClusterResult struct {
 	// Timestamp of cluster creation.
 	CreatedAt string `pulumi:"createdAt"`
 	// A database of the PostgreSQL cluster. The structure is documented below.
-	Databases []GetMdbPostgresqlClusterDatabase `pulumi:"databases"`
+	Databases          []GetMdbPostgresqlClusterDatabase `pulumi:"databases"`
+	DeletionProtection bool                              `pulumi:"deletionProtection"`
 	// Description of the PostgreSQL cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the PostgreSQL cluster.

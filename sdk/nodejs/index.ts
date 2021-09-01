@@ -102,6 +102,8 @@ export * from "./mdbMysqlCluster";
 export * from "./mdbRedisCluster";
 export * from "./mdbSqlServerCluster";
 export * from "./messageQueue";
+export * from "./organizationManagerOrganizationIamBinding";
+export * from "./organizationManagerOrganizationIamMember";
 export * from "./provider";
 export * from "./resourcemanagerCloudIamBinding";
 export * from "./resourcemanagerCloudIamMember";
@@ -178,6 +180,8 @@ import { MdbMysqlCluster } from "./mdbMysqlCluster";
 import { MdbRedisCluster } from "./mdbRedisCluster";
 import { MdbSqlServerCluster } from "./mdbSqlServerCluster";
 import { MessageQueue } from "./messageQueue";
+import { OrganizationManagerOrganizationIamBinding } from "./organizationManagerOrganizationIamBinding";
+import { OrganizationManagerOrganizationIamMember } from "./organizationManagerOrganizationIamMember";
 import { ResourcemanagerCloudIamBinding } from "./resourcemanagerCloudIamBinding";
 import { ResourcemanagerCloudIamMember } from "./resourcemanagerCloudIamMember";
 import { ResourcemanagerFolder } from "./resourcemanagerFolder";
@@ -294,6 +298,10 @@ const _module = {
                 return new MdbSqlServerCluster(name, <any>undefined, { urn })
             case "yandex:index/messageQueue:MessageQueue":
                 return new MessageQueue(name, <any>undefined, { urn })
+            case "yandex:index/organizationManagerOrganizationIamBinding:OrganizationManagerOrganizationIamBinding":
+                return new OrganizationManagerOrganizationIamBinding(name, <any>undefined, { urn })
+            case "yandex:index/organizationManagerOrganizationIamMember:OrganizationManagerOrganizationIamMember":
+                return new OrganizationManagerOrganizationIamMember(name, <any>undefined, { urn })
             case "yandex:index/resourcemanagerCloudIamBinding:ResourcemanagerCloudIamBinding":
                 return new ResourcemanagerCloudIamBinding(name, <any>undefined, { urn })
             case "yandex:index/resourcemanagerCloudIamMember:ResourcemanagerCloudIamMember":
@@ -380,6 +388,8 @@ pulumi.runtime.registerResourceModule("yandex", "index/mdbMysqlCluster", _module
 pulumi.runtime.registerResourceModule("yandex", "index/mdbRedisCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbSqlServerCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/messageQueue", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/organizationManagerOrganizationIamBinding", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/organizationManagerOrganizationIamMember", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerCloudIamBinding", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerCloudIamMember", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolder", _module)

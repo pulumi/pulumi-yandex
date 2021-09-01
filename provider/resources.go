@@ -128,9 +128,15 @@ func Provider() tfbridge.ProviderInfo {
 			//		Markdown: []byte{}, // there are some broken docs here that we want to exclude for the time being
 			//	},
 			//},
-			"yandex_mdb_redis_cluster":                  {Tok: makeResource(mainMod, "MdbRedisCluster")},
-			"yandex_mdb_sqlserver_cluster":              {Tok: makeResource(mainMod, "MdbSqlServerCluster")},
-			"yandex_message_queue":                      {Tok: makeResource(mainMod, "MessageQueue")},
+			"yandex_mdb_redis_cluster":     {Tok: makeResource(mainMod, "MdbRedisCluster")},
+			"yandex_mdb_sqlserver_cluster": {Tok: makeResource(mainMod, "MdbSqlServerCluster")},
+			"yandex_message_queue":         {Tok: makeResource(mainMod, "MessageQueue")},
+			"yandex_organizationmanager_organization_iam_binding": {
+				Tok: makeResource(mainMod, "OrganizationManagerOrganizationIamBinding"),
+			},
+			"yandex_organizationmanager_organization_iam_member": {
+				Tok: makeResource(mainMod, "OrganizationManagerOrganizationIamMember"),
+			},
 			"yandex_resourcemanager_cloud_iam_binding":  {Tok: makeResource(mainMod, "ResourcemanagerCloudIamBinding")},
 			"yandex_resourcemanager_cloud_iam_member":   {Tok: makeResource(mainMod, "ResourcemanagerCloudIamMember")},
 			"yandex_resourcemanager_folder_iam_binding": {Tok: makeResource(mainMod, "ResourcemanagerFolderIamBinding")},

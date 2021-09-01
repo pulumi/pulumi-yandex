@@ -21,7 +21,7 @@ class GetMdbClickhouseClusterResult:
     """
     A collection of values returned by getMdbClickhouseCluster.
     """
-    def __init__(__self__, access=None, backup_window_start=None, clickhouse=None, cloud_storage=None, cluster_id=None, created_at=None, databases=None, description=None, environment=None, folder_id=None, format_schemas=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, ml_models=None, name=None, network_id=None, security_group_ids=None, service_account_id=None, shard_groups=None, sql_database_management=None, sql_user_management=None, status=None, users=None, version=None, zookeeper=None):
+    def __init__(__self__, access=None, backup_window_start=None, clickhouse=None, cloud_storage=None, cluster_id=None, created_at=None, databases=None, deletion_protection=None, description=None, environment=None, folder_id=None, format_schemas=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, ml_models=None, name=None, network_id=None, security_group_ids=None, service_account_id=None, shard_groups=None, sql_database_management=None, sql_user_management=None, status=None, users=None, version=None, zookeeper=None):
         if access and not isinstance(access, dict):
             raise TypeError("Expected argument 'access' to be a dict")
         pulumi.set(__self__, "access", access)
@@ -43,6 +43,9 @@ class GetMdbClickhouseClusterResult:
         if databases and not isinstance(databases, list):
             raise TypeError("Expected argument 'databases' to be a list")
         pulumi.set(__self__, "databases", databases)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -156,6 +159,11 @@ class GetMdbClickhouseClusterResult:
         A database of the ClickHouse cluster. The structure is documented below.
         """
         return pulumi.get(self, "databases")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -327,6 +335,7 @@ class AwaitableGetMdbClickhouseClusterResult(GetMdbClickhouseClusterResult):
             cluster_id=self.cluster_id,
             created_at=self.created_at,
             databases=self.databases,
+            deletion_protection=self.deletion_protection,
             description=self.description,
             environment=self.environment,
             folder_id=self.folder_id,
@@ -352,6 +361,7 @@ class AwaitableGetMdbClickhouseClusterResult(GetMdbClickhouseClusterResult):
 
 def get_mdb_clickhouse_cluster(cloud_storage: Optional[pulumi.InputType['GetMdbClickhouseClusterCloudStorageArgs']] = None,
                                cluster_id: Optional[str] = None,
+                               deletion_protection: Optional[bool] = None,
                                folder_id: Optional[str] = None,
                                name: Optional[str] = None,
                                service_account_id: Optional[str] = None,
@@ -378,6 +388,7 @@ def get_mdb_clickhouse_cluster(cloud_storage: Optional[pulumi.InputType['GetMdbC
     __args__ = dict()
     __args__['cloudStorage'] = cloud_storage
     __args__['clusterId'] = cluster_id
+    __args__['deletionProtection'] = deletion_protection
     __args__['folderId'] = folder_id
     __args__['name'] = name
     __args__['serviceAccountId'] = service_account_id
@@ -395,6 +406,7 @@ def get_mdb_clickhouse_cluster(cloud_storage: Optional[pulumi.InputType['GetMdbC
         cluster_id=__ret__.cluster_id,
         created_at=__ret__.created_at,
         databases=__ret__.databases,
+        deletion_protection=__ret__.deletion_protection,
         description=__ret__.description,
         environment=__ret__.environment,
         folder_id=__ret__.folder_id,

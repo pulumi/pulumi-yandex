@@ -139,7 +139,8 @@ def get_alb_virtual_host(http_router_id: Optional[str] = None,
     import pulumi
     import pulumi_yandex as yandex
 
-    my_vh_data = yandex.get_alb_virtual_host(virtual_host_id=yandex_alb_virtual_host["my-vh"]["id"])
+    my_vh_data = yandex.get_alb_virtual_host(name=yandex_alb_virtual_host["my-vh"]["name"],
+        http_router_id=yandex_alb_virtual_host["my-router"]["id"])
     ```
 
     This data source is used to define [Application Load Balancer Virtual Host] that can be used by other resources.
@@ -147,7 +148,8 @@ def get_alb_virtual_host(http_router_id: Optional[str] = None,
 
     :param str http_router_id: HTTP Router that the resource belongs to.
     :param str name: Name of the Virtual Host.
-    :param str virtual_host_id: The ID of a specific Virtual Host.
+    :param str virtual_host_id: The ID of a specific Virtual Host. Virtual Host ID is concatenation of HTTP Router ID
+           and Virtual Host name with `/` symbol between them. For Example, "http_router_id/vhost_name".
     """
     __args__ = dict()
     __args__['httpRouterId'] = http_router_id

@@ -20,7 +20,7 @@ class GetDataprocClusterResult:
     """
     A collection of values returned by getDataprocCluster.
     """
-    def __init__(__self__, bucket=None, cluster_config=None, cluster_id=None, created_at=None, description=None, folder_id=None, host_group_ids=None, id=None, labels=None, name=None, security_group_ids=None, service_account_id=None, ui_proxy=None, zone_id=None):
+    def __init__(__self__, bucket=None, cluster_config=None, cluster_id=None, created_at=None, deletion_protection=None, description=None, folder_id=None, host_group_ids=None, id=None, labels=None, name=None, security_group_ids=None, service_account_id=None, ui_proxy=None, zone_id=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -33,6 +33,9 @@ class GetDataprocClusterResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -92,6 +95,11 @@ class GetDataprocClusterResult:
         The Data Proc cluster creation timestamp.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -178,6 +186,7 @@ class AwaitableGetDataprocClusterResult(GetDataprocClusterResult):
             cluster_config=self.cluster_config,
             cluster_id=self.cluster_id,
             created_at=self.created_at,
+            deletion_protection=self.deletion_protection,
             description=self.description,
             folder_id=self.folder_id,
             host_group_ids=self.host_group_ids,
@@ -224,6 +233,7 @@ def get_dataproc_cluster(cluster_id: Optional[str] = None,
         cluster_config=__ret__.cluster_config,
         cluster_id=__ret__.cluster_id,
         created_at=__ret__.created_at,
+        deletion_protection=__ret__.deletion_protection,
         description=__ret__.description,
         folder_id=__ret__.folder_id,
         host_group_ids=__ret__.host_group_ids,

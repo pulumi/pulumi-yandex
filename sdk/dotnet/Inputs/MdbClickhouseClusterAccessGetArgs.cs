@@ -13,7 +13,7 @@ namespace Pulumi.Yandex.Inputs
     public sealed class MdbClickhouseClusterAccessGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow access for Web SQL. Can be either `true` or `false`.
+        /// Allow access for DataLens. Can be either `true` or `false`.
         /// </summary>
         [Input("dataLens")]
         public Input<bool>? DataLens { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<bool>? Serverless { get; set; }
 
         /// <summary>
-        /// Allow access for DataLens. Can be either `true` or `false`.
+        /// Allow access for Web SQL. Can be either `true` or `false`.
         /// </summary>
         [Input("webSql")]
         public Input<bool>? WebSql { get; set; }

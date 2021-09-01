@@ -31,6 +31,15 @@ import * as utilities from "./utilities";
  *     website: {
  *         errorDocument: "error.html",
  *         indexDocument: "index.html",
+ *         routingRules: `[{
+ *     "Condition": {
+ *         "KeyPrefixEquals": "docs/"
+ *     },
+ *     "Redirect": {
+ *         "ReplaceKeyPrefixWith": "documents/"
+ *     }
+ * }]
+ * `,
  *     },
  * });
  * ```

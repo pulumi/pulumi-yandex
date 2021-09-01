@@ -5,10 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-/**
- * Get information about a Yandex Compute image. For more information, see
- * [the official documentation](https://cloud.yandex.com/docs/compute/concepts/image).
- */
 export function getComputeImage(args?: GetComputeImageArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeImageResult> {
     args = args || {};
     if (!opts) {

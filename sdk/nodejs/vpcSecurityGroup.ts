@@ -104,7 +104,7 @@ export class VpcSecurityGroup extends pulumi.CustomResource {
     /**
      * Labels to assign to this security group.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the security group.
      */

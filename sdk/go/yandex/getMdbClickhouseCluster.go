@@ -47,7 +47,8 @@ func LookupMdbClickhouseCluster(ctx *pulumi.Context, args *LookupMdbClickhouseCl
 type LookupMdbClickhouseClusterArgs struct {
 	CloudStorage *GetMdbClickhouseClusterCloudStorage `pulumi:"cloudStorage"`
 	// The ID of the ClickHouse cluster.
-	ClusterId *string `pulumi:"clusterId"`
+	ClusterId          *string `pulumi:"clusterId"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
 	// The name of the ClickHouse cluster.
@@ -68,7 +69,8 @@ type LookupMdbClickhouseClusterResult struct {
 	// Creation timestamp of the key.
 	CreatedAt string `pulumi:"createdAt"`
 	// A database of the ClickHouse cluster. The structure is documented below.
-	Databases []GetMdbClickhouseClusterDatabase `pulumi:"databases"`
+	Databases          []GetMdbClickhouseClusterDatabase `pulumi:"databases"`
+	DeletionProtection bool                              `pulumi:"deletionProtection"`
 	// Description of the shard group.
 	Description string `pulumi:"description"`
 	// Deployment environment of the ClickHouse cluster.

@@ -67,6 +67,7 @@ export interface GetDataprocClusterResult {
      * The Data Proc cluster creation timestamp.
      */
     readonly createdAt: string;
+    readonly deletionProtection: boolean;
     /**
      * Description of the Data Proc cluster.
      */

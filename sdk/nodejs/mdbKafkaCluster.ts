@@ -287,6 +287,10 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * Description of the Kafka cluster.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -359,6 +363,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
             const state = argsOrState as MdbKafkaClusterState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["environment"] = state ? state.environment : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
@@ -382,6 +387,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'networkId'");
             }
             inputs["config"] = args ? args.config : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
@@ -417,6 +423,10 @@ export interface MdbKafkaClusterState {
      * Timestamp of cluster creation.
      */
     readonly createdAt?: pulumi.Input<string>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Kafka cluster.
      */
@@ -484,6 +494,10 @@ export interface MdbKafkaClusterArgs {
      * Configuration of the Kafka cluster. The structure is documented below.
      */
     readonly config: pulumi.Input<inputs.MdbKafkaClusterConfig>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Kafka cluster.
      */

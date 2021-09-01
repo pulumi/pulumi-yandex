@@ -37,6 +37,12 @@ namespace Pulumi.Yandex
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the Elasticsearch cluster.
         /// </summary>
         [Output("description")]
@@ -157,6 +163,12 @@ namespace Pulumi.Yandex
         public Input<Inputs.MdbElasticSearchClusterConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
+        /// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Description of the Elasticsearch cluster.
         /// </summary>
         [Input("description")]
@@ -246,6 +258,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// Description of the Elasticsearch cluster.

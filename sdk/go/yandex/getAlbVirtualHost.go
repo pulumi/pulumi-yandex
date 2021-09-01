@@ -22,9 +22,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := yandex_alb_virtual_host.My - vh.Id
+// 		opt0 := yandex_alb_virtual_host.My - vh.Name
+// 		opt1 := yandex_alb_virtual_host.My - router.Id
 // 		_, err := yandex.LookupAlbVirtualHost(ctx, &yandex.LookupAlbVirtualHostArgs{
-// 			VirtualHostId: &opt0,
+// 			Name:         &opt0,
+// 			HttpRouterId: &opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -50,7 +52,8 @@ type LookupAlbVirtualHostArgs struct {
 	HttpRouterId *string `pulumi:"httpRouterId"`
 	// Name of the Virtual Host.
 	Name *string `pulumi:"name"`
-	// The ID of a specific Virtual Host.
+	// The ID of a specific Virtual Host. Virtual Host ID is concatenation of HTTP Router ID
+	// and Virtual Host name with `/` symbol between them. For Example, "http_router_id/vhost_name".
 	VirtualHostId *string `pulumi:"virtualHostId"`
 }
 

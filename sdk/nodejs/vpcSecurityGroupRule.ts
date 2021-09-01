@@ -90,7 +90,7 @@ export class VpcSecurityGroupRule extends pulumi.CustomResource {
     /**
      * Labels to assign to this rule.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Port number (if applied to a single port).
      */

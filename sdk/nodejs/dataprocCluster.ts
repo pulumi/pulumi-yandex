@@ -177,6 +177,10 @@ export class DataprocCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * Description of the Data Proc cluster.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -229,6 +233,7 @@ export class DataprocCluster extends pulumi.CustomResource {
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["clusterConfig"] = state ? state.clusterConfig : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
             inputs["hostGroupIds"] = state ? state.hostGroupIds : undefined;
@@ -248,6 +253,7 @@ export class DataprocCluster extends pulumi.CustomResource {
             }
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["clusterConfig"] = args ? args.clusterConfig : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
             inputs["hostGroupIds"] = args ? args.hostGroupIds : undefined;
@@ -283,6 +289,10 @@ export interface DataprocClusterState {
      * * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
      */
     readonly createdAt?: pulumi.Input<string>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Data Proc cluster.
      */
@@ -333,6 +343,10 @@ export interface DataprocClusterArgs {
      * Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
      */
     readonly clusterConfig: pulumi.Input<inputs.DataprocClusterClusterConfig>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Data Proc cluster.
      */

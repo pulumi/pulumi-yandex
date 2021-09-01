@@ -41,7 +41,7 @@ namespace Pulumi.Yandex
         /// Labels to assign to this rule.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Port number (if applied to a single port).

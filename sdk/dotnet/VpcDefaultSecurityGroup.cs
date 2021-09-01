@@ -46,7 +46,7 @@ namespace Pulumi.Yandex
         /// Labels to assign to this security group.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Name of this security group.

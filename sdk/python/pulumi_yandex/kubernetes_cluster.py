@@ -719,7 +719,7 @@ class KubernetesCluster(pulumi.CustomResource):
                 },
                 public_ip=True,
                 security_group_ids=[yandex_vpc_security_group["security_group_name"]["id"]],
-                version="1.15",
+                version="1.17",
                 zonal=yandex.KubernetesClusterMasterZonalArgs(
                     subnet_id=yandex_vpc_subnet["subnet_resource_name"]["id"],
                     zone=yandex_vpc_subnet["subnet_resource_name"]["zone"],
@@ -855,7 +855,7 @@ class KubernetesCluster(pulumi.CustomResource):
                 },
                 public_ip=True,
                 security_group_ids=[yandex_vpc_security_group["security_group_name"]["id"]],
-                version="1.15",
+                version="1.17",
                 zonal=yandex.KubernetesClusterMasterZonalArgs(
                     subnet_id=yandex_vpc_subnet["subnet_resource_name"]["id"],
                     zone=yandex_vpc_subnet["subnet_resource_name"]["zone"],

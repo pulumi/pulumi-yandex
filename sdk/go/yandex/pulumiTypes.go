@@ -22090,13 +22090,13 @@ func (o LbTargetGroupTargetArrayOutput) Index(i pulumi.IntInput) LbTargetGroupTa
 }
 
 type MdbClickhouseClusterAccess struct {
-	// Allow access for Web SQL. Can be either `true` or `false`.
+	// Allow access for DataLens. Can be either `true` or `false`.
 	DataLens *bool `pulumi:"dataLens"`
 	// Allow access for Yandex.Metrika. Can be either `true` or `false`.
 	Metrika *bool `pulumi:"metrika"`
 	// Allow access for Serverless. Can be either `true` or `false`.
 	Serverless *bool `pulumi:"serverless"`
-	// Allow access for DataLens. Can be either `true` or `false`.
+	// Allow access for Web SQL. Can be either `true` or `false`.
 	WebSql *bool `pulumi:"webSql"`
 }
 
@@ -22112,13 +22112,13 @@ type MdbClickhouseClusterAccessInput interface {
 }
 
 type MdbClickhouseClusterAccessArgs struct {
-	// Allow access for Web SQL. Can be either `true` or `false`.
+	// Allow access for DataLens. Can be either `true` or `false`.
 	DataLens pulumi.BoolPtrInput `pulumi:"dataLens"`
 	// Allow access for Yandex.Metrika. Can be either `true` or `false`.
 	Metrika pulumi.BoolPtrInput `pulumi:"metrika"`
 	// Allow access for Serverless. Can be either `true` or `false`.
 	Serverless pulumi.BoolPtrInput `pulumi:"serverless"`
-	// Allow access for DataLens. Can be either `true` or `false`.
+	// Allow access for Web SQL. Can be either `true` or `false`.
 	WebSql pulumi.BoolPtrInput `pulumi:"webSql"`
 }
 
@@ -22199,7 +22199,7 @@ func (o MdbClickhouseClusterAccessOutput) ToMdbClickhouseClusterAccessPtrOutputW
 	}).(MdbClickhouseClusterAccessPtrOutput)
 }
 
-// Allow access for Web SQL. Can be either `true` or `false`.
+// Allow access for DataLens. Can be either `true` or `false`.
 func (o MdbClickhouseClusterAccessOutput) DataLens() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterAccess) *bool { return v.DataLens }).(pulumi.BoolPtrOutput)
 }
@@ -22214,7 +22214,7 @@ func (o MdbClickhouseClusterAccessOutput) Serverless() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterAccess) *bool { return v.Serverless }).(pulumi.BoolPtrOutput)
 }
 
-// Allow access for DataLens. Can be either `true` or `false`.
+// Allow access for Web SQL. Can be either `true` or `false`.
 func (o MdbClickhouseClusterAccessOutput) WebSql() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterAccess) *bool { return v.WebSql }).(pulumi.BoolPtrOutput)
 }
@@ -22237,7 +22237,7 @@ func (o MdbClickhouseClusterAccessPtrOutput) Elem() MdbClickhouseClusterAccessOu
 	return o.ApplyT(func(v *MdbClickhouseClusterAccess) MdbClickhouseClusterAccess { return *v }).(MdbClickhouseClusterAccessOutput)
 }
 
-// Allow access for Web SQL. Can be either `true` or `false`.
+// Allow access for DataLens. Can be either `true` or `false`.
 func (o MdbClickhouseClusterAccessPtrOutput) DataLens() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MdbClickhouseClusterAccess) *bool {
 		if v == nil {
@@ -22267,7 +22267,7 @@ func (o MdbClickhouseClusterAccessPtrOutput) Serverless() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Allow access for DataLens. Can be either `true` or `false`.
+// Allow access for Web SQL. Can be either `true` or `false`.
 func (o MdbClickhouseClusterAccessPtrOutput) WebSql() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MdbClickhouseClusterAccess) *bool {
 		if v == nil {
@@ -33924,7 +33924,7 @@ type MdbRedisClusterConfig struct {
 	SlowlogMaxLen *int `pulumi:"slowlogMaxLen"`
 	// Close the connection after a client is idle for N seconds.
 	Timeout *int `pulumi:"timeout"`
-	// Version of Redis (either 5.0 or 6.0).
+	// Version of Redis (5.0, 6.0 or 6.2).
 	Version string `pulumi:"version"`
 }
 
@@ -33955,7 +33955,7 @@ type MdbRedisClusterConfigArgs struct {
 	SlowlogMaxLen pulumi.IntPtrInput `pulumi:"slowlogMaxLen"`
 	// Close the connection after a client is idle for N seconds.
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
-	// Version of Redis (either 5.0 or 6.0).
+	// Version of Redis (5.0, 6.0 or 6.2).
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -34072,7 +34072,7 @@ func (o MdbRedisClusterConfigOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MdbRedisClusterConfig) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
-// Version of Redis (either 5.0 or 6.0).
+// Version of Redis (5.0, 6.0 or 6.2).
 func (o MdbRedisClusterConfigOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbRedisClusterConfig) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -34166,7 +34166,7 @@ func (o MdbRedisClusterConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Version of Redis (either 5.0 or 6.0).
+// Version of Redis (5.0, 6.0 or 6.2).
 func (o MdbRedisClusterConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MdbRedisClusterConfig) *string {
 		if v == nil {
@@ -37003,6 +37003,10 @@ type StorageBucketWebsite struct {
 	ErrorDocument *string `pulumi:"errorDocument"`
 	// Storage returns this index document when requests are made to the root domain or any of the subfolders.
 	IndexDocument *string `pulumi:"indexDocument"`
+	// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+	RedirectAllRequestsTo *string `pulumi:"redirectAllRequestsTo"`
+	// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+	RoutingRules *string `pulumi:"routingRules"`
 }
 
 // StorageBucketWebsiteInput is an input type that accepts StorageBucketWebsiteArgs and StorageBucketWebsiteOutput values.
@@ -37021,6 +37025,10 @@ type StorageBucketWebsiteArgs struct {
 	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
 	// Storage returns this index document when requests are made to the root domain or any of the subfolders.
 	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
+	// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+	RedirectAllRequestsTo pulumi.StringPtrInput `pulumi:"redirectAllRequestsTo"`
+	// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+	RoutingRules pulumi.StringPtrInput `pulumi:"routingRules"`
 }
 
 func (StorageBucketWebsiteArgs) ElementType() reflect.Type {
@@ -37110,6 +37118,16 @@ func (o StorageBucketWebsiteOutput) IndexDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageBucketWebsite) *string { return v.IndexDocument }).(pulumi.StringPtrOutput)
 }
 
+// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+func (o StorageBucketWebsiteOutput) RedirectAllRequestsTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageBucketWebsite) *string { return v.RedirectAllRequestsTo }).(pulumi.StringPtrOutput)
+}
+
+// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+func (o StorageBucketWebsiteOutput) RoutingRules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageBucketWebsite) *string { return v.RoutingRules }).(pulumi.StringPtrOutput)
+}
+
 type StorageBucketWebsitePtrOutput struct{ *pulumi.OutputState }
 
 func (StorageBucketWebsitePtrOutput) ElementType() reflect.Type {
@@ -37145,6 +37163,26 @@ func (o StorageBucketWebsitePtrOutput) IndexDocument() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.IndexDocument
+	}).(pulumi.StringPtrOutput)
+}
+
+// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+func (o StorageBucketWebsitePtrOutput) RedirectAllRequestsTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageBucketWebsite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectAllRequestsTo
+	}).(pulumi.StringPtrOutput)
+}
+
+// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+func (o StorageBucketWebsitePtrOutput) RoutingRules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageBucketWebsite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingRules
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -61020,7 +61058,7 @@ type GetMdbRedisClusterConfig struct {
 	SlowlogMaxLen int `pulumi:"slowlogMaxLen"`
 	// Close the connection after a client is idle for N seconds.
 	Timeout int `pulumi:"timeout"`
-	// Version of Redis (either 5.0 or 6.0).
+	// Version of Redis (5.0, 6.0 or 6.2).
 	Version string `pulumi:"version"`
 }
 
@@ -61048,7 +61086,7 @@ type GetMdbRedisClusterConfigArgs struct {
 	SlowlogMaxLen pulumi.IntInput `pulumi:"slowlogMaxLen"`
 	// Close the connection after a client is idle for N seconds.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
-	// Version of Redis (either 5.0 or 6.0).
+	// Version of Redis (5.0, 6.0 or 6.2).
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -61108,7 +61146,7 @@ func (o GetMdbRedisClusterConfigOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetMdbRedisClusterConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// Version of Redis (either 5.0 or 6.0).
+// Version of Redis (5.0, 6.0 or 6.2).
 func (o GetMdbRedisClusterConfigOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbRedisClusterConfig) string { return v.Version }).(pulumi.StringOutput)
 }

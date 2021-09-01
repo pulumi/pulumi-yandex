@@ -5459,7 +5459,7 @@ export interface GetMdbRedisClusterConfig {
      */
     timeout: number;
     /**
-     * Version of Redis (either 5.0 or 6.0).
+     * Version of Redis (5.0, 6.0 or 6.2).
      */
     version: string;
 }
@@ -6249,7 +6249,7 @@ export interface LbTargetGroupTarget {
 
 export interface MdbClickhouseClusterAccess {
     /**
-     * Allow access for Web SQL. Can be either `true` or `false`.
+     * Allow access for DataLens. Can be either `true` or `false`.
      */
     dataLens?: boolean;
     /**
@@ -6261,7 +6261,7 @@ export interface MdbClickhouseClusterAccess {
      */
     serverless?: boolean;
     /**
-     * Allow access for DataLens. Can be either `true` or `false`.
+     * Allow access for Web SQL. Can be either `true` or `false`.
      */
     webSql?: boolean;
 }
@@ -7640,7 +7640,7 @@ export interface MdbRedisClusterConfig {
      */
     timeout: number;
     /**
-     * Version of Redis (either 5.0 or 6.0).
+     * Version of Redis (5.0, 6.0 or 6.2).
      */
     version: string;
 }
@@ -7937,6 +7937,14 @@ export interface StorageBucketWebsite {
      * Storage returns this index document when requests are made to the root domain or any of the subfolders.
      */
     indexDocument?: string;
+    /**
+     * A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+     */
+    redirectAllRequestsTo?: string;
+    /**
+     * A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+     */
+    routingRules?: string;
 }
 
 export interface VpcAddressExternalIpv4Address {
@@ -7971,7 +7979,7 @@ export interface VpcDefaultSecurityGroupEgress {
     /**
      * Labels to assign to this security group.
      */
-    labels?: {[key: string]: string};
+    labels: {[key: string]: string};
     port?: number;
     predefinedTarget?: string;
     protocol: string;
@@ -7994,7 +8002,7 @@ export interface VpcDefaultSecurityGroupIngress {
     /**
      * Labels to assign to this security group.
      */
-    labels?: {[key: string]: string};
+    labels: {[key: string]: string};
     port?: number;
     predefinedTarget?: string;
     protocol: string;
@@ -8028,7 +8036,7 @@ export interface VpcSecurityGroupEgress {
     /**
      * Labels to assign to this security group.
      */
-    labels?: {[key: string]: string};
+    labels: {[key: string]: string};
     port?: number;
     predefinedTarget?: string;
     protocol: string;
@@ -8051,7 +8059,7 @@ export interface VpcSecurityGroupIngress {
     /**
      * Labels to assign to this security group.
      */
-    labels?: {[key: string]: string};
+    labels: {[key: string]: string};
     port?: number;
     predefinedTarget?: string;
     protocol: string;

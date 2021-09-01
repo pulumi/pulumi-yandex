@@ -81,7 +81,7 @@ export class VpcRouteTable extends pulumi.CustomResource {
     /**
      * Labels to assign to this route table. A list of key/value pairs.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the route table. Provided by the client when the route table is created.
      */

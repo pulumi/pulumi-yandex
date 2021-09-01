@@ -14,6 +14,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Get information about a Yandex Managed PostgreSQL cluster. For more information, see
         /// [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/).
+        /// [How to connect to the DB](https://cloud.yandex.com/en-ru/docs/managed-postgresql/quickstart#connect). To connect, use port 6432. The port number is not configurable.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -53,6 +54,9 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("clusterId")]
         public string? ClusterId { get; set; }
+
+        [Input("deletionProtection")]
+        public bool? DeletionProtection { get; set; }
 
         /// <summary>
         /// Description of the PostgreSQL cluster.
@@ -94,6 +98,7 @@ namespace Pulumi.Yandex
         /// A database of the PostgreSQL cluster. The structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMdbPostgresqlClusterDatabaseResult> Databases;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// Description of the PostgreSQL cluster.
         /// </summary>
@@ -154,6 +159,8 @@ namespace Pulumi.Yandex
 
             ImmutableArray<Outputs.GetMdbPostgresqlClusterDatabaseResult> databases,
 
+            bool deletionProtection,
+
             string? description,
 
             string environment,
@@ -184,6 +191,7 @@ namespace Pulumi.Yandex
             Config = config;
             CreatedAt = createdAt;
             Databases = databases;
+            DeletionProtection = deletionProtection;
             Description = description;
             Environment = environment;
             FolderId = folderId;

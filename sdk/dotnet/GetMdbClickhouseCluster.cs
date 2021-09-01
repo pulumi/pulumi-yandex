@@ -57,6 +57,9 @@ namespace Pulumi.Yandex
         [Input("clusterId")]
         public string? ClusterId { get; set; }
 
+        [Input("deletionProtection")]
+        public bool? DeletionProtection { get; set; }
+
         /// <summary>
         /// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         /// </summary>
@@ -103,6 +106,7 @@ namespace Pulumi.Yandex
         /// A database of the ClickHouse cluster. The structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMdbClickhouseClusterDatabaseResult> Databases;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// Description of the shard group.
         /// </summary>
@@ -192,6 +196,8 @@ namespace Pulumi.Yandex
 
             ImmutableArray<Outputs.GetMdbClickhouseClusterDatabaseResult> databases,
 
+            bool deletionProtection,
+
             string description,
 
             string environment,
@@ -241,6 +247,7 @@ namespace Pulumi.Yandex
             ClusterId = clusterId;
             CreatedAt = createdAt;
             Databases = databases;
+            DeletionProtection = deletionProtection;
             Description = description;
             Environment = environment;
             FolderId = folderId;

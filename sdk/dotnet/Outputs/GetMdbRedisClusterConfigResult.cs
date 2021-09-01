@@ -38,7 +38,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly int Timeout;
         /// <summary>
-        /// Version of Redis (either 5.0 or 6.0).
+        /// Version of Redis (5.0, 6.0 or 6.2).
         /// </summary>
         public readonly string Version;
 

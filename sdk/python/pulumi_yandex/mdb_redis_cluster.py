@@ -20,6 +20,7 @@ class MdbRedisClusterArgs:
                  hosts: pulumi.Input[Sequence[pulumi.Input['MdbRedisClusterHostArgs']]],
                  network_id: pulumi.Input[str],
                  resources: pulumi.Input['MdbRedisClusterResourcesArgs'],
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -35,6 +36,7 @@ class MdbRedisClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MdbRedisClusterHostArgs']]] hosts: A host of the Redis cluster. The structure is documented below.
         :param pulumi.Input[str] network_id: ID of the network, to which the Redis cluster belongs.
         :param pulumi.Input['MdbRedisClusterResourcesArgs'] resources: Resources allocated to hosts of the Redis cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Redis cluster.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
@@ -49,6 +51,8 @@ class MdbRedisClusterArgs:
         pulumi.set(__self__, "hosts", hosts)
         pulumi.set(__self__, "network_id", network_id)
         pulumi.set(__self__, "resources", resources)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
@@ -125,6 +129,18 @@ class MdbRedisClusterArgs:
     @resources.setter
     def resources(self, value: pulumi.Input['MdbRedisClusterResourcesArgs']):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -226,6 +242,7 @@ class _MdbRedisClusterState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['MdbRedisClusterConfigArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -244,6 +261,7 @@ class _MdbRedisClusterState:
         Input properties used for looking up and filtering MdbRedisCluster resources.
         :param pulumi.Input['MdbRedisClusterConfigArgs'] config: Configuration of the Redis cluster. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the key.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Redis cluster.
         :param pulumi.Input[str] environment: Deployment environment of the Redis cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -265,6 +283,8 @@ class _MdbRedisClusterState:
             pulumi.set(__self__, "config", config)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if environment is not None:
@@ -317,6 +337,18 @@ class _MdbRedisClusterState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -493,6 +525,7 @@ class MdbRedisCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['MdbRedisClusterConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -604,6 +637,7 @@ class MdbRedisCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MdbRedisClusterConfigArgs']] config: Configuration of the Redis cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Redis cluster.
         :param pulumi.Input[str] environment: Deployment environment of the Redis cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -734,6 +768,7 @@ class MdbRedisCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['MdbRedisClusterConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -761,6 +796,7 @@ class MdbRedisCluster(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
@@ -796,6 +832,7 @@ class MdbRedisCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[pulumi.InputType['MdbRedisClusterConfigArgs']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
@@ -819,6 +856,7 @@ class MdbRedisCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MdbRedisClusterConfigArgs']] config: Configuration of the Redis cluster. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the key.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Redis cluster.
         :param pulumi.Input[str] environment: Deployment environment of the Redis cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -842,6 +880,7 @@ class MdbRedisCluster(pulumi.CustomResource):
 
         __props__.__dict__["config"] = config
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["environment"] = environment
         __props__.__dict__["folder_id"] = folder_id
@@ -873,6 +912,14 @@ class MdbRedisCluster(pulumi.CustomResource):
         Creation timestamp of the key.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

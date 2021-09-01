@@ -46,7 +46,8 @@ func GetMdbSqlserverCluster(ctx *pulumi.Context, args *GetMdbSqlserverClusterArg
 // A collection of arguments for invoking getMdbSqlserverCluster.
 type GetMdbSqlserverClusterArgs struct {
 	// The ID of the SQLServer cluster.
-	ClusterId *string `pulumi:"clusterId"`
+	ClusterId          *string `pulumi:"clusterId"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
 	// The name of the SQLServer cluster.
@@ -62,7 +63,8 @@ type GetMdbSqlserverClusterResult struct {
 	// Creation timestamp of the key.
 	CreatedAt string `pulumi:"createdAt"`
 	// A database of the SQLServer cluster. The structure is documented below.
-	Databases []GetMdbSqlserverClusterDatabase `pulumi:"databases"`
+	Databases          []GetMdbSqlserverClusterDatabase `pulumi:"databases"`
+	DeletionProtection bool                             `pulumi:"deletionProtection"`
 	// Description of the SQLServer cluster.
 	Description string `pulumi:"description"`
 	// Deployment environment of the SQLServer cluster.

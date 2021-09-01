@@ -100,7 +100,7 @@ namespace Pulumi.Yandex
     ///                     Size = 1,
     ///                 },
     ///             },
-    ///             Version = "1.14",
+    ///             Version = "1.17",
     ///         });
     ///     }
     /// 

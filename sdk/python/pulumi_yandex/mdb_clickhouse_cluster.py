@@ -25,6 +25,7 @@ class MdbClickhouseClusterArgs:
                  cloud_storage: Optional[pulumi.Input['MdbClickhouseClusterCloudStorageArgs']] = None,
                  copy_schema_on_new_hosts: Optional[pulumi.Input[bool]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterDatabaseArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  format_schemas: Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterFormatSchemaArgs']]]] = None,
@@ -51,6 +52,7 @@ class MdbClickhouseClusterArgs:
         :param pulumi.Input['MdbClickhouseClusterBackupWindowStartArgs'] backup_window_start: Time to start the daily backup, in the UTC timezone. The structure is documented below.
         :param pulumi.Input[bool] copy_schema_on_new_hosts: Whether to copy schema on new ClickHouse hosts.
         :param pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterDatabaseArgs']]] databases: A database of the ClickHouse cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the shard group.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
@@ -83,6 +85,8 @@ class MdbClickhouseClusterArgs:
             pulumi.set(__self__, "copy_schema_on_new_hosts", copy_schema_on_new_hosts)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
@@ -230,6 +234,18 @@ class MdbClickhouseClusterArgs:
     @databases.setter
     def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -421,6 +437,7 @@ class _MdbClickhouseClusterState:
                  copy_schema_on_new_hosts: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterDatabaseArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -450,6 +467,7 @@ class _MdbClickhouseClusterState:
         :param pulumi.Input[bool] copy_schema_on_new_hosts: Whether to copy schema on new ClickHouse hosts.
         :param pulumi.Input[str] created_at: Timestamp of cluster creation.
         :param pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterDatabaseArgs']]] databases: A database of the ClickHouse cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the shard group.
         :param pulumi.Input[str] environment: Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -489,6 +507,8 @@ class _MdbClickhouseClusterState:
             pulumi.set(__self__, "created_at", created_at)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if environment is not None:
@@ -622,6 +642,18 @@ class _MdbClickhouseClusterState:
     @databases.setter
     def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MdbClickhouseClusterDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -876,6 +908,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
                  cloud_storage: Optional[pulumi.Input[pulumi.InputType['MdbClickhouseClusterCloudStorageArgs']]] = None,
                  copy_schema_on_new_hosts: Optional[pulumi.Input[bool]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterDatabaseArgs']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -1286,6 +1319,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MdbClickhouseClusterClickhouseArgs']] clickhouse: Configuration of the ClickHouse subcluster. The structure is documented below.
         :param pulumi.Input[bool] copy_schema_on_new_hosts: Whether to copy schema on new ClickHouse hosts.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterDatabaseArgs']]]] databases: A database of the ClickHouse cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the shard group.
         :param pulumi.Input[str] environment: Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -1716,6 +1750,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
                  cloud_storage: Optional[pulumi.Input[pulumi.InputType['MdbClickhouseClusterCloudStorageArgs']]] = None,
                  copy_schema_on_new_hosts: Optional[pulumi.Input[bool]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterDatabaseArgs']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -1755,6 +1790,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
             __props__.__dict__["cloud_storage"] = cloud_storage
             __props__.__dict__["copy_schema_on_new_hosts"] = copy_schema_on_new_hosts
             __props__.__dict__["databases"] = databases
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
@@ -1800,6 +1836,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
             copy_schema_on_new_hosts: Optional[pulumi.Input[bool]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterDatabaseArgs']]]]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
@@ -1834,6 +1871,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] copy_schema_on_new_hosts: Whether to copy schema on new ClickHouse hosts.
         :param pulumi.Input[str] created_at: Timestamp of cluster creation.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbClickhouseClusterDatabaseArgs']]]] databases: A database of the ClickHouse cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the shard group.
         :param pulumi.Input[str] environment: Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -1869,6 +1907,7 @@ class MdbClickhouseCluster(pulumi.CustomResource):
         __props__.__dict__["copy_schema_on_new_hosts"] = copy_schema_on_new_hosts
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["databases"] = databases
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["environment"] = environment
         __props__.__dict__["folder_id"] = folder_id
@@ -1951,6 +1990,14 @@ class MdbClickhouseCluster(pulumi.CustomResource):
         A database of the ClickHouse cluster. The structure is documented below.
         """
         return pulumi.get(self, "databases")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

@@ -33,6 +33,7 @@ export function getMdbRedisCluster(args?: GetMdbRedisClusterArgs, opts?: pulumi.
     }
     return pulumi.runtime.invoke("yandex:index/getMdbRedisCluster:getMdbRedisCluster", {
         "clusterId": args.clusterId,
+        "deletionProtection": args.deletionProtection,
         "folderId": args.folderId,
         "name": args.name,
     }, opts);
@@ -46,6 +47,7 @@ export interface GetMdbRedisClusterArgs {
      * The ID of the Redis cluster.
      */
     readonly clusterId?: string;
+    readonly deletionProtection?: boolean;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
@@ -69,6 +71,7 @@ export interface GetMdbRedisClusterResult {
      * Creation timestamp of the key.
      */
     readonly createdAt: string;
+    readonly deletionProtection: boolean;
     /**
      * Description of the Redis cluster.
      */

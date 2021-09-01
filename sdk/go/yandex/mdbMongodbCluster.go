@@ -108,6 +108,9 @@ type MdbMongodbCluster struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// A database of the MongoDB cluster. The structure is documented below.
 	Databases MdbMongodbClusterDatabaseArrayOutput `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	// ***
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the MongoDB cluster.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -197,6 +200,9 @@ type mdbMongodbClusterState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// A database of the MongoDB cluster. The structure is documented below.
 	Databases []MdbMongodbClusterDatabase `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	// ***
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the MongoDB cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -237,6 +243,9 @@ type MdbMongodbClusterState struct {
 	CreatedAt pulumi.StringPtrInput
 	// A database of the MongoDB cluster. The structure is documented below.
 	Databases MdbMongodbClusterDatabaseArrayInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	// ***
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the MongoDB cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -279,6 +288,9 @@ type mdbMongodbClusterArgs struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// A database of the MongoDB cluster. The structure is documented below.
 	Databases []MdbMongodbClusterDatabase `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	// ***
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the MongoDB cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -311,6 +323,9 @@ type MdbMongodbClusterArgs struct {
 	ClusterId pulumi.StringPtrInput
 	// A database of the MongoDB cluster. The structure is documented below.
 	Databases MdbMongodbClusterDatabaseArrayInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	// ***
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the MongoDB cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.

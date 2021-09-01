@@ -110,6 +110,11 @@ export class MdbMongodbCluster extends pulumi.CustomResource {
      */
     public readonly databases!: pulumi.Output<outputs.MdbMongodbClusterDatabase[]>;
     /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     * - - -
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * Description of the MongoDB cluster.
      */
     public readonly description!: pulumi.Output<string>;
@@ -182,6 +187,7 @@ export class MdbMongodbCluster extends pulumi.CustomResource {
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["databases"] = state ? state.databases : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["environment"] = state ? state.environment : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
@@ -222,6 +228,7 @@ export class MdbMongodbCluster extends pulumi.CustomResource {
             inputs["clusterConfig"] = args ? args.clusterConfig : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["databases"] = args ? args.databases : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
@@ -265,6 +272,11 @@ export interface MdbMongodbClusterState {
      * A database of the MongoDB cluster. The structure is documented below.
      */
     readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterDatabase>[]>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     * - - -
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the MongoDB cluster.
      */
@@ -338,6 +350,11 @@ export interface MdbMongodbClusterArgs {
      * A database of the MongoDB cluster. The structure is documented below.
      */
     readonly databases: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterDatabase>[]>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     * - - -
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the MongoDB cluster.
      */

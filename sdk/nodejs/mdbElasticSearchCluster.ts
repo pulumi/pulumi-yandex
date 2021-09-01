@@ -54,6 +54,10 @@ export class MdbElasticSearchCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * Description of the Elasticsearch cluster.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -115,6 +119,7 @@ export class MdbElasticSearchCluster extends pulumi.CustomResource {
             const state = argsOrState as MdbElasticSearchClusterState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["environment"] = state ? state.environment : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
@@ -138,6 +143,7 @@ export class MdbElasticSearchCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'networkId'");
             }
             inputs["config"] = args ? args.config : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
@@ -170,6 +176,10 @@ export interface MdbElasticSearchClusterState {
      * Creation timestamp of the key.
      */
     readonly createdAt?: pulumi.Input<string>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Elasticsearch cluster.
      */
@@ -226,6 +236,10 @@ export interface MdbElasticSearchClusterArgs {
      * Configuration of the Elasticsearch cluster. The structure is documented below.
      */
     readonly config: pulumi.Input<inputs.MdbElasticSearchClusterConfig>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Elasticsearch cluster.
      */

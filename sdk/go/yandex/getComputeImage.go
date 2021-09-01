@@ -7,8 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get information about a Yandex Compute image. For more information, see
-// [the official documentation](https://cloud.yandex.com/docs/compute/concepts/image).
 func LookupComputeImage(ctx *pulumi.Context, args *LookupComputeImageArgs, opts ...pulumi.InvokeOption) (*LookupComputeImageResult, error) {
 	var rv LookupComputeImageResult
 	err := ctx.Invoke("yandex:index/getComputeImage:getComputeImage", args, &rv, opts...)

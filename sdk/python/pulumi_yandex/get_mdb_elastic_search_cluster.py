@@ -20,7 +20,7 @@ class GetMdbElasticSearchClusterResult:
     """
     A collection of values returned by getMdbElasticSearchCluster.
     """
-    def __init__(__self__, cluster_id=None, config=None, created_at=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, name=None, network_id=None, security_group_ids=None, service_account_id=None, status=None):
+    def __init__(__self__, cluster_id=None, config=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, name=None, network_id=None, security_group_ids=None, service_account_id=None, status=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -30,6 +30,9 @@ class GetMdbElasticSearchClusterResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -87,6 +90,11 @@ class GetMdbElasticSearchClusterResult:
         Creation timestamp of the key.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -188,6 +196,7 @@ class AwaitableGetMdbElasticSearchClusterResult(GetMdbElasticSearchClusterResult
             cluster_id=self.cluster_id,
             config=self.config,
             created_at=self.created_at,
+            deletion_protection=self.deletion_protection,
             description=self.description,
             environment=self.environment,
             folder_id=self.folder_id,
@@ -203,6 +212,7 @@ class AwaitableGetMdbElasticSearchClusterResult(GetMdbElasticSearchClusterResult
 
 
 def get_mdb_elastic_search_cluster(cluster_id: Optional[str] = None,
+                                   deletion_protection: Optional[bool] = None,
                                    description: Optional[str] = None,
                                    folder_id: Optional[str] = None,
                                    labels: Optional[Mapping[str, str]] = None,
@@ -235,6 +245,7 @@ def get_mdb_elastic_search_cluster(cluster_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
+    __args__['deletionProtection'] = deletion_protection
     __args__['description'] = description
     __args__['folderId'] = folder_id
     __args__['labels'] = labels
@@ -251,6 +262,7 @@ def get_mdb_elastic_search_cluster(cluster_id: Optional[str] = None,
         cluster_id=__ret__.cluster_id,
         config=__ret__.config,
         created_at=__ret__.created_at,
+        deletion_protection=__ret__.deletion_protection,
         description=__ret__.description,
         environment=__ret__.environment,
         folder_id=__ret__.folder_id,

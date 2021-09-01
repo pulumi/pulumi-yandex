@@ -1302,12 +1302,16 @@ github.com/yandex-cloud/go-genproto v0.0.0-20210326132454-24349c492ce9/go.mod h1
 github.com/yandex-cloud/go-genproto v0.0.0-20210517152439-84c9ad4d8b5f/go.mod h1:HEUYX/p8966tMUHHT+TsS0hF/Ca/NYwqprC5WXSDMfE=
 github.com/yandex-cloud/go-genproto v0.0.0-20210531102557-51d14549e0ae h1:OkcWwnqsP8n4LL9U0t8pin77LfBecWAiXUFZ63dtavo=
 github.com/yandex-cloud/go-genproto v0.0.0-20210531102557-51d14549e0ae/go.mod h1:HEUYX/p8966tMUHHT+TsS0hF/Ca/NYwqprC5WXSDMfE=
+github.com/yandex-cloud/go-genproto v0.0.0-20210816122645-072f0f433ffb h1:Jyn1xHgWAOsTmOQahd90v2OaJvNYkbhfIeyRwjGgU8A=
+github.com/yandex-cloud/go-genproto v0.0.0-20210816122645-072f0f433ffb/go.mod h1:HEUYX/p8966tMUHHT+TsS0hF/Ca/NYwqprC5WXSDMfE=
 github.com/yandex-cloud/go-sdk v0.0.0-20210211095836-1e646debd48a h1:casG0V+N2x+5T7fRLOnVHHQPTRbhG7/FQjgZkRbF3QM=
 github.com/yandex-cloud/go-sdk v0.0.0-20210211095836-1e646debd48a/go.mod h1:+mLIGBD1whVI3d4LwqXZwv6UPFCfDuAscTfdq85Ix6Y=
 github.com/yandex-cloud/go-sdk v0.0.0-20210326140609-dcebefcc0553 h1:ECPCoEcMCvcSXQJipXT88YLdKt+DN4L4sK/8uoDyN5U=
 github.com/yandex-cloud/go-sdk v0.0.0-20210326140609-dcebefcc0553/go.mod h1:QNUA7UefuK8SvFNbidEtE33sYC3Ub48ZOVhcpGq1ub4=
 github.com/yandex-cloud/go-sdk v0.0.0-20210517154707-ca282b96279e h1:Hg7VjYH4dekgjkuoYehD7gHRcSyQlPhHquECFHBjhG4=
 github.com/yandex-cloud/go-sdk v0.0.0-20210517154707-ca282b96279e/go.mod h1:SfHY/w/sP/zY/51XVAa6fEqi+eIvfIN9RbsL+6jJF/8=
+github.com/yandex-cloud/go-sdk v0.0.0-20210816123146-aedab61cdc84 h1:n0hAX3Qq3HNzIQpJ2B8L+snKCAIbiFfFZJsfRfQrlvg=
+github.com/yandex-cloud/go-sdk v0.0.0-20210816123146-aedab61cdc84/go.mod h1:N6tFNDvCQtHpKp0T42C5IhKyq5eCXC6eL3PqkwGzVwY=
 github.com/yandex-cloud/terraform-provider-yandex v0.51.1 h1:iTQwFmHYwhS8//mkhICEeULngkPb5LC4v/KJxTjufLg=
 github.com/yandex-cloud/terraform-provider-yandex v0.51.1/go.mod h1:ToMPnDXhz6+d9CDPuTpqeHx8Ww0FqEa0R8zIAQfbxYI=
 github.com/yandex-cloud/terraform-provider-yandex v0.56.0 h1:KG2TOLaZ4R/X2GI0El6lViKqE94k8Lu5G6iTKz+WkCc=
@@ -1322,6 +1326,8 @@ github.com/yandex-cloud/terraform-provider-yandex v0.60.0 h1:As9J+eQjtDT6toCqfc1
 github.com/yandex-cloud/terraform-provider-yandex v0.60.0/go.mod h1:xKcJcI39bR2aIFjchaPQoHYp/N0Ta97uWKDoT9CFS5g=
 github.com/yandex-cloud/terraform-provider-yandex v0.61.0 h1:hXKqWgbuZGTv0ERVXF7pYoRiVK5y2XpHFpDmrbwY6Zg=
 github.com/yandex-cloud/terraform-provider-yandex v0.61.0/go.mod h1:nqZRAlRVRrFfHnLF6enraGZTDL+6RYdY+eBndULiCbo=
+github.com/yandex-cloud/terraform-provider-yandex v0.62.0 h1:1DAZhF9rJOUjF2O9J6cvqHknq9dO1n1q0OJmI3rfF6w=
+github.com/yandex-cloud/terraform-provider-yandex v0.62.0/go.mod h1:x3S5cDz3k6s96DdZ+5C7giYC0H36EBL1BWea9Vh97OM=
 github.com/yudai/gojsondiff v1.0.0 h1:27cbfqXLVEJ1o8I6v3y9lg8Ydm53EKqHXAOMxEGlCOA=
 github.com/yudai/gojsondiff v1.0.0/go.mod h1:AY32+k2cwILAkW1fbgxQ5mUmMiZFgLIV+FBNExI05xg=
 github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 h1:BHyfKlQyqbsFN5p3IfnEUduWvb9is428/nNb5L3U01M=

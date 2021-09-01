@@ -596,7 +596,7 @@ class KubernetesNodeGroup(pulumi.CustomResource):
                     size=1,
                 ),
             ),
-            version="1.14")
+            version="1.17")
         ```
 
         ## Import
@@ -692,7 +692,7 @@ class KubernetesNodeGroup(pulumi.CustomResource):
                     size=1,
                 ),
             ),
-            version="1.14")
+            version="1.17")
         ```
 
         ## Import

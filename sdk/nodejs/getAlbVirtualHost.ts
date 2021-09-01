@@ -16,7 +16,8 @@ import * as utilities from "./utilities";
  * import * as yandex from "@pulumi/yandex";
  *
  * const my-vh-data = yandex.getAlbVirtualHost({
- *     virtualHostId: yandex_alb_virtual_host["my-vh"].id,
+ *     name: yandex_alb_virtual_host["my-vh"].name,
+ *     httpRouterId: yandex_alb_virtual_host["my-router"].id,
  * });
  * ```
  *
@@ -51,7 +52,8 @@ export interface GetAlbVirtualHostArgs {
      */
     readonly name?: string;
     /**
-     * The ID of a specific Virtual Host.
+     * The ID of a specific Virtual Host. Virtual Host ID is concatenation of HTTP Router ID
+     * and Virtual Host name with `/` symbol between them. For Example, "http_router_id/vhost_name".
      */
     readonly virtualHostId?: string;
 }

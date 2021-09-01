@@ -100,6 +100,8 @@ from .mdb_mysql_cluster import *
 from .mdb_redis_cluster import *
 from .mdb_sql_server_cluster import *
 from .message_queue import *
+from .organization_manager_organization_iam_binding import *
+from .organization_manager_organization_iam_member import *
 from .provider import *
 from .resourcemanager_cloud_iam_binding import *
 from .resourcemanager_cloud_iam_member import *
@@ -232,6 +234,10 @@ def _register_module():
                 return MdbSqlServerCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/messageQueue:MessageQueue":
                 return MessageQueue(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/organizationManagerOrganizationIamBinding:OrganizationManagerOrganizationIamBinding":
+                return OrganizationManagerOrganizationIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/organizationManagerOrganizationIamMember:OrganizationManagerOrganizationIamMember":
+                return OrganizationManagerOrganizationIamMember(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/resourcemanagerCloudIamBinding:ResourcemanagerCloudIamBinding":
                 return ResourcemanagerCloudIamBinding(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/resourcemanagerCloudIamMember:ResourcemanagerCloudIamMember":
@@ -318,6 +324,8 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/mdbRedisCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbSqlServerCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/messageQueue", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/organizationManagerOrganizationIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/organizationManagerOrganizationIamMember", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/resourcemanagerCloudIamBinding", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/resourcemanagerCloudIamMember", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/resourcemanagerFolder", _module_instance)

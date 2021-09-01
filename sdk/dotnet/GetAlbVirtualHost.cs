@@ -29,7 +29,8 @@ namespace Pulumi.Yandex
         ///     {
         ///         var my_vh_data = Output.Create(Yandex.GetAlbVirtualHost.InvokeAsync(new Yandex.GetAlbVirtualHostArgs
         ///         {
-        ///             VirtualHostId = yandex_alb_virtual_host.My_vh.Id,
+        ///             Name = yandex_alb_virtual_host.My_vh.Name,
+        ///             HttpRouterId = yandex_alb_virtual_host.My_router.Id,
         ///         }));
         ///     }
         /// 
@@ -60,7 +61,8 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         /// <summary>
-        /// The ID of a specific Virtual Host.
+        /// The ID of a specific Virtual Host. Virtual Host ID is concatenation of HTTP Router ID
+        /// and Virtual Host name with `/` symbol between them. For Example, "http_router_id/vhost_name".
         /// </summary>
         [Input("virtualHostId")]
         public string? VirtualHostId { get; set; }

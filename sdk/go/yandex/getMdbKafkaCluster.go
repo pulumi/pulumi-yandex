@@ -48,7 +48,8 @@ type LookupMdbKafkaClusterArgs struct {
 	// The ID of the Kafka cluster.
 	ClusterId *string `pulumi:"clusterId"`
 	// Configuration of the Kafka cluster. The structure is documented below.
-	Config *GetMdbKafkaClusterConfig `pulumi:"config"`
+	Config             *GetMdbKafkaClusterConfig `pulumi:"config"`
+	DeletionProtection *bool                     `pulumi:"deletionProtection"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
 	// The name of the Kafka cluster.
@@ -66,7 +67,8 @@ type LookupMdbKafkaClusterResult struct {
 	// Configuration of the Kafka cluster. The structure is documented below.
 	Config *GetMdbKafkaClusterConfig `pulumi:"config"`
 	// Creation timestamp of the key.
-	CreatedAt string `pulumi:"createdAt"`
+	CreatedAt          string `pulumi:"createdAt"`
+	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// Description of the Kafka cluster.
 	Description string `pulumi:"description"`
 	// Deployment environment of the Kafka cluster.

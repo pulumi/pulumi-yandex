@@ -48,7 +48,8 @@ type LookupMdbMysqlClusterArgs struct {
 	// Access policy to the MySQL cluster. The structure is documented below.
 	Access *GetMdbMysqlClusterAccess `pulumi:"access"`
 	// The ID of the MySQL cluster.
-	ClusterId *string `pulumi:"clusterId"`
+	ClusterId          *string `pulumi:"clusterId"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Description of the MySQL cluster.
 	Description *string `pulumi:"description"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
@@ -70,7 +71,8 @@ type LookupMdbMysqlClusterResult struct {
 	// Creation timestamp of the key.
 	CreatedAt string `pulumi:"createdAt"`
 	// A database of the MySQL cluster. The structure is documented below.
-	Databases []GetMdbMysqlClusterDatabase `pulumi:"databases"`
+	Databases          []GetMdbMysqlClusterDatabase `pulumi:"databases"`
+	DeletionProtection bool                         `pulumi:"deletionProtection"`
 	// Description of the MySQL cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the MySQL cluster.

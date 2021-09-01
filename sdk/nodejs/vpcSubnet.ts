@@ -81,7 +81,7 @@ export class VpcSubnet extends pulumi.CustomResource {
     /**
      * Labels to assign to this subnet. A list of key/value pairs.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the subnet. Provided by the client when the subnet is created.
      */

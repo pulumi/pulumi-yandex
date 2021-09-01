@@ -24,6 +24,18 @@ namespace Pulumi.Yandex.Inputs
         [Input("indexDocument")]
         public Input<string>? IndexDocument { get; set; }
 
+        /// <summary>
+        /// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+        /// </summary>
+        [Input("redirectAllRequestsTo")]
+        public Input<string>? RedirectAllRequestsTo { get; set; }
+
+        /// <summary>
+        /// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+        /// </summary>
+        [Input("routingRules")]
+        public Input<string>? RoutingRules { get; set; }
+
         public StorageBucketWebsiteArgs()
         {
         }

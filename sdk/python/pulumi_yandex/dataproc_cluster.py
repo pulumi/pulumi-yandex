@@ -18,6 +18,7 @@ class DataprocClusterArgs:
                  cluster_config: pulumi.Input['DataprocClusterClusterConfigArgs'],
                  service_account_id: pulumi.Input[str],
                  bucket: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -31,6 +32,7 @@ class DataprocClusterArgs:
         :param pulumi.Input['DataprocClusterClusterConfigArgs'] cluster_config: Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
         :param pulumi.Input[str] service_account_id: Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
         :param pulumi.Input[str] bucket: Name of the Object Storage bucket to use for Data Proc jobs. Data Proc Agent saves output of job driver's process to specified bucket. In order for this to work service account (specified by the `service_account_id` argument) should be given permission to create objects within this bucket.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Data Proc cluster.
         :param pulumi.Input[str] folder_id: ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of host group IDs to place VMs of the cluster on.
@@ -44,6 +46,8 @@ class DataprocClusterArgs:
         pulumi.set(__self__, "service_account_id", service_account_id)
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
@@ -96,6 +100,18 @@ class DataprocClusterArgs:
     @bucket.setter
     def bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -200,6 +216,7 @@ class _DataprocClusterState:
                  bucket: Optional[pulumi.Input[str]] = None,
                  cluster_config: Optional[pulumi.Input['DataprocClusterClusterConfigArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -215,6 +232,7 @@ class _DataprocClusterState:
         :param pulumi.Input['DataprocClusterClusterConfigArgs'] cluster_config: Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
         :param pulumi.Input[str] created_at: (Computed) The Data Proc cluster creation timestamp.
                * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Data Proc cluster.
         :param pulumi.Input[str] folder_id: ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of host group IDs to place VMs of the cluster on.
@@ -231,6 +249,8 @@ class _DataprocClusterState:
             pulumi.set(__self__, "cluster_config", cluster_config)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
@@ -286,6 +306,18 @@ class _DataprocClusterState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -403,6 +435,7 @@ class DataprocCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  cluster_config: Optional[pulumi.Input[pulumi.InputType['DataprocClusterClusterConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -537,6 +570,7 @@ class DataprocCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: Name of the Object Storage bucket to use for Data Proc jobs. Data Proc Agent saves output of job driver's process to specified bucket. In order for this to work service account (specified by the `service_account_id` argument) should be given permission to create objects within this bucket.
         :param pulumi.Input[pulumi.InputType['DataprocClusterClusterConfigArgs']] cluster_config: Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Data Proc cluster.
         :param pulumi.Input[str] folder_id: ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of host group IDs to place VMs of the cluster on.
@@ -690,6 +724,7 @@ class DataprocCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  cluster_config: Optional[pulumi.Input[pulumi.InputType['DataprocClusterClusterConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -715,6 +750,7 @@ class DataprocCluster(pulumi.CustomResource):
             if cluster_config is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_config'")
             __props__.__dict__["cluster_config"] = cluster_config
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["host_group_ids"] = host_group_ids
@@ -740,6 +776,7 @@ class DataprocCluster(pulumi.CustomResource):
             bucket: Optional[pulumi.Input[str]] = None,
             cluster_config: Optional[pulumi.Input[pulumi.InputType['DataprocClusterClusterConfigArgs']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -760,6 +797,7 @@ class DataprocCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DataprocClusterClusterConfigArgs']] cluster_config: Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
         :param pulumi.Input[str] created_at: (Computed) The Data Proc cluster creation timestamp.
                * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Data Proc cluster.
         :param pulumi.Input[str] folder_id: ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of host group IDs to place VMs of the cluster on.
@@ -777,6 +815,7 @@ class DataprocCluster(pulumi.CustomResource):
         __props__.__dict__["bucket"] = bucket
         __props__.__dict__["cluster_config"] = cluster_config
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["host_group_ids"] = host_group_ids
@@ -812,6 +851,14 @@ class DataprocCluster(pulumi.CustomResource):
         * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

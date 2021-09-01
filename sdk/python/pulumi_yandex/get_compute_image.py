@@ -183,9 +183,7 @@ def get_compute_image(family: Optional[str] = None,
                       name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputeImageResult:
     """
-    Get information about a Yandex Compute image. For more information, see
-    [the official documentation](https://cloud.yandex.com/docs/compute/concepts/image).
-
+    Use this data source to access information about an existing resource.
 
     :param str family: The family name of an image. Used to search the latest image in a family.
     :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.

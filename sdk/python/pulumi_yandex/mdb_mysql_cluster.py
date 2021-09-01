@@ -25,6 +25,7 @@ class MdbMysqlClusterArgs:
                  access: Optional[pulumi.Input['MdbMysqlClusterAccessArgs']] = None,
                  allow_regeneration_host: Optional[pulumi.Input[bool]] = None,
                  backup_window_start: Optional[pulumi.Input['MdbMysqlClusterBackupWindowStartArgs']] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -45,6 +46,7 @@ class MdbMysqlClusterArgs:
         :param pulumi.Input['MdbMysqlClusterAccessArgs'] access: Access policy to the MySQL cluster. The structure is documented below.
         :param pulumi.Input[bool] allow_regeneration_host: Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
         :param pulumi.Input['MdbMysqlClusterBackupWindowStartArgs'] backup_window_start: Time to start the daily backup, in the UTC. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the MySQL cluster.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
@@ -68,6 +70,8 @@ class MdbMysqlClusterArgs:
             pulumi.set(__self__, "allow_regeneration_host", allow_regeneration_host)
         if backup_window_start is not None:
             pulumi.set(__self__, "backup_window_start", backup_window_start)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
@@ -206,6 +210,18 @@ class MdbMysqlClusterArgs:
         pulumi.set(self, "backup_window_start", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -311,6 +327,7 @@ class _MdbMysqlClusterState:
                  backup_window_start: Optional[pulumi.Input['MdbMysqlClusterBackupWindowStartArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['MdbMysqlClusterDatabaseArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -334,6 +351,7 @@ class _MdbMysqlClusterState:
         :param pulumi.Input['MdbMysqlClusterBackupWindowStartArgs'] backup_window_start: Time to start the daily backup, in the UTC. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['MdbMysqlClusterDatabaseArgs']]] databases: A database of the MySQL cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the MySQL cluster.
         :param pulumi.Input[str] environment: Deployment environment of the MySQL cluster.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -362,6 +380,8 @@ class _MdbMysqlClusterState:
             pulumi.set(__self__, "created_at", created_at)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if environment is not None:
@@ -454,6 +474,18 @@ class _MdbMysqlClusterState:
     @databases.setter
     def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MdbMysqlClusterDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -658,6 +690,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
                  allow_regeneration_host: Optional[pulumi.Input[bool]] = None,
                  backup_window_start: Optional[pulumi.Input[pulumi.InputType['MdbMysqlClusterBackupWindowStartArgs']]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterDatabaseArgs']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -1136,6 +1169,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_regeneration_host: Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterBackupWindowStartArgs']] backup_window_start: Time to start the daily backup, in the UTC. The structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterDatabaseArgs']]]] databases: A database of the MySQL cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the MySQL cluster.
         :param pulumi.Input[str] environment: Deployment environment of the MySQL cluster.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -1634,6 +1668,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
                  allow_regeneration_host: Optional[pulumi.Input[bool]] = None,
                  backup_window_start: Optional[pulumi.Input[pulumi.InputType['MdbMysqlClusterBackupWindowStartArgs']]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterDatabaseArgs']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -1666,6 +1701,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
             if databases is None and not opts.urn:
                 raise TypeError("Missing required property 'databases'")
             __props__.__dict__["databases"] = databases
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
@@ -1710,6 +1746,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
             backup_window_start: Optional[pulumi.Input[pulumi.InputType['MdbMysqlClusterBackupWindowStartArgs']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterDatabaseArgs']]]]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
@@ -1738,6 +1775,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterBackupWindowStartArgs']] backup_window_start: Time to start the daily backup, in the UTC. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterDatabaseArgs']]]] databases: A database of the MySQL cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the MySQL cluster.
         :param pulumi.Input[str] environment: Deployment environment of the MySQL cluster.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -1765,6 +1803,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
         __props__.__dict__["backup_window_start"] = backup_window_start
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["databases"] = databases
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["environment"] = environment
         __props__.__dict__["folder_id"] = folder_id
@@ -1822,6 +1861,14 @@ class MdbMysqlCluster(pulumi.CustomResource):
         A database of the MySQL cluster. The structure is documented below.
         """
         return pulumi.get(self, "databases")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

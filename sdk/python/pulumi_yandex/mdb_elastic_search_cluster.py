@@ -18,6 +18,7 @@ class MdbElasticSearchClusterArgs:
                  config: pulumi.Input['MdbElasticSearchClusterConfigArgs'],
                  environment: pulumi.Input[str],
                  network_id: pulumi.Input[str],
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['MdbElasticSearchClusterHostArgs']]]] = None,
@@ -30,6 +31,7 @@ class MdbElasticSearchClusterArgs:
         :param pulumi.Input['MdbElasticSearchClusterConfigArgs'] config: Configuration of the Elasticsearch cluster. The structure is documented below.
         :param pulumi.Input[str] environment: Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] network_id: ID of the network, to which the Elasticsearch cluster belongs.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Elasticsearch cluster.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input['MdbElasticSearchClusterHostArgs']]] hosts: A host of the Elasticsearch cluster. The structure is documented below.
@@ -41,6 +43,8 @@ class MdbElasticSearchClusterArgs:
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "network_id", network_id)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
@@ -91,6 +95,18 @@ class MdbElasticSearchClusterArgs:
     @network_id.setter
     def network_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "network_id", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -182,6 +198,7 @@ class _MdbElasticSearchClusterState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['MdbElasticSearchClusterConfigArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -197,6 +214,7 @@ class _MdbElasticSearchClusterState:
         Input properties used for looking up and filtering MdbElasticSearchCluster resources.
         :param pulumi.Input['MdbElasticSearchClusterConfigArgs'] config: Configuration of the Elasticsearch cluster. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the key.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Elasticsearch cluster.
         :param pulumi.Input[str] environment: Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
@@ -215,6 +233,8 @@ class _MdbElasticSearchClusterState:
             pulumi.set(__self__, "config", config)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if environment is not None:
@@ -261,6 +281,18 @@ class _MdbElasticSearchClusterState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -403,6 +435,7 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['MdbElasticSearchClusterConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -428,6 +461,7 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MdbElasticSearchClusterConfigArgs']] config: Configuration of the Elasticsearch cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Elasticsearch cluster.
         :param pulumi.Input[str] environment: Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
@@ -472,6 +506,7 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['MdbElasticSearchClusterConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -496,6 +531,7 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
@@ -524,6 +560,7 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[pulumi.InputType['MdbElasticSearchClusterConfigArgs']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
@@ -544,6 +581,7 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MdbElasticSearchClusterConfigArgs']] config: Configuration of the Elasticsearch cluster. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the key.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Elasticsearch cluster.
         :param pulumi.Input[str] environment: Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
@@ -564,6 +602,7 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
 
         __props__.__dict__["config"] = config
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["environment"] = environment
         __props__.__dict__["folder_id"] = folder_id
@@ -592,6 +631,14 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
         Creation timestamp of the key.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

@@ -41,6 +41,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
@@ -53,6 +55,7 @@ import (
 // 			Website: &yandex.StorageBucketWebsiteArgs{
 // 				ErrorDocument: pulumi.String("error.html"),
 // 				IndexDocument: pulumi.String("index.html"),
+// 				RoutingRules:  pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v", "[{\n", "    \"Condition\": {\n", "        \"KeyPrefixEquals\": \"docs/\"\n", "    },\n", "    \"Redirect\": {\n", "        \"ReplaceKeyPrefixWith\": \"documents/\"\n", "    }\n", "}]\n", "\n")),
 // 			},
 // 		})
 // 		if err != nil {

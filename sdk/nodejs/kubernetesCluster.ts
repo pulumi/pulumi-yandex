@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *         },
  *         publicIp: true,
  *         securityGroupIds: [yandex_vpc_security_group_security_group_name.id],
- *         version: "1.15",
+ *         version: "1.17",
  *         zonal: {
  *             subnetId: yandex_vpc_subnet_subnet_resource_name.id,
  *             zone: yandex_vpc_subnet_subnet_resource_name.zone,
