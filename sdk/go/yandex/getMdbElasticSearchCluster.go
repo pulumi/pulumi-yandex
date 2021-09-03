@@ -46,7 +46,8 @@ func LookupMdbElasticSearchCluster(ctx *pulumi.Context, args *LookupMdbElasticSe
 // A collection of arguments for invoking getMdbElasticSearchCluster.
 type LookupMdbElasticSearchClusterArgs struct {
 	// The ID of the Elasticsearch cluster.
-	ClusterId *string `pulumi:"clusterId"`
+	ClusterId          *string `pulumi:"clusterId"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Description of the Elasticsearch cluster.
 	Description *string `pulumi:"description"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
@@ -67,7 +68,8 @@ type LookupMdbElasticSearchClusterResult struct {
 	// Configuration of the Elasticsearch cluster. The structure is documented below.
 	Config GetMdbElasticSearchClusterConfig `pulumi:"config"`
 	// Creation timestamp of the key.
-	CreatedAt string `pulumi:"createdAt"`
+	CreatedAt          string `pulumi:"createdAt"`
+	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// Description of the Elasticsearch cluster.
 	Description string `pulumi:"description"`
 	// Deployment environment of the Elasticsearch cluster.

@@ -76,7 +76,7 @@ namespace Pulumi.Yandex
         /// Labels to apply to this network. A list of key/value pairs.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Name of the network. Provided by the client when the network is created.

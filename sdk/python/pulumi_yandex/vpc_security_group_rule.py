@@ -602,7 +602,7 @@ class VpcSecurityGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels to assign to this rule.
         """

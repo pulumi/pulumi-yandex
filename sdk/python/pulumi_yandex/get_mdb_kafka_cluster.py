@@ -21,7 +21,7 @@ class GetMdbKafkaClusterResult:
     """
     A collection of values returned by getMdbKafkaCluster.
     """
-    def __init__(__self__, cluster_id=None, config=None, created_at=None, description=None, environment=None, folder_id=None, health=None, host_group_ids=None, hosts=None, id=None, labels=None, name=None, network_id=None, security_group_ids=None, status=None, subnet_ids=None, topics=None, users=None):
+    def __init__(__self__, cluster_id=None, config=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, host_group_ids=None, hosts=None, id=None, labels=None, name=None, network_id=None, security_group_ids=None, status=None, subnet_ids=None, topics=None, users=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -31,6 +31,9 @@ class GetMdbKafkaClusterResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -97,6 +100,11 @@ class GetMdbKafkaClusterResult:
         Creation timestamp of the key.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -222,6 +230,7 @@ class AwaitableGetMdbKafkaClusterResult(GetMdbKafkaClusterResult):
             cluster_id=self.cluster_id,
             config=self.config,
             created_at=self.created_at,
+            deletion_protection=self.deletion_protection,
             description=self.description,
             environment=self.environment,
             folder_id=self.folder_id,
@@ -241,6 +250,7 @@ class AwaitableGetMdbKafkaClusterResult(GetMdbKafkaClusterResult):
 
 def get_mdb_kafka_cluster(cluster_id: Optional[str] = None,
                           config: Optional[pulumi.InputType['GetMdbKafkaClusterConfigArgs']] = None,
+                          deletion_protection: Optional[bool] = None,
                           folder_id: Optional[str] = None,
                           name: Optional[str] = None,
                           subnet_ids: Optional[Sequence[str]] = None,
@@ -272,6 +282,7 @@ def get_mdb_kafka_cluster(cluster_id: Optional[str] = None,
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['config'] = config
+    __args__['deletionProtection'] = deletion_protection
     __args__['folderId'] = folder_id
     __args__['name'] = name
     __args__['subnetIds'] = subnet_ids
@@ -287,6 +298,7 @@ def get_mdb_kafka_cluster(cluster_id: Optional[str] = None,
         cluster_id=__ret__.cluster_id,
         config=__ret__.config,
         created_at=__ret__.created_at,
+        deletion_protection=__ret__.deletion_protection,
         description=__ret__.description,
         environment=__ret__.environment,
         folder_id=__ret__.folder_id,

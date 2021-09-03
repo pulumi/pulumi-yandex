@@ -34,6 +34,7 @@ export function getMdbKafkaCluster(args?: GetMdbKafkaClusterArgs, opts?: pulumi.
     return pulumi.runtime.invoke("yandex:index/getMdbKafkaCluster:getMdbKafkaCluster", {
         "clusterId": args.clusterId,
         "config": args.config,
+        "deletionProtection": args.deletionProtection,
         "folderId": args.folderId,
         "name": args.name,
         "subnetIds": args.subnetIds,
@@ -54,6 +55,7 @@ export interface GetMdbKafkaClusterArgs {
      * Configuration of the Kafka cluster. The structure is documented below.
      */
     readonly config?: inputs.GetMdbKafkaClusterConfig;
+    readonly deletionProtection?: boolean;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
@@ -86,6 +88,7 @@ export interface GetMdbKafkaClusterResult {
      * Creation timestamp of the key.
      */
     readonly createdAt: string;
+    readonly deletionProtection: boolean;
     /**
      * Description of the Kafka cluster.
      */

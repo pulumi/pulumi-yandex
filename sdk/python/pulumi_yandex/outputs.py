@@ -9311,10 +9311,10 @@ class MdbClickhouseClusterAccess(dict):
                  serverless: Optional[bool] = None,
                  web_sql: Optional[bool] = None):
         """
-        :param bool data_lens: Allow access for Web SQL. Can be either `true` or `false`.
+        :param bool data_lens: Allow access for DataLens. Can be either `true` or `false`.
         :param bool metrika: Allow access for Yandex.Metrika. Can be either `true` or `false`.
         :param bool serverless: Allow access for Serverless. Can be either `true` or `false`.
-        :param bool web_sql: Allow access for DataLens. Can be either `true` or `false`.
+        :param bool web_sql: Allow access for Web SQL. Can be either `true` or `false`.
         """
         if data_lens is not None:
             pulumi.set(__self__, "data_lens", data_lens)
@@ -9329,7 +9329,7 @@ class MdbClickhouseClusterAccess(dict):
     @pulumi.getter(name="dataLens")
     def data_lens(self) -> Optional[bool]:
         """
-        Allow access for Web SQL. Can be either `true` or `false`.
+        Allow access for DataLens. Can be either `true` or `false`.
         """
         return pulumi.get(self, "data_lens")
 
@@ -9353,7 +9353,7 @@ class MdbClickhouseClusterAccess(dict):
     @pulumi.getter(name="webSql")
     def web_sql(self) -> Optional[bool]:
         """
-        Allow access for DataLens. Can be either `true` or `false`.
+        Allow access for Web SQL. Can be either `true` or `false`.
         """
         return pulumi.get(self, "web_sql")
 
@@ -14552,7 +14552,7 @@ class MdbRedisClusterConfig(dict):
                  timeout: Optional[int] = None):
         """
         :param str password: Password for the Redis cluster.
-        :param str version: Version of Redis (either 5.0 or 6.0).
+        :param str version: Version of Redis (5.0, 6.0 or 6.2).
         :param int databases: Number of databases (changing requires redis-server restart).
         :param str maxmemory_policy: Redis key eviction policy for a dataset that reaches maximum memory.
                Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
@@ -14588,7 +14588,7 @@ class MdbRedisClusterConfig(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Version of Redis (either 5.0 or 6.0).
+        Version of Redis (5.0, 6.0 or 6.2).
         """
         return pulumi.get(self, "version")
 
@@ -15705,6 +15705,10 @@ class StorageBucketWebsite(dict):
             suggest = "error_document"
         elif key == "indexDocument":
             suggest = "index_document"
+        elif key == "redirectAllRequestsTo":
+            suggest = "redirect_all_requests_to"
+        elif key == "routingRules":
+            suggest = "routing_rules"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StorageBucketWebsite. Access the value via the '{suggest}' property getter instead.")
@@ -15719,15 +15723,23 @@ class StorageBucketWebsite(dict):
 
     def __init__(__self__, *,
                  error_document: Optional[str] = None,
-                 index_document: Optional[str] = None):
+                 index_document: Optional[str] = None,
+                 redirect_all_requests_to: Optional[str] = None,
+                 routing_rules: Optional[str] = None):
         """
         :param str error_document: An absolute path to the document to return in case of a 4XX error.
         :param str index_document: Storage returns this index document when requests are made to the root domain or any of the subfolders.
+        :param str redirect_all_requests_to: A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+        :param str routing_rules: A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
         """
         if error_document is not None:
             pulumi.set(__self__, "error_document", error_document)
         if index_document is not None:
             pulumi.set(__self__, "index_document", index_document)
+        if redirect_all_requests_to is not None:
+            pulumi.set(__self__, "redirect_all_requests_to", redirect_all_requests_to)
+        if routing_rules is not None:
+            pulumi.set(__self__, "routing_rules", routing_rules)
 
     @property
     @pulumi.getter(name="errorDocument")
@@ -15744,6 +15756,22 @@ class StorageBucketWebsite(dict):
         Storage returns this index document when requests are made to the root domain or any of the subfolders.
         """
         return pulumi.get(self, "index_document")
+
+    @property
+    @pulumi.getter(name="redirectAllRequestsTo")
+    def redirect_all_requests_to(self) -> Optional[str]:
+        """
+        A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+        """
+        return pulumi.get(self, "redirect_all_requests_to")
+
+    @property
+    @pulumi.getter(name="routingRules")
+    def routing_rules(self) -> Optional[str]:
+        """
+        A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+        """
+        return pulumi.get(self, "routing_rules")
 
 
 @pulumi.output_type
@@ -27099,7 +27127,7 @@ class GetMdbRedisClusterConfigResult(dict):
         :param int slowlog_log_slower_than: Log slow queries below this number in microseconds.
         :param int slowlog_max_len: Slow queries log length.
         :param int timeout: Close the connection after a client is idle for N seconds.
-        :param str version: Version of Redis (either 5.0 or 6.0).
+        :param str version: Version of Redis (5.0, 6.0 or 6.2).
         """
         pulumi.set(__self__, "databases", databases)
         pulumi.set(__self__, "maxmemory_policy", maxmemory_policy)
@@ -27161,7 +27189,7 @@ class GetMdbRedisClusterConfigResult(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Version of Redis (either 5.0 or 6.0).
+        Version of Redis (5.0, 6.0 or 6.2).
         """
         return pulumi.get(self, "version")
 

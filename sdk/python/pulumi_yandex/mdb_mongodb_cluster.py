@@ -23,6 +23,7 @@ class MdbMongodbClusterArgs:
                  resources: pulumi.Input['MdbMongodbClusterResourcesArgs'],
                  users: pulumi.Input[Sequence[pulumi.Input['MdbMongodbClusterUserArgs']]],
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -39,6 +40,8 @@ class MdbMongodbClusterArgs:
         :param pulumi.Input['MdbMongodbClusterResourcesArgs'] resources: Resources allocated to hosts of the MongoDB cluster. The structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['MdbMongodbClusterUserArgs']]] users: A user of the MongoDB cluster. The structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the cluster.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
+               - - -
         :param pulumi.Input[str] description: Description of the MongoDB cluster.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
@@ -55,6 +58,8 @@ class MdbMongodbClusterArgs:
         pulumi.set(__self__, "users", users)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
@@ -165,6 +170,19 @@ class MdbMongodbClusterArgs:
         pulumi.set(self, "cluster_id", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        - - -
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -242,6 +260,7 @@ class _MdbMongodbClusterState:
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['MdbMongodbClusterDatabaseArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -262,6 +281,8 @@ class _MdbMongodbClusterState:
         :param pulumi.Input[str] cluster_id: The ID of the cluster.
         :param pulumi.Input[str] created_at: Creation timestamp of the key.
         :param pulumi.Input[Sequence[pulumi.Input['MdbMongodbClusterDatabaseArgs']]] databases: A database of the MongoDB cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
+               - - -
         :param pulumi.Input[str] description: Description of the MongoDB cluster.
         :param pulumi.Input[str] environment: Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -286,6 +307,8 @@ class _MdbMongodbClusterState:
             pulumi.set(__self__, "created_at", created_at)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if environment is not None:
@@ -362,6 +385,19 @@ class _MdbMongodbClusterState:
     @databases.setter
     def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MdbMongodbClusterDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        - - -
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -539,6 +575,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
                  cluster_config: Optional[pulumi.Input[pulumi.InputType['MdbMongodbClusterClusterConfigArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMongodbClusterDatabaseArgs']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -614,6 +651,8 @@ class MdbMongodbCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MdbMongodbClusterClusterConfigArgs']] cluster_config: Configuration of the MongoDB subcluster. The structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMongodbClusterDatabaseArgs']]]] databases: A database of the MongoDB cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
+               - - -
         :param pulumi.Input[str] description: Description of the MongoDB cluster.
         :param pulumi.Input[str] environment: Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -708,6 +747,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
                  cluster_config: Optional[pulumi.Input[pulumi.InputType['MdbMongodbClusterClusterConfigArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMongodbClusterDatabaseArgs']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -738,6 +778,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
             if databases is None and not opts.urn:
                 raise TypeError("Missing required property 'databases'")
             __props__.__dict__["databases"] = databases
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
@@ -777,6 +818,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
             cluster_id: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMongodbClusterDatabaseArgs']]]]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
@@ -802,6 +844,8 @@ class MdbMongodbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The ID of the cluster.
         :param pulumi.Input[str] created_at: Creation timestamp of the key.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMongodbClusterDatabaseArgs']]]] databases: A database of the MongoDB cluster. The structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
+               - - -
         :param pulumi.Input[str] description: Description of the MongoDB cluster.
         :param pulumi.Input[str] environment: Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -826,6 +870,7 @@ class MdbMongodbCluster(pulumi.CustomResource):
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["databases"] = databases
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["environment"] = environment
         __props__.__dict__["folder_id"] = folder_id
@@ -873,6 +918,15 @@ class MdbMongodbCluster(pulumi.CustomResource):
         A database of the MongoDB cluster. The structure is documented below.
         """
         return pulumi.get(self, "databases")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        - - -
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

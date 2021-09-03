@@ -65,7 +65,7 @@ import * as utilities from "./utilities";
  *             size: 1,
  *         },
  *     },
- *     version: "1.14",
+ *     version: "1.17",
  * });
  * ```
  *

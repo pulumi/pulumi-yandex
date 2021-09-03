@@ -46,7 +46,8 @@ func LookupMdbRedisCluster(ctx *pulumi.Context, args *LookupMdbRedisClusterArgs,
 // A collection of arguments for invoking getMdbRedisCluster.
 type LookupMdbRedisClusterArgs struct {
 	// The ID of the Redis cluster.
-	ClusterId *string `pulumi:"clusterId"`
+	ClusterId          *string `pulumi:"clusterId"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
 	// The name of the Redis cluster.
@@ -59,7 +60,8 @@ type LookupMdbRedisClusterResult struct {
 	// Configuration of the Redis cluster. The structure is documented below.
 	Config GetMdbRedisClusterConfig `pulumi:"config"`
 	// Creation timestamp of the key.
-	CreatedAt string `pulumi:"createdAt"`
+	CreatedAt          string `pulumi:"createdAt"`
+	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// Description of the Redis cluster.
 	Description string `pulumi:"description"`
 	// Deployment environment of the Redis cluster.

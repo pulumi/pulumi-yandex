@@ -33,6 +33,7 @@ export function getMdbMongodbCluster(args?: GetMdbMongodbClusterArgs, opts?: pul
     }
     return pulumi.runtime.invoke("yandex:index/getMdbMongodbCluster:getMdbMongodbCluster", {
         "clusterId": args.clusterId,
+        "deletionProtection": args.deletionProtection,
         "folderId": args.folderId,
         "name": args.name,
     }, opts);
@@ -46,6 +47,7 @@ export interface GetMdbMongodbClusterArgs {
      * The ID of the MongoDB cluster.
      */
     readonly clusterId?: string;
+    readonly deletionProtection?: boolean;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
@@ -73,6 +75,7 @@ export interface GetMdbMongodbClusterResult {
      * A database of the MongoDB cluster. The structure is documented below.
      */
     readonly databases: outputs.GetMdbMongodbClusterDatabase[];
+    readonly deletionProtection: boolean;
     /**
      * Description of the MongoDB cluster.
      */

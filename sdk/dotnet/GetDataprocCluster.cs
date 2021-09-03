@@ -81,6 +81,7 @@ namespace Pulumi.Yandex
         /// The Data Proc cluster creation timestamp.
         /// </summary>
         public readonly string CreatedAt;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// Description of the Data Proc cluster.
         /// </summary>
@@ -126,6 +127,8 @@ namespace Pulumi.Yandex
 
             string createdAt,
 
+            bool deletionProtection,
+
             string description,
 
             string folderId,
@@ -150,6 +153,7 @@ namespace Pulumi.Yandex
             ClusterConfig = clusterConfig;
             ClusterId = clusterId;
             CreatedAt = createdAt;
+            DeletionProtection = deletionProtection;
             Description = description;
             FolderId = folderId;
             HostGroupIds = hostGroupIds;

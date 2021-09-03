@@ -586,6 +586,16 @@ class StorageBucket(pulumi.CustomResource):
             website=yandex.StorageBucketWebsiteArgs(
                 error_document="error.html",
                 index_document="index.html",
+                routing_rules=\"\"\"[{
+            "Condition": {
+                "KeyPrefixEquals": "docs/"
+            },
+            "Redirect": {
+                "ReplaceKeyPrefixWith": "documents/"
+            }
+        }]
+
+        \"\"\",
             ))
         ```
         ### Using ACL policy grants
@@ -923,6 +933,16 @@ class StorageBucket(pulumi.CustomResource):
             website=yandex.StorageBucketWebsiteArgs(
                 error_document="error.html",
                 index_document="index.html",
+                routing_rules=\"\"\"[{
+            "Condition": {
+                "KeyPrefixEquals": "docs/"
+            },
+            "Redirect": {
+                "ReplaceKeyPrefixWith": "documents/"
+            }
+        }]
+
+        \"\"\",
             ))
         ```
         ### Using ACL policy grants

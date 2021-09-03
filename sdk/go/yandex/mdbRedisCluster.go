@@ -169,6 +169,8 @@ type MdbRedisCluster struct {
 	Config MdbRedisClusterConfigOutput `pulumi:"config"`
 	// Creation timestamp of the key.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the Redis cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deployment environment of the Redis cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -249,6 +251,8 @@ type mdbRedisClusterState struct {
 	Config *MdbRedisClusterConfig `pulumi:"config"`
 	// Creation timestamp of the key.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the Redis cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the Redis cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -286,6 +290,8 @@ type MdbRedisClusterState struct {
 	Config MdbRedisClusterConfigPtrInput
 	// Creation timestamp of the key.
 	CreatedAt pulumi.StringPtrInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the Redis cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the Redis cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -325,6 +331,8 @@ func (MdbRedisClusterState) ElementType() reflect.Type {
 type mdbRedisClusterArgs struct {
 	// Configuration of the Redis cluster. The structure is documented below.
 	Config MdbRedisClusterConfig `pulumi:"config"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the Redis cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the Redis cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -355,6 +363,8 @@ type mdbRedisClusterArgs struct {
 type MdbRedisClusterArgs struct {
 	// Configuration of the Redis cluster. The structure is documented below.
 	Config MdbRedisClusterConfigInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the Redis cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the Redis cluster. Can be either `PRESTABLE` or `PRODUCTION`.

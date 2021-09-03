@@ -20,7 +20,7 @@ class GetMdbMongodbClusterResult:
     """
     A collection of values returned by getMdbMongodbCluster.
     """
-    def __init__(__self__, cluster_config=None, cluster_id=None, created_at=None, databases=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, users=None):
+    def __init__(__self__, cluster_config=None, cluster_id=None, created_at=None, databases=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, users=None):
         if cluster_config and not isinstance(cluster_config, dict):
             raise TypeError("Expected argument 'cluster_config' to be a dict")
         pulumi.set(__self__, "cluster_config", cluster_config)
@@ -33,6 +33,9 @@ class GetMdbMongodbClusterResult:
         if databases and not isinstance(databases, list):
             raise TypeError("Expected argument 'databases' to be a list")
         pulumi.set(__self__, "databases", databases)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -107,6 +110,11 @@ class GetMdbMongodbClusterResult:
         A database of the MongoDB cluster. The structure is documented below.
         """
         return pulumi.get(self, "databases")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -233,6 +241,7 @@ class AwaitableGetMdbMongodbClusterResult(GetMdbMongodbClusterResult):
             cluster_id=self.cluster_id,
             created_at=self.created_at,
             databases=self.databases,
+            deletion_protection=self.deletion_protection,
             description=self.description,
             environment=self.environment,
             folder_id=self.folder_id,
@@ -251,6 +260,7 @@ class AwaitableGetMdbMongodbClusterResult(GetMdbMongodbClusterResult):
 
 
 def get_mdb_mongodb_cluster(cluster_id: Optional[str] = None,
+                            deletion_protection: Optional[bool] = None,
                             folder_id: Optional[str] = None,
                             name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMdbMongodbClusterResult:
@@ -275,6 +285,7 @@ def get_mdb_mongodb_cluster(cluster_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
+    __args__['deletionProtection'] = deletion_protection
     __args__['folderId'] = folder_id
     __args__['name'] = name
     if opts is None:
@@ -288,6 +299,7 @@ def get_mdb_mongodb_cluster(cluster_id: Optional[str] = None,
         cluster_id=__ret__.cluster_id,
         created_at=__ret__.created_at,
         databases=__ret__.databases,
+        deletion_protection=__ret__.deletion_protection,
         description=__ret__.description,
         environment=__ret__.environment,
         folder_id=__ret__.folder_id,

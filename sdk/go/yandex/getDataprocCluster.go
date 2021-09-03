@@ -58,7 +58,8 @@ type LookupDataprocClusterResult struct {
 	ClusterConfig GetDataprocClusterClusterConfig `pulumi:"clusterConfig"`
 	ClusterId     string                          `pulumi:"clusterId"`
 	// The Data Proc cluster creation timestamp.
-	CreatedAt string `pulumi:"createdAt"`
+	CreatedAt          string `pulumi:"createdAt"`
+	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// Description of the Data Proc cluster.
 	Description string `pulumi:"description"`
 	FolderId    string `pulumi:"folderId"`

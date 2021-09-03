@@ -54,6 +54,9 @@ namespace Pulumi.Yandex
         [Input("clusterId")]
         public string? ClusterId { get; set; }
 
+        [Input("deletionProtection")]
+        public bool? DeletionProtection { get; set; }
+
         /// <summary>
         /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
         /// </summary>
@@ -88,6 +91,7 @@ namespace Pulumi.Yandex
         /// A database of the MongoDB cluster. The structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMdbMongodbClusterDatabaseResult> Databases;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// Description of the MongoDB cluster.
         /// </summary>
@@ -153,6 +157,8 @@ namespace Pulumi.Yandex
 
             ImmutableArray<Outputs.GetMdbMongodbClusterDatabaseResult> databases,
 
+            bool deletionProtection,
+
             string description,
 
             string environment,
@@ -187,6 +193,7 @@ namespace Pulumi.Yandex
             ClusterId = clusterId;
             CreatedAt = createdAt;
             Databases = databases;
+            DeletionProtection = deletionProtection;
             Description = description;
             Environment = environment;
             FolderId = folderId;

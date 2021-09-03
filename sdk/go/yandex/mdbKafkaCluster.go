@@ -319,6 +319,8 @@ type MdbKafkaCluster struct {
 	Config MdbKafkaClusterConfigOutput `pulumi:"config"`
 	// Timestamp of cluster creation.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the Kafka cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -389,6 +391,8 @@ type mdbKafkaClusterState struct {
 	Config *MdbKafkaClusterConfig `pulumi:"config"`
 	// Timestamp of cluster creation.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the Kafka cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -425,6 +429,8 @@ type MdbKafkaClusterState struct {
 	Config MdbKafkaClusterConfigPtrInput
 	// Timestamp of cluster creation.
 	CreatedAt pulumi.StringPtrInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the Kafka cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -463,6 +469,8 @@ func (MdbKafkaClusterState) ElementType() reflect.Type {
 type mdbKafkaClusterArgs struct {
 	// Configuration of the Kafka cluster. The structure is documented below.
 	Config MdbKafkaClusterConfig `pulumi:"config"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the Kafka cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -491,6 +499,8 @@ type mdbKafkaClusterArgs struct {
 type MdbKafkaClusterArgs struct {
 	// Configuration of the Kafka cluster. The structure is documented below.
 	Config MdbKafkaClusterConfigInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the Kafka cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.

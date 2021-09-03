@@ -33,6 +33,7 @@ export function getMdbElasticSearchCluster(args?: GetMdbElasticSearchClusterArgs
     }
     return pulumi.runtime.invoke("yandex:index/getMdbElasticSearchCluster:getMdbElasticSearchCluster", {
         "clusterId": args.clusterId,
+        "deletionProtection": args.deletionProtection,
         "description": args.description,
         "folderId": args.folderId,
         "labels": args.labels,
@@ -50,6 +51,7 @@ export interface GetMdbElasticSearchClusterArgs {
      * The ID of the Elasticsearch cluster.
      */
     readonly clusterId?: string;
+    readonly deletionProtection?: boolean;
     /**
      * Description of the Elasticsearch cluster.
      */
@@ -89,6 +91,7 @@ export interface GetMdbElasticSearchClusterResult {
      * Creation timestamp of the key.
      */
     readonly createdAt: string;
+    readonly deletionProtection: boolean;
     /**
      * Description of the Elasticsearch cluster.
      */

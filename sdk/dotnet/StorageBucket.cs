@@ -49,6 +49,16 @@ namespace Pulumi.Yandex
     ///             {
     ///                 ErrorDocument = "error.html",
     ///                 IndexDocument = "index.html",
+    ///                 RoutingRules = @"[{
+    ///     ""Condition"": {
+    ///         ""KeyPrefixEquals"": ""docs/""
+    ///     },
+    ///     ""Redirect"": {
+    ///         ""ReplaceKeyPrefixWith"": ""documents/""
+    ///     }
+    /// }]
+    /// 
+    /// ",
     ///             },
     ///         });
     ///     }

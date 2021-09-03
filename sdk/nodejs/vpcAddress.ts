@@ -97,7 +97,7 @@ export class VpcAddress extends pulumi.CustomResource {
     /**
      * Labels to apply to this resource. A list of key/value pairs.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the address. Provided by the client when the address is created.
      */

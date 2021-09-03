@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 /**
  * Get information about a Yandex Managed PostgreSQL cluster. For more information, see
  * [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/).
+ * [How to connect to the DB](https://cloud.yandex.com/en-ru/docs/managed-postgresql/quickstart#connect). To connect, use port 6432. The port number is not configurable.
  *
  * ## Example Usage
  *
@@ -33,6 +34,7 @@ export function getMdbPostgresqlCluster(args?: GetMdbPostgresqlClusterArgs, opts
     }
     return pulumi.runtime.invoke("yandex:index/getMdbPostgresqlCluster:getMdbPostgresqlCluster", {
         "clusterId": args.clusterId,
+        "deletionProtection": args.deletionProtection,
         "description": args.description,
         "folderId": args.folderId,
         "name": args.name,
@@ -47,6 +49,7 @@ export interface GetMdbPostgresqlClusterArgs {
      * The ID of the PostgreSQL cluster.
      */
     readonly clusterId?: string;
+    readonly deletionProtection?: boolean;
     /**
      * Description of the PostgreSQL cluster.
      */
@@ -78,6 +81,7 @@ export interface GetMdbPostgresqlClusterResult {
      * A database of the PostgreSQL cluster. The structure is documented below.
      */
     readonly databases: outputs.GetMdbPostgresqlClusterDatabase[];
+    readonly deletionProtection: boolean;
     /**
      * Description of the PostgreSQL cluster.
      */

@@ -113,6 +113,8 @@
         "mdbRedisCluster.ts",
         "mdbSqlServerCluster.ts",
         "messageQueue.ts",
+        "organizationManagerOrganizationIamBinding.ts",
+        "organizationManagerOrganizationIamMember.ts",
         "provider.ts",
         "resourcemanagerCloudIamBinding.ts",
         "resourcemanagerCloudIamMember.ts",

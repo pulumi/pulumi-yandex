@@ -20,7 +20,7 @@ class GetMdbPostgresqlClusterResult:
     """
     A collection of values returned by getMdbPostgresqlCluster.
     """
-    def __init__(__self__, cluster_id=None, config=None, created_at=None, databases=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, name=None, network_id=None, security_group_ids=None, status=None, users=None):
+    def __init__(__self__, cluster_id=None, config=None, created_at=None, databases=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, name=None, network_id=None, security_group_ids=None, status=None, users=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -33,6 +33,9 @@ class GetMdbPostgresqlClusterResult:
         if databases and not isinstance(databases, list):
             raise TypeError("Expected argument 'databases' to be a list")
         pulumi.set(__self__, "databases", databases)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -101,6 +104,11 @@ class GetMdbPostgresqlClusterResult:
         A database of the PostgreSQL cluster. The structure is documented below.
         """
         return pulumi.get(self, "databases")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -214,6 +222,7 @@ class AwaitableGetMdbPostgresqlClusterResult(GetMdbPostgresqlClusterResult):
             config=self.config,
             created_at=self.created_at,
             databases=self.databases,
+            deletion_protection=self.deletion_protection,
             description=self.description,
             environment=self.environment,
             folder_id=self.folder_id,
@@ -230,6 +239,7 @@ class AwaitableGetMdbPostgresqlClusterResult(GetMdbPostgresqlClusterResult):
 
 
 def get_mdb_postgresql_cluster(cluster_id: Optional[str] = None,
+                               deletion_protection: Optional[bool] = None,
                                description: Optional[str] = None,
                                folder_id: Optional[str] = None,
                                name: Optional[str] = None,
@@ -237,6 +247,7 @@ def get_mdb_postgresql_cluster(cluster_id: Optional[str] = None,
     """
     Get information about a Yandex Managed PostgreSQL cluster. For more information, see
     [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/).
+    [How to connect to the DB](https://cloud.yandex.com/en-ru/docs/managed-postgresql/quickstart#connect). To connect, use port 6432. The port number is not configurable.
 
     ## Example Usage
 
@@ -256,6 +267,7 @@ def get_mdb_postgresql_cluster(cluster_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
+    __args__['deletionProtection'] = deletion_protection
     __args__['description'] = description
     __args__['folderId'] = folder_id
     __args__['name'] = name
@@ -270,6 +282,7 @@ def get_mdb_postgresql_cluster(cluster_id: Optional[str] = None,
         config=__ret__.config,
         created_at=__ret__.created_at,
         databases=__ret__.databases,
+        deletion_protection=__ret__.deletion_protection,
         description=__ret__.description,
         environment=__ret__.environment,
         folder_id=__ret__.folder_id,

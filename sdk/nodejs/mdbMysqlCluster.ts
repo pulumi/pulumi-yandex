@@ -520,6 +520,10 @@ export class MdbMysqlCluster extends pulumi.CustomResource {
      */
     public readonly databases!: pulumi.Output<outputs.MdbMysqlClusterDatabase[]>;
     /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * Description of the MySQL cluster.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -603,6 +607,7 @@ export class MdbMysqlCluster extends pulumi.CustomResource {
             inputs["backupWindowStart"] = state ? state.backupWindowStart : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["databases"] = state ? state.databases : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["environment"] = state ? state.environment : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
@@ -646,6 +651,7 @@ export class MdbMysqlCluster extends pulumi.CustomResource {
             inputs["allowRegenerationHost"] = args ? args.allowRegenerationHost : undefined;
             inputs["backupWindowStart"] = args ? args.backupWindowStart : undefined;
             inputs["databases"] = args ? args.databases : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
@@ -695,6 +701,10 @@ export interface MdbMysqlClusterState {
      * A database of the MySQL cluster. The structure is documented below.
      */
     readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterDatabase>[]>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the MySQL cluster.
      */
@@ -782,6 +792,10 @@ export interface MdbMysqlClusterArgs {
      * A database of the MySQL cluster. The structure is documented below.
      */
     readonly databases: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterDatabase>[]>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the MySQL cluster.
      */

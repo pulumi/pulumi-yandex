@@ -198,6 +198,8 @@ type MdbSqlServerCluster struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// A database of the SQLServer cluster. The structure is documented below.
 	Databases MdbSqlServerClusterDatabaseArrayOutput `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the SQLServer cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deployment environment of the SQLServer cluster. (PRODUCTION, PRESTABLE)
@@ -285,6 +287,8 @@ type mdbSqlServerClusterState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// A database of the SQLServer cluster. The structure is documented below.
 	Databases []MdbSqlServerClusterDatabase `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the SQLServer cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the SQLServer cluster. (PRODUCTION, PRESTABLE)
@@ -323,6 +327,8 @@ type MdbSqlServerClusterState struct {
 	CreatedAt pulumi.StringPtrInput
 	// A database of the SQLServer cluster. The structure is documented below.
 	Databases MdbSqlServerClusterDatabaseArrayInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the SQLServer cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the SQLServer cluster. (PRODUCTION, PRESTABLE)
@@ -363,6 +369,8 @@ type mdbSqlServerClusterArgs struct {
 	BackupWindowStart *MdbSqlServerClusterBackupWindowStart `pulumi:"backupWindowStart"`
 	// A database of the SQLServer cluster. The structure is documented below.
 	Databases []MdbSqlServerClusterDatabase `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the SQLServer cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the SQLServer cluster. (PRODUCTION, PRESTABLE)
@@ -396,6 +404,8 @@ type MdbSqlServerClusterArgs struct {
 	BackupWindowStart MdbSqlServerClusterBackupWindowStartPtrInput
 	// A database of the SQLServer cluster. The structure is documented below.
 	Databases MdbSqlServerClusterDatabaseArrayInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the SQLServer cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the SQLServer cluster. (PRODUCTION, PRESTABLE)

@@ -185,6 +185,10 @@ export class MdbSqlServerCluster extends pulumi.CustomResource {
      */
     public readonly databases!: pulumi.Output<outputs.MdbSqlServerClusterDatabase[]>;
     /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * Description of the SQLServer cluster.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -258,6 +262,7 @@ export class MdbSqlServerCluster extends pulumi.CustomResource {
             inputs["backupWindowStart"] = state ? state.backupWindowStart : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["databases"] = state ? state.databases : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["environment"] = state ? state.environment : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
@@ -297,6 +302,7 @@ export class MdbSqlServerCluster extends pulumi.CustomResource {
             }
             inputs["backupWindowStart"] = args ? args.backupWindowStart : undefined;
             inputs["databases"] = args ? args.databases : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
@@ -336,6 +342,10 @@ export interface MdbSqlServerClusterState {
      * A database of the SQLServer cluster. The structure is documented below.
      */
     readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterDatabase>[]>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the SQLServer cluster.
      */
@@ -407,6 +417,10 @@ export interface MdbSqlServerClusterArgs {
      * A database of the SQLServer cluster. The structure is documented below.
      */
     readonly databases: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterDatabase>[]>;
+    /**
+     * Inhibits deletion of the cluster.  Can be either `true` or `false`.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the SQLServer cluster.
      */

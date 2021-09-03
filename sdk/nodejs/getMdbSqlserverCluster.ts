@@ -33,6 +33,7 @@ export function getMdbSqlserverCluster(args?: GetMdbSqlserverClusterArgs, opts?:
     }
     return pulumi.runtime.invoke("yandex:index/getMdbSqlserverCluster:getMdbSqlserverCluster", {
         "clusterId": args.clusterId,
+        "deletionProtection": args.deletionProtection,
         "folderId": args.folderId,
         "name": args.name,
         "sqlserverConfig": args.sqlserverConfig,
@@ -47,6 +48,7 @@ export interface GetMdbSqlserverClusterArgs {
      * The ID of the SQLServer cluster.
      */
     readonly clusterId?: string;
+    readonly deletionProtection?: boolean;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
@@ -75,6 +77,7 @@ export interface GetMdbSqlserverClusterResult {
      * A database of the SQLServer cluster. The structure is documented below.
      */
     readonly databases: outputs.GetMdbSqlserverClusterDatabase[];
+    readonly deletionProtection: boolean;
     /**
      * Description of the SQLServer cluster.
      */

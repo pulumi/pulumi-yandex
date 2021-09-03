@@ -60,6 +60,9 @@ namespace Pulumi.Yandex
         [Input("config")]
         public Inputs.GetMdbKafkaClusterConfigArgs? Config { get; set; }
 
+        [Input("deletionProtection")]
+        public bool? DeletionProtection { get; set; }
+
         /// <summary>
         /// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         /// </summary>
@@ -122,6 +125,7 @@ namespace Pulumi.Yandex
         /// Creation timestamp of the key.
         /// </summary>
         public readonly string CreatedAt;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// Description of the Kafka cluster.
         /// </summary>
@@ -185,6 +189,8 @@ namespace Pulumi.Yandex
 
             string createdAt,
 
+            bool deletionProtection,
+
             string description,
 
             string environment,
@@ -218,6 +224,7 @@ namespace Pulumi.Yandex
             ClusterId = clusterId;
             Config = config;
             CreatedAt = createdAt;
+            DeletionProtection = deletionProtection;
             Description = description;
             Environment = environment;
             FolderId = folderId;

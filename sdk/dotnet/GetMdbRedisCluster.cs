@@ -54,6 +54,9 @@ namespace Pulumi.Yandex
         [Input("clusterId")]
         public string? ClusterId { get; set; }
 
+        [Input("deletionProtection")]
+        public bool? DeletionProtection { get; set; }
+
         /// <summary>
         /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
         /// </summary>
@@ -84,6 +87,7 @@ namespace Pulumi.Yandex
         /// Creation timestamp of the key.
         /// </summary>
         public readonly string CreatedAt;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// Description of the Redis cluster.
         /// </summary>
@@ -144,6 +148,8 @@ namespace Pulumi.Yandex
 
             string createdAt,
 
+            bool deletionProtection,
+
             string description,
 
             string environment,
@@ -177,6 +183,7 @@ namespace Pulumi.Yandex
             ClusterId = clusterId;
             Config = config;
             CreatedAt = createdAt;
+            DeletionProtection = deletionProtection;
             Description = description;
             Environment = environment;
             FolderId = folderId;

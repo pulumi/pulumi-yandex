@@ -82,7 +82,7 @@ namespace Pulumi.Yandex
         /// Labels to assign to this subnet. A list of key/value pairs.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Name of the subnet. Provided by the client when the subnet is created.

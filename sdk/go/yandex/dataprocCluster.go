@@ -30,6 +30,8 @@ type DataprocCluster struct {
 	// (Computed) The Data Proc cluster creation timestamp.
 	// * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the Data Proc cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
@@ -92,6 +94,8 @@ type dataprocClusterState struct {
 	// (Computed) The Data Proc cluster creation timestamp.
 	// * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the Data Proc cluster.
 	Description *string `pulumi:"description"`
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
@@ -120,6 +124,8 @@ type DataprocClusterState struct {
 	// (Computed) The Data Proc cluster creation timestamp.
 	// * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
 	CreatedAt pulumi.StringPtrInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the Data Proc cluster.
 	Description pulumi.StringPtrInput
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
@@ -149,6 +155,8 @@ type dataprocClusterArgs struct {
 	Bucket *string `pulumi:"bucket"`
 	// Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
 	ClusterConfig DataprocClusterClusterConfig `pulumi:"clusterConfig"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the Data Proc cluster.
 	Description *string `pulumi:"description"`
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
@@ -175,6 +183,8 @@ type DataprocClusterArgs struct {
 	Bucket pulumi.StringPtrInput
 	// Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
 	ClusterConfig DataprocClusterClusterConfigInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the Data Proc cluster.
 	Description pulumi.StringPtrInput
 	// ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.

@@ -536,6 +536,8 @@ type MdbClickhouseCluster struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// A database of the ClickHouse cluster. The structure is documented below.
 	Databases MdbClickhouseClusterDatabaseArrayOutput `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the shard group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -636,6 +638,8 @@ type mdbClickhouseClusterState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// A database of the ClickHouse cluster. The structure is documented below.
 	Databases []MdbClickhouseClusterDatabase `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the shard group.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -696,6 +700,8 @@ type MdbClickhouseClusterState struct {
 	CreatedAt pulumi.StringPtrInput
 	// A database of the ClickHouse cluster. The structure is documented below.
 	Databases MdbClickhouseClusterDatabaseArrayInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the shard group.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -758,6 +764,8 @@ type mdbClickhouseClusterArgs struct {
 	CopySchemaOnNewHosts *bool `pulumi:"copySchemaOnNewHosts"`
 	// A database of the ClickHouse cluster. The structure is documented below.
 	Databases []MdbClickhouseClusterDatabase `pulumi:"databases"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the shard group.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -811,6 +819,8 @@ type MdbClickhouseClusterArgs struct {
 	CopySchemaOnNewHosts pulumi.BoolPtrInput
 	// A database of the ClickHouse cluster. The structure is documented below.
 	Databases MdbClickhouseClusterDatabaseArrayInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the shard group.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.

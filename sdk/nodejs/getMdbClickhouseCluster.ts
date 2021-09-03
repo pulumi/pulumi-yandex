@@ -34,6 +34,7 @@ export function getMdbClickhouseCluster(args?: GetMdbClickhouseClusterArgs, opts
     return pulumi.runtime.invoke("yandex:index/getMdbClickhouseCluster:getMdbClickhouseCluster", {
         "cloudStorage": args.cloudStorage,
         "clusterId": args.clusterId,
+        "deletionProtection": args.deletionProtection,
         "folderId": args.folderId,
         "name": args.name,
         "serviceAccountId": args.serviceAccountId,
@@ -49,6 +50,7 @@ export interface GetMdbClickhouseClusterArgs {
      * The ID of the ClickHouse cluster.
      */
     readonly clusterId?: string;
+    readonly deletionProtection?: boolean;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
@@ -86,6 +88,7 @@ export interface GetMdbClickhouseClusterResult {
      * A database of the ClickHouse cluster. The structure is documented below.
      */
     readonly databases: outputs.GetMdbClickhouseClusterDatabase[];
+    readonly deletionProtection: boolean;
     /**
      * Description of the shard group.
      */

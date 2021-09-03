@@ -81,7 +81,7 @@ namespace Pulumi.Yandex
         /// Labels to assign to this route table. A list of key/value pairs.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Name of the route table. Provided by the client when the route table is created.

@@ -34,6 +34,7 @@ export function getMdbMysqlCluster(args?: GetMdbMysqlClusterArgs, opts?: pulumi.
     return pulumi.runtime.invoke("yandex:index/getMdbMysqlCluster:getMdbMysqlCluster", {
         "access": args.access,
         "clusterId": args.clusterId,
+        "deletionProtection": args.deletionProtection,
         "description": args.description,
         "folderId": args.folderId,
         "labels": args.labels,
@@ -54,6 +55,7 @@ export interface GetMdbMysqlClusterArgs {
      * The ID of the MySQL cluster.
      */
     readonly clusterId?: string;
+    readonly deletionProtection?: boolean;
     /**
      * Description of the MySQL cluster.
      */
@@ -94,6 +96,7 @@ export interface GetMdbMysqlClusterResult {
      * A database of the MySQL cluster. The structure is documented below.
      */
     readonly databases: outputs.GetMdbMysqlClusterDatabase[];
+    readonly deletionProtection: boolean;
     /**
      * Description of the MySQL cluster.
      */

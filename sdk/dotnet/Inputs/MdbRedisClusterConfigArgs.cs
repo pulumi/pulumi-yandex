@@ -56,7 +56,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Version of Redis (either 5.0 or 6.0).
+        /// Version of Redis (5.0, 6.0 or 6.2).
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

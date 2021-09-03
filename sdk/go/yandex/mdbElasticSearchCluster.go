@@ -28,6 +28,8 @@ type MdbElasticSearchCluster struct {
 	Config MdbElasticSearchClusterConfigOutput `pulumi:"config"`
 	// Creation timestamp of the key.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the Elasticsearch cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -96,6 +98,8 @@ type mdbElasticSearchClusterState struct {
 	Config *MdbElasticSearchClusterConfig `pulumi:"config"`
 	// Creation timestamp of the key.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the Elasticsearch cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -127,6 +131,8 @@ type MdbElasticSearchClusterState struct {
 	Config MdbElasticSearchClusterConfigPtrInput
 	// Creation timestamp of the key.
 	CreatedAt pulumi.StringPtrInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the Elasticsearch cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -160,6 +166,8 @@ func (MdbElasticSearchClusterState) ElementType() reflect.Type {
 type mdbElasticSearchClusterArgs struct {
 	// Configuration of the Elasticsearch cluster. The structure is documented below.
 	Config MdbElasticSearchClusterConfig `pulumi:"config"`
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the Elasticsearch cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
@@ -184,6 +192,8 @@ type mdbElasticSearchClusterArgs struct {
 type MdbElasticSearchClusterArgs struct {
 	// Configuration of the Elasticsearch cluster. The structure is documented below.
 	Config MdbElasticSearchClusterConfigInput
+	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the Elasticsearch cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.

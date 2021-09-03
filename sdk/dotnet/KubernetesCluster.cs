@@ -53,7 +53,7 @@ namespace Pulumi.Yandex
     ///                 {
     ///                     yandex_vpc_security_group.Security_group_name.Id,
     ///                 },
-    ///                 Version = "1.15",
+    ///                 Version = "1.17",
     ///                 Zonal = new Yandex.Inputs.KubernetesClusterMasterZonalArgs
     ///                 {
     ///                     SubnetId = yandex_vpc_subnet.Subnet_resource_name.Id,

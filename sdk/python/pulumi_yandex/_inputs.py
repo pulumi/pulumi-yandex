@@ -8913,10 +8913,10 @@ class MdbClickhouseClusterAccessArgs:
                  serverless: Optional[pulumi.Input[bool]] = None,
                  web_sql: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] data_lens: Allow access for Web SQL. Can be either `true` or `false`.
+        :param pulumi.Input[bool] data_lens: Allow access for DataLens. Can be either `true` or `false`.
         :param pulumi.Input[bool] metrika: Allow access for Yandex.Metrika. Can be either `true` or `false`.
         :param pulumi.Input[bool] serverless: Allow access for Serverless. Can be either `true` or `false`.
-        :param pulumi.Input[bool] web_sql: Allow access for DataLens. Can be either `true` or `false`.
+        :param pulumi.Input[bool] web_sql: Allow access for Web SQL. Can be either `true` or `false`.
         """
         if data_lens is not None:
             pulumi.set(__self__, "data_lens", data_lens)
@@ -8931,7 +8931,7 @@ class MdbClickhouseClusterAccessArgs:
     @pulumi.getter(name="dataLens")
     def data_lens(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow access for Web SQL. Can be either `true` or `false`.
+        Allow access for DataLens. Can be either `true` or `false`.
         """
         return pulumi.get(self, "data_lens")
 
@@ -8967,7 +8967,7 @@ class MdbClickhouseClusterAccessArgs:
     @pulumi.getter(name="webSql")
     def web_sql(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow access for DataLens. Can be either `true` or `false`.
+        Allow access for Web SQL. Can be either `true` or `false`.
         """
         return pulumi.get(self, "web_sql")
 
@@ -14464,7 +14464,7 @@ class MdbRedisClusterConfigArgs:
                  timeout: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] password: Password for the Redis cluster.
-        :param pulumi.Input[str] version: Version of Redis (either 5.0 or 6.0).
+        :param pulumi.Input[str] version: Version of Redis (5.0, 6.0 or 6.2).
         :param pulumi.Input[int] databases: Number of databases (changing requires redis-server restart).
         :param pulumi.Input[str] maxmemory_policy: Redis key eviction policy for a dataset that reaches maximum memory.
                Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
@@ -14504,7 +14504,7 @@ class MdbRedisClusterConfigArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Version of Redis (either 5.0 or 6.0).
+        Version of Redis (5.0, 6.0 or 6.2).
         """
         return pulumi.get(self, "version")
 
@@ -15627,15 +15627,23 @@ class StorageBucketVersioningArgs:
 class StorageBucketWebsiteArgs:
     def __init__(__self__, *,
                  error_document: Optional[pulumi.Input[str]] = None,
-                 index_document: Optional[pulumi.Input[str]] = None):
+                 index_document: Optional[pulumi.Input[str]] = None,
+                 redirect_all_requests_to: Optional[pulumi.Input[str]] = None,
+                 routing_rules: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] error_document: An absolute path to the document to return in case of a 4XX error.
         :param pulumi.Input[str] index_document: Storage returns this index document when requests are made to the root domain or any of the subfolders.
+        :param pulumi.Input[str] redirect_all_requests_to: A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+        :param pulumi.Input[str] routing_rules: A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
         """
         if error_document is not None:
             pulumi.set(__self__, "error_document", error_document)
         if index_document is not None:
             pulumi.set(__self__, "index_document", index_document)
+        if redirect_all_requests_to is not None:
+            pulumi.set(__self__, "redirect_all_requests_to", redirect_all_requests_to)
+        if routing_rules is not None:
+            pulumi.set(__self__, "routing_rules", routing_rules)
 
     @property
     @pulumi.getter(name="errorDocument")
@@ -15660,6 +15668,30 @@ class StorageBucketWebsiteArgs:
     @index_document.setter
     def index_document(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "index_document", value)
+
+    @property
+    @pulumi.getter(name="redirectAllRequestsTo")
+    def redirect_all_requests_to(self) -> Optional[pulumi.Input[str]]:
+        """
+        A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
+        """
+        return pulumi.get(self, "redirect_all_requests_to")
+
+    @redirect_all_requests_to.setter
+    def redirect_all_requests_to(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redirect_all_requests_to", value)
+
+    @property
+    @pulumi.getter(name="routingRules")
+    def routing_rules(self) -> Optional[pulumi.Input[str]]:
+        """
+        A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+        """
+        return pulumi.get(self, "routing_rules")
+
+    @routing_rules.setter
+    def routing_rules(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "routing_rules", value)
 
 
 @pulumi.input_type

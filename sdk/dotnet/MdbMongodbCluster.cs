@@ -131,6 +131,13 @@ namespace Pulumi.Yandex
         public Output<ImmutableArray<Outputs.MdbMongodbClusterDatabase>> Databases { get; private set; } = null!;
 
         /// <summary>
+        /// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        /// - - -
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the MongoDB cluster.
         /// </summary>
         [Output("description")]
@@ -284,6 +291,13 @@ namespace Pulumi.Yandex
         }
 
         /// <summary>
+        /// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        /// - - -
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Description of the MongoDB cluster.
         /// </summary>
         [Input("description")]
@@ -407,6 +421,13 @@ namespace Pulumi.Yandex
             get => _databases ?? (_databases = new InputList<Inputs.MdbMongodbClusterDatabaseGetArgs>());
             set => _databases = value;
         }
+
+        /// <summary>
+        /// Inhibits deletion of the cluster.  Can be either `true` or `false`.
+        /// - - -
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// Description of the MongoDB cluster.

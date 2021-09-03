@@ -14,7 +14,7 @@ namespace Pulumi.Yandex.Outputs
     public sealed class MdbClickhouseClusterAccess
     {
         /// <summary>
-        /// Allow access for Web SQL. Can be either `true` or `false`.
+        /// Allow access for DataLens. Can be either `true` or `false`.
         /// </summary>
         public readonly bool? DataLens;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly bool? Serverless;
         /// <summary>
-        /// Allow access for DataLens. Can be either `true` or `false`.
+        /// Allow access for Web SQL. Can be either `true` or `false`.
         /// </summary>
         public readonly bool? WebSql;
 

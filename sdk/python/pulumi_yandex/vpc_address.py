@@ -480,7 +480,7 @@ class VpcAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels to apply to this resource. A list of key/value pairs.
         """

@@ -46,7 +46,8 @@ func LookupMdbMongodbCluster(ctx *pulumi.Context, args *LookupMdbMongodbClusterA
 // A collection of arguments for invoking getMdbMongodbCluster.
 type LookupMdbMongodbClusterArgs struct {
 	// The ID of the MongoDB cluster.
-	ClusterId *string `pulumi:"clusterId"`
+	ClusterId          *string `pulumi:"clusterId"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
 	// The name of the MongoDB cluster.
@@ -61,7 +62,8 @@ type LookupMdbMongodbClusterResult struct {
 	// Creation timestamp of the key.
 	CreatedAt string `pulumi:"createdAt"`
 	// A database of the MongoDB cluster. The structure is documented below.
-	Databases []GetMdbMongodbClusterDatabase `pulumi:"databases"`
+	Databases          []GetMdbMongodbClusterDatabase `pulumi:"databases"`
+	DeletionProtection bool                           `pulumi:"deletionProtection"`
 	// Description of the MongoDB cluster.
 	Description string `pulumi:"description"`
 	// Deployment environment of the MongoDB cluster.

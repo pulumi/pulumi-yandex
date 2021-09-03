@@ -78,7 +78,7 @@ export class VpcNetwork extends pulumi.CustomResource {
     /**
      * Labels to apply to this network. A list of key/value pairs.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the network. Provided by the client when the network is created.
      */
