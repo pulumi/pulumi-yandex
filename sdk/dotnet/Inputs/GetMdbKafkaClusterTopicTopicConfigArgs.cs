@@ -19,37 +19,37 @@ namespace Pulumi.Yandex.Inputs
         public string? CompressionType { get; set; }
 
         [Input("deleteRetentionMs")]
-        public int? DeleteRetentionMs { get; set; }
+        public string? DeleteRetentionMs { get; set; }
 
         [Input("fileDeleteDelayMs")]
-        public int? FileDeleteDelayMs { get; set; }
+        public string? FileDeleteDelayMs { get; set; }
 
         [Input("flushMessages")]
-        public int? FlushMessages { get; set; }
+        public string? FlushMessages { get; set; }
 
         [Input("flushMs")]
-        public int? FlushMs { get; set; }
+        public string? FlushMs { get; set; }
 
         [Input("maxMessageBytes")]
-        public int? MaxMessageBytes { get; set; }
+        public string? MaxMessageBytes { get; set; }
 
         [Input("minCompactionLagMs")]
-        public int? MinCompactionLagMs { get; set; }
+        public string? MinCompactionLagMs { get; set; }
 
         [Input("minInsyncReplicas")]
-        public int? MinInsyncReplicas { get; set; }
+        public string? MinInsyncReplicas { get; set; }
 
         [Input("preallocate")]
         public bool? Preallocate { get; set; }
 
         [Input("retentionBytes")]
-        public int? RetentionBytes { get; set; }
+        public string? RetentionBytes { get; set; }
 
         [Input("retentionMs")]
-        public int? RetentionMs { get; set; }
+        public string? RetentionMs { get; set; }
 
         [Input("segmentBytes")]
-        public int? SegmentBytes { get; set; }
+        public string? SegmentBytes { get; set; }
 
         public GetMdbKafkaClusterTopicTopicConfigArgs()
         {

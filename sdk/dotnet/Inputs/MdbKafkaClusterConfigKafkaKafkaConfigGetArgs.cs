@@ -19,43 +19,43 @@ namespace Pulumi.Yandex.Inputs
         public Input<string>? CompressionType { get; set; }
 
         [Input("defaultReplicationFactor")]
-        public Input<int>? DefaultReplicationFactor { get; set; }
+        public Input<string>? DefaultReplicationFactor { get; set; }
 
         [Input("logFlushIntervalMessages")]
-        public Input<int>? LogFlushIntervalMessages { get; set; }
+        public Input<string>? LogFlushIntervalMessages { get; set; }
 
         [Input("logFlushIntervalMs")]
-        public Input<int>? LogFlushIntervalMs { get; set; }
+        public Input<string>? LogFlushIntervalMs { get; set; }
 
         [Input("logFlushSchedulerIntervalMs")]
-        public Input<int>? LogFlushSchedulerIntervalMs { get; set; }
+        public Input<string>? LogFlushSchedulerIntervalMs { get; set; }
 
         [Input("logPreallocate")]
         public Input<bool>? LogPreallocate { get; set; }
 
         [Input("logRetentionBytes")]
-        public Input<int>? LogRetentionBytes { get; set; }
+        public Input<string>? LogRetentionBytes { get; set; }
 
         [Input("logRetentionHours")]
-        public Input<int>? LogRetentionHours { get; set; }
+        public Input<string>? LogRetentionHours { get; set; }
 
         [Input("logRetentionMinutes")]
-        public Input<int>? LogRetentionMinutes { get; set; }
+        public Input<string>? LogRetentionMinutes { get; set; }
 
         [Input("logRetentionMs")]
-        public Input<int>? LogRetentionMs { get; set; }
+        public Input<string>? LogRetentionMs { get; set; }
 
         [Input("logSegmentBytes")]
-        public Input<int>? LogSegmentBytes { get; set; }
+        public Input<string>? LogSegmentBytes { get; set; }
 
         [Input("numPartitions")]
-        public Input<int>? NumPartitions { get; set; }
+        public Input<string>? NumPartitions { get; set; }
 
         [Input("socketReceiveBufferBytes")]
-        public Input<int>? SocketReceiveBufferBytes { get; set; }
+        public Input<string>? SocketReceiveBufferBytes { get; set; }
 
         [Input("socketSendBufferBytes")]
-        public Input<int>? SocketSendBufferBytes { get; set; }
+        public Input<string>? SocketSendBufferBytes { get; set; }
 
         public MdbKafkaClusterConfigKafkaKafkaConfigGetArgs()
         {

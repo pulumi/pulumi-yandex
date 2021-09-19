@@ -60,7 +60,6 @@ type LookupVpcAddressResult struct {
 	// Description of the address.
 	Description string `pulumi:"description"`
 	// spec of IP v4 address.
-	// ---
 	ExternalIpv4Address GetVpcAddressExternalIpv4Address `pulumi:"externalIpv4Address"`
 	FolderId            string                           `pulumi:"folderId"`
 	// The provider-assigned unique ID for this managed resource.

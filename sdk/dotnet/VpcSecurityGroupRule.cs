@@ -11,8 +11,8 @@ namespace Pulumi.Yandex
 {
     /// <summary>
     /// Manages a single Secuirity Group Rule within the Yandex.Cloud. For more information, see the official documentation
-    /// of [security groups](https://cloud.yandex.ru/docs/vpc/concepts/security-groups)
-    /// and [security group rules](https://cloud.yandex.ru/docs/vpc/concepts/security-groups#rules).
+    /// of [security groups](https://cloud.yandex.com/docs/vpc/concepts/security-groups)
+    /// and [security group rules](https://cloud.yandex.com/docs/vpc/concepts/security-groups#rules).
     /// 
     /// &gt; **NOTE:** There is another way to manage security group rules by `ingress` and `egress` arguments in yandex_vpc_security_group. Both ways are equivalent but not compatible now. Using in-line rules of yandex.VpcSecurityGroup with Security Group Rule resource at the same time will cause a conflict of rules configuration.
     /// </summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Yandex
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        /// Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         /// </summary>
         [Output("predefinedTarget")]
         public Output<string?> PredefinedTarget { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.Yandex
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        /// Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         /// </summary>
         [Input("predefinedTarget")]
         public Input<string>? PredefinedTarget { get; set; }
@@ -271,7 +271,7 @@ namespace Pulumi.Yandex
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        /// Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         /// </summary>
         [Input("predefinedTarget")]
         public Input<string>? PredefinedTarget { get; set; }

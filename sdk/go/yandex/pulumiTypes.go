@@ -12263,8 +12263,7 @@ type ComputeInstanceGroupScalePolicy struct {
 	AutoScale *ComputeInstanceGroupScalePolicyAutoScale `pulumi:"autoScale"`
 	// The fixed scaling policy of the instance group. The structure is documented below.
 	FixedScale *ComputeInstanceGroupScalePolicyFixedScale `pulumi:"fixedScale"`
-	// The test auto scaling policy of the instance group. Use it to test how the auto scale works.
-	// The structure is documented below.
+	// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
 	TestAutoScale *ComputeInstanceGroupScalePolicyTestAutoScale `pulumi:"testAutoScale"`
 }
 
@@ -12284,8 +12283,7 @@ type ComputeInstanceGroupScalePolicyArgs struct {
 	AutoScale ComputeInstanceGroupScalePolicyAutoScalePtrInput `pulumi:"autoScale"`
 	// The fixed scaling policy of the instance group. The structure is documented below.
 	FixedScale ComputeInstanceGroupScalePolicyFixedScalePtrInput `pulumi:"fixedScale"`
-	// The test auto scaling policy of the instance group. Use it to test how the auto scale works.
-	// The structure is documented below.
+	// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
 	TestAutoScale ComputeInstanceGroupScalePolicyTestAutoScalePtrInput `pulumi:"testAutoScale"`
 }
 
@@ -12378,8 +12376,7 @@ func (o ComputeInstanceGroupScalePolicyOutput) FixedScale() ComputeInstanceGroup
 	}).(ComputeInstanceGroupScalePolicyFixedScalePtrOutput)
 }
 
-// The test auto scaling policy of the instance group. Use it to test how the auto scale works.
-// The structure is documented below.
+// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
 func (o ComputeInstanceGroupScalePolicyOutput) TestAutoScale() ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput {
 	return o.ApplyT(func(v ComputeInstanceGroupScalePolicy) *ComputeInstanceGroupScalePolicyTestAutoScale {
 		return v.TestAutoScale
@@ -12424,8 +12421,7 @@ func (o ComputeInstanceGroupScalePolicyPtrOutput) FixedScale() ComputeInstanceGr
 	}).(ComputeInstanceGroupScalePolicyFixedScalePtrOutput)
 }
 
-// The test auto scaling policy of the instance group. Use it to test how the auto scale works.
-// The structure is documented below.
+// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
 func (o ComputeInstanceGroupScalePolicyPtrOutput) TestAutoScale() ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicy) *ComputeInstanceGroupScalePolicyTestAutoScale {
 		if v == nil {
@@ -21658,7 +21654,7 @@ func (o LbNetworkLoadBalancerListenerArrayOutput) Index(i pulumi.IntInput) LbNet
 }
 
 type LbNetworkLoadBalancerListenerExternalAddressSpec struct {
-	// External IP address for a listener. IP address will be allocated if it wasn't been set.
+	// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
 	Address *string `pulumi:"address"`
 	// IP version of the internal addresses that the load balancer works with. Must be one of ipv4 or ipv6. The default is ipv4.
 	IpVersion *string `pulumi:"ipVersion"`
@@ -21676,7 +21672,7 @@ type LbNetworkLoadBalancerListenerExternalAddressSpecInput interface {
 }
 
 type LbNetworkLoadBalancerListenerExternalAddressSpecArgs struct {
-	// External IP address for a listener. IP address will be allocated if it wasn't been set.
+	// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// IP version of the internal addresses that the load balancer works with. Must be one of ipv4 or ipv6. The default is ipv4.
 	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
@@ -21759,7 +21755,7 @@ func (o LbNetworkLoadBalancerListenerExternalAddressSpecOutput) ToLbNetworkLoadB
 	}).(LbNetworkLoadBalancerListenerExternalAddressSpecPtrOutput)
 }
 
-// External IP address for a listener. IP address will be allocated if it wasn't been set.
+// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
 func (o LbNetworkLoadBalancerListenerExternalAddressSpecOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LbNetworkLoadBalancerListenerExternalAddressSpec) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -21789,7 +21785,7 @@ func (o LbNetworkLoadBalancerListenerExternalAddressSpecPtrOutput) Elem() LbNetw
 	}).(LbNetworkLoadBalancerListenerExternalAddressSpecOutput)
 }
 
-// External IP address for a listener. IP address will be allocated if it wasn't been set.
+// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
 func (o LbNetworkLoadBalancerListenerExternalAddressSpecPtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LbNetworkLoadBalancerListenerExternalAddressSpec) *string {
 		if v == nil {
@@ -21810,7 +21806,7 @@ func (o LbNetworkLoadBalancerListenerExternalAddressSpecPtrOutput) IpVersion() p
 }
 
 type LbNetworkLoadBalancerListenerInternalAddressSpec struct {
-	// External IP address for a listener. IP address will be allocated if it wasn't been set.
+	// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
 	Address *string `pulumi:"address"`
 	// IP version of the internal addresses that the load balancer works with. Must be one of ipv4 or ipv6. The default is ipv4.
 	IpVersion *string `pulumi:"ipVersion"`
@@ -21830,7 +21826,7 @@ type LbNetworkLoadBalancerListenerInternalAddressSpecInput interface {
 }
 
 type LbNetworkLoadBalancerListenerInternalAddressSpecArgs struct {
-	// External IP address for a listener. IP address will be allocated if it wasn't been set.
+	// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// IP version of the internal addresses that the load balancer works with. Must be one of ipv4 or ipv6. The default is ipv4.
 	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
@@ -21915,7 +21911,7 @@ func (o LbNetworkLoadBalancerListenerInternalAddressSpecOutput) ToLbNetworkLoadB
 	}).(LbNetworkLoadBalancerListenerInternalAddressSpecPtrOutput)
 }
 
-// External IP address for a listener. IP address will be allocated if it wasn't been set.
+// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
 func (o LbNetworkLoadBalancerListenerInternalAddressSpecOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LbNetworkLoadBalancerListenerInternalAddressSpec) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -21950,7 +21946,7 @@ func (o LbNetworkLoadBalancerListenerInternalAddressSpecPtrOutput) Elem() LbNetw
 	}).(LbNetworkLoadBalancerListenerInternalAddressSpecOutput)
 }
 
-// External IP address for a listener. IP address will be allocated if it wasn't been set.
+// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
 func (o LbNetworkLoadBalancerListenerInternalAddressSpecPtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LbNetworkLoadBalancerListenerInternalAddressSpec) *string {
 		if v == nil {
@@ -29167,6 +29163,791 @@ func (o MdbElasticSearchClusterHostArrayOutput) Index(i pulumi.IntInput) MdbElas
 	}).(MdbElasticSearchClusterHostOutput)
 }
 
+type MdbGreenplumClusterMasterHost struct {
+	// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+	AssignPublicIp *bool `pulumi:"assignPublicIp"`
+	// (Computed) The fully qualified domain name of the host.
+	Fqdn *string `pulumi:"fqdn"`
+}
+
+// MdbGreenplumClusterMasterHostInput is an input type that accepts MdbGreenplumClusterMasterHostArgs and MdbGreenplumClusterMasterHostOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterMasterHostInput` via:
+//
+//          MdbGreenplumClusterMasterHostArgs{...}
+type MdbGreenplumClusterMasterHostInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterMasterHostOutput() MdbGreenplumClusterMasterHostOutput
+	ToMdbGreenplumClusterMasterHostOutputWithContext(context.Context) MdbGreenplumClusterMasterHostOutput
+}
+
+type MdbGreenplumClusterMasterHostArgs struct {
+	// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+	AssignPublicIp pulumi.BoolPtrInput `pulumi:"assignPublicIp"`
+	// (Computed) The fully qualified domain name of the host.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+}
+
+func (MdbGreenplumClusterMasterHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterMasterHost)(nil)).Elem()
+}
+
+func (i MdbGreenplumClusterMasterHostArgs) ToMdbGreenplumClusterMasterHostOutput() MdbGreenplumClusterMasterHostOutput {
+	return i.ToMdbGreenplumClusterMasterHostOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterMasterHostArgs) ToMdbGreenplumClusterMasterHostOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterHostOutput)
+}
+
+// MdbGreenplumClusterMasterHostArrayInput is an input type that accepts MdbGreenplumClusterMasterHostArray and MdbGreenplumClusterMasterHostArrayOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterMasterHostArrayInput` via:
+//
+//          MdbGreenplumClusterMasterHostArray{ MdbGreenplumClusterMasterHostArgs{...} }
+type MdbGreenplumClusterMasterHostArrayInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterMasterHostArrayOutput() MdbGreenplumClusterMasterHostArrayOutput
+	ToMdbGreenplumClusterMasterHostArrayOutputWithContext(context.Context) MdbGreenplumClusterMasterHostArrayOutput
+}
+
+type MdbGreenplumClusterMasterHostArray []MdbGreenplumClusterMasterHostInput
+
+func (MdbGreenplumClusterMasterHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MdbGreenplumClusterMasterHost)(nil)).Elem()
+}
+
+func (i MdbGreenplumClusterMasterHostArray) ToMdbGreenplumClusterMasterHostArrayOutput() MdbGreenplumClusterMasterHostArrayOutput {
+	return i.ToMdbGreenplumClusterMasterHostArrayOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterMasterHostArray) ToMdbGreenplumClusterMasterHostArrayOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterHostArrayOutput)
+}
+
+type MdbGreenplumClusterMasterHostOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterMasterHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterMasterHost)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterMasterHostOutput) ToMdbGreenplumClusterMasterHostOutput() MdbGreenplumClusterMasterHostOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterHostOutput) ToMdbGreenplumClusterMasterHostOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterHostOutput {
+	return o
+}
+
+// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+func (o MdbGreenplumClusterMasterHostOutput) AssignPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterMasterHost) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// (Computed) The fully qualified domain name of the host.
+func (o MdbGreenplumClusterMasterHostOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterMasterHost) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+type MdbGreenplumClusterMasterHostArrayOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterMasterHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MdbGreenplumClusterMasterHost)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterMasterHostArrayOutput) ToMdbGreenplumClusterMasterHostArrayOutput() MdbGreenplumClusterMasterHostArrayOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterHostArrayOutput) ToMdbGreenplumClusterMasterHostArrayOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterHostArrayOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterHostArrayOutput) Index(i pulumi.IntInput) MdbGreenplumClusterMasterHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbGreenplumClusterMasterHost {
+		return vs[0].([]MdbGreenplumClusterMasterHost)[vs[1].(int)]
+	}).(MdbGreenplumClusterMasterHostOutput)
+}
+
+type MdbGreenplumClusterMasterSubcluster struct {
+	// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+	Resources MdbGreenplumClusterMasterSubclusterResources `pulumi:"resources"`
+}
+
+// MdbGreenplumClusterMasterSubclusterInput is an input type that accepts MdbGreenplumClusterMasterSubclusterArgs and MdbGreenplumClusterMasterSubclusterOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterMasterSubclusterInput` via:
+//
+//          MdbGreenplumClusterMasterSubclusterArgs{...}
+type MdbGreenplumClusterMasterSubclusterInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterMasterSubclusterOutput() MdbGreenplumClusterMasterSubclusterOutput
+	ToMdbGreenplumClusterMasterSubclusterOutputWithContext(context.Context) MdbGreenplumClusterMasterSubclusterOutput
+}
+
+type MdbGreenplumClusterMasterSubclusterArgs struct {
+	// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+	Resources MdbGreenplumClusterMasterSubclusterResourcesInput `pulumi:"resources"`
+}
+
+func (MdbGreenplumClusterMasterSubclusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterMasterSubcluster)(nil)).Elem()
+}
+
+func (i MdbGreenplumClusterMasterSubclusterArgs) ToMdbGreenplumClusterMasterSubclusterOutput() MdbGreenplumClusterMasterSubclusterOutput {
+	return i.ToMdbGreenplumClusterMasterSubclusterOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterMasterSubclusterArgs) ToMdbGreenplumClusterMasterSubclusterOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterOutput)
+}
+
+func (i MdbGreenplumClusterMasterSubclusterArgs) ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput {
+	return i.ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterMasterSubclusterArgs) ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterOutput).ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx)
+}
+
+// MdbGreenplumClusterMasterSubclusterPtrInput is an input type that accepts MdbGreenplumClusterMasterSubclusterArgs, MdbGreenplumClusterMasterSubclusterPtr and MdbGreenplumClusterMasterSubclusterPtrOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterMasterSubclusterPtrInput` via:
+//
+//          MdbGreenplumClusterMasterSubclusterArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbGreenplumClusterMasterSubclusterPtrInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput
+	ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput
+}
+
+type mdbGreenplumClusterMasterSubclusterPtrType MdbGreenplumClusterMasterSubclusterArgs
+
+func MdbGreenplumClusterMasterSubclusterPtr(v *MdbGreenplumClusterMasterSubclusterArgs) MdbGreenplumClusterMasterSubclusterPtrInput {
+	return (*mdbGreenplumClusterMasterSubclusterPtrType)(v)
+}
+
+func (*mdbGreenplumClusterMasterSubclusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbGreenplumClusterMasterSubcluster)(nil)).Elem()
+}
+
+func (i *mdbGreenplumClusterMasterSubclusterPtrType) ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput {
+	return i.ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbGreenplumClusterMasterSubclusterPtrType) ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterPtrOutput)
+}
+
+type MdbGreenplumClusterMasterSubclusterOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterMasterSubclusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterMasterSubcluster)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterMasterSubclusterOutput) ToMdbGreenplumClusterMasterSubclusterOutput() MdbGreenplumClusterMasterSubclusterOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterSubclusterOutput) ToMdbGreenplumClusterMasterSubclusterOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterSubclusterOutput) ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput {
+	return o.ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(context.Background())
+}
+
+func (o MdbGreenplumClusterMasterSubclusterOutput) ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterMasterSubcluster) *MdbGreenplumClusterMasterSubcluster {
+		return &v
+	}).(MdbGreenplumClusterMasterSubclusterPtrOutput)
+}
+
+// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+func (o MdbGreenplumClusterMasterSubclusterOutput) Resources() MdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterMasterSubcluster) MdbGreenplumClusterMasterSubclusterResources {
+		return v.Resources
+	}).(MdbGreenplumClusterMasterSubclusterResourcesOutput)
+}
+
+type MdbGreenplumClusterMasterSubclusterPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterMasterSubclusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbGreenplumClusterMasterSubcluster)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterMasterSubclusterPtrOutput) ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterSubclusterPtrOutput) ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterSubclusterPtrOutput) Elem() MdbGreenplumClusterMasterSubclusterOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubcluster) MdbGreenplumClusterMasterSubcluster { return *v }).(MdbGreenplumClusterMasterSubclusterOutput)
+}
+
+// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+func (o MdbGreenplumClusterMasterSubclusterPtrOutput) Resources() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubcluster) *MdbGreenplumClusterMasterSubclusterResources {
+		if v == nil {
+			return nil
+		}
+		return &v.Resources
+	}).(MdbGreenplumClusterMasterSubclusterResourcesPtrOutput)
+}
+
+type MdbGreenplumClusterMasterSubclusterResources struct {
+	DiskSize         int    `pulumi:"diskSize"`
+	DiskTypeId       string `pulumi:"diskTypeId"`
+	ResourcePresetId string `pulumi:"resourcePresetId"`
+}
+
+// MdbGreenplumClusterMasterSubclusterResourcesInput is an input type that accepts MdbGreenplumClusterMasterSubclusterResourcesArgs and MdbGreenplumClusterMasterSubclusterResourcesOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterMasterSubclusterResourcesInput` via:
+//
+//          MdbGreenplumClusterMasterSubclusterResourcesArgs{...}
+type MdbGreenplumClusterMasterSubclusterResourcesInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterMasterSubclusterResourcesOutput() MdbGreenplumClusterMasterSubclusterResourcesOutput
+	ToMdbGreenplumClusterMasterSubclusterResourcesOutputWithContext(context.Context) MdbGreenplumClusterMasterSubclusterResourcesOutput
+}
+
+type MdbGreenplumClusterMasterSubclusterResourcesArgs struct {
+	DiskSize         pulumi.IntInput    `pulumi:"diskSize"`
+	DiskTypeId       pulumi.StringInput `pulumi:"diskTypeId"`
+	ResourcePresetId pulumi.StringInput `pulumi:"resourcePresetId"`
+}
+
+func (MdbGreenplumClusterMasterSubclusterResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterResources)(nil)).Elem()
+}
+
+func (i MdbGreenplumClusterMasterSubclusterResourcesArgs) ToMdbGreenplumClusterMasterSubclusterResourcesOutput() MdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return i.ToMdbGreenplumClusterMasterSubclusterResourcesOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterMasterSubclusterResourcesArgs) ToMdbGreenplumClusterMasterSubclusterResourcesOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterResourcesOutput)
+}
+
+func (i MdbGreenplumClusterMasterSubclusterResourcesArgs) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
+	return i.ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterMasterSubclusterResourcesArgs) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterResourcesOutput).ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx)
+}
+
+// MdbGreenplumClusterMasterSubclusterResourcesPtrInput is an input type that accepts MdbGreenplumClusterMasterSubclusterResourcesArgs, MdbGreenplumClusterMasterSubclusterResourcesPtr and MdbGreenplumClusterMasterSubclusterResourcesPtrOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterMasterSubclusterResourcesPtrInput` via:
+//
+//          MdbGreenplumClusterMasterSubclusterResourcesArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbGreenplumClusterMasterSubclusterResourcesPtrInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput
+	ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput
+}
+
+type mdbGreenplumClusterMasterSubclusterResourcesPtrType MdbGreenplumClusterMasterSubclusterResourcesArgs
+
+func MdbGreenplumClusterMasterSubclusterResourcesPtr(v *MdbGreenplumClusterMasterSubclusterResourcesArgs) MdbGreenplumClusterMasterSubclusterResourcesPtrInput {
+	return (*mdbGreenplumClusterMasterSubclusterResourcesPtrType)(v)
+}
+
+func (*mdbGreenplumClusterMasterSubclusterResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbGreenplumClusterMasterSubclusterResources)(nil)).Elem()
+}
+
+func (i *mdbGreenplumClusterMasterSubclusterResourcesPtrType) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
+	return i.ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbGreenplumClusterMasterSubclusterResourcesPtrType) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterResourcesPtrOutput)
+}
+
+type MdbGreenplumClusterMasterSubclusterResourcesOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterMasterSubclusterResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterResources)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ToMdbGreenplumClusterMasterSubclusterResourcesOutput() MdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ToMdbGreenplumClusterMasterSubclusterResourcesOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
+	return o.ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterMasterSubclusterResources) *MdbGreenplumClusterMasterSubclusterResources {
+		return &v
+	}).(MdbGreenplumClusterMasterSubclusterResourcesPtrOutput)
+}
+func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterMasterSubclusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) DiskTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterMasterSubclusterResources) string { return v.DiskTypeId }).(pulumi.StringOutput)
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterMasterSubclusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
+}
+
+type MdbGreenplumClusterMasterSubclusterResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbGreenplumClusterMasterSubclusterResources)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) Elem() MdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubclusterResources) MdbGreenplumClusterMasterSubclusterResources {
+		return *v
+	}).(MdbGreenplumClusterMasterSubclusterResourcesOutput)
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubclusterResources) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubclusterResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskTypeId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubclusterResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourcePresetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type MdbGreenplumClusterSegmentHost struct {
+	// (Computed) The fully qualified domain name of the host.
+	Fqdn *string `pulumi:"fqdn"`
+}
+
+// MdbGreenplumClusterSegmentHostInput is an input type that accepts MdbGreenplumClusterSegmentHostArgs and MdbGreenplumClusterSegmentHostOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterSegmentHostInput` via:
+//
+//          MdbGreenplumClusterSegmentHostArgs{...}
+type MdbGreenplumClusterSegmentHostInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterSegmentHostOutput() MdbGreenplumClusterSegmentHostOutput
+	ToMdbGreenplumClusterSegmentHostOutputWithContext(context.Context) MdbGreenplumClusterSegmentHostOutput
+}
+
+type MdbGreenplumClusterSegmentHostArgs struct {
+	// (Computed) The fully qualified domain name of the host.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+}
+
+func (MdbGreenplumClusterSegmentHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterSegmentHost)(nil)).Elem()
+}
+
+func (i MdbGreenplumClusterSegmentHostArgs) ToMdbGreenplumClusterSegmentHostOutput() MdbGreenplumClusterSegmentHostOutput {
+	return i.ToMdbGreenplumClusterSegmentHostOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterSegmentHostArgs) ToMdbGreenplumClusterSegmentHostOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentHostOutput)
+}
+
+// MdbGreenplumClusterSegmentHostArrayInput is an input type that accepts MdbGreenplumClusterSegmentHostArray and MdbGreenplumClusterSegmentHostArrayOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterSegmentHostArrayInput` via:
+//
+//          MdbGreenplumClusterSegmentHostArray{ MdbGreenplumClusterSegmentHostArgs{...} }
+type MdbGreenplumClusterSegmentHostArrayInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterSegmentHostArrayOutput() MdbGreenplumClusterSegmentHostArrayOutput
+	ToMdbGreenplumClusterSegmentHostArrayOutputWithContext(context.Context) MdbGreenplumClusterSegmentHostArrayOutput
+}
+
+type MdbGreenplumClusterSegmentHostArray []MdbGreenplumClusterSegmentHostInput
+
+func (MdbGreenplumClusterSegmentHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MdbGreenplumClusterSegmentHost)(nil)).Elem()
+}
+
+func (i MdbGreenplumClusterSegmentHostArray) ToMdbGreenplumClusterSegmentHostArrayOutput() MdbGreenplumClusterSegmentHostArrayOutput {
+	return i.ToMdbGreenplumClusterSegmentHostArrayOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterSegmentHostArray) ToMdbGreenplumClusterSegmentHostArrayOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentHostArrayOutput)
+}
+
+type MdbGreenplumClusterSegmentHostOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterSegmentHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterSegmentHost)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterSegmentHostOutput) ToMdbGreenplumClusterSegmentHostOutput() MdbGreenplumClusterSegmentHostOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentHostOutput) ToMdbGreenplumClusterSegmentHostOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentHostOutput {
+	return o
+}
+
+// (Computed) The fully qualified domain name of the host.
+func (o MdbGreenplumClusterSegmentHostOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterSegmentHost) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+type MdbGreenplumClusterSegmentHostArrayOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterSegmentHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MdbGreenplumClusterSegmentHost)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterSegmentHostArrayOutput) ToMdbGreenplumClusterSegmentHostArrayOutput() MdbGreenplumClusterSegmentHostArrayOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentHostArrayOutput) ToMdbGreenplumClusterSegmentHostArrayOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentHostArrayOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentHostArrayOutput) Index(i pulumi.IntInput) MdbGreenplumClusterSegmentHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbGreenplumClusterSegmentHost {
+		return vs[0].([]MdbGreenplumClusterSegmentHost)[vs[1].(int)]
+	}).(MdbGreenplumClusterSegmentHostOutput)
+}
+
+type MdbGreenplumClusterSegmentSubcluster struct {
+	// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+	Resources MdbGreenplumClusterSegmentSubclusterResources `pulumi:"resources"`
+}
+
+// MdbGreenplumClusterSegmentSubclusterInput is an input type that accepts MdbGreenplumClusterSegmentSubclusterArgs and MdbGreenplumClusterSegmentSubclusterOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterSegmentSubclusterInput` via:
+//
+//          MdbGreenplumClusterSegmentSubclusterArgs{...}
+type MdbGreenplumClusterSegmentSubclusterInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterSegmentSubclusterOutput() MdbGreenplumClusterSegmentSubclusterOutput
+	ToMdbGreenplumClusterSegmentSubclusterOutputWithContext(context.Context) MdbGreenplumClusterSegmentSubclusterOutput
+}
+
+type MdbGreenplumClusterSegmentSubclusterArgs struct {
+	// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+	Resources MdbGreenplumClusterSegmentSubclusterResourcesInput `pulumi:"resources"`
+}
+
+func (MdbGreenplumClusterSegmentSubclusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterSegmentSubcluster)(nil)).Elem()
+}
+
+func (i MdbGreenplumClusterSegmentSubclusterArgs) ToMdbGreenplumClusterSegmentSubclusterOutput() MdbGreenplumClusterSegmentSubclusterOutput {
+	return i.ToMdbGreenplumClusterSegmentSubclusterOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterSegmentSubclusterArgs) ToMdbGreenplumClusterSegmentSubclusterOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterOutput)
+}
+
+func (i MdbGreenplumClusterSegmentSubclusterArgs) ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput {
+	return i.ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterSegmentSubclusterArgs) ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterOutput).ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx)
+}
+
+// MdbGreenplumClusterSegmentSubclusterPtrInput is an input type that accepts MdbGreenplumClusterSegmentSubclusterArgs, MdbGreenplumClusterSegmentSubclusterPtr and MdbGreenplumClusterSegmentSubclusterPtrOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterSegmentSubclusterPtrInput` via:
+//
+//          MdbGreenplumClusterSegmentSubclusterArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbGreenplumClusterSegmentSubclusterPtrInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput
+	ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput
+}
+
+type mdbGreenplumClusterSegmentSubclusterPtrType MdbGreenplumClusterSegmentSubclusterArgs
+
+func MdbGreenplumClusterSegmentSubclusterPtr(v *MdbGreenplumClusterSegmentSubclusterArgs) MdbGreenplumClusterSegmentSubclusterPtrInput {
+	return (*mdbGreenplumClusterSegmentSubclusterPtrType)(v)
+}
+
+func (*mdbGreenplumClusterSegmentSubclusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbGreenplumClusterSegmentSubcluster)(nil)).Elem()
+}
+
+func (i *mdbGreenplumClusterSegmentSubclusterPtrType) ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput {
+	return i.ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbGreenplumClusterSegmentSubclusterPtrType) ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterPtrOutput)
+}
+
+type MdbGreenplumClusterSegmentSubclusterOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterSegmentSubclusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterSegmentSubcluster)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterOutput) ToMdbGreenplumClusterSegmentSubclusterOutput() MdbGreenplumClusterSegmentSubclusterOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterOutput) ToMdbGreenplumClusterSegmentSubclusterOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterOutput) ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput {
+	return o.ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(context.Background())
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterOutput) ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubcluster) *MdbGreenplumClusterSegmentSubcluster {
+		return &v
+	}).(MdbGreenplumClusterSegmentSubclusterPtrOutput)
+}
+
+// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+func (o MdbGreenplumClusterSegmentSubclusterOutput) Resources() MdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubcluster) MdbGreenplumClusterSegmentSubclusterResources {
+		return v.Resources
+	}).(MdbGreenplumClusterSegmentSubclusterResourcesOutput)
+}
+
+type MdbGreenplumClusterSegmentSubclusterPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterSegmentSubclusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbGreenplumClusterSegmentSubcluster)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) Elem() MdbGreenplumClusterSegmentSubclusterOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubcluster) MdbGreenplumClusterSegmentSubcluster { return *v }).(MdbGreenplumClusterSegmentSubclusterOutput)
+}
+
+// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) Resources() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubcluster) *MdbGreenplumClusterSegmentSubclusterResources {
+		if v == nil {
+			return nil
+		}
+		return &v.Resources
+	}).(MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput)
+}
+
+type MdbGreenplumClusterSegmentSubclusterResources struct {
+	DiskSize         int    `pulumi:"diskSize"`
+	DiskTypeId       string `pulumi:"diskTypeId"`
+	ResourcePresetId string `pulumi:"resourcePresetId"`
+}
+
+// MdbGreenplumClusterSegmentSubclusterResourcesInput is an input type that accepts MdbGreenplumClusterSegmentSubclusterResourcesArgs and MdbGreenplumClusterSegmentSubclusterResourcesOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterSegmentSubclusterResourcesInput` via:
+//
+//          MdbGreenplumClusterSegmentSubclusterResourcesArgs{...}
+type MdbGreenplumClusterSegmentSubclusterResourcesInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterSegmentSubclusterResourcesOutput() MdbGreenplumClusterSegmentSubclusterResourcesOutput
+	ToMdbGreenplumClusterSegmentSubclusterResourcesOutputWithContext(context.Context) MdbGreenplumClusterSegmentSubclusterResourcesOutput
+}
+
+type MdbGreenplumClusterSegmentSubclusterResourcesArgs struct {
+	DiskSize         pulumi.IntInput    `pulumi:"diskSize"`
+	DiskTypeId       pulumi.StringInput `pulumi:"diskTypeId"`
+	ResourcePresetId pulumi.StringInput `pulumi:"resourcePresetId"`
+}
+
+func (MdbGreenplumClusterSegmentSubclusterResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterResources)(nil)).Elem()
+}
+
+func (i MdbGreenplumClusterSegmentSubclusterResourcesArgs) ToMdbGreenplumClusterSegmentSubclusterResourcesOutput() MdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return i.ToMdbGreenplumClusterSegmentSubclusterResourcesOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterSegmentSubclusterResourcesArgs) ToMdbGreenplumClusterSegmentSubclusterResourcesOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterResourcesOutput)
+}
+
+func (i MdbGreenplumClusterSegmentSubclusterResourcesArgs) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
+	return i.ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i MdbGreenplumClusterSegmentSubclusterResourcesArgs) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterResourcesOutput).ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx)
+}
+
+// MdbGreenplumClusterSegmentSubclusterResourcesPtrInput is an input type that accepts MdbGreenplumClusterSegmentSubclusterResourcesArgs, MdbGreenplumClusterSegmentSubclusterResourcesPtr and MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput values.
+// You can construct a concrete instance of `MdbGreenplumClusterSegmentSubclusterResourcesPtrInput` via:
+//
+//          MdbGreenplumClusterSegmentSubclusterResourcesArgs{...}
+//
+//  or:
+//
+//          nil
+type MdbGreenplumClusterSegmentSubclusterResourcesPtrInput interface {
+	pulumi.Input
+
+	ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput
+	ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput
+}
+
+type mdbGreenplumClusterSegmentSubclusterResourcesPtrType MdbGreenplumClusterSegmentSubclusterResourcesArgs
+
+func MdbGreenplumClusterSegmentSubclusterResourcesPtr(v *MdbGreenplumClusterSegmentSubclusterResourcesArgs) MdbGreenplumClusterSegmentSubclusterResourcesPtrInput {
+	return (*mdbGreenplumClusterSegmentSubclusterResourcesPtrType)(v)
+}
+
+func (*mdbGreenplumClusterSegmentSubclusterResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbGreenplumClusterSegmentSubclusterResources)(nil)).Elem()
+}
+
+func (i *mdbGreenplumClusterSegmentSubclusterResourcesPtrType) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
+	return i.ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *mdbGreenplumClusterSegmentSubclusterResourcesPtrType) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput)
+}
+
+type MdbGreenplumClusterSegmentSubclusterResourcesOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterSegmentSubclusterResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterResources)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesOutput() MdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
+	return o.ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubclusterResources) *MdbGreenplumClusterSegmentSubclusterResources {
+		return &v
+	}).(MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput)
+}
+func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubclusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) DiskTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubclusterResources) string { return v.DiskTypeId }).(pulumi.StringOutput)
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
+	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubclusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
+}
+
+type MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MdbGreenplumClusterSegmentSubclusterResources)(nil)).Elem()
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
+	return o
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) Elem() MdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubclusterResources) MdbGreenplumClusterSegmentSubclusterResources {
+		return *v
+	}).(MdbGreenplumClusterSegmentSubclusterResourcesOutput)
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubclusterResources) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubclusterResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskTypeId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubclusterResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourcePresetId
+	}).(pulumi.StringPtrOutput)
+}
+
 type MdbKafkaClusterConfig struct {
 	// Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
 	AssignPublicIp *bool `pulumi:"assignPublicIp"`
@@ -29565,19 +30346,19 @@ func (o MdbKafkaClusterConfigKafkaPtrOutput) Resources() MdbKafkaClusterConfigKa
 type MdbKafkaClusterConfigKafkaKafkaConfig struct {
 	AutoCreateTopicsEnable      *bool   `pulumi:"autoCreateTopicsEnable"`
 	CompressionType             *string `pulumi:"compressionType"`
-	DefaultReplicationFactor    *int    `pulumi:"defaultReplicationFactor"`
-	LogFlushIntervalMessages    *int    `pulumi:"logFlushIntervalMessages"`
-	LogFlushIntervalMs          *int    `pulumi:"logFlushIntervalMs"`
-	LogFlushSchedulerIntervalMs *int    `pulumi:"logFlushSchedulerIntervalMs"`
+	DefaultReplicationFactor    *string `pulumi:"defaultReplicationFactor"`
+	LogFlushIntervalMessages    *string `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs          *string `pulumi:"logFlushIntervalMs"`
+	LogFlushSchedulerIntervalMs *string `pulumi:"logFlushSchedulerIntervalMs"`
 	LogPreallocate              *bool   `pulumi:"logPreallocate"`
-	LogRetentionBytes           *int    `pulumi:"logRetentionBytes"`
-	LogRetentionHours           *int    `pulumi:"logRetentionHours"`
-	LogRetentionMinutes         *int    `pulumi:"logRetentionMinutes"`
-	LogRetentionMs              *int    `pulumi:"logRetentionMs"`
-	LogSegmentBytes             *int    `pulumi:"logSegmentBytes"`
-	NumPartitions               *int    `pulumi:"numPartitions"`
-	SocketReceiveBufferBytes    *int    `pulumi:"socketReceiveBufferBytes"`
-	SocketSendBufferBytes       *int    `pulumi:"socketSendBufferBytes"`
+	LogRetentionBytes           *string `pulumi:"logRetentionBytes"`
+	LogRetentionHours           *string `pulumi:"logRetentionHours"`
+	LogRetentionMinutes         *string `pulumi:"logRetentionMinutes"`
+	LogRetentionMs              *string `pulumi:"logRetentionMs"`
+	LogSegmentBytes             *string `pulumi:"logSegmentBytes"`
+	NumPartitions               *string `pulumi:"numPartitions"`
+	SocketReceiveBufferBytes    *string `pulumi:"socketReceiveBufferBytes"`
+	SocketSendBufferBytes       *string `pulumi:"socketSendBufferBytes"`
 }
 
 // MdbKafkaClusterConfigKafkaKafkaConfigInput is an input type that accepts MdbKafkaClusterConfigKafkaKafkaConfigArgs and MdbKafkaClusterConfigKafkaKafkaConfigOutput values.
@@ -29594,19 +30375,19 @@ type MdbKafkaClusterConfigKafkaKafkaConfigInput interface {
 type MdbKafkaClusterConfigKafkaKafkaConfigArgs struct {
 	AutoCreateTopicsEnable      pulumi.BoolPtrInput   `pulumi:"autoCreateTopicsEnable"`
 	CompressionType             pulumi.StringPtrInput `pulumi:"compressionType"`
-	DefaultReplicationFactor    pulumi.IntPtrInput    `pulumi:"defaultReplicationFactor"`
-	LogFlushIntervalMessages    pulumi.IntPtrInput    `pulumi:"logFlushIntervalMessages"`
-	LogFlushIntervalMs          pulumi.IntPtrInput    `pulumi:"logFlushIntervalMs"`
-	LogFlushSchedulerIntervalMs pulumi.IntPtrInput    `pulumi:"logFlushSchedulerIntervalMs"`
+	DefaultReplicationFactor    pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	LogFlushIntervalMessages    pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs          pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
+	LogFlushSchedulerIntervalMs pulumi.StringPtrInput `pulumi:"logFlushSchedulerIntervalMs"`
 	LogPreallocate              pulumi.BoolPtrInput   `pulumi:"logPreallocate"`
-	LogRetentionBytes           pulumi.IntPtrInput    `pulumi:"logRetentionBytes"`
-	LogRetentionHours           pulumi.IntPtrInput    `pulumi:"logRetentionHours"`
-	LogRetentionMinutes         pulumi.IntPtrInput    `pulumi:"logRetentionMinutes"`
-	LogRetentionMs              pulumi.IntPtrInput    `pulumi:"logRetentionMs"`
-	LogSegmentBytes             pulumi.IntPtrInput    `pulumi:"logSegmentBytes"`
-	NumPartitions               pulumi.IntPtrInput    `pulumi:"numPartitions"`
-	SocketReceiveBufferBytes    pulumi.IntPtrInput    `pulumi:"socketReceiveBufferBytes"`
-	SocketSendBufferBytes       pulumi.IntPtrInput    `pulumi:"socketSendBufferBytes"`
+	LogRetentionBytes           pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
+	LogRetentionHours           pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	LogRetentionMinutes         pulumi.StringPtrInput `pulumi:"logRetentionMinutes"`
+	LogRetentionMs              pulumi.StringPtrInput `pulumi:"logRetentionMs"`
+	LogSegmentBytes             pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	NumPartitions               pulumi.StringPtrInput `pulumi:"numPartitions"`
+	SocketReceiveBufferBytes    pulumi.StringPtrInput `pulumi:"socketReceiveBufferBytes"`
+	SocketSendBufferBytes       pulumi.StringPtrInput `pulumi:"socketSendBufferBytes"`
 }
 
 func (MdbKafkaClusterConfigKafkaKafkaConfigArgs) ElementType() reflect.Type {
@@ -29693,56 +30474,56 @@ func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) CompressionType() pulumi.St
 	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.DefaultReplicationFactor }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogFlushIntervalMessages }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogFlushIntervalMessages }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogFlushIntervalMs }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushSchedulerIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogFlushSchedulerIntervalMs }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushSchedulerIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogFlushSchedulerIntervalMs }).(pulumi.StringPtrOutput)
 }
 
 func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogPreallocate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *bool { return v.LogPreallocate }).(pulumi.BoolPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogRetentionBytes }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogRetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogRetentionHours }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionHours() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogRetentionMinutes }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMinutes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogRetentionMinutes }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogRetentionMs }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogRetentionMs }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogSegmentBytes }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) LogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.NumPartitions }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) NumPartitions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.NumPartitions }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketReceiveBufferBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.SocketReceiveBufferBytes }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketReceiveBufferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.SocketReceiveBufferBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketSendBufferBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.SocketSendBufferBytes }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketSendBufferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.SocketSendBufferBytes }).(pulumi.StringPtrOutput)
 }
 
 type MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput struct{ *pulumi.OutputState }
@@ -29781,40 +30562,40 @@ func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) CompressionType() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DefaultReplicationFactor
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogFlushIntervalMessages
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogFlushIntervalMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushSchedulerIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushSchedulerIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogFlushSchedulerIntervalMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogPreallocate() pulumi.BoolPtrOutput {
@@ -29826,76 +30607,76 @@ func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogPreallocate() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionHours() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionHours
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionMinutes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionMinutes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogSegmentBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) NumPartitions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.NumPartitions
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) SocketReceiveBufferBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) SocketReceiveBufferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SocketReceiveBufferBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) SocketSendBufferBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) SocketSendBufferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SocketSendBufferBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type MdbKafkaClusterConfigKafkaResources struct {
@@ -30636,17 +31417,17 @@ func (o MdbKafkaClusterTopicArrayOutput) Index(i pulumi.IntInput) MdbKafkaCluste
 type MdbKafkaClusterTopicTopicConfig struct {
 	CleanupPolicy      *string `pulumi:"cleanupPolicy"`
 	CompressionType    *string `pulumi:"compressionType"`
-	DeleteRetentionMs  *int    `pulumi:"deleteRetentionMs"`
-	FileDeleteDelayMs  *int    `pulumi:"fileDeleteDelayMs"`
-	FlushMessages      *int    `pulumi:"flushMessages"`
-	FlushMs            *int    `pulumi:"flushMs"`
-	MaxMessageBytes    *int    `pulumi:"maxMessageBytes"`
-	MinCompactionLagMs *int    `pulumi:"minCompactionLagMs"`
-	MinInsyncReplicas  *int    `pulumi:"minInsyncReplicas"`
+	DeleteRetentionMs  *string `pulumi:"deleteRetentionMs"`
+	FileDeleteDelayMs  *string `pulumi:"fileDeleteDelayMs"`
+	FlushMessages      *string `pulumi:"flushMessages"`
+	FlushMs            *string `pulumi:"flushMs"`
+	MaxMessageBytes    *string `pulumi:"maxMessageBytes"`
+	MinCompactionLagMs *string `pulumi:"minCompactionLagMs"`
+	MinInsyncReplicas  *string `pulumi:"minInsyncReplicas"`
 	Preallocate        *bool   `pulumi:"preallocate"`
-	RetentionBytes     *int    `pulumi:"retentionBytes"`
-	RetentionMs        *int    `pulumi:"retentionMs"`
-	SegmentBytes       *int    `pulumi:"segmentBytes"`
+	RetentionBytes     *string `pulumi:"retentionBytes"`
+	RetentionMs        *string `pulumi:"retentionMs"`
+	SegmentBytes       *string `pulumi:"segmentBytes"`
 }
 
 // MdbKafkaClusterTopicTopicConfigInput is an input type that accepts MdbKafkaClusterTopicTopicConfigArgs and MdbKafkaClusterTopicTopicConfigOutput values.
@@ -30663,17 +31444,17 @@ type MdbKafkaClusterTopicTopicConfigInput interface {
 type MdbKafkaClusterTopicTopicConfigArgs struct {
 	CleanupPolicy      pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
 	CompressionType    pulumi.StringPtrInput `pulumi:"compressionType"`
-	DeleteRetentionMs  pulumi.IntPtrInput    `pulumi:"deleteRetentionMs"`
-	FileDeleteDelayMs  pulumi.IntPtrInput    `pulumi:"fileDeleteDelayMs"`
-	FlushMessages      pulumi.IntPtrInput    `pulumi:"flushMessages"`
-	FlushMs            pulumi.IntPtrInput    `pulumi:"flushMs"`
-	MaxMessageBytes    pulumi.IntPtrInput    `pulumi:"maxMessageBytes"`
-	MinCompactionLagMs pulumi.IntPtrInput    `pulumi:"minCompactionLagMs"`
-	MinInsyncReplicas  pulumi.IntPtrInput    `pulumi:"minInsyncReplicas"`
+	DeleteRetentionMs  pulumi.StringPtrInput `pulumi:"deleteRetentionMs"`
+	FileDeleteDelayMs  pulumi.StringPtrInput `pulumi:"fileDeleteDelayMs"`
+	FlushMessages      pulumi.StringPtrInput `pulumi:"flushMessages"`
+	FlushMs            pulumi.StringPtrInput `pulumi:"flushMs"`
+	MaxMessageBytes    pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
+	MinCompactionLagMs pulumi.StringPtrInput `pulumi:"minCompactionLagMs"`
+	MinInsyncReplicas  pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
 	Preallocate        pulumi.BoolPtrInput   `pulumi:"preallocate"`
-	RetentionBytes     pulumi.IntPtrInput    `pulumi:"retentionBytes"`
-	RetentionMs        pulumi.IntPtrInput    `pulumi:"retentionMs"`
-	SegmentBytes       pulumi.IntPtrInput    `pulumi:"segmentBytes"`
+	RetentionBytes     pulumi.StringPtrInput `pulumi:"retentionBytes"`
+	RetentionMs        pulumi.StringPtrInput `pulumi:"retentionMs"`
+	SegmentBytes       pulumi.StringPtrInput `pulumi:"segmentBytes"`
 }
 
 func (MdbKafkaClusterTopicTopicConfigArgs) ElementType() reflect.Type {
@@ -30760,48 +31541,48 @@ func (o MdbKafkaClusterTopicTopicConfigOutput) CompressionType() pulumi.StringPt
 	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) DeleteRetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.DeleteRetentionMs }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.DeleteRetentionMs }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) FileDeleteDelayMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.FileDeleteDelayMs }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.FileDeleteDelayMs }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) FlushMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.FlushMessages }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) FlushMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.FlushMessages }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) FlushMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.FlushMs }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) FlushMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.FlushMs }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) MaxMessageBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.MaxMessageBytes }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) MaxMessageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.MaxMessageBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) MinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.MinCompactionLagMs }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.MinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) MinInsyncReplicas() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.MinInsyncReplicas }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
 }
 
 func (o MdbKafkaClusterTopicTopicConfigOutput) Preallocate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *bool { return v.Preallocate }).(pulumi.BoolPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) RetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.RetentionBytes }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) RetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.RetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) RetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.RetentionMs }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) RetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.RetentionMs }).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigOutput) SegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *int { return v.SegmentBytes }).(pulumi.IntPtrOutput)
+func (o MdbKafkaClusterTopicTopicConfigOutput) SegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.SegmentBytes }).(pulumi.StringPtrOutput)
 }
 
 type MdbKafkaClusterTopicTopicConfigPtrOutput struct{ *pulumi.OutputState }
@@ -30840,67 +31621,67 @@ func (o MdbKafkaClusterTopicTopicConfigPtrOutput) CompressionType() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) DeleteRetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DeleteRetentionMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) FileDeleteDelayMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.FileDeleteDelayMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) FlushMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) FlushMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.FlushMessages
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) FlushMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) FlushMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.FlushMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) MaxMessageBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) MaxMessageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxMessageBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) MinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MinCompactionLagMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) MinInsyncReplicas() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MinInsyncReplicas
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o MdbKafkaClusterTopicTopicConfigPtrOutput) Preallocate() pulumi.BoolPtrOutput {
@@ -30912,31 +31693,31 @@ func (o MdbKafkaClusterTopicTopicConfigPtrOutput) Preallocate() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) RetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) RetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RetentionBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) RetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) RetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RetentionMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MdbKafkaClusterTopicTopicConfigPtrOutput) SegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *int {
+func (o MdbKafkaClusterTopicTopicConfigPtrOutput) SegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SegmentBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type MdbKafkaClusterUser struct {
@@ -32455,7 +33236,7 @@ func (o MdbMongodbClusterUserPermissionArrayOutput) Index(i pulumi.IntInput) Mdb
 type MdbMysqlClusterAccess struct {
 	// Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
 	DataLens *bool `pulumi:"dataLens"`
-	// Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+	// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
 	WebSql *bool `pulumi:"webSql"`
 }
 
@@ -32473,7 +33254,7 @@ type MdbMysqlClusterAccessInput interface {
 type MdbMysqlClusterAccessArgs struct {
 	// Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
 	DataLens pulumi.BoolPtrInput `pulumi:"dataLens"`
-	// Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+	// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
 	WebSql pulumi.BoolPtrInput `pulumi:"webSql"`
 }
 
@@ -32559,7 +33340,7 @@ func (o MdbMysqlClusterAccessOutput) DataLens() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MdbMysqlClusterAccess) *bool { return v.DataLens }).(pulumi.BoolPtrOutput)
 }
 
-// Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
 func (o MdbMysqlClusterAccessOutput) WebSql() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MdbMysqlClusterAccess) *bool { return v.WebSql }).(pulumi.BoolPtrOutput)
 }
@@ -32592,7 +33373,7 @@ func (o MdbMysqlClusterAccessPtrOutput) DataLens() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
 func (o MdbMysqlClusterAccessPtrOutput) WebSql() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MdbMysqlClusterAccess) *bool {
 		if v == nil {
@@ -37005,7 +37786,7 @@ type StorageBucketWebsite struct {
 	IndexDocument *string `pulumi:"indexDocument"`
 	// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
 	RedirectAllRequestsTo *string `pulumi:"redirectAllRequestsTo"`
-	// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+	// A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
 	RoutingRules *string `pulumi:"routingRules"`
 }
 
@@ -37027,7 +37808,7 @@ type StorageBucketWebsiteArgs struct {
 	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
 	// A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
 	RedirectAllRequestsTo pulumi.StringPtrInput `pulumi:"redirectAllRequestsTo"`
-	// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+	// A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
 	RoutingRules pulumi.StringPtrInput `pulumi:"routingRules"`
 }
 
@@ -37123,7 +37904,7 @@ func (o StorageBucketWebsiteOutput) RedirectAllRequestsTo() pulumi.StringPtrOutp
 	return o.ApplyT(func(v StorageBucketWebsite) *string { return v.RedirectAllRequestsTo }).(pulumi.StringPtrOutput)
 }
 
-// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+// A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
 func (o StorageBucketWebsiteOutput) RoutingRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageBucketWebsite) *string { return v.RoutingRules }).(pulumi.StringPtrOutput)
 }
@@ -37176,7 +37957,7 @@ func (o StorageBucketWebsitePtrOutput) RedirectAllRequestsTo() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+// A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
 func (o StorageBucketWebsitePtrOutput) RoutingRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageBucketWebsite) *string {
 		if v == nil {
@@ -46877,9 +47658,7 @@ type GetComputeInstanceGroupScalePolicy struct {
 	AutoScales []GetComputeInstanceGroupScalePolicyAutoScale `pulumi:"autoScales"`
 	// The fixed scaling policy of the instance group. The structure is documented below.
 	FixedScales []GetComputeInstanceGroupScalePolicyFixedScale `pulumi:"fixedScales"`
-	// The test auto scaling policy of the instance group. Use it to test how the auto scale works.
-	// The structure is documented below.
-	// ---
+	// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
 	TestAutoScales []GetComputeInstanceGroupScalePolicyTestAutoScale `pulumi:"testAutoScales"`
 }
 
@@ -46899,9 +47678,7 @@ type GetComputeInstanceGroupScalePolicyArgs struct {
 	AutoScales GetComputeInstanceGroupScalePolicyAutoScaleArrayInput `pulumi:"autoScales"`
 	// The fixed scaling policy of the instance group. The structure is documented below.
 	FixedScales GetComputeInstanceGroupScalePolicyFixedScaleArrayInput `pulumi:"fixedScales"`
-	// The test auto scaling policy of the instance group. Use it to test how the auto scale works.
-	// The structure is documented below.
-	// ---
+	// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
 	TestAutoScales GetComputeInstanceGroupScalePolicyTestAutoScaleArrayInput `pulumi:"testAutoScales"`
 }
 
@@ -46945,9 +47722,7 @@ func (o GetComputeInstanceGroupScalePolicyOutput) FixedScales() GetComputeInstan
 	}).(GetComputeInstanceGroupScalePolicyFixedScaleArrayOutput)
 }
 
-// The test auto scaling policy of the instance group. Use it to test how the auto scale works.
-// The structure is documented below.
-// ---
+// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
 func (o GetComputeInstanceGroupScalePolicyOutput) TestAutoScales() GetComputeInstanceGroupScalePolicyTestAutoScaleArrayOutput {
 	return o.ApplyT(func(v GetComputeInstanceGroupScalePolicy) []GetComputeInstanceGroupScalePolicyTestAutoScale {
 		return v.TestAutoScales
@@ -56610,6 +57385,424 @@ func (o GetMdbElasticSearchClusterHostArrayOutput) Index(i pulumi.IntInput) GetM
 	}).(GetMdbElasticSearchClusterHostOutput)
 }
 
+type GetMdbGreenplumClusterMasterHost struct {
+	AssignPublicIp bool   `pulumi:"assignPublicIp"`
+	Fqdn           string `pulumi:"fqdn"`
+}
+
+// GetMdbGreenplumClusterMasterHostInput is an input type that accepts GetMdbGreenplumClusterMasterHostArgs and GetMdbGreenplumClusterMasterHostOutput values.
+// You can construct a concrete instance of `GetMdbGreenplumClusterMasterHostInput` via:
+//
+//          GetMdbGreenplumClusterMasterHostArgs{...}
+type GetMdbGreenplumClusterMasterHostInput interface {
+	pulumi.Input
+
+	ToGetMdbGreenplumClusterMasterHostOutput() GetMdbGreenplumClusterMasterHostOutput
+	ToGetMdbGreenplumClusterMasterHostOutputWithContext(context.Context) GetMdbGreenplumClusterMasterHostOutput
+}
+
+type GetMdbGreenplumClusterMasterHostArgs struct {
+	AssignPublicIp pulumi.BoolInput   `pulumi:"assignPublicIp"`
+	Fqdn           pulumi.StringInput `pulumi:"fqdn"`
+}
+
+func (GetMdbGreenplumClusterMasterHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterMasterHost)(nil)).Elem()
+}
+
+func (i GetMdbGreenplumClusterMasterHostArgs) ToGetMdbGreenplumClusterMasterHostOutput() GetMdbGreenplumClusterMasterHostOutput {
+	return i.ToGetMdbGreenplumClusterMasterHostOutputWithContext(context.Background())
+}
+
+func (i GetMdbGreenplumClusterMasterHostArgs) ToGetMdbGreenplumClusterMasterHostOutputWithContext(ctx context.Context) GetMdbGreenplumClusterMasterHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbGreenplumClusterMasterHostOutput)
+}
+
+// GetMdbGreenplumClusterMasterHostArrayInput is an input type that accepts GetMdbGreenplumClusterMasterHostArray and GetMdbGreenplumClusterMasterHostArrayOutput values.
+// You can construct a concrete instance of `GetMdbGreenplumClusterMasterHostArrayInput` via:
+//
+//          GetMdbGreenplumClusterMasterHostArray{ GetMdbGreenplumClusterMasterHostArgs{...} }
+type GetMdbGreenplumClusterMasterHostArrayInput interface {
+	pulumi.Input
+
+	ToGetMdbGreenplumClusterMasterHostArrayOutput() GetMdbGreenplumClusterMasterHostArrayOutput
+	ToGetMdbGreenplumClusterMasterHostArrayOutputWithContext(context.Context) GetMdbGreenplumClusterMasterHostArrayOutput
+}
+
+type GetMdbGreenplumClusterMasterHostArray []GetMdbGreenplumClusterMasterHostInput
+
+func (GetMdbGreenplumClusterMasterHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMdbGreenplumClusterMasterHost)(nil)).Elem()
+}
+
+func (i GetMdbGreenplumClusterMasterHostArray) ToGetMdbGreenplumClusterMasterHostArrayOutput() GetMdbGreenplumClusterMasterHostArrayOutput {
+	return i.ToGetMdbGreenplumClusterMasterHostArrayOutputWithContext(context.Background())
+}
+
+func (i GetMdbGreenplumClusterMasterHostArray) ToGetMdbGreenplumClusterMasterHostArrayOutputWithContext(ctx context.Context) GetMdbGreenplumClusterMasterHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbGreenplumClusterMasterHostArrayOutput)
+}
+
+type GetMdbGreenplumClusterMasterHostOutput struct{ *pulumi.OutputState }
+
+func (GetMdbGreenplumClusterMasterHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterMasterHost)(nil)).Elem()
+}
+
+func (o GetMdbGreenplumClusterMasterHostOutput) ToGetMdbGreenplumClusterMasterHostOutput() GetMdbGreenplumClusterMasterHostOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterMasterHostOutput) ToGetMdbGreenplumClusterMasterHostOutputWithContext(ctx context.Context) GetMdbGreenplumClusterMasterHostOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterMasterHostOutput) AssignPublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterMasterHost) bool { return v.AssignPublicIp }).(pulumi.BoolOutput)
+}
+
+func (o GetMdbGreenplumClusterMasterHostOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterMasterHost) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+type GetMdbGreenplumClusterMasterHostArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMdbGreenplumClusterMasterHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMdbGreenplumClusterMasterHost)(nil)).Elem()
+}
+
+func (o GetMdbGreenplumClusterMasterHostArrayOutput) ToGetMdbGreenplumClusterMasterHostArrayOutput() GetMdbGreenplumClusterMasterHostArrayOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterMasterHostArrayOutput) ToGetMdbGreenplumClusterMasterHostArrayOutputWithContext(ctx context.Context) GetMdbGreenplumClusterMasterHostArrayOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterMasterHostArrayOutput) Index(i pulumi.IntInput) GetMdbGreenplumClusterMasterHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMdbGreenplumClusterMasterHost {
+		return vs[0].([]GetMdbGreenplumClusterMasterHost)[vs[1].(int)]
+	}).(GetMdbGreenplumClusterMasterHostOutput)
+}
+
+type GetMdbGreenplumClusterMasterSubcluster struct {
+	Resources GetMdbGreenplumClusterMasterSubclusterResources `pulumi:"resources"`
+}
+
+// GetMdbGreenplumClusterMasterSubclusterInput is an input type that accepts GetMdbGreenplumClusterMasterSubclusterArgs and GetMdbGreenplumClusterMasterSubclusterOutput values.
+// You can construct a concrete instance of `GetMdbGreenplumClusterMasterSubclusterInput` via:
+//
+//          GetMdbGreenplumClusterMasterSubclusterArgs{...}
+type GetMdbGreenplumClusterMasterSubclusterInput interface {
+	pulumi.Input
+
+	ToGetMdbGreenplumClusterMasterSubclusterOutput() GetMdbGreenplumClusterMasterSubclusterOutput
+	ToGetMdbGreenplumClusterMasterSubclusterOutputWithContext(context.Context) GetMdbGreenplumClusterMasterSubclusterOutput
+}
+
+type GetMdbGreenplumClusterMasterSubclusterArgs struct {
+	Resources GetMdbGreenplumClusterMasterSubclusterResourcesInput `pulumi:"resources"`
+}
+
+func (GetMdbGreenplumClusterMasterSubclusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterMasterSubcluster)(nil)).Elem()
+}
+
+func (i GetMdbGreenplumClusterMasterSubclusterArgs) ToGetMdbGreenplumClusterMasterSubclusterOutput() GetMdbGreenplumClusterMasterSubclusterOutput {
+	return i.ToGetMdbGreenplumClusterMasterSubclusterOutputWithContext(context.Background())
+}
+
+func (i GetMdbGreenplumClusterMasterSubclusterArgs) ToGetMdbGreenplumClusterMasterSubclusterOutputWithContext(ctx context.Context) GetMdbGreenplumClusterMasterSubclusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbGreenplumClusterMasterSubclusterOutput)
+}
+
+type GetMdbGreenplumClusterMasterSubclusterOutput struct{ *pulumi.OutputState }
+
+func (GetMdbGreenplumClusterMasterSubclusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterMasterSubcluster)(nil)).Elem()
+}
+
+func (o GetMdbGreenplumClusterMasterSubclusterOutput) ToGetMdbGreenplumClusterMasterSubclusterOutput() GetMdbGreenplumClusterMasterSubclusterOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterMasterSubclusterOutput) ToGetMdbGreenplumClusterMasterSubclusterOutputWithContext(ctx context.Context) GetMdbGreenplumClusterMasterSubclusterOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterMasterSubclusterOutput) Resources() GetMdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterMasterSubcluster) GetMdbGreenplumClusterMasterSubclusterResources {
+		return v.Resources
+	}).(GetMdbGreenplumClusterMasterSubclusterResourcesOutput)
+}
+
+type GetMdbGreenplumClusterMasterSubclusterResources struct {
+	DiskSize         int    `pulumi:"diskSize"`
+	DiskTypeId       string `pulumi:"diskTypeId"`
+	ResourcePresetId string `pulumi:"resourcePresetId"`
+}
+
+// GetMdbGreenplumClusterMasterSubclusterResourcesInput is an input type that accepts GetMdbGreenplumClusterMasterSubclusterResourcesArgs and GetMdbGreenplumClusterMasterSubclusterResourcesOutput values.
+// You can construct a concrete instance of `GetMdbGreenplumClusterMasterSubclusterResourcesInput` via:
+//
+//          GetMdbGreenplumClusterMasterSubclusterResourcesArgs{...}
+type GetMdbGreenplumClusterMasterSubclusterResourcesInput interface {
+	pulumi.Input
+
+	ToGetMdbGreenplumClusterMasterSubclusterResourcesOutput() GetMdbGreenplumClusterMasterSubclusterResourcesOutput
+	ToGetMdbGreenplumClusterMasterSubclusterResourcesOutputWithContext(context.Context) GetMdbGreenplumClusterMasterSubclusterResourcesOutput
+}
+
+type GetMdbGreenplumClusterMasterSubclusterResourcesArgs struct {
+	DiskSize         pulumi.IntInput    `pulumi:"diskSize"`
+	DiskTypeId       pulumi.StringInput `pulumi:"diskTypeId"`
+	ResourcePresetId pulumi.StringInput `pulumi:"resourcePresetId"`
+}
+
+func (GetMdbGreenplumClusterMasterSubclusterResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterMasterSubclusterResources)(nil)).Elem()
+}
+
+func (i GetMdbGreenplumClusterMasterSubclusterResourcesArgs) ToGetMdbGreenplumClusterMasterSubclusterResourcesOutput() GetMdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return i.ToGetMdbGreenplumClusterMasterSubclusterResourcesOutputWithContext(context.Background())
+}
+
+func (i GetMdbGreenplumClusterMasterSubclusterResourcesArgs) ToGetMdbGreenplumClusterMasterSubclusterResourcesOutputWithContext(ctx context.Context) GetMdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbGreenplumClusterMasterSubclusterResourcesOutput)
+}
+
+type GetMdbGreenplumClusterMasterSubclusterResourcesOutput struct{ *pulumi.OutputState }
+
+func (GetMdbGreenplumClusterMasterSubclusterResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterMasterSubclusterResources)(nil)).Elem()
+}
+
+func (o GetMdbGreenplumClusterMasterSubclusterResourcesOutput) ToGetMdbGreenplumClusterMasterSubclusterResourcesOutput() GetMdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterMasterSubclusterResourcesOutput) ToGetMdbGreenplumClusterMasterSubclusterResourcesOutputWithContext(ctx context.Context) GetMdbGreenplumClusterMasterSubclusterResourcesOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterMasterSubclusterResourcesOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterMasterSubclusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+func (o GetMdbGreenplumClusterMasterSubclusterResourcesOutput) DiskTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterMasterSubclusterResources) string { return v.DiskTypeId }).(pulumi.StringOutput)
+}
+
+func (o GetMdbGreenplumClusterMasterSubclusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterMasterSubclusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
+}
+
+type GetMdbGreenplumClusterSegmentHost struct {
+	Fqdn string `pulumi:"fqdn"`
+}
+
+// GetMdbGreenplumClusterSegmentHostInput is an input type that accepts GetMdbGreenplumClusterSegmentHostArgs and GetMdbGreenplumClusterSegmentHostOutput values.
+// You can construct a concrete instance of `GetMdbGreenplumClusterSegmentHostInput` via:
+//
+//          GetMdbGreenplumClusterSegmentHostArgs{...}
+type GetMdbGreenplumClusterSegmentHostInput interface {
+	pulumi.Input
+
+	ToGetMdbGreenplumClusterSegmentHostOutput() GetMdbGreenplumClusterSegmentHostOutput
+	ToGetMdbGreenplumClusterSegmentHostOutputWithContext(context.Context) GetMdbGreenplumClusterSegmentHostOutput
+}
+
+type GetMdbGreenplumClusterSegmentHostArgs struct {
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+}
+
+func (GetMdbGreenplumClusterSegmentHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterSegmentHost)(nil)).Elem()
+}
+
+func (i GetMdbGreenplumClusterSegmentHostArgs) ToGetMdbGreenplumClusterSegmentHostOutput() GetMdbGreenplumClusterSegmentHostOutput {
+	return i.ToGetMdbGreenplumClusterSegmentHostOutputWithContext(context.Background())
+}
+
+func (i GetMdbGreenplumClusterSegmentHostArgs) ToGetMdbGreenplumClusterSegmentHostOutputWithContext(ctx context.Context) GetMdbGreenplumClusterSegmentHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbGreenplumClusterSegmentHostOutput)
+}
+
+// GetMdbGreenplumClusterSegmentHostArrayInput is an input type that accepts GetMdbGreenplumClusterSegmentHostArray and GetMdbGreenplumClusterSegmentHostArrayOutput values.
+// You can construct a concrete instance of `GetMdbGreenplumClusterSegmentHostArrayInput` via:
+//
+//          GetMdbGreenplumClusterSegmentHostArray{ GetMdbGreenplumClusterSegmentHostArgs{...} }
+type GetMdbGreenplumClusterSegmentHostArrayInput interface {
+	pulumi.Input
+
+	ToGetMdbGreenplumClusterSegmentHostArrayOutput() GetMdbGreenplumClusterSegmentHostArrayOutput
+	ToGetMdbGreenplumClusterSegmentHostArrayOutputWithContext(context.Context) GetMdbGreenplumClusterSegmentHostArrayOutput
+}
+
+type GetMdbGreenplumClusterSegmentHostArray []GetMdbGreenplumClusterSegmentHostInput
+
+func (GetMdbGreenplumClusterSegmentHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMdbGreenplumClusterSegmentHost)(nil)).Elem()
+}
+
+func (i GetMdbGreenplumClusterSegmentHostArray) ToGetMdbGreenplumClusterSegmentHostArrayOutput() GetMdbGreenplumClusterSegmentHostArrayOutput {
+	return i.ToGetMdbGreenplumClusterSegmentHostArrayOutputWithContext(context.Background())
+}
+
+func (i GetMdbGreenplumClusterSegmentHostArray) ToGetMdbGreenplumClusterSegmentHostArrayOutputWithContext(ctx context.Context) GetMdbGreenplumClusterSegmentHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbGreenplumClusterSegmentHostArrayOutput)
+}
+
+type GetMdbGreenplumClusterSegmentHostOutput struct{ *pulumi.OutputState }
+
+func (GetMdbGreenplumClusterSegmentHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterSegmentHost)(nil)).Elem()
+}
+
+func (o GetMdbGreenplumClusterSegmentHostOutput) ToGetMdbGreenplumClusterSegmentHostOutput() GetMdbGreenplumClusterSegmentHostOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterSegmentHostOutput) ToGetMdbGreenplumClusterSegmentHostOutputWithContext(ctx context.Context) GetMdbGreenplumClusterSegmentHostOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterSegmentHostOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterSegmentHost) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+type GetMdbGreenplumClusterSegmentHostArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMdbGreenplumClusterSegmentHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMdbGreenplumClusterSegmentHost)(nil)).Elem()
+}
+
+func (o GetMdbGreenplumClusterSegmentHostArrayOutput) ToGetMdbGreenplumClusterSegmentHostArrayOutput() GetMdbGreenplumClusterSegmentHostArrayOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterSegmentHostArrayOutput) ToGetMdbGreenplumClusterSegmentHostArrayOutputWithContext(ctx context.Context) GetMdbGreenplumClusterSegmentHostArrayOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterSegmentHostArrayOutput) Index(i pulumi.IntInput) GetMdbGreenplumClusterSegmentHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMdbGreenplumClusterSegmentHost {
+		return vs[0].([]GetMdbGreenplumClusterSegmentHost)[vs[1].(int)]
+	}).(GetMdbGreenplumClusterSegmentHostOutput)
+}
+
+type GetMdbGreenplumClusterSegmentSubcluster struct {
+	Resources GetMdbGreenplumClusterSegmentSubclusterResources `pulumi:"resources"`
+}
+
+// GetMdbGreenplumClusterSegmentSubclusterInput is an input type that accepts GetMdbGreenplumClusterSegmentSubclusterArgs and GetMdbGreenplumClusterSegmentSubclusterOutput values.
+// You can construct a concrete instance of `GetMdbGreenplumClusterSegmentSubclusterInput` via:
+//
+//          GetMdbGreenplumClusterSegmentSubclusterArgs{...}
+type GetMdbGreenplumClusterSegmentSubclusterInput interface {
+	pulumi.Input
+
+	ToGetMdbGreenplumClusterSegmentSubclusterOutput() GetMdbGreenplumClusterSegmentSubclusterOutput
+	ToGetMdbGreenplumClusterSegmentSubclusterOutputWithContext(context.Context) GetMdbGreenplumClusterSegmentSubclusterOutput
+}
+
+type GetMdbGreenplumClusterSegmentSubclusterArgs struct {
+	Resources GetMdbGreenplumClusterSegmentSubclusterResourcesInput `pulumi:"resources"`
+}
+
+func (GetMdbGreenplumClusterSegmentSubclusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterSegmentSubcluster)(nil)).Elem()
+}
+
+func (i GetMdbGreenplumClusterSegmentSubclusterArgs) ToGetMdbGreenplumClusterSegmentSubclusterOutput() GetMdbGreenplumClusterSegmentSubclusterOutput {
+	return i.ToGetMdbGreenplumClusterSegmentSubclusterOutputWithContext(context.Background())
+}
+
+func (i GetMdbGreenplumClusterSegmentSubclusterArgs) ToGetMdbGreenplumClusterSegmentSubclusterOutputWithContext(ctx context.Context) GetMdbGreenplumClusterSegmentSubclusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbGreenplumClusterSegmentSubclusterOutput)
+}
+
+type GetMdbGreenplumClusterSegmentSubclusterOutput struct{ *pulumi.OutputState }
+
+func (GetMdbGreenplumClusterSegmentSubclusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterSegmentSubcluster)(nil)).Elem()
+}
+
+func (o GetMdbGreenplumClusterSegmentSubclusterOutput) ToGetMdbGreenplumClusterSegmentSubclusterOutput() GetMdbGreenplumClusterSegmentSubclusterOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterSegmentSubclusterOutput) ToGetMdbGreenplumClusterSegmentSubclusterOutputWithContext(ctx context.Context) GetMdbGreenplumClusterSegmentSubclusterOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterSegmentSubclusterOutput) Resources() GetMdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterSegmentSubcluster) GetMdbGreenplumClusterSegmentSubclusterResources {
+		return v.Resources
+	}).(GetMdbGreenplumClusterSegmentSubclusterResourcesOutput)
+}
+
+type GetMdbGreenplumClusterSegmentSubclusterResources struct {
+	DiskSize         int    `pulumi:"diskSize"`
+	DiskTypeId       string `pulumi:"diskTypeId"`
+	ResourcePresetId string `pulumi:"resourcePresetId"`
+}
+
+// GetMdbGreenplumClusterSegmentSubclusterResourcesInput is an input type that accepts GetMdbGreenplumClusterSegmentSubclusterResourcesArgs and GetMdbGreenplumClusterSegmentSubclusterResourcesOutput values.
+// You can construct a concrete instance of `GetMdbGreenplumClusterSegmentSubclusterResourcesInput` via:
+//
+//          GetMdbGreenplumClusterSegmentSubclusterResourcesArgs{...}
+type GetMdbGreenplumClusterSegmentSubclusterResourcesInput interface {
+	pulumi.Input
+
+	ToGetMdbGreenplumClusterSegmentSubclusterResourcesOutput() GetMdbGreenplumClusterSegmentSubclusterResourcesOutput
+	ToGetMdbGreenplumClusterSegmentSubclusterResourcesOutputWithContext(context.Context) GetMdbGreenplumClusterSegmentSubclusterResourcesOutput
+}
+
+type GetMdbGreenplumClusterSegmentSubclusterResourcesArgs struct {
+	DiskSize         pulumi.IntInput    `pulumi:"diskSize"`
+	DiskTypeId       pulumi.StringInput `pulumi:"diskTypeId"`
+	ResourcePresetId pulumi.StringInput `pulumi:"resourcePresetId"`
+}
+
+func (GetMdbGreenplumClusterSegmentSubclusterResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterSegmentSubclusterResources)(nil)).Elem()
+}
+
+func (i GetMdbGreenplumClusterSegmentSubclusterResourcesArgs) ToGetMdbGreenplumClusterSegmentSubclusterResourcesOutput() GetMdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return i.ToGetMdbGreenplumClusterSegmentSubclusterResourcesOutputWithContext(context.Background())
+}
+
+func (i GetMdbGreenplumClusterSegmentSubclusterResourcesArgs) ToGetMdbGreenplumClusterSegmentSubclusterResourcesOutputWithContext(ctx context.Context) GetMdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbGreenplumClusterSegmentSubclusterResourcesOutput)
+}
+
+type GetMdbGreenplumClusterSegmentSubclusterResourcesOutput struct{ *pulumi.OutputState }
+
+func (GetMdbGreenplumClusterSegmentSubclusterResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMdbGreenplumClusterSegmentSubclusterResources)(nil)).Elem()
+}
+
+func (o GetMdbGreenplumClusterSegmentSubclusterResourcesOutput) ToGetMdbGreenplumClusterSegmentSubclusterResourcesOutput() GetMdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterSegmentSubclusterResourcesOutput) ToGetMdbGreenplumClusterSegmentSubclusterResourcesOutputWithContext(ctx context.Context) GetMdbGreenplumClusterSegmentSubclusterResourcesOutput {
+	return o
+}
+
+func (o GetMdbGreenplumClusterSegmentSubclusterResourcesOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterSegmentSubclusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+func (o GetMdbGreenplumClusterSegmentSubclusterResourcesOutput) DiskTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterSegmentSubclusterResources) string { return v.DiskTypeId }).(pulumi.StringOutput)
+}
+
+func (o GetMdbGreenplumClusterSegmentSubclusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMdbGreenplumClusterSegmentSubclusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
+}
+
 type GetMdbKafkaClusterConfig struct {
 	// The flag that defines whether a public IP address is assigned to the node.
 	AssignPublicIp *bool `pulumi:"assignPublicIp"`
@@ -56780,19 +57973,19 @@ func (o GetMdbKafkaClusterConfigKafkaOutput) Resources() GetMdbKafkaClusterConfi
 type GetMdbKafkaClusterConfigKafkaKafkaConfig struct {
 	AutoCreateTopicsEnable      *bool   `pulumi:"autoCreateTopicsEnable"`
 	CompressionType             *string `pulumi:"compressionType"`
-	DefaultReplicationFactor    *int    `pulumi:"defaultReplicationFactor"`
-	LogFlushIntervalMessages    *int    `pulumi:"logFlushIntervalMessages"`
-	LogFlushIntervalMs          *int    `pulumi:"logFlushIntervalMs"`
-	LogFlushSchedulerIntervalMs *int    `pulumi:"logFlushSchedulerIntervalMs"`
+	DefaultReplicationFactor    *string `pulumi:"defaultReplicationFactor"`
+	LogFlushIntervalMessages    *string `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs          *string `pulumi:"logFlushIntervalMs"`
+	LogFlushSchedulerIntervalMs *string `pulumi:"logFlushSchedulerIntervalMs"`
 	LogPreallocate              *bool   `pulumi:"logPreallocate"`
-	LogRetentionBytes           *int    `pulumi:"logRetentionBytes"`
-	LogRetentionHours           *int    `pulumi:"logRetentionHours"`
-	LogRetentionMinutes         *int    `pulumi:"logRetentionMinutes"`
-	LogRetentionMs              *int    `pulumi:"logRetentionMs"`
-	LogSegmentBytes             *int    `pulumi:"logSegmentBytes"`
-	NumPartitions               *int    `pulumi:"numPartitions"`
-	SocketReceiveBufferBytes    *int    `pulumi:"socketReceiveBufferBytes"`
-	SocketSendBufferBytes       *int    `pulumi:"socketSendBufferBytes"`
+	LogRetentionBytes           *string `pulumi:"logRetentionBytes"`
+	LogRetentionHours           *string `pulumi:"logRetentionHours"`
+	LogRetentionMinutes         *string `pulumi:"logRetentionMinutes"`
+	LogRetentionMs              *string `pulumi:"logRetentionMs"`
+	LogSegmentBytes             *string `pulumi:"logSegmentBytes"`
+	NumPartitions               *string `pulumi:"numPartitions"`
+	SocketReceiveBufferBytes    *string `pulumi:"socketReceiveBufferBytes"`
+	SocketSendBufferBytes       *string `pulumi:"socketSendBufferBytes"`
 }
 
 // GetMdbKafkaClusterConfigKafkaKafkaConfigInput is an input type that accepts GetMdbKafkaClusterConfigKafkaKafkaConfigArgs and GetMdbKafkaClusterConfigKafkaKafkaConfigOutput values.
@@ -56809,19 +58002,19 @@ type GetMdbKafkaClusterConfigKafkaKafkaConfigInput interface {
 type GetMdbKafkaClusterConfigKafkaKafkaConfigArgs struct {
 	AutoCreateTopicsEnable      pulumi.BoolPtrInput   `pulumi:"autoCreateTopicsEnable"`
 	CompressionType             pulumi.StringPtrInput `pulumi:"compressionType"`
-	DefaultReplicationFactor    pulumi.IntPtrInput    `pulumi:"defaultReplicationFactor"`
-	LogFlushIntervalMessages    pulumi.IntPtrInput    `pulumi:"logFlushIntervalMessages"`
-	LogFlushIntervalMs          pulumi.IntPtrInput    `pulumi:"logFlushIntervalMs"`
-	LogFlushSchedulerIntervalMs pulumi.IntPtrInput    `pulumi:"logFlushSchedulerIntervalMs"`
+	DefaultReplicationFactor    pulumi.StringPtrInput `pulumi:"defaultReplicationFactor"`
+	LogFlushIntervalMessages    pulumi.StringPtrInput `pulumi:"logFlushIntervalMessages"`
+	LogFlushIntervalMs          pulumi.StringPtrInput `pulumi:"logFlushIntervalMs"`
+	LogFlushSchedulerIntervalMs pulumi.StringPtrInput `pulumi:"logFlushSchedulerIntervalMs"`
 	LogPreallocate              pulumi.BoolPtrInput   `pulumi:"logPreallocate"`
-	LogRetentionBytes           pulumi.IntPtrInput    `pulumi:"logRetentionBytes"`
-	LogRetentionHours           pulumi.IntPtrInput    `pulumi:"logRetentionHours"`
-	LogRetentionMinutes         pulumi.IntPtrInput    `pulumi:"logRetentionMinutes"`
-	LogRetentionMs              pulumi.IntPtrInput    `pulumi:"logRetentionMs"`
-	LogSegmentBytes             pulumi.IntPtrInput    `pulumi:"logSegmentBytes"`
-	NumPartitions               pulumi.IntPtrInput    `pulumi:"numPartitions"`
-	SocketReceiveBufferBytes    pulumi.IntPtrInput    `pulumi:"socketReceiveBufferBytes"`
-	SocketSendBufferBytes       pulumi.IntPtrInput    `pulumi:"socketSendBufferBytes"`
+	LogRetentionBytes           pulumi.StringPtrInput `pulumi:"logRetentionBytes"`
+	LogRetentionHours           pulumi.StringPtrInput `pulumi:"logRetentionHours"`
+	LogRetentionMinutes         pulumi.StringPtrInput `pulumi:"logRetentionMinutes"`
+	LogRetentionMs              pulumi.StringPtrInput `pulumi:"logRetentionMs"`
+	LogSegmentBytes             pulumi.StringPtrInput `pulumi:"logSegmentBytes"`
+	NumPartitions               pulumi.StringPtrInput `pulumi:"numPartitions"`
+	SocketReceiveBufferBytes    pulumi.StringPtrInput `pulumi:"socketReceiveBufferBytes"`
+	SocketSendBufferBytes       pulumi.StringPtrInput `pulumi:"socketSendBufferBytes"`
 }
 
 func (GetMdbKafkaClusterConfigKafkaKafkaConfigArgs) ElementType() reflect.Type {
@@ -56908,56 +58101,56 @@ func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) CompressionType() pulumi
 	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.DefaultReplicationFactor }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogFlushIntervalMessages }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogFlushIntervalMessages }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogFlushIntervalMs }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogFlushIntervalMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushSchedulerIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogFlushSchedulerIntervalMs }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogFlushSchedulerIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogFlushSchedulerIntervalMs }).(pulumi.StringPtrOutput)
 }
 
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogPreallocate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *bool { return v.LogPreallocate }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogRetentionBytes }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogRetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogRetentionHours }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionHours() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogRetentionHours }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogRetentionMinutes }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMinutes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogRetentionMinutes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogRetentionMs }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogRetentionMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.LogSegmentBytes }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) LogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.LogSegmentBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.NumPartitions }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) NumPartitions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.NumPartitions }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketReceiveBufferBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.SocketReceiveBufferBytes }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketReceiveBufferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.SocketReceiveBufferBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketSendBufferBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *int { return v.SocketSendBufferBytes }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) SocketSendBufferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *string { return v.SocketSendBufferBytes }).(pulumi.StringPtrOutput)
 }
 
 type GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput struct{ *pulumi.OutputState }
@@ -56996,40 +58189,40 @@ func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) CompressionType() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) DefaultReplicationFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DefaultReplicationFactor
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogFlushIntervalMessages
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogFlushIntervalMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushSchedulerIntervalMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogFlushSchedulerIntervalMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogFlushSchedulerIntervalMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogPreallocate() pulumi.BoolPtrOutput {
@@ -57041,76 +58234,76 @@ func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogPreallocate() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionHours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionHours() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionHours
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionMinutes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionMinutes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogRetentionMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogSegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) LogSegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.LogSegmentBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) NumPartitions() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) NumPartitions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.NumPartitions
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) SocketReceiveBufferBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) SocketReceiveBufferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SocketReceiveBufferBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) SocketSendBufferBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *int {
+func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) SocketSendBufferBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SocketSendBufferBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetMdbKafkaClusterConfigKafkaResources struct {
@@ -57756,17 +58949,17 @@ func (o GetMdbKafkaClusterTopicArrayOutput) Index(i pulumi.IntInput) GetMdbKafka
 type GetMdbKafkaClusterTopicTopicConfig struct {
 	CleanupPolicy      *string `pulumi:"cleanupPolicy"`
 	CompressionType    *string `pulumi:"compressionType"`
-	DeleteRetentionMs  *int    `pulumi:"deleteRetentionMs"`
-	FileDeleteDelayMs  *int    `pulumi:"fileDeleteDelayMs"`
-	FlushMessages      *int    `pulumi:"flushMessages"`
-	FlushMs            *int    `pulumi:"flushMs"`
-	MaxMessageBytes    *int    `pulumi:"maxMessageBytes"`
-	MinCompactionLagMs *int    `pulumi:"minCompactionLagMs"`
-	MinInsyncReplicas  *int    `pulumi:"minInsyncReplicas"`
+	DeleteRetentionMs  *string `pulumi:"deleteRetentionMs"`
+	FileDeleteDelayMs  *string `pulumi:"fileDeleteDelayMs"`
+	FlushMessages      *string `pulumi:"flushMessages"`
+	FlushMs            *string `pulumi:"flushMs"`
+	MaxMessageBytes    *string `pulumi:"maxMessageBytes"`
+	MinCompactionLagMs *string `pulumi:"minCompactionLagMs"`
+	MinInsyncReplicas  *string `pulumi:"minInsyncReplicas"`
 	Preallocate        *bool   `pulumi:"preallocate"`
-	RetentionBytes     *int    `pulumi:"retentionBytes"`
-	RetentionMs        *int    `pulumi:"retentionMs"`
-	SegmentBytes       *int    `pulumi:"segmentBytes"`
+	RetentionBytes     *string `pulumi:"retentionBytes"`
+	RetentionMs        *string `pulumi:"retentionMs"`
+	SegmentBytes       *string `pulumi:"segmentBytes"`
 }
 
 // GetMdbKafkaClusterTopicTopicConfigInput is an input type that accepts GetMdbKafkaClusterTopicTopicConfigArgs and GetMdbKafkaClusterTopicTopicConfigOutput values.
@@ -57783,17 +58976,17 @@ type GetMdbKafkaClusterTopicTopicConfigInput interface {
 type GetMdbKafkaClusterTopicTopicConfigArgs struct {
 	CleanupPolicy      pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
 	CompressionType    pulumi.StringPtrInput `pulumi:"compressionType"`
-	DeleteRetentionMs  pulumi.IntPtrInput    `pulumi:"deleteRetentionMs"`
-	FileDeleteDelayMs  pulumi.IntPtrInput    `pulumi:"fileDeleteDelayMs"`
-	FlushMessages      pulumi.IntPtrInput    `pulumi:"flushMessages"`
-	FlushMs            pulumi.IntPtrInput    `pulumi:"flushMs"`
-	MaxMessageBytes    pulumi.IntPtrInput    `pulumi:"maxMessageBytes"`
-	MinCompactionLagMs pulumi.IntPtrInput    `pulumi:"minCompactionLagMs"`
-	MinInsyncReplicas  pulumi.IntPtrInput    `pulumi:"minInsyncReplicas"`
+	DeleteRetentionMs  pulumi.StringPtrInput `pulumi:"deleteRetentionMs"`
+	FileDeleteDelayMs  pulumi.StringPtrInput `pulumi:"fileDeleteDelayMs"`
+	FlushMessages      pulumi.StringPtrInput `pulumi:"flushMessages"`
+	FlushMs            pulumi.StringPtrInput `pulumi:"flushMs"`
+	MaxMessageBytes    pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
+	MinCompactionLagMs pulumi.StringPtrInput `pulumi:"minCompactionLagMs"`
+	MinInsyncReplicas  pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
 	Preallocate        pulumi.BoolPtrInput   `pulumi:"preallocate"`
-	RetentionBytes     pulumi.IntPtrInput    `pulumi:"retentionBytes"`
-	RetentionMs        pulumi.IntPtrInput    `pulumi:"retentionMs"`
-	SegmentBytes       pulumi.IntPtrInput    `pulumi:"segmentBytes"`
+	RetentionBytes     pulumi.StringPtrInput `pulumi:"retentionBytes"`
+	RetentionMs        pulumi.StringPtrInput `pulumi:"retentionMs"`
+	SegmentBytes       pulumi.StringPtrInput `pulumi:"segmentBytes"`
 }
 
 func (GetMdbKafkaClusterTopicTopicConfigArgs) ElementType() reflect.Type {
@@ -57880,48 +59073,48 @@ func (o GetMdbKafkaClusterTopicTopicConfigOutput) CompressionType() pulumi.Strin
 	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) DeleteRetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.DeleteRetentionMs }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.DeleteRetentionMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) FileDeleteDelayMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.FileDeleteDelayMs }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.FileDeleteDelayMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) FlushMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.FlushMessages }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) FlushMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.FlushMessages }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) FlushMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.FlushMs }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) FlushMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.FlushMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) MaxMessageBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.MaxMessageBytes }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) MaxMessageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.MaxMessageBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) MinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.MinCompactionLagMs }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.MinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) MinInsyncReplicas() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.MinInsyncReplicas }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
 }
 
 func (o GetMdbKafkaClusterTopicTopicConfigOutput) Preallocate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *bool { return v.Preallocate }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) RetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.RetentionBytes }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) RetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.RetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) RetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.RetentionMs }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) RetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.RetentionMs }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigOutput) SegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *int { return v.SegmentBytes }).(pulumi.IntPtrOutput)
+func (o GetMdbKafkaClusterTopicTopicConfigOutput) SegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.SegmentBytes }).(pulumi.StringPtrOutput)
 }
 
 type GetMdbKafkaClusterTopicTopicConfigPtrOutput struct{ *pulumi.OutputState }
@@ -57960,67 +59153,67 @@ func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) CompressionType() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) DeleteRetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DeleteRetentionMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) FileDeleteDelayMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.FileDeleteDelayMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) FlushMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) FlushMessages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.FlushMessages
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) FlushMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) FlushMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.FlushMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) MaxMessageBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) MaxMessageBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MaxMessageBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) MinCompactionLagMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MinCompactionLagMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) MinInsyncReplicas() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MinInsyncReplicas
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) Preallocate() pulumi.BoolPtrOutput {
@@ -58032,31 +59225,31 @@ func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) Preallocate() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) RetentionBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) RetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RetentionBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) RetentionMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) RetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RetentionMs
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) SegmentBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *int {
+func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) SegmentBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SegmentBytes
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetMdbKafkaClusterUser struct {
@@ -59086,7 +60279,7 @@ func (o GetMdbMongodbClusterUserPermissionArrayOutput) Index(i pulumi.IntInput) 
 type GetMdbMysqlClusterAccess struct {
 	// Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
 	DataLens bool `pulumi:"dataLens"`
-	// Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+	// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
 	WebSql bool `pulumi:"webSql"`
 }
 
@@ -59104,7 +60297,7 @@ type GetMdbMysqlClusterAccessInput interface {
 type GetMdbMysqlClusterAccessArgs struct {
 	// Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
 	DataLens pulumi.BoolInput `pulumi:"dataLens"`
-	// Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+	// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
 	WebSql pulumi.BoolInput `pulumi:"webSql"`
 }
 
@@ -59139,7 +60332,7 @@ func (o GetMdbMysqlClusterAccessOutput) DataLens() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMdbMysqlClusterAccess) bool { return v.DataLens }).(pulumi.BoolOutput)
 }
 
-// Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
 func (o GetMdbMysqlClusterAccessOutput) WebSql() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMdbMysqlClusterAccess) bool { return v.WebSql }).(pulumi.BoolOutput)
 }
@@ -63428,6 +64621,18 @@ func init() {
 	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterHostOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterMasterHostOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterMasterHostArrayOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterMasterSubclusterOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterMasterSubclusterPtrOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterMasterSubclusterResourcesOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterMasterSubclusterResourcesPtrOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentHostOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentHostArrayOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentSubclusterOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentSubclusterPtrOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentSubclusterResourcesOutput{})
+	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigKafkaOutput{})
@@ -63803,6 +65008,14 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbElasticSearchClusterConfigMasterNodeResourcesOutput{})
 	pulumi.RegisterOutputType(GetMdbElasticSearchClusterHostOutput{})
 	pulumi.RegisterOutputType(GetMdbElasticSearchClusterHostArrayOutput{})
+	pulumi.RegisterOutputType(GetMdbGreenplumClusterMasterHostOutput{})
+	pulumi.RegisterOutputType(GetMdbGreenplumClusterMasterHostArrayOutput{})
+	pulumi.RegisterOutputType(GetMdbGreenplumClusterMasterSubclusterOutput{})
+	pulumi.RegisterOutputType(GetMdbGreenplumClusterMasterSubclusterResourcesOutput{})
+	pulumi.RegisterOutputType(GetMdbGreenplumClusterSegmentHostOutput{})
+	pulumi.RegisterOutputType(GetMdbGreenplumClusterSegmentHostArrayOutput{})
+	pulumi.RegisterOutputType(GetMdbGreenplumClusterSegmentSubclusterOutput{})
+	pulumi.RegisterOutputType(GetMdbGreenplumClusterSegmentSubclusterResourcesOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaKafkaConfigOutput{})

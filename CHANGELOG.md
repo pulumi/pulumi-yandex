@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v0.63.1 of the Yandex Cloud Terraform Provider
 
 ---
 

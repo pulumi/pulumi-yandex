@@ -12,8 +12,8 @@ import (
 )
 
 // Manages a single Secuirity Group Rule within the Yandex.Cloud. For more information, see the official documentation
-// of [security groups](https://cloud.yandex.ru/docs/vpc/concepts/security-groups)
-// and [security group rules](https://cloud.yandex.ru/docs/vpc/concepts/security-groups#rules).
+// of [security groups](https://cloud.yandex.com/docs/vpc/concepts/security-groups)
+// and [security group rules](https://cloud.yandex.com/docs/vpc/concepts/security-groups#rules).
 //
 // > **NOTE:** There is another way to manage security group rules by `ingress` and `egress` arguments in yandex_vpc_security_group. Both ways are equivalent but not compatible now. Using in-line rules of VpcSecurityGroup with Security Group Rule resource at the same time will cause a conflict of rules configuration.
 type VpcSecurityGroupRule struct {
@@ -29,7 +29,7 @@ type VpcSecurityGroupRule struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Port number (if applied to a single port).
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
 	PredefinedTarget pulumi.StringPtrOutput `pulumi:"predefinedTarget"`
 	// One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
@@ -90,7 +90,7 @@ type vpcSecurityGroupRuleState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Port number (if applied to a single port).
 	Port *int `pulumi:"port"`
-	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
 	PredefinedTarget *string `pulumi:"predefinedTarget"`
 	// One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
 	Protocol *string `pulumi:"protocol"`
@@ -117,7 +117,7 @@ type VpcSecurityGroupRuleState struct {
 	Labels pulumi.StringMapInput
 	// Port number (if applied to a single port).
 	Port pulumi.IntPtrInput
-	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
 	PredefinedTarget pulumi.StringPtrInput
 	// One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
 	Protocol pulumi.StringPtrInput
@@ -148,7 +148,7 @@ type vpcSecurityGroupRuleArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Port number (if applied to a single port).
 	Port *int `pulumi:"port"`
-	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
 	PredefinedTarget *string `pulumi:"predefinedTarget"`
 	// One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
 	Protocol *string `pulumi:"protocol"`
@@ -176,7 +176,7 @@ type VpcSecurityGroupRuleArgs struct {
 	Labels pulumi.StringMapInput
 	// Port number (if applied to a single port).
 	Port pulumi.IntPtrInput
-	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+	// Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
 	PredefinedTarget pulumi.StringPtrInput
 	// One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
 	Protocol pulumi.StringPtrInput

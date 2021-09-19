@@ -78,7 +78,6 @@ class GetVpcAddressResult:
     def external_ipv4_address(self) -> 'outputs.GetVpcAddressExternalIpv4AddressResult':
         """
         spec of IP v4 address.
-        ---
         """
         return pulumi.get(self, "external_ipv4_address")
 

@@ -12,7 +12,7 @@ import (
 )
 
 // Manages a Security Group within the Yandex.Cloud. For more information, see
-// [the official documentation](https://cloud.yandex.ru/docs/vpc/concepts/security-groups).
+// [the official documentation](https://cloud.yandex.com/docs/vpc/concepts/security-groups).
 //
 // ## Example Usage
 //

@@ -66,7 +66,6 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Name of the service account.
         /// Can be updated without creating a new resource.
-        /// Name should comply to this pattern: /a-z?/
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -133,7 +132,6 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Name of the service account.
         /// Can be updated without creating a new resource.
-        /// Name should comply to this pattern: /a-z?/
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -164,7 +162,6 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Name of the service account.
         /// Can be updated without creating a new resource.
-        /// Name should comply to this pattern: /a-z?/
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

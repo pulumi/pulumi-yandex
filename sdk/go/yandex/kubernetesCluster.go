@@ -51,7 +51,6 @@ type KubernetesCluster struct {
 	// The ID of the cluster network.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 	// (Optional) Network Implementation options. The structure is documented below.
-	// ---
 	NetworkImplementation KubernetesClusterNetworkImplementationPtrOutput `pulumi:"networkImplementation"`
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider pulumi.StringPtrOutput `pulumi:"networkPolicyProvider"`
@@ -145,7 +144,6 @@ type kubernetesClusterState struct {
 	// The ID of the cluster network.
 	NetworkId *string `pulumi:"networkId"`
 	// (Optional) Network Implementation options. The structure is documented below.
-	// ---
 	NetworkImplementation *KubernetesClusterNetworkImplementation `pulumi:"networkImplementation"`
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider *string `pulumi:"networkPolicyProvider"`
@@ -199,7 +197,6 @@ type KubernetesClusterState struct {
 	// The ID of the cluster network.
 	NetworkId pulumi.StringPtrInput
 	// (Optional) Network Implementation options. The structure is documented below.
-	// ---
 	NetworkImplementation KubernetesClusterNetworkImplementationPtrInput
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider pulumi.StringPtrInput
@@ -251,7 +248,6 @@ type kubernetesClusterArgs struct {
 	// The ID of the cluster network.
 	NetworkId string `pulumi:"networkId"`
 	// (Optional) Network Implementation options. The structure is documented below.
-	// ---
 	NetworkImplementation *KubernetesClusterNetworkImplementation `pulumi:"networkImplementation"`
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider *string `pulumi:"networkPolicyProvider"`
@@ -298,7 +294,6 @@ type KubernetesClusterArgs struct {
 	// The ID of the cluster network.
 	NetworkId pulumi.StringInput
 	// (Optional) Network Implementation options. The structure is documented below.
-	// ---
 	NetworkImplementation KubernetesClusterNetworkImplementationPtrInput
 	// Network policy provider for the cluster. Possible values: `CALICO`.
 	NetworkPolicyProvider pulumi.StringPtrInput

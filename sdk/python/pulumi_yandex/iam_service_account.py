@@ -23,7 +23,6 @@ class IamServiceAccountArgs:
                Defaults to the provider folder configuration.
         :param pulumi.Input[str] name: Name of the service account.
                Can be updated without creating a new resource.
-               Name should comply to this pattern: /a-z?/
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -63,7 +62,6 @@ class IamServiceAccountArgs:
         """
         Name of the service account.
         Can be updated without creating a new resource.
-        Name should comply to this pattern: /a-z?/
         """
         return pulumi.get(self, "name")
 
@@ -86,7 +84,6 @@ class _IamServiceAccountState:
                Defaults to the provider folder configuration.
         :param pulumi.Input[str] name: Name of the service account.
                Can be updated without creating a new resource.
-               Name should comply to this pattern: /a-z?/
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -137,7 +134,6 @@ class _IamServiceAccountState:
         """
         Name of the service account.
         Can be updated without creating a new resource.
-        Name should comply to this pattern: /a-z?/
         """
         return pulumi.get(self, "name")
 
@@ -187,7 +183,6 @@ class IamServiceAccount(pulumi.CustomResource):
                Defaults to the provider folder configuration.
         :param pulumi.Input[str] name: Name of the service account.
                Can be updated without creating a new resource.
-               Name should comply to this pattern: /a-z?/
         """
         ...
     @overload
@@ -280,7 +275,6 @@ class IamServiceAccount(pulumi.CustomResource):
                Defaults to the provider folder configuration.
         :param pulumi.Input[str] name: Name of the service account.
                Can be updated without creating a new resource.
-               Name should comply to this pattern: /a-z?/
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -320,7 +314,6 @@ class IamServiceAccount(pulumi.CustomResource):
         """
         Name of the service account.
         Can be updated without creating a new resource.
-        Name should comply to this pattern: /a-z?/
         """
         return pulumi.get(self, "name")
 

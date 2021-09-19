@@ -103,7 +103,7 @@ export class LbNetworkLoadBalancer extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * ID of the availability zone where the network load balancer resides. 
+     * ID of the availability zone where the network load balancer resides.
      * The default is 'ru-central1'.
      */
     public readonly regionId!: pulumi.Output<string | undefined>;
@@ -188,7 +188,7 @@ export interface LbNetworkLoadBalancerState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * ID of the availability zone where the network load balancer resides. 
+     * ID of the availability zone where the network load balancer resides.
      * The default is 'ru-central1'.
      */
     readonly regionId?: pulumi.Input<string>;
@@ -229,7 +229,7 @@ export interface LbNetworkLoadBalancerArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * ID of the availability zone where the network load balancer resides. 
+     * ID of the availability zone where the network load balancer resides.
      * The default is 'ru-central1'.
      */
     readonly regionId?: pulumi.Input<string>;

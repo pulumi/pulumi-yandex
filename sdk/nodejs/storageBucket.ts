@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 /**
  * Allows management of [Yandex.Cloud Storage Bucket](https://cloud.yandex.com/docs/storage/concepts/bucket).
  *
+ * > **Note:** Your need to provide [static access key](https://cloud.yandex.com/docs/iam/concepts/authorization/access-key) (Access and Secret) to create storage client to work with Storage Service. To create them you need Service Account and proper permissions.
+ *
  * ## Example Usage
  * ### Simple Private Bucket
  *
@@ -15,7 +17,24 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as yandex from "@pulumi/yandex";
  *
+ * const folderId = "<folder-id>";
+ * // Create SA
+ * const sa = new yandex.IamServiceAccount("sa", {folderId: folderId});
+ * // Grant permissions
+ * const sa_editor = new yandex.ResourcemanagerFolderIamMember("sa-editor", {
+ *     folderId: folderId,
+ *     role: "storage.editor",
+ *     member: pulumi.interpolate`serviceAccount:${sa.id}`,
+ * });
+ * // Create Static Access Keys
+ * const sa_static_key = new yandex.IamServiceAccountStaticAccessKey("sa-static-key", {
+ *     serviceAccountId: sa.id,
+ *     description: "static access key for object storage",
+ * });
+ * // Use keys to create bucket
  * const test = new yandex.StorageBucket("test", {
+ *     accessKey: sa_static_key.accessKey,
+ *     secretKey: sa_static_key.secretKey,
  *     bucket: "tf-test-bucket",
  * });
  * ```
@@ -404,7 +423,7 @@ export class StorageBucket extends pulumi.CustomResource {
      */
     public readonly lifecycleRules!: pulumi.Output<outputs.StorageBucketLifecycleRule[] | undefined>;
     /**
-     * A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+     * A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
      */
     public readonly loggings!: pulumi.Output<outputs.StorageBucketLogging[] | undefined>;
     public readonly policy!: pulumi.Output<string | undefined>;
@@ -417,11 +436,11 @@ export class StorageBucket extends pulumi.CustomResource {
      */
     public readonly serverSideEncryptionConfiguration!: pulumi.Output<outputs.StorageBucketServerSideEncryptionConfiguration | undefined>;
     /**
-     * A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+     * A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
      */
     public readonly versioning!: pulumi.Output<outputs.StorageBucketVersioning>;
     /**
-     * A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+     * A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
      */
     public readonly website!: pulumi.Output<outputs.StorageBucketWebsite | undefined>;
     /**
@@ -528,7 +547,7 @@ export interface StorageBucketState {
      */
     readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketLifecycleRule>[]>;
     /**
-     * A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+     * A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
      */
     readonly loggings?: pulumi.Input<pulumi.Input<inputs.StorageBucketLogging>[]>;
     readonly policy?: pulumi.Input<string>;
@@ -541,11 +560,11 @@ export interface StorageBucketState {
      */
     readonly serverSideEncryptionConfiguration?: pulumi.Input<inputs.StorageBucketServerSideEncryptionConfiguration>;
     /**
-     * A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+     * A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
      */
     readonly versioning?: pulumi.Input<inputs.StorageBucketVersioning>;
     /**
-     * A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+     * A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
      */
     readonly website?: pulumi.Input<inputs.StorageBucketWebsite>;
     /**
@@ -592,7 +611,7 @@ export interface StorageBucketArgs {
      */
     readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketLifecycleRule>[]>;
     /**
-     * A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+     * A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
      */
     readonly loggings?: pulumi.Input<pulumi.Input<inputs.StorageBucketLogging>[]>;
     readonly policy?: pulumi.Input<string>;
@@ -605,11 +624,11 @@ export interface StorageBucketArgs {
      */
     readonly serverSideEncryptionConfiguration?: pulumi.Input<inputs.StorageBucketServerSideEncryptionConfiguration>;
     /**
-     * A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+     * A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
      */
     readonly versioning?: pulumi.Input<inputs.StorageBucketVersioning>;
     /**
-     * A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+     * A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
      */
     readonly website?: pulumi.Input<inputs.StorageBucketWebsite>;
     /**

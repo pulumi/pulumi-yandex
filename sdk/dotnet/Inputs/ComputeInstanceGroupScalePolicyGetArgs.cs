@@ -25,8 +25,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<Inputs.ComputeInstanceGroupScalePolicyFixedScaleGetArgs>? FixedScale { get; set; }
 
         /// <summary>
-        /// The test auto scaling policy of the instance group. Use it to test how the auto scale works. 
-        /// The structure is documented below.
+        /// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
         /// </summary>
         [Input("testAutoScale")]
         public Input<Inputs.ComputeInstanceGroupScalePolicyTestAutoScaleGetArgs>? TestAutoScale { get; set; }

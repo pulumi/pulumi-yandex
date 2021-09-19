@@ -138,7 +138,7 @@ def get_compute_disk_placement_group(description: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputeDiskPlacementGroupResult:
     """
     Get information about a Yandex Compute Disk Placement group. For more information, see
-    [the official documentation](https://cloud.yandex.ru/docs/compute/concepts/disk#nr-disks).
+    [the official documentation](https://cloud.yandex.com/docs/compute/concepts/disk#nr-disks).
 
     ## Example Usage
 

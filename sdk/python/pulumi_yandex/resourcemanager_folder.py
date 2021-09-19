@@ -177,7 +177,7 @@ class ResourcemanagerFolder(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Allows creation and management of Cloud Folders for an existing Yandex Cloud. See https://cloud.yandex.ru/docs/resource-manager/concepts/resources-hierarchy for additional info.
+        Allows creation and management of Cloud Folders for an existing Yandex Cloud. See [the official documentation](https://cloud.yandex.com/docs/resource-manager/concepts/resources-hierarchy) for additional info.
         Note: deletion of folders may take up to 30 minutes as it requires a lot of communication between cloud services.
 
         ## Example Usage
@@ -203,7 +203,7 @@ class ResourcemanagerFolder(pulumi.CustomResource):
                  args: Optional[ResourcemanagerFolderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows creation and management of Cloud Folders for an existing Yandex Cloud. See https://cloud.yandex.ru/docs/resource-manager/concepts/resources-hierarchy for additional info.
+        Allows creation and management of Cloud Folders for an existing Yandex Cloud. See [the official documentation](https://cloud.yandex.com/docs/resource-manager/concepts/resources-hierarchy) for additional info.
         Note: deletion of folders may take up to 30 minutes as it requires a lot of communication between cloud services.
 
         ## Example Usage

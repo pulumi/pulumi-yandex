@@ -14,7 +14,7 @@ namespace Pulumi.Yandex.Outputs
     public sealed class LbNetworkLoadBalancerListenerExternalAddressSpec
     {
         /// <summary>
-        /// External IP address for a listener. IP address will be allocated if it wasn't been set.
+        /// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         /// </summary>
         public readonly string? Address;
         /// <summary>

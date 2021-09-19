@@ -19,37 +19,37 @@ namespace Pulumi.Yandex.Inputs
         public Input<string>? CompressionType { get; set; }
 
         [Input("deleteRetentionMs")]
-        public Input<int>? DeleteRetentionMs { get; set; }
+        public Input<string>? DeleteRetentionMs { get; set; }
 
         [Input("fileDeleteDelayMs")]
-        public Input<int>? FileDeleteDelayMs { get; set; }
+        public Input<string>? FileDeleteDelayMs { get; set; }
 
         [Input("flushMessages")]
-        public Input<int>? FlushMessages { get; set; }
+        public Input<string>? FlushMessages { get; set; }
 
         [Input("flushMs")]
-        public Input<int>? FlushMs { get; set; }
+        public Input<string>? FlushMs { get; set; }
 
         [Input("maxMessageBytes")]
-        public Input<int>? MaxMessageBytes { get; set; }
+        public Input<string>? MaxMessageBytes { get; set; }
 
         [Input("minCompactionLagMs")]
-        public Input<int>? MinCompactionLagMs { get; set; }
+        public Input<string>? MinCompactionLagMs { get; set; }
 
         [Input("minInsyncReplicas")]
-        public Input<int>? MinInsyncReplicas { get; set; }
+        public Input<string>? MinInsyncReplicas { get; set; }
 
         [Input("preallocate")]
         public Input<bool>? Preallocate { get; set; }
 
         [Input("retentionBytes")]
-        public Input<int>? RetentionBytes { get; set; }
+        public Input<string>? RetentionBytes { get; set; }
 
         [Input("retentionMs")]
-        public Input<int>? RetentionMs { get; set; }
+        public Input<string>? RetentionMs { get; set; }
 
         [Input("segmentBytes")]
-        public Input<int>? SegmentBytes { get; set; }
+        public Input<string>? SegmentBytes { get; set; }
 
         public MdbKafkaClusterTopicTopicConfigArgs()
         {

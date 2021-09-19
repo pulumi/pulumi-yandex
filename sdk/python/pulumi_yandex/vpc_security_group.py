@@ -298,7 +298,7 @@ class VpcSecurityGroup(pulumi.CustomResource):
                  __props__=None):
         """
         Manages a Security Group within the Yandex.Cloud. For more information, see
-        [the official documentation](https://cloud.yandex.ru/docs/vpc/concepts/security-groups).
+        [the official documentation](https://cloud.yandex.com/docs/vpc/concepts/security-groups).
 
         ## Example Usage
 
@@ -361,7 +361,7 @@ class VpcSecurityGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Security Group within the Yandex.Cloud. For more information, see
-        [the official documentation](https://cloud.yandex.ru/docs/vpc/concepts/security-groups).
+        [the official documentation](https://cloud.yandex.com/docs/vpc/concepts/security-groups).
 
         ## Example Usage
 

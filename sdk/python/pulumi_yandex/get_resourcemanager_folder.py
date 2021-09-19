@@ -127,7 +127,7 @@ def get_resourcemanager_folder(cloud_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourcemanagerFolderResult:
     """
     Use this data source to get information about a Yandex Resource Manager Folder. For more information, see
-    [the official documentation](https://cloud.yandex.ru/docs/resource-manager/concepts/resources-hierarchy#folder).
+    [the official documentation](https://cloud.yandex.com/docs/resource-manager/concepts/resources-hierarchy#folder).
 
     ```python
     import pulumi

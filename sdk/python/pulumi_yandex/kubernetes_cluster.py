@@ -52,7 +52,6 @@ class KubernetesClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kubernetes cluster.
         :param pulumi.Input[str] name: Name of a specific Kubernetes cluster.
         :param pulumi.Input['KubernetesClusterNetworkImplementationArgs'] network_implementation: (Optional) Network Implementation options. The structure is documented below.
-               ---
         :param pulumi.Input[str] network_policy_provider: Network policy provider for the cluster. Possible values: `CALICO`.
         :param pulumi.Input[int] node_ipv4_cidr_mask_size: Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
         :param pulumi.Input[str] release_channel: Cluster release channel.
@@ -235,7 +234,6 @@ class KubernetesClusterArgs:
     def network_implementation(self) -> Optional[pulumi.Input['KubernetesClusterNetworkImplementationArgs']]:
         """
         (Optional) Network Implementation options. The structure is documented below.
-        ---
         """
         return pulumi.get(self, "network_implementation")
 
@@ -348,7 +346,6 @@ class _KubernetesClusterState:
         :param pulumi.Input[str] name: Name of a specific Kubernetes cluster.
         :param pulumi.Input[str] network_id: The ID of the cluster network.
         :param pulumi.Input['KubernetesClusterNetworkImplementationArgs'] network_implementation: (Optional) Network Implementation options. The structure is documented below.
-               ---
         :param pulumi.Input[str] network_policy_provider: Network policy provider for the cluster. Possible values: `CALICO`.
         :param pulumi.Input[int] node_ipv4_cidr_mask_size: Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
         :param pulumi.Input[str] node_service_account_id: Service account to be used by the worker nodes of the Kubernetes cluster
@@ -558,7 +555,6 @@ class _KubernetesClusterState:
     def network_implementation(self) -> Optional[pulumi.Input['KubernetesClusterNetworkImplementationArgs']]:
         """
         (Optional) Network Implementation options. The structure is documented below.
-        ---
         """
         return pulumi.get(self, "network_implementation")
 
@@ -762,15 +758,15 @@ class KubernetesCluster(pulumi.CustomResource):
                 regional=yandex.KubernetesClusterMasterRegionalArgs(
                     location=[
                         {
-                            "subnetId": yandex_vpc_subnet["subnet_a_resource_name"]["id"],
+                            "subnet_id": yandex_vpc_subnet["subnet_a_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_a_resource_name"]["zone"],
                         },
                         {
-                            "subnetId": yandex_vpc_subnet["subnet_b_resource_name"]["id"],
+                            "subnet_id": yandex_vpc_subnet["subnet_b_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_b_resource_name"]["zone"],
                         },
                         {
-                            "subnetId": yandex_vpc_subnet["subnet_c_resource_name"]["id"],
+                            "subnet_id": yandex_vpc_subnet["subnet_c_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_c_resource_name"]["zone"],
                         },
                     ],
@@ -807,7 +803,6 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of a specific Kubernetes cluster.
         :param pulumi.Input[str] network_id: The ID of the cluster network.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNetworkImplementationArgs']] network_implementation: (Optional) Network Implementation options. The structure is documented below.
-               ---
         :param pulumi.Input[str] network_policy_provider: Network policy provider for the cluster. Possible values: `CALICO`.
         :param pulumi.Input[int] node_ipv4_cidr_mask_size: Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
         :param pulumi.Input[str] node_service_account_id: Service account to be used by the worker nodes of the Kubernetes cluster
@@ -898,15 +893,15 @@ class KubernetesCluster(pulumi.CustomResource):
                 regional=yandex.KubernetesClusterMasterRegionalArgs(
                     location=[
                         {
-                            "subnetId": yandex_vpc_subnet["subnet_a_resource_name"]["id"],
+                            "subnet_id": yandex_vpc_subnet["subnet_a_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_a_resource_name"]["zone"],
                         },
                         {
-                            "subnetId": yandex_vpc_subnet["subnet_b_resource_name"]["id"],
+                            "subnet_id": yandex_vpc_subnet["subnet_b_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_b_resource_name"]["zone"],
                         },
                         {
-                            "subnetId": yandex_vpc_subnet["subnet_c_resource_name"]["id"],
+                            "subnet_id": yandex_vpc_subnet["subnet_c_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_c_resource_name"]["zone"],
                         },
                     ],
@@ -1055,7 +1050,6 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of a specific Kubernetes cluster.
         :param pulumi.Input[str] network_id: The ID of the cluster network.
         :param pulumi.Input[pulumi.InputType['KubernetesClusterNetworkImplementationArgs']] network_implementation: (Optional) Network Implementation options. The structure is documented below.
-               ---
         :param pulumi.Input[str] network_policy_provider: Network policy provider for the cluster. Possible values: `CALICO`.
         :param pulumi.Input[int] node_ipv4_cidr_mask_size: Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
         :param pulumi.Input[str] node_service_account_id: Service account to be used by the worker nodes of the Kubernetes cluster
@@ -1201,7 +1195,6 @@ class KubernetesCluster(pulumi.CustomResource):
     def network_implementation(self) -> pulumi.Output[Optional['outputs.KubernetesClusterNetworkImplementation']]:
         """
         (Optional) Network Implementation options. The structure is documented below.
-        ---
         """
         return pulumi.get(self, "network_implementation")
 

@@ -69,7 +69,6 @@ export interface GetVpcAddressResult {
     readonly description: string;
     /**
      * spec of IP v4 address.
-     * ---
      */
     readonly externalIpv4Address: outputs.GetVpcAddressExternalIpv4Address;
     readonly folderId: string;

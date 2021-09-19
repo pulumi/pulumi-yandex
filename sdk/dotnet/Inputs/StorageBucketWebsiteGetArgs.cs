@@ -31,7 +31,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<string>? RedirectAllRequestsTo { get; set; }
 
         /// <summary>
-        /// A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+        /// A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
         /// </summary>
         [Input("routingRules")]
         public Input<string>? RoutingRules { get; set; }

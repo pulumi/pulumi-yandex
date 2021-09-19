@@ -40,11 +40,11 @@ class StorageBucketArgs:
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
         :param pulumi.Input[Sequence[pulumi.Input['StorageBucketGrantArgs']]] grants: An [ACL policy grant](https://cloud.yandex.com/docs/storage/concepts/acl#permissions-types). Conflicts with `acl`.
         :param pulumi.Input[Sequence[pulumi.Input['StorageBucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input['StorageBucketLoggingArgs']]] loggings: A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['StorageBucketLoggingArgs']]] loggings: A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         :param pulumi.Input[str] secret_key: The secret key to use when applying changes. If omitted, `storage_secret_key` specified in provider config is used.
         :param pulumi.Input['StorageBucketServerSideEncryptionConfigurationArgs'] server_side_encryption_configuration: A configuration of server-side encryption for the bucket (documented below)
-        :param pulumi.Input['StorageBucketVersioningArgs'] versioning: A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
-        :param pulumi.Input['StorageBucketWebsiteArgs'] website: A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        :param pulumi.Input['StorageBucketVersioningArgs'] versioning: A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
+        :param pulumi.Input['StorageBucketWebsiteArgs'] website: A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         :param pulumi.Input[str] website_domain: The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         :param pulumi.Input[str] website_endpoint: The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         """
@@ -178,7 +178,7 @@ class StorageBucketArgs:
     @pulumi.getter
     def loggings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StorageBucketLoggingArgs']]]]:
         """
-        A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         """
         return pulumi.get(self, "loggings")
 
@@ -223,7 +223,7 @@ class StorageBucketArgs:
     @pulumi.getter
     def versioning(self) -> Optional[pulumi.Input['StorageBucketVersioningArgs']]:
         """
-        A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+        A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
         """
         return pulumi.get(self, "versioning")
 
@@ -235,7 +235,7 @@ class StorageBucketArgs:
     @pulumi.getter
     def website(self) -> Optional[pulumi.Input['StorageBucketWebsiteArgs']]:
         """
-        A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         """
         return pulumi.get(self, "website")
 
@@ -298,11 +298,11 @@ class _StorageBucketState:
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
         :param pulumi.Input[Sequence[pulumi.Input['StorageBucketGrantArgs']]] grants: An [ACL policy grant](https://cloud.yandex.com/docs/storage/concepts/acl#permissions-types). Conflicts with `acl`.
         :param pulumi.Input[Sequence[pulumi.Input['StorageBucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input['StorageBucketLoggingArgs']]] loggings: A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['StorageBucketLoggingArgs']]] loggings: A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         :param pulumi.Input[str] secret_key: The secret key to use when applying changes. If omitted, `storage_secret_key` specified in provider config is used.
         :param pulumi.Input['StorageBucketServerSideEncryptionConfigurationArgs'] server_side_encryption_configuration: A configuration of server-side encryption for the bucket (documented below)
-        :param pulumi.Input['StorageBucketVersioningArgs'] versioning: A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
-        :param pulumi.Input['StorageBucketWebsiteArgs'] website: A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        :param pulumi.Input['StorageBucketVersioningArgs'] versioning: A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
+        :param pulumi.Input['StorageBucketWebsiteArgs'] website: A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         :param pulumi.Input[str] website_domain: The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         :param pulumi.Input[str] website_endpoint: The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         """
@@ -450,7 +450,7 @@ class _StorageBucketState:
     @pulumi.getter
     def loggings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StorageBucketLoggingArgs']]]]:
         """
-        A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         """
         return pulumi.get(self, "loggings")
 
@@ -495,7 +495,7 @@ class _StorageBucketState:
     @pulumi.getter
     def versioning(self) -> Optional[pulumi.Input['StorageBucketVersioningArgs']]:
         """
-        A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+        A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
         """
         return pulumi.get(self, "versioning")
 
@@ -507,7 +507,7 @@ class _StorageBucketState:
     @pulumi.getter
     def website(self) -> Optional[pulumi.Input['StorageBucketWebsiteArgs']]:
         """
-        A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         """
         return pulumi.get(self, "website")
 
@@ -565,6 +565,8 @@ class StorageBucket(pulumi.CustomResource):
         """
         Allows management of [Yandex.Cloud Storage Bucket](https://cloud.yandex.com/docs/storage/concepts/bucket).
 
+        > **Note:** Your need to provide [static access key](https://cloud.yandex.com/docs/iam/concepts/authorization/access-key) (Access and Secret) to create storage client to work with Storage Service. To create them you need Service Account and proper permissions.
+
         ## Example Usage
         ### Simple Private Bucket
 
@@ -572,7 +574,23 @@ class StorageBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_yandex as yandex
 
-        test = yandex.StorageBucket("test", bucket="tf-test-bucket")
+        folder_id = "<folder-id>"
+        # Create SA
+        sa = yandex.IamServiceAccount("sa", folder_id=folder_id)
+        # Grant permissions
+        sa_editor = yandex.ResourcemanagerFolderIamMember("sa-editor",
+            folder_id=folder_id,
+            role="storage.editor",
+            member=sa.id.apply(lambda id: f"serviceAccount:{id}"))
+        # Create Static Access Keys
+        sa_static_key = yandex.IamServiceAccountStaticAccessKey("sa-static-key",
+            service_account_id=sa.id,
+            description="static access key for object storage")
+        # Use keys to create bucket
+        test = yandex.StorageBucket("test",
+            access_key=sa_static_key.access_key,
+            secret_key=sa_static_key.secret_key,
+            bucket="tf-test-bucket")
         ```
         ### Static Website Hosting
 
@@ -895,11 +913,11 @@ class StorageBucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StorageBucketGrantArgs']]]] grants: An [ACL policy grant](https://cloud.yandex.com/docs/storage/concepts/acl#permissions-types). Conflicts with `acl`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StorageBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StorageBucketLoggingArgs']]]] loggings: A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StorageBucketLoggingArgs']]]] loggings: A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         :param pulumi.Input[str] secret_key: The secret key to use when applying changes. If omitted, `storage_secret_key` specified in provider config is used.
         :param pulumi.Input[pulumi.InputType['StorageBucketServerSideEncryptionConfigurationArgs']] server_side_encryption_configuration: A configuration of server-side encryption for the bucket (documented below)
-        :param pulumi.Input[pulumi.InputType['StorageBucketVersioningArgs']] versioning: A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
-        :param pulumi.Input[pulumi.InputType['StorageBucketWebsiteArgs']] website: A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        :param pulumi.Input[pulumi.InputType['StorageBucketVersioningArgs']] versioning: A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
+        :param pulumi.Input[pulumi.InputType['StorageBucketWebsiteArgs']] website: A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         :param pulumi.Input[str] website_domain: The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         :param pulumi.Input[str] website_endpoint: The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         """
@@ -912,6 +930,8 @@ class StorageBucket(pulumi.CustomResource):
         """
         Allows management of [Yandex.Cloud Storage Bucket](https://cloud.yandex.com/docs/storage/concepts/bucket).
 
+        > **Note:** Your need to provide [static access key](https://cloud.yandex.com/docs/iam/concepts/authorization/access-key) (Access and Secret) to create storage client to work with Storage Service. To create them you need Service Account and proper permissions.
+
         ## Example Usage
         ### Simple Private Bucket
 
@@ -919,7 +939,23 @@ class StorageBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_yandex as yandex
 
-        test = yandex.StorageBucket("test", bucket="tf-test-bucket")
+        folder_id = "<folder-id>"
+        # Create SA
+        sa = yandex.IamServiceAccount("sa", folder_id=folder_id)
+        # Grant permissions
+        sa_editor = yandex.ResourcemanagerFolderIamMember("sa-editor",
+            folder_id=folder_id,
+            role="storage.editor",
+            member=sa.id.apply(lambda id: f"serviceAccount:{id}"))
+        # Create Static Access Keys
+        sa_static_key = yandex.IamServiceAccountStaticAccessKey("sa-static-key",
+            service_account_id=sa.id,
+            description="static access key for object storage")
+        # Use keys to create bucket
+        test = yandex.StorageBucket("test",
+            access_key=sa_static_key.access_key,
+            secret_key=sa_static_key.secret_key,
+            bucket="tf-test-bucket")
         ```
         ### Static Website Hosting
 
@@ -1335,11 +1371,11 @@ class StorageBucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StorageBucketGrantArgs']]]] grants: An [ACL policy grant](https://cloud.yandex.com/docs/storage/concepts/acl#permissions-types). Conflicts with `acl`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StorageBucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StorageBucketLoggingArgs']]]] loggings: A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StorageBucketLoggingArgs']]]] loggings: A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         :param pulumi.Input[str] secret_key: The secret key to use when applying changes. If omitted, `storage_secret_key` specified in provider config is used.
         :param pulumi.Input[pulumi.InputType['StorageBucketServerSideEncryptionConfigurationArgs']] server_side_encryption_configuration: A configuration of server-side encryption for the bucket (documented below)
-        :param pulumi.Input[pulumi.InputType['StorageBucketVersioningArgs']] versioning: A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
-        :param pulumi.Input[pulumi.InputType['StorageBucketWebsiteArgs']] website: A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        :param pulumi.Input[pulumi.InputType['StorageBucketVersioningArgs']] versioning: A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
+        :param pulumi.Input[pulumi.InputType['StorageBucketWebsiteArgs']] website: A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         :param pulumi.Input[str] website_domain: The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         :param pulumi.Input[str] website_endpoint: The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         """
@@ -1439,7 +1475,7 @@ class StorageBucket(pulumi.CustomResource):
     @pulumi.getter
     def loggings(self) -> pulumi.Output[Optional[Sequence['outputs.StorageBucketLogging']]]:
         """
-        A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         """
         return pulumi.get(self, "loggings")
 
@@ -1468,7 +1504,7 @@ class StorageBucket(pulumi.CustomResource):
     @pulumi.getter
     def versioning(self) -> pulumi.Output['outputs.StorageBucketVersioning']:
         """
-        A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+        A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
         """
         return pulumi.get(self, "versioning")
 
@@ -1476,7 +1512,7 @@ class StorageBucket(pulumi.CustomResource):
     @pulumi.getter
     def website(self) -> pulumi.Output[Optional['outputs.StorageBucketWebsite']]:
         """
-        A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         """
         return pulumi.get(self, "website")
 

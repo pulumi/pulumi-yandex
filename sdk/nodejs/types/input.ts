@@ -1322,8 +1322,7 @@ export interface ComputeInstanceGroupScalePolicy {
      */
     fixedScale?: pulumi.Input<inputs.ComputeInstanceGroupScalePolicyFixedScale>;
     /**
-     * The test auto scaling policy of the instance group. Use it to test how the auto scale works. 
-     * The structure is documented below.
+     * The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
      */
     testAutoScale?: pulumi.Input<inputs.ComputeInstanceGroupScalePolicyTestAutoScale>;
 }
@@ -2174,19 +2173,19 @@ export interface GetMdbKafkaClusterConfigKafka {
 export interface GetMdbKafkaClusterConfigKafkaKafkaConfig {
     autoCreateTopicsEnable?: boolean;
     compressionType?: string;
-    defaultReplicationFactor?: number;
-    logFlushIntervalMessages?: number;
-    logFlushIntervalMs?: number;
-    logFlushSchedulerIntervalMs?: number;
+    defaultReplicationFactor?: string;
+    logFlushIntervalMessages?: string;
+    logFlushIntervalMs?: string;
+    logFlushSchedulerIntervalMs?: string;
     logPreallocate?: boolean;
-    logRetentionBytes?: number;
-    logRetentionHours?: number;
-    logRetentionMinutes?: number;
-    logRetentionMs?: number;
-    logSegmentBytes?: number;
-    numPartitions?: number;
-    socketReceiveBufferBytes?: number;
-    socketSendBufferBytes?: number;
+    logRetentionBytes?: string;
+    logRetentionHours?: string;
+    logRetentionMinutes?: string;
+    logRetentionMs?: string;
+    logSegmentBytes?: string;
+    numPartitions?: string;
+    socketReceiveBufferBytes?: string;
+    socketSendBufferBytes?: string;
 }
 
 export interface GetMdbKafkaClusterConfigKafkaResources {
@@ -2244,17 +2243,17 @@ export interface GetMdbKafkaClusterTopic {
 export interface GetMdbKafkaClusterTopicTopicConfig {
     cleanupPolicy?: string;
     compressionType?: string;
-    deleteRetentionMs?: number;
-    fileDeleteDelayMs?: number;
-    flushMessages?: number;
-    flushMs?: number;
-    maxMessageBytes?: number;
-    minCompactionLagMs?: number;
-    minInsyncReplicas?: number;
+    deleteRetentionMs?: string;
+    fileDeleteDelayMs?: string;
+    flushMessages?: string;
+    flushMs?: string;
+    maxMessageBytes?: string;
+    minCompactionLagMs?: string;
+    minInsyncReplicas?: string;
     preallocate?: boolean;
-    retentionBytes?: number;
-    retentionMs?: number;
-    segmentBytes?: number;
+    retentionBytes?: string;
+    retentionMs?: string;
+    segmentBytes?: string;
 }
 
 export interface GetMdbKafkaClusterUser {
@@ -2289,7 +2288,7 @@ export interface GetMdbMysqlClusterAccess {
      */
     dataLens?: boolean;
     /**
-     * Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+     * Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
      */
     webSql?: boolean;
 }
@@ -2730,7 +2729,7 @@ export interface LbNetworkLoadBalancerListener {
 
 export interface LbNetworkLoadBalancerListenerExternalAddressSpec {
     /**
-     * External IP address for a listener. IP address will be allocated if it wasn't been set.
+     * Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
      */
     address?: pulumi.Input<string>;
     /**
@@ -2741,7 +2740,7 @@ export interface LbNetworkLoadBalancerListenerExternalAddressSpec {
 
 export interface LbNetworkLoadBalancerListenerInternalAddressSpec {
     /**
-     * External IP address for a listener. IP address will be allocated if it wasn't been set.
+     * Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
      */
     address?: pulumi.Input<string>;
     /**
@@ -3667,6 +3666,50 @@ export interface MdbElasticSearchClusterHost {
     zone: pulumi.Input<string>;
 }
 
+export interface MdbGreenplumClusterMasterHost {
+    /**
+     * Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+     */
+    assignPublicIp?: pulumi.Input<boolean>;
+    /**
+     * (Computed) The fully qualified domain name of the host.
+     */
+    fqdn?: pulumi.Input<string>;
+}
+
+export interface MdbGreenplumClusterMasterSubcluster {
+    /**
+     * Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+     */
+    resources: pulumi.Input<inputs.MdbGreenplumClusterMasterSubclusterResources>;
+}
+
+export interface MdbGreenplumClusterMasterSubclusterResources {
+    diskSize: pulumi.Input<number>;
+    diskTypeId: pulumi.Input<string>;
+    resourcePresetId: pulumi.Input<string>;
+}
+
+export interface MdbGreenplumClusterSegmentHost {
+    /**
+     * (Computed) The fully qualified domain name of the host.
+     */
+    fqdn?: pulumi.Input<string>;
+}
+
+export interface MdbGreenplumClusterSegmentSubcluster {
+    /**
+     * Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+     */
+    resources: pulumi.Input<inputs.MdbGreenplumClusterSegmentSubclusterResources>;
+}
+
+export interface MdbGreenplumClusterSegmentSubclusterResources {
+    diskSize: pulumi.Input<number>;
+    diskTypeId: pulumi.Input<string>;
+    resourcePresetId: pulumi.Input<string>;
+}
+
 export interface MdbKafkaClusterConfig {
     /**
      * Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
@@ -3712,19 +3755,19 @@ export interface MdbKafkaClusterConfigKafka {
 export interface MdbKafkaClusterConfigKafkaKafkaConfig {
     autoCreateTopicsEnable?: pulumi.Input<boolean>;
     compressionType?: pulumi.Input<string>;
-    defaultReplicationFactor?: pulumi.Input<number>;
-    logFlushIntervalMessages?: pulumi.Input<number>;
-    logFlushIntervalMs?: pulumi.Input<number>;
-    logFlushSchedulerIntervalMs?: pulumi.Input<number>;
+    defaultReplicationFactor?: pulumi.Input<string>;
+    logFlushIntervalMessages?: pulumi.Input<string>;
+    logFlushIntervalMs?: pulumi.Input<string>;
+    logFlushSchedulerIntervalMs?: pulumi.Input<string>;
     logPreallocate?: pulumi.Input<boolean>;
-    logRetentionBytes?: pulumi.Input<number>;
-    logRetentionHours?: pulumi.Input<number>;
-    logRetentionMinutes?: pulumi.Input<number>;
-    logRetentionMs?: pulumi.Input<number>;
-    logSegmentBytes?: pulumi.Input<number>;
-    numPartitions?: pulumi.Input<number>;
-    socketReceiveBufferBytes?: pulumi.Input<number>;
-    socketSendBufferBytes?: pulumi.Input<number>;
+    logRetentionBytes?: pulumi.Input<string>;
+    logRetentionHours?: pulumi.Input<string>;
+    logRetentionMinutes?: pulumi.Input<string>;
+    logRetentionMs?: pulumi.Input<string>;
+    logSegmentBytes?: pulumi.Input<string>;
+    numPartitions?: pulumi.Input<string>;
+    socketReceiveBufferBytes?: pulumi.Input<string>;
+    socketSendBufferBytes?: pulumi.Input<string>;
 }
 
 export interface MdbKafkaClusterConfigKafkaResources {
@@ -3809,17 +3852,17 @@ export interface MdbKafkaClusterTopic {
 export interface MdbKafkaClusterTopicTopicConfig {
     cleanupPolicy?: pulumi.Input<string>;
     compressionType?: pulumi.Input<string>;
-    deleteRetentionMs?: pulumi.Input<number>;
-    fileDeleteDelayMs?: pulumi.Input<number>;
-    flushMessages?: pulumi.Input<number>;
-    flushMs?: pulumi.Input<number>;
-    maxMessageBytes?: pulumi.Input<number>;
-    minCompactionLagMs?: pulumi.Input<number>;
-    minInsyncReplicas?: pulumi.Input<number>;
+    deleteRetentionMs?: pulumi.Input<string>;
+    fileDeleteDelayMs?: pulumi.Input<string>;
+    flushMessages?: pulumi.Input<string>;
+    flushMs?: pulumi.Input<string>;
+    maxMessageBytes?: pulumi.Input<string>;
+    minCompactionLagMs?: pulumi.Input<string>;
+    minInsyncReplicas?: pulumi.Input<string>;
     preallocate?: pulumi.Input<boolean>;
-    retentionBytes?: pulumi.Input<number>;
-    retentionMs?: pulumi.Input<number>;
-    segmentBytes?: pulumi.Input<number>;
+    retentionBytes?: pulumi.Input<string>;
+    retentionMs?: pulumi.Input<string>;
+    segmentBytes?: pulumi.Input<string>;
 }
 
 export interface MdbKafkaClusterUser {
@@ -3986,7 +4029,7 @@ export interface MdbMysqlClusterAccess {
      */
     dataLens?: pulumi.Input<boolean>;
     /**
-     * Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+     * Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
      */
     webSql?: pulumi.Input<boolean>;
 }
@@ -4461,7 +4504,7 @@ export interface StorageBucketWebsite {
      */
     redirectAllRequestsTo?: pulumi.Input<string>;
     /**
-     * A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+     * A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
      */
     routingRules?: pulumi.Input<string>;
 }
