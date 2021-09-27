@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.63.1 of the Yandex Cloud Terraform Provider
+_(none)_
 
 ---
+
+## 0.7.0 (2021-09-27)
+* Upgrade to v0.63.1 of the Yandex Cloud Terraform Provider
 
 ## 0.6.0 (2021-09-03)
 * Upgrade to v0.62.0 of the Yandex Cloud Terraform Provider
