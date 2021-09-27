@@ -178,7 +178,7 @@ class ComputePlacementGroup(pulumi.CustomResource):
                  __props__=None):
         """
         A Placement group resource. For more information, see
-        [the official documentation](https://cloud.yandex.ru/docs/compute/concepts/placement-groups).
+        [the official documentation](https://cloud.yandex.com/docs/compute/concepts/placement-groups).
 
         ## Example Usage
 
@@ -206,7 +206,7 @@ class ComputePlacementGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Placement group resource. For more information, see
-        [the official documentation](https://cloud.yandex.ru/docs/compute/concepts/placement-groups).
+        [the official documentation](https://cloud.yandex.com/docs/compute/concepts/placement-groups).
 
         ## Example Usage
 

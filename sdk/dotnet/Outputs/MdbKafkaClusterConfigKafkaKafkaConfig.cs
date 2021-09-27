@@ -15,19 +15,19 @@ namespace Pulumi.Yandex.Outputs
     {
         public readonly bool? AutoCreateTopicsEnable;
         public readonly string? CompressionType;
-        public readonly int? DefaultReplicationFactor;
-        public readonly int? LogFlushIntervalMessages;
-        public readonly int? LogFlushIntervalMs;
-        public readonly int? LogFlushSchedulerIntervalMs;
+        public readonly string? DefaultReplicationFactor;
+        public readonly string? LogFlushIntervalMessages;
+        public readonly string? LogFlushIntervalMs;
+        public readonly string? LogFlushSchedulerIntervalMs;
         public readonly bool? LogPreallocate;
-        public readonly int? LogRetentionBytes;
-        public readonly int? LogRetentionHours;
-        public readonly int? LogRetentionMinutes;
-        public readonly int? LogRetentionMs;
-        public readonly int? LogSegmentBytes;
-        public readonly int? NumPartitions;
-        public readonly int? SocketReceiveBufferBytes;
-        public readonly int? SocketSendBufferBytes;
+        public readonly string? LogRetentionBytes;
+        public readonly string? LogRetentionHours;
+        public readonly string? LogRetentionMinutes;
+        public readonly string? LogRetentionMs;
+        public readonly string? LogSegmentBytes;
+        public readonly string? NumPartitions;
+        public readonly string? SocketReceiveBufferBytes;
+        public readonly string? SocketSendBufferBytes;
 
         [OutputConstructor]
         private MdbKafkaClusterConfigKafkaKafkaConfig(
@@ -35,31 +35,31 @@ namespace Pulumi.Yandex.Outputs
 
             string? compressionType,
 
-            int? defaultReplicationFactor,
+            string? defaultReplicationFactor,
 
-            int? logFlushIntervalMessages,
+            string? logFlushIntervalMessages,
 
-            int? logFlushIntervalMs,
+            string? logFlushIntervalMs,
 
-            int? logFlushSchedulerIntervalMs,
+            string? logFlushSchedulerIntervalMs,
 
             bool? logPreallocate,
 
-            int? logRetentionBytes,
+            string? logRetentionBytes,
 
-            int? logRetentionHours,
+            string? logRetentionHours,
 
-            int? logRetentionMinutes,
+            string? logRetentionMinutes,
 
-            int? logRetentionMs,
+            string? logRetentionMs,
 
-            int? logSegmentBytes,
+            string? logSegmentBytes,
 
-            int? numPartitions,
+            string? numPartitions,
 
-            int? socketReceiveBufferBytes,
+            string? socketReceiveBufferBytes,
 
-            int? socketSendBufferBytes)
+            string? socketSendBufferBytes)
         {
             AutoCreateTopicsEnable = autoCreateTopicsEnable;
             CompressionType = compressionType;

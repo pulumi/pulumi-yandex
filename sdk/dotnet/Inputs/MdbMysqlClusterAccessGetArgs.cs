@@ -19,7 +19,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<bool>? DataLens { get; set; }
 
         /// <summary>
-        /// Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        /// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         /// </summary>
         [Input("webSql")]
         public Input<bool>? WebSql { get; set; }

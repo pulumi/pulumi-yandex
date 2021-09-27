@@ -58,7 +58,6 @@ type IamServiceAccount struct {
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// Name of the service account.
 	// Can be updated without creating a new resource.
-	// Name should comply to this pattern: /a-z?/
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -99,7 +98,6 @@ type iamServiceAccountState struct {
 	FolderId *string `pulumi:"folderId"`
 	// Name of the service account.
 	// Can be updated without creating a new resource.
-	// Name should comply to this pattern: /a-z?/
 	Name *string `pulumi:"name"`
 }
 
@@ -112,7 +110,6 @@ type IamServiceAccountState struct {
 	FolderId pulumi.StringPtrInput
 	// Name of the service account.
 	// Can be updated without creating a new resource.
-	// Name should comply to this pattern: /a-z?/
 	Name pulumi.StringPtrInput
 }
 
@@ -128,7 +125,6 @@ type iamServiceAccountArgs struct {
 	FolderId *string `pulumi:"folderId"`
 	// Name of the service account.
 	// Can be updated without creating a new resource.
-	// Name should comply to this pattern: /a-z?/
 	Name *string `pulumi:"name"`
 }
 
@@ -141,7 +137,6 @@ type IamServiceAccountArgs struct {
 	FolderId pulumi.StringPtrInput
 	// Name of the service account.
 	// Can be updated without creating a new resource.
-	// Name should comply to this pattern: /a-z?/
 	Name pulumi.StringPtrInput
 }
 

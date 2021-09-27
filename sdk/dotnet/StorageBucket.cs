@@ -12,6 +12,8 @@ namespace Pulumi.Yandex
     /// <summary>
     /// Allows management of [Yandex.Cloud Storage Bucket](https://cloud.yandex.com/docs/storage/concepts/bucket).
     /// 
+    /// &gt; **Note:** Your need to provide [static access key](https://cloud.yandex.com/docs/iam/concepts/authorization/access-key) (Access and Secret) to create storage client to work with Storage Service. To create them you need Service Account and proper permissions.
+    /// 
     /// ## Example Usage
     /// ### Simple Private Bucket
     /// 
@@ -23,8 +25,30 @@ namespace Pulumi.Yandex
     /// {
     ///     public MyStack()
     ///     {
+    ///         var folderId = "&lt;folder-id&gt;";
+    ///         // Create SA
+    ///         var sa = new Yandex.IamServiceAccount("sa", new Yandex.IamServiceAccountArgs
+    ///         {
+    ///             FolderId = folderId,
+    ///         });
+    ///         // Grant permissions
+    ///         var sa_editor = new Yandex.ResourcemanagerFolderIamMember("sa-editor", new Yandex.ResourcemanagerFolderIamMemberArgs
+    ///         {
+    ///             FolderId = folderId,
+    ///             Role = "storage.editor",
+    ///             Member = sa.Id.Apply(id =&gt; $"serviceAccount:{id}"),
+    ///         });
+    ///         // Create Static Access Keys
+    ///         var sa_static_key = new Yandex.IamServiceAccountStaticAccessKey("sa-static-key", new Yandex.IamServiceAccountStaticAccessKeyArgs
+    ///         {
+    ///             ServiceAccountId = sa.Id,
+    ///             Description = "static access key for object storage",
+    ///         });
+    ///         // Use keys to create bucket
     ///         var test = new Yandex.StorageBucket("test", new Yandex.StorageBucketArgs
     ///         {
+    ///             AccessKey = sa_static_key.AccessKey,
+    ///             SecretKey = sa_static_key.SecretKey,
     ///             Bucket = "tf-test-bucket",
     ///         });
     ///     }
@@ -585,7 +609,7 @@ namespace Pulumi.Yandex
         public Output<ImmutableArray<Outputs.StorageBucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
 
         /// <summary>
-        /// A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        /// A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         /// </summary>
         [Output("loggings")]
         public Output<ImmutableArray<Outputs.StorageBucketLogging>> Loggings { get; private set; } = null!;
@@ -606,13 +630,13 @@ namespace Pulumi.Yandex
         public Output<Outputs.StorageBucketServerSideEncryptionConfiguration?> ServerSideEncryptionConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+        /// A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
         /// </summary>
         [Output("versioning")]
         public Output<Outputs.StorageBucketVersioning> Versioning { get; private set; } = null!;
 
         /// <summary>
-        /// A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        /// A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         /// </summary>
         [Output("website")]
         public Output<Outputs.StorageBucketWebsite?> Website { get; private set; } = null!;
@@ -742,7 +766,7 @@ namespace Pulumi.Yandex
         private InputList<Inputs.StorageBucketLoggingArgs>? _loggings;
 
         /// <summary>
-        /// A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        /// A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         /// </summary>
         public InputList<Inputs.StorageBucketLoggingArgs> Loggings
         {
@@ -766,13 +790,13 @@ namespace Pulumi.Yandex
         public Input<Inputs.StorageBucketServerSideEncryptionConfigurationArgs>? ServerSideEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+        /// A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
         /// </summary>
         [Input("versioning")]
         public Input<Inputs.StorageBucketVersioningArgs>? Versioning { get; set; }
 
         /// <summary>
-        /// A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        /// A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         /// </summary>
         [Input("website")]
         public Input<Inputs.StorageBucketWebsiteArgs>? Website { get; set; }
@@ -869,7 +893,7 @@ namespace Pulumi.Yandex
         private InputList<Inputs.StorageBucketLoggingGetArgs>? _loggings;
 
         /// <summary>
-        /// A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+        /// A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
         /// </summary>
         public InputList<Inputs.StorageBucketLoggingGetArgs> Loggings
         {
@@ -893,13 +917,13 @@ namespace Pulumi.Yandex
         public Input<Inputs.StorageBucketServerSideEncryptionConfigurationGetArgs>? ServerSideEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+        /// A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
         /// </summary>
         [Input("versioning")]
         public Input<Inputs.StorageBucketVersioningGetArgs>? Versioning { get; set; }
 
         /// <summary>
-        /// A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+        /// A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
         /// </summary>
         [Input("website")]
         public Input<Inputs.StorageBucketWebsiteGetArgs>? Website { get; set; }

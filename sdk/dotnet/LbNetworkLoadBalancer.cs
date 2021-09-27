@@ -118,7 +118,7 @@ namespace Pulumi.Yandex
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the availability zone where the network load balancer resides. 
+        /// ID of the availability zone where the network load balancer resides.
         /// The default is 'ru-central1'.
         /// </summary>
         [Output("regionId")]
@@ -233,7 +233,7 @@ namespace Pulumi.Yandex
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// ID of the availability zone where the network load balancer resides. 
+        /// ID of the availability zone where the network load balancer resides.
         /// The default is 'ru-central1'.
         /// </summary>
         [Input("regionId")]
@@ -315,7 +315,7 @@ namespace Pulumi.Yandex
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// ID of the availability zone where the network load balancer resides. 
+        /// ID of the availability zone where the network load balancer resides.
         /// The default is 'ru-central1'.
         /// </summary>
         [Input("regionId")]

@@ -180,6 +180,12 @@ __all__ = [
     'MdbElasticSearchClusterConfigMasterNodeArgs',
     'MdbElasticSearchClusterConfigMasterNodeResourcesArgs',
     'MdbElasticSearchClusterHostArgs',
+    'MdbGreenplumClusterMasterHostArgs',
+    'MdbGreenplumClusterMasterSubclusterArgs',
+    'MdbGreenplumClusterMasterSubclusterResourcesArgs',
+    'MdbGreenplumClusterSegmentHostArgs',
+    'MdbGreenplumClusterSegmentSubclusterArgs',
+    'MdbGreenplumClusterSegmentSubclusterResourcesArgs',
     'MdbKafkaClusterConfigArgs',
     'MdbKafkaClusterConfigKafkaArgs',
     'MdbKafkaClusterConfigKafkaKafkaConfigArgs',
@@ -5127,8 +5133,7 @@ class ComputeInstanceGroupScalePolicyArgs:
         """
         :param pulumi.Input['ComputeInstanceGroupScalePolicyAutoScaleArgs'] auto_scale: The auto scaling policy of the instance group. The structure is documented below.
         :param pulumi.Input['ComputeInstanceGroupScalePolicyFixedScaleArgs'] fixed_scale: The fixed scaling policy of the instance group. The structure is documented below.
-        :param pulumi.Input['ComputeInstanceGroupScalePolicyTestAutoScaleArgs'] test_auto_scale: The test auto scaling policy of the instance group. Use it to test how the auto scale works. 
-               The structure is documented below.
+        :param pulumi.Input['ComputeInstanceGroupScalePolicyTestAutoScaleArgs'] test_auto_scale: The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
         """
         if auto_scale is not None:
             pulumi.set(__self__, "auto_scale", auto_scale)
@@ -5165,8 +5170,7 @@ class ComputeInstanceGroupScalePolicyArgs:
     @pulumi.getter(name="testAutoScale")
     def test_auto_scale(self) -> Optional[pulumi.Input['ComputeInstanceGroupScalePolicyTestAutoScaleArgs']]:
         """
-        The test auto scaling policy of the instance group. Use it to test how the auto scale works. 
-        The structure is documented below.
+        The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
         """
         return pulumi.get(self, "test_auto_scale")
 
@@ -8779,7 +8783,7 @@ class LbNetworkLoadBalancerListenerExternalAddressSpecArgs:
                  address: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: External IP address for a listener. IP address will be allocated if it wasn't been set.
+        :param pulumi.Input[str] address: Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         :param pulumi.Input[str] ip_version: IP version of the internal addresses that the load balancer works with. Must be one of ipv4 or ipv6. The default is ipv4.
         """
         if address is not None:
@@ -8791,7 +8795,7 @@ class LbNetworkLoadBalancerListenerExternalAddressSpecArgs:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        External IP address for a listener. IP address will be allocated if it wasn't been set.
+        Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         """
         return pulumi.get(self, "address")
 
@@ -8820,7 +8824,7 @@ class LbNetworkLoadBalancerListenerInternalAddressSpecArgs:
                  ip_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] subnet_id: ID of the subnet to which the internal IP address belongs.
-        :param pulumi.Input[str] address: External IP address for a listener. IP address will be allocated if it wasn't been set.
+        :param pulumi.Input[str] address: Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         :param pulumi.Input[str] ip_version: IP version of the internal addresses that the load balancer works with. Must be one of ipv4 or ipv6. The default is ipv4.
         """
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -8845,7 +8849,7 @@ class LbNetworkLoadBalancerListenerInternalAddressSpecArgs:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        External IP address for a listener. IP address will be allocated if it wasn't been set.
+        Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         """
         return pulumi.get(self, "address")
 
@@ -12557,6 +12561,188 @@ class MdbElasticSearchClusterHostArgs:
 
 
 @pulumi.input_type
+class MdbGreenplumClusterMasterHostArgs:
+    def __init__(__self__, *,
+                 assign_public_ip: Optional[pulumi.Input[bool]] = None,
+                 fqdn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] assign_public_ip: Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+        :param pulumi.Input[str] fqdn: (Computed) The fully qualified domain name of the host.
+        """
+        if assign_public_ip is not None:
+            pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+
+    @property
+    @pulumi.getter(name="assignPublicIp")
+    def assign_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+        """
+        return pulumi.get(self, "assign_public_ip")
+
+    @assign_public_ip.setter
+    def assign_public_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "assign_public_ip", value)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The fully qualified domain name of the host.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @fqdn.setter
+    def fqdn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fqdn", value)
+
+
+@pulumi.input_type
+class MdbGreenplumClusterMasterSubclusterArgs:
+    def __init__(__self__, *,
+                 resources: pulumi.Input['MdbGreenplumClusterMasterSubclusterResourcesArgs']):
+        """
+        :param pulumi.Input['MdbGreenplumClusterMasterSubclusterResourcesArgs'] resources: Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input['MdbGreenplumClusterMasterSubclusterResourcesArgs']:
+        """
+        Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input['MdbGreenplumClusterMasterSubclusterResourcesArgs']):
+        pulumi.set(self, "resources", value)
+
+
+@pulumi.input_type
+class MdbGreenplumClusterMasterSubclusterResourcesArgs:
+    def __init__(__self__, *,
+                 disk_size: pulumi.Input[int],
+                 disk_type_id: pulumi.Input[str],
+                 resource_preset_id: pulumi.Input[str]):
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "disk_type_id")
+
+    @disk_type_id.setter
+    def disk_type_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_type_id", value)
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_preset_id")
+
+    @resource_preset_id.setter
+    def resource_preset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_preset_id", value)
+
+
+@pulumi.input_type
+class MdbGreenplumClusterSegmentHostArgs:
+    def __init__(__self__, *,
+                 fqdn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] fqdn: (Computed) The fully qualified domain name of the host.
+        """
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The fully qualified domain name of the host.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @fqdn.setter
+    def fqdn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fqdn", value)
+
+
+@pulumi.input_type
+class MdbGreenplumClusterSegmentSubclusterArgs:
+    def __init__(__self__, *,
+                 resources: pulumi.Input['MdbGreenplumClusterSegmentSubclusterResourcesArgs']):
+        """
+        :param pulumi.Input['MdbGreenplumClusterSegmentSubclusterResourcesArgs'] resources: Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input['MdbGreenplumClusterSegmentSubclusterResourcesArgs']:
+        """
+        Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input['MdbGreenplumClusterSegmentSubclusterResourcesArgs']):
+        pulumi.set(self, "resources", value)
+
+
+@pulumi.input_type
+class MdbGreenplumClusterSegmentSubclusterResourcesArgs:
+    def __init__(__self__, *,
+                 disk_size: pulumi.Input[int],
+                 disk_type_id: pulumi.Input[str],
+                 resource_preset_id: pulumi.Input[str]):
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "disk_type_id")
+
+    @disk_type_id.setter
+    def disk_type_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_type_id", value)
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_preset_id")
+
+    @resource_preset_id.setter
+    def resource_preset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_preset_id", value)
+
+
+@pulumi.input_type
 class MdbKafkaClusterConfigArgs:
     def __init__(__self__, *,
                  kafka: pulumi.Input['MdbKafkaClusterConfigKafkaArgs'],
@@ -12715,19 +12901,19 @@ class MdbKafkaClusterConfigKafkaKafkaConfigArgs:
     def __init__(__self__, *,
                  auto_create_topics_enable: Optional[pulumi.Input[bool]] = None,
                  compression_type: Optional[pulumi.Input[str]] = None,
-                 default_replication_factor: Optional[pulumi.Input[int]] = None,
-                 log_flush_interval_messages: Optional[pulumi.Input[int]] = None,
-                 log_flush_interval_ms: Optional[pulumi.Input[int]] = None,
-                 log_flush_scheduler_interval_ms: Optional[pulumi.Input[int]] = None,
+                 default_replication_factor: Optional[pulumi.Input[str]] = None,
+                 log_flush_interval_messages: Optional[pulumi.Input[str]] = None,
+                 log_flush_interval_ms: Optional[pulumi.Input[str]] = None,
+                 log_flush_scheduler_interval_ms: Optional[pulumi.Input[str]] = None,
                  log_preallocate: Optional[pulumi.Input[bool]] = None,
-                 log_retention_bytes: Optional[pulumi.Input[int]] = None,
-                 log_retention_hours: Optional[pulumi.Input[int]] = None,
-                 log_retention_minutes: Optional[pulumi.Input[int]] = None,
-                 log_retention_ms: Optional[pulumi.Input[int]] = None,
-                 log_segment_bytes: Optional[pulumi.Input[int]] = None,
-                 num_partitions: Optional[pulumi.Input[int]] = None,
-                 socket_receive_buffer_bytes: Optional[pulumi.Input[int]] = None,
-                 socket_send_buffer_bytes: Optional[pulumi.Input[int]] = None):
+                 log_retention_bytes: Optional[pulumi.Input[str]] = None,
+                 log_retention_hours: Optional[pulumi.Input[str]] = None,
+                 log_retention_minutes: Optional[pulumi.Input[str]] = None,
+                 log_retention_ms: Optional[pulumi.Input[str]] = None,
+                 log_segment_bytes: Optional[pulumi.Input[str]] = None,
+                 num_partitions: Optional[pulumi.Input[str]] = None,
+                 socket_receive_buffer_bytes: Optional[pulumi.Input[str]] = None,
+                 socket_send_buffer_bytes: Optional[pulumi.Input[str]] = None):
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -12779,38 +12965,38 @@ class MdbKafkaClusterConfigKafkaKafkaConfigArgs:
 
     @property
     @pulumi.getter(name="defaultReplicationFactor")
-    def default_replication_factor(self) -> Optional[pulumi.Input[int]]:
+    def default_replication_factor(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "default_replication_factor")
 
     @default_replication_factor.setter
-    def default_replication_factor(self, value: Optional[pulumi.Input[int]]):
+    def default_replication_factor(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_replication_factor", value)
 
     @property
     @pulumi.getter(name="logFlushIntervalMessages")
-    def log_flush_interval_messages(self) -> Optional[pulumi.Input[int]]:
+    def log_flush_interval_messages(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "log_flush_interval_messages")
 
     @log_flush_interval_messages.setter
-    def log_flush_interval_messages(self, value: Optional[pulumi.Input[int]]):
+    def log_flush_interval_messages(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_flush_interval_messages", value)
 
     @property
     @pulumi.getter(name="logFlushIntervalMs")
-    def log_flush_interval_ms(self) -> Optional[pulumi.Input[int]]:
+    def log_flush_interval_ms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "log_flush_interval_ms")
 
     @log_flush_interval_ms.setter
-    def log_flush_interval_ms(self, value: Optional[pulumi.Input[int]]):
+    def log_flush_interval_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_flush_interval_ms", value)
 
     @property
     @pulumi.getter(name="logFlushSchedulerIntervalMs")
-    def log_flush_scheduler_interval_ms(self) -> Optional[pulumi.Input[int]]:
+    def log_flush_scheduler_interval_ms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "log_flush_scheduler_interval_ms")
 
     @log_flush_scheduler_interval_ms.setter
-    def log_flush_scheduler_interval_ms(self, value: Optional[pulumi.Input[int]]):
+    def log_flush_scheduler_interval_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_flush_scheduler_interval_ms", value)
 
     @property
@@ -12824,74 +13010,74 @@ class MdbKafkaClusterConfigKafkaKafkaConfigArgs:
 
     @property
     @pulumi.getter(name="logRetentionBytes")
-    def log_retention_bytes(self) -> Optional[pulumi.Input[int]]:
+    def log_retention_bytes(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "log_retention_bytes")
 
     @log_retention_bytes.setter
-    def log_retention_bytes(self, value: Optional[pulumi.Input[int]]):
+    def log_retention_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_retention_bytes", value)
 
     @property
     @pulumi.getter(name="logRetentionHours")
-    def log_retention_hours(self) -> Optional[pulumi.Input[int]]:
+    def log_retention_hours(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "log_retention_hours")
 
     @log_retention_hours.setter
-    def log_retention_hours(self, value: Optional[pulumi.Input[int]]):
+    def log_retention_hours(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_retention_hours", value)
 
     @property
     @pulumi.getter(name="logRetentionMinutes")
-    def log_retention_minutes(self) -> Optional[pulumi.Input[int]]:
+    def log_retention_minutes(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "log_retention_minutes")
 
     @log_retention_minutes.setter
-    def log_retention_minutes(self, value: Optional[pulumi.Input[int]]):
+    def log_retention_minutes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_retention_minutes", value)
 
     @property
     @pulumi.getter(name="logRetentionMs")
-    def log_retention_ms(self) -> Optional[pulumi.Input[int]]:
+    def log_retention_ms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "log_retention_ms")
 
     @log_retention_ms.setter
-    def log_retention_ms(self, value: Optional[pulumi.Input[int]]):
+    def log_retention_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_retention_ms", value)
 
     @property
     @pulumi.getter(name="logSegmentBytes")
-    def log_segment_bytes(self) -> Optional[pulumi.Input[int]]:
+    def log_segment_bytes(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "log_segment_bytes")
 
     @log_segment_bytes.setter
-    def log_segment_bytes(self, value: Optional[pulumi.Input[int]]):
+    def log_segment_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_segment_bytes", value)
 
     @property
     @pulumi.getter(name="numPartitions")
-    def num_partitions(self) -> Optional[pulumi.Input[int]]:
+    def num_partitions(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "num_partitions")
 
     @num_partitions.setter
-    def num_partitions(self, value: Optional[pulumi.Input[int]]):
+    def num_partitions(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "num_partitions", value)
 
     @property
     @pulumi.getter(name="socketReceiveBufferBytes")
-    def socket_receive_buffer_bytes(self) -> Optional[pulumi.Input[int]]:
+    def socket_receive_buffer_bytes(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "socket_receive_buffer_bytes")
 
     @socket_receive_buffer_bytes.setter
-    def socket_receive_buffer_bytes(self, value: Optional[pulumi.Input[int]]):
+    def socket_receive_buffer_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "socket_receive_buffer_bytes", value)
 
     @property
     @pulumi.getter(name="socketSendBufferBytes")
-    def socket_send_buffer_bytes(self) -> Optional[pulumi.Input[int]]:
+    def socket_send_buffer_bytes(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "socket_send_buffer_bytes")
 
     @socket_send_buffer_bytes.setter
-    def socket_send_buffer_bytes(self, value: Optional[pulumi.Input[int]]):
+    def socket_send_buffer_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "socket_send_buffer_bytes", value)
 
 
@@ -13193,17 +13379,17 @@ class MdbKafkaClusterTopicTopicConfigArgs:
     def __init__(__self__, *,
                  cleanup_policy: Optional[pulumi.Input[str]] = None,
                  compression_type: Optional[pulumi.Input[str]] = None,
-                 delete_retention_ms: Optional[pulumi.Input[int]] = None,
-                 file_delete_delay_ms: Optional[pulumi.Input[int]] = None,
-                 flush_messages: Optional[pulumi.Input[int]] = None,
-                 flush_ms: Optional[pulumi.Input[int]] = None,
-                 max_message_bytes: Optional[pulumi.Input[int]] = None,
-                 min_compaction_lag_ms: Optional[pulumi.Input[int]] = None,
-                 min_insync_replicas: Optional[pulumi.Input[int]] = None,
+                 delete_retention_ms: Optional[pulumi.Input[str]] = None,
+                 file_delete_delay_ms: Optional[pulumi.Input[str]] = None,
+                 flush_messages: Optional[pulumi.Input[str]] = None,
+                 flush_ms: Optional[pulumi.Input[str]] = None,
+                 max_message_bytes: Optional[pulumi.Input[str]] = None,
+                 min_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
+                 min_insync_replicas: Optional[pulumi.Input[str]] = None,
                  preallocate: Optional[pulumi.Input[bool]] = None,
-                 retention_bytes: Optional[pulumi.Input[int]] = None,
-                 retention_ms: Optional[pulumi.Input[int]] = None,
-                 segment_bytes: Optional[pulumi.Input[int]] = None):
+                 retention_bytes: Optional[pulumi.Input[str]] = None,
+                 retention_ms: Optional[pulumi.Input[str]] = None,
+                 segment_bytes: Optional[pulumi.Input[str]] = None):
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
         if compression_type is not None:
@@ -13251,65 +13437,65 @@ class MdbKafkaClusterTopicTopicConfigArgs:
 
     @property
     @pulumi.getter(name="deleteRetentionMs")
-    def delete_retention_ms(self) -> Optional[pulumi.Input[int]]:
+    def delete_retention_ms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "delete_retention_ms")
 
     @delete_retention_ms.setter
-    def delete_retention_ms(self, value: Optional[pulumi.Input[int]]):
+    def delete_retention_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_retention_ms", value)
 
     @property
     @pulumi.getter(name="fileDeleteDelayMs")
-    def file_delete_delay_ms(self) -> Optional[pulumi.Input[int]]:
+    def file_delete_delay_ms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "file_delete_delay_ms")
 
     @file_delete_delay_ms.setter
-    def file_delete_delay_ms(self, value: Optional[pulumi.Input[int]]):
+    def file_delete_delay_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_delete_delay_ms", value)
 
     @property
     @pulumi.getter(name="flushMessages")
-    def flush_messages(self) -> Optional[pulumi.Input[int]]:
+    def flush_messages(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "flush_messages")
 
     @flush_messages.setter
-    def flush_messages(self, value: Optional[pulumi.Input[int]]):
+    def flush_messages(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "flush_messages", value)
 
     @property
     @pulumi.getter(name="flushMs")
-    def flush_ms(self) -> Optional[pulumi.Input[int]]:
+    def flush_ms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "flush_ms")
 
     @flush_ms.setter
-    def flush_ms(self, value: Optional[pulumi.Input[int]]):
+    def flush_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "flush_ms", value)
 
     @property
     @pulumi.getter(name="maxMessageBytes")
-    def max_message_bytes(self) -> Optional[pulumi.Input[int]]:
+    def max_message_bytes(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "max_message_bytes")
 
     @max_message_bytes.setter
-    def max_message_bytes(self, value: Optional[pulumi.Input[int]]):
+    def max_message_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_message_bytes", value)
 
     @property
     @pulumi.getter(name="minCompactionLagMs")
-    def min_compaction_lag_ms(self) -> Optional[pulumi.Input[int]]:
+    def min_compaction_lag_ms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "min_compaction_lag_ms")
 
     @min_compaction_lag_ms.setter
-    def min_compaction_lag_ms(self, value: Optional[pulumi.Input[int]]):
+    def min_compaction_lag_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_compaction_lag_ms", value)
 
     @property
     @pulumi.getter(name="minInsyncReplicas")
-    def min_insync_replicas(self) -> Optional[pulumi.Input[int]]:
+    def min_insync_replicas(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "min_insync_replicas")
 
     @min_insync_replicas.setter
-    def min_insync_replicas(self, value: Optional[pulumi.Input[int]]):
+    def min_insync_replicas(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_insync_replicas", value)
 
     @property
@@ -13323,29 +13509,29 @@ class MdbKafkaClusterTopicTopicConfigArgs:
 
     @property
     @pulumi.getter(name="retentionBytes")
-    def retention_bytes(self) -> Optional[pulumi.Input[int]]:
+    def retention_bytes(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "retention_bytes")
 
     @retention_bytes.setter
-    def retention_bytes(self, value: Optional[pulumi.Input[int]]):
+    def retention_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "retention_bytes", value)
 
     @property
     @pulumi.getter(name="retentionMs")
-    def retention_ms(self) -> Optional[pulumi.Input[int]]:
+    def retention_ms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "retention_ms")
 
     @retention_ms.setter
-    def retention_ms(self, value: Optional[pulumi.Input[int]]):
+    def retention_ms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "retention_ms", value)
 
     @property
     @pulumi.getter(name="segmentBytes")
-    def segment_bytes(self) -> Optional[pulumi.Input[int]]:
+    def segment_bytes(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "segment_bytes")
 
     @segment_bytes.setter
-    def segment_bytes(self, value: Optional[pulumi.Input[int]]):
+    def segment_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "segment_bytes", value)
 
 
@@ -13928,7 +14114,7 @@ class MdbMysqlClusterAccessArgs:
                  web_sql: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] data_lens: Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
-        :param pulumi.Input[bool] web_sql: Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        :param pulumi.Input[bool] web_sql: Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         """
         if data_lens is not None:
             pulumi.set(__self__, "data_lens", data_lens)
@@ -13951,7 +14137,7 @@ class MdbMysqlClusterAccessArgs:
     @pulumi.getter(name="webSql")
     def web_sql(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         """
         return pulumi.get(self, "web_sql")
 
@@ -15634,7 +15820,7 @@ class StorageBucketWebsiteArgs:
         :param pulumi.Input[str] error_document: An absolute path to the document to return in case of a 4XX error.
         :param pulumi.Input[str] index_document: Storage returns this index document when requests are made to the root domain or any of the subfolders.
         :param pulumi.Input[str] redirect_all_requests_to: A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
-        :param pulumi.Input[str] routing_rules: A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+        :param pulumi.Input[str] routing_rules: A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
         """
         if error_document is not None:
             pulumi.set(__self__, "error_document", error_document)
@@ -15685,7 +15871,7 @@ class StorageBucketWebsiteArgs:
     @pulumi.getter(name="routingRules")
     def routing_rules(self) -> Optional[pulumi.Input[str]]:
         """
-        A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+        A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
         """
         return pulumi.get(self, "routing_rules")
 
@@ -17889,19 +18075,19 @@ class GetMdbKafkaClusterConfigKafkaKafkaConfigArgs:
     def __init__(__self__, *,
                  auto_create_topics_enable: Optional[bool] = None,
                  compression_type: Optional[str] = None,
-                 default_replication_factor: Optional[int] = None,
-                 log_flush_interval_messages: Optional[int] = None,
-                 log_flush_interval_ms: Optional[int] = None,
-                 log_flush_scheduler_interval_ms: Optional[int] = None,
+                 default_replication_factor: Optional[str] = None,
+                 log_flush_interval_messages: Optional[str] = None,
+                 log_flush_interval_ms: Optional[str] = None,
+                 log_flush_scheduler_interval_ms: Optional[str] = None,
                  log_preallocate: Optional[bool] = None,
-                 log_retention_bytes: Optional[int] = None,
-                 log_retention_hours: Optional[int] = None,
-                 log_retention_minutes: Optional[int] = None,
-                 log_retention_ms: Optional[int] = None,
-                 log_segment_bytes: Optional[int] = None,
-                 num_partitions: Optional[int] = None,
-                 socket_receive_buffer_bytes: Optional[int] = None,
-                 socket_send_buffer_bytes: Optional[int] = None):
+                 log_retention_bytes: Optional[str] = None,
+                 log_retention_hours: Optional[str] = None,
+                 log_retention_minutes: Optional[str] = None,
+                 log_retention_ms: Optional[str] = None,
+                 log_segment_bytes: Optional[str] = None,
+                 num_partitions: Optional[str] = None,
+                 socket_receive_buffer_bytes: Optional[str] = None,
+                 socket_send_buffer_bytes: Optional[str] = None):
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -17953,38 +18139,38 @@ class GetMdbKafkaClusterConfigKafkaKafkaConfigArgs:
 
     @property
     @pulumi.getter(name="defaultReplicationFactor")
-    def default_replication_factor(self) -> Optional[int]:
+    def default_replication_factor(self) -> Optional[str]:
         return pulumi.get(self, "default_replication_factor")
 
     @default_replication_factor.setter
-    def default_replication_factor(self, value: Optional[int]):
+    def default_replication_factor(self, value: Optional[str]):
         pulumi.set(self, "default_replication_factor", value)
 
     @property
     @pulumi.getter(name="logFlushIntervalMessages")
-    def log_flush_interval_messages(self) -> Optional[int]:
+    def log_flush_interval_messages(self) -> Optional[str]:
         return pulumi.get(self, "log_flush_interval_messages")
 
     @log_flush_interval_messages.setter
-    def log_flush_interval_messages(self, value: Optional[int]):
+    def log_flush_interval_messages(self, value: Optional[str]):
         pulumi.set(self, "log_flush_interval_messages", value)
 
     @property
     @pulumi.getter(name="logFlushIntervalMs")
-    def log_flush_interval_ms(self) -> Optional[int]:
+    def log_flush_interval_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_flush_interval_ms")
 
     @log_flush_interval_ms.setter
-    def log_flush_interval_ms(self, value: Optional[int]):
+    def log_flush_interval_ms(self, value: Optional[str]):
         pulumi.set(self, "log_flush_interval_ms", value)
 
     @property
     @pulumi.getter(name="logFlushSchedulerIntervalMs")
-    def log_flush_scheduler_interval_ms(self) -> Optional[int]:
+    def log_flush_scheduler_interval_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_flush_scheduler_interval_ms")
 
     @log_flush_scheduler_interval_ms.setter
-    def log_flush_scheduler_interval_ms(self, value: Optional[int]):
+    def log_flush_scheduler_interval_ms(self, value: Optional[str]):
         pulumi.set(self, "log_flush_scheduler_interval_ms", value)
 
     @property
@@ -17998,74 +18184,74 @@ class GetMdbKafkaClusterConfigKafkaKafkaConfigArgs:
 
     @property
     @pulumi.getter(name="logRetentionBytes")
-    def log_retention_bytes(self) -> Optional[int]:
+    def log_retention_bytes(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_bytes")
 
     @log_retention_bytes.setter
-    def log_retention_bytes(self, value: Optional[int]):
+    def log_retention_bytes(self, value: Optional[str]):
         pulumi.set(self, "log_retention_bytes", value)
 
     @property
     @pulumi.getter(name="logRetentionHours")
-    def log_retention_hours(self) -> Optional[int]:
+    def log_retention_hours(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_hours")
 
     @log_retention_hours.setter
-    def log_retention_hours(self, value: Optional[int]):
+    def log_retention_hours(self, value: Optional[str]):
         pulumi.set(self, "log_retention_hours", value)
 
     @property
     @pulumi.getter(name="logRetentionMinutes")
-    def log_retention_minutes(self) -> Optional[int]:
+    def log_retention_minutes(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_minutes")
 
     @log_retention_minutes.setter
-    def log_retention_minutes(self, value: Optional[int]):
+    def log_retention_minutes(self, value: Optional[str]):
         pulumi.set(self, "log_retention_minutes", value)
 
     @property
     @pulumi.getter(name="logRetentionMs")
-    def log_retention_ms(self) -> Optional[int]:
+    def log_retention_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_ms")
 
     @log_retention_ms.setter
-    def log_retention_ms(self, value: Optional[int]):
+    def log_retention_ms(self, value: Optional[str]):
         pulumi.set(self, "log_retention_ms", value)
 
     @property
     @pulumi.getter(name="logSegmentBytes")
-    def log_segment_bytes(self) -> Optional[int]:
+    def log_segment_bytes(self) -> Optional[str]:
         return pulumi.get(self, "log_segment_bytes")
 
     @log_segment_bytes.setter
-    def log_segment_bytes(self, value: Optional[int]):
+    def log_segment_bytes(self, value: Optional[str]):
         pulumi.set(self, "log_segment_bytes", value)
 
     @property
     @pulumi.getter(name="numPartitions")
-    def num_partitions(self) -> Optional[int]:
+    def num_partitions(self) -> Optional[str]:
         return pulumi.get(self, "num_partitions")
 
     @num_partitions.setter
-    def num_partitions(self, value: Optional[int]):
+    def num_partitions(self, value: Optional[str]):
         pulumi.set(self, "num_partitions", value)
 
     @property
     @pulumi.getter(name="socketReceiveBufferBytes")
-    def socket_receive_buffer_bytes(self) -> Optional[int]:
+    def socket_receive_buffer_bytes(self) -> Optional[str]:
         return pulumi.get(self, "socket_receive_buffer_bytes")
 
     @socket_receive_buffer_bytes.setter
-    def socket_receive_buffer_bytes(self, value: Optional[int]):
+    def socket_receive_buffer_bytes(self, value: Optional[str]):
         pulumi.set(self, "socket_receive_buffer_bytes", value)
 
     @property
     @pulumi.getter(name="socketSendBufferBytes")
-    def socket_send_buffer_bytes(self) -> Optional[int]:
+    def socket_send_buffer_bytes(self) -> Optional[str]:
         return pulumi.get(self, "socket_send_buffer_bytes")
 
     @socket_send_buffer_bytes.setter
-    def socket_send_buffer_bytes(self, value: Optional[int]):
+    def socket_send_buffer_bytes(self, value: Optional[str]):
         pulumi.set(self, "socket_send_buffer_bytes", value)
 
 
@@ -18264,17 +18450,17 @@ class GetMdbKafkaClusterTopicTopicConfigArgs:
     def __init__(__self__, *,
                  cleanup_policy: Optional[str] = None,
                  compression_type: Optional[str] = None,
-                 delete_retention_ms: Optional[int] = None,
-                 file_delete_delay_ms: Optional[int] = None,
-                 flush_messages: Optional[int] = None,
-                 flush_ms: Optional[int] = None,
-                 max_message_bytes: Optional[int] = None,
-                 min_compaction_lag_ms: Optional[int] = None,
-                 min_insync_replicas: Optional[int] = None,
+                 delete_retention_ms: Optional[str] = None,
+                 file_delete_delay_ms: Optional[str] = None,
+                 flush_messages: Optional[str] = None,
+                 flush_ms: Optional[str] = None,
+                 max_message_bytes: Optional[str] = None,
+                 min_compaction_lag_ms: Optional[str] = None,
+                 min_insync_replicas: Optional[str] = None,
                  preallocate: Optional[bool] = None,
-                 retention_bytes: Optional[int] = None,
-                 retention_ms: Optional[int] = None,
-                 segment_bytes: Optional[int] = None):
+                 retention_bytes: Optional[str] = None,
+                 retention_ms: Optional[str] = None,
+                 segment_bytes: Optional[str] = None):
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
         if compression_type is not None:
@@ -18322,65 +18508,65 @@ class GetMdbKafkaClusterTopicTopicConfigArgs:
 
     @property
     @pulumi.getter(name="deleteRetentionMs")
-    def delete_retention_ms(self) -> Optional[int]:
+    def delete_retention_ms(self) -> Optional[str]:
         return pulumi.get(self, "delete_retention_ms")
 
     @delete_retention_ms.setter
-    def delete_retention_ms(self, value: Optional[int]):
+    def delete_retention_ms(self, value: Optional[str]):
         pulumi.set(self, "delete_retention_ms", value)
 
     @property
     @pulumi.getter(name="fileDeleteDelayMs")
-    def file_delete_delay_ms(self) -> Optional[int]:
+    def file_delete_delay_ms(self) -> Optional[str]:
         return pulumi.get(self, "file_delete_delay_ms")
 
     @file_delete_delay_ms.setter
-    def file_delete_delay_ms(self, value: Optional[int]):
+    def file_delete_delay_ms(self, value: Optional[str]):
         pulumi.set(self, "file_delete_delay_ms", value)
 
     @property
     @pulumi.getter(name="flushMessages")
-    def flush_messages(self) -> Optional[int]:
+    def flush_messages(self) -> Optional[str]:
         return pulumi.get(self, "flush_messages")
 
     @flush_messages.setter
-    def flush_messages(self, value: Optional[int]):
+    def flush_messages(self, value: Optional[str]):
         pulumi.set(self, "flush_messages", value)
 
     @property
     @pulumi.getter(name="flushMs")
-    def flush_ms(self) -> Optional[int]:
+    def flush_ms(self) -> Optional[str]:
         return pulumi.get(self, "flush_ms")
 
     @flush_ms.setter
-    def flush_ms(self, value: Optional[int]):
+    def flush_ms(self, value: Optional[str]):
         pulumi.set(self, "flush_ms", value)
 
     @property
     @pulumi.getter(name="maxMessageBytes")
-    def max_message_bytes(self) -> Optional[int]:
+    def max_message_bytes(self) -> Optional[str]:
         return pulumi.get(self, "max_message_bytes")
 
     @max_message_bytes.setter
-    def max_message_bytes(self, value: Optional[int]):
+    def max_message_bytes(self, value: Optional[str]):
         pulumi.set(self, "max_message_bytes", value)
 
     @property
     @pulumi.getter(name="minCompactionLagMs")
-    def min_compaction_lag_ms(self) -> Optional[int]:
+    def min_compaction_lag_ms(self) -> Optional[str]:
         return pulumi.get(self, "min_compaction_lag_ms")
 
     @min_compaction_lag_ms.setter
-    def min_compaction_lag_ms(self, value: Optional[int]):
+    def min_compaction_lag_ms(self, value: Optional[str]):
         pulumi.set(self, "min_compaction_lag_ms", value)
 
     @property
     @pulumi.getter(name="minInsyncReplicas")
-    def min_insync_replicas(self) -> Optional[int]:
+    def min_insync_replicas(self) -> Optional[str]:
         return pulumi.get(self, "min_insync_replicas")
 
     @min_insync_replicas.setter
-    def min_insync_replicas(self, value: Optional[int]):
+    def min_insync_replicas(self, value: Optional[str]):
         pulumi.set(self, "min_insync_replicas", value)
 
     @property
@@ -18394,29 +18580,29 @@ class GetMdbKafkaClusterTopicTopicConfigArgs:
 
     @property
     @pulumi.getter(name="retentionBytes")
-    def retention_bytes(self) -> Optional[int]:
+    def retention_bytes(self) -> Optional[str]:
         return pulumi.get(self, "retention_bytes")
 
     @retention_bytes.setter
-    def retention_bytes(self, value: Optional[int]):
+    def retention_bytes(self, value: Optional[str]):
         pulumi.set(self, "retention_bytes", value)
 
     @property
     @pulumi.getter(name="retentionMs")
-    def retention_ms(self) -> Optional[int]:
+    def retention_ms(self) -> Optional[str]:
         return pulumi.get(self, "retention_ms")
 
     @retention_ms.setter
-    def retention_ms(self, value: Optional[int]):
+    def retention_ms(self, value: Optional[str]):
         pulumi.set(self, "retention_ms", value)
 
     @property
     @pulumi.getter(name="segmentBytes")
-    def segment_bytes(self) -> Optional[int]:
+    def segment_bytes(self) -> Optional[str]:
         return pulumi.get(self, "segment_bytes")
 
     @segment_bytes.setter
-    def segment_bytes(self, value: Optional[int]):
+    def segment_bytes(self, value: Optional[str]):
         pulumi.set(self, "segment_bytes", value)
 
 
@@ -18517,7 +18703,7 @@ class GetMdbMysqlClusterAccessArgs:
                  web_sql: bool):
         """
         :param bool data_lens: Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
-        :param bool web_sql: Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        :param bool web_sql: Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         """
         pulumi.set(__self__, "data_lens", data_lens)
         pulumi.set(__self__, "web_sql", web_sql)
@@ -18538,7 +18724,7 @@ class GetMdbMysqlClusterAccessArgs:
     @pulumi.getter(name="webSql")
     def web_sql(self) -> bool:
         """
-        Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         """
         return pulumi.get(self, "web_sql")
 

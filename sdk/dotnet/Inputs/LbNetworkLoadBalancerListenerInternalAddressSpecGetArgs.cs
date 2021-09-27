@@ -13,7 +13,7 @@ namespace Pulumi.Yandex.Inputs
     public sealed class LbNetworkLoadBalancerListenerInternalAddressSpecGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// External IP address for a listener. IP address will be allocated if it wasn't been set.
+        /// Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }

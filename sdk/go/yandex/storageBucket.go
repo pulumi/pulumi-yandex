@@ -12,6 +12,8 @@ import (
 
 // Allows management of [Yandex.Cloud Storage Bucket](https://cloud.yandex.com/docs/storage/concepts/bucket).
 //
+// > **Note:** Your need to provide [static access key](https://cloud.yandex.com/docs/iam/concepts/authorization/access-key) (Access and Secret) to create storage client to work with Storage Service. To create them you need Service Account and proper permissions.
+//
 // ## Example Usage
 // ### Simple Private Bucket
 //
@@ -19,14 +21,42 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewStorageBucket(ctx, "test", &yandex.StorageBucketArgs{
-// 			Bucket: pulumi.String("tf-test-bucket"),
+// 		folderId := "<folder-id>"
+// 		sa, err := yandex.NewIamServiceAccount(ctx, "sa", &yandex.IamServiceAccountArgs{
+// 			FolderId: pulumi.String(folderId),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = yandex.NewResourcemanagerFolderIamMember(ctx, "sa_editor", &yandex.ResourcemanagerFolderIamMemberArgs{
+// 			FolderId: pulumi.String(folderId),
+// 			Role:     pulumi.String("storage.editor"),
+// 			Member: sa.ID().ApplyT(func(id string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "serviceAccount:", id), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = yandex.NewIamServiceAccountStaticAccessKey(ctx, "sa_static_key", &yandex.IamServiceAccountStaticAccessKeyArgs{
+// 			ServiceAccountId: sa.ID(),
+// 			Description:      pulumi.String("static access key for object storage"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = yandex.NewStorageBucket(ctx, "test", &yandex.StorageBucketArgs{
+// 			AccessKey: sa_static_key.AccessKey,
+// 			SecretKey: sa_static_key.SecretKey,
+// 			Bucket:    pulumi.String("tf-test-bucket"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -507,16 +537,16 @@ type StorageBucket struct {
 	Grants StorageBucketGrantArrayOutput `pulumi:"grants"`
 	// A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
 	LifecycleRules StorageBucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
-	// A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+	// A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
 	Loggings StorageBucketLoggingArrayOutput `pulumi:"loggings"`
 	Policy   pulumi.StringPtrOutput          `pulumi:"policy"`
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in provider config is used.
 	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
 	// A configuration of server-side encryption for the bucket (documented below)
 	ServerSideEncryptionConfiguration StorageBucketServerSideEncryptionConfigurationPtrOutput `pulumi:"serverSideEncryptionConfiguration"`
-	// A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+	// A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
 	Versioning StorageBucketVersioningOutput `pulumi:"versioning"`
-	// A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+	// A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
 	Website StorageBucketWebsitePtrOutput `pulumi:"website"`
 	// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
 	WebsiteDomain pulumi.StringOutput `pulumi:"websiteDomain"`
@@ -570,16 +600,16 @@ type storageBucketState struct {
 	Grants []StorageBucketGrant `pulumi:"grants"`
 	// A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
 	LifecycleRules []StorageBucketLifecycleRule `pulumi:"lifecycleRules"`
-	// A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+	// A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
 	Loggings []StorageBucketLogging `pulumi:"loggings"`
 	Policy   *string                `pulumi:"policy"`
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in provider config is used.
 	SecretKey *string `pulumi:"secretKey"`
 	// A configuration of server-side encryption for the bucket (documented below)
 	ServerSideEncryptionConfiguration *StorageBucketServerSideEncryptionConfiguration `pulumi:"serverSideEncryptionConfiguration"`
-	// A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+	// A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
 	Versioning *StorageBucketVersioning `pulumi:"versioning"`
-	// A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+	// A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
 	Website *StorageBucketWebsite `pulumi:"website"`
 	// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
 	WebsiteDomain *string `pulumi:"websiteDomain"`
@@ -605,16 +635,16 @@ type StorageBucketState struct {
 	Grants StorageBucketGrantArrayInput
 	// A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
 	LifecycleRules StorageBucketLifecycleRuleArrayInput
-	// A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+	// A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
 	Loggings StorageBucketLoggingArrayInput
 	Policy   pulumi.StringPtrInput
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in provider config is used.
 	SecretKey pulumi.StringPtrInput
 	// A configuration of server-side encryption for the bucket (documented below)
 	ServerSideEncryptionConfiguration StorageBucketServerSideEncryptionConfigurationPtrInput
-	// A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+	// A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
 	Versioning StorageBucketVersioningPtrInput
-	// A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+	// A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
 	Website StorageBucketWebsitePtrInput
 	// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
 	WebsiteDomain pulumi.StringPtrInput
@@ -642,16 +672,16 @@ type storageBucketArgs struct {
 	Grants []StorageBucketGrant `pulumi:"grants"`
 	// A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
 	LifecycleRules []StorageBucketLifecycleRule `pulumi:"lifecycleRules"`
-	// A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+	// A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
 	Loggings []StorageBucketLogging `pulumi:"loggings"`
 	Policy   *string                `pulumi:"policy"`
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in provider config is used.
 	SecretKey *string `pulumi:"secretKey"`
 	// A configuration of server-side encryption for the bucket (documented below)
 	ServerSideEncryptionConfiguration *StorageBucketServerSideEncryptionConfiguration `pulumi:"serverSideEncryptionConfiguration"`
-	// A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+	// A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
 	Versioning *StorageBucketVersioning `pulumi:"versioning"`
-	// A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+	// A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
 	Website *StorageBucketWebsite `pulumi:"website"`
 	// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
 	WebsiteDomain *string `pulumi:"websiteDomain"`
@@ -676,16 +706,16 @@ type StorageBucketArgs struct {
 	Grants StorageBucketGrantArrayInput
 	// A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
 	LifecycleRules StorageBucketLifecycleRuleArrayInput
-	// A settings of [bucket logging](https://cloud.yandex.ru/docs/storage/concepts/server-logs) (documented below).
+	// A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
 	Loggings StorageBucketLoggingArrayInput
 	Policy   pulumi.StringPtrInput
 	// The secret key to use when applying changes. If omitted, `storageSecretKey` specified in provider config is used.
 	SecretKey pulumi.StringPtrInput
 	// A configuration of server-side encryption for the bucket (documented below)
 	ServerSideEncryptionConfiguration StorageBucketServerSideEncryptionConfigurationPtrInput
-	// A state of [versioning](https://cloud.yandex.ru/docs/storage/concepts/versioning) (documented below)
+	// A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
 	Versioning StorageBucketVersioningPtrInput
-	// A [website object](https://cloud.yandex.ru/docs/storage/concepts/hosting) (documented below).
+	// A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
 	Website StorageBucketWebsitePtrInput
 	// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
 	WebsiteDomain pulumi.StringPtrInput

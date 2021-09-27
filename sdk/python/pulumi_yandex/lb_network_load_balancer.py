@@ -33,7 +33,7 @@ class LbNetworkLoadBalancerArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this network load balancer. A list of key/value pairs.
         :param pulumi.Input[Sequence[pulumi.Input['LbNetworkLoadBalancerListenerArgs']]] listeners: Listener specification that will be used by a network load balancer. The structure is documented below.
         :param pulumi.Input[str] name: Name of the listener. The name must be unique for each listener on a single load balancer.
-        :param pulumi.Input[str] region_id: ID of the availability zone where the network load balancer resides. 
+        :param pulumi.Input[str] region_id: ID of the availability zone where the network load balancer resides.
                The default is 'ru-central1'.
         :param pulumi.Input[str] type: Type of the network load balancer. Must be one of 'external' or 'internal'. The default is 'external'.
         """
@@ -132,7 +132,7 @@ class LbNetworkLoadBalancerArgs:
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the availability zone where the network load balancer resides. 
+        ID of the availability zone where the network load balancer resides.
         The default is 'ru-central1'.
         """
         return pulumi.get(self, "region_id")
@@ -177,7 +177,7 @@ class _LbNetworkLoadBalancerState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this network load balancer. A list of key/value pairs.
         :param pulumi.Input[Sequence[pulumi.Input['LbNetworkLoadBalancerListenerArgs']]] listeners: Listener specification that will be used by a network load balancer. The structure is documented below.
         :param pulumi.Input[str] name: Name of the listener. The name must be unique for each listener on a single load balancer.
-        :param pulumi.Input[str] region_id: ID of the availability zone where the network load balancer resides. 
+        :param pulumi.Input[str] region_id: ID of the availability zone where the network load balancer resides.
                The default is 'ru-central1'.
         :param pulumi.Input[str] type: Type of the network load balancer. Must be one of 'external' or 'internal'. The default is 'external'.
         """
@@ -290,7 +290,7 @@ class _LbNetworkLoadBalancerState:
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the availability zone where the network load balancer resides. 
+        ID of the availability zone where the network load balancer resides.
         The default is 'ru-central1'.
         """
         return pulumi.get(self, "region_id")
@@ -374,7 +374,7 @@ class LbNetworkLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this network load balancer. A list of key/value pairs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LbNetworkLoadBalancerListenerArgs']]]] listeners: Listener specification that will be used by a network load balancer. The structure is documented below.
         :param pulumi.Input[str] name: Name of the listener. The name must be unique for each listener on a single load balancer.
-        :param pulumi.Input[str] region_id: ID of the availability zone where the network load balancer resides. 
+        :param pulumi.Input[str] region_id: ID of the availability zone where the network load balancer resides.
                The default is 'ru-central1'.
         :param pulumi.Input[str] type: Type of the network load balancer. Must be one of 'external' or 'internal'. The default is 'external'.
         """
@@ -501,7 +501,7 @@ class LbNetworkLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this network load balancer. A list of key/value pairs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LbNetworkLoadBalancerListenerArgs']]]] listeners: Listener specification that will be used by a network load balancer. The structure is documented below.
         :param pulumi.Input[str] name: Name of the listener. The name must be unique for each listener on a single load balancer.
-        :param pulumi.Input[str] region_id: ID of the availability zone where the network load balancer resides. 
+        :param pulumi.Input[str] region_id: ID of the availability zone where the network load balancer resides.
                The default is 'ru-central1'.
         :param pulumi.Input[str] type: Type of the network load balancer. Must be one of 'external' or 'internal'. The default is 'external'.
         """
@@ -582,7 +582,7 @@ class LbNetworkLoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[Optional[str]]:
         """
-        ID of the availability zone where the network load balancer resides. 
+        ID of the availability zone where the network load balancer resides.
         The default is 'ru-central1'.
         """
         return pulumi.get(self, "region_id")

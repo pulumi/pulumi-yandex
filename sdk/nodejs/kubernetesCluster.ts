@@ -189,7 +189,6 @@ export class KubernetesCluster extends pulumi.CustomResource {
     public readonly networkId!: pulumi.Output<string>;
     /**
      * (Optional) Network Implementation options. The structure is documented below.
-     * ---
      */
     public readonly networkImplementation!: pulumi.Output<outputs.KubernetesClusterNetworkImplementation | undefined>;
     /**
@@ -364,7 +363,6 @@ export interface KubernetesClusterState {
     readonly networkId?: pulumi.Input<string>;
     /**
      * (Optional) Network Implementation options. The structure is documented below.
-     * ---
      */
     readonly networkImplementation?: pulumi.Input<inputs.KubernetesClusterNetworkImplementation>;
     /**
@@ -451,7 +449,6 @@ export interface KubernetesClusterArgs {
     readonly networkId: pulumi.Input<string>;
     /**
      * (Optional) Network Implementation options. The structure is documented below.
-     * ---
      */
     readonly networkImplementation?: pulumi.Input<inputs.KubernetesClusterNetworkImplementation>;
     /**

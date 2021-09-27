@@ -181,6 +181,12 @@ __all__ = [
     'MdbElasticSearchClusterConfigMasterNode',
     'MdbElasticSearchClusterConfigMasterNodeResources',
     'MdbElasticSearchClusterHost',
+    'MdbGreenplumClusterMasterHost',
+    'MdbGreenplumClusterMasterSubcluster',
+    'MdbGreenplumClusterMasterSubclusterResources',
+    'MdbGreenplumClusterSegmentHost',
+    'MdbGreenplumClusterSegmentSubcluster',
+    'MdbGreenplumClusterSegmentSubclusterResources',
     'MdbKafkaClusterConfig',
     'MdbKafkaClusterConfigKafka',
     'MdbKafkaClusterConfigKafkaKafkaConfig',
@@ -417,6 +423,12 @@ __all__ = [
     'GetMdbElasticSearchClusterConfigMasterNodeResult',
     'GetMdbElasticSearchClusterConfigMasterNodeResourcesResult',
     'GetMdbElasticSearchClusterHostResult',
+    'GetMdbGreenplumClusterMasterHostResult',
+    'GetMdbGreenplumClusterMasterSubclusterResult',
+    'GetMdbGreenplumClusterMasterSubclusterResourcesResult',
+    'GetMdbGreenplumClusterSegmentHostResult',
+    'GetMdbGreenplumClusterSegmentSubclusterResult',
+    'GetMdbGreenplumClusterSegmentSubclusterResourcesResult',
     'GetMdbKafkaClusterConfigResult',
     'GetMdbKafkaClusterConfigKafkaResult',
     'GetMdbKafkaClusterConfigKafkaKafkaConfigResult',
@@ -5399,8 +5411,7 @@ class ComputeInstanceGroupScalePolicy(dict):
         """
         :param 'ComputeInstanceGroupScalePolicyAutoScaleArgs' auto_scale: The auto scaling policy of the instance group. The structure is documented below.
         :param 'ComputeInstanceGroupScalePolicyFixedScaleArgs' fixed_scale: The fixed scaling policy of the instance group. The structure is documented below.
-        :param 'ComputeInstanceGroupScalePolicyTestAutoScaleArgs' test_auto_scale: The test auto scaling policy of the instance group. Use it to test how the auto scale works. 
-               The structure is documented below.
+        :param 'ComputeInstanceGroupScalePolicyTestAutoScaleArgs' test_auto_scale: The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
         """
         if auto_scale is not None:
             pulumi.set(__self__, "auto_scale", auto_scale)
@@ -5429,8 +5440,7 @@ class ComputeInstanceGroupScalePolicy(dict):
     @pulumi.getter(name="testAutoScale")
     def test_auto_scale(self) -> Optional['outputs.ComputeInstanceGroupScalePolicyTestAutoScale']:
         """
-        The test auto scaling policy of the instance group. Use it to test how the auto scale works. 
-        The structure is documented below.
+        The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
         """
         return pulumi.get(self, "test_auto_scale")
 
@@ -9150,7 +9160,7 @@ class LbNetworkLoadBalancerListenerExternalAddressSpec(dict):
                  address: Optional[str] = None,
                  ip_version: Optional[str] = None):
         """
-        :param str address: External IP address for a listener. IP address will be allocated if it wasn't been set.
+        :param str address: Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         :param str ip_version: IP version of the internal addresses that the load balancer works with. Must be one of ipv4 or ipv6. The default is ipv4.
         """
         if address is not None:
@@ -9162,7 +9172,7 @@ class LbNetworkLoadBalancerListenerExternalAddressSpec(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        External IP address for a listener. IP address will be allocated if it wasn't been set.
+        Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         """
         return pulumi.get(self, "address")
 
@@ -9202,7 +9212,7 @@ class LbNetworkLoadBalancerListenerInternalAddressSpec(dict):
                  ip_version: Optional[str] = None):
         """
         :param str subnet_id: ID of the subnet to which the internal IP address belongs.
-        :param str address: External IP address for a listener. IP address will be allocated if it wasn't been set.
+        :param str address: Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         :param str ip_version: IP version of the internal addresses that the load balancer works with. Must be one of ipv4 or ipv6. The default is ipv4.
         """
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -9223,7 +9233,7 @@ class LbNetworkLoadBalancerListenerInternalAddressSpec(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        External IP address for a listener. IP address will be allocated if it wasn't been set.
+        Internal IP address for a listener. Must belong to the subnet that is referenced in subnet_id. IP address will be allocated if it wasn't been set.
         """
         return pulumi.get(self, "address")
 
@@ -12627,6 +12637,203 @@ class MdbElasticSearchClusterHost(dict):
 
 
 @pulumi.output_type
+class MdbGreenplumClusterMasterHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignPublicIp":
+            suggest = "assign_public_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MdbGreenplumClusterMasterHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MdbGreenplumClusterMasterHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MdbGreenplumClusterMasterHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assign_public_ip: Optional[bool] = None,
+                 fqdn: Optional[str] = None):
+        """
+        :param bool assign_public_ip: Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+        :param str fqdn: (Computed) The fully qualified domain name of the host.
+        """
+        if assign_public_ip is not None:
+            pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+
+    @property
+    @pulumi.getter(name="assignPublicIp")
+    def assign_public_ip(self) -> Optional[bool]:
+        """
+        Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+        """
+        return pulumi.get(self, "assign_public_ip")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[str]:
+        """
+        (Computed) The fully qualified domain name of the host.
+        """
+        return pulumi.get(self, "fqdn")
+
+
+@pulumi.output_type
+class MdbGreenplumClusterMasterSubcluster(dict):
+    def __init__(__self__, *,
+                 resources: 'outputs.MdbGreenplumClusterMasterSubclusterResources'):
+        """
+        :param 'MdbGreenplumClusterMasterSubclusterResourcesArgs' resources: Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> 'outputs.MdbGreenplumClusterMasterSubclusterResources':
+        """
+        Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class MdbGreenplumClusterMasterSubclusterResources(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSize":
+            suggest = "disk_size"
+        elif key == "diskTypeId":
+            suggest = "disk_type_id"
+        elif key == "resourcePresetId":
+            suggest = "resource_preset_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MdbGreenplumClusterMasterSubclusterResources. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MdbGreenplumClusterMasterSubclusterResources.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MdbGreenplumClusterMasterSubclusterResources.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size: int,
+                 disk_type_id: str,
+                 resource_preset_id: str):
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> str:
+        return pulumi.get(self, "disk_type_id")
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> str:
+        return pulumi.get(self, "resource_preset_id")
+
+
+@pulumi.output_type
+class MdbGreenplumClusterSegmentHost(dict):
+    def __init__(__self__, *,
+                 fqdn: Optional[str] = None):
+        """
+        :param str fqdn: (Computed) The fully qualified domain name of the host.
+        """
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[str]:
+        """
+        (Computed) The fully qualified domain name of the host.
+        """
+        return pulumi.get(self, "fqdn")
+
+
+@pulumi.output_type
+class MdbGreenplumClusterSegmentSubcluster(dict):
+    def __init__(__self__, *,
+                 resources: 'outputs.MdbGreenplumClusterSegmentSubclusterResources'):
+        """
+        :param 'MdbGreenplumClusterSegmentSubclusterResourcesArgs' resources: Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+        """
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> 'outputs.MdbGreenplumClusterSegmentSubclusterResources':
+        """
+        Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class MdbGreenplumClusterSegmentSubclusterResources(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSize":
+            suggest = "disk_size"
+        elif key == "diskTypeId":
+            suggest = "disk_type_id"
+        elif key == "resourcePresetId":
+            suggest = "resource_preset_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MdbGreenplumClusterSegmentSubclusterResources. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MdbGreenplumClusterSegmentSubclusterResources.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MdbGreenplumClusterSegmentSubclusterResources.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size: int,
+                 disk_type_id: str,
+                 resource_preset_id: str):
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> str:
+        return pulumi.get(self, "disk_type_id")
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> str:
+        return pulumi.get(self, "resource_preset_id")
+
+
+@pulumi.output_type
 class MdbKafkaClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -12832,19 +13039,19 @@ class MdbKafkaClusterConfigKafkaKafkaConfig(dict):
     def __init__(__self__, *,
                  auto_create_topics_enable: Optional[bool] = None,
                  compression_type: Optional[str] = None,
-                 default_replication_factor: Optional[int] = None,
-                 log_flush_interval_messages: Optional[int] = None,
-                 log_flush_interval_ms: Optional[int] = None,
-                 log_flush_scheduler_interval_ms: Optional[int] = None,
+                 default_replication_factor: Optional[str] = None,
+                 log_flush_interval_messages: Optional[str] = None,
+                 log_flush_interval_ms: Optional[str] = None,
+                 log_flush_scheduler_interval_ms: Optional[str] = None,
                  log_preallocate: Optional[bool] = None,
-                 log_retention_bytes: Optional[int] = None,
-                 log_retention_hours: Optional[int] = None,
-                 log_retention_minutes: Optional[int] = None,
-                 log_retention_ms: Optional[int] = None,
-                 log_segment_bytes: Optional[int] = None,
-                 num_partitions: Optional[int] = None,
-                 socket_receive_buffer_bytes: Optional[int] = None,
-                 socket_send_buffer_bytes: Optional[int] = None):
+                 log_retention_bytes: Optional[str] = None,
+                 log_retention_hours: Optional[str] = None,
+                 log_retention_minutes: Optional[str] = None,
+                 log_retention_ms: Optional[str] = None,
+                 log_segment_bytes: Optional[str] = None,
+                 num_partitions: Optional[str] = None,
+                 socket_receive_buffer_bytes: Optional[str] = None,
+                 socket_send_buffer_bytes: Optional[str] = None):
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -12888,22 +13095,22 @@ class MdbKafkaClusterConfigKafkaKafkaConfig(dict):
 
     @property
     @pulumi.getter(name="defaultReplicationFactor")
-    def default_replication_factor(self) -> Optional[int]:
+    def default_replication_factor(self) -> Optional[str]:
         return pulumi.get(self, "default_replication_factor")
 
     @property
     @pulumi.getter(name="logFlushIntervalMessages")
-    def log_flush_interval_messages(self) -> Optional[int]:
+    def log_flush_interval_messages(self) -> Optional[str]:
         return pulumi.get(self, "log_flush_interval_messages")
 
     @property
     @pulumi.getter(name="logFlushIntervalMs")
-    def log_flush_interval_ms(self) -> Optional[int]:
+    def log_flush_interval_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_flush_interval_ms")
 
     @property
     @pulumi.getter(name="logFlushSchedulerIntervalMs")
-    def log_flush_scheduler_interval_ms(self) -> Optional[int]:
+    def log_flush_scheduler_interval_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_flush_scheduler_interval_ms")
 
     @property
@@ -12913,42 +13120,42 @@ class MdbKafkaClusterConfigKafkaKafkaConfig(dict):
 
     @property
     @pulumi.getter(name="logRetentionBytes")
-    def log_retention_bytes(self) -> Optional[int]:
+    def log_retention_bytes(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_bytes")
 
     @property
     @pulumi.getter(name="logRetentionHours")
-    def log_retention_hours(self) -> Optional[int]:
+    def log_retention_hours(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_hours")
 
     @property
     @pulumi.getter(name="logRetentionMinutes")
-    def log_retention_minutes(self) -> Optional[int]:
+    def log_retention_minutes(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_minutes")
 
     @property
     @pulumi.getter(name="logRetentionMs")
-    def log_retention_ms(self) -> Optional[int]:
+    def log_retention_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_ms")
 
     @property
     @pulumi.getter(name="logSegmentBytes")
-    def log_segment_bytes(self) -> Optional[int]:
+    def log_segment_bytes(self) -> Optional[str]:
         return pulumi.get(self, "log_segment_bytes")
 
     @property
     @pulumi.getter(name="numPartitions")
-    def num_partitions(self) -> Optional[int]:
+    def num_partitions(self) -> Optional[str]:
         return pulumi.get(self, "num_partitions")
 
     @property
     @pulumi.getter(name="socketReceiveBufferBytes")
-    def socket_receive_buffer_bytes(self) -> Optional[int]:
+    def socket_receive_buffer_bytes(self) -> Optional[str]:
         return pulumi.get(self, "socket_receive_buffer_bytes")
 
     @property
     @pulumi.getter(name="socketSendBufferBytes")
-    def socket_send_buffer_bytes(self) -> Optional[int]:
+    def socket_send_buffer_bytes(self) -> Optional[str]:
         return pulumi.get(self, "socket_send_buffer_bytes")
 
 
@@ -13303,17 +13510,17 @@ class MdbKafkaClusterTopicTopicConfig(dict):
     def __init__(__self__, *,
                  cleanup_policy: Optional[str] = None,
                  compression_type: Optional[str] = None,
-                 delete_retention_ms: Optional[int] = None,
-                 file_delete_delay_ms: Optional[int] = None,
-                 flush_messages: Optional[int] = None,
-                 flush_ms: Optional[int] = None,
-                 max_message_bytes: Optional[int] = None,
-                 min_compaction_lag_ms: Optional[int] = None,
-                 min_insync_replicas: Optional[int] = None,
+                 delete_retention_ms: Optional[str] = None,
+                 file_delete_delay_ms: Optional[str] = None,
+                 flush_messages: Optional[str] = None,
+                 flush_ms: Optional[str] = None,
+                 max_message_bytes: Optional[str] = None,
+                 min_compaction_lag_ms: Optional[str] = None,
+                 min_insync_replicas: Optional[str] = None,
                  preallocate: Optional[bool] = None,
-                 retention_bytes: Optional[int] = None,
-                 retention_ms: Optional[int] = None,
-                 segment_bytes: Optional[int] = None):
+                 retention_bytes: Optional[str] = None,
+                 retention_ms: Optional[str] = None,
+                 segment_bytes: Optional[str] = None):
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
         if compression_type is not None:
@@ -13353,37 +13560,37 @@ class MdbKafkaClusterTopicTopicConfig(dict):
 
     @property
     @pulumi.getter(name="deleteRetentionMs")
-    def delete_retention_ms(self) -> Optional[int]:
+    def delete_retention_ms(self) -> Optional[str]:
         return pulumi.get(self, "delete_retention_ms")
 
     @property
     @pulumi.getter(name="fileDeleteDelayMs")
-    def file_delete_delay_ms(self) -> Optional[int]:
+    def file_delete_delay_ms(self) -> Optional[str]:
         return pulumi.get(self, "file_delete_delay_ms")
 
     @property
     @pulumi.getter(name="flushMessages")
-    def flush_messages(self) -> Optional[int]:
+    def flush_messages(self) -> Optional[str]:
         return pulumi.get(self, "flush_messages")
 
     @property
     @pulumi.getter(name="flushMs")
-    def flush_ms(self) -> Optional[int]:
+    def flush_ms(self) -> Optional[str]:
         return pulumi.get(self, "flush_ms")
 
     @property
     @pulumi.getter(name="maxMessageBytes")
-    def max_message_bytes(self) -> Optional[int]:
+    def max_message_bytes(self) -> Optional[str]:
         return pulumi.get(self, "max_message_bytes")
 
     @property
     @pulumi.getter(name="minCompactionLagMs")
-    def min_compaction_lag_ms(self) -> Optional[int]:
+    def min_compaction_lag_ms(self) -> Optional[str]:
         return pulumi.get(self, "min_compaction_lag_ms")
 
     @property
     @pulumi.getter(name="minInsyncReplicas")
-    def min_insync_replicas(self) -> Optional[int]:
+    def min_insync_replicas(self) -> Optional[str]:
         return pulumi.get(self, "min_insync_replicas")
 
     @property
@@ -13393,17 +13600,17 @@ class MdbKafkaClusterTopicTopicConfig(dict):
 
     @property
     @pulumi.getter(name="retentionBytes")
-    def retention_bytes(self) -> Optional[int]:
+    def retention_bytes(self) -> Optional[str]:
         return pulumi.get(self, "retention_bytes")
 
     @property
     @pulumi.getter(name="retentionMs")
-    def retention_ms(self) -> Optional[int]:
+    def retention_ms(self) -> Optional[str]:
         return pulumi.get(self, "retention_ms")
 
     @property
     @pulumi.getter(name="segmentBytes")
-    def segment_bytes(self) -> Optional[int]:
+    def segment_bytes(self) -> Optional[str]:
         return pulumi.get(self, "segment_bytes")
 
 
@@ -13991,7 +14198,7 @@ class MdbMysqlClusterAccess(dict):
                  web_sql: Optional[bool] = None):
         """
         :param bool data_lens: Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
-        :param bool web_sql: Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        :param bool web_sql: Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         """
         if data_lens is not None:
             pulumi.set(__self__, "data_lens", data_lens)
@@ -14010,7 +14217,7 @@ class MdbMysqlClusterAccess(dict):
     @pulumi.getter(name="webSql")
     def web_sql(self) -> Optional[bool]:
         """
-        Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         """
         return pulumi.get(self, "web_sql")
 
@@ -15730,7 +15937,7 @@ class StorageBucketWebsite(dict):
         :param str error_document: An absolute path to the document to return in case of a 4XX error.
         :param str index_document: Storage returns this index document when requests are made to the root domain or any of the subfolders.
         :param str redirect_all_requests_to: A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
-        :param str routing_rules: A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+        :param str routing_rules: A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
         """
         if error_document is not None:
             pulumi.set(__self__, "error_document", error_document)
@@ -15769,7 +15976,7 @@ class StorageBucketWebsite(dict):
     @pulumi.getter(name="routingRules")
     def routing_rules(self) -> Optional[str]:
         """
-        A json array containing [routing rules](https://cloud.yandex.ru/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
+        A json array containing [routing rules](https://cloud.yandex.com/docs/storage/s3/api-ref/hosting/upload#request-scheme) describing redirect behavior and when redirects are applied.
         """
         return pulumi.get(self, "routing_rules")
 
@@ -19961,9 +20168,7 @@ class GetComputeInstanceGroupScalePolicyResult(dict):
         """
         :param Sequence['GetComputeInstanceGroupScalePolicyAutoScaleArgs'] auto_scales: The auto scaling policy of the instance group. The structure is documented below.
         :param Sequence['GetComputeInstanceGroupScalePolicyFixedScaleArgs'] fixed_scales: The fixed scaling policy of the instance group. The structure is documented below.
-        :param Sequence['GetComputeInstanceGroupScalePolicyTestAutoScaleArgs'] test_auto_scales: The test auto scaling policy of the instance group. Use it to test how the auto scale works. 
-               The structure is documented below.
-               ---
+        :param Sequence['GetComputeInstanceGroupScalePolicyTestAutoScaleArgs'] test_auto_scales: The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
         """
         pulumi.set(__self__, "auto_scales", auto_scales)
         pulumi.set(__self__, "fixed_scales", fixed_scales)
@@ -19989,9 +20194,7 @@ class GetComputeInstanceGroupScalePolicyResult(dict):
     @pulumi.getter(name="testAutoScales")
     def test_auto_scales(self) -> Sequence['outputs.GetComputeInstanceGroupScalePolicyTestAutoScaleResult']:
         """
-        The test auto scaling policy of the instance group. Use it to test how the auto scale works. 
-        The structure is documented below.
-        ---
+        The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
         """
         return pulumi.get(self, "test_auto_scales")
 
@@ -25179,6 +25382,113 @@ class GetMdbElasticSearchClusterHostResult(dict):
 
 
 @pulumi.output_type
+class GetMdbGreenplumClusterMasterHostResult(dict):
+    def __init__(__self__, *,
+                 assign_public_ip: bool,
+                 fqdn: str):
+        pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        pulumi.set(__self__, "fqdn", fqdn)
+
+    @property
+    @pulumi.getter(name="assignPublicIp")
+    def assign_public_ip(self) -> bool:
+        return pulumi.get(self, "assign_public_ip")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        return pulumi.get(self, "fqdn")
+
+
+@pulumi.output_type
+class GetMdbGreenplumClusterMasterSubclusterResult(dict):
+    def __init__(__self__, *,
+                 resources: 'outputs.GetMdbGreenplumClusterMasterSubclusterResourcesResult'):
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> 'outputs.GetMdbGreenplumClusterMasterSubclusterResourcesResult':
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetMdbGreenplumClusterMasterSubclusterResourcesResult(dict):
+    def __init__(__self__, *,
+                 disk_size: int,
+                 disk_type_id: str,
+                 resource_preset_id: str):
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> str:
+        return pulumi.get(self, "disk_type_id")
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> str:
+        return pulumi.get(self, "resource_preset_id")
+
+
+@pulumi.output_type
+class GetMdbGreenplumClusterSegmentHostResult(dict):
+    def __init__(__self__, *,
+                 fqdn: str):
+        pulumi.set(__self__, "fqdn", fqdn)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        return pulumi.get(self, "fqdn")
+
+
+@pulumi.output_type
+class GetMdbGreenplumClusterSegmentSubclusterResult(dict):
+    def __init__(__self__, *,
+                 resources: 'outputs.GetMdbGreenplumClusterSegmentSubclusterResourcesResult'):
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> 'outputs.GetMdbGreenplumClusterSegmentSubclusterResourcesResult':
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetMdbGreenplumClusterSegmentSubclusterResourcesResult(dict):
+    def __init__(__self__, *,
+                 disk_size: int,
+                 disk_type_id: str,
+                 resource_preset_id: str):
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type_id", disk_type_id)
+        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskTypeId")
+    def disk_type_id(self) -> str:
+        return pulumi.get(self, "disk_type_id")
+
+    @property
+    @pulumi.getter(name="resourcePresetId")
+    def resource_preset_id(self) -> str:
+        return pulumi.get(self, "resource_preset_id")
+
+
+@pulumi.output_type
 class GetMdbKafkaClusterConfigResult(dict):
     def __init__(__self__, *,
                  kafka: 'outputs.GetMdbKafkaClusterConfigKafkaResult',
@@ -25301,19 +25611,19 @@ class GetMdbKafkaClusterConfigKafkaKafkaConfigResult(dict):
     def __init__(__self__, *,
                  auto_create_topics_enable: Optional[bool] = None,
                  compression_type: Optional[str] = None,
-                 default_replication_factor: Optional[int] = None,
-                 log_flush_interval_messages: Optional[int] = None,
-                 log_flush_interval_ms: Optional[int] = None,
-                 log_flush_scheduler_interval_ms: Optional[int] = None,
+                 default_replication_factor: Optional[str] = None,
+                 log_flush_interval_messages: Optional[str] = None,
+                 log_flush_interval_ms: Optional[str] = None,
+                 log_flush_scheduler_interval_ms: Optional[str] = None,
                  log_preallocate: Optional[bool] = None,
-                 log_retention_bytes: Optional[int] = None,
-                 log_retention_hours: Optional[int] = None,
-                 log_retention_minutes: Optional[int] = None,
-                 log_retention_ms: Optional[int] = None,
-                 log_segment_bytes: Optional[int] = None,
-                 num_partitions: Optional[int] = None,
-                 socket_receive_buffer_bytes: Optional[int] = None,
-                 socket_send_buffer_bytes: Optional[int] = None):
+                 log_retention_bytes: Optional[str] = None,
+                 log_retention_hours: Optional[str] = None,
+                 log_retention_minutes: Optional[str] = None,
+                 log_retention_ms: Optional[str] = None,
+                 log_segment_bytes: Optional[str] = None,
+                 num_partitions: Optional[str] = None,
+                 socket_receive_buffer_bytes: Optional[str] = None,
+                 socket_send_buffer_bytes: Optional[str] = None):
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -25357,22 +25667,22 @@ class GetMdbKafkaClusterConfigKafkaKafkaConfigResult(dict):
 
     @property
     @pulumi.getter(name="defaultReplicationFactor")
-    def default_replication_factor(self) -> Optional[int]:
+    def default_replication_factor(self) -> Optional[str]:
         return pulumi.get(self, "default_replication_factor")
 
     @property
     @pulumi.getter(name="logFlushIntervalMessages")
-    def log_flush_interval_messages(self) -> Optional[int]:
+    def log_flush_interval_messages(self) -> Optional[str]:
         return pulumi.get(self, "log_flush_interval_messages")
 
     @property
     @pulumi.getter(name="logFlushIntervalMs")
-    def log_flush_interval_ms(self) -> Optional[int]:
+    def log_flush_interval_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_flush_interval_ms")
 
     @property
     @pulumi.getter(name="logFlushSchedulerIntervalMs")
-    def log_flush_scheduler_interval_ms(self) -> Optional[int]:
+    def log_flush_scheduler_interval_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_flush_scheduler_interval_ms")
 
     @property
@@ -25382,42 +25692,42 @@ class GetMdbKafkaClusterConfigKafkaKafkaConfigResult(dict):
 
     @property
     @pulumi.getter(name="logRetentionBytes")
-    def log_retention_bytes(self) -> Optional[int]:
+    def log_retention_bytes(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_bytes")
 
     @property
     @pulumi.getter(name="logRetentionHours")
-    def log_retention_hours(self) -> Optional[int]:
+    def log_retention_hours(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_hours")
 
     @property
     @pulumi.getter(name="logRetentionMinutes")
-    def log_retention_minutes(self) -> Optional[int]:
+    def log_retention_minutes(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_minutes")
 
     @property
     @pulumi.getter(name="logRetentionMs")
-    def log_retention_ms(self) -> Optional[int]:
+    def log_retention_ms(self) -> Optional[str]:
         return pulumi.get(self, "log_retention_ms")
 
     @property
     @pulumi.getter(name="logSegmentBytes")
-    def log_segment_bytes(self) -> Optional[int]:
+    def log_segment_bytes(self) -> Optional[str]:
         return pulumi.get(self, "log_segment_bytes")
 
     @property
     @pulumi.getter(name="numPartitions")
-    def num_partitions(self) -> Optional[int]:
+    def num_partitions(self) -> Optional[str]:
         return pulumi.get(self, "num_partitions")
 
     @property
     @pulumi.getter(name="socketReceiveBufferBytes")
-    def socket_receive_buffer_bytes(self) -> Optional[int]:
+    def socket_receive_buffer_bytes(self) -> Optional[str]:
         return pulumi.get(self, "socket_receive_buffer_bytes")
 
     @property
     @pulumi.getter(name="socketSendBufferBytes")
-    def socket_send_buffer_bytes(self) -> Optional[int]:
+    def socket_send_buffer_bytes(self) -> Optional[str]:
         return pulumi.get(self, "socket_send_buffer_bytes")
 
 
@@ -25645,17 +25955,17 @@ class GetMdbKafkaClusterTopicTopicConfigResult(dict):
     def __init__(__self__, *,
                  cleanup_policy: Optional[str] = None,
                  compression_type: Optional[str] = None,
-                 delete_retention_ms: Optional[int] = None,
-                 file_delete_delay_ms: Optional[int] = None,
-                 flush_messages: Optional[int] = None,
-                 flush_ms: Optional[int] = None,
-                 max_message_bytes: Optional[int] = None,
-                 min_compaction_lag_ms: Optional[int] = None,
-                 min_insync_replicas: Optional[int] = None,
+                 delete_retention_ms: Optional[str] = None,
+                 file_delete_delay_ms: Optional[str] = None,
+                 flush_messages: Optional[str] = None,
+                 flush_ms: Optional[str] = None,
+                 max_message_bytes: Optional[str] = None,
+                 min_compaction_lag_ms: Optional[str] = None,
+                 min_insync_replicas: Optional[str] = None,
                  preallocate: Optional[bool] = None,
-                 retention_bytes: Optional[int] = None,
-                 retention_ms: Optional[int] = None,
-                 segment_bytes: Optional[int] = None):
+                 retention_bytes: Optional[str] = None,
+                 retention_ms: Optional[str] = None,
+                 segment_bytes: Optional[str] = None):
         if cleanup_policy is not None:
             pulumi.set(__self__, "cleanup_policy", cleanup_policy)
         if compression_type is not None:
@@ -25695,37 +26005,37 @@ class GetMdbKafkaClusterTopicTopicConfigResult(dict):
 
     @property
     @pulumi.getter(name="deleteRetentionMs")
-    def delete_retention_ms(self) -> Optional[int]:
+    def delete_retention_ms(self) -> Optional[str]:
         return pulumi.get(self, "delete_retention_ms")
 
     @property
     @pulumi.getter(name="fileDeleteDelayMs")
-    def file_delete_delay_ms(self) -> Optional[int]:
+    def file_delete_delay_ms(self) -> Optional[str]:
         return pulumi.get(self, "file_delete_delay_ms")
 
     @property
     @pulumi.getter(name="flushMessages")
-    def flush_messages(self) -> Optional[int]:
+    def flush_messages(self) -> Optional[str]:
         return pulumi.get(self, "flush_messages")
 
     @property
     @pulumi.getter(name="flushMs")
-    def flush_ms(self) -> Optional[int]:
+    def flush_ms(self) -> Optional[str]:
         return pulumi.get(self, "flush_ms")
 
     @property
     @pulumi.getter(name="maxMessageBytes")
-    def max_message_bytes(self) -> Optional[int]:
+    def max_message_bytes(self) -> Optional[str]:
         return pulumi.get(self, "max_message_bytes")
 
     @property
     @pulumi.getter(name="minCompactionLagMs")
-    def min_compaction_lag_ms(self) -> Optional[int]:
+    def min_compaction_lag_ms(self) -> Optional[str]:
         return pulumi.get(self, "min_compaction_lag_ms")
 
     @property
     @pulumi.getter(name="minInsyncReplicas")
-    def min_insync_replicas(self) -> Optional[int]:
+    def min_insync_replicas(self) -> Optional[str]:
         return pulumi.get(self, "min_insync_replicas")
 
     @property
@@ -25735,17 +26045,17 @@ class GetMdbKafkaClusterTopicTopicConfigResult(dict):
 
     @property
     @pulumi.getter(name="retentionBytes")
-    def retention_bytes(self) -> Optional[int]:
+    def retention_bytes(self) -> Optional[str]:
         return pulumi.get(self, "retention_bytes")
 
     @property
     @pulumi.getter(name="retentionMs")
-    def retention_ms(self) -> Optional[int]:
+    def retention_ms(self) -> Optional[str]:
         return pulumi.get(self, "retention_ms")
 
     @property
     @pulumi.getter(name="segmentBytes")
-    def segment_bytes(self) -> Optional[int]:
+    def segment_bytes(self) -> Optional[str]:
         return pulumi.get(self, "segment_bytes")
 
 
@@ -26176,7 +26486,7 @@ class GetMdbMysqlClusterAccessResult(dict):
                  web_sql: bool):
         """
         :param bool data_lens: Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
-        :param bool web_sql: Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        :param bool web_sql: Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         """
         pulumi.set(__self__, "data_lens", data_lens)
         pulumi.set(__self__, "web_sql", web_sql)
@@ -26193,7 +26503,7 @@ class GetMdbMysqlClusterAccessResult(dict):
     @pulumi.getter(name="webSql")
     def web_sql(self) -> bool:
         """
-        Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         """
         return pulumi.get(self, "web_sql")
 

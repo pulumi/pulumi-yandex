@@ -15,17 +15,17 @@ namespace Pulumi.Yandex.Outputs
     {
         public readonly string? CleanupPolicy;
         public readonly string? CompressionType;
-        public readonly int? DeleteRetentionMs;
-        public readonly int? FileDeleteDelayMs;
-        public readonly int? FlushMessages;
-        public readonly int? FlushMs;
-        public readonly int? MaxMessageBytes;
-        public readonly int? MinCompactionLagMs;
-        public readonly int? MinInsyncReplicas;
+        public readonly string? DeleteRetentionMs;
+        public readonly string? FileDeleteDelayMs;
+        public readonly string? FlushMessages;
+        public readonly string? FlushMs;
+        public readonly string? MaxMessageBytes;
+        public readonly string? MinCompactionLagMs;
+        public readonly string? MinInsyncReplicas;
         public readonly bool? Preallocate;
-        public readonly int? RetentionBytes;
-        public readonly int? RetentionMs;
-        public readonly int? SegmentBytes;
+        public readonly string? RetentionBytes;
+        public readonly string? RetentionMs;
+        public readonly string? SegmentBytes;
 
         [OutputConstructor]
         private MdbKafkaClusterTopicTopicConfig(
@@ -33,27 +33,27 @@ namespace Pulumi.Yandex.Outputs
 
             string? compressionType,
 
-            int? deleteRetentionMs,
+            string? deleteRetentionMs,
 
-            int? fileDeleteDelayMs,
+            string? fileDeleteDelayMs,
 
-            int? flushMessages,
+            string? flushMessages,
 
-            int? flushMs,
+            string? flushMs,
 
-            int? maxMessageBytes,
+            string? maxMessageBytes,
 
-            int? minCompactionLagMs,
+            string? minCompactionLagMs,
 
-            int? minInsyncReplicas,
+            string? minInsyncReplicas,
 
             bool? preallocate,
 
-            int? retentionBytes,
+            string? retentionBytes,
 
-            int? retentionMs,
+            string? retentionMs,
 
-            int? segmentBytes)
+            string? segmentBytes)
         {
             CleanupPolicy = cleanupPolicy;
             CompressionType = compressionType;

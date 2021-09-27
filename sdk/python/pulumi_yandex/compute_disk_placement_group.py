@@ -227,7 +227,7 @@ class ComputeDiskPlacementGroup(pulumi.CustomResource):
                  __props__=None):
         """
         A Disk Placement Group resource. For more information, see
-        [the official documentation](https://cloud.yandex.ru/docs/compute/concepts/disk#nr-disks).
+        [the official documentation](https://cloud.yandex.com/docs/compute/concepts/disk#nr-disks).
 
         ## Example Usage
 
@@ -256,7 +256,7 @@ class ComputeDiskPlacementGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Disk Placement Group resource. For more information, see
-        [the official documentation](https://cloud.yandex.ru/docs/compute/concepts/disk#nr-disks).
+        [the official documentation](https://cloud.yandex.com/docs/compute/concepts/disk#nr-disks).
 
         ## Example Usage
 

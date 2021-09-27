@@ -62,6 +62,7 @@ export * from "./getLbNetworkLoadBalancer";
 export * from "./getLbTargetGroup";
 export * from "./getMdbClickhouseCluster";
 export * from "./getMdbElasticSearchCluster";
+export * from "./getMdbGreenplumCluster";
 export * from "./getMdbKafkaCluster";
 export * from "./getMdbMongodbCluster";
 export * from "./getMdbMysqlCluster";
@@ -96,6 +97,7 @@ export * from "./lbNetworkLoadBalancer";
 export * from "./lbTargetGroup";
 export * from "./mdbClickhouseCluster";
 export * from "./mdbElasticSearchCluster";
+export * from "./mdbGreenplumCluster";
 export * from "./mdbKafkaCluster";
 export * from "./mdbMongodbCluster";
 export * from "./mdbMysqlCluster";
@@ -174,6 +176,7 @@ import { LbNetworkLoadBalancer } from "./lbNetworkLoadBalancer";
 import { LbTargetGroup } from "./lbTargetGroup";
 import { MdbClickhouseCluster } from "./mdbClickhouseCluster";
 import { MdbElasticSearchCluster } from "./mdbElasticSearchCluster";
+import { MdbGreenplumCluster } from "./mdbGreenplumCluster";
 import { MdbKafkaCluster } from "./mdbKafkaCluster";
 import { MdbMongodbCluster } from "./mdbMongodbCluster";
 import { MdbMysqlCluster } from "./mdbMysqlCluster";
@@ -286,6 +289,8 @@ const _module = {
                 return new MdbClickhouseCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
                 return new MdbElasticSearchCluster(name, <any>undefined, { urn })
+            case "yandex:index/mdbGreenplumCluster:MdbGreenplumCluster":
+                return new MdbGreenplumCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbKafkaCluster:MdbKafkaCluster":
                 return new MdbKafkaCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbMongodbCluster:MdbMongodbCluster":
@@ -382,6 +387,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/lbNetworkLoadBalancer", _
 pulumi.runtime.registerResourceModule("yandex", "index/lbTargetGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbClickhouseCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbElasticSearchCluster", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/mdbGreenplumCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbKafkaCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMongodbCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMysqlCluster", _module)

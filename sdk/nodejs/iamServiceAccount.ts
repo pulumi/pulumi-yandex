@@ -72,7 +72,6 @@ export class IamServiceAccount extends pulumi.CustomResource {
     /**
      * Name of the service account.
      * Can be updated without creating a new resource.
-     * Name should comply to this pattern: /a-z?/
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -124,7 +123,6 @@ export interface IamServiceAccountState {
     /**
      * Name of the service account.
      * Can be updated without creating a new resource.
-     * Name should comply to this pattern: /a-z?/
      */
     readonly name?: pulumi.Input<string>;
 }
@@ -145,7 +143,6 @@ export interface IamServiceAccountArgs {
     /**
      * Name of the service account.
      * Can be updated without creating a new resource.
-     * Name should comply to this pattern: /a-z?/
      */
     readonly name?: pulumi.Input<string>;
 }

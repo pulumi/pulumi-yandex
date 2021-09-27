@@ -33,7 +33,7 @@ class VpcSecurityGroupRuleArgs:
         :param pulumi.Input[int] from_port: Minimum port number.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this rule.
         :param pulumi.Input[int] port: Port number (if applied to a single port).
-        :param pulumi.Input[str] predefined_target: Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        :param pulumi.Input[str] predefined_target: Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         :param pulumi.Input[str] protocol: One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
         :param pulumi.Input[str] security_group_id: Target security group ID for this rule.
         :param pulumi.Input[int] to_port: Maximum port number.
@@ -139,7 +139,7 @@ class VpcSecurityGroupRuleArgs:
     @pulumi.getter(name="predefinedTarget")
     def predefined_target(self) -> Optional[pulumi.Input[str]]:
         """
-        Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         """
         return pulumi.get(self, "predefined_target")
 
@@ -230,7 +230,7 @@ class _VpcSecurityGroupRuleState:
         :param pulumi.Input[int] from_port: Minimum port number.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this rule.
         :param pulumi.Input[int] port: Port number (if applied to a single port).
-        :param pulumi.Input[str] predefined_target: Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        :param pulumi.Input[str] predefined_target: Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         :param pulumi.Input[str] protocol: One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
         :param pulumi.Input[str] security_group_binding: ID of the security group this rule belongs to.
         :param pulumi.Input[str] security_group_id: Target security group ID for this rule.
@@ -327,7 +327,7 @@ class _VpcSecurityGroupRuleState:
     @pulumi.getter(name="predefinedTarget")
     def predefined_target(self) -> Optional[pulumi.Input[str]]:
         """
-        Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         """
         return pulumi.get(self, "predefined_target")
 
@@ -428,8 +428,8 @@ class VpcSecurityGroupRule(pulumi.CustomResource):
                  __props__=None):
         """
         Manages a single Secuirity Group Rule within the Yandex.Cloud. For more information, see the official documentation
-        of [security groups](https://cloud.yandex.ru/docs/vpc/concepts/security-groups)
-        and [security group rules](https://cloud.yandex.ru/docs/vpc/concepts/security-groups#rules).
+        of [security groups](https://cloud.yandex.com/docs/vpc/concepts/security-groups)
+        and [security group rules](https://cloud.yandex.com/docs/vpc/concepts/security-groups#rules).
 
         > **NOTE:** There is another way to manage security group rules by `ingress` and `egress` arguments in yandex_vpc_security_group. Both ways are equivalent but not compatible now. Using in-line rules of VpcSecurityGroup with Security Group Rule resource at the same time will cause a conflict of rules configuration.
 
@@ -440,7 +440,7 @@ class VpcSecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[int] from_port: Minimum port number.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this rule.
         :param pulumi.Input[int] port: Port number (if applied to a single port).
-        :param pulumi.Input[str] predefined_target: Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        :param pulumi.Input[str] predefined_target: Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         :param pulumi.Input[str] protocol: One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
         :param pulumi.Input[str] security_group_binding: ID of the security group this rule belongs to.
         :param pulumi.Input[str] security_group_id: Target security group ID for this rule.
@@ -456,8 +456,8 @@ class VpcSecurityGroupRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a single Secuirity Group Rule within the Yandex.Cloud. For more information, see the official documentation
-        of [security groups](https://cloud.yandex.ru/docs/vpc/concepts/security-groups)
-        and [security group rules](https://cloud.yandex.ru/docs/vpc/concepts/security-groups#rules).
+        of [security groups](https://cloud.yandex.com/docs/vpc/concepts/security-groups)
+        and [security group rules](https://cloud.yandex.com/docs/vpc/concepts/security-groups#rules).
 
         > **NOTE:** There is another way to manage security group rules by `ingress` and `egress` arguments in yandex_vpc_security_group. Both ways are equivalent but not compatible now. Using in-line rules of VpcSecurityGroup with Security Group Rule resource at the same time will cause a conflict of rules configuration.
 
@@ -550,7 +550,7 @@ class VpcSecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[int] from_port: Minimum port number.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this rule.
         :param pulumi.Input[int] port: Port number (if applied to a single port).
-        :param pulumi.Input[str] predefined_target: Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        :param pulumi.Input[str] predefined_target: Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         :param pulumi.Input[str] protocol: One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
         :param pulumi.Input[str] security_group_binding: ID of the security group this rule belongs to.
         :param pulumi.Input[str] security_group_id: Target security group ID for this rule.
@@ -620,7 +620,7 @@ class VpcSecurityGroupRule(pulumi.CustomResource):
     @pulumi.getter(name="predefinedTarget")
     def predefined_target(self) -> pulumi.Output[Optional[str]]:
         """
-        Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
         """
         return pulumi.get(self, "predefined_target")
 

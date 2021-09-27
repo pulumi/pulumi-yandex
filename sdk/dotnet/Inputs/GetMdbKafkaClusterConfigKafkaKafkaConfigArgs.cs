@@ -19,43 +19,43 @@ namespace Pulumi.Yandex.Inputs
         public string? CompressionType { get; set; }
 
         [Input("defaultReplicationFactor")]
-        public int? DefaultReplicationFactor { get; set; }
+        public string? DefaultReplicationFactor { get; set; }
 
         [Input("logFlushIntervalMessages")]
-        public int? LogFlushIntervalMessages { get; set; }
+        public string? LogFlushIntervalMessages { get; set; }
 
         [Input("logFlushIntervalMs")]
-        public int? LogFlushIntervalMs { get; set; }
+        public string? LogFlushIntervalMs { get; set; }
 
         [Input("logFlushSchedulerIntervalMs")]
-        public int? LogFlushSchedulerIntervalMs { get; set; }
+        public string? LogFlushSchedulerIntervalMs { get; set; }
 
         [Input("logPreallocate")]
         public bool? LogPreallocate { get; set; }
 
         [Input("logRetentionBytes")]
-        public int? LogRetentionBytes { get; set; }
+        public string? LogRetentionBytes { get; set; }
 
         [Input("logRetentionHours")]
-        public int? LogRetentionHours { get; set; }
+        public string? LogRetentionHours { get; set; }
 
         [Input("logRetentionMinutes")]
-        public int? LogRetentionMinutes { get; set; }
+        public string? LogRetentionMinutes { get; set; }
 
         [Input("logRetentionMs")]
-        public int? LogRetentionMs { get; set; }
+        public string? LogRetentionMs { get; set; }
 
         [Input("logSegmentBytes")]
-        public int? LogSegmentBytes { get; set; }
+        public string? LogSegmentBytes { get; set; }
 
         [Input("numPartitions")]
-        public int? NumPartitions { get; set; }
+        public string? NumPartitions { get; set; }
 
         [Input("socketReceiveBufferBytes")]
-        public int? SocketReceiveBufferBytes { get; set; }
+        public string? SocketReceiveBufferBytes { get; set; }
 
         [Input("socketSendBufferBytes")]
-        public int? SocketSendBufferBytes { get; set; }
+        public string? SocketSendBufferBytes { get; set; }
 
         public GetMdbKafkaClusterConfigKafkaKafkaConfigArgs()
         {

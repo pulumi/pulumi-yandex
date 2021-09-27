@@ -79,7 +79,6 @@ namespace Pulumi.Yandex
         public readonly string Description;
         /// <summary>
         /// spec of IP v4 address.
-        /// ---
         /// </summary>
         public readonly Outputs.GetVpcAddressExternalIpv4AddressResult ExternalIpv4Address;
         public readonly string FolderId;

@@ -231,7 +231,6 @@ namespace Pulumi.Yandex
 
         /// <summary>
         /// (Optional) Network Implementation options. The structure is documented below.
-        /// ---
         /// </summary>
         [Output("networkImplementation")]
         public Output<Outputs.KubernetesClusterNetworkImplementation?> NetworkImplementation { get; private set; } = null!;
@@ -400,7 +399,6 @@ namespace Pulumi.Yandex
 
         /// <summary>
         /// (Optional) Network Implementation options. The structure is documented below.
-        /// ---
         /// </summary>
         [Input("networkImplementation")]
         public Input<Inputs.KubernetesClusterNetworkImplementationArgs>? NetworkImplementation { get; set; }
@@ -542,7 +540,6 @@ namespace Pulumi.Yandex
 
         /// <summary>
         /// (Optional) Network Implementation options. The structure is documented below.
-        /// ---
         /// </summary>
         [Input("networkImplementation")]
         public Input<Inputs.KubernetesClusterNetworkImplementationGetArgs>? NetworkImplementation { get; set; }

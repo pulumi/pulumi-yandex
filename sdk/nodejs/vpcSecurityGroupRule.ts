@@ -6,8 +6,8 @@ import * as utilities from "./utilities";
 
 /**
  * Manages a single Secuirity Group Rule within the Yandex.Cloud. For more information, see the official documentation
- * of [security groups](https://cloud.yandex.ru/docs/vpc/concepts/security-groups)
- * and [security group rules](https://cloud.yandex.ru/docs/vpc/concepts/security-groups#rules).
+ * of [security groups](https://cloud.yandex.com/docs/vpc/concepts/security-groups)
+ * and [security group rules](https://cloud.yandex.com/docs/vpc/concepts/security-groups#rules).
  *
  * > **NOTE:** There is another way to manage security group rules by `ingress` and `egress` arguments in yandex_vpc_security_group. Both ways are equivalent but not compatible now. Using in-line rules of yandex.VpcSecurityGroup with Security Group Rule resource at the same time will cause a conflict of rules configuration.
  *
@@ -96,7 +96,7 @@ export class VpcSecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+     * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
      */
     public readonly predefinedTarget!: pulumi.Output<string | undefined>;
     /**
@@ -202,7 +202,7 @@ export interface VpcSecurityGroupRuleState {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+     * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
      */
     readonly predefinedTarget?: pulumi.Input<string>;
     /**
@@ -256,7 +256,7 @@ export interface VpcSecurityGroupRuleArgs {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+     * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
      */
     readonly predefinedTarget?: pulumi.Input<string>;
     /**

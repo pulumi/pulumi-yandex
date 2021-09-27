@@ -102,6 +102,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MdbClickhouseCluster{}
 	case "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
 		r = &MdbElasticSearchCluster{}
+	case "yandex:index/mdbGreenplumCluster:MdbGreenplumCluster":
+		r = &MdbGreenplumCluster{}
 	case "yandex:index/mdbKafkaCluster:MdbKafkaCluster":
 		r = &MdbKafkaCluster{}
 	case "yandex:index/mdbMongodbCluster:MdbMongodbCluster":
@@ -386,6 +388,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/mdbElasticSearchCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/mdbGreenplumCluster",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

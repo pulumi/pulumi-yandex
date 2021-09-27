@@ -6,7 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * A Disk Placement Group resource. For more information, see
- * [the official documentation](https://cloud.yandex.ru/docs/compute/concepts/disk#nr-disks).
+ * [the official documentation](https://cloud.yandex.com/docs/compute/concepts/disk#nr-disks).
  *
  * ## Example Usage
  *

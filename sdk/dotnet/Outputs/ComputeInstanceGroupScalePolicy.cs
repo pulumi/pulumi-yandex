@@ -22,8 +22,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly Outputs.ComputeInstanceGroupScalePolicyFixedScale? FixedScale;
         /// <summary>
-        /// The test auto scaling policy of the instance group. Use it to test how the auto scale works. 
-        /// The structure is documented below.
+        /// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
         /// </summary>
         public readonly Outputs.ComputeInstanceGroupScalePolicyTestAutoScale? TestAutoScale;
 

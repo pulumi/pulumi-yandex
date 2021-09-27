@@ -8,7 +8,7 @@ import (
 )
 
 // Get information about a Yandex VPC Security Group. For more information, see
-// [Yandex.Cloud VPC](https://cloud.yandex.ru/docs/vpc/concepts/security-groups).
+// [Yandex.Cloud VPC](https://cloud.yandex.com/docs/vpc/concepts/security-groups).
 //
 // ```go
 // package main

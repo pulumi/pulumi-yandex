@@ -113,7 +113,7 @@ def get_compute_placement_group(description: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputePlacementGroupResult:
     """
     Get information about a Yandex Compute Placement group. For more information, see
-    [the official documentation](https://cloud.yandex.ru/docs/compute/concepts/placement-groups).
+    [the official documentation](https://cloud.yandex.com/docs/compute/concepts/placement-groups).
 
     ## Example Usage
 

@@ -130,6 +130,7 @@ func Provider() tfbridge.ProviderInfo {
 			//},
 			"yandex_mdb_redis_cluster":     {Tok: makeResource(mainMod, "MdbRedisCluster")},
 			"yandex_mdb_sqlserver_cluster": {Tok: makeResource(mainMod, "MdbSqlServerCluster")},
+			"yandex_mdb_greenplum_cluster": {Tok: makeResource(mainMod, "MdbGreenplumCluster")},
 			"yandex_message_queue":         {Tok: makeResource(mainMod, "MessageQueue")},
 			"yandex_organizationmanager_organization_iam_binding": {
 				Tok: makeResource(mainMod, "OrganizationManagerOrganizationIamBinding"),
@@ -333,6 +334,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_mdb_clickhouse_cluster.html.markdown",
 				},
 			},
+			"yandex_mdb_greenplum_cluster": {Tok: makeDataSource(mainMod, "getMdbGreenplumCluster")},
 			"yandex_mdb_kafka_cluster": {
 				Tok: makeDataSource(mainMod, "getMdbKafkaCluster"),
 				Docs: &tfbridge.DocInfo{

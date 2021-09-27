@@ -18,7 +18,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly bool DataLens;
         /// <summary>
-        /// Allows access for [SQL queries in the management console](https://cloud.yandex.ru/docs/managed-mysql/operations/web-sql-query).
+        /// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         /// </summary>
         public readonly bool WebSql;
 
