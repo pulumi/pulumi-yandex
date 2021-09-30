@@ -24,12 +24,16 @@ namespace Pulumi.Yandex.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("serviceNames", required: true)]
-        private InputList<string>? _serviceNames;
-        public InputList<string> ServiceNames
+        [Input("serverNames", required: true)]
+        private InputList<string>? _serverNames;
+
+        /// <summary>
+        /// A set of server names.
+        /// </summary>
+        public InputList<string> ServerNames
         {
-            get => _serviceNames ?? (_serviceNames = new InputList<string>());
-            set => _serviceNames = value;
+            get => _serverNames ?? (_serverNames = new InputList<string>());
+            set => _serverNames = value;
         }
 
         public AlbLoadBalancerListenerTlsSniHandlerArgs()

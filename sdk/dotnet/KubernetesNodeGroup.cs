@@ -48,10 +48,6 @@ namespace Pulumi.Yandex
     ///                     new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs
     ///                     {
     ///                         Nat = true,
-    ///                         SecurityGroupIds = 
-    ///                         {
-    ///                             yandex_vpc_security_group.My_sg.Id,
-    ///                         },
     ///                         SubnetIds = 
     ///                         {
     ///                             yandex_vpc_subnet.My_subnet.Id,

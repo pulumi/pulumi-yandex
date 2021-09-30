@@ -117,6 +117,7 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_kubernetes_node_group":                 {Tok: makeResource(mainMod, "KubernetesNodeGroup")},
 			"yandex_lb_network_load_balancer":              {Tok: makeResource(mainMod, "LbNetworkLoadBalancer")},
 			"yandex_lb_target_group":                       {Tok: makeResource(mainMod, "LbTargetGroup")},
+			"yandex_logging_group":                         {Tok: makeResource(mainMod, "LoggingGroup")},
 			"yandex_mdb_clickhouse_cluster":                {Tok: makeResource(mainMod, "MdbClickhouseCluster")},
 			"yandex_mdb_kafka_cluster":                     {Tok: makeResource(mainMod, "MdbKafkaCluster")},
 			"yandex_mdb_mongodb_cluster":                   {Tok: makeResource(mainMod, "MdbMongodbCluster")},
@@ -328,6 +329,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_lb_target_group.html.markdown",
 				},
 			},
+			"yandex_logging_group": {Tok: makeDataSource(mainMod, "getLoggingGroup")},
 			"yandex_mdb_clickhouse_cluster": {
 				Tok: makeDataSource(mainMod, "getMdbClickhouseCluster"),
 				Docs: &tfbridge.DocInfo{

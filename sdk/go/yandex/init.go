@@ -98,6 +98,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LbNetworkLoadBalancer{}
 	case "yandex:index/lbTargetGroup:LbTargetGroup":
 		r = &LbTargetGroup{}
+	case "yandex:index/loggingGroup:LoggingGroup":
+		r = &LoggingGroup{}
 	case "yandex:index/mdbClickhouseCluster:MdbClickhouseCluster":
 		r = &MdbClickhouseCluster{}
 	case "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
@@ -378,6 +380,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/lbTargetGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/loggingGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

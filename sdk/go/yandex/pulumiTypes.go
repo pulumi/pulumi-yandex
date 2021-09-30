@@ -4968,8 +4968,9 @@ type AlbLoadBalancerListenerTlsSniHandler struct {
 	// HTTP handler that sets plaintext HTTP router. The structure is documented below.
 	Handler AlbLoadBalancerListenerTlsSniHandlerHandler `pulumi:"handler"`
 	// name of SNI match.
-	Name         string   `pulumi:"name"`
-	ServiceNames []string `pulumi:"serviceNames"`
+	Name string `pulumi:"name"`
+	// A set of server names.
+	ServerNames []string `pulumi:"serverNames"`
 }
 
 // AlbLoadBalancerListenerTlsSniHandlerInput is an input type that accepts AlbLoadBalancerListenerTlsSniHandlerArgs and AlbLoadBalancerListenerTlsSniHandlerOutput values.
@@ -4987,8 +4988,9 @@ type AlbLoadBalancerListenerTlsSniHandlerArgs struct {
 	// HTTP handler that sets plaintext HTTP router. The structure is documented below.
 	Handler AlbLoadBalancerListenerTlsSniHandlerHandlerInput `pulumi:"handler"`
 	// name of SNI match.
-	Name         pulumi.StringInput      `pulumi:"name"`
-	ServiceNames pulumi.StringArrayInput `pulumi:"serviceNames"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// A set of server names.
+	ServerNames pulumi.StringArrayInput `pulumi:"serverNames"`
 }
 
 func (AlbLoadBalancerListenerTlsSniHandlerArgs) ElementType() reflect.Type {
@@ -5054,8 +5056,9 @@ func (o AlbLoadBalancerListenerTlsSniHandlerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AlbLoadBalancerListenerTlsSniHandler) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o AlbLoadBalancerListenerTlsSniHandlerOutput) ServiceNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerTlsSniHandler) []string { return v.ServiceNames }).(pulumi.StringArrayOutput)
+// A set of server names.
+func (o AlbLoadBalancerListenerTlsSniHandlerOutput) ServerNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlbLoadBalancerListenerTlsSniHandler) []string { return v.ServerNames }).(pulumi.StringArrayOutput)
 }
 
 type AlbLoadBalancerListenerTlsSniHandlerArrayOutput struct{ *pulumi.OutputState }
@@ -42861,9 +42864,9 @@ func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOut
 }
 
 type GetAlbLoadBalancerListenerTlsSniHandler struct {
-	Handler      GetAlbLoadBalancerListenerTlsSniHandlerHandler `pulumi:"handler"`
-	Name         string                                         `pulumi:"name"`
-	ServiceNames []string                                       `pulumi:"serviceNames"`
+	Handler     GetAlbLoadBalancerListenerTlsSniHandlerHandler `pulumi:"handler"`
+	Name        string                                         `pulumi:"name"`
+	ServerNames []string                                       `pulumi:"serverNames"`
 }
 
 // GetAlbLoadBalancerListenerTlsSniHandlerInput is an input type that accepts GetAlbLoadBalancerListenerTlsSniHandlerArgs and GetAlbLoadBalancerListenerTlsSniHandlerOutput values.
@@ -42878,9 +42881,9 @@ type GetAlbLoadBalancerListenerTlsSniHandlerInput interface {
 }
 
 type GetAlbLoadBalancerListenerTlsSniHandlerArgs struct {
-	Handler      GetAlbLoadBalancerListenerTlsSniHandlerHandlerInput `pulumi:"handler"`
-	Name         pulumi.StringInput                                  `pulumi:"name"`
-	ServiceNames pulumi.StringArrayInput                             `pulumi:"serviceNames"`
+	Handler     GetAlbLoadBalancerListenerTlsSniHandlerHandlerInput `pulumi:"handler"`
+	Name        pulumi.StringInput                                  `pulumi:"name"`
+	ServerNames pulumi.StringArrayInput                             `pulumi:"serverNames"`
 }
 
 func (GetAlbLoadBalancerListenerTlsSniHandlerArgs) ElementType() reflect.Type {
@@ -42944,8 +42947,8 @@ func (o GetAlbLoadBalancerListenerTlsSniHandlerOutput) Name() pulumi.StringOutpu
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsSniHandler) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetAlbLoadBalancerListenerTlsSniHandlerOutput) ServiceNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsSniHandler) []string { return v.ServiceNames }).(pulumi.StringArrayOutput)
+func (o GetAlbLoadBalancerListenerTlsSniHandlerOutput) ServerNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsSniHandler) []string { return v.ServerNames }).(pulumi.StringArrayOutput)
 }
 
 type GetAlbLoadBalancerListenerTlsSniHandlerArrayOutput struct{ *pulumi.OutputState }

@@ -560,7 +560,6 @@ class KubernetesNodeGroup(pulumi.CustomResource):
                 },
                 network_interfaces=[{
                     "nat": True,
-                    "security_group_ids": [yandex_vpc_security_group["my_sg"]["id"]],
                     "subnet_ids": [yandex_vpc_subnet["my_subnet"]["id"]],
                 }],
                 platform_id="standard-v2",
@@ -656,7 +655,6 @@ class KubernetesNodeGroup(pulumi.CustomResource):
                 },
                 network_interfaces=[{
                     "nat": True,
-                    "security_group_ids": [yandex_vpc_security_group["my_sg"]["id"]],
                     "subnet_ids": [yandex_vpc_subnet["my_subnet"]["id"]],
                 }],
                 platform_id="standard-v2",

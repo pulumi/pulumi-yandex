@@ -457,7 +457,10 @@ export interface AlbLoadBalancerListenerTlsSniHandler {
      * name of SNI match.
      */
     name: pulumi.Input<string>;
-    serviceNames: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A set of server names.
+     */
+    serverNames: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AlbLoadBalancerListenerTlsSniHandlerHandler {

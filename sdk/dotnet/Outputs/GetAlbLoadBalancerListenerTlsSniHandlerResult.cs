@@ -15,7 +15,7 @@ namespace Pulumi.Yandex.Outputs
     {
         public readonly Outputs.GetAlbLoadBalancerListenerTlsSniHandlerHandlerResult Handler;
         public readonly string Name;
-        public readonly ImmutableArray<string> ServiceNames;
+        public readonly ImmutableArray<string> ServerNames;
 
         [OutputConstructor]
         private GetAlbLoadBalancerListenerTlsSniHandlerResult(
@@ -23,11 +23,11 @@ namespace Pulumi.Yandex.Outputs
 
             string name,
 
-            ImmutableArray<string> serviceNames)
+            ImmutableArray<string> serverNames)
         {
             Handler = handler;
             Name = name;
-            ServiceNames = serviceNames;
+            ServerNames = serverNames;
         }
     }
 }

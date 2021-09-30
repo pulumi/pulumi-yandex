@@ -60,6 +60,7 @@ export * from "./getKubernetesCluster";
 export * from "./getKubernetesNodeGroup";
 export * from "./getLbNetworkLoadBalancer";
 export * from "./getLbTargetGroup";
+export * from "./getLoggingGroup";
 export * from "./getMdbClickhouseCluster";
 export * from "./getMdbElasticSearchCluster";
 export * from "./getMdbGreenplumCluster";
@@ -95,6 +96,7 @@ export * from "./kubernetesCluster";
 export * from "./kubernetesNodeGroup";
 export * from "./lbNetworkLoadBalancer";
 export * from "./lbTargetGroup";
+export * from "./loggingGroup";
 export * from "./mdbClickhouseCluster";
 export * from "./mdbElasticSearchCluster";
 export * from "./mdbGreenplumCluster";
@@ -174,6 +176,7 @@ import { KubernetesCluster } from "./kubernetesCluster";
 import { KubernetesNodeGroup } from "./kubernetesNodeGroup";
 import { LbNetworkLoadBalancer } from "./lbNetworkLoadBalancer";
 import { LbTargetGroup } from "./lbTargetGroup";
+import { LoggingGroup } from "./loggingGroup";
 import { MdbClickhouseCluster } from "./mdbClickhouseCluster";
 import { MdbElasticSearchCluster } from "./mdbElasticSearchCluster";
 import { MdbGreenplumCluster } from "./mdbGreenplumCluster";
@@ -285,6 +288,8 @@ const _module = {
                 return new LbNetworkLoadBalancer(name, <any>undefined, { urn })
             case "yandex:index/lbTargetGroup:LbTargetGroup":
                 return new LbTargetGroup(name, <any>undefined, { urn })
+            case "yandex:index/loggingGroup:LoggingGroup":
+                return new LoggingGroup(name, <any>undefined, { urn })
             case "yandex:index/mdbClickhouseCluster:MdbClickhouseCluster":
                 return new MdbClickhouseCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
@@ -385,6 +390,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/kubernetesCluster", _modu
 pulumi.runtime.registerResourceModule("yandex", "index/kubernetesNodeGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/lbNetworkLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/lbTargetGroup", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/loggingGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbClickhouseCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbElasticSearchCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbGreenplumCluster", _module)

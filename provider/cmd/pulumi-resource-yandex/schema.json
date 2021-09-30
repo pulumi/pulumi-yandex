@@ -1157,11 +1157,12 @@
                         }
                     }
                 },
-                "serviceNames": {
+                "serverNames": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
+                    "description": "A set of server names.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1173,7 +1174,7 @@
             "required": [
                 "handler",
                 "name",
-                "serviceNames"
+                "serverNames"
             ]
         },
         "yandex:index/AlbLoadBalancerListenerTlsSniHandlerHandler:AlbLoadBalancerListenerTlsSniHandlerHandler": {
@@ -12760,7 +12761,7 @@
                         }
                     }
                 },
-                "serviceNames": {
+                "serverNames": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -12776,7 +12777,7 @@
             "required": [
                 "handler",
                 "name",
-                "serviceNames"
+                "serverNames"
             ],
             "language": {
                 "nodejs": {
@@ -28327,7 +28328,7 @@
             }
         },
         "yandex:index/kubernetesNodeGroup:KubernetesNodeGroup": {
-            "description": "Creates a Yandex Kubernetes Node Group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myNodeGroup = new yandex.KubernetesNodeGroup(\"my_node_group\", {\n    allocationPolicy: {\n        locations: [{\n            zone: \"ru-central1-a\",\n        }],\n    },\n    clusterId: yandex_kubernetes_cluster_my_cluster.id,\n    description: \"description\",\n    instanceTemplate: {\n        bootDisk: {\n            size: 64,\n            type: \"network-hdd\",\n        },\n        networkInterfaces: [{\n            nat: true,\n            securityGroupIds: [yandex_vpc_security_group_my_sg.id],\n            subnetIds: [yandex_vpc_subnet_my_subnet.id],\n        }],\n        platformId: \"standard-v2\",\n        resources: {\n            cores: 2,\n            memory: 2,\n        },\n        schedulingPolicy: {\n            preemptible: false,\n        },\n    },\n    labels: {\n        key: \"value\",\n    },\n    maintenancePolicy: {\n        autoRepair: true,\n        autoUpgrade: true,\n        maintenanceWindows: [\n            {\n                day: \"monday\",\n                duration: \"3h\",\n                startTime: \"15:00\",\n            },\n            {\n                day: \"friday\",\n                duration: \"4h30m\",\n                startTime: \"10:00\",\n            },\n        ],\n    },\n    scalePolicy: {\n        fixedScale: {\n            size: 1,\n        },\n    },\n    version: \"1.17\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_node_group = yandex.KubernetesNodeGroup(\"myNodeGroup\",\n    allocation_policy=yandex.KubernetesNodeGroupAllocationPolicyArgs(\n        locations=[yandex.KubernetesNodeGroupAllocationPolicyLocationArgs(\n            zone=\"ru-central1-a\",\n        )],\n    ),\n    cluster_id=yandex_kubernetes_cluster[\"my_cluster\"][\"id\"],\n    description=\"description\",\n    instance_template=yandex.KubernetesNodeGroupInstanceTemplateArgs(\n        boot_disk={\n            \"size\": 64,\n            \"type\": \"network-hdd\",\n        },\n        network_interfaces=[{\n            \"nat\": True,\n            \"security_group_ids\": [yandex_vpc_security_group[\"my_sg\"][\"id\"]],\n            \"subnet_ids\": [yandex_vpc_subnet[\"my_subnet\"][\"id\"]],\n        }],\n        platform_id=\"standard-v2\",\n        resources=yandex.KubernetesNodeGroupInstanceTemplateResourcesArgs(\n            cores=2,\n            memory=2,\n        ),\n        scheduling_policy={\n            \"preemptible\": False,\n        },\n    ),\n    labels={\n        \"key\": \"value\",\n    },\n    maintenance_policy=yandex.KubernetesNodeGroupMaintenancePolicyArgs(\n        auto_repair=True,\n        auto_upgrade=True,\n        maintenance_windows=[\n            yandex.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs(\n                day=\"monday\",\n                duration=\"3h\",\n                start_time=\"15:00\",\n            ),\n            yandex.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs(\n                day=\"friday\",\n                duration=\"4h30m\",\n                start_time=\"10:00\",\n            ),\n        ],\n    ),\n    scale_policy=yandex.KubernetesNodeGroupScalePolicyArgs(\n        fixed_scale=yandex.KubernetesNodeGroupScalePolicyFixedScaleArgs(\n            size=1,\n        ),\n    ),\n    version=\"1.17\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myNodeGroup = new Yandex.KubernetesNodeGroup(\"myNodeGroup\", new Yandex.KubernetesNodeGroupArgs\n        {\n            AllocationPolicy = new Yandex.Inputs.KubernetesNodeGroupAllocationPolicyArgs\n            {\n                Locations = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupAllocationPolicyLocationArgs\n                    {\n                        Zone = \"ru-central1-a\",\n                    },\n                },\n            },\n            ClusterId = yandex_kubernetes_cluster.My_cluster.Id,\n            Description = \"description\",\n            InstanceTemplate = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateArgs\n            {\n                BootDisk = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateBootDiskArgs\n                {\n                    Size = 64,\n                    Type = \"network-hdd\",\n                },\n                NetworkInterfaces = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs\n                    {\n                        Nat = true,\n                        SecurityGroupIds = \n                        {\n                            yandex_vpc_security_group.My_sg.Id,\n                        },\n                        SubnetIds = \n                        {\n                            yandex_vpc_subnet.My_subnet.Id,\n                        },\n                    },\n                },\n                PlatformId = \"standard-v2\",\n                Resources = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateResourcesArgs\n                {\n                    Cores = 2,\n                    Memory = 2,\n                },\n                SchedulingPolicy = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs\n                {\n                    Preemptible = false,\n                },\n            },\n            Labels = \n            {\n                { \"key\", \"value\" },\n            },\n            MaintenancePolicy = new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyArgs\n            {\n                AutoRepair = true,\n                AutoUpgrade = true,\n                MaintenanceWindows = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs\n                    {\n                        Day = \"monday\",\n                        Duration = \"3h\",\n                        StartTime = \"15:00\",\n                    },\n                    new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs\n                    {\n                        Day = \"friday\",\n                        Duration = \"4h30m\",\n                        StartTime = \"10:00\",\n                    },\n                },\n            },\n            ScalePolicy = new Yandex.Inputs.KubernetesNodeGroupScalePolicyArgs\n            {\n                FixedScale = new Yandex.Inputs.KubernetesNodeGroupScalePolicyFixedScaleArgs\n                {\n                    Size = 1,\n                },\n            },\n            Version = \"1.17\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA Yandex Kubernetes Node Group can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/kubernetesNodeGroup:KubernetesNodeGroup default node_group_id\n```\n\n ",
+            "description": "Creates a Yandex Kubernetes Node Group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myNodeGroup = new yandex.KubernetesNodeGroup(\"my_node_group\", {\n    allocationPolicy: {\n        locations: [{\n            zone: \"ru-central1-a\",\n        }],\n    },\n    clusterId: yandex_kubernetes_cluster_my_cluster.id,\n    description: \"description\",\n    instanceTemplate: {\n        bootDisk: {\n            size: 64,\n            type: \"network-hdd\",\n        },\n        networkInterfaces: [{\n            nat: true,\n            subnetIds: [yandex_vpc_subnet_my_subnet.id],\n        }],\n        platformId: \"standard-v2\",\n        resources: {\n            cores: 2,\n            memory: 2,\n        },\n        schedulingPolicy: {\n            preemptible: false,\n        },\n    },\n    labels: {\n        key: \"value\",\n    },\n    maintenancePolicy: {\n        autoRepair: true,\n        autoUpgrade: true,\n        maintenanceWindows: [\n            {\n                day: \"monday\",\n                duration: \"3h\",\n                startTime: \"15:00\",\n            },\n            {\n                day: \"friday\",\n                duration: \"4h30m\",\n                startTime: \"10:00\",\n            },\n        ],\n    },\n    scalePolicy: {\n        fixedScale: {\n            size: 1,\n        },\n    },\n    version: \"1.17\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_node_group = yandex.KubernetesNodeGroup(\"myNodeGroup\",\n    allocation_policy=yandex.KubernetesNodeGroupAllocationPolicyArgs(\n        locations=[yandex.KubernetesNodeGroupAllocationPolicyLocationArgs(\n            zone=\"ru-central1-a\",\n        )],\n    ),\n    cluster_id=yandex_kubernetes_cluster[\"my_cluster\"][\"id\"],\n    description=\"description\",\n    instance_template=yandex.KubernetesNodeGroupInstanceTemplateArgs(\n        boot_disk={\n            \"size\": 64,\n            \"type\": \"network-hdd\",\n        },\n        network_interfaces=[{\n            \"nat\": True,\n            \"subnet_ids\": [yandex_vpc_subnet[\"my_subnet\"][\"id\"]],\n        }],\n        platform_id=\"standard-v2\",\n        resources=yandex.KubernetesNodeGroupInstanceTemplateResourcesArgs(\n            cores=2,\n            memory=2,\n        ),\n        scheduling_policy={\n            \"preemptible\": False,\n        },\n    ),\n    labels={\n        \"key\": \"value\",\n    },\n    maintenance_policy=yandex.KubernetesNodeGroupMaintenancePolicyArgs(\n        auto_repair=True,\n        auto_upgrade=True,\n        maintenance_windows=[\n            yandex.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs(\n                day=\"monday\",\n                duration=\"3h\",\n                start_time=\"15:00\",\n            ),\n            yandex.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs(\n                day=\"friday\",\n                duration=\"4h30m\",\n                start_time=\"10:00\",\n            ),\n        ],\n    ),\n    scale_policy=yandex.KubernetesNodeGroupScalePolicyArgs(\n        fixed_scale=yandex.KubernetesNodeGroupScalePolicyFixedScaleArgs(\n            size=1,\n        ),\n    ),\n    version=\"1.17\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myNodeGroup = new Yandex.KubernetesNodeGroup(\"myNodeGroup\", new Yandex.KubernetesNodeGroupArgs\n        {\n            AllocationPolicy = new Yandex.Inputs.KubernetesNodeGroupAllocationPolicyArgs\n            {\n                Locations = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupAllocationPolicyLocationArgs\n                    {\n                        Zone = \"ru-central1-a\",\n                    },\n                },\n            },\n            ClusterId = yandex_kubernetes_cluster.My_cluster.Id,\n            Description = \"description\",\n            InstanceTemplate = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateArgs\n            {\n                BootDisk = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateBootDiskArgs\n                {\n                    Size = 64,\n                    Type = \"network-hdd\",\n                },\n                NetworkInterfaces = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs\n                    {\n                        Nat = true,\n                        SubnetIds = \n                        {\n                            yandex_vpc_subnet.My_subnet.Id,\n                        },\n                    },\n                },\n                PlatformId = \"standard-v2\",\n                Resources = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateResourcesArgs\n                {\n                    Cores = 2,\n                    Memory = 2,\n                },\n                SchedulingPolicy = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs\n                {\n                    Preemptible = false,\n                },\n            },\n            Labels = \n            {\n                { \"key\", \"value\" },\n            },\n            MaintenancePolicy = new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyArgs\n            {\n                AutoRepair = true,\n                AutoUpgrade = true,\n                MaintenanceWindows = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs\n                    {\n                        Day = \"monday\",\n                        Duration = \"3h\",\n                        StartTime = \"15:00\",\n                    },\n                    new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs\n                    {\n                        Day = \"friday\",\n                        Duration = \"4h30m\",\n                        StartTime = \"10:00\",\n                    },\n                },\n            },\n            ScalePolicy = new Yandex.Inputs.KubernetesNodeGroupScalePolicyArgs\n            {\n                FixedScale = new Yandex.Inputs.KubernetesNodeGroupScalePolicyFixedScaleArgs\n                {\n                    Size = 1,\n                },\n            },\n            Version = \"1.17\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA Yandex Kubernetes Node Group can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/kubernetesNodeGroup:KubernetesNodeGroup default node_group_id\n```\n\n ",
             "properties": {
                 "allocationPolicy": {
                     "$ref": "#/types/yandex:index/KubernetesNodeGroupAllocationPolicy:KubernetesNodeGroupAllocationPolicy",
@@ -28844,6 +28845,120 @@
                             "$ref": "#/types/yandex:index/LbTargetGroupTarget:LbTargetGroupTarget"
                         },
                         "description": "A Target resource. The structure is documented below.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "yandex:index/loggingGroup:LoggingGroup": {
+            "description": "Yandex Cloud Logging group resource. For more information, see\n[the official documentation](https://cloud.yandex.com/en/docs/logging/concepts/log-group).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst group1 = new yandex.LoggingGroup(\"group1\", {\n    folderId: yandex_resourcemanager_folder_test_folder.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\ngroup1 = yandex.LoggingGroup(\"group1\", folder_id=data[\"yandex_resourcemanager_folder\"][\"test_folder\"][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var group1 = new Yandex.LoggingGroup(\"group1\", new Yandex.LoggingGroupArgs\n        {\n            FolderId = data.Yandex_resourcemanager_folder.Test_folder.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.NewLoggingGroup(ctx, \"group1\", \u0026yandex.LoggingGroupArgs{\n\t\t\tFolderId: pulumi.Any(data.Yandex_resourcemanager_folder.Test_folder.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "cloudId": {
+                    "type": "string",
+                    "description": "ID of the cloud that the Yandex Cloud Logging group belong to.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The Yandex Cloud Logging group creation timestamp.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the Yandex Cloud Logging group.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "ID of the folder that the Yandex Cloud Logging group belongs to.\nIt will be deduced from provider configuration if not set explicitly.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Yandex Cloud Logging group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the Yandex Cloud Logging group.\n"
+                },
+                "retentionPeriod": {
+                    "type": "string",
+                    "description": "Log entries retention period for the Yandex Cloud Logging group.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The Yandex Cloud Logging group status.\n"
+                }
+            },
+            "required": [
+                "cloudId",
+                "createdAt",
+                "folderId",
+                "name",
+                "retentionPeriod",
+                "status"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description for the Yandex Cloud Logging group.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "ID of the folder that the Yandex Cloud Logging group belongs to.\nIt will be deduced from provider configuration if not set explicitly.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Yandex Cloud Logging group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the Yandex Cloud Logging group.\n"
+                },
+                "retentionPeriod": {
+                    "type": "string",
+                    "description": "Log entries retention period for the Yandex Cloud Logging group.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LoggingGroup resources.\n",
+                "properties": {
+                    "cloudId": {
+                        "type": "string",
+                        "description": "ID of the cloud that the Yandex Cloud Logging group belong to.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The Yandex Cloud Logging group creation timestamp.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description for the Yandex Cloud Logging group.\n"
+                    },
+                    "folderId": {
+                        "type": "string",
+                        "description": "ID of the folder that the Yandex Cloud Logging group belongs to.\nIt will be deduced from provider configuration if not set explicitly.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A set of key/value label pairs to assign to the Yandex Cloud Logging group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name for the Yandex Cloud Logging group.\n"
+                    },
+                    "retentionPeriod": {
+                        "type": "string",
+                        "description": "Log entries retention period for the Yandex Cloud Logging group.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The Yandex Cloud Logging group status.\n"
                     }
                 },
                 "type": "object"
@@ -36432,6 +36547,75 @@
                 ]
             }
         },
+        "yandex:index/getLoggingGroup:getLoggingGroup": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getLoggingGroup.\n",
+                "properties": {
+                    "folderId": {
+                        "type": "string"
+                    },
+                    "groupId": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getLoggingGroup.\n",
+                "properties": {
+                    "cloudId": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "folderId": {
+                        "type": "string"
+                    },
+                    "groupId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "retentionPeriod": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cloudId",
+                    "createdAt",
+                    "description",
+                    "folderId",
+                    "groupId",
+                    "labels",
+                    "name",
+                    "retentionPeriod",
+                    "status",
+                    "id"
+                ]
+            }
+        },
         "yandex:index/getMdbClickhouseCluster:getMdbClickhouseCluster": {
             "description": "Get information about a Yandex Managed ClickHouse cluster. For more information, see\n[the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/concepts).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst foo = pulumi.output(yandex.getMdbClickhouseCluster({\n    name: \"test\",\n}, { async: true }));\n\nexport const networkId = foo.networkId;\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nfoo = yandex.get_mdb_clickhouse_cluster(name=\"test\")\npulumi.export(\"networkId\", foo.network_id)\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Yandex.GetMdbClickhouseCluster.InvokeAsync(new Yandex.GetMdbClickhouseClusterArgs\n        {\n            Name = \"test\",\n        }));\n        this.NetworkId = foo.Apply(foo =\u003e foo.NetworkId);\n    }\n\n    [Output(\"networkId\")]\n    public Output\u003cstring\u003e NetworkId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"test\"\n\t\tfoo, err := yandex.LookupMdbClickhouseCluster(ctx, \u0026yandex.LookupMdbClickhouseClusterArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"networkId\", foo.NetworkId)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -38529,7 +38713,7 @@
                     },
                     "folderId": {
                         "type": "string",
-                        "description": "ID of the folder that the Yandex Database cluster belong to.\nIt will be deduced from provider configuration if not set explicitly.\n"
+                        "description": "ID of the folder that the Yandex Database cluster belongs to.\nIt will be deduced from provider configuration if not set explicitly.\n"
                     },
                     "name": {
                         "type": "string",
@@ -38661,7 +38845,7 @@
                     },
                     "folderId": {
                         "type": "string",
-                        "description": "ID of the folder that the Yandex Database serverless cluster belong to.\nIt will be deduced from provider configuration if not set explicitly.\n"
+                        "description": "ID of the folder that the Yandex Database serverless cluster belongs to.\nIt will be deduced from provider configuration if not set explicitly.\n"
                     },
                     "name": {
                         "type": "string",

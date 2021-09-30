@@ -47,7 +47,7 @@ export interface GetYdbDatabaseServerlessArgs {
      */
     readonly databaseId?: string;
     /**
-     * ID of the folder that the Yandex Database serverless cluster belong to.
+     * ID of the folder that the Yandex Database serverless cluster belongs to.
      * It will be deduced from provider configuration if not set explicitly.
      */
     readonly folderId?: string;
