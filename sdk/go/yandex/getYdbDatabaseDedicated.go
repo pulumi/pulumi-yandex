@@ -47,7 +47,7 @@ func LookupYdbDatabaseDedicated(ctx *pulumi.Context, args *LookupYdbDatabaseDedi
 type LookupYdbDatabaseDedicatedArgs struct {
 	// ID of the Yandex Database cluster.
 	DatabaseId *string `pulumi:"databaseId"`
-	// ID of the folder that the Yandex Database cluster belong to.
+	// ID of the folder that the Yandex Database cluster belongs to.
 	// It will be deduced from provider configuration if not set explicitly.
 	FolderId *string `pulumi:"folderId"`
 	// Name of the Yandex Database cluster.

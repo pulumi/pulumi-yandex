@@ -58,6 +58,7 @@ from .get_kubernetes_cluster import *
 from .get_kubernetes_node_group import *
 from .get_lb_network_load_balancer import *
 from .get_lb_target_group import *
+from .get_logging_group import *
 from .get_mdb_clickhouse_cluster import *
 from .get_mdb_elastic_search_cluster import *
 from .get_mdb_greenplum_cluster import *
@@ -93,6 +94,7 @@ from .kubernetes_cluster import *
 from .kubernetes_node_group import *
 from .lb_network_load_balancer import *
 from .lb_target_group import *
+from .logging_group import *
 from .mdb_clickhouse_cluster import *
 from .mdb_elastic_search_cluster import *
 from .mdb_greenplum_cluster import *
@@ -220,6 +222,8 @@ def _register_module():
                 return LbNetworkLoadBalancer(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/lbTargetGroup:LbTargetGroup":
                 return LbTargetGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "yandex:index/loggingGroup:LoggingGroup":
+                return LoggingGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbClickhouseCluster:MdbClickhouseCluster":
                 return MdbClickhouseCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "yandex:index/mdbElasticSearchCluster:MdbElasticSearchCluster":
@@ -320,6 +324,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("yandex", "index/kubernetesNodeGroup", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/lbNetworkLoadBalancer", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/lbTargetGroup", _module_instance)
+    pulumi.runtime.register_resource_module("yandex", "index/loggingGroup", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbClickhouseCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbElasticSearchCluster", _module_instance)
     pulumi.runtime.register_resource_module("yandex", "index/mdbGreenplumCluster", _module_instance)

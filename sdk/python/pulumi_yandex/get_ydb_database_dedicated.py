@@ -288,7 +288,7 @@ def get_ydb_database_dedicated(database_id: Optional[str] = None,
 
 
     :param str database_id: ID of the Yandex Database cluster.
-    :param str folder_id: ID of the folder that the Yandex Database cluster belong to.
+    :param str folder_id: ID of the folder that the Yandex Database cluster belongs to.
            It will be deduced from provider configuration if not set explicitly.
     :param str name: Name of the Yandex Database cluster.
     """

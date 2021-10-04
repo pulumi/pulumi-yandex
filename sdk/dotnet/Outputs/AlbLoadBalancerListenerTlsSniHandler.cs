@@ -21,7 +21,10 @@ namespace Pulumi.Yandex.Outputs
         /// name of SNI match.
         /// </summary>
         public readonly string Name;
-        public readonly ImmutableArray<string> ServiceNames;
+        /// <summary>
+        /// A set of server names.
+        /// </summary>
+        public readonly ImmutableArray<string> ServerNames;
 
         [OutputConstructor]
         private AlbLoadBalancerListenerTlsSniHandler(
@@ -29,11 +32,11 @@ namespace Pulumi.Yandex.Outputs
 
             string name,
 
-            ImmutableArray<string> serviceNames)
+            ImmutableArray<string> serverNames)
         {
             Handler = handler;
             Name = name;
-            ServiceNames = serviceNames;
+            ServerNames = serverNames;
         }
     }
 }

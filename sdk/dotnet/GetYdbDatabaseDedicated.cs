@@ -55,7 +55,7 @@ namespace Pulumi.Yandex
         public string? DatabaseId { get; set; }
 
         /// <summary>
-        /// ID of the folder that the Yandex Database cluster belong to.
+        /// ID of the folder that the Yandex Database cluster belongs to.
         /// It will be deduced from provider configuration if not set explicitly.
         /// </summary>
         [Input("folderId")]

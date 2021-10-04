@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  *         },
  *         networkInterfaces: [{
  *             nat: true,
- *             securityGroupIds: [yandex_vpc_security_group_my_sg.id],
  *             subnetIds: [yandex_vpc_subnet_my_subnet.id],
  *         }],
  *         platformId: "standard-v2",

@@ -1929,14 +1929,15 @@ class AlbLoadBalancerListenerTlsSniHandlerArgs:
     def __init__(__self__, *,
                  handler: pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerArgs'],
                  name: pulumi.Input[str],
-                 service_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 server_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerArgs'] handler: HTTP handler that sets plaintext HTTP router. The structure is documented below.
         :param pulumi.Input[str] name: name of SNI match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] server_names: A set of server names.
         """
         pulumi.set(__self__, "handler", handler)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "service_names", service_names)
+        pulumi.set(__self__, "server_names", server_names)
 
     @property
     @pulumi.getter
@@ -1963,13 +1964,16 @@ class AlbLoadBalancerListenerTlsSniHandlerArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="serviceNames")
-    def service_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "service_names")
+    @pulumi.getter(name="serverNames")
+    def server_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A set of server names.
+        """
+        return pulumi.get(self, "server_names")
 
-    @service_names.setter
-    def service_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "service_names", value)
+    @server_names.setter
+    def server_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "server_names", value)
 
 
 @pulumi.input_type

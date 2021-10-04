@@ -457,7 +457,10 @@ export interface AlbLoadBalancerListenerTlsSniHandler {
      * name of SNI match.
      */
     name: string;
-    serviceNames: string[];
+    /**
+     * A set of server names.
+     */
+    serverNames: string[];
 }
 
 export interface AlbLoadBalancerListenerTlsSniHandlerHandler {
@@ -2168,7 +2171,7 @@ export interface GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Opti
 export interface GetAlbLoadBalancerListenerTlsSniHandler {
     handler: outputs.GetAlbLoadBalancerListenerTlsSniHandlerHandler;
     name: string;
-    serviceNames: string[];
+    serverNames: string[];
 }
 
 export interface GetAlbLoadBalancerListenerTlsSniHandlerHandler {

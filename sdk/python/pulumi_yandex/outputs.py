@@ -2206,8 +2206,8 @@ class AlbLoadBalancerListenerTlsSniHandler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "serviceNames":
-            suggest = "service_names"
+        if key == "serverNames":
+            suggest = "server_names"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AlbLoadBalancerListenerTlsSniHandler. Access the value via the '{suggest}' property getter instead.")
@@ -2223,14 +2223,15 @@ class AlbLoadBalancerListenerTlsSniHandler(dict):
     def __init__(__self__, *,
                  handler: 'outputs.AlbLoadBalancerListenerTlsSniHandlerHandler',
                  name: str,
-                 service_names: Sequence[str]):
+                 server_names: Sequence[str]):
         """
         :param 'AlbLoadBalancerListenerTlsSniHandlerHandlerArgs' handler: HTTP handler that sets plaintext HTTP router. The structure is documented below.
         :param str name: name of SNI match.
+        :param Sequence[str] server_names: A set of server names.
         """
         pulumi.set(__self__, "handler", handler)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "service_names", service_names)
+        pulumi.set(__self__, "server_names", server_names)
 
     @property
     @pulumi.getter
@@ -2249,9 +2250,12 @@ class AlbLoadBalancerListenerTlsSniHandler(dict):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="serviceNames")
-    def service_names(self) -> Sequence[str]:
-        return pulumi.get(self, "service_names")
+    @pulumi.getter(name="serverNames")
+    def server_names(self) -> Sequence[str]:
+        """
+        A set of server names.
+        """
+        return pulumi.get(self, "server_names")
 
 
 @pulumi.output_type
@@ -17904,10 +17908,10 @@ class GetAlbLoadBalancerListenerTlsSniHandlerResult(dict):
     def __init__(__self__, *,
                  handler: 'outputs.GetAlbLoadBalancerListenerTlsSniHandlerHandlerResult',
                  name: str,
-                 service_names: Sequence[str]):
+                 server_names: Sequence[str]):
         pulumi.set(__self__, "handler", handler)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "service_names", service_names)
+        pulumi.set(__self__, "server_names", server_names)
 
     @property
     @pulumi.getter
@@ -17920,9 +17924,9 @@ class GetAlbLoadBalancerListenerTlsSniHandlerResult(dict):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="serviceNames")
-    def service_names(self) -> Sequence[str]:
-        return pulumi.get(self, "service_names")
+    @pulumi.getter(name="serverNames")
+    def server_names(self) -> Sequence[str]:
+        return pulumi.get(self, "server_names")
 
 
 @pulumi.output_type

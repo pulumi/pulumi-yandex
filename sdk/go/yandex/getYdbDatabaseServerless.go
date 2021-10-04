@@ -47,7 +47,7 @@ func LookupYdbDatabaseServerless(ctx *pulumi.Context, args *LookupYdbDatabaseSer
 type LookupYdbDatabaseServerlessArgs struct {
 	// ID of the Yandex Database serverless cluster.
 	DatabaseId *string `pulumi:"databaseId"`
-	// ID of the folder that the Yandex Database serverless cluster belong to.
+	// ID of the folder that the Yandex Database serverless cluster belongs to.
 	// It will be deduced from provider configuration if not set explicitly.
 	FolderId *string `pulumi:"folderId"`
 	// Name of the Yandex Database serverless cluster.
