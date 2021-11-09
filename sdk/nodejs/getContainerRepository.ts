@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,10 +16,10 @@ import * as utilities from "./utilities";
  *
  * const repo_1 = pulumi.output(yandex.getContainerRepository({
  *     name: "some_repository_name",
- * }, { async: true }));
+ * }));
  * const repo_2 = pulumi.output(yandex.getContainerRepository({
  *     repositoryId: "some_repository_id",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getContainerRepository(args?: GetContainerRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRepositoryResult> {
@@ -45,11 +44,11 @@ export interface GetContainerRepositoryArgs {
     /**
      * Name of the repository. The name of the repository should start with id of a container registry and match the name of the images in the repository.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of a specific repository.
      */
-    readonly repositoryId?: string;
+    repositoryId?: string;
 }
 
 /**
@@ -62,4 +61,22 @@ export interface GetContainerRepositoryResult {
     readonly id: string;
     readonly name: string;
     readonly repositoryId: string;
+}
+
+export function getContainerRepositoryOutput(args?: GetContainerRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRepositoryResult> {
+    return pulumi.output(args).apply(a => getContainerRepository(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getContainerRepository.
+ */
+export interface GetContainerRepositoryOutputArgs {
+    /**
+     * Name of the repository. The name of the repository should start with id of a container registry and match the name of the images in the repository.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of a specific repository.
+     */
+    repositoryId?: pulumi.Input<string>;
 }

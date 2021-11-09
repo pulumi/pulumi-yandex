@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-rt-id"
-// 		_, err := yandex.LookupVpcRouteTable(ctx, &yandex.LookupVpcRouteTableArgs{
+// 		_, err := yandex.LookupVpcRouteTable(ctx, &GetVpcRouteTableArgs{
 // 			RouteTableId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -69,4 +72,88 @@ type LookupVpcRouteTableResult struct {
 	RouteTableId string `pulumi:"routeTableId"`
 	// List of static route records of the route table. Structure is documented below.
 	StaticRoutes []GetVpcRouteTableStaticRoute `pulumi:"staticRoutes"`
+}
+
+func LookupVpcRouteTableOutput(ctx *pulumi.Context, args LookupVpcRouteTableOutputArgs, opts ...pulumi.InvokeOption) LookupVpcRouteTableResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVpcRouteTableResult, error) {
+			args := v.(LookupVpcRouteTableArgs)
+			r, err := LookupVpcRouteTable(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVpcRouteTableResultOutput)
+}
+
+// A collection of arguments for invoking getVpcRouteTable.
+type LookupVpcRouteTableOutputArgs struct {
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// - Name of the route table.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Route table ID.
+	RouteTableId pulumi.StringPtrInput `pulumi:"routeTableId"`
+}
+
+func (LookupVpcRouteTableOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcRouteTableArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVpcRouteTable.
+type LookupVpcRouteTableResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcRouteTableResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcRouteTableResult)(nil)).Elem()
+}
+
+func (o LookupVpcRouteTableResultOutput) ToLookupVpcRouteTableResultOutput() LookupVpcRouteTableResultOutput {
+	return o
+}
+
+func (o LookupVpcRouteTableResultOutput) ToLookupVpcRouteTableResultOutputWithContext(ctx context.Context) LookupVpcRouteTableResultOutput {
+	return o
+}
+
+// Creation timestamp of this route table.
+func (o LookupVpcRouteTableResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcRouteTableResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the route table.
+func (o LookupVpcRouteTableResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcRouteTableResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcRouteTableResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcRouteTableResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVpcRouteTableResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcRouteTableResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels to assign to this route table.
+func (o LookupVpcRouteTableResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpcRouteTableResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupVpcRouteTableResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcRouteTableResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the network this route table belongs to.
+func (o LookupVpcRouteTableResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcRouteTableResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcRouteTableResultOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcRouteTableResult) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+// List of static route records of the route table. Structure is documented below.
+func (o LookupVpcRouteTableResultOutput) StaticRoutes() GetVpcRouteTableStaticRouteArrayOutput {
+	return o.ApplyT(func(v LookupVpcRouteTableResult) []GetVpcRouteTableStaticRoute { return v.StaticRoutes }).(GetVpcRouteTableStaticRouteArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVpcRouteTableResultOutput{})
 }

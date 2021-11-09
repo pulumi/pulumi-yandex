@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getResourcemanagerCloud({
  *     name: "foo-cloud",
- * }, { async: true }));
+ * }));
  *
  * export const cloudCreateTimestamp = foo.createdAt;
  * ```
@@ -45,15 +44,15 @@ export interface GetResourcemanagerCloudArgs {
     /**
      * ID of the cloud.
      */
-    readonly cloudId?: string;
+    cloudId?: string;
     /**
      * Description of the cloud.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * Name of the cloud.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -77,4 +76,26 @@ export interface GetResourcemanagerCloudResult {
      * Name of the cloud.
      */
     readonly name: string;
+}
+
+export function getResourcemanagerCloudOutput(args?: GetResourcemanagerCloudOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcemanagerCloudResult> {
+    return pulumi.output(args).apply(a => getResourcemanagerCloud(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResourcemanagerCloud.
+ */
+export interface GetResourcemanagerCloudOutputArgs {
+    /**
+     * ID of the cloud.
+     */
+    cloudId?: pulumi.Input<string>;
+    /**
+     * Description of the cloud.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the cloud.
+     */
+    name?: pulumi.Input<string>;
 }

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const myCluster = pulumi.output(yandex.getKubernetesCluster({
  *     clusterId: "some_k8s_cluster_id",
- * }, { async: true }));
+ * }));
  *
  * export const clusterExternalV4Endpoint = myCluster.master.externalV4Endpoint;
  * ```
@@ -44,15 +44,15 @@ export interface GetKubernetesClusterArgs {
     /**
      * ID of a specific Kubernetes cluster.
      */
-    readonly clusterId?: string;
+    clusterId?: string;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Name of a specific Kubernetes cluster.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -145,4 +145,26 @@ export interface GetKubernetesClusterResult {
      * Status of the Kubernetes cluster.
      */
     readonly status: string;
+}
+
+export function getKubernetesClusterOutput(args?: GetKubernetesClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesClusterResult> {
+    return pulumi.output(args).apply(a => getKubernetesCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKubernetesCluster.
+ */
+export interface GetKubernetesClusterOutputArgs {
+    /**
+     * ID of a specific Kubernetes cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Name of a specific Kubernetes cluster.
+     */
+    name?: pulumi.Input<string>;
 }

@@ -171,7 +171,7 @@ type ContainerRepositoryArrayInput interface {
 type ContainerRepositoryArray []ContainerRepositoryInput
 
 func (ContainerRepositoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ContainerRepository)(nil))
+	return reflect.TypeOf((*[]*ContainerRepository)(nil)).Elem()
 }
 
 func (i ContainerRepositoryArray) ToContainerRepositoryArrayOutput() ContainerRepositoryArrayOutput {
@@ -196,7 +196,7 @@ type ContainerRepositoryMapInput interface {
 type ContainerRepositoryMap map[string]ContainerRepositoryInput
 
 func (ContainerRepositoryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ContainerRepository)(nil))
+	return reflect.TypeOf((*map[string]*ContainerRepository)(nil)).Elem()
 }
 
 func (i ContainerRepositoryMap) ToContainerRepositoryMapOutput() ContainerRepositoryMapOutput {
@@ -207,9 +207,7 @@ func (i ContainerRepositoryMap) ToContainerRepositoryMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRepositoryMapOutput)
 }
 
-type ContainerRepositoryOutput struct {
-	*pulumi.OutputState
-}
+type ContainerRepositoryOutput struct{ *pulumi.OutputState }
 
 func (ContainerRepositoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerRepository)(nil))
@@ -228,14 +226,12 @@ func (o ContainerRepositoryOutput) ToContainerRepositoryPtrOutput() ContainerRep
 }
 
 func (o ContainerRepositoryOutput) ToContainerRepositoryPtrOutputWithContext(ctx context.Context) ContainerRepositoryPtrOutput {
-	return o.ApplyT(func(v ContainerRepository) *ContainerRepository {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerRepository) *ContainerRepository {
 		return &v
 	}).(ContainerRepositoryPtrOutput)
 }
 
-type ContainerRepositoryPtrOutput struct {
-	*pulumi.OutputState
-}
+type ContainerRepositoryPtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerRepositoryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ContainerRepository)(nil))
@@ -247,6 +243,16 @@ func (o ContainerRepositoryPtrOutput) ToContainerRepositoryPtrOutput() Container
 
 func (o ContainerRepositoryPtrOutput) ToContainerRepositoryPtrOutputWithContext(ctx context.Context) ContainerRepositoryPtrOutput {
 	return o
+}
+
+func (o ContainerRepositoryPtrOutput) Elem() ContainerRepositoryOutput {
+	return o.ApplyT(func(v *ContainerRepository) ContainerRepository {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerRepository
+		return ret
+	}).(ContainerRepositoryOutput)
 }
 
 type ContainerRepositoryArrayOutput struct{ *pulumi.OutputState }
@@ -290,6 +296,10 @@ func (o ContainerRepositoryMapOutput) MapIndex(k pulumi.StringInput) ContainerRe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRepositoryInput)(nil)).Elem(), &ContainerRepository{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRepositoryPtrInput)(nil)).Elem(), &ContainerRepository{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRepositoryArrayInput)(nil)).Elem(), ContainerRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRepositoryMapInput)(nil)).Elem(), ContainerRepositoryMap{})
 	pulumi.RegisterOutputType(ContainerRepositoryOutput{})
 	pulumi.RegisterOutputType(ContainerRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(ContainerRepositoryArrayOutput{})

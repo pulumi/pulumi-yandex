@@ -34,7 +34,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "some_folder_id"
-// 		project1, err := yandex.LookupResourcemanagerFolder(ctx, &yandex.LookupResourcemanagerFolderArgs{
+// 		project1, err := yandex.LookupResourcemanagerFolder(ctx, &GetResourcemanagerFolderArgs{
 // 			FolderId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -242,7 +242,7 @@ type ResourcemanagerFolderIamBindingArrayInput interface {
 type ResourcemanagerFolderIamBindingArray []ResourcemanagerFolderIamBindingInput
 
 func (ResourcemanagerFolderIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ResourcemanagerFolderIamBinding)(nil))
+	return reflect.TypeOf((*[]*ResourcemanagerFolderIamBinding)(nil)).Elem()
 }
 
 func (i ResourcemanagerFolderIamBindingArray) ToResourcemanagerFolderIamBindingArrayOutput() ResourcemanagerFolderIamBindingArrayOutput {
@@ -267,7 +267,7 @@ type ResourcemanagerFolderIamBindingMapInput interface {
 type ResourcemanagerFolderIamBindingMap map[string]ResourcemanagerFolderIamBindingInput
 
 func (ResourcemanagerFolderIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ResourcemanagerFolderIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*ResourcemanagerFolderIamBinding)(nil)).Elem()
 }
 
 func (i ResourcemanagerFolderIamBindingMap) ToResourcemanagerFolderIamBindingMapOutput() ResourcemanagerFolderIamBindingMapOutput {
@@ -278,9 +278,7 @@ func (i ResourcemanagerFolderIamBindingMap) ToResourcemanagerFolderIamBindingMap
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderIamBindingMapOutput)
 }
 
-type ResourcemanagerFolderIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type ResourcemanagerFolderIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourcemanagerFolderIamBinding)(nil))
@@ -299,14 +297,12 @@ func (o ResourcemanagerFolderIamBindingOutput) ToResourcemanagerFolderIamBinding
 }
 
 func (o ResourcemanagerFolderIamBindingOutput) ToResourcemanagerFolderIamBindingPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamBindingPtrOutput {
-	return o.ApplyT(func(v ResourcemanagerFolderIamBinding) *ResourcemanagerFolderIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcemanagerFolderIamBinding) *ResourcemanagerFolderIamBinding {
 		return &v
 	}).(ResourcemanagerFolderIamBindingPtrOutput)
 }
 
-type ResourcemanagerFolderIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type ResourcemanagerFolderIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ResourcemanagerFolderIamBinding)(nil))
@@ -318,6 +314,16 @@ func (o ResourcemanagerFolderIamBindingPtrOutput) ToResourcemanagerFolderIamBind
 
 func (o ResourcemanagerFolderIamBindingPtrOutput) ToResourcemanagerFolderIamBindingPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamBindingPtrOutput {
 	return o
+}
+
+func (o ResourcemanagerFolderIamBindingPtrOutput) Elem() ResourcemanagerFolderIamBindingOutput {
+	return o.ApplyT(func(v *ResourcemanagerFolderIamBinding) ResourcemanagerFolderIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcemanagerFolderIamBinding
+		return ret
+	}).(ResourcemanagerFolderIamBindingOutput)
 }
 
 type ResourcemanagerFolderIamBindingArrayOutput struct{ *pulumi.OutputState }
@@ -361,6 +367,10 @@ func (o ResourcemanagerFolderIamBindingMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamBindingInput)(nil)).Elem(), &ResourcemanagerFolderIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamBindingPtrInput)(nil)).Elem(), &ResourcemanagerFolderIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamBindingArrayInput)(nil)).Elem(), ResourcemanagerFolderIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamBindingMapInput)(nil)).Elem(), ResourcemanagerFolderIamBindingMap{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamBindingOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamBindingArrayOutput{})

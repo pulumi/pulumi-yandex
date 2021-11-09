@@ -82,7 +82,7 @@ import (
 // 		_, err := yandex.NewStorageBucket(ctx, "test", &yandex.StorageBucketArgs{
 // 			Acl:    pulumi.String("public-read"),
 // 			Bucket: pulumi.String("storage-website-test.hashicorp.com"),
-// 			Website: &yandex.StorageBucketWebsiteArgs{
+// 			Website: &StorageBucketWebsiteArgs{
 // 				ErrorDocument: pulumi.String("error.html"),
 // 				IndexDocument: pulumi.String("index.html"),
 // 				RoutingRules:  pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v", "[{\n", "    \"Condition\": {\n", "        \"KeyPrefixEquals\": \"docs/\"\n", "    },\n", "    \"Redirect\": {\n", "        \"ReplaceKeyPrefixWith\": \"documents/\"\n", "    }\n", "}]\n", "\n")),
@@ -109,15 +109,15 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := yandex.NewStorageBucket(ctx, "test", &yandex.StorageBucketArgs{
 // 			Bucket: pulumi.String("mybucket"),
-// 			Grants: yandex.StorageBucketGrantArray{
-// 				&yandex.StorageBucketGrantArgs{
+// 			Grants: StorageBucketGrantArray{
+// 				&StorageBucketGrantArgs{
 // 					Id: pulumi.String("myuser"),
 // 					Permissions: pulumi.StringArray{
 // 						pulumi.String("FULL_CONTROL"),
 // 					},
 // 					Type: pulumi.String("CanonicalUser"),
 // 				},
-// 				&yandex.StorageBucketGrantArgs{
+// 				&StorageBucketGrantArgs{
 // 					Permissions: pulumi.StringArray{
 // 						pulumi.String("READ"),
 // 						pulumi.String("WRITE"),
@@ -149,8 +149,8 @@ import (
 // 		_, err := yandex.NewStorageBucket(ctx, "storageBucket", &yandex.StorageBucketArgs{
 // 			Acl:    pulumi.String("public-read"),
 // 			Bucket: pulumi.String("s3-website-test.hashicorp.com"),
-// 			CorsRules: yandex.StorageBucketCorsRuleArray{
-// 				&yandex.StorageBucketCorsRuleArgs{
+// 			CorsRules: StorageBucketCorsRuleArray{
+// 				&StorageBucketCorsRuleArgs{
 // 					AllowedHeaders: pulumi.StringArray{
 // 						pulumi.String("*"),
 // 					},
@@ -190,7 +190,7 @@ import (
 // 		_, err := yandex.NewStorageBucket(ctx, "storageBucket", &yandex.StorageBucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("my-tf-test-bucket"),
-// 			Versioning: &yandex.StorageBucketVersioningArgs{
+// 			Versioning: &StorageBucketVersioningArgs{
 // 				Enabled: pulumi.Bool(true),
 // 			},
 // 		})
@@ -222,8 +222,8 @@ import (
 // 		_, err = yandex.NewStorageBucket(ctx, "storageBucket", &yandex.StorageBucketArgs{
 // 			Bucket: pulumi.String("my-tf-test-bucket"),
 // 			Acl:    pulumi.String("private"),
-// 			Loggings: yandex.StorageBucketLoggingArray{
-// 				&yandex.StorageBucketLoggingArgs{
+// 			Loggings: StorageBucketLoggingArray{
+// 				&StorageBucketLoggingArgs{
 // 					TargetBucket: logBucket.ID(),
 // 					TargetPrefix: pulumi.String("log/"),
 // 				},
@@ -251,24 +251,24 @@ import (
 // 		_, err := yandex.NewStorageBucket(ctx, "bucket", &yandex.StorageBucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("my-bucket"),
-// 			LifecycleRules: yandex.StorageBucketLifecycleRuleArray{
-// 				&yandex.StorageBucketLifecycleRuleArgs{
+// 			LifecycleRules: StorageBucketLifecycleRuleArray{
+// 				&StorageBucketLifecycleRuleArgs{
 // 					Enabled: pulumi.Bool(true),
-// 					Expiration: &yandex.StorageBucketLifecycleRuleExpirationArgs{
+// 					Expiration: &StorageBucketLifecycleRuleExpirationArgs{
 // 						Days: pulumi.Int(90),
 // 					},
 // 					Id:     pulumi.String("log"),
 // 					Prefix: pulumi.String("log/"),
-// 					Transitions: yandex.StorageBucketLifecycleRuleTransitionArray{
-// 						&yandex.StorageBucketLifecycleRuleTransitionArgs{
+// 					Transitions: StorageBucketLifecycleRuleTransitionArray{
+// 						&StorageBucketLifecycleRuleTransitionArgs{
 // 							Days:         pulumi.Int(30),
 // 							StorageClass: pulumi.String("COLD"),
 // 						},
 // 					},
 // 				},
-// 				&yandex.StorageBucketLifecycleRuleArgs{
+// 				&StorageBucketLifecycleRuleArgs{
 // 					Enabled: pulumi.Bool(true),
-// 					Expiration: &yandex.StorageBucketLifecycleRuleExpirationArgs{
+// 					Expiration: &StorageBucketLifecycleRuleExpirationArgs{
 // 						Date: pulumi.String("2020-12-21"),
 // 					},
 // 					Id:     pulumi.String("tmp"),
@@ -282,14 +282,14 @@ import (
 // 		_, err = yandex.NewStorageBucket(ctx, "versioningBucket", &yandex.StorageBucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("my-versioning-bucket"),
-// 			LifecycleRules: yandex.StorageBucketLifecycleRuleArray{
-// 				&yandex.StorageBucketLifecycleRuleArgs{
+// 			LifecycleRules: StorageBucketLifecycleRuleArray{
+// 				&StorageBucketLifecycleRuleArgs{
 // 					Enabled: pulumi.Bool(true),
-// 					NoncurrentVersionExpiration: &yandex.StorageBucketLifecycleRuleNoncurrentVersionExpirationArgs{
+// 					NoncurrentVersionExpiration: &StorageBucketLifecycleRuleNoncurrentVersionExpirationArgs{
 // 						Days: pulumi.Int(90),
 // 					},
-// 					NoncurrentVersionTransitions: yandex.StorageBucketLifecycleRuleNoncurrentVersionTransitionArray{
-// 						&yandex.StorageBucketLifecycleRuleNoncurrentVersionTransitionArgs{
+// 					NoncurrentVersionTransitions: StorageBucketLifecycleRuleNoncurrentVersionTransitionArray{
+// 						&StorageBucketLifecycleRuleNoncurrentVersionTransitionArgs{
 // 							Days:         pulumi.Int(30),
 // 							StorageClass: pulumi.String("COLD"),
 // 						},
@@ -297,7 +297,7 @@ import (
 // 					Prefix: pulumi.String("config/"),
 // 				},
 // 			},
-// 			Versioning: &yandex.StorageBucketVersioningArgs{
+// 			Versioning: &StorageBucketVersioningArgs{
 // 				Enabled: pulumi.Bool(true),
 // 			},
 // 		})
@@ -330,9 +330,9 @@ import (
 // 		}
 // 		_, err = yandex.NewStorageBucket(ctx, "test", &yandex.StorageBucketArgs{
 // 			Bucket: pulumi.String("mybucket"),
-// 			ServerSideEncryptionConfiguration: &yandex.StorageBucketServerSideEncryptionConfigurationArgs{
-// 				Rule: &yandex.StorageBucketServerSideEncryptionConfigurationRuleArgs{
-// 					ApplyServerSideEncryptionByDefault: &yandex.StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
+// 			ServerSideEncryptionConfiguration: &StorageBucketServerSideEncryptionConfigurationArgs{
+// 				Rule: &StorageBucketServerSideEncryptionConfigurationRuleArgs{
+// 					ApplyServerSideEncryptionByDefault: &StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
 // 						KmsMasterKeyId: key_a.ID(),
 // 						SseAlgorithm:   pulumi.String("aws:kms"),
 // 					},
@@ -385,11 +385,11 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		logBucket, err := yandex.NewStorageBucket(ctx, "logBucket", &yandex.StorageBucketArgs{
 // 			Bucket: pulumi.String("my-tf-log-bucket"),
-// 			LifecycleRules: yandex.StorageBucketLifecycleRuleArray{
-// 				&yandex.StorageBucketLifecycleRuleArgs{
+// 			LifecycleRules: StorageBucketLifecycleRuleArray{
+// 				&StorageBucketLifecycleRuleArgs{
 // 					Id:      pulumi.String("cleanupoldlogs"),
 // 					Enabled: pulumi.Bool(true),
-// 					Expiration: &yandex.StorageBucketLifecycleRuleExpirationArgs{
+// 					Expiration: &StorageBucketLifecycleRuleExpirationArgs{
 // 						Days: pulumi.Int(365),
 // 					},
 // 				},
@@ -408,64 +408,64 @@ import (
 // 		}
 // 		_, err = yandex.NewStorageBucket(ctx, "allSettings", &yandex.StorageBucketArgs{
 // 			Bucket: pulumi.String("example-tf-settings-bucket"),
-// 			Website: &yandex.StorageBucketWebsiteArgs{
+// 			Website: &StorageBucketWebsiteArgs{
 // 				IndexDocument: pulumi.String("index.html"),
 // 				ErrorDocument: pulumi.String("error.html"),
 // 			},
-// 			LifecycleRules: yandex.StorageBucketLifecycleRuleArray{
-// 				&yandex.StorageBucketLifecycleRuleArgs{
+// 			LifecycleRules: StorageBucketLifecycleRuleArray{
+// 				&StorageBucketLifecycleRuleArgs{
 // 					Id:      pulumi.String("test"),
 // 					Enabled: pulumi.Bool(true),
 // 					Prefix:  pulumi.String("prefix/"),
-// 					Expiration: &yandex.StorageBucketLifecycleRuleExpirationArgs{
+// 					Expiration: &StorageBucketLifecycleRuleExpirationArgs{
 // 						Days: pulumi.Int(30),
 // 					},
 // 				},
-// 				&yandex.StorageBucketLifecycleRuleArgs{
+// 				&StorageBucketLifecycleRuleArgs{
 // 					Id:      pulumi.String("log"),
 // 					Enabled: pulumi.Bool(true),
 // 					Prefix:  pulumi.String("log/"),
-// 					Transitions: yandex.StorageBucketLifecycleRuleTransitionArray{
-// 						&yandex.StorageBucketLifecycleRuleTransitionArgs{
+// 					Transitions: StorageBucketLifecycleRuleTransitionArray{
+// 						&StorageBucketLifecycleRuleTransitionArgs{
 // 							Days:         pulumi.Int(30),
 // 							StorageClass: pulumi.String("COLD"),
 // 						},
 // 					},
-// 					Expiration: &yandex.StorageBucketLifecycleRuleExpirationArgs{
+// 					Expiration: &StorageBucketLifecycleRuleExpirationArgs{
 // 						Days: pulumi.Int(90),
 // 					},
 // 				},
-// 				&yandex.StorageBucketLifecycleRuleArgs{
+// 				&StorageBucketLifecycleRuleArgs{
 // 					Id:      pulumi.String("everything180"),
 // 					Prefix:  pulumi.String(""),
 // 					Enabled: pulumi.Bool(true),
-// 					Expiration: &yandex.StorageBucketLifecycleRuleExpirationArgs{
+// 					Expiration: &StorageBucketLifecycleRuleExpirationArgs{
 // 						Days: pulumi.Int(180),
 // 					},
 // 				},
-// 				&yandex.StorageBucketLifecycleRuleArgs{
+// 				&StorageBucketLifecycleRuleArgs{
 // 					Id:      pulumi.String("cleanupoldversions"),
 // 					Prefix:  pulumi.String("config/"),
 // 					Enabled: pulumi.Bool(true),
-// 					NoncurrentVersionTransitions: yandex.StorageBucketLifecycleRuleNoncurrentVersionTransitionArray{
-// 						&yandex.StorageBucketLifecycleRuleNoncurrentVersionTransitionArgs{
+// 					NoncurrentVersionTransitions: StorageBucketLifecycleRuleNoncurrentVersionTransitionArray{
+// 						&StorageBucketLifecycleRuleNoncurrentVersionTransitionArgs{
 // 							Days:         pulumi.Int(30),
 // 							StorageClass: pulumi.String("COLD"),
 // 						},
 // 					},
-// 					NoncurrentVersionExpiration: &yandex.StorageBucketLifecycleRuleNoncurrentVersionExpirationArgs{
+// 					NoncurrentVersionExpiration: &StorageBucketLifecycleRuleNoncurrentVersionExpirationArgs{
 // 						Days: pulumi.Int(90),
 // 					},
 // 				},
-// 				&yandex.StorageBucketLifecycleRuleArgs{
+// 				&StorageBucketLifecycleRuleArgs{
 // 					Id:                                 pulumi.String("abortmultiparts"),
 // 					Prefix:                             pulumi.String(""),
 // 					Enabled:                            pulumi.Bool(true),
 // 					AbortIncompleteMultipartUploadDays: pulumi.Int(7),
 // 				},
 // 			},
-// 			CorsRules: yandex.StorageBucketCorsRuleArray{
-// 				&yandex.StorageBucketCorsRuleArgs{
+// 			CorsRules: StorageBucketCorsRuleArray{
+// 				&StorageBucketCorsRuleArgs{
 // 					AllowedHeaders: pulumi.StringArray{
 // 						pulumi.String("*"),
 // 					},
@@ -482,19 +482,19 @@ import (
 // 					MaxAgeSeconds: pulumi.Int(3000),
 // 				},
 // 			},
-// 			Versioning: &yandex.StorageBucketVersioningArgs{
+// 			Versioning: &StorageBucketVersioningArgs{
 // 				Enabled: pulumi.Bool(true),
 // 			},
-// 			ServerSideEncryptionConfiguration: &yandex.StorageBucketServerSideEncryptionConfigurationArgs{
-// 				Rule: &yandex.StorageBucketServerSideEncryptionConfigurationRuleArgs{
-// 					ApplyServerSideEncryptionByDefault: &yandex.StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
+// 			ServerSideEncryptionConfiguration: &StorageBucketServerSideEncryptionConfigurationArgs{
+// 				Rule: &StorageBucketServerSideEncryptionConfigurationRuleArgs{
+// 					ApplyServerSideEncryptionByDefault: &StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
 // 						KmsMasterKeyId: key_a.ID(),
 // 						SseAlgorithm:   pulumi.String("aws:kms"),
 // 					},
 // 				},
 // 			},
-// 			Loggings: yandex.StorageBucketLoggingArray{
-// 				&yandex.StorageBucketLoggingArgs{
+// 			Loggings: StorageBucketLoggingArray{
+// 				&StorageBucketLoggingArgs{
 // 					TargetBucket: logBucket.ID(),
 // 					TargetPrefix: pulumi.String("tf-logs/"),
 // 				},
@@ -789,7 +789,7 @@ type StorageBucketArrayInput interface {
 type StorageBucketArray []StorageBucketInput
 
 func (StorageBucketArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*StorageBucket)(nil))
+	return reflect.TypeOf((*[]*StorageBucket)(nil)).Elem()
 }
 
 func (i StorageBucketArray) ToStorageBucketArrayOutput() StorageBucketArrayOutput {
@@ -814,7 +814,7 @@ type StorageBucketMapInput interface {
 type StorageBucketMap map[string]StorageBucketInput
 
 func (StorageBucketMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*StorageBucket)(nil))
+	return reflect.TypeOf((*map[string]*StorageBucket)(nil)).Elem()
 }
 
 func (i StorageBucketMap) ToStorageBucketMapOutput() StorageBucketMapOutput {
@@ -825,9 +825,7 @@ func (i StorageBucketMap) ToStorageBucketMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBucketMapOutput)
 }
 
-type StorageBucketOutput struct {
-	*pulumi.OutputState
-}
+type StorageBucketOutput struct{ *pulumi.OutputState }
 
 func (StorageBucketOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StorageBucket)(nil))
@@ -846,14 +844,12 @@ func (o StorageBucketOutput) ToStorageBucketPtrOutput() StorageBucketPtrOutput {
 }
 
 func (o StorageBucketOutput) ToStorageBucketPtrOutputWithContext(ctx context.Context) StorageBucketPtrOutput {
-	return o.ApplyT(func(v StorageBucket) *StorageBucket {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBucket) *StorageBucket {
 		return &v
 	}).(StorageBucketPtrOutput)
 }
 
-type StorageBucketPtrOutput struct {
-	*pulumi.OutputState
-}
+type StorageBucketPtrOutput struct{ *pulumi.OutputState }
 
 func (StorageBucketPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StorageBucket)(nil))
@@ -865,6 +861,16 @@ func (o StorageBucketPtrOutput) ToStorageBucketPtrOutput() StorageBucketPtrOutpu
 
 func (o StorageBucketPtrOutput) ToStorageBucketPtrOutputWithContext(ctx context.Context) StorageBucketPtrOutput {
 	return o
+}
+
+func (o StorageBucketPtrOutput) Elem() StorageBucketOutput {
+	return o.ApplyT(func(v *StorageBucket) StorageBucket {
+		if v != nil {
+			return *v
+		}
+		var ret StorageBucket
+		return ret
+	}).(StorageBucketOutput)
 }
 
 type StorageBucketArrayOutput struct{ *pulumi.OutputState }
@@ -908,6 +914,10 @@ func (o StorageBucketMapOutput) MapIndex(k pulumi.StringInput) StorageBucketOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketInput)(nil)).Elem(), &StorageBucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketPtrInput)(nil)).Elem(), &StorageBucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketArrayInput)(nil)).Elem(), StorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketMapInput)(nil)).Elem(), StorageBucketMap{})
 	pulumi.RegisterOutputType(StorageBucketOutput{})
 	pulumi.RegisterOutputType(StorageBucketPtrOutput{})
 	pulumi.RegisterOutputType(StorageBucketArrayOutput{})

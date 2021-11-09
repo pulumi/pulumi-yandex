@@ -15,6 +15,59 @@ import (
 // [the official documentation](https://cloud.yandex.com/en/docs/application-load-balancer/concepts/application-load-balancer)
 // .
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yandex.NewAlbLoadBalancer(ctx, "test_balancer", &yandex.AlbLoadBalancerArgs{
+// 			NetworkId: pulumi.Any(yandex_vpc_network.Test - network.Id),
+// 			AllocationPolicy: &AlbLoadBalancerAllocationPolicyArgs{
+// 				Locations: AlbLoadBalancerAllocationPolicyLocationArray{
+// 					&AlbLoadBalancerAllocationPolicyLocationArgs{
+// 						ZoneId:   pulumi.String("ru-central1-a"),
+// 						SubnetId: pulumi.Any(yandex_vpc_subnet.Test - subnet.Id),
+// 					},
+// 				},
+// 			},
+// 			Listeners: AlbLoadBalancerListenerArray{
+// 				&AlbLoadBalancerListenerArgs{
+// 					Name: pulumi.String("my-listener"),
+// 					Endpoints: AlbLoadBalancerListenerEndpointArray{
+// 						&AlbLoadBalancerListenerEndpointArgs{
+// 							Addresses: AlbLoadBalancerListenerEndpointAddressArray{
+// 								&AlbLoadBalancerListenerEndpointAddressArgs{
+// 									ExternalIpv4Address: nil,
+// 								},
+// 							},
+// 							Ports: pulumi.IntArray{
+// 								pulumi.Int(8080),
+// 							},
+// 						},
+// 					},
+// 					Http: &AlbLoadBalancerListenerHttpArgs{
+// 						Handler: &AlbLoadBalancerListenerHttpHandlerArgs{
+// 							HttpRouterId: pulumi.Any(yandex_alb_http_router.Test - router.Id),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // An Application Load Balancer can be imported using the `id` of the resource, e.g.
@@ -252,7 +305,7 @@ type AlbLoadBalancerArrayInput interface {
 type AlbLoadBalancerArray []AlbLoadBalancerInput
 
 func (AlbLoadBalancerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AlbLoadBalancer)(nil))
+	return reflect.TypeOf((*[]*AlbLoadBalancer)(nil)).Elem()
 }
 
 func (i AlbLoadBalancerArray) ToAlbLoadBalancerArrayOutput() AlbLoadBalancerArrayOutput {
@@ -277,7 +330,7 @@ type AlbLoadBalancerMapInput interface {
 type AlbLoadBalancerMap map[string]AlbLoadBalancerInput
 
 func (AlbLoadBalancerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AlbLoadBalancer)(nil))
+	return reflect.TypeOf((*map[string]*AlbLoadBalancer)(nil)).Elem()
 }
 
 func (i AlbLoadBalancerMap) ToAlbLoadBalancerMapOutput() AlbLoadBalancerMapOutput {
@@ -288,9 +341,7 @@ func (i AlbLoadBalancerMap) ToAlbLoadBalancerMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AlbLoadBalancerMapOutput)
 }
 
-type AlbLoadBalancerOutput struct {
-	*pulumi.OutputState
-}
+type AlbLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (AlbLoadBalancerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlbLoadBalancer)(nil))
@@ -309,14 +360,12 @@ func (o AlbLoadBalancerOutput) ToAlbLoadBalancerPtrOutput() AlbLoadBalancerPtrOu
 }
 
 func (o AlbLoadBalancerOutput) ToAlbLoadBalancerPtrOutputWithContext(ctx context.Context) AlbLoadBalancerPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancer) *AlbLoadBalancer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancer) *AlbLoadBalancer {
 		return &v
 	}).(AlbLoadBalancerPtrOutput)
 }
 
-type AlbLoadBalancerPtrOutput struct {
-	*pulumi.OutputState
-}
+type AlbLoadBalancerPtrOutput struct{ *pulumi.OutputState }
 
 func (AlbLoadBalancerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlbLoadBalancer)(nil))
@@ -328,6 +377,16 @@ func (o AlbLoadBalancerPtrOutput) ToAlbLoadBalancerPtrOutput() AlbLoadBalancerPt
 
 func (o AlbLoadBalancerPtrOutput) ToAlbLoadBalancerPtrOutputWithContext(ctx context.Context) AlbLoadBalancerPtrOutput {
 	return o
+}
+
+func (o AlbLoadBalancerPtrOutput) Elem() AlbLoadBalancerOutput {
+	return o.ApplyT(func(v *AlbLoadBalancer) AlbLoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancer
+		return ret
+	}).(AlbLoadBalancerOutput)
 }
 
 type AlbLoadBalancerArrayOutput struct{ *pulumi.OutputState }
@@ -371,6 +430,10 @@ func (o AlbLoadBalancerMapOutput) MapIndex(k pulumi.StringInput) AlbLoadBalancer
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerInput)(nil)).Elem(), &AlbLoadBalancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerPtrInput)(nil)).Elem(), &AlbLoadBalancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerArrayInput)(nil)).Elem(), AlbLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerMapInput)(nil)).Elem(), AlbLoadBalancerMap{})
 	pulumi.RegisterOutputType(AlbLoadBalancerOutput{})
 	pulumi.RegisterOutputType(AlbLoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(AlbLoadBalancerArrayOutput{})

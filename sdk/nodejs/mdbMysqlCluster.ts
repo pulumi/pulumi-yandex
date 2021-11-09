@@ -684,92 +684,92 @@ export interface MdbMysqlClusterState {
     /**
      * Access policy to the MySQL cluster. The structure is documented below.
      */
-    readonly access?: pulumi.Input<inputs.MdbMysqlClusterAccess>;
+    access?: pulumi.Input<inputs.MdbMysqlClusterAccess>;
     /**
      * Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
      */
-    readonly allowRegenerationHost?: pulumi.Input<boolean>;
+    allowRegenerationHost?: pulumi.Input<boolean>;
     /**
      * Time to start the daily backup, in the UTC. The structure is documented below.
      */
-    readonly backupWindowStart?: pulumi.Input<inputs.MdbMysqlClusterBackupWindowStart>;
+    backupWindowStart?: pulumi.Input<inputs.MdbMysqlClusterBackupWindowStart>;
     /**
      * Creation timestamp of the cluster.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * A database of the MySQL cluster. The structure is documented below.
      */
-    readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterDatabase>[]>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the MySQL cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the MySQL cluster.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Aggregated health of the cluster.
      */
-    readonly health?: pulumi.Input<string>;
+    health?: pulumi.Input<string>;
     /**
      * A host of the MySQL cluster. The structure is documented below.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterHost>[]>;
+    hosts?: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the MySQL cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Maintenance policy of the MySQL cluster. The structure is documented below.
      */
-    readonly maintenanceWindow?: pulumi.Input<inputs.MdbMysqlClusterMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.MdbMysqlClusterMaintenanceWindow>;
     /**
      * MySQL cluster config. Detail info in "MySQL config" section (documented below).
      */
-    readonly mysqlConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    mysqlConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the database.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the MySQL cluster uses.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * Resources allocated to hosts of the MySQL cluster. The structure is documented below.
      */
-    readonly resources?: pulumi.Input<inputs.MdbMysqlClusterResources>;
+    resources?: pulumi.Input<inputs.MdbMysqlClusterResources>;
     /**
      * The cluster will be created from the specified backup. The structure is documented below.
      */
-    readonly restore?: pulumi.Input<inputs.MdbMysqlClusterRestore>;
+    restore?: pulumi.Input<inputs.MdbMysqlClusterRestore>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Status of the cluster.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A user of the MySQL cluster. The structure is documented below.
      */
-    readonly users?: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterUser>[]>;
     /**
      * Version of the MySQL cluster. (allowed versions are: 5.7, 8.0)
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -779,78 +779,78 @@ export interface MdbMysqlClusterArgs {
     /**
      * Access policy to the MySQL cluster. The structure is documented below.
      */
-    readonly access?: pulumi.Input<inputs.MdbMysqlClusterAccess>;
+    access?: pulumi.Input<inputs.MdbMysqlClusterAccess>;
     /**
      * Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
      */
-    readonly allowRegenerationHost?: pulumi.Input<boolean>;
+    allowRegenerationHost?: pulumi.Input<boolean>;
     /**
      * Time to start the daily backup, in the UTC. The structure is documented below.
      */
-    readonly backupWindowStart?: pulumi.Input<inputs.MdbMysqlClusterBackupWindowStart>;
+    backupWindowStart?: pulumi.Input<inputs.MdbMysqlClusterBackupWindowStart>;
     /**
      * A database of the MySQL cluster. The structure is documented below.
      */
-    readonly databases: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterDatabase>[]>;
+    databases: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterDatabase>[]>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the MySQL cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the MySQL cluster.
      */
-    readonly environment: pulumi.Input<string>;
+    environment: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A host of the MySQL cluster. The structure is documented below.
      */
-    readonly hosts: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterHost>[]>;
+    hosts: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the MySQL cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Maintenance policy of the MySQL cluster. The structure is documented below.
      */
-    readonly maintenanceWindow?: pulumi.Input<inputs.MdbMysqlClusterMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.MdbMysqlClusterMaintenanceWindow>;
     /**
      * MySQL cluster config. Detail info in "MySQL config" section (documented below).
      */
-    readonly mysqlConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    mysqlConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the database.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the MySQL cluster uses.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * Resources allocated to hosts of the MySQL cluster. The structure is documented below.
      */
-    readonly resources: pulumi.Input<inputs.MdbMysqlClusterResources>;
+    resources: pulumi.Input<inputs.MdbMysqlClusterResources>;
     /**
      * The cluster will be created from the specified backup. The structure is documented below.
      */
-    readonly restore?: pulumi.Input<inputs.MdbMysqlClusterRestore>;
+    restore?: pulumi.Input<inputs.MdbMysqlClusterRestore>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A user of the MySQL cluster. The structure is documented below.
      */
-    readonly users: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterUser>[]>;
+    users: pulumi.Input<pulumi.Input<inputs.MdbMysqlClusterUser>[]>;
     /**
      * Version of the MySQL cluster. (allowed versions are: 5.7, 8.0)
      */
-    readonly version: pulumi.Input<string>;
+    version: pulumi.Input<string>;
 }

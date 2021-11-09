@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const myTrigger = pulumi.output(yandex.getFunctionTrigger({
  *     triggerId: "are1sampletrigger11",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [Yandex Cloud Functions Trigger](https://cloud.yandex.com/docs/functions/concepts/trigger) that can be used by other resources.
@@ -43,15 +43,15 @@ export interface GetFunctionTriggerArgs {
     /**
      * Folder ID for the Yandex Cloud Functions Trigger
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Yandex Cloud Functions Trigger name used to define trigger
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Yandex Cloud Functions Trigger id used to define trigger
      */
-    readonly triggerId?: string;
+    triggerId?: string;
 }
 
 /**
@@ -127,4 +127,26 @@ export interface GetFunctionTriggerResult {
      */
     readonly timer: outputs.GetFunctionTriggerTimer;
     readonly triggerId?: string;
+}
+
+export function getFunctionTriggerOutput(args?: GetFunctionTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionTriggerResult> {
+    return pulumi.output(args).apply(a => getFunctionTrigger(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFunctionTrigger.
+ */
+export interface GetFunctionTriggerOutputArgs {
+    /**
+     * Folder ID for the Yandex Cloud Functions Trigger
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Yandex Cloud Functions Trigger name used to define trigger
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Yandex Cloud Functions Trigger id used to define trigger
+     */
+    triggerId?: pulumi.Input<string>;
 }

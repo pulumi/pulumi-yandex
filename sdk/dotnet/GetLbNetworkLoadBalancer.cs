@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetLbNetworkLoadBalancerResult> InvokeAsync(GetLbNetworkLoadBalancerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLbNetworkLoadBalancerResult>("yandex:index/getLbNetworkLoadBalancer:getLbNetworkLoadBalancer", args ?? new GetLbNetworkLoadBalancerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Load Balancer network load balancer. For more information, see
+        /// [Yandex.Cloud Network Load Balancer](https://cloud.yandex.com/docs/load-balancer/concepts/).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetLbNetworkLoadBalancer.InvokeAsync(new Yandex.GetLbNetworkLoadBalancerArgs
+        ///         {
+        ///             NetworkLoadBalancerId = "my-network-load-balancer",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Load Balancer Network Load Balancers] that can be used by other resources.
+        /// </summary>
+        public static Output<GetLbNetworkLoadBalancerResult> Invoke(GetLbNetworkLoadBalancerInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLbNetworkLoadBalancerResult>("yandex:index/getLbNetworkLoadBalancer:getLbNetworkLoadBalancer", args ?? new GetLbNetworkLoadBalancerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +87,31 @@ namespace Pulumi.Yandex
         public string? NetworkLoadBalancerId { get; set; }
 
         public GetLbNetworkLoadBalancerArgs()
+        {
+        }
+    }
+
+    public sealed class GetLbNetworkLoadBalancerInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// - Name of the network load balancer.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Network load balancer ID.
+        /// </summary>
+        [Input("networkLoadBalancerId")]
+        public Input<string>? NetworkLoadBalancerId { get; set; }
+
+        public GetLbNetworkLoadBalancerInvokeArgs()
         {
         }
     }

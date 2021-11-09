@@ -141,35 +141,35 @@ export interface DnsZoneState {
     /**
      * (Computed) The DNS zone creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Description of the DNS zone.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder to create a zone in. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the DNS zone.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User assigned name of a specific resource. Must be unique within the folder.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
      */
-    readonly privateNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    privateNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
      */
-    readonly public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean>;
     /**
      * The DNS name of this zone, e.g. "example.com.". Must ends with dot.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -179,29 +179,29 @@ export interface DnsZoneArgs {
     /**
      * Description of the DNS zone.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder to create a zone in. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the DNS zone.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User assigned name of a specific resource. Must be unique within the folder.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
      */
-    readonly privateNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    privateNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
      */
-    readonly public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean>;
     /**
      * The DNS name of this zone, e.g. "example.com.". Must ends with dot.
      */
-    readonly zone: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

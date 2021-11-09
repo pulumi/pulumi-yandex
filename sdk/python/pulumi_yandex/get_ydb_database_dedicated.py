@@ -13,6 +13,7 @@ __all__ = [
     'GetYdbDatabaseDedicatedResult',
     'AwaitableGetYdbDatabaseDedicatedResult',
     'get_ydb_database_dedicated',
+    'get_ydb_database_dedicated_output',
 ]
 
 @pulumi.output_type
@@ -323,3 +324,31 @@ def get_ydb_database_dedicated(database_id: Optional[str] = None,
         tls_enabled=__ret__.tls_enabled,
         ydb_api_endpoint=__ret__.ydb_api_endpoint,
         ydb_full_endpoint=__ret__.ydb_full_endpoint)
+
+
+@_utilities.lift_output_func(get_ydb_database_dedicated)
+def get_ydb_database_dedicated_output(database_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetYdbDatabaseDedicatedResult]:
+    """
+    Get information about a Yandex Database (dedicated) cluster.
+    For more information, see [the official documentation](https://cloud.yandex.com/en/docs/ydb/concepts/serverless_and_dedicated).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_database = yandex.get_ydb_database_dedicated(database_id="some_ydb_dedicated_database_id")
+    pulumi.export("ydbApiEndpoint", my_database.ydb_api_endpoint)
+    ```
+
+
+    :param str database_id: ID of the Yandex Database cluster.
+    :param str folder_id: ID of the folder that the Yandex Database cluster belongs to.
+           It will be deduced from provider configuration if not set explicitly.
+    :param str name: Name of the Yandex Database cluster.
+    """
+    ...

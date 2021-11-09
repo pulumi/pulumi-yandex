@@ -13,6 +13,7 @@ __all__ = [
     'GetMdbGreenplumClusterResult',
     'AwaitableGetMdbGreenplumClusterResult',
     'get_mdb_greenplum_cluster',
+    'get_mdb_greenplum_cluster_output',
 ]
 
 @pulumi.output_type
@@ -302,3 +303,14 @@ def get_mdb_greenplum_cluster(cluster_id: Optional[str] = None,
         user_name=__ret__.user_name,
         version=__ret__.version,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_mdb_greenplum_cluster)
+def get_mdb_greenplum_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                     folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                     name: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMdbGreenplumClusterResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

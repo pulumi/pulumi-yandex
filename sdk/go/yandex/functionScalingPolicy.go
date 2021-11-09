@@ -29,13 +29,13 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := yandex.NewFunctionScalingPolicy(ctx, "myScalingPolicy", &yandex.FunctionScalingPolicyArgs{
 // 			FunctionId: pulumi.String("are1samplefunction11"),
-// 			Policies: yandex.FunctionScalingPolicyPolicyArray{
-// 				&yandex.FunctionScalingPolicyPolicyArgs{
+// 			Policies: FunctionScalingPolicyPolicyArray{
+// 				&FunctionScalingPolicyPolicyArgs{
 // 					Tag:                pulumi.String(fmt.Sprintf("%v%v", "$", "latest")),
 // 					ZoneInstancesLimit: pulumi.Int(3),
 // 					ZoneRequestsLimit:  pulumi.Int(100),
 // 				},
-// 				&yandex.FunctionScalingPolicyPolicyArgs{
+// 				&FunctionScalingPolicyPolicyArgs{
 // 					Tag:                pulumi.String("my_tag"),
 // 					ZoneInstancesLimit: pulumi.Int(4),
 // 					ZoneRequestsLimit:  pulumi.Int(150),
@@ -208,7 +208,7 @@ type FunctionScalingPolicyArrayInput interface {
 type FunctionScalingPolicyArray []FunctionScalingPolicyInput
 
 func (FunctionScalingPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FunctionScalingPolicy)(nil))
+	return reflect.TypeOf((*[]*FunctionScalingPolicy)(nil)).Elem()
 }
 
 func (i FunctionScalingPolicyArray) ToFunctionScalingPolicyArrayOutput() FunctionScalingPolicyArrayOutput {
@@ -233,7 +233,7 @@ type FunctionScalingPolicyMapInput interface {
 type FunctionScalingPolicyMap map[string]FunctionScalingPolicyInput
 
 func (FunctionScalingPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FunctionScalingPolicy)(nil))
+	return reflect.TypeOf((*map[string]*FunctionScalingPolicy)(nil)).Elem()
 }
 
 func (i FunctionScalingPolicyMap) ToFunctionScalingPolicyMapOutput() FunctionScalingPolicyMapOutput {
@@ -244,9 +244,7 @@ func (i FunctionScalingPolicyMap) ToFunctionScalingPolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionScalingPolicyMapOutput)
 }
 
-type FunctionScalingPolicyOutput struct {
-	*pulumi.OutputState
-}
+type FunctionScalingPolicyOutput struct{ *pulumi.OutputState }
 
 func (FunctionScalingPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FunctionScalingPolicy)(nil))
@@ -265,14 +263,12 @@ func (o FunctionScalingPolicyOutput) ToFunctionScalingPolicyPtrOutput() Function
 }
 
 func (o FunctionScalingPolicyOutput) ToFunctionScalingPolicyPtrOutputWithContext(ctx context.Context) FunctionScalingPolicyPtrOutput {
-	return o.ApplyT(func(v FunctionScalingPolicy) *FunctionScalingPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionScalingPolicy) *FunctionScalingPolicy {
 		return &v
 	}).(FunctionScalingPolicyPtrOutput)
 }
 
-type FunctionScalingPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type FunctionScalingPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionScalingPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FunctionScalingPolicy)(nil))
@@ -284,6 +280,16 @@ func (o FunctionScalingPolicyPtrOutput) ToFunctionScalingPolicyPtrOutput() Funct
 
 func (o FunctionScalingPolicyPtrOutput) ToFunctionScalingPolicyPtrOutputWithContext(ctx context.Context) FunctionScalingPolicyPtrOutput {
 	return o
+}
+
+func (o FunctionScalingPolicyPtrOutput) Elem() FunctionScalingPolicyOutput {
+	return o.ApplyT(func(v *FunctionScalingPolicy) FunctionScalingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionScalingPolicy
+		return ret
+	}).(FunctionScalingPolicyOutput)
 }
 
 type FunctionScalingPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -327,6 +333,10 @@ func (o FunctionScalingPolicyMapOutput) MapIndex(k pulumi.StringInput) FunctionS
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionScalingPolicyInput)(nil)).Elem(), &FunctionScalingPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionScalingPolicyPtrInput)(nil)).Elem(), &FunctionScalingPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionScalingPolicyArrayInput)(nil)).Elem(), FunctionScalingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionScalingPolicyMapInput)(nil)).Elem(), FunctionScalingPolicyMap{})
 	pulumi.RegisterOutputType(FunctionScalingPolicyOutput{})
 	pulumi.RegisterOutputType(FunctionScalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(FunctionScalingPolicyArrayOutput{})

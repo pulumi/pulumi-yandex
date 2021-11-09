@@ -12,6 +12,7 @@ __all__ = [
     'GetApiGatewayResult',
     'AwaitableGetApiGatewayResult',
     'get_api_gateway',
+    'get_api_gateway_output',
 ]
 
 @pulumi.output_type
@@ -161,3 +162,14 @@ def get_api_gateway(api_gateway_id: Optional[str] = None,
         name=__ret__.name,
         status=__ret__.status,
         user_domains=__ret__.user_domains)
+
+
+@_utilities.lift_output_func(get_api_gateway)
+def get_api_gateway_output(api_gateway_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           name: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiGatewayResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

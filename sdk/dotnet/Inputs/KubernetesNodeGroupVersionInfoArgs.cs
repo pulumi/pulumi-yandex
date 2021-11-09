@@ -9,4 +9,40 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Yandex.Inputs
 {
+
+    public sealed class KubernetesNodeGroupVersionInfoArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Current Kubernetes version, major.minor (e.g. 1.15).
+        /// </summary>
+        [Input("currentVersion")]
+        public Input<string>? CurrentVersion { get; set; }
+
+        /// <summary>
+        /// True/false flag.
+        /// Newer revisions may include Kubernetes patches (e.g 1.15.1 &gt; 1.15.2) as well
+        /// as some internal component updates - new features or bug fixes in yandex-specific
+        /// components either on the master or nodes.
+        /// </summary>
+        [Input("newRevisionAvailable")]
+        public Input<bool>? NewRevisionAvailable { get; set; }
+
+        /// <summary>
+        /// Human readable description of the changes to be applied
+        /// when updating to the latest revision. Empty if new_revision_available is false.
+        /// </summary>
+        [Input("newRevisionSummary")]
+        public Input<string>? NewRevisionSummary { get; set; }
+
+        /// <summary>
+        /// True/false flag. The current version is on the deprecation schedule,
+        /// component (master or node group) should be upgraded.
+        /// </summary>
+        [Input("versionDeprecated")]
+        public Input<bool>? VersionDeprecated { get; set; }
+
+        public KubernetesNodeGroupVersionInfoArgs()
+        {
+        }
+    }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetVpcAddressResult> InvokeAsync(GetVpcAddressArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcAddressResult>("yandex:index/getVpcAddress:getVpcAddress", args ?? new GetVpcAddressArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex VPC address. For more information, see
+        /// Yandex.Cloud VPC.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var addr = Output.Create(Yandex.GetVpcAddress.InvokeAsync(new Yandex.GetVpcAddressArgs
+        ///         {
+        ///             AddressId = "my-address-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [VPC Address] that can be used by other resources.
+        /// </summary>
+        public static Output<GetVpcAddressResult> Invoke(GetVpcAddressInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVpcAddressResult>("yandex:index/getVpcAddress:getVpcAddress", args ?? new GetVpcAddressInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +87,31 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetVpcAddressArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcAddressInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of the address.
+        /// </summary>
+        [Input("addressId")]
+        public Input<string>? AddressId { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// Name of the address.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetVpcAddressInvokeArgs()
         {
         }
     }

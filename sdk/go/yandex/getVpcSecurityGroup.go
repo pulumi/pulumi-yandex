@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-id"
-// 		_, err := yandex.LookupVpcSecurityGroup(ctx, &yandex.LookupVpcSecurityGroupArgs{
+// 		_, err := yandex.LookupVpcSecurityGroup(ctx, &GetVpcSecurityGroupArgs{
 // 			SecurityGroupId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -43,7 +46,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-group1"
-// 		_, err := yandex.LookupVpcSecurityGroup(ctx, &yandex.LookupVpcSecurityGroupArgs{
+// 		_, err := yandex.LookupVpcSecurityGroup(ctx, &GetVpcSecurityGroupArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -98,4 +101,101 @@ type LookupVpcSecurityGroupResult struct {
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// Status of this security group.
 	Status string `pulumi:"status"`
+}
+
+func LookupVpcSecurityGroupOutput(ctx *pulumi.Context, args LookupVpcSecurityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupVpcSecurityGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVpcSecurityGroupResult, error) {
+			args := v.(LookupVpcSecurityGroupArgs)
+			r, err := LookupVpcSecurityGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVpcSecurityGroupResultOutput)
+}
+
+// A collection of arguments for invoking getVpcSecurityGroup.
+type LookupVpcSecurityGroupOutputArgs struct {
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// - Name of the security group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Security Group ID.
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+}
+
+func (LookupVpcSecurityGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcSecurityGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVpcSecurityGroup.
+type LookupVpcSecurityGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcSecurityGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcSecurityGroupResult)(nil)).Elem()
+}
+
+func (o LookupVpcSecurityGroupResultOutput) ToLookupVpcSecurityGroupResultOutput() LookupVpcSecurityGroupResultOutput {
+	return o
+}
+
+func (o LookupVpcSecurityGroupResultOutput) ToLookupVpcSecurityGroupResultOutputWithContext(ctx context.Context) LookupVpcSecurityGroupResultOutput {
+	return o
+}
+
+// Creation timestamp of this security group.
+func (o LookupVpcSecurityGroupResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the rule.
+func (o LookupVpcSecurityGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of egress rules. The structure is documented below.
+func (o LookupVpcSecurityGroupResultOutput) Egresses() GetVpcSecurityGroupEgressArrayOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) []GetVpcSecurityGroupEgress { return v.Egresses }).(GetVpcSecurityGroupEgressArrayOutput)
+}
+
+// ID of the folder this security group belongs to.
+func (o LookupVpcSecurityGroupResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVpcSecurityGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of ingress rules. The structure is documented below.
+func (o LookupVpcSecurityGroupResultOutput) Ingresses() GetVpcSecurityGroupIngressArrayOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) []GetVpcSecurityGroupIngress { return v.Ingresses }).(GetVpcSecurityGroupIngressArrayOutput)
+}
+
+// Labels to assign to this rule.
+func (o LookupVpcSecurityGroupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the security group.
+func (o LookupVpcSecurityGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the network this security group belongs to.
+func (o LookupVpcSecurityGroupResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Target security group ID for this rule.
+func (o LookupVpcSecurityGroupResultOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Status of this security group.
+func (o LookupVpcSecurityGroupResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSecurityGroupResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVpcSecurityGroupResultOutput{})
 }

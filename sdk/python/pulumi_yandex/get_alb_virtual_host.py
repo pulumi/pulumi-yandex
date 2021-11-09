@@ -13,6 +13,7 @@ __all__ = [
     'GetAlbVirtualHostResult',
     'AwaitableGetAlbVirtualHostResult',
     'get_alb_virtual_host',
+    'get_alb_virtual_host_output',
 ]
 
 @pulumi.output_type
@@ -170,3 +171,33 @@ def get_alb_virtual_host(http_router_id: Optional[str] = None,
         name=__ret__.name,
         routes=__ret__.routes,
         virtual_host_id=__ret__.virtual_host_id)
+
+
+@_utilities.lift_output_func(get_alb_virtual_host)
+def get_alb_virtual_host_output(http_router_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                name: Optional[pulumi.Input[Optional[str]]] = None,
+                                virtual_host_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlbVirtualHostResult]:
+    """
+    Get information about a Yandex ALB Virtual Host. For more information, see
+    [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_vh_data = yandex.get_alb_virtual_host(name=yandex_alb_virtual_host["my-vh"]["name"],
+        http_router_id=yandex_alb_virtual_host["my-router"]["id"])
+    ```
+
+    This data source is used to define [Application Load Balancer Virtual Host] that can be used by other resources.
+
+
+    :param str http_router_id: HTTP Router that the resource belongs to.
+    :param str name: Name of the Virtual Host.
+    :param str virtual_host_id: The ID of a specific Virtual Host. Virtual Host ID is concatenation of HTTP Router ID
+           and Virtual Host name with `/` symbol between them. For Example, "http_router_id/vhost_name".
+    """
+    ...

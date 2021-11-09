@@ -32,8 +32,8 @@ import (
 // 		}
 // 		_, err = yandex.NewVpcSecurityGroup(ctx, "group1", &yandex.VpcSecurityGroupArgs{
 // 			Description: pulumi.String("description for my security group"),
-// 			Egresses: yandex.VpcSecurityGroupEgressArray{
-// 				&yandex.VpcSecurityGroupEgressArgs{
+// 			Egresses: VpcSecurityGroupEgressArray{
+// 				&VpcSecurityGroupEgressArgs{
 // 					Description: pulumi.String("rule2 description"),
 // 					FromPort:    pulumi.Int(8090),
 // 					Protocol:    pulumi.String("ANY"),
@@ -43,7 +43,7 @@ import (
 // 						pulumi.String("10.0.2.0/24"),
 // 					},
 // 				},
-// 				&yandex.VpcSecurityGroupEgressArgs{
+// 				&VpcSecurityGroupEgressArgs{
 // 					Description: pulumi.String("rule3 description"),
 // 					FromPort:    pulumi.Int(8090),
 // 					Protocol:    pulumi.String("UDP"),
@@ -53,8 +53,8 @@ import (
 // 					},
 // 				},
 // 			},
-// 			Ingresses: yandex.VpcSecurityGroupIngressArray{
-// 				&yandex.VpcSecurityGroupIngressArgs{
+// 			Ingresses: VpcSecurityGroupIngressArray{
+// 				&VpcSecurityGroupIngressArgs{
 // 					Description: pulumi.String("rule1 description"),
 // 					Port:        pulumi.Int(8080),
 // 					Protocol:    pulumi.String("TCP"),
@@ -277,7 +277,7 @@ type VpcSecurityGroupArrayInput interface {
 type VpcSecurityGroupArray []VpcSecurityGroupInput
 
 func (VpcSecurityGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VpcSecurityGroup)(nil))
+	return reflect.TypeOf((*[]*VpcSecurityGroup)(nil)).Elem()
 }
 
 func (i VpcSecurityGroupArray) ToVpcSecurityGroupArrayOutput() VpcSecurityGroupArrayOutput {
@@ -302,7 +302,7 @@ type VpcSecurityGroupMapInput interface {
 type VpcSecurityGroupMap map[string]VpcSecurityGroupInput
 
 func (VpcSecurityGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VpcSecurityGroup)(nil))
+	return reflect.TypeOf((*map[string]*VpcSecurityGroup)(nil)).Elem()
 }
 
 func (i VpcSecurityGroupMap) ToVpcSecurityGroupMapOutput() VpcSecurityGroupMapOutput {
@@ -313,9 +313,7 @@ func (i VpcSecurityGroupMap) ToVpcSecurityGroupMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(VpcSecurityGroupMapOutput)
 }
 
-type VpcSecurityGroupOutput struct {
-	*pulumi.OutputState
-}
+type VpcSecurityGroupOutput struct{ *pulumi.OutputState }
 
 func (VpcSecurityGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcSecurityGroup)(nil))
@@ -334,14 +332,12 @@ func (o VpcSecurityGroupOutput) ToVpcSecurityGroupPtrOutput() VpcSecurityGroupPt
 }
 
 func (o VpcSecurityGroupOutput) ToVpcSecurityGroupPtrOutputWithContext(ctx context.Context) VpcSecurityGroupPtrOutput {
-	return o.ApplyT(func(v VpcSecurityGroup) *VpcSecurityGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcSecurityGroup) *VpcSecurityGroup {
 		return &v
 	}).(VpcSecurityGroupPtrOutput)
 }
 
-type VpcSecurityGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type VpcSecurityGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (VpcSecurityGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VpcSecurityGroup)(nil))
@@ -353,6 +349,16 @@ func (o VpcSecurityGroupPtrOutput) ToVpcSecurityGroupPtrOutput() VpcSecurityGrou
 
 func (o VpcSecurityGroupPtrOutput) ToVpcSecurityGroupPtrOutputWithContext(ctx context.Context) VpcSecurityGroupPtrOutput {
 	return o
+}
+
+func (o VpcSecurityGroupPtrOutput) Elem() VpcSecurityGroupOutput {
+	return o.ApplyT(func(v *VpcSecurityGroup) VpcSecurityGroup {
+		if v != nil {
+			return *v
+		}
+		var ret VpcSecurityGroup
+		return ret
+	}).(VpcSecurityGroupOutput)
 }
 
 type VpcSecurityGroupArrayOutput struct{ *pulumi.OutputState }
@@ -396,6 +402,10 @@ func (o VpcSecurityGroupMapOutput) MapIndex(k pulumi.StringInput) VpcSecurityGro
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupInput)(nil)).Elem(), &VpcSecurityGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupPtrInput)(nil)).Elem(), &VpcSecurityGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupArrayInput)(nil)).Elem(), VpcSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupMapInput)(nil)).Elem(), VpcSecurityGroupMap{})
 	pulumi.RegisterOutputType(VpcSecurityGroupOutput{})
 	pulumi.RegisterOutputType(VpcSecurityGroupPtrOutput{})
 	pulumi.RegisterOutputType(VpcSecurityGroupArrayOutput{})

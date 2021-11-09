@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getMdbPostgresqlCluster({
  *     name: "test",
- * }, { async: true }));
+ * }));
  *
  * export const fqdn = foo.hosts[0].fqdn;
  * ```
@@ -48,20 +48,20 @@ export interface GetMdbPostgresqlClusterArgs {
     /**
      * The ID of the PostgreSQL cluster.
      */
-    readonly clusterId?: string;
-    readonly deletionProtection?: boolean;
+    clusterId?: string;
+    deletionProtection?: boolean;
     /**
      * Description of the PostgreSQL cluster.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * The name of the PostgreSQL cluster.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -131,4 +131,31 @@ export interface GetMdbPostgresqlClusterResult {
      * A user of the PostgreSQL cluster. The structure is documented below.
      */
     readonly users: outputs.GetMdbPostgresqlClusterUser[];
+}
+
+export function getMdbPostgresqlClusterOutput(args?: GetMdbPostgresqlClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbPostgresqlClusterResult> {
+    return pulumi.output(args).apply(a => getMdbPostgresqlCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMdbPostgresqlCluster.
+ */
+export interface GetMdbPostgresqlClusterOutputArgs {
+    /**
+     * The ID of the PostgreSQL cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Description of the PostgreSQL cluster.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * The name of the PostgreSQL cluster.
+     */
+    name?: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetYdbDatabaseServerlessResult> InvokeAsync(GetYdbDatabaseServerlessArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetYdbDatabaseServerlessResult>("yandex:index/getYdbDatabaseServerless:getYdbDatabaseServerless", args ?? new GetYdbDatabaseServerlessArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Database serverless cluster.
+        /// For more information, see [the official documentation](https://cloud.yandex.com/en/docs/ydb/concepts/serverless_and_dedicated).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myDatabase = Output.Create(Yandex.GetYdbDatabaseServerless.InvokeAsync(new Yandex.GetYdbDatabaseServerlessArgs
+        ///         {
+        ///             DatabaseId = "some_ydb_serverless_database_id",
+        ///         }));
+        ///         this.YdbApiEndpoint = myDatabase.Apply(myDatabase =&gt; myDatabase.YdbApiEndpoint);
+        ///     }
+        /// 
+        ///     [Output("ydbApiEndpoint")]
+        ///     public Output&lt;string&gt; YdbApiEndpoint { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetYdbDatabaseServerlessResult> Invoke(GetYdbDatabaseServerlessInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetYdbDatabaseServerlessResult>("yandex:index/getYdbDatabaseServerless:getYdbDatabaseServerless", args ?? new GetYdbDatabaseServerlessInvokeArgs(), options.WithVersion());
     }
 
 
@@ -68,6 +102,32 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetYdbDatabaseServerlessArgs()
+        {
+        }
+    }
+
+    public sealed class GetYdbDatabaseServerlessInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of the Yandex Database serverless cluster.
+        /// </summary>
+        [Input("databaseId")]
+        public Input<string>? DatabaseId { get; set; }
+
+        /// <summary>
+        /// ID of the folder that the Yandex Database serverless cluster belongs to.
+        /// It will be deduced from provider configuration if not set explicitly.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// Name of the Yandex Database serverless cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetYdbDatabaseServerlessInvokeArgs()
         {
         }
     }

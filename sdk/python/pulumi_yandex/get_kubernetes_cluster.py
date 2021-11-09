@@ -13,6 +13,7 @@ __all__ = [
     'GetKubernetesClusterResult',
     'AwaitableGetKubernetesClusterResult',
     'get_kubernetes_cluster',
+    'get_kubernetes_cluster_output',
 ]
 
 @pulumi.output_type
@@ -308,6 +309,16 @@ def get_kubernetes_cluster(cluster_id: Optional[str] = None,
     """
     Get information about a Yandex Kubernetes Cluster.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_cluster = yandex.get_kubernetes_cluster(cluster_id="some_k8s_cluster_id")
+    pulumi.export("clusterExternalV4Endpoint", my_cluster.master.external_v4_endpoint)
+    ```
+
 
     :param str cluster_id: ID of a specific Kubernetes cluster.
     :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
@@ -347,3 +358,29 @@ def get_kubernetes_cluster(cluster_id: Optional[str] = None,
         service_ipv4_range=__ret__.service_ipv4_range,
         service_ipv6_range=__ret__.service_ipv6_range,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_kubernetes_cluster)
+def get_kubernetes_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  name: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesClusterResult]:
+    """
+    Get information about a Yandex Kubernetes Cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_cluster = yandex.get_kubernetes_cluster(cluster_id="some_k8s_cluster_id")
+    pulumi.export("clusterExternalV4Endpoint", my_cluster.master.external_v4_endpoint)
+    ```
+
+
+    :param str cluster_id: ID of a specific Kubernetes cluster.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: Name of a specific Kubernetes cluster.
+    """
+    ...

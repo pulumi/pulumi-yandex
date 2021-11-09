@@ -91,7 +91,7 @@ export interface ContainerRepositoryState {
     /**
      * A name of the repository. The name of the repository should start with id of a container registry and match the name of the images that will be pushed in the repository.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -101,5 +101,5 @@ export interface ContainerRepositoryArgs {
     /**
      * A name of the repository. The name of the repository should start with id of a container registry and match the name of the images that will be pushed in the repository.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

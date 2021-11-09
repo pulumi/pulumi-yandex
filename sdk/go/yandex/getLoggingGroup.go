@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,84 @@ type LookupLoggingGroupResult struct {
 	Name            string            `pulumi:"name"`
 	RetentionPeriod string            `pulumi:"retentionPeriod"`
 	Status          string            `pulumi:"status"`
+}
+
+func LookupLoggingGroupOutput(ctx *pulumi.Context, args LookupLoggingGroupOutputArgs, opts ...pulumi.InvokeOption) LookupLoggingGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupLoggingGroupResult, error) {
+			args := v.(LookupLoggingGroupArgs)
+			r, err := LookupLoggingGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupLoggingGroupResultOutput)
+}
+
+// A collection of arguments for invoking getLoggingGroup.
+type LookupLoggingGroupOutputArgs struct {
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	GroupId  pulumi.StringPtrInput `pulumi:"groupId"`
+	Name     pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupLoggingGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLoggingGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getLoggingGroup.
+type LookupLoggingGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupLoggingGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLoggingGroupResult)(nil)).Elem()
+}
+
+func (o LookupLoggingGroupResultOutput) ToLookupLoggingGroupResultOutput() LookupLoggingGroupResultOutput {
+	return o
+}
+
+func (o LookupLoggingGroupResultOutput) ToLookupLoggingGroupResultOutputWithContext(ctx context.Context) LookupLoggingGroupResultOutput {
+	return o
+}
+
+func (o LookupLoggingGroupResultOutput) CloudId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) string { return v.CloudId }).(pulumi.StringOutput)
+}
+
+func (o LookupLoggingGroupResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupLoggingGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupLoggingGroupResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+func (o LookupLoggingGroupResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupLoggingGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupLoggingGroupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupLoggingGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupLoggingGroupResultOutput) RetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) string { return v.RetentionPeriod }).(pulumi.StringOutput)
+}
+
+func (o LookupLoggingGroupResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggingGroupResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupLoggingGroupResultOutput{})
 }

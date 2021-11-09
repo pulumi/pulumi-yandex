@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -32,7 +33,7 @@ namespace Pulumi.Yandex
         ///         {
         ///             Name = "test",
         ///         }));
-        ///         this.Fqdn = foo.Apply(foo =&gt; foo.Hosts[0].Fqdn);
+        ///         this.Fqdn = foo.Apply(foo =&gt; foo.Hosts?[0]?.Fqdn);
         ///     }
         /// 
         ///     [Output("fqdn")]
@@ -44,6 +45,40 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetMdbPostgresqlClusterResult> InvokeAsync(GetMdbPostgresqlClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMdbPostgresqlClusterResult>("yandex:index/getMdbPostgresqlCluster:getMdbPostgresqlCluster", args ?? new GetMdbPostgresqlClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Managed PostgreSQL cluster. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/).
+        /// [How to connect to the DB](https://cloud.yandex.com/en-ru/docs/managed-postgresql/quickstart#connect). To connect, use port 6432. The port number is not configurable.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetMdbPostgresqlCluster.InvokeAsync(new Yandex.GetMdbPostgresqlClusterArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///         this.Fqdn = foo.Apply(foo =&gt; foo.Hosts?[0]?.Fqdn);
+        ///     }
+        /// 
+        ///     [Output("fqdn")]
+        ///     public Output&lt;string&gt; Fqdn { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMdbPostgresqlClusterResult> Invoke(GetMdbPostgresqlClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMdbPostgresqlClusterResult>("yandex:index/getMdbPostgresqlCluster:getMdbPostgresqlCluster", args ?? new GetMdbPostgresqlClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -77,6 +112,40 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetMdbPostgresqlClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetMdbPostgresqlClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the PostgreSQL cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Description of the PostgreSQL cluster.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The name of the PostgreSQL cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetMdbPostgresqlClusterInvokeArgs()
         {
         }
     }

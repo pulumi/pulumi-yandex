@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getMdbMongodbCluster({
  *     name: "test",
- * }, { async: true }));
+ * }));
  *
  * export const networkId = foo.networkId;
  * ```
@@ -46,16 +46,16 @@ export interface GetMdbMongodbClusterArgs {
     /**
      * The ID of the MongoDB cluster.
      */
-    readonly clusterId?: string;
-    readonly deletionProtection?: boolean;
+    clusterId?: string;
+    deletionProtection?: boolean;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * The name of the MongoDB cluster.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -130,4 +130,27 @@ export interface GetMdbMongodbClusterResult {
      * A user of the MongoDB cluster. The structure is documented below.
      */
     readonly users: outputs.GetMdbMongodbClusterUser[];
+}
+
+export function getMdbMongodbClusterOutput(args?: GetMdbMongodbClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbMongodbClusterResult> {
+    return pulumi.output(args).apply(a => getMdbMongodbCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMdbMongodbCluster.
+ */
+export interface GetMdbMongodbClusterOutputArgs {
+    /**
+     * The ID of the MongoDB cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * The name of the MongoDB cluster.
+     */
+    name?: pulumi.Input<string>;
 }

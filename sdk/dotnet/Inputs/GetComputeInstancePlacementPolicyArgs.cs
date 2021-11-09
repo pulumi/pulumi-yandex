@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetComputeInstancePlacementPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetComputeInstancePlacementPolicyInputArgs : Pulumi.ResourceArgs
     {
         [Input("placementGroupId", required: true)]
-        public string PlacementGroupId { get; set; } = null!;
+        public Input<string> PlacementGroupId { get; set; } = null!;
 
-        public GetComputeInstancePlacementPolicyArgs()
+        public GetComputeInstancePlacementPolicyInputArgs()
         {
         }
     }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -15,10 +14,10 @@ import * as utilities from "./utilities";
  *
  * const builder = pulumi.output(yandex.getIamServiceAccount({
  *     serviceAccountId: "sa_id",
- * }, { async: true }));
+ * }));
  * const deployer = pulumi.output(yandex.getIamServiceAccount({
  *     name: "sa_name",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ## Argument reference
@@ -51,9 +50,9 @@ export function getIamServiceAccount(args?: GetIamServiceAccountArgs, opts?: pul
  * A collection of arguments for invoking getIamServiceAccount.
  */
 export interface GetIamServiceAccountArgs {
-    readonly folderId?: string;
-    readonly name?: string;
-    readonly serviceAccountId?: string;
+    folderId?: string;
+    name?: string;
+    serviceAccountId?: string;
 }
 
 /**
@@ -72,4 +71,17 @@ export interface GetIamServiceAccountResult {
     readonly id: string;
     readonly name: string;
     readonly serviceAccountId: string;
+}
+
+export function getIamServiceAccountOutput(args?: GetIamServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamServiceAccountResult> {
+    return pulumi.output(args).apply(a => getIamServiceAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIamServiceAccount.
+ */
+export interface GetIamServiceAccountOutputArgs {
+    folderId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
 }

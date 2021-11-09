@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const myGroup = pulumi.output(yandex.getComputeInstanceGroup({
  *     instanceGroupId: "some_instance_group_id",
- * }, { async: true }));
+ * }));
  *
  * export const instanceExternalIp = myGroup.instances[*].networkInterface.0.natIpAddress;
  * ```
@@ -41,7 +41,7 @@ export interface GetComputeInstanceGroupArgs {
     /**
      * The ID of a specific instance group.
      */
-    readonly instanceGroupId: string;
+    instanceGroupId: string;
 }
 
 /**
@@ -134,4 +134,18 @@ export interface GetComputeInstanceGroupResult {
      * A set of key/value  variables pairs to assign to the instance group.
      */
     readonly variables: {[key: string]: string};
+}
+
+export function getComputeInstanceGroupOutput(args: GetComputeInstanceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceGroupResult> {
+    return pulumi.output(args).apply(a => getComputeInstanceGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getComputeInstanceGroup.
+ */
+export interface GetComputeInstanceGroupOutputArgs {
+    /**
+     * The ID of a specific instance group.
+     */
+    instanceGroupId: pulumi.Input<string>;
 }

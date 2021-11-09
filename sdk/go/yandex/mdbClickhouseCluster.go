@@ -43,75 +43,75 @@ import (
 // 			return err
 // 		}
 // 		_, err = yandex.NewMdbClickhouseCluster(ctx, "fooMdbClickhouseCluster", &yandex.MdbClickhouseClusterArgs{
-// 			Clickhouse: &yandex.MdbClickhouseClusterClickhouseArgs{
-// 				Config: &yandex.MdbClickhouseClusterClickhouseConfigArgs{
+// 			Clickhouse: &MdbClickhouseClusterClickhouseArgs{
+// 				Config: &MdbClickhouseClusterClickhouseConfigArgs{
 // 					BackgroundPoolSize:         pulumi.Int(16),
 // 					BackgroundSchedulePoolSize: pulumi.Int(16),
-// 					Compression: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"method":           pulumi.String("LZ4"),
-// 							"minPartSize":      pulumi.Float64(1024),
-// 							"minPartSizeRatio": pulumi.Float64(0.5),
+// 					Compression: []interface{}{
+// 						map[string]interface{}{
+// 							"method":           "LZ4",
+// 							"minPartSize":      1024,
+// 							"minPartSizeRatio": 0.5,
 // 						},
-// 						pulumi.Map{
-// 							"method":           pulumi.String("ZSTD"),
-// 							"minPartSize":      pulumi.Float64(2048),
-// 							"minPartSizeRatio": pulumi.Float64(0.7),
+// 						map[string]interface{}{
+// 							"method":           "ZSTD",
+// 							"minPartSize":      2048,
+// 							"minPartSizeRatio": 0.7,
 // 						},
 // 					},
 // 					GeobaseUri: pulumi.String(""),
-// 					GraphiteRollup: pulumi.Array{
-// 						pulumi.Map{
-// 							"name": pulumi.String("rollup1"),
-// 							"pattern": pulumi.MapArray{
-// 								pulumi.Map{
-// 									"function": pulumi.String("func1"),
-// 									"regexp":   pulumi.String("abc"),
-// 									"retention": pulumi.Float64MapArray{
-// 										pulumi.Float64Map{
-// 											"age":       pulumi.Float64(1000),
-// 											"precision": pulumi.Float64(3),
+// 					GraphiteRollup: []interface{}{
+// 						map[string]interface{}{
+// 							"name": "rollup1",
+// 							"pattern": []map[string]interface{}{
+// 								map[string]interface{}{
+// 									"function": "func1",
+// 									"regexp":   "abc",
+// 									"retention": []map[string]interface{}{
+// 										map[string]interface{}{
+// 											"age":       1000,
+// 											"precision": 3,
 // 										},
 // 									},
 // 								},
 // 							},
 // 						},
-// 						pulumi.Map{
-// 							"name": pulumi.String("rollup2"),
-// 							"pattern": pulumi.MapArray{
-// 								pulumi.Map{
-// 									"function": pulumi.String("func2"),
-// 									"retention": pulumi.Float64MapArray{
-// 										pulumi.Float64Map{
-// 											"age":       pulumi.Float64(2000),
-// 											"precision": pulumi.Float64(5),
+// 						map[string]interface{}{
+// 							"name": "rollup2",
+// 							"pattern": []map[string]interface{}{
+// 								map[string]interface{}{
+// 									"function": "func2",
+// 									"retention": []map[string]interface{}{
+// 										map[string]interface{}{
+// 											"age":       2000,
+// 											"precision": 5,
 // 										},
 // 									},
 // 								},
 // 							},
 // 						},
 // 					},
-// 					Kafka: &yandex.MdbClickhouseClusterClickhouseConfigKafkaArgs{
+// 					Kafka: &MdbClickhouseClusterClickhouseConfigKafkaArgs{
 // 						SaslMechanism:    pulumi.String("SASL_MECHANISM_GSSAPI"),
 // 						SaslPassword:     pulumi.String("pass1"),
 // 						SaslUsername:     pulumi.String("user1"),
 // 						SecurityProtocol: pulumi.String("SECURITY_PROTOCOL_PLAINTEXT"),
 // 					},
-// 					KafkaTopic: pulumi.Array{
-// 						pulumi.Map{
-// 							"name": pulumi.String("topic1"),
-// 							"settings": pulumi.StringMap{
-// 								"saslMechanism":    pulumi.String("SASL_MECHANISM_SCRAM_SHA_256"),
-// 								"saslPassword":     pulumi.String("pass2"),
-// 								"saslUsername":     pulumi.String("user2"),
-// 								"securityProtocol": pulumi.String("SECURITY_PROTOCOL_SSL"),
+// 					KafkaTopic: []interface{}{
+// 						map[string]interface{}{
+// 							"name": "topic1",
+// 							"settings": map[string]interface{}{
+// 								"saslMechanism":    "SASL_MECHANISM_SCRAM_SHA_256",
+// 								"saslPassword":     "pass2",
+// 								"saslUsername":     "user2",
+// 								"securityProtocol": "SECURITY_PROTOCOL_SSL",
 // 							},
 // 						},
-// 						pulumi.Map{
-// 							"name": pulumi.String("topic2"),
-// 							"settings": pulumi.StringMap{
-// 								"saslMechanism":    pulumi.String("SASL_MECHANISM_PLAIN"),
-// 								"securityProtocol": pulumi.String("SECURITY_PROTOCOL_SASL_PLAINTEXT"),
+// 						map[string]interface{}{
+// 							"name": "topic2",
+// 							"settings": map[string]interface{}{
+// 								"saslMechanism":    "SASL_MECHANISM_PLAIN",
+// 								"securityProtocol": "SECURITY_PROTOCOL_SASL_PLAINTEXT",
 // 							},
 // 						},
 // 					},
@@ -122,7 +122,7 @@ import (
 // 					MaxConnections:         pulumi.Int(100),
 // 					MaxPartitionSizeToDrop: pulumi.Int(53687091200),
 // 					MaxTableSizeToDrop:     pulumi.Int(53687091200),
-// 					MergeTree: &yandex.MdbClickhouseClusterClickhouseConfigMergeTreeArgs{
+// 					MergeTree: &MdbClickhouseClusterClickhouseConfigMergeTreeArgs{
 // 						MaxBytesToMergeAtMinSpaceInPool:                pulumi.Int(1048576),
 // 						MaxReplicatedMergesInQueue:                     pulumi.Int(16),
 // 						NumberOfFreeEntriesInPoolToLowerMaxSizeOfMerge: pulumi.Int(8),
@@ -141,7 +141,7 @@ import (
 // 					QueryThreadLogEnabled:       pulumi.Bool(true),
 // 					QueryThreadLogRetentionSize: pulumi.Int(536870912),
 // 					QueryThreadLogRetentionTime: pulumi.Int(2592000),
-// 					Rabbitmq: &yandex.MdbClickhouseClusterClickhouseConfigRabbitmqArgs{
+// 					Rabbitmq: &MdbClickhouseClusterClickhouseConfigRabbitmqArgs{
 // 						Password: pulumi.String("rabbit_pass"),
 // 						Username: pulumi.String("rabbit_user"),
 // 					},
@@ -155,40 +155,40 @@ import (
 // 					TraceLogRetentionTime: pulumi.Int(2592000),
 // 					UncompressedCacheSize: pulumi.Int(8589934592),
 // 				},
-// 				Resources: &yandex.MdbClickhouseClusterClickhouseResourcesArgs{
+// 				Resources: &MdbClickhouseClusterClickhouseResourcesArgs{
 // 					DiskSize:         pulumi.Int(32),
 // 					DiskTypeId:       pulumi.String("network-ssd"),
 // 					ResourcePresetId: pulumi.String("s2.micro"),
 // 				},
 // 			},
-// 			CloudStorage: &yandex.MdbClickhouseClusterCloudStorageArgs{
+// 			CloudStorage: &MdbClickhouseClusterCloudStorageArgs{
 // 				Enabled: pulumi.Bool(false),
 // 			},
-// 			Databases: yandex.MdbClickhouseClusterDatabaseArray{
-// 				&yandex.MdbClickhouseClusterDatabaseArgs{
+// 			Databases: MdbClickhouseClusterDatabaseArray{
+// 				&MdbClickhouseClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name"),
 // 				},
 // 			},
 // 			Environment: pulumi.String("PRESTABLE"),
-// 			FormatSchemas: yandex.MdbClickhouseClusterFormatSchemaArray{
-// 				&yandex.MdbClickhouseClusterFormatSchemaArgs{
+// 			FormatSchemas: MdbClickhouseClusterFormatSchemaArray{
+// 				&MdbClickhouseClusterFormatSchemaArgs{
 // 					Name: pulumi.String("test_schema"),
 // 					Type: pulumi.String("FORMAT_SCHEMA_TYPE_CAPNPROTO"),
 // 					Uri:  pulumi.String("https://storage.yandexcloud.net/ch-data/schema.proto"),
 // 				},
 // 			},
-// 			Hosts: yandex.MdbClickhouseClusterHostArray{
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 			Hosts: MdbClickhouseClusterHostArray{
+// 				&MdbClickhouseClusterHostArgs{
 // 					SubnetId: fooVpcSubnet.ID(),
 // 					Type:     pulumi.String("CLICKHOUSE"),
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 				},
 // 			},
-// 			MaintenanceWindow: &yandex.MdbClickhouseClusterMaintenanceWindowArgs{
+// 			MaintenanceWindow: &MdbClickhouseClusterMaintenanceWindowArgs{
 // 				Type: pulumi.String("ANYTIME"),
 // 			},
-// 			MlModels: yandex.MdbClickhouseClusterMlModelArray{
-// 				&yandex.MdbClickhouseClusterMlModelArgs{
+// 			MlModels: MdbClickhouseClusterMlModelArray{
+// 				&MdbClickhouseClusterMlModelArgs{
 // 					Name: pulumi.String("test_model"),
 // 					Type: pulumi.String("ML_MODEL_TYPE_CATBOOST"),
 // 					Uri:  pulumi.String("https://storage.yandexcloud.net/ch-data/train.csv"),
@@ -196,28 +196,28 @@ import (
 // 			},
 // 			NetworkId:        fooVpcNetwork.ID(),
 // 			ServiceAccountId: pulumi.String("your_service_account_id"),
-// 			Users: yandex.MdbClickhouseClusterUserArray{
-// 				&yandex.MdbClickhouseClusterUserArgs{
+// 			Users: MdbClickhouseClusterUserArray{
+// 				&MdbClickhouseClusterUserArgs{
 // 					Name:     pulumi.String("user"),
 // 					Password: pulumi.String("your_password"),
-// 					Permissions: yandex.MdbClickhouseClusterUserPermissionArray{
-// 						&yandex.MdbClickhouseClusterUserPermissionArgs{
+// 					Permissions: MdbClickhouseClusterUserPermissionArray{
+// 						&MdbClickhouseClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name"),
 // 						},
 // 					},
-// 					Quotas: yandex.MdbClickhouseClusterUserQuotaArray{
-// 						&yandex.MdbClickhouseClusterUserQuotaArgs{
+// 					Quotas: MdbClickhouseClusterUserQuotaArray{
+// 						&MdbClickhouseClusterUserQuotaArgs{
 // 							Errors:           pulumi.Int(1000),
 // 							IntervalDuration: pulumi.Int(3600000),
 // 							Queries:          pulumi.Int(10000),
 // 						},
-// 						&yandex.MdbClickhouseClusterUserQuotaArgs{
-// 							Error:            pulumi.Float64(5000),
+// 						&MdbClickhouseClusterUserQuotaArgs{
+// 							Error:            5000,
 // 							IntervalDuration: pulumi.Int(79800000),
 // 							Queries:          pulumi.Int(50000),
 // 						},
 // 					},
-// 					Settings: &yandex.MdbClickhouseClusterUserSettingsArgs{
+// 					Settings: &MdbClickhouseClusterUserSettingsArgs{
 // 						MaxMemoryUsageForUser:              pulumi.Int(1000000000),
 // 						OutputFormatJsonQuote64bitIntegers: pulumi.Bool(true),
 // 						ReadOverflowMode:                   pulumi.String("throw"),
@@ -280,80 +280,80 @@ import (
 // 			return err
 // 		}
 // 		_, err = yandex.NewMdbClickhouseCluster(ctx, "fooMdbClickhouseCluster", &yandex.MdbClickhouseClusterArgs{
-// 			Clickhouse: &yandex.MdbClickhouseClusterClickhouseArgs{
-// 				Resources: &yandex.MdbClickhouseClusterClickhouseResourcesArgs{
+// 			Clickhouse: &MdbClickhouseClusterClickhouseArgs{
+// 				Resources: &MdbClickhouseClusterClickhouseResourcesArgs{
 // 					DiskSize:         pulumi.Int(16),
 // 					DiskTypeId:       pulumi.String("network-ssd"),
 // 					ResourcePresetId: pulumi.String("s2.micro"),
 // 				},
 // 			},
-// 			CloudStorage: &yandex.MdbClickhouseClusterCloudStorageArgs{
+// 			CloudStorage: &MdbClickhouseClusterCloudStorageArgs{
 // 				Enabled: pulumi.Bool(false),
 // 			},
-// 			Databases: yandex.MdbClickhouseClusterDatabaseArray{
-// 				&yandex.MdbClickhouseClusterDatabaseArgs{
+// 			Databases: MdbClickhouseClusterDatabaseArray{
+// 				&MdbClickhouseClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name"),
 // 				},
 // 			},
 // 			Environment: pulumi.String("PRESTABLE"),
-// 			Hosts: yandex.MdbClickhouseClusterHostArray{
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 			Hosts: MdbClickhouseClusterHostArray{
+// 				&MdbClickhouseClusterHostArgs{
 // 					SubnetId: fooVpcSubnet.ID(),
 // 					Type:     pulumi.String("CLICKHOUSE"),
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 				},
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 				&MdbClickhouseClusterHostArgs{
 // 					SubnetId: bar.ID(),
 // 					Type:     pulumi.String("CLICKHOUSE"),
 // 					Zone:     pulumi.String("ru-central1-b"),
 // 				},
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 				&MdbClickhouseClusterHostArgs{
 // 					SubnetId: fooVpcSubnet.ID(),
 // 					Type:     pulumi.String("ZOOKEEPER"),
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 				},
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 				&MdbClickhouseClusterHostArgs{
 // 					SubnetId: bar.ID(),
 // 					Type:     pulumi.String("ZOOKEEPER"),
 // 					Zone:     pulumi.String("ru-central1-b"),
 // 				},
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 				&MdbClickhouseClusterHostArgs{
 // 					SubnetId: baz.ID(),
 // 					Type:     pulumi.String("ZOOKEEPER"),
 // 					Zone:     pulumi.String("ru-central1-c"),
 // 				},
 // 			},
 // 			NetworkId: fooVpcNetwork.ID(),
-// 			Users: yandex.MdbClickhouseClusterUserArray{
-// 				&yandex.MdbClickhouseClusterUserArgs{
+// 			Users: MdbClickhouseClusterUserArray{
+// 				&MdbClickhouseClusterUserArgs{
 // 					Name:     pulumi.String("user"),
 // 					Password: pulumi.String("password"),
-// 					Permissions: yandex.MdbClickhouseClusterUserPermissionArray{
-// 						&yandex.MdbClickhouseClusterUserPermissionArgs{
+// 					Permissions: MdbClickhouseClusterUserPermissionArray{
+// 						&MdbClickhouseClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name"),
 // 						},
 // 					},
-// 					Quotas: yandex.MdbClickhouseClusterUserQuotaArray{
-// 						&yandex.MdbClickhouseClusterUserQuotaArgs{
+// 					Quotas: MdbClickhouseClusterUserQuotaArray{
+// 						&MdbClickhouseClusterUserQuotaArgs{
 // 							Errors:           pulumi.Int(1000),
 // 							IntervalDuration: pulumi.Int(3600000),
 // 							Queries:          pulumi.Int(10000),
 // 						},
-// 						&yandex.MdbClickhouseClusterUserQuotaArgs{
-// 							Error:            pulumi.Float64(5000),
+// 						&MdbClickhouseClusterUserQuotaArgs{
+// 							Error:            5000,
 // 							IntervalDuration: pulumi.Int(79800000),
 // 							Queries:          pulumi.Int(50000),
 // 						},
 // 					},
-// 					Settings: &yandex.MdbClickhouseClusterUserSettingsArgs{
+// 					Settings: &MdbClickhouseClusterUserSettingsArgs{
 // 						MaxMemoryUsageForUser:              pulumi.Int(1000000000),
 // 						OutputFormatJsonQuote64bitIntegers: pulumi.Bool(true),
 // 						ReadOverflowMode:                   pulumi.String("throw"),
 // 					},
 // 				},
 // 			},
-// 			Zookeeper: &yandex.MdbClickhouseClusterZookeeperArgs{
-// 				Resources: &yandex.MdbClickhouseClusterZookeeperResourcesArgs{
+// 			Zookeeper: &MdbClickhouseClusterZookeeperArgs{
+// 				Resources: &MdbClickhouseClusterZookeeperResourcesArgs{
 // 					DiskSize:         pulumi.Int(10),
 // 					DiskTypeId:       pulumi.String("network-ssd"),
 // 					ResourcePresetId: pulumi.String("s2.micro"),
@@ -415,42 +415,42 @@ import (
 // 			return err
 // 		}
 // 		_, err = yandex.NewMdbClickhouseCluster(ctx, "fooMdbClickhouseCluster", &yandex.MdbClickhouseClusterArgs{
-// 			Clickhouse: &yandex.MdbClickhouseClusterClickhouseArgs{
-// 				Resources: &yandex.MdbClickhouseClusterClickhouseResourcesArgs{
+// 			Clickhouse: &MdbClickhouseClusterClickhouseArgs{
+// 				Resources: &MdbClickhouseClusterClickhouseResourcesArgs{
 // 					DiskSize:         pulumi.Int(16),
 // 					DiskTypeId:       pulumi.String("network-ssd"),
 // 					ResourcePresetId: pulumi.String("s2.micro"),
 // 				},
 // 			},
-// 			CloudStorage: &yandex.MdbClickhouseClusterCloudStorageArgs{
+// 			CloudStorage: &MdbClickhouseClusterCloudStorageArgs{
 // 				Enabled: pulumi.Bool(false),
 // 			},
-// 			Databases: yandex.MdbClickhouseClusterDatabaseArray{
-// 				&yandex.MdbClickhouseClusterDatabaseArgs{
+// 			Databases: MdbClickhouseClusterDatabaseArray{
+// 				&MdbClickhouseClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name"),
 // 				},
 // 			},
 // 			Environment: pulumi.String("PRODUCTION"),
-// 			Hosts: yandex.MdbClickhouseClusterHostArray{
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 			Hosts: MdbClickhouseClusterHostArray{
+// 				&MdbClickhouseClusterHostArgs{
 // 					ShardName: pulumi.String("shard1"),
 // 					SubnetId:  fooVpcSubnet.ID(),
 // 					Type:      pulumi.String("CLICKHOUSE"),
 // 					Zone:      pulumi.String("ru-central1-a"),
 // 				},
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 				&MdbClickhouseClusterHostArgs{
 // 					ShardName: pulumi.String("shard1"),
 // 					SubnetId:  bar.ID(),
 // 					Type:      pulumi.String("CLICKHOUSE"),
 // 					Zone:      pulumi.String("ru-central1-b"),
 // 				},
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 				&MdbClickhouseClusterHostArgs{
 // 					ShardName: pulumi.String("shard2"),
 // 					SubnetId:  bar.ID(),
 // 					Type:      pulumi.String("CLICKHOUSE"),
 // 					Zone:      pulumi.String("ru-central1-b"),
 // 				},
-// 				&yandex.MdbClickhouseClusterHostArgs{
+// 				&MdbClickhouseClusterHostArgs{
 // 					ShardName: pulumi.String("shard2"),
 // 					SubnetId:  baz.ID(),
 // 					Type:      pulumi.String("CLICKHOUSE"),
@@ -458,8 +458,8 @@ import (
 // 				},
 // 			},
 // 			NetworkId: fooVpcNetwork.ID(),
-// 			ShardGroups: yandex.MdbClickhouseClusterShardGroupArray{
-// 				&yandex.MdbClickhouseClusterShardGroupArgs{
+// 			ShardGroups: MdbClickhouseClusterShardGroupArray{
+// 				&MdbClickhouseClusterShardGroupArgs{
 // 					Description: pulumi.String("Cluster configuration that contain only shard1"),
 // 					Name:        pulumi.String("single_shard_group"),
 // 					ShardNames: pulumi.StringArray{
@@ -467,36 +467,36 @@ import (
 // 					},
 // 				},
 // 			},
-// 			Users: yandex.MdbClickhouseClusterUserArray{
-// 				&yandex.MdbClickhouseClusterUserArgs{
+// 			Users: MdbClickhouseClusterUserArray{
+// 				&MdbClickhouseClusterUserArgs{
 // 					Name:     pulumi.String("user"),
 // 					Password: pulumi.String("password"),
-// 					Permissions: yandex.MdbClickhouseClusterUserPermissionArray{
-// 						&yandex.MdbClickhouseClusterUserPermissionArgs{
+// 					Permissions: MdbClickhouseClusterUserPermissionArray{
+// 						&MdbClickhouseClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name"),
 // 						},
 // 					},
-// 					Quotas: yandex.MdbClickhouseClusterUserQuotaArray{
-// 						&yandex.MdbClickhouseClusterUserQuotaArgs{
+// 					Quotas: MdbClickhouseClusterUserQuotaArray{
+// 						&MdbClickhouseClusterUserQuotaArgs{
 // 							Errors:           pulumi.Int(1000),
 // 							IntervalDuration: pulumi.Int(3600000),
 // 							Queries:          pulumi.Int(10000),
 // 						},
-// 						&yandex.MdbClickhouseClusterUserQuotaArgs{
-// 							Error:            pulumi.Float64(5000),
+// 						&MdbClickhouseClusterUserQuotaArgs{
+// 							Error:            5000,
 // 							IntervalDuration: pulumi.Int(79800000),
 // 							Queries:          pulumi.Int(50000),
 // 						},
 // 					},
-// 					Settings: &yandex.MdbClickhouseClusterUserSettingsArgs{
+// 					Settings: &MdbClickhouseClusterUserSettingsArgs{
 // 						MaxMemoryUsageForUser:              pulumi.Int(1000000000),
 // 						OutputFormatJsonQuote64bitIntegers: pulumi.Bool(true),
 // 						ReadOverflowMode:                   pulumi.String("throw"),
 // 					},
 // 				},
 // 			},
-// 			Zookeeper: &yandex.MdbClickhouseClusterZookeeperArgs{
-// 				Resources: &yandex.MdbClickhouseClusterZookeeperResourcesArgs{
+// 			Zookeeper: &MdbClickhouseClusterZookeeperArgs{
+// 				Resources: &MdbClickhouseClusterZookeeperResourcesArgs{
 // 					DiskSize:         pulumi.Int(10),
 // 					DiskTypeId:       pulumi.String("network-ssd"),
 // 					ResourcePresetId: pulumi.String("s2.micro"),
@@ -925,7 +925,7 @@ type MdbClickhouseClusterArrayInput interface {
 type MdbClickhouseClusterArray []MdbClickhouseClusterInput
 
 func (MdbClickhouseClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MdbClickhouseCluster)(nil))
+	return reflect.TypeOf((*[]*MdbClickhouseCluster)(nil)).Elem()
 }
 
 func (i MdbClickhouseClusterArray) ToMdbClickhouseClusterArrayOutput() MdbClickhouseClusterArrayOutput {
@@ -950,7 +950,7 @@ type MdbClickhouseClusterMapInput interface {
 type MdbClickhouseClusterMap map[string]MdbClickhouseClusterInput
 
 func (MdbClickhouseClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MdbClickhouseCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbClickhouseCluster)(nil)).Elem()
 }
 
 func (i MdbClickhouseClusterMap) ToMdbClickhouseClusterMapOutput() MdbClickhouseClusterMapOutput {
@@ -961,9 +961,7 @@ func (i MdbClickhouseClusterMap) ToMdbClickhouseClusterMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterMapOutput)
 }
 
-type MdbClickhouseClusterOutput struct {
-	*pulumi.OutputState
-}
+type MdbClickhouseClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbClickhouseClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MdbClickhouseCluster)(nil))
@@ -982,14 +980,12 @@ func (o MdbClickhouseClusterOutput) ToMdbClickhouseClusterPtrOutput() MdbClickho
 }
 
 func (o MdbClickhouseClusterOutput) ToMdbClickhouseClusterPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseCluster) *MdbClickhouseCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseCluster) *MdbClickhouseCluster {
 		return &v
 	}).(MdbClickhouseClusterPtrOutput)
 }
 
-type MdbClickhouseClusterPtrOutput struct {
-	*pulumi.OutputState
-}
+type MdbClickhouseClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (MdbClickhouseClusterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MdbClickhouseCluster)(nil))
@@ -1001,6 +997,16 @@ func (o MdbClickhouseClusterPtrOutput) ToMdbClickhouseClusterPtrOutput() MdbClic
 
 func (o MdbClickhouseClusterPtrOutput) ToMdbClickhouseClusterPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterPtrOutput {
 	return o
+}
+
+func (o MdbClickhouseClusterPtrOutput) Elem() MdbClickhouseClusterOutput {
+	return o.ApplyT(func(v *MdbClickhouseCluster) MdbClickhouseCluster {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseCluster
+		return ret
+	}).(MdbClickhouseClusterOutput)
 }
 
 type MdbClickhouseClusterArrayOutput struct{ *pulumi.OutputState }
@@ -1044,6 +1050,10 @@ func (o MdbClickhouseClusterMapOutput) MapIndex(k pulumi.StringInput) MdbClickho
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterInput)(nil)).Elem(), &MdbClickhouseCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterPtrInput)(nil)).Elem(), &MdbClickhouseCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterArrayInput)(nil)).Elem(), MdbClickhouseClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterMapInput)(nil)).Elem(), MdbClickhouseClusterMap{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterArrayOutput{})

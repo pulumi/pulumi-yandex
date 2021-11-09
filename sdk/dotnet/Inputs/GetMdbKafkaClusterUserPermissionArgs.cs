@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetMdbKafkaClusterUserPermissionArgs : Pulumi.InvokeArgs
+    public sealed class GetMdbKafkaClusterUserPermissionInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Role of the host in the cluster.
         /// </summary>
         [Input("role", required: true)]
-        public string Role { get; set; } = null!;
+        public Input<string> Role { get; set; } = null!;
 
         /// <summary>
         /// (Required) The name of the topic that the permission grants access to.
         /// </summary>
         [Input("topicName", required: true)]
-        public string TopicName { get; set; } = null!;
+        public Input<string> TopicName { get; set; } = null!;
 
-        public GetMdbKafkaClusterUserPermissionArgs()
+        public GetMdbKafkaClusterUserPermissionInputArgs()
         {
         }
     }

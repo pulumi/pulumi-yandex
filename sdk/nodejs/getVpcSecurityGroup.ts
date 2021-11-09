@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const group1 = pulumi.output(yandex.getVpcSecurityGroup({
  *     securityGroupId: "my-id",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * const group1 = pulumi.output(yandex.getVpcSecurityGroup({
  *     name: "my-group1",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define Security Group that can be used by other resources.
@@ -52,15 +52,15 @@ export interface GetVpcSecurityGroupArgs {
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * - Name of the security group.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Security Group ID.
      */
-    readonly securityGroupId?: string;
+    securityGroupId?: string;
 }
 
 /**
@@ -111,4 +111,26 @@ export interface GetVpcSecurityGroupResult {
      * Status of this security group.
      */
     readonly status: string;
+}
+
+export function getVpcSecurityGroupOutput(args?: GetVpcSecurityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcSecurityGroupResult> {
+    return pulumi.output(args).apply(a => getVpcSecurityGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcSecurityGroup.
+ */
+export interface GetVpcSecurityGroupOutputArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * - Name of the security group.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Security Group ID.
+     */
+    securityGroupId?: pulumi.Input<string>;
 }

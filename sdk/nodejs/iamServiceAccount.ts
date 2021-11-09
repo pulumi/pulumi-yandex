@@ -110,21 +110,21 @@ export class IamServiceAccount extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IamServiceAccount resources.
  */
 export interface IamServiceAccountState {
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Description of the service account.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder that the service account will be created in.
      * Defaults to the provider folder configuration.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Name of the service account.
      * Can be updated without creating a new resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -134,15 +134,15 @@ export interface IamServiceAccountArgs {
     /**
      * Description of the service account.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder that the service account will be created in.
      * Defaults to the provider folder configuration.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Name of the service account.
      * Can be updated without creating a new resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

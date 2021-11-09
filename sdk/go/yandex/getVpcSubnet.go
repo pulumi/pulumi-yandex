@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-subnet-id"
-// 		_, err := yandex.LookupVpcSubnet(ctx, &yandex.LookupVpcSubnetArgs{
+// 		_, err := yandex.LookupVpcSubnet(ctx, &GetVpcSubnetArgs{
 // 			SubnetId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -77,4 +80,108 @@ type LookupVpcSubnetResult struct {
 	V6CidrBlocks []string `pulumi:"v6CidrBlocks"`
 	// Name of the availability zone for this subnet.
 	Zone string `pulumi:"zone"`
+}
+
+func LookupVpcSubnetOutput(ctx *pulumi.Context, args LookupVpcSubnetOutputArgs, opts ...pulumi.InvokeOption) LookupVpcSubnetResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVpcSubnetResult, error) {
+			args := v.(LookupVpcSubnetArgs)
+			r, err := LookupVpcSubnet(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVpcSubnetResultOutput)
+}
+
+// A collection of arguments for invoking getVpcSubnet.
+type LookupVpcSubnetOutputArgs struct {
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// - Name of the subnet.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Subnet ID.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (LookupVpcSubnetOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcSubnetArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVpcSubnet.
+type LookupVpcSubnetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcSubnetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcSubnetResult)(nil)).Elem()
+}
+
+func (o LookupVpcSubnetResultOutput) ToLookupVpcSubnetResultOutput() LookupVpcSubnetResultOutput {
+	return o
+}
+
+func (o LookupVpcSubnetResultOutput) ToLookupVpcSubnetResultOutputWithContext(ctx context.Context) LookupVpcSubnetResultOutput {
+	return o
+}
+
+// Creation timestamp of this subnet.
+func (o LookupVpcSubnetResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the subnet.
+func (o LookupVpcSubnetResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Options for DHCP client. The structure is documented below.
+func (o LookupVpcSubnetResultOutput) DhcpOptions() GetVpcSubnetDhcpOptionsOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) GetVpcSubnetDhcpOptions { return v.DhcpOptions }).(GetVpcSubnetDhcpOptionsOutput)
+}
+
+func (o LookupVpcSubnetResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVpcSubnetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels to assign to this subnet.
+func (o LookupVpcSubnetResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupVpcSubnetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the network this subnet belongs to.
+func (o LookupVpcSubnetResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// ID of the route table to assign to this subnet.
+func (o LookupVpcSubnetResultOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcSubnetResultOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// The blocks of internal IPv4 addresses owned by this subnet.
+func (o LookupVpcSubnetResultOutput) V4CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) []string { return v.V4CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// The blocks of internal IPv6 addresses owned by this subnet.
+func (o LookupVpcSubnetResultOutput) V6CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) []string { return v.V6CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// Name of the availability zone for this subnet.
+func (o LookupVpcSubnetResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVpcSubnetResultOutput{})
 }

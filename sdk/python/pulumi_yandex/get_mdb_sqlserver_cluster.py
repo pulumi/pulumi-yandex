@@ -13,6 +13,7 @@ __all__ = [
     'GetMdbSqlserverClusterResult',
     'AwaitableGetMdbSqlserverClusterResult',
     'get_mdb_sqlserver_cluster',
+    'get_mdb_sqlserver_cluster_output',
 ]
 
 @pulumi.output_type
@@ -318,3 +319,33 @@ def get_mdb_sqlserver_cluster(cluster_id: Optional[str] = None,
         status=__ret__.status,
         users=__ret__.users,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_mdb_sqlserver_cluster)
+def get_mdb_sqlserver_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                     deletion_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                                     folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                     name: Optional[pulumi.Input[Optional[str]]] = None,
+                                     sqlserver_config: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMdbSqlserverClusterResult]:
+    """
+    Get information about a Yandex Managed SQLServer cluster. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/managed-sqlserver/).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_mdb_sqlserver_cluster(name="test")
+    pulumi.export("networkId", foo.network_id)
+    ```
+
+
+    :param str cluster_id: The ID of the SQLServer cluster.
+    :param str folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+    :param str name: The name of the SQLServer cluster.
+    :param Mapping[str, str] sqlserver_config: SQLServer cluster config.
+    """
+    ...

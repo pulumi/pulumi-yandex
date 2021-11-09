@@ -173,40 +173,40 @@ export interface ApiGatewayState {
     /**
      * Creation timestamp of the Yandex Cloud API Gateway.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Description of the Yandex Cloud API Gateway.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Default domain for the Yandex API Gateway. Generated at creation time.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly logGroupId?: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    logGroupId?: pulumi.Input<string>;
     /**
      * Yandex Cloud API Gateway name used to define API Gateway.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * OpenAPI specification for Yandex API Gateway.
      */
-    readonly spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string>;
     /**
      * Status of the Yandex API Gateway.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Set of user domains attached to Yandex API Gateway.
      */
-    readonly userDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    userDomains?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -216,21 +216,21 @@ export interface ApiGatewayArgs {
     /**
      * Description of the Yandex Cloud API Gateway.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Folder ID for the Yandex Cloud API Gateway. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Yandex Cloud API Gateway.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Yandex Cloud API Gateway name used to define API Gateway.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * OpenAPI specification for Yandex API Gateway.
      */
-    readonly spec: pulumi.Input<string>;
+    spec: pulumi.Input<string>;
 }

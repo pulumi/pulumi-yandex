@@ -9,4 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Yandex.Inputs
 {
+
+    public sealed class MdbGreenplumClusterSegmentHostArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// (Computed) The fully qualified domain name of the host.
+        /// </summary>
+        [Input("fqdn")]
+        public Input<string>? Fqdn { get; set; }
+
+        public MdbGreenplumClusterSegmentHostArgs()
+        {
+        }
+    }
 }

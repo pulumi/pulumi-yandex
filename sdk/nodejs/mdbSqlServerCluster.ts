@@ -333,76 +333,76 @@ export interface MdbSqlServerClusterState {
     /**
      * Time to start the daily backup, in the UTC. The structure is documented below.
      */
-    readonly backupWindowStart?: pulumi.Input<inputs.MdbSqlServerClusterBackupWindowStart>;
+    backupWindowStart?: pulumi.Input<inputs.MdbSqlServerClusterBackupWindowStart>;
     /**
      * Creation timestamp of the cluster.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * A database of the SQLServer cluster. The structure is documented below.
      */
-    readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterDatabase>[]>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the SQLServer cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the SQLServer cluster. (PRODUCTION, PRESTABLE)
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Aggregated health of the cluster.
      */
-    readonly health?: pulumi.Input<string>;
+    health?: pulumi.Input<string>;
     /**
      * A host of the SQLServer cluster. The structure is documented below.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterHost>[]>;
+    hosts?: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the SQLServer cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the database.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the SQLServer cluster uses.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * Resources allocated to hosts of the SQLServer cluster. The structure is documented below.
      */
-    readonly resources?: pulumi.Input<inputs.MdbSqlServerClusterResources>;
+    resources?: pulumi.Input<inputs.MdbSqlServerClusterResources>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * SQLServer cluster config. Detail info in "SQLServer config" section (documented below).
      */
-    readonly sqlserverConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sqlserverConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Status of the cluster.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A user of the SQLServer cluster. The structure is documented below.
      */
-    readonly users?: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterUser>[]>;
     /**
      * Version of the SQLServer cluster. (2016sp2std, 2016sp2ent)
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -412,62 +412,62 @@ export interface MdbSqlServerClusterArgs {
     /**
      * Time to start the daily backup, in the UTC. The structure is documented below.
      */
-    readonly backupWindowStart?: pulumi.Input<inputs.MdbSqlServerClusterBackupWindowStart>;
+    backupWindowStart?: pulumi.Input<inputs.MdbSqlServerClusterBackupWindowStart>;
     /**
      * A database of the SQLServer cluster. The structure is documented below.
      */
-    readonly databases: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterDatabase>[]>;
+    databases: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterDatabase>[]>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the SQLServer cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the SQLServer cluster. (PRODUCTION, PRESTABLE)
      */
-    readonly environment: pulumi.Input<string>;
+    environment: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A host of the SQLServer cluster. The structure is documented below.
      */
-    readonly hosts: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterHost>[]>;
+    hosts: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the SQLServer cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the database.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the SQLServer cluster uses.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * Resources allocated to hosts of the SQLServer cluster. The structure is documented below.
      */
-    readonly resources: pulumi.Input<inputs.MdbSqlServerClusterResources>;
+    resources: pulumi.Input<inputs.MdbSqlServerClusterResources>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * SQLServer cluster config. Detail info in "SQLServer config" section (documented below).
      */
-    readonly sqlserverConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sqlserverConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A user of the SQLServer cluster. The structure is documented below.
      */
-    readonly users: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterUser>[]>;
+    users: pulumi.Input<pulumi.Input<inputs.MdbSqlServerClusterUser>[]>;
     /**
      * Version of the SQLServer cluster. (2016sp2std, 2016sp2ent)
      */
-    readonly version: pulumi.Input<string>;
+    version: pulumi.Input<string>;
 }

@@ -238,7 +238,7 @@ type IamServiceAccountIamMemberArrayInput interface {
 type IamServiceAccountIamMemberArray []IamServiceAccountIamMemberInput
 
 func (IamServiceAccountIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IamServiceAccountIamMember)(nil))
+	return reflect.TypeOf((*[]*IamServiceAccountIamMember)(nil)).Elem()
 }
 
 func (i IamServiceAccountIamMemberArray) ToIamServiceAccountIamMemberArrayOutput() IamServiceAccountIamMemberArrayOutput {
@@ -263,7 +263,7 @@ type IamServiceAccountIamMemberMapInput interface {
 type IamServiceAccountIamMemberMap map[string]IamServiceAccountIamMemberInput
 
 func (IamServiceAccountIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IamServiceAccountIamMember)(nil))
+	return reflect.TypeOf((*map[string]*IamServiceAccountIamMember)(nil)).Elem()
 }
 
 func (i IamServiceAccountIamMemberMap) ToIamServiceAccountIamMemberMapOutput() IamServiceAccountIamMemberMapOutput {
@@ -274,9 +274,7 @@ func (i IamServiceAccountIamMemberMap) ToIamServiceAccountIamMemberMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(IamServiceAccountIamMemberMapOutput)
 }
 
-type IamServiceAccountIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type IamServiceAccountIamMemberOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamServiceAccountIamMember)(nil))
@@ -295,14 +293,12 @@ func (o IamServiceAccountIamMemberOutput) ToIamServiceAccountIamMemberPtrOutput(
 }
 
 func (o IamServiceAccountIamMemberOutput) ToIamServiceAccountIamMemberPtrOutputWithContext(ctx context.Context) IamServiceAccountIamMemberPtrOutput {
-	return o.ApplyT(func(v IamServiceAccountIamMember) *IamServiceAccountIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamServiceAccountIamMember) *IamServiceAccountIamMember {
 		return &v
 	}).(IamServiceAccountIamMemberPtrOutput)
 }
 
-type IamServiceAccountIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type IamServiceAccountIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamServiceAccountIamMember)(nil))
@@ -314,6 +310,16 @@ func (o IamServiceAccountIamMemberPtrOutput) ToIamServiceAccountIamMemberPtrOutp
 
 func (o IamServiceAccountIamMemberPtrOutput) ToIamServiceAccountIamMemberPtrOutputWithContext(ctx context.Context) IamServiceAccountIamMemberPtrOutput {
 	return o
+}
+
+func (o IamServiceAccountIamMemberPtrOutput) Elem() IamServiceAccountIamMemberOutput {
+	return o.ApplyT(func(v *IamServiceAccountIamMember) IamServiceAccountIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret IamServiceAccountIamMember
+		return ret
+	}).(IamServiceAccountIamMemberOutput)
 }
 
 type IamServiceAccountIamMemberArrayOutput struct{ *pulumi.OutputState }
@@ -357,6 +363,10 @@ func (o IamServiceAccountIamMemberMapOutput) MapIndex(k pulumi.StringInput) IamS
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamMemberInput)(nil)).Elem(), &IamServiceAccountIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamMemberPtrInput)(nil)).Elem(), &IamServiceAccountIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamMemberArrayInput)(nil)).Elem(), IamServiceAccountIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamMemberMapInput)(nil)).Elem(), IamServiceAccountIamMemberMap{})
 	pulumi.RegisterOutputType(IamServiceAccountIamMemberOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountIamMemberArrayOutput{})

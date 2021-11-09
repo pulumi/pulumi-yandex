@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * const myRegistry = pulumi.output(yandex.getIotCoreRegistry({
  *     registryId: "are1sampleregistry11",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [Yandex.Cloud IoT Registry](https://cloud.yandex.com/docs/iot-core/quickstart) that can be used by other resources.
@@ -43,15 +42,15 @@ export interface GetIotCoreRegistryArgs {
     /**
      * Folder ID for the IoT Core Registry
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * IoT Core Registry name used to define registry
      */
-    readonly name?: string;
+    name?: string;
     /**
      * IoT Core Registry id used to define registry
      */
-    readonly registryId?: string;
+    registryId?: string;
 }
 
 /**
@@ -85,4 +84,26 @@ export interface GetIotCoreRegistryResult {
      */
     readonly passwords: string[];
     readonly registryId?: string;
+}
+
+export function getIotCoreRegistryOutput(args?: GetIotCoreRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIotCoreRegistryResult> {
+    return pulumi.output(args).apply(a => getIotCoreRegistry(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIotCoreRegistry.
+ */
+export interface GetIotCoreRegistryOutputArgs {
+    /**
+     * Folder ID for the IoT Core Registry
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * IoT Core Registry name used to define registry
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * IoT Core Registry id used to define registry
+     */
+    registryId?: pulumi.Input<string>;
 }

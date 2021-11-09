@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -40,7 +39,7 @@ export interface GetDnsZoneArgs {
     /**
      * The ID of the DNS Zone.
      */
-    readonly dnsZoneId: string;
+    dnsZoneId: string;
 }
 
 /**
@@ -84,4 +83,18 @@ export interface GetDnsZoneResult {
      * (Computed) The DNS name of this zone, e.g. "example.com.". Must ends with dot.
      */
     readonly zone: string;
+}
+
+export function getDnsZoneOutput(args: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsZoneResult> {
+    return pulumi.output(args).apply(a => getDnsZone(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDnsZone.
+ */
+export interface GetDnsZoneOutputArgs {
+    /**
+     * The ID of the DNS Zone.
+     */
+    dnsZoneId: pulumi.Input<string>;
 }

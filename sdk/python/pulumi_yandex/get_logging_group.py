@@ -12,6 +12,7 @@ __all__ = [
     'GetLoggingGroupResult',
     'AwaitableGetLoggingGroupResult',
     'get_logging_group',
+    'get_logging_group_output',
 ]
 
 @pulumi.output_type
@@ -151,3 +152,14 @@ def get_logging_group(folder_id: Optional[str] = None,
         name=__ret__.name,
         retention_period=__ret__.retention_period,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_logging_group)
+def get_logging_group_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             name: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoggingGroupResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

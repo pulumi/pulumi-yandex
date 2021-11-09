@@ -13,6 +13,7 @@ __all__ = [
     'GetComputeInstanceGroupResult',
     'AwaitableGetComputeInstanceGroupResult',
     'get_compute_instance_group',
+    'get_compute_instance_group_output',
 ]
 
 @pulumi.output_type
@@ -332,3 +333,15 @@ def get_compute_instance_group(instance_group_id: Optional[str] = None,
         service_account_id=__ret__.service_account_id,
         status=__ret__.status,
         variables=__ret__.variables)
+
+
+@_utilities.lift_output_func(get_compute_instance_group)
+def get_compute_instance_group_output(instance_group_id: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceGroupResult]:
+    """
+    Get information about a Yandex Compute instance group.
+
+
+    :param str instance_group_id: The ID of a specific instance group.
+    """
+    ...

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * const tf_router = pulumi.output(yandex.getAlbHttpRouter({
  *     httpRouterId: "my-http-router-id",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [Application Load Balancer HTTP Router] that can be used by other resources.
@@ -44,19 +43,19 @@ export interface GetAlbHttpRouterArgs {
     /**
      * Description of the HTTP Router.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * HTTP Router ID.
      */
-    readonly httpRouterId?: string;
+    httpRouterId?: string;
     /**
      * - Name of the HTTP Router.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -82,4 +81,30 @@ export interface GetAlbHttpRouterResult {
      */
     readonly labels: {[key: string]: string};
     readonly name: string;
+}
+
+export function getAlbHttpRouterOutput(args?: GetAlbHttpRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlbHttpRouterResult> {
+    return pulumi.output(args).apply(a => getAlbHttpRouter(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlbHttpRouter.
+ */
+export interface GetAlbHttpRouterOutputArgs {
+    /**
+     * Description of the HTTP Router.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * HTTP Router ID.
+     */
+    httpRouterId?: pulumi.Input<string>;
+    /**
+     * - Name of the HTTP Router.
+     */
+    name?: pulumi.Input<string>;
 }

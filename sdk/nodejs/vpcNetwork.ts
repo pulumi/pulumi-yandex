@@ -129,30 +129,30 @@ export interface VpcNetworkState {
     /**
      * Creation timestamp of the key.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * ID of default Security Group of this network.
      */
-    readonly defaultSecurityGroupId?: pulumi.Input<string>;
+    defaultSecurityGroupId?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to apply to this network. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the network. Provided by the client when the network is created.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<string>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -163,18 +163,18 @@ export interface VpcNetworkArgs {
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to apply to this network. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the network. Provided by the client when the network is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

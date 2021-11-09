@@ -326,100 +326,100 @@ export interface MdbGreenplumClusterState {
     /**
      * Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
      */
-    readonly assignPublicIp?: pulumi.Input<boolean>;
+    assignPublicIp?: pulumi.Input<boolean>;
     /**
      * Creation timestamp of the cluster.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Greenplum cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the Greenplum cluster. (PRODUCTION, PRESTABLE)
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Aggregated health of the cluster.
      */
-    readonly health?: pulumi.Input<string>;
+    health?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Greenplum cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Number of hosts in master subcluster (1 or 2).
      */
-    readonly masterHostCount?: pulumi.Input<number>;
+    masterHostCount?: pulumi.Input<number>;
     /**
      * (Computed) Info about hosts in master subcluster. The structure is documented below.
      */
-    readonly masterHosts?: pulumi.Input<pulumi.Input<inputs.MdbGreenplumClusterMasterHost>[]>;
+    masterHosts?: pulumi.Input<pulumi.Input<inputs.MdbGreenplumClusterMasterHost>[]>;
     /**
      * Settings for master subcluster. The structure is documented below.
      */
-    readonly masterSubcluster?: pulumi.Input<inputs.MdbGreenplumClusterMasterSubcluster>;
+    masterSubcluster?: pulumi.Input<inputs.MdbGreenplumClusterMasterSubcluster>;
     /**
      * Name of the Greenplum cluster. Provided by the client when the cluster is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the Greenplum cluster uses.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of hosts in segment subcluster (from 1 to 32).
      */
-    readonly segmentHostCount?: pulumi.Input<number>;
+    segmentHostCount?: pulumi.Input<number>;
     /**
      * (Computed) Info about hosts in segment subcluster. The structure is documented below.
      */
-    readonly segmentHosts?: pulumi.Input<pulumi.Input<inputs.MdbGreenplumClusterSegmentHost>[]>;
+    segmentHosts?: pulumi.Input<pulumi.Input<inputs.MdbGreenplumClusterSegmentHost>[]>;
     /**
      * Number of segments on segment host (not more then 1 + RAM/8).
      */
-    readonly segmentInHost?: pulumi.Input<number>;
+    segmentInHost?: pulumi.Input<number>;
     /**
      * Settings for segment subcluster. The structure is documented below.
      */
-    readonly segmentSubcluster?: pulumi.Input<inputs.MdbGreenplumClusterSegmentSubcluster>;
+    segmentSubcluster?: pulumi.Input<inputs.MdbGreenplumClusterSegmentSubcluster>;
     /**
      * Status of the cluster.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ID of the subnet, to which the hosts belongs. The subnet must be a part of the network to which the cluster belongs.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
     /**
      * Greenplum cluster admin user name.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
     /**
      * Greenplum cluster admin password name.
      */
-    readonly userPassword?: pulumi.Input<string>;
+    userPassword?: pulumi.Input<string>;
     /**
      * Version of the Greenplum cluster. (6.17)
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The availability zone where the Greenplum hosts will be created.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -429,78 +429,78 @@ export interface MdbGreenplumClusterArgs {
     /**
      * Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
      */
-    readonly assignPublicIp: pulumi.Input<boolean>;
+    assignPublicIp: pulumi.Input<boolean>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Greenplum cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the Greenplum cluster. (PRODUCTION, PRESTABLE)
      */
-    readonly environment: pulumi.Input<string>;
+    environment: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Greenplum cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Number of hosts in master subcluster (1 or 2).
      */
-    readonly masterHostCount: pulumi.Input<number>;
+    masterHostCount: pulumi.Input<number>;
     /**
      * Settings for master subcluster. The structure is documented below.
      */
-    readonly masterSubcluster: pulumi.Input<inputs.MdbGreenplumClusterMasterSubcluster>;
+    masterSubcluster: pulumi.Input<inputs.MdbGreenplumClusterMasterSubcluster>;
     /**
      * Name of the Greenplum cluster. Provided by the client when the cluster is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the Greenplum cluster uses.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of hosts in segment subcluster (from 1 to 32).
      */
-    readonly segmentHostCount: pulumi.Input<number>;
+    segmentHostCount: pulumi.Input<number>;
     /**
      * Number of segments on segment host (not more then 1 + RAM/8).
      */
-    readonly segmentInHost: pulumi.Input<number>;
+    segmentInHost: pulumi.Input<number>;
     /**
      * Settings for segment subcluster. The structure is documented below.
      */
-    readonly segmentSubcluster: pulumi.Input<inputs.MdbGreenplumClusterSegmentSubcluster>;
+    segmentSubcluster: pulumi.Input<inputs.MdbGreenplumClusterSegmentSubcluster>;
     /**
      * The ID of the subnet, to which the hosts belongs. The subnet must be a part of the network to which the cluster belongs.
      */
-    readonly subnetId: pulumi.Input<string>;
+    subnetId: pulumi.Input<string>;
     /**
      * Greenplum cluster admin user name.
      */
-    readonly userName: pulumi.Input<string>;
+    userName: pulumi.Input<string>;
     /**
      * Greenplum cluster admin password name.
      */
-    readonly userPassword: pulumi.Input<string>;
+    userPassword: pulumi.Input<string>;
     /**
      * Version of the Greenplum cluster. (6.17)
      */
-    readonly version: pulumi.Input<string>;
+    version: pulumi.Input<string>;
     /**
      * The availability zone where the Greenplum hosts will be created.
      */
-    readonly zone: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

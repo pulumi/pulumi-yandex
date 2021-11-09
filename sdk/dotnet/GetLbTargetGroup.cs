@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetLbTargetGroupResult> InvokeAsync(GetLbTargetGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLbTargetGroupResult>("yandex:index/getLbTargetGroup:getLbTargetGroup", args ?? new GetLbTargetGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Load Balancer target group. For more information, see
+        /// [Yandex.Cloud Load Balancer](https://cloud.yandex.com/docs/load-balancer/quickstart).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetLbTargetGroup.InvokeAsync(new Yandex.GetLbTargetGroupArgs
+        ///         {
+        ///             TargetGroupId = "my-target-group-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Load Balancer Target Groups] that can be used by other resources.
+        /// </summary>
+        public static Output<GetLbTargetGroupResult> Invoke(GetLbTargetGroupInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLbTargetGroupResult>("yandex:index/getLbTargetGroup:getLbTargetGroup", args ?? new GetLbTargetGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +87,31 @@ namespace Pulumi.Yandex
         public string? TargetGroupId { get; set; }
 
         public GetLbTargetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetLbTargetGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// - Name of the Target Group.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Target Group ID.
+        /// </summary>
+        [Input("targetGroupId")]
+        public Input<string>? TargetGroupId { get; set; }
+
+        public GetLbTargetGroupInvokeArgs()
         {
         }
     }

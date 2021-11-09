@@ -12,6 +12,7 @@ __all__ = [
     'GetResourcemanagerFolderResult',
     'AwaitableGetResourcemanagerFolderResult',
     'get_resourcemanager_folder',
+    'get_resourcemanager_folder_output',
 ]
 
 @pulumi.output_type
@@ -166,3 +167,33 @@ def get_resourcemanager_folder(cloud_id: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_resourcemanager_folder)
+def get_resourcemanager_folder_output(cloud_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcemanagerFolderResult]:
+    """
+    Use this data source to get information about a Yandex Resource Manager Folder. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/resource-manager/concepts/resources-hierarchy#folder).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_folder1 = yandex.get_resourcemanager_folder(folder_id="folder_id_number_1")
+    my_folder2 = yandex.get_resourcemanager_folder(cloud_id="some_cloud_id",
+        name="folder_name")
+    pulumi.export("myFolder1Name", my_folder1.name)
+    pulumi.export("myFolder2CloudId", my_folder2.cloud_id)
+    ```
+
+
+    :param str cloud_id: Cloud that the resource belongs to. If value is omitted, the default provider cloud is used.
+    :param str folder_id: ID of the folder.
+    :param Mapping[str, str] labels: A map of labels applied to this folder.
+    :param str name: Name of the folder.
+    """
+    ...

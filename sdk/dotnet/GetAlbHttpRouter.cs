@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetAlbHttpRouterResult> InvokeAsync(GetAlbHttpRouterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlbHttpRouterResult>("yandex:index/getAlbHttpRouter:getAlbHttpRouter", args ?? new GetAlbHttpRouterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Application Load Balancer HTTP Router. For more information, see
+        /// [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var tf_router = Output.Create(Yandex.GetAlbHttpRouter.InvokeAsync(new Yandex.GetAlbHttpRouterArgs
+        ///         {
+        ///             HttpRouterId = "my-http-router-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Application Load Balancer HTTP Router] that can be used by other resources.
+        /// </summary>
+        public static Output<GetAlbHttpRouterResult> Invoke(GetAlbHttpRouterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlbHttpRouterResult>("yandex:index/getAlbHttpRouter:getAlbHttpRouter", args ?? new GetAlbHttpRouterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -66,6 +93,37 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetAlbHttpRouterArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlbHttpRouterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Description of the HTTP Router.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// HTTP Router ID.
+        /// </summary>
+        [Input("httpRouterId")]
+        public Input<string>? HttpRouterId { get; set; }
+
+        /// <summary>
+        /// - Name of the HTTP Router.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetAlbHttpRouterInvokeArgs()
         {
         }
     }

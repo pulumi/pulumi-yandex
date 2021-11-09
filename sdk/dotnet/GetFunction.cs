@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetFunctionResult> InvokeAsync(GetFunctionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("yandex:index/getFunction:getFunction", args ?? new GetFunctionArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Cloud Function. For more information about Yandex Cloud Functions, see 
+        /// [Yandex Cloud Functions](https://cloud.yandex.com/docs/functions/).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myFunction = Output.Create(Yandex.GetFunction.InvokeAsync(new Yandex.GetFunctionArgs
+        ///         {
+        ///             FunctionId = "are1samplefunction11",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Yandex Cloud Function](https://cloud.yandex.com/docs/functions/concepts/function) that can be used by other resources.
+        /// </summary>
+        public static Output<GetFunctionResult> Invoke(GetFunctionInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFunctionResult>("yandex:index/getFunction:getFunction", args ?? new GetFunctionInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +87,31 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetFunctionArgs()
+        {
+        }
+    }
+
+    public sealed class GetFunctionInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder ID for the Yandex Cloud Function
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// Yandex Cloud Function id used to define function
+        /// </summary>
+        [Input("functionId")]
+        public Input<string>? FunctionId { get; set; }
+
+        /// <summary>
+        /// Yandex Cloud Function name used to define function
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetFunctionInvokeArgs()
         {
         }
     }

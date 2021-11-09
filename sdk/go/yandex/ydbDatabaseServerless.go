@@ -257,7 +257,7 @@ type YdbDatabaseServerlessArrayInput interface {
 type YdbDatabaseServerlessArray []YdbDatabaseServerlessInput
 
 func (YdbDatabaseServerlessArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*YdbDatabaseServerless)(nil))
+	return reflect.TypeOf((*[]*YdbDatabaseServerless)(nil)).Elem()
 }
 
 func (i YdbDatabaseServerlessArray) ToYdbDatabaseServerlessArrayOutput() YdbDatabaseServerlessArrayOutput {
@@ -282,7 +282,7 @@ type YdbDatabaseServerlessMapInput interface {
 type YdbDatabaseServerlessMap map[string]YdbDatabaseServerlessInput
 
 func (YdbDatabaseServerlessMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*YdbDatabaseServerless)(nil))
+	return reflect.TypeOf((*map[string]*YdbDatabaseServerless)(nil)).Elem()
 }
 
 func (i YdbDatabaseServerlessMap) ToYdbDatabaseServerlessMapOutput() YdbDatabaseServerlessMapOutput {
@@ -293,9 +293,7 @@ func (i YdbDatabaseServerlessMap) ToYdbDatabaseServerlessMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseServerlessMapOutput)
 }
 
-type YdbDatabaseServerlessOutput struct {
-	*pulumi.OutputState
-}
+type YdbDatabaseServerlessOutput struct{ *pulumi.OutputState }
 
 func (YdbDatabaseServerlessOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*YdbDatabaseServerless)(nil))
@@ -314,14 +312,12 @@ func (o YdbDatabaseServerlessOutput) ToYdbDatabaseServerlessPtrOutput() YdbDatab
 }
 
 func (o YdbDatabaseServerlessOutput) ToYdbDatabaseServerlessPtrOutputWithContext(ctx context.Context) YdbDatabaseServerlessPtrOutput {
-	return o.ApplyT(func(v YdbDatabaseServerless) *YdbDatabaseServerless {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseServerless) *YdbDatabaseServerless {
 		return &v
 	}).(YdbDatabaseServerlessPtrOutput)
 }
 
-type YdbDatabaseServerlessPtrOutput struct {
-	*pulumi.OutputState
-}
+type YdbDatabaseServerlessPtrOutput struct{ *pulumi.OutputState }
 
 func (YdbDatabaseServerlessPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**YdbDatabaseServerless)(nil))
@@ -333,6 +329,16 @@ func (o YdbDatabaseServerlessPtrOutput) ToYdbDatabaseServerlessPtrOutput() YdbDa
 
 func (o YdbDatabaseServerlessPtrOutput) ToYdbDatabaseServerlessPtrOutputWithContext(ctx context.Context) YdbDatabaseServerlessPtrOutput {
 	return o
+}
+
+func (o YdbDatabaseServerlessPtrOutput) Elem() YdbDatabaseServerlessOutput {
+	return o.ApplyT(func(v *YdbDatabaseServerless) YdbDatabaseServerless {
+		if v != nil {
+			return *v
+		}
+		var ret YdbDatabaseServerless
+		return ret
+	}).(YdbDatabaseServerlessOutput)
 }
 
 type YdbDatabaseServerlessArrayOutput struct{ *pulumi.OutputState }
@@ -376,6 +382,10 @@ func (o YdbDatabaseServerlessMapOutput) MapIndex(k pulumi.StringInput) YdbDataba
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseServerlessInput)(nil)).Elem(), &YdbDatabaseServerless{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseServerlessPtrInput)(nil)).Elem(), &YdbDatabaseServerless{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseServerlessArrayInput)(nil)).Elem(), YdbDatabaseServerlessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseServerlessMapInput)(nil)).Elem(), YdbDatabaseServerlessMap{})
 	pulumi.RegisterOutputType(YdbDatabaseServerlessOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseServerlessPtrOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseServerlessArrayOutput{})

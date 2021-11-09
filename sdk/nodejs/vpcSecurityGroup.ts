@@ -169,39 +169,39 @@ export interface VpcSecurityGroupState {
     /**
      * Creation timestamp of this security group.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Description of the security group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A list of egress rules. The structure is documented below.
      */
-    readonly egresses?: pulumi.Input<pulumi.Input<inputs.VpcSecurityGroupEgress>[]>;
+    egresses?: pulumi.Input<pulumi.Input<inputs.VpcSecurityGroupEgress>[]>;
     /**
      * ID of the folder this security group belongs to.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A list of ingress rules.
      */
-    readonly ingresses?: pulumi.Input<pulumi.Input<inputs.VpcSecurityGroupIngress>[]>;
+    ingresses?: pulumi.Input<pulumi.Input<inputs.VpcSecurityGroupIngress>[]>;
     /**
      * Labels to assign to this security group.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the security group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network this security group belongs to.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * Status of this security group.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -211,29 +211,29 @@ export interface VpcSecurityGroupArgs {
     /**
      * Description of the security group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A list of egress rules. The structure is documented below.
      */
-    readonly egresses?: pulumi.Input<pulumi.Input<inputs.VpcSecurityGroupEgress>[]>;
+    egresses?: pulumi.Input<pulumi.Input<inputs.VpcSecurityGroupEgress>[]>;
     /**
      * ID of the folder this security group belongs to.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A list of ingress rules.
      */
-    readonly ingresses?: pulumi.Input<pulumi.Input<inputs.VpcSecurityGroupIngress>[]>;
+    ingresses?: pulumi.Input<pulumi.Input<inputs.VpcSecurityGroupIngress>[]>;
     /**
      * Labels to assign to this security group.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the security group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network this security group belongs to.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
 }

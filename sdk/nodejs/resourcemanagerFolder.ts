@@ -105,20 +105,20 @@ export interface ResourcemanagerFolderState {
     /**
      * Cloud that the resource belongs to. If value is omitted, the default provider Cloud ID is used.
      */
-    readonly cloudId?: pulumi.Input<string>;
-    readonly createdAt?: pulumi.Input<string>;
+    cloudId?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * A description of the Folder.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Folder.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Folder.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -128,17 +128,17 @@ export interface ResourcemanagerFolderArgs {
     /**
      * Cloud that the resource belongs to. If value is omitted, the default provider Cloud ID is used.
      */
-    readonly cloudId?: pulumi.Input<string>;
+    cloudId?: pulumi.Input<string>;
     /**
      * A description of the Folder.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Folder.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Folder.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,124 @@ type LookupComputeDiskResult struct {
 	Type string `pulumi:"type"`
 	// ID of the zone where the disk resides.
 	Zone string `pulumi:"zone"`
+}
+
+func LookupComputeDiskOutput(ctx *pulumi.Context, args LookupComputeDiskOutputArgs, opts ...pulumi.InvokeOption) LookupComputeDiskResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupComputeDiskResult, error) {
+			args := v.(LookupComputeDiskArgs)
+			r, err := LookupComputeDisk(ctx, &args, opts...)
+			return *r, err
+		}).(LookupComputeDiskResultOutput)
+}
+
+// A collection of arguments for invoking getComputeDisk.
+type LookupComputeDiskOutputArgs struct {
+	// The ID of a specific disk.
+	DiskId              pulumi.StringPtrInput                     `pulumi:"diskId"`
+	DiskPlacementPolicy GetComputeDiskDiskPlacementPolicyPtrInput `pulumi:"diskPlacementPolicy"`
+	// ID of the folder that the disk belongs to.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// Name of the disk.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupComputeDiskOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeDiskArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getComputeDisk.
+type LookupComputeDiskResultOutput struct{ *pulumi.OutputState }
+
+func (LookupComputeDiskResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeDiskResult)(nil)).Elem()
+}
+
+func (o LookupComputeDiskResultOutput) ToLookupComputeDiskResultOutput() LookupComputeDiskResultOutput {
+	return o
+}
+
+func (o LookupComputeDiskResultOutput) ToLookupComputeDiskResultOutputWithContext(ctx context.Context) LookupComputeDiskResultOutput {
+	return o
+}
+
+// Disk creation timestamp.
+func (o LookupComputeDiskResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Optional description of this disk.
+func (o LookupComputeDiskResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupComputeDiskResultOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+func (o LookupComputeDiskResultOutput) DiskPlacementPolicy() GetComputeDiskDiskPlacementPolicyPtrOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) *GetComputeDiskDiskPlacementPolicy { return v.DiskPlacementPolicy }).(GetComputeDiskDiskPlacementPolicyPtrOutput)
+}
+
+// ID of the folder that the disk belongs to.
+func (o LookupComputeDiskResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupComputeDiskResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the source image that was used to create this disk.
+func (o LookupComputeDiskResultOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// IDs of instances to which this disk is attached.
+func (o LookupComputeDiskResultOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// Map of labels applied to this disk.
+func (o LookupComputeDiskResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupComputeDiskResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// License IDs that indicate which licenses are attached to this disk.
+func (o LookupComputeDiskResultOutput) ProductIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) []string { return v.ProductIds }).(pulumi.StringArrayOutput)
+}
+
+// Size of the disk, specified in Gb.
+func (o LookupComputeDiskResultOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Source snapshot that was used to create this disk.
+func (o LookupComputeDiskResultOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// Status of the disk.
+func (o LookupComputeDiskResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Type of the disk.
+func (o LookupComputeDiskResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// ID of the zone where the disk resides.
+func (o LookupComputeDiskResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupComputeDiskResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -44,6 +45,40 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetContainerRepositoryResult> InvokeAsync(GetContainerRepositoryArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContainerRepositoryResult>("yandex:index/getContainerRepository:getContainerRepository", args ?? new GetContainerRepositoryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Container Repository. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/container-registry/concepts/repository)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var repo_1 = Output.Create(Yandex.GetContainerRepository.InvokeAsync(new Yandex.GetContainerRepositoryArgs
+        ///         {
+        ///             Name = "some_repository_name",
+        ///         }));
+        ///         var repo_2 = Output.Create(Yandex.GetContainerRepository.InvokeAsync(new Yandex.GetContainerRepositoryArgs
+        ///         {
+        ///             RepositoryId = "some_repository_id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetContainerRepositoryResult> Invoke(GetContainerRepositoryInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetContainerRepositoryResult>("yandex:index/getContainerRepository:getContainerRepository", args ?? new GetContainerRepositoryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -62,6 +97,25 @@ namespace Pulumi.Yandex
         public string? RepositoryId { get; set; }
 
         public GetContainerRepositoryArgs()
+        {
+        }
+    }
+
+    public sealed class GetContainerRepositoryInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Name of the repository. The name of the repository should start with id of a container registry and match the name of the images in the repository.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of a specific repository.
+        /// </summary>
+        [Input("repositoryId")]
+        public Input<string>? RepositoryId { get; set; }
+
+        public GetContainerRepositoryInvokeArgs()
         {
         }
     }

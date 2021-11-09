@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const project1 = pulumi.output(yandex.getResourcemanagerCloud({
  *     name: "Project 1",
- * }, { async: true }));
+ * }));
  * const admin = new yandex.ResourcemanagerCloudIamBinding("admin", {
  *     cloudId: project1.id,
  *     members: ["userAccount:some_user_id"],
@@ -126,7 +126,7 @@ export interface ResourcemanagerCloudIamBindingState {
     /**
      * ID of the cloud to attach the policy to.
      */
-    readonly cloudId?: pulumi.Input<string>;
+    cloudId?: pulumi.Input<string>;
     /**
      * An array of identities that will be granted the privilege in the `role`.
      * Each entry can have one of the following values:
@@ -134,13 +134,13 @@ export interface ResourcemanagerCloudIamBindingState {
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      * * **federatedUser:{federated_user_id}**: A unique federated user ID.
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be assigned. Only one
      * `yandex.ResourcemanagerCloudIamBinding` can be used per role.
      */
-    readonly role?: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role?: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }
 
 /**
@@ -150,7 +150,7 @@ export interface ResourcemanagerCloudIamBindingArgs {
     /**
      * ID of the cloud to attach the policy to.
      */
-    readonly cloudId: pulumi.Input<string>;
+    cloudId: pulumi.Input<string>;
     /**
      * An array of identities that will be granted the privilege in the `role`.
      * Each entry can have one of the following values:
@@ -158,11 +158,11 @@ export interface ResourcemanagerCloudIamBindingArgs {
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      * * **federatedUser:{federated_user_id}**: A unique federated user ID.
      */
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be assigned. Only one
      * `yandex.ResourcemanagerCloudIamBinding` can be used per role.
      */
-    readonly role: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }

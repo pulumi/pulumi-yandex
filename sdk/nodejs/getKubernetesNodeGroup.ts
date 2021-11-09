@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const myNodeGroup = pulumi.output(yandex.getKubernetesNodeGroup({
  *     nodeGroupId: "some_k8s_node_group_id",
- * }, { async: true }));
+ * }));
  *
  * export const my_node_group_status = myNodeGroup.status;
  * ```
@@ -45,15 +45,15 @@ export interface GetKubernetesNodeGroupArgs {
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Name of a specific Kubernetes node group.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * ID of a specific Kubernetes node group.
      */
-    readonly nodeGroupId?: string;
+    nodeGroupId?: string;
 }
 
 /**
@@ -131,4 +131,26 @@ export interface GetKubernetesNodeGroupResult {
      * Information about Kubernetes node group version. The structure is documented below.
      */
     readonly versionInfo: outputs.GetKubernetesNodeGroupVersionInfo;
+}
+
+export function getKubernetesNodeGroupOutput(args?: GetKubernetesNodeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesNodeGroupResult> {
+    return pulumi.output(args).apply(a => getKubernetesNodeGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKubernetesNodeGroup.
+ */
+export interface GetKubernetesNodeGroupOutputArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Name of a specific Kubernetes node group.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * ID of a specific Kubernetes node group.
+     */
+    nodeGroupId?: pulumi.Input<string>;
 }

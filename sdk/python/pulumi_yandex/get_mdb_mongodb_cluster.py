@@ -13,6 +13,7 @@ __all__ = [
     'GetMdbMongodbClusterResult',
     'AwaitableGetMdbMongodbClusterResult',
     'get_mdb_mongodb_cluster',
+    'get_mdb_mongodb_cluster_output',
 ]
 
 @pulumi.output_type
@@ -315,3 +316,31 @@ def get_mdb_mongodb_cluster(cluster_id: Optional[str] = None,
         sharded=__ret__.sharded,
         status=__ret__.status,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_mdb_mongodb_cluster)
+def get_mdb_mongodb_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                   deletion_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                                   folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                   name: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMdbMongodbClusterResult]:
+    """
+    Get information about a Yandex Managed MongoDB cluster. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/managed-mongodb/concepts).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_mdb_mongodb_cluster(name="test")
+    pulumi.export("networkId", foo.network_id)
+    ```
+
+
+    :param str cluster_id: The ID of the MongoDB cluster.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: The name of the MongoDB cluster.
+    """
+    ...

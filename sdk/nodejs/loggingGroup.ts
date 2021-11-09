@@ -127,36 +127,36 @@ export interface LoggingGroupState {
     /**
      * ID of the cloud that the Yandex Cloud Logging group belong to.
      */
-    readonly cloudId?: pulumi.Input<string>;
+    cloudId?: pulumi.Input<string>;
     /**
      * The Yandex Cloud Logging group creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * A description for the Yandex Cloud Logging group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder that the Yandex Cloud Logging group belongs to.
      * It will be deduced from provider configuration if not set explicitly.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Yandex Cloud Logging group.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name for the Yandex Cloud Logging group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Log entries retention period for the Yandex Cloud Logging group.
      */
-    readonly retentionPeriod?: pulumi.Input<string>;
+    retentionPeriod?: pulumi.Input<string>;
     /**
      * The Yandex Cloud Logging group status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -166,22 +166,22 @@ export interface LoggingGroupArgs {
     /**
      * A description for the Yandex Cloud Logging group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder that the Yandex Cloud Logging group belongs to.
      * It will be deduced from provider configuration if not set explicitly.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Yandex Cloud Logging group.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name for the Yandex Cloud Logging group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Log entries retention period for the Yandex Cloud Logging group.
      */
-    readonly retentionPeriod?: pulumi.Input<string>;
+    retentionPeriod?: pulumi.Input<string>;
 }

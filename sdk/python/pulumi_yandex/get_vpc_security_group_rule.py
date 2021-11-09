@@ -12,6 +12,7 @@ __all__ = [
     'GetVpcSecurityGroupRuleResult',
     'AwaitableGetVpcSecurityGroupRuleResult',
     'get_vpc_security_group_rule',
+    'get_vpc_security_group_rule_output',
 ]
 
 @pulumi.output_type
@@ -189,3 +190,13 @@ def get_vpc_security_group_rule(rule_id: Optional[str] = None,
         to_port=__ret__.to_port,
         v4_cidr_blocks=__ret__.v4_cidr_blocks,
         v6_cidr_blocks=__ret__.v6_cidr_blocks)
+
+
+@_utilities.lift_output_func(get_vpc_security_group_rule)
+def get_vpc_security_group_rule_output(rule_id: Optional[pulumi.Input[str]] = None,
+                                       security_group_binding: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSecurityGroupRuleResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

@@ -14,6 +14,7 @@ __all__ = [
     'GetComputeInstanceResult',
     'AwaitableGetComputeInstanceResult',
     'get_compute_instance',
+    'get_compute_instance_output',
 ]
 
 @pulumi.output_type
@@ -326,3 +327,33 @@ def get_compute_instance(folder_id: Optional[str] = None,
         service_account_id=__ret__.service_account_id,
         status=__ret__.status,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_compute_instance)
+def get_compute_instance_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                name: Optional[pulumi.Input[Optional[str]]] = None,
+                                placement_policy: Optional[pulumi.Input[Optional[pulumi.InputType['GetComputeInstancePlacementPolicyArgs']]]] = None,
+                                scheduling_policy: Optional[pulumi.Input[Optional[pulumi.InputType['GetComputeInstanceSchedulingPolicyArgs']]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceResult]:
+    """
+    Get information about a Yandex Compute instance. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/compute/concepts/vm).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_instance = yandex.get_compute_instance(instance_id="some_instance_id")
+    pulumi.export("instanceExternalIp", my_instance.network_interfaces[0].nat_ip_address)
+    ```
+
+
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str instance_id: The ID of a specific instance.
+    :param str name: Name of the instance.
+    :param pulumi.InputType['GetComputeInstanceSchedulingPolicyArgs'] scheduling_policy: Scheduling policy configuration. The structure is documented below.
+    """
+    ...

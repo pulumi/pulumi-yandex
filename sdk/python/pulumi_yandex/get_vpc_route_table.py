@@ -13,6 +13,7 @@ __all__ = [
     'GetVpcRouteTableResult',
     'AwaitableGetVpcRouteTableResult',
     'get_vpc_route_table',
+    'get_vpc_route_table_output',
 ]
 
 @pulumi.output_type
@@ -172,3 +173,29 @@ def get_vpc_route_table(folder_id: Optional[str] = None,
         network_id=__ret__.network_id,
         route_table_id=__ret__.route_table_id,
         static_routes=__ret__.static_routes)
+
+
+@_utilities.lift_output_func(get_vpc_route_table)
+def get_vpc_route_table_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               name: Optional[pulumi.Input[Optional[str]]] = None,
+                               route_table_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcRouteTableResult]:
+    """
+    Get information about a Yandex VPC route table. For more information, see
+    [Yandex.Cloud VPC](https://cloud.yandex.com/docs/vpc/concepts/index).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    this = yandex.get_vpc_route_table(route_table_id="my-rt-id")
+    ```
+
+    This data source is used to define [VPC Route Table] that can be used by other resources.
+
+
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: - Name of the route table.
+    :param str route_table_id: Route table ID.
+    """
+    ...

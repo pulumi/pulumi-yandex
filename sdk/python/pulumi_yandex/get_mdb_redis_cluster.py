@@ -13,6 +13,7 @@ __all__ = [
     'GetMdbRedisClusterResult',
     'AwaitableGetMdbRedisClusterResult',
     'get_mdb_redis_cluster',
+    'get_mdb_redis_cluster_output',
 ]
 
 @pulumi.output_type
@@ -299,3 +300,31 @@ def get_mdb_redis_cluster(cluster_id: Optional[str] = None,
         sharded=__ret__.sharded,
         status=__ret__.status,
         tls_enabled=__ret__.tls_enabled)
+
+
+@_utilities.lift_output_func(get_mdb_redis_cluster)
+def get_mdb_redis_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 deletion_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMdbRedisClusterResult]:
+    """
+    Get information about a Yandex Managed Redis cluster. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/managed-redis/concepts).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_mdb_redis_cluster(name="test")
+    pulumi.export("networkId", foo.network_id)
+    ```
+
+
+    :param str cluster_id: The ID of the Redis cluster.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: The name of the Redis cluster.
+    """
+    ...

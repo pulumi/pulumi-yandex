@@ -10,63 +10,63 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetAlbBackendGroupHttpBackendHealthcheckArgs : Pulumi.InvokeArgs
+    public sealed class GetAlbBackendGroupHttpBackendHealthcheckInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
         /// </summary>
         [Input("grpcHealthcheck", required: true)]
-        public Inputs.GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs GrpcHealthcheck { get; set; } = null!;
+        public Input<Inputs.GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInputArgs> GrpcHealthcheck { get; set; } = null!;
 
         /// <summary>
         /// Optional alternative port for health checking.
         /// </summary>
         [Input("healthcheckPort", required: true)]
-        public int HealthcheckPort { get; set; }
+        public Input<int> HealthcheckPort { get; set; } = null!;
 
         /// <summary>
         /// Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
         /// </summary>
         [Input("healthyThreshold", required: true)]
-        public int HealthyThreshold { get; set; }
+        public Input<int> HealthyThreshold { get; set; } = null!;
 
         /// <summary>
         /// Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
         /// </summary>
         [Input("httpHealthcheck", required: true)]
-        public Inputs.GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs HttpHealthcheck { get; set; } = null!;
+        public Input<Inputs.GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInputArgs> HttpHealthcheck { get; set; } = null!;
 
         /// <summary>
         /// Interval between health checks.
         /// </summary>
         [Input("interval", required: true)]
-        public string Interval { get; set; } = null!;
+        public Input<string> Interval { get; set; } = null!;
 
         /// <summary>
         /// An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * interval_jitter_percent / 100) will be added to the wait time.
         /// </summary>
         [Input("intervalJitterPercent", required: true)]
-        public double IntervalJitterPercent { get; set; }
+        public Input<double> IntervalJitterPercent { get; set; } = null!;
 
         /// <summary>
         /// Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
         /// </summary>
         [Input("streamHealthcheck", required: true)]
-        public Inputs.GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs StreamHealthcheck { get; set; } = null!;
+        public Input<Inputs.GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInputArgs> StreamHealthcheck { get; set; } = null!;
 
         /// <summary>
         /// Time to wait for a health check response.
         /// </summary>
         [Input("timeout", required: true)]
-        public string Timeout { get; set; } = null!;
+        public Input<string> Timeout { get; set; } = null!;
 
         /// <summary>
         /// Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
         /// </summary>
         [Input("unhealthyThreshold", required: true)]
-        public int UnhealthyThreshold { get; set; }
+        public Input<int> UnhealthyThreshold { get; set; } = null!;
 
-        public GetAlbBackendGroupHttpBackendHealthcheckArgs()
+        public GetAlbBackendGroupHttpBackendHealthcheckInputArgs()
         {
         }
     }

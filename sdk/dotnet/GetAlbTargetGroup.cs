@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetAlbTargetGroupResult> InvokeAsync(GetAlbTargetGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlbTargetGroupResult>("yandex:index/getAlbTargetGroup:getAlbTargetGroup", args ?? new GetAlbTargetGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Application Load Balancer target group. For more information, see
+        /// [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetAlbTargetGroup.InvokeAsync(new Yandex.GetAlbTargetGroupArgs
+        ///         {
+        ///             TargetGroupId = "my-target-group-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Application Load Balancer Target Groups] that can be used by other resources.
+        /// </summary>
+        public static Output<GetAlbTargetGroupResult> Invoke(GetAlbTargetGroupInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlbTargetGroupResult>("yandex:index/getAlbTargetGroup:getAlbTargetGroup", args ?? new GetAlbTargetGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -66,6 +93,37 @@ namespace Pulumi.Yandex
         public string? TargetGroupId { get; set; }
 
         public GetAlbTargetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlbTargetGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Description of the target group.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// - Name of the Target Group.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Target Group ID.
+        /// </summary>
+        [Input("targetGroupId")]
+        public Input<string>? TargetGroupId { get; set; }
+
+        public GetAlbTargetGroupInvokeArgs()
         {
         }
     }

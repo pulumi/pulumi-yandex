@@ -619,13 +619,13 @@ class ComputeInstanceGroup(pulumi.CustomResource):
             ),
             folder_id=data["yandex_resourcemanager_folder"]["test_folder"]["id"],
             instance_template=yandex.ComputeInstanceGroupInstanceTemplateArgs(
-                boot_disk={
-                    "initializeParams": {
-                        "image_id": data["yandex_compute_image"]["ubuntu"]["id"],
-                        "size": 4,
-                    },
-                    "mode": "READ_WRITE",
-                },
+                boot_disk=yandex.ComputeInstanceGroupInstanceTemplateBootDiskArgs(
+                    initialize_params=yandex.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs(
+                        image_id=data["yandex_compute_image"]["ubuntu"]["id"],
+                        size=4,
+                    ),
+                    mode="READ_WRITE",
+                ),
                 labels={
                     "label1": "label1-value",
                     "label2": "label2-value",
@@ -634,10 +634,10 @@ class ComputeInstanceGroup(pulumi.CustomResource):
                     "foo": "bar",
                     "ssh-keys": f"ubuntu:{(lambda path: open(path).read())('~/.ssh/id_rsa.pub')}",
                 },
-                network_interfaces=[{
-                    "network_id": yandex_vpc_network["my-inst-group-network"]["id"],
-                    "subnet_ids": [yandex_vpc_subnet["my-inst-group-subnet"]["id"]],
-                }],
+                network_interfaces=[yandex.ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs(
+                    network_id=yandex_vpc_network["my-inst-group-network"]["id"],
+                    subnet_ids=[yandex_vpc_subnet["my-inst-group-subnet"]["id"]],
+                )],
                 network_settings=[yandex.ComputeInstanceGroupInstanceTemplateNetworkSettingArgs(
                     type="STANDARD",
                 )],
@@ -713,13 +713,13 @@ class ComputeInstanceGroup(pulumi.CustomResource):
             ),
             folder_id=data["yandex_resourcemanager_folder"]["test_folder"]["id"],
             instance_template=yandex.ComputeInstanceGroupInstanceTemplateArgs(
-                boot_disk={
-                    "initializeParams": {
-                        "image_id": data["yandex_compute_image"]["ubuntu"]["id"],
-                        "size": 4,
-                    },
-                    "mode": "READ_WRITE",
-                },
+                boot_disk=yandex.ComputeInstanceGroupInstanceTemplateBootDiskArgs(
+                    initialize_params=yandex.ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs(
+                        image_id=data["yandex_compute_image"]["ubuntu"]["id"],
+                        size=4,
+                    ),
+                    mode="READ_WRITE",
+                ),
                 labels={
                     "label1": "label1-value",
                     "label2": "label2-value",
@@ -728,10 +728,10 @@ class ComputeInstanceGroup(pulumi.CustomResource):
                     "foo": "bar",
                     "ssh-keys": f"ubuntu:{(lambda path: open(path).read())('~/.ssh/id_rsa.pub')}",
                 },
-                network_interfaces=[{
-                    "network_id": yandex_vpc_network["my-inst-group-network"]["id"],
-                    "subnet_ids": [yandex_vpc_subnet["my-inst-group-subnet"]["id"]],
-                }],
+                network_interfaces=[yandex.ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs(
+                    network_id=yandex_vpc_network["my-inst-group-network"]["id"],
+                    subnet_ids=[yandex_vpc_subnet["my-inst-group-subnet"]["id"]],
+                )],
                 network_settings=[yandex.ComputeInstanceGroupInstanceTemplateNetworkSettingArgs(
                     type="STANDARD",
                 )],

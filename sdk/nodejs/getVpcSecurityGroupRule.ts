@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getVpcSecurityGroupRule(args: GetVpcSecurityGroupRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcSecurityGroupRuleResult> {
@@ -23,8 +22,8 @@ export function getVpcSecurityGroupRule(args: GetVpcSecurityGroupRuleArgs, opts?
  * A collection of arguments for invoking getVpcSecurityGroupRule.
  */
 export interface GetVpcSecurityGroupRuleArgs {
-    readonly ruleId: string;
-    readonly securityGroupBinding: string;
+    ruleId: string;
+    securityGroupBinding: string;
 }
 
 /**
@@ -48,4 +47,16 @@ export interface GetVpcSecurityGroupRuleResult {
     readonly toPort: number;
     readonly v4CidrBlocks: string[];
     readonly v6CidrBlocks: string[];
+}
+
+export function getVpcSecurityGroupRuleOutput(args: GetVpcSecurityGroupRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcSecurityGroupRuleResult> {
+    return pulumi.output(args).apply(a => getVpcSecurityGroupRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcSecurityGroupRule.
+ */
+export interface GetVpcSecurityGroupRuleOutputArgs {
+    ruleId: pulumi.Input<string>;
+    securityGroupBinding: pulumi.Input<string>;
 }

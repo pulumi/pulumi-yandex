@@ -31,7 +31,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "some_folder_id"
-// 		_, err := yandex.LookupResourcemanagerFolder(ctx, &yandex.LookupResourcemanagerFolderArgs{
+// 		_, err := yandex.LookupResourcemanagerFolder(ctx, &GetResourcemanagerFolderArgs{
 // 			FolderId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -232,7 +232,7 @@ type ResourcemanagerFolderIamMemberArrayInput interface {
 type ResourcemanagerFolderIamMemberArray []ResourcemanagerFolderIamMemberInput
 
 func (ResourcemanagerFolderIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ResourcemanagerFolderIamMember)(nil))
+	return reflect.TypeOf((*[]*ResourcemanagerFolderIamMember)(nil)).Elem()
 }
 
 func (i ResourcemanagerFolderIamMemberArray) ToResourcemanagerFolderIamMemberArrayOutput() ResourcemanagerFolderIamMemberArrayOutput {
@@ -257,7 +257,7 @@ type ResourcemanagerFolderIamMemberMapInput interface {
 type ResourcemanagerFolderIamMemberMap map[string]ResourcemanagerFolderIamMemberInput
 
 func (ResourcemanagerFolderIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ResourcemanagerFolderIamMember)(nil))
+	return reflect.TypeOf((*map[string]*ResourcemanagerFolderIamMember)(nil)).Elem()
 }
 
 func (i ResourcemanagerFolderIamMemberMap) ToResourcemanagerFolderIamMemberMapOutput() ResourcemanagerFolderIamMemberMapOutput {
@@ -268,9 +268,7 @@ func (i ResourcemanagerFolderIamMemberMap) ToResourcemanagerFolderIamMemberMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderIamMemberMapOutput)
 }
 
-type ResourcemanagerFolderIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type ResourcemanagerFolderIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourcemanagerFolderIamMember)(nil))
@@ -289,14 +287,12 @@ func (o ResourcemanagerFolderIamMemberOutput) ToResourcemanagerFolderIamMemberPt
 }
 
 func (o ResourcemanagerFolderIamMemberOutput) ToResourcemanagerFolderIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamMemberPtrOutput {
-	return o.ApplyT(func(v ResourcemanagerFolderIamMember) *ResourcemanagerFolderIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcemanagerFolderIamMember) *ResourcemanagerFolderIamMember {
 		return &v
 	}).(ResourcemanagerFolderIamMemberPtrOutput)
 }
 
-type ResourcemanagerFolderIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type ResourcemanagerFolderIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ResourcemanagerFolderIamMember)(nil))
@@ -308,6 +304,16 @@ func (o ResourcemanagerFolderIamMemberPtrOutput) ToResourcemanagerFolderIamMembe
 
 func (o ResourcemanagerFolderIamMemberPtrOutput) ToResourcemanagerFolderIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamMemberPtrOutput {
 	return o
+}
+
+func (o ResourcemanagerFolderIamMemberPtrOutput) Elem() ResourcemanagerFolderIamMemberOutput {
+	return o.ApplyT(func(v *ResourcemanagerFolderIamMember) ResourcemanagerFolderIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcemanagerFolderIamMember
+		return ret
+	}).(ResourcemanagerFolderIamMemberOutput)
 }
 
 type ResourcemanagerFolderIamMemberArrayOutput struct{ *pulumi.OutputState }
@@ -351,6 +357,10 @@ func (o ResourcemanagerFolderIamMemberMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamMemberInput)(nil)).Elem(), &ResourcemanagerFolderIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamMemberPtrInput)(nil)).Elem(), &ResourcemanagerFolderIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamMemberArrayInput)(nil)).Elem(), ResourcemanagerFolderIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamMemberMapInput)(nil)).Elem(), ResourcemanagerFolderIamMemberMap{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamMemberOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamMemberArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Yandex
     {
         public static Task<GetVpcSecurityGroupRuleResult> InvokeAsync(GetVpcSecurityGroupRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcSecurityGroupRuleResult>("yandex:index/getVpcSecurityGroupRule:getVpcSecurityGroupRule", args ?? new GetVpcSecurityGroupRuleArgs(), options.WithVersion());
+
+        public static Output<GetVpcSecurityGroupRuleResult> Invoke(GetVpcSecurityGroupRuleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVpcSecurityGroupRuleResult>("yandex:index/getVpcSecurityGroupRule:getVpcSecurityGroupRule", args ?? new GetVpcSecurityGroupRuleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +29,19 @@ namespace Pulumi.Yandex
         public string SecurityGroupBinding { get; set; } = null!;
 
         public GetVpcSecurityGroupRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcSecurityGroupRuleInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ruleId", required: true)]
+        public Input<string> RuleId { get; set; } = null!;
+
+        [Input("securityGroupBinding", required: true)]
+        public Input<string> SecurityGroupBinding { get; set; } = null!;
+
+        public GetVpcSecurityGroupRuleInvokeArgs()
         {
         }
     }

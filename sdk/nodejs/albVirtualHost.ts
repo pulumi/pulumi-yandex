@@ -137,27 +137,27 @@ export interface AlbVirtualHostState {
      * A list of domains (host/authority header) that will be matched to this virtual host. Wildcard
      * hosts are supported in the form of '*.foo.com' or '*-bar.foo.com'. If not specified, all domains will be matched.
      */
-    readonly authorities?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly httpRouterId?: pulumi.Input<string>;
+    authorities?: pulumi.Input<pulumi.Input<string>[]>;
+    httpRouterId?: pulumi.Input<string>;
     /**
      * Apply the following modifications to the request
      * headers. The structure is documented below.
      */
-    readonly modifyRequestHeaders?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostModifyRequestHeader>[]>;
+    modifyRequestHeaders?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostModifyRequestHeader>[]>;
     /**
      * Apply the following modifications to the response
      * headers. The structure is documented below.
      */
-    readonly modifyResponseHeaders?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostModifyResponseHeader>[]>;
+    modifyResponseHeaders?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostModifyResponseHeader>[]>;
     /**
      * name of the route.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A Route resource. Routes are matched *in-order*. Be careful when adding them to the end. For instance, having
      * http '/' match first makes all other routes unused. The structure is documented below.
      */
-    readonly routes?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostRoute>[]>;
 }
 
 /**
@@ -168,25 +168,25 @@ export interface AlbVirtualHostArgs {
      * A list of domains (host/authority header) that will be matched to this virtual host. Wildcard
      * hosts are supported in the form of '*.foo.com' or '*-bar.foo.com'. If not specified, all domains will be matched.
      */
-    readonly authorities?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly httpRouterId: pulumi.Input<string>;
+    authorities?: pulumi.Input<pulumi.Input<string>[]>;
+    httpRouterId: pulumi.Input<string>;
     /**
      * Apply the following modifications to the request
      * headers. The structure is documented below.
      */
-    readonly modifyRequestHeaders?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostModifyRequestHeader>[]>;
+    modifyRequestHeaders?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostModifyRequestHeader>[]>;
     /**
      * Apply the following modifications to the response
      * headers. The structure is documented below.
      */
-    readonly modifyResponseHeaders?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostModifyResponseHeader>[]>;
+    modifyResponseHeaders?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostModifyResponseHeader>[]>;
     /**
      * name of the route.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A Route resource. Routes are matched *in-order*. Be careful when adding them to the end. For instance, having
      * http '/' match first makes all other routes unused. The structure is documented below.
      */
-    readonly routes?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.AlbVirtualHostRoute>[]>;
 }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -32,15 +31,15 @@ export interface GetComputeSnapshotArgs {
     /**
      * ID of the folder that the snapshot belongs to.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * The name of the snapshot.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of a specific snapshot.
      */
-    readonly snapshotId?: string;
+    snapshotId?: string;
 }
 
 /**
@@ -89,4 +88,26 @@ export interface GetComputeSnapshotResult {
      * The size of the snapshot, specified in Gb.
      */
     readonly storageSize: number;
+}
+
+export function getComputeSnapshotOutput(args?: GetComputeSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeSnapshotResult> {
+    return pulumi.output(args).apply(a => getComputeSnapshot(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getComputeSnapshot.
+ */
+export interface GetComputeSnapshotOutputArgs {
+    /**
+     * ID of the folder that the snapshot belongs to.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * The name of the snapshot.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of a specific snapshot.
+     */
+    snapshotId?: pulumi.Input<string>;
 }

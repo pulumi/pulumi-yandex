@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Yandex
     {
         public static Task<GetMdbGreenplumClusterResult> InvokeAsync(GetMdbGreenplumClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMdbGreenplumClusterResult>("yandex:index/getMdbGreenplumCluster:getMdbGreenplumCluster", args ?? new GetMdbGreenplumClusterArgs(), options.WithVersion());
+
+        public static Output<GetMdbGreenplumClusterResult> Invoke(GetMdbGreenplumClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMdbGreenplumClusterResult>("yandex:index/getMdbGreenplumCluster:getMdbGreenplumCluster", args ?? new GetMdbGreenplumClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +32,22 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetMdbGreenplumClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetMdbGreenplumClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetMdbGreenplumClusterInvokeArgs()
         {
         }
     }

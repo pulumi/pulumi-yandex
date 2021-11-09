@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getMdbSqlserverCluster({
  *     name: "test",
- * }, { async: true }));
+ * }));
  *
  * export const networkId = foo.networkId;
  * ```
@@ -47,20 +47,20 @@ export interface GetMdbSqlserverClusterArgs {
     /**
      * The ID of the SQLServer cluster.
      */
-    readonly clusterId?: string;
-    readonly deletionProtection?: boolean;
+    clusterId?: string;
+    deletionProtection?: boolean;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * The name of the SQLServer cluster.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * SQLServer cluster config.
      */
-    readonly sqlserverConfig?: {[key: string]: string};
+    sqlserverConfig?: {[key: string]: string};
 }
 
 /**
@@ -135,4 +135,31 @@ export interface GetMdbSqlserverClusterResult {
      * Version of the SQLServer cluster.
      */
     readonly version: string;
+}
+
+export function getMdbSqlserverClusterOutput(args?: GetMdbSqlserverClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbSqlserverClusterResult> {
+    return pulumi.output(args).apply(a => getMdbSqlserverCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMdbSqlserverCluster.
+ */
+export interface GetMdbSqlserverClusterOutputArgs {
+    /**
+     * The ID of the SQLServer cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * The name of the SQLServer cluster.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * SQLServer cluster config.
+     */
+    sqlserverConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

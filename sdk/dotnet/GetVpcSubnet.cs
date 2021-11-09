@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetVpcSubnetResult> InvokeAsync(GetVpcSubnetArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcSubnetResult>("yandex:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex VPC subnet. For more information, see
+        /// [Yandex.Cloud VPC](https://cloud.yandex.com/docs/vpc/concepts/index).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var admin = Output.Create(Yandex.GetVpcSubnet.InvokeAsync(new Yandex.GetVpcSubnetArgs
+        ///         {
+        ///             SubnetId = "my-subnet-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [VPC Subnets] that can be used by other resources.
+        /// </summary>
+        public static Output<GetVpcSubnetResult> Invoke(GetVpcSubnetInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVpcSubnetResult>("yandex:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +87,31 @@ namespace Pulumi.Yandex
         public string? SubnetId { get; set; }
 
         public GetVpcSubnetArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcSubnetInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// - Name of the subnet.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Subnet ID.
+        /// </summary>
+        [Input("subnetId")]
+        public Input<string>? SubnetId { get; set; }
+
+        public GetVpcSubnetInvokeArgs()
         {
         }
     }

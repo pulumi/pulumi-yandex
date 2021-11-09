@@ -10,27 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs : Pulumi.InvokeArgs
+    public sealed class GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional "Host" HTTP header value.
         /// </summary>
         [Input("host", required: true)]
-        public string Host { get; set; } = null!;
+        public Input<string> Host { get; set; } = null!;
 
         /// <summary>
         /// If set, health checks will use HTTP2.
         /// </summary>
         [Input("http2", required: true)]
-        public bool Http2 { get; set; }
+        public Input<bool> Http2 { get; set; } = null!;
 
         /// <summary>
         /// HTTP path.
         /// </summary>
         [Input("path", required: true)]
-        public string Path { get; set; } = null!;
+        public Input<string> Path { get; set; } = null!;
 
-        public GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs()
+        public GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInputArgs()
         {
         }
     }

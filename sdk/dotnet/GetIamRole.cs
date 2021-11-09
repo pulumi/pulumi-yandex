@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -49,6 +50,45 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetIamRoleResult> InvokeAsync(GetIamRoleArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIamRoleResult>("yandex:index/getIamRole:getIamRole", args ?? new GetIamRoleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Generates an [IAM] role document that may be referenced by and applied to
+        /// other Yandex.Cloud Platform resources, such as the `yandex.ResourcemanagerFolder` resource. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/iam/concepts/access-control/roles).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var admin = Output.Create(Yandex.GetIamRole.InvokeAsync(new Yandex.GetIamRoleArgs
+        ///         {
+        ///             Binding = 
+        ///             {
+        ///                 
+        ///                 {
+        ///                     { "members", 
+        ///                     {
+        ///                         "userAccount:user_id_1",
+        ///                     } },
+        ///                     { "role", "admin" },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [IAM] roles in order to apply them to other resources.
+        /// Currently, defining a role through a data source and referencing that role
+        /// from another resource is the only way to apply an IAM role to a resource.
+        /// </summary>
+        public static Output<GetIamRoleResult> Invoke(GetIamRoleInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIamRoleResult>("yandex:index/getIamRole:getIamRole", args ?? new GetIamRoleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -61,6 +101,19 @@ namespace Pulumi.Yandex
         public string? RoleId { get; set; }
 
         public GetIamRoleArgs()
+        {
+        }
+    }
+
+    public sealed class GetIamRoleInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
+
+        public GetIamRoleInvokeArgs()
         {
         }
     }

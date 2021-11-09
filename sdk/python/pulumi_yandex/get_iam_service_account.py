@@ -12,6 +12,7 @@ __all__ = [
     'GetIamServiceAccountResult',
     'AwaitableGetIamServiceAccountResult',
     'get_iam_service_account',
+    'get_iam_service_account_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,33 @@ def get_iam_service_account(folder_id: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         service_account_id=__ret__.service_account_id)
+
+
+@_utilities.lift_output_func(get_iam_service_account)
+def get_iam_service_account_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                   name: Optional[pulumi.Input[Optional[str]]] = None,
+                                   service_account_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamServiceAccountResult]:
+    """
+    Get information about a Yandex IAM service account. For more information about accounts, see
+    [Yandex.Cloud IAM accounts](https://cloud.yandex.com/docs/iam/concepts/#accounts).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    builder = yandex.get_iam_service_account(service_account_id="sa_id")
+    deployer = yandex.get_iam_service_account(name="sa_name")
+    ```
+
+    ## Argument reference
+
+    * `service_account_id` - (Optional) ID of a specific service account.
+
+    * `name` - (Optional) Name of a specific service account.
+
+    > **NOTE:** One of `service_account_id` or `name` should be specified.
+
+    * `folder_id` - (Optional) Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    """
+    ...

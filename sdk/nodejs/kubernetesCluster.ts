@@ -315,93 +315,93 @@ export interface KubernetesClusterState {
      * It should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be
      * set up for this CIDR blocks in node subnets.
      */
-    readonly clusterIpv4Range?: pulumi.Input<string>;
+    clusterIpv4Range?: pulumi.Input<string>;
     /**
      * Identical to clusterIpv4Range but for IPv6 protocol.
      */
-    readonly clusterIpv6Range?: pulumi.Input<string>;
+    clusterIpv6Range?: pulumi.Input<string>;
     /**
      * (Computed) The Kubernetes cluster creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * A description of the Kubernetes cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder that the Kubernetes cluster belongs to.
      * If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * (Computed) Health of the Kubernetes cluster.
      */
-    readonly health?: pulumi.Input<string>;
+    health?: pulumi.Input<string>;
     /**
      * cluster KMS provider parameters.
      */
-    readonly kmsProvider?: pulumi.Input<inputs.KubernetesClusterKmsProvider>;
+    kmsProvider?: pulumi.Input<inputs.KubernetesClusterKmsProvider>;
     /**
      * A set of key/value label pairs to assign to the Kubernetes cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
      */
-    readonly logGroupId?: pulumi.Input<string>;
+    logGroupId?: pulumi.Input<string>;
     /**
      * Kubernetes master configuration options. The structure is documented below.
      */
-    readonly master?: pulumi.Input<inputs.KubernetesClusterMaster>;
+    master?: pulumi.Input<inputs.KubernetesClusterMaster>;
     /**
      * Name of a specific Kubernetes cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the cluster network.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * (Optional) Network Implementation options. The structure is documented below.
      */
-    readonly networkImplementation?: pulumi.Input<inputs.KubernetesClusterNetworkImplementation>;
+    networkImplementation?: pulumi.Input<inputs.KubernetesClusterNetworkImplementation>;
     /**
      * Network policy provider for the cluster. Possible values: `CALICO`.
      */
-    readonly networkPolicyProvider?: pulumi.Input<string>;
+    networkPolicyProvider?: pulumi.Input<string>;
     /**
      * Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
      */
-    readonly nodeIpv4CidrMaskSize?: pulumi.Input<number>;
+    nodeIpv4CidrMaskSize?: pulumi.Input<number>;
     /**
      * Service account to be used by the worker nodes of the Kubernetes cluster
      * to access Container Registry or to push node logs and metrics.
      */
-    readonly nodeServiceAccountId?: pulumi.Input<string>;
+    nodeServiceAccountId?: pulumi.Input<string>;
     /**
      * Cluster release channel.
      */
-    readonly releaseChannel?: pulumi.Input<string>;
+    releaseChannel?: pulumi.Input<string>;
     /**
      * Service account to be used for provisioning Compute Cloud and VPC resources
      * for Kubernetes cluster. Selected service account should have `edit` role on the folder where the Kubernetes
      * cluster will be located and on the folder where selected network resides.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * CIDR block. IP range Kubernetes service Kubernetes cluster
      * IP addresses will be allocated from. It should not overlap with any subnet in the network
      * the Kubernetes cluster located in.
      */
-    readonly serviceIpv4Range?: pulumi.Input<string>;
+    serviceIpv4Range?: pulumi.Input<string>;
     /**
      * Identical to serviceIpv4Range but for IPv6 protocol.
      */
-    readonly serviceIpv6Range?: pulumi.Input<string>;
+    serviceIpv6Range?: pulumi.Input<string>;
     /**
      * (Computed)Status of the Kubernetes cluster.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -413,75 +413,75 @@ export interface KubernetesClusterArgs {
      * It should not overlap with any subnet in the network the Kubernetes cluster located in. Static routes will be
      * set up for this CIDR blocks in node subnets.
      */
-    readonly clusterIpv4Range?: pulumi.Input<string>;
+    clusterIpv4Range?: pulumi.Input<string>;
     /**
      * Identical to clusterIpv4Range but for IPv6 protocol.
      */
-    readonly clusterIpv6Range?: pulumi.Input<string>;
+    clusterIpv6Range?: pulumi.Input<string>;
     /**
      * A description of the Kubernetes cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder that the Kubernetes cluster belongs to.
      * If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * cluster KMS provider parameters.
      */
-    readonly kmsProvider?: pulumi.Input<inputs.KubernetesClusterKmsProvider>;
+    kmsProvider?: pulumi.Input<inputs.KubernetesClusterKmsProvider>;
     /**
      * A set of key/value label pairs to assign to the Kubernetes cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Kubernetes master configuration options. The structure is documented below.
      */
-    readonly master: pulumi.Input<inputs.KubernetesClusterMaster>;
+    master: pulumi.Input<inputs.KubernetesClusterMaster>;
     /**
      * Name of a specific Kubernetes cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the cluster network.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * (Optional) Network Implementation options. The structure is documented below.
      */
-    readonly networkImplementation?: pulumi.Input<inputs.KubernetesClusterNetworkImplementation>;
+    networkImplementation?: pulumi.Input<inputs.KubernetesClusterNetworkImplementation>;
     /**
      * Network policy provider for the cluster. Possible values: `CALICO`.
      */
-    readonly networkPolicyProvider?: pulumi.Input<string>;
+    networkPolicyProvider?: pulumi.Input<string>;
     /**
      * Size of the masks that are assigned to each node in the cluster. Effectively limits maximum number of pods for each node.
      */
-    readonly nodeIpv4CidrMaskSize?: pulumi.Input<number>;
+    nodeIpv4CidrMaskSize?: pulumi.Input<number>;
     /**
      * Service account to be used by the worker nodes of the Kubernetes cluster
      * to access Container Registry or to push node logs and metrics.
      */
-    readonly nodeServiceAccountId: pulumi.Input<string>;
+    nodeServiceAccountId: pulumi.Input<string>;
     /**
      * Cluster release channel.
      */
-    readonly releaseChannel?: pulumi.Input<string>;
+    releaseChannel?: pulumi.Input<string>;
     /**
      * Service account to be used for provisioning Compute Cloud and VPC resources
      * for Kubernetes cluster. Selected service account should have `edit` role on the folder where the Kubernetes
      * cluster will be located and on the folder where selected network resides.
      */
-    readonly serviceAccountId: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
     /**
      * CIDR block. IP range Kubernetes service Kubernetes cluster
      * IP addresses will be allocated from. It should not overlap with any subnet in the network
      * the Kubernetes cluster located in.
      */
-    readonly serviceIpv4Range?: pulumi.Input<string>;
+    serviceIpv4Range?: pulumi.Input<string>;
     /**
      * Identical to serviceIpv4Range but for IPv6 protocol.
      */
-    readonly serviceIpv6Range?: pulumi.Input<string>;
+    serviceIpv6Range?: pulumi.Input<string>;
 }

@@ -26,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := yandex.NewFunction(ctx, "test_function", &yandex.FunctionArgs{
-// 			Content: &yandex.FunctionContentArgs{
+// 			Content: &FunctionContentArgs{
 // 				ZipFilename: pulumi.String("function.zip"),
 // 			},
 // 			Description:      pulumi.String("any description"),
@@ -359,7 +359,7 @@ type FunctionArrayInput interface {
 type FunctionArray []FunctionInput
 
 func (FunctionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Function)(nil))
+	return reflect.TypeOf((*[]*Function)(nil)).Elem()
 }
 
 func (i FunctionArray) ToFunctionArrayOutput() FunctionArrayOutput {
@@ -384,7 +384,7 @@ type FunctionMapInput interface {
 type FunctionMap map[string]FunctionInput
 
 func (FunctionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Function)(nil))
+	return reflect.TypeOf((*map[string]*Function)(nil)).Elem()
 }
 
 func (i FunctionMap) ToFunctionMapOutput() FunctionMapOutput {
@@ -395,9 +395,7 @@ func (i FunctionMap) ToFunctionMapOutputWithContext(ctx context.Context) Functio
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionMapOutput)
 }
 
-type FunctionOutput struct {
-	*pulumi.OutputState
-}
+type FunctionOutput struct{ *pulumi.OutputState }
 
 func (FunctionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Function)(nil))
@@ -416,14 +414,12 @@ func (o FunctionOutput) ToFunctionPtrOutput() FunctionPtrOutput {
 }
 
 func (o FunctionOutput) ToFunctionPtrOutputWithContext(ctx context.Context) FunctionPtrOutput {
-	return o.ApplyT(func(v Function) *Function {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Function) *Function {
 		return &v
 	}).(FunctionPtrOutput)
 }
 
-type FunctionPtrOutput struct {
-	*pulumi.OutputState
-}
+type FunctionPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Function)(nil))
@@ -435,6 +431,16 @@ func (o FunctionPtrOutput) ToFunctionPtrOutput() FunctionPtrOutput {
 
 func (o FunctionPtrOutput) ToFunctionPtrOutputWithContext(ctx context.Context) FunctionPtrOutput {
 	return o
+}
+
+func (o FunctionPtrOutput) Elem() FunctionOutput {
+	return o.ApplyT(func(v *Function) Function {
+		if v != nil {
+			return *v
+		}
+		var ret Function
+		return ret
+	}).(FunctionOutput)
 }
 
 type FunctionArrayOutput struct{ *pulumi.OutputState }
@@ -478,6 +484,10 @@ func (o FunctionMapOutput) MapIndex(k pulumi.StringInput) FunctionOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionInput)(nil)).Elem(), &Function{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionPtrInput)(nil)).Elem(), &Function{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionArrayInput)(nil)).Elem(), FunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionMapInput)(nil)).Elem(), FunctionMap{})
 	pulumi.RegisterOutputType(FunctionOutput{})
 	pulumi.RegisterOutputType(FunctionPtrOutput{})
 	pulumi.RegisterOutputType(FunctionArrayOutput{})

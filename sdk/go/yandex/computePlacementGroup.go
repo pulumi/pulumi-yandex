@@ -195,7 +195,7 @@ type ComputePlacementGroupArrayInput interface {
 type ComputePlacementGroupArray []ComputePlacementGroupInput
 
 func (ComputePlacementGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ComputePlacementGroup)(nil))
+	return reflect.TypeOf((*[]*ComputePlacementGroup)(nil)).Elem()
 }
 
 func (i ComputePlacementGroupArray) ToComputePlacementGroupArrayOutput() ComputePlacementGroupArrayOutput {
@@ -220,7 +220,7 @@ type ComputePlacementGroupMapInput interface {
 type ComputePlacementGroupMap map[string]ComputePlacementGroupInput
 
 func (ComputePlacementGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ComputePlacementGroup)(nil))
+	return reflect.TypeOf((*map[string]*ComputePlacementGroup)(nil)).Elem()
 }
 
 func (i ComputePlacementGroupMap) ToComputePlacementGroupMapOutput() ComputePlacementGroupMapOutput {
@@ -231,9 +231,7 @@ func (i ComputePlacementGroupMap) ToComputePlacementGroupMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ComputePlacementGroupMapOutput)
 }
 
-type ComputePlacementGroupOutput struct {
-	*pulumi.OutputState
-}
+type ComputePlacementGroupOutput struct{ *pulumi.OutputState }
 
 func (ComputePlacementGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ComputePlacementGroup)(nil))
@@ -252,14 +250,12 @@ func (o ComputePlacementGroupOutput) ToComputePlacementGroupPtrOutput() ComputeP
 }
 
 func (o ComputePlacementGroupOutput) ToComputePlacementGroupPtrOutputWithContext(ctx context.Context) ComputePlacementGroupPtrOutput {
-	return o.ApplyT(func(v ComputePlacementGroup) *ComputePlacementGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputePlacementGroup) *ComputePlacementGroup {
 		return &v
 	}).(ComputePlacementGroupPtrOutput)
 }
 
-type ComputePlacementGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type ComputePlacementGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (ComputePlacementGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ComputePlacementGroup)(nil))
@@ -271,6 +267,16 @@ func (o ComputePlacementGroupPtrOutput) ToComputePlacementGroupPtrOutput() Compu
 
 func (o ComputePlacementGroupPtrOutput) ToComputePlacementGroupPtrOutputWithContext(ctx context.Context) ComputePlacementGroupPtrOutput {
 	return o
+}
+
+func (o ComputePlacementGroupPtrOutput) Elem() ComputePlacementGroupOutput {
+	return o.ApplyT(func(v *ComputePlacementGroup) ComputePlacementGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ComputePlacementGroup
+		return ret
+	}).(ComputePlacementGroupOutput)
 }
 
 type ComputePlacementGroupArrayOutput struct{ *pulumi.OutputState }
@@ -314,6 +320,10 @@ func (o ComputePlacementGroupMapOutput) MapIndex(k pulumi.StringInput) ComputePl
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputePlacementGroupInput)(nil)).Elem(), &ComputePlacementGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputePlacementGroupPtrInput)(nil)).Elem(), &ComputePlacementGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputePlacementGroupArrayInput)(nil)).Elem(), ComputePlacementGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputePlacementGroupMapInput)(nil)).Elem(), ComputePlacementGroupMap{})
 	pulumi.RegisterOutputType(ComputePlacementGroupOutput{})
 	pulumi.RegisterOutputType(ComputePlacementGroupPtrOutput{})
 	pulumi.RegisterOutputType(ComputePlacementGroupArrayOutput{})

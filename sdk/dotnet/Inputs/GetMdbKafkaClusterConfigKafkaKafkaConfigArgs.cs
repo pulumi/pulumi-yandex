@@ -10,54 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetMdbKafkaClusterConfigKafkaKafkaConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetMdbKafkaClusterConfigKafkaKafkaConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("autoCreateTopicsEnable")]
-        public bool? AutoCreateTopicsEnable { get; set; }
+        public Input<bool>? AutoCreateTopicsEnable { get; set; }
 
         [Input("compressionType")]
-        public string? CompressionType { get; set; }
+        public Input<string>? CompressionType { get; set; }
 
         [Input("defaultReplicationFactor")]
-        public string? DefaultReplicationFactor { get; set; }
+        public Input<string>? DefaultReplicationFactor { get; set; }
 
         [Input("logFlushIntervalMessages")]
-        public string? LogFlushIntervalMessages { get; set; }
+        public Input<string>? LogFlushIntervalMessages { get; set; }
 
         [Input("logFlushIntervalMs")]
-        public string? LogFlushIntervalMs { get; set; }
+        public Input<string>? LogFlushIntervalMs { get; set; }
 
         [Input("logFlushSchedulerIntervalMs")]
-        public string? LogFlushSchedulerIntervalMs { get; set; }
+        public Input<string>? LogFlushSchedulerIntervalMs { get; set; }
 
         [Input("logPreallocate")]
-        public bool? LogPreallocate { get; set; }
+        public Input<bool>? LogPreallocate { get; set; }
 
         [Input("logRetentionBytes")]
-        public string? LogRetentionBytes { get; set; }
+        public Input<string>? LogRetentionBytes { get; set; }
 
         [Input("logRetentionHours")]
-        public string? LogRetentionHours { get; set; }
+        public Input<string>? LogRetentionHours { get; set; }
 
         [Input("logRetentionMinutes")]
-        public string? LogRetentionMinutes { get; set; }
+        public Input<string>? LogRetentionMinutes { get; set; }
 
         [Input("logRetentionMs")]
-        public string? LogRetentionMs { get; set; }
+        public Input<string>? LogRetentionMs { get; set; }
 
         [Input("logSegmentBytes")]
-        public string? LogSegmentBytes { get; set; }
+        public Input<string>? LogSegmentBytes { get; set; }
 
         [Input("numPartitions")]
-        public string? NumPartitions { get; set; }
+        public Input<string>? NumPartitions { get; set; }
 
         [Input("socketReceiveBufferBytes")]
-        public string? SocketReceiveBufferBytes { get; set; }
+        public Input<string>? SocketReceiveBufferBytes { get; set; }
 
         [Input("socketSendBufferBytes")]
-        public string? SocketSendBufferBytes { get; set; }
+        public Input<string>? SocketSendBufferBytes { get; set; }
 
-        public GetMdbKafkaClusterConfigKafkaKafkaConfigArgs()
+        public GetMdbKafkaClusterConfigKafkaKafkaConfigInputArgs()
         {
         }
     }

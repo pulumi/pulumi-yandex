@@ -213,78 +213,78 @@ export interface FunctionState {
      * Version deployment content for Yandex Cloud Function code. Can be only one `package` or `content` section.
      * * `content.0.zip_filename` - Filename to zip archive for the version.
      */
-    readonly content?: pulumi.Input<inputs.FunctionContent>;
+    content?: pulumi.Input<inputs.FunctionContent>;
     /**
      * Creation timestamp of the Yandex Cloud Function.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Description of the Yandex Cloud Function
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Entrypoint for Yandex Cloud Function
      */
-    readonly entrypoint?: pulumi.Input<string>;
+    entrypoint?: pulumi.Input<string>;
     /**
      * A set of key/value environment variables for Yandex Cloud Function
      */
-    readonly environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Execution timeout in seconds for Yandex Cloud Function
      */
-    readonly executionTimeout?: pulumi.Input<string>;
+    executionTimeout?: pulumi.Input<string>;
     /**
      * Folder ID for the Yandex Cloud Function
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Image size for Yandex Cloud Function.
      */
-    readonly imageSize?: pulumi.Input<number>;
+    imageSize?: pulumi.Input<number>;
     /**
      * A set of key/value label pairs to assign to the Yandex Cloud Function
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Loggroup ID size for Yandex Cloud Function.
      */
-    readonly loggroupId?: pulumi.Input<string>;
+    loggroupId?: pulumi.Input<string>;
     /**
      * Memory in megabytes (**aligned to 128MB**) for Yandex Cloud Function
      */
-    readonly memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number>;
     /**
      * Yandex Cloud Function name used to define trigger
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Version deployment package for Yandex Cloud Function code. Can be only one `package` or `content` section.
      * * `package.0.sha_256` - SHA256 hash of the version deployment package.
      * * `package.0.bucket_name` - Name of the bucket that stores the code for the version.
      * * `package.0.object_name` - Name of the object in the bucket that stores the code for the version.
      */
-    readonly package?: pulumi.Input<inputs.FunctionPackage>;
+    package?: pulumi.Input<inputs.FunctionPackage>;
     /**
      * Runtime for Yandex Cloud Function
      */
-    readonly runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<string>;
     /**
      * Service account ID for Yandex Cloud Function
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * Tags for Yandex Cloud Function. Tag "$latest" isn't returned.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User-defined string for current function version. User must change this string any times when function changed. Function will be updated when hash is changed.
      */
-    readonly userHash?: pulumi.Input<string>;
+    userHash?: pulumi.Input<string>;
     /**
      * Version for Yandex Cloud Function.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -295,60 +295,60 @@ export interface FunctionArgs {
      * Version deployment content for Yandex Cloud Function code. Can be only one `package` or `content` section.
      * * `content.0.zip_filename` - Filename to zip archive for the version.
      */
-    readonly content?: pulumi.Input<inputs.FunctionContent>;
+    content?: pulumi.Input<inputs.FunctionContent>;
     /**
      * Description of the Yandex Cloud Function
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Entrypoint for Yandex Cloud Function
      */
-    readonly entrypoint: pulumi.Input<string>;
+    entrypoint: pulumi.Input<string>;
     /**
      * A set of key/value environment variables for Yandex Cloud Function
      */
-    readonly environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Execution timeout in seconds for Yandex Cloud Function
      */
-    readonly executionTimeout?: pulumi.Input<string>;
+    executionTimeout?: pulumi.Input<string>;
     /**
      * Folder ID for the Yandex Cloud Function
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Yandex Cloud Function
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Memory in megabytes (**aligned to 128MB**) for Yandex Cloud Function
      */
-    readonly memory: pulumi.Input<number>;
+    memory: pulumi.Input<number>;
     /**
      * Yandex Cloud Function name used to define trigger
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Version deployment package for Yandex Cloud Function code. Can be only one `package` or `content` section.
      * * `package.0.sha_256` - SHA256 hash of the version deployment package.
      * * `package.0.bucket_name` - Name of the bucket that stores the code for the version.
      * * `package.0.object_name` - Name of the object in the bucket that stores the code for the version.
      */
-    readonly package?: pulumi.Input<inputs.FunctionPackage>;
+    package?: pulumi.Input<inputs.FunctionPackage>;
     /**
      * Runtime for Yandex Cloud Function
      */
-    readonly runtime: pulumi.Input<string>;
+    runtime: pulumi.Input<string>;
     /**
      * Service account ID for Yandex Cloud Function
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * Tags for Yandex Cloud Function. Tag "$latest" isn't returned.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User-defined string for current function version. User must change this string any times when function changed. Function will be updated when hash is changed.
      */
-    readonly userHash: pulumi.Input<string>;
+    userHash: pulumi.Input<string>;
 }

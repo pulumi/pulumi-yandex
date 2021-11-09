@@ -186,51 +186,51 @@ export interface AlbLoadBalancerState {
     /**
      * Allocation zones for the Load Balancer instance. The structure is documented below.
      */
-    readonly allocationPolicy?: pulumi.Input<inputs.AlbLoadBalancerAllocationPolicy>;
+    allocationPolicy?: pulumi.Input<inputs.AlbLoadBalancerAllocationPolicy>;
     /**
      * The Load Balancer creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * An optional description of the Load Balancer.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs. If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this Load Balancer. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * List of listeners for the Load Balancer. The structure is documented below.
      */
-    readonly listeners?: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListener>[]>;
     /**
      * Cloud log group used by the Load Balancer to store access logs.
      */
-    readonly logGroupId?: pulumi.Input<string>;
+    logGroupId?: pulumi.Input<string>;
     /**
      * name of SNI match.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network that the Load Balancer is located at.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * ID of the region that the Load Balancer is located at.
      */
-    readonly regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string>;
     /**
      * A list of ID's of security groups attached to the Load Balancer.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Status of the Load Balancer.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -240,37 +240,37 @@ export interface AlbLoadBalancerArgs {
     /**
      * Allocation zones for the Load Balancer instance. The structure is documented below.
      */
-    readonly allocationPolicy: pulumi.Input<inputs.AlbLoadBalancerAllocationPolicy>;
+    allocationPolicy: pulumi.Input<inputs.AlbLoadBalancerAllocationPolicy>;
     /**
      * An optional description of the Load Balancer.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs. If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this Load Balancer. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * List of listeners for the Load Balancer. The structure is documented below.
      */
-    readonly listeners?: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.AlbLoadBalancerListener>[]>;
     /**
      * name of SNI match.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network that the Load Balancer is located at.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * ID of the region that the Load Balancer is located at.
      */
-    readonly regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string>;
     /**
      * A list of ID's of security groups attached to the Load Balancer.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

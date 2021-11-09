@@ -227,83 +227,83 @@ export interface YdbDatabaseDedicatedState {
     /**
      * Whether public IP addresses should be assigned to the Yandex Database cluster.
      */
-    readonly assignPublicIps?: pulumi.Input<boolean>;
+    assignPublicIps?: pulumi.Input<boolean>;
     /**
      * The Yandex Database cluster creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Full database path of the Yandex Database cluster.
      * Useful for SDK configuration.
      */
-    readonly databasePath?: pulumi.Input<string>;
+    databasePath?: pulumi.Input<string>;
     /**
      * A description for the Yandex Database cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder that the Yandex Database cluster belongs to.
      * It will be deduced from provider configuration if not set explicitly.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Yandex Database cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location for the Yandex Database cluster.
      * The structure is documented below.
      */
-    readonly location?: pulumi.Input<inputs.YdbDatabaseDedicatedLocation>;
+    location?: pulumi.Input<inputs.YdbDatabaseDedicatedLocation>;
     /**
      * Location ID for the Yandex Database cluster.
      */
-    readonly locationId?: pulumi.Input<string>;
+    locationId?: pulumi.Input<string>;
     /**
      * Name of the Yandex Database cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network to attach the Yandex Database cluster to.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * The Yandex Database cluster preset.
      * Available presets can be obtained via `yc ydb resource-preset list` command.
      */
-    readonly resourcePresetId?: pulumi.Input<string>;
+    resourcePresetId?: pulumi.Input<string>;
     /**
      * Scaling policy for the Yandex Database cluster.
      * The structure is documented below.
      */
-    readonly scalePolicy?: pulumi.Input<inputs.YdbDatabaseDedicatedScalePolicy>;
+    scalePolicy?: pulumi.Input<inputs.YdbDatabaseDedicatedScalePolicy>;
     /**
      * Status of the Yandex Database cluster.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A list of storage configuration options for the Yandex Database cluster.
      * The structure is documented below.
      */
-    readonly storageConfig?: pulumi.Input<inputs.YdbDatabaseDedicatedStorageConfig>;
+    storageConfig?: pulumi.Input<inputs.YdbDatabaseDedicatedStorageConfig>;
     /**
      * List of subnet IDs to attach the Yandex Database cluster to.
      */
-    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether TLS is enabled for the Yandex Database cluster.
      * Useful for SDK configuration.
      */
-    readonly tlsEnabled?: pulumi.Input<boolean>;
+    tlsEnabled?: pulumi.Input<boolean>;
     /**
      * API endpoint of the Yandex Database cluster.
      * Useful for SDK configuration.
      */
-    readonly ydbApiEndpoint?: pulumi.Input<string>;
+    ydbApiEndpoint?: pulumi.Input<string>;
     /**
      * Full endpoint of the Yandex Database cluster.
      */
-    readonly ydbFullEndpoint?: pulumi.Input<string>;
+    ydbFullEndpoint?: pulumi.Input<string>;
 }
 
 /**
@@ -313,54 +313,54 @@ export interface YdbDatabaseDedicatedArgs {
     /**
      * Whether public IP addresses should be assigned to the Yandex Database cluster.
      */
-    readonly assignPublicIps?: pulumi.Input<boolean>;
+    assignPublicIps?: pulumi.Input<boolean>;
     /**
      * A description for the Yandex Database cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder that the Yandex Database cluster belongs to.
      * It will be deduced from provider configuration if not set explicitly.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the Yandex Database cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location for the Yandex Database cluster.
      * The structure is documented below.
      */
-    readonly location?: pulumi.Input<inputs.YdbDatabaseDedicatedLocation>;
+    location?: pulumi.Input<inputs.YdbDatabaseDedicatedLocation>;
     /**
      * Location ID for the Yandex Database cluster.
      */
-    readonly locationId?: pulumi.Input<string>;
+    locationId?: pulumi.Input<string>;
     /**
      * Name of the Yandex Database cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network to attach the Yandex Database cluster to.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * The Yandex Database cluster preset.
      * Available presets can be obtained via `yc ydb resource-preset list` command.
      */
-    readonly resourcePresetId: pulumi.Input<string>;
+    resourcePresetId: pulumi.Input<string>;
     /**
      * Scaling policy for the Yandex Database cluster.
      * The structure is documented below.
      */
-    readonly scalePolicy: pulumi.Input<inputs.YdbDatabaseDedicatedScalePolicy>;
+    scalePolicy: pulumi.Input<inputs.YdbDatabaseDedicatedScalePolicy>;
     /**
      * A list of storage configuration options for the Yandex Database cluster.
      * The structure is documented below.
      */
-    readonly storageConfig: pulumi.Input<inputs.YdbDatabaseDedicatedStorageConfig>;
+    storageConfig: pulumi.Input<inputs.YdbDatabaseDedicatedStorageConfig>;
     /**
      * List of subnet IDs to attach the Yandex Database cluster to.
      */
-    readonly subnetIds: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds: pulumi.Input<pulumi.Input<string>[]>;
 }

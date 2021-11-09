@@ -232,7 +232,7 @@ type OrganizationManagerOrganizationIamMemberArrayInput interface {
 type OrganizationManagerOrganizationIamMemberArray []OrganizationManagerOrganizationIamMemberInput
 
 func (OrganizationManagerOrganizationIamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OrganizationManagerOrganizationIamMember)(nil))
+	return reflect.TypeOf((*[]*OrganizationManagerOrganizationIamMember)(nil)).Elem()
 }
 
 func (i OrganizationManagerOrganizationIamMemberArray) ToOrganizationManagerOrganizationIamMemberArrayOutput() OrganizationManagerOrganizationIamMemberArrayOutput {
@@ -257,7 +257,7 @@ type OrganizationManagerOrganizationIamMemberMapInput interface {
 type OrganizationManagerOrganizationIamMemberMap map[string]OrganizationManagerOrganizationIamMemberInput
 
 func (OrganizationManagerOrganizationIamMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OrganizationManagerOrganizationIamMember)(nil))
+	return reflect.TypeOf((*map[string]*OrganizationManagerOrganizationIamMember)(nil)).Elem()
 }
 
 func (i OrganizationManagerOrganizationIamMemberMap) ToOrganizationManagerOrganizationIamMemberMapOutput() OrganizationManagerOrganizationIamMemberMapOutput {
@@ -268,9 +268,7 @@ func (i OrganizationManagerOrganizationIamMemberMap) ToOrganizationManagerOrgani
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationManagerOrganizationIamMemberMapOutput)
 }
 
-type OrganizationManagerOrganizationIamMemberOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationManagerOrganizationIamMemberOutput struct{ *pulumi.OutputState }
 
 func (OrganizationManagerOrganizationIamMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationManagerOrganizationIamMember)(nil))
@@ -289,14 +287,12 @@ func (o OrganizationManagerOrganizationIamMemberOutput) ToOrganizationManagerOrg
 }
 
 func (o OrganizationManagerOrganizationIamMemberOutput) ToOrganizationManagerOrganizationIamMemberPtrOutputWithContext(ctx context.Context) OrganizationManagerOrganizationIamMemberPtrOutput {
-	return o.ApplyT(func(v OrganizationManagerOrganizationIamMember) *OrganizationManagerOrganizationIamMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationManagerOrganizationIamMember) *OrganizationManagerOrganizationIamMember {
 		return &v
 	}).(OrganizationManagerOrganizationIamMemberPtrOutput)
 }
 
-type OrganizationManagerOrganizationIamMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationManagerOrganizationIamMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationManagerOrganizationIamMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationManagerOrganizationIamMember)(nil))
@@ -308,6 +304,16 @@ func (o OrganizationManagerOrganizationIamMemberPtrOutput) ToOrganizationManager
 
 func (o OrganizationManagerOrganizationIamMemberPtrOutput) ToOrganizationManagerOrganizationIamMemberPtrOutputWithContext(ctx context.Context) OrganizationManagerOrganizationIamMemberPtrOutput {
 	return o
+}
+
+func (o OrganizationManagerOrganizationIamMemberPtrOutput) Elem() OrganizationManagerOrganizationIamMemberOutput {
+	return o.ApplyT(func(v *OrganizationManagerOrganizationIamMember) OrganizationManagerOrganizationIamMember {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationManagerOrganizationIamMember
+		return ret
+	}).(OrganizationManagerOrganizationIamMemberOutput)
 }
 
 type OrganizationManagerOrganizationIamMemberArrayOutput struct{ *pulumi.OutputState }
@@ -351,6 +357,10 @@ func (o OrganizationManagerOrganizationIamMemberMapOutput) MapIndex(k pulumi.Str
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationManagerOrganizationIamMemberInput)(nil)).Elem(), &OrganizationManagerOrganizationIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationManagerOrganizationIamMemberPtrInput)(nil)).Elem(), &OrganizationManagerOrganizationIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationManagerOrganizationIamMemberArrayInput)(nil)).Elem(), OrganizationManagerOrganizationIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationManagerOrganizationIamMemberMapInput)(nil)).Elem(), OrganizationManagerOrganizationIamMemberMap{})
 	pulumi.RegisterOutputType(OrganizationManagerOrganizationIamMemberOutput{})
 	pulumi.RegisterOutputType(OrganizationManagerOrganizationIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationManagerOrganizationIamMemberArrayOutput{})

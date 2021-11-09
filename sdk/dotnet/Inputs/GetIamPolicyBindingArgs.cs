@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetIamPolicyBindingArgs : Pulumi.InvokeArgs
+    public sealed class GetIamPolicyBindingInputArgs : Pulumi.ResourceArgs
     {
         [Input("members", required: true)]
-        private List<string>? _members;
+        private InputList<string>? _members;
 
         /// <summary>
         /// An array of identities that will be granted the privilege in the `role`.
@@ -21,9 +21,9 @@ namespace Pulumi.Yandex.Inputs
         /// * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
         /// * **serviceAccount:{service_account_id}**: A unique service account ID.
         /// </summary>
-        public List<string> Members
+        public InputList<string> Members
         {
-            get => _members ?? (_members = new List<string>());
+            get => _members ?? (_members = new InputList<string>());
             set => _members = value;
         }
 
@@ -32,9 +32,9 @@ namespace Pulumi.Yandex.Inputs
         /// See the [IAM Roles] documentation for a complete list of roles.
         /// </summary>
         [Input("role", required: true)]
-        public string Role { get; set; } = null!;
+        public Input<string> Role { get; set; } = null!;
 
-        public GetIamPolicyBindingArgs()
+        public GetIamPolicyBindingInputArgs()
         {
         }
     }

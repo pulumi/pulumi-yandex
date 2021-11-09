@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -48,6 +49,44 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetIamServiceAccountResult> InvokeAsync(GetIamServiceAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIamServiceAccountResult>("yandex:index/getIamServiceAccount:getIamServiceAccount", args ?? new GetIamServiceAccountArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex IAM service account. For more information about accounts, see 
+        /// [Yandex.Cloud IAM accounts](https://cloud.yandex.com/docs/iam/concepts/#accounts).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var builder = Output.Create(Yandex.GetIamServiceAccount.InvokeAsync(new Yandex.GetIamServiceAccountArgs
+        ///         {
+        ///             ServiceAccountId = "sa_id",
+        ///         }));
+        ///         var deployer = Output.Create(Yandex.GetIamServiceAccount.InvokeAsync(new Yandex.GetIamServiceAccountArgs
+        ///         {
+        ///             Name = "sa_name",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ## Argument reference
+        /// 
+        /// * `service_account_id` - (Optional) ID of a specific service account.
+        /// 
+        /// * `name` - (Optional) Name of a specific service account.
+        /// 
+        /// &gt; **NOTE:** One of `service_account_id` or `name` should be specified.
+        /// 
+        /// * `folder_id` - (Optional) Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        public static Output<GetIamServiceAccountResult> Invoke(GetIamServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIamServiceAccountResult>("yandex:index/getIamServiceAccount:getIamServiceAccount", args ?? new GetIamServiceAccountInvokeArgs(), options.WithVersion());
     }
 
 
@@ -63,6 +102,22 @@ namespace Pulumi.Yandex
         public string? ServiceAccountId { get; set; }
 
         public GetIamServiceAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetIamServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("serviceAccountId")]
+        public Input<string>? ServiceAccountId { get; set; }
+
+        public GetIamServiceAccountInvokeArgs()
         {
         }
     }

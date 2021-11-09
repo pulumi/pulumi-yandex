@@ -19,6 +19,83 @@ namespace Pulumi.Yandex
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// ID of Yandex.Cloud tenant.
+        /// </summary>
+        [Output("cloudId")]
+        public Output<string?> CloudId { get; private set; } = null!;
+
+        /// <summary>
+        /// The API endpoint for Yandex.Cloud SDK client.
+        /// </summary>
+        [Output("endpoint")]
+        public Output<string?> Endpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The default folder ID where resources will be placed.
+        /// </summary>
+        [Output("folderId")]
+        public Output<string?> FolderId { get; private set; } = null!;
+
+        /// <summary>
+        /// Either the path to or the contents of a Service Account key file in JSON format.
+        /// </summary>
+        [Output("serviceAccountKeyFile")]
+        public Output<string?> ServiceAccountKeyFile { get; private set; } = null!;
+
+        /// <summary>
+        /// Yandex.Cloud storage service access key. Used when a storage data/resource doesn't have an access key explicitly
+        /// specified.
+        /// </summary>
+        [Output("storageAccessKey")]
+        public Output<string?> StorageAccessKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Yandex.Cloud storage service endpoint. Default is storage.yandexcloud.net
+        /// </summary>
+        [Output("storageEndpoint")]
+        public Output<string?> StorageEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// Yandex.Cloud storage service secret key. Used when a storage data/resource doesn't have a secret key explicitly
+        /// specified.
+        /// </summary>
+        [Output("storageSecretKey")]
+        public Output<string?> StorageSecretKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The access token for API operations.
+        /// </summary>
+        [Output("token")]
+        public Output<string?> Token { get; private set; } = null!;
+
+        /// <summary>
+        /// Yandex.Cloud Message Queue service access key. Used when a message queue resource doesn't have an access key explicitly
+        /// specified.
+        /// </summary>
+        [Output("ymqAccessKey")]
+        public Output<string?> YmqAccessKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Yandex.Cloud Message Queue service endpoint. Default is message-queue.api.cloud.yandex.net
+        /// </summary>
+        [Output("ymqEndpoint")]
+        public Output<string?> YmqEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// Yandex.Cloud Message Queue service secret key. Used when a message queue resource doesn't have a secret key explicitly
+        /// specified.
+        /// </summary>
+        [Output("ymqSecretKey")]
+        public Output<string?> YmqSecretKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone where operations will take place. Examples are ru-central1-a, ru-central2-c, etc.
+        /// </summary>
+        [Output("zone")]
+        public Output<string?> Zone { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

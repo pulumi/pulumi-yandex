@@ -12,6 +12,7 @@ __all__ = [
     'GetComputeImageResult',
     'AwaitableGetComputeImageResult',
     'get_compute_image',
+    'get_compute_image_output',
 ]
 
 @pulumi.output_type
@@ -215,3 +216,20 @@ def get_compute_image(family: Optional[str] = None,
         product_ids=__ret__.product_ids,
         size=__ret__.size,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_compute_image)
+def get_compute_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
+                             folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             image_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             name: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeImageResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str family: The family name of an image. Used to search the latest image in a family.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str image_id: The ID of a specific image.
+    :param str name: The name of the image.
+    """
+    ...

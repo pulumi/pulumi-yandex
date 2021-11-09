@@ -390,3 +390,103 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="cloudId")
+    def cloud_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        ID of Yandex.Cloud tenant.
+        """
+        return pulumi.get(self, "cloud_id")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Output[Optional[str]]:
+        """
+        The API endpoint for Yandex.Cloud SDK client.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The default folder ID where resources will be placed.
+        """
+        return pulumi.get(self, "folder_id")
+
+    @property
+    @pulumi.getter(name="serviceAccountKeyFile")
+    def service_account_key_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        Either the path to or the contents of a Service Account key file in JSON format.
+        """
+        return pulumi.get(self, "service_account_key_file")
+
+    @property
+    @pulumi.getter(name="storageAccessKey")
+    def storage_access_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        Yandex.Cloud storage service access key. Used when a storage data/resource doesn't have an access key explicitly
+        specified.
+        """
+        return pulumi.get(self, "storage_access_key")
+
+    @property
+    @pulumi.getter(name="storageEndpoint")
+    def storage_endpoint(self) -> pulumi.Output[Optional[str]]:
+        """
+        Yandex.Cloud storage service endpoint. Default is storage.yandexcloud.net
+        """
+        return pulumi.get(self, "storage_endpoint")
+
+    @property
+    @pulumi.getter(name="storageSecretKey")
+    def storage_secret_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        Yandex.Cloud storage service secret key. Used when a storage data/resource doesn't have a secret key explicitly
+        specified.
+        """
+        return pulumi.get(self, "storage_secret_key")
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Output[Optional[str]]:
+        """
+        The access token for API operations.
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="ymqAccessKey")
+    def ymq_access_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        Yandex.Cloud Message Queue service access key. Used when a message queue resource doesn't have an access key explicitly
+        specified.
+        """
+        return pulumi.get(self, "ymq_access_key")
+
+    @property
+    @pulumi.getter(name="ymqEndpoint")
+    def ymq_endpoint(self) -> pulumi.Output[Optional[str]]:
+        """
+        Yandex.Cloud Message Queue service endpoint. Default is message-queue.api.cloud.yandex.net
+        """
+        return pulumi.get(self, "ymq_endpoint")
+
+    @property
+    @pulumi.getter(name="ymqSecretKey")
+    def ymq_secret_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        Yandex.Cloud Message Queue service secret key. Used when a message queue resource doesn't have a secret key explicitly
+        specified.
+        """
+        return pulumi.get(self, "ymq_secret_key")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The zone where operations will take place. Examples are ru-central1-a, ru-central2-c, etc.
+        """
+        return pulumi.get(self, "zone")
+

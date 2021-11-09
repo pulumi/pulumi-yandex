@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getMdbMysqlCluster({
  *     name: "test",
- * }, { async: true }));
+ * }));
  *
  * export const networkId = foo.networkId;
  * ```
@@ -50,32 +50,32 @@ export interface GetMdbMysqlClusterArgs {
     /**
      * Access policy to the MySQL cluster. The structure is documented below.
      */
-    readonly access?: inputs.GetMdbMysqlClusterAccess;
+    access?: inputs.GetMdbMysqlClusterAccess;
     /**
      * The ID of the MySQL cluster.
      */
-    readonly clusterId?: string;
-    readonly deletionProtection?: boolean;
+    clusterId?: string;
+    deletionProtection?: boolean;
     /**
      * Description of the MySQL cluster.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * A set of key/value label pairs to assign to the MySQL cluster.
      */
-    readonly labels?: {[key: string]: string};
+    labels?: {[key: string]: string};
     /**
      * MySQL cluster config.
      */
-    readonly mysqlConfig?: {[key: string]: string};
+    mysqlConfig?: {[key: string]: string};
     /**
      * The name of the MySQL cluster.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -158,4 +158,43 @@ export interface GetMdbMysqlClusterResult {
      * Version of the MySQL cluster.
      */
     readonly version: string;
+}
+
+export function getMdbMysqlClusterOutput(args?: GetMdbMysqlClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbMysqlClusterResult> {
+    return pulumi.output(args).apply(a => getMdbMysqlCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMdbMysqlCluster.
+ */
+export interface GetMdbMysqlClusterOutputArgs {
+    /**
+     * Access policy to the MySQL cluster. The structure is documented below.
+     */
+    access?: pulumi.Input<inputs.GetMdbMysqlClusterAccessArgs>;
+    /**
+     * The ID of the MySQL cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Description of the MySQL cluster.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the MySQL cluster.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * MySQL cluster config.
+     */
+    mysqlConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the MySQL cluster.
+     */
+    name?: pulumi.Input<string>;
 }

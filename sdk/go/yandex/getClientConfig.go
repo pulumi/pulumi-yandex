@@ -26,7 +26,7 @@ import (
 // 			return err
 // 		}
 // 		opt0 := "kubernetes"
-// 		_, err = yandex.LookupKubernetesCluster(ctx, &yandex.LookupKubernetesClusterArgs{
+// 		_, err = yandex.LookupKubernetesCluster(ctx, &GetKubernetesClusterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {

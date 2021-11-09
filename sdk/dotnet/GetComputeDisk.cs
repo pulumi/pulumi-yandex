@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -17,6 +18,13 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetComputeDiskResult> InvokeAsync(GetComputeDiskArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComputeDiskResult>("yandex:index/getComputeDisk:getComputeDisk", args ?? new GetComputeDiskArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Compute disk. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/compute/concepts/disk).
+        /// </summary>
+        public static Output<GetComputeDiskResult> Invoke(GetComputeDiskInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetComputeDiskResult>("yandex:index/getComputeDisk:getComputeDisk", args ?? new GetComputeDiskInvokeArgs(), options.WithVersion());
     }
 
 
@@ -44,6 +52,34 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetComputeDiskArgs()
+        {
+        }
+    }
+
+    public sealed class GetComputeDiskInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of a specific disk.
+        /// </summary>
+        [Input("diskId")]
+        public Input<string>? DiskId { get; set; }
+
+        [Input("diskPlacementPolicy")]
+        public Input<Inputs.GetComputeDiskDiskPlacementPolicyInputArgs>? DiskPlacementPolicy { get; set; }
+
+        /// <summary>
+        /// ID of the folder that the disk belongs to.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// Name of the disk.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetComputeDiskInvokeArgs()
         {
         }
     }

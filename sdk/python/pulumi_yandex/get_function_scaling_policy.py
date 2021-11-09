@@ -14,6 +14,7 @@ __all__ = [
     'GetFunctionScalingPolicyResult',
     'AwaitableGetFunctionScalingPolicyResult',
     'get_function_scaling_policy',
+    'get_function_scaling_policy_output',
 ]
 
 @pulumi.output_type
@@ -81,3 +82,13 @@ def get_function_scaling_policy(function_id: Optional[str] = None,
         function_id=__ret__.function_id,
         id=__ret__.id,
         policies=__ret__.policies)
+
+
+@_utilities.lift_output_func(get_function_scaling_policy)
+def get_function_scaling_policy_output(function_id: Optional[pulumi.Input[str]] = None,
+                                       policies: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFunctionScalingPolicyPolicyArgs']]]]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionScalingPolicyResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

@@ -184,51 +184,51 @@ export interface VpcSecurityGroupRuleState {
     /**
      * Description of the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * direction of the rule. Can be `ingress` (inbound) or `egress` (outbound).
      */
-    readonly direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string>;
     /**
      * Minimum port number.
      */
-    readonly fromPort?: pulumi.Input<number>;
+    fromPort?: pulumi.Input<number>;
     /**
      * Labels to assign to this rule.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Port number (if applied to a single port).
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
      */
-    readonly predefinedTarget?: pulumi.Input<string>;
+    predefinedTarget?: pulumi.Input<string>;
     /**
      * One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * ID of the security group this rule belongs to.
      */
-    readonly securityGroupBinding?: pulumi.Input<string>;
+    securityGroupBinding?: pulumi.Input<string>;
     /**
      * Target security group ID for this rule.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * Maximum port number.
      */
-    readonly toPort?: pulumi.Input<number>;
+    toPort?: pulumi.Input<number>;
     /**
      * The blocks of IPv4 addresses for this rule.
      */
-    readonly v4CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    v4CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The blocks of IPv6 addresses for this rule. `v6CidrBlocks` argument is currently not supported. It will be available in the future.
      */
-    readonly v6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    v6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -238,49 +238,49 @@ export interface VpcSecurityGroupRuleArgs {
     /**
      * Description of the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * direction of the rule. Can be `ingress` (inbound) or `egress` (outbound).
      */
-    readonly direction: pulumi.Input<string>;
+    direction: pulumi.Input<string>;
     /**
      * Minimum port number.
      */
-    readonly fromPort?: pulumi.Input<number>;
+    fromPort?: pulumi.Input<number>;
     /**
      * Labels to assign to this rule.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Port number (if applied to a single port).
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.com/docs/vpc/concepts/security-groups) for possible options.
      */
-    readonly predefinedTarget?: pulumi.Input<string>;
+    predefinedTarget?: pulumi.Input<string>;
     /**
      * One of `ANY`, `TCP`, `UDP`, `ICMP`, `IPV6_ICMP`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * ID of the security group this rule belongs to.
      */
-    readonly securityGroupBinding: pulumi.Input<string>;
+    securityGroupBinding: pulumi.Input<string>;
     /**
      * Target security group ID for this rule.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * Maximum port number.
      */
-    readonly toPort?: pulumi.Input<number>;
+    toPort?: pulumi.Input<number>;
     /**
      * The blocks of IPv4 addresses for this rule.
      */
-    readonly v4CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    v4CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The blocks of IPv6 addresses for this rule. `v6CidrBlocks` argument is currently not supported. It will be available in the future.
      */
-    readonly v6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    v6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
 }

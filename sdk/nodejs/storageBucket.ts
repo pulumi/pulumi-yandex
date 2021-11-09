@@ -516,65 +516,65 @@ export interface StorageBucketState {
     /**
      * The access key to use when applying changes. If omitted, `storageAccessKey` specified in provider config is used.
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * The [predefined ACL](https://cloud.yandex.com/docs/storage/concepts/acl#predefined_acls) to apply. Defaults to `private`. Conflicts with `grant`.
      */
-    readonly acl?: pulumi.Input<string>;
-    readonly bucket?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * The bucket domain name.
      */
-    readonly bucketDomainName?: pulumi.Input<string>;
+    bucketDomainName?: pulumi.Input<string>;
     /**
      * Creates a unique bucket name beginning with the specified prefix. Conflicts with `bucket`.
      */
-    readonly bucketPrefix?: pulumi.Input<string>;
+    bucketPrefix?: pulumi.Input<string>;
     /**
      * A rule of [Cross-Origin Resource Sharing](https://cloud.yandex.com/docs/storage/cors/) (documented below).
      */
-    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketCorsRule>[]>;
     /**
      * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * An [ACL policy grant](https://cloud.yandex.com/docs/storage/concepts/acl#permissions-types). Conflicts with `acl`.
      */
-    readonly grants?: pulumi.Input<pulumi.Input<inputs.StorageBucketGrant>[]>;
+    grants?: pulumi.Input<pulumi.Input<inputs.StorageBucketGrant>[]>;
     /**
      * A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketLifecycleRule>[]>;
     /**
      * A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
      */
-    readonly loggings?: pulumi.Input<pulumi.Input<inputs.StorageBucketLogging>[]>;
-    readonly policy?: pulumi.Input<string>;
+    loggings?: pulumi.Input<pulumi.Input<inputs.StorageBucketLogging>[]>;
+    policy?: pulumi.Input<string>;
     /**
      * The secret key to use when applying changes. If omitted, `storageSecretKey` specified in provider config is used.
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * A configuration of server-side encryption for the bucket (documented below)
      */
-    readonly serverSideEncryptionConfiguration?: pulumi.Input<inputs.StorageBucketServerSideEncryptionConfiguration>;
+    serverSideEncryptionConfiguration?: pulumi.Input<inputs.StorageBucketServerSideEncryptionConfiguration>;
     /**
      * A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
      */
-    readonly versioning?: pulumi.Input<inputs.StorageBucketVersioning>;
+    versioning?: pulumi.Input<inputs.StorageBucketVersioning>;
     /**
      * A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
      */
-    readonly website?: pulumi.Input<inputs.StorageBucketWebsite>;
+    website?: pulumi.Input<inputs.StorageBucketWebsite>;
     /**
      * The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
      */
-    readonly websiteDomain?: pulumi.Input<string>;
+    websiteDomain?: pulumi.Input<string>;
     /**
      * The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
      */
-    readonly websiteEndpoint?: pulumi.Input<string>;
+    websiteEndpoint?: pulumi.Input<string>;
 }
 
 /**
@@ -584,59 +584,59 @@ export interface StorageBucketArgs {
     /**
      * The access key to use when applying changes. If omitted, `storageAccessKey` specified in provider config is used.
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * The [predefined ACL](https://cloud.yandex.com/docs/storage/concepts/acl#predefined_acls) to apply. Defaults to `private`. Conflicts with `grant`.
      */
-    readonly acl?: pulumi.Input<string>;
-    readonly bucket?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * Creates a unique bucket name beginning with the specified prefix. Conflicts with `bucket`.
      */
-    readonly bucketPrefix?: pulumi.Input<string>;
+    bucketPrefix?: pulumi.Input<string>;
     /**
      * A rule of [Cross-Origin Resource Sharing](https://cloud.yandex.com/docs/storage/cors/) (documented below).
      */
-    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketCorsRule>[]>;
     /**
      * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
      */
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * An [ACL policy grant](https://cloud.yandex.com/docs/storage/concepts/acl#permissions-types). Conflicts with `acl`.
      */
-    readonly grants?: pulumi.Input<pulumi.Input<inputs.StorageBucketGrant>[]>;
+    grants?: pulumi.Input<pulumi.Input<inputs.StorageBucketGrant>[]>;
     /**
      * A configuration of [object lifecycle management](https://cloud.yandex.com/docs/storage/concepts/lifecycles) (documented below).
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.StorageBucketLifecycleRule>[]>;
     /**
      * A settings of [bucket logging](https://cloud.yandex.com/docs/storage/concepts/server-logs) (documented below).
      */
-    readonly loggings?: pulumi.Input<pulumi.Input<inputs.StorageBucketLogging>[]>;
-    readonly policy?: pulumi.Input<string>;
+    loggings?: pulumi.Input<pulumi.Input<inputs.StorageBucketLogging>[]>;
+    policy?: pulumi.Input<string>;
     /**
      * The secret key to use when applying changes. If omitted, `storageSecretKey` specified in provider config is used.
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * A configuration of server-side encryption for the bucket (documented below)
      */
-    readonly serverSideEncryptionConfiguration?: pulumi.Input<inputs.StorageBucketServerSideEncryptionConfiguration>;
+    serverSideEncryptionConfiguration?: pulumi.Input<inputs.StorageBucketServerSideEncryptionConfiguration>;
     /**
      * A state of [versioning](https://cloud.yandex.com/docs/storage/concepts/versioning) (documented below)
      */
-    readonly versioning?: pulumi.Input<inputs.StorageBucketVersioning>;
+    versioning?: pulumi.Input<inputs.StorageBucketVersioning>;
     /**
      * A [website object](https://cloud.yandex.com/docs/storage/concepts/hosting) (documented below).
      */
-    readonly website?: pulumi.Input<inputs.StorageBucketWebsite>;
+    website?: pulumi.Input<inputs.StorageBucketWebsite>;
     /**
      * The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
      */
-    readonly websiteDomain?: pulumi.Input<string>;
+    websiteDomain?: pulumi.Input<string>;
     /**
      * The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
      */
-    readonly websiteEndpoint?: pulumi.Input<string>;
+    websiteEndpoint?: pulumi.Input<string>;
 }

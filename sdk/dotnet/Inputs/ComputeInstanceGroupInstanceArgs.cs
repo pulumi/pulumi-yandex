@@ -9,4 +9,69 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Yandex.Inputs
 {
+
+    public sealed class ComputeInstanceGroupInstanceArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// DNS record fqdn (must have dot at the end).
+        /// </summary>
+        [Input("fqdn")]
+        public Input<string>? Fqdn { get; set; }
+
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Name template of the instance.  
+        /// In order to be unique it must contain at least one of instance unique placeholders:
+        /// {instance.short_id}
+        /// {instance.index}
+        /// combination of {instance.zone_id} and {instance.index_in_zone}
+        /// Example: my-instance-{instance.index}
+        /// If not set, default is used: {instance_group.id}-{instance.short_id}
+        /// It may also contain another placeholders, see metadata doc for full list.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("networkInterfaces")]
+        private InputList<Inputs.ComputeInstanceGroupInstanceNetworkInterfaceArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Network specifications for the instance. This can be used multiple times for adding multiple interfaces. The structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ComputeInstanceGroupInstanceNetworkInterfaceArgs> NetworkInterfaces
+        {
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ComputeInstanceGroupInstanceNetworkInterfaceArgs>());
+            set => _networkInterfaces = value;
+        }
+
+        /// <summary>
+        /// The status of the instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("statusChangedAt")]
+        public Input<string>? StatusChangedAt { get; set; }
+
+        /// <summary>
+        /// The status message of the instance.
+        /// </summary>
+        [Input("statusMessage")]
+        public Input<string>? StatusMessage { get; set; }
+
+        /// <summary>
+        /// The ID of the availability zone where the instance resides.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public ComputeInstanceGroupInstanceArgs()
+        {
+        }
+    }
 }

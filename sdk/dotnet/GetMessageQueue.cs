@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetMessageQueueResult> InvokeAsync(GetMessageQueueArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMessageQueueResult>("yandex:index/getMessageQueue:getMessageQueue", args ?? new GetMessageQueueArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Message Queue. For more information about Yandex Message Queue, see
+        /// [Yandex.Cloud Message Queue](https://cloud.yandex.com/docs/message-queue).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var exampleQueue = Output.Create(Yandex.GetMessageQueue.InvokeAsync(new Yandex.GetMessageQueueArgs
+        ///         {
+        ///             Name = "ymq_terraform_example",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMessageQueueResult> Invoke(GetMessageQueueInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMessageQueueResult>("yandex:index/getMessageQueue:getMessageQueue", args ?? new GetMessageQueueInvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +89,25 @@ namespace Pulumi.Yandex
         public string? SecretKey { get; set; }
 
         public GetMessageQueueArgs()
+        {
+        }
+    }
+
+    public sealed class GetMessageQueueInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("accessKey")]
+        public Input<string>? AccessKey { get; set; }
+
+        /// <summary>
+        /// Queue name.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("secretKey")]
+        public Input<string>? SecretKey { get; set; }
+
+        public GetMessageQueueInvokeArgs()
         {
         }
     }

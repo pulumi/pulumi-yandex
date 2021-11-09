@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,88 @@ type LookupApiGatewayResult struct {
 	Name        *string           `pulumi:"name"`
 	Status      string            `pulumi:"status"`
 	UserDomains []string          `pulumi:"userDomains"`
+}
+
+func LookupApiGatewayOutput(ctx *pulumi.Context, args LookupApiGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupApiGatewayResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupApiGatewayResult, error) {
+			args := v.(LookupApiGatewayArgs)
+			r, err := LookupApiGateway(ctx, &args, opts...)
+			return *r, err
+		}).(LookupApiGatewayResultOutput)
+}
+
+// A collection of arguments for invoking getApiGateway.
+type LookupApiGatewayOutputArgs struct {
+	ApiGatewayId pulumi.StringPtrInput `pulumi:"apiGatewayId"`
+	FolderId     pulumi.StringPtrInput `pulumi:"folderId"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupApiGatewayOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApiGatewayArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getApiGateway.
+type LookupApiGatewayResultOutput struct{ *pulumi.OutputState }
+
+func (LookupApiGatewayResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApiGatewayResult)(nil)).Elem()
+}
+
+func (o LookupApiGatewayResultOutput) ToLookupApiGatewayResultOutput() LookupApiGatewayResultOutput {
+	return o
+}
+
+func (o LookupApiGatewayResultOutput) ToLookupApiGatewayResultOutputWithContext(ctx context.Context) LookupApiGatewayResultOutput {
+	return o
+}
+
+func (o LookupApiGatewayResultOutput) ApiGatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) *string { return v.ApiGatewayId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupApiGatewayResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupApiGatewayResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupApiGatewayResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o LookupApiGatewayResultOutput) FolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) *string { return v.FolderId }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupApiGatewayResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupApiGatewayResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupApiGatewayResultOutput) LogGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) string { return v.LogGroupId }).(pulumi.StringOutput)
+}
+
+func (o LookupApiGatewayResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupApiGatewayResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupApiGatewayResultOutput) UserDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) []string { return v.UserDomains }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupApiGatewayResultOutput{})
 }

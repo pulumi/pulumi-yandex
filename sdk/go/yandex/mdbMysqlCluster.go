@@ -46,7 +46,7 @@ import (
 // 			Environment: pulumi.String("PRESTABLE"),
 // 			NetworkId:   fooVpcNetwork.ID(),
 // 			Version:     pulumi.String("8.0"),
-// 			Resources: &yandex.MdbMysqlClusterResourcesArgs{
+// 			Resources: &MdbMysqlClusterResourcesArgs{
 // 				ResourcePresetId: pulumi.String("s2.micro"),
 // 				DiskTypeId:       pulumi.String("network-ssd"),
 // 				DiskSize:         pulumi.Int(16),
@@ -57,20 +57,20 @@ import (
 // 				"default_authentication_plugin": pulumi.String("MYSQL_NATIVE_PASSWORD"),
 // 				"innodb_print_all_deadlocks":    pulumi.String("true"),
 // 			},
-// 			Access: &yandex.MdbMysqlClusterAccessArgs{
+// 			Access: &MdbMysqlClusterAccessArgs{
 // 				WebSql: pulumi.Bool(true),
 // 			},
-// 			Databases: yandex.MdbMysqlClusterDatabaseArray{
-// 				&yandex.MdbMysqlClusterDatabaseArgs{
+// 			Databases: MdbMysqlClusterDatabaseArray{
+// 				&MdbMysqlClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name"),
 // 				},
 // 			},
-// 			Users: yandex.MdbMysqlClusterUserArray{
-// 				&yandex.MdbMysqlClusterUserArgs{
+// 			Users: MdbMysqlClusterUserArray{
+// 				&MdbMysqlClusterUserArgs{
 // 					Name:     pulumi.String("user_name"),
 // 					Password: pulumi.String("your_password"),
-// 					Permissions: yandex.MdbMysqlClusterUserPermissionArray{
-// 						&yandex.MdbMysqlClusterUserPermissionArgs{
+// 					Permissions: MdbMysqlClusterUserPermissionArray{
+// 						&MdbMysqlClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name"),
 // 							Roles: pulumi.StringArray{
 // 								pulumi.String("ALL"),
@@ -79,8 +79,8 @@ import (
 // 					},
 // 				},
 // 			},
-// 			Hosts: yandex.MdbMysqlClusterHostArray{
-// 				&yandex.MdbMysqlClusterHostArgs{
+// 			Hosts: MdbMysqlClusterHostArray{
+// 				&MdbMysqlClusterHostArgs{
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 					SubnetId: fooVpcSubnet.ID(),
 // 				},
@@ -134,27 +134,27 @@ import (
 // 			Environment: pulumi.String("PRESTABLE"),
 // 			NetworkId:   fooVpcNetwork.ID(),
 // 			Version:     pulumi.String("8.0"),
-// 			Resources: &yandex.MdbMysqlClusterResourcesArgs{
+// 			Resources: &MdbMysqlClusterResourcesArgs{
 // 				ResourcePresetId: pulumi.String("s2.micro"),
 // 				DiskTypeId:       pulumi.String("network-ssd"),
 // 				DiskSize:         pulumi.Int(16),
 // 			},
-// 			Databases: yandex.MdbMysqlClusterDatabaseArray{
-// 				&yandex.MdbMysqlClusterDatabaseArgs{
+// 			Databases: MdbMysqlClusterDatabaseArray{
+// 				&MdbMysqlClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name"),
 // 				},
 // 			},
-// 			MaintenanceWindow: &yandex.MdbMysqlClusterMaintenanceWindowArgs{
+// 			MaintenanceWindow: &MdbMysqlClusterMaintenanceWindowArgs{
 // 				Type: pulumi.String("WEEKLY"),
 // 				Day:  pulumi.String("SAT"),
 // 				Hour: pulumi.Int(12),
 // 			},
-// 			Users: yandex.MdbMysqlClusterUserArray{
-// 				&yandex.MdbMysqlClusterUserArgs{
+// 			Users: MdbMysqlClusterUserArray{
+// 				&MdbMysqlClusterUserArgs{
 // 					Name:     pulumi.String("user_name"),
 // 					Password: pulumi.String("your_password"),
-// 					Permissions: yandex.MdbMysqlClusterUserPermissionArray{
-// 						&yandex.MdbMysqlClusterUserPermissionArgs{
+// 					Permissions: MdbMysqlClusterUserPermissionArray{
+// 						&MdbMysqlClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name"),
 // 							Roles: pulumi.StringArray{
 // 								pulumi.String("ALL"),
@@ -163,12 +163,12 @@ import (
 // 					},
 // 				},
 // 			},
-// 			Hosts: yandex.MdbMysqlClusterHostArray{
-// 				&yandex.MdbMysqlClusterHostArgs{
+// 			Hosts: MdbMysqlClusterHostArray{
+// 				&MdbMysqlClusterHostArgs{
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 					SubnetId: fooVpcSubnet.ID(),
 // 				},
-// 				&yandex.MdbMysqlClusterHostArgs{
+// 				&MdbMysqlClusterHostArgs{
 // 					Zone:     pulumi.String("ru-central1-b"),
 // 					SubnetId: bar.ID(),
 // 				},
@@ -212,32 +212,32 @@ import (
 // 			Environment: pulumi.String("PRESTABLE"),
 // 			NetworkId:   fooVpcNetwork.ID(),
 // 			Version:     pulumi.String("8.0"),
-// 			Resources: &yandex.MdbMysqlClusterResourcesArgs{
+// 			Resources: &MdbMysqlClusterResourcesArgs{
 // 				ResourcePresetId: pulumi.String("s2.micro"),
 // 				DiskTypeId:       pulumi.String("network-ssd"),
 // 				DiskSize:         pulumi.Int(16),
 // 			},
-// 			Databases: yandex.MdbMysqlClusterDatabaseArray{
-// 				&yandex.MdbMysqlClusterDatabaseArgs{
+// 			Databases: MdbMysqlClusterDatabaseArray{
+// 				&MdbMysqlClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name"),
 // 				},
 // 			},
-// 			MaintenanceWindow: &yandex.MdbMysqlClusterMaintenanceWindowArgs{
+// 			MaintenanceWindow: &MdbMysqlClusterMaintenanceWindowArgs{
 // 				Type: pulumi.String("ANYTIME"),
 // 			},
-// 			Users: yandex.MdbMysqlClusterUserArray{
-// 				&yandex.MdbMysqlClusterUserArgs{
+// 			Users: MdbMysqlClusterUserArray{
+// 				&MdbMysqlClusterUserArgs{
 // 					Name:     pulumi.String("user_name"),
 // 					Password: pulumi.String("your_password"),
-// 					Permissions: yandex.MdbMysqlClusterUserPermissionArray{
-// 						&yandex.MdbMysqlClusterUserPermissionArgs{
+// 					Permissions: MdbMysqlClusterUserPermissionArray{
+// 						&MdbMysqlClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name"),
 // 							Roles: pulumi.StringArray{
 // 								pulumi.String("ALL"),
 // 							},
 // 						},
 // 					},
-// 					ConnectionLimits: &yandex.MdbMysqlClusterUserConnectionLimitsArgs{
+// 					ConnectionLimits: &MdbMysqlClusterUserConnectionLimitsArgs{
 // 						MaxQuestionsPerHour: pulumi.Int(10),
 // 					},
 // 					GlobalPermissions: pulumi.StringArray{
@@ -247,8 +247,8 @@ import (
 // 					AuthenticationPlugin: pulumi.String("CACHING_SHA2_PASSWORD"),
 // 				},
 // 			},
-// 			Hosts: yandex.MdbMysqlClusterHostArray{
-// 				&yandex.MdbMysqlClusterHostArgs{
+// 			Hosts: MdbMysqlClusterHostArray{
+// 				&MdbMysqlClusterHostArgs{
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 					SubnetId: fooVpcSubnet.ID(),
 // 				},
@@ -292,26 +292,26 @@ import (
 // 			Environment: pulumi.String("PRESTABLE"),
 // 			NetworkId:   fooVpcNetwork.ID(),
 // 			Version:     pulumi.String("8.0"),
-// 			Restore: &yandex.MdbMysqlClusterRestoreArgs{
+// 			Restore: &MdbMysqlClusterRestoreArgs{
 // 				BackupId: pulumi.String("c9qj2tns23432471d9qha:stream_20210122T141717Z"),
 // 				Time:     pulumi.String("2021-01-23T15:04:05"),
 // 			},
-// 			Resources: &yandex.MdbMysqlClusterResourcesArgs{
+// 			Resources: &MdbMysqlClusterResourcesArgs{
 // 				ResourcePresetId: pulumi.String("s2.micro"),
 // 				DiskTypeId:       pulumi.String("network-ssd"),
 // 				DiskSize:         pulumi.Int(16),
 // 			},
-// 			Databases: yandex.MdbMysqlClusterDatabaseArray{
-// 				&yandex.MdbMysqlClusterDatabaseArgs{
+// 			Databases: MdbMysqlClusterDatabaseArray{
+// 				&MdbMysqlClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name"),
 // 				},
 // 			},
-// 			Users: yandex.MdbMysqlClusterUserArray{
-// 				&yandex.MdbMysqlClusterUserArgs{
+// 			Users: MdbMysqlClusterUserArray{
+// 				&MdbMysqlClusterUserArgs{
 // 					Name:     pulumi.String("user_name"),
 // 					Password: pulumi.String("your_password"),
-// 					Permissions: yandex.MdbMysqlClusterUserPermissionArray{
-// 						&yandex.MdbMysqlClusterUserPermissionArgs{
+// 					Permissions: MdbMysqlClusterUserPermissionArray{
+// 						&MdbMysqlClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name"),
 // 							Roles: pulumi.StringArray{
 // 								pulumi.String("ALL"),
@@ -320,8 +320,8 @@ import (
 // 					},
 // 				},
 // 			},
-// 			Hosts: yandex.MdbMysqlClusterHostArray{
-// 				&yandex.MdbMysqlClusterHostArgs{
+// 			Hosts: MdbMysqlClusterHostArray{
+// 				&MdbMysqlClusterHostArgs{
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 					SubnetId: fooVpcSubnet.ID(),
 // 				},
@@ -948,7 +948,7 @@ type MdbMysqlClusterArrayInput interface {
 type MdbMysqlClusterArray []MdbMysqlClusterInput
 
 func (MdbMysqlClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MdbMysqlCluster)(nil))
+	return reflect.TypeOf((*[]*MdbMysqlCluster)(nil)).Elem()
 }
 
 func (i MdbMysqlClusterArray) ToMdbMysqlClusterArrayOutput() MdbMysqlClusterArrayOutput {
@@ -973,7 +973,7 @@ type MdbMysqlClusterMapInput interface {
 type MdbMysqlClusterMap map[string]MdbMysqlClusterInput
 
 func (MdbMysqlClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MdbMysqlCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbMysqlCluster)(nil)).Elem()
 }
 
 func (i MdbMysqlClusterMap) ToMdbMysqlClusterMapOutput() MdbMysqlClusterMapOutput {
@@ -984,9 +984,7 @@ func (i MdbMysqlClusterMap) ToMdbMysqlClusterMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterMapOutput)
 }
 
-type MdbMysqlClusterOutput struct {
-	*pulumi.OutputState
-}
+type MdbMysqlClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbMysqlClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MdbMysqlCluster)(nil))
@@ -1005,14 +1003,12 @@ func (o MdbMysqlClusterOutput) ToMdbMysqlClusterPtrOutput() MdbMysqlClusterPtrOu
 }
 
 func (o MdbMysqlClusterOutput) ToMdbMysqlClusterPtrOutputWithContext(ctx context.Context) MdbMysqlClusterPtrOutput {
-	return o.ApplyT(func(v MdbMysqlCluster) *MdbMysqlCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMysqlCluster) *MdbMysqlCluster {
 		return &v
 	}).(MdbMysqlClusterPtrOutput)
 }
 
-type MdbMysqlClusterPtrOutput struct {
-	*pulumi.OutputState
-}
+type MdbMysqlClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (MdbMysqlClusterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MdbMysqlCluster)(nil))
@@ -1024,6 +1020,16 @@ func (o MdbMysqlClusterPtrOutput) ToMdbMysqlClusterPtrOutput() MdbMysqlClusterPt
 
 func (o MdbMysqlClusterPtrOutput) ToMdbMysqlClusterPtrOutputWithContext(ctx context.Context) MdbMysqlClusterPtrOutput {
 	return o
+}
+
+func (o MdbMysqlClusterPtrOutput) Elem() MdbMysqlClusterOutput {
+	return o.ApplyT(func(v *MdbMysqlCluster) MdbMysqlCluster {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMysqlCluster
+		return ret
+	}).(MdbMysqlClusterOutput)
 }
 
 type MdbMysqlClusterArrayOutput struct{ *pulumi.OutputState }
@@ -1067,6 +1073,10 @@ func (o MdbMysqlClusterMapOutput) MapIndex(k pulumi.StringInput) MdbMysqlCluster
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterInput)(nil)).Elem(), &MdbMysqlCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterPtrInput)(nil)).Elem(), &MdbMysqlCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterArrayInput)(nil)).Elem(), MdbMysqlClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterMapInput)(nil)).Elem(), MdbMysqlClusterMap{})
 	pulumi.RegisterOutputType(MdbMysqlClusterOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterArrayOutput{})

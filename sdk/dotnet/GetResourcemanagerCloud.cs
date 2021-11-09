@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetResourcemanagerCloudResult> InvokeAsync(GetResourcemanagerCloudArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourcemanagerCloudResult>("yandex:index/getResourcemanagerCloud:getResourcemanagerCloud", args ?? new GetResourcemanagerCloudArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get cloud details.
+        /// For more information, see [Cloud](https://cloud.yandex.com/docs/resource-manager/concepts/resources-hierarchy#cloud).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetResourcemanagerCloud.InvokeAsync(new Yandex.GetResourcemanagerCloudArgs
+        ///         {
+        ///             Name = "foo-cloud",
+        ///         }));
+        ///         this.CloudCreateTimestamp = foo.Apply(foo =&gt; foo.CreatedAt);
+        ///     }
+        /// 
+        ///     [Output("cloudCreateTimestamp")]
+        ///     public Output&lt;string&gt; CloudCreateTimestamp { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetResourcemanagerCloudResult> Invoke(GetResourcemanagerCloudInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetResourcemanagerCloudResult>("yandex:index/getResourcemanagerCloud:getResourcemanagerCloud", args ?? new GetResourcemanagerCloudInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +101,31 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetResourcemanagerCloudArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourcemanagerCloudInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of the cloud.
+        /// </summary>
+        [Input("cloudId")]
+        public Input<string>? CloudId { get; set; }
+
+        /// <summary>
+        /// Description of the cloud.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Name of the cloud.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetResourcemanagerCloudInvokeArgs()
         {
         }
     }

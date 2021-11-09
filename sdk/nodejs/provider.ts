@@ -25,6 +25,58 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * ID of Yandex.Cloud tenant.
+     */
+    public readonly cloudId!: pulumi.Output<string | undefined>;
+    /**
+     * The API endpoint for Yandex.Cloud SDK client.
+     */
+    public readonly endpoint!: pulumi.Output<string | undefined>;
+    /**
+     * The default folder ID where resources will be placed.
+     */
+    public readonly folderId!: pulumi.Output<string | undefined>;
+    /**
+     * Either the path to or the contents of a Service Account key file in JSON format.
+     */
+    public readonly serviceAccountKeyFile!: pulumi.Output<string | undefined>;
+    /**
+     * Yandex.Cloud storage service access key. Used when a storage data/resource doesn't have an access key explicitly
+     * specified.
+     */
+    public readonly storageAccessKey!: pulumi.Output<string | undefined>;
+    /**
+     * Yandex.Cloud storage service endpoint. Default is storage.yandexcloud.net
+     */
+    public readonly storageEndpoint!: pulumi.Output<string | undefined>;
+    /**
+     * Yandex.Cloud storage service secret key. Used when a storage data/resource doesn't have a secret key explicitly
+     * specified.
+     */
+    public readonly storageSecretKey!: pulumi.Output<string | undefined>;
+    /**
+     * The access token for API operations.
+     */
+    public readonly token!: pulumi.Output<string | undefined>;
+    /**
+     * Yandex.Cloud Message Queue service access key. Used when a message queue resource doesn't have an access key explicitly
+     * specified.
+     */
+    public readonly ymqAccessKey!: pulumi.Output<string | undefined>;
+    /**
+     * Yandex.Cloud Message Queue service endpoint. Default is message-queue.api.cloud.yandex.net
+     */
+    public readonly ymqEndpoint!: pulumi.Output<string | undefined>;
+    /**
+     * Yandex.Cloud Message Queue service secret key. Used when a message queue resource doesn't have a secret key explicitly
+     * specified.
+     */
+    public readonly ymqSecretKey!: pulumi.Output<string | undefined>;
+    /**
+     * The zone where operations will take place. Examples are ru-central1-a, ru-central2-c, etc.
+     */
+    public readonly zone!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -67,65 +119,65 @@ export interface ProviderArgs {
     /**
      * ID of Yandex.Cloud tenant.
      */
-    readonly cloudId?: pulumi.Input<string>;
+    cloudId?: pulumi.Input<string>;
     /**
      * The API endpoint for Yandex.Cloud SDK client.
      */
-    readonly endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
     /**
      * The default folder ID where resources will be placed.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`.
      */
-    readonly insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean>;
     /**
      * The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
      */
-    readonly maxRetries?: pulumi.Input<number>;
+    maxRetries?: pulumi.Input<number>;
     /**
      * Disable use of TLS. Default value is `false`.
      */
-    readonly plaintext?: pulumi.Input<boolean>;
+    plaintext?: pulumi.Input<boolean>;
     /**
      * Either the path to or the contents of a Service Account key file in JSON format.
      */
-    readonly serviceAccountKeyFile?: pulumi.Input<string>;
+    serviceAccountKeyFile?: pulumi.Input<string>;
     /**
      * Yandex.Cloud storage service access key. Used when a storage data/resource doesn't have an access key explicitly
      * specified.
      */
-    readonly storageAccessKey?: pulumi.Input<string>;
+    storageAccessKey?: pulumi.Input<string>;
     /**
      * Yandex.Cloud storage service endpoint. Default is storage.yandexcloud.net
      */
-    readonly storageEndpoint?: pulumi.Input<string>;
+    storageEndpoint?: pulumi.Input<string>;
     /**
      * Yandex.Cloud storage service secret key. Used when a storage data/resource doesn't have a secret key explicitly
      * specified.
      */
-    readonly storageSecretKey?: pulumi.Input<string>;
+    storageSecretKey?: pulumi.Input<string>;
     /**
      * The access token for API operations.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * Yandex.Cloud Message Queue service access key. Used when a message queue resource doesn't have an access key explicitly
      * specified.
      */
-    readonly ymqAccessKey?: pulumi.Input<string>;
+    ymqAccessKey?: pulumi.Input<string>;
     /**
      * Yandex.Cloud Message Queue service endpoint. Default is message-queue.api.cloud.yandex.net
      */
-    readonly ymqEndpoint?: pulumi.Input<string>;
+    ymqEndpoint?: pulumi.Input<string>;
     /**
      * Yandex.Cloud Message Queue service secret key. Used when a message queue resource doesn't have a secret key explicitly
      * specified.
      */
-    readonly ymqSecretKey?: pulumi.Input<string>;
+    ymqSecretKey?: pulumi.Input<string>;
     /**
      * The zone where operations will take place. Examples are ru-central1-a, ru-central2-c, etc.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

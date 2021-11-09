@@ -128,41 +128,41 @@ export interface KmsSymmetricKeyState {
     /**
      * Creation timestamp of the key.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Encryption algorithm to be used with a new key version, 
      * generated with the next rotation. The default value is `AES_128`.
      */
-    readonly defaultAlgorithm?: pulumi.Input<string>;
+    defaultAlgorithm?: pulumi.Input<string>;
     /**
      * An optional description of the key.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the key.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the key.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Last rotation timestamp of the key.
      */
-    readonly rotatedAt?: pulumi.Input<string>;
+    rotatedAt?: pulumi.Input<string>;
     /**
      * Interval between automatic rotations. To disable automatic rotation, omit this parameter.
      */
-    readonly rotationPeriod?: pulumi.Input<string>;
+    rotationPeriod?: pulumi.Input<string>;
     /**
      * The status of the key.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -173,26 +173,26 @@ export interface KmsSymmetricKeyArgs {
      * Encryption algorithm to be used with a new key version, 
      * generated with the next rotation. The default value is `AES_128`.
      */
-    readonly defaultAlgorithm?: pulumi.Input<string>;
+    defaultAlgorithm?: pulumi.Input<string>;
     /**
      * An optional description of the key.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the key.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the key.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Interval between automatic rotations. To disable automatic rotation, omit this parameter.
      */
-    readonly rotationPeriod?: pulumi.Input<string>;
+    rotationPeriod?: pulumi.Input<string>;
 }

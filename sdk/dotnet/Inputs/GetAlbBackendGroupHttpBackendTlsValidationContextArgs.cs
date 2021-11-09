@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetAlbBackendGroupHttpBackendTlsValidationContextArgs : Pulumi.InvokeArgs
+    public sealed class GetAlbBackendGroupHttpBackendTlsValidationContextInputArgs : Pulumi.ResourceArgs
     {
         [Input("trustedCaBytes", required: true)]
-        public string TrustedCaBytes { get; set; } = null!;
+        public Input<string> TrustedCaBytes { get; set; } = null!;
 
         [Input("trustedCaId", required: true)]
-        public string TrustedCaId { get; set; } = null!;
+        public Input<string> TrustedCaId { get; set; } = null!;
 
-        public GetAlbBackendGroupHttpBackendTlsValidationContextArgs()
+        public GetAlbBackendGroupHttpBackendTlsValidationContextInputArgs()
         {
         }
     }

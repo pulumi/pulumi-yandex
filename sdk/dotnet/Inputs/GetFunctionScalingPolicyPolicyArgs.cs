@@ -10,18 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetFunctionScalingPolicyPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetFunctionScalingPolicyPolicyInputArgs : Pulumi.ResourceArgs
     {
         [Input("tag", required: true)]
-        public string Tag { get; set; } = null!;
+        public Input<string> Tag { get; set; } = null!;
 
         [Input("zoneInstancesLimit")]
-        public int? ZoneInstancesLimit { get; set; }
+        public Input<int>? ZoneInstancesLimit { get; set; }
 
         [Input("zoneRequestsLimit")]
-        public int? ZoneRequestsLimit { get; set; }
+        public Input<int>? ZoneRequestsLimit { get; set; }
 
-        public GetFunctionScalingPolicyPolicyArgs()
+        public GetFunctionScalingPolicyPolicyInputArgs()
         {
         }
     }

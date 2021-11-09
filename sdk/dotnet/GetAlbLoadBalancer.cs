@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Yandex
     {
         public static Task<GetAlbLoadBalancerResult> InvokeAsync(GetAlbLoadBalancerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlbLoadBalancerResult>("yandex:index/getAlbLoadBalancer:getAlbLoadBalancer", args ?? new GetAlbLoadBalancerArgs(), options.WithVersion());
+
+        public static Output<GetAlbLoadBalancerResult> Invoke(GetAlbLoadBalancerInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlbLoadBalancerResult>("yandex:index/getAlbLoadBalancer:getAlbLoadBalancer", args ?? new GetAlbLoadBalancerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -25,6 +29,19 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetAlbLoadBalancerArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlbLoadBalancerInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("loadBalancerId")]
+        public Input<string>? LoadBalancerId { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetAlbLoadBalancerInvokeArgs()
         {
         }
     }

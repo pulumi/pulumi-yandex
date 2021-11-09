@@ -13,6 +13,84 @@ import (
 
 // Creates a Yandex Kubernetes Node Group.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yandex.NewKubernetesNodeGroup(ctx, "myNodeGroup", &yandex.KubernetesNodeGroupArgs{
+// 			AllocationPolicy: &KubernetesNodeGroupAllocationPolicyArgs{
+// 				Locations: KubernetesNodeGroupAllocationPolicyLocationArray{
+// 					&KubernetesNodeGroupAllocationPolicyLocationArgs{
+// 						Zone: pulumi.String("ru-central1-a"),
+// 					},
+// 				},
+// 			},
+// 			ClusterId:   pulumi.Any(yandex_kubernetes_cluster.My_cluster.Id),
+// 			Description: pulumi.String("description"),
+// 			InstanceTemplate: &KubernetesNodeGroupInstanceTemplateArgs{
+// 				BootDisk: &KubernetesNodeGroupInstanceTemplateBootDiskArgs{
+// 					Size: pulumi.Int(64),
+// 					Type: pulumi.String("network-hdd"),
+// 				},
+// 				NetworkInterfaces: KubernetesNodeGroupInstanceTemplateNetworkInterfaceArray{
+// 					&KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs{
+// 						Nat: pulumi.Bool(true),
+// 						SubnetIds: pulumi.StringArray{
+// 							pulumi.Any(yandex_vpc_subnet.My_subnet.Id),
+// 						},
+// 					},
+// 				},
+// 				PlatformId: pulumi.String("standard-v2"),
+// 				Resources: &KubernetesNodeGroupInstanceTemplateResourcesArgs{
+// 					Cores:  pulumi.Int(2),
+// 					Memory: pulumi.Float64(2),
+// 				},
+// 				SchedulingPolicy: &KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs{
+// 					Preemptible: pulumi.Bool(false),
+// 				},
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"key": pulumi.String("value"),
+// 			},
+// 			MaintenancePolicy: &KubernetesNodeGroupMaintenancePolicyArgs{
+// 				AutoRepair:  pulumi.Bool(true),
+// 				AutoUpgrade: pulumi.Bool(true),
+// 				MaintenanceWindows: KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArray{
+// 					&KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs{
+// 						Day:       pulumi.String("monday"),
+// 						Duration:  pulumi.String("3h"),
+// 						StartTime: pulumi.String("15:00"),
+// 					},
+// 					&KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs{
+// 						Day:       pulumi.String("friday"),
+// 						Duration:  pulumi.String("4h30m"),
+// 						StartTime: pulumi.String("10:00"),
+// 					},
+// 				},
+// 			},
+// 			ScalePolicy: &KubernetesNodeGroupScalePolicyArgs{
+// 				FixedScale: &KubernetesNodeGroupScalePolicyFixedScaleArgs{
+// 					Size: pulumi.Int(1),
+// 				},
+// 			},
+// 			Version: pulumi.String("1.17"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // A Yandex Kubernetes Node Group can be imported using the `id` of the resource, e.g.
@@ -314,7 +392,7 @@ type KubernetesNodeGroupArrayInput interface {
 type KubernetesNodeGroupArray []KubernetesNodeGroupInput
 
 func (KubernetesNodeGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KubernetesNodeGroup)(nil))
+	return reflect.TypeOf((*[]*KubernetesNodeGroup)(nil)).Elem()
 }
 
 func (i KubernetesNodeGroupArray) ToKubernetesNodeGroupArrayOutput() KubernetesNodeGroupArrayOutput {
@@ -339,7 +417,7 @@ type KubernetesNodeGroupMapInput interface {
 type KubernetesNodeGroupMap map[string]KubernetesNodeGroupInput
 
 func (KubernetesNodeGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KubernetesNodeGroup)(nil))
+	return reflect.TypeOf((*map[string]*KubernetesNodeGroup)(nil)).Elem()
 }
 
 func (i KubernetesNodeGroupMap) ToKubernetesNodeGroupMapOutput() KubernetesNodeGroupMapOutput {
@@ -350,9 +428,7 @@ func (i KubernetesNodeGroupMap) ToKubernetesNodeGroupMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupMapOutput)
 }
 
-type KubernetesNodeGroupOutput struct {
-	*pulumi.OutputState
-}
+type KubernetesNodeGroupOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodeGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesNodeGroup)(nil))
@@ -371,14 +447,12 @@ func (o KubernetesNodeGroupOutput) ToKubernetesNodeGroupPtrOutput() KubernetesNo
 }
 
 func (o KubernetesNodeGroupOutput) ToKubernetesNodeGroupPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroup) *KubernetesNodeGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroup) *KubernetesNodeGroup {
 		return &v
 	}).(KubernetesNodeGroupPtrOutput)
 }
 
-type KubernetesNodeGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type KubernetesNodeGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodeGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KubernetesNodeGroup)(nil))
@@ -390,6 +464,16 @@ func (o KubernetesNodeGroupPtrOutput) ToKubernetesNodeGroupPtrOutput() Kubernete
 
 func (o KubernetesNodeGroupPtrOutput) ToKubernetesNodeGroupPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupPtrOutput {
 	return o
+}
+
+func (o KubernetesNodeGroupPtrOutput) Elem() KubernetesNodeGroupOutput {
+	return o.ApplyT(func(v *KubernetesNodeGroup) KubernetesNodeGroup {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroup
+		return ret
+	}).(KubernetesNodeGroupOutput)
 }
 
 type KubernetesNodeGroupArrayOutput struct{ *pulumi.OutputState }
@@ -433,6 +517,10 @@ func (o KubernetesNodeGroupMapOutput) MapIndex(k pulumi.StringInput) KubernetesN
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInput)(nil)).Elem(), &KubernetesNodeGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupPtrInput)(nil)).Elem(), &KubernetesNodeGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupArrayInput)(nil)).Elem(), KubernetesNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupMapInput)(nil)).Elem(), KubernetesNodeGroupMap{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupArrayOutput{})

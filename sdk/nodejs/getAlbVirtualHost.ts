@@ -46,16 +46,16 @@ export interface GetAlbVirtualHostArgs {
     /**
      * HTTP Router that the resource belongs to.
      */
-    readonly httpRouterId?: string;
+    httpRouterId?: string;
     /**
      * Name of the Virtual Host.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of a specific Virtual Host. Virtual Host ID is concatenation of HTTP Router ID
      * and Virtual Host name with `/` symbol between them. For Example, "http_router_id/vhost_name".
      */
-    readonly virtualHostId?: string;
+    virtualHostId?: string;
 }
 
 /**
@@ -92,4 +92,27 @@ export interface GetAlbVirtualHostResult {
      */
     readonly routes: outputs.GetAlbVirtualHostRoute[];
     readonly virtualHostId: string;
+}
+
+export function getAlbVirtualHostOutput(args?: GetAlbVirtualHostOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlbVirtualHostResult> {
+    return pulumi.output(args).apply(a => getAlbVirtualHost(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlbVirtualHost.
+ */
+export interface GetAlbVirtualHostOutputArgs {
+    /**
+     * HTTP Router that the resource belongs to.
+     */
+    httpRouterId?: pulumi.Input<string>;
+    /**
+     * Name of the Virtual Host.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of a specific Virtual Host. Virtual Host ID is concatenation of HTTP Router ID
+     * and Virtual Host name with `/` symbol between them. For Example, "http_router_id/vhost_name".
+     */
+    virtualHostId?: pulumi.Input<string>;
 }

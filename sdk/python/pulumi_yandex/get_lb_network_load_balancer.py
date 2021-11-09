@@ -13,6 +13,7 @@ __all__ = [
     'GetLbNetworkLoadBalancerResult',
     'AwaitableGetLbNetworkLoadBalancerResult',
     'get_lb_network_load_balancer',
+    'get_lb_network_load_balancer_output',
 ]
 
 @pulumi.output_type
@@ -201,3 +202,29 @@ def get_lb_network_load_balancer(folder_id: Optional[str] = None,
         network_load_balancer_id=__ret__.network_load_balancer_id,
         region_id=__ret__.region_id,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_lb_network_load_balancer)
+def get_lb_network_load_balancer_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                                        network_load_balancer_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLbNetworkLoadBalancerResult]:
+    """
+    Get information about a Yandex Load Balancer network load balancer. For more information, see
+    [Yandex.Cloud Network Load Balancer](https://cloud.yandex.com/docs/load-balancer/concepts/).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_lb_network_load_balancer(network_load_balancer_id="my-network-load-balancer")
+    ```
+
+    This data source is used to define [Load Balancer Network Load Balancers] that can be used by other resources.
+
+
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: - Name of the network load balancer.
+    :param str network_load_balancer_id: Network load balancer ID.
+    """
+    ...

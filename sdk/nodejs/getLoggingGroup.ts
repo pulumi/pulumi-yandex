@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getLoggingGroup(args?: GetLoggingGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetLoggingGroupResult> {
@@ -25,9 +24,9 @@ export function getLoggingGroup(args?: GetLoggingGroupArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getLoggingGroup.
  */
 export interface GetLoggingGroupArgs {
-    readonly folderId?: string;
-    readonly groupId?: string;
-    readonly name?: string;
+    folderId?: string;
+    groupId?: string;
+    name?: string;
 }
 
 /**
@@ -47,4 +46,17 @@ export interface GetLoggingGroupResult {
     readonly name: string;
     readonly retentionPeriod: string;
     readonly status: string;
+}
+
+export function getLoggingGroupOutput(args?: GetLoggingGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoggingGroupResult> {
+    return pulumi.output(args).apply(a => getLoggingGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLoggingGroup.
+ */
+export interface GetLoggingGroupOutputArgs {
+    folderId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

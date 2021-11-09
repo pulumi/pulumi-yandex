@@ -640,116 +640,116 @@ export interface MdbClickhouseClusterState {
     /**
      * Access policy to the ClickHouse cluster. The structure is documented below.
      */
-    readonly access?: pulumi.Input<inputs.MdbClickhouseClusterAccess>;
+    access?: pulumi.Input<inputs.MdbClickhouseClusterAccess>;
     /**
      * A password used to authorize as user `admin` when `sqlUserManagement` enabled.
      */
-    readonly adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string>;
     /**
      * Time to start the daily backup, in the UTC timezone. The structure is documented below.
      */
-    readonly backupWindowStart?: pulumi.Input<inputs.MdbClickhouseClusterBackupWindowStart>;
+    backupWindowStart?: pulumi.Input<inputs.MdbClickhouseClusterBackupWindowStart>;
     /**
      * Configuration of the ClickHouse subcluster. The structure is documented below.
      */
-    readonly clickhouse?: pulumi.Input<inputs.MdbClickhouseClusterClickhouse>;
-    readonly cloudStorage?: pulumi.Input<inputs.MdbClickhouseClusterCloudStorage>;
+    clickhouse?: pulumi.Input<inputs.MdbClickhouseClusterClickhouse>;
+    cloudStorage?: pulumi.Input<inputs.MdbClickhouseClusterCloudStorage>;
     /**
      * Whether to copy schema on new ClickHouse hosts.
      */
-    readonly copySchemaOnNewHosts?: pulumi.Input<boolean>;
+    copySchemaOnNewHosts?: pulumi.Input<boolean>;
     /**
      * Timestamp of cluster creation.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * A database of the ClickHouse cluster. The structure is documented below.
      */
-    readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterDatabase>[]>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the shard group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of protobuf or capnproto format schemas. The structure is documented below.
      */
-    readonly formatSchemas?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterFormatSchema>[]>;
+    formatSchemas?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterFormatSchema>[]>;
     /**
      * Aggregated health of the cluster. Can be `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
      * For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
      */
-    readonly health?: pulumi.Input<string>;
+    health?: pulumi.Input<string>;
     /**
      * A host of the ClickHouse cluster. The structure is documented below.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterHost>[]>;
+    hosts?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the ClickHouse cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly maintenanceWindow?: pulumi.Input<inputs.MdbClickhouseClusterMaintenanceWindow>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    maintenanceWindow?: pulumi.Input<inputs.MdbClickhouseClusterMaintenanceWindow>;
     /**
      * A group of machine learning models. The structure is documented below
      */
-    readonly mlModels?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterMlModel>[]>;
+    mlModels?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterMlModel>[]>;
     /**
      * Graphite rollup configuration name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the ClickHouse cluster belongs.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the service account used for access to Yandex Object Storage.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * A group of clickhouse shards. The structure is documented below.
      */
-    readonly shardGroups?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterShardGroup>[]>;
+    shardGroups?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterShardGroup>[]>;
     /**
      * Grants `admin` user database management permission.
      */
-    readonly sqlDatabaseManagement?: pulumi.Input<boolean>;
+    sqlDatabaseManagement?: pulumi.Input<boolean>;
     /**
      * Enables `admin` user with user management permission.
      */
-    readonly sqlUserManagement?: pulumi.Input<boolean>;
+    sqlUserManagement?: pulumi.Input<boolean>;
     /**
      * Status of the cluster. Can be `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
      * For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/api-ref/Cluster/).
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A user of the ClickHouse cluster. The structure is documented below.
      */
-    readonly users?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterUser>[]>;
     /**
      * Version of the ClickHouse server software.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * Configuration of the ZooKeeper subcluster. The structure is documented below.
      */
-    readonly zookeeper?: pulumi.Input<inputs.MdbClickhouseClusterZookeeper>;
+    zookeeper?: pulumi.Input<inputs.MdbClickhouseClusterZookeeper>;
 }
 
 /**
@@ -759,100 +759,100 @@ export interface MdbClickhouseClusterArgs {
     /**
      * Access policy to the ClickHouse cluster. The structure is documented below.
      */
-    readonly access?: pulumi.Input<inputs.MdbClickhouseClusterAccess>;
+    access?: pulumi.Input<inputs.MdbClickhouseClusterAccess>;
     /**
      * A password used to authorize as user `admin` when `sqlUserManagement` enabled.
      */
-    readonly adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string>;
     /**
      * Time to start the daily backup, in the UTC timezone. The structure is documented below.
      */
-    readonly backupWindowStart?: pulumi.Input<inputs.MdbClickhouseClusterBackupWindowStart>;
+    backupWindowStart?: pulumi.Input<inputs.MdbClickhouseClusterBackupWindowStart>;
     /**
      * Configuration of the ClickHouse subcluster. The structure is documented below.
      */
-    readonly clickhouse: pulumi.Input<inputs.MdbClickhouseClusterClickhouse>;
-    readonly cloudStorage?: pulumi.Input<inputs.MdbClickhouseClusterCloudStorage>;
+    clickhouse: pulumi.Input<inputs.MdbClickhouseClusterClickhouse>;
+    cloudStorage?: pulumi.Input<inputs.MdbClickhouseClusterCloudStorage>;
     /**
      * Whether to copy schema on new ClickHouse hosts.
      */
-    readonly copySchemaOnNewHosts?: pulumi.Input<boolean>;
+    copySchemaOnNewHosts?: pulumi.Input<boolean>;
     /**
      * A database of the ClickHouse cluster. The structure is documented below.
      */
-    readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterDatabase>[]>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the shard group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the ClickHouse cluster. Can be either `PRESTABLE` or `PRODUCTION`.
      */
-    readonly environment: pulumi.Input<string>;
+    environment: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of protobuf or capnproto format schemas. The structure is documented below.
      */
-    readonly formatSchemas?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterFormatSchema>[]>;
+    formatSchemas?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterFormatSchema>[]>;
     /**
      * A host of the ClickHouse cluster. The structure is documented below.
      */
-    readonly hosts: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterHost>[]>;
+    hosts: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the ClickHouse cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly maintenanceWindow?: pulumi.Input<inputs.MdbClickhouseClusterMaintenanceWindow>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    maintenanceWindow?: pulumi.Input<inputs.MdbClickhouseClusterMaintenanceWindow>;
     /**
      * A group of machine learning models. The structure is documented below
      */
-    readonly mlModels?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterMlModel>[]>;
+    mlModels?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterMlModel>[]>;
     /**
      * Graphite rollup configuration name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the ClickHouse cluster belongs.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the service account used for access to Yandex Object Storage.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * A group of clickhouse shards. The structure is documented below.
      */
-    readonly shardGroups?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterShardGroup>[]>;
+    shardGroups?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterShardGroup>[]>;
     /**
      * Grants `admin` user database management permission.
      */
-    readonly sqlDatabaseManagement?: pulumi.Input<boolean>;
+    sqlDatabaseManagement?: pulumi.Input<boolean>;
     /**
      * Enables `admin` user with user management permission.
      */
-    readonly sqlUserManagement?: pulumi.Input<boolean>;
+    sqlUserManagement?: pulumi.Input<boolean>;
     /**
      * A user of the ClickHouse cluster. The structure is documented below.
      */
-    readonly users?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.MdbClickhouseClusterUser>[]>;
     /**
      * Version of the ClickHouse server software.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * Configuration of the ZooKeeper subcluster. The structure is documented below.
      */
-    readonly zookeeper?: pulumi.Input<inputs.MdbClickhouseClusterZookeeper>;
+    zookeeper?: pulumi.Input<inputs.MdbClickhouseClusterZookeeper>;
 }

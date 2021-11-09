@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *             role: "viewer",
  *         },
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [IAM] policies to apply to other resources.
@@ -53,7 +53,7 @@ export interface GetIamPolicyArgs {
      * that defines a binding to be included in the policy document. Multiple
      * `binding` arguments are supported.
      */
-    readonly bindings: inputs.GetIamPolicyBinding[];
+    bindings: inputs.GetIamPolicyBinding[];
 }
 
 /**
@@ -70,4 +70,20 @@ export interface GetIamPolicyResult {
      * referencing from a resource that supports IAM.
      */
     readonly policyData: string;
+}
+
+export function getIamPolicyOutput(args: GetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyResult> {
+    return pulumi.output(args).apply(a => getIamPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIamPolicy.
+ */
+export interface GetIamPolicyOutputArgs {
+    /**
+     * A nested configuration block (described below)
+     * that defines a binding to be included in the policy document. Multiple
+     * `binding` arguments are supported.
+     */
+    bindings: pulumi.Input<pulumi.Input<inputs.GetIamPolicyBindingArgs>[]>;
 }

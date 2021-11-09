@@ -198,76 +198,76 @@ export interface ComputeImageState {
     /**
      * Creation timestamp of the image.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * An optional description of the image. Provide this property when
      * you create a resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the image family to which this image belongs.
      */
-    readonly family?: pulumi.Input<string>;
+    family?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the image.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Minimum size in GB of the disk that will be created from this image.
      */
-    readonly minDiskSize?: pulumi.Input<number>;
+    minDiskSize?: pulumi.Input<number>;
     /**
      * Name of the disk.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
      */
-    readonly osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string>;
     /**
      * License IDs that indicate which licenses are 
      * attached to this image.
      */
-    readonly productIds?: pulumi.Input<pulumi.Input<string>[]>;
+    productIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The size of the image, specified in GB.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The ID of a disk to use as the source of the
      * image. Changing this ID forces a new resource to be created.
      */
-    readonly sourceDisk?: pulumi.Input<string>;
+    sourceDisk?: pulumi.Input<string>;
     /**
      * The name of the family to use as the source of the new image. 
      * The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
      * a new resource to be created.
      */
-    readonly sourceFamily?: pulumi.Input<string>;
+    sourceFamily?: pulumi.Input<string>;
     /**
      * The ID of an existing image to use as the source of the
      * image. Changing this ID forces a new resource to be created.
      */
-    readonly sourceImage?: pulumi.Input<string>;
+    sourceImage?: pulumi.Input<string>;
     /**
      * The ID of a snapshot to use as the source of the
      * image. Changing this ID forces a new resource to be created.
      */
-    readonly sourceSnapshot?: pulumi.Input<string>;
+    sourceSnapshot?: pulumi.Input<string>;
     /**
      * The URL to use as the source of the
      * image. Changing this URL forces a new resource to be created.
      */
-    readonly sourceUrl?: pulumi.Input<string>;
+    sourceUrl?: pulumi.Input<string>;
     /**
      * The status of the image.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -278,61 +278,61 @@ export interface ComputeImageArgs {
      * An optional description of the image. Provide this property when
      * you create a resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the image family to which this image belongs.
      */
-    readonly family?: pulumi.Input<string>;
+    family?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the image.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Minimum size in GB of the disk that will be created from this image.
      */
-    readonly minDiskSize?: pulumi.Input<number>;
+    minDiskSize?: pulumi.Input<number>;
     /**
      * Name of the disk.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
      */
-    readonly osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string>;
     /**
      * License IDs that indicate which licenses are 
      * attached to this image.
      */
-    readonly productIds?: pulumi.Input<pulumi.Input<string>[]>;
+    productIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of a disk to use as the source of the
      * image. Changing this ID forces a new resource to be created.
      */
-    readonly sourceDisk?: pulumi.Input<string>;
+    sourceDisk?: pulumi.Input<string>;
     /**
      * The name of the family to use as the source of the new image. 
      * The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
      * a new resource to be created.
      */
-    readonly sourceFamily?: pulumi.Input<string>;
+    sourceFamily?: pulumi.Input<string>;
     /**
      * The ID of an existing image to use as the source of the
      * image. Changing this ID forces a new resource to be created.
      */
-    readonly sourceImage?: pulumi.Input<string>;
+    sourceImage?: pulumi.Input<string>;
     /**
      * The ID of a snapshot to use as the source of the
      * image. Changing this ID forces a new resource to be created.
      */
-    readonly sourceSnapshot?: pulumi.Input<string>;
+    sourceSnapshot?: pulumi.Input<string>;
     /**
      * The URL to use as the source of the
      * image. Changing this URL forces a new resource to be created.
      */
-    readonly sourceUrl?: pulumi.Input<string>;
+    sourceUrl?: pulumi.Input<string>;
 }

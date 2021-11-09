@@ -13,6 +13,7 @@ __all__ = [
     'GetDataprocClusterResult',
     'AwaitableGetDataprocClusterResult',
     'get_dataproc_cluster',
+    'get_dataproc_cluster_output',
 ]
 
 @pulumi.output_type
@@ -244,3 +245,27 @@ def get_dataproc_cluster(cluster_id: Optional[str] = None,
         service_account_id=__ret__.service_account_id,
         ui_proxy=__ret__.ui_proxy,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_dataproc_cluster)
+def get_dataproc_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                name: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataprocClusterResult]:
+    """
+    Get information about a Yandex Data Proc cluster. For more information, see [the official documentation](https://cloud.yandex.com/docs/data-proc/).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_dataproc_cluster(name="test")
+    pulumi.export("serviceAccountId", foo.service_account_id)
+    ```
+
+
+    :param str cluster_id: The ID of the Data Proc cluster.
+    :param str name: The name of the Data Proc cluster.
+    """
+    ...

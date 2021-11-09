@@ -8,102 +8,118 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'cloud_id',
-    'endpoint',
-    'folder_id',
-    'insecure',
-    'max_retries',
-    'plaintext',
-    'service_account_key_file',
-    'storage_access_key',
-    'storage_endpoint',
-    'storage_secret_key',
-    'token',
-    'ymq_access_key',
-    'ymq_endpoint',
-    'ymq_secret_key',
-    'zone',
-]
+import types
 
 __config__ = pulumi.Config('yandex')
 
-cloud_id = __config__.get('cloudId')
-"""
-ID of Yandex.Cloud tenant.
-"""
 
-endpoint = __config__.get('endpoint')
-"""
-The API endpoint for Yandex.Cloud SDK client.
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def cloud_id(self) -> Optional[str]:
+        """
+        ID of Yandex.Cloud tenant.
+        """
+        return __config__.get('cloudId')
 
-folder_id = __config__.get('folderId')
-"""
-The default folder ID where resources will be placed.
-"""
+    @property
+    def endpoint(self) -> Optional[str]:
+        """
+        The API endpoint for Yandex.Cloud SDK client.
+        """
+        return __config__.get('endpoint')
 
-insecure = __config__.get('insecure')
-"""
-Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`.
-"""
+    @property
+    def folder_id(self) -> Optional[str]:
+        """
+        The default folder ID where resources will be placed.
+        """
+        return __config__.get('folderId')
 
-max_retries = __config__.get('maxRetries')
-"""
-The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
-"""
+    @property
+    def insecure(self) -> Optional[bool]:
+        """
+        Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`.
+        """
+        return __config__.get_bool('insecure')
 
-plaintext = __config__.get('plaintext')
-"""
-Disable use of TLS. Default value is `false`.
-"""
+    @property
+    def max_retries(self) -> Optional[int]:
+        """
+        The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
+        """
+        return __config__.get_int('maxRetries')
 
-service_account_key_file = __config__.get('serviceAccountKeyFile')
-"""
-Either the path to or the contents of a Service Account key file in JSON format.
-"""
+    @property
+    def plaintext(self) -> Optional[bool]:
+        """
+        Disable use of TLS. Default value is `false`.
+        """
+        return __config__.get_bool('plaintext')
 
-storage_access_key = __config__.get('storageAccessKey')
-"""
-Yandex.Cloud storage service access key. Used when a storage data/resource doesn't have an access key explicitly
-specified.
-"""
+    @property
+    def service_account_key_file(self) -> Optional[str]:
+        """
+        Either the path to or the contents of a Service Account key file in JSON format.
+        """
+        return __config__.get('serviceAccountKeyFile')
 
-storage_endpoint = __config__.get('storageEndpoint')
-"""
-Yandex.Cloud storage service endpoint. Default is storage.yandexcloud.net
-"""
+    @property
+    def storage_access_key(self) -> Optional[str]:
+        """
+        Yandex.Cloud storage service access key. Used when a storage data/resource doesn't have an access key explicitly
+        specified.
+        """
+        return __config__.get('storageAccessKey')
 
-storage_secret_key = __config__.get('storageSecretKey')
-"""
-Yandex.Cloud storage service secret key. Used when a storage data/resource doesn't have a secret key explicitly
-specified.
-"""
+    @property
+    def storage_endpoint(self) -> Optional[str]:
+        """
+        Yandex.Cloud storage service endpoint. Default is storage.yandexcloud.net
+        """
+        return __config__.get('storageEndpoint')
 
-token = __config__.get('token')
-"""
-The access token for API operations.
-"""
+    @property
+    def storage_secret_key(self) -> Optional[str]:
+        """
+        Yandex.Cloud storage service secret key. Used when a storage data/resource doesn't have a secret key explicitly
+        specified.
+        """
+        return __config__.get('storageSecretKey')
 
-ymq_access_key = __config__.get('ymqAccessKey')
-"""
-Yandex.Cloud Message Queue service access key. Used when a message queue resource doesn't have an access key explicitly
-specified.
-"""
+    @property
+    def token(self) -> Optional[str]:
+        """
+        The access token for API operations.
+        """
+        return __config__.get('token')
 
-ymq_endpoint = __config__.get('ymqEndpoint')
-"""
-Yandex.Cloud Message Queue service endpoint. Default is message-queue.api.cloud.yandex.net
-"""
+    @property
+    def ymq_access_key(self) -> Optional[str]:
+        """
+        Yandex.Cloud Message Queue service access key. Used when a message queue resource doesn't have an access key explicitly
+        specified.
+        """
+        return __config__.get('ymqAccessKey')
 
-ymq_secret_key = __config__.get('ymqSecretKey')
-"""
-Yandex.Cloud Message Queue service secret key. Used when a message queue resource doesn't have a secret key explicitly
-specified.
-"""
+    @property
+    def ymq_endpoint(self) -> Optional[str]:
+        """
+        Yandex.Cloud Message Queue service endpoint. Default is message-queue.api.cloud.yandex.net
+        """
+        return __config__.get('ymqEndpoint')
 
-zone = __config__.get('zone')
-"""
-The zone where operations will take place. Examples are ru-central1-a, ru-central2-c, etc.
-"""
+    @property
+    def ymq_secret_key(self) -> Optional[str]:
+        """
+        Yandex.Cloud Message Queue service secret key. Used when a message queue resource doesn't have a secret key explicitly
+        specified.
+        """
+        return __config__.get('ymqSecretKey')
+
+    @property
+    def zone(self) -> Optional[str]:
+        """
+        The zone where operations will take place. Examples are ru-central1-a, ru-central2-c, etc.
+        """
+        return __config__.get('zone')
 

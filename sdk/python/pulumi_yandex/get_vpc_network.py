@@ -12,6 +12,7 @@ __all__ = [
     'GetVpcNetworkResult',
     'AwaitableGetVpcNetworkResult',
     'get_vpc_network',
+    'get_vpc_network_output',
 ]
 
 @pulumi.output_type
@@ -168,3 +169,29 @@ def get_vpc_network(folder_id: Optional[str] = None,
         name=__ret__.name,
         network_id=__ret__.network_id,
         subnet_ids=__ret__.subnet_ids)
+
+
+@_utilities.lift_output_func(get_vpc_network)
+def get_vpc_network_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           name: Optional[pulumi.Input[Optional[str]]] = None,
+                           network_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcNetworkResult]:
+    """
+    Get information about a Yandex VPC network. For more information, see
+    [Yandex.Cloud VPC](https://cloud.yandex.com/docs/vpc/concepts/index).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    admin = yandex.get_vpc_network(network_id="my-network-id")
+    ```
+
+    This data source is used to define [VPC Networks] that can be used by other resources.
+
+
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: Name of the network.
+    :param str network_id: ID of the network.
+    """
+    ...

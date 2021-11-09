@@ -132,16 +132,16 @@ export interface OrganizationManagerOrganizationIamMemberState {
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      * * **federatedUser:{federated_user_id}**: A unique federated user ID.
      */
-    readonly member?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * ID of the organization to attach a policy to.
      */
-    readonly organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string>;
     /**
      * The role that should be assigned.
      */
-    readonly role?: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role?: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }
 
 /**
@@ -155,14 +155,14 @@ export interface OrganizationManagerOrganizationIamMemberArgs {
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      * * **federatedUser:{federated_user_id}**: A unique federated user ID.
      */
-    readonly member: pulumi.Input<string>;
+    member: pulumi.Input<string>;
     /**
      * ID of the organization to attach a policy to.
      */
-    readonly organizationId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * The role that should be assigned.
      */
-    readonly role: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }

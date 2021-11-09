@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "test"
-// 		foo, err := yandex.LookupMdbMongodbCluster(ctx, &yandex.LookupMdbMongodbClusterArgs{
+// 		foo, err := yandex.LookupMdbMongodbCluster(ctx, &GetMdbMongodbClusterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -92,4 +95,145 @@ type LookupMdbMongodbClusterResult struct {
 	Status string `pulumi:"status"`
 	// A user of the MongoDB cluster. The structure is documented below.
 	Users []GetMdbMongodbClusterUser `pulumi:"users"`
+}
+
+func LookupMdbMongodbClusterOutput(ctx *pulumi.Context, args LookupMdbMongodbClusterOutputArgs, opts ...pulumi.InvokeOption) LookupMdbMongodbClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMdbMongodbClusterResult, error) {
+			args := v.(LookupMdbMongodbClusterArgs)
+			r, err := LookupMdbMongodbCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMdbMongodbClusterResultOutput)
+}
+
+// A collection of arguments for invoking getMdbMongodbCluster.
+type LookupMdbMongodbClusterOutputArgs struct {
+	// The ID of the MongoDB cluster.
+	ClusterId          pulumi.StringPtrInput `pulumi:"clusterId"`
+	DeletionProtection pulumi.BoolPtrInput   `pulumi:"deletionProtection"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// The name of the MongoDB cluster.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupMdbMongodbClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMdbMongodbClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMdbMongodbCluster.
+type LookupMdbMongodbClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMdbMongodbClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMdbMongodbClusterResult)(nil)).Elem()
+}
+
+func (o LookupMdbMongodbClusterResultOutput) ToLookupMdbMongodbClusterResultOutput() LookupMdbMongodbClusterResultOutput {
+	return o
+}
+
+func (o LookupMdbMongodbClusterResultOutput) ToLookupMdbMongodbClusterResultOutputWithContext(ctx context.Context) LookupMdbMongodbClusterResultOutput {
+	return o
+}
+
+// Configuration of the MongoDB cluster. The structure is documented below.
+func (o LookupMdbMongodbClusterResultOutput) ClusterConfig() GetMdbMongodbClusterClusterConfigOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) GetMdbMongodbClusterClusterConfig { return v.ClusterConfig }).(GetMdbMongodbClusterClusterConfigOutput)
+}
+
+func (o LookupMdbMongodbClusterResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Creation timestamp of the key.
+func (o LookupMdbMongodbClusterResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A database of the MongoDB cluster. The structure is documented below.
+func (o LookupMdbMongodbClusterResultOutput) Databases() GetMdbMongodbClusterDatabaseArrayOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) []GetMdbMongodbClusterDatabase { return v.Databases }).(GetMdbMongodbClusterDatabaseArrayOutput)
+}
+
+func (o LookupMdbMongodbClusterResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// Description of the MongoDB cluster.
+func (o LookupMdbMongodbClusterResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Deployment environment of the MongoDB cluster.
+func (o LookupMdbMongodbClusterResultOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+func (o LookupMdbMongodbClusterResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The health of the host.
+func (o LookupMdbMongodbClusterResultOutput) Health() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.Health }).(pulumi.StringOutput)
+}
+
+// A host of the MongoDB cluster. The structure is documented below.
+func (o LookupMdbMongodbClusterResultOutput) Hosts() GetMdbMongodbClusterHostArrayOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) []GetMdbMongodbClusterHost { return v.Hosts }).(GetMdbMongodbClusterHostArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupMdbMongodbClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs to assign to the MongoDB cluster.
+func (o LookupMdbMongodbClusterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupMdbMongodbClusterResultOutput) MaintenanceWindow() GetMdbMongodbClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) GetMdbMongodbClusterMaintenanceWindow {
+		return v.MaintenanceWindow
+	}).(GetMdbMongodbClusterMaintenanceWindowOutput)
+}
+
+// The name of the database.
+func (o LookupMdbMongodbClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the network, to which the MongoDB cluster belongs.
+func (o LookupMdbMongodbClusterResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Resources allocated to hosts of the MongoDB cluster. The structure is documented below.
+func (o LookupMdbMongodbClusterResultOutput) Resources() GetMdbMongodbClusterResourcesOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) GetMdbMongodbClusterResources { return v.Resources }).(GetMdbMongodbClusterResourcesOutput)
+}
+
+// A set of ids of security groups assigned to hosts of the cluster.
+func (o LookupMdbMongodbClusterResultOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// MongoDB Cluster mode enabled/disabled.
+func (o LookupMdbMongodbClusterResultOutput) Sharded() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) bool { return v.Sharded }).(pulumi.BoolOutput)
+}
+
+// Status of the cluster.
+func (o LookupMdbMongodbClusterResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A user of the MongoDB cluster. The structure is documented below.
+func (o LookupMdbMongodbClusterResultOutput) Users() GetMdbMongodbClusterUserArrayOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) []GetMdbMongodbClusterUser { return v.Users }).(GetMdbMongodbClusterUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMdbMongodbClusterResultOutput{})
 }

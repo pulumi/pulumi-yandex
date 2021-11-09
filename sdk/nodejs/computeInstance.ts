@@ -241,168 +241,168 @@ export class ComputeInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ComputeInstance resources.
  */
 export interface ComputeInstanceState {
-    readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
+    allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * The boot disk for the instance. The structure is documented below.
      */
-    readonly bootDisk?: pulumi.Input<inputs.ComputeInstanceBootDisk>;
+    bootDisk?: pulumi.Input<inputs.ComputeInstanceBootDisk>;
     /**
      * Creation timestamp of the instance.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Description of the boot disk.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * DNS record FQDN (must have a dot at the end).
      */
-    readonly fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string>;
     /**
      * Host name for the instance. This field is used to generate the instance `fqdn` value. 
      * The host name must be unique within the network and region. If not specified, the host name will be equal
      * to `id` of the instance and `fqdn` will be `<id>.auto.internal`.
      * Otherwise FQDN will be `<hostname>.<region_id>.internal`.
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the instance.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Metadata key/value pairs to make available from
      * within the instance.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the boot disk.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Type of network acceleration. The default is `standard`. Values: `standard`, `softwareAccelerated`
      */
-    readonly networkAccelerationType?: pulumi.Input<string>;
+    networkAccelerationType?: pulumi.Input<string>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. The structure is documented below.
      */
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterface>[]>;
     /**
      * The placement policy configuration. The structure is documented below.
      */
-    readonly placementPolicy?: pulumi.Input<inputs.ComputeInstancePlacementPolicy>;
+    placementPolicy?: pulumi.Input<inputs.ComputeInstancePlacementPolicy>;
     /**
      * The type of virtual machine to create. The default is 'standard-v1'.
      */
-    readonly platformId?: pulumi.Input<string>;
+    platformId?: pulumi.Input<string>;
     /**
      * Compute resources that are allocated for the instance. The structure is documented below.
      */
-    readonly resources?: pulumi.Input<inputs.ComputeInstanceResources>;
+    resources?: pulumi.Input<inputs.ComputeInstanceResources>;
     /**
      * Scheduling policy configuration. The structure is documented below.
      */
-    readonly schedulingPolicy?: pulumi.Input<inputs.ComputeInstanceSchedulingPolicy>;
+    schedulingPolicy?: pulumi.Input<inputs.ComputeInstanceSchedulingPolicy>;
     /**
      * A list of disks to attach to the instance. The structure is documented below.
      * **Note**: The `allowStoppingForUpdate` property must be set to true in order to update this structure.
      */
-    readonly secondaryDisks?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceSecondaryDisk>[]>;
+    secondaryDisks?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceSecondaryDisk>[]>;
     /**
      * ID of the service account authorized for this instance.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * The status of this instance.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The availability zone where the virtual machine will be created. If it is not provided,
      * the default provider folder is used.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ComputeInstance resource.
  */
 export interface ComputeInstanceArgs {
-    readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
+    allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * The boot disk for the instance. The structure is documented below.
      */
-    readonly bootDisk: pulumi.Input<inputs.ComputeInstanceBootDisk>;
+    bootDisk: pulumi.Input<inputs.ComputeInstanceBootDisk>;
     /**
      * Description of the boot disk.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Host name for the instance. This field is used to generate the instance `fqdn` value. 
      * The host name must be unique within the network and region. If not specified, the host name will be equal
      * to `id` of the instance and `fqdn` will be `<id>.auto.internal`.
      * Otherwise FQDN will be `<hostname>.<region_id>.internal`.
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the instance.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Metadata key/value pairs to make available from
      * within the instance.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the boot disk.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Type of network acceleration. The default is `standard`. Values: `standard`, `softwareAccelerated`
      */
-    readonly networkAccelerationType?: pulumi.Input<string>;
+    networkAccelerationType?: pulumi.Input<string>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. The structure is documented below.
      */
-    readonly networkInterfaces: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterface>[]>;
+    networkInterfaces: pulumi.Input<pulumi.Input<inputs.ComputeInstanceNetworkInterface>[]>;
     /**
      * The placement policy configuration. The structure is documented below.
      */
-    readonly placementPolicy?: pulumi.Input<inputs.ComputeInstancePlacementPolicy>;
+    placementPolicy?: pulumi.Input<inputs.ComputeInstancePlacementPolicy>;
     /**
      * The type of virtual machine to create. The default is 'standard-v1'.
      */
-    readonly platformId?: pulumi.Input<string>;
+    platformId?: pulumi.Input<string>;
     /**
      * Compute resources that are allocated for the instance. The structure is documented below.
      */
-    readonly resources: pulumi.Input<inputs.ComputeInstanceResources>;
+    resources: pulumi.Input<inputs.ComputeInstanceResources>;
     /**
      * Scheduling policy configuration. The structure is documented below.
      */
-    readonly schedulingPolicy?: pulumi.Input<inputs.ComputeInstanceSchedulingPolicy>;
+    schedulingPolicy?: pulumi.Input<inputs.ComputeInstanceSchedulingPolicy>;
     /**
      * A list of disks to attach to the instance. The structure is documented below.
      * **Note**: The `allowStoppingForUpdate` property must be set to true in order to update this structure.
      */
-    readonly secondaryDisks?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceSecondaryDisk>[]>;
+    secondaryDisks?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceSecondaryDisk>[]>;
     /**
      * ID of the service account authorized for this instance.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * The availability zone where the virtual machine will be created. If it is not provided,
      * the default provider folder is used.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

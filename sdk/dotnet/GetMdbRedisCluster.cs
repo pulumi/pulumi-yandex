@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetMdbRedisClusterResult> InvokeAsync(GetMdbRedisClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMdbRedisClusterResult>("yandex:index/getMdbRedisCluster:getMdbRedisCluster", args ?? new GetMdbRedisClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Managed Redis cluster. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/managed-redis/concepts).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetMdbRedisCluster.InvokeAsync(new Yandex.GetMdbRedisClusterArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///         this.NetworkId = foo.Apply(foo =&gt; foo.NetworkId);
+        ///     }
+        /// 
+        ///     [Output("networkId")]
+        ///     public Output&lt;string&gt; NetworkId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMdbRedisClusterResult> Invoke(GetMdbRedisClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMdbRedisClusterResult>("yandex:index/getMdbRedisCluster:getMdbRedisCluster", args ?? new GetMdbRedisClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +104,34 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetMdbRedisClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetMdbRedisClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Redis cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The name of the Redis cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetMdbRedisClusterInvokeArgs()
         {
         }
     }

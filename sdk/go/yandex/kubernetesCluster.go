@@ -13,6 +13,126 @@ import (
 
 // Creates a Yandex Kubernetes Cluster.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yandex.NewKubernetesCluster(ctx, "zonalClusterResourceName", &yandex.KubernetesClusterArgs{
+// 			Description: pulumi.String("description"),
+// 			KmsProvider: &KubernetesClusterKmsProviderArgs{
+// 				KeyId: pulumi.Any(yandex_kms_symmetric_key.Kms_key_resource_name.Id),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"my_key":       pulumi.String("my_value"),
+// 				"my_other_key": pulumi.String("my_other_value"),
+// 			},
+// 			Master: &KubernetesClusterMasterArgs{
+// 				MaintenancePolicy: &KubernetesClusterMasterMaintenancePolicyArgs{
+// 					AutoUpgrade: pulumi.Bool(true),
+// 					MaintenanceWindow: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"duration":  "3h",
+// 							"startTime": "15:00",
+// 						},
+// 					},
+// 				},
+// 				PublicIp: pulumi.Bool(true),
+// 				SecurityGroupIds: pulumi.StringArray{
+// 					pulumi.Any(yandex_vpc_security_group.Security_group_name.Id),
+// 				},
+// 				Version: pulumi.String("1.17"),
+// 				Zonal: &KubernetesClusterMasterZonalArgs{
+// 					SubnetId: pulumi.Any(yandex_vpc_subnet.Subnet_resource_name.Id),
+// 					Zone:     pulumi.Any(yandex_vpc_subnet.Subnet_resource_name.Zone),
+// 				},
+// 			},
+// 			NetworkId:             pulumi.Any(yandex_vpc_network.Network_resource_name.Id),
+// 			NetworkPolicyProvider: pulumi.String("CALICO"),
+// 			NodeServiceAccountId:  pulumi.Any(yandex_iam_service_account.Node_service_account_resource_name.Id),
+// 			ReleaseChannel:        pulumi.String("RAPID"),
+// 			ServiceAccountId:      pulumi.Any(yandex_iam_service_account.Service_account_resource_name.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yandex.NewKubernetesCluster(ctx, "regionalClusterResourceName", &yandex.KubernetesClusterArgs{
+// 			Description: pulumi.String("description"),
+// 			Labels: pulumi.StringMap{
+// 				"my_key":       pulumi.String("my_value"),
+// 				"my_other_key": pulumi.String("my_other_value"),
+// 			},
+// 			Master: &KubernetesClusterMasterArgs{
+// 				MaintenancePolicy: &KubernetesClusterMasterMaintenancePolicyArgs{
+// 					AutoUpgrade: pulumi.Bool(true),
+// 					MaintenanceWindow: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"day":       "monday",
+// 							"duration":  "3h",
+// 							"startTime": "15:00",
+// 						},
+// 						map[string]interface{}{
+// 							"day":       "friday",
+// 							"duration":  "4h30m",
+// 							"startTime": "10:00",
+// 						},
+// 					},
+// 				},
+// 				PublicIp: pulumi.Bool(true),
+// 				Regional: &KubernetesClusterMasterRegionalArgs{
+// 					Location: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"subnetId": yandex_vpc_subnet.Subnet_a_resource_name.Id,
+// 							"zone":     yandex_vpc_subnet.Subnet_a_resource_name.Zone,
+// 						},
+// 						map[string]interface{}{
+// 							"subnetId": yandex_vpc_subnet.Subnet_b_resource_name.Id,
+// 							"zone":     yandex_vpc_subnet.Subnet_b_resource_name.Zone,
+// 						},
+// 						map[string]interface{}{
+// 							"subnetId": yandex_vpc_subnet.Subnet_c_resource_name.Id,
+// 							"zone":     yandex_vpc_subnet.Subnet_c_resource_name.Zone,
+// 						},
+// 					},
+// 					Region: pulumi.String("ru-central1"),
+// 				},
+// 				Version: pulumi.String("1.14"),
+// 			},
+// 			NetworkId:            pulumi.Any(yandex_vpc_network.Network_resource_name.Id),
+// 			NodeServiceAccountId: pulumi.Any(yandex_iam_service_account.Node_service_account_resource_name.Id),
+// 			ReleaseChannel:       pulumi.String("STABLE"),
+// 			ServiceAccountId:     pulumi.Any(yandex_iam_service_account.Service_account_resource_name.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // A Managed Kubernetes cluster can be imported using the `id` of the resource, e.g.
@@ -382,7 +502,7 @@ type KubernetesClusterArrayInput interface {
 type KubernetesClusterArray []KubernetesClusterInput
 
 func (KubernetesClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KubernetesCluster)(nil))
+	return reflect.TypeOf((*[]*KubernetesCluster)(nil)).Elem()
 }
 
 func (i KubernetesClusterArray) ToKubernetesClusterArrayOutput() KubernetesClusterArrayOutput {
@@ -407,7 +527,7 @@ type KubernetesClusterMapInput interface {
 type KubernetesClusterMap map[string]KubernetesClusterInput
 
 func (KubernetesClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KubernetesCluster)(nil))
+	return reflect.TypeOf((*map[string]*KubernetesCluster)(nil)).Elem()
 }
 
 func (i KubernetesClusterMap) ToKubernetesClusterMapOutput() KubernetesClusterMapOutput {
@@ -418,9 +538,7 @@ func (i KubernetesClusterMap) ToKubernetesClusterMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterMapOutput)
 }
 
-type KubernetesClusterOutput struct {
-	*pulumi.OutputState
-}
+type KubernetesClusterOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesCluster)(nil))
@@ -439,14 +557,12 @@ func (o KubernetesClusterOutput) ToKubernetesClusterPtrOutput() KubernetesCluste
 }
 
 func (o KubernetesClusterOutput) ToKubernetesClusterPtrOutputWithContext(ctx context.Context) KubernetesClusterPtrOutput {
-	return o.ApplyT(func(v KubernetesCluster) *KubernetesCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesCluster) *KubernetesCluster {
 		return &v
 	}).(KubernetesClusterPtrOutput)
 }
 
-type KubernetesClusterPtrOutput struct {
-	*pulumi.OutputState
-}
+type KubernetesClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KubernetesCluster)(nil))
@@ -458,6 +574,16 @@ func (o KubernetesClusterPtrOutput) ToKubernetesClusterPtrOutput() KubernetesClu
 
 func (o KubernetesClusterPtrOutput) ToKubernetesClusterPtrOutputWithContext(ctx context.Context) KubernetesClusterPtrOutput {
 	return o
+}
+
+func (o KubernetesClusterPtrOutput) Elem() KubernetesClusterOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesCluster {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesCluster
+		return ret
+	}).(KubernetesClusterOutput)
 }
 
 type KubernetesClusterArrayOutput struct{ *pulumi.OutputState }
@@ -501,6 +627,10 @@ func (o KubernetesClusterMapOutput) MapIndex(k pulumi.StringInput) KubernetesClu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterInput)(nil)).Elem(), &KubernetesCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterPtrInput)(nil)).Elem(), &KubernetesCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterArrayInput)(nil)).Elem(), KubernetesClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMapInput)(nil)).Elem(), KubernetesClusterMap{})
 	pulumi.RegisterOutputType(KubernetesClusterOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterArrayOutput{})

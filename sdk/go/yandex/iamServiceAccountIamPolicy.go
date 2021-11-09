@@ -38,9 +38,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := yandex.GetIamPolicy(ctx, &yandex.GetIamPolicyArgs{
-// 			Bindings: []yandex.GetIamPolicyBinding{
-// 				yandex.GetIamPolicyBinding{
+// 		admin, err := yandex.GetIamPolicy(ctx, &GetIamPolicyArgs{
+// 			Bindings: []GetIamPolicyBinding{
+// 				GetIamPolicyBinding{
 // 					Members: []string{
 // 						"userAccount:foobar_user_id",
 // 					},
@@ -217,7 +217,7 @@ type IamServiceAccountIamPolicyArrayInput interface {
 type IamServiceAccountIamPolicyArray []IamServiceAccountIamPolicyInput
 
 func (IamServiceAccountIamPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IamServiceAccountIamPolicy)(nil))
+	return reflect.TypeOf((*[]*IamServiceAccountIamPolicy)(nil)).Elem()
 }
 
 func (i IamServiceAccountIamPolicyArray) ToIamServiceAccountIamPolicyArrayOutput() IamServiceAccountIamPolicyArrayOutput {
@@ -242,7 +242,7 @@ type IamServiceAccountIamPolicyMapInput interface {
 type IamServiceAccountIamPolicyMap map[string]IamServiceAccountIamPolicyInput
 
 func (IamServiceAccountIamPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IamServiceAccountIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*IamServiceAccountIamPolicy)(nil)).Elem()
 }
 
 func (i IamServiceAccountIamPolicyMap) ToIamServiceAccountIamPolicyMapOutput() IamServiceAccountIamPolicyMapOutput {
@@ -253,9 +253,7 @@ func (i IamServiceAccountIamPolicyMap) ToIamServiceAccountIamPolicyMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(IamServiceAccountIamPolicyMapOutput)
 }
 
-type IamServiceAccountIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type IamServiceAccountIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamServiceAccountIamPolicy)(nil))
@@ -274,14 +272,12 @@ func (o IamServiceAccountIamPolicyOutput) ToIamServiceAccountIamPolicyPtrOutput(
 }
 
 func (o IamServiceAccountIamPolicyOutput) ToIamServiceAccountIamPolicyPtrOutputWithContext(ctx context.Context) IamServiceAccountIamPolicyPtrOutput {
-	return o.ApplyT(func(v IamServiceAccountIamPolicy) *IamServiceAccountIamPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamServiceAccountIamPolicy) *IamServiceAccountIamPolicy {
 		return &v
 	}).(IamServiceAccountIamPolicyPtrOutput)
 }
 
-type IamServiceAccountIamPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type IamServiceAccountIamPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountIamPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamServiceAccountIamPolicy)(nil))
@@ -293,6 +289,16 @@ func (o IamServiceAccountIamPolicyPtrOutput) ToIamServiceAccountIamPolicyPtrOutp
 
 func (o IamServiceAccountIamPolicyPtrOutput) ToIamServiceAccountIamPolicyPtrOutputWithContext(ctx context.Context) IamServiceAccountIamPolicyPtrOutput {
 	return o
+}
+
+func (o IamServiceAccountIamPolicyPtrOutput) Elem() IamServiceAccountIamPolicyOutput {
+	return o.ApplyT(func(v *IamServiceAccountIamPolicy) IamServiceAccountIamPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret IamServiceAccountIamPolicy
+		return ret
+	}).(IamServiceAccountIamPolicyOutput)
 }
 
 type IamServiceAccountIamPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -336,6 +342,10 @@ func (o IamServiceAccountIamPolicyMapOutput) MapIndex(k pulumi.StringInput) IamS
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamPolicyInput)(nil)).Elem(), &IamServiceAccountIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamPolicyPtrInput)(nil)).Elem(), &IamServiceAccountIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamPolicyArrayInput)(nil)).Elem(), IamServiceAccountIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamPolicyMapInput)(nil)).Elem(), IamServiceAccountIamPolicyMap{})
 	pulumi.RegisterOutputType(IamServiceAccountIamPolicyOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountIamPolicyArrayOutput{})

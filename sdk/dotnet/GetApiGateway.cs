@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Yandex
     {
         public static Task<GetApiGatewayResult> InvokeAsync(GetApiGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApiGatewayResult>("yandex:index/getApiGateway:getApiGateway", args ?? new GetApiGatewayArgs(), options.WithVersion());
+
+        public static Output<GetApiGatewayResult> Invoke(GetApiGatewayInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApiGatewayResult>("yandex:index/getApiGateway:getApiGateway", args ?? new GetApiGatewayInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +32,22 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetApiGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetApiGatewayInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("apiGatewayId")]
+        public Input<string>? ApiGatewayId { get; set; }
+
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetApiGatewayInvokeArgs()
         {
         }
     }

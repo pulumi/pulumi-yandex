@@ -554,22 +554,22 @@ class KubernetesNodeGroup(pulumi.CustomResource):
             cluster_id=yandex_kubernetes_cluster["my_cluster"]["id"],
             description="description",
             instance_template=yandex.KubernetesNodeGroupInstanceTemplateArgs(
-                boot_disk={
-                    "size": 64,
-                    "type": "network-hdd",
-                },
-                network_interfaces=[{
-                    "nat": True,
-                    "subnet_ids": [yandex_vpc_subnet["my_subnet"]["id"]],
-                }],
+                boot_disk=yandex.KubernetesNodeGroupInstanceTemplateBootDiskArgs(
+                    size=64,
+                    type="network-hdd",
+                ),
+                network_interfaces=[yandex.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs(
+                    nat=True,
+                    subnet_ids=[yandex_vpc_subnet["my_subnet"]["id"]],
+                )],
                 platform_id="standard-v2",
                 resources=yandex.KubernetesNodeGroupInstanceTemplateResourcesArgs(
                     cores=2,
                     memory=2,
                 ),
-                scheduling_policy={
-                    "preemptible": False,
-                },
+                scheduling_policy=yandex.KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs(
+                    preemptible=False,
+                ),
             ),
             labels={
                 "key": "value",
@@ -649,22 +649,22 @@ class KubernetesNodeGroup(pulumi.CustomResource):
             cluster_id=yandex_kubernetes_cluster["my_cluster"]["id"],
             description="description",
             instance_template=yandex.KubernetesNodeGroupInstanceTemplateArgs(
-                boot_disk={
-                    "size": 64,
-                    "type": "network-hdd",
-                },
-                network_interfaces=[{
-                    "nat": True,
-                    "subnet_ids": [yandex_vpc_subnet["my_subnet"]["id"]],
-                }],
+                boot_disk=yandex.KubernetesNodeGroupInstanceTemplateBootDiskArgs(
+                    size=64,
+                    type="network-hdd",
+                ),
+                network_interfaces=[yandex.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs(
+                    nat=True,
+                    subnet_ids=[yandex_vpc_subnet["my_subnet"]["id"]],
+                )],
                 platform_id="standard-v2",
                 resources=yandex.KubernetesNodeGroupInstanceTemplateResourcesArgs(
                     cores=2,
                     memory=2,
                 ),
-                scheduling_policy={
-                    "preemptible": False,
-                },
+                scheduling_policy=yandex.KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs(
+                    preemptible=False,
+                ),
             ),
             labels={
                 "key": "value",

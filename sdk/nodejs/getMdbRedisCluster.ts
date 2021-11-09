@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getMdbRedisCluster({
  *     name: "test",
- * }, { async: true }));
+ * }));
  *
  * export const networkId = foo.networkId;
  * ```
@@ -46,16 +46,16 @@ export interface GetMdbRedisClusterArgs {
     /**
      * The ID of the Redis cluster.
      */
-    readonly clusterId?: string;
-    readonly deletionProtection?: boolean;
+    clusterId?: string;
+    deletionProtection?: boolean;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * The name of the Redis cluster.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -123,4 +123,27 @@ export interface GetMdbRedisClusterResult {
      * tls support mode enabled/disabled.
      */
     readonly tlsEnabled: boolean;
+}
+
+export function getMdbRedisClusterOutput(args?: GetMdbRedisClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbRedisClusterResult> {
+    return pulumi.output(args).apply(a => getMdbRedisCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMdbRedisCluster.
+ */
+export interface GetMdbRedisClusterOutputArgs {
+    /**
+     * The ID of the Redis cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * The name of the Redis cluster.
+     */
+    name?: pulumi.Input<string>;
 }

@@ -27,10 +27,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := yandex.NewFunctionTrigger(ctx, "myTrigger", &yandex.FunctionTriggerArgs{
 // 			Description: pulumi.String("any description"),
-// 			Function: &yandex.FunctionTriggerFunctionArgs{
+// 			Function: &FunctionTriggerFunctionArgs{
 // 				Id: pulumi.String("tf-test"),
 // 			},
-// 			Timer: &yandex.FunctionTriggerTimerArgs{
+// 			Timer: &FunctionTriggerTimerArgs{
 // 				CronExpression: pulumi.String("* * * * ? *"),
 // 			},
 // 		})
@@ -381,7 +381,7 @@ type FunctionTriggerArrayInput interface {
 type FunctionTriggerArray []FunctionTriggerInput
 
 func (FunctionTriggerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FunctionTrigger)(nil))
+	return reflect.TypeOf((*[]*FunctionTrigger)(nil)).Elem()
 }
 
 func (i FunctionTriggerArray) ToFunctionTriggerArrayOutput() FunctionTriggerArrayOutput {
@@ -406,7 +406,7 @@ type FunctionTriggerMapInput interface {
 type FunctionTriggerMap map[string]FunctionTriggerInput
 
 func (FunctionTriggerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FunctionTrigger)(nil))
+	return reflect.TypeOf((*map[string]*FunctionTrigger)(nil)).Elem()
 }
 
 func (i FunctionTriggerMap) ToFunctionTriggerMapOutput() FunctionTriggerMapOutput {
@@ -417,9 +417,7 @@ func (i FunctionTriggerMap) ToFunctionTriggerMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionTriggerMapOutput)
 }
 
-type FunctionTriggerOutput struct {
-	*pulumi.OutputState
-}
+type FunctionTriggerOutput struct{ *pulumi.OutputState }
 
 func (FunctionTriggerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FunctionTrigger)(nil))
@@ -438,14 +436,12 @@ func (o FunctionTriggerOutput) ToFunctionTriggerPtrOutput() FunctionTriggerPtrOu
 }
 
 func (o FunctionTriggerOutput) ToFunctionTriggerPtrOutputWithContext(ctx context.Context) FunctionTriggerPtrOutput {
-	return o.ApplyT(func(v FunctionTrigger) *FunctionTrigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTrigger) *FunctionTrigger {
 		return &v
 	}).(FunctionTriggerPtrOutput)
 }
 
-type FunctionTriggerPtrOutput struct {
-	*pulumi.OutputState
-}
+type FunctionTriggerPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionTriggerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FunctionTrigger)(nil))
@@ -457,6 +453,16 @@ func (o FunctionTriggerPtrOutput) ToFunctionTriggerPtrOutput() FunctionTriggerPt
 
 func (o FunctionTriggerPtrOutput) ToFunctionTriggerPtrOutputWithContext(ctx context.Context) FunctionTriggerPtrOutput {
 	return o
+}
+
+func (o FunctionTriggerPtrOutput) Elem() FunctionTriggerOutput {
+	return o.ApplyT(func(v *FunctionTrigger) FunctionTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTrigger
+		return ret
+	}).(FunctionTriggerOutput)
 }
 
 type FunctionTriggerArrayOutput struct{ *pulumi.OutputState }
@@ -500,6 +506,10 @@ func (o FunctionTriggerMapOutput) MapIndex(k pulumi.StringInput) FunctionTrigger
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerInput)(nil)).Elem(), &FunctionTrigger{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerPtrInput)(nil)).Elem(), &FunctionTrigger{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerArrayInput)(nil)).Elem(), FunctionTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerMapInput)(nil)).Elem(), FunctionTriggerMap{})
 	pulumi.RegisterOutputType(FunctionTriggerOutput{})
 	pulumi.RegisterOutputType(FunctionTriggerPtrOutput{})
 	pulumi.RegisterOutputType(FunctionTriggerArrayOutput{})

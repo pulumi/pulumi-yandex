@@ -12,6 +12,7 @@ __all__ = [
     'GetComputePlacementGroupResult',
     'AwaitableGetComputePlacementGroupResult',
     'get_compute_placement_group',
+    'get_compute_placement_group_output',
 ]
 
 @pulumi.output_type
@@ -152,3 +153,34 @@ def get_compute_placement_group(description: Optional[str] = None,
         id=__ret__.id,
         labels=__ret__.labels,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_compute_placement_group)
+def get_compute_placement_group_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                                       folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                       group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                       labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                       name: Optional[pulumi.Input[Optional[str]]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputePlacementGroupResult]:
+    """
+    Get information about a Yandex Compute Placement group. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/compute/concepts/placement-groups).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_group = yandex.get_compute_placement_group(group_id="some_group_id")
+    pulumi.export("placementGroupName", my_group.name)
+    ```
+
+
+    :param str description: Description of the group.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str group_id: The ID of a specific group.
+    :param Mapping[str, str] labels: A set of key/value label pairs assigned to the group.
+    :param str name: Name of the group.
+    """
+    ...

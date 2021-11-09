@@ -16,13 +16,13 @@ import * as utilities from "./utilities";
  *
  * const project1 = pulumi.output(yandex.getResourcemanagerFolder({
  *     folderId: "my_folder_id",
- * }, { async: true }));
+ * }));
  * const admin = pulumi.output(yandex.getIamPolicy({
  *     bindings: [{
  *         members: ["userAccount:some_user_id"],
  *         role: "editor",
  *     }],
- * }, { async: true }));
+ * }));
  * const folderAdminPolicy = new yandex.ResourcemanagerFolderIamPolicy("folder_admin_policy", {
  *     folderId: yandex_folder_project1.id,
  *     policyData: admin.policyData,
@@ -107,12 +107,12 @@ export interface ResourcemanagerFolderIamPolicyState {
     /**
      * ID of the folder that the policy is attached to.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * The `yandex.getIamPolicy` data source that represents
      * the IAM policy that will be applied to the folder. This policy overrides any existing policy applied to the folder.
      */
-    readonly policyData?: pulumi.Input<string>;
+    policyData?: pulumi.Input<string>;
 }
 
 /**
@@ -122,10 +122,10 @@ export interface ResourcemanagerFolderIamPolicyArgs {
     /**
      * ID of the folder that the policy is attached to.
      */
-    readonly folderId: pulumi.Input<string>;
+    folderId: pulumi.Input<string>;
     /**
      * The `yandex.getIamPolicy` data source that represents
      * the IAM policy that will be applied to the folder. This policy overrides any existing policy applied to the folder.
      */
-    readonly policyData: pulumi.Input<string>;
+    policyData: pulumi.Input<string>;
 }

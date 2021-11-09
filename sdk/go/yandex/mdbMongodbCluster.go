@@ -43,17 +43,17 @@ import (
 // 			return err
 // 		}
 // 		_, err = yandex.NewMdbMongodbCluster(ctx, "fooMdbMongodbCluster", &yandex.MdbMongodbClusterArgs{
-// 			ClusterConfig: &yandex.MdbMongodbClusterClusterConfigArgs{
+// 			ClusterConfig: &MdbMongodbClusterClusterConfigArgs{
 // 				Version: pulumi.String("4.2"),
 // 			},
-// 			Databases: yandex.MdbMongodbClusterDatabaseArray{
-// 				&yandex.MdbMongodbClusterDatabaseArgs{
+// 			Databases: MdbMongodbClusterDatabaseArray{
+// 				&MdbMongodbClusterDatabaseArgs{
 // 					Name: pulumi.String("testdb"),
 // 				},
 // 			},
 // 			Environment: pulumi.String("PRESTABLE"),
-// 			Hosts: yandex.MdbMongodbClusterHostArray{
-// 				&yandex.MdbMongodbClusterHostArgs{
+// 			Hosts: MdbMongodbClusterHostArray{
+// 				&MdbMongodbClusterHostArgs{
 // 					SubnetId: fooVpcSubnet.ID(),
 // 					ZoneId:   pulumi.String("ru-central1-a"),
 // 				},
@@ -61,21 +61,21 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"test_key": pulumi.String("test_value"),
 // 			},
-// 			MaintenanceWindow: &yandex.MdbMongodbClusterMaintenanceWindowArgs{
+// 			MaintenanceWindow: &MdbMongodbClusterMaintenanceWindowArgs{
 // 				Type: pulumi.String("ANYTIME"),
 // 			},
 // 			NetworkId: fooVpcNetwork.ID(),
-// 			Resources: &yandex.MdbMongodbClusterResourcesArgs{
+// 			Resources: &MdbMongodbClusterResourcesArgs{
 // 				DiskSize:         pulumi.Int(16),
 // 				DiskTypeId:       pulumi.String("network-hdd"),
 // 				ResourcePresetId: pulumi.String("b1.nano"),
 // 			},
-// 			Users: yandex.MdbMongodbClusterUserArray{
-// 				&yandex.MdbMongodbClusterUserArgs{
+// 			Users: MdbMongodbClusterUserArray{
+// 				&MdbMongodbClusterUserArgs{
 // 					Name:     pulumi.String("john"),
 // 					Password: pulumi.String("password"),
-// 					Permissions: yandex.MdbMongodbClusterUserPermissionArray{
-// 						&yandex.MdbMongodbClusterUserPermissionArgs{
+// 					Permissions: MdbMongodbClusterUserPermissionArray{
+// 						&MdbMongodbClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("testdb"),
 // 						},
 // 					},
@@ -416,7 +416,7 @@ type MdbMongodbClusterArrayInput interface {
 type MdbMongodbClusterArray []MdbMongodbClusterInput
 
 func (MdbMongodbClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MdbMongodbCluster)(nil))
+	return reflect.TypeOf((*[]*MdbMongodbCluster)(nil)).Elem()
 }
 
 func (i MdbMongodbClusterArray) ToMdbMongodbClusterArrayOutput() MdbMongodbClusterArrayOutput {
@@ -441,7 +441,7 @@ type MdbMongodbClusterMapInput interface {
 type MdbMongodbClusterMap map[string]MdbMongodbClusterInput
 
 func (MdbMongodbClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MdbMongodbCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbMongodbCluster)(nil)).Elem()
 }
 
 func (i MdbMongodbClusterMap) ToMdbMongodbClusterMapOutput() MdbMongodbClusterMapOutput {
@@ -452,9 +452,7 @@ func (i MdbMongodbClusterMap) ToMdbMongodbClusterMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterMapOutput)
 }
 
-type MdbMongodbClusterOutput struct {
-	*pulumi.OutputState
-}
+type MdbMongodbClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbMongodbClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MdbMongodbCluster)(nil))
@@ -473,14 +471,12 @@ func (o MdbMongodbClusterOutput) ToMdbMongodbClusterPtrOutput() MdbMongodbCluste
 }
 
 func (o MdbMongodbClusterOutput) ToMdbMongodbClusterPtrOutputWithContext(ctx context.Context) MdbMongodbClusterPtrOutput {
-	return o.ApplyT(func(v MdbMongodbCluster) *MdbMongodbCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMongodbCluster) *MdbMongodbCluster {
 		return &v
 	}).(MdbMongodbClusterPtrOutput)
 }
 
-type MdbMongodbClusterPtrOutput struct {
-	*pulumi.OutputState
-}
+type MdbMongodbClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (MdbMongodbClusterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MdbMongodbCluster)(nil))
@@ -492,6 +488,16 @@ func (o MdbMongodbClusterPtrOutput) ToMdbMongodbClusterPtrOutput() MdbMongodbClu
 
 func (o MdbMongodbClusterPtrOutput) ToMdbMongodbClusterPtrOutputWithContext(ctx context.Context) MdbMongodbClusterPtrOutput {
 	return o
+}
+
+func (o MdbMongodbClusterPtrOutput) Elem() MdbMongodbClusterOutput {
+	return o.ApplyT(func(v *MdbMongodbCluster) MdbMongodbCluster {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMongodbCluster
+		return ret
+	}).(MdbMongodbClusterOutput)
 }
 
 type MdbMongodbClusterArrayOutput struct{ *pulumi.OutputState }
@@ -535,6 +541,10 @@ func (o MdbMongodbClusterMapOutput) MapIndex(k pulumi.StringInput) MdbMongodbClu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterInput)(nil)).Elem(), &MdbMongodbCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterPtrInput)(nil)).Elem(), &MdbMongodbCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterArrayInput)(nil)).Elem(), MdbMongodbClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterMapInput)(nil)).Elem(), MdbMongodbClusterMap{})
 	pulumi.RegisterOutputType(MdbMongodbClusterOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterArrayOutput{})

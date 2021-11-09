@@ -14,6 +14,7 @@ __all__ = [
     'GetMdbKafkaClusterResult',
     'AwaitableGetMdbKafkaClusterResult',
     'get_mdb_kafka_cluster',
+    'get_mdb_kafka_cluster_output',
 ]
 
 @pulumi.output_type
@@ -314,3 +315,38 @@ def get_mdb_kafka_cluster(cluster_id: Optional[str] = None,
         subnet_ids=__ret__.subnet_ids,
         topics=__ret__.topics,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_mdb_kafka_cluster)
+def get_mdb_kafka_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 config: Optional[pulumi.Input[Optional[pulumi.InputType['GetMdbKafkaClusterConfigArgs']]]] = None,
+                                 deletion_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 subnet_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 topics: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetMdbKafkaClusterTopicArgs']]]]] = None,
+                                 users: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetMdbKafkaClusterUserArgs']]]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMdbKafkaClusterResult]:
+    """
+    Get information about a Yandex Managed Kafka cluster. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_mdb_kafka_cluster(name="test")
+    pulumi.export("networkId", foo.network_id)
+    ```
+
+
+    :param str cluster_id: The ID of the Kafka cluster.
+    :param pulumi.InputType['GetMdbKafkaClusterConfigArgs'] config: Configuration of the Kafka cluster. The structure is documented below.
+    :param str folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+    :param str name: The name of the Kafka cluster.
+    :param Sequence[pulumi.InputType['GetMdbKafkaClusterTopicArgs']] topics: A topic of the Kafka cluster. The structure is documented below.
+    :param Sequence[pulumi.InputType['GetMdbKafkaClusterUserArgs']] users: A user of the Kafka cluster. The structure is documented below.
+    """
+    ...

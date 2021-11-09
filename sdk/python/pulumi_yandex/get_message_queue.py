@@ -12,6 +12,7 @@ __all__ = [
     'GetMessageQueueResult',
     'AwaitableGetMessageQueueResult',
     'get_message_queue',
+    'get_message_queue_output',
 ]
 
 @pulumi.output_type
@@ -130,3 +131,27 @@ def get_message_queue(access_key: Optional[str] = None,
         name=__ret__.name,
         secret_key=__ret__.secret_key,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_message_queue)
+def get_message_queue_output(access_key: Optional[pulumi.Input[Optional[str]]] = None,
+                             name: Optional[pulumi.Input[str]] = None,
+                             secret_key: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMessageQueueResult]:
+    """
+    Get information about a Yandex Message Queue. For more information about Yandex Message Queue, see
+    [Yandex.Cloud Message Queue](https://cloud.yandex.com/docs/message-queue).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    example_queue = yandex.get_message_queue(name="ymq_terraform_example")
+    ```
+
+
+    :param str name: Queue name.
+    """
+    ...

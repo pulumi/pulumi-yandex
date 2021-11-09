@@ -12,6 +12,7 @@ __all__ = [
     'GetComputeSnapshotResult',
     'AwaitableGetComputeSnapshotResult',
     'get_compute_snapshot',
+    'get_compute_snapshot_output',
 ]
 
 @pulumi.output_type
@@ -204,3 +205,20 @@ def get_compute_snapshot(folder_id: Optional[str] = None,
         source_disk_id=__ret__.source_disk_id,
         status=__ret__.status,
         storage_size=__ret__.storage_size)
+
+
+@_utilities.lift_output_func(get_compute_snapshot)
+def get_compute_snapshot_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                name: Optional[pulumi.Input[Optional[str]]] = None,
+                                snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeSnapshotResult]:
+    """
+    Get information about a Yandex Compute snapshot. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/compute/concepts/snapshot).
+
+
+    :param str folder_id: ID of the folder that the snapshot belongs to.
+    :param str name: The name of the snapshot.
+    :param str snapshot_id: The ID of a specific snapshot.
+    """
+    ...

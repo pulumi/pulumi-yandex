@@ -13,6 +13,7 @@ __all__ = [
     'GetAlbTargetGroupResult',
     'AwaitableGetAlbTargetGroupResult',
     'get_alb_target_group',
+    'get_alb_target_group_output',
 ]
 
 @pulumi.output_type
@@ -161,3 +162,31 @@ def get_alb_target_group(description: Optional[str] = None,
         name=__ret__.name,
         target_group_id=__ret__.target_group_id,
         targets=__ret__.targets)
+
+
+@_utilities.lift_output_func(get_alb_target_group)
+def get_alb_target_group_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                                folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                name: Optional[pulumi.Input[Optional[str]]] = None,
+                                target_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlbTargetGroupResult]:
+    """
+    Get information about a Yandex Application Load Balancer target group. For more information, see
+    [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_alb_target_group(target_group_id="my-target-group-id")
+    ```
+
+    This data source is used to define [Application Load Balancer Target Groups] that can be used by other resources.
+
+
+    :param str description: Description of the target group.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: - Name of the Target Group.
+    :param str target_group_id: Target Group ID.
+    """
+    ...

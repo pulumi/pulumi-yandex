@@ -240,7 +240,7 @@ type IamServiceAccountIamBindingArrayInput interface {
 type IamServiceAccountIamBindingArray []IamServiceAccountIamBindingInput
 
 func (IamServiceAccountIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IamServiceAccountIamBinding)(nil))
+	return reflect.TypeOf((*[]*IamServiceAccountIamBinding)(nil)).Elem()
 }
 
 func (i IamServiceAccountIamBindingArray) ToIamServiceAccountIamBindingArrayOutput() IamServiceAccountIamBindingArrayOutput {
@@ -265,7 +265,7 @@ type IamServiceAccountIamBindingMapInput interface {
 type IamServiceAccountIamBindingMap map[string]IamServiceAccountIamBindingInput
 
 func (IamServiceAccountIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IamServiceAccountIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*IamServiceAccountIamBinding)(nil)).Elem()
 }
 
 func (i IamServiceAccountIamBindingMap) ToIamServiceAccountIamBindingMapOutput() IamServiceAccountIamBindingMapOutput {
@@ -276,9 +276,7 @@ func (i IamServiceAccountIamBindingMap) ToIamServiceAccountIamBindingMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(IamServiceAccountIamBindingMapOutput)
 }
 
-type IamServiceAccountIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type IamServiceAccountIamBindingOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamServiceAccountIamBinding)(nil))
@@ -297,14 +295,12 @@ func (o IamServiceAccountIamBindingOutput) ToIamServiceAccountIamBindingPtrOutpu
 }
 
 func (o IamServiceAccountIamBindingOutput) ToIamServiceAccountIamBindingPtrOutputWithContext(ctx context.Context) IamServiceAccountIamBindingPtrOutput {
-	return o.ApplyT(func(v IamServiceAccountIamBinding) *IamServiceAccountIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamServiceAccountIamBinding) *IamServiceAccountIamBinding {
 		return &v
 	}).(IamServiceAccountIamBindingPtrOutput)
 }
 
-type IamServiceAccountIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type IamServiceAccountIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamServiceAccountIamBinding)(nil))
@@ -316,6 +312,16 @@ func (o IamServiceAccountIamBindingPtrOutput) ToIamServiceAccountIamBindingPtrOu
 
 func (o IamServiceAccountIamBindingPtrOutput) ToIamServiceAccountIamBindingPtrOutputWithContext(ctx context.Context) IamServiceAccountIamBindingPtrOutput {
 	return o
+}
+
+func (o IamServiceAccountIamBindingPtrOutput) Elem() IamServiceAccountIamBindingOutput {
+	return o.ApplyT(func(v *IamServiceAccountIamBinding) IamServiceAccountIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret IamServiceAccountIamBinding
+		return ret
+	}).(IamServiceAccountIamBindingOutput)
 }
 
 type IamServiceAccountIamBindingArrayOutput struct{ *pulumi.OutputState }
@@ -359,6 +365,10 @@ func (o IamServiceAccountIamBindingMapOutput) MapIndex(k pulumi.StringInput) Iam
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamBindingInput)(nil)).Elem(), &IamServiceAccountIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamBindingPtrInput)(nil)).Elem(), &IamServiceAccountIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamBindingArrayInput)(nil)).Elem(), IamServiceAccountIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamBindingMapInput)(nil)).Elem(), IamServiceAccountIamBindingMap{})
 	pulumi.RegisterOutputType(IamServiceAccountIamBindingOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountIamBindingArrayOutput{})

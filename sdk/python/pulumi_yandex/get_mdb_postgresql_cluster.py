@@ -13,6 +13,7 @@ __all__ = [
     'GetMdbPostgresqlClusterResult',
     'AwaitableGetMdbPostgresqlClusterResult',
     'get_mdb_postgresql_cluster',
+    'get_mdb_postgresql_cluster_output',
 ]
 
 @pulumi.output_type
@@ -296,3 +297,34 @@ def get_mdb_postgresql_cluster(cluster_id: Optional[str] = None,
         security_group_ids=__ret__.security_group_ids,
         status=__ret__.status,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_mdb_postgresql_cluster)
+def get_mdb_postgresql_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      deletion_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                                      description: Optional[pulumi.Input[Optional[str]]] = None,
+                                      folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMdbPostgresqlClusterResult]:
+    """
+    Get information about a Yandex Managed PostgreSQL cluster. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/).
+    [How to connect to the DB](https://cloud.yandex.com/en-ru/docs/managed-postgresql/quickstart#connect). To connect, use port 6432. The port number is not configurable.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_mdb_postgresql_cluster(name="test")
+    pulumi.export("fqdn", foo.hosts[0].fqdn)
+    ```
+
+
+    :param str cluster_id: The ID of the PostgreSQL cluster.
+    :param str description: Description of the PostgreSQL cluster.
+    :param str folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+    :param str name: The name of the PostgreSQL cluster.
+    """
+    ...

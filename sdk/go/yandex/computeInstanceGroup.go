@@ -13,6 +13,97 @@ import (
 
 // An Instance group resource. For more information, see
 // [the official documentation](https://cloud.yandex.com/docs/compute/concepts/instance-groups/).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yandex.NewComputeInstanceGroup(ctx, "group1", &yandex.ComputeInstanceGroupArgs{
+// 			AllocationPolicy: &ComputeInstanceGroupAllocationPolicyArgs{
+// 				Zones: pulumi.StringArray{
+// 					pulumi.String("ru-central1-a"),
+// 				},
+// 			},
+// 			DeletionProtection: pulumi.Bool(true),
+// 			DeployPolicy: &ComputeInstanceGroupDeployPolicyArgs{
+// 				MaxCreating:    pulumi.Int(2),
+// 				MaxDeleting:    pulumi.Int(2),
+// 				MaxExpansion:   pulumi.Int(2),
+// 				MaxUnavailable: pulumi.Int(2),
+// 			},
+// 			FolderId: pulumi.Any(data.Yandex_resourcemanager_folder.Test_folder.Id),
+// 			InstanceTemplate: &ComputeInstanceGroupInstanceTemplateArgs{
+// 				BootDisk: &ComputeInstanceGroupInstanceTemplateBootDiskArgs{
+// 					InitializeParams: &ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs{
+// 						ImageId: pulumi.Any(data.Yandex_compute_image.Ubuntu.Id),
+// 						Size:    pulumi.Int(4),
+// 					},
+// 					Mode: pulumi.String("READ_WRITE"),
+// 				},
+// 				Labels: pulumi.StringMap{
+// 					"label1": pulumi.String("label1-value"),
+// 					"label2": pulumi.String("label2-value"),
+// 				},
+// 				Metadata: pulumi.StringMap{
+// 					"foo":      pulumi.String("bar"),
+// 					"ssh-keys": pulumi.String(fmt.Sprintf("%v%v", "ubuntu:", readFileOrPanic("~/.ssh/id_rsa.pub"))),
+// 				},
+// 				NetworkInterfaces: ComputeInstanceGroupInstanceTemplateNetworkInterfaceArray{
+// 					&ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs{
+// 						NetworkId: pulumi.Any(yandex_vpc_network.My - inst - group - network.Id),
+// 						SubnetIds: pulumi.StringArray{
+// 							pulumi.Any(yandex_vpc_subnet.My - inst - group - subnet.Id),
+// 						},
+// 					},
+// 				},
+// 				NetworkSettings: ComputeInstanceGroupInstanceTemplateNetworkSettingArray{
+// 					&ComputeInstanceGroupInstanceTemplateNetworkSettingArgs{
+// 						Type: pulumi.String("STANDARD"),
+// 					},
+// 				},
+// 				PlatformId: pulumi.String("standard-v1"),
+// 				Resources: &ComputeInstanceGroupInstanceTemplateResourcesArgs{
+// 					Cores:  pulumi.Int(2),
+// 					Memory: pulumi.Float64(1),
+// 				},
+// 			},
+// 			ScalePolicy: &ComputeInstanceGroupScalePolicyArgs{
+// 				FixedScale: &ComputeInstanceGroupScalePolicyFixedScaleArgs{
+// 					Size: pulumi.Int(3),
+// 				},
+// 			},
+// 			ServiceAccountId: pulumi.Any(yandex_iam_service_account.Test_account.Id),
+// 			Variables: pulumi.StringMap{
+// 				"test_key1": pulumi.String("test_value1"),
+// 				"test_key2": pulumi.String("test_value2"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ComputeInstanceGroup struct {
 	pulumi.CustomResourceState
 
@@ -344,7 +435,7 @@ type ComputeInstanceGroupArrayInput interface {
 type ComputeInstanceGroupArray []ComputeInstanceGroupInput
 
 func (ComputeInstanceGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ComputeInstanceGroup)(nil))
+	return reflect.TypeOf((*[]*ComputeInstanceGroup)(nil)).Elem()
 }
 
 func (i ComputeInstanceGroupArray) ToComputeInstanceGroupArrayOutput() ComputeInstanceGroupArrayOutput {
@@ -369,7 +460,7 @@ type ComputeInstanceGroupMapInput interface {
 type ComputeInstanceGroupMap map[string]ComputeInstanceGroupInput
 
 func (ComputeInstanceGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ComputeInstanceGroup)(nil))
+	return reflect.TypeOf((*map[string]*ComputeInstanceGroup)(nil)).Elem()
 }
 
 func (i ComputeInstanceGroupMap) ToComputeInstanceGroupMapOutput() ComputeInstanceGroupMapOutput {
@@ -380,9 +471,7 @@ func (i ComputeInstanceGroupMap) ToComputeInstanceGroupMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupMapOutput)
 }
 
-type ComputeInstanceGroupOutput struct {
-	*pulumi.OutputState
-}
+type ComputeInstanceGroupOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ComputeInstanceGroup)(nil))
@@ -401,14 +490,12 @@ func (o ComputeInstanceGroupOutput) ToComputeInstanceGroupPtrOutput() ComputeIns
 }
 
 func (o ComputeInstanceGroupOutput) ToComputeInstanceGroupPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroup) *ComputeInstanceGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroup) *ComputeInstanceGroup {
 		return &v
 	}).(ComputeInstanceGroupPtrOutput)
 }
 
-type ComputeInstanceGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type ComputeInstanceGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ComputeInstanceGroup)(nil))
@@ -420,6 +507,16 @@ func (o ComputeInstanceGroupPtrOutput) ToComputeInstanceGroupPtrOutput() Compute
 
 func (o ComputeInstanceGroupPtrOutput) ToComputeInstanceGroupPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupPtrOutput {
 	return o
+}
+
+func (o ComputeInstanceGroupPtrOutput) Elem() ComputeInstanceGroupOutput {
+	return o.ApplyT(func(v *ComputeInstanceGroup) ComputeInstanceGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroup
+		return ret
+	}).(ComputeInstanceGroupOutput)
 }
 
 type ComputeInstanceGroupArrayOutput struct{ *pulumi.OutputState }
@@ -463,6 +560,10 @@ func (o ComputeInstanceGroupMapOutput) MapIndex(k pulumi.StringInput) ComputeIns
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInput)(nil)).Elem(), &ComputeInstanceGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupPtrInput)(nil)).Elem(), &ComputeInstanceGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupArrayInput)(nil)).Elem(), ComputeInstanceGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupMapInput)(nil)).Elem(), ComputeInstanceGroupMap{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupArrayOutput{})

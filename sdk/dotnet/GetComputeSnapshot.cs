@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -17,6 +18,13 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetComputeSnapshotResult> InvokeAsync(GetComputeSnapshotArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComputeSnapshotResult>("yandex:index/getComputeSnapshot:getComputeSnapshot", args ?? new GetComputeSnapshotArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Compute snapshot. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/compute/concepts/snapshot).
+        /// </summary>
+        public static Output<GetComputeSnapshotResult> Invoke(GetComputeSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetComputeSnapshotResult>("yandex:index/getComputeSnapshot:getComputeSnapshot", args ?? new GetComputeSnapshotInvokeArgs(), options.WithVersion());
     }
 
 
@@ -41,6 +49,31 @@ namespace Pulumi.Yandex
         public string? SnapshotId { get; set; }
 
         public GetComputeSnapshotArgs()
+        {
+        }
+    }
+
+    public sealed class GetComputeSnapshotInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of the folder that the snapshot belongs to.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of a specific snapshot.
+        /// </summary>
+        [Input("snapshotId")]
+        public Input<string>? SnapshotId { get; set; }
+
+        public GetComputeSnapshotInvokeArgs()
         {
         }
     }

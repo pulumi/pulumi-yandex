@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -45,6 +46,41 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetResourcemanagerFolderResult> InvokeAsync(GetResourcemanagerFolderArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourcemanagerFolderResult>("yandex:index/getResourcemanagerFolder:getResourcemanagerFolder", args ?? new GetResourcemanagerFolderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information about a Yandex Resource Manager Folder. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/resource-manager/concepts/resources-hierarchy#folder).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myFolder1 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs
+        ///         {
+        ///             FolderId = "folder_id_number_1",
+        ///         }));
+        ///         var myFolder2 = Output.Create(Yandex.GetResourcemanagerFolder.InvokeAsync(new Yandex.GetResourcemanagerFolderArgs
+        ///         {
+        ///             CloudId = "some_cloud_id",
+        ///             Name = "folder_name",
+        ///         }));
+        ///         this.MyFolder1Name = myFolder1.Apply(myFolder1 =&gt; myFolder1.Name);
+        ///         this.MyFolder2CloudId = myFolder2.Apply(myFolder2 =&gt; myFolder2.CloudId);
+        ///     }
+        /// 
+        ///     [Output("myFolder1Name")]
+        ///     public Output&lt;string&gt; MyFolder1Name { get; set; }
+        ///     [Output("myFolder2CloudId")]
+        ///     public Output&lt;string&gt; MyFolder2CloudId { get; set; }
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetResourcemanagerFolderResult> Invoke(GetResourcemanagerFolderInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetResourcemanagerFolderResult>("yandex:index/getResourcemanagerFolder:getResourcemanagerFolder", args ?? new GetResourcemanagerFolderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +117,43 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetResourcemanagerFolderArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourcemanagerFolderInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Cloud that the resource belongs to. If value is omitted, the default provider cloud is used.
+        /// </summary>
+        [Input("cloudId")]
+        public Input<string>? CloudId { get; set; }
+
+        /// <summary>
+        /// ID of the folder.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A map of labels applied to this folder.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// Name of the folder.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetResourcemanagerFolderInvokeArgs()
         {
         }
     }

@@ -239,7 +239,7 @@ type ComputeSnapshotArrayInput interface {
 type ComputeSnapshotArray []ComputeSnapshotInput
 
 func (ComputeSnapshotArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ComputeSnapshot)(nil))
+	return reflect.TypeOf((*[]*ComputeSnapshot)(nil)).Elem()
 }
 
 func (i ComputeSnapshotArray) ToComputeSnapshotArrayOutput() ComputeSnapshotArrayOutput {
@@ -264,7 +264,7 @@ type ComputeSnapshotMapInput interface {
 type ComputeSnapshotMap map[string]ComputeSnapshotInput
 
 func (ComputeSnapshotMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ComputeSnapshot)(nil))
+	return reflect.TypeOf((*map[string]*ComputeSnapshot)(nil)).Elem()
 }
 
 func (i ComputeSnapshotMap) ToComputeSnapshotMapOutput() ComputeSnapshotMapOutput {
@@ -275,9 +275,7 @@ func (i ComputeSnapshotMap) ToComputeSnapshotMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeSnapshotMapOutput)
 }
 
-type ComputeSnapshotOutput struct {
-	*pulumi.OutputState
-}
+type ComputeSnapshotOutput struct{ *pulumi.OutputState }
 
 func (ComputeSnapshotOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ComputeSnapshot)(nil))
@@ -296,14 +294,12 @@ func (o ComputeSnapshotOutput) ToComputeSnapshotPtrOutput() ComputeSnapshotPtrOu
 }
 
 func (o ComputeSnapshotOutput) ToComputeSnapshotPtrOutputWithContext(ctx context.Context) ComputeSnapshotPtrOutput {
-	return o.ApplyT(func(v ComputeSnapshot) *ComputeSnapshot {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeSnapshot) *ComputeSnapshot {
 		return &v
 	}).(ComputeSnapshotPtrOutput)
 }
 
-type ComputeSnapshotPtrOutput struct {
-	*pulumi.OutputState
-}
+type ComputeSnapshotPtrOutput struct{ *pulumi.OutputState }
 
 func (ComputeSnapshotPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ComputeSnapshot)(nil))
@@ -315,6 +311,16 @@ func (o ComputeSnapshotPtrOutput) ToComputeSnapshotPtrOutput() ComputeSnapshotPt
 
 func (o ComputeSnapshotPtrOutput) ToComputeSnapshotPtrOutputWithContext(ctx context.Context) ComputeSnapshotPtrOutput {
 	return o
+}
+
+func (o ComputeSnapshotPtrOutput) Elem() ComputeSnapshotOutput {
+	return o.ApplyT(func(v *ComputeSnapshot) ComputeSnapshot {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeSnapshot
+		return ret
+	}).(ComputeSnapshotOutput)
 }
 
 type ComputeSnapshotArrayOutput struct{ *pulumi.OutputState }
@@ -358,6 +364,10 @@ func (o ComputeSnapshotMapOutput) MapIndex(k pulumi.StringInput) ComputeSnapshot
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSnapshotInput)(nil)).Elem(), &ComputeSnapshot{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSnapshotPtrInput)(nil)).Elem(), &ComputeSnapshot{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSnapshotArrayInput)(nil)).Elem(), ComputeSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSnapshotMapInput)(nil)).Elem(), ComputeSnapshotMap{})
 	pulumi.RegisterOutputType(ComputeSnapshotOutput{})
 	pulumi.RegisterOutputType(ComputeSnapshotPtrOutput{})
 	pulumi.RegisterOutputType(ComputeSnapshotArrayOutput{})

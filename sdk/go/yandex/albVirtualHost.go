@@ -28,11 +28,11 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := yandex.NewAlbVirtualHost(ctx, "my_virtual_host", &yandex.AlbVirtualHostArgs{
 // 			HttpRouterId: pulumi.Any(yandex_alb_http_router.My - router.Id),
-// 			Routes: yandex.AlbVirtualHostRouteArray{
-// 				&yandex.AlbVirtualHostRouteArgs{
+// 			Routes: AlbVirtualHostRouteArray{
+// 				&AlbVirtualHostRouteArgs{
 // 					Name: pulumi.String("my-route"),
-// 					HttpRoute: &yandex.AlbVirtualHostRouteHttpRouteArgs{
-// 						HttpRouteAction: &yandex.AlbVirtualHostRouteHttpRouteHttpRouteActionArgs{
+// 					HttpRoute: &AlbVirtualHostRouteHttpRouteArgs{
+// 						HttpRouteAction: &AlbVirtualHostRouteHttpRouteHttpRouteActionArgs{
 // 							BackendGroupId: pulumi.Any(yandex_alb_backend_group.My - bg.Id),
 // 							Timeout:        pulumi.String("3s"),
 // 						},
@@ -249,7 +249,7 @@ type AlbVirtualHostArrayInput interface {
 type AlbVirtualHostArray []AlbVirtualHostInput
 
 func (AlbVirtualHostArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AlbVirtualHost)(nil))
+	return reflect.TypeOf((*[]*AlbVirtualHost)(nil)).Elem()
 }
 
 func (i AlbVirtualHostArray) ToAlbVirtualHostArrayOutput() AlbVirtualHostArrayOutput {
@@ -274,7 +274,7 @@ type AlbVirtualHostMapInput interface {
 type AlbVirtualHostMap map[string]AlbVirtualHostInput
 
 func (AlbVirtualHostMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AlbVirtualHost)(nil))
+	return reflect.TypeOf((*map[string]*AlbVirtualHost)(nil)).Elem()
 }
 
 func (i AlbVirtualHostMap) ToAlbVirtualHostMapOutput() AlbVirtualHostMapOutput {
@@ -285,9 +285,7 @@ func (i AlbVirtualHostMap) ToAlbVirtualHostMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AlbVirtualHostMapOutput)
 }
 
-type AlbVirtualHostOutput struct {
-	*pulumi.OutputState
-}
+type AlbVirtualHostOutput struct{ *pulumi.OutputState }
 
 func (AlbVirtualHostOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlbVirtualHost)(nil))
@@ -306,14 +304,12 @@ func (o AlbVirtualHostOutput) ToAlbVirtualHostPtrOutput() AlbVirtualHostPtrOutpu
 }
 
 func (o AlbVirtualHostOutput) ToAlbVirtualHostPtrOutputWithContext(ctx context.Context) AlbVirtualHostPtrOutput {
-	return o.ApplyT(func(v AlbVirtualHost) *AlbVirtualHost {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHost) *AlbVirtualHost {
 		return &v
 	}).(AlbVirtualHostPtrOutput)
 }
 
-type AlbVirtualHostPtrOutput struct {
-	*pulumi.OutputState
-}
+type AlbVirtualHostPtrOutput struct{ *pulumi.OutputState }
 
 func (AlbVirtualHostPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlbVirtualHost)(nil))
@@ -325,6 +321,16 @@ func (o AlbVirtualHostPtrOutput) ToAlbVirtualHostPtrOutput() AlbVirtualHostPtrOu
 
 func (o AlbVirtualHostPtrOutput) ToAlbVirtualHostPtrOutputWithContext(ctx context.Context) AlbVirtualHostPtrOutput {
 	return o
+}
+
+func (o AlbVirtualHostPtrOutput) Elem() AlbVirtualHostOutput {
+	return o.ApplyT(func(v *AlbVirtualHost) AlbVirtualHost {
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHost
+		return ret
+	}).(AlbVirtualHostOutput)
 }
 
 type AlbVirtualHostArrayOutput struct{ *pulumi.OutputState }
@@ -368,6 +374,10 @@ func (o AlbVirtualHostMapOutput) MapIndex(k pulumi.StringInput) AlbVirtualHostOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostInput)(nil)).Elem(), &AlbVirtualHost{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostPtrInput)(nil)).Elem(), &AlbVirtualHost{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostArrayInput)(nil)).Elem(), AlbVirtualHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostMapInput)(nil)).Elem(), AlbVirtualHostMap{})
 	pulumi.RegisterOutputType(AlbVirtualHostOutput{})
 	pulumi.RegisterOutputType(AlbVirtualHostPtrOutput{})
 	pulumi.RegisterOutputType(AlbVirtualHostArrayOutput{})

@@ -33,16 +33,16 @@ export interface GetComputeDiskArgs {
     /**
      * The ID of a specific disk.
      */
-    readonly diskId?: string;
-    readonly diskPlacementPolicy?: inputs.GetComputeDiskDiskPlacementPolicy;
+    diskId?: string;
+    diskPlacementPolicy?: inputs.GetComputeDiskDiskPlacementPolicy;
     /**
      * ID of the folder that the disk belongs to.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Name of the disk.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -104,4 +104,27 @@ export interface GetComputeDiskResult {
      * ID of the zone where the disk resides.
      */
     readonly zone: string;
+}
+
+export function getComputeDiskOutput(args?: GetComputeDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeDiskResult> {
+    return pulumi.output(args).apply(a => getComputeDisk(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getComputeDisk.
+ */
+export interface GetComputeDiskOutputArgs {
+    /**
+     * The ID of a specific disk.
+     */
+    diskId?: pulumi.Input<string>;
+    diskPlacementPolicy?: pulumi.Input<inputs.GetComputeDiskDiskPlacementPolicyArgs>;
+    /**
+     * ID of the folder that the disk belongs to.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Name of the disk.
+     */
+    name?: pulumi.Input<string>;
 }

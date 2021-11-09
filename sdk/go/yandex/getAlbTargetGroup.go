@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-target-group-id"
-// 		_, err := yandex.LookupAlbTargetGroup(ctx, &yandex.LookupAlbTargetGroupArgs{
+// 		_, err := yandex.LookupAlbTargetGroup(ctx, &GetAlbTargetGroupArgs{
 // 			TargetGroupId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -70,4 +73,86 @@ type LookupAlbTargetGroupResult struct {
 	Name          string                    `pulumi:"name"`
 	TargetGroupId string                    `pulumi:"targetGroupId"`
 	Targets       []GetAlbTargetGroupTarget `pulumi:"targets"`
+}
+
+func LookupAlbTargetGroupOutput(ctx *pulumi.Context, args LookupAlbTargetGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAlbTargetGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAlbTargetGroupResult, error) {
+			args := v.(LookupAlbTargetGroupArgs)
+			r, err := LookupAlbTargetGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAlbTargetGroupResultOutput)
+}
+
+// A collection of arguments for invoking getAlbTargetGroup.
+type LookupAlbTargetGroupOutputArgs struct {
+	// Description of the target group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// - Name of the Target Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Target Group ID.
+	TargetGroupId pulumi.StringPtrInput `pulumi:"targetGroupId"`
+}
+
+func (LookupAlbTargetGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAlbTargetGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlbTargetGroup.
+type LookupAlbTargetGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAlbTargetGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAlbTargetGroupResult)(nil)).Elem()
+}
+
+func (o LookupAlbTargetGroupResultOutput) ToLookupAlbTargetGroupResultOutput() LookupAlbTargetGroupResultOutput {
+	return o
+}
+
+func (o LookupAlbTargetGroupResultOutput) ToLookupAlbTargetGroupResultOutputWithContext(ctx context.Context) LookupAlbTargetGroupResultOutput {
+	return o
+}
+
+// Creation timestamp of this target group.
+func (o LookupAlbTargetGroupResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbTargetGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the target group.
+func (o LookupAlbTargetGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbTargetGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupAlbTargetGroupResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbTargetGroupResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAlbTargetGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbTargetGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels to assign to this target group.
+// * `target.0.ip_address` - IP address of the target.
+// * `target.0.subnet_id` - ID of the subnet that targets are connected to.
+func (o LookupAlbTargetGroupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAlbTargetGroupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupAlbTargetGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbTargetGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupAlbTargetGroupResultOutput) TargetGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbTargetGroupResult) string { return v.TargetGroupId }).(pulumi.StringOutput)
+}
+
+func (o LookupAlbTargetGroupResultOutput) Targets() GetAlbTargetGroupTargetArrayOutput {
+	return o.ApplyT(func(v LookupAlbTargetGroupResult) []GetAlbTargetGroupTarget { return v.Targets }).(GetAlbTargetGroupTargetArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAlbTargetGroupResultOutput{})
 }
