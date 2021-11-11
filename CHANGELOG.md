@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi v3.14.0
-* Upgrade to pulumi-terraform-bridge v3.11.0
+_(none)_
 
 ---
+
+## 0.9.0 (2021-11-11)
+* Upgrade to pulumi v3.14.0
+* Upgrade to pulumi-terraform-bridge v3.11.0
 
 ## 0.8.0 (2021-10-04)
 * Upgrade to v0.64.1 of the Yandex Cloud Terraform Provider
