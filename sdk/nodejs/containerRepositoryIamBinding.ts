@@ -138,16 +138,16 @@ export interface ContainerRepositoryIamBindingState {
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      * * **system:{allUsers|allAuthenticatedUsers}**: see [system groups](https://cloud.yandex.com/docs/iam/concepts/access-control/system-group)
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The [Yandex Container Repository](https://cloud.yandex.com/docs/container-registry/concepts/repository) ID to apply a binding to.
      */
-    readonly repositoryId?: pulumi.Input<string>;
+    repositoryId?: pulumi.Input<string>;
     /**
      * The role that should be applied. See [roles](https://cloud.yandex.com/docs/container-registry/security/).
      */
-    readonly role?: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role?: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }
 
 /**
@@ -161,14 +161,14 @@ export interface ContainerRepositoryIamBindingArgs {
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      * * **system:{allUsers|allAuthenticatedUsers}**: see [system groups](https://cloud.yandex.com/docs/iam/concepts/access-control/system-group)
      */
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The [Yandex Container Repository](https://cloud.yandex.com/docs/container-registry/concepts/repository) ID to apply a binding to.
      */
-    readonly repositoryId: pulumi.Input<string>;
+    repositoryId: pulumi.Input<string>;
     /**
      * The role that should be applied. See [roles](https://cloud.yandex.com/docs/container-registry/security/).
      */
-    readonly role: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }

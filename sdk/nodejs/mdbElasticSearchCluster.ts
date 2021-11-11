@@ -171,61 +171,61 @@ export interface MdbElasticSearchClusterState {
     /**
      * Configuration of the Elasticsearch cluster. The structure is documented below.
      */
-    readonly config?: pulumi.Input<inputs.MdbElasticSearchClusterConfig>;
+    config?: pulumi.Input<inputs.MdbElasticSearchClusterConfig>;
     /**
      * Creation timestamp of the key.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Elasticsearch cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Aggregated health of the cluster. Can be either `ALIVE`, `DEGRADED`, `DEAD` or `HEALTH_UNKNOWN`.
      * For more information see `health` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-elasticsearch/api-ref/Cluster/).
      */
-    readonly health?: pulumi.Input<string>;
+    health?: pulumi.Input<string>;
     /**
      * A host of the Elasticsearch cluster. The structure is documented below.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<inputs.MdbElasticSearchClusterHost>[]>;
+    hosts?: pulumi.Input<pulumi.Input<inputs.MdbElasticSearchClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the Elasticsearch cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User defined host name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the Elasticsearch cluster belongs.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the service account authorized for this cluster.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
      * For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-elasticsearch/api-ref/Cluster/).
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -235,45 +235,45 @@ export interface MdbElasticSearchClusterArgs {
     /**
      * Configuration of the Elasticsearch cluster. The structure is documented below.
      */
-    readonly config: pulumi.Input<inputs.MdbElasticSearchClusterConfig>;
+    config: pulumi.Input<inputs.MdbElasticSearchClusterConfig>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Elasticsearch cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the Elasticsearch cluster. Can be either `PRESTABLE` or `PRODUCTION`.
      */
-    readonly environment: pulumi.Input<string>;
+    environment: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A host of the Elasticsearch cluster. The structure is documented below.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<inputs.MdbElasticSearchClusterHost>[]>;
+    hosts?: pulumi.Input<pulumi.Input<inputs.MdbElasticSearchClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the Elasticsearch cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User defined host name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the Elasticsearch cluster belongs.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the service account authorized for this cluster.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
 }

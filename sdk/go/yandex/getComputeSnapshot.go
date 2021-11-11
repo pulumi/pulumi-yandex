@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,4 +55,104 @@ type LookupComputeSnapshotResult struct {
 	Status string `pulumi:"status"`
 	// The size of the snapshot, specified in Gb.
 	StorageSize int `pulumi:"storageSize"`
+}
+
+func LookupComputeSnapshotOutput(ctx *pulumi.Context, args LookupComputeSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupComputeSnapshotResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupComputeSnapshotResult, error) {
+			args := v.(LookupComputeSnapshotArgs)
+			r, err := LookupComputeSnapshot(ctx, &args, opts...)
+			return *r, err
+		}).(LookupComputeSnapshotResultOutput)
+}
+
+// A collection of arguments for invoking getComputeSnapshot.
+type LookupComputeSnapshotOutputArgs struct {
+	// ID of the folder that the snapshot belongs to.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// The name of the snapshot.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of a specific snapshot.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+}
+
+func (LookupComputeSnapshotOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeSnapshotArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getComputeSnapshot.
+type LookupComputeSnapshotResultOutput struct{ *pulumi.OutputState }
+
+func (LookupComputeSnapshotResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeSnapshotResult)(nil)).Elem()
+}
+
+func (o LookupComputeSnapshotResultOutput) ToLookupComputeSnapshotResultOutput() LookupComputeSnapshotResultOutput {
+	return o
+}
+
+func (o LookupComputeSnapshotResultOutput) ToLookupComputeSnapshotResultOutputWithContext(ctx context.Context) LookupComputeSnapshotResultOutput {
+	return o
+}
+
+// Snapshot creation timestamp.
+func (o LookupComputeSnapshotResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// An optional description of this snapshot.
+func (o LookupComputeSnapshotResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Minimum required size of the disk which is created from this snapshot.
+func (o LookupComputeSnapshotResultOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+// ID of the folder that the snapshot belongs to.
+func (o LookupComputeSnapshotResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupComputeSnapshotResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A map of labels applied to this snapshot.
+func (o LookupComputeSnapshotResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupComputeSnapshotResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// License IDs that indicate which licenses are attached to this snapshot.
+func (o LookupComputeSnapshotResultOutput) ProductIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) []string { return v.ProductIds }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupComputeSnapshotResultOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// ID of the source disk.
+func (o LookupComputeSnapshotResultOutput) SourceDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// The status of the snapshot.
+func (o LookupComputeSnapshotResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The size of the snapshot, specified in Gb.
+func (o LookupComputeSnapshotResultOutput) StorageSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupComputeSnapshotResult) int { return v.StorageSize }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupComputeSnapshotResultOutput{})
 }

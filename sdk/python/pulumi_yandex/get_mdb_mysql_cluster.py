@@ -14,6 +14,7 @@ __all__ = [
     'GetMdbMysqlClusterResult',
     'AwaitableGetMdbMysqlClusterResult',
     'get_mdb_mysql_cluster',
+    'get_mdb_mysql_cluster_output',
 ]
 
 @pulumi.output_type
@@ -354,3 +355,39 @@ def get_mdb_mysql_cluster(access: Optional[pulumi.InputType['GetMdbMysqlClusterA
         status=__ret__.status,
         users=__ret__.users,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_mdb_mysql_cluster)
+def get_mdb_mysql_cluster_output(access: Optional[pulumi.Input[Optional[pulumi.InputType['GetMdbMysqlClusterAccessArgs']]]] = None,
+                                 cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 deletion_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 description: Optional[pulumi.Input[Optional[str]]] = None,
+                                 folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                 mysql_config: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                 name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMdbMysqlClusterResult]:
+    """
+    Get information about a Yandex Managed MySQL cluster. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/managed-mysql/).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_mdb_mysql_cluster(name="test")
+    pulumi.export("networkId", foo.network_id)
+    ```
+
+
+    :param pulumi.InputType['GetMdbMysqlClusterAccessArgs'] access: Access policy to the MySQL cluster. The structure is documented below.
+    :param str cluster_id: The ID of the MySQL cluster.
+    :param str description: Description of the MySQL cluster.
+    :param str folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+    :param Mapping[str, str] labels: A set of key/value label pairs to assign to the MySQL cluster.
+    :param Mapping[str, str] mysql_config: MySQL cluster config.
+    :param str name: The name of the MySQL cluster.
+    """
+    ...

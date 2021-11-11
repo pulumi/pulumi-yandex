@@ -122,25 +122,25 @@ export interface AlbHttpRouterState {
     /**
      * The HTTP Router creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * An optional description of the HTTP Router. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this HTTP Router. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the HTTP Router. Provided by the client when the HTTP Router is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -151,18 +151,18 @@ export interface AlbHttpRouterArgs {
      * An optional description of the HTTP Router. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this HTTP Router. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the HTTP Router. Provided by the client when the HTTP Router is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

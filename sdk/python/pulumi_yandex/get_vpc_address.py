@@ -13,6 +13,7 @@ __all__ = [
     'GetVpcAddressResult',
     'AwaitableGetVpcAddressResult',
     'get_vpc_address',
+    'get_vpc_address_output',
 ]
 
 @pulumi.output_type
@@ -185,3 +186,29 @@ def get_vpc_address(address_id: Optional[str] = None,
         name=__ret__.name,
         reserved=__ret__.reserved,
         used=__ret__.used)
+
+
+@_utilities.lift_output_func(get_vpc_address)
+def get_vpc_address_output(address_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           name: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcAddressResult]:
+    """
+    Get information about a Yandex VPC address. For more information, see
+    Yandex.Cloud VPC.
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    addr = yandex.get_vpc_address(address_id="my-address-id")
+    ```
+
+    This data source is used to define [VPC Address] that can be used by other resources.
+
+
+    :param str address_id: ID of the address.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: Name of the address.
+    """
+    ...

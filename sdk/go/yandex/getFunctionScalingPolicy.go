@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,4 +31,55 @@ type LookupFunctionScalingPolicyResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string                           `pulumi:"id"`
 	Policies []GetFunctionScalingPolicyPolicy `pulumi:"policies"`
+}
+
+func LookupFunctionScalingPolicyOutput(ctx *pulumi.Context, args LookupFunctionScalingPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupFunctionScalingPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupFunctionScalingPolicyResult, error) {
+			args := v.(LookupFunctionScalingPolicyArgs)
+			r, err := LookupFunctionScalingPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupFunctionScalingPolicyResultOutput)
+}
+
+// A collection of arguments for invoking getFunctionScalingPolicy.
+type LookupFunctionScalingPolicyOutputArgs struct {
+	FunctionId pulumi.StringInput                       `pulumi:"functionId"`
+	Policies   GetFunctionScalingPolicyPolicyArrayInput `pulumi:"policies"`
+}
+
+func (LookupFunctionScalingPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFunctionScalingPolicyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFunctionScalingPolicy.
+type LookupFunctionScalingPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupFunctionScalingPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFunctionScalingPolicyResult)(nil)).Elem()
+}
+
+func (o LookupFunctionScalingPolicyResultOutput) ToLookupFunctionScalingPolicyResultOutput() LookupFunctionScalingPolicyResultOutput {
+	return o
+}
+
+func (o LookupFunctionScalingPolicyResultOutput) ToLookupFunctionScalingPolicyResultOutputWithContext(ctx context.Context) LookupFunctionScalingPolicyResultOutput {
+	return o
+}
+
+func (o LookupFunctionScalingPolicyResultOutput) FunctionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionScalingPolicyResult) string { return v.FunctionId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupFunctionScalingPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionScalingPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionScalingPolicyResultOutput) Policies() GetFunctionScalingPolicyPolicyArrayOutput {
+	return o.ApplyT(func(v LookupFunctionScalingPolicyResult) []GetFunctionScalingPolicyPolicy { return v.Policies }).(GetFunctionScalingPolicyPolicyArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupFunctionScalingPolicyResultOutput{})
 }

@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs : Pulumi.InvokeArgs
+    public sealed class GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional text to search in reply.
         /// </summary>
         [Input("receive", required: true)]
-        public string Receive { get; set; } = null!;
+        public Input<string> Receive { get; set; } = null!;
 
         /// <summary>
         /// Optional message to send. If empty, it's a connect-only health check.
         /// </summary>
         [Input("send", required: true)]
-        public string Send { get; set; } = null!;
+        public Input<string> Send { get; set; } = null!;
 
-        public GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs()
+        public GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInputArgs()
         {
         }
     }

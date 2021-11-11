@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetMdbKafkaClusterResult> InvokeAsync(GetMdbKafkaClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMdbKafkaClusterResult>("yandex:index/getMdbKafkaCluster:getMdbKafkaCluster", args ?? new GetMdbKafkaClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Managed Kafka cluster. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetMdbKafkaCluster.InvokeAsync(new Yandex.GetMdbKafkaClusterArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///         this.NetworkId = foo.Apply(foo =&gt; foo.NetworkId);
+        ///     }
+        /// 
+        ///     [Output("networkId")]
+        ///     public Output&lt;string&gt; NetworkId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMdbKafkaClusterResult> Invoke(GetMdbKafkaClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMdbKafkaClusterResult>("yandex:index/getMdbKafkaCluster:getMdbKafkaCluster", args ?? new GetMdbKafkaClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -108,6 +142,72 @@ namespace Pulumi.Yandex
         }
 
         public GetMdbKafkaClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetMdbKafkaClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Kafka cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Configuration of the Kafka cluster. The structure is documented below.
+        /// </summary>
+        [Input("config")]
+        public Input<Inputs.GetMdbKafkaClusterConfigInputArgs>? Config { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The name of the Kafka cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("subnetIds")]
+        private InputList<string>? _subnetIds;
+        public InputList<string> SubnetIds
+        {
+            get => _subnetIds ?? (_subnetIds = new InputList<string>());
+            set => _subnetIds = value;
+        }
+
+        [Input("topics")]
+        private InputList<Inputs.GetMdbKafkaClusterTopicInputArgs>? _topics;
+
+        /// <summary>
+        /// A topic of the Kafka cluster. The structure is documented below.
+        /// </summary>
+        public InputList<Inputs.GetMdbKafkaClusterTopicInputArgs> Topics
+        {
+            get => _topics ?? (_topics = new InputList<Inputs.GetMdbKafkaClusterTopicInputArgs>());
+            set => _topics = value;
+        }
+
+        [Input("users")]
+        private InputList<Inputs.GetMdbKafkaClusterUserInputArgs>? _users;
+
+        /// <summary>
+        /// A user of the Kafka cluster. The structure is documented below.
+        /// </summary>
+        public InputList<Inputs.GetMdbKafkaClusterUserInputArgs> Users
+        {
+            get => _users ?? (_users = new InputList<Inputs.GetMdbKafkaClusterUserInputArgs>());
+            set => _users = value;
+        }
+
+        public GetMdbKafkaClusterInvokeArgs()
         {
         }
     }

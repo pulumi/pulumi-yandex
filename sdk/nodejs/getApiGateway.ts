@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getApiGateway(args?: GetApiGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetApiGatewayResult> {
@@ -25,9 +24,9 @@ export function getApiGateway(args?: GetApiGatewayArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getApiGateway.
  */
 export interface GetApiGatewayArgs {
-    readonly apiGatewayId?: string;
-    readonly folderId?: string;
-    readonly name?: string;
+    apiGatewayId?: string;
+    folderId?: string;
+    name?: string;
 }
 
 /**
@@ -48,4 +47,17 @@ export interface GetApiGatewayResult {
     readonly name?: string;
     readonly status: string;
     readonly userDomains: string[];
+}
+
+export function getApiGatewayOutput(args?: GetApiGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiGatewayResult> {
+    return pulumi.output(args).apply(a => getApiGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApiGateway.
+ */
+export interface GetApiGatewayOutputArgs {
+    apiGatewayId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

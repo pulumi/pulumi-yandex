@@ -203,36 +203,36 @@ export interface ComputeDiskState {
     /**
      * Creation timestamp of the disk.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * -
      * (Optional) Description of the disk. Provide this property when
      * you create a resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Disk placement policy configuration. The structure is documented below.
      */
-    readonly diskPlacementPolicy?: pulumi.Input<inputs.ComputeDiskDiskPlacementPolicy>;
+    diskPlacementPolicy?: pulumi.Input<inputs.ComputeDiskDiskPlacementPolicy>;
     /**
      * (Optional) The ID of the folder that the disk belongs to.
      * If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * The source image to use for disk creation.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * Labels to assign to this disk. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the disk. Provide this property when
      * you create a resource.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly productIds?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<string>;
+    productIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Size of the persistent disk, specified in GB. You can specify this
      * field when creating a persistent disk using the `imageId` or `snapshotId`
@@ -241,23 +241,23 @@ export interface ComputeDiskState {
      * the size value must not be less than the size of the source image
      * or the size of the snapshot.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The source snapshot to use for disk creation.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * The status of the disk.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Type of disk to create. Provide this when creating a disk.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Availability zone where the disk will reside.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -269,29 +269,29 @@ export interface ComputeDiskArgs {
      * (Optional) Description of the disk. Provide this property when
      * you create a resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Disk placement policy configuration. The structure is documented below.
      */
-    readonly diskPlacementPolicy?: pulumi.Input<inputs.ComputeDiskDiskPlacementPolicy>;
+    diskPlacementPolicy?: pulumi.Input<inputs.ComputeDiskDiskPlacementPolicy>;
     /**
      * (Optional) The ID of the folder that the disk belongs to.
      * If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * The source image to use for disk creation.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * Labels to assign to this disk. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the disk. Provide this property when
      * you create a resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Size of the persistent disk, specified in GB. You can specify this
      * field when creating a persistent disk using the `imageId` or `snapshotId`
@@ -300,17 +300,17 @@ export interface ComputeDiskArgs {
      * the size value must not be less than the size of the source image
      * or the size of the snapshot.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The source snapshot to use for disk creation.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * Type of disk to create. Provide this when creating a disk.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Availability zone where the disk will reside.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

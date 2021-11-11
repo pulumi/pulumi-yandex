@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const myGroup = pulumi.output(yandex.getComputePlacementGroup({
  *     groupId: "some_group_id",
- * }, { async: true }));
+ * }));
  *
  * export const placementGroupName = myGroup.name!;
  * ```
@@ -47,23 +46,23 @@ export interface GetComputePlacementGroupArgs {
     /**
      * Description of the group.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * The ID of a specific group.
      */
-    readonly groupId?: string;
+    groupId?: string;
     /**
      * A set of key/value label pairs assigned to the group.
      */
-    readonly labels?: {[key: string]: string};
+    labels?: {[key: string]: string};
     /**
      * Name of the group.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -89,4 +88,34 @@ export interface GetComputePlacementGroupResult {
      */
     readonly labels?: {[key: string]: string};
     readonly name?: string;
+}
+
+export function getComputePlacementGroupOutput(args?: GetComputePlacementGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputePlacementGroupResult> {
+    return pulumi.output(args).apply(a => getComputePlacementGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getComputePlacementGroup.
+ */
+export interface GetComputePlacementGroupOutputArgs {
+    /**
+     * Description of the group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * The ID of a specific group.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs assigned to the group.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the group.
+     */
+    name?: pulumi.Input<string>;
 }

@@ -24,8 +24,8 @@ export function getAlbLoadBalancer(args?: GetAlbLoadBalancerArgs, opts?: pulumi.
  * A collection of arguments for invoking getAlbLoadBalancer.
  */
 export interface GetAlbLoadBalancerArgs {
-    readonly loadBalancerId?: string;
-    readonly name?: string;
+    loadBalancerId?: string;
+    name?: string;
 }
 
 /**
@@ -49,4 +49,16 @@ export interface GetAlbLoadBalancerResult {
     readonly regionId: string;
     readonly securityGroupIds: string[];
     readonly status: string;
+}
+
+export function getAlbLoadBalancerOutput(args?: GetAlbLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlbLoadBalancerResult> {
+    return pulumi.output(args).apply(a => getAlbLoadBalancer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlbLoadBalancer.
+ */
+export interface GetAlbLoadBalancerOutputArgs {
+    loadBalancerId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

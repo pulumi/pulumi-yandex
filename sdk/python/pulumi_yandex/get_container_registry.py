@@ -12,6 +12,7 @@ __all__ = [
     'GetContainerRegistryResult',
     'AwaitableGetContainerRegistryResult',
     'get_container_registry',
+    'get_container_registry_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,31 @@ def get_container_registry(folder_id: Optional[str] = None,
         name=__ret__.name,
         registry_id=__ret__.registry_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_container_registry)
+def get_container_registry_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                  name: Optional[pulumi.Input[Optional[str]]] = None,
+                                  registry_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRegistryResult]:
+    """
+    Get information about a Yandex Container Registry. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/container-registry/concepts/registry)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    source = yandex.get_container_registry(registry_id="some_registry_id")
+    ```
+
+
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param Mapping[str, str] labels: Labels to assign to this registry.
+    :param str name: Name of the registry.
+    :param str registry_id: The ID of a specific registry.
+    """
+    ...

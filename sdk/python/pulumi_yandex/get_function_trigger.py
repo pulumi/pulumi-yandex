@@ -13,6 +13,7 @@ __all__ = [
     'GetFunctionTriggerResult',
     'AwaitableGetFunctionTriggerResult',
     'get_function_trigger',
+    'get_function_trigger_output',
 ]
 
 @pulumi.output_type
@@ -259,3 +260,29 @@ def get_function_trigger(folder_id: Optional[str] = None,
         object_storage=__ret__.object_storage,
         timer=__ret__.timer,
         trigger_id=__ret__.trigger_id)
+
+
+@_utilities.lift_output_func(get_function_trigger)
+def get_function_trigger_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                name: Optional[pulumi.Input[Optional[str]]] = None,
+                                trigger_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionTriggerResult]:
+    """
+    Get information about a Yandex Cloud Function Trigger. For more information about Yandex Cloud Functions, see
+    [Yandex Cloud Functions](https://cloud.yandex.com/docs/functions/).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_trigger = yandex.get_function_trigger(trigger_id="are1sampletrigger11")
+    ```
+
+    This data source is used to define [Yandex Cloud Functions Trigger](https://cloud.yandex.com/docs/functions/concepts/trigger) that can be used by other resources.
+
+
+    :param str folder_id: Folder ID for the Yandex Cloud Functions Trigger
+    :param str name: Yandex Cloud Functions Trigger name used to define trigger
+    :param str trigger_id: Yandex Cloud Functions Trigger id used to define trigger
+    """
+    ...

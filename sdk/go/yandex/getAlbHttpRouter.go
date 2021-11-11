@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-http-router-id"
-// 		_, err := yandex.LookupAlbHttpRouter(ctx, &yandex.LookupAlbHttpRouterArgs{
+// 		_, err := yandex.LookupAlbHttpRouter(ctx, &GetAlbHttpRouterArgs{
 // 			HttpRouterId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -67,4 +70,80 @@ type LookupAlbHttpRouterResult struct {
 	// Labels to assign to this HTTP Router.
 	Labels map[string]string `pulumi:"labels"`
 	Name   string            `pulumi:"name"`
+}
+
+func LookupAlbHttpRouterOutput(ctx *pulumi.Context, args LookupAlbHttpRouterOutputArgs, opts ...pulumi.InvokeOption) LookupAlbHttpRouterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAlbHttpRouterResult, error) {
+			args := v.(LookupAlbHttpRouterArgs)
+			r, err := LookupAlbHttpRouter(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAlbHttpRouterResultOutput)
+}
+
+// A collection of arguments for invoking getAlbHttpRouter.
+type LookupAlbHttpRouterOutputArgs struct {
+	// Description of the HTTP Router.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// HTTP Router ID.
+	HttpRouterId pulumi.StringPtrInput `pulumi:"httpRouterId"`
+	// - Name of the HTTP Router.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupAlbHttpRouterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAlbHttpRouterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlbHttpRouter.
+type LookupAlbHttpRouterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAlbHttpRouterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAlbHttpRouterResult)(nil)).Elem()
+}
+
+func (o LookupAlbHttpRouterResultOutput) ToLookupAlbHttpRouterResultOutput() LookupAlbHttpRouterResultOutput {
+	return o
+}
+
+func (o LookupAlbHttpRouterResultOutput) ToLookupAlbHttpRouterResultOutputWithContext(ctx context.Context) LookupAlbHttpRouterResultOutput {
+	return o
+}
+
+// Creation timestamp of this HTTP Router.
+func (o LookupAlbHttpRouterResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbHttpRouterResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the HTTP Router.
+func (o LookupAlbHttpRouterResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbHttpRouterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupAlbHttpRouterResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbHttpRouterResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+func (o LookupAlbHttpRouterResultOutput) HttpRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbHttpRouterResult) string { return v.HttpRouterId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAlbHttpRouterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbHttpRouterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels to assign to this HTTP Router.
+func (o LookupAlbHttpRouterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAlbHttpRouterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupAlbHttpRouterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbHttpRouterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAlbHttpRouterResultOutput{})
 }

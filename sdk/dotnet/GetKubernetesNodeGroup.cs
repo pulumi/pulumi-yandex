@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetKubernetesNodeGroupResult> InvokeAsync(GetKubernetesNodeGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesNodeGroupResult>("yandex:index/getKubernetesNodeGroup:getKubernetesNodeGroup", args ?? new GetKubernetesNodeGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Kubernetes Node Group. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/managed-kubernetes/concepts/#node-group).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myNodeGroup = Output.Create(Yandex.GetKubernetesNodeGroup.InvokeAsync(new Yandex.GetKubernetesNodeGroupArgs
+        ///         {
+        ///             NodeGroupId = "some_k8s_node_group_id",
+        ///         }));
+        ///         this.MyNodeGroup_status = myNodeGroup.Apply(myNodeGroup =&gt; myNodeGroup.Status);
+        ///     }
+        /// 
+        ///     [Output("myNodeGroup.status")]
+        ///     public Output&lt;string&gt; MyNodeGroup_status { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKubernetesNodeGroupResult> Invoke(GetKubernetesNodeGroupInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKubernetesNodeGroupResult>("yandex:index/getKubernetesNodeGroup:getKubernetesNodeGroup", args ?? new GetKubernetesNodeGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +101,31 @@ namespace Pulumi.Yandex
         public string? NodeGroupId { get; set; }
 
         public GetKubernetesNodeGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetKubernetesNodeGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// Name of a specific Kubernetes node group.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// ID of a specific Kubernetes node group.
+        /// </summary>
+        [Input("nodeGroupId")]
+        public Input<string>? NodeGroupId { get; set; }
+
+        public GetKubernetesNodeGroupInvokeArgs()
         {
         }
     }

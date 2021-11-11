@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * const department1 = pulumi.output(yandex.getResourcemanagerCloud({
  *     name: "Department 1",
- * }, { async: true }));
+ * }));
  * const admin = new yandex.ResourcemanagerCloudIamMember("admin", {
  *     cloudId: department1.id,
  *     member: "userAccount:user_id",
@@ -130,19 +130,19 @@ export interface ResourcemanagerCloudIamMemberState {
     /**
      * ID of the cloud to attach a policy to.
      */
-    readonly cloudId?: pulumi.Input<string>;
+    cloudId?: pulumi.Input<string>;
     /**
      * The identity that will be granted the privilege that is specified in the `role` field.
      * This field can have one of the following values:
      * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      */
-    readonly member?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The role that should be assigned.
      */
-    readonly role?: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role?: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }
 
 /**
@@ -152,17 +152,17 @@ export interface ResourcemanagerCloudIamMemberArgs {
     /**
      * ID of the cloud to attach a policy to.
      */
-    readonly cloudId: pulumi.Input<string>;
+    cloudId: pulumi.Input<string>;
     /**
      * The identity that will be granted the privilege that is specified in the `role` field.
      * This field can have one of the following values:
      * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      */
-    readonly member: pulumi.Input<string>;
+    member: pulumi.Input<string>;
     /**
      * The role that should be assigned.
      */
-    readonly role: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }

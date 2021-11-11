@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "are1sampleregistry11"
-// 		_, err := yandex.LookupIotCoreDevice(ctx, &yandex.LookupIotCoreDeviceArgs{
+// 		_, err := yandex.LookupIotCoreDevice(ctx, &GetIotCoreDeviceArgs{
 // 			DeviceId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -68,4 +71,87 @@ type LookupIotCoreDeviceResult struct {
 	Passwords []string `pulumi:"passwords"`
 	// IoT Core Registry ID for the IoT Core Device
 	RegistryId string `pulumi:"registryId"`
+}
+
+func LookupIotCoreDeviceOutput(ctx *pulumi.Context, args LookupIotCoreDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupIotCoreDeviceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupIotCoreDeviceResult, error) {
+			args := v.(LookupIotCoreDeviceArgs)
+			r, err := LookupIotCoreDevice(ctx, &args, opts...)
+			return *r, err
+		}).(LookupIotCoreDeviceResultOutput)
+}
+
+// A collection of arguments for invoking getIotCoreDevice.
+type LookupIotCoreDeviceOutputArgs struct {
+	// IoT Core Device id used to define device
+	DeviceId pulumi.StringPtrInput `pulumi:"deviceId"`
+	// IoT Core Device name used to define device
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupIotCoreDeviceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIotCoreDeviceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getIotCoreDevice.
+type LookupIotCoreDeviceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupIotCoreDeviceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIotCoreDeviceResult)(nil)).Elem()
+}
+
+func (o LookupIotCoreDeviceResultOutput) ToLookupIotCoreDeviceResultOutput() LookupIotCoreDeviceResultOutput {
+	return o
+}
+
+func (o LookupIotCoreDeviceResultOutput) ToLookupIotCoreDeviceResultOutputWithContext(ctx context.Context) LookupIotCoreDeviceResultOutput {
+	return o
+}
+
+// A set of key/value aliases pairs to assign to the IoT Core Device
+func (o LookupIotCoreDeviceResultOutput) Aliases() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupIotCoreDeviceResult) map[string]string { return v.Aliases }).(pulumi.StringMapOutput)
+}
+
+// A set of certificate's fingerprints for the IoT Core Device
+func (o LookupIotCoreDeviceResultOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupIotCoreDeviceResult) []string { return v.Certificates }).(pulumi.StringArrayOutput)
+}
+
+// Creation timestamp of the IoT Core Device
+func (o LookupIotCoreDeviceResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIotCoreDeviceResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the IoT Core Device
+func (o LookupIotCoreDeviceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIotCoreDeviceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupIotCoreDeviceResultOutput) DeviceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupIotCoreDeviceResult) *string { return v.DeviceId }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupIotCoreDeviceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIotCoreDeviceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupIotCoreDeviceResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupIotCoreDeviceResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A set of passwords's id for the IoT Core Device
+func (o LookupIotCoreDeviceResultOutput) Passwords() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupIotCoreDeviceResult) []string { return v.Passwords }).(pulumi.StringArrayOutput)
+}
+
+// IoT Core Registry ID for the IoT Core Device
+func (o LookupIotCoreDeviceResultOutput) RegistryId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIotCoreDeviceResult) string { return v.RegistryId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupIotCoreDeviceResultOutput{})
 }

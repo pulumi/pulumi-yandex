@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetComputeDiskDiskPlacementPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetComputeDiskDiskPlacementPolicyInputArgs : Pulumi.ResourceArgs
     {
         [Input("diskPlacementGroupId", required: true)]
-        public string DiskPlacementGroupId { get; set; } = null!;
+        public Input<string> DiskPlacementGroupId { get; set; } = null!;
 
-        public GetComputeDiskDiskPlacementPolicyArgs()
+        public GetComputeDiskDiskPlacementPolicyInputArgs()
         {
         }
     }

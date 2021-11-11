@@ -12,6 +12,7 @@ __all__ = [
     'GetFunctionResult',
     'AwaitableGetFunctionResult',
     'get_function',
+    'get_function_output',
 ]
 
 @pulumi.output_type
@@ -275,3 +276,29 @@ def get_function(folder_id: Optional[str] = None,
         service_account_id=__ret__.service_account_id,
         tags=__ret__.tags,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_function)
+def get_function_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        function_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionResult]:
+    """
+    Get information about a Yandex Cloud Function. For more information about Yandex Cloud Functions, see
+    [Yandex Cloud Functions](https://cloud.yandex.com/docs/functions/).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_function = yandex.get_function(function_id="are1samplefunction11")
+    ```
+
+    This data source is used to define [Yandex Cloud Function](https://cloud.yandex.com/docs/functions/concepts/function) that can be used by other resources.
+
+
+    :param str folder_id: Folder ID for the Yandex Cloud Function
+    :param str function_id: Yandex Cloud Function id used to define function
+    :param str name: Yandex Cloud Function name used to define function
+    """
+    ...

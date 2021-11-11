@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getMdbClickhouseCluster({
  *     name: "test",
- * }, { async: true }));
+ * }));
  *
  * export const networkId = foo.networkId;
  * ```
@@ -45,21 +45,21 @@ export function getMdbClickhouseCluster(args?: GetMdbClickhouseClusterArgs, opts
  * A collection of arguments for invoking getMdbClickhouseCluster.
  */
 export interface GetMdbClickhouseClusterArgs {
-    readonly cloudStorage?: inputs.GetMdbClickhouseClusterCloudStorage;
+    cloudStorage?: inputs.GetMdbClickhouseClusterCloudStorage;
     /**
      * The ID of the ClickHouse cluster.
      */
-    readonly clusterId?: string;
-    readonly deletionProtection?: boolean;
+    clusterId?: string;
+    deletionProtection?: boolean;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * The name of the ClickHouse cluster.
      */
-    readonly name?: string;
-    readonly serviceAccountId?: string;
+    name?: string;
+    serviceAccountId?: string;
 }
 
 /**
@@ -161,4 +161,29 @@ export interface GetMdbClickhouseClusterResult {
      * Configuration of the ZooKeeper subcluster. The structure is documented below.
      */
     readonly zookeeper: outputs.GetMdbClickhouseClusterZookeeper;
+}
+
+export function getMdbClickhouseClusterOutput(args?: GetMdbClickhouseClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbClickhouseClusterResult> {
+    return pulumi.output(args).apply(a => getMdbClickhouseCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMdbClickhouseCluster.
+ */
+export interface GetMdbClickhouseClusterOutputArgs {
+    cloudStorage?: pulumi.Input<inputs.GetMdbClickhouseClusterCloudStorageArgs>;
+    /**
+     * The ID of the ClickHouse cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * The name of the ClickHouse cluster.
+     */
+    name?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
 }

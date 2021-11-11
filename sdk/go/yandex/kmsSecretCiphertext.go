@@ -208,7 +208,7 @@ type KmsSecretCiphertextArrayInput interface {
 type KmsSecretCiphertextArray []KmsSecretCiphertextInput
 
 func (KmsSecretCiphertextArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KmsSecretCiphertext)(nil))
+	return reflect.TypeOf((*[]*KmsSecretCiphertext)(nil)).Elem()
 }
 
 func (i KmsSecretCiphertextArray) ToKmsSecretCiphertextArrayOutput() KmsSecretCiphertextArrayOutput {
@@ -233,7 +233,7 @@ type KmsSecretCiphertextMapInput interface {
 type KmsSecretCiphertextMap map[string]KmsSecretCiphertextInput
 
 func (KmsSecretCiphertextMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KmsSecretCiphertext)(nil))
+	return reflect.TypeOf((*map[string]*KmsSecretCiphertext)(nil)).Elem()
 }
 
 func (i KmsSecretCiphertextMap) ToKmsSecretCiphertextMapOutput() KmsSecretCiphertextMapOutput {
@@ -244,9 +244,7 @@ func (i KmsSecretCiphertextMap) ToKmsSecretCiphertextMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(KmsSecretCiphertextMapOutput)
 }
 
-type KmsSecretCiphertextOutput struct {
-	*pulumi.OutputState
-}
+type KmsSecretCiphertextOutput struct{ *pulumi.OutputState }
 
 func (KmsSecretCiphertextOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KmsSecretCiphertext)(nil))
@@ -265,14 +263,12 @@ func (o KmsSecretCiphertextOutput) ToKmsSecretCiphertextPtrOutput() KmsSecretCip
 }
 
 func (o KmsSecretCiphertextOutput) ToKmsSecretCiphertextPtrOutputWithContext(ctx context.Context) KmsSecretCiphertextPtrOutput {
-	return o.ApplyT(func(v KmsSecretCiphertext) *KmsSecretCiphertext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KmsSecretCiphertext) *KmsSecretCiphertext {
 		return &v
 	}).(KmsSecretCiphertextPtrOutput)
 }
 
-type KmsSecretCiphertextPtrOutput struct {
-	*pulumi.OutputState
-}
+type KmsSecretCiphertextPtrOutput struct{ *pulumi.OutputState }
 
 func (KmsSecretCiphertextPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KmsSecretCiphertext)(nil))
@@ -284,6 +280,16 @@ func (o KmsSecretCiphertextPtrOutput) ToKmsSecretCiphertextPtrOutput() KmsSecret
 
 func (o KmsSecretCiphertextPtrOutput) ToKmsSecretCiphertextPtrOutputWithContext(ctx context.Context) KmsSecretCiphertextPtrOutput {
 	return o
+}
+
+func (o KmsSecretCiphertextPtrOutput) Elem() KmsSecretCiphertextOutput {
+	return o.ApplyT(func(v *KmsSecretCiphertext) KmsSecretCiphertext {
+		if v != nil {
+			return *v
+		}
+		var ret KmsSecretCiphertext
+		return ret
+	}).(KmsSecretCiphertextOutput)
 }
 
 type KmsSecretCiphertextArrayOutput struct{ *pulumi.OutputState }
@@ -327,6 +333,10 @@ func (o KmsSecretCiphertextMapOutput) MapIndex(k pulumi.StringInput) KmsSecretCi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KmsSecretCiphertextInput)(nil)).Elem(), &KmsSecretCiphertext{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KmsSecretCiphertextPtrInput)(nil)).Elem(), &KmsSecretCiphertext{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KmsSecretCiphertextArrayInput)(nil)).Elem(), KmsSecretCiphertextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KmsSecretCiphertextMapInput)(nil)).Elem(), KmsSecretCiphertextMap{})
 	pulumi.RegisterOutputType(KmsSecretCiphertextOutput{})
 	pulumi.RegisterOutputType(KmsSecretCiphertextPtrOutput{})
 	pulumi.RegisterOutputType(KmsSecretCiphertextArrayOutput{})

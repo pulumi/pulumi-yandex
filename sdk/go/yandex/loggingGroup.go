@@ -224,7 +224,7 @@ type LoggingGroupArrayInput interface {
 type LoggingGroupArray []LoggingGroupInput
 
 func (LoggingGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LoggingGroup)(nil))
+	return reflect.TypeOf((*[]*LoggingGroup)(nil)).Elem()
 }
 
 func (i LoggingGroupArray) ToLoggingGroupArrayOutput() LoggingGroupArrayOutput {
@@ -249,7 +249,7 @@ type LoggingGroupMapInput interface {
 type LoggingGroupMap map[string]LoggingGroupInput
 
 func (LoggingGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LoggingGroup)(nil))
+	return reflect.TypeOf((*map[string]*LoggingGroup)(nil)).Elem()
 }
 
 func (i LoggingGroupMap) ToLoggingGroupMapOutput() LoggingGroupMapOutput {
@@ -260,9 +260,7 @@ func (i LoggingGroupMap) ToLoggingGroupMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingGroupMapOutput)
 }
 
-type LoggingGroupOutput struct {
-	*pulumi.OutputState
-}
+type LoggingGroupOutput struct{ *pulumi.OutputState }
 
 func (LoggingGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoggingGroup)(nil))
@@ -281,14 +279,12 @@ func (o LoggingGroupOutput) ToLoggingGroupPtrOutput() LoggingGroupPtrOutput {
 }
 
 func (o LoggingGroupOutput) ToLoggingGroupPtrOutputWithContext(ctx context.Context) LoggingGroupPtrOutput {
-	return o.ApplyT(func(v LoggingGroup) *LoggingGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingGroup) *LoggingGroup {
 		return &v
 	}).(LoggingGroupPtrOutput)
 }
 
-type LoggingGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type LoggingGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (LoggingGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LoggingGroup)(nil))
@@ -300,6 +296,16 @@ func (o LoggingGroupPtrOutput) ToLoggingGroupPtrOutput() LoggingGroupPtrOutput {
 
 func (o LoggingGroupPtrOutput) ToLoggingGroupPtrOutputWithContext(ctx context.Context) LoggingGroupPtrOutput {
 	return o
+}
+
+func (o LoggingGroupPtrOutput) Elem() LoggingGroupOutput {
+	return o.ApplyT(func(v *LoggingGroup) LoggingGroup {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingGroup
+		return ret
+	}).(LoggingGroupOutput)
 }
 
 type LoggingGroupArrayOutput struct{ *pulumi.OutputState }
@@ -343,6 +349,10 @@ func (o LoggingGroupMapOutput) MapIndex(k pulumi.StringInput) LoggingGroupOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingGroupInput)(nil)).Elem(), &LoggingGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingGroupPtrInput)(nil)).Elem(), &LoggingGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingGroupArrayInput)(nil)).Elem(), LoggingGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingGroupMapInput)(nil)).Elem(), LoggingGroupMap{})
 	pulumi.RegisterOutputType(LoggingGroupOutput{})
 	pulumi.RegisterOutputType(LoggingGroupPtrOutput{})
 	pulumi.RegisterOutputType(LoggingGroupArrayOutput{})

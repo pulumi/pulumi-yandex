@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -13,9 +14,67 @@ namespace Pulumi.Yandex
     {
         /// <summary>
         /// Get information about a Yandex Kubernetes Cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myCluster = Output.Create(Yandex.GetKubernetesCluster.InvokeAsync(new Yandex.GetKubernetesClusterArgs
+        ///         {
+        ///             ClusterId = "some_k8s_cluster_id",
+        ///         }));
+        ///         this.ClusterExternalV4Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Master?.ExternalV4Endpoint);
+        ///     }
+        /// 
+        ///     [Output("clusterExternalV4Endpoint")]
+        ///     public Output&lt;string&gt; ClusterExternalV4Endpoint { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesClusterResult> InvokeAsync(GetKubernetesClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClusterResult>("yandex:index/getKubernetesCluster:getKubernetesCluster", args ?? new GetKubernetesClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Kubernetes Cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myCluster = Output.Create(Yandex.GetKubernetesCluster.InvokeAsync(new Yandex.GetKubernetesClusterArgs
+        ///         {
+        ///             ClusterId = "some_k8s_cluster_id",
+        ///         }));
+        ///         this.ClusterExternalV4Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Master?.ExternalV4Endpoint);
+        ///     }
+        /// 
+        ///     [Output("clusterExternalV4Endpoint")]
+        ///     public Output&lt;string&gt; ClusterExternalV4Endpoint { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKubernetesClusterResult> Invoke(GetKubernetesClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKubernetesClusterResult>("yandex:index/getKubernetesCluster:getKubernetesCluster", args ?? new GetKubernetesClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +99,31 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetKubernetesClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetKubernetesClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of a specific Kubernetes cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// Name of a specific Kubernetes cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetKubernetesClusterInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetIotCoreDeviceResult> InvokeAsync(GetIotCoreDeviceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIotCoreDeviceResult>("yandex:index/getIotCoreDevice:getIotCoreDevice", args ?? new GetIotCoreDeviceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex IoT Core device. For more information about IoT Core, see 
+        /// [Yandex.Cloud IoT Device](https://cloud.yandex.com/docs/iot-core/quickstart).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myDevice = Output.Create(Yandex.GetIotCoreDevice.InvokeAsync(new Yandex.GetIotCoreDeviceArgs
+        ///         {
+        ///             DeviceId = "are1sampleregistry11",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Yandex.Cloud IoT Device](https://cloud.yandex.com/docs/iot-core/quickstart) that can be used by other resources.
+        /// </summary>
+        public static Output<GetIotCoreDeviceResult> Invoke(GetIotCoreDeviceInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIotCoreDeviceResult>("yandex:index/getIotCoreDevice:getIotCoreDevice", args ?? new GetIotCoreDeviceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -54,6 +81,25 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetIotCoreDeviceArgs()
+        {
+        }
+    }
+
+    public sealed class GetIotCoreDeviceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// IoT Core Device id used to define device
+        /// </summary>
+        [Input("deviceId")]
+        public Input<string>? DeviceId { get; set; }
+
+        /// <summary>
+        /// IoT Core Device name used to define device
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetIotCoreDeviceInvokeArgs()
         {
         }
     }

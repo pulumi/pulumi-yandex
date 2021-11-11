@@ -135,31 +135,31 @@ export interface IotCoreDeviceState {
     /**
      * A set of key/value aliases pairs to assign to the IoT Core Device
      */
-    readonly aliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    aliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A set of certificate's fingerprints for the IoT Core Device
      */
-    readonly certificates?: pulumi.Input<pulumi.Input<string>[]>;
+    certificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Creation timestamp of the IoT Core Device
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Description of the IoT Core Device
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * IoT Core Device name used to define device
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A set of passwords's id for the IoT Core Device
      */
-    readonly passwords?: pulumi.Input<pulumi.Input<string>[]>;
+    passwords?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * IoT Core Registry ID for the IoT Core Device
      */
-    readonly registryId?: pulumi.Input<string>;
+    registryId?: pulumi.Input<string>;
 }
 
 /**
@@ -169,25 +169,25 @@ export interface IotCoreDeviceArgs {
     /**
      * A set of key/value aliases pairs to assign to the IoT Core Device
      */
-    readonly aliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    aliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A set of certificate's fingerprints for the IoT Core Device
      */
-    readonly certificates?: pulumi.Input<pulumi.Input<string>[]>;
+    certificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the IoT Core Device
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * IoT Core Device name used to define device
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A set of passwords's id for the IoT Core Device
      */
-    readonly passwords?: pulumi.Input<pulumi.Input<string>[]>;
+    passwords?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * IoT Core Registry ID for the IoT Core Device
      */
-    readonly registryId: pulumi.Input<string>;
+    registryId: pulumi.Input<string>;
 }

@@ -12,6 +12,7 @@ __all__ = [
     'GetDnsZoneResult',
     'AwaitableGetDnsZoneResult',
     'get_dns_zone',
+    'get_dns_zone_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,25 @@ def get_dns_zone(dns_zone_id: Optional[str] = None,
         private_networks=__ret__.private_networks,
         public=__ret__.public,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_dns_zone)
+def get_dns_zone_output(dns_zone_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDnsZoneResult]:
+    """
+    Get information about a DNS Zone.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_dns_zone(dns_zone_id=yandex_dns_zone["zone1"]["id"])
+    pulumi.export("zone", foo.zone)
+    ```
+
+
+    :param str dns_zone_id: The ID of the DNS Zone.
+    """
+    ...

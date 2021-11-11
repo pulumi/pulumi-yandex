@@ -13,6 +13,7 @@ __all__ = [
     'GetVpcSecurityGroupResult',
     'AwaitableGetVpcSecurityGroupResult',
     'get_vpc_security_group',
+    'get_vpc_security_group_output',
 ]
 
 @pulumi.output_type
@@ -214,3 +215,36 @@ def get_vpc_security_group(folder_id: Optional[str] = None,
         network_id=__ret__.network_id,
         security_group_id=__ret__.security_group_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_vpc_security_group)
+def get_vpc_security_group_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  name: Optional[pulumi.Input[Optional[str]]] = None,
+                                  security_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSecurityGroupResult]:
+    """
+    Get information about a Yandex VPC Security Group. For more information, see
+    [Yandex.Cloud VPC](https://cloud.yandex.com/docs/vpc/concepts/security-groups).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    group1 = yandex.get_vpc_security_group(security_group_id="my-id")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    group1 = yandex.get_vpc_security_group(name="my-group1")
+    ```
+
+    This data source is used to define Security Group that can be used by other resources.
+
+
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: - Name of the security group.
+    :param str security_group_id: Security Group ID.
+    """
+    ...

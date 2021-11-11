@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-network-id"
-// 		_, err := yandex.LookupVpcNetwork(ctx, &yandex.LookupVpcNetworkArgs{
+// 		_, err := yandex.LookupVpcNetwork(ctx, &GetVpcNetworkArgs{
 // 			NetworkId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -68,4 +71,87 @@ type LookupVpcNetworkResult struct {
 	Name      string            `pulumi:"name"`
 	NetworkId string            `pulumi:"networkId"`
 	SubnetIds []string          `pulumi:"subnetIds"`
+}
+
+func LookupVpcNetworkOutput(ctx *pulumi.Context, args LookupVpcNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupVpcNetworkResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVpcNetworkResult, error) {
+			args := v.(LookupVpcNetworkArgs)
+			r, err := LookupVpcNetwork(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVpcNetworkResultOutput)
+}
+
+// A collection of arguments for invoking getVpcNetwork.
+type LookupVpcNetworkOutputArgs struct {
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// Name of the network.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// ID of the network.
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
+}
+
+func (LookupVpcNetworkOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcNetworkArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVpcNetwork.
+type LookupVpcNetworkResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcNetworkResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcNetworkResult)(nil)).Elem()
+}
+
+func (o LookupVpcNetworkResultOutput) ToLookupVpcNetworkResultOutput() LookupVpcNetworkResultOutput {
+	return o
+}
+
+func (o LookupVpcNetworkResultOutput) ToLookupVpcNetworkResultOutputWithContext(ctx context.Context) LookupVpcNetworkResultOutput {
+	return o
+}
+
+// Creation timestamp of this network.
+func (o LookupVpcNetworkResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcNetworkResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// ID of default Security Group of this network.
+func (o LookupVpcNetworkResultOutput) DefaultSecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcNetworkResult) string { return v.DefaultSecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Description of the network.
+func (o LookupVpcNetworkResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcNetworkResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcNetworkResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcNetworkResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVpcNetworkResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcNetworkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels assigned to this network.
+func (o LookupVpcNetworkResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpcNetworkResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupVpcNetworkResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcNetworkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcNetworkResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcNetworkResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcNetworkResultOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVpcNetworkResult) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVpcNetworkResultOutput{})
 }

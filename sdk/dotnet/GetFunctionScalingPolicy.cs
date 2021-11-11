@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Yandex
     {
         public static Task<GetFunctionScalingPolicyResult> InvokeAsync(GetFunctionScalingPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionScalingPolicyResult>("yandex:index/getFunctionScalingPolicy:getFunctionScalingPolicy", args ?? new GetFunctionScalingPolicyArgs(), options.WithVersion());
+
+        public static Output<GetFunctionScalingPolicyResult> Invoke(GetFunctionScalingPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFunctionScalingPolicyResult>("yandex:index/getFunctionScalingPolicy:getFunctionScalingPolicy", args ?? new GetFunctionScalingPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -30,6 +34,24 @@ namespace Pulumi.Yandex
         }
 
         public GetFunctionScalingPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetFunctionScalingPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("functionId", required: true)]
+        public Input<string> FunctionId { get; set; } = null!;
+
+        [Input("policies")]
+        private InputList<Inputs.GetFunctionScalingPolicyPolicyInputArgs>? _policies;
+        public InputList<Inputs.GetFunctionScalingPolicyPolicyInputArgs> Policies
+        {
+            get => _policies ?? (_policies = new InputList<Inputs.GetFunctionScalingPolicyPolicyInputArgs>());
+            set => _policies = value;
+        }
+
+        public GetFunctionScalingPolicyInvokeArgs()
         {
         }
     }

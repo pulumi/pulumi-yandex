@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.LookupMessageQueue(ctx, &yandex.LookupMessageQueueArgs{
+// 		_, err := yandex.LookupMessageQueue(ctx, &GetMessageQueueArgs{
 // 			Name: "ymq_terraform_example",
 // 		}, nil)
 // 		if err != nil {
@@ -60,4 +63,71 @@ type LookupMessageQueueResult struct {
 	SecretKey *string `pulumi:"secretKey"`
 	// URL of the queue.
 	Url string `pulumi:"url"`
+}
+
+func LookupMessageQueueOutput(ctx *pulumi.Context, args LookupMessageQueueOutputArgs, opts ...pulumi.InvokeOption) LookupMessageQueueResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMessageQueueResult, error) {
+			args := v.(LookupMessageQueueArgs)
+			r, err := LookupMessageQueue(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMessageQueueResultOutput)
+}
+
+// A collection of arguments for invoking getMessageQueue.
+type LookupMessageQueueOutputArgs struct {
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// Queue name.
+	Name      pulumi.StringInput    `pulumi:"name"`
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+}
+
+func (LookupMessageQueueOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMessageQueueArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMessageQueue.
+type LookupMessageQueueResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMessageQueueResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMessageQueueResult)(nil)).Elem()
+}
+
+func (o LookupMessageQueueResultOutput) ToLookupMessageQueueResultOutput() LookupMessageQueueResultOutput {
+	return o
+}
+
+func (o LookupMessageQueueResultOutput) ToLookupMessageQueueResultOutputWithContext(ctx context.Context) LookupMessageQueueResultOutput {
+	return o
+}
+
+func (o LookupMessageQueueResultOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMessageQueueResult) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// ARN of the queue. It is used for setting up a [redrive policy](https://cloud.yandex.com/docs/message-queue/concepts/dlq). See [documentation](https://cloud.yandex.com/docs/message-queue/api-ref/queue/SetQueueAttributes).
+func (o LookupMessageQueueResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMessageQueueResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupMessageQueueResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMessageQueueResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupMessageQueueResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMessageQueueResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupMessageQueueResultOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMessageQueueResult) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// URL of the queue.
+func (o LookupMessageQueueResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMessageQueueResult) string { return v.Url }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMessageQueueResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetFunctionTriggerResult> InvokeAsync(GetFunctionTriggerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionTriggerResult>("yandex:index/getFunctionTrigger:getFunctionTrigger", args ?? new GetFunctionTriggerArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Cloud Function Trigger. For more information about Yandex Cloud Functions, see 
+        /// [Yandex Cloud Functions](https://cloud.yandex.com/docs/functions/).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myTrigger = Output.Create(Yandex.GetFunctionTrigger.InvokeAsync(new Yandex.GetFunctionTriggerArgs
+        ///         {
+        ///             TriggerId = "are1sampletrigger11",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Yandex Cloud Functions Trigger](https://cloud.yandex.com/docs/functions/concepts/trigger) that can be used by other resources.
+        /// </summary>
+        public static Output<GetFunctionTriggerResult> Invoke(GetFunctionTriggerInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFunctionTriggerResult>("yandex:index/getFunctionTrigger:getFunctionTrigger", args ?? new GetFunctionTriggerInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +87,31 @@ namespace Pulumi.Yandex
         public string? TriggerId { get; set; }
 
         public GetFunctionTriggerArgs()
+        {
+        }
+    }
+
+    public sealed class GetFunctionTriggerInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder ID for the Yandex Cloud Functions Trigger
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// Yandex Cloud Functions Trigger name used to define trigger
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Yandex Cloud Functions Trigger id used to define trigger
+        /// </summary>
+        [Input("triggerId")]
+        public Input<string>? TriggerId { get; set; }
+
+        public GetFunctionTriggerInvokeArgs()
         {
         }
     }

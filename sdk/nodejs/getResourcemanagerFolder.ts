@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -15,11 +14,11 @@ import * as utilities from "./utilities";
  *
  * const myFolder1 = pulumi.output(yandex.getResourcemanagerFolder({
  *     folderId: "folder_id_number_1",
- * }, { async: true }));
+ * }));
  * const myFolder2 = pulumi.output(yandex.getResourcemanagerFolder({
  *     cloudId: "some_cloud_id",
  *     name: "folder_name",
- * }, { async: true }));
+ * }));
  *
  * export const myFolder1Name = myFolder1.name!;
  * export const myFolder2CloudId = myFolder2.cloudId!;
@@ -49,19 +48,19 @@ export interface GetResourcemanagerFolderArgs {
     /**
      * Cloud that the resource belongs to. If value is omitted, the default provider cloud is used.
      */
-    readonly cloudId?: string;
+    cloudId?: string;
     /**
      * ID of the folder.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * A map of labels applied to this folder.
      */
-    readonly labels?: {[key: string]: string};
+    labels?: {[key: string]: string};
     /**
      * Name of the folder.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -94,4 +93,30 @@ export interface GetResourcemanagerFolderResult {
      * Current status of the folder.
      */
     readonly status: string;
+}
+
+export function getResourcemanagerFolderOutput(args?: GetResourcemanagerFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcemanagerFolderResult> {
+    return pulumi.output(args).apply(a => getResourcemanagerFolder(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResourcemanagerFolder.
+ */
+export interface GetResourcemanagerFolderOutputArgs {
+    /**
+     * Cloud that the resource belongs to. If value is omitted, the default provider cloud is used.
+     */
+    cloudId?: pulumi.Input<string>;
+    /**
+     * ID of the folder.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * A map of labels applied to this folder.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the folder.
+     */
+    name?: pulumi.Input<string>;
 }

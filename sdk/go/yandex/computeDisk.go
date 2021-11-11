@@ -73,7 +73,7 @@ import (
 // 			Size: pulumi.Int(93),
 // 			Type: pulumi.String("network-ssd-nonreplicated"),
 // 			Zone: pulumi.String("ru-central1-b"),
-// 			DiskPlacementPolicy: &yandex.ComputeDiskDiskPlacementPolicyArgs{
+// 			DiskPlacementPolicy: &ComputeDiskDiskPlacementPolicyArgs{
 // 				DiskPlacementGroupId: this.ID(),
 // 			},
 // 		})
@@ -368,7 +368,7 @@ type ComputeDiskArrayInput interface {
 type ComputeDiskArray []ComputeDiskInput
 
 func (ComputeDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ComputeDisk)(nil))
+	return reflect.TypeOf((*[]*ComputeDisk)(nil)).Elem()
 }
 
 func (i ComputeDiskArray) ToComputeDiskArrayOutput() ComputeDiskArrayOutput {
@@ -393,7 +393,7 @@ type ComputeDiskMapInput interface {
 type ComputeDiskMap map[string]ComputeDiskInput
 
 func (ComputeDiskMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ComputeDisk)(nil))
+	return reflect.TypeOf((*map[string]*ComputeDisk)(nil)).Elem()
 }
 
 func (i ComputeDiskMap) ToComputeDiskMapOutput() ComputeDiskMapOutput {
@@ -404,9 +404,7 @@ func (i ComputeDiskMap) ToComputeDiskMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeDiskMapOutput)
 }
 
-type ComputeDiskOutput struct {
-	*pulumi.OutputState
-}
+type ComputeDiskOutput struct{ *pulumi.OutputState }
 
 func (ComputeDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ComputeDisk)(nil))
@@ -425,14 +423,12 @@ func (o ComputeDiskOutput) ToComputeDiskPtrOutput() ComputeDiskPtrOutput {
 }
 
 func (o ComputeDiskOutput) ToComputeDiskPtrOutputWithContext(ctx context.Context) ComputeDiskPtrOutput {
-	return o.ApplyT(func(v ComputeDisk) *ComputeDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeDisk) *ComputeDisk {
 		return &v
 	}).(ComputeDiskPtrOutput)
 }
 
-type ComputeDiskPtrOutput struct {
-	*pulumi.OutputState
-}
+type ComputeDiskPtrOutput struct{ *pulumi.OutputState }
 
 func (ComputeDiskPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ComputeDisk)(nil))
@@ -444,6 +440,16 @@ func (o ComputeDiskPtrOutput) ToComputeDiskPtrOutput() ComputeDiskPtrOutput {
 
 func (o ComputeDiskPtrOutput) ToComputeDiskPtrOutputWithContext(ctx context.Context) ComputeDiskPtrOutput {
 	return o
+}
+
+func (o ComputeDiskPtrOutput) Elem() ComputeDiskOutput {
+	return o.ApplyT(func(v *ComputeDisk) ComputeDisk {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeDisk
+		return ret
+	}).(ComputeDiskOutput)
 }
 
 type ComputeDiskArrayOutput struct{ *pulumi.OutputState }
@@ -487,6 +493,10 @@ func (o ComputeDiskMapOutput) MapIndex(k pulumi.StringInput) ComputeDiskOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskInput)(nil)).Elem(), &ComputeDisk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskPtrInput)(nil)).Elem(), &ComputeDisk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskArrayInput)(nil)).Elem(), ComputeDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskMapInput)(nil)).Elem(), ComputeDiskMap{})
 	pulumi.RegisterOutputType(ComputeDiskOutput{})
 	pulumi.RegisterOutputType(ComputeDiskPtrOutput{})
 	pulumi.RegisterOutputType(ComputeDiskArrayOutput{})

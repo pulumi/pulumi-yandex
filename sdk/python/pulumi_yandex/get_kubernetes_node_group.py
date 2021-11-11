@@ -13,6 +13,7 @@ __all__ = [
     'GetKubernetesNodeGroupResult',
     'AwaitableGetKubernetesNodeGroupResult',
     'get_kubernetes_node_group',
+    'get_kubernetes_node_group_output',
 ]
 
 @pulumi.output_type
@@ -307,3 +308,30 @@ def get_kubernetes_node_group(folder_id: Optional[str] = None,
         scale_policy=__ret__.scale_policy,
         status=__ret__.status,
         version_info=__ret__.version_info)
+
+
+@_utilities.lift_output_func(get_kubernetes_node_group)
+def get_kubernetes_node_group_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                     name: Optional[pulumi.Input[Optional[str]]] = None,
+                                     node_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesNodeGroupResult]:
+    """
+    Get information about a Yandex Kubernetes Node Group. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/managed-kubernetes/concepts/#node-group).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_node_group = yandex.get_kubernetes_node_group(node_group_id="some_k8s_node_group_id")
+    pulumi.export("myNodeGroup.status", my_node_group.status)
+    ```
+
+
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: Name of a specific Kubernetes node group.
+    :param str node_group_id: ID of a specific Kubernetes node group.
+    """
+    ...

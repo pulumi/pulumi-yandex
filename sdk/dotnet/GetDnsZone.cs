@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -42,6 +43,38 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetDnsZoneResult> InvokeAsync(GetDnsZoneArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("yandex:index/getDnsZone:getDnsZone", args ?? new GetDnsZoneArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a DNS Zone.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetDnsZone.InvokeAsync(new Yandex.GetDnsZoneArgs
+        ///         {
+        ///             DnsZoneId = yandex_dns_zone.Zone1.Id,
+        ///         }));
+        ///         this.Zone = foo.Apply(foo =&gt; foo.Zone);
+        ///     }
+        /// 
+        ///     [Output("zone")]
+        ///     public Output&lt;string&gt; Zone { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDnsZoneResult> Invoke(GetDnsZoneInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDnsZoneResult>("yandex:index/getDnsZone:getDnsZone", args ?? new GetDnsZoneInvokeArgs(), options.WithVersion());
     }
 
 
@@ -54,6 +87,19 @@ namespace Pulumi.Yandex
         public string DnsZoneId { get; set; } = null!;
 
         public GetDnsZoneArgs()
+        {
+        }
+    }
+
+    public sealed class GetDnsZoneInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the DNS Zone.
+        /// </summary>
+        [Input("dnsZoneId", required: true)]
+        public Input<string> DnsZoneId { get; set; } = null!;
+
+        public GetDnsZoneInvokeArgs()
         {
         }
     }

@@ -12,6 +12,7 @@ __all__ = [
     'GetIotCoreDeviceResult',
     'AwaitableGetIotCoreDeviceResult',
     'get_iot_core_device',
+    'get_iot_core_device_output',
 ]
 
 @pulumi.output_type
@@ -171,3 +172,27 @@ def get_iot_core_device(device_id: Optional[str] = None,
         name=__ret__.name,
         passwords=__ret__.passwords,
         registry_id=__ret__.registry_id)
+
+
+@_utilities.lift_output_func(get_iot_core_device)
+def get_iot_core_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               name: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIotCoreDeviceResult]:
+    """
+    Get information about a Yandex IoT Core device. For more information about IoT Core, see
+    [Yandex.Cloud IoT Device](https://cloud.yandex.com/docs/iot-core/quickstart).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    my_device = yandex.get_iot_core_device(device_id="are1sampleregistry11")
+    ```
+
+    This data source is used to define [Yandex.Cloud IoT Device](https://cloud.yandex.com/docs/iot-core/quickstart) that can be used by other resources.
+
+
+    :param str device_id: IoT Core Device id used to define device
+    :param str name: IoT Core Device name used to define device
+    """
+    ...

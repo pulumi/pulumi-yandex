@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const admin = pulumi.output(yandex.getVpcSubnet({
  *     subnetId: "my-subnet-id",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [VPC Subnets] that can be used by other resources.
@@ -43,15 +43,15 @@ export interface GetVpcSubnetArgs {
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * - Name of the subnet.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Subnet ID.
      */
-    readonly subnetId?: string;
+    subnetId?: string;
 }
 
 /**
@@ -101,4 +101,26 @@ export interface GetVpcSubnetResult {
      * Name of the availability zone for this subnet.
      */
     readonly zone: string;
+}
+
+export function getVpcSubnetOutput(args?: GetVpcSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcSubnetResult> {
+    return pulumi.output(args).apply(a => getVpcSubnet(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcSubnet.
+ */
+export interface GetVpcSubnetOutputArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * - Name of the subnet.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Subnet ID.
+     */
+    subnetId?: pulumi.Input<string>;
 }

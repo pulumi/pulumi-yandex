@@ -134,29 +134,29 @@ export interface AlbTargetGroupState {
     /**
      * The target group creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * An optional description of the target group. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this target group. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the target group. Provided by the client when the target group is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A Target resource. The structure is documented below.
      */
-    readonly targets?: pulumi.Input<pulumi.Input<inputs.AlbTargetGroupTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.AlbTargetGroupTarget>[]>;
 }
 
 /**
@@ -167,22 +167,22 @@ export interface AlbTargetGroupArgs {
      * An optional description of the target group. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this target group. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the target group. Provided by the client when the target group is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A Target resource. The structure is documented below.
      */
-    readonly targets?: pulumi.Input<pulumi.Input<inputs.AlbTargetGroupTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.AlbTargetGroupTarget>[]>;
 }

@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "some_instance_id"
-// 		myInstance, err := yandex.LookupComputeInstance(ctx, &yandex.LookupComputeInstanceArgs{
+// 		myInstance, err := yandex.LookupComputeInstance(ctx, &GetComputeInstanceArgs{
 // 			InstanceId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -101,4 +104,152 @@ type LookupComputeInstanceResult struct {
 	Status string `pulumi:"status"`
 	// Availability zone where the instance resides.
 	Zone string `pulumi:"zone"`
+}
+
+func LookupComputeInstanceOutput(ctx *pulumi.Context, args LookupComputeInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupComputeInstanceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupComputeInstanceResult, error) {
+			args := v.(LookupComputeInstanceArgs)
+			r, err := LookupComputeInstance(ctx, &args, opts...)
+			return *r, err
+		}).(LookupComputeInstanceResultOutput)
+}
+
+// A collection of arguments for invoking getComputeInstance.
+type LookupComputeInstanceOutputArgs struct {
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// The ID of a specific instance.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// Name of the instance.
+	Name            pulumi.StringPtrInput                     `pulumi:"name"`
+	PlacementPolicy GetComputeInstancePlacementPolicyPtrInput `pulumi:"placementPolicy"`
+	// Scheduling policy configuration. The structure is documented below.
+	SchedulingPolicy GetComputeInstanceSchedulingPolicyPtrInput `pulumi:"schedulingPolicy"`
+}
+
+func (LookupComputeInstanceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeInstanceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getComputeInstance.
+type LookupComputeInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupComputeInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeInstanceResult)(nil)).Elem()
+}
+
+func (o LookupComputeInstanceResultOutput) ToLookupComputeInstanceResultOutput() LookupComputeInstanceResultOutput {
+	return o
+}
+
+func (o LookupComputeInstanceResultOutput) ToLookupComputeInstanceResultOutputWithContext(ctx context.Context) LookupComputeInstanceResultOutput {
+	return o
+}
+
+// The boot disk for the instance. Structure is documented below.
+func (o LookupComputeInstanceResultOutput) BootDisk() GetComputeInstanceBootDiskOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) GetComputeInstanceBootDisk { return v.BootDisk }).(GetComputeInstanceBootDiskOutput)
+}
+
+// Instance creation timestamp.
+func (o LookupComputeInstanceResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the boot disk.
+func (o LookupComputeInstanceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupComputeInstanceResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// DNS record FQDN.
+func (o LookupComputeInstanceResultOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupComputeInstanceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupComputeInstanceResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs assigned to the instance.
+func (o LookupComputeInstanceResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Metadata key/value pairs to make available from
+// within the instance.
+func (o LookupComputeInstanceResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Name of the boot disk.
+func (o LookupComputeInstanceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type of network acceleration. The default is `standard`. Values: `standard`, `softwareAccelerated`
+func (o LookupComputeInstanceResultOutput) NetworkAccelerationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.NetworkAccelerationType }).(pulumi.StringOutput)
+}
+
+// The networks attached to the instance. Structure is documented below.
+// * `network_interface.0.ip_address` - An internal IP address of the instance, either manually or dynamically assigned.
+// * `network_interface.0.nat_ip_address` - An assigned external IP address if the instance has NAT enabled.
+func (o LookupComputeInstanceResultOutput) NetworkInterfaces() GetComputeInstanceNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) []GetComputeInstanceNetworkInterface { return v.NetworkInterfaces }).(GetComputeInstanceNetworkInterfaceArrayOutput)
+}
+
+func (o LookupComputeInstanceResultOutput) PlacementPolicy() GetComputeInstancePlacementPolicyPtrOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) *GetComputeInstancePlacementPolicy { return v.PlacementPolicy }).(GetComputeInstancePlacementPolicyPtrOutput)
+}
+
+// Type of virtual machine to create. Default is 'standard-v1'.
+func (o LookupComputeInstanceResultOutput) PlatformId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.PlatformId }).(pulumi.StringOutput)
+}
+
+func (o LookupComputeInstanceResultOutput) Resources() GetComputeInstanceResourcesOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) GetComputeInstanceResources { return v.Resources }).(GetComputeInstanceResourcesOutput)
+}
+
+// Scheduling policy configuration. The structure is documented below.
+func (o LookupComputeInstanceResultOutput) SchedulingPolicy() GetComputeInstanceSchedulingPolicyOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) GetComputeInstanceSchedulingPolicy { return v.SchedulingPolicy }).(GetComputeInstanceSchedulingPolicyOutput)
+}
+
+// List of secondary disks attached to the instance. Structure is documented below.
+func (o LookupComputeInstanceResultOutput) SecondaryDisks() GetComputeInstanceSecondaryDiskArrayOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) []GetComputeInstanceSecondaryDisk { return v.SecondaryDisks }).(GetComputeInstanceSecondaryDiskArrayOutput)
+}
+
+// ID of the service account authorized for this instance.
+func (o LookupComputeInstanceResultOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.ServiceAccountId }).(pulumi.StringOutput)
+}
+
+// Status of the instance.
+// * `resources.0.memory` - Memory size allocated for the instance.
+// * `resources.0.cores` - Number of CPU cores allocated for the instance.
+// * `resources.0.core_fraction` - Baseline performance for a core, set as a percent.
+// * `resources.0.gpus` - Number of GPU cores allocated for the instance.
+func (o LookupComputeInstanceResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Availability zone where the instance resides.
+func (o LookupComputeInstanceResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupComputeInstanceResultOutput{})
 }

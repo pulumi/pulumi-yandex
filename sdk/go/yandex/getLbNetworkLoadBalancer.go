@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-network-load-balancer"
-// 		_, err := yandex.LookupLbNetworkLoadBalancer(ctx, &yandex.LookupLbNetworkLoadBalancerArgs{
+// 		_, err := yandex.LookupLbNetworkLoadBalancer(ctx, &GetLbNetworkLoadBalancerArgs{
 // 			NetworkLoadBalancerId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -74,4 +77,101 @@ type LookupLbNetworkLoadBalancerResult struct {
 	RegionId string `pulumi:"regionId"`
 	// Type of the network load balancer.
 	Type string `pulumi:"type"`
+}
+
+func LookupLbNetworkLoadBalancerOutput(ctx *pulumi.Context, args LookupLbNetworkLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLbNetworkLoadBalancerResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupLbNetworkLoadBalancerResult, error) {
+			args := v.(LookupLbNetworkLoadBalancerArgs)
+			r, err := LookupLbNetworkLoadBalancer(ctx, &args, opts...)
+			return *r, err
+		}).(LookupLbNetworkLoadBalancerResultOutput)
+}
+
+// A collection of arguments for invoking getLbNetworkLoadBalancer.
+type LookupLbNetworkLoadBalancerOutputArgs struct {
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// - Name of the network load balancer.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Network load balancer ID.
+	NetworkLoadBalancerId pulumi.StringPtrInput `pulumi:"networkLoadBalancerId"`
+}
+
+func (LookupLbNetworkLoadBalancerOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLbNetworkLoadBalancerArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getLbNetworkLoadBalancer.
+type LookupLbNetworkLoadBalancerResultOutput struct{ *pulumi.OutputState }
+
+func (LookupLbNetworkLoadBalancerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLbNetworkLoadBalancerResult)(nil)).Elem()
+}
+
+func (o LookupLbNetworkLoadBalancerResultOutput) ToLookupLbNetworkLoadBalancerResultOutput() LookupLbNetworkLoadBalancerResultOutput {
+	return o
+}
+
+func (o LookupLbNetworkLoadBalancerResultOutput) ToLookupLbNetworkLoadBalancerResultOutputWithContext(ctx context.Context) LookupLbNetworkLoadBalancerResultOutput {
+	return o
+}
+
+// An attached target group is a group of targets that is attached to a load balancer. Structure is documented below.
+func (o LookupLbNetworkLoadBalancerResultOutput) AttachedTargetGroups() GetLbNetworkLoadBalancerAttachedTargetGroupArrayOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) []GetLbNetworkLoadBalancerAttachedTargetGroup {
+		return v.AttachedTargetGroups
+	}).(GetLbNetworkLoadBalancerAttachedTargetGroupArrayOutput)
+}
+
+// Creation timestamp of this network load balancer.
+func (o LookupLbNetworkLoadBalancerResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the network load balancer.
+func (o LookupLbNetworkLoadBalancerResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupLbNetworkLoadBalancerResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupLbNetworkLoadBalancerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels to assign to this network load balancer.
+func (o LookupLbNetworkLoadBalancerResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Listener specification that will be used by a network load balancer. Structure is documented below.
+func (o LookupLbNetworkLoadBalancerResultOutput) Listeners() GetLbNetworkLoadBalancerListenerArrayOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) []GetLbNetworkLoadBalancerListener { return v.Listeners }).(GetLbNetworkLoadBalancerListenerArrayOutput)
+}
+
+// Name of the listener.
+func (o LookupLbNetworkLoadBalancerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupLbNetworkLoadBalancerResultOutput) NetworkLoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) string { return v.NetworkLoadBalancerId }).(pulumi.StringOutput)
+}
+
+// ID of the region where the network load balancer resides.
+func (o LookupLbNetworkLoadBalancerResultOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Type of the network load balancer.
+func (o LookupLbNetworkLoadBalancerResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLbNetworkLoadBalancerResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupLbNetworkLoadBalancerResultOutput{})
 }

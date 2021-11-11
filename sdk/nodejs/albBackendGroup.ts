@@ -148,31 +148,31 @@ export interface AlbBackendGroupState {
     /**
      * The backend group creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Description of the backend group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
      */
-    readonly grpcBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupGrpcBackend>[]>;
+    grpcBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupGrpcBackend>[]>;
     /**
      * Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
      */
-    readonly httpBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupHttpBackend>[]>;
+    httpBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupHttpBackend>[]>;
     /**
      * Labels to assign to this backend group.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the backend.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -182,25 +182,25 @@ export interface AlbBackendGroupArgs {
     /**
      * Description of the backend group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
      */
-    readonly grpcBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupGrpcBackend>[]>;
+    grpcBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupGrpcBackend>[]>;
     /**
      * Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
      */
-    readonly httpBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupHttpBackend>[]>;
+    httpBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupHttpBackend>[]>;
     /**
      * Labels to assign to this backend group.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the backend.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

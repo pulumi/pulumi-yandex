@@ -13,6 +13,7 @@ __all__ = [
     'GetVpcSubnetResult',
     'AwaitableGetVpcSubnetResult',
     'get_vpc_subnet',
+    'get_vpc_subnet_output',
 ]
 
 @pulumi.output_type
@@ -224,3 +225,29 @@ def get_vpc_subnet(folder_id: Optional[str] = None,
         v4_cidr_blocks=__ret__.v4_cidr_blocks,
         v6_cidr_blocks=__ret__.v6_cidr_blocks,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_vpc_subnet)
+def get_vpc_subnet_output(folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                          name: Optional[pulumi.Input[Optional[str]]] = None,
+                          subnet_id: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcSubnetResult]:
+    """
+    Get information about a Yandex VPC subnet. For more information, see
+    [Yandex.Cloud VPC](https://cloud.yandex.com/docs/vpc/concepts/index).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    admin = yandex.get_vpc_subnet(subnet_id="my-subnet-id")
+    ```
+
+    This data source is used to define [VPC Subnets] that can be used by other resources.
+
+
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: - Name of the subnet.
+    :param str subnet_id: Subnet ID.
+    """
+    ...

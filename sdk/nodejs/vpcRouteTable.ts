@@ -142,33 +142,33 @@ export interface VpcRouteTableState {
     /**
      * Creation timestamp of the route table.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * An optional description of the route table. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this route table. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the route table. Provided by the client when the route table is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network this route table belongs to.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * A list of static route records for the route table. The structure is documented below.
      */
-    readonly staticRoutes?: pulumi.Input<pulumi.Input<inputs.VpcRouteTableStaticRoute>[]>;
+    staticRoutes?: pulumi.Input<pulumi.Input<inputs.VpcRouteTableStaticRoute>[]>;
 }
 
 /**
@@ -179,26 +179,26 @@ export interface VpcRouteTableArgs {
      * An optional description of the route table. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this route table. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the route table. Provided by the client when the route table is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network this route table belongs to.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * A list of static route records for the route table. The structure is documented below.
      */
-    readonly staticRoutes?: pulumi.Input<pulumi.Input<inputs.VpcRouteTableStaticRoute>[]>;
+    staticRoutes?: pulumi.Input<pulumi.Input<inputs.VpcRouteTableStaticRoute>[]>;
 }

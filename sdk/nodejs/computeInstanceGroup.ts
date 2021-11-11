@@ -256,52 +256,52 @@ export interface ComputeInstanceGroupState {
     /**
      * The allocation policy of the instance group by zone and region. The structure is documented below.
      */
-    readonly allocationPolicy?: pulumi.Input<inputs.ComputeInstanceGroupAllocationPolicy>;
+    allocationPolicy?: pulumi.Input<inputs.ComputeInstanceGroupAllocationPolicy>;
     /**
      * Application Load balancing (L7) specifications. The structure is documented below.
      */
-    readonly applicationLoadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupApplicationLoadBalancer>;
+    applicationLoadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupApplicationLoadBalancer>;
     /**
      * The instance group creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Flag that protects the instance group from accidental deletion.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The deployment policy of the instance group. The structure is documented below.
      */
-    readonly deployPolicy?: pulumi.Input<inputs.ComputeInstanceGroupDeployPolicy>;
+    deployPolicy?: pulumi.Input<inputs.ComputeInstanceGroupDeployPolicy>;
     /**
      * A description of the boot disk.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Health check specifications. The structure is documented below.
      */
-    readonly healthChecks?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupHealthCheck>[]>;
+    healthChecks?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupHealthCheck>[]>;
     /**
      * The template for creating new instances. The structure is documented below.
      */
-    readonly instanceTemplate?: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplate>;
-    readonly instances?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupInstance>[]>;
+    instanceTemplate?: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplate>;
+    instances?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupInstance>[]>;
     /**
      * A map of labels of metric.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Load balancing specifications. The structure is documented below.
      */
-    readonly loadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupLoadBalancer>;
     /**
      * Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
      */
-    readonly maxCheckingHealthDuration?: pulumi.Input<number>;
+    maxCheckingHealthDuration?: pulumi.Input<number>;
     /**
      * Name template of the instance.  
      * In order to be unique it must contain at least one of instance unique placeholders:
@@ -312,23 +312,23 @@ export interface ComputeInstanceGroupState {
      * If not set, default is used: {instance_group.id}-{instance.short_id}
      * It may also contain another placeholders, see metadata doc for full list.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The scaling policy of the instance group. The structure is documented below.
      */
-    readonly scalePolicy?: pulumi.Input<inputs.ComputeInstanceGroupScalePolicy>;
+    scalePolicy?: pulumi.Input<inputs.ComputeInstanceGroupScalePolicy>;
     /**
      * The ID of the service account authorized for this instance.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * The status of the instance.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A set of key/value  variables pairs to assign to the instance group.
      */
-    readonly variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -338,47 +338,47 @@ export interface ComputeInstanceGroupArgs {
     /**
      * The allocation policy of the instance group by zone and region. The structure is documented below.
      */
-    readonly allocationPolicy: pulumi.Input<inputs.ComputeInstanceGroupAllocationPolicy>;
+    allocationPolicy: pulumi.Input<inputs.ComputeInstanceGroupAllocationPolicy>;
     /**
      * Application Load balancing (L7) specifications. The structure is documented below.
      */
-    readonly applicationLoadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupApplicationLoadBalancer>;
+    applicationLoadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupApplicationLoadBalancer>;
     /**
      * Flag that protects the instance group from accidental deletion.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The deployment policy of the instance group. The structure is documented below.
      */
-    readonly deployPolicy: pulumi.Input<inputs.ComputeInstanceGroupDeployPolicy>;
+    deployPolicy: pulumi.Input<inputs.ComputeInstanceGroupDeployPolicy>;
     /**
      * A description of the boot disk.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Health check specifications. The structure is documented below.
      */
-    readonly healthChecks?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupHealthCheck>[]>;
+    healthChecks?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupHealthCheck>[]>;
     /**
      * The template for creating new instances. The structure is documented below.
      */
-    readonly instanceTemplate: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplate>;
+    instanceTemplate: pulumi.Input<inputs.ComputeInstanceGroupInstanceTemplate>;
     /**
      * A map of labels of metric.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Load balancing specifications. The structure is documented below.
      */
-    readonly loadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.ComputeInstanceGroupLoadBalancer>;
     /**
      * Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
      */
-    readonly maxCheckingHealthDuration?: pulumi.Input<number>;
+    maxCheckingHealthDuration?: pulumi.Input<number>;
     /**
      * Name template of the instance.  
      * In order to be unique it must contain at least one of instance unique placeholders:
@@ -389,17 +389,17 @@ export interface ComputeInstanceGroupArgs {
      * If not set, default is used: {instance_group.id}-{instance.short_id}
      * It may also contain another placeholders, see metadata doc for full list.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The scaling policy of the instance group. The structure is documented below.
      */
-    readonly scalePolicy: pulumi.Input<inputs.ComputeInstanceGroupScalePolicy>;
+    scalePolicy: pulumi.Input<inputs.ComputeInstanceGroupScalePolicy>;
     /**
      * The ID of the service account authorized for this instance.
      */
-    readonly serviceAccountId: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
     /**
      * A set of key/value  variables pairs to assign to the instance group.
      */
-    readonly variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

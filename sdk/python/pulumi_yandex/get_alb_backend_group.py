@@ -14,6 +14,7 @@ __all__ = [
     'GetAlbBackendGroupResult',
     'AwaitableGetAlbBackendGroupResult',
     'get_alb_backend_group',
+    'get_alb_backend_group_output',
 ]
 
 @pulumi.output_type
@@ -188,3 +189,37 @@ def get_alb_backend_group(backend_group_id: Optional[str] = None,
         id=__ret__.id,
         labels=__ret__.labels,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_alb_backend_group)
+def get_alb_backend_group_output(backend_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 description: Optional[pulumi.Input[Optional[str]]] = None,
+                                 folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 grpc_backends: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAlbBackendGroupGrpcBackendArgs']]]]] = None,
+                                 http_backends: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAlbBackendGroupHttpBackendArgs']]]]] = None,
+                                 labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                 name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlbBackendGroupResult]:
+    """
+    Get information about a Yandex Application Load Balancer Backend Group. For more information, see
+    [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_alb_backend_group(backend_group_id="my-backend-group-id")
+    ```
+
+    This data source is used to define [Application Load Balancer Backend Groups] that can be used by other resources.
+
+
+    :param str backend_group_id: Backend Group ID.
+    :param str description: Description of the backend group.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param Sequence[pulumi.InputType['GetAlbBackendGroupGrpcBackendArgs']] grpc_backends: Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+    :param Sequence[pulumi.InputType['GetAlbBackendGroupHttpBackendArgs']] http_backends: Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+    :param Mapping[str, str] labels: Labels to assign to this backend group.
+    :param str name: - Name of the Backend Group.
+    """
+    ...

@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "some_group_id"
-// 		myGroup, err := yandex.LookupComputeDiskPlacementGroup(ctx, &yandex.LookupComputeDiskPlacementGroupArgs{
+// 		myGroup, err := yandex.LookupComputeDiskPlacementGroup(ctx, &GetComputeDiskPlacementGroupArgs{
 // 			GroupId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -76,4 +79,94 @@ type LookupComputeDiskPlacementGroupResult struct {
 	Status string `pulumi:"status"`
 	// ID of the zone where the Disk Placement Group resides.
 	Zone *string `pulumi:"zone"`
+}
+
+func LookupComputeDiskPlacementGroupOutput(ctx *pulumi.Context, args LookupComputeDiskPlacementGroupOutputArgs, opts ...pulumi.InvokeOption) LookupComputeDiskPlacementGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupComputeDiskPlacementGroupResult, error) {
+			args := v.(LookupComputeDiskPlacementGroupArgs)
+			r, err := LookupComputeDiskPlacementGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupComputeDiskPlacementGroupResultOutput)
+}
+
+// A collection of arguments for invoking getComputeDiskPlacementGroup.
+type LookupComputeDiskPlacementGroupOutputArgs struct {
+	// Description of the Disk Placement Group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// The ID of a specific group.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// A set of key/value label pairs assigned to the Disk Placement Group.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name of the group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// ID of the zone where the Disk Placement Group resides.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (LookupComputeDiskPlacementGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeDiskPlacementGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getComputeDiskPlacementGroup.
+type LookupComputeDiskPlacementGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupComputeDiskPlacementGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeDiskPlacementGroupResult)(nil)).Elem()
+}
+
+func (o LookupComputeDiskPlacementGroupResultOutput) ToLookupComputeDiskPlacementGroupResultOutput() LookupComputeDiskPlacementGroupResultOutput {
+	return o
+}
+
+func (o LookupComputeDiskPlacementGroupResultOutput) ToLookupComputeDiskPlacementGroupResultOutputWithContext(ctx context.Context) LookupComputeDiskPlacementGroupResultOutput {
+	return o
+}
+
+// The creation timestamp of the Disk Placement Group.
+func (o LookupComputeDiskPlacementGroupResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskPlacementGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the Disk Placement Group.
+func (o LookupComputeDiskPlacementGroupResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupComputeDiskPlacementGroupResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupComputeDiskPlacementGroupResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskPlacementGroupResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+func (o LookupComputeDiskPlacementGroupResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskPlacementGroupResult) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupComputeDiskPlacementGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskPlacementGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs assigned to the Disk Placement Group.
+func (o LookupComputeDiskPlacementGroupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupComputeDiskPlacementGroupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupComputeDiskPlacementGroupResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupComputeDiskPlacementGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Status of the Disk Placement Group.
+func (o LookupComputeDiskPlacementGroupResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeDiskPlacementGroupResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// ID of the zone where the Disk Placement Group resides.
+func (o LookupComputeDiskPlacementGroupResultOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupComputeDiskPlacementGroupResult) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupComputeDiskPlacementGroupResultOutput{})
 }

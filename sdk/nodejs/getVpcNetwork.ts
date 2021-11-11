@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * const admin = pulumi.output(yandex.getVpcNetwork({
  *     networkId: "my-network-id",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [VPC Networks] that can be used by other resources.
@@ -43,15 +42,15 @@ export interface GetVpcNetworkArgs {
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Name of the network.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * ID of the network.
      */
-    readonly networkId?: string;
+    networkId?: string;
 }
 
 /**
@@ -82,4 +81,26 @@ export interface GetVpcNetworkResult {
     readonly name: string;
     readonly networkId: string;
     readonly subnetIds: string[];
+}
+
+export function getVpcNetworkOutput(args?: GetVpcNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcNetworkResult> {
+    return pulumi.output(args).apply(a => getVpcNetwork(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcNetwork.
+ */
+export interface GetVpcNetworkOutputArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Name of the network.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * ID of the network.
+     */
+    networkId?: pulumi.Input<string>;
 }

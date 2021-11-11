@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const thisVpcRouteTable = pulumi.output(yandex.getVpcRouteTable({
  *     routeTableId: "my-rt-id",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [VPC Route Table] that can be used by other resources.
@@ -43,15 +43,15 @@ export interface GetVpcRouteTableArgs {
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * - Name of the route table.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Route table ID.
      */
-    readonly routeTableId?: string;
+    routeTableId?: string;
 }
 
 /**
@@ -85,4 +85,26 @@ export interface GetVpcRouteTableResult {
      * List of static route records of the route table. Structure is documented below.
      */
     readonly staticRoutes: outputs.GetVpcRouteTableStaticRoute[];
+}
+
+export function getVpcRouteTableOutput(args?: GetVpcRouteTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcRouteTableResult> {
+    return pulumi.output(args).apply(a => getVpcRouteTable(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcRouteTable.
+ */
+export interface GetVpcRouteTableOutputArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * - Name of the route table.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Route table ID.
+     */
+    routeTableId?: pulumi.Input<string>;
 }

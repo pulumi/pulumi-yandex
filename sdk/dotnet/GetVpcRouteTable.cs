@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetVpcRouteTableResult> InvokeAsync(GetVpcRouteTableArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcRouteTableResult>("yandex:index/getVpcRouteTable:getVpcRouteTable", args ?? new GetVpcRouteTableArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex VPC route table. For more information, see
+        /// [Yandex.Cloud VPC](https://cloud.yandex.com/docs/vpc/concepts/index).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(Yandex.GetVpcRouteTable.InvokeAsync(new Yandex.GetVpcRouteTableArgs
+        ///         {
+        ///             RouteTableId = "my-rt-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [VPC Route Table] that can be used by other resources.
+        /// </summary>
+        public static Output<GetVpcRouteTableResult> Invoke(GetVpcRouteTableInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVpcRouteTableResult>("yandex:index/getVpcRouteTable:getVpcRouteTable", args ?? new GetVpcRouteTableInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +87,31 @@ namespace Pulumi.Yandex
         public string? RouteTableId { get; set; }
 
         public GetVpcRouteTableArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcRouteTableInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// - Name of the route table.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Route table ID.
+        /// </summary>
+        [Input("routeTableId")]
+        public Input<string>? RouteTableId { get; set; }
+
+        public GetVpcRouteTableInvokeArgs()
         {
         }
     }

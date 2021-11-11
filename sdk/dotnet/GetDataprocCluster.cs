@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -42,6 +43,38 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetDataprocClusterResult> InvokeAsync(GetDataprocClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDataprocClusterResult>("yandex:index/getDataprocCluster:getDataprocCluster", args ?? new GetDataprocClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Data Proc cluster. For more information, see [the official documentation](https://cloud.yandex.com/docs/data-proc/).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetDataprocCluster.InvokeAsync(new Yandex.GetDataprocClusterArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///         this.ServiceAccountId = foo.Apply(foo =&gt; foo.ServiceAccountId);
+        ///     }
+        /// 
+        ///     [Output("serviceAccountId")]
+        ///     public Output&lt;string&gt; ServiceAccountId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDataprocClusterResult> Invoke(GetDataprocClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDataprocClusterResult>("yandex:index/getDataprocCluster:getDataprocCluster", args ?? new GetDataprocClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +93,25 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetDataprocClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetDataprocClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Data Proc cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// The name of the Data Proc cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetDataprocClusterInvokeArgs()
         {
         }
     }

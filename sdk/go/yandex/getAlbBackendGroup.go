@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-backend-group-id"
-// 		_, err := yandex.LookupAlbBackendGroup(ctx, &yandex.LookupAlbBackendGroupArgs{
+// 		_, err := yandex.LookupAlbBackendGroup(ctx, &GetAlbBackendGroupArgs{
 // 			BackendGroupId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -78,4 +81,97 @@ type LookupAlbBackendGroupResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the backend.
 	Name string `pulumi:"name"`
+}
+
+func LookupAlbBackendGroupOutput(ctx *pulumi.Context, args LookupAlbBackendGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAlbBackendGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAlbBackendGroupResult, error) {
+			args := v.(LookupAlbBackendGroupArgs)
+			r, err := LookupAlbBackendGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAlbBackendGroupResultOutput)
+}
+
+// A collection of arguments for invoking getAlbBackendGroup.
+type LookupAlbBackendGroupOutputArgs struct {
+	// Backend Group ID.
+	BackendGroupId pulumi.StringPtrInput `pulumi:"backendGroupId"`
+	// Description of the backend group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	GrpcBackends GetAlbBackendGroupGrpcBackendArrayInput `pulumi:"grpcBackends"`
+	// Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	HttpBackends GetAlbBackendGroupHttpBackendArrayInput `pulumi:"httpBackends"`
+	// Labels to assign to this backend group.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// - Name of the Backend Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupAlbBackendGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAlbBackendGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlbBackendGroup.
+type LookupAlbBackendGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAlbBackendGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAlbBackendGroupResult)(nil)).Elem()
+}
+
+func (o LookupAlbBackendGroupResultOutput) ToLookupAlbBackendGroupResultOutput() LookupAlbBackendGroupResultOutput {
+	return o
+}
+
+func (o LookupAlbBackendGroupResultOutput) ToLookupAlbBackendGroupResultOutputWithContext(ctx context.Context) LookupAlbBackendGroupResultOutput {
+	return o
+}
+
+func (o LookupAlbBackendGroupResultOutput) BackendGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) string { return v.BackendGroupId }).(pulumi.StringOutput)
+}
+
+// Creation timestamp of this backend group.
+func (o LookupAlbBackendGroupResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the backend group.
+func (o LookupAlbBackendGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupAlbBackendGroupResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+func (o LookupAlbBackendGroupResultOutput) GrpcBackends() GetAlbBackendGroupGrpcBackendArrayOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) []GetAlbBackendGroupGrpcBackend { return v.GrpcBackends }).(GetAlbBackendGroupGrpcBackendArrayOutput)
+}
+
+// Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+func (o LookupAlbBackendGroupResultOutput) HttpBackends() GetAlbBackendGroupHttpBackendArrayOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) []GetAlbBackendGroupHttpBackend { return v.HttpBackends }).(GetAlbBackendGroupHttpBackendArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAlbBackendGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels to assign to this backend group.
+func (o LookupAlbBackendGroupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the backend.
+func (o LookupAlbBackendGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAlbBackendGroupResultOutput{})
 }

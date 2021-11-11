@@ -146,23 +146,23 @@ export interface DnsRecordSetState {
     /**
      * The string data for the records in this record set.
      */
-    readonly datas?: pulumi.Input<pulumi.Input<string>[]>;
+    datas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS name this record set will apply to.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The time-to-live of this record set (seconds).
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The DNS record set type.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The id of the zone in which this record set will reside.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -172,21 +172,21 @@ export interface DnsRecordSetArgs {
     /**
      * The string data for the records in this record set.
      */
-    readonly datas: pulumi.Input<pulumi.Input<string>[]>;
+    datas: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS name this record set will apply to.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The time-to-live of this record set (seconds).
      */
-    readonly ttl: pulumi.Input<number>;
+    ttl: pulumi.Input<number>;
     /**
      * The DNS record set type.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The id of the zone in which this record set will reside.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

@@ -119,19 +119,19 @@ export interface KmsSecretCiphertextState {
     /**
      * Additional authenticated data (AAD context), optional. If specified, this data will be required for decryption with the `SymmetricDecryptRequest`
      */
-    readonly aadContext?: pulumi.Input<string>;
+    aadContext?: pulumi.Input<string>;
     /**
      * Resulting ciphertext, encoded with "standard" base64 alphabet as defined in RFC 4648 section 4
      */
-    readonly ciphertext?: pulumi.Input<string>;
+    ciphertext?: pulumi.Input<string>;
     /**
      * ID of the symmetric KMS key to use for encryption.
      */
-    readonly keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string>;
     /**
      * Plaintext to be encrypted.
      */
-    readonly plaintext?: pulumi.Input<string>;
+    plaintext?: pulumi.Input<string>;
 }
 
 /**
@@ -141,13 +141,13 @@ export interface KmsSecretCiphertextArgs {
     /**
      * Additional authenticated data (AAD context), optional. If specified, this data will be required for decryption with the `SymmetricDecryptRequest`
      */
-    readonly aadContext?: pulumi.Input<string>;
+    aadContext?: pulumi.Input<string>;
     /**
      * ID of the symmetric KMS key to use for encryption.
      */
-    readonly keyId: pulumi.Input<string>;
+    keyId: pulumi.Input<string>;
     /**
      * Plaintext to be encrypted.
      */
-    readonly plaintext: pulumi.Input<string>;
+    plaintext: pulumi.Input<string>;
 }

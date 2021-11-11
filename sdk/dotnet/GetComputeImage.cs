@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Yandex
     {
         public static Task<GetComputeImageResult> InvokeAsync(GetComputeImageArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComputeImageResult>("yandex:index/getComputeImage:getComputeImage", args ?? new GetComputeImageArgs(), options.WithVersion());
+
+        public static Output<GetComputeImageResult> Invoke(GetComputeImageInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetComputeImageResult>("yandex:index/getComputeImage:getComputeImage", args ?? new GetComputeImageInvokeArgs(), options.WithVersion());
     }
 
 
@@ -43,6 +47,37 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetComputeImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetComputeImageInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The family name of an image. Used to search the latest image in a family.
+        /// </summary>
+        [Input("family")]
+        public Input<string>? Family { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The ID of a specific image.
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// The name of the image.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetComputeImageInvokeArgs()
         {
         }
     }

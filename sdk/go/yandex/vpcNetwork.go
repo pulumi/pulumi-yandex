@@ -226,7 +226,7 @@ type VpcNetworkArrayInput interface {
 type VpcNetworkArray []VpcNetworkInput
 
 func (VpcNetworkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VpcNetwork)(nil))
+	return reflect.TypeOf((*[]*VpcNetwork)(nil)).Elem()
 }
 
 func (i VpcNetworkArray) ToVpcNetworkArrayOutput() VpcNetworkArrayOutput {
@@ -251,7 +251,7 @@ type VpcNetworkMapInput interface {
 type VpcNetworkMap map[string]VpcNetworkInput
 
 func (VpcNetworkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VpcNetwork)(nil))
+	return reflect.TypeOf((*map[string]*VpcNetwork)(nil)).Elem()
 }
 
 func (i VpcNetworkMap) ToVpcNetworkMapOutput() VpcNetworkMapOutput {
@@ -262,9 +262,7 @@ func (i VpcNetworkMap) ToVpcNetworkMapOutputWithContext(ctx context.Context) Vpc
 	return pulumi.ToOutputWithContext(ctx, i).(VpcNetworkMapOutput)
 }
 
-type VpcNetworkOutput struct {
-	*pulumi.OutputState
-}
+type VpcNetworkOutput struct{ *pulumi.OutputState }
 
 func (VpcNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcNetwork)(nil))
@@ -283,14 +281,12 @@ func (o VpcNetworkOutput) ToVpcNetworkPtrOutput() VpcNetworkPtrOutput {
 }
 
 func (o VpcNetworkOutput) ToVpcNetworkPtrOutputWithContext(ctx context.Context) VpcNetworkPtrOutput {
-	return o.ApplyT(func(v VpcNetwork) *VpcNetwork {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcNetwork) *VpcNetwork {
 		return &v
 	}).(VpcNetworkPtrOutput)
 }
 
-type VpcNetworkPtrOutput struct {
-	*pulumi.OutputState
-}
+type VpcNetworkPtrOutput struct{ *pulumi.OutputState }
 
 func (VpcNetworkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VpcNetwork)(nil))
@@ -302,6 +298,16 @@ func (o VpcNetworkPtrOutput) ToVpcNetworkPtrOutput() VpcNetworkPtrOutput {
 
 func (o VpcNetworkPtrOutput) ToVpcNetworkPtrOutputWithContext(ctx context.Context) VpcNetworkPtrOutput {
 	return o
+}
+
+func (o VpcNetworkPtrOutput) Elem() VpcNetworkOutput {
+	return o.ApplyT(func(v *VpcNetwork) VpcNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret VpcNetwork
+		return ret
+	}).(VpcNetworkOutput)
 }
 
 type VpcNetworkArrayOutput struct{ *pulumi.OutputState }
@@ -345,6 +351,10 @@ func (o VpcNetworkMapOutput) MapIndex(k pulumi.StringInput) VpcNetworkOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNetworkInput)(nil)).Elem(), &VpcNetwork{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNetworkPtrInput)(nil)).Elem(), &VpcNetwork{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNetworkArrayInput)(nil)).Elem(), VpcNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNetworkMapInput)(nil)).Elem(), VpcNetworkMap{})
 	pulumi.RegisterOutputType(VpcNetworkOutput{})
 	pulumi.RegisterOutputType(VpcNetworkPtrOutput{})
 	pulumi.RegisterOutputType(VpcNetworkArrayOutput{})

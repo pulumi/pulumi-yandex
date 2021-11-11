@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getLbNetworkLoadBalancer({
  *     networkLoadBalancerId: "my-network-load-balancer",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [Load Balancer Network Load Balancers] that can be used by other resources.
@@ -43,15 +43,15 @@ export interface GetLbNetworkLoadBalancerArgs {
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * - Name of the network load balancer.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Network load balancer ID.
      */
-    readonly networkLoadBalancerId?: string;
+    networkLoadBalancerId?: string;
 }
 
 /**
@@ -96,4 +96,26 @@ export interface GetLbNetworkLoadBalancerResult {
      * Type of the network load balancer.
      */
     readonly type: string;
+}
+
+export function getLbNetworkLoadBalancerOutput(args?: GetLbNetworkLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLbNetworkLoadBalancerResult> {
+    return pulumi.output(args).apply(a => getLbNetworkLoadBalancer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLbNetworkLoadBalancer.
+ */
+export interface GetLbNetworkLoadBalancerOutputArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * - Name of the network load balancer.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Network load balancer ID.
+     */
+    networkLoadBalancerId?: pulumi.Input<string>;
 }

@@ -46,8 +46,8 @@ import (
 // 		}
 // 		_, err = yandex.NewVpcSecurityGroup(ctx, "test_sg_x", &yandex.VpcSecurityGroupArgs{
 // 			NetworkId: fooVpcNetwork.ID(),
-// 			Ingresses: yandex.VpcSecurityGroupIngressArray{
-// 				&yandex.VpcSecurityGroupIngressArgs{
+// 			Ingresses: VpcSecurityGroupIngressArray{
+// 				&VpcSecurityGroupIngressArgs{
 // 					Protocol:    pulumi.String("ANY"),
 // 					Description: pulumi.String("Allow incoming traffic from members of the same security group"),
 // 					FromPort:    pulumi.Int(0),
@@ -57,8 +57,8 @@ import (
 // 					},
 // 				},
 // 			},
-// 			Egresses: yandex.VpcSecurityGroupEgressArray{
-// 				&yandex.VpcSecurityGroupEgressArgs{
+// 			Egresses: VpcSecurityGroupEgressArray{
+// 				&VpcSecurityGroupEgressArgs{
 // 					Protocol:    pulumi.String("ANY"),
 // 					Description: pulumi.String("Allow outgoing traffic to members of the same security group"),
 // 					FromPort:    pulumi.Int(0),
@@ -76,7 +76,7 @@ import (
 // 			Environment: pulumi.String("PRESTABLE"),
 // 			NetworkId:   fooVpcNetwork.ID(),
 // 			Version:     pulumi.String("2016sp2std"),
-// 			Resources: &yandex.MdbSqlServerClusterResourcesArgs{
+// 			Resources: &MdbSqlServerClusterResourcesArgs{
 // 				ResourcePresetId: pulumi.String("s2.small"),
 // 				DiskTypeId:       pulumi.String("network-ssd"),
 // 				DiskSize:         pulumi.Int(20),
@@ -84,7 +84,7 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"test_key": pulumi.String("test_value"),
 // 			},
-// 			BackupWindowStart: &yandex.MdbSqlServerClusterBackupWindowStartArgs{
+// 			BackupWindowStart: &MdbSqlServerClusterBackupWindowStartArgs{
 // 				Hours:   pulumi.Int(20),
 // 				Minutes: pulumi.Int(30),
 // 			},
@@ -92,27 +92,27 @@ import (
 // 				"fill_factor_percent":           pulumi.String("49"),
 // 				"optimize_for_ad_hoc_workloads": pulumi.String("true"),
 // 			},
-// 			Databases: yandex.MdbSqlServerClusterDatabaseArray{
-// 				&yandex.MdbSqlServerClusterDatabaseArgs{
+// 			Databases: MdbSqlServerClusterDatabaseArray{
+// 				&MdbSqlServerClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name_a"),
 // 				},
-// 				&yandex.MdbSqlServerClusterDatabaseArgs{
+// 				&MdbSqlServerClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name"),
 // 				},
-// 				&yandex.MdbSqlServerClusterDatabaseArgs{
+// 				&MdbSqlServerClusterDatabaseArgs{
 // 					Name: pulumi.String("db_name_b"),
 // 				},
 // 			},
-// 			Users: yandex.MdbSqlServerClusterUserArray{
-// 				&yandex.MdbSqlServerClusterUserArgs{
+// 			Users: MdbSqlServerClusterUserArray{
+// 				&MdbSqlServerClusterUserArgs{
 // 					Name:     pulumi.String("bob"),
 // 					Password: pulumi.String("mysecurepassword"),
 // 				},
-// 				&yandex.MdbSqlServerClusterUserArgs{
+// 				&MdbSqlServerClusterUserArgs{
 // 					Name:     pulumi.String("alice"),
 // 					Password: pulumi.String("mysecurepassword"),
-// 					Permissions: yandex.MdbSqlServerClusterUserPermissionArray{
-// 						&yandex.MdbSqlServerClusterUserPermissionArgs{
+// 					Permissions: MdbSqlServerClusterUserPermissionArray{
+// 						&MdbSqlServerClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name"),
 // 							Roles: pulumi.StringArray{
 // 								pulumi.String("DDLADMIN"),
@@ -120,24 +120,24 @@ import (
 // 						},
 // 					},
 // 				},
-// 				&yandex.MdbSqlServerClusterUserArgs{
+// 				&MdbSqlServerClusterUserArgs{
 // 					Name:     pulumi.String("chuck"),
 // 					Password: pulumi.String("mysecurepassword"),
-// 					Permissions: yandex.MdbSqlServerClusterUserPermissionArray{
-// 						&yandex.MdbSqlServerClusterUserPermissionArgs{
+// 					Permissions: MdbSqlServerClusterUserPermissionArray{
+// 						&MdbSqlServerClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name_a"),
 // 							Roles: pulumi.StringArray{
 // 								pulumi.String("OWNER"),
 // 							},
 // 						},
-// 						&yandex.MdbSqlServerClusterUserPermissionArgs{
+// 						&MdbSqlServerClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name"),
 // 							Roles: pulumi.StringArray{
 // 								pulumi.String("OWNER"),
 // 								pulumi.String("DDLADMIN"),
 // 							},
 // 						},
-// 						&yandex.MdbSqlServerClusterUserPermissionArgs{
+// 						&MdbSqlServerClusterUserPermissionArgs{
 // 							DatabaseName: pulumi.String("db_name_b"),
 // 							Roles: pulumi.StringArray{
 // 								pulumi.String("OWNER"),
@@ -147,8 +147,8 @@ import (
 // 					},
 // 				},
 // 			},
-// 			Hosts: yandex.MdbSqlServerClusterHostArray{
-// 				&yandex.MdbSqlServerClusterHostArgs{
+// 			Hosts: MdbSqlServerClusterHostArray{
+// 				&MdbSqlServerClusterHostArgs{
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 					SubnetId: fooVpcSubnet.ID(),
 // 				},
@@ -499,7 +499,7 @@ type MdbSqlServerClusterArrayInput interface {
 type MdbSqlServerClusterArray []MdbSqlServerClusterInput
 
 func (MdbSqlServerClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MdbSqlServerCluster)(nil))
+	return reflect.TypeOf((*[]*MdbSqlServerCluster)(nil)).Elem()
 }
 
 func (i MdbSqlServerClusterArray) ToMdbSqlServerClusterArrayOutput() MdbSqlServerClusterArrayOutput {
@@ -524,7 +524,7 @@ type MdbSqlServerClusterMapInput interface {
 type MdbSqlServerClusterMap map[string]MdbSqlServerClusterInput
 
 func (MdbSqlServerClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MdbSqlServerCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbSqlServerCluster)(nil)).Elem()
 }
 
 func (i MdbSqlServerClusterMap) ToMdbSqlServerClusterMapOutput() MdbSqlServerClusterMapOutput {
@@ -535,9 +535,7 @@ func (i MdbSqlServerClusterMap) ToMdbSqlServerClusterMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MdbSqlServerClusterMapOutput)
 }
 
-type MdbSqlServerClusterOutput struct {
-	*pulumi.OutputState
-}
+type MdbSqlServerClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbSqlServerClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MdbSqlServerCluster)(nil))
@@ -556,14 +554,12 @@ func (o MdbSqlServerClusterOutput) ToMdbSqlServerClusterPtrOutput() MdbSqlServer
 }
 
 func (o MdbSqlServerClusterOutput) ToMdbSqlServerClusterPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterPtrOutput {
-	return o.ApplyT(func(v MdbSqlServerCluster) *MdbSqlServerCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbSqlServerCluster) *MdbSqlServerCluster {
 		return &v
 	}).(MdbSqlServerClusterPtrOutput)
 }
 
-type MdbSqlServerClusterPtrOutput struct {
-	*pulumi.OutputState
-}
+type MdbSqlServerClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (MdbSqlServerClusterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MdbSqlServerCluster)(nil))
@@ -575,6 +571,16 @@ func (o MdbSqlServerClusterPtrOutput) ToMdbSqlServerClusterPtrOutput() MdbSqlSer
 
 func (o MdbSqlServerClusterPtrOutput) ToMdbSqlServerClusterPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterPtrOutput {
 	return o
+}
+
+func (o MdbSqlServerClusterPtrOutput) Elem() MdbSqlServerClusterOutput {
+	return o.ApplyT(func(v *MdbSqlServerCluster) MdbSqlServerCluster {
+		if v != nil {
+			return *v
+		}
+		var ret MdbSqlServerCluster
+		return ret
+	}).(MdbSqlServerClusterOutput)
 }
 
 type MdbSqlServerClusterArrayOutput struct{ *pulumi.OutputState }
@@ -618,6 +624,10 @@ func (o MdbSqlServerClusterMapOutput) MapIndex(k pulumi.StringInput) MdbSqlServe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterInput)(nil)).Elem(), &MdbSqlServerCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterPtrInput)(nil)).Elem(), &MdbSqlServerCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterArrayInput)(nil)).Elem(), MdbSqlServerClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterMapInput)(nil)).Elem(), MdbSqlServerClusterMap{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterArrayOutput{})

@@ -49,7 +49,7 @@ import (
 // 			return err
 // 		}
 // 		opt0 := "some_repository_name"
-// 		repo_2, err := yandex.LookupContainerRepository(ctx, &yandex.LookupContainerRepositoryArgs{
+// 		repo_2, err := yandex.LookupContainerRepository(ctx, &GetContainerRepositoryArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -257,7 +257,7 @@ type ContainerRepositoryIamBindingArrayInput interface {
 type ContainerRepositoryIamBindingArray []ContainerRepositoryIamBindingInput
 
 func (ContainerRepositoryIamBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ContainerRepositoryIamBinding)(nil))
+	return reflect.TypeOf((*[]*ContainerRepositoryIamBinding)(nil)).Elem()
 }
 
 func (i ContainerRepositoryIamBindingArray) ToContainerRepositoryIamBindingArrayOutput() ContainerRepositoryIamBindingArrayOutput {
@@ -282,7 +282,7 @@ type ContainerRepositoryIamBindingMapInput interface {
 type ContainerRepositoryIamBindingMap map[string]ContainerRepositoryIamBindingInput
 
 func (ContainerRepositoryIamBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ContainerRepositoryIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*ContainerRepositoryIamBinding)(nil)).Elem()
 }
 
 func (i ContainerRepositoryIamBindingMap) ToContainerRepositoryIamBindingMapOutput() ContainerRepositoryIamBindingMapOutput {
@@ -293,9 +293,7 @@ func (i ContainerRepositoryIamBindingMap) ToContainerRepositoryIamBindingMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRepositoryIamBindingMapOutput)
 }
 
-type ContainerRepositoryIamBindingOutput struct {
-	*pulumi.OutputState
-}
+type ContainerRepositoryIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ContainerRepositoryIamBindingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContainerRepositoryIamBinding)(nil))
@@ -314,14 +312,12 @@ func (o ContainerRepositoryIamBindingOutput) ToContainerRepositoryIamBindingPtrO
 }
 
 func (o ContainerRepositoryIamBindingOutput) ToContainerRepositoryIamBindingPtrOutputWithContext(ctx context.Context) ContainerRepositoryIamBindingPtrOutput {
-	return o.ApplyT(func(v ContainerRepositoryIamBinding) *ContainerRepositoryIamBinding {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerRepositoryIamBinding) *ContainerRepositoryIamBinding {
 		return &v
 	}).(ContainerRepositoryIamBindingPtrOutput)
 }
 
-type ContainerRepositoryIamBindingPtrOutput struct {
-	*pulumi.OutputState
-}
+type ContainerRepositoryIamBindingPtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerRepositoryIamBindingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ContainerRepositoryIamBinding)(nil))
@@ -333,6 +329,16 @@ func (o ContainerRepositoryIamBindingPtrOutput) ToContainerRepositoryIamBindingP
 
 func (o ContainerRepositoryIamBindingPtrOutput) ToContainerRepositoryIamBindingPtrOutputWithContext(ctx context.Context) ContainerRepositoryIamBindingPtrOutput {
 	return o
+}
+
+func (o ContainerRepositoryIamBindingPtrOutput) Elem() ContainerRepositoryIamBindingOutput {
+	return o.ApplyT(func(v *ContainerRepositoryIamBinding) ContainerRepositoryIamBinding {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerRepositoryIamBinding
+		return ret
+	}).(ContainerRepositoryIamBindingOutput)
 }
 
 type ContainerRepositoryIamBindingArrayOutput struct{ *pulumi.OutputState }
@@ -376,6 +382,10 @@ func (o ContainerRepositoryIamBindingMapOutput) MapIndex(k pulumi.StringInput) C
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRepositoryIamBindingInput)(nil)).Elem(), &ContainerRepositoryIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRepositoryIamBindingPtrInput)(nil)).Elem(), &ContainerRepositoryIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRepositoryIamBindingArrayInput)(nil)).Elem(), ContainerRepositoryIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRepositoryIamBindingMapInput)(nil)).Elem(), ContainerRepositoryIamBindingMap{})
 	pulumi.RegisterOutputType(ContainerRepositoryIamBindingOutput{})
 	pulumi.RegisterOutputType(ContainerRepositoryIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(ContainerRepositoryIamBindingArrayOutput{})

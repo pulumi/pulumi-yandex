@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetMdbMysqlClusterAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetMdbMysqlClusterAccessInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
         /// </summary>
         [Input("dataLens", required: true)]
-        public bool DataLens { get; set; }
+        public Input<bool> DataLens { get; set; } = null!;
 
         /// <summary>
         /// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
         /// </summary>
         [Input("webSql", required: true)]
-        public bool WebSql { get; set; }
+        public Input<bool> WebSql { get; set; } = null!;
 
-        public GetMdbMysqlClusterAccessArgs()
+        public GetMdbMysqlClusterAccessInputArgs()
         {
         }
     }

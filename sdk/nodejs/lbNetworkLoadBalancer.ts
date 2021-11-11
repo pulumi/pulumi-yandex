@@ -160,42 +160,42 @@ export interface LbNetworkLoadBalancerState {
     /**
      * An AttachedTargetGroup resource. The structure is documented below.
      */
-    readonly attachedTargetGroups?: pulumi.Input<pulumi.Input<inputs.LbNetworkLoadBalancerAttachedTargetGroup>[]>;
+    attachedTargetGroups?: pulumi.Input<pulumi.Input<inputs.LbNetworkLoadBalancerAttachedTargetGroup>[]>;
     /**
      * The network load balancer creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * An optional description of the network load balancer. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this network load balancer. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Listener specification that will be used by a network load balancer. The structure is documented below.
      */
-    readonly listeners?: pulumi.Input<pulumi.Input<inputs.LbNetworkLoadBalancerListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.LbNetworkLoadBalancerListener>[]>;
     /**
      * Name of the listener. The name must be unique for each listener on a single load balancer.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the availability zone where the network load balancer resides.
      * The default is 'ru-central1'.
      */
-    readonly regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string>;
     /**
      * Type of the network load balancer. Must be one of 'external' or 'internal'. The default is 'external'.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -205,36 +205,36 @@ export interface LbNetworkLoadBalancerArgs {
     /**
      * An AttachedTargetGroup resource. The structure is documented below.
      */
-    readonly attachedTargetGroups?: pulumi.Input<pulumi.Input<inputs.LbNetworkLoadBalancerAttachedTargetGroup>[]>;
+    attachedTargetGroups?: pulumi.Input<pulumi.Input<inputs.LbNetworkLoadBalancerAttachedTargetGroup>[]>;
     /**
      * An optional description of the network load balancer. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this network load balancer. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Listener specification that will be used by a network load balancer. The structure is documented below.
      */
-    readonly listeners?: pulumi.Input<pulumi.Input<inputs.LbNetworkLoadBalancerListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.LbNetworkLoadBalancerListener>[]>;
     /**
      * Name of the listener. The name must be unique for each listener on a single load balancer.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the availability zone where the network load balancer resides.
      * The default is 'ru-central1'.
      */
-    readonly regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string>;
     /**
      * Type of the network load balancer. Must be one of 'external' or 'internal'. The default is 'external'.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

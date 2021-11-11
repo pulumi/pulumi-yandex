@@ -14,6 +14,7 @@ __all__ = [
     'GetMdbClickhouseClusterResult',
     'AwaitableGetMdbClickhouseClusterResult',
     'get_mdb_clickhouse_cluster',
+    'get_mdb_clickhouse_cluster_output',
 ]
 
 @pulumi.output_type
@@ -428,3 +429,33 @@ def get_mdb_clickhouse_cluster(cloud_storage: Optional[pulumi.InputType['GetMdbC
         users=__ret__.users,
         version=__ret__.version,
         zookeeper=__ret__.zookeeper)
+
+
+@_utilities.lift_output_func(get_mdb_clickhouse_cluster)
+def get_mdb_clickhouse_cluster_output(cloud_storage: Optional[pulumi.Input[Optional[pulumi.InputType['GetMdbClickhouseClusterCloudStorageArgs']]]] = None,
+                                      cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      deletion_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                                      folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                                      service_account_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMdbClickhouseClusterResult]:
+    """
+    Get information about a Yandex Managed ClickHouse cluster. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/concepts).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_mdb_clickhouse_cluster(name="test")
+    pulumi.export("networkId", foo.network_id)
+    ```
+
+
+    :param str cluster_id: The ID of the ClickHouse cluster.
+    :param str folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+    :param str name: The name of the ClickHouse cluster.
+    """
+    ...

@@ -418,72 +418,72 @@ export interface MdbKafkaClusterState {
     /**
      * Configuration of the Kafka cluster. The structure is documented below.
      */
-    readonly config?: pulumi.Input<inputs.MdbKafkaClusterConfig>;
+    config?: pulumi.Input<inputs.MdbKafkaClusterConfig>;
     /**
      * Timestamp of cluster creation.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Kafka cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Health of the host.
      */
-    readonly health?: pulumi.Input<string>;
+    health?: pulumi.Input<string>;
     /**
      * A list of IDs of the host groups to place VMs of the cluster on.
      */
-    readonly hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A host of the Kafka cluster. The structure is documented below.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterHost>[]>;
+    hosts?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the Kafka cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the topic.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the Kafka cluster belongs.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * Security group ids, to which the Kafka cluster belongs.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
      * For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * IDs of the subnets, to which the Kafka cluster belongs.
      */
-    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A topic of the Kafka cluster. The structure is documented below.
      */
-    readonly topics?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterTopic>[]>;
+    topics?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterTopic>[]>;
     /**
      * A user of the Kafka cluster. The structure is documented below.
      */
-    readonly users?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterUser>[]>;
 }
 
 /**
@@ -493,53 +493,53 @@ export interface MdbKafkaClusterArgs {
     /**
      * Configuration of the Kafka cluster. The structure is documented below.
      */
-    readonly config: pulumi.Input<inputs.MdbKafkaClusterConfig>;
+    config: pulumi.Input<inputs.MdbKafkaClusterConfig>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Kafka cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A list of IDs of the host groups to place VMs of the cluster on.
      */
-    readonly hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A set of key/value label pairs to assign to the Kafka cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the topic.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the Kafka cluster belongs.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * Security group ids, to which the Kafka cluster belongs.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * IDs of the subnets, to which the Kafka cluster belongs.
      */
-    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A topic of the Kafka cluster. The structure is documented below.
      */
-    readonly topics?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterTopic>[]>;
+    topics?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterTopic>[]>;
     /**
      * A user of the Kafka cluster. The structure is documented below.
      */
-    readonly users?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterUser>[]>;
 }

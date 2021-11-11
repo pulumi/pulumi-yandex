@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -31,7 +32,7 @@ namespace Pulumi.Yandex
         ///         {
         ///             InstanceId = "some_instance_id",
         ///         }));
-        ///         this.InstanceExternalIp = myInstance.Apply(myInstance =&gt; myInstance.NetworkInterfaces[0].NatIpAddress);
+        ///         this.InstanceExternalIp = myInstance.Apply(myInstance =&gt; myInstance.NetworkInterfaces?[0]?.NatIpAddress);
         ///     }
         /// 
         ///     [Output("instanceExternalIp")]
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetComputeInstanceResult> InvokeAsync(GetComputeInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComputeInstanceResult>("yandex:index/getComputeInstance:getComputeInstance", args ?? new GetComputeInstanceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Compute instance. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/compute/concepts/vm).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myInstance = Output.Create(Yandex.GetComputeInstance.InvokeAsync(new Yandex.GetComputeInstanceArgs
+        ///         {
+        ///             InstanceId = "some_instance_id",
+        ///         }));
+        ///         this.InstanceExternalIp = myInstance.Apply(myInstance =&gt; myInstance.NetworkInterfaces?[0]?.NatIpAddress);
+        ///     }
+        /// 
+        ///     [Output("instanceExternalIp")]
+        ///     public Output&lt;string&gt; InstanceExternalIp { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetComputeInstanceResult> Invoke(GetComputeInstanceInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetComputeInstanceResult>("yandex:index/getComputeInstance:getComputeInstance", args ?? new GetComputeInstanceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -76,6 +110,40 @@ namespace Pulumi.Yandex
         public Inputs.GetComputeInstanceSchedulingPolicyArgs? SchedulingPolicy { get; set; }
 
         public GetComputeInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetComputeInstanceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The ID of a specific instance.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Name of the instance.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("placementPolicy")]
+        public Input<Inputs.GetComputeInstancePlacementPolicyInputArgs>? PlacementPolicy { get; set; }
+
+        /// <summary>
+        /// Scheduling policy configuration. The structure is documented below.
+        /// </summary>
+        [Input("schedulingPolicy")]
+        public Input<Inputs.GetComputeInstanceSchedulingPolicyInputArgs>? SchedulingPolicy { get; set; }
+
+        public GetComputeInstanceInvokeArgs()
         {
         }
     }

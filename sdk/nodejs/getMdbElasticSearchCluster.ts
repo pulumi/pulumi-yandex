@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getMdbElasticSearchCluster({
  *     name: "test",
- * }, { async: true }));
+ * }));
  *
  * export const networkId = foo.networkId;
  * ```
@@ -50,32 +50,32 @@ export interface GetMdbElasticSearchClusterArgs {
     /**
      * The ID of the Elasticsearch cluster.
      */
-    readonly clusterId?: string;
-    readonly deletionProtection?: boolean;
+    clusterId?: string;
+    deletionProtection?: boolean;
     /**
      * Description of the Elasticsearch cluster.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * A set of key/value label pairs to assign to the Elasticsearch cluster.
      */
-    readonly labels?: {[key: string]: string};
+    labels?: {[key: string]: string};
     /**
      * The name of the Elasticsearch cluster.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: string[];
+    securityGroupIds?: string[];
     /**
      * ID of the service account authorized for this cluster.
      */
-    readonly serviceAccountId?: string;
+    serviceAccountId?: string;
 }
 
 /**
@@ -134,4 +134,43 @@ export interface GetMdbElasticSearchClusterResult {
      * Status of the cluster.
      */
     readonly status: string;
+}
+
+export function getMdbElasticSearchClusterOutput(args?: GetMdbElasticSearchClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbElasticSearchClusterResult> {
+    return pulumi.output(args).apply(a => getMdbElasticSearchCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMdbElasticSearchCluster.
+ */
+export interface GetMdbElasticSearchClusterOutputArgs {
+    /**
+     * The ID of the Elasticsearch cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Description of the Elasticsearch cluster.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the Elasticsearch cluster.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the Elasticsearch cluster.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A set of ids of security groups assigned to hosts of the cluster.
+     */
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the service account authorized for this cluster.
+     */
+    serviceAccountId?: pulumi.Input<string>;
 }

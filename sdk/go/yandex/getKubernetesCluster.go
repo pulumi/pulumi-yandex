@@ -4,10 +4,38 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a Yandex Kubernetes Cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "some_k8s_cluster_id"
+// 		myCluster, err := yandex.LookupKubernetesCluster(ctx, &GetKubernetesClusterArgs{
+// 			ClusterId: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("clusterExternalV4Endpoint", myCluster.Master.ExternalV4Endpoint)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupKubernetesCluster(ctx *pulumi.Context, args *LookupKubernetesClusterArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesClusterResult, error) {
 	var rv LookupKubernetesClusterResult
 	err := ctx.Invoke("yandex:index/getKubernetesCluster:getKubernetesCluster", args, &rv, opts...)
@@ -75,4 +103,163 @@ type LookupKubernetesClusterResult struct {
 	ServiceIpv6Range string `pulumi:"serviceIpv6Range"`
 	// Status of the Kubernetes cluster.
 	Status string `pulumi:"status"`
+}
+
+func LookupKubernetesClusterOutput(ctx *pulumi.Context, args LookupKubernetesClusterOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKubernetesClusterResult, error) {
+			args := v.(LookupKubernetesClusterArgs)
+			r, err := LookupKubernetesCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKubernetesClusterResultOutput)
+}
+
+// A collection of arguments for invoking getKubernetesCluster.
+type LookupKubernetesClusterOutputArgs struct {
+	// ID of a specific Kubernetes cluster.
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// Name of a specific Kubernetes cluster.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupKubernetesClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKubernetesClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKubernetesCluster.
+type LookupKubernetesClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKubernetesClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKubernetesClusterResult)(nil)).Elem()
+}
+
+func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutput() LookupKubernetesClusterResultOutput {
+	return o
+}
+
+func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutputWithContext(ctx context.Context) LookupKubernetesClusterResultOutput {
+	return o
+}
+
+func (o LookupKubernetesClusterResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// IP range for allocating pod addresses.
+func (o LookupKubernetesClusterResultOutput) ClusterIpv4Range() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ClusterIpv4Range }).(pulumi.StringOutput)
+}
+
+// Identical to clusterIpv4Range but for the IPv6 protocol.
+func (o LookupKubernetesClusterResultOutput) ClusterIpv6Range() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ClusterIpv6Range }).(pulumi.StringOutput)
+}
+
+// The Kubernetes cluster creation timestamp.
+func (o LookupKubernetesClusterResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A description of the Kubernetes cluster.
+func (o LookupKubernetesClusterResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// Health of the Kubernetes cluster.
+func (o LookupKubernetesClusterResultOutput) Health() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Health }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKubernetesClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// cluster KMS provider parameters.
+func (o LookupKubernetesClusterResultOutput) KmsProvider() GetKubernetesClusterKmsProviderOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterKmsProvider { return v.KmsProvider }).(GetKubernetesClusterKmsProviderOutput)
+}
+
+// A set of key/value label pairs to assign to the Kubernetes cluster.
+func (o LookupKubernetesClusterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
+func (o LookupKubernetesClusterResultOutput) LogGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.LogGroupId }).(pulumi.StringOutput)
+}
+
+// Kubernetes master configuration options. The structure is documented below.
+func (o LookupKubernetesClusterResultOutput) Master() GetKubernetesClusterMasterOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterMaster { return v.Master }).(GetKubernetesClusterMasterOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the cluster network.
+func (o LookupKubernetesClusterResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// (Optional) Network Implementation options. The structure is documented below.
+func (o LookupKubernetesClusterResultOutput) NetworkImplementation() GetKubernetesClusterNetworkImplementationOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterNetworkImplementation {
+		return v.NetworkImplementation
+	}).(GetKubernetesClusterNetworkImplementationOutput)
+}
+
+// Network policy provider for the cluster, if present. Possible values: `CALICO`.
+func (o LookupKubernetesClusterResultOutput) NetworkPolicyProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.NetworkPolicyProvider }).(pulumi.StringOutput)
+}
+
+// Size of the masks that are assigned to each node in the cluster.
+func (o LookupKubernetesClusterResultOutput) NodeIpv4CidrMaskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) int { return v.NodeIpv4CidrMaskSize }).(pulumi.IntOutput)
+}
+
+// Service account to be used by the worker nodes of the Kubernetes cluster
+// to access Container Registry or to push node logs and metrics.
+func (o LookupKubernetesClusterResultOutput) NodeServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.NodeServiceAccountId }).(pulumi.StringOutput)
+}
+
+// Cluster release channel.
+func (o LookupKubernetesClusterResultOutput) ReleaseChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ReleaseChannel }).(pulumi.StringOutput)
+}
+
+// Service account to be used for provisioning Compute Cloud and VPC resources
+// for Kubernetes cluster. Selected service account should have `edit` role on the folder where the Kubernetes
+// cluster will be located and on the folder where selected network resides.
+func (o LookupKubernetesClusterResultOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ServiceAccountId }).(pulumi.StringOutput)
+}
+
+// IP range Kubernetes services Kubernetes cluster IP addresses will be allocated from.
+func (o LookupKubernetesClusterResultOutput) ServiceIpv4Range() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ServiceIpv4Range }).(pulumi.StringOutput)
+}
+
+// Identical to serviceIpv4Range but for the IPv6 protocol.
+func (o LookupKubernetesClusterResultOutput) ServiceIpv6Range() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ServiceIpv6Range }).(pulumi.StringOutput)
+}
+
+// Status of the Kubernetes cluster.
+func (o LookupKubernetesClusterResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKubernetesClusterResultOutput{})
 }

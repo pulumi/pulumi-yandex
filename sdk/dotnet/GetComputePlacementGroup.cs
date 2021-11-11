@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetComputePlacementGroupResult> InvokeAsync(GetComputePlacementGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComputePlacementGroupResult>("yandex:index/getComputePlacementGroup:getComputePlacementGroup", args ?? new GetComputePlacementGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Compute Placement group. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/compute/concepts/placement-groups).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myGroup = Output.Create(Yandex.GetComputePlacementGroup.InvokeAsync(new Yandex.GetComputePlacementGroupArgs
+        ///         {
+        ///             GroupId = "some_group_id",
+        ///         }));
+        ///         this.PlacementGroupName = myGroup.Apply(myGroup =&gt; myGroup.Name);
+        ///     }
+        /// 
+        ///     [Output("placementGroupName")]
+        ///     public Output&lt;string&gt; PlacementGroupName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetComputePlacementGroupResult> Invoke(GetComputePlacementGroupInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetComputePlacementGroupResult>("yandex:index/getComputePlacementGroup:getComputePlacementGroup", args ?? new GetComputePlacementGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -85,6 +119,49 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetComputePlacementGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetComputePlacementGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Description of the group.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The ID of a specific group.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs assigned to the group.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// Name of the group.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetComputePlacementGroupInvokeArgs()
         {
         }
     }

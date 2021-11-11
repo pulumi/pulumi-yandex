@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "test"
-// 		foo, err := yandex.LookupMdbMysqlCluster(ctx, &yandex.LookupMdbMysqlClusterArgs{
+// 		foo, err := yandex.LookupMdbMysqlCluster(ctx, &GetMdbMysqlClusterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -104,4 +107,161 @@ type LookupMdbMysqlClusterResult struct {
 	Users []GetMdbMysqlClusterUser `pulumi:"users"`
 	// Version of the MySQL cluster.
 	Version string `pulumi:"version"`
+}
+
+func LookupMdbMysqlClusterOutput(ctx *pulumi.Context, args LookupMdbMysqlClusterOutputArgs, opts ...pulumi.InvokeOption) LookupMdbMysqlClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMdbMysqlClusterResult, error) {
+			args := v.(LookupMdbMysqlClusterArgs)
+			r, err := LookupMdbMysqlCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMdbMysqlClusterResultOutput)
+}
+
+// A collection of arguments for invoking getMdbMysqlCluster.
+type LookupMdbMysqlClusterOutputArgs struct {
+	// Access policy to the MySQL cluster. The structure is documented below.
+	Access GetMdbMysqlClusterAccessPtrInput `pulumi:"access"`
+	// The ID of the MySQL cluster.
+	ClusterId          pulumi.StringPtrInput `pulumi:"clusterId"`
+	DeletionProtection pulumi.BoolPtrInput   `pulumi:"deletionProtection"`
+	// Description of the MySQL cluster.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// A set of key/value label pairs to assign to the MySQL cluster.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// MySQL cluster config.
+	MysqlConfig pulumi.StringMapInput `pulumi:"mysqlConfig"`
+	// The name of the MySQL cluster.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupMdbMysqlClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMdbMysqlClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMdbMysqlCluster.
+type LookupMdbMysqlClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMdbMysqlClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMdbMysqlClusterResult)(nil)).Elem()
+}
+
+func (o LookupMdbMysqlClusterResultOutput) ToLookupMdbMysqlClusterResultOutput() LookupMdbMysqlClusterResultOutput {
+	return o
+}
+
+func (o LookupMdbMysqlClusterResultOutput) ToLookupMdbMysqlClusterResultOutputWithContext(ctx context.Context) LookupMdbMysqlClusterResultOutput {
+	return o
+}
+
+// Access policy to the MySQL cluster. The structure is documented below.
+func (o LookupMdbMysqlClusterResultOutput) Access() GetMdbMysqlClusterAccessOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) GetMdbMysqlClusterAccess { return v.Access }).(GetMdbMysqlClusterAccessOutput)
+}
+
+func (o LookupMdbMysqlClusterResultOutput) BackupWindowStart() GetMdbMysqlClusterBackupWindowStartOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) GetMdbMysqlClusterBackupWindowStart { return v.BackupWindowStart }).(GetMdbMysqlClusterBackupWindowStartOutput)
+}
+
+func (o LookupMdbMysqlClusterResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Creation timestamp of the key.
+func (o LookupMdbMysqlClusterResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A database of the MySQL cluster. The structure is documented below.
+func (o LookupMdbMysqlClusterResultOutput) Databases() GetMdbMysqlClusterDatabaseArrayOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) []GetMdbMysqlClusterDatabase { return v.Databases }).(GetMdbMysqlClusterDatabaseArrayOutput)
+}
+
+func (o LookupMdbMysqlClusterResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// Description of the MySQL cluster.
+func (o LookupMdbMysqlClusterResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Deployment environment of the MySQL cluster.
+func (o LookupMdbMysqlClusterResultOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+func (o LookupMdbMysqlClusterResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// Aggregated health of the cluster.
+func (o LookupMdbMysqlClusterResultOutput) Health() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.Health }).(pulumi.StringOutput)
+}
+
+// A host of the MySQL cluster. The structure is documented below.
+func (o LookupMdbMysqlClusterResultOutput) Hosts() GetMdbMysqlClusterHostArrayOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) []GetMdbMysqlClusterHost { return v.Hosts }).(GetMdbMysqlClusterHostArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupMdbMysqlClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs to assign to the MySQL cluster.
+func (o LookupMdbMysqlClusterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Maintenance window settings of the MySQL cluster. The structure is documented below.
+func (o LookupMdbMysqlClusterResultOutput) MaintenanceWindow() GetMdbMysqlClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) GetMdbMysqlClusterMaintenanceWindow { return v.MaintenanceWindow }).(GetMdbMysqlClusterMaintenanceWindowOutput)
+}
+
+// MySQL cluster config.
+func (o LookupMdbMysqlClusterResultOutput) MysqlConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) map[string]string { return v.MysqlConfig }).(pulumi.StringMapOutput)
+}
+
+// The name of the database.
+func (o LookupMdbMysqlClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the network, to which the MySQL cluster belongs.
+func (o LookupMdbMysqlClusterResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Resources allocated to hosts of the MySQL cluster. The structure is documented below.
+func (o LookupMdbMysqlClusterResultOutput) Resources() GetMdbMysqlClusterResourcesOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) GetMdbMysqlClusterResources { return v.Resources }).(GetMdbMysqlClusterResourcesOutput)
+}
+
+// A set of ids of security groups assigned to hosts of the cluster.
+func (o LookupMdbMysqlClusterResultOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Status of the cluster.
+func (o LookupMdbMysqlClusterResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A user of the MySQL cluster. The structure is documented below.
+func (o LookupMdbMysqlClusterResultOutput) Users() GetMdbMysqlClusterUserArrayOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) []GetMdbMysqlClusterUser { return v.Users }).(GetMdbMysqlClusterUserArrayOutput)
+}
+
+// Version of the MySQL cluster.
+func (o LookupMdbMysqlClusterResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMdbMysqlClusterResultOutput{})
 }

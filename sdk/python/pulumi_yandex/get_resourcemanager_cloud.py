@@ -12,6 +12,7 @@ __all__ = [
     'GetResourcemanagerCloudResult',
     'AwaitableGetResourcemanagerCloudResult',
     'get_resourcemanager_cloud',
+    'get_resourcemanager_cloud_output',
 ]
 
 @pulumi.output_type
@@ -126,3 +127,30 @@ def get_resourcemanager_cloud(cloud_id: Optional[str] = None,
         description=__ret__.description,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_resourcemanager_cloud)
+def get_resourcemanager_cloud_output(cloud_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                     description: Optional[pulumi.Input[Optional[str]]] = None,
+                                     name: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcemanagerCloudResult]:
+    """
+    Use this data source to get cloud details.
+    For more information, see [Cloud](https://cloud.yandex.com/docs/resource-manager/concepts/resources-hierarchy#cloud).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_resourcemanager_cloud(name="foo-cloud")
+    pulumi.export("cloudCreateTimestamp", foo.created_at)
+    ```
+
+
+    :param str cloud_id: ID of the cloud.
+    :param str description: Description of the cloud.
+    :param str name: Name of the cloud.
+    """
+    ...

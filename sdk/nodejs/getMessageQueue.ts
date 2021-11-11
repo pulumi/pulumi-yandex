@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const exampleQueue = pulumi.output(yandex.getMessageQueue({
  *     name: "ymq_terraform_example",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getMessageQueue(args: GetMessageQueueArgs, opts?: pulumi.InvokeOptions): Promise<GetMessageQueueResult> {
@@ -39,12 +38,12 @@ export function getMessageQueue(args: GetMessageQueueArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getMessageQueue.
  */
 export interface GetMessageQueueArgs {
-    readonly accessKey?: string;
+    accessKey?: string;
     /**
      * Queue name.
      */
-    readonly name: string;
-    readonly secretKey?: string;
+    name: string;
+    secretKey?: string;
 }
 
 /**
@@ -66,4 +65,20 @@ export interface GetMessageQueueResult {
      * URL of the queue.
      */
     readonly url: string;
+}
+
+export function getMessageQueueOutput(args: GetMessageQueueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMessageQueueResult> {
+    return pulumi.output(args).apply(a => getMessageQueue(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMessageQueue.
+ */
+export interface GetMessageQueueOutputArgs {
+    accessKey?: pulumi.Input<string>;
+    /**
+     * Queue name.
+     */
+    name: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
 }

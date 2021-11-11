@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,164 @@ type LookupComputeInstanceGroupResult struct {
 	Status string `pulumi:"status"`
 	// A set of key/value  variables pairs to assign to the instance group.
 	Variables map[string]string `pulumi:"variables"`
+}
+
+func LookupComputeInstanceGroupOutput(ctx *pulumi.Context, args LookupComputeInstanceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupComputeInstanceGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupComputeInstanceGroupResult, error) {
+			args := v.(LookupComputeInstanceGroupArgs)
+			r, err := LookupComputeInstanceGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupComputeInstanceGroupResultOutput)
+}
+
+// A collection of arguments for invoking getComputeInstanceGroup.
+type LookupComputeInstanceGroupOutputArgs struct {
+	// The ID of a specific instance group.
+	InstanceGroupId pulumi.StringInput `pulumi:"instanceGroupId"`
+}
+
+func (LookupComputeInstanceGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeInstanceGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getComputeInstanceGroup.
+type LookupComputeInstanceGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupComputeInstanceGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComputeInstanceGroupResult)(nil)).Elem()
+}
+
+func (o LookupComputeInstanceGroupResultOutput) ToLookupComputeInstanceGroupResultOutput() LookupComputeInstanceGroupResultOutput {
+	return o
+}
+
+func (o LookupComputeInstanceGroupResultOutput) ToLookupComputeInstanceGroupResultOutputWithContext(ctx context.Context) LookupComputeInstanceGroupResultOutput {
+	return o
+}
+
+// The allocation policy of the instance group by zone and region. The structure is documented below.
+func (o LookupComputeInstanceGroupResultOutput) AllocationPolicy() GetComputeInstanceGroupAllocationPolicyOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) GetComputeInstanceGroupAllocationPolicy {
+		return v.AllocationPolicy
+	}).(GetComputeInstanceGroupAllocationPolicyOutput)
+}
+
+func (o LookupComputeInstanceGroupResultOutput) ApplicationBalancerState() GetComputeInstanceGroupApplicationBalancerStateOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) GetComputeInstanceGroupApplicationBalancerState {
+		return v.ApplicationBalancerState
+	}).(GetComputeInstanceGroupApplicationBalancerStateOutput)
+}
+
+// Application Load balancing (L7) specifications. The structure is documented below.
+func (o LookupComputeInstanceGroupResultOutput) ApplicationLoadBalancer() GetComputeInstanceGroupApplicationLoadBalancerOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) GetComputeInstanceGroupApplicationLoadBalancer {
+		return v.ApplicationLoadBalancer
+	}).(GetComputeInstanceGroupApplicationLoadBalancerOutput)
+}
+
+// The instance group creation timestamp.
+func (o LookupComputeInstanceGroupResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Flag that protects the instance group from accidental deletion.
+func (o LookupComputeInstanceGroupResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The deployment policy of the instance group. The structure is documented below.
+func (o LookupComputeInstanceGroupResultOutput) DeployPolicy() GetComputeInstanceGroupDeployPolicyOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) GetComputeInstanceGroupDeployPolicy { return v.DeployPolicy }).(GetComputeInstanceGroupDeployPolicyOutput)
+}
+
+// A description of the boot disk.
+func (o LookupComputeInstanceGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Folder ID of custom metric in Yandex Monitoring that should be used for scaling.
+func (o LookupComputeInstanceGroupResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// Health check specification. The structure is documented below.
+func (o LookupComputeInstanceGroupResultOutput) HealthChecks() GetComputeInstanceGroupHealthCheckArrayOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) []GetComputeInstanceGroupHealthCheck { return v.HealthChecks }).(GetComputeInstanceGroupHealthCheckArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupComputeInstanceGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupComputeInstanceGroupResultOutput) InstanceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) string { return v.InstanceGroupId }).(pulumi.StringOutput)
+}
+
+// The instance template that the instance group belongs to. The structure is documented below.
+func (o LookupComputeInstanceGroupResultOutput) InstanceTemplate() GetComputeInstanceGroupInstanceTemplateOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) GetComputeInstanceGroupInstanceTemplate {
+		return v.InstanceTemplate
+	}).(GetComputeInstanceGroupInstanceTemplateOutput)
+}
+
+// A list of instances in the specified instance group. The structure is documented below.
+func (o LookupComputeInstanceGroupResultOutput) Instances() GetComputeInstanceGroupInstanceArrayOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) []GetComputeInstanceGroupInstance { return v.Instances }).(GetComputeInstanceGroupInstanceArrayOutput)
+}
+
+// A map of labels applied to this instance.
+// * `resources.0.memory` - The memory size allocated to the instance.
+// * `resources.0.cores` - Number of CPU cores allocated to the instance.
+// * `resources.0.core_fraction` - Baseline core performance as a percent.
+// * `resources.0.gpus` - Number of GPU cores allocated to the instance.
+func (o LookupComputeInstanceGroupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Load balancing specification. The structure is documented below.
+func (o LookupComputeInstanceGroupResultOutput) LoadBalancer() GetComputeInstanceGroupLoadBalancerOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) GetComputeInstanceGroupLoadBalancer { return v.LoadBalancer }).(GetComputeInstanceGroupLoadBalancerOutput)
+}
+
+// Information about which entities can be attached to this load balancer. The structure is documented below.
+func (o LookupComputeInstanceGroupResultOutput) LoadBalancerState() GetComputeInstanceGroupLoadBalancerStateOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) GetComputeInstanceGroupLoadBalancerState {
+		return v.LoadBalancerState
+	}).(GetComputeInstanceGroupLoadBalancerStateOutput)
+}
+
+// Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
+func (o LookupComputeInstanceGroupResultOutput) MaxCheckingHealthDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) int { return v.MaxCheckingHealthDuration }).(pulumi.IntOutput)
+}
+
+// The name of the managed instance.
+func (o LookupComputeInstanceGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The scaling policy of the instance group. The structure is documented below.
+func (o LookupComputeInstanceGroupResultOutput) ScalePolicy() GetComputeInstanceGroupScalePolicyOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) GetComputeInstanceGroupScalePolicy { return v.ScalePolicy }).(GetComputeInstanceGroupScalePolicyOutput)
+}
+
+// The service account ID for the instance.
+func (o LookupComputeInstanceGroupResultOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) string { return v.ServiceAccountId }).(pulumi.StringOutput)
+}
+
+// The status of the instance.
+func (o LookupComputeInstanceGroupResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A set of key/value  variables pairs to assign to the instance group.
+func (o LookupComputeInstanceGroupResultOutput) Variables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupComputeInstanceGroupResult) map[string]string { return v.Variables }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupComputeInstanceGroupResultOutput{})
 }

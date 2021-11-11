@@ -400,7 +400,7 @@ class AlbLoadBalancer(pulumi.CustomResource):
                 name="my-listener",
                 endpoints=[yandex.AlbLoadBalancerListenerEndpointArgs(
                     addresses=[yandex.AlbLoadBalancerListenerEndpointAddressArgs(
-                        external_ipv4_address={},
+                        external_ipv4_address=yandex.AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs(),
                     )],
                     ports=[8080],
                 )],
@@ -461,7 +461,7 @@ class AlbLoadBalancer(pulumi.CustomResource):
                 name="my-listener",
                 endpoints=[yandex.AlbLoadBalancerListenerEndpointArgs(
                     addresses=[yandex.AlbLoadBalancerListenerEndpointAddressArgs(
-                        external_ipv4_address={},
+                        external_ipv4_address=yandex.AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs(),
                     )],
                     ports=[8080],
                 )],

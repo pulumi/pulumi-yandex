@@ -14,6 +14,7 @@ __all__ = [
     'GetComputeDiskResult',
     'AwaitableGetComputeDiskResult',
     'get_compute_disk',
+    'get_compute_disk_output',
 ]
 
 @pulumi.output_type
@@ -257,3 +258,21 @@ def get_compute_disk(disk_id: Optional[str] = None,
         status=__ret__.status,
         type=__ret__.type,
         zone=__ret__.zone)
+
+
+@_utilities.lift_output_func(get_compute_disk)
+def get_compute_disk_output(disk_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            disk_placement_policy: Optional[pulumi.Input[Optional[pulumi.InputType['GetComputeDiskDiskPlacementPolicyArgs']]]] = None,
+                            folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            name: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeDiskResult]:
+    """
+    Get information about a Yandex Compute disk. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/compute/concepts/disk).
+
+
+    :param str disk_id: The ID of a specific disk.
+    :param str folder_id: ID of the folder that the disk belongs to.
+    :param str name: Name of the disk.
+    """
+    ...

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * const myDevice = pulumi.output(yandex.getIotCoreDevice({
  *     deviceId: "are1sampleregistry11",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [Yandex.Cloud IoT Device](https://cloud.yandex.com/docs/iot-core/quickstart) that can be used by other resources.
@@ -42,11 +41,11 @@ export interface GetIotCoreDeviceArgs {
     /**
      * IoT Core Device id used to define device
      */
-    readonly deviceId?: string;
+    deviceId?: string;
     /**
      * IoT Core Device name used to define device
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -83,4 +82,22 @@ export interface GetIotCoreDeviceResult {
      * IoT Core Registry ID for the IoT Core Device
      */
     readonly registryId: string;
+}
+
+export function getIotCoreDeviceOutput(args?: GetIotCoreDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIotCoreDeviceResult> {
+    return pulumi.output(args).apply(a => getIotCoreDevice(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIotCoreDevice.
+ */
+export interface GetIotCoreDeviceOutputArgs {
+    /**
+     * IoT Core Device id used to define device
+     */
+    deviceId?: pulumi.Input<string>;
+    /**
+     * IoT Core Device name used to define device
+     */
+    name?: pulumi.Input<string>;
 }

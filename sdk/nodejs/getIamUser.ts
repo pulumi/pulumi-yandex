@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * const admin = pulumi.output(yandex.getIamUser({
  *     login: "my-yandex-login",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [IAM User] that can be used by other resources.
@@ -42,11 +41,11 @@ export interface GetIamUserArgs {
     /**
      * Login name used to sign in to Yandex Passport.
      */
-    readonly login?: string;
+    login?: string;
     /**
      * User ID used to manage IAM access bindings.
      */
-    readonly userId?: string;
+    userId?: string;
 }
 
 /**
@@ -69,4 +68,22 @@ export interface GetIamUserResult {
      * ID of IAM user account.
      */
     readonly userId: string;
+}
+
+export function getIamUserOutput(args?: GetIamUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamUserResult> {
+    return pulumi.output(args).apply(a => getIamUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIamUser.
+ */
+export interface GetIamUserOutputArgs {
+    /**
+     * Login name used to sign in to Yandex Passport.
+     */
+    login?: pulumi.Input<string>;
+    /**
+     * User ID used to manage IAM access bindings.
+     */
+    userId?: pulumi.Input<string>;
 }

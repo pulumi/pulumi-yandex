@@ -28,19 +28,19 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := yandex.NewYdbDatabaseDedicated(ctx, "database1", &yandex.YdbDatabaseDedicatedArgs{
 // 			FolderId: pulumi.Any(data.Yandex_resourcemanager_folder.Test_folder.Id),
-// 			Location: &yandex.YdbDatabaseDedicatedLocationArgs{
-// 				Region: &yandex.YdbDatabaseDedicatedLocationRegionArgs{
+// 			Location: &YdbDatabaseDedicatedLocationArgs{
+// 				Region: &YdbDatabaseDedicatedLocationRegionArgs{
 // 					Id: pulumi.String("ru-central1"),
 // 				},
 // 			},
 // 			NetworkId:        pulumi.Any(yandex_vpc_network.My - inst - group - network.Id),
 // 			ResourcePresetId: pulumi.String("medium"),
-// 			ScalePolicy: &yandex.YdbDatabaseDedicatedScalePolicyArgs{
-// 				FixedScale: &yandex.YdbDatabaseDedicatedScalePolicyFixedScaleArgs{
+// 			ScalePolicy: &YdbDatabaseDedicatedScalePolicyArgs{
+// 				FixedScale: &YdbDatabaseDedicatedScalePolicyFixedScaleArgs{
 // 					Size: pulumi.Int(1),
 // 				},
 // 			},
-// 			StorageConfig: &yandex.YdbDatabaseDedicatedStorageConfigArgs{
+// 			StorageConfig: &YdbDatabaseDedicatedStorageConfigArgs{
 // 				GroupCount:    pulumi.Int(1),
 // 				StorageTypeId: pulumi.String("ssd"),
 // 			},
@@ -376,7 +376,7 @@ type YdbDatabaseDedicatedArrayInput interface {
 type YdbDatabaseDedicatedArray []YdbDatabaseDedicatedInput
 
 func (YdbDatabaseDedicatedArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*YdbDatabaseDedicated)(nil))
+	return reflect.TypeOf((*[]*YdbDatabaseDedicated)(nil)).Elem()
 }
 
 func (i YdbDatabaseDedicatedArray) ToYdbDatabaseDedicatedArrayOutput() YdbDatabaseDedicatedArrayOutput {
@@ -401,7 +401,7 @@ type YdbDatabaseDedicatedMapInput interface {
 type YdbDatabaseDedicatedMap map[string]YdbDatabaseDedicatedInput
 
 func (YdbDatabaseDedicatedMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*YdbDatabaseDedicated)(nil))
+	return reflect.TypeOf((*map[string]*YdbDatabaseDedicated)(nil)).Elem()
 }
 
 func (i YdbDatabaseDedicatedMap) ToYdbDatabaseDedicatedMapOutput() YdbDatabaseDedicatedMapOutput {
@@ -412,9 +412,7 @@ func (i YdbDatabaseDedicatedMap) ToYdbDatabaseDedicatedMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedMapOutput)
 }
 
-type YdbDatabaseDedicatedOutput struct {
-	*pulumi.OutputState
-}
+type YdbDatabaseDedicatedOutput struct{ *pulumi.OutputState }
 
 func (YdbDatabaseDedicatedOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*YdbDatabaseDedicated)(nil))
@@ -433,14 +431,12 @@ func (o YdbDatabaseDedicatedOutput) ToYdbDatabaseDedicatedPtrOutput() YdbDatabas
 }
 
 func (o YdbDatabaseDedicatedOutput) ToYdbDatabaseDedicatedPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedPtrOutput {
-	return o.ApplyT(func(v YdbDatabaseDedicated) *YdbDatabaseDedicated {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseDedicated) *YdbDatabaseDedicated {
 		return &v
 	}).(YdbDatabaseDedicatedPtrOutput)
 }
 
-type YdbDatabaseDedicatedPtrOutput struct {
-	*pulumi.OutputState
-}
+type YdbDatabaseDedicatedPtrOutput struct{ *pulumi.OutputState }
 
 func (YdbDatabaseDedicatedPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**YdbDatabaseDedicated)(nil))
@@ -452,6 +448,16 @@ func (o YdbDatabaseDedicatedPtrOutput) ToYdbDatabaseDedicatedPtrOutput() YdbData
 
 func (o YdbDatabaseDedicatedPtrOutput) ToYdbDatabaseDedicatedPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedPtrOutput {
 	return o
+}
+
+func (o YdbDatabaseDedicatedPtrOutput) Elem() YdbDatabaseDedicatedOutput {
+	return o.ApplyT(func(v *YdbDatabaseDedicated) YdbDatabaseDedicated {
+		if v != nil {
+			return *v
+		}
+		var ret YdbDatabaseDedicated
+		return ret
+	}).(YdbDatabaseDedicatedOutput)
 }
 
 type YdbDatabaseDedicatedArrayOutput struct{ *pulumi.OutputState }
@@ -495,6 +501,10 @@ func (o YdbDatabaseDedicatedMapOutput) MapIndex(k pulumi.StringInput) YdbDatabas
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedInput)(nil)).Elem(), &YdbDatabaseDedicated{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedPtrInput)(nil)).Elem(), &YdbDatabaseDedicated{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedArrayInput)(nil)).Elem(), YdbDatabaseDedicatedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedMapInput)(nil)).Elem(), YdbDatabaseDedicatedMap{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedPtrOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedArrayOutput{})

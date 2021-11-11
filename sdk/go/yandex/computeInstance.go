@@ -14,6 +14,70 @@ import (
 // A VM instance resource. For more information, see
 // [the official documentation](https://cloud.yandex.com/docs/compute/concepts/vm).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooVpcNetwork, err := yandex.NewVpcNetwork(ctx, "fooVpcNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooVpcSubnet, err := yandex.NewVpcSubnet(ctx, "fooVpcSubnet", &yandex.VpcSubnetArgs{
+// 			NetworkId: fooVpcNetwork.ID(),
+// 			Zone:      pulumi.String("ru-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = yandex.NewComputeInstance(ctx, "_default", &yandex.ComputeInstanceArgs{
+// 			BootDisk: &ComputeInstanceBootDiskArgs{
+// 				InitializeParams: &ComputeInstanceBootDiskInitializeParamsArgs{
+// 					ImageId: pulumi.String("image_id"),
+// 				},
+// 			},
+// 			Metadata: pulumi.StringMap{
+// 				"foo":      pulumi.String("bar"),
+// 				"ssh-keys": pulumi.String(fmt.Sprintf("%v%v", "ubuntu:", readFileOrPanic("~/.ssh/id_rsa.pub"))),
+// 			},
+// 			NetworkInterfaces: ComputeInstanceNetworkInterfaceArray{
+// 				&ComputeInstanceNetworkInterfaceArgs{
+// 					SubnetId: fooVpcSubnet.ID(),
+// 				},
+// 			},
+// 			PlatformId: pulumi.String("standard-v1"),
+// 			Resources: &ComputeInstanceResourcesArgs{
+// 				Cores:  pulumi.Int(2),
+// 				Memory: pulumi.Float64(4),
+// 			},
+// 			Zone: pulumi.String("ru-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Instances can be imported using the `ID` of an instance, e.g.
@@ -369,7 +433,7 @@ type ComputeInstanceArrayInput interface {
 type ComputeInstanceArray []ComputeInstanceInput
 
 func (ComputeInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ComputeInstance)(nil))
+	return reflect.TypeOf((*[]*ComputeInstance)(nil)).Elem()
 }
 
 func (i ComputeInstanceArray) ToComputeInstanceArrayOutput() ComputeInstanceArrayOutput {
@@ -394,7 +458,7 @@ type ComputeInstanceMapInput interface {
 type ComputeInstanceMap map[string]ComputeInstanceInput
 
 func (ComputeInstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ComputeInstance)(nil))
+	return reflect.TypeOf((*map[string]*ComputeInstance)(nil)).Elem()
 }
 
 func (i ComputeInstanceMap) ToComputeInstanceMapOutput() ComputeInstanceMapOutput {
@@ -405,9 +469,7 @@ func (i ComputeInstanceMap) ToComputeInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceMapOutput)
 }
 
-type ComputeInstanceOutput struct {
-	*pulumi.OutputState
-}
+type ComputeInstanceOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ComputeInstance)(nil))
@@ -426,14 +488,12 @@ func (o ComputeInstanceOutput) ToComputeInstancePtrOutput() ComputeInstancePtrOu
 }
 
 func (o ComputeInstanceOutput) ToComputeInstancePtrOutputWithContext(ctx context.Context) ComputeInstancePtrOutput {
-	return o.ApplyT(func(v ComputeInstance) *ComputeInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstance) *ComputeInstance {
 		return &v
 	}).(ComputeInstancePtrOutput)
 }
 
-type ComputeInstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type ComputeInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ComputeInstance)(nil))
@@ -445,6 +505,16 @@ func (o ComputeInstancePtrOutput) ToComputeInstancePtrOutput() ComputeInstancePt
 
 func (o ComputeInstancePtrOutput) ToComputeInstancePtrOutputWithContext(ctx context.Context) ComputeInstancePtrOutput {
 	return o
+}
+
+func (o ComputeInstancePtrOutput) Elem() ComputeInstanceOutput {
+	return o.ApplyT(func(v *ComputeInstance) ComputeInstance {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstance
+		return ret
+	}).(ComputeInstanceOutput)
 }
 
 type ComputeInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -488,6 +558,10 @@ func (o ComputeInstanceMapOutput) MapIndex(k pulumi.StringInput) ComputeInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceInput)(nil)).Elem(), &ComputeInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstancePtrInput)(nil)).Elem(), &ComputeInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceArrayInput)(nil)).Elem(), ComputeInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceMapInput)(nil)).Elem(), ComputeInstanceMap{})
 	pulumi.RegisterOutputType(ComputeInstanceOutput{})
 	pulumi.RegisterOutputType(ComputeInstancePtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceArrayOutput{})

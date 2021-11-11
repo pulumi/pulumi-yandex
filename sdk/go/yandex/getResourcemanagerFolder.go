@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "folder_id_number_1"
-// 		myFolder1, err := yandex.LookupResourcemanagerFolder(ctx, &yandex.LookupResourcemanagerFolderArgs{
+// 		myFolder1, err := yandex.LookupResourcemanagerFolder(ctx, &GetResourcemanagerFolderArgs{
 // 			FolderId: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -29,7 +32,7 @@ import (
 // 		}
 // 		opt1 := "some_cloud_id"
 // 		opt2 := "folder_name"
-// 		myFolder2, err := yandex.LookupResourcemanagerFolder(ctx, &yandex.LookupResourcemanagerFolderArgs{
+// 		myFolder2, err := yandex.LookupResourcemanagerFolder(ctx, &GetResourcemanagerFolderArgs{
 // 			CloudId: &opt1,
 // 			Name:    &opt2,
 // 		}, nil)
@@ -79,4 +82,86 @@ type LookupResourcemanagerFolderResult struct {
 	Name   string            `pulumi:"name"`
 	// Current status of the folder.
 	Status string `pulumi:"status"`
+}
+
+func LookupResourcemanagerFolderOutput(ctx *pulumi.Context, args LookupResourcemanagerFolderOutputArgs, opts ...pulumi.InvokeOption) LookupResourcemanagerFolderResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupResourcemanagerFolderResult, error) {
+			args := v.(LookupResourcemanagerFolderArgs)
+			r, err := LookupResourcemanagerFolder(ctx, &args, opts...)
+			return *r, err
+		}).(LookupResourcemanagerFolderResultOutput)
+}
+
+// A collection of arguments for invoking getResourcemanagerFolder.
+type LookupResourcemanagerFolderOutputArgs struct {
+	// Cloud that the resource belongs to. If value is omitted, the default provider cloud is used.
+	CloudId pulumi.StringPtrInput `pulumi:"cloudId"`
+	// ID of the folder.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// A map of labels applied to this folder.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name of the folder.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupResourcemanagerFolderOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourcemanagerFolderArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getResourcemanagerFolder.
+type LookupResourcemanagerFolderResultOutput struct{ *pulumi.OutputState }
+
+func (LookupResourcemanagerFolderResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourcemanagerFolderResult)(nil)).Elem()
+}
+
+func (o LookupResourcemanagerFolderResultOutput) ToLookupResourcemanagerFolderResultOutput() LookupResourcemanagerFolderResultOutput {
+	return o
+}
+
+func (o LookupResourcemanagerFolderResultOutput) ToLookupResourcemanagerFolderResultOutputWithContext(ctx context.Context) LookupResourcemanagerFolderResultOutput {
+	return o
+}
+
+// ID of the cloud that contains the folder.
+func (o LookupResourcemanagerFolderResultOutput) CloudId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcemanagerFolderResult) string { return v.CloudId }).(pulumi.StringOutput)
+}
+
+// Folder creation timestamp.
+func (o LookupResourcemanagerFolderResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcemanagerFolderResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the folder.
+func (o LookupResourcemanagerFolderResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcemanagerFolderResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupResourcemanagerFolderResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcemanagerFolderResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupResourcemanagerFolderResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcemanagerFolderResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A map of labels applied to this folder.
+func (o LookupResourcemanagerFolderResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupResourcemanagerFolderResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupResourcemanagerFolderResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcemanagerFolderResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Current status of the folder.
+func (o LookupResourcemanagerFolderResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcemanagerFolderResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupResourcemanagerFolderResultOutput{})
 }

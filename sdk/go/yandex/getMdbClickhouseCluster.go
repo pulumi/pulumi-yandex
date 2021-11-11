@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "test"
-// 		foo, err := yandex.LookupMdbClickhouseCluster(ctx, &yandex.LookupMdbClickhouseClusterArgs{
+// 		foo, err := yandex.LookupMdbClickhouseCluster(ctx, &GetMdbClickhouseClusterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -109,4 +112,191 @@ type LookupMdbClickhouseClusterResult struct {
 	Version string                        `pulumi:"version"`
 	// Configuration of the ZooKeeper subcluster. The structure is documented below.
 	Zookeeper GetMdbClickhouseClusterZookeeper `pulumi:"zookeeper"`
+}
+
+func LookupMdbClickhouseClusterOutput(ctx *pulumi.Context, args LookupMdbClickhouseClusterOutputArgs, opts ...pulumi.InvokeOption) LookupMdbClickhouseClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMdbClickhouseClusterResult, error) {
+			args := v.(LookupMdbClickhouseClusterArgs)
+			r, err := LookupMdbClickhouseCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMdbClickhouseClusterResultOutput)
+}
+
+// A collection of arguments for invoking getMdbClickhouseCluster.
+type LookupMdbClickhouseClusterOutputArgs struct {
+	CloudStorage GetMdbClickhouseClusterCloudStoragePtrInput `pulumi:"cloudStorage"`
+	// The ID of the ClickHouse cluster.
+	ClusterId          pulumi.StringPtrInput `pulumi:"clusterId"`
+	DeletionProtection pulumi.BoolPtrInput   `pulumi:"deletionProtection"`
+	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// The name of the ClickHouse cluster.
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+}
+
+func (LookupMdbClickhouseClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMdbClickhouseClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMdbClickhouseCluster.
+type LookupMdbClickhouseClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMdbClickhouseClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMdbClickhouseClusterResult)(nil)).Elem()
+}
+
+func (o LookupMdbClickhouseClusterResultOutput) ToLookupMdbClickhouseClusterResultOutput() LookupMdbClickhouseClusterResultOutput {
+	return o
+}
+
+func (o LookupMdbClickhouseClusterResultOutput) ToLookupMdbClickhouseClusterResultOutputWithContext(ctx context.Context) LookupMdbClickhouseClusterResultOutput {
+	return o
+}
+
+// Access policy to the ClickHouse cluster. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) Access() GetMdbClickhouseClusterAccessOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterAccess { return v.Access }).(GetMdbClickhouseClusterAccessOutput)
+}
+
+// Time to start the daily backup, in the UTC timezone. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) BackupWindowStart() GetMdbClickhouseClusterBackupWindowStartOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterBackupWindowStart {
+		return v.BackupWindowStart
+	}).(GetMdbClickhouseClusterBackupWindowStartOutput)
+}
+
+// Configuration of the ClickHouse subcluster. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) Clickhouse() GetMdbClickhouseClusterClickhouseOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterClickhouse { return v.Clickhouse }).(GetMdbClickhouseClusterClickhouseOutput)
+}
+
+func (o LookupMdbClickhouseClusterResultOutput) CloudStorage() GetMdbClickhouseClusterCloudStoragePtrOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) *GetMdbClickhouseClusterCloudStorage { return v.CloudStorage }).(GetMdbClickhouseClusterCloudStoragePtrOutput)
+}
+
+func (o LookupMdbClickhouseClusterResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Creation timestamp of the key.
+func (o LookupMdbClickhouseClusterResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A database of the ClickHouse cluster. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) Databases() GetMdbClickhouseClusterDatabaseArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterDatabase { return v.Databases }).(GetMdbClickhouseClusterDatabaseArrayOutput)
+}
+
+func (o LookupMdbClickhouseClusterResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// Description of the shard group.
+func (o LookupMdbClickhouseClusterResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Deployment environment of the ClickHouse cluster.
+func (o LookupMdbClickhouseClusterResultOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+func (o LookupMdbClickhouseClusterResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// A set of protobuf or cap'n proto format schemas. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) FormatSchemas() GetMdbClickhouseClusterFormatSchemaArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterFormatSchema { return v.FormatSchemas }).(GetMdbClickhouseClusterFormatSchemaArrayOutput)
+}
+
+// Aggregated health of the cluster.
+func (o LookupMdbClickhouseClusterResultOutput) Health() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.Health }).(pulumi.StringOutput)
+}
+
+// A host of the ClickHouse cluster. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) Hosts() GetMdbClickhouseClusterHostArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterHost { return v.Hosts }).(GetMdbClickhouseClusterHostArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupMdbClickhouseClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs to assign to the ClickHouse cluster.
+func (o LookupMdbClickhouseClusterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupMdbClickhouseClusterResultOutput) MaintenanceWindow() GetMdbClickhouseClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterMaintenanceWindow {
+		return v.MaintenanceWindow
+	}).(GetMdbClickhouseClusterMaintenanceWindowOutput)
+}
+
+// A group of machine learning models. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) MlModels() GetMdbClickhouseClusterMlModelArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterMlModel { return v.MlModels }).(GetMdbClickhouseClusterMlModelArrayOutput)
+}
+
+// Graphite rollup configuration name.
+func (o LookupMdbClickhouseClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the network, to which the ClickHouse cluster belongs.
+func (o LookupMdbClickhouseClusterResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// A set of ids of security groups assigned to hosts of the cluster.
+func (o LookupMdbClickhouseClusterResultOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupMdbClickhouseClusterResultOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.ServiceAccountId }).(pulumi.StringOutput)
+}
+
+// A group of clickhouse shards. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) ShardGroups() GetMdbClickhouseClusterShardGroupArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterShardGroup { return v.ShardGroups }).(GetMdbClickhouseClusterShardGroupArrayOutput)
+}
+
+// Grants `admin` user database management permission.
+func (o LookupMdbClickhouseClusterResultOutput) SqlDatabaseManagement() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) bool { return v.SqlDatabaseManagement }).(pulumi.BoolOutput)
+}
+
+// Enables `admin` user with user management permission.
+func (o LookupMdbClickhouseClusterResultOutput) SqlUserManagement() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) bool { return v.SqlUserManagement }).(pulumi.BoolOutput)
+}
+
+// Status of the cluster.
+func (o LookupMdbClickhouseClusterResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A user of the ClickHouse cluster. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) Users() GetMdbClickhouseClusterUserArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterUser { return v.Users }).(GetMdbClickhouseClusterUserArrayOutput)
+}
+
+func (o LookupMdbClickhouseClusterResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Configuration of the ZooKeeper subcluster. The structure is documented below.
+func (o LookupMdbClickhouseClusterResultOutput) Zookeeper() GetMdbClickhouseClusterZookeeperOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterZookeeper { return v.Zookeeper }).(GetMdbClickhouseClusterZookeeperOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMdbClickhouseClusterResultOutput{})
 }

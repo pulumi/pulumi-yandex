@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetMdbElasticSearchClusterResult> InvokeAsync(GetMdbElasticSearchClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMdbElasticSearchClusterResult>("yandex:index/getMdbElasticSearchCluster:getMdbElasticSearchCluster", args ?? new GetMdbElasticSearchClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Managed Elasticsearch cluster. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/managed-elasticsearch/concepts).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetMdbElasticSearchCluster.InvokeAsync(new Yandex.GetMdbElasticSearchClusterArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///         this.NetworkId = foo.Apply(foo =&gt; foo.NetworkId);
+        ///     }
+        /// 
+        ///     [Output("networkId")]
+        ///     public Output&lt;string&gt; NetworkId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMdbElasticSearchClusterResult> Invoke(GetMdbElasticSearchClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMdbElasticSearchClusterResult>("yandex:index/getMdbElasticSearchCluster:getMdbElasticSearchCluster", args ?? new GetMdbElasticSearchClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -106,6 +140,70 @@ namespace Pulumi.Yandex
         public string? ServiceAccountId { get; set; }
 
         public GetMdbElasticSearchClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetMdbElasticSearchClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Elasticsearch cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Description of the Elasticsearch cluster.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs to assign to the Elasticsearch cluster.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// The name of the Elasticsearch cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// A set of ids of security groups assigned to hosts of the cluster.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
+
+        /// <summary>
+        /// ID of the service account authorized for this cluster.
+        /// </summary>
+        [Input("serviceAccountId")]
+        public Input<string>? ServiceAccountId { get; set; }
+
+        public GetMdbElasticSearchClusterInvokeArgs()
         {
         }
     }

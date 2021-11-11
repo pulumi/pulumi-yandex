@@ -147,44 +147,44 @@ export interface IamServiceAccountKeyState {
     /**
      * Creation timestamp of the static access key.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The description of the key pair.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The encrypted private key, base64 encoded. This is only populated when `pgpKey` is supplied.
      */
-    readonly encryptedPrivateKey?: pulumi.Input<string>;
+    encryptedPrivateKey?: pulumi.Input<string>;
     /**
      * The output format of the keys. `PEM_FILE` is the default format.
      */
-    readonly format?: pulumi.Input<string>;
+    format?: pulumi.Input<string>;
     /**
      * The algorithm used to generate the key. `RSA_2048` is the default algorithm.
      * Valid values are listed in the [API reference](https://cloud.yandex.com/docs/iam/api-ref/Key).
      */
-    readonly keyAlgorithm?: pulumi.Input<string>;
+    keyAlgorithm?: pulumi.Input<string>;
     /**
      * The fingerprint of the PGP key used to encrypt the private key. This is only populated when `pgpKey` is supplied.
      */
-    readonly keyFingerprint?: pulumi.Input<string>;
+    keyFingerprint?: pulumi.Input<string>;
     /**
      * An optional PGP key to encrypt the resulting private key material. May either be a base64-encoded public key or a keybase username in the form `keybase:keybaseusername`.
      */
-    readonly pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string>;
     /**
      * The private key. This is only populated when no `pgpKey` is provided.
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * The public key.
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * ID of the service account to create a pair for.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
 }
 
 /**
@@ -194,22 +194,22 @@ export interface IamServiceAccountKeyArgs {
     /**
      * The description of the key pair.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The output format of the keys. `PEM_FILE` is the default format.
      */
-    readonly format?: pulumi.Input<string>;
+    format?: pulumi.Input<string>;
     /**
      * The algorithm used to generate the key. `RSA_2048` is the default algorithm.
      * Valid values are listed in the [API reference](https://cloud.yandex.com/docs/iam/api-ref/Key).
      */
-    readonly keyAlgorithm?: pulumi.Input<string>;
+    keyAlgorithm?: pulumi.Input<string>;
     /**
      * An optional PGP key to encrypt the resulting private key material. May either be a base64-encoded public key or a keybase username in the form `keybase:keybaseusername`.
      */
-    readonly pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string>;
     /**
      * ID of the service account to create a pair for.
      */
-    readonly serviceAccountId: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
 }

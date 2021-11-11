@@ -706,13 +706,13 @@ class KubernetesCluster(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             },
             master=yandex.KubernetesClusterMasterArgs(
-                maintenance_policy={
-                    "autoUpgrade": True,
-                    "maintenance_window": [{
+                maintenance_policy=yandex.KubernetesClusterMasterMaintenancePolicyArgs(
+                    auto_upgrade=True,
+                    maintenance_window=[{
                         "duration": "3h",
                         "startTime": "15:00",
                     }],
-                },
+                ),
                 public_ip=True,
                 security_group_ids=[yandex_vpc_security_group["security_group_name"]["id"]],
                 version="1.17",
@@ -739,9 +739,9 @@ class KubernetesCluster(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             },
             master=yandex.KubernetesClusterMasterArgs(
-                maintenance_policy={
-                    "autoUpgrade": True,
-                    "maintenance_window": [
+                maintenance_policy=yandex.KubernetesClusterMasterMaintenancePolicyArgs(
+                    auto_upgrade=True,
+                    maintenance_window=[
                         {
                             "day": "monday",
                             "duration": "3h",
@@ -753,20 +753,20 @@ class KubernetesCluster(pulumi.CustomResource):
                             "startTime": "10:00",
                         },
                     ],
-                },
+                ),
                 public_ip=True,
                 regional=yandex.KubernetesClusterMasterRegionalArgs(
                     location=[
                         {
-                            "subnet_id": yandex_vpc_subnet["subnet_a_resource_name"]["id"],
+                            "subnetId": yandex_vpc_subnet["subnet_a_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_a_resource_name"]["zone"],
                         },
                         {
-                            "subnet_id": yandex_vpc_subnet["subnet_b_resource_name"]["id"],
+                            "subnetId": yandex_vpc_subnet["subnet_b_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_b_resource_name"]["zone"],
                         },
                         {
-                            "subnet_id": yandex_vpc_subnet["subnet_c_resource_name"]["id"],
+                            "subnetId": yandex_vpc_subnet["subnet_c_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_c_resource_name"]["zone"],
                         },
                     ],
@@ -841,13 +841,13 @@ class KubernetesCluster(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             },
             master=yandex.KubernetesClusterMasterArgs(
-                maintenance_policy={
-                    "autoUpgrade": True,
-                    "maintenance_window": [{
+                maintenance_policy=yandex.KubernetesClusterMasterMaintenancePolicyArgs(
+                    auto_upgrade=True,
+                    maintenance_window=[{
                         "duration": "3h",
                         "startTime": "15:00",
                     }],
-                },
+                ),
                 public_ip=True,
                 security_group_ids=[yandex_vpc_security_group["security_group_name"]["id"]],
                 version="1.17",
@@ -874,9 +874,9 @@ class KubernetesCluster(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             },
             master=yandex.KubernetesClusterMasterArgs(
-                maintenance_policy={
-                    "autoUpgrade": True,
-                    "maintenance_window": [
+                maintenance_policy=yandex.KubernetesClusterMasterMaintenancePolicyArgs(
+                    auto_upgrade=True,
+                    maintenance_window=[
                         {
                             "day": "monday",
                             "duration": "3h",
@@ -888,20 +888,20 @@ class KubernetesCluster(pulumi.CustomResource):
                             "startTime": "10:00",
                         },
                     ],
-                },
+                ),
                 public_ip=True,
                 regional=yandex.KubernetesClusterMasterRegionalArgs(
                     location=[
                         {
-                            "subnet_id": yandex_vpc_subnet["subnet_a_resource_name"]["id"],
+                            "subnetId": yandex_vpc_subnet["subnet_a_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_a_resource_name"]["zone"],
                         },
                         {
-                            "subnet_id": yandex_vpc_subnet["subnet_b_resource_name"]["id"],
+                            "subnetId": yandex_vpc_subnet["subnet_b_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_b_resource_name"]["zone"],
                         },
                         {
-                            "subnet_id": yandex_vpc_subnet["subnet_c_resource_name"]["id"],
+                            "subnetId": yandex_vpc_subnet["subnet_c_resource_name"]["id"],
                             "zone": yandex_vpc_subnet["subnet_c_resource_name"]["zone"],
                         },
                     ],

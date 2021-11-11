@@ -249,74 +249,74 @@ export interface KubernetesNodeGroupState {
     /**
      * This argument specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
      */
-    readonly allocationPolicy?: pulumi.Input<inputs.KubernetesNodeGroupAllocationPolicy>;
+    allocationPolicy?: pulumi.Input<inputs.KubernetesNodeGroupAllocationPolicy>;
     /**
      * A list of allowed unsafe sysctl parameters for this node group. For more details see [documentation](https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/).
      */
-    readonly allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the Kubernetes cluster that this node group belongs to.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * (Computed) The Kubernetes node group creation timestamp.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Deploy policy of the node group. The structure is documented below.
      */
-    readonly deployPolicy?: pulumi.Input<inputs.KubernetesNodeGroupDeployPolicy>;
+    deployPolicy?: pulumi.Input<inputs.KubernetesNodeGroupDeployPolicy>;
     /**
      * A description of the Kubernetes node group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of instance group that is used to manage this Kubernetes node group.
      */
-    readonly instanceGroupId?: pulumi.Input<string>;
+    instanceGroupId?: pulumi.Input<string>;
     /**
      * Template used to create compute instances in this Kubernetes node group. The structure is documented below.
      */
-    readonly instanceTemplate?: pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplate>;
+    instanceTemplate?: pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplate>;
     /**
      * A set of key/value label pairs assigned to the Kubernetes node group.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) Maintenance policy for this Kubernetes node group.
      * If policy is omitted, automatic revision upgrades are enabled and could happen at any time.
      * Revision upgrades are performed only within the same minor version, e.g. 1.13.
      * Minor version upgrades (e.g. 1.13->1.14) should be performed manually. The structure is documented below.
      */
-    readonly maintenancePolicy?: pulumi.Input<inputs.KubernetesNodeGroupMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.KubernetesNodeGroupMaintenancePolicy>;
     /**
      * Name of a specific Kubernetes node group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs, that are assigned to all the nodes of this Kubernetes node group.
      */
-    readonly nodeLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of Kubernetes taints, that are applied to all the nodes of this Kubernetes node group.
      */
-    readonly nodeTaints?: pulumi.Input<pulumi.Input<string>[]>;
+    nodeTaints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Scale policy of the node group. The structure is documented below.
      */
-    readonly scalePolicy?: pulumi.Input<inputs.KubernetesNodeGroupScalePolicy>;
+    scalePolicy?: pulumi.Input<inputs.KubernetesNodeGroupScalePolicy>;
     /**
      * (Computed) Status of the Kubernetes node group.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Version of Kubernetes that will be used for Kubernetes node group.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * Information about Kubernetes node group version. The structure is documented below.
      */
-    readonly versionInfo?: pulumi.Input<inputs.KubernetesNodeGroupVersionInfo>;
+    versionInfo?: pulumi.Input<inputs.KubernetesNodeGroupVersionInfo>;
 }
 
 /**
@@ -326,56 +326,56 @@ export interface KubernetesNodeGroupArgs {
     /**
      * This argument specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
      */
-    readonly allocationPolicy?: pulumi.Input<inputs.KubernetesNodeGroupAllocationPolicy>;
+    allocationPolicy?: pulumi.Input<inputs.KubernetesNodeGroupAllocationPolicy>;
     /**
      * A list of allowed unsafe sysctl parameters for this node group. For more details see [documentation](https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/).
      */
-    readonly allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the Kubernetes cluster that this node group belongs to.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * Deploy policy of the node group. The structure is documented below.
      */
-    readonly deployPolicy?: pulumi.Input<inputs.KubernetesNodeGroupDeployPolicy>;
+    deployPolicy?: pulumi.Input<inputs.KubernetesNodeGroupDeployPolicy>;
     /**
      * A description of the Kubernetes node group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Template used to create compute instances in this Kubernetes node group. The structure is documented below.
      */
-    readonly instanceTemplate: pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplate>;
+    instanceTemplate: pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplate>;
     /**
      * A set of key/value label pairs assigned to the Kubernetes node group.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) Maintenance policy for this Kubernetes node group.
      * If policy is omitted, automatic revision upgrades are enabled and could happen at any time.
      * Revision upgrades are performed only within the same minor version, e.g. 1.13.
      * Minor version upgrades (e.g. 1.13->1.14) should be performed manually. The structure is documented below.
      */
-    readonly maintenancePolicy?: pulumi.Input<inputs.KubernetesNodeGroupMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.KubernetesNodeGroupMaintenancePolicy>;
     /**
      * Name of a specific Kubernetes node group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs, that are assigned to all the nodes of this Kubernetes node group.
      */
-    readonly nodeLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of Kubernetes taints, that are applied to all the nodes of this Kubernetes node group.
      */
-    readonly nodeTaints?: pulumi.Input<pulumi.Input<string>[]>;
+    nodeTaints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Scale policy of the node group. The structure is documented below.
      */
-    readonly scalePolicy: pulumi.Input<inputs.KubernetesNodeGroupScalePolicy>;
+    scalePolicy: pulumi.Input<inputs.KubernetesNodeGroupScalePolicy>;
     /**
      * Version of Kubernetes that will be used for Kubernetes node group.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

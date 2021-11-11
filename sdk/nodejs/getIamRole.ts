@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -19,7 +18,7 @@ import * as utilities from "./utilities";
  *         members: ["userAccount:user_id_1"],
  *         role: "admin",
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [IAM] roles in order to apply them to other resources.
@@ -45,8 +44,8 @@ export function getIamRole(args?: GetIamRoleArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getIamRole.
  */
 export interface GetIamRoleArgs {
-    readonly description?: string;
-    readonly roleId?: string;
+    description?: string;
+    roleId?: string;
 }
 
 /**
@@ -59,4 +58,16 @@ export interface GetIamRoleResult {
      */
     readonly id: string;
     readonly roleId: string;
+}
+
+export function getIamRoleOutput(args?: GetIamRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamRoleResult> {
+    return pulumi.output(args).apply(a => getIamRole(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIamRole.
+ */
+export interface GetIamRoleOutputArgs {
+    description?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string>;
 }

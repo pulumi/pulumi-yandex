@@ -157,38 +157,38 @@ export interface VpcAddressState {
     /**
      * Creation timestamp of the key.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * spec of IP v4 address
      * ---
      */
-    readonly externalIpv4Address?: pulumi.Input<inputs.VpcAddressExternalIpv4Address>;
+    externalIpv4Address?: pulumi.Input<inputs.VpcAddressExternalIpv4Address>;
     /**
      * ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to apply to this resource. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the address. Provided by the client when the address is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * `false` means that address is ephemeral.
      */
-    readonly reserved?: pulumi.Input<boolean>;
+    reserved?: pulumi.Input<boolean>;
     /**
      * `true` if address is used.
      */
-    readonly used?: pulumi.Input<boolean>;
+    used?: pulumi.Input<boolean>;
 }
 
 /**
@@ -199,23 +199,23 @@ export interface VpcAddressArgs {
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * spec of IP v4 address
      * ---
      */
-    readonly externalIpv4Address?: pulumi.Input<inputs.VpcAddressExternalIpv4Address>;
+    externalIpv4Address?: pulumi.Input<inputs.VpcAddressExternalIpv4Address>;
     /**
      * ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to apply to this resource. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the address. Provided by the client when the address is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

@@ -43,22 +43,22 @@ import (
 // 			return err
 // 		}
 // 		_, err = yandex.NewMdbRedisCluster(ctx, "fooMdbRedisCluster", &yandex.MdbRedisClusterArgs{
-// 			Config: &yandex.MdbRedisClusterConfigArgs{
+// 			Config: &MdbRedisClusterConfigArgs{
 // 				Password: pulumi.String("your_password"),
 // 				Version:  pulumi.String("6.0"),
 // 			},
 // 			Environment: pulumi.String("PRESTABLE"),
-// 			Hosts: yandex.MdbRedisClusterHostArray{
-// 				&yandex.MdbRedisClusterHostArgs{
+// 			Hosts: MdbRedisClusterHostArray{
+// 				&MdbRedisClusterHostArgs{
 // 					SubnetId: fooVpcSubnet.ID(),
 // 					Zone:     pulumi.String("ru-central1-a"),
 // 				},
 // 			},
-// 			MaintenanceWindow: &yandex.MdbRedisClusterMaintenanceWindowArgs{
+// 			MaintenanceWindow: &MdbRedisClusterMaintenanceWindowArgs{
 // 				Type: pulumi.String("ANYTIME"),
 // 			},
 // 			NetworkId: fooVpcNetwork.ID(),
-// 			Resources: &yandex.MdbRedisClusterResourcesArgs{
+// 			Resources: &MdbRedisClusterResourcesArgs{
 // 				DiskSize:         pulumi.Int(16),
 // 				ResourcePresetId: pulumi.String("hm1.nano"),
 // 			},
@@ -118,30 +118,30 @@ import (
 // 			return err
 // 		}
 // 		_, err = yandex.NewMdbRedisCluster(ctx, "fooMdbRedisCluster", &yandex.MdbRedisClusterArgs{
-// 			Config: &yandex.MdbRedisClusterConfigArgs{
+// 			Config: &MdbRedisClusterConfigArgs{
 // 				Password: pulumi.String("your_password"),
 // 				Version:  pulumi.String("6.0"),
 // 			},
 // 			Environment: pulumi.String("PRESTABLE"),
-// 			Hosts: yandex.MdbRedisClusterHostArray{
-// 				&yandex.MdbRedisClusterHostArgs{
+// 			Hosts: MdbRedisClusterHostArray{
+// 				&MdbRedisClusterHostArgs{
 // 					ShardName: pulumi.String("first"),
 // 					SubnetId:  fooVpcSubnet.ID(),
 // 					Zone:      pulumi.String("ru-central1-a"),
 // 				},
-// 				&yandex.MdbRedisClusterHostArgs{
+// 				&MdbRedisClusterHostArgs{
 // 					ShardName: pulumi.String("second"),
 // 					SubnetId:  bar.ID(),
 // 					Zone:      pulumi.String("ru-central1-b"),
 // 				},
-// 				&yandex.MdbRedisClusterHostArgs{
+// 				&MdbRedisClusterHostArgs{
 // 					ShardName: pulumi.String("third"),
 // 					SubnetId:  baz.ID(),
 // 					Zone:      pulumi.String("ru-central1-c"),
 // 				},
 // 			},
 // 			NetworkId: fooVpcNetwork.ID(),
-// 			Resources: &yandex.MdbRedisClusterResourcesArgs{
+// 			Resources: &MdbRedisClusterResourcesArgs{
 // 				DiskSize:         pulumi.Int(16),
 // 				ResourcePresetId: pulumi.String("hm1.nano"),
 // 			},
@@ -457,7 +457,7 @@ type MdbRedisClusterArrayInput interface {
 type MdbRedisClusterArray []MdbRedisClusterInput
 
 func (MdbRedisClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MdbRedisCluster)(nil))
+	return reflect.TypeOf((*[]*MdbRedisCluster)(nil)).Elem()
 }
 
 func (i MdbRedisClusterArray) ToMdbRedisClusterArrayOutput() MdbRedisClusterArrayOutput {
@@ -482,7 +482,7 @@ type MdbRedisClusterMapInput interface {
 type MdbRedisClusterMap map[string]MdbRedisClusterInput
 
 func (MdbRedisClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MdbRedisCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbRedisCluster)(nil)).Elem()
 }
 
 func (i MdbRedisClusterMap) ToMdbRedisClusterMapOutput() MdbRedisClusterMapOutput {
@@ -493,9 +493,7 @@ func (i MdbRedisClusterMap) ToMdbRedisClusterMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterMapOutput)
 }
 
-type MdbRedisClusterOutput struct {
-	*pulumi.OutputState
-}
+type MdbRedisClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbRedisClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MdbRedisCluster)(nil))
@@ -514,14 +512,12 @@ func (o MdbRedisClusterOutput) ToMdbRedisClusterPtrOutput() MdbRedisClusterPtrOu
 }
 
 func (o MdbRedisClusterOutput) ToMdbRedisClusterPtrOutputWithContext(ctx context.Context) MdbRedisClusterPtrOutput {
-	return o.ApplyT(func(v MdbRedisCluster) *MdbRedisCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbRedisCluster) *MdbRedisCluster {
 		return &v
 	}).(MdbRedisClusterPtrOutput)
 }
 
-type MdbRedisClusterPtrOutput struct {
-	*pulumi.OutputState
-}
+type MdbRedisClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (MdbRedisClusterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MdbRedisCluster)(nil))
@@ -533,6 +529,16 @@ func (o MdbRedisClusterPtrOutput) ToMdbRedisClusterPtrOutput() MdbRedisClusterPt
 
 func (o MdbRedisClusterPtrOutput) ToMdbRedisClusterPtrOutputWithContext(ctx context.Context) MdbRedisClusterPtrOutput {
 	return o
+}
+
+func (o MdbRedisClusterPtrOutput) Elem() MdbRedisClusterOutput {
+	return o.ApplyT(func(v *MdbRedisCluster) MdbRedisCluster {
+		if v != nil {
+			return *v
+		}
+		var ret MdbRedisCluster
+		return ret
+	}).(MdbRedisClusterOutput)
 }
 
 type MdbRedisClusterArrayOutput struct{ *pulumi.OutputState }
@@ -576,6 +582,10 @@ func (o MdbRedisClusterMapOutput) MapIndex(k pulumi.StringInput) MdbRedisCluster
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterInput)(nil)).Elem(), &MdbRedisCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterPtrInput)(nil)).Elem(), &MdbRedisCluster{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterArrayInput)(nil)).Elem(), MdbRedisClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterMapInput)(nil)).Elem(), MdbRedisClusterMap{})
 	pulumi.RegisterOutputType(MdbRedisClusterOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterArrayOutput{})

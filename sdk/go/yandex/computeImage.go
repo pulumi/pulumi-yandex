@@ -32,8 +32,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = yandex.NewComputeInstance(ctx, "vm", &yandex.ComputeInstanceArgs{
-// 			BootDisk: &yandex.ComputeInstanceBootDiskArgs{
-// 				InitializeParams: &yandex.ComputeInstanceBootDiskInitializeParamsArgs{
+// 			BootDisk: &ComputeInstanceBootDiskArgs{
+// 				InitializeParams: &ComputeInstanceBootDiskInitializeParamsArgs{
 // 					ImageId: foo_image.ID(),
 // 				},
 // 			},
@@ -362,7 +362,7 @@ type ComputeImageArrayInput interface {
 type ComputeImageArray []ComputeImageInput
 
 func (ComputeImageArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ComputeImage)(nil))
+	return reflect.TypeOf((*[]*ComputeImage)(nil)).Elem()
 }
 
 func (i ComputeImageArray) ToComputeImageArrayOutput() ComputeImageArrayOutput {
@@ -387,7 +387,7 @@ type ComputeImageMapInput interface {
 type ComputeImageMap map[string]ComputeImageInput
 
 func (ComputeImageMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ComputeImage)(nil))
+	return reflect.TypeOf((*map[string]*ComputeImage)(nil)).Elem()
 }
 
 func (i ComputeImageMap) ToComputeImageMapOutput() ComputeImageMapOutput {
@@ -398,9 +398,7 @@ func (i ComputeImageMap) ToComputeImageMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeImageMapOutput)
 }
 
-type ComputeImageOutput struct {
-	*pulumi.OutputState
-}
+type ComputeImageOutput struct{ *pulumi.OutputState }
 
 func (ComputeImageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ComputeImage)(nil))
@@ -419,14 +417,12 @@ func (o ComputeImageOutput) ToComputeImagePtrOutput() ComputeImagePtrOutput {
 }
 
 func (o ComputeImageOutput) ToComputeImagePtrOutputWithContext(ctx context.Context) ComputeImagePtrOutput {
-	return o.ApplyT(func(v ComputeImage) *ComputeImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeImage) *ComputeImage {
 		return &v
 	}).(ComputeImagePtrOutput)
 }
 
-type ComputeImagePtrOutput struct {
-	*pulumi.OutputState
-}
+type ComputeImagePtrOutput struct{ *pulumi.OutputState }
 
 func (ComputeImagePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ComputeImage)(nil))
@@ -438,6 +434,16 @@ func (o ComputeImagePtrOutput) ToComputeImagePtrOutput() ComputeImagePtrOutput {
 
 func (o ComputeImagePtrOutput) ToComputeImagePtrOutputWithContext(ctx context.Context) ComputeImagePtrOutput {
 	return o
+}
+
+func (o ComputeImagePtrOutput) Elem() ComputeImageOutput {
+	return o.ApplyT(func(v *ComputeImage) ComputeImage {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeImage
+		return ret
+	}).(ComputeImageOutput)
 }
 
 type ComputeImageArrayOutput struct{ *pulumi.OutputState }
@@ -481,6 +487,10 @@ func (o ComputeImageMapOutput) MapIndex(k pulumi.StringInput) ComputeImageOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeImageInput)(nil)).Elem(), &ComputeImage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeImagePtrInput)(nil)).Elem(), &ComputeImage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeImageArrayInput)(nil)).Elem(), ComputeImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeImageMapInput)(nil)).Elem(), ComputeImageMap{})
 	pulumi.RegisterOutputType(ComputeImageOutput{})
 	pulumi.RegisterOutputType(ComputeImagePtrOutput{})
 	pulumi.RegisterOutputType(ComputeImageArrayOutput{})

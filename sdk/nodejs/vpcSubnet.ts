@@ -167,54 +167,54 @@ export class VpcSubnet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcSubnet resources.
  */
 export interface VpcSubnetState {
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * An optional description of the subnet. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Options for DHCP client. The structure is documented below.
      */
-    readonly dhcpOptions?: pulumi.Input<inputs.VpcSubnetDhcpOptions>;
+    dhcpOptions?: pulumi.Input<inputs.VpcSubnetDhcpOptions>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this subnet. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the subnet. Provided by the client when the subnet is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnets.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * The ID of the route table to assign to this subnet. Assigned route table should
      * belong to the same network as this subnet.
      */
-    readonly routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string>;
     /**
      * A list of blocks of internal IPv4 addresses that are owned by this subnet.
      * Provide this property when you create the subnet. For example, 10.0.0.0/22 or 192.168.0.0/16.
      * Blocks of addresses must be unique and non-overlapping within a network.
      * Minimum subnet size is /28, and maximum subnet size is /16. Only IPv4 is supported.
      */
-    readonly v4CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    v4CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional list of blocks of IPv6 addresses that are owned by this subnet.
      */
-    readonly v6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    v6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the Yandex.Cloud zone for this subnet.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -225,43 +225,43 @@ export interface VpcSubnetArgs {
      * An optional description of the subnet. Provide this property when
      * you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Options for DHCP client. The structure is documented below.
      */
-    readonly dhcpOptions?: pulumi.Input<inputs.VpcSubnetDhcpOptions>;
+    dhcpOptions?: pulumi.Input<inputs.VpcSubnetDhcpOptions>;
     /**
      * The ID of the folder to which the resource belongs.
      * If omitted, the provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Labels to assign to this subnet. A list of key/value pairs.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the subnet. Provided by the client when the subnet is created.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnets.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * The ID of the route table to assign to this subnet. Assigned route table should
      * belong to the same network as this subnet.
      */
-    readonly routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string>;
     /**
      * A list of blocks of internal IPv4 addresses that are owned by this subnet.
      * Provide this property when you create the subnet. For example, 10.0.0.0/22 or 192.168.0.0/16.
      * Blocks of addresses must be unique and non-overlapping within a network.
      * Minimum subnet size is /28, and maximum subnet size is /16. Only IPv4 is supported.
      */
-    readonly v4CidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
+    v4CidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the Yandex.Cloud zone for this subnet.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

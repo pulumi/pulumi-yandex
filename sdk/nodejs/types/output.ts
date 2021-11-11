@@ -8198,3 +8198,4 @@ export interface YdbDatabaseDedicatedStorageConfig {
      */
     storageTypeId: string;
 }
+

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const myDatabase = pulumi.output(yandex.getYdbDatabaseDedicated({
  *     databaseId: "some_ydb_dedicated_database_id",
- * }, { async: true }));
+ * }));
  *
  * export const ydbApiEndpoint = myDatabase.ydbApiEndpoint;
  * ```
@@ -45,16 +45,16 @@ export interface GetYdbDatabaseDedicatedArgs {
     /**
      * ID of the Yandex Database cluster.
      */
-    readonly databaseId?: string;
+    databaseId?: string;
     /**
      * ID of the folder that the Yandex Database cluster belongs to.
      * It will be deduced from provider configuration if not set explicitly.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Name of the Yandex Database cluster.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -138,4 +138,27 @@ export interface GetYdbDatabaseDedicatedResult {
      * Full endpoint of the Yandex Database cluster.
      */
     readonly ydbFullEndpoint: string;
+}
+
+export function getYdbDatabaseDedicatedOutput(args?: GetYdbDatabaseDedicatedOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetYdbDatabaseDedicatedResult> {
+    return pulumi.output(args).apply(a => getYdbDatabaseDedicated(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getYdbDatabaseDedicated.
+ */
+export interface GetYdbDatabaseDedicatedOutputArgs {
+    /**
+     * ID of the Yandex Database cluster.
+     */
+    databaseId?: pulumi.Input<string>;
+    /**
+     * ID of the folder that the Yandex Database cluster belongs to.
+     * It will be deduced from provider configuration if not set explicitly.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Name of the Yandex Database cluster.
+     */
+    name?: pulumi.Input<string>;
 }

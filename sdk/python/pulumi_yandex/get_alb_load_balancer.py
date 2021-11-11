@@ -13,6 +13,7 @@ __all__ = [
     'GetAlbLoadBalancerResult',
     'AwaitableGetAlbLoadBalancerResult',
     'get_alb_load_balancer',
+    'get_alb_load_balancer_output',
 ]
 
 @pulumi.output_type
@@ -190,3 +191,13 @@ def get_alb_load_balancer(load_balancer_id: Optional[str] = None,
         region_id=__ret__.region_id,
         security_group_ids=__ret__.security_group_ids,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_alb_load_balancer)
+def get_alb_load_balancer_output(load_balancer_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlbLoadBalancerResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

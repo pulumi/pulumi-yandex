@@ -141,36 +141,36 @@ export interface ComputeSnapshotState {
     /**
      * Creation timestamp of the snapshot.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Description of the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Size of the disk when the snapshot was created, specified in GB.
      */
-    readonly diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the snapshot.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A name for the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the disk to create a snapshot from.
      */
-    readonly sourceDiskId?: pulumi.Input<string>;
+    sourceDiskId?: pulumi.Input<string>;
     /**
      * Size of the snapshot, specified in GB.
      */
-    readonly storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number>;
 }
 
 /**
@@ -180,22 +180,22 @@ export interface ComputeSnapshotArgs {
     /**
      * Description of the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the snapshot.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A name for the resource.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the disk to create a snapshot from.
      */
-    readonly sourceDiskId: pulumi.Input<string>;
+    sourceDiskId: pulumi.Input<string>;
 }

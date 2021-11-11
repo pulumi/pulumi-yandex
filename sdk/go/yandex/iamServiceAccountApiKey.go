@@ -215,7 +215,7 @@ type IamServiceAccountApiKeyArrayInput interface {
 type IamServiceAccountApiKeyArray []IamServiceAccountApiKeyInput
 
 func (IamServiceAccountApiKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IamServiceAccountApiKey)(nil))
+	return reflect.TypeOf((*[]*IamServiceAccountApiKey)(nil)).Elem()
 }
 
 func (i IamServiceAccountApiKeyArray) ToIamServiceAccountApiKeyArrayOutput() IamServiceAccountApiKeyArrayOutput {
@@ -240,7 +240,7 @@ type IamServiceAccountApiKeyMapInput interface {
 type IamServiceAccountApiKeyMap map[string]IamServiceAccountApiKeyInput
 
 func (IamServiceAccountApiKeyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IamServiceAccountApiKey)(nil))
+	return reflect.TypeOf((*map[string]*IamServiceAccountApiKey)(nil)).Elem()
 }
 
 func (i IamServiceAccountApiKeyMap) ToIamServiceAccountApiKeyMapOutput() IamServiceAccountApiKeyMapOutput {
@@ -251,9 +251,7 @@ func (i IamServiceAccountApiKeyMap) ToIamServiceAccountApiKeyMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(IamServiceAccountApiKeyMapOutput)
 }
 
-type IamServiceAccountApiKeyOutput struct {
-	*pulumi.OutputState
-}
+type IamServiceAccountApiKeyOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountApiKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamServiceAccountApiKey)(nil))
@@ -272,14 +270,12 @@ func (o IamServiceAccountApiKeyOutput) ToIamServiceAccountApiKeyPtrOutput() IamS
 }
 
 func (o IamServiceAccountApiKeyOutput) ToIamServiceAccountApiKeyPtrOutputWithContext(ctx context.Context) IamServiceAccountApiKeyPtrOutput {
-	return o.ApplyT(func(v IamServiceAccountApiKey) *IamServiceAccountApiKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamServiceAccountApiKey) *IamServiceAccountApiKey {
 		return &v
 	}).(IamServiceAccountApiKeyPtrOutput)
 }
 
-type IamServiceAccountApiKeyPtrOutput struct {
-	*pulumi.OutputState
-}
+type IamServiceAccountApiKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountApiKeyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamServiceAccountApiKey)(nil))
@@ -291,6 +287,16 @@ func (o IamServiceAccountApiKeyPtrOutput) ToIamServiceAccountApiKeyPtrOutput() I
 
 func (o IamServiceAccountApiKeyPtrOutput) ToIamServiceAccountApiKeyPtrOutputWithContext(ctx context.Context) IamServiceAccountApiKeyPtrOutput {
 	return o
+}
+
+func (o IamServiceAccountApiKeyPtrOutput) Elem() IamServiceAccountApiKeyOutput {
+	return o.ApplyT(func(v *IamServiceAccountApiKey) IamServiceAccountApiKey {
+		if v != nil {
+			return *v
+		}
+		var ret IamServiceAccountApiKey
+		return ret
+	}).(IamServiceAccountApiKeyOutput)
 }
 
 type IamServiceAccountApiKeyArrayOutput struct{ *pulumi.OutputState }
@@ -334,6 +340,10 @@ func (o IamServiceAccountApiKeyMapOutput) MapIndex(k pulumi.StringInput) IamServ
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountApiKeyInput)(nil)).Elem(), &IamServiceAccountApiKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountApiKeyPtrInput)(nil)).Elem(), &IamServiceAccountApiKey{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountApiKeyArrayInput)(nil)).Elem(), IamServiceAccountApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountApiKeyMapInput)(nil)).Elem(), IamServiceAccountApiKeyMap{})
 	pulumi.RegisterOutputType(IamServiceAccountApiKeyOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountApiKeyPtrOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountApiKeyArrayOutput{})

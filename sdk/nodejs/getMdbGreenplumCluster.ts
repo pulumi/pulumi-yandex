@@ -25,9 +25,9 @@ export function getMdbGreenplumCluster(args?: GetMdbGreenplumClusterArgs, opts?:
  * A collection of arguments for invoking getMdbGreenplumCluster.
  */
 export interface GetMdbGreenplumClusterArgs {
-    readonly clusterId?: string;
-    readonly folderId?: string;
-    readonly name?: string;
+    clusterId?: string;
+    folderId?: string;
+    name?: string;
 }
 
 /**
@@ -62,4 +62,17 @@ export interface GetMdbGreenplumClusterResult {
     readonly userName: string;
     readonly version: string;
     readonly zone: string;
+}
+
+export function getMdbGreenplumClusterOutput(args?: GetMdbGreenplumClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbGreenplumClusterResult> {
+    return pulumi.output(args).apply(a => getMdbGreenplumCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMdbGreenplumCluster.
+ */
+export interface GetMdbGreenplumClusterOutputArgs {
+    clusterId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

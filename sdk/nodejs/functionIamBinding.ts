@@ -110,19 +110,19 @@ export interface FunctionIamBindingState {
     /**
      * The [Yandex Cloud Function](https://cloud.yandex.com/docs/functions/) ID to apply a binding to.
      */
-    readonly functionId?: pulumi.Input<string>;
+    functionId?: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
      * * **system:{allUsers|allAuthenticatedUsers}**: see [system groups](https://cloud.yandex.com/docs/iam/concepts/access-control/system-group)
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. See [roles](https://cloud.yandex.com/docs/functions/security/)
      */
-    readonly role?: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role?: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }
 
 /**
@@ -132,17 +132,17 @@ export interface FunctionIamBindingArgs {
     /**
      * The [Yandex Cloud Function](https://cloud.yandex.com/docs/functions/) ID to apply a binding to.
      */
-    readonly functionId: pulumi.Input<string>;
+    functionId: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
      * * **system:{allUsers|allAuthenticatedUsers}**: see [system groups](https://cloud.yandex.com/docs/iam/concepts/access-control/system-group)
      */
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. See [roles](https://cloud.yandex.com/docs/functions/security/)
      */
-    readonly role: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }

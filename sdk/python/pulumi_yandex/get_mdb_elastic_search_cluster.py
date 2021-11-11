@@ -13,6 +13,7 @@ __all__ = [
     'GetMdbElasticSearchClusterResult',
     'AwaitableGetMdbElasticSearchClusterResult',
     'get_mdb_elastic_search_cluster',
+    'get_mdb_elastic_search_cluster_output',
 ]
 
 @pulumi.output_type
@@ -275,3 +276,39 @@ def get_mdb_elastic_search_cluster(cluster_id: Optional[str] = None,
         security_group_ids=__ret__.security_group_ids,
         service_account_id=__ret__.service_account_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_mdb_elastic_search_cluster)
+def get_mdb_elastic_search_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                          deletion_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                                          description: Optional[pulumi.Input[Optional[str]]] = None,
+                                          folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                          labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                          name: Optional[pulumi.Input[Optional[str]]] = None,
+                                          security_group_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                          service_account_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMdbElasticSearchClusterResult]:
+    """
+    Get information about a Yandex Managed Elasticsearch cluster. For more information, see
+    [the official documentation](https://cloud.yandex.com/docs/managed-elasticsearch/concepts).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    foo = yandex.get_mdb_elastic_search_cluster(name="test")
+    pulumi.export("networkId", foo.network_id)
+    ```
+
+
+    :param str cluster_id: The ID of the Elasticsearch cluster.
+    :param str description: Description of the Elasticsearch cluster.
+    :param str folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+    :param Mapping[str, str] labels: A set of key/value label pairs to assign to the Elasticsearch cluster.
+    :param str name: The name of the Elasticsearch cluster.
+    :param Sequence[str] security_group_ids: A set of ids of security groups assigned to hosts of the cluster.
+    :param str service_account_id: ID of the service account authorized for this cluster.
+    """
+    ...

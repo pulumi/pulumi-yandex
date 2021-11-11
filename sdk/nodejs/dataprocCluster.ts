@@ -279,56 +279,56 @@ export interface DataprocClusterState {
     /**
      * Name of the Object Storage bucket to use for Data Proc jobs. Data Proc Agent saves output of job driver's process to specified bucket. In order for this to work service account (specified by the `serviceAccountId` argument) should be given permission to create objects within this bucket.
      */
-    readonly bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
      */
-    readonly clusterConfig?: pulumi.Input<inputs.DataprocClusterClusterConfig>;
+    clusterConfig?: pulumi.Input<inputs.DataprocClusterClusterConfig>;
     /**
      * (Computed) The Data Proc cluster creation timestamp.
      * * `cluster_config.0.subcluster_spec.X.id` - (Computed) ID of the subcluster.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Data Proc cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A list of host group IDs to place VMs of the cluster on.
      */
-    readonly hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A set of key/value label pairs to assign to the Data Proc cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the Data Proc subcluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of security group IDs that the cluster belongs to.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
     /**
      * Whether to enable UI Proxy feature.
      */
-    readonly uiProxy?: pulumi.Input<boolean>;
+    uiProxy?: pulumi.Input<boolean>;
     /**
      * ID of the availability zone to create cluster in. If it is not provided, the default provider zone is used.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -338,49 +338,49 @@ export interface DataprocClusterArgs {
     /**
      * Name of the Object Storage bucket to use for Data Proc jobs. Data Proc Agent saves output of job driver's process to specified bucket. In order for this to work service account (specified by the `serviceAccountId` argument) should be given permission to create objects within this bucket.
      */
-    readonly bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * Configuration and resources for hosts that should be created with the cluster. The structure is documented below.
      */
-    readonly clusterConfig: pulumi.Input<inputs.DataprocClusterClusterConfig>;
+    clusterConfig: pulumi.Input<inputs.DataprocClusterClusterConfig>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the Data Proc cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the folder to create a cluster in. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A list of host group IDs to place VMs of the cluster on.
      */
-    readonly hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A set of key/value label pairs to assign to the Data Proc cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the Data Proc subcluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of security group IDs that the cluster belongs to.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service account to be used by the Data Proc agent to access resources of Yandex.Cloud. Selected service account should have `mdb.dataproc.agent` role on the folder where the Data Proc cluster will be located.
      */
-    readonly serviceAccountId: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
     /**
      * Whether to enable UI Proxy feature.
      */
-    readonly uiProxy?: pulumi.Input<boolean>;
+    uiProxy?: pulumi.Input<boolean>;
     /**
      * ID of the availability zone to create cluster in. If it is not provided, the default provider zone is used.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

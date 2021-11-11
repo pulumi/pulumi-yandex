@@ -211,7 +211,7 @@ type ComputeDiskPlacementGroupArrayInput interface {
 type ComputeDiskPlacementGroupArray []ComputeDiskPlacementGroupInput
 
 func (ComputeDiskPlacementGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ComputeDiskPlacementGroup)(nil))
+	return reflect.TypeOf((*[]*ComputeDiskPlacementGroup)(nil)).Elem()
 }
 
 func (i ComputeDiskPlacementGroupArray) ToComputeDiskPlacementGroupArrayOutput() ComputeDiskPlacementGroupArrayOutput {
@@ -236,7 +236,7 @@ type ComputeDiskPlacementGroupMapInput interface {
 type ComputeDiskPlacementGroupMap map[string]ComputeDiskPlacementGroupInput
 
 func (ComputeDiskPlacementGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ComputeDiskPlacementGroup)(nil))
+	return reflect.TypeOf((*map[string]*ComputeDiskPlacementGroup)(nil)).Elem()
 }
 
 func (i ComputeDiskPlacementGroupMap) ToComputeDiskPlacementGroupMapOutput() ComputeDiskPlacementGroupMapOutput {
@@ -247,9 +247,7 @@ func (i ComputeDiskPlacementGroupMap) ToComputeDiskPlacementGroupMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeDiskPlacementGroupMapOutput)
 }
 
-type ComputeDiskPlacementGroupOutput struct {
-	*pulumi.OutputState
-}
+type ComputeDiskPlacementGroupOutput struct{ *pulumi.OutputState }
 
 func (ComputeDiskPlacementGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ComputeDiskPlacementGroup)(nil))
@@ -268,14 +266,12 @@ func (o ComputeDiskPlacementGroupOutput) ToComputeDiskPlacementGroupPtrOutput() 
 }
 
 func (o ComputeDiskPlacementGroupOutput) ToComputeDiskPlacementGroupPtrOutputWithContext(ctx context.Context) ComputeDiskPlacementGroupPtrOutput {
-	return o.ApplyT(func(v ComputeDiskPlacementGroup) *ComputeDiskPlacementGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeDiskPlacementGroup) *ComputeDiskPlacementGroup {
 		return &v
 	}).(ComputeDiskPlacementGroupPtrOutput)
 }
 
-type ComputeDiskPlacementGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type ComputeDiskPlacementGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (ComputeDiskPlacementGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ComputeDiskPlacementGroup)(nil))
@@ -287,6 +283,16 @@ func (o ComputeDiskPlacementGroupPtrOutput) ToComputeDiskPlacementGroupPtrOutput
 
 func (o ComputeDiskPlacementGroupPtrOutput) ToComputeDiskPlacementGroupPtrOutputWithContext(ctx context.Context) ComputeDiskPlacementGroupPtrOutput {
 	return o
+}
+
+func (o ComputeDiskPlacementGroupPtrOutput) Elem() ComputeDiskPlacementGroupOutput {
+	return o.ApplyT(func(v *ComputeDiskPlacementGroup) ComputeDiskPlacementGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeDiskPlacementGroup
+		return ret
+	}).(ComputeDiskPlacementGroupOutput)
 }
 
 type ComputeDiskPlacementGroupArrayOutput struct{ *pulumi.OutputState }
@@ -330,6 +336,10 @@ func (o ComputeDiskPlacementGroupMapOutput) MapIndex(k pulumi.StringInput) Compu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskPlacementGroupInput)(nil)).Elem(), &ComputeDiskPlacementGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskPlacementGroupPtrInput)(nil)).Elem(), &ComputeDiskPlacementGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskPlacementGroupArrayInput)(nil)).Elem(), ComputeDiskPlacementGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskPlacementGroupMapInput)(nil)).Elem(), ComputeDiskPlacementGroupMap{})
 	pulumi.RegisterOutputType(ComputeDiskPlacementGroupOutput{})
 	pulumi.RegisterOutputType(ComputeDiskPlacementGroupPtrOutput{})
 	pulumi.RegisterOutputType(ComputeDiskPlacementGroupArrayOutput{})

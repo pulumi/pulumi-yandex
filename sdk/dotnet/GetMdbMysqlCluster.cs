@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetMdbMysqlClusterResult> InvokeAsync(GetMdbMysqlClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMdbMysqlClusterResult>("yandex:index/getMdbMysqlCluster:getMdbMysqlCluster", args ?? new GetMdbMysqlClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Managed MySQL cluster. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/managed-mysql/).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetMdbMysqlCluster.InvokeAsync(new Yandex.GetMdbMysqlClusterArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///         this.NetworkId = foo.Apply(foo =&gt; foo.NetworkId);
+        ///     }
+        /// 
+        ///     [Output("networkId")]
+        ///     public Output&lt;string&gt; NetworkId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMdbMysqlClusterResult> Invoke(GetMdbMysqlClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMdbMysqlClusterResult>("yandex:index/getMdbMysqlCluster:getMdbMysqlCluster", args ?? new GetMdbMysqlClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -106,6 +140,70 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetMdbMysqlClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetMdbMysqlClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Access policy to the MySQL cluster. The structure is documented below.
+        /// </summary>
+        [Input("access")]
+        public Input<Inputs.GetMdbMysqlClusterAccessInputArgs>? Access { get; set; }
+
+        /// <summary>
+        /// The ID of the MySQL cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Description of the MySQL cluster.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs to assign to the MySQL cluster.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        [Input("mysqlConfig")]
+        private InputMap<string>? _mysqlConfig;
+
+        /// <summary>
+        /// MySQL cluster config.
+        /// </summary>
+        public InputMap<string> MysqlConfig
+        {
+            get => _mysqlConfig ?? (_mysqlConfig = new InputMap<string>());
+            set => _mysqlConfig = value;
+        }
+
+        /// <summary>
+        /// The name of the MySQL cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetMdbMysqlClusterInvokeArgs()
         {
         }
     }

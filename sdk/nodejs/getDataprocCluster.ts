@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getDataprocCluster({
  *     name: "test",
- * }, { async: true }));
+ * }));
  *
  * export const serviceAccountId = foo.serviceAccountId;
  * ```
@@ -43,11 +43,11 @@ export interface GetDataprocClusterArgs {
     /**
      * The ID of the Data Proc cluster.
      */
-    readonly clusterId?: string;
+    clusterId?: string;
     /**
      * The name of the Data Proc cluster.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -102,4 +102,22 @@ export interface GetDataprocClusterResult {
      * ID of the availability zone where the cluster resides.
      */
     readonly zoneId: string;
+}
+
+export function getDataprocClusterOutput(args?: GetDataprocClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataprocClusterResult> {
+    return pulumi.output(args).apply(a => getDataprocCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDataprocCluster.
+ */
+export interface GetDataprocClusterOutputArgs {
+    /**
+     * The ID of the Data Proc cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    /**
+     * The name of the Data Proc cluster.
+     */
+    name?: pulumi.Input<string>;
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetAlbBackendGroupGrpcBackendTlsArgs : Pulumi.InvokeArgs
+    public sealed class GetAlbBackendGroupGrpcBackendTlsInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
@@ -18,12 +18,12 @@ namespace Pulumi.Yandex.Inputs
         /// * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
         /// </summary>
         [Input("sni", required: true)]
-        public string Sni { get; set; } = null!;
+        public Input<string> Sni { get; set; } = null!;
 
         [Input("validationContext", required: true)]
-        public Inputs.GetAlbBackendGroupGrpcBackendTlsValidationContextArgs ValidationContext { get; set; } = null!;
+        public Input<Inputs.GetAlbBackendGroupGrpcBackendTlsValidationContextInputArgs> ValidationContext { get; set; } = null!;
 
-        public GetAlbBackendGroupGrpcBackendTlsArgs()
+        public GetAlbBackendGroupGrpcBackendTlsInputArgs()
         {
         }
     }

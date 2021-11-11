@@ -10,33 +10,33 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetMdbKafkaClusterTopicArgs : Pulumi.InvokeArgs
+    public sealed class GetMdbKafkaClusterTopicInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Kafka cluster.
         /// </summary>
         [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// (Required) The number of the topic's partitions.
         /// </summary>
         [Input("partitions", required: true)]
-        public int Partitions { get; set; }
+        public Input<int> Partitions { get; set; } = null!;
 
         /// <summary>
         /// (Required) Amount of data copies (replicas) for the topic in the cluster.
         /// </summary>
         [Input("replicationFactor", required: true)]
-        public int ReplicationFactor { get; set; }
+        public Input<int> ReplicationFactor { get; set; } = null!;
 
         /// <summary>
         /// (Required) User-defined settings for the topic. The structure is documented below.
         /// </summary>
         [Input("topicConfig")]
-        public Inputs.GetMdbKafkaClusterTopicTopicConfigArgs? TopicConfig { get; set; }
+        public Input<Inputs.GetMdbKafkaClusterTopicTopicConfigInputArgs>? TopicConfig { get; set; }
 
-        public GetMdbKafkaClusterTopicArgs()
+        public GetMdbKafkaClusterTopicInputArgs()
         {
         }
     }

@@ -109,7 +109,7 @@ export interface FunctionScalingPolicyState {
     /**
      * Yandex Cloud Function id used to define function
      */
-    readonly functionId?: pulumi.Input<string>;
+    functionId?: pulumi.Input<string>;
     /**
      * list definition for Yandex Cloud Function scaling policies
      * * `policy.#` - number of Yandex Cloud Function scaling policies
@@ -117,7 +117,7 @@ export interface FunctionScalingPolicyState {
      * * `policy.{num}.zone_instances_limit` - max number of instances in one zone for Yandex.Cloud Function with tag
      * * `policy.{num}.zone_requests_limit` - max number of requests in one zone for Yandex.Cloud Function with tag
      */
-    readonly policies?: pulumi.Input<pulumi.Input<inputs.FunctionScalingPolicyPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.FunctionScalingPolicyPolicy>[]>;
 }
 
 /**
@@ -127,7 +127,7 @@ export interface FunctionScalingPolicyArgs {
     /**
      * Yandex Cloud Function id used to define function
      */
-    readonly functionId: pulumi.Input<string>;
+    functionId: pulumi.Input<string>;
     /**
      * list definition for Yandex Cloud Function scaling policies
      * * `policy.#` - number of Yandex Cloud Function scaling policies
@@ -135,5 +135,5 @@ export interface FunctionScalingPolicyArgs {
      * * `policy.{num}.zone_instances_limit` - max number of instances in one zone for Yandex.Cloud Function with tag
      * * `policy.{num}.zone_requests_limit` - max number of requests in one zone for Yandex.Cloud Function with tag
      */
-    readonly policies?: pulumi.Input<pulumi.Input<inputs.FunctionScalingPolicyPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.FunctionScalingPolicyPolicy>[]>;
 }

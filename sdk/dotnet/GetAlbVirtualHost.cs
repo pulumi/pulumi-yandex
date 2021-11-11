@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetAlbVirtualHostResult> InvokeAsync(GetAlbVirtualHostArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlbVirtualHostResult>("yandex:index/getAlbVirtualHost:getAlbVirtualHost", args ?? new GetAlbVirtualHostArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex ALB Virtual Host. For more information, see
+        /// [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_vh_data = Output.Create(Yandex.GetAlbVirtualHost.InvokeAsync(new Yandex.GetAlbVirtualHostArgs
+        ///         {
+        ///             Name = yandex_alb_virtual_host.My_vh.Name,
+        ///             HttpRouterId = yandex_alb_virtual_host.My_router.Id,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Application Load Balancer Virtual Host] that can be used by other resources.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAlbVirtualHostResult> Invoke(GetAlbVirtualHostInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlbVirtualHostResult>("yandex:index/getAlbVirtualHost:getAlbVirtualHost", args ?? new GetAlbVirtualHostInvokeArgs(), options.WithVersion());
     }
 
 
@@ -68,6 +102,32 @@ namespace Pulumi.Yandex
         public string? VirtualHostId { get; set; }
 
         public GetAlbVirtualHostArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlbVirtualHostInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// HTTP Router that the resource belongs to.
+        /// </summary>
+        [Input("httpRouterId")]
+        public Input<string>? HttpRouterId { get; set; }
+
+        /// <summary>
+        /// Name of the Virtual Host.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of a specific Virtual Host. Virtual Host ID is concatenation of HTTP Router ID
+        /// and Virtual Host name with `/` symbol between them. For Example, "http_router_id/vhost_name".
+        /// </summary>
+        [Input("virtualHostId")]
+        public Input<string>? VirtualHostId { get; set; }
+
+        public GetAlbVirtualHostInvokeArgs()
         {
         }
     }

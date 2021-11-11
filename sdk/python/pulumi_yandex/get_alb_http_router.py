@@ -12,6 +12,7 @@ __all__ = [
     'GetAlbHttpRouterResult',
     'AwaitableGetAlbHttpRouterResult',
     'get_alb_http_router',
+    'get_alb_http_router_output',
 ]
 
 @pulumi.output_type
@@ -148,3 +149,31 @@ def get_alb_http_router(description: Optional[str] = None,
         id=__ret__.id,
         labels=__ret__.labels,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_alb_http_router)
+def get_alb_http_router_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                               folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               http_router_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               name: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlbHttpRouterResult]:
+    """
+    Get information about a Yandex Application Load Balancer HTTP Router. For more information, see
+    [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+
+    ```python
+    import pulumi
+    import pulumi_yandex as yandex
+
+    tf_router = yandex.get_alb_http_router(http_router_id="my-http-router-id")
+    ```
+
+    This data source is used to define [Application Load Balancer HTTP Router] that can be used by other resources.
+
+
+    :param str description: Description of the HTTP Router.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str http_router_id: HTTP Router ID.
+    :param str name: - Name of the HTTP Router.
+    """
+    ...

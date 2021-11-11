@@ -30,7 +30,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := yandex.NewVpcAddress(ctx, "addr", &yandex.VpcAddressArgs{
-// 			ExternalIpv4Address: &yandex.VpcAddressExternalIpv4AddressArgs{
+// 			ExternalIpv4Address: &VpcAddressExternalIpv4AddressArgs{
 // 				ZoneId: pulumi.String("ru-central1-a"),
 // 			},
 // 		})
@@ -54,7 +54,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := yandex.NewVpcAddress(ctx, "vpnaddr", &yandex.VpcAddressArgs{
-// 			ExternalIpv4Address: &yandex.VpcAddressExternalIpv4AddressArgs{
+// 			ExternalIpv4Address: &VpcAddressExternalIpv4AddressArgs{
 // 				DdosProtectionProvider: pulumi.String("qrator"),
 // 				ZoneId:                 pulumi.String("ru-central1-a"),
 // 			},
@@ -273,7 +273,7 @@ type VpcAddressArrayInput interface {
 type VpcAddressArray []VpcAddressInput
 
 func (VpcAddressArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VpcAddress)(nil))
+	return reflect.TypeOf((*[]*VpcAddress)(nil)).Elem()
 }
 
 func (i VpcAddressArray) ToVpcAddressArrayOutput() VpcAddressArrayOutput {
@@ -298,7 +298,7 @@ type VpcAddressMapInput interface {
 type VpcAddressMap map[string]VpcAddressInput
 
 func (VpcAddressMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VpcAddress)(nil))
+	return reflect.TypeOf((*map[string]*VpcAddress)(nil)).Elem()
 }
 
 func (i VpcAddressMap) ToVpcAddressMapOutput() VpcAddressMapOutput {
@@ -309,9 +309,7 @@ func (i VpcAddressMap) ToVpcAddressMapOutputWithContext(ctx context.Context) Vpc
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAddressMapOutput)
 }
 
-type VpcAddressOutput struct {
-	*pulumi.OutputState
-}
+type VpcAddressOutput struct{ *pulumi.OutputState }
 
 func (VpcAddressOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcAddress)(nil))
@@ -330,14 +328,12 @@ func (o VpcAddressOutput) ToVpcAddressPtrOutput() VpcAddressPtrOutput {
 }
 
 func (o VpcAddressOutput) ToVpcAddressPtrOutputWithContext(ctx context.Context) VpcAddressPtrOutput {
-	return o.ApplyT(func(v VpcAddress) *VpcAddress {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcAddress) *VpcAddress {
 		return &v
 	}).(VpcAddressPtrOutput)
 }
 
-type VpcAddressPtrOutput struct {
-	*pulumi.OutputState
-}
+type VpcAddressPtrOutput struct{ *pulumi.OutputState }
 
 func (VpcAddressPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VpcAddress)(nil))
@@ -349,6 +345,16 @@ func (o VpcAddressPtrOutput) ToVpcAddressPtrOutput() VpcAddressPtrOutput {
 
 func (o VpcAddressPtrOutput) ToVpcAddressPtrOutputWithContext(ctx context.Context) VpcAddressPtrOutput {
 	return o
+}
+
+func (o VpcAddressPtrOutput) Elem() VpcAddressOutput {
+	return o.ApplyT(func(v *VpcAddress) VpcAddress {
+		if v != nil {
+			return *v
+		}
+		var ret VpcAddress
+		return ret
+	}).(VpcAddressOutput)
 }
 
 type VpcAddressArrayOutput struct{ *pulumi.OutputState }
@@ -392,6 +398,10 @@ func (o VpcAddressMapOutput) MapIndex(k pulumi.StringInput) VpcAddressOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressInput)(nil)).Elem(), &VpcAddress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressPtrInput)(nil)).Elem(), &VpcAddress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressArrayInput)(nil)).Elem(), VpcAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressMapInput)(nil)).Elem(), VpcAddressMap{})
 	pulumi.RegisterOutputType(VpcAddressOutput{})
 	pulumi.RegisterOutputType(VpcAddressPtrOutput{})
 	pulumi.RegisterOutputType(VpcAddressArrayOutput{})

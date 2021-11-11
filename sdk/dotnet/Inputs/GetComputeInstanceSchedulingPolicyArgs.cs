@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetComputeInstanceSchedulingPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetComputeInstanceSchedulingPolicyInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) Specifies if the instance is preemptible. Defaults to false.
         /// </summary>
         [Input("preemptible")]
-        public bool? Preemptible { get; set; }
+        public Input<bool>? Preemptible { get; set; }
 
-        public GetComputeInstanceSchedulingPolicyArgs()
+        public GetComputeInstanceSchedulingPolicyInputArgs()
         {
         }
     }

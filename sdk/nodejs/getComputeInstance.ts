@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const myInstance = pulumi.output(yandex.getComputeInstance({
  *     instanceId: "some_instance_id",
- * }, { async: true }));
+ * }));
  *
  * export const instanceExternalIp = myInstance.networkInterfaces[0].natIpAddress;
  * ```
@@ -47,20 +47,20 @@ export interface GetComputeInstanceArgs {
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * The ID of a specific instance.
      */
-    readonly instanceId?: string;
+    instanceId?: string;
     /**
      * Name of the instance.
      */
-    readonly name?: string;
-    readonly placementPolicy?: inputs.GetComputeInstancePlacementPolicy;
+    name?: string;
+    placementPolicy?: inputs.GetComputeInstancePlacementPolicy;
     /**
      * Scheduling policy configuration. The structure is documented below.
      */
-    readonly schedulingPolicy?: inputs.GetComputeInstanceSchedulingPolicy;
+    schedulingPolicy?: inputs.GetComputeInstanceSchedulingPolicy;
 }
 
 /**
@@ -142,4 +142,31 @@ export interface GetComputeInstanceResult {
      * Availability zone where the instance resides.
      */
     readonly zone: string;
+}
+
+export function getComputeInstanceOutput(args?: GetComputeInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeInstanceResult> {
+    return pulumi.output(args).apply(a => getComputeInstance(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getComputeInstance.
+ */
+export interface GetComputeInstanceOutputArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * The ID of a specific instance.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * Name of the instance.
+     */
+    name?: pulumi.Input<string>;
+    placementPolicy?: pulumi.Input<inputs.GetComputeInstancePlacementPolicyArgs>;
+    /**
+     * Scheduling policy configuration. The structure is documented below.
+     */
+    schedulingPolicy?: pulumi.Input<inputs.GetComputeInstanceSchedulingPolicyArgs>;
 }

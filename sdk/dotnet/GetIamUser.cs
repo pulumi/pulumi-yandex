@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetIamUserResult> InvokeAsync(GetIamUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIamUserResult>("yandex:index/getIamUser:getIamUser", args ?? new GetIamUserArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex IAM user account. For more information about accounts, see 
+        /// [Yandex.Cloud IAM accounts](https://cloud.yandex.com/docs/iam/concepts/#accounts).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var admin = Output.Create(Yandex.GetIamUser.InvokeAsync(new Yandex.GetIamUserArgs
+        ///         {
+        ///             Login = "my-yandex-login",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [IAM User] that can be used by other resources.
+        /// </summary>
+        public static Output<GetIamUserResult> Invoke(GetIamUserInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIamUserResult>("yandex:index/getIamUser:getIamUser", args ?? new GetIamUserInvokeArgs(), options.WithVersion());
     }
 
 
@@ -54,6 +81,25 @@ namespace Pulumi.Yandex
         public string? UserId { get; set; }
 
         public GetIamUserArgs()
+        {
+        }
+    }
+
+    public sealed class GetIamUserInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Login name used to sign in to Yandex Passport.
+        /// </summary>
+        [Input("login")]
+        public Input<string>? Login { get; set; }
+
+        /// <summary>
+        /// User ID used to manage IAM access bindings.
+        /// </summary>
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
+
+        public GetIamUserInvokeArgs()
         {
         }
     }

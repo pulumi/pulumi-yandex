@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "test"
-// 		foo, err := yandex.LookupMdbRedisCluster(ctx, &yandex.LookupMdbRedisClusterArgs{
+// 		foo, err := yandex.LookupMdbRedisCluster(ctx, &GetMdbRedisClusterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -89,4 +92,137 @@ type LookupMdbRedisClusterResult struct {
 	Status string `pulumi:"status"`
 	// tls support mode enabled/disabled.
 	TlsEnabled bool `pulumi:"tlsEnabled"`
+}
+
+func LookupMdbRedisClusterOutput(ctx *pulumi.Context, args LookupMdbRedisClusterOutputArgs, opts ...pulumi.InvokeOption) LookupMdbRedisClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMdbRedisClusterResult, error) {
+			args := v.(LookupMdbRedisClusterArgs)
+			r, err := LookupMdbRedisCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMdbRedisClusterResultOutput)
+}
+
+// A collection of arguments for invoking getMdbRedisCluster.
+type LookupMdbRedisClusterOutputArgs struct {
+	// The ID of the Redis cluster.
+	ClusterId          pulumi.StringPtrInput `pulumi:"clusterId"`
+	DeletionProtection pulumi.BoolPtrInput   `pulumi:"deletionProtection"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// The name of the Redis cluster.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupMdbRedisClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMdbRedisClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMdbRedisCluster.
+type LookupMdbRedisClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMdbRedisClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMdbRedisClusterResult)(nil)).Elem()
+}
+
+func (o LookupMdbRedisClusterResultOutput) ToLookupMdbRedisClusterResultOutput() LookupMdbRedisClusterResultOutput {
+	return o
+}
+
+func (o LookupMdbRedisClusterResultOutput) ToLookupMdbRedisClusterResultOutputWithContext(ctx context.Context) LookupMdbRedisClusterResultOutput {
+	return o
+}
+
+func (o LookupMdbRedisClusterResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Configuration of the Redis cluster. The structure is documented below.
+func (o LookupMdbRedisClusterResultOutput) Config() GetMdbRedisClusterConfigOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) GetMdbRedisClusterConfig { return v.Config }).(GetMdbRedisClusterConfigOutput)
+}
+
+// Creation timestamp of the key.
+func (o LookupMdbRedisClusterResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupMdbRedisClusterResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// Description of the Redis cluster.
+func (o LookupMdbRedisClusterResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Deployment environment of the Redis cluster.
+func (o LookupMdbRedisClusterResultOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+func (o LookupMdbRedisClusterResultOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// Aggregated health of the cluster.
+func (o LookupMdbRedisClusterResultOutput) Health() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.Health }).(pulumi.StringOutput)
+}
+
+// A host of the Redis cluster. The structure is documented below.
+func (o LookupMdbRedisClusterResultOutput) Hosts() GetMdbRedisClusterHostArrayOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) []GetMdbRedisClusterHost { return v.Hosts }).(GetMdbRedisClusterHostArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupMdbRedisClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs to assign to the Redis cluster.
+func (o LookupMdbRedisClusterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupMdbRedisClusterResultOutput) MaintenanceWindow() GetMdbRedisClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) GetMdbRedisClusterMaintenanceWindow { return v.MaintenanceWindow }).(GetMdbRedisClusterMaintenanceWindowOutput)
+}
+
+func (o LookupMdbRedisClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the network, to which the Redis cluster belongs.
+func (o LookupMdbRedisClusterResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Resources allocated to hosts of the Redis cluster. The structure is documented below.
+func (o LookupMdbRedisClusterResultOutput) Resources() GetMdbRedisClusterResourcesOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) GetMdbRedisClusterResources { return v.Resources }).(GetMdbRedisClusterResourcesOutput)
+}
+
+// A set of ids of security groups assigned to hosts of the cluster.
+func (o LookupMdbRedisClusterResultOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Redis Cluster mode enabled/disabled.
+func (o LookupMdbRedisClusterResultOutput) Sharded() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) bool { return v.Sharded }).(pulumi.BoolOutput)
+}
+
+// Status of the cluster.
+func (o LookupMdbRedisClusterResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// tls support mode enabled/disabled.
+func (o LookupMdbRedisClusterResultOutput) TlsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) bool { return v.TlsEnabled }).(pulumi.BoolOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMdbRedisClusterResultOutput{})
 }

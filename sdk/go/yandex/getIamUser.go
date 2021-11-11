@@ -4,6 +4,9 @@
 package yandex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-yandex-login"
-// 		_, err := yandex.GetIamUser(ctx, &yandex.GetIamUserArgs{
+// 		_, err := yandex.GetIamUser(ctx, &GetIamUserArgs{
 // 			Login: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -60,4 +63,64 @@ type GetIamUserResult struct {
 	Login string `pulumi:"login"`
 	// ID of IAM user account.
 	UserId string `pulumi:"userId"`
+}
+
+func GetIamUserOutput(ctx *pulumi.Context, args GetIamUserOutputArgs, opts ...pulumi.InvokeOption) GetIamUserResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetIamUserResult, error) {
+			args := v.(GetIamUserArgs)
+			r, err := GetIamUser(ctx, &args, opts...)
+			return *r, err
+		}).(GetIamUserResultOutput)
+}
+
+// A collection of arguments for invoking getIamUser.
+type GetIamUserOutputArgs struct {
+	// Login name used to sign in to Yandex Passport.
+	Login pulumi.StringPtrInput `pulumi:"login"`
+	// User ID used to manage IAM access bindings.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (GetIamUserOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamUserArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getIamUser.
+type GetIamUserResultOutput struct{ *pulumi.OutputState }
+
+func (GetIamUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamUserResult)(nil)).Elem()
+}
+
+func (o GetIamUserResultOutput) ToGetIamUserResultOutput() GetIamUserResultOutput {
+	return o
+}
+
+func (o GetIamUserResultOutput) ToGetIamUserResultOutputWithContext(ctx context.Context) GetIamUserResultOutput {
+	return o
+}
+
+// Email address of user account.
+func (o GetIamUserResultOutput) DefaultEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamUserResult) string { return v.DefaultEmail }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIamUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Login name of IAM user account.
+func (o GetIamUserResultOutput) Login() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamUserResult) string { return v.Login }).(pulumi.StringOutput)
+}
+
+// ID of IAM user account.
+func (o GetIamUserResultOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamUserResult) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIamUserResultOutput{})
 }

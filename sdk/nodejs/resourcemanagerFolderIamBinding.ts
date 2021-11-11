@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * const project1 = pulumi.output(yandex.getResourcemanagerFolder({
  *     folderId: "some_folder_id",
- * }, { async: true }));
+ * }));
  * const admin = new yandex.ResourcemanagerFolderIamBinding("admin", {
  *     folderId: project1.id,
  *     members: ["userAccount:some_user_id"],
@@ -132,20 +132,20 @@ export interface ResourcemanagerFolderIamBindingState {
     /**
      * ID of the folder to attach a policy to.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * An array of identities that will be granted the privilege that is specified in the `role` field.
      * Each entry can have one of the following values:
      * * **userAccount:{user_id}**: An email address that represents a specific Yandex account. For example, ivan@yandex.ru or joe@example.com.
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be assigned. Only one
      * `yandex.ResourcemanagerFolderIamBinding` can be used per role.
      */
-    readonly role?: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role?: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }
 
 /**
@@ -155,18 +155,18 @@ export interface ResourcemanagerFolderIamBindingArgs {
     /**
      * ID of the folder to attach a policy to.
      */
-    readonly folderId: pulumi.Input<string>;
+    folderId: pulumi.Input<string>;
     /**
      * An array of identities that will be granted the privilege that is specified in the `role` field.
      * Each entry can have one of the following values:
      * * **userAccount:{user_id}**: An email address that represents a specific Yandex account. For example, ivan@yandex.ru or joe@example.com.
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      */
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be assigned. Only one
      * `yandex.ResourcemanagerFolderIamBinding` can be used per role.
      */
-    readonly role: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }

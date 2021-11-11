@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getAlbTargetGroup({
  *     targetGroupId: "my-target-group-id",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [Application Load Balancer Target Groups] that can be used by other resources.
@@ -44,19 +44,19 @@ export interface GetAlbTargetGroupArgs {
     /**
      * Description of the target group.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * - Name of the Target Group.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Target Group ID.
      */
-    readonly targetGroupId?: string;
+    targetGroupId?: string;
 }
 
 /**
@@ -85,4 +85,30 @@ export interface GetAlbTargetGroupResult {
     readonly name: string;
     readonly targetGroupId: string;
     readonly targets: outputs.GetAlbTargetGroupTarget[];
+}
+
+export function getAlbTargetGroupOutput(args?: GetAlbTargetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlbTargetGroupResult> {
+    return pulumi.output(args).apply(a => getAlbTargetGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlbTargetGroup.
+ */
+export interface GetAlbTargetGroupOutputArgs {
+    /**
+     * Description of the target group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * - Name of the Target Group.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Target Group ID.
+     */
+    targetGroupId?: pulumi.Input<string>;
 }

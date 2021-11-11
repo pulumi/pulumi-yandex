@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetIotCoreRegistryResult> InvokeAsync(GetIotCoreRegistryArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIotCoreRegistryResult>("yandex:index/getIotCoreRegistry:getIotCoreRegistry", args ?? new GetIotCoreRegistryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex IoT Core Registry. For more information IoT Core, see 
+        /// [Yandex.Cloud IoT Registry](https://cloud.yandex.com/docs/iot-core/quickstart).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myRegistry = Output.Create(Yandex.GetIotCoreRegistry.InvokeAsync(new Yandex.GetIotCoreRegistryArgs
+        ///         {
+        ///             RegistryId = "are1sampleregistry11",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Yandex.Cloud IoT Registry](https://cloud.yandex.com/docs/iot-core/quickstart) that can be used by other resources.
+        /// </summary>
+        public static Output<GetIotCoreRegistryResult> Invoke(GetIotCoreRegistryInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIotCoreRegistryResult>("yandex:index/getIotCoreRegistry:getIotCoreRegistry", args ?? new GetIotCoreRegistryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +87,31 @@ namespace Pulumi.Yandex
         public string? RegistryId { get; set; }
 
         public GetIotCoreRegistryArgs()
+        {
+        }
+    }
+
+    public sealed class GetIotCoreRegistryInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder ID for the IoT Core Registry
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// IoT Core Registry name used to define registry
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// IoT Core Registry id used to define registry
+        /// </summary>
+        [Input("registryId")]
+        public Input<string>? RegistryId { get; set; }
+
+        public GetIotCoreRegistryInvokeArgs()
         {
         }
     }

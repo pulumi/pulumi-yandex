@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const myDatabase = pulumi.output(yandex.getYdbDatabaseServerless({
  *     databaseId: "some_ydb_serverless_database_id",
- * }, { async: true }));
+ * }));
  *
  * export const ydbApiEndpoint = myDatabase.ydbApiEndpoint;
  * ```
@@ -45,16 +44,16 @@ export interface GetYdbDatabaseServerlessArgs {
     /**
      * ID of the Yandex Database serverless cluster.
      */
-    readonly databaseId?: string;
+    databaseId?: string;
     /**
      * ID of the folder that the Yandex Database serverless cluster belongs to.
      * It will be deduced from provider configuration if not set explicitly.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Name of the Yandex Database serverless cluster.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -111,4 +110,27 @@ export interface GetYdbDatabaseServerlessResult {
      * Full endpoint of the Yandex Database serverless cluster.
      */
     readonly ydbFullEndpoint: string;
+}
+
+export function getYdbDatabaseServerlessOutput(args?: GetYdbDatabaseServerlessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetYdbDatabaseServerlessResult> {
+    return pulumi.output(args).apply(a => getYdbDatabaseServerless(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getYdbDatabaseServerless.
+ */
+export interface GetYdbDatabaseServerlessOutputArgs {
+    /**
+     * ID of the Yandex Database serverless cluster.
+     */
+    databaseId?: pulumi.Input<string>;
+    /**
+     * ID of the folder that the Yandex Database serverless cluster belongs to.
+     * It will be deduced from provider configuration if not set explicitly.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Name of the Yandex Database serverless cluster.
+     */
+    name?: pulumi.Input<string>;
 }

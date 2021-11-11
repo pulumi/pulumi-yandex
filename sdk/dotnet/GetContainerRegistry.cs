@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -40,6 +41,36 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetContainerRegistryResult> InvokeAsync(GetContainerRegistryArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryResult>("yandex:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Container Registry. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/container-registry/concepts/registry)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var source = Output.Create(Yandex.GetContainerRegistry.InvokeAsync(new Yandex.GetContainerRegistryArgs
+        ///         {
+        ///             RegistryId = "some_registry_id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetContainerRegistryResult> Invoke(GetContainerRegistryInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("yandex:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -76,6 +107,43 @@ namespace Pulumi.Yandex
         public string? RegistryId { get; set; }
 
         public GetContainerRegistryArgs()
+        {
+        }
+    }
+
+    public sealed class GetContainerRegistryInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels to assign to this registry.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// Name of the registry.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of a specific registry.
+        /// </summary>
+        [Input("registryId")]
+        public Input<string>? RegistryId { get; set; }
+
+        public GetContainerRegistryInvokeArgs()
         {
         }
     }

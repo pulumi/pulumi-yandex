@@ -137,17 +137,17 @@ export interface IamServiceAccountIamMemberState {
      * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      */
-    readonly member?: pulumi.Input<string>;
+    member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `yandex.IamServiceAccountIamBinding` can be used per role.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * The service account ID to apply a policy to.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    serviceAccountId?: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }
 
 /**
@@ -160,15 +160,15 @@ export interface IamServiceAccountIamMemberArgs {
      * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      */
-    readonly member: pulumi.Input<string>;
+    member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `yandex.IamServiceAccountIamBinding` can be used per role.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
     /**
      * The service account ID to apply a policy to.
      */
-    readonly serviceAccountId: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    serviceAccountId: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }

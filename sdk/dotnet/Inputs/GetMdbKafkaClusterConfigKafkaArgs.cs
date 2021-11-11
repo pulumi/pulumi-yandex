@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex.Inputs
 {
 
-    public sealed class GetMdbKafkaClusterConfigKafkaArgs : Pulumi.InvokeArgs
+    public sealed class GetMdbKafkaClusterConfigKafkaInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
         /// </summary>
         [Input("kafkaConfig")]
-        public Inputs.GetMdbKafkaClusterConfigKafkaKafkaConfigArgs? KafkaConfig { get; set; }
+        public Input<Inputs.GetMdbKafkaClusterConfigKafkaKafkaConfigInputArgs>? KafkaConfig { get; set; }
 
         /// <summary>
         /// (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
         /// </summary>
         [Input("resources", required: true)]
-        public Inputs.GetMdbKafkaClusterConfigKafkaResourcesArgs Resources { get; set; } = null!;
+        public Input<Inputs.GetMdbKafkaClusterConfigKafkaResourcesInputArgs> Resources { get; set; } = null!;
 
-        public GetMdbKafkaClusterConfigKafkaArgs()
+        public GetMdbKafkaClusterConfigKafkaInputArgs()
         {
         }
     }

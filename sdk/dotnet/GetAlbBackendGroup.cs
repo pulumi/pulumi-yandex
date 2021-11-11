@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,6 +37,32 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetAlbBackendGroupResult> InvokeAsync(GetAlbBackendGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlbBackendGroupResult>("yandex:index/getAlbBackendGroup:getAlbBackendGroup", args ?? new GetAlbBackendGroupArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Application Load Balancer Backend Group. For more information, see
+        /// [Yandex.Cloud Application Load Balancer](https://cloud.yandex.com/en/docs/application-load-balancer/quickstart).
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetAlbBackendGroup.InvokeAsync(new Yandex.GetAlbBackendGroupArgs
+        ///         {
+        ///             BackendGroupId = "my-backend-group-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// This data source is used to define [Application Load Balancer Backend Groups] that can be used by other resources.
+        /// </summary>
+        public static Output<GetAlbBackendGroupResult> Invoke(GetAlbBackendGroupInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlbBackendGroupResult>("yandex:index/getAlbBackendGroup:getAlbBackendGroup", args ?? new GetAlbBackendGroupInvokeArgs(), options.WithVersion());
     }
 
 
@@ -102,6 +129,73 @@ namespace Pulumi.Yandex
         public string? Name { get; set; }
 
         public GetAlbBackendGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlbBackendGroupInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Backend Group ID.
+        /// </summary>
+        [Input("backendGroupId")]
+        public Input<string>? BackendGroupId { get; set; }
+
+        /// <summary>
+        /// Description of the backend group.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        [Input("grpcBackends")]
+        private InputList<Inputs.GetAlbBackendGroupGrpcBackendInputArgs>? _grpcBackends;
+
+        /// <summary>
+        /// Grpc backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.GetAlbBackendGroupGrpcBackendInputArgs> GrpcBackends
+        {
+            get => _grpcBackends ?? (_grpcBackends = new InputList<Inputs.GetAlbBackendGroupGrpcBackendInputArgs>());
+            set => _grpcBackends = value;
+        }
+
+        [Input("httpBackends")]
+        private InputList<Inputs.GetAlbBackendGroupHttpBackendInputArgs>? _httpBackends;
+
+        /// <summary>
+        /// Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.GetAlbBackendGroupHttpBackendInputArgs> HttpBackends
+        {
+            get => _httpBackends ?? (_httpBackends = new InputList<Inputs.GetAlbBackendGroupHttpBackendInputArgs>());
+            set => _httpBackends = value;
+        }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels to assign to this backend group.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// - Name of the Backend Group.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetAlbBackendGroupInvokeArgs()
         {
         }
     }

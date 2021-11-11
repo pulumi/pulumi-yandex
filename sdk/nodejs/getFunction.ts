@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * const myFunction = pulumi.output(yandex.getFunction({
  *     functionId: "are1samplefunction11",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [Yandex Cloud Function](https://cloud.yandex.com/docs/functions/concepts/function) that can be used by other resources.
@@ -43,15 +42,15 @@ export interface GetFunctionArgs {
     /**
      * Folder ID for the Yandex Cloud Function
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Yandex Cloud Function id used to define function
      */
-    readonly functionId?: string;
+    functionId?: string;
     /**
      * Yandex Cloud Function name used to define function
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -117,4 +116,26 @@ export interface GetFunctionResult {
      * Version for Yandex Cloud Function.
      */
     readonly version: string;
+}
+
+export function getFunctionOutput(args?: GetFunctionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionResult> {
+    return pulumi.output(args).apply(a => getFunction(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFunction.
+ */
+export interface GetFunctionOutputArgs {
+    /**
+     * Folder ID for the Yandex Cloud Function
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Yandex Cloud Function id used to define function
+     */
+    functionId?: pulumi.Input<string>;
+    /**
+     * Yandex Cloud Function name used to define function
+     */
+    name?: pulumi.Input<string>;
 }

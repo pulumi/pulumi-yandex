@@ -23,8 +23,8 @@ export function getFunctionScalingPolicy(args: GetFunctionScalingPolicyArgs, opt
  * A collection of arguments for invoking getFunctionScalingPolicy.
  */
 export interface GetFunctionScalingPolicyArgs {
-    readonly functionId: string;
-    readonly policies?: inputs.GetFunctionScalingPolicyPolicy[];
+    functionId: string;
+    policies?: inputs.GetFunctionScalingPolicyPolicy[];
 }
 
 /**
@@ -37,4 +37,16 @@ export interface GetFunctionScalingPolicyResult {
      */
     readonly id: string;
     readonly policies: outputs.GetFunctionScalingPolicyPolicy[];
+}
+
+export function getFunctionScalingPolicyOutput(args: GetFunctionScalingPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionScalingPolicyResult> {
+    return pulumi.output(args).apply(a => getFunctionScalingPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFunctionScalingPolicy.
+ */
+export interface GetFunctionScalingPolicyOutputArgs {
+    functionId: pulumi.Input<string>;
+    policies?: pulumi.Input<pulumi.Input<inputs.GetFunctionScalingPolicyPolicyArgs>[]>;
 }

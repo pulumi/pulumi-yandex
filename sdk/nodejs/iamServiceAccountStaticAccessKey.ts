@@ -135,35 +135,35 @@ export interface IamServiceAccountStaticAccessKeyState {
     /**
      * ID of the static access key.
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * Creation timestamp of the static access key.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * The description of the service account static key.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The encrypted secret, base64 encoded. This is only populated when `pgpKey` is supplied.
      */
-    readonly encryptedSecretKey?: pulumi.Input<string>;
+    encryptedSecretKey?: pulumi.Input<string>;
     /**
      * The fingerprint of the PGP key used to encrypt the secret key. This is only populated when `pgpKey` is supplied.
      */
-    readonly keyFingerprint?: pulumi.Input<string>;
+    keyFingerprint?: pulumi.Input<string>;
     /**
      * An optional PGP key to encrypt the resulting secret key material. May either be a base64-encoded public key or a keybase username in the form `keybase:keybaseusername`.
      */
-    readonly pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string>;
     /**
      * Private part of generated static access key. This is only populated when no `pgpKey` is provided.
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * ID of the service account which is used to get a static key.
      */
-    readonly serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string>;
 }
 
 /**
@@ -173,13 +173,13 @@ export interface IamServiceAccountStaticAccessKeyArgs {
     /**
      * The description of the service account static key.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * An optional PGP key to encrypt the resulting secret key material. May either be a base64-encoded public key or a keybase username in the form `keybase:keybaseusername`.
      */
-    readonly pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string>;
     /**
      * ID of the service account which is used to get a static key.
      */
-    readonly serviceAccountId: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
 }

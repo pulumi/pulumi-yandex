@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const foo = pulumi.output(yandex.getMdbKafkaCluster({
  *     name: "test",
- * }, { async: true }));
+ * }));
  *
  * export const networkId = foo.networkId;
  * ```
@@ -50,29 +50,29 @@ export interface GetMdbKafkaClusterArgs {
     /**
      * The ID of the Kafka cluster.
      */
-    readonly clusterId?: string;
+    clusterId?: string;
     /**
      * Configuration of the Kafka cluster. The structure is documented below.
      */
-    readonly config?: inputs.GetMdbKafkaClusterConfig;
-    readonly deletionProtection?: boolean;
+    config?: inputs.GetMdbKafkaClusterConfig;
+    deletionProtection?: boolean;
     /**
      * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * The name of the Kafka cluster.
      */
-    readonly name?: string;
-    readonly subnetIds?: string[];
+    name?: string;
+    subnetIds?: string[];
     /**
      * A topic of the Kafka cluster. The structure is documented below.
      */
-    readonly topics?: inputs.GetMdbKafkaClusterTopic[];
+    topics?: inputs.GetMdbKafkaClusterTopic[];
     /**
      * A user of the Kafka cluster. The structure is documented below.
      */
-    readonly users?: inputs.GetMdbKafkaClusterUser[];
+    users?: inputs.GetMdbKafkaClusterUser[];
 }
 
 /**
@@ -143,4 +143,40 @@ export interface GetMdbKafkaClusterResult {
      * A user of the Kafka cluster. The structure is documented below.
      */
     readonly users?: outputs.GetMdbKafkaClusterUser[];
+}
+
+export function getMdbKafkaClusterOutput(args?: GetMdbKafkaClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbKafkaClusterResult> {
+    return pulumi.output(args).apply(a => getMdbKafkaCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMdbKafkaCluster.
+ */
+export interface GetMdbKafkaClusterOutputArgs {
+    /**
+     * The ID of the Kafka cluster.
+     */
+    clusterId?: pulumi.Input<string>;
+    /**
+     * Configuration of the Kafka cluster. The structure is documented below.
+     */
+    config?: pulumi.Input<inputs.GetMdbKafkaClusterConfigArgs>;
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * The name of the Kafka cluster.
+     */
+    name?: pulumi.Input<string>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A topic of the Kafka cluster. The structure is documented below.
+     */
+    topics?: pulumi.Input<pulumi.Input<inputs.GetMdbKafkaClusterTopicArgs>[]>;
+    /**
+     * A user of the Kafka cluster. The structure is documented below.
+     */
+    users?: pulumi.Input<pulumi.Input<inputs.GetMdbKafkaClusterUserArgs>[]>;
 }

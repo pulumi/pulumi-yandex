@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetMdbSqlserverClusterResult> InvokeAsync(GetMdbSqlserverClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMdbSqlserverClusterResult>("yandex:index/getMdbSqlserverCluster:getMdbSqlserverCluster", args ?? new GetMdbSqlserverClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Managed SQLServer cluster. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/managed-sqlserver/).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetMdbSqlserverCluster.InvokeAsync(new Yandex.GetMdbSqlserverClusterArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///         this.NetworkId = foo.Apply(foo =&gt; foo.NetworkId);
+        ///     }
+        /// 
+        ///     [Output("networkId")]
+        ///     public Output&lt;string&gt; NetworkId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMdbSqlserverClusterResult> Invoke(GetMdbSqlserverClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMdbSqlserverClusterResult>("yandex:index/getMdbSqlserverCluster:getMdbSqlserverCluster", args ?? new GetMdbSqlserverClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -82,6 +116,46 @@ namespace Pulumi.Yandex
         }
 
         public GetMdbSqlserverClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetMdbSqlserverClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the SQLServer cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The name of the SQLServer cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("sqlserverConfig")]
+        private InputMap<string>? _sqlserverConfig;
+
+        /// <summary>
+        /// SQLServer cluster config.
+        /// </summary>
+        public InputMap<string> SqlserverConfig
+        {
+            get => _sqlserverConfig ?? (_sqlserverConfig = new InputMap<string>());
+            set => _sqlserverConfig = value;
+        }
+
+        public GetMdbSqlserverClusterInvokeArgs()
         {
         }
     }

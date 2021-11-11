@@ -127,17 +127,17 @@ export interface OrganizationManagerOrganizationIamBindingState {
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      * * **federatedUser:{federated_user_id}**: A unique federated user ID.
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the organization to attach the policy to.
      */
-    readonly organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string>;
     /**
      * The role that should be assigned. Only one
      * `yandex.OrganizationManagerOrganizationIamBinding` can be used per role.
      */
-    readonly role?: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role?: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }
 
 /**
@@ -151,15 +151,15 @@ export interface OrganizationManagerOrganizationIamBindingArgs {
      * * **serviceAccount:{service_account_id}**: A unique service account ID.
      * * **federatedUser:{federated_user_id}**: A unique federated user ID.
      */
-    readonly members: pulumi.Input<pulumi.Input<string>[]>;
+    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the organization to attach the policy to.
      */
-    readonly organizationId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * The role that should be assigned. Only one
      * `yandex.OrganizationManagerOrganizationIamBinding` can be used per role.
      */
-    readonly role: pulumi.Input<string>;
-    readonly sleepAfter?: pulumi.Input<number>;
+    role: pulumi.Input<string>;
+    sleepAfter?: pulumi.Input<number>;
 }

@@ -288,7 +288,7 @@ func (o AlbBackendGroupGrpcBackendHealthcheckOutput) ToAlbBackendGroupGrpcBacken
 }
 
 func (o AlbBackendGroupGrpcBackendHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheck) *AlbBackendGroupGrpcBackendHealthcheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupGrpcBackendHealthcheck) *AlbBackendGroupGrpcBackendHealthcheck {
 		return &v
 	}).(AlbBackendGroupGrpcBackendHealthcheckPtrOutput)
 }
@@ -359,7 +359,13 @@ func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) ToAlbBackendGroupGrpcBac
 }
 
 func (o AlbBackendGroupGrpcBackendHealthcheckPtrOutput) Elem() AlbBackendGroupGrpcBackendHealthcheckOutput {
-	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) AlbBackendGroupGrpcBackendHealthcheck { return *v }).(AlbBackendGroupGrpcBackendHealthcheckOutput)
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheck) AlbBackendGroupGrpcBackendHealthcheck {
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupGrpcBackendHealthcheck
+		return ret
+	}).(AlbBackendGroupGrpcBackendHealthcheckOutput)
 }
 
 // Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
@@ -545,7 +551,7 @@ func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackend
 }
 
 func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
 		return &v
 	}).(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput)
 }
@@ -571,7 +577,11 @@ func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput) ToAlbBack
 
 func (o AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrOutput) Elem() AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput {
 	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck) AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck
+		return ret
 	}).(AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckOutput)
 }
 
@@ -686,7 +696,7 @@ func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ToAlbBackend
 }
 
 func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
 		return &v
 	}).(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput)
 }
@@ -722,7 +732,11 @@ func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput) ToAlbBack
 
 func (o AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrOutput) Elem() AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput {
 	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck) AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck
+		return ret
 	}).(AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckOutput)
 }
 
@@ -853,7 +867,7 @@ func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ToAlbBacke
 }
 
 func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
 		return &v
 	}).(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput)
 }
@@ -884,7 +898,11 @@ func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput) ToAlbBa
 
 func (o AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrOutput) Elem() AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput {
 	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck) AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck
+		return ret
 	}).(AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckOutput)
 }
 
@@ -1009,7 +1027,7 @@ func (o AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ToAlbBackendGroupGr
 }
 
 func (o AlbBackendGroupGrpcBackendLoadBalancingConfigOutput) ToAlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupGrpcBackendLoadBalancingConfig) *AlbBackendGroupGrpcBackendLoadBalancingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupGrpcBackendLoadBalancingConfig) *AlbBackendGroupGrpcBackendLoadBalancingConfig {
 		return &v
 	}).(AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput)
 }
@@ -1045,7 +1063,11 @@ func (o AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput) ToAlbBackendGrou
 
 func (o AlbBackendGroupGrpcBackendLoadBalancingConfigPtrOutput) Elem() AlbBackendGroupGrpcBackendLoadBalancingConfigOutput {
 	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendLoadBalancingConfig) AlbBackendGroupGrpcBackendLoadBalancingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupGrpcBackendLoadBalancingConfig
+		return ret
 	}).(AlbBackendGroupGrpcBackendLoadBalancingConfigOutput)
 }
 
@@ -1178,7 +1200,7 @@ func (o AlbBackendGroupGrpcBackendTlsOutput) ToAlbBackendGroupGrpcBackendTlsPtrO
 }
 
 func (o AlbBackendGroupGrpcBackendTlsOutput) ToAlbBackendGroupGrpcBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupGrpcBackendTls) *AlbBackendGroupGrpcBackendTls {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupGrpcBackendTls) *AlbBackendGroupGrpcBackendTls {
 		return &v
 	}).(AlbBackendGroupGrpcBackendTlsPtrOutput)
 }
@@ -1211,7 +1233,13 @@ func (o AlbBackendGroupGrpcBackendTlsPtrOutput) ToAlbBackendGroupGrpcBackendTlsP
 }
 
 func (o AlbBackendGroupGrpcBackendTlsPtrOutput) Elem() AlbBackendGroupGrpcBackendTlsOutput {
-	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendTls) AlbBackendGroupGrpcBackendTls { return *v }).(AlbBackendGroupGrpcBackendTlsOutput)
+	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendTls) AlbBackendGroupGrpcBackendTls {
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupGrpcBackendTls
+		return ret
+	}).(AlbBackendGroupGrpcBackendTlsOutput)
 }
 
 // [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
@@ -1328,10 +1356,11 @@ func (o AlbBackendGroupGrpcBackendTlsValidationContextOutput) ToAlbBackendGroupG
 }
 
 func (o AlbBackendGroupGrpcBackendTlsValidationContextOutput) ToAlbBackendGroupGrpcBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupGrpcBackendTlsValidationContext) *AlbBackendGroupGrpcBackendTlsValidationContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupGrpcBackendTlsValidationContext) *AlbBackendGroupGrpcBackendTlsValidationContext {
 		return &v
 	}).(AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput)
 }
+
 func (o AlbBackendGroupGrpcBackendTlsValidationContextOutput) TrustedCaBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlbBackendGroupGrpcBackendTlsValidationContext) *string { return v.TrustedCaBytes }).(pulumi.StringPtrOutput)
 }
@@ -1356,7 +1385,11 @@ func (o AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput) ToAlbBackendGro
 
 func (o AlbBackendGroupGrpcBackendTlsValidationContextPtrOutput) Elem() AlbBackendGroupGrpcBackendTlsValidationContextOutput {
 	return o.ApplyT(func(v *AlbBackendGroupGrpcBackendTlsValidationContext) AlbBackendGroupGrpcBackendTlsValidationContext {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupGrpcBackendTlsValidationContext
+		return ret
 	}).(AlbBackendGroupGrpcBackendTlsValidationContextOutput)
 }
 
@@ -1665,7 +1698,7 @@ func (o AlbBackendGroupHttpBackendHealthcheckOutput) ToAlbBackendGroupHttpBacken
 }
 
 func (o AlbBackendGroupHttpBackendHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheck) *AlbBackendGroupHttpBackendHealthcheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupHttpBackendHealthcheck) *AlbBackendGroupHttpBackendHealthcheck {
 		return &v
 	}).(AlbBackendGroupHttpBackendHealthcheckPtrOutput)
 }
@@ -1736,7 +1769,13 @@ func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) ToAlbBackendGroupHttpBac
 }
 
 func (o AlbBackendGroupHttpBackendHealthcheckPtrOutput) Elem() AlbBackendGroupHttpBackendHealthcheckOutput {
-	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) AlbBackendGroupHttpBackendHealthcheck { return *v }).(AlbBackendGroupHttpBackendHealthcheckOutput)
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheck) AlbBackendGroupHttpBackendHealthcheck {
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupHttpBackendHealthcheck
+		return ret
+	}).(AlbBackendGroupHttpBackendHealthcheckOutput)
 }
 
 // Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
@@ -1922,7 +1961,7 @@ func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackend
 }
 
 func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck) *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck) *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
 		return &v
 	}).(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput)
 }
@@ -1948,7 +1987,11 @@ func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput) ToAlbBack
 
 func (o AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrOutput) Elem() AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput {
 	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck) AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck
+		return ret
 	}).(AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckOutput)
 }
 
@@ -2063,7 +2106,7 @@ func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ToAlbBackend
 }
 
 func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
 		return &v
 	}).(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput)
 }
@@ -2099,7 +2142,11 @@ func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput) ToAlbBack
 
 func (o AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrOutput) Elem() AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput {
 	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck) AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupHttpBackendHealthcheckHttpHealthcheck
+		return ret
 	}).(AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckOutput)
 }
 
@@ -2230,7 +2277,7 @@ func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ToAlbBacke
 }
 
 func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput) ToAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
 		return &v
 	}).(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput)
 }
@@ -2261,7 +2308,11 @@ func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput) ToAlbBa
 
 func (o AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrOutput) Elem() AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput {
 	return o.ApplyT(func(v *AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck) AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupHttpBackendHealthcheckStreamHealthcheck
+		return ret
 	}).(AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckOutput)
 }
 
@@ -2386,7 +2437,7 @@ func (o AlbBackendGroupHttpBackendLoadBalancingConfigOutput) ToAlbBackendGroupHt
 }
 
 func (o AlbBackendGroupHttpBackendLoadBalancingConfigOutput) ToAlbBackendGroupHttpBackendLoadBalancingConfigPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupHttpBackendLoadBalancingConfig) *AlbBackendGroupHttpBackendLoadBalancingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupHttpBackendLoadBalancingConfig) *AlbBackendGroupHttpBackendLoadBalancingConfig {
 		return &v
 	}).(AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput)
 }
@@ -2422,7 +2473,11 @@ func (o AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput) ToAlbBackendGrou
 
 func (o AlbBackendGroupHttpBackendLoadBalancingConfigPtrOutput) Elem() AlbBackendGroupHttpBackendLoadBalancingConfigOutput {
 	return o.ApplyT(func(v *AlbBackendGroupHttpBackendLoadBalancingConfig) AlbBackendGroupHttpBackendLoadBalancingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupHttpBackendLoadBalancingConfig
+		return ret
 	}).(AlbBackendGroupHttpBackendLoadBalancingConfigOutput)
 }
 
@@ -2555,7 +2610,7 @@ func (o AlbBackendGroupHttpBackendTlsOutput) ToAlbBackendGroupHttpBackendTlsPtrO
 }
 
 func (o AlbBackendGroupHttpBackendTlsOutput) ToAlbBackendGroupHttpBackendTlsPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupHttpBackendTls) *AlbBackendGroupHttpBackendTls {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupHttpBackendTls) *AlbBackendGroupHttpBackendTls {
 		return &v
 	}).(AlbBackendGroupHttpBackendTlsPtrOutput)
 }
@@ -2588,7 +2643,13 @@ func (o AlbBackendGroupHttpBackendTlsPtrOutput) ToAlbBackendGroupHttpBackendTlsP
 }
 
 func (o AlbBackendGroupHttpBackendTlsPtrOutput) Elem() AlbBackendGroupHttpBackendTlsOutput {
-	return o.ApplyT(func(v *AlbBackendGroupHttpBackendTls) AlbBackendGroupHttpBackendTls { return *v }).(AlbBackendGroupHttpBackendTlsOutput)
+	return o.ApplyT(func(v *AlbBackendGroupHttpBackendTls) AlbBackendGroupHttpBackendTls {
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupHttpBackendTls
+		return ret
+	}).(AlbBackendGroupHttpBackendTlsOutput)
 }
 
 // [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
@@ -2705,10 +2766,11 @@ func (o AlbBackendGroupHttpBackendTlsValidationContextOutput) ToAlbBackendGroupH
 }
 
 func (o AlbBackendGroupHttpBackendTlsValidationContextOutput) ToAlbBackendGroupHttpBackendTlsValidationContextPtrOutputWithContext(ctx context.Context) AlbBackendGroupHttpBackendTlsValidationContextPtrOutput {
-	return o.ApplyT(func(v AlbBackendGroupHttpBackendTlsValidationContext) *AlbBackendGroupHttpBackendTlsValidationContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroupHttpBackendTlsValidationContext) *AlbBackendGroupHttpBackendTlsValidationContext {
 		return &v
 	}).(AlbBackendGroupHttpBackendTlsValidationContextPtrOutput)
 }
+
 func (o AlbBackendGroupHttpBackendTlsValidationContextOutput) TrustedCaBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlbBackendGroupHttpBackendTlsValidationContext) *string { return v.TrustedCaBytes }).(pulumi.StringPtrOutput)
 }
@@ -2733,7 +2795,11 @@ func (o AlbBackendGroupHttpBackendTlsValidationContextPtrOutput) ToAlbBackendGro
 
 func (o AlbBackendGroupHttpBackendTlsValidationContextPtrOutput) Elem() AlbBackendGroupHttpBackendTlsValidationContextOutput {
 	return o.ApplyT(func(v *AlbBackendGroupHttpBackendTlsValidationContext) AlbBackendGroupHttpBackendTlsValidationContext {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbBackendGroupHttpBackendTlsValidationContext
+		return ret
 	}).(AlbBackendGroupHttpBackendTlsValidationContextOutput)
 }
 
@@ -2848,7 +2914,7 @@ func (o AlbLoadBalancerAllocationPolicyOutput) ToAlbLoadBalancerAllocationPolicy
 }
 
 func (o AlbLoadBalancerAllocationPolicyOutput) ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(ctx context.Context) AlbLoadBalancerAllocationPolicyPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerAllocationPolicy) *AlbLoadBalancerAllocationPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerAllocationPolicy) *AlbLoadBalancerAllocationPolicy {
 		return &v
 	}).(AlbLoadBalancerAllocationPolicyPtrOutput)
 }
@@ -2873,7 +2939,13 @@ func (o AlbLoadBalancerAllocationPolicyPtrOutput) ToAlbLoadBalancerAllocationPol
 }
 
 func (o AlbLoadBalancerAllocationPolicyPtrOutput) Elem() AlbLoadBalancerAllocationPolicyOutput {
-	return o.ApplyT(func(v *AlbLoadBalancerAllocationPolicy) AlbLoadBalancerAllocationPolicy { return *v }).(AlbLoadBalancerAllocationPolicyOutput)
+	return o.ApplyT(func(v *AlbLoadBalancerAllocationPolicy) AlbLoadBalancerAllocationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerAllocationPolicy
+		return ret
+	}).(AlbLoadBalancerAllocationPolicyOutput)
 }
 
 // Unique set of locations. The structure is documented below.
@@ -3445,7 +3517,7 @@ func (o AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressOutput) ToAlbLo
 }
 
 func (o AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressOutput) ToAlbLoadBalancerListenerEndpointAddressExternalIpv4AddressPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerEndpointAddressExternalIpv4Address) *AlbLoadBalancerListenerEndpointAddressExternalIpv4Address {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerEndpointAddressExternalIpv4Address) *AlbLoadBalancerListenerEndpointAddressExternalIpv4Address {
 		return &v
 	}).(AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressPtrOutput)
 }
@@ -3471,7 +3543,11 @@ func (o AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressPtrOutput) ToAl
 
 func (o AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressPtrOutput) Elem() AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressOutput {
 	return o.ApplyT(func(v *AlbLoadBalancerListenerEndpointAddressExternalIpv4Address) AlbLoadBalancerListenerEndpointAddressExternalIpv4Address {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerEndpointAddressExternalIpv4Address
+		return ret
 	}).(AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressOutput)
 }
 
@@ -3578,7 +3654,7 @@ func (o AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressOutput) ToAlbLo
 }
 
 func (o AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressOutput) ToAlbLoadBalancerListenerEndpointAddressExternalIpv6AddressPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerEndpointAddressExternalIpv6Address) *AlbLoadBalancerListenerEndpointAddressExternalIpv6Address {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerEndpointAddressExternalIpv6Address) *AlbLoadBalancerListenerEndpointAddressExternalIpv6Address {
 		return &v
 	}).(AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressPtrOutput)
 }
@@ -3604,7 +3680,11 @@ func (o AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressPtrOutput) ToAl
 
 func (o AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressPtrOutput) Elem() AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressOutput {
 	return o.ApplyT(func(v *AlbLoadBalancerListenerEndpointAddressExternalIpv6Address) AlbLoadBalancerListenerEndpointAddressExternalIpv6Address {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerEndpointAddressExternalIpv6Address
+		return ret
 	}).(AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressOutput)
 }
 
@@ -3715,7 +3795,7 @@ func (o AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressOutput) ToAlbLo
 }
 
 func (o AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressOutput) ToAlbLoadBalancerListenerEndpointAddressInternalIpv4AddressPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerEndpointAddressInternalIpv4Address) *AlbLoadBalancerListenerEndpointAddressInternalIpv4Address {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerEndpointAddressInternalIpv4Address) *AlbLoadBalancerListenerEndpointAddressInternalIpv4Address {
 		return &v
 	}).(AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressPtrOutput)
 }
@@ -3746,7 +3826,11 @@ func (o AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressPtrOutput) ToAl
 
 func (o AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressPtrOutput) Elem() AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressOutput {
 	return o.ApplyT(func(v *AlbLoadBalancerListenerEndpointAddressInternalIpv4Address) AlbLoadBalancerListenerEndpointAddressInternalIpv4Address {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerEndpointAddressInternalIpv4Address
+		return ret
 	}).(AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressOutput)
 }
 
@@ -3867,7 +3951,7 @@ func (o AlbLoadBalancerListenerHttpOutput) ToAlbLoadBalancerListenerHttpPtrOutpu
 }
 
 func (o AlbLoadBalancerListenerHttpOutput) ToAlbLoadBalancerListenerHttpPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerHttpPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerHttp) *AlbLoadBalancerListenerHttp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerHttp) *AlbLoadBalancerListenerHttp {
 		return &v
 	}).(AlbLoadBalancerListenerHttpPtrOutput)
 }
@@ -3897,7 +3981,13 @@ func (o AlbLoadBalancerListenerHttpPtrOutput) ToAlbLoadBalancerListenerHttpPtrOu
 }
 
 func (o AlbLoadBalancerListenerHttpPtrOutput) Elem() AlbLoadBalancerListenerHttpOutput {
-	return o.ApplyT(func(v *AlbLoadBalancerListenerHttp) AlbLoadBalancerListenerHttp { return *v }).(AlbLoadBalancerListenerHttpOutput)
+	return o.ApplyT(func(v *AlbLoadBalancerListenerHttp) AlbLoadBalancerListenerHttp {
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerHttp
+		return ret
+	}).(AlbLoadBalancerListenerHttpOutput)
 }
 
 // HTTP handler that sets plaintext HTTP router. The structure is documented below.
@@ -4021,7 +4111,7 @@ func (o AlbLoadBalancerListenerHttpHandlerOutput) ToAlbLoadBalancerListenerHttpH
 }
 
 func (o AlbLoadBalancerListenerHttpHandlerOutput) ToAlbLoadBalancerListenerHttpHandlerPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerHttpHandlerPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerHttpHandler) *AlbLoadBalancerListenerHttpHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerHttpHandler) *AlbLoadBalancerListenerHttpHandler {
 		return &v
 	}).(AlbLoadBalancerListenerHttpHandlerPtrOutput)
 }
@@ -4058,7 +4148,13 @@ func (o AlbLoadBalancerListenerHttpHandlerPtrOutput) ToAlbLoadBalancerListenerHt
 }
 
 func (o AlbLoadBalancerListenerHttpHandlerPtrOutput) Elem() AlbLoadBalancerListenerHttpHandlerOutput {
-	return o.ApplyT(func(v *AlbLoadBalancerListenerHttpHandler) AlbLoadBalancerListenerHttpHandler { return *v }).(AlbLoadBalancerListenerHttpHandlerOutput)
+	return o.ApplyT(func(v *AlbLoadBalancerListenerHttpHandler) AlbLoadBalancerListenerHttpHandler {
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerHttpHandler
+		return ret
+	}).(AlbLoadBalancerListenerHttpHandlerOutput)
 }
 
 // If set, will enable only HTTP1 protocol with HTTP1.0 support.
@@ -4184,7 +4280,7 @@ func (o AlbLoadBalancerListenerHttpHandlerHttp2OptionsOutput) ToAlbLoadBalancerL
 }
 
 func (o AlbLoadBalancerListenerHttpHandlerHttp2OptionsOutput) ToAlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerHttpHandlerHttp2Options) *AlbLoadBalancerListenerHttpHandlerHttp2Options {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerHttpHandlerHttp2Options) *AlbLoadBalancerListenerHttpHandlerHttp2Options {
 		return &v
 	}).(AlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutput)
 }
@@ -4210,7 +4306,11 @@ func (o AlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutput) ToAlbLoadBalanc
 
 func (o AlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutput) Elem() AlbLoadBalancerListenerHttpHandlerHttp2OptionsOutput {
 	return o.ApplyT(func(v *AlbLoadBalancerListenerHttpHandlerHttp2Options) AlbLoadBalancerListenerHttpHandlerHttp2Options {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerHttpHandlerHttp2Options
+		return ret
 	}).(AlbLoadBalancerListenerHttpHandlerHttp2OptionsOutput)
 }
 
@@ -4315,10 +4415,11 @@ func (o AlbLoadBalancerListenerHttpRedirectsOutput) ToAlbLoadBalancerListenerHtt
 }
 
 func (o AlbLoadBalancerListenerHttpRedirectsOutput) ToAlbLoadBalancerListenerHttpRedirectsPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerHttpRedirectsPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerHttpRedirects) *AlbLoadBalancerListenerHttpRedirects {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerHttpRedirects) *AlbLoadBalancerListenerHttpRedirects {
 		return &v
 	}).(AlbLoadBalancerListenerHttpRedirectsPtrOutput)
 }
+
 func (o AlbLoadBalancerListenerHttpRedirectsOutput) HttpToHttps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlbLoadBalancerListenerHttpRedirects) *bool { return v.HttpToHttps }).(pulumi.BoolPtrOutput)
 }
@@ -4338,7 +4439,13 @@ func (o AlbLoadBalancerListenerHttpRedirectsPtrOutput) ToAlbLoadBalancerListener
 }
 
 func (o AlbLoadBalancerListenerHttpRedirectsPtrOutput) Elem() AlbLoadBalancerListenerHttpRedirectsOutput {
-	return o.ApplyT(func(v *AlbLoadBalancerListenerHttpRedirects) AlbLoadBalancerListenerHttpRedirects { return *v }).(AlbLoadBalancerListenerHttpRedirectsOutput)
+	return o.ApplyT(func(v *AlbLoadBalancerListenerHttpRedirects) AlbLoadBalancerListenerHttpRedirects {
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerHttpRedirects
+		return ret
+	}).(AlbLoadBalancerListenerHttpRedirectsOutput)
 }
 
 func (o AlbLoadBalancerListenerHttpRedirectsPtrOutput) HttpToHttps() pulumi.BoolPtrOutput {
@@ -4447,7 +4554,7 @@ func (o AlbLoadBalancerListenerTlsOutput) ToAlbLoadBalancerListenerTlsPtrOutput(
 }
 
 func (o AlbLoadBalancerListenerTlsOutput) ToAlbLoadBalancerListenerTlsPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerTlsPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerTls) *AlbLoadBalancerListenerTls {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerTls) *AlbLoadBalancerListenerTls {
 		return &v
 	}).(AlbLoadBalancerListenerTlsPtrOutput)
 }
@@ -4477,7 +4584,13 @@ func (o AlbLoadBalancerListenerTlsPtrOutput) ToAlbLoadBalancerListenerTlsPtrOutp
 }
 
 func (o AlbLoadBalancerListenerTlsPtrOutput) Elem() AlbLoadBalancerListenerTlsOutput {
-	return o.ApplyT(func(v *AlbLoadBalancerListenerTls) AlbLoadBalancerListenerTls { return *v }).(AlbLoadBalancerListenerTlsOutput)
+	return o.ApplyT(func(v *AlbLoadBalancerListenerTls) AlbLoadBalancerListenerTls {
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerTls
+		return ret
+	}).(AlbLoadBalancerListenerTlsOutput)
 }
 
 // TLS handler resource. The structure is documented below.
@@ -4599,7 +4712,7 @@ func (o AlbLoadBalancerListenerTlsDefaultHandlerOutput) ToAlbLoadBalancerListene
 }
 
 func (o AlbLoadBalancerListenerTlsDefaultHandlerOutput) ToAlbLoadBalancerListenerTlsDefaultHandlerPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerTlsDefaultHandlerPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerTlsDefaultHandler) *AlbLoadBalancerListenerTlsDefaultHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerTlsDefaultHandler) *AlbLoadBalancerListenerTlsDefaultHandler {
 		return &v
 	}).(AlbLoadBalancerListenerTlsDefaultHandlerPtrOutput)
 }
@@ -4632,7 +4745,13 @@ func (o AlbLoadBalancerListenerTlsDefaultHandlerPtrOutput) ToAlbLoadBalancerList
 }
 
 func (o AlbLoadBalancerListenerTlsDefaultHandlerPtrOutput) Elem() AlbLoadBalancerListenerTlsDefaultHandlerOutput {
-	return o.ApplyT(func(v *AlbLoadBalancerListenerTlsDefaultHandler) AlbLoadBalancerListenerTlsDefaultHandler { return *v }).(AlbLoadBalancerListenerTlsDefaultHandlerOutput)
+	return o.ApplyT(func(v *AlbLoadBalancerListenerTlsDefaultHandler) AlbLoadBalancerListenerTlsDefaultHandler {
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerTlsDefaultHandler
+		return ret
+	}).(AlbLoadBalancerListenerTlsDefaultHandlerOutput)
 }
 
 // Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
@@ -4757,7 +4876,7 @@ func (o AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerOutput) ToAlbLoadBala
 }
 
 func (o AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerOutput) ToAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler) *AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler) *AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
 		return &v
 	}).(AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutput)
 }
@@ -4795,7 +4914,11 @@ func (o AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutput) ToAlbLoadB
 
 func (o AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutput) Elem() AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerOutput {
 	return o.ApplyT(func(v *AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler) AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler
+		return ret
 	}).(AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerOutput)
 }
 
@@ -4922,7 +5045,7 @@ func (o AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsOutput) T
 }
 
 func (o AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsOutput) ToAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options) *AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options) *AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
 		return &v
 	}).(AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOutput)
 }
@@ -4950,7 +5073,11 @@ func (o AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOutput
 
 func (o AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOutput) Elem() AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsOutput {
 	return o.ApplyT(func(v *AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options) AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options
+		return ret
 	}).(AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsOutput)
 }
 
@@ -5248,7 +5375,7 @@ func (o AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerOutput) ToAlbLoadB
 }
 
 func (o AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerOutput) ToAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler) *AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler) *AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
 		return &v
 	}).(AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutput)
 }
@@ -5286,7 +5413,11 @@ func (o AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutput) ToAlbLo
 
 func (o AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutput) Elem() AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerOutput {
 	return o.ApplyT(func(v *AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler) AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler
+		return ret
 	}).(AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerOutput)
 }
 
@@ -5413,7 +5544,7 @@ func (o AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsOutput
 }
 
 func (o AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsOutput) ToAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrOutputWithContext(ctx context.Context) AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrOutput {
-	return o.ApplyT(func(v AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options) *AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options) *AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
 		return &v
 	}).(AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrOutput)
 }
@@ -5441,7 +5572,11 @@ func (o AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrOut
 
 func (o AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrOutput) Elem() AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsOutput {
 	return o.ApplyT(func(v *AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options) AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options
+		return ret
 	}).(AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsOutput)
 }
 
@@ -6034,7 +6169,7 @@ func (o AlbVirtualHostRouteGrpcRouteOutput) ToAlbVirtualHostRouteGrpcRoutePtrOut
 }
 
 func (o AlbVirtualHostRouteGrpcRouteOutput) ToAlbVirtualHostRouteGrpcRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRoutePtrOutput {
-	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRoute) *AlbVirtualHostRouteGrpcRoute {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHostRouteGrpcRoute) *AlbVirtualHostRouteGrpcRoute {
 		return &v
 	}).(AlbVirtualHostRouteGrpcRoutePtrOutput)
 }
@@ -6073,7 +6208,13 @@ func (o AlbVirtualHostRouteGrpcRoutePtrOutput) ToAlbVirtualHostRouteGrpcRoutePtr
 }
 
 func (o AlbVirtualHostRouteGrpcRoutePtrOutput) Elem() AlbVirtualHostRouteGrpcRouteOutput {
-	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRoute) AlbVirtualHostRouteGrpcRoute { return *v }).(AlbVirtualHostRouteGrpcRouteOutput)
+	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRoute) AlbVirtualHostRouteGrpcRoute {
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHostRouteGrpcRoute
+		return ret
+	}).(AlbVirtualHostRouteGrpcRouteOutput)
 }
 
 // Checks "/" prefix by default. The structure is documented below.
@@ -6298,10 +6439,11 @@ func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ToAlbVirtualHostRouteGr
 }
 
 func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) ToAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput {
-	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
 		return &v
 	}).(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput)
 }
+
 func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
@@ -6326,7 +6468,11 @@ func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput) ToAlbVirtualHostRout
 
 func (o AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrOutput) Elem() AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput {
 	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn) AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn
+		return ret
 	}).(AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnOutput)
 }
 
@@ -6465,7 +6611,7 @@ func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ToAlbVirtualHostRoute
 }
 
 func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput {
-	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *AlbVirtualHostRouteGrpcRouteGrpcRouteAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHostRouteGrpcRouteGrpcRouteAction) *AlbVirtualHostRouteGrpcRouteGrpcRouteAction {
 		return &v
 	}).(AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput)
 }
@@ -6515,7 +6661,11 @@ func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) ToAlbVirtualHostRo
 
 func (o AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrOutput) Elem() AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput {
 	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcRouteAction) AlbVirtualHostRouteGrpcRouteGrpcRouteAction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHostRouteGrpcRouteGrpcRouteAction
+		return ret
 	}).(AlbVirtualHostRouteGrpcRouteGrpcRouteActionOutput)
 }
 
@@ -6668,7 +6818,7 @@ func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ToAlbVirtual
 }
 
 func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput) ToAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput {
-	return o.ApplyT(func(v AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction) *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction) *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
 		return &v
 	}).(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput)
 }
@@ -6695,7 +6845,11 @@ func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput) ToAlbVirt
 
 func (o AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrOutput) Elem() AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput {
 	return o.ApplyT(func(v *AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction) AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHostRouteGrpcRouteGrpcStatusResponseAction
+		return ret
 	}).(AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionOutput)
 }
 
@@ -6815,7 +6969,7 @@ func (o AlbVirtualHostRouteHttpRouteOutput) ToAlbVirtualHostRouteHttpRoutePtrOut
 }
 
 func (o AlbVirtualHostRouteHttpRouteOutput) ToAlbVirtualHostRouteHttpRoutePtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRoutePtrOutput {
-	return o.ApplyT(func(v AlbVirtualHostRouteHttpRoute) *AlbVirtualHostRouteHttpRoute {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHostRouteHttpRoute) *AlbVirtualHostRouteHttpRoute {
 		return &v
 	}).(AlbVirtualHostRouteHttpRoutePtrOutput)
 }
@@ -6861,7 +7015,13 @@ func (o AlbVirtualHostRouteHttpRoutePtrOutput) ToAlbVirtualHostRouteHttpRoutePtr
 }
 
 func (o AlbVirtualHostRouteHttpRoutePtrOutput) Elem() AlbVirtualHostRouteHttpRouteOutput {
-	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRoute) AlbVirtualHostRouteHttpRoute { return *v }).(AlbVirtualHostRouteHttpRouteOutput)
+	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRoute) AlbVirtualHostRouteHttpRoute {
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHostRouteHttpRoute
+		return ret
+	}).(AlbVirtualHostRouteHttpRouteOutput)
 }
 
 // Direct response action resource. The structure is documented below.
@@ -7003,7 +7163,7 @@ func (o AlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ToAlbVirtualHost
 }
 
 func (o AlbVirtualHostRouteHttpRouteDirectResponseActionOutput) ToAlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput {
-	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteDirectResponseAction) *AlbVirtualHostRouteHttpRouteDirectResponseAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHostRouteHttpRouteDirectResponseAction) *AlbVirtualHostRouteHttpRouteDirectResponseAction {
 		return &v
 	}).(AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput)
 }
@@ -7035,7 +7195,11 @@ func (o AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput) ToAlbVirtualH
 
 func (o AlbVirtualHostRouteHttpRouteDirectResponseActionPtrOutput) Elem() AlbVirtualHostRouteHttpRouteDirectResponseActionOutput {
 	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteDirectResponseAction) AlbVirtualHostRouteHttpRouteDirectResponseAction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHostRouteHttpRouteDirectResponseAction
+		return ret
 	}).(AlbVirtualHostRouteHttpRouteDirectResponseActionOutput)
 }
 
@@ -7261,10 +7425,11 @@ func (o AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ToAlbVirtualHostRouteHt
 }
 
 func (o AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) ToAlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput {
-	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpMatchPath) *AlbVirtualHostRouteHttpRouteHttpMatchPath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHostRouteHttpRouteHttpMatchPath) *AlbVirtualHostRouteHttpRouteHttpMatchPath {
 		return &v
 	}).(AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput)
 }
+
 func (o AlbVirtualHostRouteHttpRouteHttpMatchPathOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpMatchPath) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
@@ -7289,7 +7454,11 @@ func (o AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput) ToAlbVirtualHostRout
 
 func (o AlbVirtualHostRouteHttpRouteHttpMatchPathPtrOutput) Elem() AlbVirtualHostRouteHttpRouteHttpMatchPathOutput {
 	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpMatchPath) AlbVirtualHostRouteHttpRouteHttpMatchPath {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHostRouteHttpRouteHttpMatchPath
+		return ret
 	}).(AlbVirtualHostRouteHttpRouteHttpMatchPathOutput)
 }
 
@@ -7438,7 +7607,7 @@ func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ToAlbVirtualHostRoute
 }
 
 func (o AlbVirtualHostRouteHttpRouteHttpRouteActionOutput) ToAlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput {
-	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteHttpRouteAction) *AlbVirtualHostRouteHttpRouteHttpRouteAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHostRouteHttpRouteHttpRouteAction) *AlbVirtualHostRouteHttpRouteHttpRouteAction {
 		return &v
 	}).(AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput)
 }
@@ -7499,7 +7668,11 @@ func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) ToAlbVirtualHostRo
 
 func (o AlbVirtualHostRouteHttpRouteHttpRouteActionPtrOutput) Elem() AlbVirtualHostRouteHttpRouteHttpRouteActionOutput {
 	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteHttpRouteAction) AlbVirtualHostRouteHttpRouteHttpRouteAction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHostRouteHttpRouteHttpRouteAction
+		return ret
 	}).(AlbVirtualHostRouteHttpRouteHttpRouteActionOutput)
 }
 
@@ -7699,10 +7872,11 @@ func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ToAlbVirtualHostRouteH
 }
 
 func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) ToAlbVirtualHostRouteHttpRouteRedirectActionPtrOutputWithContext(ctx context.Context) AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput {
-	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *AlbVirtualHostRouteHttpRouteRedirectAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbVirtualHostRouteHttpRouteRedirectAction) *AlbVirtualHostRouteHttpRouteRedirectAction {
 		return &v
 	}).(AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput)
 }
+
 func (o AlbVirtualHostRouteHttpRouteRedirectActionOutput) RemoveQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlbVirtualHostRouteHttpRouteRedirectAction) *bool { return v.RemoveQuery }).(pulumi.BoolPtrOutput)
 }
@@ -7756,7 +7930,11 @@ func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) ToAlbVirtualHostRou
 
 func (o AlbVirtualHostRouteHttpRouteRedirectActionPtrOutput) Elem() AlbVirtualHostRouteHttpRouteRedirectActionOutput {
 	return o.ApplyT(func(v *AlbVirtualHostRouteHttpRouteRedirectAction) AlbVirtualHostRouteHttpRouteRedirectAction {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret AlbVirtualHostRouteHttpRouteRedirectAction
+		return ret
 	}).(AlbVirtualHostRouteHttpRouteRedirectActionOutput)
 }
 
@@ -7925,7 +8103,7 @@ func (o ComputeDiskDiskPlacementPolicyOutput) ToComputeDiskDiskPlacementPolicyPt
 }
 
 func (o ComputeDiskDiskPlacementPolicyOutput) ToComputeDiskDiskPlacementPolicyPtrOutputWithContext(ctx context.Context) ComputeDiskDiskPlacementPolicyPtrOutput {
-	return o.ApplyT(func(v ComputeDiskDiskPlacementPolicy) *ComputeDiskDiskPlacementPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeDiskDiskPlacementPolicy) *ComputeDiskDiskPlacementPolicy {
 		return &v
 	}).(ComputeDiskDiskPlacementPolicyPtrOutput)
 }
@@ -7950,7 +8128,13 @@ func (o ComputeDiskDiskPlacementPolicyPtrOutput) ToComputeDiskDiskPlacementPolic
 }
 
 func (o ComputeDiskDiskPlacementPolicyPtrOutput) Elem() ComputeDiskDiskPlacementPolicyOutput {
-	return o.ApplyT(func(v *ComputeDiskDiskPlacementPolicy) ComputeDiskDiskPlacementPolicy { return *v }).(ComputeDiskDiskPlacementPolicyOutput)
+	return o.ApplyT(func(v *ComputeDiskDiskPlacementPolicy) ComputeDiskDiskPlacementPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeDiskDiskPlacementPolicy
+		return ret
+	}).(ComputeDiskDiskPlacementPolicyOutput)
 }
 
 // Specifies Disk Placement Group id.
@@ -8078,7 +8262,7 @@ func (o ComputeInstanceBootDiskOutput) ToComputeInstanceBootDiskPtrOutput() Comp
 }
 
 func (o ComputeInstanceBootDiskOutput) ToComputeInstanceBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceBootDiskPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceBootDisk) *ComputeInstanceBootDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceBootDisk) *ComputeInstanceBootDisk {
 		return &v
 	}).(ComputeInstanceBootDiskPtrOutput)
 }
@@ -8126,7 +8310,13 @@ func (o ComputeInstanceBootDiskPtrOutput) ToComputeInstanceBootDiskPtrOutputWith
 }
 
 func (o ComputeInstanceBootDiskPtrOutput) Elem() ComputeInstanceBootDiskOutput {
-	return o.ApplyT(func(v *ComputeInstanceBootDisk) ComputeInstanceBootDisk { return *v }).(ComputeInstanceBootDiskOutput)
+	return o.ApplyT(func(v *ComputeInstanceBootDisk) ComputeInstanceBootDisk {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceBootDisk
+		return ret
+	}).(ComputeInstanceBootDiskOutput)
 }
 
 // Whether the disk is auto-deleted when the instance
@@ -8295,7 +8485,7 @@ func (o ComputeInstanceBootDiskInitializeParamsOutput) ToComputeInstanceBootDisk
 }
 
 func (o ComputeInstanceBootDiskInitializeParamsOutput) ToComputeInstanceBootDiskInitializeParamsPtrOutputWithContext(ctx context.Context) ComputeInstanceBootDiskInitializeParamsPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceBootDiskInitializeParams) *ComputeInstanceBootDiskInitializeParams {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceBootDiskInitializeParams) *ComputeInstanceBootDiskInitializeParams {
 		return &v
 	}).(ComputeInstanceBootDiskInitializeParamsPtrOutput)
 }
@@ -8345,7 +8535,13 @@ func (o ComputeInstanceBootDiskInitializeParamsPtrOutput) ToComputeInstanceBootD
 }
 
 func (o ComputeInstanceBootDiskInitializeParamsPtrOutput) Elem() ComputeInstanceBootDiskInitializeParamsOutput {
-	return o.ApplyT(func(v *ComputeInstanceBootDiskInitializeParams) ComputeInstanceBootDiskInitializeParams { return *v }).(ComputeInstanceBootDiskInitializeParamsOutput)
+	return o.ApplyT(func(v *ComputeInstanceBootDiskInitializeParams) ComputeInstanceBootDiskInitializeParams {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceBootDiskInitializeParams
+		return ret
+	}).(ComputeInstanceBootDiskInitializeParamsOutput)
 }
 
 // Description of the boot disk.
@@ -8501,7 +8697,7 @@ func (o ComputeInstanceGroupAllocationPolicyOutput) ToComputeInstanceGroupAlloca
 }
 
 func (o ComputeInstanceGroupAllocationPolicyOutput) ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupAllocationPolicyPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupAllocationPolicy) *ComputeInstanceGroupAllocationPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupAllocationPolicy) *ComputeInstanceGroupAllocationPolicy {
 		return &v
 	}).(ComputeInstanceGroupAllocationPolicyPtrOutput)
 }
@@ -8526,7 +8722,13 @@ func (o ComputeInstanceGroupAllocationPolicyPtrOutput) ToComputeInstanceGroupAll
 }
 
 func (o ComputeInstanceGroupAllocationPolicyPtrOutput) Elem() ComputeInstanceGroupAllocationPolicyOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupAllocationPolicy) ComputeInstanceGroupAllocationPolicy { return *v }).(ComputeInstanceGroupAllocationPolicyOutput)
+	return o.ApplyT(func(v *ComputeInstanceGroupAllocationPolicy) ComputeInstanceGroupAllocationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupAllocationPolicy
+		return ret
+	}).(ComputeInstanceGroupAllocationPolicyOutput)
 }
 
 // A list of availability zones.
@@ -8650,7 +8852,7 @@ func (o ComputeInstanceGroupApplicationLoadBalancerOutput) ToComputeInstanceGrou
 }
 
 func (o ComputeInstanceGroupApplicationLoadBalancerOutput) ToComputeInstanceGroupApplicationLoadBalancerPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupApplicationLoadBalancerPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupApplicationLoadBalancer) *ComputeInstanceGroupApplicationLoadBalancer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupApplicationLoadBalancer) *ComputeInstanceGroupApplicationLoadBalancer {
 		return &v
 	}).(ComputeInstanceGroupApplicationLoadBalancerPtrOutput)
 }
@@ -8700,7 +8902,11 @@ func (o ComputeInstanceGroupApplicationLoadBalancerPtrOutput) ToComputeInstanceG
 
 func (o ComputeInstanceGroupApplicationLoadBalancerPtrOutput) Elem() ComputeInstanceGroupApplicationLoadBalancerOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupApplicationLoadBalancer) ComputeInstanceGroupApplicationLoadBalancer {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupApplicationLoadBalancer
+		return ret
 	}).(ComputeInstanceGroupApplicationLoadBalancerOutput)
 }
 
@@ -8888,7 +9094,7 @@ func (o ComputeInstanceGroupDeployPolicyOutput) ToComputeInstanceGroupDeployPoli
 }
 
 func (o ComputeInstanceGroupDeployPolicyOutput) ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupDeployPolicyPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupDeployPolicy) *ComputeInstanceGroupDeployPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupDeployPolicy) *ComputeInstanceGroupDeployPolicy {
 		return &v
 	}).(ComputeInstanceGroupDeployPolicyPtrOutput)
 }
@@ -8944,7 +9150,13 @@ func (o ComputeInstanceGroupDeployPolicyPtrOutput) ToComputeInstanceGroupDeployP
 }
 
 func (o ComputeInstanceGroupDeployPolicyPtrOutput) Elem() ComputeInstanceGroupDeployPolicyOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupDeployPolicy) ComputeInstanceGroupDeployPolicy { return *v }).(ComputeInstanceGroupDeployPolicyOutput)
+	return o.ApplyT(func(v *ComputeInstanceGroupDeployPolicy) ComputeInstanceGroupDeployPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupDeployPolicy
+		return ret
+	}).(ComputeInstanceGroupDeployPolicyOutput)
 }
 
 // The maximum number of instances that can be created at the same time.
@@ -9898,7 +10110,7 @@ func (o ComputeInstanceGroupInstanceTemplateOutput) ToComputeInstanceGroupInstan
 }
 
 func (o ComputeInstanceGroupInstanceTemplateOutput) ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplatePtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplate) *ComputeInstanceGroupInstanceTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplate) *ComputeInstanceGroupInstanceTemplate {
 		return &v
 	}).(ComputeInstanceGroupInstanceTemplatePtrOutput)
 }
@@ -10020,7 +10232,13 @@ func (o ComputeInstanceGroupInstanceTemplatePtrOutput) ToComputeInstanceGroupIns
 }
 
 func (o ComputeInstanceGroupInstanceTemplatePtrOutput) Elem() ComputeInstanceGroupInstanceTemplateOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) ComputeInstanceGroupInstanceTemplate { return *v }).(ComputeInstanceGroupInstanceTemplateOutput)
+	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) ComputeInstanceGroupInstanceTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupInstanceTemplate
+		return ret
+	}).(ComputeInstanceGroupInstanceTemplateOutput)
 }
 
 // Boot disk specifications for the instance. The structure is documented below.
@@ -10286,7 +10504,7 @@ func (o ComputeInstanceGroupInstanceTemplateBootDiskOutput) ToComputeInstanceGro
 }
 
 func (o ComputeInstanceGroupInstanceTemplateBootDiskOutput) ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateBootDisk) *ComputeInstanceGroupInstanceTemplateBootDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplateBootDisk) *ComputeInstanceGroupInstanceTemplateBootDisk {
 		return &v
 	}).(ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput)
 }
@@ -10329,7 +10547,11 @@ func (o ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) ToComputeInstance
 
 func (o ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) Elem() ComputeInstanceGroupInstanceTemplateBootDiskOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateBootDisk) ComputeInstanceGroupInstanceTemplateBootDisk {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupInstanceTemplateBootDisk
+		return ret
 	}).(ComputeInstanceGroupInstanceTemplateBootDiskOutput)
 }
 
@@ -10482,7 +10704,7 @@ func (o ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsOutput) ToCo
 }
 
 func (o ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsOutput) ToComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams) *ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams) *ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams {
 		return &v
 	}).(ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrOutput)
 }
@@ -10528,7 +10750,11 @@ func (o ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrOutput) T
 
 func (o ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrOutput) Elem() ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams) ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams
+		return ret
 	}).(ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsOutput)
 }
 
@@ -11343,7 +11569,7 @@ func (o ComputeInstanceGroupInstanceTemplatePlacementPolicyOutput) ToComputeInst
 }
 
 func (o ComputeInstanceGroupInstanceTemplatePlacementPolicyOutput) ToComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplatePlacementPolicy) *ComputeInstanceGroupInstanceTemplatePlacementPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplatePlacementPolicy) *ComputeInstanceGroupInstanceTemplatePlacementPolicy {
 		return &v
 	}).(ComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput)
 }
@@ -11369,7 +11595,11 @@ func (o ComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput) ToComputeI
 
 func (o ComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput) Elem() ComputeInstanceGroupInstanceTemplatePlacementPolicyOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplatePlacementPolicy) ComputeInstanceGroupInstanceTemplatePlacementPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupInstanceTemplatePlacementPolicy
+		return ret
 	}).(ComputeInstanceGroupInstanceTemplatePlacementPolicyOutput)
 }
 
@@ -11486,7 +11716,7 @@ func (o ComputeInstanceGroupInstanceTemplateResourcesOutput) ToComputeInstanceGr
 }
 
 func (o ComputeInstanceGroupInstanceTemplateResourcesOutput) ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateResources) *ComputeInstanceGroupInstanceTemplateResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplateResources) *ComputeInstanceGroupInstanceTemplateResources {
 		return &v
 	}).(ComputeInstanceGroupInstanceTemplateResourcesPtrOutput)
 }
@@ -11526,7 +11756,11 @@ func (o ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) ToComputeInstanc
 
 func (o ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) Elem() ComputeInstanceGroupInstanceTemplateResourcesOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateResources) ComputeInstanceGroupInstanceTemplateResources {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupInstanceTemplateResources
+		return ret
 	}).(ComputeInstanceGroupInstanceTemplateResourcesOutput)
 }
 
@@ -11662,7 +11896,7 @@ func (o ComputeInstanceGroupInstanceTemplateSchedulingPolicyOutput) ToComputeIns
 }
 
 func (o ComputeInstanceGroupInstanceTemplateSchedulingPolicyOutput) ToComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateSchedulingPolicy) *ComputeInstanceGroupInstanceTemplateSchedulingPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplateSchedulingPolicy) *ComputeInstanceGroupInstanceTemplateSchedulingPolicy {
 		return &v
 	}).(ComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrOutput)
 }
@@ -11688,7 +11922,11 @@ func (o ComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrOutput) ToCompute
 
 func (o ComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrOutput) Elem() ComputeInstanceGroupInstanceTemplateSchedulingPolicyOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateSchedulingPolicy) ComputeInstanceGroupInstanceTemplateSchedulingPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupInstanceTemplateSchedulingPolicy
+		return ret
 	}).(ComputeInstanceGroupInstanceTemplateSchedulingPolicyOutput)
 }
 
@@ -11937,7 +12175,7 @@ func (o ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsOutput)
 }
 
 func (o ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsOutput) ToComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams) *ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams) *ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams {
 		return &v
 	}).(ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsPtrOutput)
 }
@@ -11985,7 +12223,11 @@ func (o ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsPtrOutp
 
 func (o ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsPtrOutput) Elem() ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams) ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParams
+		return ret
 	}).(ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsOutput)
 }
 
@@ -12150,7 +12392,7 @@ func (o ComputeInstanceGroupLoadBalancerOutput) ToComputeInstanceGroupLoadBalanc
 }
 
 func (o ComputeInstanceGroupLoadBalancerOutput) ToComputeInstanceGroupLoadBalancerPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupLoadBalancerPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupLoadBalancer) *ComputeInstanceGroupLoadBalancer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupLoadBalancer) *ComputeInstanceGroupLoadBalancer {
 		return &v
 	}).(ComputeInstanceGroupLoadBalancerPtrOutput)
 }
@@ -12199,7 +12441,13 @@ func (o ComputeInstanceGroupLoadBalancerPtrOutput) ToComputeInstanceGroupLoadBal
 }
 
 func (o ComputeInstanceGroupLoadBalancerPtrOutput) Elem() ComputeInstanceGroupLoadBalancerOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupLoadBalancer) ComputeInstanceGroupLoadBalancer { return *v }).(ComputeInstanceGroupLoadBalancerOutput)
+	return o.ApplyT(func(v *ComputeInstanceGroupLoadBalancer) ComputeInstanceGroupLoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupLoadBalancer
+		return ret
+	}).(ComputeInstanceGroupLoadBalancerOutput)
 }
 
 // Timeout for waiting for the VM to be checked by the load balancer. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
@@ -12362,7 +12610,7 @@ func (o ComputeInstanceGroupScalePolicyOutput) ToComputeInstanceGroupScalePolicy
 }
 
 func (o ComputeInstanceGroupScalePolicyOutput) ToComputeInstanceGroupScalePolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupScalePolicyPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupScalePolicy) *ComputeInstanceGroupScalePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupScalePolicy) *ComputeInstanceGroupScalePolicy {
 		return &v
 	}).(ComputeInstanceGroupScalePolicyPtrOutput)
 }
@@ -12401,7 +12649,13 @@ func (o ComputeInstanceGroupScalePolicyPtrOutput) ToComputeInstanceGroupScalePol
 }
 
 func (o ComputeInstanceGroupScalePolicyPtrOutput) Elem() ComputeInstanceGroupScalePolicyOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicy) ComputeInstanceGroupScalePolicy { return *v }).(ComputeInstanceGroupScalePolicyOutput)
+	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicy) ComputeInstanceGroupScalePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupScalePolicy
+		return ret
+	}).(ComputeInstanceGroupScalePolicyOutput)
 }
 
 // The auto scaling policy of the instance group. The structure is documented below.
@@ -12565,7 +12819,7 @@ func (o ComputeInstanceGroupScalePolicyAutoScaleOutput) ToComputeInstanceGroupSc
 }
 
 func (o ComputeInstanceGroupScalePolicyAutoScaleOutput) ToComputeInstanceGroupScalePolicyAutoScalePtrOutputWithContext(ctx context.Context) ComputeInstanceGroupScalePolicyAutoScalePtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupScalePolicyAutoScale) *ComputeInstanceGroupScalePolicyAutoScale {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupScalePolicyAutoScale) *ComputeInstanceGroupScalePolicyAutoScale {
 		return &v
 	}).(ComputeInstanceGroupScalePolicyAutoScalePtrOutput)
 }
@@ -12632,7 +12886,13 @@ func (o ComputeInstanceGroupScalePolicyAutoScalePtrOutput) ToComputeInstanceGrou
 }
 
 func (o ComputeInstanceGroupScalePolicyAutoScalePtrOutput) Elem() ComputeInstanceGroupScalePolicyAutoScaleOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicyAutoScale) ComputeInstanceGroupScalePolicyAutoScale { return *v }).(ComputeInstanceGroupScalePolicyAutoScaleOutput)
+	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicyAutoScale) ComputeInstanceGroupScalePolicyAutoScale {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupScalePolicyAutoScale
+		return ret
+	}).(ComputeInstanceGroupScalePolicyAutoScaleOutput)
 }
 
 // Target CPU load level.
@@ -12976,7 +13236,7 @@ func (o ComputeInstanceGroupScalePolicyFixedScaleOutput) ToComputeInstanceGroupS
 }
 
 func (o ComputeInstanceGroupScalePolicyFixedScaleOutput) ToComputeInstanceGroupScalePolicyFixedScalePtrOutputWithContext(ctx context.Context) ComputeInstanceGroupScalePolicyFixedScalePtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupScalePolicyFixedScale) *ComputeInstanceGroupScalePolicyFixedScale {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupScalePolicyFixedScale) *ComputeInstanceGroupScalePolicyFixedScale {
 		return &v
 	}).(ComputeInstanceGroupScalePolicyFixedScalePtrOutput)
 }
@@ -13002,7 +13262,11 @@ func (o ComputeInstanceGroupScalePolicyFixedScalePtrOutput) ToComputeInstanceGro
 
 func (o ComputeInstanceGroupScalePolicyFixedScalePtrOutput) Elem() ComputeInstanceGroupScalePolicyFixedScaleOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicyFixedScale) ComputeInstanceGroupScalePolicyFixedScale {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupScalePolicyFixedScale
+		return ret
 	}).(ComputeInstanceGroupScalePolicyFixedScaleOutput)
 }
 
@@ -13147,7 +13411,7 @@ func (o ComputeInstanceGroupScalePolicyTestAutoScaleOutput) ToComputeInstanceGro
 }
 
 func (o ComputeInstanceGroupScalePolicyTestAutoScaleOutput) ToComputeInstanceGroupScalePolicyTestAutoScalePtrOutputWithContext(ctx context.Context) ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput {
-	return o.ApplyT(func(v ComputeInstanceGroupScalePolicyTestAutoScale) *ComputeInstanceGroupScalePolicyTestAutoScale {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupScalePolicyTestAutoScale) *ComputeInstanceGroupScalePolicyTestAutoScale {
 		return &v
 	}).(ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput)
 }
@@ -13215,7 +13479,11 @@ func (o ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput) ToComputeInstance
 
 func (o ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput) Elem() ComputeInstanceGroupScalePolicyTestAutoScaleOutput {
 	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicyTestAutoScale) ComputeInstanceGroupScalePolicyTestAutoScale {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceGroupScalePolicyTestAutoScale
+		return ret
 	}).(ComputeInstanceGroupScalePolicyTestAutoScaleOutput)
 }
 
@@ -14155,7 +14423,7 @@ func (o ComputeInstancePlacementPolicyOutput) ToComputeInstancePlacementPolicyPt
 }
 
 func (o ComputeInstancePlacementPolicyOutput) ToComputeInstancePlacementPolicyPtrOutputWithContext(ctx context.Context) ComputeInstancePlacementPolicyPtrOutput {
-	return o.ApplyT(func(v ComputeInstancePlacementPolicy) *ComputeInstancePlacementPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstancePlacementPolicy) *ComputeInstancePlacementPolicy {
 		return &v
 	}).(ComputeInstancePlacementPolicyPtrOutput)
 }
@@ -14180,7 +14448,13 @@ func (o ComputeInstancePlacementPolicyPtrOutput) ToComputeInstancePlacementPolic
 }
 
 func (o ComputeInstancePlacementPolicyPtrOutput) Elem() ComputeInstancePlacementPolicyOutput {
-	return o.ApplyT(func(v *ComputeInstancePlacementPolicy) ComputeInstancePlacementPolicy { return *v }).(ComputeInstancePlacementPolicyOutput)
+	return o.ApplyT(func(v *ComputeInstancePlacementPolicy) ComputeInstancePlacementPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstancePlacementPolicy
+		return ret
+	}).(ComputeInstancePlacementPolicyOutput)
 }
 
 // Specifies the id of the Placement Group to assign to the instance.
@@ -14296,7 +14570,7 @@ func (o ComputeInstanceResourcesOutput) ToComputeInstanceResourcesPtrOutput() Co
 }
 
 func (o ComputeInstanceResourcesOutput) ToComputeInstanceResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceResourcesPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceResources) *ComputeInstanceResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceResources) *ComputeInstanceResources {
 		return &v
 	}).(ComputeInstanceResourcesPtrOutput)
 }
@@ -14335,7 +14609,13 @@ func (o ComputeInstanceResourcesPtrOutput) ToComputeInstanceResourcesPtrOutputWi
 }
 
 func (o ComputeInstanceResourcesPtrOutput) Elem() ComputeInstanceResourcesOutput {
-	return o.ApplyT(func(v *ComputeInstanceResources) ComputeInstanceResources { return *v }).(ComputeInstanceResourcesOutput)
+	return o.ApplyT(func(v *ComputeInstanceResources) ComputeInstanceResources {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceResources
+		return ret
+	}).(ComputeInstanceResourcesOutput)
 }
 
 // If provided, specifies baseline performance for a core as a percent.
@@ -14470,7 +14750,7 @@ func (o ComputeInstanceSchedulingPolicyOutput) ToComputeInstanceSchedulingPolicy
 }
 
 func (o ComputeInstanceSchedulingPolicyOutput) ToComputeInstanceSchedulingPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceSchedulingPolicyPtrOutput {
-	return o.ApplyT(func(v ComputeInstanceSchedulingPolicy) *ComputeInstanceSchedulingPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceSchedulingPolicy) *ComputeInstanceSchedulingPolicy {
 		return &v
 	}).(ComputeInstanceSchedulingPolicyPtrOutput)
 }
@@ -14495,7 +14775,13 @@ func (o ComputeInstanceSchedulingPolicyPtrOutput) ToComputeInstanceSchedulingPol
 }
 
 func (o ComputeInstanceSchedulingPolicyPtrOutput) Elem() ComputeInstanceSchedulingPolicyOutput {
-	return o.ApplyT(func(v *ComputeInstanceSchedulingPolicy) ComputeInstanceSchedulingPolicy { return *v }).(ComputeInstanceSchedulingPolicyOutput)
+	return o.ApplyT(func(v *ComputeInstanceSchedulingPolicy) ComputeInstanceSchedulingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeInstanceSchedulingPolicy
+		return ret
+	}).(ComputeInstanceSchedulingPolicyOutput)
 }
 
 // Specifies if the instance is preemptible. Defaults to false.
@@ -14739,7 +15025,7 @@ func (o DataprocClusterClusterConfigOutput) ToDataprocClusterClusterConfigPtrOut
 }
 
 func (o DataprocClusterClusterConfigOutput) ToDataprocClusterClusterConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigPtrOutput {
-	return o.ApplyT(func(v DataprocClusterClusterConfig) *DataprocClusterClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataprocClusterClusterConfig) *DataprocClusterClusterConfig {
 		return &v
 	}).(DataprocClusterClusterConfigPtrOutput)
 }
@@ -14776,7 +15062,13 @@ func (o DataprocClusterClusterConfigPtrOutput) ToDataprocClusterClusterConfigPtr
 }
 
 func (o DataprocClusterClusterConfigPtrOutput) Elem() DataprocClusterClusterConfigOutput {
-	return o.ApplyT(func(v *DataprocClusterClusterConfig) DataprocClusterClusterConfig { return *v }).(DataprocClusterClusterConfigOutput)
+	return o.ApplyT(func(v *DataprocClusterClusterConfig) DataprocClusterClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataprocClusterClusterConfig
+		return ret
+	}).(DataprocClusterClusterConfigOutput)
 }
 
 // Data Proc specific options. The structure is documented below.
@@ -14910,7 +15202,7 @@ func (o DataprocClusterClusterConfigHadoopOutput) ToDataprocClusterClusterConfig
 }
 
 func (o DataprocClusterClusterConfigHadoopOutput) ToDataprocClusterClusterConfigHadoopPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigHadoopPtrOutput {
-	return o.ApplyT(func(v DataprocClusterClusterConfigHadoop) *DataprocClusterClusterConfigHadoop {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataprocClusterClusterConfigHadoop) *DataprocClusterClusterConfigHadoop {
 		return &v
 	}).(DataprocClusterClusterConfigHadoopPtrOutput)
 }
@@ -14945,7 +15237,13 @@ func (o DataprocClusterClusterConfigHadoopPtrOutput) ToDataprocClusterClusterCon
 }
 
 func (o DataprocClusterClusterConfigHadoopPtrOutput) Elem() DataprocClusterClusterConfigHadoopOutput {
-	return o.ApplyT(func(v *DataprocClusterClusterConfigHadoop) DataprocClusterClusterConfigHadoop { return *v }).(DataprocClusterClusterConfigHadoopOutput)
+	return o.ApplyT(func(v *DataprocClusterClusterConfigHadoop) DataprocClusterClusterConfigHadoop {
+		if v != nil {
+			return *v
+		}
+		var ret DataprocClusterClusterConfigHadoop
+		return ret
+	}).(DataprocClusterClusterConfigHadoopOutput)
 }
 
 // A set of key/value pairs that are used to configure cluster services.
@@ -15250,7 +15548,7 @@ func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ToDat
 }
 
 func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput) ToDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput {
-	return o.ApplyT(func(v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
 		return &v
 	}).(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput)
 }
@@ -15310,7 +15608,11 @@ func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) To
 
 func (o DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrOutput) Elem() DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput {
 	return o.ApplyT(func(v *DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig) DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig
+		return ret
 	}).(DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigOutput)
 }
 
@@ -15545,10 +15847,11 @@ func (o FunctionContentOutput) ToFunctionContentPtrOutput() FunctionContentPtrOu
 }
 
 func (o FunctionContentOutput) ToFunctionContentPtrOutputWithContext(ctx context.Context) FunctionContentPtrOutput {
-	return o.ApplyT(func(v FunctionContent) *FunctionContent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionContent) *FunctionContent {
 		return &v
 	}).(FunctionContentPtrOutput)
 }
+
 func (o FunctionContentOutput) ZipFilename() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionContent) string { return v.ZipFilename }).(pulumi.StringOutput)
 }
@@ -15568,7 +15871,13 @@ func (o FunctionContentPtrOutput) ToFunctionContentPtrOutputWithContext(ctx cont
 }
 
 func (o FunctionContentPtrOutput) Elem() FunctionContentOutput {
-	return o.ApplyT(func(v *FunctionContent) FunctionContent { return *v }).(FunctionContentOutput)
+	return o.ApplyT(func(v *FunctionContent) FunctionContent {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionContent
+		return ret
+	}).(FunctionContentOutput)
 }
 
 func (o FunctionContentPtrOutput) ZipFilename() pulumi.StringPtrOutput {
@@ -15675,10 +15984,11 @@ func (o FunctionPackageOutput) ToFunctionPackagePtrOutput() FunctionPackagePtrOu
 }
 
 func (o FunctionPackageOutput) ToFunctionPackagePtrOutputWithContext(ctx context.Context) FunctionPackagePtrOutput {
-	return o.ApplyT(func(v FunctionPackage) *FunctionPackage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionPackage) *FunctionPackage {
 		return &v
 	}).(FunctionPackagePtrOutput)
 }
+
 func (o FunctionPackageOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionPackage) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -15706,7 +16016,13 @@ func (o FunctionPackagePtrOutput) ToFunctionPackagePtrOutputWithContext(ctx cont
 }
 
 func (o FunctionPackagePtrOutput) Elem() FunctionPackageOutput {
-	return o.ApplyT(func(v *FunctionPackage) FunctionPackage { return *v }).(FunctionPackageOutput)
+	return o.ApplyT(func(v *FunctionPackage) FunctionPackage {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionPackage
+		return ret
+	}).(FunctionPackageOutput)
 }
 
 func (o FunctionPackagePtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -15935,10 +16251,11 @@ func (o FunctionTriggerDlqOutput) ToFunctionTriggerDlqPtrOutput() FunctionTrigge
 }
 
 func (o FunctionTriggerDlqOutput) ToFunctionTriggerDlqPtrOutputWithContext(ctx context.Context) FunctionTriggerDlqPtrOutput {
-	return o.ApplyT(func(v FunctionTriggerDlq) *FunctionTriggerDlq {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTriggerDlq) *FunctionTriggerDlq {
 		return &v
 	}).(FunctionTriggerDlqPtrOutput)
 }
+
 func (o FunctionTriggerDlqOutput) QueueId() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionTriggerDlq) string { return v.QueueId }).(pulumi.StringOutput)
 }
@@ -15962,7 +16279,13 @@ func (o FunctionTriggerDlqPtrOutput) ToFunctionTriggerDlqPtrOutputWithContext(ct
 }
 
 func (o FunctionTriggerDlqPtrOutput) Elem() FunctionTriggerDlqOutput {
-	return o.ApplyT(func(v *FunctionTriggerDlq) FunctionTriggerDlq { return *v }).(FunctionTriggerDlqOutput)
+	return o.ApplyT(func(v *FunctionTriggerDlq) FunctionTriggerDlq {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTriggerDlq
+		return ret
+	}).(FunctionTriggerDlqOutput)
 }
 
 func (o FunctionTriggerDlqPtrOutput) QueueId() pulumi.StringPtrOutput {
@@ -16082,10 +16405,11 @@ func (o FunctionTriggerFunctionOutput) ToFunctionTriggerFunctionPtrOutput() Func
 }
 
 func (o FunctionTriggerFunctionOutput) ToFunctionTriggerFunctionPtrOutputWithContext(ctx context.Context) FunctionTriggerFunctionPtrOutput {
-	return o.ApplyT(func(v FunctionTriggerFunction) *FunctionTriggerFunction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTriggerFunction) *FunctionTriggerFunction {
 		return &v
 	}).(FunctionTriggerFunctionPtrOutput)
 }
+
 func (o FunctionTriggerFunctionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionTriggerFunction) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -16121,7 +16445,13 @@ func (o FunctionTriggerFunctionPtrOutput) ToFunctionTriggerFunctionPtrOutputWith
 }
 
 func (o FunctionTriggerFunctionPtrOutput) Elem() FunctionTriggerFunctionOutput {
-	return o.ApplyT(func(v *FunctionTriggerFunction) FunctionTriggerFunction { return *v }).(FunctionTriggerFunctionOutput)
+	return o.ApplyT(func(v *FunctionTriggerFunction) FunctionTriggerFunction {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTriggerFunction
+		return ret
+	}).(FunctionTriggerFunctionOutput)
 }
 
 func (o FunctionTriggerFunctionPtrOutput) Id() pulumi.StringPtrOutput {
@@ -16264,10 +16594,11 @@ func (o FunctionTriggerIotOutput) ToFunctionTriggerIotPtrOutput() FunctionTrigge
 }
 
 func (o FunctionTriggerIotOutput) ToFunctionTriggerIotPtrOutputWithContext(ctx context.Context) FunctionTriggerIotPtrOutput {
-	return o.ApplyT(func(v FunctionTriggerIot) *FunctionTriggerIot {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTriggerIot) *FunctionTriggerIot {
 		return &v
 	}).(FunctionTriggerIotPtrOutput)
 }
+
 func (o FunctionTriggerIotOutput) DeviceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionTriggerIot) *string { return v.DeviceId }).(pulumi.StringPtrOutput)
 }
@@ -16295,7 +16626,13 @@ func (o FunctionTriggerIotPtrOutput) ToFunctionTriggerIotPtrOutputWithContext(ct
 }
 
 func (o FunctionTriggerIotPtrOutput) Elem() FunctionTriggerIotOutput {
-	return o.ApplyT(func(v *FunctionTriggerIot) FunctionTriggerIot { return *v }).(FunctionTriggerIotOutput)
+	return o.ApplyT(func(v *FunctionTriggerIot) FunctionTriggerIot {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTriggerIot
+		return ret
+	}).(FunctionTriggerIotOutput)
 }
 
 func (o FunctionTriggerIotPtrOutput) DeviceId() pulumi.StringPtrOutput {
@@ -16420,10 +16757,11 @@ func (o FunctionTriggerLogGroupOutput) ToFunctionTriggerLogGroupPtrOutput() Func
 }
 
 func (o FunctionTriggerLogGroupOutput) ToFunctionTriggerLogGroupPtrOutputWithContext(ctx context.Context) FunctionTriggerLogGroupPtrOutput {
-	return o.ApplyT(func(v FunctionTriggerLogGroup) *FunctionTriggerLogGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTriggerLogGroup) *FunctionTriggerLogGroup {
 		return &v
 	}).(FunctionTriggerLogGroupPtrOutput)
 }
+
 func (o FunctionTriggerLogGroupOutput) BatchCutoff() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionTriggerLogGroup) string { return v.BatchCutoff }).(pulumi.StringOutput)
 }
@@ -16451,7 +16789,13 @@ func (o FunctionTriggerLogGroupPtrOutput) ToFunctionTriggerLogGroupPtrOutputWith
 }
 
 func (o FunctionTriggerLogGroupPtrOutput) Elem() FunctionTriggerLogGroupOutput {
-	return o.ApplyT(func(v *FunctionTriggerLogGroup) FunctionTriggerLogGroup { return *v }).(FunctionTriggerLogGroupOutput)
+	return o.ApplyT(func(v *FunctionTriggerLogGroup) FunctionTriggerLogGroup {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTriggerLogGroup
+		return ret
+	}).(FunctionTriggerLogGroupOutput)
 }
 
 func (o FunctionTriggerLogGroupPtrOutput) BatchCutoff() pulumi.StringPtrOutput {
@@ -16580,10 +16924,11 @@ func (o FunctionTriggerMessageQueueOutput) ToFunctionTriggerMessageQueuePtrOutpu
 }
 
 func (o FunctionTriggerMessageQueueOutput) ToFunctionTriggerMessageQueuePtrOutputWithContext(ctx context.Context) FunctionTriggerMessageQueuePtrOutput {
-	return o.ApplyT(func(v FunctionTriggerMessageQueue) *FunctionTriggerMessageQueue {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTriggerMessageQueue) *FunctionTriggerMessageQueue {
 		return &v
 	}).(FunctionTriggerMessageQueuePtrOutput)
 }
+
 func (o FunctionTriggerMessageQueueOutput) BatchCutoff() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionTriggerMessageQueue) string { return v.BatchCutoff }).(pulumi.StringOutput)
 }
@@ -16619,7 +16964,13 @@ func (o FunctionTriggerMessageQueuePtrOutput) ToFunctionTriggerMessageQueuePtrOu
 }
 
 func (o FunctionTriggerMessageQueuePtrOutput) Elem() FunctionTriggerMessageQueueOutput {
-	return o.ApplyT(func(v *FunctionTriggerMessageQueue) FunctionTriggerMessageQueue { return *v }).(FunctionTriggerMessageQueueOutput)
+	return o.ApplyT(func(v *FunctionTriggerMessageQueue) FunctionTriggerMessageQueue {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTriggerMessageQueue
+		return ret
+	}).(FunctionTriggerMessageQueueOutput)
 }
 
 func (o FunctionTriggerMessageQueuePtrOutput) BatchCutoff() pulumi.StringPtrOutput {
@@ -16768,10 +17119,11 @@ func (o FunctionTriggerObjectStorageOutput) ToFunctionTriggerObjectStoragePtrOut
 }
 
 func (o FunctionTriggerObjectStorageOutput) ToFunctionTriggerObjectStoragePtrOutputWithContext(ctx context.Context) FunctionTriggerObjectStoragePtrOutput {
-	return o.ApplyT(func(v FunctionTriggerObjectStorage) *FunctionTriggerObjectStorage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTriggerObjectStorage) *FunctionTriggerObjectStorage {
 		return &v
 	}).(FunctionTriggerObjectStoragePtrOutput)
 }
+
 func (o FunctionTriggerObjectStorageOutput) BucketId() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionTriggerObjectStorage) string { return v.BucketId }).(pulumi.StringOutput)
 }
@@ -16811,7 +17163,13 @@ func (o FunctionTriggerObjectStoragePtrOutput) ToFunctionTriggerObjectStoragePtr
 }
 
 func (o FunctionTriggerObjectStoragePtrOutput) Elem() FunctionTriggerObjectStorageOutput {
-	return o.ApplyT(func(v *FunctionTriggerObjectStorage) FunctionTriggerObjectStorage { return *v }).(FunctionTriggerObjectStorageOutput)
+	return o.ApplyT(func(v *FunctionTriggerObjectStorage) FunctionTriggerObjectStorage {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTriggerObjectStorage
+		return ret
+	}).(FunctionTriggerObjectStorageOutput)
 }
 
 func (o FunctionTriggerObjectStoragePtrOutput) BucketId() pulumi.StringPtrOutput {
@@ -16959,10 +17317,11 @@ func (o FunctionTriggerTimerOutput) ToFunctionTriggerTimerPtrOutput() FunctionTr
 }
 
 func (o FunctionTriggerTimerOutput) ToFunctionTriggerTimerPtrOutputWithContext(ctx context.Context) FunctionTriggerTimerPtrOutput {
-	return o.ApplyT(func(v FunctionTriggerTimer) *FunctionTriggerTimer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTriggerTimer) *FunctionTriggerTimer {
 		return &v
 	}).(FunctionTriggerTimerPtrOutput)
 }
+
 func (o FunctionTriggerTimerOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionTriggerTimer) string { return v.CronExpression }).(pulumi.StringOutput)
 }
@@ -16982,7 +17341,13 @@ func (o FunctionTriggerTimerPtrOutput) ToFunctionTriggerTimerPtrOutputWithContex
 }
 
 func (o FunctionTriggerTimerPtrOutput) Elem() FunctionTriggerTimerOutput {
-	return o.ApplyT(func(v *FunctionTriggerTimer) FunctionTriggerTimer { return *v }).(FunctionTriggerTimerOutput)
+	return o.ApplyT(func(v *FunctionTriggerTimer) FunctionTriggerTimer {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionTriggerTimer
+		return ret
+	}).(FunctionTriggerTimerOutput)
 }
 
 func (o FunctionTriggerTimerPtrOutput) CronExpression() pulumi.StringPtrOutput {
@@ -17087,7 +17452,7 @@ func (o KubernetesClusterKmsProviderOutput) ToKubernetesClusterKmsProviderPtrOut
 }
 
 func (o KubernetesClusterKmsProviderOutput) ToKubernetesClusterKmsProviderPtrOutputWithContext(ctx context.Context) KubernetesClusterKmsProviderPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterKmsProvider) *KubernetesClusterKmsProvider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterKmsProvider) *KubernetesClusterKmsProvider {
 		return &v
 	}).(KubernetesClusterKmsProviderPtrOutput)
 }
@@ -17112,7 +17477,13 @@ func (o KubernetesClusterKmsProviderPtrOutput) ToKubernetesClusterKmsProviderPtr
 }
 
 func (o KubernetesClusterKmsProviderPtrOutput) Elem() KubernetesClusterKmsProviderOutput {
-	return o.ApplyT(func(v *KubernetesClusterKmsProvider) KubernetesClusterKmsProvider { return *v }).(KubernetesClusterKmsProviderOutput)
+	return o.ApplyT(func(v *KubernetesClusterKmsProvider) KubernetesClusterKmsProvider {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterKmsProvider
+		return ret
+	}).(KubernetesClusterKmsProviderOutput)
 }
 
 // KMS key ID.
@@ -17268,7 +17639,7 @@ func (o KubernetesClusterMasterOutput) ToKubernetesClusterMasterPtrOutput() Kube
 }
 
 func (o KubernetesClusterMasterOutput) ToKubernetesClusterMasterPtrOutputWithContext(ctx context.Context) KubernetesClusterMasterPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterMaster) *KubernetesClusterMaster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterMaster) *KubernetesClusterMaster {
 		return &v
 	}).(KubernetesClusterMasterPtrOutput)
 }
@@ -17351,7 +17722,13 @@ func (o KubernetesClusterMasterPtrOutput) ToKubernetesClusterMasterPtrOutputWith
 }
 
 func (o KubernetesClusterMasterPtrOutput) Elem() KubernetesClusterMasterOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) KubernetesClusterMaster { return *v }).(KubernetesClusterMasterOutput)
+	return o.ApplyT(func(v *KubernetesClusterMaster) KubernetesClusterMaster {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterMaster
+		return ret
+	}).(KubernetesClusterMasterOutput)
 }
 
 // (Computed) PEM-encoded public certificate that is the root of trust for the Kubernetes cluster.
@@ -17578,7 +17955,7 @@ func (o KubernetesClusterMasterMaintenancePolicyOutput) ToKubernetesClusterMaste
 }
 
 func (o KubernetesClusterMasterMaintenancePolicyOutput) ToKubernetesClusterMasterMaintenancePolicyPtrOutputWithContext(ctx context.Context) KubernetesClusterMasterMaintenancePolicyPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterMasterMaintenancePolicy) *KubernetesClusterMasterMaintenancePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterMasterMaintenancePolicy) *KubernetesClusterMasterMaintenancePolicy {
 		return &v
 	}).(KubernetesClusterMasterMaintenancePolicyPtrOutput)
 }
@@ -17612,7 +17989,13 @@ func (o KubernetesClusterMasterMaintenancePolicyPtrOutput) ToKubernetesClusterMa
 }
 
 func (o KubernetesClusterMasterMaintenancePolicyPtrOutput) Elem() KubernetesClusterMasterMaintenancePolicyOutput {
-	return o.ApplyT(func(v *KubernetesClusterMasterMaintenancePolicy) KubernetesClusterMasterMaintenancePolicy { return *v }).(KubernetesClusterMasterMaintenancePolicyOutput)
+	return o.ApplyT(func(v *KubernetesClusterMasterMaintenancePolicy) KubernetesClusterMasterMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterMasterMaintenancePolicy
+		return ret
+	}).(KubernetesClusterMasterMaintenancePolicyOutput)
 }
 
 // (Required) Boolean flag that specifies if master can be upgraded automatically. When omitted, default value is TRUE.
@@ -17840,7 +18223,7 @@ func (o KubernetesClusterMasterRegionalOutput) ToKubernetesClusterMasterRegional
 }
 
 func (o KubernetesClusterMasterRegionalOutput) ToKubernetesClusterMasterRegionalPtrOutputWithContext(ctx context.Context) KubernetesClusterMasterRegionalPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterMasterRegional) *KubernetesClusterMasterRegional {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterMasterRegional) *KubernetesClusterMasterRegional {
 		return &v
 	}).(KubernetesClusterMasterRegionalPtrOutput)
 }
@@ -17870,7 +18253,13 @@ func (o KubernetesClusterMasterRegionalPtrOutput) ToKubernetesClusterMasterRegio
 }
 
 func (o KubernetesClusterMasterRegionalPtrOutput) Elem() KubernetesClusterMasterRegionalOutput {
-	return o.ApplyT(func(v *KubernetesClusterMasterRegional) KubernetesClusterMasterRegional { return *v }).(KubernetesClusterMasterRegionalOutput)
+	return o.ApplyT(func(v *KubernetesClusterMasterRegional) KubernetesClusterMasterRegional {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterMasterRegional
+		return ret
+	}).(KubernetesClusterMasterRegionalOutput)
 }
 
 // Array of locations, where master instances will be allocated. The structure is documented below.
@@ -18114,7 +18503,7 @@ func (o KubernetesClusterMasterVersionInfoOutput) ToKubernetesClusterMasterVersi
 }
 
 func (o KubernetesClusterMasterVersionInfoOutput) ToKubernetesClusterMasterVersionInfoPtrOutputWithContext(ctx context.Context) KubernetesClusterMasterVersionInfoPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterMasterVersionInfo) *KubernetesClusterMasterVersionInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterMasterVersionInfo) *KubernetesClusterMasterVersionInfo {
 		return &v
 	}).(KubernetesClusterMasterVersionInfoPtrOutput)
 }
@@ -18159,7 +18548,13 @@ func (o KubernetesClusterMasterVersionInfoPtrOutput) ToKubernetesClusterMasterVe
 }
 
 func (o KubernetesClusterMasterVersionInfoPtrOutput) Elem() KubernetesClusterMasterVersionInfoOutput {
-	return o.ApplyT(func(v *KubernetesClusterMasterVersionInfo) KubernetesClusterMasterVersionInfo { return *v }).(KubernetesClusterMasterVersionInfoOutput)
+	return o.ApplyT(func(v *KubernetesClusterMasterVersionInfo) KubernetesClusterMasterVersionInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterMasterVersionInfo
+		return ret
+	}).(KubernetesClusterMasterVersionInfoOutput)
 }
 
 // Current Kubernetes version, major.minor (e.g. 1.15).
@@ -18304,7 +18699,7 @@ func (o KubernetesClusterMasterZonalOutput) ToKubernetesClusterMasterZonalPtrOut
 }
 
 func (o KubernetesClusterMasterZonalOutput) ToKubernetesClusterMasterZonalPtrOutputWithContext(ctx context.Context) KubernetesClusterMasterZonalPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterMasterZonal) *KubernetesClusterMasterZonal {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterMasterZonal) *KubernetesClusterMasterZonal {
 		return &v
 	}).(KubernetesClusterMasterZonalPtrOutput)
 }
@@ -18334,7 +18729,13 @@ func (o KubernetesClusterMasterZonalPtrOutput) ToKubernetesClusterMasterZonalPtr
 }
 
 func (o KubernetesClusterMasterZonalPtrOutput) Elem() KubernetesClusterMasterZonalOutput {
-	return o.ApplyT(func(v *KubernetesClusterMasterZonal) KubernetesClusterMasterZonal { return *v }).(KubernetesClusterMasterZonalOutput)
+	return o.ApplyT(func(v *KubernetesClusterMasterZonal) KubernetesClusterMasterZonal {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterMasterZonal
+		return ret
+	}).(KubernetesClusterMasterZonalOutput)
 }
 
 // (Optional) ID of the subnet.
@@ -18450,7 +18851,7 @@ func (o KubernetesClusterNetworkImplementationOutput) ToKubernetesClusterNetwork
 }
 
 func (o KubernetesClusterNetworkImplementationOutput) ToKubernetesClusterNetworkImplementationPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterNetworkImplementation) *KubernetesClusterNetworkImplementation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterNetworkImplementation) *KubernetesClusterNetworkImplementation {
 		return &v
 	}).(KubernetesClusterNetworkImplementationPtrOutput)
 }
@@ -18477,7 +18878,13 @@ func (o KubernetesClusterNetworkImplementationPtrOutput) ToKubernetesClusterNetw
 }
 
 func (o KubernetesClusterNetworkImplementationPtrOutput) Elem() KubernetesClusterNetworkImplementationOutput {
-	return o.ApplyT(func(v *KubernetesClusterNetworkImplementation) KubernetesClusterNetworkImplementation { return *v }).(KubernetesClusterNetworkImplementationOutput)
+	return o.ApplyT(func(v *KubernetesClusterNetworkImplementation) KubernetesClusterNetworkImplementation {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterNetworkImplementation
+		return ret
+	}).(KubernetesClusterNetworkImplementationOutput)
 }
 
 // (Optional) Cilium network implementation configuration. No options exist.
@@ -18579,7 +18986,7 @@ func (o KubernetesClusterNetworkImplementationCiliumOutput) ToKubernetesClusterN
 }
 
 func (o KubernetesClusterNetworkImplementationCiliumOutput) ToKubernetesClusterNetworkImplementationCiliumPtrOutputWithContext(ctx context.Context) KubernetesClusterNetworkImplementationCiliumPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterNetworkImplementationCilium) *KubernetesClusterNetworkImplementationCilium {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterNetworkImplementationCilium) *KubernetesClusterNetworkImplementationCilium {
 		return &v
 	}).(KubernetesClusterNetworkImplementationCiliumPtrOutput)
 }
@@ -18600,7 +19007,11 @@ func (o KubernetesClusterNetworkImplementationCiliumPtrOutput) ToKubernetesClust
 
 func (o KubernetesClusterNetworkImplementationCiliumPtrOutput) Elem() KubernetesClusterNetworkImplementationCiliumOutput {
 	return o.ApplyT(func(v *KubernetesClusterNetworkImplementationCilium) KubernetesClusterNetworkImplementationCilium {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterNetworkImplementationCilium
+		return ret
 	}).(KubernetesClusterNetworkImplementationCiliumOutput)
 }
 
@@ -18697,7 +19108,7 @@ func (o KubernetesNodeGroupAllocationPolicyOutput) ToKubernetesNodeGroupAllocati
 }
 
 func (o KubernetesNodeGroupAllocationPolicyOutput) ToKubernetesNodeGroupAllocationPolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupAllocationPolicyPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupAllocationPolicy) *KubernetesNodeGroupAllocationPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupAllocationPolicy) *KubernetesNodeGroupAllocationPolicy {
 		return &v
 	}).(KubernetesNodeGroupAllocationPolicyPtrOutput)
 }
@@ -18724,7 +19135,13 @@ func (o KubernetesNodeGroupAllocationPolicyPtrOutput) ToKubernetesNodeGroupAlloc
 }
 
 func (o KubernetesNodeGroupAllocationPolicyPtrOutput) Elem() KubernetesNodeGroupAllocationPolicyOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupAllocationPolicy) KubernetesNodeGroupAllocationPolicy { return *v }).(KubernetesNodeGroupAllocationPolicyOutput)
+	return o.ApplyT(func(v *KubernetesNodeGroupAllocationPolicy) KubernetesNodeGroupAllocationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupAllocationPolicy
+		return ret
+	}).(KubernetesNodeGroupAllocationPolicyOutput)
 }
 
 // Repeated field, that specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
@@ -18946,7 +19363,7 @@ func (o KubernetesNodeGroupDeployPolicyOutput) ToKubernetesNodeGroupDeployPolicy
 }
 
 func (o KubernetesNodeGroupDeployPolicyOutput) ToKubernetesNodeGroupDeployPolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupDeployPolicyPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupDeployPolicy) *KubernetesNodeGroupDeployPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupDeployPolicy) *KubernetesNodeGroupDeployPolicy {
 		return &v
 	}).(KubernetesNodeGroupDeployPolicyPtrOutput)
 }
@@ -18976,7 +19393,13 @@ func (o KubernetesNodeGroupDeployPolicyPtrOutput) ToKubernetesNodeGroupDeployPol
 }
 
 func (o KubernetesNodeGroupDeployPolicyPtrOutput) Elem() KubernetesNodeGroupDeployPolicyOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupDeployPolicy) KubernetesNodeGroupDeployPolicy { return *v }).(KubernetesNodeGroupDeployPolicyOutput)
+	return o.ApplyT(func(v *KubernetesNodeGroupDeployPolicy) KubernetesNodeGroupDeployPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupDeployPolicy
+		return ret
+	}).(KubernetesNodeGroupDeployPolicyOutput)
 }
 
 // The maximum number of instances that can be temporarily allocated above the group's target size during the update.
@@ -19132,7 +19555,7 @@ func (o KubernetesNodeGroupInstanceTemplateOutput) ToKubernetesNodeGroupInstance
 }
 
 func (o KubernetesNodeGroupInstanceTemplateOutput) ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplate {
 		return &v
 	}).(KubernetesNodeGroupInstanceTemplatePtrOutput)
 }
@@ -19211,7 +19634,13 @@ func (o KubernetesNodeGroupInstanceTemplatePtrOutput) ToKubernetesNodeGroupInsta
 }
 
 func (o KubernetesNodeGroupInstanceTemplatePtrOutput) Elem() KubernetesNodeGroupInstanceTemplateOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) KubernetesNodeGroupInstanceTemplate { return *v }).(KubernetesNodeGroupInstanceTemplateOutput)
+	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) KubernetesNodeGroupInstanceTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupInstanceTemplate
+		return ret
+	}).(KubernetesNodeGroupInstanceTemplateOutput)
 }
 
 // The specifications for boot disks that will be attached to the instance. The structure is documented below.
@@ -19405,7 +19834,7 @@ func (o KubernetesNodeGroupInstanceTemplateBootDiskOutput) ToKubernetesNodeGroup
 }
 
 func (o KubernetesNodeGroupInstanceTemplateBootDiskOutput) ToKubernetesNodeGroupInstanceTemplateBootDiskPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplateBootDiskPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplateBootDisk) *KubernetesNodeGroupInstanceTemplateBootDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupInstanceTemplateBootDisk) *KubernetesNodeGroupInstanceTemplateBootDisk {
 		return &v
 	}).(KubernetesNodeGroupInstanceTemplateBootDiskPtrOutput)
 }
@@ -19436,7 +19865,11 @@ func (o KubernetesNodeGroupInstanceTemplateBootDiskPtrOutput) ToKubernetesNodeGr
 
 func (o KubernetesNodeGroupInstanceTemplateBootDiskPtrOutput) Elem() KubernetesNodeGroupInstanceTemplateBootDiskOutput {
 	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplateBootDisk) KubernetesNodeGroupInstanceTemplateBootDisk {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupInstanceTemplateBootDisk
+		return ret
 	}).(KubernetesNodeGroupInstanceTemplateBootDiskOutput)
 }
 
@@ -19684,10 +20117,11 @@ func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToKubernetesNo
 }
 
 func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplatePlacementPolicy) *KubernetesNodeGroupInstanceTemplatePlacementPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupInstanceTemplatePlacementPolicy) *KubernetesNodeGroupInstanceTemplatePlacementPolicy {
 		return &v
 	}).(KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
 }
+
 func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) PlacementGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplatePlacementPolicy) string { return v.PlacementGroupId }).(pulumi.StringOutput)
 }
@@ -19708,7 +20142,11 @@ func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) ToKubernete
 
 func (o KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) Elem() KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
 	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplatePlacementPolicy) KubernetesNodeGroupInstanceTemplatePlacementPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupInstanceTemplatePlacementPolicy
+		return ret
 	}).(KubernetesNodeGroupInstanceTemplatePlacementPolicyOutput)
 }
 
@@ -19818,10 +20256,11 @@ func (o KubernetesNodeGroupInstanceTemplateResourcesOutput) ToKubernetesNodeGrou
 }
 
 func (o KubernetesNodeGroupInstanceTemplateResourcesOutput) ToKubernetesNodeGroupInstanceTemplateResourcesPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplateResourcesPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplateResources) *KubernetesNodeGroupInstanceTemplateResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupInstanceTemplateResources) *KubernetesNodeGroupInstanceTemplateResources {
 		return &v
 	}).(KubernetesNodeGroupInstanceTemplateResourcesPtrOutput)
 }
+
 func (o KubernetesNodeGroupInstanceTemplateResourcesOutput) CoreFraction() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplateResources) *int { return v.CoreFraction }).(pulumi.IntPtrOutput)
 }
@@ -19854,7 +20293,11 @@ func (o KubernetesNodeGroupInstanceTemplateResourcesPtrOutput) ToKubernetesNodeG
 
 func (o KubernetesNodeGroupInstanceTemplateResourcesPtrOutput) Elem() KubernetesNodeGroupInstanceTemplateResourcesOutput {
 	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplateResources) KubernetesNodeGroupInstanceTemplateResources {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupInstanceTemplateResources
+		return ret
 	}).(KubernetesNodeGroupInstanceTemplateResourcesOutput)
 }
 
@@ -19987,7 +20430,7 @@ func (o KubernetesNodeGroupInstanceTemplateSchedulingPolicyOutput) ToKubernetesN
 }
 
 func (o KubernetesNodeGroupInstanceTemplateSchedulingPolicyOutput) ToKubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplateSchedulingPolicy) *KubernetesNodeGroupInstanceTemplateSchedulingPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupInstanceTemplateSchedulingPolicy) *KubernetesNodeGroupInstanceTemplateSchedulingPolicy {
 		return &v
 	}).(KubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrOutput)
 }
@@ -20013,7 +20456,11 @@ func (o KubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrOutput) ToKubernet
 
 func (o KubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrOutput) Elem() KubernetesNodeGroupInstanceTemplateSchedulingPolicyOutput {
 	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplateSchedulingPolicy) KubernetesNodeGroupInstanceTemplateSchedulingPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupInstanceTemplateSchedulingPolicy
+		return ret
 	}).(KubernetesNodeGroupInstanceTemplateSchedulingPolicyOutput)
 }
 
@@ -20128,7 +20575,7 @@ func (o KubernetesNodeGroupMaintenancePolicyOutput) ToKubernetesNodeGroupMainten
 }
 
 func (o KubernetesNodeGroupMaintenancePolicyOutput) ToKubernetesNodeGroupMaintenancePolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupMaintenancePolicyPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupMaintenancePolicy) *KubernetesNodeGroupMaintenancePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupMaintenancePolicy) *KubernetesNodeGroupMaintenancePolicy {
 		return &v
 	}).(KubernetesNodeGroupMaintenancePolicyPtrOutput)
 }
@@ -20165,7 +20612,13 @@ func (o KubernetesNodeGroupMaintenancePolicyPtrOutput) ToKubernetesNodeGroupMain
 }
 
 func (o KubernetesNodeGroupMaintenancePolicyPtrOutput) Elem() KubernetesNodeGroupMaintenancePolicyOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupMaintenancePolicy) KubernetesNodeGroupMaintenancePolicy { return *v }).(KubernetesNodeGroupMaintenancePolicyOutput)
+	return o.ApplyT(func(v *KubernetesNodeGroupMaintenancePolicy) KubernetesNodeGroupMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupMaintenancePolicy
+		return ret
+	}).(KubernetesNodeGroupMaintenancePolicyOutput)
 }
 
 // Boolean flag that specifies if node group can be repaired automatically. When omitted, default value is TRUE.
@@ -20401,7 +20854,7 @@ func (o KubernetesNodeGroupScalePolicyOutput) ToKubernetesNodeGroupScalePolicyPt
 }
 
 func (o KubernetesNodeGroupScalePolicyOutput) ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupScalePolicyPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupScalePolicy) *KubernetesNodeGroupScalePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupScalePolicy) *KubernetesNodeGroupScalePolicy {
 		return &v
 	}).(KubernetesNodeGroupScalePolicyPtrOutput)
 }
@@ -20431,7 +20884,13 @@ func (o KubernetesNodeGroupScalePolicyPtrOutput) ToKubernetesNodeGroupScalePolic
 }
 
 func (o KubernetesNodeGroupScalePolicyPtrOutput) Elem() KubernetesNodeGroupScalePolicyOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupScalePolicy) KubernetesNodeGroupScalePolicy { return *v }).(KubernetesNodeGroupScalePolicyOutput)
+	return o.ApplyT(func(v *KubernetesNodeGroupScalePolicy) KubernetesNodeGroupScalePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupScalePolicy
+		return ret
+	}).(KubernetesNodeGroupScalePolicyOutput)
 }
 
 // Scale policy for an autoscaled node group. The structure is documented below.
@@ -20555,7 +21014,7 @@ func (o KubernetesNodeGroupScalePolicyAutoScaleOutput) ToKubernetesNodeGroupScal
 }
 
 func (o KubernetesNodeGroupScalePolicyAutoScaleOutput) ToKubernetesNodeGroupScalePolicyAutoScalePtrOutputWithContext(ctx context.Context) KubernetesNodeGroupScalePolicyAutoScalePtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupScalePolicyAutoScale) *KubernetesNodeGroupScalePolicyAutoScale {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupScalePolicyAutoScale) *KubernetesNodeGroupScalePolicyAutoScale {
 		return &v
 	}).(KubernetesNodeGroupScalePolicyAutoScalePtrOutput)
 }
@@ -20590,7 +21049,13 @@ func (o KubernetesNodeGroupScalePolicyAutoScalePtrOutput) ToKubernetesNodeGroupS
 }
 
 func (o KubernetesNodeGroupScalePolicyAutoScalePtrOutput) Elem() KubernetesNodeGroupScalePolicyAutoScaleOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupScalePolicyAutoScale) KubernetesNodeGroupScalePolicyAutoScale { return *v }).(KubernetesNodeGroupScalePolicyAutoScaleOutput)
+	return o.ApplyT(func(v *KubernetesNodeGroupScalePolicyAutoScale) KubernetesNodeGroupScalePolicyAutoScale {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupScalePolicyAutoScale
+		return ret
+	}).(KubernetesNodeGroupScalePolicyAutoScaleOutput)
 }
 
 // Initial number of instances in the node group.
@@ -20716,7 +21181,7 @@ func (o KubernetesNodeGroupScalePolicyFixedScaleOutput) ToKubernetesNodeGroupSca
 }
 
 func (o KubernetesNodeGroupScalePolicyFixedScaleOutput) ToKubernetesNodeGroupScalePolicyFixedScalePtrOutputWithContext(ctx context.Context) KubernetesNodeGroupScalePolicyFixedScalePtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupScalePolicyFixedScale) *KubernetesNodeGroupScalePolicyFixedScale {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupScalePolicyFixedScale) *KubernetesNodeGroupScalePolicyFixedScale {
 		return &v
 	}).(KubernetesNodeGroupScalePolicyFixedScalePtrOutput)
 }
@@ -20741,7 +21206,13 @@ func (o KubernetesNodeGroupScalePolicyFixedScalePtrOutput) ToKubernetesNodeGroup
 }
 
 func (o KubernetesNodeGroupScalePolicyFixedScalePtrOutput) Elem() KubernetesNodeGroupScalePolicyFixedScaleOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupScalePolicyFixedScale) KubernetesNodeGroupScalePolicyFixedScale { return *v }).(KubernetesNodeGroupScalePolicyFixedScaleOutput)
+	return o.ApplyT(func(v *KubernetesNodeGroupScalePolicyFixedScale) KubernetesNodeGroupScalePolicyFixedScale {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupScalePolicyFixedScale
+		return ret
+	}).(KubernetesNodeGroupScalePolicyFixedScaleOutput)
 }
 
 // The number of instances in the node group.
@@ -20869,7 +21340,7 @@ func (o KubernetesNodeGroupVersionInfoOutput) ToKubernetesNodeGroupVersionInfoPt
 }
 
 func (o KubernetesNodeGroupVersionInfoOutput) ToKubernetesNodeGroupVersionInfoPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupVersionInfoPtrOutput {
-	return o.ApplyT(func(v KubernetesNodeGroupVersionInfo) *KubernetesNodeGroupVersionInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupVersionInfo) *KubernetesNodeGroupVersionInfo {
 		return &v
 	}).(KubernetesNodeGroupVersionInfoPtrOutput)
 }
@@ -20914,7 +21385,13 @@ func (o KubernetesNodeGroupVersionInfoPtrOutput) ToKubernetesNodeGroupVersionInf
 }
 
 func (o KubernetesNodeGroupVersionInfoPtrOutput) Elem() KubernetesNodeGroupVersionInfoOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupVersionInfo) KubernetesNodeGroupVersionInfo { return *v }).(KubernetesNodeGroupVersionInfoOutput)
+	return o.ApplyT(func(v *KubernetesNodeGroupVersionInfo) KubernetesNodeGroupVersionInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesNodeGroupVersionInfo
+		return ret
+	}).(KubernetesNodeGroupVersionInfoOutput)
 }
 
 // Current Kubernetes version, major.minor (e.g. 1.15).
@@ -21322,7 +21799,7 @@ func (o LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsOutput) To
 }
 
 func (o LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsOutput) ToLbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsPtrOutputWithContext(ctx context.Context) LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsPtrOutput {
-	return o.ApplyT(func(v LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptions) *LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptions) *LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptions {
 		return &v
 	}).(LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsPtrOutput)
 }
@@ -21353,7 +21830,11 @@ func (o LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsPtrOutput)
 
 func (o LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsPtrOutput) Elem() LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsOutput {
 	return o.ApplyT(func(v *LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptions) LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptions
+		return ret
 	}).(LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsOutput)
 }
 
@@ -21470,7 +21951,7 @@ func (o LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsOutput) ToL
 }
 
 func (o LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsOutput) ToLbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsPtrOutputWithContext(ctx context.Context) LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsPtrOutput {
-	return o.ApplyT(func(v LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptions) *LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptions) *LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptions {
 		return &v
 	}).(LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsPtrOutput)
 }
@@ -21496,7 +21977,11 @@ func (o LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsPtrOutput) 
 
 func (o LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsPtrOutput) Elem() LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsOutput {
 	return o.ApplyT(func(v *LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptions) LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptions
+		return ret
 	}).(LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsOutput)
 }
 
@@ -21753,7 +22238,7 @@ func (o LbNetworkLoadBalancerListenerExternalAddressSpecOutput) ToLbNetworkLoadB
 }
 
 func (o LbNetworkLoadBalancerListenerExternalAddressSpecOutput) ToLbNetworkLoadBalancerListenerExternalAddressSpecPtrOutputWithContext(ctx context.Context) LbNetworkLoadBalancerListenerExternalAddressSpecPtrOutput {
-	return o.ApplyT(func(v LbNetworkLoadBalancerListenerExternalAddressSpec) *LbNetworkLoadBalancerListenerExternalAddressSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LbNetworkLoadBalancerListenerExternalAddressSpec) *LbNetworkLoadBalancerListenerExternalAddressSpec {
 		return &v
 	}).(LbNetworkLoadBalancerListenerExternalAddressSpecPtrOutput)
 }
@@ -21784,7 +22269,11 @@ func (o LbNetworkLoadBalancerListenerExternalAddressSpecPtrOutput) ToLbNetworkLo
 
 func (o LbNetworkLoadBalancerListenerExternalAddressSpecPtrOutput) Elem() LbNetworkLoadBalancerListenerExternalAddressSpecOutput {
 	return o.ApplyT(func(v *LbNetworkLoadBalancerListenerExternalAddressSpec) LbNetworkLoadBalancerListenerExternalAddressSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret LbNetworkLoadBalancerListenerExternalAddressSpec
+		return ret
 	}).(LbNetworkLoadBalancerListenerExternalAddressSpecOutput)
 }
 
@@ -21909,7 +22398,7 @@ func (o LbNetworkLoadBalancerListenerInternalAddressSpecOutput) ToLbNetworkLoadB
 }
 
 func (o LbNetworkLoadBalancerListenerInternalAddressSpecOutput) ToLbNetworkLoadBalancerListenerInternalAddressSpecPtrOutputWithContext(ctx context.Context) LbNetworkLoadBalancerListenerInternalAddressSpecPtrOutput {
-	return o.ApplyT(func(v LbNetworkLoadBalancerListenerInternalAddressSpec) *LbNetworkLoadBalancerListenerInternalAddressSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LbNetworkLoadBalancerListenerInternalAddressSpec) *LbNetworkLoadBalancerListenerInternalAddressSpec {
 		return &v
 	}).(LbNetworkLoadBalancerListenerInternalAddressSpecPtrOutput)
 }
@@ -21945,7 +22434,11 @@ func (o LbNetworkLoadBalancerListenerInternalAddressSpecPtrOutput) ToLbNetworkLo
 
 func (o LbNetworkLoadBalancerListenerInternalAddressSpecPtrOutput) Elem() LbNetworkLoadBalancerListenerInternalAddressSpecOutput {
 	return o.ApplyT(func(v *LbNetworkLoadBalancerListenerInternalAddressSpec) LbNetworkLoadBalancerListenerInternalAddressSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret LbNetworkLoadBalancerListenerInternalAddressSpec
+		return ret
 	}).(LbNetworkLoadBalancerListenerInternalAddressSpecOutput)
 }
 
@@ -22193,7 +22686,7 @@ func (o MdbClickhouseClusterAccessOutput) ToMdbClickhouseClusterAccessPtrOutput(
 }
 
 func (o MdbClickhouseClusterAccessOutput) ToMdbClickhouseClusterAccessPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterAccessPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterAccess) *MdbClickhouseClusterAccess {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterAccess) *MdbClickhouseClusterAccess {
 		return &v
 	}).(MdbClickhouseClusterAccessPtrOutput)
 }
@@ -22233,7 +22726,13 @@ func (o MdbClickhouseClusterAccessPtrOutput) ToMdbClickhouseClusterAccessPtrOutp
 }
 
 func (o MdbClickhouseClusterAccessPtrOutput) Elem() MdbClickhouseClusterAccessOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterAccess) MdbClickhouseClusterAccess { return *v }).(MdbClickhouseClusterAccessOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterAccess) MdbClickhouseClusterAccess {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterAccess
+		return ret
+	}).(MdbClickhouseClusterAccessOutput)
 }
 
 // Allow access for DataLens. Can be either `true` or `false`.
@@ -22373,7 +22872,7 @@ func (o MdbClickhouseClusterBackupWindowStartOutput) ToMdbClickhouseClusterBacku
 }
 
 func (o MdbClickhouseClusterBackupWindowStartOutput) ToMdbClickhouseClusterBackupWindowStartPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterBackupWindowStartPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterBackupWindowStart) *MdbClickhouseClusterBackupWindowStart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterBackupWindowStart) *MdbClickhouseClusterBackupWindowStart {
 		return &v
 	}).(MdbClickhouseClusterBackupWindowStartPtrOutput)
 }
@@ -22403,7 +22902,13 @@ func (o MdbClickhouseClusterBackupWindowStartPtrOutput) ToMdbClickhouseClusterBa
 }
 
 func (o MdbClickhouseClusterBackupWindowStartPtrOutput) Elem() MdbClickhouseClusterBackupWindowStartOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterBackupWindowStart) MdbClickhouseClusterBackupWindowStart { return *v }).(MdbClickhouseClusterBackupWindowStartOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterBackupWindowStart) MdbClickhouseClusterBackupWindowStart {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterBackupWindowStart
+		return ret
+	}).(MdbClickhouseClusterBackupWindowStartOutput)
 }
 
 // The hour at which backup will be started.
@@ -22523,7 +23028,7 @@ func (o MdbClickhouseClusterClickhouseOutput) ToMdbClickhouseClusterClickhousePt
 }
 
 func (o MdbClickhouseClusterClickhouseOutput) ToMdbClickhouseClusterClickhousePtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhousePtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterClickhouse) *MdbClickhouseClusterClickhouse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterClickhouse) *MdbClickhouseClusterClickhouse {
 		return &v
 	}).(MdbClickhouseClusterClickhousePtrOutput)
 }
@@ -22553,7 +23058,13 @@ func (o MdbClickhouseClusterClickhousePtrOutput) ToMdbClickhouseClusterClickhous
 }
 
 func (o MdbClickhouseClusterClickhousePtrOutput) Elem() MdbClickhouseClusterClickhouseOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouse) MdbClickhouseClusterClickhouse { return *v }).(MdbClickhouseClusterClickhouseOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterClickhouse) MdbClickhouseClusterClickhouse {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterClickhouse
+		return ret
+	}).(MdbClickhouseClusterClickhouseOutput)
 }
 
 // Main ClickHouse cluster configuration.
@@ -22747,10 +23258,11 @@ func (o MdbClickhouseClusterClickhouseConfigOutput) ToMdbClickhouseClusterClickh
 }
 
 func (o MdbClickhouseClusterClickhouseConfigOutput) ToMdbClickhouseClusterClickhouseConfigPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseConfigPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterClickhouseConfig) *MdbClickhouseClusterClickhouseConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterClickhouseConfig) *MdbClickhouseClusterClickhouseConfig {
 		return &v
 	}).(MdbClickhouseClusterClickhouseConfigPtrOutput)
 }
+
 func (o MdbClickhouseClusterClickhouseConfigOutput) BackgroundPoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterClickhouseConfig) *int { return v.BackgroundPoolSize }).(pulumi.IntPtrOutput)
 }
@@ -22924,7 +23436,13 @@ func (o MdbClickhouseClusterClickhouseConfigPtrOutput) ToMdbClickhouseClusterCli
 }
 
 func (o MdbClickhouseClusterClickhouseConfigPtrOutput) Elem() MdbClickhouseClusterClickhouseConfigOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseConfig) MdbClickhouseClusterClickhouseConfig { return *v }).(MdbClickhouseClusterClickhouseConfigOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseConfig) MdbClickhouseClusterClickhouseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterClickhouseConfig
+		return ret
+	}).(MdbClickhouseClusterClickhouseConfigOutput)
 }
 
 func (o MdbClickhouseClusterClickhouseConfigPtrOutput) BackgroundPoolSize() pulumi.IntPtrOutput {
@@ -23799,7 +24317,7 @@ func (o MdbClickhouseClusterClickhouseConfigKafkaOutput) ToMdbClickhouseClusterC
 }
 
 func (o MdbClickhouseClusterClickhouseConfigKafkaOutput) ToMdbClickhouseClusterClickhouseConfigKafkaPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseConfigKafkaPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterClickhouseConfigKafka) *MdbClickhouseClusterClickhouseConfigKafka {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterClickhouseConfigKafka) *MdbClickhouseClusterClickhouseConfigKafka {
 		return &v
 	}).(MdbClickhouseClusterClickhouseConfigKafkaPtrOutput)
 }
@@ -23840,7 +24358,11 @@ func (o MdbClickhouseClusterClickhouseConfigKafkaPtrOutput) ToMdbClickhouseClust
 
 func (o MdbClickhouseClusterClickhouseConfigKafkaPtrOutput) Elem() MdbClickhouseClusterClickhouseConfigKafkaOutput {
 	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseConfigKafka) MdbClickhouseClusterClickhouseConfigKafka {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterClickhouseConfigKafka
+		return ret
 	}).(MdbClickhouseClusterClickhouseConfigKafkaOutput)
 }
 
@@ -24097,7 +24619,7 @@ func (o MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsOutput) ToMdbClick
 }
 
 func (o MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsOutput) ToMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterClickhouseConfigKafkaTopicSettings) *MdbClickhouseClusterClickhouseConfigKafkaTopicSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterClickhouseConfigKafkaTopicSettings) *MdbClickhouseClusterClickhouseConfigKafkaTopicSettings {
 		return &v
 	}).(MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutput)
 }
@@ -24138,7 +24660,11 @@ func (o MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutput) ToMdbCl
 
 func (o MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutput) Elem() MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsOutput {
 	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseConfigKafkaTopicSettings) MdbClickhouseClusterClickhouseConfigKafkaTopicSettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterClickhouseConfigKafkaTopicSettings
+		return ret
 	}).(MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsOutput)
 }
 
@@ -24299,7 +24825,7 @@ func (o MdbClickhouseClusterClickhouseConfigMergeTreeOutput) ToMdbClickhouseClus
 }
 
 func (o MdbClickhouseClusterClickhouseConfigMergeTreeOutput) ToMdbClickhouseClusterClickhouseConfigMergeTreePtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseConfigMergeTreePtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterClickhouseConfigMergeTree) *MdbClickhouseClusterClickhouseConfigMergeTree {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterClickhouseConfigMergeTree) *MdbClickhouseClusterClickhouseConfigMergeTree {
 		return &v
 	}).(MdbClickhouseClusterClickhouseConfigMergeTreePtrOutput)
 }
@@ -24359,7 +24885,11 @@ func (o MdbClickhouseClusterClickhouseConfigMergeTreePtrOutput) ToMdbClickhouseC
 
 func (o MdbClickhouseClusterClickhouseConfigMergeTreePtrOutput) Elem() MdbClickhouseClusterClickhouseConfigMergeTreeOutput {
 	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseConfigMergeTree) MdbClickhouseClusterClickhouseConfigMergeTree {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterClickhouseConfigMergeTree
+		return ret
 	}).(MdbClickhouseClusterClickhouseConfigMergeTreeOutput)
 }
 
@@ -24530,7 +25060,7 @@ func (o MdbClickhouseClusterClickhouseConfigRabbitmqOutput) ToMdbClickhouseClust
 }
 
 func (o MdbClickhouseClusterClickhouseConfigRabbitmqOutput) ToMdbClickhouseClusterClickhouseConfigRabbitmqPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseConfigRabbitmqPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterClickhouseConfigRabbitmq) *MdbClickhouseClusterClickhouseConfigRabbitmq {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterClickhouseConfigRabbitmq) *MdbClickhouseClusterClickhouseConfigRabbitmq {
 		return &v
 	}).(MdbClickhouseClusterClickhouseConfigRabbitmqPtrOutput)
 }
@@ -24561,7 +25091,11 @@ func (o MdbClickhouseClusterClickhouseConfigRabbitmqPtrOutput) ToMdbClickhouseCl
 
 func (o MdbClickhouseClusterClickhouseConfigRabbitmqPtrOutput) Elem() MdbClickhouseClusterClickhouseConfigRabbitmqOutput {
 	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseConfigRabbitmq) MdbClickhouseClusterClickhouseConfigRabbitmq {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterClickhouseConfigRabbitmq
+		return ret
 	}).(MdbClickhouseClusterClickhouseConfigRabbitmqOutput)
 }
 
@@ -24686,7 +25220,7 @@ func (o MdbClickhouseClusterClickhouseResourcesOutput) ToMdbClickhouseClusterCli
 }
 
 func (o MdbClickhouseClusterClickhouseResourcesOutput) ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterClickhouseResources) *MdbClickhouseClusterClickhouseResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterClickhouseResources) *MdbClickhouseClusterClickhouseResources {
 		return &v
 	}).(MdbClickhouseClusterClickhouseResourcesPtrOutput)
 }
@@ -24721,7 +25255,13 @@ func (o MdbClickhouseClusterClickhouseResourcesPtrOutput) ToMdbClickhouseCluster
 }
 
 func (o MdbClickhouseClusterClickhouseResourcesPtrOutput) Elem() MdbClickhouseClusterClickhouseResourcesOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseResources) MdbClickhouseClusterClickhouseResources { return *v }).(MdbClickhouseClusterClickhouseResourcesOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseResources) MdbClickhouseClusterClickhouseResources {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterClickhouseResources
+		return ret
+	}).(MdbClickhouseClusterClickhouseResourcesOutput)
 }
 
 // Volume of the storage available to a ZooKeeper host, in gigabytes.
@@ -24847,7 +25387,7 @@ func (o MdbClickhouseClusterCloudStorageOutput) ToMdbClickhouseClusterCloudStora
 }
 
 func (o MdbClickhouseClusterCloudStorageOutput) ToMdbClickhouseClusterCloudStoragePtrOutputWithContext(ctx context.Context) MdbClickhouseClusterCloudStoragePtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterCloudStorage) *MdbClickhouseClusterCloudStorage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterCloudStorage) *MdbClickhouseClusterCloudStorage {
 		return &v
 	}).(MdbClickhouseClusterCloudStoragePtrOutput)
 }
@@ -24872,7 +25412,13 @@ func (o MdbClickhouseClusterCloudStoragePtrOutput) ToMdbClickhouseClusterCloudSt
 }
 
 func (o MdbClickhouseClusterCloudStoragePtrOutput) Elem() MdbClickhouseClusterCloudStorageOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterCloudStorage) MdbClickhouseClusterCloudStorage { return *v }).(MdbClickhouseClusterCloudStorageOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterCloudStorage) MdbClickhouseClusterCloudStorage {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterCloudStorage
+		return ret
+	}).(MdbClickhouseClusterCloudStorageOutput)
 }
 
 // Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
@@ -25343,7 +25889,7 @@ func (o MdbClickhouseClusterMaintenanceWindowOutput) ToMdbClickhouseClusterMaint
 }
 
 func (o MdbClickhouseClusterMaintenanceWindowOutput) ToMdbClickhouseClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterMaintenanceWindow) *MdbClickhouseClusterMaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterMaintenanceWindow) *MdbClickhouseClusterMaintenanceWindow {
 		return &v
 	}).(MdbClickhouseClusterMaintenanceWindowPtrOutput)
 }
@@ -25378,7 +25924,13 @@ func (o MdbClickhouseClusterMaintenanceWindowPtrOutput) ToMdbClickhouseClusterMa
 }
 
 func (o MdbClickhouseClusterMaintenanceWindowPtrOutput) Elem() MdbClickhouseClusterMaintenanceWindowOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterMaintenanceWindow) MdbClickhouseClusterMaintenanceWindow { return *v }).(MdbClickhouseClusterMaintenanceWindowOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterMaintenanceWindow) MdbClickhouseClusterMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterMaintenanceWindow
+		return ret
+	}).(MdbClickhouseClusterMaintenanceWindowOutput)
 }
 
 // Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
@@ -26474,7 +27026,7 @@ func (o MdbClickhouseClusterUserSettingsOutput) ToMdbClickhouseClusterUserSettin
 }
 
 func (o MdbClickhouseClusterUserSettingsOutput) ToMdbClickhouseClusterUserSettingsPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterUserSettingsPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterUserSettings) *MdbClickhouseClusterUserSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterUserSettings) *MdbClickhouseClusterUserSettings {
 		return &v
 	}).(MdbClickhouseClusterUserSettingsPtrOutput)
 }
@@ -26959,7 +27511,13 @@ func (o MdbClickhouseClusterUserSettingsPtrOutput) ToMdbClickhouseClusterUserSet
 }
 
 func (o MdbClickhouseClusterUserSettingsPtrOutput) Elem() MdbClickhouseClusterUserSettingsOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterUserSettings) MdbClickhouseClusterUserSettings { return *v }).(MdbClickhouseClusterUserSettingsOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterUserSettings) MdbClickhouseClusterUserSettings {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterUserSettings
+		return ret
+	}).(MdbClickhouseClusterUserSettingsOutput)
 }
 
 // Include CORS headers in HTTP responces.
@@ -27985,7 +28543,7 @@ func (o MdbClickhouseClusterZookeeperOutput) ToMdbClickhouseClusterZookeeperPtrO
 }
 
 func (o MdbClickhouseClusterZookeeperOutput) ToMdbClickhouseClusterZookeeperPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterZookeeperPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterZookeeper) *MdbClickhouseClusterZookeeper {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterZookeeper) *MdbClickhouseClusterZookeeper {
 		return &v
 	}).(MdbClickhouseClusterZookeeperPtrOutput)
 }
@@ -28010,7 +28568,13 @@ func (o MdbClickhouseClusterZookeeperPtrOutput) ToMdbClickhouseClusterZookeeperP
 }
 
 func (o MdbClickhouseClusterZookeeperPtrOutput) Elem() MdbClickhouseClusterZookeeperOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterZookeeper) MdbClickhouseClusterZookeeper { return *v }).(MdbClickhouseClusterZookeeperOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterZookeeper) MdbClickhouseClusterZookeeper {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterZookeeper
+		return ret
+	}).(MdbClickhouseClusterZookeeperOutput)
 }
 
 // Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
@@ -28124,7 +28688,7 @@ func (o MdbClickhouseClusterZookeeperResourcesOutput) ToMdbClickhouseClusterZook
 }
 
 func (o MdbClickhouseClusterZookeeperResourcesOutput) ToMdbClickhouseClusterZookeeperResourcesPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterZookeeperResourcesPtrOutput {
-	return o.ApplyT(func(v MdbClickhouseClusterZookeeperResources) *MdbClickhouseClusterZookeeperResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterZookeeperResources) *MdbClickhouseClusterZookeeperResources {
 		return &v
 	}).(MdbClickhouseClusterZookeeperResourcesPtrOutput)
 }
@@ -28159,7 +28723,13 @@ func (o MdbClickhouseClusterZookeeperResourcesPtrOutput) ToMdbClickhouseClusterZ
 }
 
 func (o MdbClickhouseClusterZookeeperResourcesPtrOutput) Elem() MdbClickhouseClusterZookeeperResourcesOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterZookeeperResources) MdbClickhouseClusterZookeeperResources { return *v }).(MdbClickhouseClusterZookeeperResourcesOutput)
+	return o.ApplyT(func(v *MdbClickhouseClusterZookeeperResources) MdbClickhouseClusterZookeeperResources {
+		if v != nil {
+			return *v
+		}
+		var ret MdbClickhouseClusterZookeeperResources
+		return ret
+	}).(MdbClickhouseClusterZookeeperResourcesOutput)
 }
 
 // Volume of the storage available to a ZooKeeper host, in gigabytes.
@@ -28305,7 +28875,7 @@ func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigPtrO
 }
 
 func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigPtrOutput {
-	return o.ApplyT(func(v MdbElasticSearchClusterConfig) *MdbElasticSearchClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbElasticSearchClusterConfig) *MdbElasticSearchClusterConfig {
 		return &v
 	}).(MdbElasticSearchClusterConfigPtrOutput)
 }
@@ -28355,7 +28925,13 @@ func (o MdbElasticSearchClusterConfigPtrOutput) ToMdbElasticSearchClusterConfigP
 }
 
 func (o MdbElasticSearchClusterConfigPtrOutput) Elem() MdbElasticSearchClusterConfigOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) MdbElasticSearchClusterConfig { return *v }).(MdbElasticSearchClusterConfigOutput)
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) MdbElasticSearchClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MdbElasticSearchClusterConfig
+		return ret
+	}).(MdbElasticSearchClusterConfigOutput)
 }
 
 // Password for admin user of Elasticsearch.
@@ -28511,7 +29087,7 @@ func (o MdbElasticSearchClusterConfigDataNodeOutput) ToMdbElasticSearchClusterCo
 }
 
 func (o MdbElasticSearchClusterConfigDataNodeOutput) ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNode) *MdbElasticSearchClusterConfigDataNode {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbElasticSearchClusterConfigDataNode) *MdbElasticSearchClusterConfigDataNode {
 		return &v
 	}).(MdbElasticSearchClusterConfigDataNodePtrOutput)
 }
@@ -28538,7 +29114,13 @@ func (o MdbElasticSearchClusterConfigDataNodePtrOutput) ToMdbElasticSearchCluste
 }
 
 func (o MdbElasticSearchClusterConfigDataNodePtrOutput) Elem() MdbElasticSearchClusterConfigDataNodeOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNode) MdbElasticSearchClusterConfigDataNode { return *v }).(MdbElasticSearchClusterConfigDataNodeOutput)
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNode) MdbElasticSearchClusterConfigDataNode {
+		if v != nil {
+			return *v
+		}
+		var ret MdbElasticSearchClusterConfigDataNode
+		return ret
+	}).(MdbElasticSearchClusterConfigDataNodeOutput)
 }
 
 // Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
@@ -28650,7 +29232,7 @@ func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ToMdbElasticSearch
 }
 
 func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNodeResources) *MdbElasticSearchClusterConfigDataNodeResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbElasticSearchClusterConfigDataNodeResources) *MdbElasticSearchClusterConfigDataNodeResources {
 		return &v
 	}).(MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput)
 }
@@ -28685,7 +29267,11 @@ func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) ToMdbElasticSea
 
 func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) Elem() MdbElasticSearchClusterConfigDataNodeResourcesOutput {
 	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNodeResources) MdbElasticSearchClusterConfigDataNodeResources {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MdbElasticSearchClusterConfigDataNodeResources
+		return ret
 	}).(MdbElasticSearchClusterConfigDataNodeResourcesOutput)
 }
 
@@ -28811,7 +29397,7 @@ func (o MdbElasticSearchClusterConfigMasterNodeOutput) ToMdbElasticSearchCluster
 }
 
 func (o MdbElasticSearchClusterConfigMasterNodeOutput) ToMdbElasticSearchClusterConfigMasterNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodePtrOutput {
-	return o.ApplyT(func(v MdbElasticSearchClusterConfigMasterNode) *MdbElasticSearchClusterConfigMasterNode {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbElasticSearchClusterConfigMasterNode) *MdbElasticSearchClusterConfigMasterNode {
 		return &v
 	}).(MdbElasticSearchClusterConfigMasterNodePtrOutput)
 }
@@ -28838,7 +29424,13 @@ func (o MdbElasticSearchClusterConfigMasterNodePtrOutput) ToMdbElasticSearchClus
 }
 
 func (o MdbElasticSearchClusterConfigMasterNodePtrOutput) Elem() MdbElasticSearchClusterConfigMasterNodeOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfigMasterNode) MdbElasticSearchClusterConfigMasterNode { return *v }).(MdbElasticSearchClusterConfigMasterNodeOutput)
+	return o.ApplyT(func(v *MdbElasticSearchClusterConfigMasterNode) MdbElasticSearchClusterConfigMasterNode {
+		if v != nil {
+			return *v
+		}
+		var ret MdbElasticSearchClusterConfigMasterNode
+		return ret
+	}).(MdbElasticSearchClusterConfigMasterNodeOutput)
 }
 
 // Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
@@ -28950,7 +29542,7 @@ func (o MdbElasticSearchClusterConfigMasterNodeResourcesOutput) ToMdbElasticSear
 }
 
 func (o MdbElasticSearchClusterConfigMasterNodeResourcesOutput) ToMdbElasticSearchClusterConfigMasterNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput {
-	return o.ApplyT(func(v MdbElasticSearchClusterConfigMasterNodeResources) *MdbElasticSearchClusterConfigMasterNodeResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbElasticSearchClusterConfigMasterNodeResources) *MdbElasticSearchClusterConfigMasterNodeResources {
 		return &v
 	}).(MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput)
 }
@@ -28985,7 +29577,11 @@ func (o MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput) ToMdbElasticS
 
 func (o MdbElasticSearchClusterConfigMasterNodeResourcesPtrOutput) Elem() MdbElasticSearchClusterConfigMasterNodeResourcesOutput {
 	return o.ApplyT(func(v *MdbElasticSearchClusterConfigMasterNodeResources) MdbElasticSearchClusterConfigMasterNodeResources {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MdbElasticSearchClusterConfigMasterNodeResources
+		return ret
 	}).(MdbElasticSearchClusterConfigMasterNodeResourcesOutput)
 }
 
@@ -29365,7 +29961,7 @@ func (o MdbGreenplumClusterMasterSubclusterOutput) ToMdbGreenplumClusterMasterSu
 }
 
 func (o MdbGreenplumClusterMasterSubclusterOutput) ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput {
-	return o.ApplyT(func(v MdbGreenplumClusterMasterSubcluster) *MdbGreenplumClusterMasterSubcluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbGreenplumClusterMasterSubcluster) *MdbGreenplumClusterMasterSubcluster {
 		return &v
 	}).(MdbGreenplumClusterMasterSubclusterPtrOutput)
 }
@@ -29392,7 +29988,13 @@ func (o MdbGreenplumClusterMasterSubclusterPtrOutput) ToMdbGreenplumClusterMaste
 }
 
 func (o MdbGreenplumClusterMasterSubclusterPtrOutput) Elem() MdbGreenplumClusterMasterSubclusterOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubcluster) MdbGreenplumClusterMasterSubcluster { return *v }).(MdbGreenplumClusterMasterSubclusterOutput)
+	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubcluster) MdbGreenplumClusterMasterSubcluster {
+		if v != nil {
+			return *v
+		}
+		var ret MdbGreenplumClusterMasterSubcluster
+		return ret
+	}).(MdbGreenplumClusterMasterSubclusterOutput)
 }
 
 // Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
@@ -29500,10 +30102,11 @@ func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ToMdbGreenplumCluste
 }
 
 func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return o.ApplyT(func(v MdbGreenplumClusterMasterSubclusterResources) *MdbGreenplumClusterMasterSubclusterResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbGreenplumClusterMasterSubclusterResources) *MdbGreenplumClusterMasterSubclusterResources {
 		return &v
 	}).(MdbGreenplumClusterMasterSubclusterResourcesPtrOutput)
 }
+
 func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v MdbGreenplumClusterMasterSubclusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
 }
@@ -29532,7 +30135,11 @@ func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) ToMdbGreenplumClu
 
 func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) Elem() MdbGreenplumClusterMasterSubclusterResourcesOutput {
 	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubclusterResources) MdbGreenplumClusterMasterSubclusterResources {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MdbGreenplumClusterMasterSubclusterResources
+		return ret
 	}).(MdbGreenplumClusterMasterSubclusterResourcesOutput)
 }
 
@@ -29753,7 +30360,7 @@ func (o MdbGreenplumClusterSegmentSubclusterOutput) ToMdbGreenplumClusterSegment
 }
 
 func (o MdbGreenplumClusterSegmentSubclusterOutput) ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput {
-	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubcluster) *MdbGreenplumClusterSegmentSubcluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbGreenplumClusterSegmentSubcluster) *MdbGreenplumClusterSegmentSubcluster {
 		return &v
 	}).(MdbGreenplumClusterSegmentSubclusterPtrOutput)
 }
@@ -29780,7 +30387,13 @@ func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) ToMdbGreenplumClusterSegm
 }
 
 func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) Elem() MdbGreenplumClusterSegmentSubclusterOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubcluster) MdbGreenplumClusterSegmentSubcluster { return *v }).(MdbGreenplumClusterSegmentSubclusterOutput)
+	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubcluster) MdbGreenplumClusterSegmentSubcluster {
+		if v != nil {
+			return *v
+		}
+		var ret MdbGreenplumClusterSegmentSubcluster
+		return ret
+	}).(MdbGreenplumClusterSegmentSubclusterOutput)
 }
 
 // Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
@@ -29888,10 +30501,11 @@ func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ToMdbGreenplumClust
 }
 
 func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubclusterResources) *MdbGreenplumClusterSegmentSubclusterResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbGreenplumClusterSegmentSubclusterResources) *MdbGreenplumClusterSegmentSubclusterResources {
 		return &v
 	}).(MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput)
 }
+
 func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubclusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
 }
@@ -29920,7 +30534,11 @@ func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) ToMdbGreenplumCl
 
 func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) Elem() MdbGreenplumClusterSegmentSubclusterResourcesOutput {
 	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubclusterResources) MdbGreenplumClusterSegmentSubclusterResources {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MdbGreenplumClusterSegmentSubclusterResources
+		return ret
 	}).(MdbGreenplumClusterSegmentSubclusterResourcesOutput)
 }
 
@@ -30068,7 +30686,7 @@ func (o MdbKafkaClusterConfigOutput) ToMdbKafkaClusterConfigPtrOutput() MdbKafka
 }
 
 func (o MdbKafkaClusterConfigOutput) ToMdbKafkaClusterConfigPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfig) *MdbKafkaClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterConfig) *MdbKafkaClusterConfig {
 		return &v
 	}).(MdbKafkaClusterConfigPtrOutput)
 }
@@ -30123,7 +30741,13 @@ func (o MdbKafkaClusterConfigPtrOutput) ToMdbKafkaClusterConfigPtrOutputWithCont
 }
 
 func (o MdbKafkaClusterConfigPtrOutput) Elem() MdbKafkaClusterConfigOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) MdbKafkaClusterConfig { return *v }).(MdbKafkaClusterConfigOutput)
+	return o.ApplyT(func(v *MdbKafkaClusterConfig) MdbKafkaClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MdbKafkaClusterConfig
+		return ret
+	}).(MdbKafkaClusterConfigOutput)
 }
 
 // Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
@@ -30293,7 +30917,7 @@ func (o MdbKafkaClusterConfigKafkaOutput) ToMdbKafkaClusterConfigKafkaPtrOutput(
 }
 
 func (o MdbKafkaClusterConfigKafkaOutput) ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafka) *MdbKafkaClusterConfigKafka {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterConfigKafka) *MdbKafkaClusterConfigKafka {
 		return &v
 	}).(MdbKafkaClusterConfigKafkaPtrOutput)
 }
@@ -30323,7 +30947,13 @@ func (o MdbKafkaClusterConfigKafkaPtrOutput) ToMdbKafkaClusterConfigKafkaPtrOutp
 }
 
 func (o MdbKafkaClusterConfigKafkaPtrOutput) Elem() MdbKafkaClusterConfigKafkaOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafka) MdbKafkaClusterConfigKafka { return *v }).(MdbKafkaClusterConfigKafkaOutput)
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafka) MdbKafkaClusterConfigKafka {
+		if v != nil {
+			return *v
+		}
+		var ret MdbKafkaClusterConfigKafka
+		return ret
+	}).(MdbKafkaClusterConfigKafkaOutput)
 }
 
 // User-defined settings for the Kafka cluster. The structure is documented below.
@@ -30465,10 +31095,11 @@ func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) ToMdbKafkaClusterConfigKafk
 }
 
 func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) ToMdbKafkaClusterConfigKafkaKafkaConfigPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *MdbKafkaClusterConfigKafkaKafkaConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterConfigKafkaKafkaConfig) *MdbKafkaClusterConfigKafkaKafkaConfig {
 		return &v
 	}).(MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput)
 }
+
 func (o MdbKafkaClusterConfigKafkaKafkaConfigOutput) AutoCreateTopicsEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaKafkaConfig) *bool { return v.AutoCreateTopicsEnable }).(pulumi.BoolPtrOutput)
 }
@@ -30544,7 +31175,13 @@ func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) ToMdbKafkaClusterConfigK
 }
 
 func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) Elem() MdbKafkaClusterConfigKafkaKafkaConfigOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) MdbKafkaClusterConfigKafkaKafkaConfig { return *v }).(MdbKafkaClusterConfigKafkaKafkaConfigOutput)
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaKafkaConfig) MdbKafkaClusterConfigKafkaKafkaConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MdbKafkaClusterConfigKafkaKafkaConfig
+		return ret
+	}).(MdbKafkaClusterConfigKafkaKafkaConfigOutput)
 }
 
 func (o MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) AutoCreateTopicsEnable() pulumi.BoolPtrOutput {
@@ -30783,7 +31420,7 @@ func (o MdbKafkaClusterConfigKafkaResourcesOutput) ToMdbKafkaClusterConfigKafkaR
 }
 
 func (o MdbKafkaClusterConfigKafkaResourcesOutput) ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaResources) *MdbKafkaClusterConfigKafkaResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterConfigKafkaResources) *MdbKafkaClusterConfigKafkaResources {
 		return &v
 	}).(MdbKafkaClusterConfigKafkaResourcesPtrOutput)
 }
@@ -30818,7 +31455,13 @@ func (o MdbKafkaClusterConfigKafkaResourcesPtrOutput) ToMdbKafkaClusterConfigKaf
 }
 
 func (o MdbKafkaClusterConfigKafkaResourcesPtrOutput) Elem() MdbKafkaClusterConfigKafkaResourcesOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaResources) MdbKafkaClusterConfigKafkaResources { return *v }).(MdbKafkaClusterConfigKafkaResourcesOutput)
+	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaResources) MdbKafkaClusterConfigKafkaResources {
+		if v != nil {
+			return *v
+		}
+		var ret MdbKafkaClusterConfigKafkaResources
+		return ret
+	}).(MdbKafkaClusterConfigKafkaResourcesOutput)
 }
 
 // Volume of the storage available to a ZooKeeper host, in gigabytes.
@@ -30944,7 +31587,7 @@ func (o MdbKafkaClusterConfigZookeeperOutput) ToMdbKafkaClusterConfigZookeeperPt
 }
 
 func (o MdbKafkaClusterConfigZookeeperOutput) ToMdbKafkaClusterConfigZookeeperPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigZookeeperPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigZookeeper) *MdbKafkaClusterConfigZookeeper {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterConfigZookeeper) *MdbKafkaClusterConfigZookeeper {
 		return &v
 	}).(MdbKafkaClusterConfigZookeeperPtrOutput)
 }
@@ -30969,7 +31612,13 @@ func (o MdbKafkaClusterConfigZookeeperPtrOutput) ToMdbKafkaClusterConfigZookeepe
 }
 
 func (o MdbKafkaClusterConfigZookeeperPtrOutput) Elem() MdbKafkaClusterConfigZookeeperOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigZookeeper) MdbKafkaClusterConfigZookeeper { return *v }).(MdbKafkaClusterConfigZookeeperOutput)
+	return o.ApplyT(func(v *MdbKafkaClusterConfigZookeeper) MdbKafkaClusterConfigZookeeper {
+		if v != nil {
+			return *v
+		}
+		var ret MdbKafkaClusterConfigZookeeper
+		return ret
+	}).(MdbKafkaClusterConfigZookeeperOutput)
 }
 
 // Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
@@ -31083,7 +31732,7 @@ func (o MdbKafkaClusterConfigZookeeperResourcesOutput) ToMdbKafkaClusterConfigZo
 }
 
 func (o MdbKafkaClusterConfigZookeeperResourcesOutput) ToMdbKafkaClusterConfigZookeeperResourcesPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigZookeeperResourcesPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterConfigZookeeperResources) *MdbKafkaClusterConfigZookeeperResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterConfigZookeeperResources) *MdbKafkaClusterConfigZookeeperResources {
 		return &v
 	}).(MdbKafkaClusterConfigZookeeperResourcesPtrOutput)
 }
@@ -31118,7 +31767,13 @@ func (o MdbKafkaClusterConfigZookeeperResourcesPtrOutput) ToMdbKafkaClusterConfi
 }
 
 func (o MdbKafkaClusterConfigZookeeperResourcesPtrOutput) Elem() MdbKafkaClusterConfigZookeeperResourcesOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigZookeeperResources) MdbKafkaClusterConfigZookeeperResources { return *v }).(MdbKafkaClusterConfigZookeeperResourcesOutput)
+	return o.ApplyT(func(v *MdbKafkaClusterConfigZookeeperResources) MdbKafkaClusterConfigZookeeperResources {
+		if v != nil {
+			return *v
+		}
+		var ret MdbKafkaClusterConfigZookeeperResources
+		return ret
+	}).(MdbKafkaClusterConfigZookeeperResourcesOutput)
 }
 
 // Volume of the storage available to a ZooKeeper host, in gigabytes.
@@ -31532,10 +32187,11 @@ func (o MdbKafkaClusterTopicTopicConfigOutput) ToMdbKafkaClusterTopicTopicConfig
 }
 
 func (o MdbKafkaClusterTopicTopicConfigOutput) ToMdbKafkaClusterTopicTopicConfigPtrOutputWithContext(ctx context.Context) MdbKafkaClusterTopicTopicConfigPtrOutput {
-	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *MdbKafkaClusterTopicTopicConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterTopicTopicConfig) *MdbKafkaClusterTopicTopicConfig {
 		return &v
 	}).(MdbKafkaClusterTopicTopicConfigPtrOutput)
 }
+
 func (o MdbKafkaClusterTopicTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MdbKafkaClusterTopicTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
@@ -31603,7 +32259,13 @@ func (o MdbKafkaClusterTopicTopicConfigPtrOutput) ToMdbKafkaClusterTopicTopicCon
 }
 
 func (o MdbKafkaClusterTopicTopicConfigPtrOutput) Elem() MdbKafkaClusterTopicTopicConfigOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) MdbKafkaClusterTopicTopicConfig { return *v }).(MdbKafkaClusterTopicTopicConfigOutput)
+	return o.ApplyT(func(v *MdbKafkaClusterTopicTopicConfig) MdbKafkaClusterTopicTopicConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MdbKafkaClusterTopicTopicConfig
+		return ret
+	}).(MdbKafkaClusterTopicTopicConfigOutput)
 }
 
 func (o MdbKafkaClusterTopicTopicConfigPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
@@ -32049,7 +32711,7 @@ func (o MdbMongodbClusterClusterConfigOutput) ToMdbMongodbClusterClusterConfigPt
 }
 
 func (o MdbMongodbClusterClusterConfigOutput) ToMdbMongodbClusterClusterConfigPtrOutputWithContext(ctx context.Context) MdbMongodbClusterClusterConfigPtrOutput {
-	return o.ApplyT(func(v MdbMongodbClusterClusterConfig) *MdbMongodbClusterClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMongodbClusterClusterConfig) *MdbMongodbClusterClusterConfig {
 		return &v
 	}).(MdbMongodbClusterClusterConfigPtrOutput)
 }
@@ -32091,7 +32753,13 @@ func (o MdbMongodbClusterClusterConfigPtrOutput) ToMdbMongodbClusterClusterConfi
 }
 
 func (o MdbMongodbClusterClusterConfigPtrOutput) Elem() MdbMongodbClusterClusterConfigOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterClusterConfig) MdbMongodbClusterClusterConfig { return *v }).(MdbMongodbClusterClusterConfigOutput)
+	return o.ApplyT(func(v *MdbMongodbClusterClusterConfig) MdbMongodbClusterClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMongodbClusterClusterConfig
+		return ret
+	}).(MdbMongodbClusterClusterConfigOutput)
 }
 
 // Shows whether cluster has access to data lens. The structure is documented below.
@@ -32227,7 +32895,7 @@ func (o MdbMongodbClusterClusterConfigAccessOutput) ToMdbMongodbClusterClusterCo
 }
 
 func (o MdbMongodbClusterClusterConfigAccessOutput) ToMdbMongodbClusterClusterConfigAccessPtrOutputWithContext(ctx context.Context) MdbMongodbClusterClusterConfigAccessPtrOutput {
-	return o.ApplyT(func(v MdbMongodbClusterClusterConfigAccess) *MdbMongodbClusterClusterConfigAccess {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMongodbClusterClusterConfigAccess) *MdbMongodbClusterClusterConfigAccess {
 		return &v
 	}).(MdbMongodbClusterClusterConfigAccessPtrOutput)
 }
@@ -32252,7 +32920,13 @@ func (o MdbMongodbClusterClusterConfigAccessPtrOutput) ToMdbMongodbClusterCluste
 }
 
 func (o MdbMongodbClusterClusterConfigAccessPtrOutput) Elem() MdbMongodbClusterClusterConfigAccessOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterClusterConfigAccess) MdbMongodbClusterClusterConfigAccess { return *v }).(MdbMongodbClusterClusterConfigAccessOutput)
+	return o.ApplyT(func(v *MdbMongodbClusterClusterConfigAccess) MdbMongodbClusterClusterConfigAccess {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMongodbClusterClusterConfigAccess
+		return ret
+	}).(MdbMongodbClusterClusterConfigAccessOutput)
 }
 
 // Allow access for DataLens.
@@ -32362,7 +33036,7 @@ func (o MdbMongodbClusterClusterConfigBackupWindowStartOutput) ToMdbMongodbClust
 }
 
 func (o MdbMongodbClusterClusterConfigBackupWindowStartOutput) ToMdbMongodbClusterClusterConfigBackupWindowStartPtrOutputWithContext(ctx context.Context) MdbMongodbClusterClusterConfigBackupWindowStartPtrOutput {
-	return o.ApplyT(func(v MdbMongodbClusterClusterConfigBackupWindowStart) *MdbMongodbClusterClusterConfigBackupWindowStart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMongodbClusterClusterConfigBackupWindowStart) *MdbMongodbClusterClusterConfigBackupWindowStart {
 		return &v
 	}).(MdbMongodbClusterClusterConfigBackupWindowStartPtrOutput)
 }
@@ -32393,7 +33067,11 @@ func (o MdbMongodbClusterClusterConfigBackupWindowStartPtrOutput) ToMdbMongodbCl
 
 func (o MdbMongodbClusterClusterConfigBackupWindowStartPtrOutput) Elem() MdbMongodbClusterClusterConfigBackupWindowStartOutput {
 	return o.ApplyT(func(v *MdbMongodbClusterClusterConfigBackupWindowStart) MdbMongodbClusterClusterConfigBackupWindowStart {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MdbMongodbClusterClusterConfigBackupWindowStart
+		return ret
 	}).(MdbMongodbClusterClusterConfigBackupWindowStartOutput)
 }
 
@@ -32781,7 +33459,7 @@ func (o MdbMongodbClusterMaintenanceWindowOutput) ToMdbMongodbClusterMaintenance
 }
 
 func (o MdbMongodbClusterMaintenanceWindowOutput) ToMdbMongodbClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMongodbClusterMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v MdbMongodbClusterMaintenanceWindow) *MdbMongodbClusterMaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMongodbClusterMaintenanceWindow) *MdbMongodbClusterMaintenanceWindow {
 		return &v
 	}).(MdbMongodbClusterMaintenanceWindowPtrOutput)
 }
@@ -32816,7 +33494,13 @@ func (o MdbMongodbClusterMaintenanceWindowPtrOutput) ToMdbMongodbClusterMaintena
 }
 
 func (o MdbMongodbClusterMaintenanceWindowPtrOutput) Elem() MdbMongodbClusterMaintenanceWindowOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterMaintenanceWindow) MdbMongodbClusterMaintenanceWindow { return *v }).(MdbMongodbClusterMaintenanceWindowOutput)
+	return o.ApplyT(func(v *MdbMongodbClusterMaintenanceWindow) MdbMongodbClusterMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMongodbClusterMaintenanceWindow
+		return ret
+	}).(MdbMongodbClusterMaintenanceWindowOutput)
 }
 
 // Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
@@ -32950,7 +33634,7 @@ func (o MdbMongodbClusterResourcesOutput) ToMdbMongodbClusterResourcesPtrOutput(
 }
 
 func (o MdbMongodbClusterResourcesOutput) ToMdbMongodbClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMongodbClusterResourcesPtrOutput {
-	return o.ApplyT(func(v MdbMongodbClusterResources) *MdbMongodbClusterResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMongodbClusterResources) *MdbMongodbClusterResources {
 		return &v
 	}).(MdbMongodbClusterResourcesPtrOutput)
 }
@@ -32985,7 +33669,13 @@ func (o MdbMongodbClusterResourcesPtrOutput) ToMdbMongodbClusterResourcesPtrOutp
 }
 
 func (o MdbMongodbClusterResourcesPtrOutput) Elem() MdbMongodbClusterResourcesOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterResources) MdbMongodbClusterResources { return *v }).(MdbMongodbClusterResourcesOutput)
+	return o.ApplyT(func(v *MdbMongodbClusterResources) MdbMongodbClusterResources {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMongodbClusterResources
+		return ret
+	}).(MdbMongodbClusterResourcesOutput)
 }
 
 // Volume of the storage available to a MongoDB host, in gigabytes.
@@ -33333,7 +34023,7 @@ func (o MdbMysqlClusterAccessOutput) ToMdbMysqlClusterAccessPtrOutput() MdbMysql
 }
 
 func (o MdbMysqlClusterAccessOutput) ToMdbMysqlClusterAccessPtrOutputWithContext(ctx context.Context) MdbMysqlClusterAccessPtrOutput {
-	return o.ApplyT(func(v MdbMysqlClusterAccess) *MdbMysqlClusterAccess {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMysqlClusterAccess) *MdbMysqlClusterAccess {
 		return &v
 	}).(MdbMysqlClusterAccessPtrOutput)
 }
@@ -33363,7 +34053,13 @@ func (o MdbMysqlClusterAccessPtrOutput) ToMdbMysqlClusterAccessPtrOutputWithCont
 }
 
 func (o MdbMysqlClusterAccessPtrOutput) Elem() MdbMysqlClusterAccessOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterAccess) MdbMysqlClusterAccess { return *v }).(MdbMysqlClusterAccessOutput)
+	return o.ApplyT(func(v *MdbMysqlClusterAccess) MdbMysqlClusterAccess {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMysqlClusterAccess
+		return ret
+	}).(MdbMysqlClusterAccessOutput)
 }
 
 // Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
@@ -33483,7 +34179,7 @@ func (o MdbMysqlClusterBackupWindowStartOutput) ToMdbMysqlClusterBackupWindowSta
 }
 
 func (o MdbMysqlClusterBackupWindowStartOutput) ToMdbMysqlClusterBackupWindowStartPtrOutputWithContext(ctx context.Context) MdbMysqlClusterBackupWindowStartPtrOutput {
-	return o.ApplyT(func(v MdbMysqlClusterBackupWindowStart) *MdbMysqlClusterBackupWindowStart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMysqlClusterBackupWindowStart) *MdbMysqlClusterBackupWindowStart {
 		return &v
 	}).(MdbMysqlClusterBackupWindowStartPtrOutput)
 }
@@ -33513,7 +34209,13 @@ func (o MdbMysqlClusterBackupWindowStartPtrOutput) ToMdbMysqlClusterBackupWindow
 }
 
 func (o MdbMysqlClusterBackupWindowStartPtrOutput) Elem() MdbMysqlClusterBackupWindowStartOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterBackupWindowStart) MdbMysqlClusterBackupWindowStart { return *v }).(MdbMysqlClusterBackupWindowStartOutput)
+	return o.ApplyT(func(v *MdbMysqlClusterBackupWindowStart) MdbMysqlClusterBackupWindowStart {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMysqlClusterBackupWindowStart
+		return ret
+	}).(MdbMysqlClusterBackupWindowStartOutput)
 }
 
 // The hour at which backup will be started.
@@ -33858,7 +34560,7 @@ func (o MdbMysqlClusterMaintenanceWindowOutput) ToMdbMysqlClusterMaintenanceWind
 }
 
 func (o MdbMysqlClusterMaintenanceWindowOutput) ToMdbMysqlClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbMysqlClusterMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v MdbMysqlClusterMaintenanceWindow) *MdbMysqlClusterMaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMysqlClusterMaintenanceWindow) *MdbMysqlClusterMaintenanceWindow {
 		return &v
 	}).(MdbMysqlClusterMaintenanceWindowPtrOutput)
 }
@@ -33893,7 +34595,13 @@ func (o MdbMysqlClusterMaintenanceWindowPtrOutput) ToMdbMysqlClusterMaintenanceW
 }
 
 func (o MdbMysqlClusterMaintenanceWindowPtrOutput) Elem() MdbMysqlClusterMaintenanceWindowOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterMaintenanceWindow) MdbMysqlClusterMaintenanceWindow { return *v }).(MdbMysqlClusterMaintenanceWindowOutput)
+	return o.ApplyT(func(v *MdbMysqlClusterMaintenanceWindow) MdbMysqlClusterMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMysqlClusterMaintenanceWindow
+		return ret
+	}).(MdbMysqlClusterMaintenanceWindowOutput)
 }
 
 // Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
@@ -34025,7 +34733,7 @@ func (o MdbMysqlClusterResourcesOutput) ToMdbMysqlClusterResourcesPtrOutput() Md
 }
 
 func (o MdbMysqlClusterResourcesOutput) ToMdbMysqlClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMysqlClusterResourcesPtrOutput {
-	return o.ApplyT(func(v MdbMysqlClusterResources) *MdbMysqlClusterResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMysqlClusterResources) *MdbMysqlClusterResources {
 		return &v
 	}).(MdbMysqlClusterResourcesPtrOutput)
 }
@@ -34059,7 +34767,13 @@ func (o MdbMysqlClusterResourcesPtrOutput) ToMdbMysqlClusterResourcesPtrOutputWi
 }
 
 func (o MdbMysqlClusterResourcesPtrOutput) Elem() MdbMysqlClusterResourcesOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterResources) MdbMysqlClusterResources { return *v }).(MdbMysqlClusterResourcesOutput)
+	return o.ApplyT(func(v *MdbMysqlClusterResources) MdbMysqlClusterResources {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMysqlClusterResources
+		return ret
+	}).(MdbMysqlClusterResourcesOutput)
 }
 
 // Volume of the storage available to a MySQL host, in gigabytes.
@@ -34188,7 +34902,7 @@ func (o MdbMysqlClusterRestoreOutput) ToMdbMysqlClusterRestorePtrOutput() MdbMys
 }
 
 func (o MdbMysqlClusterRestoreOutput) ToMdbMysqlClusterRestorePtrOutputWithContext(ctx context.Context) MdbMysqlClusterRestorePtrOutput {
-	return o.ApplyT(func(v MdbMysqlClusterRestore) *MdbMysqlClusterRestore {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMysqlClusterRestore) *MdbMysqlClusterRestore {
 		return &v
 	}).(MdbMysqlClusterRestorePtrOutput)
 }
@@ -34218,7 +34932,13 @@ func (o MdbMysqlClusterRestorePtrOutput) ToMdbMysqlClusterRestorePtrOutputWithCo
 }
 
 func (o MdbMysqlClusterRestorePtrOutput) Elem() MdbMysqlClusterRestoreOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterRestore) MdbMysqlClusterRestore { return *v }).(MdbMysqlClusterRestoreOutput)
+	return o.ApplyT(func(v *MdbMysqlClusterRestore) MdbMysqlClusterRestore {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMysqlClusterRestore
+		return ret
+	}).(MdbMysqlClusterRestoreOutput)
 }
 
 // Backup ID. The cluster will be created from the specified backup. [How to get a list of MySQL backups](https://cloud.yandex.com/docs/managed-mysql/operations/cluster-backups).
@@ -34497,7 +35217,7 @@ func (o MdbMysqlClusterUserConnectionLimitsOutput) ToMdbMysqlClusterUserConnecti
 }
 
 func (o MdbMysqlClusterUserConnectionLimitsOutput) ToMdbMysqlClusterUserConnectionLimitsPtrOutputWithContext(ctx context.Context) MdbMysqlClusterUserConnectionLimitsPtrOutput {
-	return o.ApplyT(func(v MdbMysqlClusterUserConnectionLimits) *MdbMysqlClusterUserConnectionLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMysqlClusterUserConnectionLimits) *MdbMysqlClusterUserConnectionLimits {
 		return &v
 	}).(MdbMysqlClusterUserConnectionLimitsPtrOutput)
 }
@@ -34537,7 +35257,13 @@ func (o MdbMysqlClusterUserConnectionLimitsPtrOutput) ToMdbMysqlClusterUserConne
 }
 
 func (o MdbMysqlClusterUserConnectionLimitsPtrOutput) Elem() MdbMysqlClusterUserConnectionLimitsOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterUserConnectionLimits) MdbMysqlClusterUserConnectionLimits { return *v }).(MdbMysqlClusterUserConnectionLimitsOutput)
+	return o.ApplyT(func(v *MdbMysqlClusterUserConnectionLimits) MdbMysqlClusterUserConnectionLimits {
+		if v != nil {
+			return *v
+		}
+		var ret MdbMysqlClusterUserConnectionLimits
+		return ret
+	}).(MdbMysqlClusterUserConnectionLimitsOutput)
 }
 
 // Max connections per hour.
@@ -34815,7 +35541,7 @@ func (o MdbRedisClusterConfigOutput) ToMdbRedisClusterConfigPtrOutput() MdbRedis
 }
 
 func (o MdbRedisClusterConfigOutput) ToMdbRedisClusterConfigPtrOutputWithContext(ctx context.Context) MdbRedisClusterConfigPtrOutput {
-	return o.ApplyT(func(v MdbRedisClusterConfig) *MdbRedisClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbRedisClusterConfig) *MdbRedisClusterConfig {
 		return &v
 	}).(MdbRedisClusterConfigPtrOutput)
 }
@@ -34876,7 +35602,13 @@ func (o MdbRedisClusterConfigPtrOutput) ToMdbRedisClusterConfigPtrOutputWithCont
 }
 
 func (o MdbRedisClusterConfigPtrOutput) Elem() MdbRedisClusterConfigOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) MdbRedisClusterConfig { return *v }).(MdbRedisClusterConfigOutput)
+	return o.ApplyT(func(v *MdbRedisClusterConfig) MdbRedisClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MdbRedisClusterConfig
+		return ret
+	}).(MdbRedisClusterConfigOutput)
 }
 
 // Number of databases (changing requires redis-server restart).
@@ -35191,7 +35923,7 @@ func (o MdbRedisClusterMaintenanceWindowOutput) ToMdbRedisClusterMaintenanceWind
 }
 
 func (o MdbRedisClusterMaintenanceWindowOutput) ToMdbRedisClusterMaintenanceWindowPtrOutputWithContext(ctx context.Context) MdbRedisClusterMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v MdbRedisClusterMaintenanceWindow) *MdbRedisClusterMaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbRedisClusterMaintenanceWindow) *MdbRedisClusterMaintenanceWindow {
 		return &v
 	}).(MdbRedisClusterMaintenanceWindowPtrOutput)
 }
@@ -35226,7 +35958,13 @@ func (o MdbRedisClusterMaintenanceWindowPtrOutput) ToMdbRedisClusterMaintenanceW
 }
 
 func (o MdbRedisClusterMaintenanceWindowPtrOutput) Elem() MdbRedisClusterMaintenanceWindowOutput {
-	return o.ApplyT(func(v *MdbRedisClusterMaintenanceWindow) MdbRedisClusterMaintenanceWindow { return *v }).(MdbRedisClusterMaintenanceWindowOutput)
+	return o.ApplyT(func(v *MdbRedisClusterMaintenanceWindow) MdbRedisClusterMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret MdbRedisClusterMaintenanceWindow
+		return ret
+	}).(MdbRedisClusterMaintenanceWindowOutput)
 }
 
 // Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
@@ -35358,7 +36096,7 @@ func (o MdbRedisClusterResourcesOutput) ToMdbRedisClusterResourcesPtrOutput() Md
 }
 
 func (o MdbRedisClusterResourcesOutput) ToMdbRedisClusterResourcesPtrOutputWithContext(ctx context.Context) MdbRedisClusterResourcesPtrOutput {
-	return o.ApplyT(func(v MdbRedisClusterResources) *MdbRedisClusterResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbRedisClusterResources) *MdbRedisClusterResources {
 		return &v
 	}).(MdbRedisClusterResourcesPtrOutput)
 }
@@ -35392,7 +36130,13 @@ func (o MdbRedisClusterResourcesPtrOutput) ToMdbRedisClusterResourcesPtrOutputWi
 }
 
 func (o MdbRedisClusterResourcesPtrOutput) Elem() MdbRedisClusterResourcesOutput {
-	return o.ApplyT(func(v *MdbRedisClusterResources) MdbRedisClusterResources { return *v }).(MdbRedisClusterResourcesOutput)
+	return o.ApplyT(func(v *MdbRedisClusterResources) MdbRedisClusterResources {
+		if v != nil {
+			return *v
+		}
+		var ret MdbRedisClusterResources
+		return ret
+	}).(MdbRedisClusterResourcesOutput)
 }
 
 // Volume of the storage available to a host, in gigabytes.
@@ -35521,7 +36265,7 @@ func (o MdbSqlServerClusterBackupWindowStartOutput) ToMdbSqlServerClusterBackupW
 }
 
 func (o MdbSqlServerClusterBackupWindowStartOutput) ToMdbSqlServerClusterBackupWindowStartPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterBackupWindowStartPtrOutput {
-	return o.ApplyT(func(v MdbSqlServerClusterBackupWindowStart) *MdbSqlServerClusterBackupWindowStart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbSqlServerClusterBackupWindowStart) *MdbSqlServerClusterBackupWindowStart {
 		return &v
 	}).(MdbSqlServerClusterBackupWindowStartPtrOutput)
 }
@@ -35551,7 +36295,13 @@ func (o MdbSqlServerClusterBackupWindowStartPtrOutput) ToMdbSqlServerClusterBack
 }
 
 func (o MdbSqlServerClusterBackupWindowStartPtrOutput) Elem() MdbSqlServerClusterBackupWindowStartOutput {
-	return o.ApplyT(func(v *MdbSqlServerClusterBackupWindowStart) MdbSqlServerClusterBackupWindowStart { return *v }).(MdbSqlServerClusterBackupWindowStartOutput)
+	return o.ApplyT(func(v *MdbSqlServerClusterBackupWindowStart) MdbSqlServerClusterBackupWindowStart {
+		if v != nil {
+			return *v
+		}
+		var ret MdbSqlServerClusterBackupWindowStart
+		return ret
+	}).(MdbSqlServerClusterBackupWindowStartOutput)
 }
 
 // The hour at which backup will be started.
@@ -35894,7 +36644,7 @@ func (o MdbSqlServerClusterResourcesOutput) ToMdbSqlServerClusterResourcesPtrOut
 }
 
 func (o MdbSqlServerClusterResourcesOutput) ToMdbSqlServerClusterResourcesPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterResourcesPtrOutput {
-	return o.ApplyT(func(v MdbSqlServerClusterResources) *MdbSqlServerClusterResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbSqlServerClusterResources) *MdbSqlServerClusterResources {
 		return &v
 	}).(MdbSqlServerClusterResourcesPtrOutput)
 }
@@ -35928,7 +36678,13 @@ func (o MdbSqlServerClusterResourcesPtrOutput) ToMdbSqlServerClusterResourcesPtr
 }
 
 func (o MdbSqlServerClusterResourcesPtrOutput) Elem() MdbSqlServerClusterResourcesOutput {
-	return o.ApplyT(func(v *MdbSqlServerClusterResources) MdbSqlServerClusterResources { return *v }).(MdbSqlServerClusterResourcesOutput)
+	return o.ApplyT(func(v *MdbSqlServerClusterResources) MdbSqlServerClusterResources {
+		if v != nil {
+			return *v
+		}
+		var ret MdbSqlServerClusterResources
+		return ret
+	}).(MdbSqlServerClusterResourcesOutput)
 }
 
 // Volume of the storage available to a SQLServer host, in gigabytes.
@@ -36697,7 +37453,7 @@ func (o StorageBucketLifecycleRuleExpirationOutput) ToStorageBucketLifecycleRule
 }
 
 func (o StorageBucketLifecycleRuleExpirationOutput) ToStorageBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) StorageBucketLifecycleRuleExpirationPtrOutput {
-	return o.ApplyT(func(v StorageBucketLifecycleRuleExpiration) *StorageBucketLifecycleRuleExpiration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBucketLifecycleRuleExpiration) *StorageBucketLifecycleRuleExpiration {
 		return &v
 	}).(StorageBucketLifecycleRuleExpirationPtrOutput)
 }
@@ -36732,7 +37488,13 @@ func (o StorageBucketLifecycleRuleExpirationPtrOutput) ToStorageBucketLifecycleR
 }
 
 func (o StorageBucketLifecycleRuleExpirationPtrOutput) Elem() StorageBucketLifecycleRuleExpirationOutput {
-	return o.ApplyT(func(v *StorageBucketLifecycleRuleExpiration) StorageBucketLifecycleRuleExpiration { return *v }).(StorageBucketLifecycleRuleExpirationOutput)
+	return o.ApplyT(func(v *StorageBucketLifecycleRuleExpiration) StorageBucketLifecycleRuleExpiration {
+		if v != nil {
+			return *v
+		}
+		var ret StorageBucketLifecycleRuleExpiration
+		return ret
+	}).(StorageBucketLifecycleRuleExpirationOutput)
 }
 
 // Specifies the date after which you want the corresponding action to take effect.
@@ -36858,7 +37620,7 @@ func (o StorageBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToStorageBu
 }
 
 func (o StorageBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToStorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) StorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
-	return o.ApplyT(func(v StorageBucketLifecycleRuleNoncurrentVersionExpiration) *StorageBucketLifecycleRuleNoncurrentVersionExpiration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBucketLifecycleRuleNoncurrentVersionExpiration) *StorageBucketLifecycleRuleNoncurrentVersionExpiration {
 		return &v
 	}).(StorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
 }
@@ -36884,7 +37646,11 @@ func (o StorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) ToStorag
 
 func (o StorageBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Elem() StorageBucketLifecycleRuleNoncurrentVersionExpirationOutput {
 	return o.ApplyT(func(v *StorageBucketLifecycleRuleNoncurrentVersionExpiration) StorageBucketLifecycleRuleNoncurrentVersionExpiration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret StorageBucketLifecycleRuleNoncurrentVersionExpiration
+		return ret
 	}).(StorageBucketLifecycleRuleNoncurrentVersionExpirationOutput)
 }
 
@@ -37318,7 +38084,7 @@ func (o StorageBucketServerSideEncryptionConfigurationOutput) ToStorageBucketSer
 }
 
 func (o StorageBucketServerSideEncryptionConfigurationOutput) ToStorageBucketServerSideEncryptionConfigurationPtrOutputWithContext(ctx context.Context) StorageBucketServerSideEncryptionConfigurationPtrOutput {
-	return o.ApplyT(func(v StorageBucketServerSideEncryptionConfiguration) *StorageBucketServerSideEncryptionConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBucketServerSideEncryptionConfiguration) *StorageBucketServerSideEncryptionConfiguration {
 		return &v
 	}).(StorageBucketServerSideEncryptionConfigurationPtrOutput)
 }
@@ -37346,7 +38112,11 @@ func (o StorageBucketServerSideEncryptionConfigurationPtrOutput) ToStorageBucket
 
 func (o StorageBucketServerSideEncryptionConfigurationPtrOutput) Elem() StorageBucketServerSideEncryptionConfigurationOutput {
 	return o.ApplyT(func(v *StorageBucketServerSideEncryptionConfiguration) StorageBucketServerSideEncryptionConfiguration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret StorageBucketServerSideEncryptionConfiguration
+		return ret
 	}).(StorageBucketServerSideEncryptionConfigurationOutput)
 }
 
@@ -37453,7 +38223,7 @@ func (o StorageBucketServerSideEncryptionConfigurationRuleOutput) ToStorageBucke
 }
 
 func (o StorageBucketServerSideEncryptionConfigurationRuleOutput) ToStorageBucketServerSideEncryptionConfigurationRulePtrOutputWithContext(ctx context.Context) StorageBucketServerSideEncryptionConfigurationRulePtrOutput {
-	return o.ApplyT(func(v StorageBucketServerSideEncryptionConfigurationRule) *StorageBucketServerSideEncryptionConfigurationRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBucketServerSideEncryptionConfigurationRule) *StorageBucketServerSideEncryptionConfigurationRule {
 		return &v
 	}).(StorageBucketServerSideEncryptionConfigurationRulePtrOutput)
 }
@@ -37481,7 +38251,11 @@ func (o StorageBucketServerSideEncryptionConfigurationRulePtrOutput) ToStorageBu
 
 func (o StorageBucketServerSideEncryptionConfigurationRulePtrOutput) Elem() StorageBucketServerSideEncryptionConfigurationRuleOutput {
 	return o.ApplyT(func(v *StorageBucketServerSideEncryptionConfigurationRule) StorageBucketServerSideEncryptionConfigurationRule {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret StorageBucketServerSideEncryptionConfigurationRule
+		return ret
 	}).(StorageBucketServerSideEncryptionConfigurationRuleOutput)
 }
 
@@ -37592,7 +38366,7 @@ func (o StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncrypt
 }
 
 func (o StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultOutput) ToStorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutputWithContext(ctx context.Context) StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutput {
-	return o.ApplyT(func(v StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault) *StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault) *StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault {
 		return &v
 	}).(StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutput)
 }
@@ -37627,7 +38401,11 @@ func (o StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncrypt
 
 func (o StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutput) Elem() StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultOutput {
 	return o.ApplyT(func(v *StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault) StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault
+		return ret
 	}).(StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultOutput)
 }
 
@@ -37744,7 +38522,7 @@ func (o StorageBucketVersioningOutput) ToStorageBucketVersioningPtrOutput() Stor
 }
 
 func (o StorageBucketVersioningOutput) ToStorageBucketVersioningPtrOutputWithContext(ctx context.Context) StorageBucketVersioningPtrOutput {
-	return o.ApplyT(func(v StorageBucketVersioning) *StorageBucketVersioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBucketVersioning) *StorageBucketVersioning {
 		return &v
 	}).(StorageBucketVersioningPtrOutput)
 }
@@ -37769,7 +38547,13 @@ func (o StorageBucketVersioningPtrOutput) ToStorageBucketVersioningPtrOutputWith
 }
 
 func (o StorageBucketVersioningPtrOutput) Elem() StorageBucketVersioningOutput {
-	return o.ApplyT(func(v *StorageBucketVersioning) StorageBucketVersioning { return *v }).(StorageBucketVersioningOutput)
+	return o.ApplyT(func(v *StorageBucketVersioning) StorageBucketVersioning {
+		if v != nil {
+			return *v
+		}
+		var ret StorageBucketVersioning
+		return ret
+	}).(StorageBucketVersioningOutput)
 }
 
 // Enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
@@ -37887,7 +38671,7 @@ func (o StorageBucketWebsiteOutput) ToStorageBucketWebsitePtrOutput() StorageBuc
 }
 
 func (o StorageBucketWebsiteOutput) ToStorageBucketWebsitePtrOutputWithContext(ctx context.Context) StorageBucketWebsitePtrOutput {
-	return o.ApplyT(func(v StorageBucketWebsite) *StorageBucketWebsite {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBucketWebsite) *StorageBucketWebsite {
 		return &v
 	}).(StorageBucketWebsitePtrOutput)
 }
@@ -37927,7 +38711,13 @@ func (o StorageBucketWebsitePtrOutput) ToStorageBucketWebsitePtrOutputWithContex
 }
 
 func (o StorageBucketWebsitePtrOutput) Elem() StorageBucketWebsiteOutput {
-	return o.ApplyT(func(v *StorageBucketWebsite) StorageBucketWebsite { return *v }).(StorageBucketWebsiteOutput)
+	return o.ApplyT(func(v *StorageBucketWebsite) StorageBucketWebsite {
+		if v != nil {
+			return *v
+		}
+		var ret StorageBucketWebsite
+		return ret
+	}).(StorageBucketWebsiteOutput)
 }
 
 // An absolute path to the document to return in case of a 4XX error.
@@ -38075,7 +38865,7 @@ func (o VpcAddressExternalIpv4AddressOutput) ToVpcAddressExternalIpv4AddressPtrO
 }
 
 func (o VpcAddressExternalIpv4AddressOutput) ToVpcAddressExternalIpv4AddressPtrOutputWithContext(ctx context.Context) VpcAddressExternalIpv4AddressPtrOutput {
-	return o.ApplyT(func(v VpcAddressExternalIpv4Address) *VpcAddressExternalIpv4Address {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcAddressExternalIpv4Address) *VpcAddressExternalIpv4Address {
 		return &v
 	}).(VpcAddressExternalIpv4AddressPtrOutput)
 }
@@ -38115,7 +38905,13 @@ func (o VpcAddressExternalIpv4AddressPtrOutput) ToVpcAddressExternalIpv4AddressP
 }
 
 func (o VpcAddressExternalIpv4AddressPtrOutput) Elem() VpcAddressExternalIpv4AddressOutput {
-	return o.ApplyT(func(v *VpcAddressExternalIpv4Address) VpcAddressExternalIpv4Address { return *v }).(VpcAddressExternalIpv4AddressOutput)
+	return o.ApplyT(func(v *VpcAddressExternalIpv4Address) VpcAddressExternalIpv4Address {
+		if v != nil {
+			return *v
+		}
+		var ret VpcAddressExternalIpv4Address
+		return ret
+	}).(VpcAddressExternalIpv4AddressOutput)
 }
 
 // - Desired IP.
@@ -39017,7 +39813,7 @@ func (o VpcSubnetDhcpOptionsOutput) ToVpcSubnetDhcpOptionsPtrOutput() VpcSubnetD
 }
 
 func (o VpcSubnetDhcpOptionsOutput) ToVpcSubnetDhcpOptionsPtrOutputWithContext(ctx context.Context) VpcSubnetDhcpOptionsPtrOutput {
-	return o.ApplyT(func(v VpcSubnetDhcpOptions) *VpcSubnetDhcpOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcSubnetDhcpOptions) *VpcSubnetDhcpOptions {
 		return &v
 	}).(VpcSubnetDhcpOptionsPtrOutput)
 }
@@ -39052,7 +39848,13 @@ func (o VpcSubnetDhcpOptionsPtrOutput) ToVpcSubnetDhcpOptionsPtrOutputWithContex
 }
 
 func (o VpcSubnetDhcpOptionsPtrOutput) Elem() VpcSubnetDhcpOptionsOutput {
-	return o.ApplyT(func(v *VpcSubnetDhcpOptions) VpcSubnetDhcpOptions { return *v }).(VpcSubnetDhcpOptionsOutput)
+	return o.ApplyT(func(v *VpcSubnetDhcpOptions) VpcSubnetDhcpOptions {
+		if v != nil {
+			return *v
+		}
+		var ret VpcSubnetDhcpOptions
+		return ret
+	}).(VpcSubnetDhcpOptionsOutput)
 }
 
 // Domain name.
@@ -39180,7 +39982,7 @@ func (o YdbDatabaseDedicatedLocationOutput) ToYdbDatabaseDedicatedLocationPtrOut
 }
 
 func (o YdbDatabaseDedicatedLocationOutput) ToYdbDatabaseDedicatedLocationPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedLocationPtrOutput {
-	return o.ApplyT(func(v YdbDatabaseDedicatedLocation) *YdbDatabaseDedicatedLocation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseDedicatedLocation) *YdbDatabaseDedicatedLocation {
 		return &v
 	}).(YdbDatabaseDedicatedLocationPtrOutput)
 }
@@ -39206,7 +40008,13 @@ func (o YdbDatabaseDedicatedLocationPtrOutput) ToYdbDatabaseDedicatedLocationPtr
 }
 
 func (o YdbDatabaseDedicatedLocationPtrOutput) Elem() YdbDatabaseDedicatedLocationOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedLocation) YdbDatabaseDedicatedLocation { return *v }).(YdbDatabaseDedicatedLocationOutput)
+	return o.ApplyT(func(v *YdbDatabaseDedicatedLocation) YdbDatabaseDedicatedLocation {
+		if v != nil {
+			return *v
+		}
+		var ret YdbDatabaseDedicatedLocation
+		return ret
+	}).(YdbDatabaseDedicatedLocationOutput)
 }
 
 // Region for the Yandex Database cluster.
@@ -39313,7 +40121,7 @@ func (o YdbDatabaseDedicatedLocationRegionOutput) ToYdbDatabaseDedicatedLocation
 }
 
 func (o YdbDatabaseDedicatedLocationRegionOutput) ToYdbDatabaseDedicatedLocationRegionPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedLocationRegionPtrOutput {
-	return o.ApplyT(func(v YdbDatabaseDedicatedLocationRegion) *YdbDatabaseDedicatedLocationRegion {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseDedicatedLocationRegion) *YdbDatabaseDedicatedLocationRegion {
 		return &v
 	}).(YdbDatabaseDedicatedLocationRegionPtrOutput)
 }
@@ -39338,7 +40146,13 @@ func (o YdbDatabaseDedicatedLocationRegionPtrOutput) ToYdbDatabaseDedicatedLocat
 }
 
 func (o YdbDatabaseDedicatedLocationRegionPtrOutput) Elem() YdbDatabaseDedicatedLocationRegionOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedLocationRegion) YdbDatabaseDedicatedLocationRegion { return *v }).(YdbDatabaseDedicatedLocationRegionOutput)
+	return o.ApplyT(func(v *YdbDatabaseDedicatedLocationRegion) YdbDatabaseDedicatedLocationRegion {
+		if v != nil {
+			return *v
+		}
+		var ret YdbDatabaseDedicatedLocationRegion
+		return ret
+	}).(YdbDatabaseDedicatedLocationRegionOutput)
 }
 
 // Region ID for the Yandex Database cluster.
@@ -39446,7 +40260,7 @@ func (o YdbDatabaseDedicatedScalePolicyOutput) ToYdbDatabaseDedicatedScalePolicy
 }
 
 func (o YdbDatabaseDedicatedScalePolicyOutput) ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyPtrOutput {
-	return o.ApplyT(func(v YdbDatabaseDedicatedScalePolicy) *YdbDatabaseDedicatedScalePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseDedicatedScalePolicy) *YdbDatabaseDedicatedScalePolicy {
 		return &v
 	}).(YdbDatabaseDedicatedScalePolicyPtrOutput)
 }
@@ -39472,7 +40286,13 @@ func (o YdbDatabaseDedicatedScalePolicyPtrOutput) ToYdbDatabaseDedicatedScalePol
 }
 
 func (o YdbDatabaseDedicatedScalePolicyPtrOutput) Elem() YdbDatabaseDedicatedScalePolicyOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedScalePolicy) YdbDatabaseDedicatedScalePolicy { return *v }).(YdbDatabaseDedicatedScalePolicyOutput)
+	return o.ApplyT(func(v *YdbDatabaseDedicatedScalePolicy) YdbDatabaseDedicatedScalePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret YdbDatabaseDedicatedScalePolicy
+		return ret
+	}).(YdbDatabaseDedicatedScalePolicyOutput)
 }
 
 // Fixed scaling policy for the Yandex Database cluster.
@@ -39579,7 +40399,7 @@ func (o YdbDatabaseDedicatedScalePolicyFixedScaleOutput) ToYdbDatabaseDedicatedS
 }
 
 func (o YdbDatabaseDedicatedScalePolicyFixedScaleOutput) ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return o.ApplyT(func(v YdbDatabaseDedicatedScalePolicyFixedScale) *YdbDatabaseDedicatedScalePolicyFixedScale {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseDedicatedScalePolicyFixedScale) *YdbDatabaseDedicatedScalePolicyFixedScale {
 		return &v
 	}).(YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput)
 }
@@ -39605,7 +40425,11 @@ func (o YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput) ToYdbDatabaseDedicat
 
 func (o YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput) Elem() YdbDatabaseDedicatedScalePolicyFixedScaleOutput {
 	return o.ApplyT(func(v *YdbDatabaseDedicatedScalePolicyFixedScale) YdbDatabaseDedicatedScalePolicyFixedScale {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret YdbDatabaseDedicatedScalePolicyFixedScale
+		return ret
 	}).(YdbDatabaseDedicatedScalePolicyFixedScaleOutput)
 }
 
@@ -39718,7 +40542,7 @@ func (o YdbDatabaseDedicatedStorageConfigOutput) ToYdbDatabaseDedicatedStorageCo
 }
 
 func (o YdbDatabaseDedicatedStorageConfigOutput) ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedStorageConfigPtrOutput {
-	return o.ApplyT(func(v YdbDatabaseDedicatedStorageConfig) *YdbDatabaseDedicatedStorageConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseDedicatedStorageConfig) *YdbDatabaseDedicatedStorageConfig {
 		return &v
 	}).(YdbDatabaseDedicatedStorageConfigPtrOutput)
 }
@@ -39749,7 +40573,13 @@ func (o YdbDatabaseDedicatedStorageConfigPtrOutput) ToYdbDatabaseDedicatedStorag
 }
 
 func (o YdbDatabaseDedicatedStorageConfigPtrOutput) Elem() YdbDatabaseDedicatedStorageConfigOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedStorageConfig) YdbDatabaseDedicatedStorageConfig { return *v }).(YdbDatabaseDedicatedStorageConfigOutput)
+	return o.ApplyT(func(v *YdbDatabaseDedicatedStorageConfig) YdbDatabaseDedicatedStorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret YdbDatabaseDedicatedStorageConfig
+		return ret
+	}).(YdbDatabaseDedicatedStorageConfigOutput)
 }
 
 // Amount of storage groups of selected type for the Yandex Database cluster.
@@ -41825,10 +42655,11 @@ func (o GetAlbLoadBalancerListenerHttpOutput) ToGetAlbLoadBalancerListenerHttpPt
 }
 
 func (o GetAlbLoadBalancerListenerHttpOutput) ToGetAlbLoadBalancerListenerHttpPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerHttpPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerHttp) *GetAlbLoadBalancerListenerHttp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerHttp) *GetAlbLoadBalancerListenerHttp {
 		return &v
 	}).(GetAlbLoadBalancerListenerHttpPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerHttpOutput) Handler() GetAlbLoadBalancerListenerHttpHandlerPtrOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerHttp) *GetAlbLoadBalancerListenerHttpHandler { return v.Handler }).(GetAlbLoadBalancerListenerHttpHandlerPtrOutput)
 }
@@ -41852,7 +42683,13 @@ func (o GetAlbLoadBalancerListenerHttpPtrOutput) ToGetAlbLoadBalancerListenerHtt
 }
 
 func (o GetAlbLoadBalancerListenerHttpPtrOutput) Elem() GetAlbLoadBalancerListenerHttpOutput {
-	return o.ApplyT(func(v *GetAlbLoadBalancerListenerHttp) GetAlbLoadBalancerListenerHttp { return *v }).(GetAlbLoadBalancerListenerHttpOutput)
+	return o.ApplyT(func(v *GetAlbLoadBalancerListenerHttp) GetAlbLoadBalancerListenerHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerHttp
+		return ret
+	}).(GetAlbLoadBalancerListenerHttpOutput)
 }
 
 func (o GetAlbLoadBalancerListenerHttpPtrOutput) Handler() GetAlbLoadBalancerListenerHttpHandlerPtrOutput {
@@ -41968,10 +42805,11 @@ func (o GetAlbLoadBalancerListenerHttpHandlerOutput) ToGetAlbLoadBalancerListene
 }
 
 func (o GetAlbLoadBalancerListenerHttpHandlerOutput) ToGetAlbLoadBalancerListenerHttpHandlerPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerHttpHandlerPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerHttpHandler) *GetAlbLoadBalancerListenerHttpHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerHttpHandler) *GetAlbLoadBalancerListenerHttpHandler {
 		return &v
 	}).(GetAlbLoadBalancerListenerHttpHandlerPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerHttpHandlerOutput) AllowHttp10() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerHttpHandler) *bool { return v.AllowHttp10 }).(pulumi.BoolPtrOutput)
 }
@@ -42001,7 +42839,13 @@ func (o GetAlbLoadBalancerListenerHttpHandlerPtrOutput) ToGetAlbLoadBalancerList
 }
 
 func (o GetAlbLoadBalancerListenerHttpHandlerPtrOutput) Elem() GetAlbLoadBalancerListenerHttpHandlerOutput {
-	return o.ApplyT(func(v *GetAlbLoadBalancerListenerHttpHandler) GetAlbLoadBalancerListenerHttpHandler { return *v }).(GetAlbLoadBalancerListenerHttpHandlerOutput)
+	return o.ApplyT(func(v *GetAlbLoadBalancerListenerHttpHandler) GetAlbLoadBalancerListenerHttpHandler {
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerHttpHandler
+		return ret
+	}).(GetAlbLoadBalancerListenerHttpHandlerOutput)
 }
 
 func (o GetAlbLoadBalancerListenerHttpHandlerPtrOutput) AllowHttp10() pulumi.BoolPtrOutput {
@@ -42122,10 +42966,11 @@ func (o GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsOutput) ToGetAlbLoadBal
 }
 
 func (o GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsOutput) ToGetAlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerHttpHandlerHttp2Options) *GetAlbLoadBalancerListenerHttpHandlerHttp2Options {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerHttpHandlerHttp2Options) *GetAlbLoadBalancerListenerHttpHandlerHttp2Options {
 		return &v
 	}).(GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsOutput) MaxConcurrentStreams() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerHttpHandlerHttp2Options) int { return v.MaxConcurrentStreams }).(pulumi.IntOutput)
 }
@@ -42146,7 +42991,11 @@ func (o GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutput) ToGetAlbLoad
 
 func (o GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrOutput) Elem() GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsOutput {
 	return o.ApplyT(func(v *GetAlbLoadBalancerListenerHttpHandlerHttp2Options) GetAlbLoadBalancerListenerHttpHandlerHttp2Options {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerHttpHandlerHttp2Options
+		return ret
 	}).(GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsOutput)
 }
 
@@ -42250,10 +43099,11 @@ func (o GetAlbLoadBalancerListenerHttpRedirectsOutput) ToGetAlbLoadBalancerListe
 }
 
 func (o GetAlbLoadBalancerListenerHttpRedirectsOutput) ToGetAlbLoadBalancerListenerHttpRedirectsPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerHttpRedirectsPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerHttpRedirects) *GetAlbLoadBalancerListenerHttpRedirects {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerHttpRedirects) *GetAlbLoadBalancerListenerHttpRedirects {
 		return &v
 	}).(GetAlbLoadBalancerListenerHttpRedirectsPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerHttpRedirectsOutput) HttpToHttps() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerHttpRedirects) bool { return v.HttpToHttps }).(pulumi.BoolOutput)
 }
@@ -42273,7 +43123,13 @@ func (o GetAlbLoadBalancerListenerHttpRedirectsPtrOutput) ToGetAlbLoadBalancerLi
 }
 
 func (o GetAlbLoadBalancerListenerHttpRedirectsPtrOutput) Elem() GetAlbLoadBalancerListenerHttpRedirectsOutput {
-	return o.ApplyT(func(v *GetAlbLoadBalancerListenerHttpRedirects) GetAlbLoadBalancerListenerHttpRedirects { return *v }).(GetAlbLoadBalancerListenerHttpRedirectsOutput)
+	return o.ApplyT(func(v *GetAlbLoadBalancerListenerHttpRedirects) GetAlbLoadBalancerListenerHttpRedirects {
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerHttpRedirects
+		return ret
+	}).(GetAlbLoadBalancerListenerHttpRedirectsOutput)
 }
 
 func (o GetAlbLoadBalancerListenerHttpRedirectsPtrOutput) HttpToHttps() pulumi.BoolPtrOutput {
@@ -42378,10 +43234,11 @@ func (o GetAlbLoadBalancerListenerTlsOutput) ToGetAlbLoadBalancerListenerTlsPtrO
 }
 
 func (o GetAlbLoadBalancerListenerTlsOutput) ToGetAlbLoadBalancerListenerTlsPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerTlsPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerTls) *GetAlbLoadBalancerListenerTls {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerTls) *GetAlbLoadBalancerListenerTls {
 		return &v
 	}).(GetAlbLoadBalancerListenerTlsPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerTlsOutput) DefaultHandler() GetAlbLoadBalancerListenerTlsDefaultHandlerOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerTls) GetAlbLoadBalancerListenerTlsDefaultHandler {
 		return v.DefaultHandler
@@ -42407,7 +43264,13 @@ func (o GetAlbLoadBalancerListenerTlsPtrOutput) ToGetAlbLoadBalancerListenerTlsP
 }
 
 func (o GetAlbLoadBalancerListenerTlsPtrOutput) Elem() GetAlbLoadBalancerListenerTlsOutput {
-	return o.ApplyT(func(v *GetAlbLoadBalancerListenerTls) GetAlbLoadBalancerListenerTls { return *v }).(GetAlbLoadBalancerListenerTlsOutput)
+	return o.ApplyT(func(v *GetAlbLoadBalancerListenerTls) GetAlbLoadBalancerListenerTls {
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerTls
+		return ret
+	}).(GetAlbLoadBalancerListenerTlsOutput)
 }
 
 func (o GetAlbLoadBalancerListenerTlsPtrOutput) DefaultHandler() GetAlbLoadBalancerListenerTlsDefaultHandlerPtrOutput {
@@ -42521,10 +43384,11 @@ func (o GetAlbLoadBalancerListenerTlsDefaultHandlerOutput) ToGetAlbLoadBalancerL
 }
 
 func (o GetAlbLoadBalancerListenerTlsDefaultHandlerOutput) ToGetAlbLoadBalancerListenerTlsDefaultHandlerPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerTlsDefaultHandlerPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsDefaultHandler) *GetAlbLoadBalancerListenerTlsDefaultHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerTlsDefaultHandler) *GetAlbLoadBalancerListenerTlsDefaultHandler {
 		return &v
 	}).(GetAlbLoadBalancerListenerTlsDefaultHandlerPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerTlsDefaultHandlerOutput) CertificateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsDefaultHandler) []string { return v.CertificateIds }).(pulumi.StringArrayOutput)
 }
@@ -42551,7 +43415,11 @@ func (o GetAlbLoadBalancerListenerTlsDefaultHandlerPtrOutput) ToGetAlbLoadBalanc
 
 func (o GetAlbLoadBalancerListenerTlsDefaultHandlerPtrOutput) Elem() GetAlbLoadBalancerListenerTlsDefaultHandlerOutput {
 	return o.ApplyT(func(v *GetAlbLoadBalancerListenerTlsDefaultHandler) GetAlbLoadBalancerListenerTlsDefaultHandler {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerTlsDefaultHandler
+		return ret
 	}).(GetAlbLoadBalancerListenerTlsDefaultHandlerOutput)
 }
 
@@ -42668,10 +43536,11 @@ func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerOutput) ToGetAlbLo
 }
 
 func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerOutput) ToGetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler) *GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler) *GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
 		return &v
 	}).(GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerOutput) AllowHttp10() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler) *bool { return v.AllowHttp10 }).(pulumi.BoolPtrOutput)
 }
@@ -42702,7 +43571,11 @@ func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutput) ToGetAl
 
 func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrOutput) Elem() GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerOutput {
 	return o.ApplyT(func(v *GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler) GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandler
+		return ret
 	}).(GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerOutput)
 }
 
@@ -42824,10 +43697,11 @@ func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsOutput
 }
 
 func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsOutput) ToGetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options) *GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options) *GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
 		return &v
 	}).(GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsOutput) MaxConcurrentStreams() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options) int {
 		return v.MaxConcurrentStreams
@@ -42850,7 +43724,11 @@ func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOut
 
 func (o GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrOutput) Elem() GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsOutput {
 	return o.ApplyT(func(v *GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options) GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options
+		return ret
 	}).(GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsOutput)
 }
 
@@ -43123,10 +44001,11 @@ func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerOutput) ToGetAl
 }
 
 func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerOutput) ToGetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler) *GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler) *GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
 		return &v
 	}).(GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerOutput) AllowHttp10() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler) *bool { return v.AllowHttp10 }).(pulumi.BoolPtrOutput)
 }
@@ -43157,7 +44036,11 @@ func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutput) ToGe
 
 func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrOutput) Elem() GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerOutput {
 	return o.ApplyT(func(v *GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler) GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler
+		return ret
 	}).(GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerOutput)
 }
 
@@ -43279,10 +44162,11 @@ func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsOut
 }
 
 func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsOutput) ToGetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrOutputWithContext(ctx context.Context) GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrOutput {
-	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options) *GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options) *GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
 		return &v
 	}).(GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrOutput)
 }
+
 func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsOutput) MaxConcurrentStreams() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options) int {
 		return v.MaxConcurrentStreams
@@ -43305,7 +44189,11 @@ func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtr
 
 func (o GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrOutput) Elem() GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsOutput {
 	return o.ApplyT(func(v *GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options) GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Options
+		return ret
 	}).(GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsOutput)
 }
 
@@ -44750,6 +45638,47 @@ func (i GetComputeDiskDiskPlacementPolicyArgs) ToGetComputeDiskDiskPlacementPoli
 	return pulumi.ToOutputWithContext(ctx, i).(GetComputeDiskDiskPlacementPolicyOutput)
 }
 
+func (i GetComputeDiskDiskPlacementPolicyArgs) ToGetComputeDiskDiskPlacementPolicyPtrOutput() GetComputeDiskDiskPlacementPolicyPtrOutput {
+	return i.ToGetComputeDiskDiskPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GetComputeDiskDiskPlacementPolicyArgs) ToGetComputeDiskDiskPlacementPolicyPtrOutputWithContext(ctx context.Context) GetComputeDiskDiskPlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeDiskDiskPlacementPolicyOutput).ToGetComputeDiskDiskPlacementPolicyPtrOutputWithContext(ctx)
+}
+
+// GetComputeDiskDiskPlacementPolicyPtrInput is an input type that accepts GetComputeDiskDiskPlacementPolicyArgs, GetComputeDiskDiskPlacementPolicyPtr and GetComputeDiskDiskPlacementPolicyPtrOutput values.
+// You can construct a concrete instance of `GetComputeDiskDiskPlacementPolicyPtrInput` via:
+//
+//          GetComputeDiskDiskPlacementPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type GetComputeDiskDiskPlacementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGetComputeDiskDiskPlacementPolicyPtrOutput() GetComputeDiskDiskPlacementPolicyPtrOutput
+	ToGetComputeDiskDiskPlacementPolicyPtrOutputWithContext(context.Context) GetComputeDiskDiskPlacementPolicyPtrOutput
+}
+
+type getComputeDiskDiskPlacementPolicyPtrType GetComputeDiskDiskPlacementPolicyArgs
+
+func GetComputeDiskDiskPlacementPolicyPtr(v *GetComputeDiskDiskPlacementPolicyArgs) GetComputeDiskDiskPlacementPolicyPtrInput {
+	return (*getComputeDiskDiskPlacementPolicyPtrType)(v)
+}
+
+func (*getComputeDiskDiskPlacementPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetComputeDiskDiskPlacementPolicy)(nil)).Elem()
+}
+
+func (i *getComputeDiskDiskPlacementPolicyPtrType) ToGetComputeDiskDiskPlacementPolicyPtrOutput() GetComputeDiskDiskPlacementPolicyPtrOutput {
+	return i.ToGetComputeDiskDiskPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *getComputeDiskDiskPlacementPolicyPtrType) ToGetComputeDiskDiskPlacementPolicyPtrOutputWithContext(ctx context.Context) GetComputeDiskDiskPlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeDiskDiskPlacementPolicyPtrOutput)
+}
+
 type GetComputeDiskDiskPlacementPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetComputeDiskDiskPlacementPolicyOutput) ElementType() reflect.Type {
@@ -44764,8 +45693,51 @@ func (o GetComputeDiskDiskPlacementPolicyOutput) ToGetComputeDiskDiskPlacementPo
 	return o
 }
 
+func (o GetComputeDiskDiskPlacementPolicyOutput) ToGetComputeDiskDiskPlacementPolicyPtrOutput() GetComputeDiskDiskPlacementPolicyPtrOutput {
+	return o.ToGetComputeDiskDiskPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GetComputeDiskDiskPlacementPolicyOutput) ToGetComputeDiskDiskPlacementPolicyPtrOutputWithContext(ctx context.Context) GetComputeDiskDiskPlacementPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetComputeDiskDiskPlacementPolicy) *GetComputeDiskDiskPlacementPolicy {
+		return &v
+	}).(GetComputeDiskDiskPlacementPolicyPtrOutput)
+}
+
 func (o GetComputeDiskDiskPlacementPolicyOutput) DiskPlacementGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeDiskDiskPlacementPolicy) string { return v.DiskPlacementGroupId }).(pulumi.StringOutput)
+}
+
+type GetComputeDiskDiskPlacementPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetComputeDiskDiskPlacementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetComputeDiskDiskPlacementPolicy)(nil)).Elem()
+}
+
+func (o GetComputeDiskDiskPlacementPolicyPtrOutput) ToGetComputeDiskDiskPlacementPolicyPtrOutput() GetComputeDiskDiskPlacementPolicyPtrOutput {
+	return o
+}
+
+func (o GetComputeDiskDiskPlacementPolicyPtrOutput) ToGetComputeDiskDiskPlacementPolicyPtrOutputWithContext(ctx context.Context) GetComputeDiskDiskPlacementPolicyPtrOutput {
+	return o
+}
+
+func (o GetComputeDiskDiskPlacementPolicyPtrOutput) Elem() GetComputeDiskDiskPlacementPolicyOutput {
+	return o.ApplyT(func(v *GetComputeDiskDiskPlacementPolicy) GetComputeDiskDiskPlacementPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GetComputeDiskDiskPlacementPolicy
+		return ret
+	}).(GetComputeDiskDiskPlacementPolicyOutput)
+}
+
+func (o GetComputeDiskDiskPlacementPolicyPtrOutput) DiskPlacementGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetComputeDiskDiskPlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskPlacementGroupId
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetComputeInstanceBootDisk struct {
@@ -47124,10 +48096,11 @@ func (o GetComputeInstanceGroupInstanceTemplatePlacementPolicyOutput) ToGetCompu
 }
 
 func (o GetComputeInstanceGroupInstanceTemplatePlacementPolicyOutput) ToGetComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) GetComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput {
-	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplatePlacementPolicy) *GetComputeInstanceGroupInstanceTemplatePlacementPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetComputeInstanceGroupInstanceTemplatePlacementPolicy) *GetComputeInstanceGroupInstanceTemplatePlacementPolicy {
 		return &v
 	}).(GetComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput)
 }
+
 func (o GetComputeInstanceGroupInstanceTemplatePlacementPolicyOutput) PlacementGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstanceGroupInstanceTemplatePlacementPolicy) string { return v.PlacementGroupId }).(pulumi.StringOutput)
 }
@@ -47148,7 +48121,11 @@ func (o GetComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput) ToGetCo
 
 func (o GetComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput) Elem() GetComputeInstanceGroupInstanceTemplatePlacementPolicyOutput {
 	return o.ApplyT(func(v *GetComputeInstanceGroupInstanceTemplatePlacementPolicy) GetComputeInstanceGroupInstanceTemplatePlacementPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetComputeInstanceGroupInstanceTemplatePlacementPolicy
+		return ret
 	}).(GetComputeInstanceGroupInstanceTemplatePlacementPolicyOutput)
 }
 
@@ -49150,6 +50127,47 @@ func (i GetComputeInstancePlacementPolicyArgs) ToGetComputeInstancePlacementPoli
 	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstancePlacementPolicyOutput)
 }
 
+func (i GetComputeInstancePlacementPolicyArgs) ToGetComputeInstancePlacementPolicyPtrOutput() GetComputeInstancePlacementPolicyPtrOutput {
+	return i.ToGetComputeInstancePlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GetComputeInstancePlacementPolicyArgs) ToGetComputeInstancePlacementPolicyPtrOutputWithContext(ctx context.Context) GetComputeInstancePlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstancePlacementPolicyOutput).ToGetComputeInstancePlacementPolicyPtrOutputWithContext(ctx)
+}
+
+// GetComputeInstancePlacementPolicyPtrInput is an input type that accepts GetComputeInstancePlacementPolicyArgs, GetComputeInstancePlacementPolicyPtr and GetComputeInstancePlacementPolicyPtrOutput values.
+// You can construct a concrete instance of `GetComputeInstancePlacementPolicyPtrInput` via:
+//
+//          GetComputeInstancePlacementPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type GetComputeInstancePlacementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGetComputeInstancePlacementPolicyPtrOutput() GetComputeInstancePlacementPolicyPtrOutput
+	ToGetComputeInstancePlacementPolicyPtrOutputWithContext(context.Context) GetComputeInstancePlacementPolicyPtrOutput
+}
+
+type getComputeInstancePlacementPolicyPtrType GetComputeInstancePlacementPolicyArgs
+
+func GetComputeInstancePlacementPolicyPtr(v *GetComputeInstancePlacementPolicyArgs) GetComputeInstancePlacementPolicyPtrInput {
+	return (*getComputeInstancePlacementPolicyPtrType)(v)
+}
+
+func (*getComputeInstancePlacementPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetComputeInstancePlacementPolicy)(nil)).Elem()
+}
+
+func (i *getComputeInstancePlacementPolicyPtrType) ToGetComputeInstancePlacementPolicyPtrOutput() GetComputeInstancePlacementPolicyPtrOutput {
+	return i.ToGetComputeInstancePlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *getComputeInstancePlacementPolicyPtrType) ToGetComputeInstancePlacementPolicyPtrOutputWithContext(ctx context.Context) GetComputeInstancePlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstancePlacementPolicyPtrOutput)
+}
+
 type GetComputeInstancePlacementPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetComputeInstancePlacementPolicyOutput) ElementType() reflect.Type {
@@ -49164,8 +50182,51 @@ func (o GetComputeInstancePlacementPolicyOutput) ToGetComputeInstancePlacementPo
 	return o
 }
 
+func (o GetComputeInstancePlacementPolicyOutput) ToGetComputeInstancePlacementPolicyPtrOutput() GetComputeInstancePlacementPolicyPtrOutput {
+	return o.ToGetComputeInstancePlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GetComputeInstancePlacementPolicyOutput) ToGetComputeInstancePlacementPolicyPtrOutputWithContext(ctx context.Context) GetComputeInstancePlacementPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetComputeInstancePlacementPolicy) *GetComputeInstancePlacementPolicy {
+		return &v
+	}).(GetComputeInstancePlacementPolicyPtrOutput)
+}
+
 func (o GetComputeInstancePlacementPolicyOutput) PlacementGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetComputeInstancePlacementPolicy) string { return v.PlacementGroupId }).(pulumi.StringOutput)
+}
+
+type GetComputeInstancePlacementPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetComputeInstancePlacementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetComputeInstancePlacementPolicy)(nil)).Elem()
+}
+
+func (o GetComputeInstancePlacementPolicyPtrOutput) ToGetComputeInstancePlacementPolicyPtrOutput() GetComputeInstancePlacementPolicyPtrOutput {
+	return o
+}
+
+func (o GetComputeInstancePlacementPolicyPtrOutput) ToGetComputeInstancePlacementPolicyPtrOutputWithContext(ctx context.Context) GetComputeInstancePlacementPolicyPtrOutput {
+	return o
+}
+
+func (o GetComputeInstancePlacementPolicyPtrOutput) Elem() GetComputeInstancePlacementPolicyOutput {
+	return o.ApplyT(func(v *GetComputeInstancePlacementPolicy) GetComputeInstancePlacementPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GetComputeInstancePlacementPolicy
+		return ret
+	}).(GetComputeInstancePlacementPolicyOutput)
+}
+
+func (o GetComputeInstancePlacementPolicyPtrOutput) PlacementGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetComputeInstancePlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PlacementGroupId
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetComputeInstanceResources struct {
@@ -49268,6 +50329,47 @@ func (i GetComputeInstanceSchedulingPolicyArgs) ToGetComputeInstanceSchedulingPo
 	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceSchedulingPolicyOutput)
 }
 
+func (i GetComputeInstanceSchedulingPolicyArgs) ToGetComputeInstanceSchedulingPolicyPtrOutput() GetComputeInstanceSchedulingPolicyPtrOutput {
+	return i.ToGetComputeInstanceSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GetComputeInstanceSchedulingPolicyArgs) ToGetComputeInstanceSchedulingPolicyPtrOutputWithContext(ctx context.Context) GetComputeInstanceSchedulingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceSchedulingPolicyOutput).ToGetComputeInstanceSchedulingPolicyPtrOutputWithContext(ctx)
+}
+
+// GetComputeInstanceSchedulingPolicyPtrInput is an input type that accepts GetComputeInstanceSchedulingPolicyArgs, GetComputeInstanceSchedulingPolicyPtr and GetComputeInstanceSchedulingPolicyPtrOutput values.
+// You can construct a concrete instance of `GetComputeInstanceSchedulingPolicyPtrInput` via:
+//
+//          GetComputeInstanceSchedulingPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type GetComputeInstanceSchedulingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGetComputeInstanceSchedulingPolicyPtrOutput() GetComputeInstanceSchedulingPolicyPtrOutput
+	ToGetComputeInstanceSchedulingPolicyPtrOutputWithContext(context.Context) GetComputeInstanceSchedulingPolicyPtrOutput
+}
+
+type getComputeInstanceSchedulingPolicyPtrType GetComputeInstanceSchedulingPolicyArgs
+
+func GetComputeInstanceSchedulingPolicyPtr(v *GetComputeInstanceSchedulingPolicyArgs) GetComputeInstanceSchedulingPolicyPtrInput {
+	return (*getComputeInstanceSchedulingPolicyPtrType)(v)
+}
+
+func (*getComputeInstanceSchedulingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetComputeInstanceSchedulingPolicy)(nil)).Elem()
+}
+
+func (i *getComputeInstanceSchedulingPolicyPtrType) ToGetComputeInstanceSchedulingPolicyPtrOutput() GetComputeInstanceSchedulingPolicyPtrOutput {
+	return i.ToGetComputeInstanceSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *getComputeInstanceSchedulingPolicyPtrType) ToGetComputeInstanceSchedulingPolicyPtrOutputWithContext(ctx context.Context) GetComputeInstanceSchedulingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComputeInstanceSchedulingPolicyPtrOutput)
+}
+
 type GetComputeInstanceSchedulingPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetComputeInstanceSchedulingPolicyOutput) ElementType() reflect.Type {
@@ -49282,9 +50384,53 @@ func (o GetComputeInstanceSchedulingPolicyOutput) ToGetComputeInstanceScheduling
 	return o
 }
 
+func (o GetComputeInstanceSchedulingPolicyOutput) ToGetComputeInstanceSchedulingPolicyPtrOutput() GetComputeInstanceSchedulingPolicyPtrOutput {
+	return o.ToGetComputeInstanceSchedulingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GetComputeInstanceSchedulingPolicyOutput) ToGetComputeInstanceSchedulingPolicyPtrOutputWithContext(ctx context.Context) GetComputeInstanceSchedulingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetComputeInstanceSchedulingPolicy) *GetComputeInstanceSchedulingPolicy {
+		return &v
+	}).(GetComputeInstanceSchedulingPolicyPtrOutput)
+}
+
 // (Optional) Specifies if the instance is preemptible. Defaults to false.
 func (o GetComputeInstanceSchedulingPolicyOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetComputeInstanceSchedulingPolicy) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+}
+
+type GetComputeInstanceSchedulingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetComputeInstanceSchedulingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetComputeInstanceSchedulingPolicy)(nil)).Elem()
+}
+
+func (o GetComputeInstanceSchedulingPolicyPtrOutput) ToGetComputeInstanceSchedulingPolicyPtrOutput() GetComputeInstanceSchedulingPolicyPtrOutput {
+	return o
+}
+
+func (o GetComputeInstanceSchedulingPolicyPtrOutput) ToGetComputeInstanceSchedulingPolicyPtrOutputWithContext(ctx context.Context) GetComputeInstanceSchedulingPolicyPtrOutput {
+	return o
+}
+
+func (o GetComputeInstanceSchedulingPolicyPtrOutput) Elem() GetComputeInstanceSchedulingPolicyOutput {
+	return o.ApplyT(func(v *GetComputeInstanceSchedulingPolicy) GetComputeInstanceSchedulingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GetComputeInstanceSchedulingPolicy
+		return ret
+	}).(GetComputeInstanceSchedulingPolicyOutput)
+}
+
+// (Optional) Specifies if the instance is preemptible. Defaults to false.
+func (o GetComputeInstanceSchedulingPolicyPtrOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetComputeInstanceSchedulingPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptible
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetComputeInstanceSecondaryDisk struct {
@@ -51879,10 +53025,11 @@ func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToGetKubern
 }
 
 func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) ToGetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutputWithContext(ctx context.Context) GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
-	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplatePlacementPolicy) *GetKubernetesNodeGroupInstanceTemplatePlacementPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubernetesNodeGroupInstanceTemplatePlacementPolicy) *GetKubernetesNodeGroupInstanceTemplatePlacementPolicy {
 		return &v
 	}).(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
 }
+
 func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput) PlacementGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesNodeGroupInstanceTemplatePlacementPolicy) string { return v.PlacementGroupId }).(pulumi.StringOutput)
 }
@@ -51903,7 +53050,11 @@ func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) ToGetKub
 
 func (o GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput) Elem() GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput {
 	return o.ApplyT(func(v *GetKubernetesNodeGroupInstanceTemplatePlacementPolicy) GetKubernetesNodeGroupInstanceTemplatePlacementPolicy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetKubernetesNodeGroupInstanceTemplatePlacementPolicy
+		return ret
 	}).(GetKubernetesNodeGroupInstanceTemplatePlacementPolicyOutput)
 }
 
@@ -54513,7 +55664,7 @@ func (o GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsOutput) ToGetMd
 }
 
 func (o GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsOutput) ToGetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutputWithContext(ctx context.Context) GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutput {
-	return o.ApplyT(func(v GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettings) *GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettings) *GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettings {
 		return &v
 	}).(GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutput)
 }
@@ -54554,7 +55705,11 @@ func (o GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutput) ToGe
 
 func (o GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrOutput) Elem() GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsOutput {
 	return o.ApplyT(func(v *GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettings) GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettings
+		return ret
 	}).(GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsOutput)
 }
 
@@ -54871,6 +56026,47 @@ func (i GetMdbClickhouseClusterCloudStorageArgs) ToGetMdbClickhouseClusterCloudS
 	return pulumi.ToOutputWithContext(ctx, i).(GetMdbClickhouseClusterCloudStorageOutput)
 }
 
+func (i GetMdbClickhouseClusterCloudStorageArgs) ToGetMdbClickhouseClusterCloudStoragePtrOutput() GetMdbClickhouseClusterCloudStoragePtrOutput {
+	return i.ToGetMdbClickhouseClusterCloudStoragePtrOutputWithContext(context.Background())
+}
+
+func (i GetMdbClickhouseClusterCloudStorageArgs) ToGetMdbClickhouseClusterCloudStoragePtrOutputWithContext(ctx context.Context) GetMdbClickhouseClusterCloudStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbClickhouseClusterCloudStorageOutput).ToGetMdbClickhouseClusterCloudStoragePtrOutputWithContext(ctx)
+}
+
+// GetMdbClickhouseClusterCloudStoragePtrInput is an input type that accepts GetMdbClickhouseClusterCloudStorageArgs, GetMdbClickhouseClusterCloudStoragePtr and GetMdbClickhouseClusterCloudStoragePtrOutput values.
+// You can construct a concrete instance of `GetMdbClickhouseClusterCloudStoragePtrInput` via:
+//
+//          GetMdbClickhouseClusterCloudStorageArgs{...}
+//
+//  or:
+//
+//          nil
+type GetMdbClickhouseClusterCloudStoragePtrInput interface {
+	pulumi.Input
+
+	ToGetMdbClickhouseClusterCloudStoragePtrOutput() GetMdbClickhouseClusterCloudStoragePtrOutput
+	ToGetMdbClickhouseClusterCloudStoragePtrOutputWithContext(context.Context) GetMdbClickhouseClusterCloudStoragePtrOutput
+}
+
+type getMdbClickhouseClusterCloudStoragePtrType GetMdbClickhouseClusterCloudStorageArgs
+
+func GetMdbClickhouseClusterCloudStoragePtr(v *GetMdbClickhouseClusterCloudStorageArgs) GetMdbClickhouseClusterCloudStoragePtrInput {
+	return (*getMdbClickhouseClusterCloudStoragePtrType)(v)
+}
+
+func (*getMdbClickhouseClusterCloudStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbClickhouseClusterCloudStorage)(nil)).Elem()
+}
+
+func (i *getMdbClickhouseClusterCloudStoragePtrType) ToGetMdbClickhouseClusterCloudStoragePtrOutput() GetMdbClickhouseClusterCloudStoragePtrOutput {
+	return i.ToGetMdbClickhouseClusterCloudStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *getMdbClickhouseClusterCloudStoragePtrType) ToGetMdbClickhouseClusterCloudStoragePtrOutputWithContext(ctx context.Context) GetMdbClickhouseClusterCloudStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbClickhouseClusterCloudStoragePtrOutput)
+}
+
 type GetMdbClickhouseClusterCloudStorageOutput struct{ *pulumi.OutputState }
 
 func (GetMdbClickhouseClusterCloudStorageOutput) ElementType() reflect.Type {
@@ -54885,9 +56081,53 @@ func (o GetMdbClickhouseClusterCloudStorageOutput) ToGetMdbClickhouseClusterClou
 	return o
 }
 
+func (o GetMdbClickhouseClusterCloudStorageOutput) ToGetMdbClickhouseClusterCloudStoragePtrOutput() GetMdbClickhouseClusterCloudStoragePtrOutput {
+	return o.ToGetMdbClickhouseClusterCloudStoragePtrOutputWithContext(context.Background())
+}
+
+func (o GetMdbClickhouseClusterCloudStorageOutput) ToGetMdbClickhouseClusterCloudStoragePtrOutputWithContext(ctx context.Context) GetMdbClickhouseClusterCloudStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbClickhouseClusterCloudStorage) *GetMdbClickhouseClusterCloudStorage {
+		return &v
+	}).(GetMdbClickhouseClusterCloudStoragePtrOutput)
+}
+
 // (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
 func (o GetMdbClickhouseClusterCloudStorageOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMdbClickhouseClusterCloudStorage) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetMdbClickhouseClusterCloudStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (GetMdbClickhouseClusterCloudStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbClickhouseClusterCloudStorage)(nil)).Elem()
+}
+
+func (o GetMdbClickhouseClusterCloudStoragePtrOutput) ToGetMdbClickhouseClusterCloudStoragePtrOutput() GetMdbClickhouseClusterCloudStoragePtrOutput {
+	return o
+}
+
+func (o GetMdbClickhouseClusterCloudStoragePtrOutput) ToGetMdbClickhouseClusterCloudStoragePtrOutputWithContext(ctx context.Context) GetMdbClickhouseClusterCloudStoragePtrOutput {
+	return o
+}
+
+func (o GetMdbClickhouseClusterCloudStoragePtrOutput) Elem() GetMdbClickhouseClusterCloudStorageOutput {
+	return o.ApplyT(func(v *GetMdbClickhouseClusterCloudStorage) GetMdbClickhouseClusterCloudStorage {
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbClickhouseClusterCloudStorage
+		return ret
+	}).(GetMdbClickhouseClusterCloudStorageOutput)
+}
+
+// (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
+func (o GetMdbClickhouseClusterCloudStoragePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMdbClickhouseClusterCloudStorage) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetMdbClickhouseClusterDatabase struct {
@@ -57863,6 +59103,47 @@ func (i GetMdbKafkaClusterConfigArgs) ToGetMdbKafkaClusterConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetMdbKafkaClusterConfigOutput)
 }
 
+func (i GetMdbKafkaClusterConfigArgs) ToGetMdbKafkaClusterConfigPtrOutput() GetMdbKafkaClusterConfigPtrOutput {
+	return i.ToGetMdbKafkaClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetMdbKafkaClusterConfigArgs) ToGetMdbKafkaClusterConfigPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbKafkaClusterConfigOutput).ToGetMdbKafkaClusterConfigPtrOutputWithContext(ctx)
+}
+
+// GetMdbKafkaClusterConfigPtrInput is an input type that accepts GetMdbKafkaClusterConfigArgs, GetMdbKafkaClusterConfigPtr and GetMdbKafkaClusterConfigPtrOutput values.
+// You can construct a concrete instance of `GetMdbKafkaClusterConfigPtrInput` via:
+//
+//          GetMdbKafkaClusterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GetMdbKafkaClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetMdbKafkaClusterConfigPtrOutput() GetMdbKafkaClusterConfigPtrOutput
+	ToGetMdbKafkaClusterConfigPtrOutputWithContext(context.Context) GetMdbKafkaClusterConfigPtrOutput
+}
+
+type getMdbKafkaClusterConfigPtrType GetMdbKafkaClusterConfigArgs
+
+func GetMdbKafkaClusterConfigPtr(v *GetMdbKafkaClusterConfigArgs) GetMdbKafkaClusterConfigPtrInput {
+	return (*getMdbKafkaClusterConfigPtrType)(v)
+}
+
+func (*getMdbKafkaClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbKafkaClusterConfig)(nil)).Elem()
+}
+
+func (i *getMdbKafkaClusterConfigPtrType) ToGetMdbKafkaClusterConfigPtrOutput() GetMdbKafkaClusterConfigPtrOutput {
+	return i.ToGetMdbKafkaClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getMdbKafkaClusterConfigPtrType) ToGetMdbKafkaClusterConfigPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbKafkaClusterConfigPtrOutput)
+}
+
 type GetMdbKafkaClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (GetMdbKafkaClusterConfigOutput) ElementType() reflect.Type {
@@ -57875,6 +59156,16 @@ func (o GetMdbKafkaClusterConfigOutput) ToGetMdbKafkaClusterConfigOutput() GetMd
 
 func (o GetMdbKafkaClusterConfigOutput) ToGetMdbKafkaClusterConfigOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigOutput {
 	return o
+}
+
+func (o GetMdbKafkaClusterConfigOutput) ToGetMdbKafkaClusterConfigPtrOutput() GetMdbKafkaClusterConfigPtrOutput {
+	return o.ToGetMdbKafkaClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetMdbKafkaClusterConfigOutput) ToGetMdbKafkaClusterConfigPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbKafkaClusterConfig) *GetMdbKafkaClusterConfig {
+		return &v
+	}).(GetMdbKafkaClusterConfigPtrOutput)
 }
 
 // The flag that defines whether a public IP address is assigned to the node.
@@ -57910,6 +59201,100 @@ func (o GetMdbKafkaClusterConfigOutput) Zones() pulumi.StringArrayOutput {
 // (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
 func (o GetMdbKafkaClusterConfigOutput) Zookeeper() GetMdbKafkaClusterConfigZookeeperPtrOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterConfig) *GetMdbKafkaClusterConfigZookeeper { return v.Zookeeper }).(GetMdbKafkaClusterConfigZookeeperPtrOutput)
+}
+
+type GetMdbKafkaClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMdbKafkaClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbKafkaClusterConfig)(nil)).Elem()
+}
+
+func (o GetMdbKafkaClusterConfigPtrOutput) ToGetMdbKafkaClusterConfigPtrOutput() GetMdbKafkaClusterConfigPtrOutput {
+	return o
+}
+
+func (o GetMdbKafkaClusterConfigPtrOutput) ToGetMdbKafkaClusterConfigPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigPtrOutput {
+	return o
+}
+
+func (o GetMdbKafkaClusterConfigPtrOutput) Elem() GetMdbKafkaClusterConfigOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfig) GetMdbKafkaClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbKafkaClusterConfig
+		return ret
+	}).(GetMdbKafkaClusterConfigOutput)
+}
+
+// The flag that defines whether a public IP address is assigned to the node.
+func (o GetMdbKafkaClusterConfigPtrOutput) AssignPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AssignPublicIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Optional) Count of brokers per availability zone.
+func (o GetMdbKafkaClusterConfigPtrOutput) BrokersCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BrokersCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional) Configuration of the Kafka subcluster. The structure is documented below.
+func (o GetMdbKafkaClusterConfigPtrOutput) Kafka() GetMdbKafkaClusterConfigKafkaPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfig) *GetMdbKafkaClusterConfigKafka {
+		if v == nil {
+			return nil
+		}
+		return &v.Kafka
+	}).(GetMdbKafkaClusterConfigKafkaPtrOutput)
+}
+
+// (Optional) Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
+func (o GetMdbKafkaClusterConfigPtrOutput) UnmanagedTopics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UnmanagedTopics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Required) Version of the Kafka server software.
+func (o GetMdbKafkaClusterConfigPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) List of availability zones.
+func (o GetMdbKafkaClusterConfigPtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
+func (o GetMdbKafkaClusterConfigPtrOutput) Zookeeper() GetMdbKafkaClusterConfigZookeeperPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfig) *GetMdbKafkaClusterConfigZookeeper {
+		if v == nil {
+			return nil
+		}
+		return v.Zookeeper
+	}).(GetMdbKafkaClusterConfigZookeeperPtrOutput)
 }
 
 type GetMdbKafkaClusterConfigKafka struct {
@@ -57949,6 +59334,47 @@ func (i GetMdbKafkaClusterConfigKafkaArgs) ToGetMdbKafkaClusterConfigKafkaOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetMdbKafkaClusterConfigKafkaOutput)
 }
 
+func (i GetMdbKafkaClusterConfigKafkaArgs) ToGetMdbKafkaClusterConfigKafkaPtrOutput() GetMdbKafkaClusterConfigKafkaPtrOutput {
+	return i.ToGetMdbKafkaClusterConfigKafkaPtrOutputWithContext(context.Background())
+}
+
+func (i GetMdbKafkaClusterConfigKafkaArgs) ToGetMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbKafkaClusterConfigKafkaOutput).ToGetMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx)
+}
+
+// GetMdbKafkaClusterConfigKafkaPtrInput is an input type that accepts GetMdbKafkaClusterConfigKafkaArgs, GetMdbKafkaClusterConfigKafkaPtr and GetMdbKafkaClusterConfigKafkaPtrOutput values.
+// You can construct a concrete instance of `GetMdbKafkaClusterConfigKafkaPtrInput` via:
+//
+//          GetMdbKafkaClusterConfigKafkaArgs{...}
+//
+//  or:
+//
+//          nil
+type GetMdbKafkaClusterConfigKafkaPtrInput interface {
+	pulumi.Input
+
+	ToGetMdbKafkaClusterConfigKafkaPtrOutput() GetMdbKafkaClusterConfigKafkaPtrOutput
+	ToGetMdbKafkaClusterConfigKafkaPtrOutputWithContext(context.Context) GetMdbKafkaClusterConfigKafkaPtrOutput
+}
+
+type getMdbKafkaClusterConfigKafkaPtrType GetMdbKafkaClusterConfigKafkaArgs
+
+func GetMdbKafkaClusterConfigKafkaPtr(v *GetMdbKafkaClusterConfigKafkaArgs) GetMdbKafkaClusterConfigKafkaPtrInput {
+	return (*getMdbKafkaClusterConfigKafkaPtrType)(v)
+}
+
+func (*getMdbKafkaClusterConfigKafkaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbKafkaClusterConfigKafka)(nil)).Elem()
+}
+
+func (i *getMdbKafkaClusterConfigKafkaPtrType) ToGetMdbKafkaClusterConfigKafkaPtrOutput() GetMdbKafkaClusterConfigKafkaPtrOutput {
+	return i.ToGetMdbKafkaClusterConfigKafkaPtrOutputWithContext(context.Background())
+}
+
+func (i *getMdbKafkaClusterConfigKafkaPtrType) ToGetMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbKafkaClusterConfigKafkaPtrOutput)
+}
+
 type GetMdbKafkaClusterConfigKafkaOutput struct{ *pulumi.OutputState }
 
 func (GetMdbKafkaClusterConfigKafkaOutput) ElementType() reflect.Type {
@@ -57963,6 +59389,16 @@ func (o GetMdbKafkaClusterConfigKafkaOutput) ToGetMdbKafkaClusterConfigKafkaOutp
 	return o
 }
 
+func (o GetMdbKafkaClusterConfigKafkaOutput) ToGetMdbKafkaClusterConfigKafkaPtrOutput() GetMdbKafkaClusterConfigKafkaPtrOutput {
+	return o.ToGetMdbKafkaClusterConfigKafkaPtrOutputWithContext(context.Background())
+}
+
+func (o GetMdbKafkaClusterConfigKafkaOutput) ToGetMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbKafkaClusterConfigKafka) *GetMdbKafkaClusterConfigKafka {
+		return &v
+	}).(GetMdbKafkaClusterConfigKafkaPtrOutput)
+}
+
 // (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
 func (o GetMdbKafkaClusterConfigKafkaOutput) KafkaConfig() GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafka) *GetMdbKafkaClusterConfigKafkaKafkaConfig { return v.KafkaConfig }).(GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput)
@@ -57971,6 +59407,50 @@ func (o GetMdbKafkaClusterConfigKafkaOutput) KafkaConfig() GetMdbKafkaClusterCon
 // (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
 func (o GetMdbKafkaClusterConfigKafkaOutput) Resources() GetMdbKafkaClusterConfigKafkaResourcesOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafka) GetMdbKafkaClusterConfigKafkaResources { return v.Resources }).(GetMdbKafkaClusterConfigKafkaResourcesOutput)
+}
+
+type GetMdbKafkaClusterConfigKafkaPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMdbKafkaClusterConfigKafkaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbKafkaClusterConfigKafka)(nil)).Elem()
+}
+
+func (o GetMdbKafkaClusterConfigKafkaPtrOutput) ToGetMdbKafkaClusterConfigKafkaPtrOutput() GetMdbKafkaClusterConfigKafkaPtrOutput {
+	return o
+}
+
+func (o GetMdbKafkaClusterConfigKafkaPtrOutput) ToGetMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaPtrOutput {
+	return o
+}
+
+func (o GetMdbKafkaClusterConfigKafkaPtrOutput) Elem() GetMdbKafkaClusterConfigKafkaOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafka) GetMdbKafkaClusterConfigKafka {
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbKafkaClusterConfigKafka
+		return ret
+	}).(GetMdbKafkaClusterConfigKafkaOutput)
+}
+
+// (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
+func (o GetMdbKafkaClusterConfigKafkaPtrOutput) KafkaConfig() GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafka) *GetMdbKafkaClusterConfigKafkaKafkaConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConfig
+	}).(GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput)
+}
+
+// (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
+func (o GetMdbKafkaClusterConfigKafkaPtrOutput) Resources() GetMdbKafkaClusterConfigKafkaResourcesPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafka) *GetMdbKafkaClusterConfigKafkaResources {
+		if v == nil {
+			return nil
+		}
+		return &v.Resources
+	}).(GetMdbKafkaClusterConfigKafkaResourcesPtrOutput)
 }
 
 type GetMdbKafkaClusterConfigKafkaKafkaConfig struct {
@@ -58092,10 +59572,11 @@ func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) ToGetMdbKafkaClusterConf
 }
 
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) ToGetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *GetMdbKafkaClusterConfigKafkaKafkaConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbKafkaClusterConfigKafkaKafkaConfig) *GetMdbKafkaClusterConfigKafkaKafkaConfig {
 		return &v
 	}).(GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput)
 }
+
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigOutput) AutoCreateTopicsEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaKafkaConfig) *bool { return v.AutoCreateTopicsEnable }).(pulumi.BoolPtrOutput)
 }
@@ -58171,7 +59652,13 @@ func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) ToGetMdbKafkaClusterC
 }
 
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) Elem() GetMdbKafkaClusterConfigKafkaKafkaConfigOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) GetMdbKafkaClusterConfigKafkaKafkaConfig { return *v }).(GetMdbKafkaClusterConfigKafkaKafkaConfigOutput)
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaKafkaConfig) GetMdbKafkaClusterConfigKafkaKafkaConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbKafkaClusterConfigKafkaKafkaConfig
+		return ret
+	}).(GetMdbKafkaClusterConfigKafkaKafkaConfigOutput)
 }
 
 func (o GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput) AutoCreateTopicsEnable() pulumi.BoolPtrOutput {
@@ -58350,6 +59837,47 @@ func (i GetMdbKafkaClusterConfigKafkaResourcesArgs) ToGetMdbKafkaClusterConfigKa
 	return pulumi.ToOutputWithContext(ctx, i).(GetMdbKafkaClusterConfigKafkaResourcesOutput)
 }
 
+func (i GetMdbKafkaClusterConfigKafkaResourcesArgs) ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutput() GetMdbKafkaClusterConfigKafkaResourcesPtrOutput {
+	return i.ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i GetMdbKafkaClusterConfigKafkaResourcesArgs) ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbKafkaClusterConfigKafkaResourcesOutput).ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx)
+}
+
+// GetMdbKafkaClusterConfigKafkaResourcesPtrInput is an input type that accepts GetMdbKafkaClusterConfigKafkaResourcesArgs, GetMdbKafkaClusterConfigKafkaResourcesPtr and GetMdbKafkaClusterConfigKafkaResourcesPtrOutput values.
+// You can construct a concrete instance of `GetMdbKafkaClusterConfigKafkaResourcesPtrInput` via:
+//
+//          GetMdbKafkaClusterConfigKafkaResourcesArgs{...}
+//
+//  or:
+//
+//          nil
+type GetMdbKafkaClusterConfigKafkaResourcesPtrInput interface {
+	pulumi.Input
+
+	ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutput() GetMdbKafkaClusterConfigKafkaResourcesPtrOutput
+	ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(context.Context) GetMdbKafkaClusterConfigKafkaResourcesPtrOutput
+}
+
+type getMdbKafkaClusterConfigKafkaResourcesPtrType GetMdbKafkaClusterConfigKafkaResourcesArgs
+
+func GetMdbKafkaClusterConfigKafkaResourcesPtr(v *GetMdbKafkaClusterConfigKafkaResourcesArgs) GetMdbKafkaClusterConfigKafkaResourcesPtrInput {
+	return (*getMdbKafkaClusterConfigKafkaResourcesPtrType)(v)
+}
+
+func (*getMdbKafkaClusterConfigKafkaResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbKafkaClusterConfigKafkaResources)(nil)).Elem()
+}
+
+func (i *getMdbKafkaClusterConfigKafkaResourcesPtrType) ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutput() GetMdbKafkaClusterConfigKafkaResourcesPtrOutput {
+	return i.ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *getMdbKafkaClusterConfigKafkaResourcesPtrType) ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbKafkaClusterConfigKafkaResourcesPtrOutput)
+}
+
 type GetMdbKafkaClusterConfigKafkaResourcesOutput struct{ *pulumi.OutputState }
 
 func (GetMdbKafkaClusterConfigKafkaResourcesOutput) ElementType() reflect.Type {
@@ -58362,6 +59890,16 @@ func (o GetMdbKafkaClusterConfigKafkaResourcesOutput) ToGetMdbKafkaClusterConfig
 
 func (o GetMdbKafkaClusterConfigKafkaResourcesOutput) ToGetMdbKafkaClusterConfigKafkaResourcesOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaResourcesOutput {
 	return o
+}
+
+func (o GetMdbKafkaClusterConfigKafkaResourcesOutput) ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutput() GetMdbKafkaClusterConfigKafkaResourcesPtrOutput {
+	return o.ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o GetMdbKafkaClusterConfigKafkaResourcesOutput) ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbKafkaClusterConfigKafkaResources) *GetMdbKafkaClusterConfigKafkaResources {
+		return &v
+	}).(GetMdbKafkaClusterConfigKafkaResourcesPtrOutput)
 }
 
 // (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
@@ -58377,6 +59915,60 @@ func (o GetMdbKafkaClusterConfigKafkaResourcesOutput) DiskTypeId() pulumi.String
 
 func (o GetMdbKafkaClusterConfigKafkaResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterConfigKafkaResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
+}
+
+type GetMdbKafkaClusterConfigKafkaResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMdbKafkaClusterConfigKafkaResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbKafkaClusterConfigKafkaResources)(nil)).Elem()
+}
+
+func (o GetMdbKafkaClusterConfigKafkaResourcesPtrOutput) ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutput() GetMdbKafkaClusterConfigKafkaResourcesPtrOutput {
+	return o
+}
+
+func (o GetMdbKafkaClusterConfigKafkaResourcesPtrOutput) ToGetMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigKafkaResourcesPtrOutput {
+	return o
+}
+
+func (o GetMdbKafkaClusterConfigKafkaResourcesPtrOutput) Elem() GetMdbKafkaClusterConfigKafkaResourcesOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaResources) GetMdbKafkaClusterConfigKafkaResources {
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbKafkaClusterConfigKafkaResources
+		return ret
+	}).(GetMdbKafkaClusterConfigKafkaResourcesOutput)
+}
+
+// (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
+func (o GetMdbKafkaClusterConfigKafkaResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaResources) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional) Type of the storage of ZooKeeper hosts.
+// For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
+func (o GetMdbKafkaClusterConfigKafkaResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskTypeId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMdbKafkaClusterConfigKafkaResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigKafkaResources) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourcePresetId
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetMdbKafkaClusterConfigZookeeper struct {
@@ -58472,7 +60064,7 @@ func (o GetMdbKafkaClusterConfigZookeeperOutput) ToGetMdbKafkaClusterConfigZooke
 }
 
 func (o GetMdbKafkaClusterConfigZookeeperOutput) ToGetMdbKafkaClusterConfigZookeeperPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigZookeeperPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigZookeeper) *GetMdbKafkaClusterConfigZookeeper {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbKafkaClusterConfigZookeeper) *GetMdbKafkaClusterConfigZookeeper {
 		return &v
 	}).(GetMdbKafkaClusterConfigZookeeperPtrOutput)
 }
@@ -58499,7 +60091,13 @@ func (o GetMdbKafkaClusterConfigZookeeperPtrOutput) ToGetMdbKafkaClusterConfigZo
 }
 
 func (o GetMdbKafkaClusterConfigZookeeperPtrOutput) Elem() GetMdbKafkaClusterConfigZookeeperOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterConfigZookeeper) GetMdbKafkaClusterConfigZookeeper { return *v }).(GetMdbKafkaClusterConfigZookeeperOutput)
+	return o.ApplyT(func(v *GetMdbKafkaClusterConfigZookeeper) GetMdbKafkaClusterConfigZookeeper {
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbKafkaClusterConfigZookeeper
+		return ret
+	}).(GetMdbKafkaClusterConfigZookeeperOutput)
 }
 
 // (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
@@ -58613,7 +60211,7 @@ func (o GetMdbKafkaClusterConfigZookeeperResourcesOutput) ToGetMdbKafkaClusterCo
 }
 
 func (o GetMdbKafkaClusterConfigZookeeperResourcesOutput) ToGetMdbKafkaClusterConfigZookeeperResourcesPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterConfigZookeeperResourcesPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterConfigZookeeperResources) *GetMdbKafkaClusterConfigZookeeperResources {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbKafkaClusterConfigZookeeperResources) *GetMdbKafkaClusterConfigZookeeperResources {
 		return &v
 	}).(GetMdbKafkaClusterConfigZookeeperResourcesPtrOutput)
 }
@@ -58649,7 +60247,11 @@ func (o GetMdbKafkaClusterConfigZookeeperResourcesPtrOutput) ToGetMdbKafkaCluste
 
 func (o GetMdbKafkaClusterConfigZookeeperResourcesPtrOutput) Elem() GetMdbKafkaClusterConfigZookeeperResourcesOutput {
 	return o.ApplyT(func(v *GetMdbKafkaClusterConfigZookeeperResources) GetMdbKafkaClusterConfigZookeeperResources {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbKafkaClusterConfigZookeeperResources
+		return ret
 	}).(GetMdbKafkaClusterConfigZookeeperResourcesOutput)
 }
 
@@ -59064,10 +60666,11 @@ func (o GetMdbKafkaClusterTopicTopicConfigOutput) ToGetMdbKafkaClusterTopicTopic
 }
 
 func (o GetMdbKafkaClusterTopicTopicConfigOutput) ToGetMdbKafkaClusterTopicTopicConfigPtrOutputWithContext(ctx context.Context) GetMdbKafkaClusterTopicTopicConfigPtrOutput {
-	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *GetMdbKafkaClusterTopicTopicConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbKafkaClusterTopicTopicConfig) *GetMdbKafkaClusterTopicTopicConfig {
 		return &v
 	}).(GetMdbKafkaClusterTopicTopicConfigPtrOutput)
 }
+
 func (o GetMdbKafkaClusterTopicTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMdbKafkaClusterTopicTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
@@ -59135,7 +60738,13 @@ func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) ToGetMdbKafkaClusterTopicTo
 }
 
 func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) Elem() GetMdbKafkaClusterTopicTopicConfigOutput {
-	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) GetMdbKafkaClusterTopicTopicConfig { return *v }).(GetMdbKafkaClusterTopicTopicConfigOutput)
+	return o.ApplyT(func(v *GetMdbKafkaClusterTopicTopicConfig) GetMdbKafkaClusterTopicTopicConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbKafkaClusterTopicTopicConfig
+		return ret
+	}).(GetMdbKafkaClusterTopicTopicConfigOutput)
 }
 
 func (o GetMdbKafkaClusterTopicTopicConfigPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
@@ -60316,6 +61925,47 @@ func (i GetMdbMysqlClusterAccessArgs) ToGetMdbMysqlClusterAccessOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetMdbMysqlClusterAccessOutput)
 }
 
+func (i GetMdbMysqlClusterAccessArgs) ToGetMdbMysqlClusterAccessPtrOutput() GetMdbMysqlClusterAccessPtrOutput {
+	return i.ToGetMdbMysqlClusterAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetMdbMysqlClusterAccessArgs) ToGetMdbMysqlClusterAccessPtrOutputWithContext(ctx context.Context) GetMdbMysqlClusterAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbMysqlClusterAccessOutput).ToGetMdbMysqlClusterAccessPtrOutputWithContext(ctx)
+}
+
+// GetMdbMysqlClusterAccessPtrInput is an input type that accepts GetMdbMysqlClusterAccessArgs, GetMdbMysqlClusterAccessPtr and GetMdbMysqlClusterAccessPtrOutput values.
+// You can construct a concrete instance of `GetMdbMysqlClusterAccessPtrInput` via:
+//
+//          GetMdbMysqlClusterAccessArgs{...}
+//
+//  or:
+//
+//          nil
+type GetMdbMysqlClusterAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetMdbMysqlClusterAccessPtrOutput() GetMdbMysqlClusterAccessPtrOutput
+	ToGetMdbMysqlClusterAccessPtrOutputWithContext(context.Context) GetMdbMysqlClusterAccessPtrOutput
+}
+
+type getMdbMysqlClusterAccessPtrType GetMdbMysqlClusterAccessArgs
+
+func GetMdbMysqlClusterAccessPtr(v *GetMdbMysqlClusterAccessArgs) GetMdbMysqlClusterAccessPtrInput {
+	return (*getMdbMysqlClusterAccessPtrType)(v)
+}
+
+func (*getMdbMysqlClusterAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbMysqlClusterAccess)(nil)).Elem()
+}
+
+func (i *getMdbMysqlClusterAccessPtrType) ToGetMdbMysqlClusterAccessPtrOutput() GetMdbMysqlClusterAccessPtrOutput {
+	return i.ToGetMdbMysqlClusterAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getMdbMysqlClusterAccessPtrType) ToGetMdbMysqlClusterAccessPtrOutputWithContext(ctx context.Context) GetMdbMysqlClusterAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMdbMysqlClusterAccessPtrOutput)
+}
+
 type GetMdbMysqlClusterAccessOutput struct{ *pulumi.OutputState }
 
 func (GetMdbMysqlClusterAccessOutput) ElementType() reflect.Type {
@@ -60330,6 +61980,16 @@ func (o GetMdbMysqlClusterAccessOutput) ToGetMdbMysqlClusterAccessOutputWithCont
 	return o
 }
 
+func (o GetMdbMysqlClusterAccessOutput) ToGetMdbMysqlClusterAccessPtrOutput() GetMdbMysqlClusterAccessPtrOutput {
+	return o.ToGetMdbMysqlClusterAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetMdbMysqlClusterAccessOutput) ToGetMdbMysqlClusterAccessPtrOutputWithContext(ctx context.Context) GetMdbMysqlClusterAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMdbMysqlClusterAccess) *GetMdbMysqlClusterAccess {
+		return &v
+	}).(GetMdbMysqlClusterAccessPtrOutput)
+}
+
 // Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
 func (o GetMdbMysqlClusterAccessOutput) DataLens() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMdbMysqlClusterAccess) bool { return v.DataLens }).(pulumi.BoolOutput)
@@ -60338,6 +61998,50 @@ func (o GetMdbMysqlClusterAccessOutput) DataLens() pulumi.BoolOutput {
 // Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
 func (o GetMdbMysqlClusterAccessOutput) WebSql() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMdbMysqlClusterAccess) bool { return v.WebSql }).(pulumi.BoolOutput)
+}
+
+type GetMdbMysqlClusterAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMdbMysqlClusterAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMdbMysqlClusterAccess)(nil)).Elem()
+}
+
+func (o GetMdbMysqlClusterAccessPtrOutput) ToGetMdbMysqlClusterAccessPtrOutput() GetMdbMysqlClusterAccessPtrOutput {
+	return o
+}
+
+func (o GetMdbMysqlClusterAccessPtrOutput) ToGetMdbMysqlClusterAccessPtrOutputWithContext(ctx context.Context) GetMdbMysqlClusterAccessPtrOutput {
+	return o
+}
+
+func (o GetMdbMysqlClusterAccessPtrOutput) Elem() GetMdbMysqlClusterAccessOutput {
+	return o.ApplyT(func(v *GetMdbMysqlClusterAccess) GetMdbMysqlClusterAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetMdbMysqlClusterAccess
+		return ret
+	}).(GetMdbMysqlClusterAccessOutput)
+}
+
+// Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
+func (o GetMdbMysqlClusterAccessPtrOutput) DataLens() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMdbMysqlClusterAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DataLens
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
+func (o GetMdbMysqlClusterAccessPtrOutput) WebSql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMdbMysqlClusterAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.WebSql
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetMdbMysqlClusterBackupWindowStart struct {
@@ -64284,6 +65988,843 @@ func (o GetYdbDatabaseDedicatedStorageConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendInput)(nil)).Elem(), AlbBackendGroupGrpcBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendArrayInput)(nil)).Elem(), AlbBackendGroupGrpcBackendArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckInput)(nil)).Elem(), AlbBackendGroupGrpcBackendHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckPtrInput)(nil)).Elem(), AlbBackendGroupGrpcBackendHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput)(nil)).Elem(), AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckPtrInput)(nil)).Elem(), AlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput)(nil)).Elem(), AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckPtrInput)(nil)).Elem(), AlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput)(nil)).Elem(), AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckPtrInput)(nil)).Elem(), AlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendLoadBalancingConfigInput)(nil)).Elem(), AlbBackendGroupGrpcBackendLoadBalancingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendLoadBalancingConfigPtrInput)(nil)).Elem(), AlbBackendGroupGrpcBackendLoadBalancingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendTlsInput)(nil)).Elem(), AlbBackendGroupGrpcBackendTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendTlsPtrInput)(nil)).Elem(), AlbBackendGroupGrpcBackendTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendTlsValidationContextInput)(nil)).Elem(), AlbBackendGroupGrpcBackendTlsValidationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupGrpcBackendTlsValidationContextPtrInput)(nil)).Elem(), AlbBackendGroupGrpcBackendTlsValidationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendInput)(nil)).Elem(), AlbBackendGroupHttpBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendArrayInput)(nil)).Elem(), AlbBackendGroupHttpBackendArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckInput)(nil)).Elem(), AlbBackendGroupHttpBackendHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckPtrInput)(nil)).Elem(), AlbBackendGroupHttpBackendHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput)(nil)).Elem(), AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckPtrInput)(nil)).Elem(), AlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput)(nil)).Elem(), AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckPtrInput)(nil)).Elem(), AlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput)(nil)).Elem(), AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckPtrInput)(nil)).Elem(), AlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendLoadBalancingConfigInput)(nil)).Elem(), AlbBackendGroupHttpBackendLoadBalancingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendLoadBalancingConfigPtrInput)(nil)).Elem(), AlbBackendGroupHttpBackendLoadBalancingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendTlsInput)(nil)).Elem(), AlbBackendGroupHttpBackendTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendTlsPtrInput)(nil)).Elem(), AlbBackendGroupHttpBackendTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendTlsValidationContextInput)(nil)).Elem(), AlbBackendGroupHttpBackendTlsValidationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupHttpBackendTlsValidationContextPtrInput)(nil)).Elem(), AlbBackendGroupHttpBackendTlsValidationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerAllocationPolicyInput)(nil)).Elem(), AlbLoadBalancerAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerAllocationPolicyPtrInput)(nil)).Elem(), AlbLoadBalancerAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerAllocationPolicyLocationInput)(nil)).Elem(), AlbLoadBalancerAllocationPolicyLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerAllocationPolicyLocationArrayInput)(nil)).Elem(), AlbLoadBalancerAllocationPolicyLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerInput)(nil)).Elem(), AlbLoadBalancerListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerArrayInput)(nil)).Elem(), AlbLoadBalancerListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointArrayInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointAddressInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointAddressArrayInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressPtrInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressPtrInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointAddressExternalIpv6AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressPtrInput)(nil)).Elem(), AlbLoadBalancerListenerEndpointAddressInternalIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerHttpInput)(nil)).Elem(), AlbLoadBalancerListenerHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerHttpPtrInput)(nil)).Elem(), AlbLoadBalancerListenerHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerHttpHandlerInput)(nil)).Elem(), AlbLoadBalancerListenerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerHttpHandlerPtrInput)(nil)).Elem(), AlbLoadBalancerListenerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerHttpHandlerHttp2OptionsInput)(nil)).Elem(), AlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrInput)(nil)).Elem(), AlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerHttpRedirectsInput)(nil)).Elem(), AlbLoadBalancerListenerHttpRedirectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerHttpRedirectsPtrInput)(nil)).Elem(), AlbLoadBalancerListenerHttpRedirectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsInput)(nil)).Elem(), AlbLoadBalancerListenerTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsPtrInput)(nil)).Elem(), AlbLoadBalancerListenerTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsDefaultHandlerInput)(nil)).Elem(), AlbLoadBalancerListenerTlsDefaultHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsDefaultHandlerPtrInput)(nil)).Elem(), AlbLoadBalancerListenerTlsDefaultHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerInput)(nil)).Elem(), AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrInput)(nil)).Elem(), AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsInput)(nil)).Elem(), AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrInput)(nil)).Elem(), AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsSniHandlerInput)(nil)).Elem(), AlbLoadBalancerListenerTlsSniHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsSniHandlerArrayInput)(nil)).Elem(), AlbLoadBalancerListenerTlsSniHandlerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsSniHandlerHandlerInput)(nil)).Elem(), AlbLoadBalancerListenerTlsSniHandlerHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerInput)(nil)).Elem(), AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrInput)(nil)).Elem(), AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsInput)(nil)).Elem(), AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrInput)(nil)).Elem(), AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbTargetGroupTargetInput)(nil)).Elem(), AlbTargetGroupTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbTargetGroupTargetArrayInput)(nil)).Elem(), AlbTargetGroupTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostModifyRequestHeaderInput)(nil)).Elem(), AlbVirtualHostModifyRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostModifyRequestHeaderArrayInput)(nil)).Elem(), AlbVirtualHostModifyRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostModifyResponseHeaderInput)(nil)).Elem(), AlbVirtualHostModifyResponseHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostModifyResponseHeaderArrayInput)(nil)).Elem(), AlbVirtualHostModifyResponseHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteInput)(nil)).Elem(), AlbVirtualHostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteArrayInput)(nil)).Elem(), AlbVirtualHostRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRoutePtrInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcMatchInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteGrpcMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteGrpcMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnPtrInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcRouteActionInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcRouteActionPtrInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionPtrInput)(nil)).Elem(), AlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRoutePtrInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteDirectResponseActionInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteDirectResponseActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteDirectResponseActionPtrInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteDirectResponseActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpMatchInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteHttpMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpMatchArrayInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteHttpMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpMatchPathInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteHttpMatchPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpMatchPathPtrInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteHttpMatchPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpRouteActionInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteHttpRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteHttpRouteActionPtrInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteHttpRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteRedirectActionInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbVirtualHostRouteHttpRouteRedirectActionPtrInput)(nil)).Elem(), AlbVirtualHostRouteHttpRouteRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskDiskPlacementPolicyInput)(nil)).Elem(), ComputeDiskDiskPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskDiskPlacementPolicyPtrInput)(nil)).Elem(), ComputeDiskDiskPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceBootDiskInput)(nil)).Elem(), ComputeInstanceBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceBootDiskPtrInput)(nil)).Elem(), ComputeInstanceBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceBootDiskInitializeParamsInput)(nil)).Elem(), ComputeInstanceBootDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceBootDiskInitializeParamsPtrInput)(nil)).Elem(), ComputeInstanceBootDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupAllocationPolicyInput)(nil)).Elem(), ComputeInstanceGroupAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupAllocationPolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupApplicationLoadBalancerInput)(nil)).Elem(), ComputeInstanceGroupApplicationLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupApplicationLoadBalancerPtrInput)(nil)).Elem(), ComputeInstanceGroupApplicationLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupDeployPolicyInput)(nil)).Elem(), ComputeInstanceGroupDeployPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupDeployPolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupDeployPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupHealthCheckInput)(nil)).Elem(), ComputeInstanceGroupHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupHealthCheckArrayInput)(nil)).Elem(), ComputeInstanceGroupHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupHealthCheckHttpOptionInput)(nil)).Elem(), ComputeInstanceGroupHealthCheckHttpOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupHealthCheckHttpOptionArrayInput)(nil)).Elem(), ComputeInstanceGroupHealthCheckHttpOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupHealthCheckTcpOptionInput)(nil)).Elem(), ComputeInstanceGroupHealthCheckTcpOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupHealthCheckTcpOptionArrayInput)(nil)).Elem(), ComputeInstanceGroupHealthCheckTcpOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceInput)(nil)).Elem(), ComputeInstanceGroupInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceArrayInput)(nil)).Elem(), ComputeInstanceGroupInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceNetworkInterfaceInput)(nil)).Elem(), ComputeInstanceGroupInstanceNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceNetworkInterfaceArrayInput)(nil)).Elem(), ComputeInstanceGroupInstanceNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplatePtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateBootDiskInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateBootDiskPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkInterfaceArrayInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArrayInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArrayInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArrayInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkSettingInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkSettingArrayInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplatePlacementPolicyInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplatePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplatePlacementPolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplatePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateResourcesInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateResourcesPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateSchedulingPolicyInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateSecondaryDiskInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateSecondaryDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateSecondaryDiskArrayInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateSecondaryDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupLoadBalancerInput)(nil)).Elem(), ComputeInstanceGroupLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupLoadBalancerPtrInput)(nil)).Elem(), ComputeInstanceGroupLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyAutoScaleInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyAutoScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyAutoScalePtrInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyAutoScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyAutoScaleCustomRuleInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyAutoScaleCustomRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyAutoScaleCustomRuleArrayInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyAutoScaleCustomRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyFixedScaleInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyFixedScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyFixedScalePtrInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyFixedScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyTestAutoScaleInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyTestAutoScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyTestAutoScalePtrInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyTestAutoScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArrayInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceArrayInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceDnsRecordInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceDnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceDnsRecordArrayInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceDnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceIpv6DnsRecordInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceIpv6DnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceIpv6DnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceNatDnsRecordInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceNatDnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceNetworkInterfaceNatDnsRecordArrayInput)(nil)).Elem(), ComputeInstanceNetworkInterfaceNatDnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstancePlacementPolicyInput)(nil)).Elem(), ComputeInstancePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstancePlacementPolicyPtrInput)(nil)).Elem(), ComputeInstancePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceResourcesInput)(nil)).Elem(), ComputeInstanceResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceResourcesPtrInput)(nil)).Elem(), ComputeInstanceResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceSchedulingPolicyInput)(nil)).Elem(), ComputeInstanceSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceSchedulingPolicyPtrInput)(nil)).Elem(), ComputeInstanceSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceSecondaryDiskInput)(nil)).Elem(), ComputeInstanceSecondaryDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceSecondaryDiskArrayInput)(nil)).Elem(), ComputeInstanceSecondaryDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigInput)(nil)).Elem(), DataprocClusterClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigPtrInput)(nil)).Elem(), DataprocClusterClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigHadoopInput)(nil)).Elem(), DataprocClusterClusterConfigHadoopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigHadoopPtrInput)(nil)).Elem(), DataprocClusterClusterConfigHadoopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigSubclusterSpecInput)(nil)).Elem(), DataprocClusterClusterConfigSubclusterSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigSubclusterSpecArrayInput)(nil)).Elem(), DataprocClusterClusterConfigSubclusterSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigInput)(nil)).Elem(), DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigPtrInput)(nil)).Elem(), DataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigSubclusterSpecResourcesInput)(nil)).Elem(), DataprocClusterClusterConfigSubclusterSpecResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionContentInput)(nil)).Elem(), FunctionContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionContentPtrInput)(nil)).Elem(), FunctionContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionPackageInput)(nil)).Elem(), FunctionPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionPackagePtrInput)(nil)).Elem(), FunctionPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionScalingPolicyPolicyInput)(nil)).Elem(), FunctionScalingPolicyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionScalingPolicyPolicyArrayInput)(nil)).Elem(), FunctionScalingPolicyPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerDlqInput)(nil)).Elem(), FunctionTriggerDlqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerDlqPtrInput)(nil)).Elem(), FunctionTriggerDlqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerFunctionInput)(nil)).Elem(), FunctionTriggerFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerFunctionPtrInput)(nil)).Elem(), FunctionTriggerFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerIotInput)(nil)).Elem(), FunctionTriggerIotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerIotPtrInput)(nil)).Elem(), FunctionTriggerIotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerLogGroupInput)(nil)).Elem(), FunctionTriggerLogGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerLogGroupPtrInput)(nil)).Elem(), FunctionTriggerLogGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerMessageQueueInput)(nil)).Elem(), FunctionTriggerMessageQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerMessageQueuePtrInput)(nil)).Elem(), FunctionTriggerMessageQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerObjectStorageInput)(nil)).Elem(), FunctionTriggerObjectStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerObjectStoragePtrInput)(nil)).Elem(), FunctionTriggerObjectStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerTimerInput)(nil)).Elem(), FunctionTriggerTimerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerTimerPtrInput)(nil)).Elem(), FunctionTriggerTimerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKmsProviderInput)(nil)).Elem(), KubernetesClusterKmsProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKmsProviderPtrInput)(nil)).Elem(), KubernetesClusterKmsProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterInput)(nil)).Elem(), KubernetesClusterMasterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterPtrInput)(nil)).Elem(), KubernetesClusterMasterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterMaintenancePolicyInput)(nil)).Elem(), KubernetesClusterMasterMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterMaintenancePolicyPtrInput)(nil)).Elem(), KubernetesClusterMasterMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterMaintenancePolicyMaintenanceWindowInput)(nil)).Elem(), KubernetesClusterMasterMaintenancePolicyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterMaintenancePolicyMaintenanceWindowArrayInput)(nil)).Elem(), KubernetesClusterMasterMaintenancePolicyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterRegionalInput)(nil)).Elem(), KubernetesClusterMasterRegionalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterRegionalPtrInput)(nil)).Elem(), KubernetesClusterMasterRegionalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterRegionalLocationInput)(nil)).Elem(), KubernetesClusterMasterRegionalLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterRegionalLocationArrayInput)(nil)).Elem(), KubernetesClusterMasterRegionalLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterVersionInfoInput)(nil)).Elem(), KubernetesClusterMasterVersionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterVersionInfoPtrInput)(nil)).Elem(), KubernetesClusterMasterVersionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterZonalInput)(nil)).Elem(), KubernetesClusterMasterZonalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterZonalPtrInput)(nil)).Elem(), KubernetesClusterMasterZonalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNetworkImplementationInput)(nil)).Elem(), KubernetesClusterNetworkImplementationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNetworkImplementationPtrInput)(nil)).Elem(), KubernetesClusterNetworkImplementationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNetworkImplementationCiliumInput)(nil)).Elem(), KubernetesClusterNetworkImplementationCiliumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNetworkImplementationCiliumPtrInput)(nil)).Elem(), KubernetesClusterNetworkImplementationCiliumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupAllocationPolicyInput)(nil)).Elem(), KubernetesNodeGroupAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupAllocationPolicyPtrInput)(nil)).Elem(), KubernetesNodeGroupAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupAllocationPolicyLocationInput)(nil)).Elem(), KubernetesNodeGroupAllocationPolicyLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupAllocationPolicyLocationArrayInput)(nil)).Elem(), KubernetesNodeGroupAllocationPolicyLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupDeployPolicyInput)(nil)).Elem(), KubernetesNodeGroupDeployPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupDeployPolicyPtrInput)(nil)).Elem(), KubernetesNodeGroupDeployPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplatePtrInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateBootDiskInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateBootDiskPtrInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplatePlacementPolicyInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateResourcesInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateResourcesPtrInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateSchedulingPolicyInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupMaintenancePolicyInput)(nil)).Elem(), KubernetesNodeGroupMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupMaintenancePolicyPtrInput)(nil)).Elem(), KubernetesNodeGroupMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupMaintenancePolicyMaintenanceWindowInput)(nil)).Elem(), KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArrayInput)(nil)).Elem(), KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyPtrInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyAutoScaleInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyAutoScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyAutoScalePtrInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyAutoScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyFixedScaleInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyFixedScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyFixedScalePtrInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyFixedScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupVersionInfoInput)(nil)).Elem(), KubernetesNodeGroupVersionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupVersionInfoPtrInput)(nil)).Elem(), KubernetesNodeGroupVersionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerAttachedTargetGroupInput)(nil)).Elem(), LbNetworkLoadBalancerAttachedTargetGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerAttachedTargetGroupArrayInput)(nil)).Elem(), LbNetworkLoadBalancerAttachedTargetGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerAttachedTargetGroupHealthcheckInput)(nil)).Elem(), LbNetworkLoadBalancerAttachedTargetGroupHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerAttachedTargetGroupHealthcheckArrayInput)(nil)).Elem(), LbNetworkLoadBalancerAttachedTargetGroupHealthcheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsInput)(nil)).Elem(), LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsPtrInput)(nil)).Elem(), LbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsInput)(nil)).Elem(), LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsPtrInput)(nil)).Elem(), LbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerListenerInput)(nil)).Elem(), LbNetworkLoadBalancerListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerListenerArrayInput)(nil)).Elem(), LbNetworkLoadBalancerListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerListenerExternalAddressSpecInput)(nil)).Elem(), LbNetworkLoadBalancerListenerExternalAddressSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerListenerExternalAddressSpecPtrInput)(nil)).Elem(), LbNetworkLoadBalancerListenerExternalAddressSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerListenerInternalAddressSpecInput)(nil)).Elem(), LbNetworkLoadBalancerListenerInternalAddressSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbNetworkLoadBalancerListenerInternalAddressSpecPtrInput)(nil)).Elem(), LbNetworkLoadBalancerListenerInternalAddressSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbTargetGroupTargetInput)(nil)).Elem(), LbTargetGroupTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbTargetGroupTargetArrayInput)(nil)).Elem(), LbTargetGroupTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterAccessInput)(nil)).Elem(), MdbClickhouseClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterAccessPtrInput)(nil)).Elem(), MdbClickhouseClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterBackupWindowStartInput)(nil)).Elem(), MdbClickhouseClusterBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterBackupWindowStartPtrInput)(nil)).Elem(), MdbClickhouseClusterBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseInput)(nil)).Elem(), MdbClickhouseClusterClickhouseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhousePtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigPtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigCompressionInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigCompressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigCompressionArrayInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigCompressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigGraphiteRollupInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigGraphiteRollupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigGraphiteRollupArrayInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigGraphiteRollupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigGraphiteRollupPatternInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigGraphiteRollupPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigGraphiteRollupPatternArrayInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigGraphiteRollupPatternArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigGraphiteRollupPatternRetentionInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigGraphiteRollupPatternRetentionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigGraphiteRollupPatternRetentionArrayInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigGraphiteRollupPatternRetentionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigKafkaInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigKafkaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigKafkaPtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigKafkaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigKafkaTopicInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigKafkaTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigKafkaTopicArrayInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigKafkaTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigKafkaTopicSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigMergeTreeInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigMergeTreeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigMergeTreePtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigMergeTreeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigRabbitmqInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigRabbitmqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigRabbitmqPtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigRabbitmqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseResourcesInput)(nil)).Elem(), MdbClickhouseClusterClickhouseResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseResourcesPtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterCloudStorageInput)(nil)).Elem(), MdbClickhouseClusterCloudStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterCloudStoragePtrInput)(nil)).Elem(), MdbClickhouseClusterCloudStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterDatabaseInput)(nil)).Elem(), MdbClickhouseClusterDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterDatabaseArrayInput)(nil)).Elem(), MdbClickhouseClusterDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterFormatSchemaInput)(nil)).Elem(), MdbClickhouseClusterFormatSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterFormatSchemaArrayInput)(nil)).Elem(), MdbClickhouseClusterFormatSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterHostInput)(nil)).Elem(), MdbClickhouseClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterHostArrayInput)(nil)).Elem(), MdbClickhouseClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterMaintenanceWindowInput)(nil)).Elem(), MdbClickhouseClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterMaintenanceWindowPtrInput)(nil)).Elem(), MdbClickhouseClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterMlModelInput)(nil)).Elem(), MdbClickhouseClusterMlModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterMlModelArrayInput)(nil)).Elem(), MdbClickhouseClusterMlModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterShardGroupInput)(nil)).Elem(), MdbClickhouseClusterShardGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterShardGroupArrayInput)(nil)).Elem(), MdbClickhouseClusterShardGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterUserInput)(nil)).Elem(), MdbClickhouseClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterUserArrayInput)(nil)).Elem(), MdbClickhouseClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterUserPermissionInput)(nil)).Elem(), MdbClickhouseClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterUserPermissionArrayInput)(nil)).Elem(), MdbClickhouseClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterUserQuotaInput)(nil)).Elem(), MdbClickhouseClusterUserQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterUserQuotaArrayInput)(nil)).Elem(), MdbClickhouseClusterUserQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterUserSettingsInput)(nil)).Elem(), MdbClickhouseClusterUserSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterUserSettingsPtrInput)(nil)).Elem(), MdbClickhouseClusterUserSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterZookeeperInput)(nil)).Elem(), MdbClickhouseClusterZookeeperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterZookeeperPtrInput)(nil)).Elem(), MdbClickhouseClusterZookeeperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterZookeeperResourcesInput)(nil)).Elem(), MdbClickhouseClusterZookeeperResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterZookeeperResourcesPtrInput)(nil)).Elem(), MdbClickhouseClusterZookeeperResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigInput)(nil)).Elem(), MdbElasticSearchClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigPtrInput)(nil)).Elem(), MdbElasticSearchClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodeInput)(nil)).Elem(), MdbElasticSearchClusterConfigDataNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodePtrInput)(nil)).Elem(), MdbElasticSearchClusterConfigDataNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodeResourcesInput)(nil)).Elem(), MdbElasticSearchClusterConfigDataNodeResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodeResourcesPtrInput)(nil)).Elem(), MdbElasticSearchClusterConfigDataNodeResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNodeInput)(nil)).Elem(), MdbElasticSearchClusterConfigMasterNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNodePtrInput)(nil)).Elem(), MdbElasticSearchClusterConfigMasterNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNodeResourcesInput)(nil)).Elem(), MdbElasticSearchClusterConfigMasterNodeResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNodeResourcesPtrInput)(nil)).Elem(), MdbElasticSearchClusterConfigMasterNodeResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterHostInput)(nil)).Elem(), MdbElasticSearchClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterHostArrayInput)(nil)).Elem(), MdbElasticSearchClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterHostInput)(nil)).Elem(), MdbGreenplumClusterMasterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterHostArrayInput)(nil)).Elem(), MdbGreenplumClusterMasterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterInput)(nil)).Elem(), MdbGreenplumClusterMasterSubclusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterPtrInput)(nil)).Elem(), MdbGreenplumClusterMasterSubclusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterResourcesInput)(nil)).Elem(), MdbGreenplumClusterMasterSubclusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterResourcesPtrInput)(nil)).Elem(), MdbGreenplumClusterMasterSubclusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentHostInput)(nil)).Elem(), MdbGreenplumClusterSegmentHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentHostArrayInput)(nil)).Elem(), MdbGreenplumClusterSegmentHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterInput)(nil)).Elem(), MdbGreenplumClusterSegmentSubclusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterPtrInput)(nil)).Elem(), MdbGreenplumClusterSegmentSubclusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterResourcesInput)(nil)).Elem(), MdbGreenplumClusterSegmentSubclusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterResourcesPtrInput)(nil)).Elem(), MdbGreenplumClusterSegmentSubclusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigInput)(nil)).Elem(), MdbKafkaClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigPtrInput)(nil)).Elem(), MdbKafkaClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaPtrInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaKafkaConfigInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaKafkaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaKafkaConfigPtrInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaKafkaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaResourcesInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaResourcesPtrInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigZookeeperInput)(nil)).Elem(), MdbKafkaClusterConfigZookeeperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigZookeeperPtrInput)(nil)).Elem(), MdbKafkaClusterConfigZookeeperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigZookeeperResourcesInput)(nil)).Elem(), MdbKafkaClusterConfigZookeeperResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigZookeeperResourcesPtrInput)(nil)).Elem(), MdbKafkaClusterConfigZookeeperResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterHostInput)(nil)).Elem(), MdbKafkaClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterHostArrayInput)(nil)).Elem(), MdbKafkaClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterTopicInput)(nil)).Elem(), MdbKafkaClusterTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterTopicArrayInput)(nil)).Elem(), MdbKafkaClusterTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterTopicTopicConfigInput)(nil)).Elem(), MdbKafkaClusterTopicTopicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterTopicTopicConfigPtrInput)(nil)).Elem(), MdbKafkaClusterTopicTopicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterUserInput)(nil)).Elem(), MdbKafkaClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterUserArrayInput)(nil)).Elem(), MdbKafkaClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterUserPermissionInput)(nil)).Elem(), MdbKafkaClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterUserPermissionArrayInput)(nil)).Elem(), MdbKafkaClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigInput)(nil)).Elem(), MdbMongodbClusterClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigPtrInput)(nil)).Elem(), MdbMongodbClusterClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigAccessInput)(nil)).Elem(), MdbMongodbClusterClusterConfigAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigAccessPtrInput)(nil)).Elem(), MdbMongodbClusterClusterConfigAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigBackupWindowStartInput)(nil)).Elem(), MdbMongodbClusterClusterConfigBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigBackupWindowStartPtrInput)(nil)).Elem(), MdbMongodbClusterClusterConfigBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterDatabaseInput)(nil)).Elem(), MdbMongodbClusterDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterDatabaseArrayInput)(nil)).Elem(), MdbMongodbClusterDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterHostInput)(nil)).Elem(), MdbMongodbClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterHostArrayInput)(nil)).Elem(), MdbMongodbClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterMaintenanceWindowInput)(nil)).Elem(), MdbMongodbClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterMaintenanceWindowPtrInput)(nil)).Elem(), MdbMongodbClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterResourcesInput)(nil)).Elem(), MdbMongodbClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterResourcesPtrInput)(nil)).Elem(), MdbMongodbClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterUserInput)(nil)).Elem(), MdbMongodbClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterUserArrayInput)(nil)).Elem(), MdbMongodbClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterUserPermissionInput)(nil)).Elem(), MdbMongodbClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterUserPermissionArrayInput)(nil)).Elem(), MdbMongodbClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterAccessInput)(nil)).Elem(), MdbMysqlClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterAccessPtrInput)(nil)).Elem(), MdbMysqlClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterBackupWindowStartInput)(nil)).Elem(), MdbMysqlClusterBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterBackupWindowStartPtrInput)(nil)).Elem(), MdbMysqlClusterBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterDatabaseInput)(nil)).Elem(), MdbMysqlClusterDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterDatabaseArrayInput)(nil)).Elem(), MdbMysqlClusterDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterHostInput)(nil)).Elem(), MdbMysqlClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterHostArrayInput)(nil)).Elem(), MdbMysqlClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterMaintenanceWindowInput)(nil)).Elem(), MdbMysqlClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterMaintenanceWindowPtrInput)(nil)).Elem(), MdbMysqlClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterResourcesInput)(nil)).Elem(), MdbMysqlClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterResourcesPtrInput)(nil)).Elem(), MdbMysqlClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterRestoreInput)(nil)).Elem(), MdbMysqlClusterRestoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterRestorePtrInput)(nil)).Elem(), MdbMysqlClusterRestoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterUserInput)(nil)).Elem(), MdbMysqlClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterUserArrayInput)(nil)).Elem(), MdbMysqlClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterUserConnectionLimitsInput)(nil)).Elem(), MdbMysqlClusterUserConnectionLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterUserConnectionLimitsPtrInput)(nil)).Elem(), MdbMysqlClusterUserConnectionLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterUserPermissionInput)(nil)).Elem(), MdbMysqlClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterUserPermissionArrayInput)(nil)).Elem(), MdbMysqlClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterConfigInput)(nil)).Elem(), MdbRedisClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterConfigPtrInput)(nil)).Elem(), MdbRedisClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterHostInput)(nil)).Elem(), MdbRedisClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterHostArrayInput)(nil)).Elem(), MdbRedisClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterMaintenanceWindowInput)(nil)).Elem(), MdbRedisClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterMaintenanceWindowPtrInput)(nil)).Elem(), MdbRedisClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterResourcesInput)(nil)).Elem(), MdbRedisClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterResourcesPtrInput)(nil)).Elem(), MdbRedisClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterBackupWindowStartInput)(nil)).Elem(), MdbSqlServerClusterBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterBackupWindowStartPtrInput)(nil)).Elem(), MdbSqlServerClusterBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterDatabaseInput)(nil)).Elem(), MdbSqlServerClusterDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterDatabaseArrayInput)(nil)).Elem(), MdbSqlServerClusterDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterHostInput)(nil)).Elem(), MdbSqlServerClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterHostArrayInput)(nil)).Elem(), MdbSqlServerClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterResourcesInput)(nil)).Elem(), MdbSqlServerClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterResourcesPtrInput)(nil)).Elem(), MdbSqlServerClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterUserInput)(nil)).Elem(), MdbSqlServerClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterUserArrayInput)(nil)).Elem(), MdbSqlServerClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterUserPermissionInput)(nil)).Elem(), MdbSqlServerClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterUserPermissionArrayInput)(nil)).Elem(), MdbSqlServerClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketCorsRuleInput)(nil)).Elem(), StorageBucketCorsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketCorsRuleArrayInput)(nil)).Elem(), StorageBucketCorsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketGrantInput)(nil)).Elem(), StorageBucketGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketGrantArrayInput)(nil)).Elem(), StorageBucketGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleInput)(nil)).Elem(), StorageBucketLifecycleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleArrayInput)(nil)).Elem(), StorageBucketLifecycleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleExpirationInput)(nil)).Elem(), StorageBucketLifecycleRuleExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleExpirationPtrInput)(nil)).Elem(), StorageBucketLifecycleRuleExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleNoncurrentVersionExpirationInput)(nil)).Elem(), StorageBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleNoncurrentVersionExpirationPtrInput)(nil)).Elem(), StorageBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleNoncurrentVersionTransitionInput)(nil)).Elem(), StorageBucketLifecycleRuleNoncurrentVersionTransitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleNoncurrentVersionTransitionArrayInput)(nil)).Elem(), StorageBucketLifecycleRuleNoncurrentVersionTransitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleTransitionInput)(nil)).Elem(), StorageBucketLifecycleRuleTransitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLifecycleRuleTransitionArrayInput)(nil)).Elem(), StorageBucketLifecycleRuleTransitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLoggingInput)(nil)).Elem(), StorageBucketLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketLoggingArrayInput)(nil)).Elem(), StorageBucketLoggingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketServerSideEncryptionConfigurationInput)(nil)).Elem(), StorageBucketServerSideEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketServerSideEncryptionConfigurationPtrInput)(nil)).Elem(), StorageBucketServerSideEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketServerSideEncryptionConfigurationRuleInput)(nil)).Elem(), StorageBucketServerSideEncryptionConfigurationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketServerSideEncryptionConfigurationRulePtrInput)(nil)).Elem(), StorageBucketServerSideEncryptionConfigurationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultInput)(nil)).Elem(), StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrInput)(nil)).Elem(), StorageBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketVersioningInput)(nil)).Elem(), StorageBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketVersioningPtrInput)(nil)).Elem(), StorageBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketWebsiteInput)(nil)).Elem(), StorageBucketWebsiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketWebsitePtrInput)(nil)).Elem(), StorageBucketWebsiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressExternalIpv4AddressInput)(nil)).Elem(), VpcAddressExternalIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressExternalIpv4AddressPtrInput)(nil)).Elem(), VpcAddressExternalIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcDefaultSecurityGroupEgressInput)(nil)).Elem(), VpcDefaultSecurityGroupEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcDefaultSecurityGroupEgressArrayInput)(nil)).Elem(), VpcDefaultSecurityGroupEgressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcDefaultSecurityGroupIngressInput)(nil)).Elem(), VpcDefaultSecurityGroupIngressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcDefaultSecurityGroupIngressArrayInput)(nil)).Elem(), VpcDefaultSecurityGroupIngressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRouteTableStaticRouteInput)(nil)).Elem(), VpcRouteTableStaticRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRouteTableStaticRouteArrayInput)(nil)).Elem(), VpcRouteTableStaticRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupEgressInput)(nil)).Elem(), VpcSecurityGroupEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupEgressArrayInput)(nil)).Elem(), VpcSecurityGroupEgressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupIngressInput)(nil)).Elem(), VpcSecurityGroupIngressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupIngressArrayInput)(nil)).Elem(), VpcSecurityGroupIngressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetDhcpOptionsInput)(nil)).Elem(), VpcSubnetDhcpOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetDhcpOptionsPtrInput)(nil)).Elem(), VpcSubnetDhcpOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedLocationInput)(nil)).Elem(), YdbDatabaseDedicatedLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedLocationPtrInput)(nil)).Elem(), YdbDatabaseDedicatedLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedLocationRegionInput)(nil)).Elem(), YdbDatabaseDedicatedLocationRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedLocationRegionPtrInput)(nil)).Elem(), YdbDatabaseDedicatedLocationRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedScalePolicyInput)(nil)).Elem(), YdbDatabaseDedicatedScalePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedScalePolicyPtrInput)(nil)).Elem(), YdbDatabaseDedicatedScalePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedScalePolicyFixedScaleInput)(nil)).Elem(), YdbDatabaseDedicatedScalePolicyFixedScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedScalePolicyFixedScalePtrInput)(nil)).Elem(), YdbDatabaseDedicatedScalePolicyFixedScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedStorageConfigInput)(nil)).Elem(), YdbDatabaseDedicatedStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedStorageConfigPtrInput)(nil)).Elem(), YdbDatabaseDedicatedStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendArrayInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendLoadBalancingConfigInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendTlsInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendTlsValidationContextInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendTlsValidationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupHttpBackendInput)(nil)).Elem(), GetAlbBackendGroupHttpBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupHttpBackendArrayInput)(nil)).Elem(), GetAlbBackendGroupHttpBackendArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckInput)(nil)).Elem(), GetAlbBackendGroupHttpBackendHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckInput)(nil)).Elem(), GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckInput)(nil)).Elem(), GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckInput)(nil)).Elem(), GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupHttpBackendLoadBalancingConfigInput)(nil)).Elem(), GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupHttpBackendTlsInput)(nil)).Elem(), GetAlbBackendGroupHttpBackendTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupHttpBackendTlsValidationContextInput)(nil)).Elem(), GetAlbBackendGroupHttpBackendTlsValidationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerAllocationPolicyInput)(nil)).Elem(), GetAlbLoadBalancerAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerAllocationPolicyLocationInput)(nil)).Elem(), GetAlbLoadBalancerAllocationPolicyLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerAllocationPolicyLocationArrayInput)(nil)).Elem(), GetAlbLoadBalancerAllocationPolicyLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerInput)(nil)).Elem(), GetAlbLoadBalancerListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerArrayInput)(nil)).Elem(), GetAlbLoadBalancerListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerEndpointInput)(nil)).Elem(), GetAlbLoadBalancerListenerEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerEndpointArrayInput)(nil)).Elem(), GetAlbLoadBalancerListenerEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerEndpointAddressInput)(nil)).Elem(), GetAlbLoadBalancerListenerEndpointAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerEndpointAddressArrayInput)(nil)).Elem(), GetAlbLoadBalancerListenerEndpointAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerEndpointAddressExternalIpv4AddressInput)(nil)).Elem(), GetAlbLoadBalancerListenerEndpointAddressExternalIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerEndpointAddressExternalIpv6AddressInput)(nil)).Elem(), GetAlbLoadBalancerListenerEndpointAddressExternalIpv6AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerEndpointAddressInternalIpv4AddressInput)(nil)).Elem(), GetAlbLoadBalancerListenerEndpointAddressInternalIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerHttpInput)(nil)).Elem(), GetAlbLoadBalancerListenerHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerHttpPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerHttpHandlerInput)(nil)).Elem(), GetAlbLoadBalancerListenerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerHttpHandlerPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsInput)(nil)).Elem(), GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerHttpRedirectsInput)(nil)).Elem(), GetAlbLoadBalancerListenerHttpRedirectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerHttpRedirectsPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerHttpRedirectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsDefaultHandlerInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsDefaultHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsDefaultHandlerPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsDefaultHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsSniHandlerInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsSniHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsSniHandlerArrayInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsSniHandlerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsSniHandlerHandlerInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsSniHandlerHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsPtrInput)(nil)).Elem(), GetAlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbTargetGroupTargetInput)(nil)).Elem(), GetAlbTargetGroupTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbTargetGroupTargetArrayInput)(nil)).Elem(), GetAlbTargetGroupTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostModifyRequestHeaderInput)(nil)).Elem(), GetAlbVirtualHostModifyRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostModifyRequestHeaderArrayInput)(nil)).Elem(), GetAlbVirtualHostModifyRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostModifyResponseHeaderInput)(nil)).Elem(), GetAlbVirtualHostModifyResponseHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostModifyResponseHeaderArrayInput)(nil)).Elem(), GetAlbVirtualHostModifyResponseHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteInput)(nil)).Elem(), GetAlbVirtualHostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteArrayInput)(nil)).Elem(), GetAlbVirtualHostRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteInput)(nil)).Elem(), GetAlbVirtualHostRouteGrpcRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcMatchInput)(nil)).Elem(), GetAlbVirtualHostRouteGrpcRouteGrpcMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcMatchArrayInput)(nil)).Elem(), GetAlbVirtualHostRouteGrpcRouteGrpcMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnInput)(nil)).Elem(), GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionInput)(nil)).Elem(), GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionInput)(nil)).Elem(), GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteInput)(nil)).Elem(), GetAlbVirtualHostRouteHttpRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteDirectResponseActionInput)(nil)).Elem(), GetAlbVirtualHostRouteHttpRouteDirectResponseActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpMatchInput)(nil)).Elem(), GetAlbVirtualHostRouteHttpRouteHttpMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpMatchArrayInput)(nil)).Elem(), GetAlbVirtualHostRouteHttpRouteHttpMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpMatchPathInput)(nil)).Elem(), GetAlbVirtualHostRouteHttpRouteHttpMatchPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteHttpRouteActionInput)(nil)).Elem(), GetAlbVirtualHostRouteHttpRouteHttpRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbVirtualHostRouteHttpRouteRedirectActionInput)(nil)).Elem(), GetAlbVirtualHostRouteHttpRouteRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeDiskDiskPlacementPolicyInput)(nil)).Elem(), GetComputeDiskDiskPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeDiskDiskPlacementPolicyPtrInput)(nil)).Elem(), GetComputeDiskDiskPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceBootDiskInput)(nil)).Elem(), GetComputeInstanceBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceBootDiskInitializeParamInput)(nil)).Elem(), GetComputeInstanceBootDiskInitializeParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceBootDiskInitializeParamArrayInput)(nil)).Elem(), GetComputeInstanceBootDiskInitializeParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupAllocationPolicyInput)(nil)).Elem(), GetComputeInstanceGroupAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupApplicationBalancerStateInput)(nil)).Elem(), GetComputeInstanceGroupApplicationBalancerStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupApplicationLoadBalancerInput)(nil)).Elem(), GetComputeInstanceGroupApplicationLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupDeployPolicyInput)(nil)).Elem(), GetComputeInstanceGroupDeployPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupHealthCheckInput)(nil)).Elem(), GetComputeInstanceGroupHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupHealthCheckArrayInput)(nil)).Elem(), GetComputeInstanceGroupHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupHealthCheckHttpOptionInput)(nil)).Elem(), GetComputeInstanceGroupHealthCheckHttpOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupHealthCheckHttpOptionArrayInput)(nil)).Elem(), GetComputeInstanceGroupHealthCheckHttpOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupHealthCheckTcpOptionInput)(nil)).Elem(), GetComputeInstanceGroupHealthCheckTcpOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupHealthCheckTcpOptionArrayInput)(nil)).Elem(), GetComputeInstanceGroupHealthCheckTcpOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceInput)(nil)).Elem(), GetComputeInstanceGroupInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceArrayInput)(nil)).Elem(), GetComputeInstanceGroupInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceNetworkInterfaceInput)(nil)).Elem(), GetComputeInstanceGroupInstanceNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceNetworkInterfaceArrayInput)(nil)).Elem(), GetComputeInstanceGroupInstanceNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateBootDiskInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkInterfaceArrayInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArrayInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkInterfaceDnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArrayInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkInterfaceIpv6DnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArrayInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkInterfaceNatDnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkSettingInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateNetworkSettingArrayInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateNetworkSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplatePlacementPolicyInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplatePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplatePlacementPolicyPtrInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplatePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateResourcesInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateSchedulingPolicyInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateSecondaryDiskInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateSecondaryDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateSecondaryDiskArrayInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateSecondaryDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsInput)(nil)).Elem(), GetComputeInstanceGroupInstanceTemplateSecondaryDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupLoadBalancerInput)(nil)).Elem(), GetComputeInstanceGroupLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupLoadBalancerStateInput)(nil)).Elem(), GetComputeInstanceGroupLoadBalancerStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyAutoScaleInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyAutoScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyAutoScaleArrayInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyAutoScaleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyAutoScaleCustomRuleInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyAutoScaleCustomRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyAutoScaleCustomRuleArrayInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyAutoScaleCustomRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyFixedScaleInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyFixedScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyFixedScaleArrayInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyFixedScaleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyTestAutoScaleInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyTestAutoScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyTestAutoScaleArrayInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyTestAutoScaleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArrayInput)(nil)).Elem(), GetComputeInstanceGroupScalePolicyTestAutoScaleCustomRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceNetworkInterfaceInput)(nil)).Elem(), GetComputeInstanceNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceNetworkInterfaceArrayInput)(nil)).Elem(), GetComputeInstanceNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceNetworkInterfaceDnsRecordInput)(nil)).Elem(), GetComputeInstanceNetworkInterfaceDnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceNetworkInterfaceDnsRecordArrayInput)(nil)).Elem(), GetComputeInstanceNetworkInterfaceDnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceNetworkInterfaceIpv6DnsRecordInput)(nil)).Elem(), GetComputeInstanceNetworkInterfaceIpv6DnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceNetworkInterfaceIpv6DnsRecordArrayInput)(nil)).Elem(), GetComputeInstanceNetworkInterfaceIpv6DnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceNetworkInterfaceNatDnsRecordInput)(nil)).Elem(), GetComputeInstanceNetworkInterfaceNatDnsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceNetworkInterfaceNatDnsRecordArrayInput)(nil)).Elem(), GetComputeInstanceNetworkInterfaceNatDnsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstancePlacementPolicyInput)(nil)).Elem(), GetComputeInstancePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstancePlacementPolicyPtrInput)(nil)).Elem(), GetComputeInstancePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceResourcesInput)(nil)).Elem(), GetComputeInstanceResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceSchedulingPolicyInput)(nil)).Elem(), GetComputeInstanceSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceSchedulingPolicyPtrInput)(nil)).Elem(), GetComputeInstanceSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceSecondaryDiskInput)(nil)).Elem(), GetComputeInstanceSecondaryDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComputeInstanceSecondaryDiskArrayInput)(nil)).Elem(), GetComputeInstanceSecondaryDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataprocClusterClusterConfigInput)(nil)).Elem(), GetDataprocClusterClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataprocClusterClusterConfigHadoopInput)(nil)).Elem(), GetDataprocClusterClusterConfigHadoopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataprocClusterClusterConfigSubclusterSpecInput)(nil)).Elem(), GetDataprocClusterClusterConfigSubclusterSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataprocClusterClusterConfigSubclusterSpecArrayInput)(nil)).Elem(), GetDataprocClusterClusterConfigSubclusterSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigInput)(nil)).Elem(), GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataprocClusterClusterConfigSubclusterSpecResourcesInput)(nil)).Elem(), GetDataprocClusterClusterConfigSubclusterSpecResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionScalingPolicyPolicyInput)(nil)).Elem(), GetFunctionScalingPolicyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionScalingPolicyPolicyArrayInput)(nil)).Elem(), GetFunctionScalingPolicyPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionTriggerDlqInput)(nil)).Elem(), GetFunctionTriggerDlqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionTriggerFunctionInput)(nil)).Elem(), GetFunctionTriggerFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionTriggerIotInput)(nil)).Elem(), GetFunctionTriggerIotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionTriggerLogGroupInput)(nil)).Elem(), GetFunctionTriggerLogGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionTriggerMessageQueueInput)(nil)).Elem(), GetFunctionTriggerMessageQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionTriggerObjectStorageInput)(nil)).Elem(), GetFunctionTriggerObjectStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionTriggerTimerInput)(nil)).Elem(), GetFunctionTriggerTimerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyBindingInput)(nil)).Elem(), GetIamPolicyBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyBindingArrayInput)(nil)).Elem(), GetIamPolicyBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterKmsProviderInput)(nil)).Elem(), GetKubernetesClusterKmsProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMasterInput)(nil)).Elem(), GetKubernetesClusterMasterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMasterMaintenancePolicyInput)(nil)).Elem(), GetKubernetesClusterMasterMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMasterMaintenancePolicyMaintenanceWindowInput)(nil)).Elem(), GetKubernetesClusterMasterMaintenancePolicyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMasterMaintenancePolicyMaintenanceWindowArrayInput)(nil)).Elem(), GetKubernetesClusterMasterMaintenancePolicyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMasterRegionalInput)(nil)).Elem(), GetKubernetesClusterMasterRegionalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMasterVersionInfoInput)(nil)).Elem(), GetKubernetesClusterMasterVersionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMasterZonalInput)(nil)).Elem(), GetKubernetesClusterMasterZonalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNetworkImplementationInput)(nil)).Elem(), GetKubernetesClusterNetworkImplementationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNetworkImplementationCiliumInput)(nil)).Elem(), GetKubernetesClusterNetworkImplementationCiliumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupAllocationPolicyInput)(nil)).Elem(), GetKubernetesNodeGroupAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupAllocationPolicyLocationInput)(nil)).Elem(), GetKubernetesNodeGroupAllocationPolicyLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupAllocationPolicyLocationArrayInput)(nil)).Elem(), GetKubernetesNodeGroupAllocationPolicyLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupDeployPolicyInput)(nil)).Elem(), GetKubernetesNodeGroupDeployPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplateInput)(nil)).Elem(), GetKubernetesNodeGroupInstanceTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplateBootDiskInput)(nil)).Elem(), GetKubernetesNodeGroupInstanceTemplateBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayInput)(nil)).Elem(), GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplatePlacementPolicyInput)(nil)).Elem(), GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplatePlacementPolicyPtrInput)(nil)).Elem(), GetKubernetesNodeGroupInstanceTemplatePlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplateResourcesInput)(nil)).Elem(), GetKubernetesNodeGroupInstanceTemplateResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyInput)(nil)).Elem(), GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupMaintenancePolicyInput)(nil)).Elem(), GetKubernetesNodeGroupMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupMaintenancePolicyMaintenanceWindowInput)(nil)).Elem(), GetKubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupMaintenancePolicyMaintenanceWindowArrayInput)(nil)).Elem(), GetKubernetesNodeGroupMaintenancePolicyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupScalePolicyInput)(nil)).Elem(), GetKubernetesNodeGroupScalePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupScalePolicyAutoScaleInput)(nil)).Elem(), GetKubernetesNodeGroupScalePolicyAutoScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupScalePolicyFixedScaleInput)(nil)).Elem(), GetKubernetesNodeGroupScalePolicyFixedScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodeGroupVersionInfoInput)(nil)).Elem(), GetKubernetesNodeGroupVersionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerAttachedTargetGroupInput)(nil)).Elem(), GetLbNetworkLoadBalancerAttachedTargetGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerAttachedTargetGroupArrayInput)(nil)).Elem(), GetLbNetworkLoadBalancerAttachedTargetGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckInput)(nil)).Elem(), GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckArrayInput)(nil)).Elem(), GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsInput)(nil)).Elem(), GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsInput)(nil)).Elem(), GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerListenerInput)(nil)).Elem(), GetLbNetworkLoadBalancerListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerListenerArrayInput)(nil)).Elem(), GetLbNetworkLoadBalancerListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerListenerExternalAddressSpecInput)(nil)).Elem(), GetLbNetworkLoadBalancerListenerExternalAddressSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbNetworkLoadBalancerListenerInternalAddressSpecInput)(nil)).Elem(), GetLbNetworkLoadBalancerListenerInternalAddressSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbTargetGroupTargetInput)(nil)).Elem(), GetLbTargetGroupTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLbTargetGroupTargetArrayInput)(nil)).Elem(), GetLbTargetGroupTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterAccessInput)(nil)).Elem(), GetMdbClickhouseClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterBackupWindowStartInput)(nil)).Elem(), GetMdbClickhouseClusterBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigCompressionInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigCompressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigCompressionArrayInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigCompressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigGraphiteRollupInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigGraphiteRollupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigGraphiteRollupArrayInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigGraphiteRollupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigGraphiteRollupPatternInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigGraphiteRollupPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigGraphiteRollupPatternArrayInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigGraphiteRollupPatternArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigGraphiteRollupPatternRetentionInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigGraphiteRollupPatternRetentionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigGraphiteRollupPatternRetentionArrayInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigGraphiteRollupPatternRetentionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigKafkaInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigKafkaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigKafkaArrayInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigKafkaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigKafkaTopicInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigKafkaTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigKafkaTopicArrayInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigKafkaTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsPtrInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigKafkaTopicSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigMergeTreeInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigMergeTreeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseConfigRabbitmqInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseConfigRabbitmqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterClickhouseResourcesInput)(nil)).Elem(), GetMdbClickhouseClusterClickhouseResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterCloudStorageInput)(nil)).Elem(), GetMdbClickhouseClusterCloudStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterCloudStoragePtrInput)(nil)).Elem(), GetMdbClickhouseClusterCloudStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterDatabaseInput)(nil)).Elem(), GetMdbClickhouseClusterDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterDatabaseArrayInput)(nil)).Elem(), GetMdbClickhouseClusterDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterFormatSchemaInput)(nil)).Elem(), GetMdbClickhouseClusterFormatSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterFormatSchemaArrayInput)(nil)).Elem(), GetMdbClickhouseClusterFormatSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterHostInput)(nil)).Elem(), GetMdbClickhouseClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterHostArrayInput)(nil)).Elem(), GetMdbClickhouseClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterMaintenanceWindowInput)(nil)).Elem(), GetMdbClickhouseClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterMlModelInput)(nil)).Elem(), GetMdbClickhouseClusterMlModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterMlModelArrayInput)(nil)).Elem(), GetMdbClickhouseClusterMlModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterShardGroupInput)(nil)).Elem(), GetMdbClickhouseClusterShardGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterShardGroupArrayInput)(nil)).Elem(), GetMdbClickhouseClusterShardGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterUserInput)(nil)).Elem(), GetMdbClickhouseClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterUserArrayInput)(nil)).Elem(), GetMdbClickhouseClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterUserPermissionInput)(nil)).Elem(), GetMdbClickhouseClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterUserPermissionArrayInput)(nil)).Elem(), GetMdbClickhouseClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterUserQuotaInput)(nil)).Elem(), GetMdbClickhouseClusterUserQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterUserQuotaArrayInput)(nil)).Elem(), GetMdbClickhouseClusterUserQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterUserSettingsInput)(nil)).Elem(), GetMdbClickhouseClusterUserSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterZookeeperInput)(nil)).Elem(), GetMdbClickhouseClusterZookeeperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbClickhouseClusterZookeeperResourcesInput)(nil)).Elem(), GetMdbClickhouseClusterZookeeperResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbElasticSearchClusterConfigInput)(nil)).Elem(), GetMdbElasticSearchClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbElasticSearchClusterConfigDataNodeInput)(nil)).Elem(), GetMdbElasticSearchClusterConfigDataNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbElasticSearchClusterConfigDataNodeResourcesInput)(nil)).Elem(), GetMdbElasticSearchClusterConfigDataNodeResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbElasticSearchClusterConfigMasterNodeInput)(nil)).Elem(), GetMdbElasticSearchClusterConfigMasterNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbElasticSearchClusterConfigMasterNodeResourcesInput)(nil)).Elem(), GetMdbElasticSearchClusterConfigMasterNodeResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbElasticSearchClusterHostInput)(nil)).Elem(), GetMdbElasticSearchClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbElasticSearchClusterHostArrayInput)(nil)).Elem(), GetMdbElasticSearchClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbGreenplumClusterMasterHostInput)(nil)).Elem(), GetMdbGreenplumClusterMasterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbGreenplumClusterMasterHostArrayInput)(nil)).Elem(), GetMdbGreenplumClusterMasterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbGreenplumClusterMasterSubclusterInput)(nil)).Elem(), GetMdbGreenplumClusterMasterSubclusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbGreenplumClusterMasterSubclusterResourcesInput)(nil)).Elem(), GetMdbGreenplumClusterMasterSubclusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbGreenplumClusterSegmentHostInput)(nil)).Elem(), GetMdbGreenplumClusterSegmentHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbGreenplumClusterSegmentHostArrayInput)(nil)).Elem(), GetMdbGreenplumClusterSegmentHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbGreenplumClusterSegmentSubclusterInput)(nil)).Elem(), GetMdbGreenplumClusterSegmentSubclusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbGreenplumClusterSegmentSubclusterResourcesInput)(nil)).Elem(), GetMdbGreenplumClusterSegmentSubclusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigInput)(nil)).Elem(), GetMdbKafkaClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigPtrInput)(nil)).Elem(), GetMdbKafkaClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigKafkaInput)(nil)).Elem(), GetMdbKafkaClusterConfigKafkaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigKafkaPtrInput)(nil)).Elem(), GetMdbKafkaClusterConfigKafkaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigKafkaKafkaConfigInput)(nil)).Elem(), GetMdbKafkaClusterConfigKafkaKafkaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigKafkaKafkaConfigPtrInput)(nil)).Elem(), GetMdbKafkaClusterConfigKafkaKafkaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigKafkaResourcesInput)(nil)).Elem(), GetMdbKafkaClusterConfigKafkaResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigKafkaResourcesPtrInput)(nil)).Elem(), GetMdbKafkaClusterConfigKafkaResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigZookeeperInput)(nil)).Elem(), GetMdbKafkaClusterConfigZookeeperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigZookeeperPtrInput)(nil)).Elem(), GetMdbKafkaClusterConfigZookeeperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigZookeeperResourcesInput)(nil)).Elem(), GetMdbKafkaClusterConfigZookeeperResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterConfigZookeeperResourcesPtrInput)(nil)).Elem(), GetMdbKafkaClusterConfigZookeeperResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterHostInput)(nil)).Elem(), GetMdbKafkaClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterHostArrayInput)(nil)).Elem(), GetMdbKafkaClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterTopicInput)(nil)).Elem(), GetMdbKafkaClusterTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterTopicArrayInput)(nil)).Elem(), GetMdbKafkaClusterTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterTopicTopicConfigInput)(nil)).Elem(), GetMdbKafkaClusterTopicTopicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterTopicTopicConfigPtrInput)(nil)).Elem(), GetMdbKafkaClusterTopicTopicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterUserInput)(nil)).Elem(), GetMdbKafkaClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterUserArrayInput)(nil)).Elem(), GetMdbKafkaClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterUserPermissionInput)(nil)).Elem(), GetMdbKafkaClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbKafkaClusterUserPermissionArrayInput)(nil)).Elem(), GetMdbKafkaClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterClusterConfigInput)(nil)).Elem(), GetMdbMongodbClusterClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterClusterConfigAccessInput)(nil)).Elem(), GetMdbMongodbClusterClusterConfigAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterClusterConfigBackupWindowStartInput)(nil)).Elem(), GetMdbMongodbClusterClusterConfigBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterDatabaseInput)(nil)).Elem(), GetMdbMongodbClusterDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterDatabaseArrayInput)(nil)).Elem(), GetMdbMongodbClusterDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterHostInput)(nil)).Elem(), GetMdbMongodbClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterHostArrayInput)(nil)).Elem(), GetMdbMongodbClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterMaintenanceWindowInput)(nil)).Elem(), GetMdbMongodbClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterResourcesInput)(nil)).Elem(), GetMdbMongodbClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterUserInput)(nil)).Elem(), GetMdbMongodbClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterUserArrayInput)(nil)).Elem(), GetMdbMongodbClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterUserPermissionInput)(nil)).Elem(), GetMdbMongodbClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMongodbClusterUserPermissionArrayInput)(nil)).Elem(), GetMdbMongodbClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterAccessInput)(nil)).Elem(), GetMdbMysqlClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterAccessPtrInput)(nil)).Elem(), GetMdbMysqlClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterBackupWindowStartInput)(nil)).Elem(), GetMdbMysqlClusterBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterDatabaseInput)(nil)).Elem(), GetMdbMysqlClusterDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterDatabaseArrayInput)(nil)).Elem(), GetMdbMysqlClusterDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterHostInput)(nil)).Elem(), GetMdbMysqlClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterHostArrayInput)(nil)).Elem(), GetMdbMysqlClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterMaintenanceWindowInput)(nil)).Elem(), GetMdbMysqlClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterResourcesInput)(nil)).Elem(), GetMdbMysqlClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterUserInput)(nil)).Elem(), GetMdbMysqlClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterUserArrayInput)(nil)).Elem(), GetMdbMysqlClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterUserConnectionLimitsInput)(nil)).Elem(), GetMdbMysqlClusterUserConnectionLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterUserPermissionInput)(nil)).Elem(), GetMdbMysqlClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbMysqlClusterUserPermissionArrayInput)(nil)).Elem(), GetMdbMysqlClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterConfigInput)(nil)).Elem(), GetMdbPostgresqlClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterConfigAccessInput)(nil)).Elem(), GetMdbPostgresqlClusterConfigAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterConfigBackupWindowStartInput)(nil)).Elem(), GetMdbPostgresqlClusterConfigBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterConfigPerformanceDiagnosticsInput)(nil)).Elem(), GetMdbPostgresqlClusterConfigPerformanceDiagnosticsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterConfigPoolerConfigInput)(nil)).Elem(), GetMdbPostgresqlClusterConfigPoolerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterConfigResourcesInput)(nil)).Elem(), GetMdbPostgresqlClusterConfigResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterDatabaseInput)(nil)).Elem(), GetMdbPostgresqlClusterDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterDatabaseArrayInput)(nil)).Elem(), GetMdbPostgresqlClusterDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterDatabaseExtensionInput)(nil)).Elem(), GetMdbPostgresqlClusterDatabaseExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterDatabaseExtensionArrayInput)(nil)).Elem(), GetMdbPostgresqlClusterDatabaseExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterHostInput)(nil)).Elem(), GetMdbPostgresqlClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterHostArrayInput)(nil)).Elem(), GetMdbPostgresqlClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterMaintenanceWindowInput)(nil)).Elem(), GetMdbPostgresqlClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterUserInput)(nil)).Elem(), GetMdbPostgresqlClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterUserArrayInput)(nil)).Elem(), GetMdbPostgresqlClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterUserPermissionInput)(nil)).Elem(), GetMdbPostgresqlClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbPostgresqlClusterUserPermissionArrayInput)(nil)).Elem(), GetMdbPostgresqlClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbRedisClusterConfigInput)(nil)).Elem(), GetMdbRedisClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbRedisClusterHostInput)(nil)).Elem(), GetMdbRedisClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbRedisClusterHostArrayInput)(nil)).Elem(), GetMdbRedisClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbRedisClusterMaintenanceWindowInput)(nil)).Elem(), GetMdbRedisClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbRedisClusterResourcesInput)(nil)).Elem(), GetMdbRedisClusterResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterBackupWindowStartInput)(nil)).Elem(), GetMdbSqlserverClusterBackupWindowStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterBackupWindowStartArrayInput)(nil)).Elem(), GetMdbSqlserverClusterBackupWindowStartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterDatabaseInput)(nil)).Elem(), GetMdbSqlserverClusterDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterDatabaseArrayInput)(nil)).Elem(), GetMdbSqlserverClusterDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterHostInput)(nil)).Elem(), GetMdbSqlserverClusterHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterHostArrayInput)(nil)).Elem(), GetMdbSqlserverClusterHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterResourceInput)(nil)).Elem(), GetMdbSqlserverClusterResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterResourceArrayInput)(nil)).Elem(), GetMdbSqlserverClusterResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterUserInput)(nil)).Elem(), GetMdbSqlserverClusterUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterUserArrayInput)(nil)).Elem(), GetMdbSqlserverClusterUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterUserPermissionInput)(nil)).Elem(), GetMdbSqlserverClusterUserPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMdbSqlserverClusterUserPermissionArrayInput)(nil)).Elem(), GetMdbSqlserverClusterUserPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcAddressExternalIpv4AddressInput)(nil)).Elem(), GetVpcAddressExternalIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcRouteTableStaticRouteInput)(nil)).Elem(), GetVpcRouteTableStaticRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcRouteTableStaticRouteArrayInput)(nil)).Elem(), GetVpcRouteTableStaticRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSecurityGroupEgressInput)(nil)).Elem(), GetVpcSecurityGroupEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSecurityGroupEgressArrayInput)(nil)).Elem(), GetVpcSecurityGroupEgressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSecurityGroupIngressInput)(nil)).Elem(), GetVpcSecurityGroupIngressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSecurityGroupIngressArrayInput)(nil)).Elem(), GetVpcSecurityGroupIngressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetDhcpOptionsInput)(nil)).Elem(), GetVpcSubnetDhcpOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetYdbDatabaseDedicatedLocationInput)(nil)).Elem(), GetYdbDatabaseDedicatedLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetYdbDatabaseDedicatedLocationRegionInput)(nil)).Elem(), GetYdbDatabaseDedicatedLocationRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetYdbDatabaseDedicatedLocationZoneInput)(nil)).Elem(), GetYdbDatabaseDedicatedLocationZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetYdbDatabaseDedicatedScalePolicyInput)(nil)).Elem(), GetYdbDatabaseDedicatedScalePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetYdbDatabaseDedicatedScalePolicyFixedScaleInput)(nil)).Elem(), GetYdbDatabaseDedicatedScalePolicyFixedScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetYdbDatabaseDedicatedStorageConfigInput)(nil)).Elem(), GetYdbDatabaseDedicatedStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetYdbDatabaseDedicatedStorageConfigArrayInput)(nil)).Elem(), GetYdbDatabaseDedicatedStorageConfigArray{})
 	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendOutput{})
 	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendArrayOutput{})
 	pulumi.RegisterOutputType(AlbBackendGroupGrpcBackendHealthcheckOutput{})
@@ -64841,6 +67382,7 @@ func init() {
 	pulumi.RegisterOutputType(GetAlbVirtualHostRouteHttpRouteHttpRouteActionOutput{})
 	pulumi.RegisterOutputType(GetAlbVirtualHostRouteHttpRouteRedirectActionOutput{})
 	pulumi.RegisterOutputType(GetComputeDiskDiskPlacementPolicyOutput{})
+	pulumi.RegisterOutputType(GetComputeDiskDiskPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceBootDiskOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceBootDiskInitializeParamOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceBootDiskInitializeParamArrayOutput{})
@@ -64900,8 +67442,10 @@ func init() {
 	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceNatDnsRecordOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceNetworkInterfaceNatDnsRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetComputeInstancePlacementPolicyOutput{})
+	pulumi.RegisterOutputType(GetComputeInstancePlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceResourcesOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceSchedulingPolicyOutput{})
+	pulumi.RegisterOutputType(GetComputeInstanceSchedulingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceSecondaryDiskOutput{})
 	pulumi.RegisterOutputType(GetComputeInstanceSecondaryDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetDataprocClusterClusterConfigOutput{})
@@ -64984,6 +67528,7 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterClickhouseConfigRabbitmqOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterClickhouseResourcesOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterCloudStorageOutput{})
+	pulumi.RegisterOutputType(GetMdbClickhouseClusterCloudStoragePtrOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterDatabaseOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetMdbClickhouseClusterFormatSchemaOutput{})
@@ -65020,10 +67565,13 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbGreenplumClusterSegmentSubclusterOutput{})
 	pulumi.RegisterOutputType(GetMdbGreenplumClusterSegmentSubclusterResourcesOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigOutput{})
+	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaOutput{})
+	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaPtrOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaKafkaConfigOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaKafkaConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaResourcesOutput{})
+	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigKafkaResourcesPtrOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigZookeeperOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigZookeeperPtrOutput{})
 	pulumi.RegisterOutputType(GetMdbKafkaClusterConfigZookeeperResourcesOutput{})
@@ -65052,6 +67600,7 @@ func init() {
 	pulumi.RegisterOutputType(GetMdbMongodbClusterUserPermissionOutput{})
 	pulumi.RegisterOutputType(GetMdbMongodbClusterUserPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetMdbMysqlClusterAccessOutput{})
+	pulumi.RegisterOutputType(GetMdbMysqlClusterAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetMdbMysqlClusterBackupWindowStartOutput{})
 	pulumi.RegisterOutputType(GetMdbMysqlClusterDatabaseOutput{})
 	pulumi.RegisterOutputType(GetMdbMysqlClusterDatabaseArrayOutput{})

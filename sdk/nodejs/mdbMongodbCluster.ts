@@ -259,79 +259,79 @@ export interface MdbMongodbClusterState {
     /**
      * Configuration of the MongoDB subcluster. The structure is documented below.
      */
-    readonly clusterConfig?: pulumi.Input<inputs.MdbMongodbClusterClusterConfig>;
+    clusterConfig?: pulumi.Input<inputs.MdbMongodbClusterClusterConfig>;
     /**
      * The ID of the cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * Creation timestamp of the key.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * A database of the MongoDB cluster. The structure is documented below.
      */
-    readonly databases?: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterDatabase>[]>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      * - - -
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the MongoDB cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * The health of the host.
      */
-    readonly health?: pulumi.Input<string>;
+    health?: pulumi.Input<string>;
     /**
      * A host of the MongoDB cluster. The structure is documented below.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterHost>[]>;
+    hosts?: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the MongoDB cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly maintenanceWindow?: pulumi.Input<inputs.MdbMongodbClusterMaintenanceWindow>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    maintenanceWindow?: pulumi.Input<inputs.MdbMongodbClusterMaintenanceWindow>;
     /**
      * The fully qualified domain name of the host. Computed on server side.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the MongoDB cluster belongs.
      */
-    readonly networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * Resources allocated to hosts of the MongoDB cluster. The structure is documented below.
      */
-    readonly resources?: pulumi.Input<inputs.MdbMongodbClusterResources>;
+    resources?: pulumi.Input<inputs.MdbMongodbClusterResources>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * MongoDB Cluster mode enabled/disabled.
      */
-    readonly sharded?: pulumi.Input<boolean>;
+    sharded?: pulumi.Input<boolean>;
     /**
      * Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
      * For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-mongodb/api-ref/Cluster/).
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A user of the MongoDB cluster. The structure is documented below.
      */
-    readonly users?: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterUser>[]>;
 }
 
 /**
@@ -341,60 +341,60 @@ export interface MdbMongodbClusterArgs {
     /**
      * Configuration of the MongoDB subcluster. The structure is documented below.
      */
-    readonly clusterConfig: pulumi.Input<inputs.MdbMongodbClusterClusterConfig>;
+    clusterConfig: pulumi.Input<inputs.MdbMongodbClusterClusterConfig>;
     /**
      * The ID of the cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * A database of the MongoDB cluster. The structure is documented below.
      */
-    readonly databases: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterDatabase>[]>;
+    databases: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterDatabase>[]>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      * - - -
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the MongoDB cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Deployment environment of the MongoDB cluster. Can be either `PRESTABLE` or `PRODUCTION`.
      */
-    readonly environment: pulumi.Input<string>;
+    environment: pulumi.Input<string>;
     /**
      * The ID of the folder that the resource belongs to. If it
      * is not provided, the default provider folder is used.
      */
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * A host of the MongoDB cluster. The structure is documented below.
      */
-    readonly hosts: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterHost>[]>;
+    hosts: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterHost>[]>;
     /**
      * A set of key/value label pairs to assign to the MongoDB cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly maintenanceWindow?: pulumi.Input<inputs.MdbMongodbClusterMaintenanceWindow>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    maintenanceWindow?: pulumi.Input<inputs.MdbMongodbClusterMaintenanceWindow>;
     /**
      * The fully qualified domain name of the host. Computed on server side.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * ID of the network, to which the MongoDB cluster belongs.
      */
-    readonly networkId: pulumi.Input<string>;
+    networkId: pulumi.Input<string>;
     /**
      * Resources allocated to hosts of the MongoDB cluster. The structure is documented below.
      */
-    readonly resources: pulumi.Input<inputs.MdbMongodbClusterResources>;
+    resources: pulumi.Input<inputs.MdbMongodbClusterResources>;
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A user of the MongoDB cluster. The structure is documented below.
      */
-    readonly users: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterUser>[]>;
+    users: pulumi.Input<pulumi.Input<inputs.MdbMongodbClusterUser>[]>;
 }

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const addr = pulumi.output(yandex.getVpcAddress({
  *     addressId: "my-address-id",
- * }, { async: true }));
+ * }));
  * ```
  *
  * This data source is used to define [VPC Address] that can be used by other resources.
@@ -43,15 +43,15 @@ export interface GetVpcAddressArgs {
     /**
      * ID of the address.
      */
-    readonly addressId?: string;
+    addressId?: string;
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Name of the address.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -89,4 +89,26 @@ export interface GetVpcAddressResult {
      * `true` if address is used.
      */
     readonly used: boolean;
+}
+
+export function getVpcAddressOutput(args?: GetVpcAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcAddressResult> {
+    return pulumi.output(args).apply(a => getVpcAddress(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcAddress.
+ */
+export interface GetVpcAddressOutputArgs {
+    /**
+     * ID of the address.
+     */
+    addressId?: pulumi.Input<string>;
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Name of the address.
+     */
+    name?: pulumi.Input<string>;
 }

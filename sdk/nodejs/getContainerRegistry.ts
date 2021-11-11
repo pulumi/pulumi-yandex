@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const source = pulumi.output(yandex.getContainerRegistry({
  *     registryId: "some_registry_id",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getContainerRegistry(args?: GetContainerRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryResult> {
@@ -44,19 +43,19 @@ export interface GetContainerRegistryArgs {
     /**
      * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
      */
-    readonly folderId?: string;
+    folderId?: string;
     /**
      * Labels to assign to this registry.
      */
-    readonly labels?: {[key: string]: string};
+    labels?: {[key: string]: string};
     /**
      * Name of the registry.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of a specific registry.
      */
-    readonly registryId?: string;
+    registryId?: string;
 }
 
 /**
@@ -82,4 +81,30 @@ export interface GetContainerRegistryResult {
      * Status of the registry.
      */
     readonly status: string;
+}
+
+export function getContainerRegistryOutput(args?: GetContainerRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRegistryResult> {
+    return pulumi.output(args).apply(a => getContainerRegistry(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getContainerRegistry.
+ */
+export interface GetContainerRegistryOutputArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
+    folderId?: pulumi.Input<string>;
+    /**
+     * Labels to assign to this registry.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the registry.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of a specific registry.
+     */
+    registryId?: pulumi.Input<string>;
 }

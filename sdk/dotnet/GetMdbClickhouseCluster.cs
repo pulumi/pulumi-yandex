@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Yandex
         /// </summary>
         public static Task<GetMdbClickhouseClusterResult> InvokeAsync(GetMdbClickhouseClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMdbClickhouseClusterResult>("yandex:index/getMdbClickhouseCluster:getMdbClickhouseCluster", args ?? new GetMdbClickhouseClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Get information about a Yandex Managed ClickHouse cluster. For more information, see
+        /// [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/concepts).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Yandex = Pulumi.Yandex;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Yandex.GetMdbClickhouseCluster.InvokeAsync(new Yandex.GetMdbClickhouseClusterArgs
+        ///         {
+        ///             Name = "test",
+        ///         }));
+        ///         this.NetworkId = foo.Apply(foo =&gt; foo.NetworkId);
+        ///     }
+        /// 
+        ///     [Output("networkId")]
+        ///     public Output&lt;string&gt; NetworkId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMdbClickhouseClusterResult> Invoke(GetMdbClickhouseClusterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMdbClickhouseClusterResult>("yandex:index/getMdbClickhouseCluster:getMdbClickhouseCluster", args ?? new GetMdbClickhouseClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -76,6 +110,40 @@ namespace Pulumi.Yandex
         public string? ServiceAccountId { get; set; }
 
         public GetMdbClickhouseClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetMdbClickhouseClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("cloudStorage")]
+        public Input<Inputs.GetMdbClickhouseClusterCloudStorageInputArgs>? CloudStorage { get; set; }
+
+        /// <summary>
+        /// The ID of the ClickHouse cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The name of the ClickHouse cluster.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("serviceAccountId")]
+        public Input<string>? ServiceAccountId { get; set; }
+
+        public GetMdbClickhouseClusterInvokeArgs()
         {
         }
     }
