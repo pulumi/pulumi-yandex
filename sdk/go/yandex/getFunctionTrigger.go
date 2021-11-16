@@ -84,6 +84,7 @@ type LookupFunctionTriggerResult struct {
 	// A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
 	Labels   map[string]string          `pulumi:"labels"`
 	LogGroup GetFunctionTriggerLogGroup `pulumi:"logGroup"`
+	Logging  GetFunctionTriggerLogging  `pulumi:"logging"`
 	// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
 	// * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -196,6 +197,10 @@ func (o LookupFunctionTriggerResultOutput) Labels() pulumi.StringMapOutput {
 
 func (o LookupFunctionTriggerResultOutput) LogGroup() GetFunctionTriggerLogGroupOutput {
 	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerLogGroup { return v.LogGroup }).(GetFunctionTriggerLogGroupOutput)
+}
+
+func (o LookupFunctionTriggerResultOutput) Logging() GetFunctionTriggerLoggingOutput {
+	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerLogging { return v.Logging }).(GetFunctionTriggerLoggingOutput)
 }
 
 // [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present

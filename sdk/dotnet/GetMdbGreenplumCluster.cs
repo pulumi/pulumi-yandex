@@ -56,7 +56,9 @@ namespace Pulumi.Yandex
     [OutputType]
     public sealed class GetMdbGreenplumClusterResult
     {
+        public readonly ImmutableArray<Outputs.GetMdbGreenplumClusterAccessResult> Accesses;
         public readonly bool AssignPublicIp;
+        public readonly ImmutableArray<Outputs.GetMdbGreenplumClusterBackupWindowStartResult> BackupWindowStarts;
         public readonly string ClusterId;
         public readonly string CreatedAt;
         public readonly bool DeletionProtection;
@@ -87,7 +89,11 @@ namespace Pulumi.Yandex
 
         [OutputConstructor]
         private GetMdbGreenplumClusterResult(
+            ImmutableArray<Outputs.GetMdbGreenplumClusterAccessResult> accesses,
+
             bool assignPublicIp,
+
+            ImmutableArray<Outputs.GetMdbGreenplumClusterBackupWindowStartResult> backupWindowStarts,
 
             string clusterId,
 
@@ -137,7 +143,9 @@ namespace Pulumi.Yandex
 
             string zone)
         {
+            Accesses = accesses;
             AssignPublicIp = assignPublicIp;
+            BackupWindowStarts = backupWindowStarts;
             ClusterId = clusterId;
             CreatedAt = createdAt;
             DeletionProtection = deletionProtection;

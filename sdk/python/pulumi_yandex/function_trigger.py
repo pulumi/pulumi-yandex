@@ -22,6 +22,7 @@ class FunctionTriggerArgs:
                  iot: Optional[pulumi.Input['FunctionTriggerIotArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  log_group: Optional[pulumi.Input['FunctionTriggerLogGroupArgs']] = None,
+                 logging: Optional[pulumi.Input['FunctionTriggerLoggingArgs']] = None,
                  message_queue: Optional[pulumi.Input['FunctionTriggerMessageQueueArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  object_storage: Optional[pulumi.Input['FunctionTriggerObjectStorageArgs']] = None,
@@ -44,6 +45,13 @@ class FunctionTriggerArgs:
                * `iot.0.device_id` - IoT Device ID for Yandex Cloud Functions Trigger
                * `iot.0.topic` - IoT Topic for Yandex Cloud Functions Trigger
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
+        :param pulumi.Input['FunctionTriggerLoggingArgs'] logging: [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+               * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+               * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+               * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
         :param pulumi.Input['FunctionTriggerMessageQueueArgs'] message_queue: [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
                * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
                * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -74,6 +82,8 @@ class FunctionTriggerArgs:
             pulumi.set(__self__, "labels", labels)
         if log_group is not None:
             pulumi.set(__self__, "log_group", log_group)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if message_queue is not None:
             pulumi.set(__self__, "message_queue", message_queue)
         if name is not None:
@@ -175,6 +185,24 @@ class FunctionTriggerArgs:
         pulumi.set(self, "log_group", value)
 
     @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['FunctionTriggerLoggingArgs']]:
+        """
+        [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+        * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+        * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+        * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+        * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+        * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+        * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['FunctionTriggerLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
     @pulumi.getter(name="messageQueue")
     def message_queue(self) -> Optional[pulumi.Input['FunctionTriggerMessageQueueArgs']]:
         """
@@ -246,6 +274,7 @@ class _FunctionTriggerState:
                  iot: Optional[pulumi.Input['FunctionTriggerIotArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  log_group: Optional[pulumi.Input['FunctionTriggerLogGroupArgs']] = None,
+                 logging: Optional[pulumi.Input['FunctionTriggerLoggingArgs']] = None,
                  message_queue: Optional[pulumi.Input['FunctionTriggerMessageQueueArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  object_storage: Optional[pulumi.Input['FunctionTriggerObjectStorageArgs']] = None,
@@ -269,6 +298,13 @@ class _FunctionTriggerState:
                * `iot.0.device_id` - IoT Device ID for Yandex Cloud Functions Trigger
                * `iot.0.topic` - IoT Topic for Yandex Cloud Functions Trigger
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
+        :param pulumi.Input['FunctionTriggerLoggingArgs'] logging: [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+               * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+               * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+               * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
         :param pulumi.Input['FunctionTriggerMessageQueueArgs'] message_queue: [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
                * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
                * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -302,6 +338,8 @@ class _FunctionTriggerState:
             pulumi.set(__self__, "labels", labels)
         if log_group is not None:
             pulumi.set(__self__, "log_group", log_group)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if message_queue is not None:
             pulumi.set(__self__, "message_queue", message_queue)
         if name is not None:
@@ -415,6 +453,24 @@ class _FunctionTriggerState:
         pulumi.set(self, "log_group", value)
 
     @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['FunctionTriggerLoggingArgs']]:
+        """
+        [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+        * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+        * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+        * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+        * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+        * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+        * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['FunctionTriggerLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
     @pulumi.getter(name="messageQueue")
     def message_queue(self) -> Optional[pulumi.Input['FunctionTriggerMessageQueueArgs']]:
         """
@@ -487,6 +543,7 @@ class FunctionTrigger(pulumi.CustomResource):
                  iot: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerIotArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  log_group: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerLogGroupArgs']]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerLoggingArgs']]] = None,
                  message_queue: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerMessageQueueArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  object_storage: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerObjectStorageArgs']]] = None,
@@ -529,6 +586,13 @@ class FunctionTrigger(pulumi.CustomResource):
                * `iot.0.device_id` - IoT Device ID for Yandex Cloud Functions Trigger
                * `iot.0.topic` - IoT Topic for Yandex Cloud Functions Trigger
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
+        :param pulumi.Input[pulumi.InputType['FunctionTriggerLoggingArgs']] logging: [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+               * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+               * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+               * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
         :param pulumi.Input[pulumi.InputType['FunctionTriggerMessageQueueArgs']] message_queue: [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
                * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
                * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -593,6 +657,7 @@ class FunctionTrigger(pulumi.CustomResource):
                  iot: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerIotArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  log_group: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerLogGroupArgs']]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerLoggingArgs']]] = None,
                  message_queue: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerMessageQueueArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  object_storage: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerObjectStorageArgs']]] = None,
@@ -618,6 +683,7 @@ class FunctionTrigger(pulumi.CustomResource):
             __props__.__dict__["iot"] = iot
             __props__.__dict__["labels"] = labels
             __props__.__dict__["log_group"] = log_group
+            __props__.__dict__["logging"] = logging
             __props__.__dict__["message_queue"] = message_queue
             __props__.__dict__["name"] = name
             __props__.__dict__["object_storage"] = object_storage
@@ -641,6 +707,7 @@ class FunctionTrigger(pulumi.CustomResource):
             iot: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerIotArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             log_group: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerLogGroupArgs']]] = None,
+            logging: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerLoggingArgs']]] = None,
             message_queue: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerMessageQueueArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             object_storage: Optional[pulumi.Input[pulumi.InputType['FunctionTriggerObjectStorageArgs']]] = None,
@@ -669,6 +736,13 @@ class FunctionTrigger(pulumi.CustomResource):
                * `iot.0.device_id` - IoT Device ID for Yandex Cloud Functions Trigger
                * `iot.0.topic` - IoT Topic for Yandex Cloud Functions Trigger
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
+        :param pulumi.Input[pulumi.InputType['FunctionTriggerLoggingArgs']] logging: [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+               * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+               * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+               * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+               * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
         :param pulumi.Input[pulumi.InputType['FunctionTriggerMessageQueueArgs']] message_queue: [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
                * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
                * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -698,6 +772,7 @@ class FunctionTrigger(pulumi.CustomResource):
         __props__.__dict__["iot"] = iot
         __props__.__dict__["labels"] = labels
         __props__.__dict__["log_group"] = log_group
+        __props__.__dict__["logging"] = logging
         __props__.__dict__["message_queue"] = message_queue
         __props__.__dict__["name"] = name
         __props__.__dict__["object_storage"] = object_storage
@@ -774,6 +849,20 @@ class FunctionTrigger(pulumi.CustomResource):
     @pulumi.getter(name="logGroup")
     def log_group(self) -> pulumi.Output[Optional['outputs.FunctionTriggerLogGroup']]:
         return pulumi.get(self, "log_group")
+
+    @property
+    @pulumi.getter
+    def logging(self) -> pulumi.Output[Optional['outputs.FunctionTriggerLogging']]:
+        """
+        [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+        * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+        * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+        * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+        * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+        * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+        * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+        """
+        return pulumi.get(self, "logging")
 
     @property
     @pulumi.getter(name="messageQueue")

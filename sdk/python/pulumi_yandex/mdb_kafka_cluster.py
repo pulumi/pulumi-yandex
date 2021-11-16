@@ -34,14 +34,15 @@ class MdbKafkaClusterArgs:
         :param pulumi.Input[str] network_id: ID of the network, to which the Kafka cluster belongs.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Kafka cluster.
-        :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+               The default is `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: IDs of the subnets, to which the Kafka cluster belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterTopicArgs']]] topics: A topic of the Kafka cluster. The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterTopicArgs']]] topics: To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
         :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterUserArgs']]] users: A user of the Kafka cluster. The structure is documented below.
         """
         pulumi.set(__self__, "config", config)
@@ -64,6 +65,9 @@ class MdbKafkaClusterArgs:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
+        if topics is not None:
+            warnings.warn("""to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic""", DeprecationWarning)
+            pulumi.log.warn("""topics is deprecated: to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic""")
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
         if users is not None:
@@ -121,7 +125,8 @@ class MdbKafkaClusterArgs:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
-        Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+        The default is `PRODUCTION`.
         """
         return pulumi.get(self, "environment")
 
@@ -205,7 +210,7 @@ class MdbKafkaClusterArgs:
     @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterTopicArgs']]]]:
         """
-        A topic of the Kafka cluster. The structure is documented below.
+        To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
         """
         return pulumi.get(self, "topics")
 
@@ -252,7 +257,8 @@ class _MdbKafkaClusterState:
         :param pulumi.Input[str] created_at: Timestamp of cluster creation.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Kafka cluster.
-        :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+               The default is `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         :param pulumi.Input[str] health: Health of the host.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
@@ -264,7 +270,7 @@ class _MdbKafkaClusterState:
         :param pulumi.Input[str] status: Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
                For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: IDs of the subnets, to which the Kafka cluster belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterTopicArgs']]] topics: A topic of the Kafka cluster. The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterTopicArgs']]] topics: To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
         :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterUserArgs']]] users: A user of the Kafka cluster. The structure is documented below.
         """
         if config is not None:
@@ -297,6 +303,9 @@ class _MdbKafkaClusterState:
             pulumi.set(__self__, "status", status)
         if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
+        if topics is not None:
+            warnings.warn("""to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic""", DeprecationWarning)
+            pulumi.log.warn("""topics is deprecated: to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic""")
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
         if users is not None:
@@ -354,7 +363,8 @@ class _MdbKafkaClusterState:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
-        Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+        The default is `PRODUCTION`.
         """
         return pulumi.get(self, "environment")
 
@@ -487,7 +497,7 @@ class _MdbKafkaClusterState:
     @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterTopicArgs']]]]:
         """
-        A topic of the Kafka cluster. The structure is documented below.
+        To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
         """
         return pulumi.get(self, "topics")
 
@@ -569,6 +579,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                         resource_preset_id="s2.micro",
                     ),
                 ),
+                schema_registry=False,
                 unmanaged_topics=False,
                 version="2.6",
                 zones=["ru-central1-a"],
@@ -576,38 +587,6 @@ class MdbKafkaCluster(pulumi.CustomResource):
             environment="PRESTABLE",
             network_id=foo_vpc_network.id,
             subnet_ids=[foo_vpc_subnet.id],
-            topics=[
-                yandex.MdbKafkaClusterTopicArgs(
-                    name="input",
-                    partitions=2,
-                    replication_factor=1,
-                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
-                        compression_type="COMPRESSION_TYPE_LZ4",
-                        delete_retention_ms="86400000",
-                        file_delete_delay_ms="60000",
-                        flush_messages="128",
-                        flush_ms="1000",
-                        max_message_bytes="1048588",
-                        min_compaction_lag_ms="0",
-                        min_insync_replicas="1",
-                        preallocate=True,
-                        retention_bytes="10737418240",
-                        retention_ms="604800000",
-                        segment_bytes="268435456",
-                    ),
-                ),
-                yandex.MdbKafkaClusterTopicArgs(
-                    name="output",
-                    partitions=6,
-                    replication_factor=1,
-                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
-                        compression_type="COMPRESSION_TYPE_GZIP",
-                        max_message_bytes="1048588",
-                        preallocate=False,
-                        segment_bytes="536870912",
-                    ),
-                ),
-            ],
             users=[
                 yandex.MdbKafkaClusterUserArgs(
                     name="producer-application",
@@ -678,6 +657,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                         resource_preset_id="s2.medium",
                     ),
                 ),
+                schema_registry=False,
                 unmanaged_topics=False,
                 version="2.6",
                 zones=[
@@ -699,38 +679,6 @@ class MdbKafkaCluster(pulumi.CustomResource):
                 foo_vpc_subnet.id,
                 bar.id,
                 baz.id,
-            ],
-            topics=[
-                yandex.MdbKafkaClusterTopicArgs(
-                    name="input",
-                    partitions=2,
-                    replication_factor=1,
-                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
-                        compression_type="COMPRESSION_TYPE_LZ4",
-                        delete_retention_ms="86400000",
-                        file_delete_delay_ms="60000",
-                        flush_messages="128",
-                        flush_ms="1000",
-                        max_message_bytes="1048588",
-                        min_compaction_lag_ms="0",
-                        min_insync_replicas="1",
-                        preallocate=True,
-                        retention_bytes="10737418240",
-                        retention_ms="604800000",
-                        segment_bytes="268435456",
-                    ),
-                ),
-                yandex.MdbKafkaClusterTopicArgs(
-                    name="output",
-                    partitions=6,
-                    replication_factor=1,
-                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
-                        compression_type="COMPRESSION_TYPE_GZIP",
-                        max_message_bytes="1048588",
-                        preallocate=False,
-                        segment_bytes="536870912",
-                    ),
-                ),
             ],
             users=[
                 yandex.MdbKafkaClusterUserArgs(
@@ -771,7 +719,8 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MdbKafkaClusterConfigArgs']] config: Configuration of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Kafka cluster.
-        :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+               The default is `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
@@ -779,7 +728,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[str] network_id: ID of the network, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: IDs of the subnets, to which the Kafka cluster belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterTopicArgs']]]] topics: A topic of the Kafka cluster. The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterTopicArgs']]]] topics: To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterUserArgs']]]] users: A user of the Kafka cluster. The structure is documented below.
         """
         ...
@@ -830,6 +779,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                         resource_preset_id="s2.micro",
                     ),
                 ),
+                schema_registry=False,
                 unmanaged_topics=False,
                 version="2.6",
                 zones=["ru-central1-a"],
@@ -837,38 +787,6 @@ class MdbKafkaCluster(pulumi.CustomResource):
             environment="PRESTABLE",
             network_id=foo_vpc_network.id,
             subnet_ids=[foo_vpc_subnet.id],
-            topics=[
-                yandex.MdbKafkaClusterTopicArgs(
-                    name="input",
-                    partitions=2,
-                    replication_factor=1,
-                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
-                        compression_type="COMPRESSION_TYPE_LZ4",
-                        delete_retention_ms="86400000",
-                        file_delete_delay_ms="60000",
-                        flush_messages="128",
-                        flush_ms="1000",
-                        max_message_bytes="1048588",
-                        min_compaction_lag_ms="0",
-                        min_insync_replicas="1",
-                        preallocate=True,
-                        retention_bytes="10737418240",
-                        retention_ms="604800000",
-                        segment_bytes="268435456",
-                    ),
-                ),
-                yandex.MdbKafkaClusterTopicArgs(
-                    name="output",
-                    partitions=6,
-                    replication_factor=1,
-                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
-                        compression_type="COMPRESSION_TYPE_GZIP",
-                        max_message_bytes="1048588",
-                        preallocate=False,
-                        segment_bytes="536870912",
-                    ),
-                ),
-            ],
             users=[
                 yandex.MdbKafkaClusterUserArgs(
                     name="producer-application",
@@ -939,6 +857,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                         resource_preset_id="s2.medium",
                     ),
                 ),
+                schema_registry=False,
                 unmanaged_topics=False,
                 version="2.6",
                 zones=[
@@ -960,38 +879,6 @@ class MdbKafkaCluster(pulumi.CustomResource):
                 foo_vpc_subnet.id,
                 bar.id,
                 baz.id,
-            ],
-            topics=[
-                yandex.MdbKafkaClusterTopicArgs(
-                    name="input",
-                    partitions=2,
-                    replication_factor=1,
-                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
-                        compression_type="COMPRESSION_TYPE_LZ4",
-                        delete_retention_ms="86400000",
-                        file_delete_delay_ms="60000",
-                        flush_messages="128",
-                        flush_ms="1000",
-                        max_message_bytes="1048588",
-                        min_compaction_lag_ms="0",
-                        min_insync_replicas="1",
-                        preallocate=True,
-                        retention_bytes="10737418240",
-                        retention_ms="604800000",
-                        segment_bytes="268435456",
-                    ),
-                ),
-                yandex.MdbKafkaClusterTopicArgs(
-                    name="output",
-                    partitions=6,
-                    replication_factor=1,
-                    topic_config=yandex.MdbKafkaClusterTopicTopicConfigArgs(
-                        compression_type="COMPRESSION_TYPE_GZIP",
-                        max_message_bytes="1048588",
-                        preallocate=False,
-                        segment_bytes="536870912",
-                    ),
-                ),
             ],
             users=[
                 yandex.MdbKafkaClusterUserArgs(
@@ -1082,6 +969,9 @@ class MdbKafkaCluster(pulumi.CustomResource):
             __props__.__dict__["network_id"] = network_id
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["subnet_ids"] = subnet_ids
+            if topics is not None and not opts.urn:
+                warnings.warn("""to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic""", DeprecationWarning)
+                pulumi.log.warn("""topics is deprecated: to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic""")
             __props__.__dict__["topics"] = topics
             __props__.__dict__["users"] = users
             __props__.__dict__["created_at"] = None
@@ -1126,7 +1016,8 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: Timestamp of cluster creation.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Kafka cluster.
-        :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        :param pulumi.Input[str] environment: Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+               The default is `PRODUCTION`.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         :param pulumi.Input[str] health: Health of the host.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
@@ -1138,7 +1029,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[str] status: Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
                For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: IDs of the subnets, to which the Kafka cluster belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterTopicArgs']]]] topics: A topic of the Kafka cluster. The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterTopicArgs']]]] topics: To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterUserArgs']]]] users: A user of the Kafka cluster. The structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1200,7 +1091,8 @@ class MdbKafkaCluster(pulumi.CustomResource):
     @pulumi.getter
     def environment(self) -> pulumi.Output[Optional[str]]:
         """
-        Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+        The default is `PRODUCTION`.
         """
         return pulumi.get(self, "environment")
 
@@ -1222,7 +1114,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostGroupIds")
-    def host_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def host_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of IDs of the host groups to place VMs of the cluster on.
         """
@@ -1238,7 +1130,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A set of key/value label pairs to assign to the Kafka cluster.
         """
@@ -1262,7 +1154,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         Security group ids, to which the Kafka cluster belongs.
         """
@@ -1289,7 +1181,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
     @pulumi.getter
     def topics(self) -> pulumi.Output[Optional[Sequence['outputs.MdbKafkaClusterTopic']]]:
         """
-        A topic of the Kafka cluster. The structure is documented below.
+        To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
         """
         return pulumi.get(self, "topics")
 

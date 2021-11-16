@@ -40,7 +40,7 @@ namespace Pulumi.Yandex.Inputs
         }
 
         /// <summary>
-        /// The name of the database.
+        /// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

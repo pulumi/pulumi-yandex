@@ -14,7 +14,7 @@ namespace Pulumi.Yandex.Outputs
     public sealed class MdbKafkaClusterHost
     {
         /// <summary>
-        /// Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+        /// Determines whether each broker will be assigned a public IP address. The default is `false`.
         /// </summary>
         public readonly bool? AssignPublicIp;
         /// <summary>

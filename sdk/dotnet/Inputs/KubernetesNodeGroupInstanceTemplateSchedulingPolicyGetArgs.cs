@@ -14,6 +14,7 @@ namespace Pulumi.Yandex.Inputs
     {
         /// <summary>
         /// Specifies if the instance is preemptible. Defaults to false.
+        /// ---
         /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }

@@ -1797,6 +1797,15 @@ export interface FunctionTriggerLogGroup {
     logGroupIds: string[];
 }
 
+export interface FunctionTriggerLogging {
+    batchCutoff: string;
+    batchSize?: string;
+    groupId: string;
+    levels: string[];
+    resourceIds: string[];
+    resourceTypes: string[];
+}
+
 export interface FunctionTriggerMessageQueue {
     batchCutoff: string;
     batchSize?: string;
@@ -3447,6 +3456,15 @@ export interface GetFunctionTriggerLogGroup {
     logGroupIds: string[];
 }
 
+export interface GetFunctionTriggerLogging {
+    batchCutoff: string;
+    batchSize: string;
+    groupId: string;
+    levels: string[];
+    resourceIds: string[];
+    resourceTypes: string[];
+}
+
 export interface GetFunctionTriggerMessageQueue {
     batchCutoff: string;
     batchSize: string;
@@ -3658,6 +3676,9 @@ export interface GetKubernetesNodeGroupInstanceTemplate {
      * An array with the network interfaces that will be attached to the instance. The structure is documented below.
      */
     networkInterfaces: outputs.GetKubernetesNodeGroupInstanceTemplateNetworkInterface[];
+    /**
+     * (Optional) The placement policy configuration. The structure is documented below.
+     */
     placementPolicy?: outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicy;
     /**
      * The ID of the hardware platform configuration for the instance.
@@ -3705,6 +3726,9 @@ export interface GetKubernetesNodeGroupInstanceTemplateNetworkInterface {
 }
 
 export interface GetKubernetesNodeGroupInstanceTemplatePlacementPolicy {
+    /**
+     * (Optional) Specifies the id of the Placement Group to assign to the instances.
+     */
     placementGroupId: string;
 }
 
@@ -3718,6 +3742,7 @@ export interface GetKubernetesNodeGroupInstanceTemplateResources {
 export interface GetKubernetesNodeGroupInstanceTemplateSchedulingPolicy {
     /**
      * Specifies if the instance is preemptible. Defaults to false.
+     * ---
      */
     preemptible: boolean;
 }
@@ -4776,6 +4801,16 @@ export interface GetMdbElasticSearchClusterHost {
     zone: string;
 }
 
+export interface GetMdbGreenplumClusterAccess {
+    dataLens: boolean;
+    webSql: boolean;
+}
+
+export interface GetMdbGreenplumClusterBackupWindowStart {
+    hours: number;
+    minutes: number;
+}
+
 export interface GetMdbGreenplumClusterMasterHost {
     assignPublicIp: boolean;
     fqdn: string;
@@ -4819,6 +4854,10 @@ export interface GetMdbKafkaClusterConfig {
      */
     kafka: outputs.GetMdbKafkaClusterConfigKafka;
     /**
+     * (Optional) Enables managed schema registry on cluster. Can be either `true` or `false`.
+     */
+    schemaRegistry?: boolean;
+    /**
      * (Optional) Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
      */
     unmanagedTopics?: boolean;
@@ -4833,7 +4872,7 @@ export interface GetMdbKafkaClusterConfig {
     /**
      * (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
      */
-    zookeeper?: outputs.GetMdbKafkaClusterConfigZookeeper;
+    zookeeper: outputs.GetMdbKafkaClusterConfigZookeeper;
 }
 
 export interface GetMdbKafkaClusterConfigKafka {
@@ -4927,6 +4966,10 @@ export interface GetMdbKafkaClusterHost {
 
 export interface GetMdbKafkaClusterTopic {
     /**
+     * The ID of the Kafka cluster.
+     */
+    clusterId: string;
+    /**
      * The name of the Kafka cluster.
      */
     name: string;
@@ -4986,6 +5029,22 @@ export interface GetMdbKafkaClusterUserPermission {
     topicName: string;
 }
 
+export interface GetMdbKafkaTopicTopicConfig {
+    cleanupPolicy: string;
+    compressionType: string;
+    deleteRetentionMs: string;
+    fileDeleteDelayMs: string;
+    flushMessages: string;
+    flushMs: string;
+    maxMessageBytes: string;
+    minCompactionLagMs: string;
+    minInsyncReplicas: string;
+    preallocate: boolean;
+    retentionBytes: string;
+    retentionMs: string;
+    segmentBytes: string;
+}
+
 export interface GetMdbMongodbClusterClusterConfig {
     /**
      * Access policy to MongoDB cluster. The structure is documented below.
@@ -5000,7 +5059,7 @@ export interface GetMdbMongodbClusterClusterConfig {
      */
     featureCompatibilityVersion: string;
     /**
-     * Version of MongoDB (either 4.4, 4.2, 4.0 or 3.6).
+     * Version of MongoDB (either 5.0, 4.4, 4.2, 4.0 or 3.6).
      */
     version: string;
 }
@@ -5154,6 +5213,10 @@ export interface GetMdbMysqlClusterHost {
      */
     fqdn: string;
     /**
+     * Host replication source (fqdn), case when replicationSource is empty then host in HA group.
+     */
+    replicationSource: string;
+    /**
      * The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
      */
     subnetId: string;
@@ -5258,6 +5321,10 @@ export interface GetMdbPostgresqlClusterConfig {
      * Configuration setting which enables/disables autofailover in cluster.
      */
     autofailover: boolean;
+    /**
+     * The period in days during which backups are stored.
+     */
+    backupRetainPeriodDays: number;
     /**
      * Time to start the daily backup, in the UTC timezone. The structure is documented below.
      */
@@ -6009,6 +6076,9 @@ export interface KubernetesNodeGroupInstanceTemplate {
      * An array with the network interfaces that will be attached to the instance. The structure is documented below.
      */
     networkInterfaces: outputs.KubernetesNodeGroupInstanceTemplateNetworkInterface[];
+    /**
+     * The placement policy configuration. The structure is documented below.
+     */
     placementPolicy?: outputs.KubernetesNodeGroupInstanceTemplatePlacementPolicy;
     /**
      * The ID of the hardware platform configuration for the node group compute instances.
@@ -6056,6 +6126,9 @@ export interface KubernetesNodeGroupInstanceTemplateNetworkInterface {
 }
 
 export interface KubernetesNodeGroupInstanceTemplatePlacementPolicy {
+    /**
+     * Specifies the id of the Placement Group to assign to the instances.
+     */
     placementGroupId: string;
 }
 
@@ -6069,6 +6142,7 @@ export interface KubernetesNodeGroupInstanceTemplateResources {
 export interface KubernetesNodeGroupInstanceTemplateSchedulingPolicy {
     /**
      * Specifies if the instance is preemptible. Defaults to false.
+     * ---
      */
     preemptible: boolean;
 }
@@ -7177,6 +7251,28 @@ export interface MdbElasticSearchClusterHost {
     zone: string;
 }
 
+export interface MdbGreenplumClusterAccess {
+    /**
+     * Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
+     */
+    dataLens?: boolean;
+    /**
+     * Allows access for SQL queries in the management console
+     */
+    webSql?: boolean;
+}
+
+export interface MdbGreenplumClusterBackupWindowStart {
+    /**
+     * The hour at which backup will be started (UTC).
+     */
+    hours?: number;
+    /**
+     * The minute at which backup will be started (UTC).
+     */
+    minutes?: number;
+}
+
 export interface MdbGreenplumClusterMasterHost {
     /**
      * Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
@@ -7223,11 +7319,11 @@ export interface MdbGreenplumClusterSegmentSubclusterResources {
 
 export interface MdbKafkaClusterConfig {
     /**
-     * Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+     * Determines whether each broker will be assigned a public IP address. The default is `false`.
      */
     assignPublicIp?: boolean;
     /**
-     * Count of brokers per availability zone.
+     * Count of brokers per availability zone. The default is `1`.
      */
     brokersCount?: number;
     /**
@@ -7235,7 +7331,11 @@ export interface MdbKafkaClusterConfig {
      */
     kafka: outputs.MdbKafkaClusterConfigKafka;
     /**
-     * Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
+     * Enables managed schema registry on cluster. The default is `false`.
+     */
+    schemaRegistry?: boolean;
+    /**
+     * Allows to use Kafka AdminAPI to manage topics. The default is `false`.
      */
     unmanagedTopics?: boolean;
     /**
@@ -7249,7 +7349,7 @@ export interface MdbKafkaClusterConfig {
     /**
      * Configuration of the ZooKeeper subcluster. The structure is documented below.
      */
-    zookeeper?: outputs.MdbKafkaClusterConfigZookeeper;
+    zookeeper: outputs.MdbKafkaClusterConfigZookeeper;
 }
 
 export interface MdbKafkaClusterConfigKafka {
@@ -7316,7 +7416,7 @@ export interface MdbKafkaClusterConfigZookeeperResources {
 
 export interface MdbKafkaClusterHost {
     /**
-     * Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+     * Determines whether each broker will be assigned a public IP address. The default is `false`.
      */
     assignPublicIp: boolean;
     /**
@@ -7402,6 +7502,22 @@ export interface MdbKafkaClusterUserPermission {
     topicName: string;
 }
 
+export interface MdbKafkaTopicTopicConfig {
+    cleanupPolicy?: string;
+    compressionType?: string;
+    deleteRetentionMs?: string;
+    fileDeleteDelayMs?: string;
+    flushMessages?: string;
+    flushMs?: string;
+    maxMessageBytes?: string;
+    minCompactionLagMs?: string;
+    minInsyncReplicas?: string;
+    preallocate?: boolean;
+    retentionBytes?: string;
+    retentionMs?: string;
+    segmentBytes?: string;
+}
+
 export interface MdbMongodbClusterClusterConfig {
     /**
      * Shows whether cluster has access to data lens. The structure is documented below.
@@ -7412,11 +7528,11 @@ export interface MdbMongodbClusterClusterConfig {
      */
     backupWindowStart: outputs.MdbMongodbClusterClusterConfigBackupWindowStart;
     /**
-     * Feature compatibility version of MongoDB. If not provided version is taken. Can be either `4.4`, `4.2`, `4.0` and `3.6`.
+     * Feature compatibility version of MongoDB. If not provided version is taken. Can be either `5.0`, `4.4`, `4.2` and `4.0`.
      */
     featureCompatibilityVersion: string;
     /**
-     * Version of MongoDB (either 4.4, 4.2, 4.0 or 3.6).
+     * Version of MongoDB (either 5.0, 4.4, 4.2 or 4.0).
      */
     version: string;
 }
@@ -7558,20 +7674,32 @@ export interface MdbMysqlClusterBackupWindowStart {
 
 export interface MdbMysqlClusterDatabase {
     /**
-     * The name of the database.
+     * Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
      */
     name: string;
 }
 
 export interface MdbMysqlClusterHost {
     /**
-     * Sets whether the host should get a public IP address on creation. When changing the `assignPublicIp` attribute and `allowRegenerationHost` is true, the old host is deleted and a new host is created. Changing this parameter for an existing host is not supported at the moment.
+     * Sets whether the host should get a public IP address. It can be changed on the fly only when `name` is set.
      */
     assignPublicIp?: boolean;
     /**
      * The fully qualified domain name of the host.
      */
     fqdn: string;
+    /**
+     * Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
+     */
+    name?: string;
+    /**
+     * Host replication source (fqdn), when replicationSource is empty then host is in HA group.
+     */
+    replicationSource: string;
+    /**
+     * Host replication source name points to host's `name` from which this host should replicate. When not set then host in HA group. It works only when `name` is set.
+     */
+    replicationSourceName?: string;
     /**
      * The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
      */
@@ -7637,7 +7765,7 @@ export interface MdbMysqlClusterUser {
      */
     globalPermissions: string[];
     /**
-     * The name of the database.
+     * Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
      */
     name: string;
     /**
@@ -8198,4 +8326,3 @@ export interface YdbDatabaseDedicatedStorageConfig {
      */
     storageTypeId: string;
 }
-

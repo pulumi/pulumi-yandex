@@ -182,6 +182,108 @@ import (
 // }
 // ```
 //
+// Example of creating a MySQL Cluster with cascade replicas: HA-group consist of 'na-1' and 'na-2', cascade replicas form a chain 'na-1' > 'nb-1' > 'nb-2'
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooVpcNetwork, err := yandex.NewVpcNetwork(ctx, "fooVpcNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooVpcSubnet, err := yandex.NewVpcSubnet(ctx, "fooVpcSubnet", &yandex.VpcSubnetArgs{
+// 			Zone:      pulumi.String("ru-central1-a"),
+// 			NetworkId: fooVpcNetwork.ID(),
+// 			V4CidrBlocks: pulumi.StringArray{
+// 				pulumi.String("10.1.0.0/24"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bar, err := yandex.NewVpcSubnet(ctx, "bar", &yandex.VpcSubnetArgs{
+// 			Zone:      pulumi.String("ru-central1-b"),
+// 			NetworkId: fooVpcNetwork.ID(),
+// 			V4CidrBlocks: pulumi.StringArray{
+// 				pulumi.String("10.2.0.0/24"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = yandex.NewMdbMysqlCluster(ctx, "fooMdbMysqlCluster", &yandex.MdbMysqlClusterArgs{
+// 			Environment: pulumi.String("PRESTABLE"),
+// 			NetworkId:   fooVpcNetwork.ID(),
+// 			Version:     pulumi.String("8.0"),
+// 			Resources: &MdbMysqlClusterResourcesArgs{
+// 				ResourcePresetId: pulumi.String("s2.micro"),
+// 				DiskTypeId:       pulumi.String("network-ssd"),
+// 				DiskSize:         pulumi.Int(16),
+// 			},
+// 			Databases: MdbMysqlClusterDatabaseArray{
+// 				&MdbMysqlClusterDatabaseArgs{
+// 					Name: pulumi.String("db_name"),
+// 				},
+// 			},
+// 			MaintenanceWindow: &MdbMysqlClusterMaintenanceWindowArgs{
+// 				Type: pulumi.String("WEEKLY"),
+// 				Day:  pulumi.String("SAT"),
+// 				Hour: pulumi.Int(12),
+// 			},
+// 			Users: MdbMysqlClusterUserArray{
+// 				&MdbMysqlClusterUserArgs{
+// 					Name:     pulumi.String("user_name"),
+// 					Password: pulumi.String("your_password"),
+// 					Permissions: MdbMysqlClusterUserPermissionArray{
+// 						&MdbMysqlClusterUserPermissionArgs{
+// 							DatabaseName: pulumi.String("db_name"),
+// 							Roles: pulumi.StringArray{
+// 								pulumi.String("ALL"),
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Hosts: MdbMysqlClusterHostArray{
+// 				&MdbMysqlClusterHostArgs{
+// 					Zone:     pulumi.String("ru-central1-a"),
+// 					Name:     pulumi.String("na-1"),
+// 					SubnetId: fooVpcSubnet.ID(),
+// 				},
+// 				&MdbMysqlClusterHostArgs{
+// 					Zone:     pulumi.String("ru-central1-a"),
+// 					Name:     pulumi.String("na-2"),
+// 					SubnetId: fooVpcSubnet.ID(),
+// 				},
+// 				&MdbMysqlClusterHostArgs{
+// 					Zone:                  pulumi.String("ru-central1-b"),
+// 					Name:                  pulumi.String("nb-1"),
+// 					ReplicationSourceName: pulumi.String("na-1"),
+// 					SubnetId:              bar.ID(),
+// 				},
+// 				&MdbMysqlClusterHostArgs{
+// 					Zone:                  pulumi.String("ru-central1-b"),
+// 					Name:                  pulumi.String("nb-2"),
+// 					ReplicationSourceName: pulumi.String("nb-1"),
+// 					SubnetId:              bar.ID(),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // Example of creating a Single Node MySQL with user params.
 //
 // ```go
@@ -603,7 +705,7 @@ type MdbMysqlCluster struct {
 
 	// Access policy to the MySQL cluster. The structure is documented below.
 	Access MdbMysqlClusterAccessOutput `pulumi:"access"`
-	// Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
+	// Deprecated: You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.
 	AllowRegenerationHost pulumi.BoolPtrOutput `pulumi:"allowRegenerationHost"`
 	// Time to start the daily backup, in the UTC. The structure is documented below.
 	BackupWindowStart MdbMysqlClusterBackupWindowStartOutput `pulumi:"backupWindowStart"`
@@ -630,7 +732,7 @@ type MdbMysqlCluster struct {
 	MaintenanceWindow MdbMysqlClusterMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig pulumi.StringMapOutput `pulumi:"mysqlConfig"`
-	// The name of the database.
+	// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ID of the network, to which the MySQL cluster uses.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
@@ -700,7 +802,7 @@ func GetMdbMysqlCluster(ctx *pulumi.Context,
 type mdbMysqlClusterState struct {
 	// Access policy to the MySQL cluster. The structure is documented below.
 	Access *MdbMysqlClusterAccess `pulumi:"access"`
-	// Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
+	// Deprecated: You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.
 	AllowRegenerationHost *bool `pulumi:"allowRegenerationHost"`
 	// Time to start the daily backup, in the UTC. The structure is documented below.
 	BackupWindowStart *MdbMysqlClusterBackupWindowStart `pulumi:"backupWindowStart"`
@@ -727,7 +829,7 @@ type mdbMysqlClusterState struct {
 	MaintenanceWindow *MdbMysqlClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig map[string]string `pulumi:"mysqlConfig"`
-	// The name of the database.
+	// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the MySQL cluster uses.
 	NetworkId *string `pulumi:"networkId"`
@@ -748,7 +850,7 @@ type mdbMysqlClusterState struct {
 type MdbMysqlClusterState struct {
 	// Access policy to the MySQL cluster. The structure is documented below.
 	Access MdbMysqlClusterAccessPtrInput
-	// Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
+	// Deprecated: You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.
 	AllowRegenerationHost pulumi.BoolPtrInput
 	// Time to start the daily backup, in the UTC. The structure is documented below.
 	BackupWindowStart MdbMysqlClusterBackupWindowStartPtrInput
@@ -775,7 +877,7 @@ type MdbMysqlClusterState struct {
 	MaintenanceWindow MdbMysqlClusterMaintenanceWindowPtrInput
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig pulumi.StringMapInput
-	// The name of the database.
+	// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the MySQL cluster uses.
 	NetworkId pulumi.StringPtrInput
@@ -800,7 +902,7 @@ func (MdbMysqlClusterState) ElementType() reflect.Type {
 type mdbMysqlClusterArgs struct {
 	// Access policy to the MySQL cluster. The structure is documented below.
 	Access *MdbMysqlClusterAccess `pulumi:"access"`
-	// Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
+	// Deprecated: You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.
 	AllowRegenerationHost *bool `pulumi:"allowRegenerationHost"`
 	// Time to start the daily backup, in the UTC. The structure is documented below.
 	BackupWindowStart *MdbMysqlClusterBackupWindowStart `pulumi:"backupWindowStart"`
@@ -823,7 +925,7 @@ type mdbMysqlClusterArgs struct {
 	MaintenanceWindow *MdbMysqlClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig map[string]string `pulumi:"mysqlConfig"`
-	// The name of the database.
+	// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the MySQL cluster uses.
 	NetworkId string `pulumi:"networkId"`
@@ -843,7 +945,7 @@ type mdbMysqlClusterArgs struct {
 type MdbMysqlClusterArgs struct {
 	// Access policy to the MySQL cluster. The structure is documented below.
 	Access MdbMysqlClusterAccessPtrInput
-	// Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
+	// Deprecated: You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.
 	AllowRegenerationHost pulumi.BoolPtrInput
 	// Time to start the daily backup, in the UTC. The structure is documented below.
 	BackupWindowStart MdbMysqlClusterBackupWindowStartPtrInput
@@ -866,7 +968,7 @@ type MdbMysqlClusterArgs struct {
 	MaintenanceWindow MdbMysqlClusterMaintenanceWindowPtrInput
 	// MySQL cluster config. Detail info in "MySQL config" section (documented below).
 	MysqlConfig pulumi.StringMapInput
-	// The name of the database.
+	// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the MySQL cluster uses.
 	NetworkId pulumi.StringInput

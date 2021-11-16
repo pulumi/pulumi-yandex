@@ -28,8 +28,12 @@ import (
 type MdbGreenplumCluster struct {
 	pulumi.CustomResourceState
 
+	// Access policy to the Greenplum cluster. The structure is documented below.
+	Access MdbGreenplumClusterAccessOutput `pulumi:"access"`
 	// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
 	AssignPublicIp pulumi.BoolOutput `pulumi:"assignPublicIp"`
+	// Time to start the daily backup, in the UTC timezone. The structure is documented below.
+	BackupWindowStart MdbGreenplumClusterBackupWindowStartOutput `pulumi:"backupWindowStart"`
 	// Creation timestamp of the cluster.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
@@ -147,8 +151,12 @@ func GetMdbGreenplumCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MdbGreenplumCluster resources.
 type mdbGreenplumClusterState struct {
+	// Access policy to the Greenplum cluster. The structure is documented below.
+	Access *MdbGreenplumClusterAccess `pulumi:"access"`
 	// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
 	AssignPublicIp *bool `pulumi:"assignPublicIp"`
+	// Time to start the daily backup, in the UTC timezone. The structure is documented below.
+	BackupWindowStart *MdbGreenplumClusterBackupWindowStart `pulumi:"backupWindowStart"`
 	// Creation timestamp of the cluster.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
@@ -199,8 +207,12 @@ type mdbGreenplumClusterState struct {
 }
 
 type MdbGreenplumClusterState struct {
+	// Access policy to the Greenplum cluster. The structure is documented below.
+	Access MdbGreenplumClusterAccessPtrInput
 	// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
 	AssignPublicIp pulumi.BoolPtrInput
+	// Time to start the daily backup, in the UTC timezone. The structure is documented below.
+	BackupWindowStart MdbGreenplumClusterBackupWindowStartPtrInput
 	// Creation timestamp of the cluster.
 	CreatedAt pulumi.StringPtrInput
 	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
@@ -255,8 +267,12 @@ func (MdbGreenplumClusterState) ElementType() reflect.Type {
 }
 
 type mdbGreenplumClusterArgs struct {
+	// Access policy to the Greenplum cluster. The structure is documented below.
+	Access *MdbGreenplumClusterAccess `pulumi:"access"`
 	// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
 	AssignPublicIp bool `pulumi:"assignPublicIp"`
+	// Time to start the daily backup, in the UTC timezone. The structure is documented below.
+	BackupWindowStart *MdbGreenplumClusterBackupWindowStart `pulumi:"backupWindowStart"`
 	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the Greenplum cluster.
@@ -298,8 +314,12 @@ type mdbGreenplumClusterArgs struct {
 
 // The set of arguments for constructing a MdbGreenplumCluster resource.
 type MdbGreenplumClusterArgs struct {
+	// Access policy to the Greenplum cluster. The structure is documented below.
+	Access MdbGreenplumClusterAccessPtrInput
 	// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
 	AssignPublicIp pulumi.BoolInput
+	// Time to start the daily backup, in the UTC timezone. The structure is documented below.
+	BackupWindowStart MdbGreenplumClusterBackupWindowStartPtrInput
 	// Inhibits deletion of the cluster.  Can be either `true` or `false`.
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the Greenplum cluster.

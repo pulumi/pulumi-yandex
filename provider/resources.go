@@ -113,6 +113,7 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_iot_core_registry":                     {Tok: makeResource(mainMod, "IotCoreRegistry")},
 			"yandex_kms_secret_ciphertext":                 {Tok: makeResource(mainMod, "KmsSecretCiphertext")},
 			"yandex_kms_symmetric_key":                     {Tok: makeResource(mainMod, "KmsSymmetricKey")},
+			"yandex_kms_symmetric_key_iam_binding":         {Tok: makeResource(mainMod, "KmsSymmetricKeyIamBinding")},
 			"yandex_kubernetes_cluster":                    {Tok: makeResource(mainMod, "KubernetesCluster")},
 			"yandex_kubernetes_node_group":                 {Tok: makeResource(mainMod, "KubernetesNodeGroup")},
 			"yandex_lb_network_load_balancer":              {Tok: makeResource(mainMod, "LbNetworkLoadBalancer")},
@@ -120,6 +121,7 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_logging_group":                         {Tok: makeResource(mainMod, "LoggingGroup")},
 			"yandex_mdb_clickhouse_cluster":                {Tok: makeResource(mainMod, "MdbClickhouseCluster")},
 			"yandex_mdb_kafka_cluster":                     {Tok: makeResource(mainMod, "MdbKafkaCluster")},
+			"yandex_mdb_kafka_topic":                       {Tok: makeResource(mainMod, "MdbKafkaTopic")},
 			"yandex_mdb_mongodb_cluster":                   {Tok: makeResource(mainMod, "MdbMongodbCluster")},
 			"yandex_mdb_mysql_cluster":                     {Tok: makeResource(mainMod, "MdbMysqlCluster")},
 			"yandex_mdb_elasticsearch_cluster":             {Tok: makeResource(mainMod, "MdbElasticSearchCluster")},
@@ -343,6 +345,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_mdb_kafka_cluster.html.markdown",
 				},
 			},
+			"yandex_mdb_kafka_topic": {Tok: makeDataSource(mainMod, "getMdbKafkaTopic")},
 			"yandex_mdb_mongodb_cluster": {
 				Tok: makeDataSource(mainMod, "getMdbMongodbCluster"),
 				Docs: &tfbridge.DocInfo{

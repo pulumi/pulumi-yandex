@@ -31,6 +31,12 @@ namespace Pulumi.Yandex.Inputs
         public Inputs.GetMdbKafkaClusterConfigKafkaArgs Kafka { get; set; } = null!;
 
         /// <summary>
+        /// (Optional) Enables managed schema registry on cluster. Can be either `true` or `false`.
+        /// </summary>
+        [Input("schemaRegistry")]
+        public bool? SchemaRegistry { get; set; }
+
+        /// <summary>
         /// (Optional) Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
         /// </summary>
         [Input("unmanagedTopics")]
@@ -57,8 +63,8 @@ namespace Pulumi.Yandex.Inputs
         /// <summary>
         /// (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
         /// </summary>
-        [Input("zookeeper")]
-        public Inputs.GetMdbKafkaClusterConfigZookeeperArgs? Zookeeper { get; set; }
+        [Input("zookeeper", required: true)]
+        public Inputs.GetMdbKafkaClusterConfigZookeeperArgs Zookeeper { get; set; } = null!;
 
         public GetMdbKafkaClusterConfigArgs()
         {

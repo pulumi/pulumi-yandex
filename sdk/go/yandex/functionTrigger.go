@@ -69,6 +69,14 @@ type FunctionTrigger struct {
 	// A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
 	Labels   pulumi.StringMapOutput           `pulumi:"labels"`
 	LogGroup FunctionTriggerLogGroupPtrOutput `pulumi:"logGroup"`
+	// [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+	// * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+	Logging FunctionTriggerLoggingPtrOutput `pulumi:"logging"`
 	// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
 	// * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -148,6 +156,14 @@ type functionTriggerState struct {
 	// A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
 	Labels   map[string]string        `pulumi:"labels"`
 	LogGroup *FunctionTriggerLogGroup `pulumi:"logGroup"`
+	// [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+	// * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+	Logging *FunctionTriggerLogging `pulumi:"logging"`
 	// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
 	// * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -196,6 +212,14 @@ type FunctionTriggerState struct {
 	// A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
 	Labels   pulumi.StringMapInput
 	LogGroup FunctionTriggerLogGroupPtrInput
+	// [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+	// * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+	Logging FunctionTriggerLoggingPtrInput
 	// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
 	// * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -246,6 +270,14 @@ type functionTriggerArgs struct {
 	// A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
 	Labels   map[string]string        `pulumi:"labels"`
 	LogGroup *FunctionTriggerLogGroup `pulumi:"logGroup"`
+	// [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+	// * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+	Logging *FunctionTriggerLogging `pulumi:"logging"`
 	// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
 	// * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -293,6 +325,14 @@ type FunctionTriggerArgs struct {
 	// A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
 	Labels   pulumi.StringMapInput
 	LogGroup FunctionTriggerLogGroupPtrInput
+	// [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+	// * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+	// * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+	Logging FunctionTriggerLoggingPtrInput
 	// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
 	// * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger

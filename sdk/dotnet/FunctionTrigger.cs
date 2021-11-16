@@ -98,6 +98,18 @@ namespace Pulumi.Yandex
         public Output<Outputs.FunctionTriggerLogGroup?> LogGroup { get; private set; } = null!;
 
         /// <summary>
+        /// [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+        /// * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+        /// * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+        /// * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+        /// * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+        /// * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+        /// * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+        /// </summary>
+        [Output("logging")]
+        public Output<Outputs.FunctionTriggerLogging?> Logging { get; private set; } = null!;
+
+        /// <summary>
         /// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
         /// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
         /// * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -235,6 +247,18 @@ namespace Pulumi.Yandex
         public Input<Inputs.FunctionTriggerLogGroupArgs>? LogGroup { get; set; }
 
         /// <summary>
+        /// [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+        /// * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+        /// * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+        /// * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+        /// * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+        /// * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+        /// * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.FunctionTriggerLoggingArgs>? Logging { get; set; }
+
+        /// <summary>
         /// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
         /// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
         /// * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -337,6 +361,18 @@ namespace Pulumi.Yandex
 
         [Input("logGroup")]
         public Input<Inputs.FunctionTriggerLogGroupGetArgs>? LogGroup { get; set; }
+
+        /// <summary>
+        /// [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+        /// * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+        /// * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+        /// * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+        /// * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+        /// * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+        /// * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.FunctionTriggerLoggingGetArgs>? Logging { get; set; }
 
         /// <summary>
         /// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present

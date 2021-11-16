@@ -29,10 +29,22 @@ namespace Pulumi.Yandex
     public partial class MdbGreenplumCluster : Pulumi.CustomResource
     {
         /// <summary>
+        /// Access policy to the Greenplum cluster. The structure is documented below.
+        /// </summary>
+        [Output("access")]
+        public Output<Outputs.MdbGreenplumClusterAccess> Access { get; private set; } = null!;
+
+        /// <summary>
         /// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
         /// </summary>
         [Output("assignPublicIp")]
         public Output<bool> AssignPublicIp { get; private set; } = null!;
+
+        /// <summary>
+        /// Time to start the daily backup, in the UTC timezone. The structure is documented below.
+        /// </summary>
+        [Output("backupWindowStart")]
+        public Output<Outputs.MdbGreenplumClusterBackupWindowStart> BackupWindowStart { get; private set; } = null!;
 
         /// <summary>
         /// Creation timestamp of the cluster.
@@ -220,10 +232,22 @@ namespace Pulumi.Yandex
     public sealed class MdbGreenplumClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Access policy to the Greenplum cluster. The structure is documented below.
+        /// </summary>
+        [Input("access")]
+        public Input<Inputs.MdbGreenplumClusterAccessArgs>? Access { get; set; }
+
+        /// <summary>
         /// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
         /// </summary>
         [Input("assignPublicIp", required: true)]
         public Input<bool> AssignPublicIp { get; set; } = null!;
+
+        /// <summary>
+        /// Time to start the daily backup, in the UTC timezone. The structure is documented below.
+        /// </summary>
+        [Input("backupWindowStart")]
+        public Input<Inputs.MdbGreenplumClusterBackupWindowStartArgs>? BackupWindowStart { get; set; }
 
         /// <summary>
         /// Inhibits deletion of the cluster.  Can be either `true` or `false`.
@@ -354,10 +378,22 @@ namespace Pulumi.Yandex
     public sealed class MdbGreenplumClusterState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Access policy to the Greenplum cluster. The structure is documented below.
+        /// </summary>
+        [Input("access")]
+        public Input<Inputs.MdbGreenplumClusterAccessGetArgs>? Access { get; set; }
+
+        /// <summary>
         /// Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
         /// </summary>
         [Input("assignPublicIp")]
         public Input<bool>? AssignPublicIp { get; set; }
+
+        /// <summary>
+        /// Time to start the daily backup, in the UTC timezone. The structure is documented below.
+        /// </summary>
+        [Input("backupWindowStart")]
+        public Input<Inputs.MdbGreenplumClusterBackupWindowStartGetArgs>? BackupWindowStart { get; set; }
 
         /// <summary>
         /// Creation timestamp of the cluster.

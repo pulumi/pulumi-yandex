@@ -1797,6 +1797,15 @@ export interface FunctionTriggerLogGroup {
     logGroupIds: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface FunctionTriggerLogging {
+    batchCutoff: pulumi.Input<string>;
+    batchSize?: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
+    levels: pulumi.Input<pulumi.Input<string>[]>;
+    resourceIds: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface FunctionTriggerMessageQueue {
     batchCutoff: pulumi.Input<string>;
     batchSize?: pulumi.Input<string>;
@@ -1816,37 +1825,6 @@ export interface FunctionTriggerObjectStorage {
 
 export interface FunctionTriggerTimer {
     cronExpression: pulumi.Input<string>;
-}
-
-export interface GetAlbBackendGroupGrpcBackend {
-    /**
-     * Healthcheck specification that will be used by this backend. Structure is documented below.
-     */
-    healthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheck;
-    /**
-     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
-     */
-    loadBalancingConfig?: inputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfig;
-    /**
-     * - Name of the Backend Group.
-     */
-    name?: string;
-    /**
-     * Port for incoming traffic.
-     */
-    port?: number;
-    /**
-     * References target groups for the backend.
-     */
-    targetGroupIds?: string[];
-    /**
-     * Tls specification that will be used by this backend. Structure is documented below.
-     */
-    tls?: inputs.GetAlbBackendGroupGrpcBackendTls;
-    /**
-     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
-     */
-    weight?: number;
 }
 
 export interface GetAlbBackendGroupGrpcBackendArgs {
@@ -1880,43 +1858,35 @@ export interface GetAlbBackendGroupGrpcBackendArgs {
     weight?: pulumi.Input<number>;
 }
 
-export interface GetAlbBackendGroupGrpcBackendHealthcheckArgs {
+export interface GetAlbBackendGroupGrpcBackend {
     /**
-     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
      */
-    grpcHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs>;
+    healthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheck;
     /**
-     * Optional alternative port for health checking.
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
      */
-    healthcheckPort?: pulumi.Input<number>;
+    loadBalancingConfig?: inputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfig;
     /**
-     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     * - Name of the Backend Group.
      */
-    healthyThreshold?: pulumi.Input<number>;
+    name?: string;
     /**
-     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     * Port for incoming traffic.
      */
-    httpHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs>;
+    port?: number;
     /**
-     * Interval between health checks.
+     * References target groups for the backend.
      */
-    interval?: pulumi.Input<string>;
+    targetGroupIds?: string[];
     /**
-     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     * Tls specification that will be used by this backend. Structure is documented below.
      */
-    intervalJitterPercent?: pulumi.Input<number>;
+    tls?: inputs.GetAlbBackendGroupGrpcBackendTls;
     /**
-     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
      */
-    streamHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs>;
-    /**
-     * Time to wait for a health check response.
-     */
-    timeout?: pulumi.Input<string>;
-    /**
-     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
-     */
-    unhealthyThreshold?: pulumi.Input<number>;
+    weight?: number;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheck {
@@ -1956,6 +1926,45 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheck {
      * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
      */
     unhealthyThreshold?: number;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckArgs {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    grpcHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs>;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: pulumi.Input<number>;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: pulumi.Input<number>;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs>;
+    /**
+     * Interval between health checks.
+     */
+    interval?: pulumi.Input<string>;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: pulumi.Input<number>;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs>;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout?: pulumi.Input<string>;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: pulumi.Input<number>;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
@@ -2024,21 +2033,6 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
     send?: string;
 }
 
-export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
-    /**
-     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
-     */
-    localityAwareRoutingPercent?: number;
-    /**
-     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
-     */
-    panicThreshold?: number;
-    /**
-     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
-     */
-    strictLocality?: boolean;
-}
-
 export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs {
     /**
      * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
@@ -2052,6 +2046,21 @@ export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs {
      * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
      */
     strictLocality?: pulumi.Input<boolean>;
+}
+
+export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: boolean;
 }
 
 export interface GetAlbBackendGroupGrpcBackendTls {
@@ -2074,14 +2083,14 @@ export interface GetAlbBackendGroupGrpcBackendTlsArgs {
     validationContext?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendTlsValidationContextArgs>;
 }
 
-export interface GetAlbBackendGroupGrpcBackendTlsValidationContext {
-    trustedCaBytes?: string;
-    trustedCaId?: string;
-}
-
 export interface GetAlbBackendGroupGrpcBackendTlsValidationContextArgs {
     trustedCaBytes?: pulumi.Input<string>;
     trustedCaId?: pulumi.Input<string>;
+}
+
+export interface GetAlbBackendGroupGrpcBackendTlsValidationContext {
+    trustedCaBytes?: string;
+    trustedCaId?: string;
 }
 
 export interface GetAlbBackendGroupHttpBackend {
@@ -2366,12 +2375,12 @@ export interface GetComputeDiskDiskPlacementPolicy {
     diskPlacementGroupId: string;
 }
 
-export interface GetComputeInstancePlacementPolicyArgs {
-    placementGroupId: pulumi.Input<string>;
-}
-
 export interface GetComputeInstancePlacementPolicy {
     placementGroupId: string;
+}
+
+export interface GetComputeInstancePlacementPolicyArgs {
+    placementGroupId: pulumi.Input<string>;
 }
 
 export interface GetComputeInstanceSchedulingPolicyArgs {
@@ -2444,37 +2453,6 @@ export interface GetMdbClickhouseClusterCloudStorage {
     enabled: boolean;
 }
 
-export interface GetMdbKafkaClusterConfigArgs {
-    /**
-     * The flag that defines whether a public IP address is assigned to the node.
-     */
-    assignPublicIp?: pulumi.Input<boolean>;
-    /**
-     * (Optional) Count of brokers per availability zone.
-     */
-    brokersCount?: pulumi.Input<number>;
-    /**
-     * (Optional) Configuration of the Kafka subcluster. The structure is documented below.
-     */
-    kafka: pulumi.Input<inputs.GetMdbKafkaClusterConfigKafkaArgs>;
-    /**
-     * (Optional) Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
-     */
-    unmanagedTopics?: pulumi.Input<boolean>;
-    /**
-     * (Required) Version of the Kafka server software.
-     */
-    version: pulumi.Input<string>;
-    /**
-     * (Optional) List of availability zones.
-     */
-    zones: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
-     */
-    zookeeper?: pulumi.Input<inputs.GetMdbKafkaClusterConfigZookeeperArgs>;
-}
-
 export interface GetMdbKafkaClusterConfig {
     /**
      * The flag that defines whether a public IP address is assigned to the node.
@@ -2488,6 +2466,10 @@ export interface GetMdbKafkaClusterConfig {
      * (Optional) Configuration of the Kafka subcluster. The structure is documented below.
      */
     kafka: inputs.GetMdbKafkaClusterConfigKafka;
+    /**
+     * (Optional) Enables managed schema registry on cluster. Can be either `true` or `false`.
+     */
+    schemaRegistry?: boolean;
     /**
      * (Optional) Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
      */
@@ -2504,6 +2486,41 @@ export interface GetMdbKafkaClusterConfig {
      * (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
      */
     zookeeper?: inputs.GetMdbKafkaClusterConfigZookeeper;
+}
+
+export interface GetMdbKafkaClusterConfigArgs {
+    /**
+     * The flag that defines whether a public IP address is assigned to the node.
+     */
+    assignPublicIp?: pulumi.Input<boolean>;
+    /**
+     * (Optional) Count of brokers per availability zone.
+     */
+    brokersCount?: pulumi.Input<number>;
+    /**
+     * (Optional) Configuration of the Kafka subcluster. The structure is documented below.
+     */
+    kafka: pulumi.Input<inputs.GetMdbKafkaClusterConfigKafkaArgs>;
+    /**
+     * (Optional) Enables managed schema registry on cluster. Can be either `true` or `false`.
+     */
+    schemaRegistry?: pulumi.Input<boolean>;
+    /**
+     * (Optional) Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
+     */
+    unmanagedTopics?: pulumi.Input<boolean>;
+    /**
+     * (Required) Version of the Kafka server software.
+     */
+    version: pulumi.Input<string>;
+    /**
+     * (Optional) List of availability zones.
+     */
+    zones: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
+     */
+    zookeeper?: pulumi.Input<inputs.GetMdbKafkaClusterConfigZookeeperArgs>;
 }
 
 export interface GetMdbKafkaClusterConfigKafka {
@@ -2594,43 +2611,47 @@ export interface GetMdbKafkaClusterConfigZookeeperArgs {
     /**
      * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
      */
-    resources: pulumi.Input<inputs.GetMdbKafkaClusterConfigZookeeperResourcesArgs>;
+    resources?: pulumi.Input<inputs.GetMdbKafkaClusterConfigZookeeperResourcesArgs>;
 }
 
 export interface GetMdbKafkaClusterConfigZookeeper {
     /**
      * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
      */
-    resources: inputs.GetMdbKafkaClusterConfigZookeeperResources;
+    resources?: inputs.GetMdbKafkaClusterConfigZookeeperResources;
 }
 
 export interface GetMdbKafkaClusterConfigZookeeperResources {
     /**
      * (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
      */
-    diskSize: number;
+    diskSize?: number;
     /**
      * (Optional) Type of the storage of ZooKeeper hosts.
      * For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
      */
-    diskTypeId: string;
-    resourcePresetId: string;
+    diskTypeId?: string;
+    resourcePresetId?: string;
 }
 
 export interface GetMdbKafkaClusterConfigZookeeperResourcesArgs {
     /**
      * (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
      */
-    diskSize: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number>;
     /**
      * (Optional) Type of the storage of ZooKeeper hosts.
      * For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
      */
-    diskTypeId: pulumi.Input<string>;
-    resourcePresetId: pulumi.Input<string>;
+    diskTypeId?: pulumi.Input<string>;
+    resourcePresetId?: pulumi.Input<string>;
 }
 
 export interface GetMdbKafkaClusterTopicArgs {
+    /**
+     * The ID of the Kafka cluster.
+     */
+    clusterId: pulumi.Input<string>;
     /**
      * The name of the Kafka cluster.
      */
@@ -2650,6 +2671,10 @@ export interface GetMdbKafkaClusterTopicArgs {
 }
 
 export interface GetMdbKafkaClusterTopic {
+    /**
+     * The ID of the Kafka cluster.
+     */
+    clusterId: string;
     /**
      * The name of the Kafka cluster.
      */
@@ -2979,6 +3004,9 @@ export interface KubernetesNodeGroupInstanceTemplate {
      * An array with the network interfaces that will be attached to the instance. The structure is documented below.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplateNetworkInterface>[]>;
+    /**
+     * The placement policy configuration. The structure is documented below.
+     */
     placementPolicy?: pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplatePlacementPolicy>;
     /**
      * The ID of the hardware platform configuration for the node group compute instances.
@@ -3026,6 +3054,9 @@ export interface KubernetesNodeGroupInstanceTemplateNetworkInterface {
 }
 
 export interface KubernetesNodeGroupInstanceTemplatePlacementPolicy {
+    /**
+     * Specifies the id of the Placement Group to assign to the instances.
+     */
     placementGroupId: pulumi.Input<string>;
 }
 
@@ -3039,6 +3070,7 @@ export interface KubernetesNodeGroupInstanceTemplateResources {
 export interface KubernetesNodeGroupInstanceTemplateSchedulingPolicy {
     /**
      * Specifies if the instance is preemptible. Defaults to false.
+     * ---
      */
     preemptible?: pulumi.Input<boolean>;
 }
@@ -4147,6 +4179,28 @@ export interface MdbElasticSearchClusterHost {
     zone: pulumi.Input<string>;
 }
 
+export interface MdbGreenplumClusterAccess {
+    /**
+     * Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
+     */
+    dataLens?: pulumi.Input<boolean>;
+    /**
+     * Allows access for SQL queries in the management console
+     */
+    webSql?: pulumi.Input<boolean>;
+}
+
+export interface MdbGreenplumClusterBackupWindowStart {
+    /**
+     * The hour at which backup will be started (UTC).
+     */
+    hours?: pulumi.Input<number>;
+    /**
+     * The minute at which backup will be started (UTC).
+     */
+    minutes?: pulumi.Input<number>;
+}
+
 export interface MdbGreenplumClusterMasterHost {
     /**
      * Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
@@ -4193,11 +4247,11 @@ export interface MdbGreenplumClusterSegmentSubclusterResources {
 
 export interface MdbKafkaClusterConfig {
     /**
-     * Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+     * Determines whether each broker will be assigned a public IP address. The default is `false`.
      */
     assignPublicIp?: pulumi.Input<boolean>;
     /**
-     * Count of brokers per availability zone.
+     * Count of brokers per availability zone. The default is `1`.
      */
     brokersCount?: pulumi.Input<number>;
     /**
@@ -4205,7 +4259,11 @@ export interface MdbKafkaClusterConfig {
      */
     kafka: pulumi.Input<inputs.MdbKafkaClusterConfigKafka>;
     /**
-     * Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
+     * Enables managed schema registry on cluster. The default is `false`.
+     */
+    schemaRegistry?: pulumi.Input<boolean>;
+    /**
+     * Allows to use Kafka AdminAPI to manage topics. The default is `false`.
      */
     unmanagedTopics?: pulumi.Input<boolean>;
     /**
@@ -4268,25 +4326,25 @@ export interface MdbKafkaClusterConfigZookeeper {
     /**
      * Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
      */
-    resources: pulumi.Input<inputs.MdbKafkaClusterConfigZookeeperResources>;
+    resources?: pulumi.Input<inputs.MdbKafkaClusterConfigZookeeperResources>;
 }
 
 export interface MdbKafkaClusterConfigZookeeperResources {
     /**
      * Volume of the storage available to a ZooKeeper host, in gigabytes.
      */
-    diskSize: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number>;
     /**
      * Type of the storage of ZooKeeper hosts.
      * For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
      */
-    diskTypeId: pulumi.Input<string>;
-    resourcePresetId: pulumi.Input<string>;
+    diskTypeId?: pulumi.Input<string>;
+    resourcePresetId?: pulumi.Input<string>;
 }
 
 export interface MdbKafkaClusterHost {
     /**
-     * Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+     * Determines whether each broker will be assigned a public IP address. The default is `false`.
      */
     assignPublicIp?: pulumi.Input<boolean>;
     /**
@@ -4372,6 +4430,22 @@ export interface MdbKafkaClusterUserPermission {
     topicName: pulumi.Input<string>;
 }
 
+export interface MdbKafkaTopicTopicConfig {
+    cleanupPolicy?: pulumi.Input<string>;
+    compressionType?: pulumi.Input<string>;
+    deleteRetentionMs?: pulumi.Input<string>;
+    fileDeleteDelayMs?: pulumi.Input<string>;
+    flushMessages?: pulumi.Input<string>;
+    flushMs?: pulumi.Input<string>;
+    maxMessageBytes?: pulumi.Input<string>;
+    minCompactionLagMs?: pulumi.Input<string>;
+    minInsyncReplicas?: pulumi.Input<string>;
+    preallocate?: pulumi.Input<boolean>;
+    retentionBytes?: pulumi.Input<string>;
+    retentionMs?: pulumi.Input<string>;
+    segmentBytes?: pulumi.Input<string>;
+}
+
 export interface MdbMongodbClusterClusterConfig {
     /**
      * Shows whether cluster has access to data lens. The structure is documented below.
@@ -4382,11 +4456,11 @@ export interface MdbMongodbClusterClusterConfig {
      */
     backupWindowStart?: pulumi.Input<inputs.MdbMongodbClusterClusterConfigBackupWindowStart>;
     /**
-     * Feature compatibility version of MongoDB. If not provided version is taken. Can be either `4.4`, `4.2`, `4.0` and `3.6`.
+     * Feature compatibility version of MongoDB. If not provided version is taken. Can be either `5.0`, `4.4`, `4.2` and `4.0`.
      */
     featureCompatibilityVersion?: pulumi.Input<string>;
     /**
-     * Version of MongoDB (either 4.4, 4.2, 4.0 or 3.6).
+     * Version of MongoDB (either 5.0, 4.4, 4.2 or 4.0).
      */
     version: pulumi.Input<string>;
 }
@@ -4528,20 +4602,32 @@ export interface MdbMysqlClusterBackupWindowStart {
 
 export interface MdbMysqlClusterDatabase {
     /**
-     * The name of the database.
+     * Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
      */
     name: pulumi.Input<string>;
 }
 
 export interface MdbMysqlClusterHost {
     /**
-     * Sets whether the host should get a public IP address on creation. When changing the `assignPublicIp` attribute and `allowRegenerationHost` is true, the old host is deleted and a new host is created. Changing this parameter for an existing host is not supported at the moment.
+     * Sets whether the host should get a public IP address. It can be changed on the fly only when `name` is set.
      */
     assignPublicIp?: pulumi.Input<boolean>;
     /**
      * The fully qualified domain name of the host.
      */
     fqdn?: pulumi.Input<string>;
+    /**
+     * Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Host replication source (fqdn), when replicationSource is empty then host is in HA group.
+     */
+    replicationSource?: pulumi.Input<string>;
+    /**
+     * Host replication source name points to host's `name` from which this host should replicate. When not set then host in HA group. It works only when `name` is set.
+     */
+    replicationSourceName?: pulumi.Input<string>;
     /**
      * The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
      */
@@ -4607,7 +4693,7 @@ export interface MdbMysqlClusterUser {
      */
     globalPermissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the database.
+     * Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
      */
     name: pulumi.Input<string>;
     /**

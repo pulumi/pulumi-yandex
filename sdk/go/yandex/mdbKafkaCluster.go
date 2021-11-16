@@ -67,6 +67,7 @@ import (
 // 						ResourcePresetId: pulumi.String("s2.micro"),
 // 					},
 // 				},
+// 				SchemaRegistry:  pulumi.Bool(false),
 // 				UnmanagedTopics: pulumi.Bool(false),
 // 				Version:         pulumi.String("2.6"),
 // 				Zones: pulumi.StringArray{
@@ -77,38 +78,6 @@ import (
 // 			NetworkId:   fooVpcNetwork.ID(),
 // 			SubnetIds: pulumi.StringArray{
 // 				fooVpcSubnet.ID(),
-// 			},
-// 			Topics: MdbKafkaClusterTopicArray{
-// 				&MdbKafkaClusterTopicArgs{
-// 					Name:              pulumi.String("input"),
-// 					Partitions:        pulumi.Int(2),
-// 					ReplicationFactor: pulumi.Int(1),
-// 					TopicConfig: &MdbKafkaClusterTopicTopicConfigArgs{
-// 						CompressionType:    pulumi.String("COMPRESSION_TYPE_LZ4"),
-// 						DeleteRetentionMs:  pulumi.String("86400000"),
-// 						FileDeleteDelayMs:  pulumi.String("60000"),
-// 						FlushMessages:      pulumi.String("128"),
-// 						FlushMs:            pulumi.String("1000"),
-// 						MaxMessageBytes:    pulumi.String("1048588"),
-// 						MinCompactionLagMs: pulumi.String("0"),
-// 						MinInsyncReplicas:  pulumi.String("1"),
-// 						Preallocate:        pulumi.Bool(true),
-// 						RetentionBytes:     pulumi.String("10737418240"),
-// 						RetentionMs:        pulumi.String("604800000"),
-// 						SegmentBytes:       pulumi.String("268435456"),
-// 					},
-// 				},
-// 				&MdbKafkaClusterTopicArgs{
-// 					Name:              pulumi.String("output"),
-// 					Partitions:        pulumi.Int(6),
-// 					ReplicationFactor: pulumi.Int(1),
-// 					TopicConfig: &MdbKafkaClusterTopicTopicConfigArgs{
-// 						CompressionType: pulumi.String("COMPRESSION_TYPE_GZIP"),
-// 						MaxMessageBytes: pulumi.String("1048588"),
-// 						Preallocate:     pulumi.Bool(false),
-// 						SegmentBytes:    pulumi.String("536870912"),
-// 					},
-// 				},
 // 			},
 // 			Users: MdbKafkaClusterUserArray{
 // 				&MdbKafkaClusterUserArgs{
@@ -216,6 +185,7 @@ import (
 // 						ResourcePresetId: pulumi.String("s2.medium"),
 // 					},
 // 				},
+// 				SchemaRegistry:  pulumi.Bool(false),
 // 				UnmanagedTopics: pulumi.Bool(false),
 // 				Version:         pulumi.String("2.6"),
 // 				Zones: pulumi.StringArray{
@@ -237,38 +207,6 @@ import (
 // 				fooVpcSubnet.ID(),
 // 				bar.ID(),
 // 				baz.ID(),
-// 			},
-// 			Topics: MdbKafkaClusterTopicArray{
-// 				&MdbKafkaClusterTopicArgs{
-// 					Name:              pulumi.String("input"),
-// 					Partitions:        pulumi.Int(2),
-// 					ReplicationFactor: pulumi.Int(1),
-// 					TopicConfig: &MdbKafkaClusterTopicTopicConfigArgs{
-// 						CompressionType:    pulumi.String("COMPRESSION_TYPE_LZ4"),
-// 						DeleteRetentionMs:  pulumi.String("86400000"),
-// 						FileDeleteDelayMs:  pulumi.String("60000"),
-// 						FlushMessages:      pulumi.String("128"),
-// 						FlushMs:            pulumi.String("1000"),
-// 						MaxMessageBytes:    pulumi.String("1048588"),
-// 						MinCompactionLagMs: pulumi.String("0"),
-// 						MinInsyncReplicas:  pulumi.String("1"),
-// 						Preallocate:        pulumi.Bool(true),
-// 						RetentionBytes:     pulumi.String("10737418240"),
-// 						RetentionMs:        pulumi.String("604800000"),
-// 						SegmentBytes:       pulumi.String("268435456"),
-// 					},
-// 				},
-// 				&MdbKafkaClusterTopicArgs{
-// 					Name:              pulumi.String("output"),
-// 					Partitions:        pulumi.Int(6),
-// 					ReplicationFactor: pulumi.Int(1),
-// 					TopicConfig: &MdbKafkaClusterTopicTopicConfigArgs{
-// 						CompressionType: pulumi.String("COMPRESSION_TYPE_GZIP"),
-// 						MaxMessageBytes: pulumi.String("1048588"),
-// 						Preallocate:     pulumi.Bool(false),
-// 						SegmentBytes:    pulumi.String("536870912"),
-// 					},
-// 				},
 // 			},
 // 			Users: MdbKafkaClusterUserArray{
 // 				&MdbKafkaClusterUserArgs{
@@ -324,6 +262,7 @@ type MdbKafkaCluster struct {
 	// Description of the Kafka cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+	// The default is `PRODUCTION`.
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
@@ -346,7 +285,9 @@ type MdbKafkaCluster struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// IDs of the subnets, to which the Kafka cluster belongs.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
-	// A topic of the Kafka cluster. The structure is documented below.
+	// To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
+	//
+	// Deprecated: to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic
 	Topics MdbKafkaClusterTopicArrayOutput `pulumi:"topics"`
 	// A user of the Kafka cluster. The structure is documented below.
 	Users MdbKafkaClusterUserArrayOutput `pulumi:"users"`
@@ -396,6 +337,7 @@ type mdbKafkaClusterState struct {
 	// Description of the Kafka cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+	// The default is `PRODUCTION`.
 	Environment *string `pulumi:"environment"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
@@ -418,7 +360,9 @@ type mdbKafkaClusterState struct {
 	Status *string `pulumi:"status"`
 	// IDs of the subnets, to which the Kafka cluster belongs.
 	SubnetIds []string `pulumi:"subnetIds"`
-	// A topic of the Kafka cluster. The structure is documented below.
+	// To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
+	//
+	// Deprecated: to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic
 	Topics []MdbKafkaClusterTopic `pulumi:"topics"`
 	// A user of the Kafka cluster. The structure is documented below.
 	Users []MdbKafkaClusterUser `pulumi:"users"`
@@ -434,6 +378,7 @@ type MdbKafkaClusterState struct {
 	// Description of the Kafka cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+	// The default is `PRODUCTION`.
 	Environment pulumi.StringPtrInput
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId pulumi.StringPtrInput
@@ -456,7 +401,9 @@ type MdbKafkaClusterState struct {
 	Status pulumi.StringPtrInput
 	// IDs of the subnets, to which the Kafka cluster belongs.
 	SubnetIds pulumi.StringArrayInput
-	// A topic of the Kafka cluster. The structure is documented below.
+	// To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
+	//
+	// Deprecated: to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic
 	Topics MdbKafkaClusterTopicArrayInput
 	// A user of the Kafka cluster. The structure is documented below.
 	Users MdbKafkaClusterUserArrayInput
@@ -474,6 +421,7 @@ type mdbKafkaClusterArgs struct {
 	// Description of the Kafka cluster.
 	Description *string `pulumi:"description"`
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+	// The default is `PRODUCTION`.
 	Environment *string `pulumi:"environment"`
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
@@ -489,7 +437,9 @@ type mdbKafkaClusterArgs struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// IDs of the subnets, to which the Kafka cluster belongs.
 	SubnetIds []string `pulumi:"subnetIds"`
-	// A topic of the Kafka cluster. The structure is documented below.
+	// To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
+	//
+	// Deprecated: to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic
 	Topics []MdbKafkaClusterTopic `pulumi:"topics"`
 	// A user of the Kafka cluster. The structure is documented below.
 	Users []MdbKafkaClusterUser `pulumi:"users"`
@@ -504,6 +454,7 @@ type MdbKafkaClusterArgs struct {
 	// Description of the Kafka cluster.
 	Description pulumi.StringPtrInput
 	// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+	// The default is `PRODUCTION`.
 	Environment pulumi.StringPtrInput
 	// The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
 	FolderId pulumi.StringPtrInput
@@ -519,7 +470,9 @@ type MdbKafkaClusterArgs struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// IDs of the subnets, to which the Kafka cluster belongs.
 	SubnetIds pulumi.StringArrayInput
-	// A topic of the Kafka cluster. The structure is documented below.
+	// To manage topics, please switch to using a separate resource type `MdbKafkaTopic`.
+	//
+	// Deprecated: to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic
 	Topics MdbKafkaClusterTopicArrayInput
 	// A user of the Kafka cluster. The structure is documented below.
 	Users MdbKafkaClusterUserArrayInput

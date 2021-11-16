@@ -34,7 +34,9 @@ export interface GetMdbGreenplumClusterArgs {
  * A collection of values returned by getMdbGreenplumCluster.
  */
 export interface GetMdbGreenplumClusterResult {
+    readonly accesses: outputs.GetMdbGreenplumClusterAccess[];
     readonly assignPublicIp: boolean;
+    readonly backupWindowStarts: outputs.GetMdbGreenplumClusterBackupWindowStart[];
     readonly clusterId: string;
     readonly createdAt: string;
     readonly deletionProtection: boolean;

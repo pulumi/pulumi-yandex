@@ -15,18 +15,18 @@ namespace Pulumi.Yandex.Inputs
         /// <summary>
         /// Volume of the storage available to a ZooKeeper host, in gigabytes.
         /// </summary>
-        [Input("diskSize", required: true)]
-        public Input<int> DiskSize { get; set; } = null!;
+        [Input("diskSize")]
+        public Input<int>? DiskSize { get; set; }
 
         /// <summary>
         /// Type of the storage of ZooKeeper hosts.
         /// For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
         /// </summary>
-        [Input("diskTypeId", required: true)]
-        public Input<string> DiskTypeId { get; set; } = null!;
+        [Input("diskTypeId")]
+        public Input<string>? DiskTypeId { get; set; }
 
-        [Input("resourcePresetId", required: true)]
-        public Input<string> ResourcePresetId { get; set; } = null!;
+        [Input("resourcePresetId")]
+        public Input<string>? ResourcePresetId { get; set; }
 
         public MdbKafkaClusterConfigZookeeperResourcesArgs()
         {

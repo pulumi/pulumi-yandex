@@ -44,7 +44,6 @@ class MdbMysqlClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MdbMysqlClusterUserArgs']]] users: A user of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[str] version: Version of the MySQL cluster. (allowed versions are: 5.7, 8.0)
         :param pulumi.Input['MdbMysqlClusterAccessArgs'] access: Access policy to the MySQL cluster. The structure is documented below.
-        :param pulumi.Input[bool] allow_regeneration_host: Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
         :param pulumi.Input['MdbMysqlClusterBackupWindowStartArgs'] backup_window_start: Time to start the daily backup, in the UTC. The structure is documented below.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the MySQL cluster.
@@ -53,7 +52,7 @@ class MdbMysqlClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the MySQL cluster.
         :param pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs'] maintenance_window: Maintenance policy of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] mysql_config: MySQL cluster config. Detail info in "MySQL config" section (documented below).
-        :param pulumi.Input[str] name: The name of the database.
+        :param pulumi.Input[str] name: Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         :param pulumi.Input['MdbMysqlClusterRestoreArgs'] restore: The cluster will be created from the specified backup. The structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A set of ids of security groups assigned to hosts of the cluster.
         """
@@ -66,6 +65,9 @@ class MdbMysqlClusterArgs:
         pulumi.set(__self__, "version", version)
         if access is not None:
             pulumi.set(__self__, "access", access)
+        if allow_regeneration_host is not None:
+            warnings.warn("""You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.""", DeprecationWarning)
+            pulumi.log.warn("""allow_regeneration_host is deprecated: You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.""")
         if allow_regeneration_host is not None:
             pulumi.set(__self__, "allow_regeneration_host", allow_regeneration_host)
         if backup_window_start is not None:
@@ -188,9 +190,6 @@ class MdbMysqlClusterArgs:
     @property
     @pulumi.getter(name="allowRegenerationHost")
     def allow_regeneration_host(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
-        """
         return pulumi.get(self, "allow_regeneration_host")
 
     @allow_regeneration_host.setter
@@ -286,7 +285,7 @@ class MdbMysqlClusterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the database.
+        Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         """
         return pulumi.get(self, "name")
 
@@ -347,7 +346,6 @@ class _MdbMysqlClusterState:
         """
         Input properties used for looking up and filtering MdbMysqlCluster resources.
         :param pulumi.Input['MdbMysqlClusterAccessArgs'] access: Access policy to the MySQL cluster. The structure is documented below.
-        :param pulumi.Input[bool] allow_regeneration_host: Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
         :param pulumi.Input['MdbMysqlClusterBackupWindowStartArgs'] backup_window_start: Time to start the daily backup, in the UTC. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['MdbMysqlClusterDatabaseArgs']]] databases: A database of the MySQL cluster. The structure is documented below.
@@ -361,7 +359,7 @@ class _MdbMysqlClusterState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the MySQL cluster.
         :param pulumi.Input['MdbMysqlClusterMaintenanceWindowArgs'] maintenance_window: Maintenance policy of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] mysql_config: MySQL cluster config. Detail info in "MySQL config" section (documented below).
-        :param pulumi.Input[str] name: The name of the database.
+        :param pulumi.Input[str] name: Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         :param pulumi.Input[str] network_id: ID of the network, to which the MySQL cluster uses.
         :param pulumi.Input['MdbMysqlClusterResourcesArgs'] resources: Resources allocated to hosts of the MySQL cluster. The structure is documented below.
         :param pulumi.Input['MdbMysqlClusterRestoreArgs'] restore: The cluster will be created from the specified backup. The structure is documented below.
@@ -372,6 +370,9 @@ class _MdbMysqlClusterState:
         """
         if access is not None:
             pulumi.set(__self__, "access", access)
+        if allow_regeneration_host is not None:
+            warnings.warn("""You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.""", DeprecationWarning)
+            pulumi.log.warn("""allow_regeneration_host is deprecated: You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.""")
         if allow_regeneration_host is not None:
             pulumi.set(__self__, "allow_regeneration_host", allow_regeneration_host)
         if backup_window_start is not None:
@@ -430,9 +431,6 @@ class _MdbMysqlClusterState:
     @property
     @pulumi.getter(name="allowRegenerationHost")
     def allow_regeneration_host(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
-        """
         return pulumi.get(self, "allow_regeneration_host")
 
     @allow_regeneration_host.setter
@@ -588,7 +586,7 @@ class _MdbMysqlClusterState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the database.
+        Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         """
         return pulumi.get(self, "name")
 
@@ -805,6 +803,72 @@ class MdbMysqlCluster(pulumi.CustomResource):
                 ),
                 yandex.MdbMysqlClusterHostArgs(
                     zone="ru-central1-b",
+                    subnet_id=bar.id,
+                ),
+            ])
+        ```
+
+        Example of creating a MySQL Cluster with cascade replicas: HA-group consist of 'na-1' and 'na-2', cascade replicas form a chain 'na-1' > 'nb-1' > 'nb-2'
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        foo_vpc_network = yandex.VpcNetwork("fooVpcNetwork")
+        foo_vpc_subnet = yandex.VpcSubnet("fooVpcSubnet",
+            zone="ru-central1-a",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.1.0.0/24"])
+        bar = yandex.VpcSubnet("bar",
+            zone="ru-central1-b",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.2.0.0/24"])
+        foo_mdb_mysql_cluster = yandex.MdbMysqlCluster("fooMdbMysqlCluster",
+            environment="PRESTABLE",
+            network_id=foo_vpc_network.id,
+            version="8.0",
+            resources=yandex.MdbMysqlClusterResourcesArgs(
+                resource_preset_id="s2.micro",
+                disk_type_id="network-ssd",
+                disk_size=16,
+            ),
+            databases=[yandex.MdbMysqlClusterDatabaseArgs(
+                name="db_name",
+            )],
+            maintenance_window=yandex.MdbMysqlClusterMaintenanceWindowArgs(
+                type="WEEKLY",
+                day="SAT",
+                hour=12,
+            ),
+            users=[yandex.MdbMysqlClusterUserArgs(
+                name="user_name",
+                password="your_password",
+                permissions=[yandex.MdbMysqlClusterUserPermissionArgs(
+                    database_name="db_name",
+                    roles=["ALL"],
+                )],
+            )],
+            hosts=[
+                yandex.MdbMysqlClusterHostArgs(
+                    zone="ru-central1-a",
+                    name="na-1",
+                    subnet_id=foo_vpc_subnet.id,
+                ),
+                yandex.MdbMysqlClusterHostArgs(
+                    zone="ru-central1-a",
+                    name="na-2",
+                    subnet_id=foo_vpc_subnet.id,
+                ),
+                yandex.MdbMysqlClusterHostArgs(
+                    zone="ru-central1-b",
+                    name="nb-1",
+                    replication_source_name="na-1",
+                    subnet_id=bar.id,
+                ),
+                yandex.MdbMysqlClusterHostArgs(
+                    zone="ru-central1-b",
+                    name="nb-2",
+                    replication_source_name="nb-1",
                     subnet_id=bar.id,
                 ),
             ])
@@ -1166,7 +1230,6 @@ class MdbMysqlCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterAccessArgs']] access: Access policy to the MySQL cluster. The structure is documented below.
-        :param pulumi.Input[bool] allow_regeneration_host: Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterBackupWindowStartArgs']] backup_window_start: Time to start the daily backup, in the UTC. The structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterDatabaseArgs']]]] databases: A database of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
@@ -1178,7 +1241,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the MySQL cluster.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterMaintenanceWindowArgs']] maintenance_window: Maintenance policy of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] mysql_config: MySQL cluster config. Detail info in "MySQL config" section (documented below).
-        :param pulumi.Input[str] name: The name of the database.
+        :param pulumi.Input[str] name: Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         :param pulumi.Input[str] network_id: ID of the network, to which the MySQL cluster uses.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterResourcesArgs']] resources: Resources allocated to hosts of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterRestoreArgs']] restore: The cluster will be created from the specified backup. The structure is documented below.
@@ -1291,6 +1354,72 @@ class MdbMysqlCluster(pulumi.CustomResource):
                 ),
                 yandex.MdbMysqlClusterHostArgs(
                     zone="ru-central1-b",
+                    subnet_id=bar.id,
+                ),
+            ])
+        ```
+
+        Example of creating a MySQL Cluster with cascade replicas: HA-group consist of 'na-1' and 'na-2', cascade replicas form a chain 'na-1' > 'nb-1' > 'nb-2'
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        foo_vpc_network = yandex.VpcNetwork("fooVpcNetwork")
+        foo_vpc_subnet = yandex.VpcSubnet("fooVpcSubnet",
+            zone="ru-central1-a",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.1.0.0/24"])
+        bar = yandex.VpcSubnet("bar",
+            zone="ru-central1-b",
+            network_id=foo_vpc_network.id,
+            v4_cidr_blocks=["10.2.0.0/24"])
+        foo_mdb_mysql_cluster = yandex.MdbMysqlCluster("fooMdbMysqlCluster",
+            environment="PRESTABLE",
+            network_id=foo_vpc_network.id,
+            version="8.0",
+            resources=yandex.MdbMysqlClusterResourcesArgs(
+                resource_preset_id="s2.micro",
+                disk_type_id="network-ssd",
+                disk_size=16,
+            ),
+            databases=[yandex.MdbMysqlClusterDatabaseArgs(
+                name="db_name",
+            )],
+            maintenance_window=yandex.MdbMysqlClusterMaintenanceWindowArgs(
+                type="WEEKLY",
+                day="SAT",
+                hour=12,
+            ),
+            users=[yandex.MdbMysqlClusterUserArgs(
+                name="user_name",
+                password="your_password",
+                permissions=[yandex.MdbMysqlClusterUserPermissionArgs(
+                    database_name="db_name",
+                    roles=["ALL"],
+                )],
+            )],
+            hosts=[
+                yandex.MdbMysqlClusterHostArgs(
+                    zone="ru-central1-a",
+                    name="na-1",
+                    subnet_id=foo_vpc_subnet.id,
+                ),
+                yandex.MdbMysqlClusterHostArgs(
+                    zone="ru-central1-a",
+                    name="na-2",
+                    subnet_id=foo_vpc_subnet.id,
+                ),
+                yandex.MdbMysqlClusterHostArgs(
+                    zone="ru-central1-b",
+                    name="nb-1",
+                    replication_source_name="na-1",
+                    subnet_id=bar.id,
+                ),
+                yandex.MdbMysqlClusterHostArgs(
+                    zone="ru-central1-b",
+                    name="nb-2",
+                    replication_source_name="nb-1",
                     subnet_id=bar.id,
                 ),
             ])
@@ -1696,6 +1825,9 @@ class MdbMysqlCluster(pulumi.CustomResource):
             __props__ = MdbMysqlClusterArgs.__new__(MdbMysqlClusterArgs)
 
             __props__.__dict__["access"] = access
+            if allow_regeneration_host is not None and not opts.urn:
+                warnings.warn("""You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.""", DeprecationWarning)
+                pulumi.log.warn("""allow_regeneration_host is deprecated: You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.""")
             __props__.__dict__["allow_regeneration_host"] = allow_regeneration_host
             __props__.__dict__["backup_window_start"] = backup_window_start
             if databases is None and not opts.urn:
@@ -1771,7 +1903,6 @@ class MdbMysqlCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterAccessArgs']] access: Access policy to the MySQL cluster. The structure is documented below.
-        :param pulumi.Input[bool] allow_regeneration_host: Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterBackupWindowStartArgs']] backup_window_start: Time to start the daily backup, in the UTC. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbMysqlClusterDatabaseArgs']]]] databases: A database of the MySQL cluster. The structure is documented below.
@@ -1785,7 +1916,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the MySQL cluster.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterMaintenanceWindowArgs']] maintenance_window: Maintenance policy of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] mysql_config: MySQL cluster config. Detail info in "MySQL config" section (documented below).
-        :param pulumi.Input[str] name: The name of the database.
+        :param pulumi.Input[str] name: Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         :param pulumi.Input[str] network_id: ID of the network, to which the MySQL cluster uses.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterResourcesArgs']] resources: Resources allocated to hosts of the MySQL cluster. The structure is documented below.
         :param pulumi.Input[pulumi.InputType['MdbMysqlClusterRestoreArgs']] restore: The cluster will be created from the specified backup. The structure is documented below.
@@ -1833,9 +1964,6 @@ class MdbMysqlCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowRegenerationHost")
     def allow_regeneration_host(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
-        """
         return pulumi.get(self, "allow_regeneration_host")
 
     @property
@@ -1939,7 +2067,7 @@ class MdbMysqlCluster(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the database.
+        Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         """
         return pulumi.get(self, "name")
 

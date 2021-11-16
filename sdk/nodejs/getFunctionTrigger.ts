@@ -101,6 +101,7 @@ export interface GetFunctionTriggerResult {
      */
     readonly labels: {[key: string]: string};
     readonly logGroup: outputs.GetFunctionTriggerLogGroup;
+    readonly logging: outputs.GetFunctionTriggerLogging;
     /**
      * [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
      * * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
