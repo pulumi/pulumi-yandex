@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.66.0 of the Yandex Cloud Terraform Provider
+_(none)_
 
 ---
+
+## 0.10.0 (2021-11-18)
+* Upgrade to v0.66.0 of the Yandex Cloud Terraform Provider
 
 ## 0.9.0 (2021-11-11)
 * Upgrade to pulumi v3.14.0
