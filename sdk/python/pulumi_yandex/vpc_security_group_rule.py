@@ -433,6 +433,39 @@ class VpcSecurityGroupRule(pulumi.CustomResource):
 
         > **NOTE:** There is another way to manage security group rules by `ingress` and `egress` arguments in yandex_vpc_security_group. Both ways are equivalent but not compatible now. Using in-line rules of VpcSecurityGroup with Security Group Rule resource at the same time will cause a conflict of rules configuration.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        lab_net = yandex.VpcNetwork("lab-net")
+        group1 = yandex.VpcSecurityGroup("group1",
+            description="description for my security group",
+            network_id=lab_net.id,
+            labels={
+                "my-label": "my-label-value",
+            })
+        rule1 = yandex.VpcSecurityGroupRule("rule1",
+            security_group_binding=group1.id,
+            direction="ingress",
+            description="rule1 description",
+            v4_cidr_blocks=[
+                "10.0.1.0/24",
+                "10.0.2.0/24",
+            ],
+            port=8080,
+            protocol="TCP")
+        rule2 = yandex.VpcSecurityGroupRule("rule2",
+            security_group_binding=group1.id,
+            direction="egress",
+            description="rule2 description",
+            v4_cidr_blocks=["10.0.1.0/24"],
+            from_port=8090,
+            to_port=8099,
+            protocol="UDP")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the rule.
@@ -460,6 +493,39 @@ class VpcSecurityGroupRule(pulumi.CustomResource):
         and [security group rules](https://cloud.yandex.com/docs/vpc/concepts/security-groups#rules).
 
         > **NOTE:** There is another way to manage security group rules by `ingress` and `egress` arguments in yandex_vpc_security_group. Both ways are equivalent but not compatible now. Using in-line rules of VpcSecurityGroup with Security Group Rule resource at the same time will cause a conflict of rules configuration.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        lab_net = yandex.VpcNetwork("lab-net")
+        group1 = yandex.VpcSecurityGroup("group1",
+            description="description for my security group",
+            network_id=lab_net.id,
+            labels={
+                "my-label": "my-label-value",
+            })
+        rule1 = yandex.VpcSecurityGroupRule("rule1",
+            security_group_binding=group1.id,
+            direction="ingress",
+            description="rule1 description",
+            v4_cidr_blocks=[
+                "10.0.1.0/24",
+                "10.0.2.0/24",
+            ],
+            port=8080,
+            protocol="TCP")
+        rule2 = yandex.VpcSecurityGroupRule("rule2",
+            security_group_binding=group1.id,
+            direction="egress",
+            description="rule2 description",
+            v4_cidr_blocks=["10.0.1.0/24"],
+            from_port=8090,
+            to_port=8099,
+            protocol="UDP")
+        ```
 
         :param str resource_name: The name of the resource.
         :param VpcSecurityGroupRuleArgs args: The arguments to use to populate this resource's properties.

@@ -13,7 +13,7 @@ namespace Pulumi.Yandex.Inputs
     public sealed class MdbKafkaClusterHostGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+        /// Determines whether each broker will be assigned a public IP address. The default is `false`.
         /// </summary>
         [Input("assignPublicIp")]
         public Input<bool>? AssignPublicIp { get; set; }

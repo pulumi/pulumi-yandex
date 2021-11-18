@@ -114,6 +114,75 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * Example of creating a MySQL Cluster with cascade replicas: HA-group consist of 'na-1' and 'na-2', cascade replicas form a chain 'na-1' > 'nb-1' > 'nb-2'
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as yandex from "@pulumi/yandex";
+ *
+ * const fooVpcNetwork = new yandex.VpcNetwork("fooVpcNetwork", {});
+ * const fooVpcSubnet = new yandex.VpcSubnet("fooVpcSubnet", {
+ *     zone: "ru-central1-a",
+ *     networkId: fooVpcNetwork.id,
+ *     v4CidrBlocks: ["10.1.0.0/24"],
+ * });
+ * const bar = new yandex.VpcSubnet("bar", {
+ *     zone: "ru-central1-b",
+ *     networkId: fooVpcNetwork.id,
+ *     v4CidrBlocks: ["10.2.0.0/24"],
+ * });
+ * const fooMdbMysqlCluster = new yandex.MdbMysqlCluster("fooMdbMysqlCluster", {
+ *     environment: "PRESTABLE",
+ *     networkId: fooVpcNetwork.id,
+ *     version: "8.0",
+ *     resources: {
+ *         resourcePresetId: "s2.micro",
+ *         diskTypeId: "network-ssd",
+ *         diskSize: 16,
+ *     },
+ *     databases: [{
+ *         name: "db_name",
+ *     }],
+ *     maintenanceWindow: {
+ *         type: "WEEKLY",
+ *         day: "SAT",
+ *         hour: 12,
+ *     },
+ *     users: [{
+ *         name: "user_name",
+ *         password: "your_password",
+ *         permissions: [{
+ *             databaseName: "db_name",
+ *             roles: ["ALL"],
+ *         }],
+ *     }],
+ *     hosts: [
+ *         {
+ *             zone: "ru-central1-a",
+ *             name: "na-1",
+ *             subnetId: fooVpcSubnet.id,
+ *         },
+ *         {
+ *             zone: "ru-central1-a",
+ *             name: "na-2",
+ *             subnetId: fooVpcSubnet.id,
+ *         },
+ *         {
+ *             zone: "ru-central1-b",
+ *             name: "nb-1",
+ *             replicationSourceName: "na-1",
+ *             subnetId: bar.id,
+ *         },
+ *         {
+ *             zone: "ru-central1-b",
+ *             name: "nb-2",
+ *             replicationSourceName: "nb-1",
+ *             subnetId: bar.id,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * Example of creating a Single Node MySQL with user params.
  *
  * ```typescript
@@ -504,7 +573,7 @@ export class MdbMysqlCluster extends pulumi.CustomResource {
      */
     public readonly access!: pulumi.Output<outputs.MdbMysqlClusterAccess>;
     /**
-     * Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
+     * @deprecated You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.
      */
     public readonly allowRegenerationHost!: pulumi.Output<boolean | undefined>;
     /**
@@ -557,7 +626,7 @@ export class MdbMysqlCluster extends pulumi.CustomResource {
      */
     public readonly mysqlConfig!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The name of the database.
+     * Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -686,7 +755,7 @@ export interface MdbMysqlClusterState {
      */
     access?: pulumi.Input<inputs.MdbMysqlClusterAccess>;
     /**
-     * Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
+     * @deprecated You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.
      */
     allowRegenerationHost?: pulumi.Input<boolean>;
     /**
@@ -739,7 +808,7 @@ export interface MdbMysqlClusterState {
      */
     mysqlConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the database.
+     * Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
      */
     name?: pulumi.Input<string>;
     /**
@@ -781,7 +850,7 @@ export interface MdbMysqlClusterArgs {
      */
     access?: pulumi.Input<inputs.MdbMysqlClusterAccess>;
     /**
-     * Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
+     * @deprecated You can safely remove this option. There is no need to recreate host if assign_public_ip is changed.
      */
     allowRegenerationHost?: pulumi.Input<boolean>;
     /**
@@ -826,7 +895,7 @@ export interface MdbMysqlClusterArgs {
      */
     mysqlConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the database.
+     * Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replicationSourceName` parameter.
      */
     name?: pulumi.Input<string>;
     /**

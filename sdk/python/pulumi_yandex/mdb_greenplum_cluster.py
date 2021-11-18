@@ -28,6 +28,8 @@ class MdbGreenplumClusterArgs:
                  user_password: pulumi.Input[str],
                  version: pulumi.Input[str],
                  zone: pulumi.Input[str],
+                 access: Optional[pulumi.Input['MdbGreenplumClusterAccessArgs']] = None,
+                 backup_window_start: Optional[pulumi.Input['MdbGreenplumClusterBackupWindowStartArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -49,6 +51,8 @@ class MdbGreenplumClusterArgs:
         :param pulumi.Input[str] user_password: Greenplum cluster admin password name.
         :param pulumi.Input[str] version: Version of the Greenplum cluster. (6.17)
         :param pulumi.Input[str] zone: The availability zone where the Greenplum hosts will be created.
+        :param pulumi.Input['MdbGreenplumClusterAccessArgs'] access: Access policy to the Greenplum cluster. The structure is documented below.
+        :param pulumi.Input['MdbGreenplumClusterBackupWindowStartArgs'] backup_window_start: Time to start the daily backup, in the UTC timezone. The structure is documented below.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Greenplum cluster.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
@@ -70,6 +74,10 @@ class MdbGreenplumClusterArgs:
         pulumi.set(__self__, "user_password", user_password)
         pulumi.set(__self__, "version", version)
         pulumi.set(__self__, "zone", zone)
+        if access is not None:
+            pulumi.set(__self__, "access", access)
+        if backup_window_start is not None:
+            pulumi.set(__self__, "backup_window_start", backup_window_start)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -240,6 +248,30 @@ class MdbGreenplumClusterArgs:
         pulumi.set(self, "zone", value)
 
     @property
+    @pulumi.getter
+    def access(self) -> Optional[pulumi.Input['MdbGreenplumClusterAccessArgs']]:
+        """
+        Access policy to the Greenplum cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "access")
+
+    @access.setter
+    def access(self, value: Optional[pulumi.Input['MdbGreenplumClusterAccessArgs']]):
+        pulumi.set(self, "access", value)
+
+    @property
+    @pulumi.getter(name="backupWindowStart")
+    def backup_window_start(self) -> Optional[pulumi.Input['MdbGreenplumClusterBackupWindowStartArgs']]:
+        """
+        Time to start the daily backup, in the UTC timezone. The structure is documented below.
+        """
+        return pulumi.get(self, "backup_window_start")
+
+    @backup_window_start.setter
+    def backup_window_start(self, value: Optional[pulumi.Input['MdbGreenplumClusterBackupWindowStartArgs']]):
+        pulumi.set(self, "backup_window_start", value)
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -316,7 +348,9 @@ class MdbGreenplumClusterArgs:
 @pulumi.input_type
 class _MdbGreenplumClusterState:
     def __init__(__self__, *,
+                 access: Optional[pulumi.Input['MdbGreenplumClusterAccessArgs']] = None,
                  assign_public_ip: Optional[pulumi.Input[bool]] = None,
+                 backup_window_start: Optional[pulumi.Input['MdbGreenplumClusterBackupWindowStartArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -342,7 +376,9 @@ class _MdbGreenplumClusterState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MdbGreenplumCluster resources.
+        :param pulumi.Input['MdbGreenplumClusterAccessArgs'] access: Access policy to the Greenplum cluster. The structure is documented below.
         :param pulumi.Input[bool] assign_public_ip: Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+        :param pulumi.Input['MdbGreenplumClusterBackupWindowStartArgs'] backup_window_start: Time to start the daily backup, in the UTC timezone. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the cluster.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Greenplum cluster.
@@ -368,8 +404,12 @@ class _MdbGreenplumClusterState:
         :param pulumi.Input[str] version: Version of the Greenplum cluster. (6.17)
         :param pulumi.Input[str] zone: The availability zone where the Greenplum hosts will be created.
         """
+        if access is not None:
+            pulumi.set(__self__, "access", access)
         if assign_public_ip is not None:
             pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        if backup_window_start is not None:
+            pulumi.set(__self__, "backup_window_start", backup_window_start)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if deletion_protection is not None:
@@ -418,6 +458,18 @@ class _MdbGreenplumClusterState:
             pulumi.set(__self__, "zone", zone)
 
     @property
+    @pulumi.getter
+    def access(self) -> Optional[pulumi.Input['MdbGreenplumClusterAccessArgs']]:
+        """
+        Access policy to the Greenplum cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "access")
+
+    @access.setter
+    def access(self, value: Optional[pulumi.Input['MdbGreenplumClusterAccessArgs']]):
+        pulumi.set(self, "access", value)
+
+    @property
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -428,6 +480,18 @@ class _MdbGreenplumClusterState:
     @assign_public_ip.setter
     def assign_public_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "assign_public_ip", value)
+
+    @property
+    @pulumi.getter(name="backupWindowStart")
+    def backup_window_start(self) -> Optional[pulumi.Input['MdbGreenplumClusterBackupWindowStartArgs']]:
+        """
+        Time to start the daily backup, in the UTC timezone. The structure is documented below.
+        """
+        return pulumi.get(self, "backup_window_start")
+
+    @backup_window_start.setter
+    def backup_window_start(self, value: Optional[pulumi.Input['MdbGreenplumClusterBackupWindowStartArgs']]):
+        pulumi.set(self, "backup_window_start", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -712,7 +776,9 @@ class MdbGreenplumCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access: Optional[pulumi.Input[pulumi.InputType['MdbGreenplumClusterAccessArgs']]] = None,
                  assign_public_ip: Optional[pulumi.Input[bool]] = None,
+                 backup_window_start: Optional[pulumi.Input[pulumi.InputType['MdbGreenplumClusterBackupWindowStartArgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
@@ -750,7 +816,9 @@ class MdbGreenplumCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['MdbGreenplumClusterAccessArgs']] access: Access policy to the Greenplum cluster. The structure is documented below.
         :param pulumi.Input[bool] assign_public_ip: Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+        :param pulumi.Input[pulumi.InputType['MdbGreenplumClusterBackupWindowStartArgs']] backup_window_start: Time to start the daily backup, in the UTC timezone. The structure is documented below.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Greenplum cluster.
         :param pulumi.Input[str] environment: Deployment environment of the Greenplum cluster. (PRODUCTION, PRESTABLE)
@@ -808,7 +876,9 @@ class MdbGreenplumCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access: Optional[pulumi.Input[pulumi.InputType['MdbGreenplumClusterAccessArgs']]] = None,
                  assign_public_ip: Optional[pulumi.Input[bool]] = None,
+                 backup_window_start: Optional[pulumi.Input[pulumi.InputType['MdbGreenplumClusterBackupWindowStartArgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
@@ -839,9 +909,11 @@ class MdbGreenplumCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MdbGreenplumClusterArgs.__new__(MdbGreenplumClusterArgs)
 
+            __props__.__dict__["access"] = access
             if assign_public_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'assign_public_ip'")
             __props__.__dict__["assign_public_ip"] = assign_public_ip
+            __props__.__dict__["backup_window_start"] = backup_window_start
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             if environment is None and not opts.urn:
@@ -899,7 +971,9 @@ class MdbGreenplumCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access: Optional[pulumi.Input[pulumi.InputType['MdbGreenplumClusterAccessArgs']]] = None,
             assign_public_ip: Optional[pulumi.Input[bool]] = None,
+            backup_window_start: Optional[pulumi.Input[pulumi.InputType['MdbGreenplumClusterBackupWindowStartArgs']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -930,7 +1004,9 @@ class MdbGreenplumCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['MdbGreenplumClusterAccessArgs']] access: Access policy to the Greenplum cluster. The structure is documented below.
         :param pulumi.Input[bool] assign_public_ip: Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
+        :param pulumi.Input[pulumi.InputType['MdbGreenplumClusterBackupWindowStartArgs']] backup_window_start: Time to start the daily backup, in the UTC timezone. The structure is documented below.
         :param pulumi.Input[str] created_at: Creation timestamp of the cluster.
         :param pulumi.Input[bool] deletion_protection: Inhibits deletion of the cluster.  Can be either `true` or `false`.
         :param pulumi.Input[str] description: Description of the Greenplum cluster.
@@ -960,7 +1036,9 @@ class MdbGreenplumCluster(pulumi.CustomResource):
 
         __props__ = _MdbGreenplumClusterState.__new__(_MdbGreenplumClusterState)
 
+        __props__.__dict__["access"] = access
         __props__.__dict__["assign_public_ip"] = assign_public_ip
+        __props__.__dict__["backup_window_start"] = backup_window_start
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
@@ -987,12 +1065,28 @@ class MdbGreenplumCluster(pulumi.CustomResource):
         return MdbGreenplumCluster(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter
+    def access(self) -> pulumi.Output['outputs.MdbGreenplumClusterAccess']:
+        """
+        Access policy to the Greenplum cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "access")
+
+    @property
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> pulumi.Output[bool]:
         """
         Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
         """
         return pulumi.get(self, "assign_public_ip")
+
+    @property
+    @pulumi.getter(name="backupWindowStart")
+    def backup_window_start(self) -> pulumi.Output['outputs.MdbGreenplumClusterBackupWindowStart']:
+        """
+        Time to start the daily backup, in the UTC timezone. The structure is documented below.
+        """
+        return pulumi.get(self, "backup_window_start")
 
     @property
     @pulumi.getter(name="createdAt")

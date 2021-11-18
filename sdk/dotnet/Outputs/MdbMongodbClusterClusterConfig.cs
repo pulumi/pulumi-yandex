@@ -22,11 +22,11 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly Outputs.MdbMongodbClusterClusterConfigBackupWindowStart? BackupWindowStart;
         /// <summary>
-        /// Feature compatibility version of MongoDB. If not provided version is taken. Can be either `4.4`, `4.2`, `4.0` and `3.6`.
+        /// Feature compatibility version of MongoDB. If not provided version is taken. Can be either `5.0`, `4.4`, `4.2` and `4.0`.
         /// </summary>
         public readonly string? FeatureCompatibilityVersion;
         /// <summary>
-        /// Version of MongoDB (either 4.4, 4.2, 4.0 or 3.6).
+        /// Version of MongoDB (either 5.0, 4.4, 4.2 or 4.0).
         /// </summary>
         public readonly string Version;
 

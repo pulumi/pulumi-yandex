@@ -14,13 +14,25 @@ namespace Pulumi.Yandex.Outputs
     public sealed class MdbMysqlClusterHost
     {
         /// <summary>
-        /// Sets whether the host should get a public IP address on creation. When changing the `assign_public_ip` attribute and `allow_regeneration_host` is true, the old host is deleted and a new host is created. Changing this parameter for an existing host is not supported at the moment.
+        /// Sets whether the host should get a public IP address. It can be changed on the fly only when `name` is set.
         /// </summary>
         public readonly bool? AssignPublicIp;
         /// <summary>
         /// The fully qualified domain name of the host.
         /// </summary>
         public readonly string? Fqdn;
+        /// <summary>
+        /// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// Host replication source (fqdn), when replication_source is empty then host is in HA group.
+        /// </summary>
+        public readonly string? ReplicationSource;
+        /// <summary>
+        /// Host replication source name points to host's `name` from which this host should replicate. When not set then host in HA group. It works only when `name` is set.
+        /// </summary>
+        public readonly string? ReplicationSourceName;
         /// <summary>
         /// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
         /// </summary>
@@ -36,12 +48,21 @@ namespace Pulumi.Yandex.Outputs
 
             string? fqdn,
 
+            string? name,
+
+            string? replicationSource,
+
+            string? replicationSourceName,
+
             string? subnetId,
 
             string zone)
         {
             AssignPublicIp = assignPublicIp;
             Fqdn = fqdn;
+            Name = name;
+            ReplicationSource = replicationSource;
+            ReplicationSourceName = replicationSourceName;
             SubnetId = subnetId;
             Zone = zone;
         }

@@ -67,6 +67,7 @@ namespace Pulumi.Yandex
     ///                         ResourcePresetId = "s2.micro",
     ///                     },
     ///                 },
+    ///                 SchemaRegistry = false,
     ///                 UnmanagedTopics = false,
     ///                 Version = "2.6",
     ///                 Zones = 
@@ -79,43 +80,6 @@ namespace Pulumi.Yandex
     ///             SubnetIds = 
     ///             {
     ///                 fooVpcSubnet.Id,
-    ///             },
-    ///             Topics = 
-    ///             {
-    ///                 new Yandex.Inputs.MdbKafkaClusterTopicArgs
-    ///                 {
-    ///                     Name = "input",
-    ///                     Partitions = 2,
-    ///                     ReplicationFactor = 1,
-    ///                     TopicConfig = new Yandex.Inputs.MdbKafkaClusterTopicTopicConfigArgs
-    ///                     {
-    ///                         CompressionType = "COMPRESSION_TYPE_LZ4",
-    ///                         DeleteRetentionMs = "86400000",
-    ///                         FileDeleteDelayMs = "60000",
-    ///                         FlushMessages = "128",
-    ///                         FlushMs = "1000",
-    ///                         MaxMessageBytes = "1048588",
-    ///                         MinCompactionLagMs = "0",
-    ///                         MinInsyncReplicas = "1",
-    ///                         Preallocate = true,
-    ///                         RetentionBytes = "10737418240",
-    ///                         RetentionMs = "604800000",
-    ///                         SegmentBytes = "268435456",
-    ///                     },
-    ///                 },
-    ///                 new Yandex.Inputs.MdbKafkaClusterTopicArgs
-    ///                 {
-    ///                     Name = "output",
-    ///                     Partitions = 6,
-    ///                     ReplicationFactor = 1,
-    ///                     TopicConfig = new Yandex.Inputs.MdbKafkaClusterTopicTopicConfigArgs
-    ///                     {
-    ///                         CompressionType = "COMPRESSION_TYPE_GZIP",
-    ///                         MaxMessageBytes = "1048588",
-    ///                         Preallocate = false,
-    ///                         SegmentBytes = "536870912",
-    ///                     },
-    ///                 },
     ///             },
     ///             Users = 
     ///             {
@@ -227,6 +191,7 @@ namespace Pulumi.Yandex
     ///                         ResourcePresetId = "s2.medium",
     ///                     },
     ///                 },
+    ///                 SchemaRegistry = false,
     ///                 UnmanagedTopics = false,
     ///                 Version = "2.6",
     ///                 Zones = 
@@ -252,43 +217,6 @@ namespace Pulumi.Yandex
     ///                 fooVpcSubnet.Id,
     ///                 bar.Id,
     ///                 baz.Id,
-    ///             },
-    ///             Topics = 
-    ///             {
-    ///                 new Yandex.Inputs.MdbKafkaClusterTopicArgs
-    ///                 {
-    ///                     Name = "input",
-    ///                     Partitions = 2,
-    ///                     ReplicationFactor = 1,
-    ///                     TopicConfig = new Yandex.Inputs.MdbKafkaClusterTopicTopicConfigArgs
-    ///                     {
-    ///                         CompressionType = "COMPRESSION_TYPE_LZ4",
-    ///                         DeleteRetentionMs = "86400000",
-    ///                         FileDeleteDelayMs = "60000",
-    ///                         FlushMessages = "128",
-    ///                         FlushMs = "1000",
-    ///                         MaxMessageBytes = "1048588",
-    ///                         MinCompactionLagMs = "0",
-    ///                         MinInsyncReplicas = "1",
-    ///                         Preallocate = true,
-    ///                         RetentionBytes = "10737418240",
-    ///                         RetentionMs = "604800000",
-    ///                         SegmentBytes = "268435456",
-    ///                     },
-    ///                 },
-    ///                 new Yandex.Inputs.MdbKafkaClusterTopicArgs
-    ///                 {
-    ///                     Name = "output",
-    ///                     Partitions = 6,
-    ///                     ReplicationFactor = 1,
-    ///                     TopicConfig = new Yandex.Inputs.MdbKafkaClusterTopicTopicConfigArgs
-    ///                     {
-    ///                         CompressionType = "COMPRESSION_TYPE_GZIP",
-    ///                         MaxMessageBytes = "1048588",
-    ///                         Preallocate = false,
-    ///                         SegmentBytes = "536870912",
-    ///                     },
-    ///                 },
     ///             },
     ///             Users = 
     ///             {
@@ -366,7 +294,8 @@ namespace Pulumi.Yandex
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        /// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+        /// The default is `PRODUCTION`.
         /// </summary>
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
@@ -399,7 +328,7 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the Kafka cluster.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The name of the topic.
@@ -433,7 +362,7 @@ namespace Pulumi.Yandex
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
         /// <summary>
-        /// A topic of the Kafka cluster. The structure is documented below.
+        /// To manage topics, please switch to using a separate resource type `yandex.MdbKafkaTopic`.
         /// </summary>
         [Output("topics")]
         public Output<ImmutableArray<Outputs.MdbKafkaClusterTopic>> Topics { get; private set; } = null!;
@@ -509,7 +438,8 @@ namespace Pulumi.Yandex
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        /// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+        /// The default is `PRODUCTION`.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -584,8 +514,9 @@ namespace Pulumi.Yandex
         private InputList<Inputs.MdbKafkaClusterTopicArgs>? _topics;
 
         /// <summary>
-        /// A topic of the Kafka cluster. The structure is documented below.
+        /// To manage topics, please switch to using a separate resource type `yandex.MdbKafkaTopic`.
         /// </summary>
+        [Obsolete(@"to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic")]
         public InputList<Inputs.MdbKafkaClusterTopicArgs> Topics
         {
             get => _topics ?? (_topics = new InputList<Inputs.MdbKafkaClusterTopicArgs>());
@@ -636,7 +567,8 @@ namespace Pulumi.Yandex
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+        /// Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+        /// The default is `PRODUCTION`.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -736,8 +668,9 @@ namespace Pulumi.Yandex
         private InputList<Inputs.MdbKafkaClusterTopicGetArgs>? _topics;
 
         /// <summary>
-        /// A topic of the Kafka cluster. The structure is documented below.
+        /// To manage topics, please switch to using a separate resource type `yandex.MdbKafkaTopic`.
         /// </summary>
+        [Obsolete(@"to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic")]
         public InputList<Inputs.MdbKafkaClusterTopicGetArgs> Topics
         {
             get => _topics ?? (_topics = new InputList<Inputs.MdbKafkaClusterTopicGetArgs>());

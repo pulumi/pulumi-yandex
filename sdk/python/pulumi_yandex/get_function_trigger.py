@@ -21,7 +21,7 @@ class GetFunctionTriggerResult:
     """
     A collection of values returned by getFunctionTrigger.
     """
-    def __init__(__self__, created_at=None, description=None, dlq=None, folder_id=None, function=None, id=None, iot=None, labels=None, log_group=None, message_queue=None, name=None, object_storage=None, timer=None, trigger_id=None):
+    def __init__(__self__, created_at=None, description=None, dlq=None, folder_id=None, function=None, id=None, iot=None, labels=None, log_group=None, logging=None, message_queue=None, name=None, object_storage=None, timer=None, trigger_id=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -49,6 +49,9 @@ class GetFunctionTriggerResult:
         if log_group and not isinstance(log_group, dict):
             raise TypeError("Expected argument 'log_group' to be a dict")
         pulumi.set(__self__, "log_group", log_group)
+        if logging and not isinstance(logging, dict):
+            raise TypeError("Expected argument 'logging' to be a dict")
+        pulumi.set(__self__, "logging", logging)
         if message_queue and not isinstance(message_queue, dict):
             raise TypeError("Expected argument 'message_queue' to be a dict")
         pulumi.set(__self__, "message_queue", message_queue)
@@ -145,6 +148,11 @@ class GetFunctionTriggerResult:
         return pulumi.get(self, "log_group")
 
     @property
+    @pulumi.getter
+    def logging(self) -> 'outputs.GetFunctionTriggerLoggingResult':
+        return pulumi.get(self, "logging")
+
+    @property
     @pulumi.getter(name="messageQueue")
     def message_queue(self) -> 'outputs.GetFunctionTriggerMessageQueueResult':
         """
@@ -206,6 +214,7 @@ class AwaitableGetFunctionTriggerResult(GetFunctionTriggerResult):
             iot=self.iot,
             labels=self.labels,
             log_group=self.log_group,
+            logging=self.logging,
             message_queue=self.message_queue,
             name=self.name,
             object_storage=self.object_storage,
@@ -255,6 +264,7 @@ def get_function_trigger(folder_id: Optional[str] = None,
         iot=__ret__.iot,
         labels=__ret__.labels,
         log_group=__ret__.log_group,
+        logging=__ret__.logging,
         message_queue=__ret__.message_queue,
         name=__ret__.name,
         object_storage=__ret__.object_storage,

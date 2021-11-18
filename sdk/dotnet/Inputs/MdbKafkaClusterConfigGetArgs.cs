@@ -13,13 +13,13 @@ namespace Pulumi.Yandex.Inputs
     public sealed class MdbKafkaClusterConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+        /// Determines whether each broker will be assigned a public IP address. The default is `false`.
         /// </summary>
         [Input("assignPublicIp")]
         public Input<bool>? AssignPublicIp { get; set; }
 
         /// <summary>
-        /// Count of brokers per availability zone.
+        /// Count of brokers per availability zone. The default is `1`.
         /// </summary>
         [Input("brokersCount")]
         public Input<int>? BrokersCount { get; set; }
@@ -31,7 +31,13 @@ namespace Pulumi.Yandex.Inputs
         public Input<Inputs.MdbKafkaClusterConfigKafkaGetArgs> Kafka { get; set; } = null!;
 
         /// <summary>
-        /// Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
+        /// Enables managed schema registry on cluster. The default is `false`.
+        /// </summary>
+        [Input("schemaRegistry")]
+        public Input<bool>? SchemaRegistry { get; set; }
+
+        /// <summary>
+        /// Allows to use Kafka AdminAPI to manage topics. The default is `false`.
         /// </summary>
         [Input("unmanagedTopics")]
         public Input<bool>? UnmanagedTopics { get; set; }

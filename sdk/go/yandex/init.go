@@ -90,6 +90,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KmsSecretCiphertext{}
 	case "yandex:index/kmsSymmetricKey:KmsSymmetricKey":
 		r = &KmsSymmetricKey{}
+	case "yandex:index/kmsSymmetricKeyIamBinding:KmsSymmetricKeyIamBinding":
+		r = &KmsSymmetricKeyIamBinding{}
 	case "yandex:index/kubernetesCluster:KubernetesCluster":
 		r = &KubernetesCluster{}
 	case "yandex:index/kubernetesNodeGroup:KubernetesNodeGroup":
@@ -108,6 +110,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MdbGreenplumCluster{}
 	case "yandex:index/mdbKafkaCluster:MdbKafkaCluster":
 		r = &MdbKafkaCluster{}
+	case "yandex:index/mdbKafkaTopic:MdbKafkaTopic":
+		r = &MdbKafkaTopic{}
 	case "yandex:index/mdbMongodbCluster:MdbMongodbCluster":
 		r = &MdbMongodbCluster{}
 	case "yandex:index/mdbMysqlCluster:MdbMysqlCluster":
@@ -364,6 +368,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"yandex",
+		"index/kmsSymmetricKeyIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
 		"index/kubernetesCluster",
 		&module{version},
 	)
@@ -405,6 +414,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/mdbKafkaCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/mdbKafkaTopic",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

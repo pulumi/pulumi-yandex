@@ -21,10 +21,16 @@ class GetMdbGreenplumClusterResult:
     """
     A collection of values returned by getMdbGreenplumCluster.
     """
-    def __init__(__self__, assign_public_ip=None, cluster_id=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, id=None, labels=None, master_host_count=None, master_hosts=None, master_subcluster=None, name=None, network_id=None, security_group_ids=None, segment_host_count=None, segment_hosts=None, segment_in_host=None, segment_subcluster=None, status=None, subnet_id=None, user_name=None, version=None, zone=None):
+    def __init__(__self__, accesses=None, assign_public_ip=None, backup_window_starts=None, cluster_id=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, id=None, labels=None, master_host_count=None, master_hosts=None, master_subcluster=None, name=None, network_id=None, security_group_ids=None, segment_host_count=None, segment_hosts=None, segment_in_host=None, segment_subcluster=None, status=None, subnet_id=None, user_name=None, version=None, zone=None):
+        if accesses and not isinstance(accesses, list):
+            raise TypeError("Expected argument 'accesses' to be a list")
+        pulumi.set(__self__, "accesses", accesses)
         if assign_public_ip and not isinstance(assign_public_ip, bool):
             raise TypeError("Expected argument 'assign_public_ip' to be a bool")
         pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        if backup_window_starts and not isinstance(backup_window_starts, list):
+            raise TypeError("Expected argument 'backup_window_starts' to be a list")
+        pulumi.set(__self__, "backup_window_starts", backup_window_starts)
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -99,9 +105,19 @@ class GetMdbGreenplumClusterResult:
         pulumi.set(__self__, "zone", zone)
 
     @property
+    @pulumi.getter
+    def accesses(self) -> Sequence['outputs.GetMdbGreenplumClusterAccessResult']:
+        return pulumi.get(self, "accesses")
+
+    @property
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> bool:
         return pulumi.get(self, "assign_public_ip")
+
+    @property
+    @pulumi.getter(name="backupWindowStarts")
+    def backup_window_starts(self) -> Sequence['outputs.GetMdbGreenplumClusterBackupWindowStartResult']:
+        return pulumi.get(self, "backup_window_starts")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -233,7 +249,9 @@ class AwaitableGetMdbGreenplumClusterResult(GetMdbGreenplumClusterResult):
         if False:
             yield self
         return GetMdbGreenplumClusterResult(
+            accesses=self.accesses,
             assign_public_ip=self.assign_public_ip,
+            backup_window_starts=self.backup_window_starts,
             cluster_id=self.cluster_id,
             created_at=self.created_at,
             deletion_protection=self.deletion_protection,
@@ -278,7 +296,9 @@ def get_mdb_greenplum_cluster(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('yandex:index/getMdbGreenplumCluster:getMdbGreenplumCluster', __args__, opts=opts, typ=GetMdbGreenplumClusterResult).value
 
     return AwaitableGetMdbGreenplumClusterResult(
+        accesses=__ret__.accesses,
         assign_public_ip=__ret__.assign_public_ip,
+        backup_window_starts=__ret__.backup_window_starts,
         cluster_id=__ret__.cluster_id,
         created_at=__ret__.created_at,
         deletion_protection=__ret__.deletion_protection,

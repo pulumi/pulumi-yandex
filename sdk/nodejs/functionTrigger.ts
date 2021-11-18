@@ -93,6 +93,16 @@ export class FunctionTrigger extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly logGroup!: pulumi.Output<outputs.FunctionTriggerLogGroup | undefined>;
     /**
+     * [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+     * * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+     * * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+     * * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+     * * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+     * * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+     * * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+     */
+    public readonly logging!: pulumi.Output<outputs.FunctionTriggerLogging | undefined>;
+    /**
      * [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
      * * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
      * * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
@@ -142,6 +152,7 @@ export class FunctionTrigger extends pulumi.CustomResource {
             inputs["iot"] = state ? state.iot : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["logGroup"] = state ? state.logGroup : undefined;
+            inputs["logging"] = state ? state.logging : undefined;
             inputs["messageQueue"] = state ? state.messageQueue : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["objectStorage"] = state ? state.objectStorage : undefined;
@@ -158,6 +169,7 @@ export class FunctionTrigger extends pulumi.CustomResource {
             inputs["iot"] = args ? args.iot : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["logGroup"] = args ? args.logGroup : undefined;
+            inputs["logging"] = args ? args.logging : undefined;
             inputs["messageQueue"] = args ? args.messageQueue : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["objectStorage"] = args ? args.objectStorage : undefined;
@@ -214,6 +226,16 @@ export interface FunctionTriggerState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     logGroup?: pulumi.Input<inputs.FunctionTriggerLogGroup>;
+    /**
+     * [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+     * * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+     * * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+     * * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+     * * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+     * * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+     * * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+     */
+    logging?: pulumi.Input<inputs.FunctionTriggerLogging>;
     /**
      * [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
      * * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
@@ -283,6 +305,16 @@ export interface FunctionTriggerArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     logGroup?: pulumi.Input<inputs.FunctionTriggerLogGroup>;
+    /**
+     * [Logging](https://cloud.yandex.com/docs/functions/concepts/trigger/logging) settings definition for Yandex Cloud Functions Trigger, if present
+     * * `logging.0.group_id` - Logging group ID for Yandex Cloud Functions Trigger
+     * * `logging.0.resource_ids` - Resource ID filter setting for Yandex Cloud Functions Trigger
+     * * `logging.0.resource_types` - Resource type filter setting for Yandex Cloud Functions Trigger
+     * * `logging.0.levels` - Logging level filter setting for Yandex Cloud Functions Trigger
+     * * `logging.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
+     * * `logging.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
+     */
+    logging?: pulumi.Input<inputs.FunctionTriggerLogging>;
     /**
      * [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
      * * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger

@@ -22,6 +22,10 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string Fqdn;
         /// <summary>
+        /// Host replication source (fqdn), case when replication_source is empty then host in HA group.
+        /// </summary>
+        public readonly string ReplicationSource;
+        /// <summary>
         /// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
         /// </summary>
         public readonly string SubnetId;
@@ -36,12 +40,15 @@ namespace Pulumi.Yandex.Outputs
 
             string fqdn,
 
+            string replicationSource,
+
             string subnetId,
 
             string zone)
         {
             AssignPublicIp = assignPublicIp;
             Fqdn = fqdn;
+            ReplicationSource = replicationSource;
             SubnetId = subnetId;
             Zone = zone;
         }

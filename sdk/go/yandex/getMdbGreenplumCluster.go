@@ -28,14 +28,16 @@ type LookupMdbGreenplumClusterArgs struct {
 
 // A collection of values returned by getMdbGreenplumCluster.
 type LookupMdbGreenplumClusterResult struct {
-	AssignPublicIp     bool   `pulumi:"assignPublicIp"`
-	ClusterId          string `pulumi:"clusterId"`
-	CreatedAt          string `pulumi:"createdAt"`
-	DeletionProtection bool   `pulumi:"deletionProtection"`
-	Description        string `pulumi:"description"`
-	Environment        string `pulumi:"environment"`
-	FolderId           string `pulumi:"folderId"`
-	Health             string `pulumi:"health"`
+	Accesses           []GetMdbGreenplumClusterAccess            `pulumi:"accesses"`
+	AssignPublicIp     bool                                      `pulumi:"assignPublicIp"`
+	BackupWindowStarts []GetMdbGreenplumClusterBackupWindowStart `pulumi:"backupWindowStarts"`
+	ClusterId          string                                    `pulumi:"clusterId"`
+	CreatedAt          string                                    `pulumi:"createdAt"`
+	DeletionProtection bool                                      `pulumi:"deletionProtection"`
+	Description        string                                    `pulumi:"description"`
+	Environment        string                                    `pulumi:"environment"`
+	FolderId           string                                    `pulumi:"folderId"`
+	Health             string                                    `pulumi:"health"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                string                                  `pulumi:"id"`
 	Labels            map[string]string                       `pulumi:"labels"`
@@ -91,8 +93,18 @@ func (o LookupMdbGreenplumClusterResultOutput) ToLookupMdbGreenplumClusterResult
 	return o
 }
 
+func (o LookupMdbGreenplumClusterResultOutput) Accesses() GetMdbGreenplumClusterAccessArrayOutput {
+	return o.ApplyT(func(v LookupMdbGreenplumClusterResult) []GetMdbGreenplumClusterAccess { return v.Accesses }).(GetMdbGreenplumClusterAccessArrayOutput)
+}
+
 func (o LookupMdbGreenplumClusterResultOutput) AssignPublicIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMdbGreenplumClusterResult) bool { return v.AssignPublicIp }).(pulumi.BoolOutput)
+}
+
+func (o LookupMdbGreenplumClusterResultOutput) BackupWindowStarts() GetMdbGreenplumClusterBackupWindowStartArrayOutput {
+	return o.ApplyT(func(v LookupMdbGreenplumClusterResult) []GetMdbGreenplumClusterBackupWindowStart {
+		return v.BackupWindowStarts
+	}).(GetMdbGreenplumClusterBackupWindowStartArrayOutput)
 }
 
 func (o LookupMdbGreenplumClusterResultOutput) ClusterId() pulumi.StringOutput {

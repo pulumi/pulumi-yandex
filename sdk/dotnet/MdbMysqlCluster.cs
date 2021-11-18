@@ -192,6 +192,115 @@ namespace Pulumi.Yandex
     /// }
     /// ```
     /// 
+    /// Example of creating a MySQL Cluster with cascade replicas: HA-group consist of 'na-1' and 'na-2', cascade replicas form a chain 'na-1' &gt; 'nb-1' &gt; 'nb-2'
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Yandex = Pulumi.Yandex;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooVpcNetwork = new Yandex.VpcNetwork("fooVpcNetwork", new Yandex.VpcNetworkArgs
+    ///         {
+    ///         });
+    ///         var fooVpcSubnet = new Yandex.VpcSubnet("fooVpcSubnet", new Yandex.VpcSubnetArgs
+    ///         {
+    ///             Zone = "ru-central1-a",
+    ///             NetworkId = fooVpcNetwork.Id,
+    ///             V4CidrBlocks = 
+    ///             {
+    ///                 "10.1.0.0/24",
+    ///             },
+    ///         });
+    ///         var bar = new Yandex.VpcSubnet("bar", new Yandex.VpcSubnetArgs
+    ///         {
+    ///             Zone = "ru-central1-b",
+    ///             NetworkId = fooVpcNetwork.Id,
+    ///             V4CidrBlocks = 
+    ///             {
+    ///                 "10.2.0.0/24",
+    ///             },
+    ///         });
+    ///         var fooMdbMysqlCluster = new Yandex.MdbMysqlCluster("fooMdbMysqlCluster", new Yandex.MdbMysqlClusterArgs
+    ///         {
+    ///             Environment = "PRESTABLE",
+    ///             NetworkId = fooVpcNetwork.Id,
+    ///             Version = "8.0",
+    ///             Resources = new Yandex.Inputs.MdbMysqlClusterResourcesArgs
+    ///             {
+    ///                 ResourcePresetId = "s2.micro",
+    ///                 DiskTypeId = "network-ssd",
+    ///                 DiskSize = 16,
+    ///             },
+    ///             Databases = 
+    ///             {
+    ///                 new Yandex.Inputs.MdbMysqlClusterDatabaseArgs
+    ///                 {
+    ///                     Name = "db_name",
+    ///                 },
+    ///             },
+    ///             MaintenanceWindow = new Yandex.Inputs.MdbMysqlClusterMaintenanceWindowArgs
+    ///             {
+    ///                 Type = "WEEKLY",
+    ///                 Day = "SAT",
+    ///                 Hour = 12,
+    ///             },
+    ///             Users = 
+    ///             {
+    ///                 new Yandex.Inputs.MdbMysqlClusterUserArgs
+    ///                 {
+    ///                     Name = "user_name",
+    ///                     Password = "your_password",
+    ///                     Permissions = 
+    ///                     {
+    ///                         new Yandex.Inputs.MdbMysqlClusterUserPermissionArgs
+    ///                         {
+    ///                             DatabaseName = "db_name",
+    ///                             Roles = 
+    ///                             {
+    ///                                 "ALL",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Hosts = 
+    ///             {
+    ///                 new Yandex.Inputs.MdbMysqlClusterHostArgs
+    ///                 {
+    ///                     Zone = "ru-central1-a",
+    ///                     Name = "na-1",
+    ///                     SubnetId = fooVpcSubnet.Id,
+    ///                 },
+    ///                 new Yandex.Inputs.MdbMysqlClusterHostArgs
+    ///                 {
+    ///                     Zone = "ru-central1-a",
+    ///                     Name = "na-2",
+    ///                     SubnetId = fooVpcSubnet.Id,
+    ///                 },
+    ///                 new Yandex.Inputs.MdbMysqlClusterHostArgs
+    ///                 {
+    ///                     Zone = "ru-central1-b",
+    ///                     Name = "nb-1",
+    ///                     ReplicationSourceName = "na-1",
+    ///                     SubnetId = bar.Id,
+    ///                 },
+    ///                 new Yandex.Inputs.MdbMysqlClusterHostArgs
+    ///                 {
+    ///                     Zone = "ru-central1-b",
+    ///                     Name = "nb-2",
+    ///                     ReplicationSourceName = "nb-1",
+    ///                     SubnetId = bar.Id,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// Example of creating a Single Node MySQL with user params.
     /// 
     /// ```csharp
@@ -630,9 +739,6 @@ namespace Pulumi.Yandex
         [Output("access")]
         public Output<Outputs.MdbMysqlClusterAccess> Access { get; private set; } = null!;
 
-        /// <summary>
-        /// Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
-        /// </summary>
         [Output("allowRegenerationHost")]
         public Output<bool?> AllowRegenerationHost { get; private set; } = null!;
 
@@ -710,7 +816,7 @@ namespace Pulumi.Yandex
         public Output<ImmutableDictionary<string, string>> MysqlConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the database.
+        /// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -809,9 +915,6 @@ namespace Pulumi.Yandex
         [Input("access")]
         public Input<Inputs.MdbMysqlClusterAccessArgs>? Access { get; set; }
 
-        /// <summary>
-        /// Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
-        /// </summary>
         [Input("allowRegenerationHost")]
         public Input<bool>? AllowRegenerationHost { get; set; }
 
@@ -901,7 +1004,7 @@ namespace Pulumi.Yandex
         }
 
         /// <summary>
-        /// The name of the database.
+        /// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -967,9 +1070,6 @@ namespace Pulumi.Yandex
         [Input("access")]
         public Input<Inputs.MdbMysqlClusterAccessGetArgs>? Access { get; set; }
 
-        /// <summary>
-        /// Allow drop and create host when `host.assign_public_ip` changed. The new host will be created (recreated) with a different FQDN.
-        /// </summary>
         [Input("allowRegenerationHost")]
         public Input<bool>? AllowRegenerationHost { get; set; }
 
@@ -1071,7 +1171,7 @@ namespace Pulumi.Yandex
         }
 
         /// <summary>
-        /// The name of the database.
+        /// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

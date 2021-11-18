@@ -26,6 +26,10 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly Outputs.GetMdbKafkaClusterConfigKafkaResult Kafka;
         /// <summary>
+        /// (Optional) Enables managed schema registry on cluster. Can be either `true` or `false`.
+        /// </summary>
+        public readonly bool? SchemaRegistry;
+        /// <summary>
         /// (Optional) Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
         /// </summary>
         public readonly bool? UnmanagedTopics;
@@ -40,7 +44,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbKafkaClusterConfigZookeeperResult? Zookeeper;
+        public readonly Outputs.GetMdbKafkaClusterConfigZookeeperResult Zookeeper;
 
         [OutputConstructor]
         private GetMdbKafkaClusterConfigResult(
@@ -50,17 +54,20 @@ namespace Pulumi.Yandex.Outputs
 
             Outputs.GetMdbKafkaClusterConfigKafkaResult kafka,
 
+            bool? schemaRegistry,
+
             bool? unmanagedTopics,
 
             string version,
 
             ImmutableArray<string> zones,
 
-            Outputs.GetMdbKafkaClusterConfigZookeeperResult? zookeeper)
+            Outputs.GetMdbKafkaClusterConfigZookeeperResult zookeeper)
         {
             AssignPublicIp = assignPublicIp;
             BrokersCount = brokersCount;
             Kafka = kafka;
+            SchemaRegistry = schemaRegistry;
             UnmanagedTopics = unmanagedTopics;
             Version = version;
             Zones = zones;

@@ -22,6 +22,10 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly bool Autofailover;
         /// <summary>
+        /// The period in days during which backups are stored.
+        /// </summary>
+        public readonly int BackupRetainPeriodDays;
+        /// <summary>
         /// Time to start the daily backup, in the UTC timezone. The structure is documented below.
         /// </summary>
         public readonly Outputs.GetMdbPostgresqlClusterConfigBackupWindowStartResult BackupWindowStart;
@@ -52,6 +56,8 @@ namespace Pulumi.Yandex.Outputs
 
             bool autofailover,
 
+            int backupRetainPeriodDays,
+
             Outputs.GetMdbPostgresqlClusterConfigBackupWindowStartResult backupWindowStart,
 
             Outputs.GetMdbPostgresqlClusterConfigPerformanceDiagnosticsResult performanceDiagnostics,
@@ -66,6 +72,7 @@ namespace Pulumi.Yandex.Outputs
         {
             Access = access;
             Autofailover = autofailover;
+            BackupRetainPeriodDays = backupRetainPeriodDays;
             BackupWindowStart = backupWindowStart;
             PerformanceDiagnostics = performanceDiagnostics;
             PoolerConfig = poolerConfig;

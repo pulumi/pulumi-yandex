@@ -65,6 +65,7 @@ export * from "./getMdbClickhouseCluster";
 export * from "./getMdbElasticSearchCluster";
 export * from "./getMdbGreenplumCluster";
 export * from "./getMdbKafkaCluster";
+export * from "./getMdbKafkaTopic";
 export * from "./getMdbMongodbCluster";
 export * from "./getMdbMysqlCluster";
 export * from "./getMdbPostgresqlCluster";
@@ -92,6 +93,7 @@ export * from "./iotCoreDevice";
 export * from "./iotCoreRegistry";
 export * from "./kmsSecretCiphertext";
 export * from "./kmsSymmetricKey";
+export * from "./kmsSymmetricKeyIamBinding";
 export * from "./kubernetesCluster";
 export * from "./kubernetesNodeGroup";
 export * from "./lbNetworkLoadBalancer";
@@ -101,6 +103,7 @@ export * from "./mdbClickhouseCluster";
 export * from "./mdbElasticSearchCluster";
 export * from "./mdbGreenplumCluster";
 export * from "./mdbKafkaCluster";
+export * from "./mdbKafkaTopic";
 export * from "./mdbMongodbCluster";
 export * from "./mdbMysqlCluster";
 export * from "./mdbRedisCluster";
@@ -172,6 +175,7 @@ import { IotCoreDevice } from "./iotCoreDevice";
 import { IotCoreRegistry } from "./iotCoreRegistry";
 import { KmsSecretCiphertext } from "./kmsSecretCiphertext";
 import { KmsSymmetricKey } from "./kmsSymmetricKey";
+import { KmsSymmetricKeyIamBinding } from "./kmsSymmetricKeyIamBinding";
 import { KubernetesCluster } from "./kubernetesCluster";
 import { KubernetesNodeGroup } from "./kubernetesNodeGroup";
 import { LbNetworkLoadBalancer } from "./lbNetworkLoadBalancer";
@@ -181,6 +185,7 @@ import { MdbClickhouseCluster } from "./mdbClickhouseCluster";
 import { MdbElasticSearchCluster } from "./mdbElasticSearchCluster";
 import { MdbGreenplumCluster } from "./mdbGreenplumCluster";
 import { MdbKafkaCluster } from "./mdbKafkaCluster";
+import { MdbKafkaTopic } from "./mdbKafkaTopic";
 import { MdbMongodbCluster } from "./mdbMongodbCluster";
 import { MdbMysqlCluster } from "./mdbMysqlCluster";
 import { MdbRedisCluster } from "./mdbRedisCluster";
@@ -280,6 +285,8 @@ const _module = {
                 return new KmsSecretCiphertext(name, <any>undefined, { urn })
             case "yandex:index/kmsSymmetricKey:KmsSymmetricKey":
                 return new KmsSymmetricKey(name, <any>undefined, { urn })
+            case "yandex:index/kmsSymmetricKeyIamBinding:KmsSymmetricKeyIamBinding":
+                return new KmsSymmetricKeyIamBinding(name, <any>undefined, { urn })
             case "yandex:index/kubernetesCluster:KubernetesCluster":
                 return new KubernetesCluster(name, <any>undefined, { urn })
             case "yandex:index/kubernetesNodeGroup:KubernetesNodeGroup":
@@ -298,6 +305,8 @@ const _module = {
                 return new MdbGreenplumCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbKafkaCluster:MdbKafkaCluster":
                 return new MdbKafkaCluster(name, <any>undefined, { urn })
+            case "yandex:index/mdbKafkaTopic:MdbKafkaTopic":
+                return new MdbKafkaTopic(name, <any>undefined, { urn })
             case "yandex:index/mdbMongodbCluster:MdbMongodbCluster":
                 return new MdbMongodbCluster(name, <any>undefined, { urn })
             case "yandex:index/mdbMysqlCluster:MdbMysqlCluster":
@@ -386,6 +395,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/iotCoreDevice", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/iotCoreRegistry", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/kmsSecretCiphertext", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/kmsSymmetricKey", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/kmsSymmetricKeyIamBinding", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/kubernetesCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/kubernetesNodeGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/lbNetworkLoadBalancer", _module)
@@ -395,6 +405,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/mdbClickhouseCluster", _m
 pulumi.runtime.registerResourceModule("yandex", "index/mdbElasticSearchCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbGreenplumCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbKafkaCluster", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/mdbKafkaTopic", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMongodbCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbMysqlCluster", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/mdbRedisCluster", _module)

@@ -15,6 +15,7 @@ namespace Pulumi.Yandex.Outputs
     {
         /// <summary>
         /// Specifies if the instance is preemptible. Defaults to false.
+        /// ---
         /// </summary>
         public readonly bool? Preemptible;
 

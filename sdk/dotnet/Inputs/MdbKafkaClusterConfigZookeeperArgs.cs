@@ -15,8 +15,8 @@ namespace Pulumi.Yandex.Inputs
         /// <summary>
         /// Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
         /// </summary>
-        [Input("resources", required: true)]
-        public Input<Inputs.MdbKafkaClusterConfigZookeeperResourcesArgs> Resources { get; set; } = null!;
+        [Input("resources")]
+        public Input<Inputs.MdbKafkaClusterConfigZookeeperResourcesArgs>? Resources { get; set; }
 
         public MdbKafkaClusterConfigZookeeperArgs()
         {

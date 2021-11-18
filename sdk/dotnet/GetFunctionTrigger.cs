@@ -163,6 +163,7 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly Outputs.GetFunctionTriggerLogGroupResult LogGroup;
+        public readonly Outputs.GetFunctionTriggerLoggingResult Logging;
         /// <summary>
         /// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
         /// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
@@ -210,6 +211,8 @@ namespace Pulumi.Yandex
 
             Outputs.GetFunctionTriggerLogGroupResult logGroup,
 
+            Outputs.GetFunctionTriggerLoggingResult logging,
+
             Outputs.GetFunctionTriggerMessageQueueResult messageQueue,
 
             string? name,
@@ -229,6 +232,7 @@ namespace Pulumi.Yandex
             Iot = iot;
             Labels = labels;
             LogGroup = logGroup;
+            Logging = logging;
             MessageQueue = messageQueue;
             Name = name;
             ObjectStorage = objectStorage;

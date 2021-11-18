@@ -58,6 +58,9 @@ namespace Pulumi.Yandex.Inputs
             set => _networkInterfaces = value;
         }
 
+        /// <summary>
+        /// The placement policy configuration. The structure is documented below.
+        /// </summary>
         [Input("placementPolicy")]
         public Input<Inputs.KubernetesNodeGroupInstanceTemplatePlacementPolicyGetArgs>? PlacementPolicy { get; set; }
 

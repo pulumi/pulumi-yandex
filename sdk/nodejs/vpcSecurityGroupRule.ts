@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *     securityGroupBinding: group1.id,
  *     direction: "ingress",
  *     description: "rule1 description",
- *     v4CidrBlokcs: [
+ *     v4CidrBlocks: [
  *         "10.0.1.0/24",
  *         "10.0.2.0/24",
  *     ],
@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *     securityGroupBinding: group1.id,
  *     direction: "egress",
  *     description: "rule2 description",
- *     v4CidrBlokcs: ["10.0.1.0/24"],
+ *     v4CidrBlocks: ["10.0.1.0/24"],
  *     fromPort: 8090,
  *     toPort: 8099,
  *     protocol: "UDP",

@@ -16,10 +16,10 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.MdbKafkaClusterConfigZookeeperResources Resources;
+        public readonly Outputs.MdbKafkaClusterConfigZookeeperResources? Resources;
 
         [OutputConstructor]
-        private MdbKafkaClusterConfigZookeeper(Outputs.MdbKafkaClusterConfigZookeeperResources resources)
+        private MdbKafkaClusterConfigZookeeper(Outputs.MdbKafkaClusterConfigZookeeperResources? resources)
         {
             Resources = resources;
         }

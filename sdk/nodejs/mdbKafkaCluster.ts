@@ -48,6 +48,7 @@ import * as utilities from "./utilities";
  *                 resourcePresetId: "s2.micro",
  *             },
  *         },
+ *         schemaRegistry: false,
  *         unmanagedTopics: false,
  *         version: "2.6",
  *         zones: ["ru-central1-a"],
@@ -55,38 +56,6 @@ import * as utilities from "./utilities";
  *     environment: "PRESTABLE",
  *     networkId: fooVpcNetwork.id,
  *     subnetIds: [fooVpcSubnet.id],
- *     topics: [
- *         {
- *             name: "input",
- *             partitions: 2,
- *             replicationFactor: 1,
- *             topicConfig: {
- *                 compressionType: "COMPRESSION_TYPE_LZ4",
- *                 deleteRetentionMs: "8.64e+07",
- *                 fileDeleteDelayMs: "60000",
- *                 flushMessages: "128",
- *                 flushMs: "1000",
- *                 maxMessageBytes: "1.048588e+06",
- *                 minCompactionLagMs: "0",
- *                 minInsyncReplicas: "1",
- *                 preallocate: true,
- *                 retentionBytes: "1.073741824e+10",
- *                 retentionMs: "6.048e+08",
- *                 segmentBytes: "2.68435456e+08",
- *             },
- *         },
- *         {
- *             name: "output",
- *             partitions: 6,
- *             replicationFactor: 1,
- *             topicConfig: {
- *                 compressionType: "COMPRESSION_TYPE_GZIP",
- *                 maxMessageBytes: "1.048588e+06",
- *                 preallocate: false,
- *                 segmentBytes: "5.36870912e+08",
- *             },
- *         },
- *     ],
  *     users: [
  *         {
  *             name: "producer-application",
@@ -161,6 +130,7 @@ import * as utilities from "./utilities";
  *                 resourcePresetId: "s2.medium",
  *             },
  *         },
+ *         schemaRegistry: false,
  *         unmanagedTopics: false,
  *         version: "2.6",
  *         zones: [
@@ -182,38 +152,6 @@ import * as utilities from "./utilities";
  *         fooVpcSubnet.id,
  *         bar.id,
  *         baz.id,
- *     ],
- *     topics: [
- *         {
- *             name: "input",
- *             partitions: 2,
- *             replicationFactor: 1,
- *             topicConfig: {
- *                 compressionType: "COMPRESSION_TYPE_LZ4",
- *                 deleteRetentionMs: "8.64e+07",
- *                 fileDeleteDelayMs: "60000",
- *                 flushMessages: "128",
- *                 flushMs: "1000",
- *                 maxMessageBytes: "1.048588e+06",
- *                 minCompactionLagMs: "0",
- *                 minInsyncReplicas: "1",
- *                 preallocate: true,
- *                 retentionBytes: "1.073741824e+10",
- *                 retentionMs: "6.048e+08",
- *                 segmentBytes: "2.68435456e+08",
- *             },
- *         },
- *         {
- *             name: "output",
- *             partitions: 6,
- *             replicationFactor: 1,
- *             topicConfig: {
- *                 compressionType: "COMPRESSION_TYPE_GZIP",
- *                 maxMessageBytes: "1.048588e+06",
- *                 preallocate: false,
- *                 segmentBytes: "5.36870912e+08",
- *             },
- *         },
  *     ],
  *     users: [
  *         {
@@ -295,7 +233,8 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+     * Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+     * The default is `PRODUCTION`.
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
@@ -309,7 +248,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
     /**
      * A list of IDs of the host groups to place VMs of the cluster on.
      */
-    public readonly hostGroupIds!: pulumi.Output<string[] | undefined>;
+    public readonly hostGroupIds!: pulumi.Output<string[]>;
     /**
      * A host of the Kafka cluster. The structure is documented below.
      */
@@ -317,7 +256,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
     /**
      * A set of key/value label pairs to assign to the Kafka cluster.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the topic.
      */
@@ -329,7 +268,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
     /**
      * Security group ids, to which the Kafka cluster belongs.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
      * Status of the cluster. Can be either `CREATING`, `STARTING`, `RUNNING`, `UPDATING`, `STOPPING`, `STOPPED`, `ERROR` or `STATUS_UNKNOWN`.
      * For more information see `status` field of JSON representation in [the official documentation](https://cloud.yandex.com/docs/managed-kafka/api-ref/Cluster/).
@@ -340,7 +279,9 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
      */
     public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
-     * A topic of the Kafka cluster. The structure is documented below.
+     * To manage topics, please switch to using a separate resource type `yandex.MdbKafkaTopic`.
+     *
+     * @deprecated to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic
      */
     public readonly topics!: pulumi.Output<outputs.MdbKafkaClusterTopic[] | undefined>;
     /**
@@ -432,7 +373,8 @@ export interface MdbKafkaClusterState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+     * Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+     * The default is `PRODUCTION`.
      */
     environment?: pulumi.Input<string>;
     /**
@@ -477,7 +419,9 @@ export interface MdbKafkaClusterState {
      */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A topic of the Kafka cluster. The structure is documented below.
+     * To manage topics, please switch to using a separate resource type `yandex.MdbKafkaTopic`.
+     *
+     * @deprecated to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic
      */
     topics?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterTopic>[]>;
     /**
@@ -503,7 +447,8 @@ export interface MdbKafkaClusterArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`.
+     * Deployment environment of the Kafka cluster. Can be either `PRESTABLE` or `PRODUCTION`. 
+     * The default is `PRODUCTION`.
      */
     environment?: pulumi.Input<string>;
     /**
@@ -535,7 +480,9 @@ export interface MdbKafkaClusterArgs {
      */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A topic of the Kafka cluster. The structure is documented below.
+     * To manage topics, please switch to using a separate resource type `yandex.MdbKafkaTopic`.
+     *
+     * @deprecated to manage topics, please switch to using a separate resource type yandex_mdb_kafka_topic
      */
     topics?: pulumi.Input<pulumi.Input<inputs.MdbKafkaClusterTopic>[]>;
     /**

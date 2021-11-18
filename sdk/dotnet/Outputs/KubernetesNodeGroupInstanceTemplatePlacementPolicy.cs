@@ -13,6 +13,9 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class KubernetesNodeGroupInstanceTemplatePlacementPolicy
     {
+        /// <summary>
+        /// Specifies the id of the Placement Group to assign to the instances.
+        /// </summary>
         public readonly string PlacementGroupId;
 
         [OutputConstructor]

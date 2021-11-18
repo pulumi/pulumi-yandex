@@ -14,11 +14,11 @@ namespace Pulumi.Yandex.Outputs
     public sealed class MdbKafkaClusterConfig
     {
         /// <summary>
-        /// Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+        /// Determines whether each broker will be assigned a public IP address. The default is `false`.
         /// </summary>
         public readonly bool? AssignPublicIp;
         /// <summary>
-        /// Count of brokers per availability zone.
+        /// Count of brokers per availability zone. The default is `1`.
         /// </summary>
         public readonly int? BrokersCount;
         /// <summary>
@@ -26,7 +26,11 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly Outputs.MdbKafkaClusterConfigKafka Kafka;
         /// <summary>
-        /// Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
+        /// Enables managed schema registry on cluster. The default is `false`.
+        /// </summary>
+        public readonly bool? SchemaRegistry;
+        /// <summary>
+        /// Allows to use Kafka AdminAPI to manage topics. The default is `false`.
         /// </summary>
         public readonly bool? UnmanagedTopics;
         /// <summary>
@@ -50,6 +54,8 @@ namespace Pulumi.Yandex.Outputs
 
             Outputs.MdbKafkaClusterConfigKafka kafka,
 
+            bool? schemaRegistry,
+
             bool? unmanagedTopics,
 
             string version,
@@ -61,6 +67,7 @@ namespace Pulumi.Yandex.Outputs
             AssignPublicIp = assignPublicIp;
             BrokersCount = brokersCount;
             Kafka = kafka;
+            SchemaRegistry = schemaRegistry;
             UnmanagedTopics = unmanagedTopics;
             Version = version;
             Zones = zones;

@@ -69,6 +69,9 @@ import * as utilities from "./utilities";
  *             diskTypeId: "network-ssd",
  *         },
  *     },
+ *     access: {
+ *         webSql: true,
+ *     },
  *     userName: "admin_user",
  *     userPassword: "your_super_secret_password",
  *     securityGroupIds: [test_sg_x.id],
@@ -112,9 +115,17 @@ export class MdbGreenplumCluster extends pulumi.CustomResource {
     }
 
     /**
+     * Access policy to the Greenplum cluster. The structure is documented below.
+     */
+    public readonly access!: pulumi.Output<outputs.MdbGreenplumClusterAccess>;
+    /**
      * Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
      */
     public readonly assignPublicIp!: pulumi.Output<boolean>;
+    /**
+     * Time to start the daily backup, in the UTC timezone. The structure is documented below.
+     */
+    public readonly backupWindowStart!: pulumi.Output<outputs.MdbGreenplumClusterBackupWindowStart>;
     /**
      * Creation timestamp of the cluster.
      */
@@ -222,7 +233,9 @@ export class MdbGreenplumCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MdbGreenplumClusterState | undefined;
+            inputs["access"] = state ? state.access : undefined;
             inputs["assignPublicIp"] = state ? state.assignPublicIp : undefined;
+            inputs["backupWindowStart"] = state ? state.backupWindowStart : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -287,7 +300,9 @@ export class MdbGreenplumCluster extends pulumi.CustomResource {
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
+            inputs["access"] = args ? args.access : undefined;
             inputs["assignPublicIp"] = args ? args.assignPublicIp : undefined;
+            inputs["backupWindowStart"] = args ? args.backupWindowStart : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environment"] = args ? args.environment : undefined;
@@ -324,9 +339,17 @@ export class MdbGreenplumCluster extends pulumi.CustomResource {
  */
 export interface MdbGreenplumClusterState {
     /**
+     * Access policy to the Greenplum cluster. The structure is documented below.
+     */
+    access?: pulumi.Input<inputs.MdbGreenplumClusterAccess>;
+    /**
      * Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
      */
     assignPublicIp?: pulumi.Input<boolean>;
+    /**
+     * Time to start the daily backup, in the UTC timezone. The structure is documented below.
+     */
+    backupWindowStart?: pulumi.Input<inputs.MdbGreenplumClusterBackupWindowStart>;
     /**
      * Creation timestamp of the cluster.
      */
@@ -427,9 +450,17 @@ export interface MdbGreenplumClusterState {
  */
 export interface MdbGreenplumClusterArgs {
     /**
+     * Access policy to the Greenplum cluster. The structure is documented below.
+     */
+    access?: pulumi.Input<inputs.MdbGreenplumClusterAccess>;
+    /**
      * Sets whether the master hosts should get a public IP address on creation. Changing this parameter for an existing host is not supported at the moment.
      */
     assignPublicIp: pulumi.Input<boolean>;
+    /**
+     * Time to start the daily backup, in the UTC timezone. The structure is documented below.
+     */
+    backupWindowStart?: pulumi.Input<inputs.MdbGreenplumClusterBackupWindowStart>;
     /**
      * Inhibits deletion of the cluster.  Can be either `true` or `false`.
      */

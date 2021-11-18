@@ -111,6 +111,7 @@ __all__ = [
     'FunctionTriggerFunctionArgs',
     'FunctionTriggerIotArgs',
     'FunctionTriggerLogGroupArgs',
+    'FunctionTriggerLoggingArgs',
     'FunctionTriggerMessageQueueArgs',
     'FunctionTriggerObjectStorageArgs',
     'FunctionTriggerTimerArgs',
@@ -180,6 +181,8 @@ __all__ = [
     'MdbElasticSearchClusterConfigMasterNodeArgs',
     'MdbElasticSearchClusterConfigMasterNodeResourcesArgs',
     'MdbElasticSearchClusterHostArgs',
+    'MdbGreenplumClusterAccessArgs',
+    'MdbGreenplumClusterBackupWindowStartArgs',
     'MdbGreenplumClusterMasterHostArgs',
     'MdbGreenplumClusterMasterSubclusterArgs',
     'MdbGreenplumClusterMasterSubclusterResourcesArgs',
@@ -197,6 +200,7 @@ __all__ = [
     'MdbKafkaClusterTopicTopicConfigArgs',
     'MdbKafkaClusterUserArgs',
     'MdbKafkaClusterUserPermissionArgs',
+    'MdbKafkaTopicTopicConfigArgs',
     'MdbMongodbClusterClusterConfigArgs',
     'MdbMongodbClusterClusterConfigAccessArgs',
     'MdbMongodbClusterClusterConfigBackupWindowStartArgs',
@@ -7017,6 +7021,78 @@ class FunctionTriggerLogGroupArgs:
 
 
 @pulumi.input_type
+class FunctionTriggerLoggingArgs:
+    def __init__(__self__, *,
+                 batch_cutoff: pulumi.Input[str],
+                 group_id: pulumi.Input[str],
+                 levels: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 resource_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 resource_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 batch_size: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "batch_cutoff", batch_cutoff)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "levels", levels)
+        pulumi.set(__self__, "resource_ids", resource_ids)
+        pulumi.set(__self__, "resource_types", resource_types)
+        if batch_size is not None:
+            pulumi.set(__self__, "batch_size", batch_size)
+
+    @property
+    @pulumi.getter(name="batchCutoff")
+    def batch_cutoff(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "batch_cutoff")
+
+    @batch_cutoff.setter
+    def batch_cutoff(self, value: pulumi.Input[str]):
+        pulumi.set(self, "batch_cutoff", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def levels(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "levels")
+
+    @levels.setter
+    def levels(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "levels", value)
+
+    @property
+    @pulumi.getter(name="resourceIds")
+    def resource_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "resource_ids")
+
+    @resource_ids.setter
+    def resource_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "resource_ids", value)
+
+    @property
+    @pulumi.getter(name="resourceTypes")
+    def resource_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "resource_types")
+
+    @resource_types.setter
+    def resource_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "resource_types", value)
+
+    @property
+    @pulumi.getter(name="batchSize")
+    def batch_size(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "batch_size")
+
+    @batch_size.setter
+    def batch_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "batch_size", value)
+
+
+@pulumi.input_type
 class FunctionTriggerMessageQueueArgs:
     def __init__(__self__, *,
                  batch_cutoff: pulumi.Input[str],
@@ -7829,6 +7905,7 @@ class KubernetesNodeGroupInstanceTemplateArgs:
         :param pulumi.Input[bool] nat: A public address that can be used to access the internet over NAT.
         :param pulumi.Input[str] network_acceleration_type: Type of network acceleration. Values: `standard`, `software_accelerated`.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs']]] network_interfaces: An array with the network interfaces that will be attached to the instance. The structure is documented below.
+        :param pulumi.Input['KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs'] placement_policy: The placement policy configuration. The structure is documented below.
         :param pulumi.Input[str] platform_id: The ID of the hardware platform configuration for the node group compute instances.
         :param pulumi.Input['KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs'] scheduling_policy: The scheduling policy for the instances in node group. The structure is documented below.
         """
@@ -7921,6 +7998,9 @@ class KubernetesNodeGroupInstanceTemplateArgs:
     @property
     @pulumi.getter(name="placementPolicy")
     def placement_policy(self) -> Optional[pulumi.Input['KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs']]:
+        """
+        The placement policy configuration. The structure is documented below.
+        """
         return pulumi.get(self, "placement_policy")
 
     @placement_policy.setter
@@ -8090,11 +8170,17 @@ class KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs:
 class KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs:
     def __init__(__self__, *,
                  placement_group_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] placement_group_id: Specifies the id of the Placement Group to assign to the instances.
+        """
         pulumi.set(__self__, "placement_group_id", placement_group_id)
 
     @property
     @pulumi.getter(name="placementGroupId")
     def placement_group_id(self) -> pulumi.Input[str]:
+        """
+        Specifies the id of the Placement Group to assign to the instances.
+        """
         return pulumi.get(self, "placement_group_id")
 
     @placement_group_id.setter
@@ -8161,6 +8247,7 @@ class KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs:
                  preemptible: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] preemptible: Specifies if the instance is preemptible. Defaults to false.
+               ---
         """
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
@@ -8170,6 +8257,7 @@ class KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs:
     def preemptible(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies if the instance is preemptible. Defaults to false.
+        ---
         """
         return pulumi.get(self, "preemptible")
 
@@ -12565,6 +12653,84 @@ class MdbElasticSearchClusterHostArgs:
 
 
 @pulumi.input_type
+class MdbGreenplumClusterAccessArgs:
+    def __init__(__self__, *,
+                 data_lens: Optional[pulumi.Input[bool]] = None,
+                 web_sql: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] data_lens: Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
+        :param pulumi.Input[bool] web_sql: Allows access for SQL queries in the management console
+        """
+        if data_lens is not None:
+            pulumi.set(__self__, "data_lens", data_lens)
+        if web_sql is not None:
+            pulumi.set(__self__, "web_sql", web_sql)
+
+    @property
+    @pulumi.getter(name="dataLens")
+    def data_lens(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
+        """
+        return pulumi.get(self, "data_lens")
+
+    @data_lens.setter
+    def data_lens(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "data_lens", value)
+
+    @property
+    @pulumi.getter(name="webSql")
+    def web_sql(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows access for SQL queries in the management console
+        """
+        return pulumi.get(self, "web_sql")
+
+    @web_sql.setter
+    def web_sql(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "web_sql", value)
+
+
+@pulumi.input_type
+class MdbGreenplumClusterBackupWindowStartArgs:
+    def __init__(__self__, *,
+                 hours: Optional[pulumi.Input[int]] = None,
+                 minutes: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] hours: The hour at which backup will be started (UTC).
+        :param pulumi.Input[int] minutes: The minute at which backup will be started (UTC).
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        The hour at which backup will be started (UTC).
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hours", value)
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minute at which backup will be started (UTC).
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minutes", value)
+
+
+@pulumi.input_type
 class MdbGreenplumClusterMasterHostArgs:
     def __init__(__self__, *,
                  assign_public_ip: Optional[pulumi.Input[bool]] = None,
@@ -12754,15 +12920,17 @@ class MdbKafkaClusterConfigArgs:
                  zones: pulumi.Input[Sequence[pulumi.Input[str]]],
                  assign_public_ip: Optional[pulumi.Input[bool]] = None,
                  brokers_count: Optional[pulumi.Input[int]] = None,
+                 schema_registry: Optional[pulumi.Input[bool]] = None,
                  unmanaged_topics: Optional[pulumi.Input[bool]] = None,
                  zookeeper: Optional[pulumi.Input['MdbKafkaClusterConfigZookeeperArgs']] = None):
         """
         :param pulumi.Input['MdbKafkaClusterConfigKafkaArgs'] kafka: Configuration of the Kafka subcluster. The structure is documented below.
         :param pulumi.Input[str] version: Version of the Kafka server software.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: List of availability zones.
-        :param pulumi.Input[bool] assign_public_ip: Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
-        :param pulumi.Input[int] brokers_count: Count of brokers per availability zone.
-        :param pulumi.Input[bool] unmanaged_topics: Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
+        :param pulumi.Input[bool] assign_public_ip: Determines whether each broker will be assigned a public IP address. The default is `false`.
+        :param pulumi.Input[int] brokers_count: Count of brokers per availability zone. The default is `1`.
+        :param pulumi.Input[bool] schema_registry: Enables managed schema registry on cluster. The default is `false`.
+        :param pulumi.Input[bool] unmanaged_topics: Allows to use Kafka AdminAPI to manage topics. The default is `false`.
         :param pulumi.Input['MdbKafkaClusterConfigZookeeperArgs'] zookeeper: Configuration of the ZooKeeper subcluster. The structure is documented below.
         """
         pulumi.set(__self__, "kafka", kafka)
@@ -12772,6 +12940,8 @@ class MdbKafkaClusterConfigArgs:
             pulumi.set(__self__, "assign_public_ip", assign_public_ip)
         if brokers_count is not None:
             pulumi.set(__self__, "brokers_count", brokers_count)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
         if unmanaged_topics is not None:
             pulumi.set(__self__, "unmanaged_topics", unmanaged_topics)
         if zookeeper is not None:
@@ -12817,7 +12987,7 @@ class MdbKafkaClusterConfigArgs:
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+        Determines whether each broker will be assigned a public IP address. The default is `false`.
         """
         return pulumi.get(self, "assign_public_ip")
 
@@ -12829,7 +12999,7 @@ class MdbKafkaClusterConfigArgs:
     @pulumi.getter(name="brokersCount")
     def brokers_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Count of brokers per availability zone.
+        Count of brokers per availability zone. The default is `1`.
         """
         return pulumi.get(self, "brokers_count")
 
@@ -12838,10 +13008,22 @@ class MdbKafkaClusterConfigArgs:
         pulumi.set(self, "brokers_count", value)
 
     @property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables managed schema registry on cluster. The default is `false`.
+        """
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "schema_registry", value)
+
+    @property
     @pulumi.getter(name="unmanagedTopics")
     def unmanaged_topics(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
+        Allows to use Kafka AdminAPI to manage topics. The default is `false`.
         """
         return pulumi.get(self, "unmanaged_topics")
 
@@ -13138,55 +13320,59 @@ class MdbKafkaClusterConfigKafkaResourcesArgs:
 @pulumi.input_type
 class MdbKafkaClusterConfigZookeeperArgs:
     def __init__(__self__, *,
-                 resources: pulumi.Input['MdbKafkaClusterConfigZookeeperResourcesArgs']):
+                 resources: Optional[pulumi.Input['MdbKafkaClusterConfigZookeeperResourcesArgs']] = None):
         """
         :param pulumi.Input['MdbKafkaClusterConfigZookeeperResourcesArgs'] resources: Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
         """
-        pulumi.set(__self__, "resources", resources)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter
-    def resources(self) -> pulumi.Input['MdbKafkaClusterConfigZookeeperResourcesArgs']:
+    def resources(self) -> Optional[pulumi.Input['MdbKafkaClusterConfigZookeeperResourcesArgs']]:
         """
         Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: pulumi.Input['MdbKafkaClusterConfigZookeeperResourcesArgs']):
+    def resources(self, value: Optional[pulumi.Input['MdbKafkaClusterConfigZookeeperResourcesArgs']]):
         pulumi.set(self, "resources", value)
 
 
 @pulumi.input_type
 class MdbKafkaClusterConfigZookeeperResourcesArgs:
     def __init__(__self__, *,
-                 disk_size: pulumi.Input[int],
-                 disk_type_id: pulumi.Input[str],
-                 resource_preset_id: pulumi.Input[str]):
+                 disk_size: Optional[pulumi.Input[int]] = None,
+                 disk_type_id: Optional[pulumi.Input[str]] = None,
+                 resource_preset_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] disk_size: Volume of the storage available to a ZooKeeper host, in gigabytes.
         :param pulumi.Input[str] disk_type_id: Type of the storage of ZooKeeper hosts.
                For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
         """
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "disk_type_id", disk_type_id)
-        pulumi.set(__self__, "resource_preset_id", resource_preset_id)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if disk_type_id is not None:
+            pulumi.set(__self__, "disk_type_id", disk_type_id)
+        if resource_preset_id is not None:
+            pulumi.set(__self__, "resource_preset_id", resource_preset_id)
 
     @property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> pulumi.Input[int]:
+    def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
         Volume of the storage available to a ZooKeeper host, in gigabytes.
         """
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: pulumi.Input[int]):
+    def disk_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size", value)
 
     @property
     @pulumi.getter(name="diskTypeId")
-    def disk_type_id(self) -> pulumi.Input[str]:
+    def disk_type_id(self) -> Optional[pulumi.Input[str]]:
         """
         Type of the storage of ZooKeeper hosts.
         For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
@@ -13194,16 +13380,16 @@ class MdbKafkaClusterConfigZookeeperResourcesArgs:
         return pulumi.get(self, "disk_type_id")
 
     @disk_type_id.setter
-    def disk_type_id(self, value: pulumi.Input[str]):
+    def disk_type_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type_id", value)
 
     @property
     @pulumi.getter(name="resourcePresetId")
-    def resource_preset_id(self) -> pulumi.Input[str]:
+    def resource_preset_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "resource_preset_id")
 
     @resource_preset_id.setter
-    def resource_preset_id(self, value: pulumi.Input[str]):
+    def resource_preset_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_preset_id", value)
 
 
@@ -13217,7 +13403,7 @@ class MdbKafkaClusterHostArgs:
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] assign_public_ip: Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+        :param pulumi.Input[bool] assign_public_ip: Determines whether each broker will be assigned a public IP address. The default is `false`.
         :param pulumi.Input[str] health: Health of the host.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[str] role: The role type to grant to the topic.
@@ -13241,7 +13427,7 @@ class MdbKafkaClusterHostArgs:
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
+        Determines whether each broker will be assigned a public IP address. The default is `false`.
         """
         return pulumi.get(self, "assign_public_ip")
 
@@ -13630,6 +13816,167 @@ class MdbKafkaClusterUserPermissionArgs:
 
 
 @pulumi.input_type
+class MdbKafkaTopicTopicConfigArgs:
+    def __init__(__self__, *,
+                 cleanup_policy: Optional[pulumi.Input[str]] = None,
+                 compression_type: Optional[pulumi.Input[str]] = None,
+                 delete_retention_ms: Optional[pulumi.Input[str]] = None,
+                 file_delete_delay_ms: Optional[pulumi.Input[str]] = None,
+                 flush_messages: Optional[pulumi.Input[str]] = None,
+                 flush_ms: Optional[pulumi.Input[str]] = None,
+                 max_message_bytes: Optional[pulumi.Input[str]] = None,
+                 min_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
+                 min_insync_replicas: Optional[pulumi.Input[str]] = None,
+                 preallocate: Optional[pulumi.Input[bool]] = None,
+                 retention_bytes: Optional[pulumi.Input[str]] = None,
+                 retention_ms: Optional[pulumi.Input[str]] = None,
+                 segment_bytes: Optional[pulumi.Input[str]] = None):
+        if cleanup_policy is not None:
+            pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        if compression_type is not None:
+            pulumi.set(__self__, "compression_type", compression_type)
+        if delete_retention_ms is not None:
+            pulumi.set(__self__, "delete_retention_ms", delete_retention_ms)
+        if file_delete_delay_ms is not None:
+            pulumi.set(__self__, "file_delete_delay_ms", file_delete_delay_ms)
+        if flush_messages is not None:
+            pulumi.set(__self__, "flush_messages", flush_messages)
+        if flush_ms is not None:
+            pulumi.set(__self__, "flush_ms", flush_ms)
+        if max_message_bytes is not None:
+            pulumi.set(__self__, "max_message_bytes", max_message_bytes)
+        if min_compaction_lag_ms is not None:
+            pulumi.set(__self__, "min_compaction_lag_ms", min_compaction_lag_ms)
+        if min_insync_replicas is not None:
+            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
+        if preallocate is not None:
+            pulumi.set(__self__, "preallocate", preallocate)
+        if retention_bytes is not None:
+            pulumi.set(__self__, "retention_bytes", retention_bytes)
+        if retention_ms is not None:
+            pulumi.set(__self__, "retention_ms", retention_ms)
+        if segment_bytes is not None:
+            pulumi.set(__self__, "segment_bytes", segment_bytes)
+
+    @property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cleanup_policy")
+
+    @cleanup_policy.setter
+    def cleanup_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cleanup_policy", value)
+
+    @property
+    @pulumi.getter(name="compressionType")
+    def compression_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "compression_type")
+
+    @compression_type.setter
+    def compression_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compression_type", value)
+
+    @property
+    @pulumi.getter(name="deleteRetentionMs")
+    def delete_retention_ms(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "delete_retention_ms")
+
+    @delete_retention_ms.setter
+    def delete_retention_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_retention_ms", value)
+
+    @property
+    @pulumi.getter(name="fileDeleteDelayMs")
+    def file_delete_delay_ms(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "file_delete_delay_ms")
+
+    @file_delete_delay_ms.setter
+    def file_delete_delay_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_delete_delay_ms", value)
+
+    @property
+    @pulumi.getter(name="flushMessages")
+    def flush_messages(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "flush_messages")
+
+    @flush_messages.setter
+    def flush_messages(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flush_messages", value)
+
+    @property
+    @pulumi.getter(name="flushMs")
+    def flush_ms(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "flush_ms")
+
+    @flush_ms.setter
+    def flush_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flush_ms", value)
+
+    @property
+    @pulumi.getter(name="maxMessageBytes")
+    def max_message_bytes(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_message_bytes")
+
+    @max_message_bytes.setter
+    def max_message_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_message_bytes", value)
+
+    @property
+    @pulumi.getter(name="minCompactionLagMs")
+    def min_compaction_lag_ms(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "min_compaction_lag_ms")
+
+    @min_compaction_lag_ms.setter
+    def min_compaction_lag_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_compaction_lag_ms", value)
+
+    @property
+    @pulumi.getter(name="minInsyncReplicas")
+    def min_insync_replicas(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "min_insync_replicas")
+
+    @min_insync_replicas.setter
+    def min_insync_replicas(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_insync_replicas", value)
+
+    @property
+    @pulumi.getter
+    def preallocate(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "preallocate")
+
+    @preallocate.setter
+    def preallocate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preallocate", value)
+
+    @property
+    @pulumi.getter(name="retentionBytes")
+    def retention_bytes(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "retention_bytes")
+
+    @retention_bytes.setter
+    def retention_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention_bytes", value)
+
+    @property
+    @pulumi.getter(name="retentionMs")
+    def retention_ms(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "retention_ms")
+
+    @retention_ms.setter
+    def retention_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention_ms", value)
+
+    @property
+    @pulumi.getter(name="segmentBytes")
+    def segment_bytes(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "segment_bytes")
+
+    @segment_bytes.setter
+    def segment_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "segment_bytes", value)
+
+
+@pulumi.input_type
 class MdbMongodbClusterClusterConfigArgs:
     def __init__(__self__, *,
                  version: pulumi.Input[str],
@@ -13637,10 +13984,10 @@ class MdbMongodbClusterClusterConfigArgs:
                  backup_window_start: Optional[pulumi.Input['MdbMongodbClusterClusterConfigBackupWindowStartArgs']] = None,
                  feature_compatibility_version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] version: Version of MongoDB (either 4.4, 4.2, 4.0 or 3.6).
+        :param pulumi.Input[str] version: Version of MongoDB (either 5.0, 4.4, 4.2 or 4.0).
         :param pulumi.Input['MdbMongodbClusterClusterConfigAccessArgs'] access: Shows whether cluster has access to data lens. The structure is documented below.
         :param pulumi.Input['MdbMongodbClusterClusterConfigBackupWindowStartArgs'] backup_window_start: Time to start the daily backup, in the UTC timezone. The structure is documented below.
-        :param pulumi.Input[str] feature_compatibility_version: Feature compatibility version of MongoDB. If not provided version is taken. Can be either `4.4`, `4.2`, `4.0` and `3.6`.
+        :param pulumi.Input[str] feature_compatibility_version: Feature compatibility version of MongoDB. If not provided version is taken. Can be either `5.0`, `4.4`, `4.2` and `4.0`.
         """
         pulumi.set(__self__, "version", version)
         if access is not None:
@@ -13654,7 +14001,7 @@ class MdbMongodbClusterClusterConfigArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Version of MongoDB (either 4.4, 4.2, 4.0 or 3.6).
+        Version of MongoDB (either 5.0, 4.4, 4.2 or 4.0).
         """
         return pulumi.get(self, "version")
 
@@ -13690,7 +14037,7 @@ class MdbMongodbClusterClusterConfigArgs:
     @pulumi.getter(name="featureCompatibilityVersion")
     def feature_compatibility_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Feature compatibility version of MongoDB. If not provided version is taken. Can be either `4.4`, `4.2`, `4.0` and `3.6`.
+        Feature compatibility version of MongoDB. If not provided version is taken. Can be either `5.0`, `4.4`, `4.2` and `4.0`.
         """
         return pulumi.get(self, "feature_compatibility_version")
 
@@ -14194,7 +14541,7 @@ class MdbMysqlClusterDatabaseArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: The name of the database.
+        :param pulumi.Input[str] name: Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         """
         pulumi.set(__self__, "name", name)
 
@@ -14202,7 +14549,7 @@ class MdbMysqlClusterDatabaseArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the database.
+        Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         """
         return pulumi.get(self, "name")
 
@@ -14217,11 +14564,17 @@ class MdbMysqlClusterHostArgs:
                  zone: pulumi.Input[str],
                  assign_public_ip: Optional[pulumi.Input[bool]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 replication_source: Optional[pulumi.Input[str]] = None,
+                 replication_source_name: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] zone: The availability zone where the MySQL host will be created.
-        :param pulumi.Input[bool] assign_public_ip: Sets whether the host should get a public IP address on creation. When changing the `assign_public_ip` attribute and `allow_regeneration_host` is true, the old host is deleted and a new host is created. Changing this parameter for an existing host is not supported at the moment.
+        :param pulumi.Input[bool] assign_public_ip: Sets whether the host should get a public IP address. It can be changed on the fly only when `name` is set.
         :param pulumi.Input[str] fqdn: The fully qualified domain name of the host.
+        :param pulumi.Input[str] name: Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
+        :param pulumi.Input[str] replication_source: Host replication source (fqdn), when replication_source is empty then host is in HA group.
+        :param pulumi.Input[str] replication_source_name: Host replication source name points to host's `name` from which this host should replicate. When not set then host in HA group. It works only when `name` is set.
         :param pulumi.Input[str] subnet_id: The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.
         """
         pulumi.set(__self__, "zone", zone)
@@ -14229,6 +14582,12 @@ class MdbMysqlClusterHostArgs:
             pulumi.set(__self__, "assign_public_ip", assign_public_ip)
         if fqdn is not None:
             pulumi.set(__self__, "fqdn", fqdn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if replication_source is not None:
+            pulumi.set(__self__, "replication_source", replication_source)
+        if replication_source_name is not None:
+            pulumi.set(__self__, "replication_source_name", replication_source_name)
         if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
 
@@ -14248,7 +14607,7 @@ class MdbMysqlClusterHostArgs:
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Sets whether the host should get a public IP address on creation. When changing the `assign_public_ip` attribute and `allow_regeneration_host` is true, the old host is deleted and a new host is created. Changing this parameter for an existing host is not supported at the moment.
+        Sets whether the host should get a public IP address. It can be changed on the fly only when `name` is set.
         """
         return pulumi.get(self, "assign_public_ip")
 
@@ -14267,6 +14626,42 @@ class MdbMysqlClusterHostArgs:
     @fqdn.setter
     def fqdn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fqdn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="replicationSource")
+    def replication_source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host replication source (fqdn), when replication_source is empty then host is in HA group.
+        """
+        return pulumi.get(self, "replication_source")
+
+    @replication_source.setter
+    def replication_source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replication_source", value)
+
+    @property
+    @pulumi.getter(name="replicationSourceName")
+    def replication_source_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host replication source name points to host's `name` from which this host should replicate. When not set then host in HA group. It works only when `name` is set.
+        """
+        return pulumi.get(self, "replication_source_name")
+
+    @replication_source_name.setter
+    def replication_source_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replication_source_name", value)
 
     @property
     @pulumi.getter(name="subnetId")
@@ -14431,7 +14826,7 @@ class MdbMysqlClusterUserArgs:
                  global_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input['MdbMysqlClusterUserPermissionArgs']]]] = None):
         """
-        :param pulumi.Input[str] name: The name of the database.
+        :param pulumi.Input[str] name: Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         :param pulumi.Input[str] password: The password of the user.
         :param pulumi.Input[str] authentication_plugin: Authentication plugin. Allowed values: `MYSQL_NATIVE_PASSWORD`, `CACHING_SHA2_PASSWORD`, `SHA256_PASSWORD` (for version 5.7 `MYSQL_NATIVE_PASSWORD`, `SHA256_PASSWORD`)
         :param pulumi.Input['MdbMysqlClusterUserConnectionLimitsArgs'] connection_limits: User's connection limits. The structure is documented below.
@@ -14456,7 +14851,7 @@ class MdbMysqlClusterUserArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the database.
+        Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
         """
         return pulumi.get(self, "name")
 
@@ -17926,30 +18321,33 @@ class GetMdbKafkaClusterConfigArgs:
                  kafka: 'GetMdbKafkaClusterConfigKafkaArgs',
                  version: str,
                  zones: Sequence[str],
+                 zookeeper: 'GetMdbKafkaClusterConfigZookeeperArgs',
                  assign_public_ip: Optional[bool] = None,
                  brokers_count: Optional[int] = None,
-                 unmanaged_topics: Optional[bool] = None,
-                 zookeeper: Optional['GetMdbKafkaClusterConfigZookeeperArgs'] = None):
+                 schema_registry: Optional[bool] = None,
+                 unmanaged_topics: Optional[bool] = None):
         """
         :param 'GetMdbKafkaClusterConfigKafkaArgs' kafka: (Optional) Configuration of the Kafka subcluster. The structure is documented below.
         :param str version: (Required) Version of the Kafka server software.
         :param Sequence[str] zones: (Optional) List of availability zones.
+        :param 'GetMdbKafkaClusterConfigZookeeperArgs' zookeeper: (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
         :param bool assign_public_ip: The flag that defines whether a public IP address is assigned to the node.
         :param int brokers_count: (Optional) Count of brokers per availability zone.
+        :param bool schema_registry: (Optional) Enables managed schema registry on cluster. Can be either `true` or `false`.
         :param bool unmanaged_topics: (Optional) Allows to use Kafka AdminAPI to manage topics. Can be either `true` or `false`.
-        :param 'GetMdbKafkaClusterConfigZookeeperArgs' zookeeper: (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
         """
         pulumi.set(__self__, "kafka", kafka)
         pulumi.set(__self__, "version", version)
         pulumi.set(__self__, "zones", zones)
+        pulumi.set(__self__, "zookeeper", zookeeper)
         if assign_public_ip is not None:
             pulumi.set(__self__, "assign_public_ip", assign_public_ip)
         if brokers_count is not None:
             pulumi.set(__self__, "brokers_count", brokers_count)
+        if schema_registry is not None:
+            pulumi.set(__self__, "schema_registry", schema_registry)
         if unmanaged_topics is not None:
             pulumi.set(__self__, "unmanaged_topics", unmanaged_topics)
-        if zookeeper is not None:
-            pulumi.set(__self__, "zookeeper", zookeeper)
 
     @property
     @pulumi.getter
@@ -17988,6 +18386,18 @@ class GetMdbKafkaClusterConfigArgs:
         pulumi.set(self, "zones", value)
 
     @property
+    @pulumi.getter
+    def zookeeper(self) -> 'GetMdbKafkaClusterConfigZookeeperArgs':
+        """
+        (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
+        """
+        return pulumi.get(self, "zookeeper")
+
+    @zookeeper.setter
+    def zookeeper(self, value: 'GetMdbKafkaClusterConfigZookeeperArgs'):
+        pulumi.set(self, "zookeeper", value)
+
+    @property
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> Optional[bool]:
         """
@@ -18012,6 +18422,18 @@ class GetMdbKafkaClusterConfigArgs:
         pulumi.set(self, "brokers_count", value)
 
     @property
+    @pulumi.getter(name="schemaRegistry")
+    def schema_registry(self) -> Optional[bool]:
+        """
+        (Optional) Enables managed schema registry on cluster. Can be either `true` or `false`.
+        """
+        return pulumi.get(self, "schema_registry")
+
+    @schema_registry.setter
+    def schema_registry(self, value: Optional[bool]):
+        pulumi.set(self, "schema_registry", value)
+
+    @property
     @pulumi.getter(name="unmanagedTopics")
     def unmanaged_topics(self) -> Optional[bool]:
         """
@@ -18022,18 +18444,6 @@ class GetMdbKafkaClusterConfigArgs:
     @unmanaged_topics.setter
     def unmanaged_topics(self, value: Optional[bool]):
         pulumi.set(self, "unmanaged_topics", value)
-
-    @property
-    @pulumi.getter
-    def zookeeper(self) -> Optional['GetMdbKafkaClusterConfigZookeeperArgs']:
-        """
-        (Optional) Configuration of the ZooKeeper subcluster. The structure is documented below.
-        """
-        return pulumi.get(self, "zookeeper")
-
-    @zookeeper.setter
-    def zookeeper(self, value: Optional['GetMdbKafkaClusterConfigZookeeperArgs']):
-        pulumi.set(self, "zookeeper", value)
 
 
 @pulumi.input_type
@@ -18384,21 +18794,36 @@ class GetMdbKafkaClusterConfigZookeeperResourcesArgs:
 @pulumi.input_type
 class GetMdbKafkaClusterTopicArgs:
     def __init__(__self__, *,
+                 cluster_id: str,
                  name: str,
                  partitions: int,
                  replication_factor: int,
                  topic_config: Optional['GetMdbKafkaClusterTopicTopicConfigArgs'] = None):
         """
+        :param str cluster_id: The ID of the Kafka cluster.
         :param str name: The name of the Kafka cluster.
         :param int partitions: (Required) The number of the topic's partitions.
         :param int replication_factor: (Required) Amount of data copies (replicas) for the topic in the cluster.
         :param 'GetMdbKafkaClusterTopicTopicConfigArgs' topic_config: (Required) User-defined settings for the topic. The structure is documented below.
         """
+        pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "partitions", partitions)
         pulumi.set(__self__, "replication_factor", replication_factor)
         if topic_config is not None:
             pulumi.set(__self__, "topic_config", topic_config)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the Kafka cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: str):
+        pulumi.set(self, "cluster_id", value)
 
     @property
     @pulumi.getter

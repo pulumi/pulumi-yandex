@@ -16,21 +16,21 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Volume of the storage available to a ZooKeeper host, in gigabytes.
         /// </summary>
-        public readonly int DiskSize;
+        public readonly int? DiskSize;
         /// <summary>
         /// Type of the storage of ZooKeeper hosts.
         /// For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
         /// </summary>
-        public readonly string DiskTypeId;
-        public readonly string ResourcePresetId;
+        public readonly string? DiskTypeId;
+        public readonly string? ResourcePresetId;
 
         [OutputConstructor]
         private MdbKafkaClusterConfigZookeeperResources(
-            int diskSize,
+            int? diskSize,
 
-            string diskTypeId,
+            string? diskTypeId,
 
-            string resourcePresetId)
+            string? resourcePresetId)
         {
             DiskSize = diskSize;
             DiskTypeId = diskTypeId;

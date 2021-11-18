@@ -15,6 +15,59 @@ namespace Pulumi.Yandex
     /// and [security group rules](https://cloud.yandex.com/docs/vpc/concepts/security-groups#rules).
     /// 
     /// &gt; **NOTE:** There is another way to manage security group rules by `ingress` and `egress` arguments in yandex_vpc_security_group. Both ways are equivalent but not compatible now. Using in-line rules of yandex.VpcSecurityGroup with Security Group Rule resource at the same time will cause a conflict of rules configuration.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Yandex = Pulumi.Yandex;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var lab_net = new Yandex.VpcNetwork("lab-net", new Yandex.VpcNetworkArgs
+    ///         {
+    ///         });
+    ///         var group1 = new Yandex.VpcSecurityGroup("group1", new Yandex.VpcSecurityGroupArgs
+    ///         {
+    ///             Description = "description for my security group",
+    ///             NetworkId = lab_net.Id,
+    ///             Labels = 
+    ///             {
+    ///                 { "my-label", "my-label-value" },
+    ///             },
+    ///         });
+    ///         var rule1 = new Yandex.VpcSecurityGroupRule("rule1", new Yandex.VpcSecurityGroupRuleArgs
+    ///         {
+    ///             SecurityGroupBinding = group1.Id,
+    ///             Direction = "ingress",
+    ///             Description = "rule1 description",
+    ///             V4CidrBlocks = 
+    ///             {
+    ///                 "10.0.1.0/24",
+    ///                 "10.0.2.0/24",
+    ///             },
+    ///             Port = 8080,
+    ///             Protocol = "TCP",
+    ///         });
+    ///         var rule2 = new Yandex.VpcSecurityGroupRule("rule2", new Yandex.VpcSecurityGroupRuleArgs
+    ///         {
+    ///             SecurityGroupBinding = group1.Id,
+    ///             Direction = "egress",
+    ///             Description = "rule2 description",
+    ///             V4CidrBlocks = 
+    ///             {
+    ///                 "10.0.1.0/24",
+    ///             },
+    ///             FromPort = 8090,
+    ///             ToPort = 8099,
+    ///             Protocol = "UDP",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [YandexResourceType("yandex:index/vpcSecurityGroupRule:VpcSecurityGroupRule")]
     public partial class VpcSecurityGroupRule : Pulumi.CustomResource

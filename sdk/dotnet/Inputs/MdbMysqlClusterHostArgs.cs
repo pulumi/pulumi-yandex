@@ -13,7 +13,7 @@ namespace Pulumi.Yandex.Inputs
     public sealed class MdbMysqlClusterHostArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets whether the host should get a public IP address on creation. When changing the `assign_public_ip` attribute and `allow_regeneration_host` is true, the old host is deleted and a new host is created. Changing this parameter for an existing host is not supported at the moment.
+        /// Sets whether the host should get a public IP address. It can be changed on the fly only when `name` is set.
         /// </summary>
         [Input("assignPublicIp")]
         public Input<bool>? AssignPublicIp { get; set; }
@@ -23,6 +23,24 @@ namespace Pulumi.Yandex.Inputs
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }
+
+        /// <summary>
+        /// Host state name. It should be set for all hosts or unset for all hosts. This field can be used by another host, to select which host will be its replication source. Please refer to `replication_source_name` parameter.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Host replication source (fqdn), when replication_source is empty then host is in HA group.
+        /// </summary>
+        [Input("replicationSource")]
+        public Input<string>? ReplicationSource { get; set; }
+
+        /// <summary>
+        /// Host replication source name points to host's `name` from which this host should replicate. When not set then host in HA group. It works only when `name` is set.
+        /// </summary>
+        [Input("replicationSourceName")]
+        public Input<string>? ReplicationSourceName { get; set; }
 
         /// <summary>
         /// The ID of the subnet, to which the host belongs. The subnet must be a part of the network to which the cluster belongs.

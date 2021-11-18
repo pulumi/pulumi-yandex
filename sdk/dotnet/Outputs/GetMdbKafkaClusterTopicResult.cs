@@ -14,6 +14,10 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetMdbKafkaClusterTopicResult
     {
         /// <summary>
+        /// The ID of the Kafka cluster.
+        /// </summary>
+        public readonly string ClusterId;
+        /// <summary>
         /// The name of the Kafka cluster.
         /// </summary>
         public readonly string Name;
@@ -32,6 +36,8 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetMdbKafkaClusterTopicResult(
+            string clusterId,
+
             string name,
 
             int partitions,
@@ -40,6 +46,7 @@ namespace Pulumi.Yandex.Outputs
 
             Outputs.GetMdbKafkaClusterTopicTopicConfigResult? topicConfig)
         {
+            ClusterId = clusterId;
             Name = name;
             Partitions = partitions;
             ReplicationFactor = replicationFactor;

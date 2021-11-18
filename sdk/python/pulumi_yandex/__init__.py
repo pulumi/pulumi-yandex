@@ -65,6 +65,7 @@ from .get_mdb_clickhouse_cluster import *
 from .get_mdb_elastic_search_cluster import *
 from .get_mdb_greenplum_cluster import *
 from .get_mdb_kafka_cluster import *
+from .get_mdb_kafka_topic import *
 from .get_mdb_mongodb_cluster import *
 from .get_mdb_mysql_cluster import *
 from .get_mdb_postgresql_cluster import *
@@ -92,6 +93,7 @@ from .iot_core_device import *
 from .iot_core_registry import *
 from .kms_secret_ciphertext import *
 from .kms_symmetric_key import *
+from .kms_symmetric_key_iam_binding import *
 from .kubernetes_cluster import *
 from .kubernetes_node_group import *
 from .lb_network_load_balancer import *
@@ -101,6 +103,7 @@ from .mdb_clickhouse_cluster import *
 from .mdb_elastic_search_cluster import *
 from .mdb_greenplum_cluster import *
 from .mdb_kafka_cluster import *
+from .mdb_kafka_topic import *
 from .mdb_mongodb_cluster import *
 from .mdb_mysql_cluster import *
 from .mdb_redis_cluster import *
@@ -421,6 +424,14 @@ _utilities.register(
  },
  {
   "pkg": "yandex",
+  "mod": "index/kmsSymmetricKeyIamBinding",
+  "fqn": "pulumi_yandex",
+  "classes": {
+   "yandex:index/kmsSymmetricKeyIamBinding:KmsSymmetricKeyIamBinding": "KmsSymmetricKeyIamBinding"
+  }
+ },
+ {
+  "pkg": "yandex",
   "mod": "index/kubernetesCluster",
   "fqn": "pulumi_yandex",
   "classes": {
@@ -489,6 +500,14 @@ _utilities.register(
   "fqn": "pulumi_yandex",
   "classes": {
    "yandex:index/mdbKafkaCluster:MdbKafkaCluster": "MdbKafkaCluster"
+  }
+ },
+ {
+  "pkg": "yandex",
+  "mod": "index/mdbKafkaTopic",
+  "fqn": "pulumi_yandex",
+  "classes": {
+   "yandex:index/mdbKafkaTopic:MdbKafkaTopic": "MdbKafkaTopic"
   }
  },
  {
