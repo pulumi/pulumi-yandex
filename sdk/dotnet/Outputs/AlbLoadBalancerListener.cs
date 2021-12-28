@@ -26,6 +26,10 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Stream listener resource. The structure is documented below.
+        /// </summary>
+        public readonly Outputs.AlbLoadBalancerListenerStream? Stream;
+        /// <summary>
         /// TLS listener resource. The structure is documented below.
         /// </summary>
         public readonly Outputs.AlbLoadBalancerListenerTls? Tls;
@@ -38,11 +42,14 @@ namespace Pulumi.Yandex.Outputs
 
             string name,
 
+            Outputs.AlbLoadBalancerListenerStream? stream,
+
             Outputs.AlbLoadBalancerListenerTls? tls)
         {
             Endpoints = endpoints;
             Http = http;
             Name = name;
+            Stream = stream;
             Tls = tls;
         }
     }

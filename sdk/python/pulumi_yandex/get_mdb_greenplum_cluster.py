@@ -21,7 +21,7 @@ class GetMdbGreenplumClusterResult:
     """
     A collection of values returned by getMdbGreenplumCluster.
     """
-    def __init__(__self__, accesses=None, assign_public_ip=None, backup_window_starts=None, cluster_id=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, id=None, labels=None, master_host_count=None, master_hosts=None, master_subcluster=None, name=None, network_id=None, security_group_ids=None, segment_host_count=None, segment_hosts=None, segment_in_host=None, segment_subcluster=None, status=None, subnet_id=None, user_name=None, version=None, zone=None):
+    def __init__(__self__, accesses=None, assign_public_ip=None, backup_window_starts=None, cluster_id=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, id=None, labels=None, master_host_count=None, master_hosts=None, master_subclusters=None, name=None, network_id=None, security_group_ids=None, segment_host_count=None, segment_hosts=None, segment_in_host=None, segment_subclusters=None, status=None, subnet_id=None, user_name=None, version=None, zone=None):
         if accesses and not isinstance(accesses, list):
             raise TypeError("Expected argument 'accesses' to be a list")
         pulumi.set(__self__, "accesses", accesses)
@@ -64,9 +64,9 @@ class GetMdbGreenplumClusterResult:
         if master_hosts and not isinstance(master_hosts, list):
             raise TypeError("Expected argument 'master_hosts' to be a list")
         pulumi.set(__self__, "master_hosts", master_hosts)
-        if master_subcluster and not isinstance(master_subcluster, dict):
-            raise TypeError("Expected argument 'master_subcluster' to be a dict")
-        pulumi.set(__self__, "master_subcluster", master_subcluster)
+        if master_subclusters and not isinstance(master_subclusters, list):
+            raise TypeError("Expected argument 'master_subclusters' to be a list")
+        pulumi.set(__self__, "master_subclusters", master_subclusters)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -85,9 +85,9 @@ class GetMdbGreenplumClusterResult:
         if segment_in_host and not isinstance(segment_in_host, int):
             raise TypeError("Expected argument 'segment_in_host' to be a int")
         pulumi.set(__self__, "segment_in_host", segment_in_host)
-        if segment_subcluster and not isinstance(segment_subcluster, dict):
-            raise TypeError("Expected argument 'segment_subcluster' to be a dict")
-        pulumi.set(__self__, "segment_subcluster", segment_subcluster)
+        if segment_subclusters and not isinstance(segment_subclusters, list):
+            raise TypeError("Expected argument 'segment_subclusters' to be a list")
+        pulumi.set(__self__, "segment_subclusters", segment_subclusters)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -178,9 +178,9 @@ class GetMdbGreenplumClusterResult:
         return pulumi.get(self, "master_hosts")
 
     @property
-    @pulumi.getter(name="masterSubcluster")
-    def master_subcluster(self) -> 'outputs.GetMdbGreenplumClusterMasterSubclusterResult':
-        return pulumi.get(self, "master_subcluster")
+    @pulumi.getter(name="masterSubclusters")
+    def master_subclusters(self) -> Sequence['outputs.GetMdbGreenplumClusterMasterSubclusterResult']:
+        return pulumi.get(self, "master_subclusters")
 
     @property
     @pulumi.getter
@@ -213,9 +213,9 @@ class GetMdbGreenplumClusterResult:
         return pulumi.get(self, "segment_in_host")
 
     @property
-    @pulumi.getter(name="segmentSubcluster")
-    def segment_subcluster(self) -> 'outputs.GetMdbGreenplumClusterSegmentSubclusterResult':
-        return pulumi.get(self, "segment_subcluster")
+    @pulumi.getter(name="segmentSubclusters")
+    def segment_subclusters(self) -> Sequence['outputs.GetMdbGreenplumClusterSegmentSubclusterResult']:
+        return pulumi.get(self, "segment_subclusters")
 
     @property
     @pulumi.getter
@@ -263,14 +263,14 @@ class AwaitableGetMdbGreenplumClusterResult(GetMdbGreenplumClusterResult):
             labels=self.labels,
             master_host_count=self.master_host_count,
             master_hosts=self.master_hosts,
-            master_subcluster=self.master_subcluster,
+            master_subclusters=self.master_subclusters,
             name=self.name,
             network_id=self.network_id,
             security_group_ids=self.security_group_ids,
             segment_host_count=self.segment_host_count,
             segment_hosts=self.segment_hosts,
             segment_in_host=self.segment_in_host,
-            segment_subcluster=self.segment_subcluster,
+            segment_subclusters=self.segment_subclusters,
             status=self.status,
             subnet_id=self.subnet_id,
             user_name=self.user_name,
@@ -310,14 +310,14 @@ def get_mdb_greenplum_cluster(cluster_id: Optional[str] = None,
         labels=__ret__.labels,
         master_host_count=__ret__.master_host_count,
         master_hosts=__ret__.master_hosts,
-        master_subcluster=__ret__.master_subcluster,
+        master_subclusters=__ret__.master_subclusters,
         name=__ret__.name,
         network_id=__ret__.network_id,
         security_group_ids=__ret__.security_group_ids,
         segment_host_count=__ret__.segment_host_count,
         segment_hosts=__ret__.segment_hosts,
         segment_in_host=__ret__.segment_in_host,
-        segment_subcluster=__ret__.segment_subcluster,
+        segment_subclusters=__ret__.segment_subclusters,
         status=__ret__.status,
         subnet_id=__ret__.subnet_id,
         user_name=__ret__.user_name,

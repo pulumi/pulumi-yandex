@@ -13,21 +13,21 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetAlbLoadBalancerListenerEndpointAddressResult
     {
-        public readonly Outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv4AddressResult ExternalIpv4Address;
-        public readonly Outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv6AddressResult ExternalIpv6Address;
-        public readonly Outputs.GetAlbLoadBalancerListenerEndpointAddressInternalIpv4AddressResult InternalIpv4Address;
+        public readonly ImmutableArray<Outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv4AddressResult> ExternalIpv4Addresses;
+        public readonly ImmutableArray<Outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv6AddressResult> ExternalIpv6Addresses;
+        public readonly ImmutableArray<Outputs.GetAlbLoadBalancerListenerEndpointAddressInternalIpv4AddressResult> InternalIpv4Addresses;
 
         [OutputConstructor]
         private GetAlbLoadBalancerListenerEndpointAddressResult(
-            Outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv4AddressResult externalIpv4Address,
+            ImmutableArray<Outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv4AddressResult> externalIpv4Addresses,
 
-            Outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv6AddressResult externalIpv6Address,
+            ImmutableArray<Outputs.GetAlbLoadBalancerListenerEndpointAddressExternalIpv6AddressResult> externalIpv6Addresses,
 
-            Outputs.GetAlbLoadBalancerListenerEndpointAddressInternalIpv4AddressResult internalIpv4Address)
+            ImmutableArray<Outputs.GetAlbLoadBalancerListenerEndpointAddressInternalIpv4AddressResult> internalIpv4Addresses)
         {
-            ExternalIpv4Address = externalIpv4Address;
-            ExternalIpv6Address = externalIpv6Address;
-            InternalIpv4Address = internalIpv4Address;
+            ExternalIpv4Addresses = externalIpv4Addresses;
+            ExternalIpv6Addresses = externalIpv6Addresses;
+            InternalIpv4Addresses = internalIpv4Addresses;
         }
     }
 }

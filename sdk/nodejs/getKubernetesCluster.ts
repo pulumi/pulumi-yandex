@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *     clusterId: "some_k8s_cluster_id",
  * }));
  *
- * export const clusterExternalV4Endpoint = myCluster.master.externalV4Endpoint;
+ * export const clusterExternalV4Endpoint = myCluster.masters[0].externalV4Endpoint;
  * ```
  */
 export function getKubernetesCluster(args?: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
@@ -88,7 +88,7 @@ export interface GetKubernetesClusterResult {
     /**
      * cluster KMS provider parameters.
      */
-    readonly kmsProvider: outputs.GetKubernetesClusterKmsProvider;
+    readonly kmsProviders: outputs.GetKubernetesClusterKmsProvider[];
     /**
      * A set of key/value label pairs to assign to the Kubernetes cluster.
      */
@@ -100,7 +100,7 @@ export interface GetKubernetesClusterResult {
     /**
      * Kubernetes master configuration options. The structure is documented below.
      */
-    readonly master: outputs.GetKubernetesClusterMaster;
+    readonly masters: outputs.GetKubernetesClusterMaster[];
     readonly name: string;
     /**
      * The ID of the cluster network.
@@ -109,7 +109,7 @@ export interface GetKubernetesClusterResult {
     /**
      * (Optional) Network Implementation options. The structure is documented below.
      */
-    readonly networkImplementation: outputs.GetKubernetesClusterNetworkImplementation;
+    readonly networkImplementations: outputs.GetKubernetesClusterNetworkImplementation[];
     /**
      * Network policy provider for the cluster, if present. Possible values: `CALICO`.
      */

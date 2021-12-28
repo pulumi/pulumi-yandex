@@ -143,7 +143,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Configuration of the MongoDB cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbMongodbClusterClusterConfigResult ClusterConfig;
+        public readonly ImmutableArray<Outputs.GetMdbMongodbClusterClusterConfigResult> ClusterConfigs;
         public readonly string ClusterId;
         /// <summary>
         /// Creation timestamp of the key.
@@ -179,7 +179,7 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the MongoDB cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
-        public readonly Outputs.GetMdbMongodbClusterMaintenanceWindowResult MaintenanceWindow;
+        public readonly ImmutableArray<Outputs.GetMdbMongodbClusterMaintenanceWindowResult> MaintenanceWindows;
         /// <summary>
         /// The name of the database.
         /// </summary>
@@ -191,7 +191,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Resources allocated to hosts of the MongoDB cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbMongodbClusterResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetMdbMongodbClusterResourceResult> Resources;
         /// <summary>
         /// A set of ids of security groups assigned to hosts of the cluster.
         /// </summary>
@@ -211,7 +211,7 @@ namespace Pulumi.Yandex
 
         [OutputConstructor]
         private GetMdbMongodbClusterResult(
-            Outputs.GetMdbMongodbClusterClusterConfigResult clusterConfig,
+            ImmutableArray<Outputs.GetMdbMongodbClusterClusterConfigResult> clusterConfigs,
 
             string clusterId,
 
@@ -235,13 +235,13 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
-            Outputs.GetMdbMongodbClusterMaintenanceWindowResult maintenanceWindow,
+            ImmutableArray<Outputs.GetMdbMongodbClusterMaintenanceWindowResult> maintenanceWindows,
 
             string name,
 
             string networkId,
 
-            Outputs.GetMdbMongodbClusterResourcesResult resources,
+            ImmutableArray<Outputs.GetMdbMongodbClusterResourceResult> resources,
 
             ImmutableArray<string> securityGroupIds,
 
@@ -251,7 +251,7 @@ namespace Pulumi.Yandex
 
             ImmutableArray<Outputs.GetMdbMongodbClusterUserResult> users)
         {
-            ClusterConfig = clusterConfig;
+            ClusterConfigs = clusterConfigs;
             ClusterId = clusterId;
             CreatedAt = createdAt;
             Databases = databases;
@@ -263,7 +263,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
-            MaintenanceWindow = maintenanceWindow;
+            MaintenanceWindows = maintenanceWindows;
             Name = name;
             NetworkId = networkId;
             Resources = resources;

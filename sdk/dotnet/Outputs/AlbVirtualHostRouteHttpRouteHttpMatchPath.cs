@@ -13,7 +13,13 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class AlbVirtualHostRouteHttpRouteHttpMatchPath
     {
+        /// <summary>
+        /// Match exactly.
+        /// </summary>
         public readonly string? Exact;
+        /// <summary>
+        /// Match prefix.
+        /// </summary>
         public readonly string? Prefix;
 
         [OutputConstructor]

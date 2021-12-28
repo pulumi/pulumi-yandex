@@ -118,6 +118,10 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly string OsType;
         /// <summary>
+        /// Optimize the image to create a disk.
+        /// </summary>
+        public readonly bool Pooled;
+        /// <summary>
         /// License IDs that indicate which licenses are attached to this image.
         /// </summary>
         public readonly ImmutableArray<string> ProductIds;
@@ -152,6 +156,8 @@ namespace Pulumi.Yandex
 
             string osType,
 
+            bool pooled,
+
             ImmutableArray<string> productIds,
 
             int size,
@@ -168,6 +174,7 @@ namespace Pulumi.Yandex
             MinDiskSize = minDiskSize;
             Name = name;
             OsType = osType;
+            Pooled = pooled;
             ProductIds = productIds;
             Size = size;
             Status = status;

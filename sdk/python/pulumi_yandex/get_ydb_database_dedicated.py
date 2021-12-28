@@ -21,7 +21,7 @@ class GetYdbDatabaseDedicatedResult:
     """
     A collection of values returned by getYdbDatabaseDedicated.
     """
-    def __init__(__self__, assign_public_ips=None, created_at=None, database_id=None, database_path=None, description=None, folder_id=None, id=None, labels=None, location=None, location_id=None, name=None, network_id=None, resource_preset_id=None, scale_policy=None, status=None, storage_configs=None, subnet_ids=None, tls_enabled=None, ydb_api_endpoint=None, ydb_full_endpoint=None):
+    def __init__(__self__, assign_public_ips=None, created_at=None, database_id=None, database_path=None, description=None, folder_id=None, id=None, labels=None, location_id=None, locations=None, name=None, network_id=None, resource_preset_id=None, scale_policies=None, status=None, storage_configs=None, subnet_ids=None, tls_enabled=None, ydb_api_endpoint=None, ydb_full_endpoint=None):
         if assign_public_ips and not isinstance(assign_public_ips, bool):
             raise TypeError("Expected argument 'assign_public_ips' to be a bool")
         pulumi.set(__self__, "assign_public_ips", assign_public_ips)
@@ -46,12 +46,12 @@ class GetYdbDatabaseDedicatedResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if location and not isinstance(location, dict):
-            raise TypeError("Expected argument 'location' to be a dict")
-        pulumi.set(__self__, "location", location)
         if location_id and not isinstance(location_id, str):
             raise TypeError("Expected argument 'location_id' to be a str")
         pulumi.set(__self__, "location_id", location_id)
+        if locations and not isinstance(locations, list):
+            raise TypeError("Expected argument 'locations' to be a list")
+        pulumi.set(__self__, "locations", locations)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -61,9 +61,9 @@ class GetYdbDatabaseDedicatedResult:
         if resource_preset_id and not isinstance(resource_preset_id, str):
             raise TypeError("Expected argument 'resource_preset_id' to be a str")
         pulumi.set(__self__, "resource_preset_id", resource_preset_id)
-        if scale_policy and not isinstance(scale_policy, dict):
-            raise TypeError("Expected argument 'scale_policy' to be a dict")
-        pulumi.set(__self__, "scale_policy", scale_policy)
+        if scale_policies and not isinstance(scale_policies, list):
+            raise TypeError("Expected argument 'scale_policies' to be a list")
+        pulumi.set(__self__, "scale_policies", scale_policies)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -143,21 +143,21 @@ class GetYdbDatabaseDedicatedResult:
         return pulumi.get(self, "labels")
 
     @property
-    @pulumi.getter
-    def location(self) -> 'outputs.GetYdbDatabaseDedicatedLocationResult':
-        """
-        Location of the Yandex Database cluster.
-        The structure is documented below.
-        """
-        return pulumi.get(self, "location")
-
-    @property
     @pulumi.getter(name="locationId")
     def location_id(self) -> str:
         """
         Location ID of the Yandex Database cluster.
         """
         return pulumi.get(self, "location_id")
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Sequence['outputs.GetYdbDatabaseDedicatedLocationResult']:
+        """
+        Location of the Yandex Database cluster.
+        The structure is documented below.
+        """
+        return pulumi.get(self, "locations")
 
     @property
     @pulumi.getter
@@ -181,13 +181,13 @@ class GetYdbDatabaseDedicatedResult:
         return pulumi.get(self, "resource_preset_id")
 
     @property
-    @pulumi.getter(name="scalePolicy")
-    def scale_policy(self) -> 'outputs.GetYdbDatabaseDedicatedScalePolicyResult':
+    @pulumi.getter(name="scalePolicies")
+    def scale_policies(self) -> Sequence['outputs.GetYdbDatabaseDedicatedScalePolicyResult']:
         """
         Scaling policy of the Yandex Database cluster.
         The structure is documented below.
         """
-        return pulumi.get(self, "scale_policy")
+        return pulumi.get(self, "scale_policies")
 
     @property
     @pulumi.getter
@@ -255,12 +255,12 @@ class AwaitableGetYdbDatabaseDedicatedResult(GetYdbDatabaseDedicatedResult):
             folder_id=self.folder_id,
             id=self.id,
             labels=self.labels,
-            location=self.location,
             location_id=self.location_id,
+            locations=self.locations,
             name=self.name,
             network_id=self.network_id,
             resource_preset_id=self.resource_preset_id,
-            scale_policy=self.scale_policy,
+            scale_policies=self.scale_policies,
             status=self.status,
             storage_configs=self.storage_configs,
             subnet_ids=self.subnet_ids,
@@ -312,12 +312,12 @@ def get_ydb_database_dedicated(database_id: Optional[str] = None,
         folder_id=__ret__.folder_id,
         id=__ret__.id,
         labels=__ret__.labels,
-        location=__ret__.location,
         location_id=__ret__.location_id,
+        locations=__ret__.locations,
         name=__ret__.name,
         network_id=__ret__.network_id,
         resource_preset_id=__ret__.resource_preset_id,
-        scale_policy=__ret__.scale_policy,
+        scale_policies=__ret__.scale_policies,
         status=__ret__.status,
         storage_configs=__ret__.storage_configs,
         subnet_ids=__ret__.subnet_ids,

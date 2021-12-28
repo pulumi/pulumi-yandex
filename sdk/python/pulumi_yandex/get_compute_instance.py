@@ -22,10 +22,10 @@ class GetComputeInstanceResult:
     """
     A collection of values returned by getComputeInstance.
     """
-    def __init__(__self__, boot_disk=None, created_at=None, description=None, folder_id=None, fqdn=None, id=None, instance_id=None, labels=None, metadata=None, name=None, network_acceleration_type=None, network_interfaces=None, placement_policy=None, platform_id=None, resources=None, scheduling_policy=None, secondary_disks=None, service_account_id=None, status=None, zone=None):
-        if boot_disk and not isinstance(boot_disk, dict):
-            raise TypeError("Expected argument 'boot_disk' to be a dict")
-        pulumi.set(__self__, "boot_disk", boot_disk)
+    def __init__(__self__, boot_disks=None, created_at=None, description=None, folder_id=None, fqdn=None, id=None, instance_id=None, labels=None, metadata=None, name=None, network_acceleration_type=None, network_interfaces=None, placement_policy=None, platform_id=None, resources=None, scheduling_policies=None, secondary_disks=None, service_account_id=None, status=None, zone=None):
+        if boot_disks and not isinstance(boot_disks, list):
+            raise TypeError("Expected argument 'boot_disks' to be a list")
+        pulumi.set(__self__, "boot_disks", boot_disks)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -65,12 +65,12 @@ class GetComputeInstanceResult:
         if platform_id and not isinstance(platform_id, str):
             raise TypeError("Expected argument 'platform_id' to be a str")
         pulumi.set(__self__, "platform_id", platform_id)
-        if resources and not isinstance(resources, dict):
-            raise TypeError("Expected argument 'resources' to be a dict")
+        if resources and not isinstance(resources, list):
+            raise TypeError("Expected argument 'resources' to be a list")
         pulumi.set(__self__, "resources", resources)
-        if scheduling_policy and not isinstance(scheduling_policy, dict):
-            raise TypeError("Expected argument 'scheduling_policy' to be a dict")
-        pulumi.set(__self__, "scheduling_policy", scheduling_policy)
+        if scheduling_policies and not isinstance(scheduling_policies, list):
+            raise TypeError("Expected argument 'scheduling_policies' to be a list")
+        pulumi.set(__self__, "scheduling_policies", scheduling_policies)
         if secondary_disks and not isinstance(secondary_disks, list):
             raise TypeError("Expected argument 'secondary_disks' to be a list")
         pulumi.set(__self__, "secondary_disks", secondary_disks)
@@ -85,12 +85,12 @@ class GetComputeInstanceResult:
         pulumi.set(__self__, "zone", zone)
 
     @property
-    @pulumi.getter(name="bootDisk")
-    def boot_disk(self) -> 'outputs.GetComputeInstanceBootDiskResult':
+    @pulumi.getter(name="bootDisks")
+    def boot_disks(self) -> Sequence['outputs.GetComputeInstanceBootDiskResult']:
         """
         The boot disk for the instance. Structure is documented below.
         """
-        return pulumi.get(self, "boot_disk")
+        return pulumi.get(self, "boot_disks")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -192,16 +192,16 @@ class GetComputeInstanceResult:
 
     @property
     @pulumi.getter
-    def resources(self) -> 'outputs.GetComputeInstanceResourcesResult':
+    def resources(self) -> Sequence['outputs.GetComputeInstanceResourceResult']:
         return pulumi.get(self, "resources")
 
     @property
-    @pulumi.getter(name="schedulingPolicy")
-    def scheduling_policy(self) -> 'outputs.GetComputeInstanceSchedulingPolicyResult':
+    @pulumi.getter(name="schedulingPolicies")
+    def scheduling_policies(self) -> Sequence['outputs.GetComputeInstanceSchedulingPolicyResult']:
         """
         Scheduling policy configuration. The structure is documented below.
         """
-        return pulumi.get(self, "scheduling_policy")
+        return pulumi.get(self, "scheduling_policies")
 
     @property
     @pulumi.getter(name="secondaryDisks")
@@ -246,7 +246,7 @@ class AwaitableGetComputeInstanceResult(GetComputeInstanceResult):
         if False:
             yield self
         return GetComputeInstanceResult(
-            boot_disk=self.boot_disk,
+            boot_disks=self.boot_disks,
             created_at=self.created_at,
             description=self.description,
             folder_id=self.folder_id,
@@ -261,7 +261,7 @@ class AwaitableGetComputeInstanceResult(GetComputeInstanceResult):
             placement_policy=self.placement_policy,
             platform_id=self.platform_id,
             resources=self.resources,
-            scheduling_policy=self.scheduling_policy,
+            scheduling_policies=self.scheduling_policies,
             secondary_disks=self.secondary_disks,
             service_account_id=self.service_account_id,
             status=self.status,
@@ -272,7 +272,6 @@ def get_compute_instance(folder_id: Optional[str] = None,
                          instance_id: Optional[str] = None,
                          name: Optional[str] = None,
                          placement_policy: Optional[pulumi.InputType['GetComputeInstancePlacementPolicyArgs']] = None,
-                         scheduling_policy: Optional[pulumi.InputType['GetComputeInstanceSchedulingPolicyArgs']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetComputeInstanceResult:
     """
     Get information about a Yandex Compute instance. For more information, see
@@ -292,14 +291,12 @@ def get_compute_instance(folder_id: Optional[str] = None,
     :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
     :param str instance_id: The ID of a specific instance.
     :param str name: Name of the instance.
-    :param pulumi.InputType['GetComputeInstanceSchedulingPolicyArgs'] scheduling_policy: Scheduling policy configuration. The structure is documented below.
     """
     __args__ = dict()
     __args__['folderId'] = folder_id
     __args__['instanceId'] = instance_id
     __args__['name'] = name
     __args__['placementPolicy'] = placement_policy
-    __args__['schedulingPolicy'] = scheduling_policy
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -307,7 +304,7 @@ def get_compute_instance(folder_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('yandex:index/getComputeInstance:getComputeInstance', __args__, opts=opts, typ=GetComputeInstanceResult).value
 
     return AwaitableGetComputeInstanceResult(
-        boot_disk=__ret__.boot_disk,
+        boot_disks=__ret__.boot_disks,
         created_at=__ret__.created_at,
         description=__ret__.description,
         folder_id=__ret__.folder_id,
@@ -322,7 +319,7 @@ def get_compute_instance(folder_id: Optional[str] = None,
         placement_policy=__ret__.placement_policy,
         platform_id=__ret__.platform_id,
         resources=__ret__.resources,
-        scheduling_policy=__ret__.scheduling_policy,
+        scheduling_policies=__ret__.scheduling_policies,
         secondary_disks=__ret__.secondary_disks,
         service_account_id=__ret__.service_account_id,
         status=__ret__.status,
@@ -334,7 +331,6 @@ def get_compute_instance_output(folder_id: Optional[pulumi.Input[Optional[str]]]
                                 instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 name: Optional[pulumi.Input[Optional[str]]] = None,
                                 placement_policy: Optional[pulumi.Input[Optional[pulumi.InputType['GetComputeInstancePlacementPolicyArgs']]]] = None,
-                                scheduling_policy: Optional[pulumi.Input[Optional[pulumi.InputType['GetComputeInstanceSchedulingPolicyArgs']]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeInstanceResult]:
     """
     Get information about a Yandex Compute instance. For more information, see
@@ -354,6 +350,5 @@ def get_compute_instance_output(folder_id: Optional[pulumi.Input[Optional[str]]]
     :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
     :param str instance_id: The ID of a specific instance.
     :param str name: Name of the instance.
-    :param pulumi.InputType['GetComputeInstanceSchedulingPolicyArgs'] scheduling_policy: Scheduling policy configuration. The structure is documented below.
     """
     ...

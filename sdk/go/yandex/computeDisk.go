@@ -95,6 +95,7 @@ import (
 type ComputeDisk struct {
 	pulumi.CustomResourceState
 
+	BlockSize pulumi.IntPtrOutput `pulumi:"blockSize"`
 	// Creation timestamp of the disk.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// -
@@ -160,6 +161,7 @@ func GetComputeDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeDisk resources.
 type computeDiskState struct {
+	BlockSize *int `pulumi:"blockSize"`
 	// Creation timestamp of the disk.
 	CreatedAt *string `pulumi:"createdAt"`
 	// -
@@ -197,6 +199,7 @@ type computeDiskState struct {
 }
 
 type ComputeDiskState struct {
+	BlockSize pulumi.IntPtrInput
 	// Creation timestamp of the disk.
 	CreatedAt pulumi.StringPtrInput
 	// -
@@ -238,6 +241,7 @@ func (ComputeDiskState) ElementType() reflect.Type {
 }
 
 type computeDiskArgs struct {
+	BlockSize *int `pulumi:"blockSize"`
 	// -
 	// (Optional) Description of the disk. Provide this property when
 	// you create a resource.
@@ -271,6 +275,7 @@ type computeDiskArgs struct {
 
 // The set of arguments for constructing a ComputeDisk resource.
 type ComputeDiskArgs struct {
+	BlockSize pulumi.IntPtrInput
 	// -
 	// (Optional) Description of the disk. Provide this property when
 	// you create a resource.

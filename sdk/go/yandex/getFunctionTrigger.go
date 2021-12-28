@@ -64,7 +64,7 @@ type LookupFunctionTriggerResult struct {
 	// Dead Letter Queue settings definition for Yandex Cloud Functions Trigger
 	// * `dlq.0.queue_id` - ID of Dead Letter Queue for Trigger (Queue ARN)
 	// * `dlq.0.service_account_id` - Service Account ID for Dead Letter Queue for Yandex Cloud Functions Trigger
-	Dlq GetFunctionTriggerDlq `pulumi:"dlq"`
+	Dlqs []GetFunctionTriggerDlq `pulumi:"dlqs"`
 	// Folder ID for the Yandex Cloud Functions Trigger
 	FolderId *string `pulumi:"folderId"`
 	// [Yandex.Cloud Function](https://cloud.yandex.com/docs/functions/concepts/function) settings definition for Yandex Cloud Functions Trigger
@@ -73,26 +73,26 @@ type LookupFunctionTriggerResult struct {
 	// * `function.0.tag` - Tag for Yandex.Cloud Function for Yandex Cloud Functions Trigger
 	// * `function.0.retry_attempts` - Retry attempts for Yandex.Cloud Function for Yandex Cloud Functions Trigger
 	// * `function.0.retry_interval` - Retry interval in seconds for Yandex.Cloud Function for Yandex Cloud Functions Trigger
-	Function GetFunctionTriggerFunction `pulumi:"function"`
+	Functions []GetFunctionTriggerFunction `pulumi:"functions"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// [IoT](https://cloud.yandex.com/docs/functions/concepts/trigger/iot-core-trigger) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `iot.0.registry_id` - IoT Registry ID for Yandex Cloud Functions Trigger
 	// * `iot.0.device_id` - IoT Device ID for Yandex Cloud Functions Trigger
 	// * `iot.0.topic` - IoT Topic for Yandex Cloud Functions Trigger
-	Iot GetFunctionTriggerIot `pulumi:"iot"`
+	Iots []GetFunctionTriggerIot `pulumi:"iots"`
 	// A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
-	Labels   map[string]string          `pulumi:"labels"`
-	LogGroup GetFunctionTriggerLogGroup `pulumi:"logGroup"`
-	Logging  GetFunctionTriggerLogging  `pulumi:"logging"`
+	Labels    map[string]string            `pulumi:"labels"`
+	LogGroups []GetFunctionTriggerLogGroup `pulumi:"logGroups"`
+	Loggings  []GetFunctionTriggerLogging  `pulumi:"loggings"`
 	// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
 	// * `message_queue.0.service_account_id` - Message Queue Service Account ID for Yandex Cloud Functions Trigger
 	// * `message_queue.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
 	// * `message_queue.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
 	// * `message_queue.0.visibility_timeout` - Visibility timeout for Yandex Cloud Functions Trigger
-	MessageQueue GetFunctionTriggerMessageQueue `pulumi:"messageQueue"`
-	Name         *string                        `pulumi:"name"`
+	MessageQueues []GetFunctionTriggerMessageQueue `pulumi:"messageQueues"`
+	Name          *string                          `pulumi:"name"`
 	// [Object Storage](https://cloud.yandex.com/docs/functions/concepts/trigger/os-trigger) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `object_storage.0.bucket_id` - Object Storage Bucket ID for Yandex Cloud Functions Trigger
 	// * `object_storage.0.prefix` - Prefix for Object Storage for Yandex Cloud Functions Trigger
@@ -100,11 +100,11 @@ type LookupFunctionTriggerResult struct {
 	// * `object_storage.0.create` - Boolean flag for setting create event for Yandex Cloud Functions Trigger
 	// * `object_storage.0.update` - Boolean flag for setting update event for Yandex Cloud Functions Trigger
 	// * `object_storage.0.delete` - Boolean flag for setting delete event for Yandex Cloud Functions Trigger
-	ObjectStorage GetFunctionTriggerObjectStorage `pulumi:"objectStorage"`
+	ObjectStorages []GetFunctionTriggerObjectStorage `pulumi:"objectStorages"`
 	// [Timer](https://cloud.yandex.com/docs/functions/concepts/trigger/timer) settings definition for Yandex Cloud Functions Trigger, if present
 	// * `timer.0.cron_expression` - Cron expression for timer for Yandex Cloud Functions Trigger
-	Timer     GetFunctionTriggerTimer `pulumi:"timer"`
-	TriggerId *string                 `pulumi:"triggerId"`
+	Timers    []GetFunctionTriggerTimer `pulumi:"timers"`
+	TriggerId *string                   `pulumi:"triggerId"`
 }
 
 func LookupFunctionTriggerOutput(ctx *pulumi.Context, args LookupFunctionTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupFunctionTriggerResultOutput {
@@ -158,8 +158,8 @@ func (o LookupFunctionTriggerResultOutput) Description() pulumi.StringOutput {
 // Dead Letter Queue settings definition for Yandex Cloud Functions Trigger
 // * `dlq.0.queue_id` - ID of Dead Letter Queue for Trigger (Queue ARN)
 // * `dlq.0.service_account_id` - Service Account ID for Dead Letter Queue for Yandex Cloud Functions Trigger
-func (o LookupFunctionTriggerResultOutput) Dlq() GetFunctionTriggerDlqOutput {
-	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerDlq { return v.Dlq }).(GetFunctionTriggerDlqOutput)
+func (o LookupFunctionTriggerResultOutput) Dlqs() GetFunctionTriggerDlqArrayOutput {
+	return o.ApplyT(func(v LookupFunctionTriggerResult) []GetFunctionTriggerDlq { return v.Dlqs }).(GetFunctionTriggerDlqArrayOutput)
 }
 
 // Folder ID for the Yandex Cloud Functions Trigger
@@ -173,8 +173,8 @@ func (o LookupFunctionTriggerResultOutput) FolderId() pulumi.StringPtrOutput {
 // * `function.0.tag` - Tag for Yandex.Cloud Function for Yandex Cloud Functions Trigger
 // * `function.0.retry_attempts` - Retry attempts for Yandex.Cloud Function for Yandex Cloud Functions Trigger
 // * `function.0.retry_interval` - Retry interval in seconds for Yandex.Cloud Function for Yandex Cloud Functions Trigger
-func (o LookupFunctionTriggerResultOutput) Function() GetFunctionTriggerFunctionOutput {
-	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerFunction { return v.Function }).(GetFunctionTriggerFunctionOutput)
+func (o LookupFunctionTriggerResultOutput) Functions() GetFunctionTriggerFunctionArrayOutput {
+	return o.ApplyT(func(v LookupFunctionTriggerResult) []GetFunctionTriggerFunction { return v.Functions }).(GetFunctionTriggerFunctionArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -186,8 +186,8 @@ func (o LookupFunctionTriggerResultOutput) Id() pulumi.StringOutput {
 // * `iot.0.registry_id` - IoT Registry ID for Yandex Cloud Functions Trigger
 // * `iot.0.device_id` - IoT Device ID for Yandex Cloud Functions Trigger
 // * `iot.0.topic` - IoT Topic for Yandex Cloud Functions Trigger
-func (o LookupFunctionTriggerResultOutput) Iot() GetFunctionTriggerIotOutput {
-	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerIot { return v.Iot }).(GetFunctionTriggerIotOutput)
+func (o LookupFunctionTriggerResultOutput) Iots() GetFunctionTriggerIotArrayOutput {
+	return o.ApplyT(func(v LookupFunctionTriggerResult) []GetFunctionTriggerIot { return v.Iots }).(GetFunctionTriggerIotArrayOutput)
 }
 
 // A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
@@ -195,12 +195,12 @@ func (o LookupFunctionTriggerResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFunctionTriggerResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupFunctionTriggerResultOutput) LogGroup() GetFunctionTriggerLogGroupOutput {
-	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerLogGroup { return v.LogGroup }).(GetFunctionTriggerLogGroupOutput)
+func (o LookupFunctionTriggerResultOutput) LogGroups() GetFunctionTriggerLogGroupArrayOutput {
+	return o.ApplyT(func(v LookupFunctionTriggerResult) []GetFunctionTriggerLogGroup { return v.LogGroups }).(GetFunctionTriggerLogGroupArrayOutput)
 }
 
-func (o LookupFunctionTriggerResultOutput) Logging() GetFunctionTriggerLoggingOutput {
-	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerLogging { return v.Logging }).(GetFunctionTriggerLoggingOutput)
+func (o LookupFunctionTriggerResultOutput) Loggings() GetFunctionTriggerLoggingArrayOutput {
+	return o.ApplyT(func(v LookupFunctionTriggerResult) []GetFunctionTriggerLogging { return v.Loggings }).(GetFunctionTriggerLoggingArrayOutput)
 }
 
 // [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
@@ -209,8 +209,8 @@ func (o LookupFunctionTriggerResultOutput) Logging() GetFunctionTriggerLoggingOu
 // * `message_queue.0.batch_cutoff` - Batch Duration in seconds for Yandex Cloud Functions Trigger
 // * `message_queue.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
 // * `message_queue.0.visibility_timeout` - Visibility timeout for Yandex Cloud Functions Trigger
-func (o LookupFunctionTriggerResultOutput) MessageQueue() GetFunctionTriggerMessageQueueOutput {
-	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerMessageQueue { return v.MessageQueue }).(GetFunctionTriggerMessageQueueOutput)
+func (o LookupFunctionTriggerResultOutput) MessageQueues() GetFunctionTriggerMessageQueueArrayOutput {
+	return o.ApplyT(func(v LookupFunctionTriggerResult) []GetFunctionTriggerMessageQueue { return v.MessageQueues }).(GetFunctionTriggerMessageQueueArrayOutput)
 }
 
 func (o LookupFunctionTriggerResultOutput) Name() pulumi.StringPtrOutput {
@@ -224,14 +224,14 @@ func (o LookupFunctionTriggerResultOutput) Name() pulumi.StringPtrOutput {
 // * `object_storage.0.create` - Boolean flag for setting create event for Yandex Cloud Functions Trigger
 // * `object_storage.0.update` - Boolean flag for setting update event for Yandex Cloud Functions Trigger
 // * `object_storage.0.delete` - Boolean flag for setting delete event for Yandex Cloud Functions Trigger
-func (o LookupFunctionTriggerResultOutput) ObjectStorage() GetFunctionTriggerObjectStorageOutput {
-	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerObjectStorage { return v.ObjectStorage }).(GetFunctionTriggerObjectStorageOutput)
+func (o LookupFunctionTriggerResultOutput) ObjectStorages() GetFunctionTriggerObjectStorageArrayOutput {
+	return o.ApplyT(func(v LookupFunctionTriggerResult) []GetFunctionTriggerObjectStorage { return v.ObjectStorages }).(GetFunctionTriggerObjectStorageArrayOutput)
 }
 
 // [Timer](https://cloud.yandex.com/docs/functions/concepts/trigger/timer) settings definition for Yandex Cloud Functions Trigger, if present
 // * `timer.0.cron_expression` - Cron expression for timer for Yandex Cloud Functions Trigger
-func (o LookupFunctionTriggerResultOutput) Timer() GetFunctionTriggerTimerOutput {
-	return o.ApplyT(func(v LookupFunctionTriggerResult) GetFunctionTriggerTimer { return v.Timer }).(GetFunctionTriggerTimerOutput)
+func (o LookupFunctionTriggerResultOutput) Timers() GetFunctionTriggerTimerArrayOutput {
+	return o.ApplyT(func(v LookupFunctionTriggerResult) []GetFunctionTriggerTimer { return v.Timers }).(GetFunctionTriggerTimerArrayOutput)
 }
 
 func (o LookupFunctionTriggerResultOutput) TriggerId() pulumi.StringPtrOutput {

@@ -19,6 +19,8 @@
         "albTargetGroup.ts",
         "albVirtualHost.ts",
         "apiGateway.ts",
+        "cdnOriginGroup.ts",
+        "cdnResource.ts",
         "computeDisk.ts",
         "computeDiskPlacementGroup.ts",
         "computeImage.ts",
@@ -45,6 +47,8 @@
         "getAlbTargetGroup.ts",
         "getAlbVirtualHost.ts",
         "getApiGateway.ts",
+        "getCdnOriginGroup.ts",
+        "getCdnResource.ts",
         "getClientConfig.ts",
         "getComputeDisk.ts",
         "getComputeDiskPlacementGroup.ts",
@@ -84,6 +88,7 @@
         "getMessageQueue.ts",
         "getResourcemanagerCloud.ts",
         "getResourcemanagerFolder.ts",
+        "getServerlessContainer.ts",
         "getVpcAddress.ts",
         "getVpcNetwork.ts",
         "getVpcRouteTable.ts",
@@ -129,6 +134,7 @@
         "resourcemanagerFolderIamBinding.ts",
         "resourcemanagerFolderIamMember.ts",
         "resourcemanagerFolderIamPolicy.ts",
+        "serverlessContainer.ts",
         "storageBucket.ts",
         "storageObject.ts",
         "types/index.ts",
@@ -142,7 +148,6 @@
         "vpcSecurityGroup.ts",
         "vpcSecurityGroupRule.ts",
         "vpcSubnet.ts",
-        "ydbDatabaseDedicated.ts",
-        "ydbDatabaseServerless.ts"
+        "ydbDatabaseDedicated.ts"
     ]
 }

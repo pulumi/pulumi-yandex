@@ -62,11 +62,11 @@ type LookupMdbClickhouseClusterArgs struct {
 // A collection of values returned by getMdbClickhouseCluster.
 type LookupMdbClickhouseClusterResult struct {
 	// Access policy to the ClickHouse cluster. The structure is documented below.
-	Access GetMdbClickhouseClusterAccess `pulumi:"access"`
+	Accesses []GetMdbClickhouseClusterAccess `pulumi:"accesses"`
 	// Time to start the daily backup, in the UTC timezone. The structure is documented below.
-	BackupWindowStart GetMdbClickhouseClusterBackupWindowStart `pulumi:"backupWindowStart"`
+	BackupWindowStarts []GetMdbClickhouseClusterBackupWindowStart `pulumi:"backupWindowStarts"`
 	// Configuration of the ClickHouse subcluster. The structure is documented below.
-	Clickhouse   GetMdbClickhouseClusterClickhouse    `pulumi:"clickhouse"`
+	Clickhouses  []GetMdbClickhouseClusterClickhouse  `pulumi:"clickhouses"`
 	CloudStorage *GetMdbClickhouseClusterCloudStorage `pulumi:"cloudStorage"`
 	ClusterId    string                               `pulumi:"clusterId"`
 	// Creation timestamp of the key.
@@ -88,8 +88,8 @@ type LookupMdbClickhouseClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the ClickHouse cluster.
-	Labels            map[string]string                        `pulumi:"labels"`
-	MaintenanceWindow GetMdbClickhouseClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
+	Labels             map[string]string                          `pulumi:"labels"`
+	MaintenanceWindows []GetMdbClickhouseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
 	// A group of machine learning models. The structure is documented below.
 	MlModels []GetMdbClickhouseClusterMlModel `pulumi:"mlModels"`
 	// Graphite rollup configuration name.
@@ -111,7 +111,7 @@ type LookupMdbClickhouseClusterResult struct {
 	Users   []GetMdbClickhouseClusterUser `pulumi:"users"`
 	Version string                        `pulumi:"version"`
 	// Configuration of the ZooKeeper subcluster. The structure is documented below.
-	Zookeeper GetMdbClickhouseClusterZookeeper `pulumi:"zookeeper"`
+	Zookeepers []GetMdbClickhouseClusterZookeeper `pulumi:"zookeepers"`
 }
 
 func LookupMdbClickhouseClusterOutput(ctx *pulumi.Context, args LookupMdbClickhouseClusterOutputArgs, opts ...pulumi.InvokeOption) LookupMdbClickhouseClusterResultOutput {
@@ -156,20 +156,20 @@ func (o LookupMdbClickhouseClusterResultOutput) ToLookupMdbClickhouseClusterResu
 }
 
 // Access policy to the ClickHouse cluster. The structure is documented below.
-func (o LookupMdbClickhouseClusterResultOutput) Access() GetMdbClickhouseClusterAccessOutput {
-	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterAccess { return v.Access }).(GetMdbClickhouseClusterAccessOutput)
+func (o LookupMdbClickhouseClusterResultOutput) Accesses() GetMdbClickhouseClusterAccessArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterAccess { return v.Accesses }).(GetMdbClickhouseClusterAccessArrayOutput)
 }
 
 // Time to start the daily backup, in the UTC timezone. The structure is documented below.
-func (o LookupMdbClickhouseClusterResultOutput) BackupWindowStart() GetMdbClickhouseClusterBackupWindowStartOutput {
-	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterBackupWindowStart {
-		return v.BackupWindowStart
-	}).(GetMdbClickhouseClusterBackupWindowStartOutput)
+func (o LookupMdbClickhouseClusterResultOutput) BackupWindowStarts() GetMdbClickhouseClusterBackupWindowStartArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterBackupWindowStart {
+		return v.BackupWindowStarts
+	}).(GetMdbClickhouseClusterBackupWindowStartArrayOutput)
 }
 
 // Configuration of the ClickHouse subcluster. The structure is documented below.
-func (o LookupMdbClickhouseClusterResultOutput) Clickhouse() GetMdbClickhouseClusterClickhouseOutput {
-	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterClickhouse { return v.Clickhouse }).(GetMdbClickhouseClusterClickhouseOutput)
+func (o LookupMdbClickhouseClusterResultOutput) Clickhouses() GetMdbClickhouseClusterClickhouseArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterClickhouse { return v.Clickhouses }).(GetMdbClickhouseClusterClickhouseArrayOutput)
 }
 
 func (o LookupMdbClickhouseClusterResultOutput) CloudStorage() GetMdbClickhouseClusterCloudStoragePtrOutput {
@@ -233,10 +233,10 @@ func (o LookupMdbClickhouseClusterResultOutput) Labels() pulumi.StringMapOutput 
 	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupMdbClickhouseClusterResultOutput) MaintenanceWindow() GetMdbClickhouseClusterMaintenanceWindowOutput {
-	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterMaintenanceWindow {
-		return v.MaintenanceWindow
-	}).(GetMdbClickhouseClusterMaintenanceWindowOutput)
+func (o LookupMdbClickhouseClusterResultOutput) MaintenanceWindows() GetMdbClickhouseClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterMaintenanceWindow {
+		return v.MaintenanceWindows
+	}).(GetMdbClickhouseClusterMaintenanceWindowArrayOutput)
 }
 
 // A group of machine learning models. The structure is documented below.
@@ -293,8 +293,8 @@ func (o LookupMdbClickhouseClusterResultOutput) Version() pulumi.StringOutput {
 }
 
 // Configuration of the ZooKeeper subcluster. The structure is documented below.
-func (o LookupMdbClickhouseClusterResultOutput) Zookeeper() GetMdbClickhouseClusterZookeeperOutput {
-	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) GetMdbClickhouseClusterZookeeper { return v.Zookeeper }).(GetMdbClickhouseClusterZookeeperOutput)
+func (o LookupMdbClickhouseClusterResultOutput) Zookeepers() GetMdbClickhouseClusterZookeeperArrayOutput {
+	return o.ApplyT(func(v LookupMdbClickhouseClusterResult) []GetMdbClickhouseClusterZookeeper { return v.Zookeepers }).(GetMdbClickhouseClusterZookeeperArrayOutput)
 }
 
 func init() {

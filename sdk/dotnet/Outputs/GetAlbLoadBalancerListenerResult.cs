@@ -14,23 +14,27 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetAlbLoadBalancerListenerResult
     {
         public readonly ImmutableArray<Outputs.GetAlbLoadBalancerListenerEndpointResult> Endpoints;
-        public readonly Outputs.GetAlbLoadBalancerListenerHttpResult? Http;
+        public readonly ImmutableArray<Outputs.GetAlbLoadBalancerListenerHttpResult> Https;
         public readonly string Name;
-        public readonly Outputs.GetAlbLoadBalancerListenerTlsResult? Tls;
+        public readonly Outputs.GetAlbLoadBalancerListenerStreamResult? Stream;
+        public readonly ImmutableArray<Outputs.GetAlbLoadBalancerListenerTlResult> Tls;
 
         [OutputConstructor]
         private GetAlbLoadBalancerListenerResult(
             ImmutableArray<Outputs.GetAlbLoadBalancerListenerEndpointResult> endpoints,
 
-            Outputs.GetAlbLoadBalancerListenerHttpResult? http,
+            ImmutableArray<Outputs.GetAlbLoadBalancerListenerHttpResult> https,
 
             string name,
 
-            Outputs.GetAlbLoadBalancerListenerTlsResult? tls)
+            Outputs.GetAlbLoadBalancerListenerStreamResult? stream,
+
+            ImmutableArray<Outputs.GetAlbLoadBalancerListenerTlResult> tls)
         {
             Endpoints = endpoints;
-            Http = http;
+            Https = https;
             Name = name;
+            Stream = stream;
             Tls = tls;
         }
     }

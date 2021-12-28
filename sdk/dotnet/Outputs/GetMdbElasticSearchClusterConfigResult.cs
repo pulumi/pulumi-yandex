@@ -17,7 +17,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbElasticSearchClusterConfigDataNodeResult DataNode;
+        public readonly ImmutableArray<Outputs.GetMdbElasticSearchClusterConfigDataNodeResult> DataNodes;
         /// <summary>
         /// Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
         /// </summary>
@@ -39,7 +39,7 @@ namespace Pulumi.Yandex.Outputs
         private GetMdbElasticSearchClusterConfigResult(
             string adminPassword,
 
-            Outputs.GetMdbElasticSearchClusterConfigDataNodeResult dataNode,
+            ImmutableArray<Outputs.GetMdbElasticSearchClusterConfigDataNodeResult> dataNodes,
 
             string edition,
 
@@ -50,7 +50,7 @@ namespace Pulumi.Yandex.Outputs
             string version)
         {
             AdminPassword = adminPassword;
-            DataNode = dataNode;
+            DataNodes = dataNodes;
             Edition = edition;
             MasterNode = masterNode;
             Plugins = plugins;

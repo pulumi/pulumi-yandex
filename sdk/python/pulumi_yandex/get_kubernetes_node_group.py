@@ -21,10 +21,10 @@ class GetKubernetesNodeGroupResult:
     """
     A collection of values returned by getKubernetesNodeGroup.
     """
-    def __init__(__self__, allocation_policy=None, allowed_unsafe_sysctls=None, cluster_id=None, created_at=None, deploy_policy=None, description=None, folder_id=None, id=None, instance_group_id=None, instance_template=None, labels=None, maintenance_policy=None, name=None, node_group_id=None, node_labels=None, node_taints=None, scale_policy=None, status=None, version_info=None):
-        if allocation_policy and not isinstance(allocation_policy, dict):
-            raise TypeError("Expected argument 'allocation_policy' to be a dict")
-        pulumi.set(__self__, "allocation_policy", allocation_policy)
+    def __init__(__self__, allocation_policies=None, allowed_unsafe_sysctls=None, cluster_id=None, created_at=None, deploy_policies=None, description=None, folder_id=None, id=None, instance_group_id=None, instance_templates=None, labels=None, maintenance_policies=None, name=None, node_group_id=None, node_labels=None, node_taints=None, scale_policies=None, status=None, version_infos=None):
+        if allocation_policies and not isinstance(allocation_policies, list):
+            raise TypeError("Expected argument 'allocation_policies' to be a list")
+        pulumi.set(__self__, "allocation_policies", allocation_policies)
         if allowed_unsafe_sysctls and not isinstance(allowed_unsafe_sysctls, list):
             raise TypeError("Expected argument 'allowed_unsafe_sysctls' to be a list")
         pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
@@ -34,9 +34,9 @@ class GetKubernetesNodeGroupResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
-        if deploy_policy and not isinstance(deploy_policy, dict):
-            raise TypeError("Expected argument 'deploy_policy' to be a dict")
-        pulumi.set(__self__, "deploy_policy", deploy_policy)
+        if deploy_policies and not isinstance(deploy_policies, list):
+            raise TypeError("Expected argument 'deploy_policies' to be a list")
+        pulumi.set(__self__, "deploy_policies", deploy_policies)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -49,15 +49,15 @@ class GetKubernetesNodeGroupResult:
         if instance_group_id and not isinstance(instance_group_id, str):
             raise TypeError("Expected argument 'instance_group_id' to be a str")
         pulumi.set(__self__, "instance_group_id", instance_group_id)
-        if instance_template and not isinstance(instance_template, dict):
-            raise TypeError("Expected argument 'instance_template' to be a dict")
-        pulumi.set(__self__, "instance_template", instance_template)
+        if instance_templates and not isinstance(instance_templates, list):
+            raise TypeError("Expected argument 'instance_templates' to be a list")
+        pulumi.set(__self__, "instance_templates", instance_templates)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if maintenance_policy and not isinstance(maintenance_policy, dict):
-            raise TypeError("Expected argument 'maintenance_policy' to be a dict")
-        pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_policies and not isinstance(maintenance_policies, list):
+            raise TypeError("Expected argument 'maintenance_policies' to be a list")
+        pulumi.set(__self__, "maintenance_policies", maintenance_policies)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -70,23 +70,23 @@ class GetKubernetesNodeGroupResult:
         if node_taints and not isinstance(node_taints, list):
             raise TypeError("Expected argument 'node_taints' to be a list")
         pulumi.set(__self__, "node_taints", node_taints)
-        if scale_policy and not isinstance(scale_policy, dict):
-            raise TypeError("Expected argument 'scale_policy' to be a dict")
-        pulumi.set(__self__, "scale_policy", scale_policy)
+        if scale_policies and not isinstance(scale_policies, list):
+            raise TypeError("Expected argument 'scale_policies' to be a list")
+        pulumi.set(__self__, "scale_policies", scale_policies)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
-        if version_info and not isinstance(version_info, dict):
-            raise TypeError("Expected argument 'version_info' to be a dict")
-        pulumi.set(__self__, "version_info", version_info)
+        if version_infos and not isinstance(version_infos, list):
+            raise TypeError("Expected argument 'version_infos' to be a list")
+        pulumi.set(__self__, "version_infos", version_infos)
 
     @property
-    @pulumi.getter(name="allocationPolicy")
-    def allocation_policy(self) -> 'outputs.GetKubernetesNodeGroupAllocationPolicyResult':
+    @pulumi.getter(name="allocationPolicies")
+    def allocation_policies(self) -> Sequence['outputs.GetKubernetesNodeGroupAllocationPolicyResult']:
         """
         This argument specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
         """
-        return pulumi.get(self, "allocation_policy")
+        return pulumi.get(self, "allocation_policies")
 
     @property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -113,12 +113,12 @@ class GetKubernetesNodeGroupResult:
         return pulumi.get(self, "created_at")
 
     @property
-    @pulumi.getter(name="deployPolicy")
-    def deploy_policy(self) -> 'outputs.GetKubernetesNodeGroupDeployPolicyResult':
+    @pulumi.getter(name="deployPolicies")
+    def deploy_policies(self) -> Sequence['outputs.GetKubernetesNodeGroupDeployPolicyResult']:
         """
         Deploy policy of the node group. The structure is documented below.
         """
-        return pulumi.get(self, "deploy_policy")
+        return pulumi.get(self, "deploy_policies")
 
     @property
     @pulumi.getter
@@ -150,12 +150,12 @@ class GetKubernetesNodeGroupResult:
         return pulumi.get(self, "instance_group_id")
 
     @property
-    @pulumi.getter(name="instanceTemplate")
-    def instance_template(self) -> 'outputs.GetKubernetesNodeGroupInstanceTemplateResult':
+    @pulumi.getter(name="instanceTemplates")
+    def instance_templates(self) -> Sequence['outputs.GetKubernetesNodeGroupInstanceTemplateResult']:
         """
         Template used to create compute instances in this Kubernetes node group. The structure is documented below.
         """
-        return pulumi.get(self, "instance_template")
+        return pulumi.get(self, "instance_templates")
 
     @property
     @pulumi.getter
@@ -170,12 +170,12 @@ class GetKubernetesNodeGroupResult:
         return pulumi.get(self, "labels")
 
     @property
-    @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> 'outputs.GetKubernetesNodeGroupMaintenancePolicyResult':
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> Sequence['outputs.GetKubernetesNodeGroupMaintenancePolicyResult']:
         """
         Information about maintenance policy for this Kubernetes node group. The structure is documented below.
         """
-        return pulumi.get(self, "maintenance_policy")
+        return pulumi.get(self, "maintenance_policies")
 
     @property
     @pulumi.getter
@@ -204,12 +204,12 @@ class GetKubernetesNodeGroupResult:
         return pulumi.get(self, "node_taints")
 
     @property
-    @pulumi.getter(name="scalePolicy")
-    def scale_policy(self) -> 'outputs.GetKubernetesNodeGroupScalePolicyResult':
+    @pulumi.getter(name="scalePolicies")
+    def scale_policies(self) -> Sequence['outputs.GetKubernetesNodeGroupScalePolicyResult']:
         """
         Scale policy of the node group. The structure is documented below.
         """
-        return pulumi.get(self, "scale_policy")
+        return pulumi.get(self, "scale_policies")
 
     @property
     @pulumi.getter
@@ -220,12 +220,12 @@ class GetKubernetesNodeGroupResult:
         return pulumi.get(self, "status")
 
     @property
-    @pulumi.getter(name="versionInfo")
-    def version_info(self) -> 'outputs.GetKubernetesNodeGroupVersionInfoResult':
+    @pulumi.getter(name="versionInfos")
+    def version_infos(self) -> Sequence['outputs.GetKubernetesNodeGroupVersionInfoResult']:
         """
         Information about Kubernetes node group version. The structure is documented below.
         """
-        return pulumi.get(self, "version_info")
+        return pulumi.get(self, "version_infos")
 
 
 class AwaitableGetKubernetesNodeGroupResult(GetKubernetesNodeGroupResult):
@@ -234,25 +234,25 @@ class AwaitableGetKubernetesNodeGroupResult(GetKubernetesNodeGroupResult):
         if False:
             yield self
         return GetKubernetesNodeGroupResult(
-            allocation_policy=self.allocation_policy,
+            allocation_policies=self.allocation_policies,
             allowed_unsafe_sysctls=self.allowed_unsafe_sysctls,
             cluster_id=self.cluster_id,
             created_at=self.created_at,
-            deploy_policy=self.deploy_policy,
+            deploy_policies=self.deploy_policies,
             description=self.description,
             folder_id=self.folder_id,
             id=self.id,
             instance_group_id=self.instance_group_id,
-            instance_template=self.instance_template,
+            instance_templates=self.instance_templates,
             labels=self.labels,
-            maintenance_policy=self.maintenance_policy,
+            maintenance_policies=self.maintenance_policies,
             name=self.name,
             node_group_id=self.node_group_id,
             node_labels=self.node_labels,
             node_taints=self.node_taints,
-            scale_policy=self.scale_policy,
+            scale_policies=self.scale_policies,
             status=self.status,
-            version_info=self.version_info)
+            version_infos=self.version_infos)
 
 
 def get_kubernetes_node_group(folder_id: Optional[str] = None,
@@ -289,25 +289,25 @@ def get_kubernetes_node_group(folder_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('yandex:index/getKubernetesNodeGroup:getKubernetesNodeGroup', __args__, opts=opts, typ=GetKubernetesNodeGroupResult).value
 
     return AwaitableGetKubernetesNodeGroupResult(
-        allocation_policy=__ret__.allocation_policy,
+        allocation_policies=__ret__.allocation_policies,
         allowed_unsafe_sysctls=__ret__.allowed_unsafe_sysctls,
         cluster_id=__ret__.cluster_id,
         created_at=__ret__.created_at,
-        deploy_policy=__ret__.deploy_policy,
+        deploy_policies=__ret__.deploy_policies,
         description=__ret__.description,
         folder_id=__ret__.folder_id,
         id=__ret__.id,
         instance_group_id=__ret__.instance_group_id,
-        instance_template=__ret__.instance_template,
+        instance_templates=__ret__.instance_templates,
         labels=__ret__.labels,
-        maintenance_policy=__ret__.maintenance_policy,
+        maintenance_policies=__ret__.maintenance_policies,
         name=__ret__.name,
         node_group_id=__ret__.node_group_id,
         node_labels=__ret__.node_labels,
         node_taints=__ret__.node_taints,
-        scale_policy=__ret__.scale_policy,
+        scale_policies=__ret__.scale_policies,
         status=__ret__.status,
-        version_info=__ret__.version_info)
+        version_infos=__ret__.version_infos)
 
 
 @_utilities.lift_output_func(get_kubernetes_node_group)

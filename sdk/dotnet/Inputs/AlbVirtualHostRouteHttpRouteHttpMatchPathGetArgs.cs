@@ -12,9 +12,15 @@ namespace Pulumi.Yandex.Inputs
 
     public sealed class AlbVirtualHostRouteHttpRouteHttpMatchPathGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Match exactly.
+        /// </summary>
         [Input("exact")]
         public Input<string>? Exact { get; set; }
 
+        /// <summary>
+        /// Match prefix.
+        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 

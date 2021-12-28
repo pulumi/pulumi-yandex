@@ -144,7 +144,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Configuration of the Redis cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbRedisClusterConfigResult Config;
+        public readonly ImmutableArray<Outputs.GetMdbRedisClusterConfigResult> Configs;
         /// <summary>
         /// Creation timestamp of the key.
         /// </summary>
@@ -175,7 +175,7 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the Redis cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
-        public readonly Outputs.GetMdbRedisClusterMaintenanceWindowResult MaintenanceWindow;
+        public readonly ImmutableArray<Outputs.GetMdbRedisClusterMaintenanceWindowResult> MaintenanceWindows;
         public readonly string Name;
         /// <summary>
         /// ID of the network, to which the Redis cluster belongs.
@@ -184,7 +184,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Resources allocated to hosts of the Redis cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbRedisClusterResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetMdbRedisClusterResourceResult> Resources;
         /// <summary>
         /// A set of ids of security groups assigned to hosts of the cluster.
         /// </summary>
@@ -206,7 +206,7 @@ namespace Pulumi.Yandex
         private GetMdbRedisClusterResult(
             string clusterId,
 
-            Outputs.GetMdbRedisClusterConfigResult config,
+            ImmutableArray<Outputs.GetMdbRedisClusterConfigResult> configs,
 
             string createdAt,
 
@@ -226,13 +226,13 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
-            Outputs.GetMdbRedisClusterMaintenanceWindowResult maintenanceWindow,
+            ImmutableArray<Outputs.GetMdbRedisClusterMaintenanceWindowResult> maintenanceWindows,
 
             string name,
 
             string networkId,
 
-            Outputs.GetMdbRedisClusterResourcesResult resources,
+            ImmutableArray<Outputs.GetMdbRedisClusterResourceResult> resources,
 
             ImmutableArray<string> securityGroupIds,
 
@@ -243,7 +243,7 @@ namespace Pulumi.Yandex
             bool tlsEnabled)
         {
             ClusterId = clusterId;
-            Config = config;
+            Configs = configs;
             CreatedAt = createdAt;
             DeletionProtection = deletionProtection;
             Description = description;
@@ -253,7 +253,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
-            MaintenanceWindow = maintenanceWindow;
+            MaintenanceWindows = maintenanceWindows;
             Name = name;
             NetworkId = networkId;
             Resources = resources;

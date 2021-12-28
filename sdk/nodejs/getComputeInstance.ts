@@ -36,7 +36,6 @@ export function getComputeInstance(args?: GetComputeInstanceArgs, opts?: pulumi.
         "instanceId": args.instanceId,
         "name": args.name,
         "placementPolicy": args.placementPolicy,
-        "schedulingPolicy": args.schedulingPolicy,
     }, opts);
 }
 
@@ -57,10 +56,6 @@ export interface GetComputeInstanceArgs {
      */
     name?: string;
     placementPolicy?: inputs.GetComputeInstancePlacementPolicy;
-    /**
-     * Scheduling policy configuration. The structure is documented below.
-     */
-    schedulingPolicy?: inputs.GetComputeInstanceSchedulingPolicy;
 }
 
 /**
@@ -70,7 +65,7 @@ export interface GetComputeInstanceResult {
     /**
      * The boot disk for the instance. Structure is documented below.
      */
-    readonly bootDisk: outputs.GetComputeInstanceBootDisk;
+    readonly bootDisks: outputs.GetComputeInstanceBootDisk[];
     /**
      * Instance creation timestamp.
      */
@@ -117,11 +112,11 @@ export interface GetComputeInstanceResult {
      * Type of virtual machine to create. Default is 'standard-v1'.
      */
     readonly platformId: string;
-    readonly resources: outputs.GetComputeInstanceResources;
+    readonly resources: outputs.GetComputeInstanceResource[];
     /**
      * Scheduling policy configuration. The structure is documented below.
      */
-    readonly schedulingPolicy: outputs.GetComputeInstanceSchedulingPolicy;
+    readonly schedulingPolicies: outputs.GetComputeInstanceSchedulingPolicy[];
     /**
      * List of secondary disks attached to the instance. Structure is documented below.
      */
@@ -165,8 +160,4 @@ export interface GetComputeInstanceOutputArgs {
      */
     name?: pulumi.Input<string>;
     placementPolicy?: pulumi.Input<inputs.GetComputeInstancePlacementPolicyArgs>;
-    /**
-     * Scheduling policy configuration. The structure is documented below.
-     */
-    schedulingPolicy?: pulumi.Input<inputs.GetComputeInstanceSchedulingPolicyArgs>;
 }

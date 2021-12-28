@@ -51,12 +51,12 @@ export interface GetComputeInstanceGroupResult {
     /**
      * The allocation policy of the instance group by zone and region. The structure is documented below.
      */
-    readonly allocationPolicy: outputs.GetComputeInstanceGroupAllocationPolicy;
-    readonly applicationBalancerState: outputs.GetComputeInstanceGroupApplicationBalancerState;
+    readonly allocationPolicies: outputs.GetComputeInstanceGroupAllocationPolicy[];
+    readonly applicationBalancerStates: outputs.GetComputeInstanceGroupApplicationBalancerState[];
     /**
      * Application Load balancing (L7) specifications. The structure is documented below.
      */
-    readonly applicationLoadBalancer: outputs.GetComputeInstanceGroupApplicationLoadBalancer;
+    readonly applicationLoadBalancers: outputs.GetComputeInstanceGroupApplicationLoadBalancer[];
     /**
      * The instance group creation timestamp.
      */
@@ -68,7 +68,7 @@ export interface GetComputeInstanceGroupResult {
     /**
      * The deployment policy of the instance group. The structure is documented below.
      */
-    readonly deployPolicy: outputs.GetComputeInstanceGroupDeployPolicy;
+    readonly deployPolicies: outputs.GetComputeInstanceGroupDeployPolicy[];
     /**
      * A description of the boot disk.
      */
@@ -89,7 +89,7 @@ export interface GetComputeInstanceGroupResult {
     /**
      * The instance template that the instance group belongs to. The structure is documented below.
      */
-    readonly instanceTemplate: outputs.GetComputeInstanceGroupInstanceTemplate;
+    readonly instanceTemplates: outputs.GetComputeInstanceGroupInstanceTemplate[];
     /**
      * A list of instances in the specified instance group. The structure is documented below.
      */
@@ -103,13 +103,13 @@ export interface GetComputeInstanceGroupResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Load balancing specification. The structure is documented below.
-     */
-    readonly loadBalancer: outputs.GetComputeInstanceGroupLoadBalancer;
-    /**
      * Information about which entities can be attached to this load balancer. The structure is documented below.
      */
-    readonly loadBalancerState: outputs.GetComputeInstanceGroupLoadBalancerState;
+    readonly loadBalancerStates: outputs.GetComputeInstanceGroupLoadBalancerState[];
+    /**
+     * Load balancing specification. The structure is documented below.
+     */
+    readonly loadBalancers: outputs.GetComputeInstanceGroupLoadBalancer[];
     /**
      * Timeout for waiting for the VM to become healthy. If the timeout is exceeded, the VM will be turned off based on the deployment policy. Specified in seconds.
      */
@@ -121,7 +121,7 @@ export interface GetComputeInstanceGroupResult {
     /**
      * The scaling policy of the instance group. The structure is documented below.
      */
-    readonly scalePolicy: outputs.GetComputeInstanceGroupScalePolicy;
+    readonly scalePolicies: outputs.GetComputeInstanceGroupScalePolicy[];
     /**
      * The service account ID for the instance.
      */

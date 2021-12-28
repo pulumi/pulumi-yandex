@@ -16,7 +16,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Data Proc specific options. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetDataprocClusterClusterConfigHadoopResult Hadoop;
+        public readonly ImmutableArray<Outputs.GetDataprocClusterClusterConfigHadoopResult> Hadoops;
         /// <summary>
         /// Configuration of the Data Proc subcluster. The structure is documented below.
         /// </summary>
@@ -28,13 +28,13 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetDataprocClusterClusterConfigResult(
-            Outputs.GetDataprocClusterClusterConfigHadoopResult hadoop,
+            ImmutableArray<Outputs.GetDataprocClusterClusterConfigHadoopResult> hadoops,
 
             ImmutableArray<Outputs.GetDataprocClusterClusterConfigSubclusterSpecResult> subclusterSpecs,
 
             string versionId)
         {
-            Hadoop = hadoop;
+            Hadoops = hadoops;
             SubclusterSpecs = subclusterSpecs;
             VersionId = versionId;
         }

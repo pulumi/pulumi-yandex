@@ -18,6 +18,7 @@ class ProviderArgs:
                  folder_id: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  plaintext: Optional[pulumi.Input[bool]] = None,
                  service_account_key_file: Optional[pulumi.Input[str]] = None,
                  storage_access_key: Optional[pulumi.Input[str]] = None,
@@ -60,6 +61,8 @@ class ProviderArgs:
             pulumi.set(__self__, "insecure", insecure)
         if max_retries is not None:
             pulumi.set(__self__, "max_retries", max_retries)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
         if plaintext is not None:
             pulumi.set(__self__, "plaintext", plaintext)
         if service_account_key_file is not None:
@@ -140,6 +143,15 @@ class ProviderArgs:
     @max_retries.setter
     def max_retries(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_retries", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -276,6 +288,7 @@ class Provider(pulumi.ProviderResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  plaintext: Optional[pulumi.Input[bool]] = None,
                  service_account_key_file: Optional[pulumi.Input[str]] = None,
                  storage_access_key: Optional[pulumi.Input[str]] = None,
@@ -347,6 +360,7 @@ class Provider(pulumi.ProviderResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  plaintext: Optional[pulumi.Input[bool]] = None,
                  service_account_key_file: Optional[pulumi.Input[str]] = None,
                  storage_access_key: Optional[pulumi.Input[str]] = None,
@@ -374,6 +388,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
             __props__.__dict__["max_retries"] = pulumi.Output.from_input(max_retries).apply(pulumi.runtime.to_json) if max_retries is not None else None
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["plaintext"] = pulumi.Output.from_input(plaintext).apply(pulumi.runtime.to_json) if plaintext is not None else None
             __props__.__dict__["service_account_key_file"] = service_account_key_file
             __props__.__dict__["storage_access_key"] = storage_access_key
@@ -413,6 +428,11 @@ class Provider(pulumi.ProviderResource):
         The default folder ID where resources will be placed.
         """
         return pulumi.get(self, "folder_id")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="serviceAccountKeyFile")

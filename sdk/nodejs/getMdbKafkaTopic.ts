@@ -39,7 +39,7 @@ export interface GetMdbKafkaTopicResult {
     readonly name: string;
     readonly partitions: number;
     readonly replicationFactor: number;
-    readonly topicConfig: outputs.GetMdbKafkaTopicTopicConfig;
+    readonly topicConfigs: outputs.GetMdbKafkaTopicTopicConfig[];
 }
 
 export function getMdbKafkaTopicOutput(args: GetMdbKafkaTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbKafkaTopicResult> {

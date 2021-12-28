@@ -16,7 +16,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// (Required) Direct response action resource. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetAlbVirtualHostRouteHttpRouteDirectResponseActionResult DirectResponseAction;
+        public readonly ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteDirectResponseActionResult> DirectResponseActions;
         /// <summary>
         /// Checks "/" prefix by default. The structure is documented below.
         /// </summary>
@@ -24,26 +24,26 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// HTTP route action resource. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetAlbVirtualHostRouteHttpRouteHttpRouteActionResult HttpRouteAction;
+        public readonly ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteHttpRouteActionResult> HttpRouteActions;
         /// <summary>
         /// Redirect action resource. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetAlbVirtualHostRouteHttpRouteRedirectActionResult RedirectAction;
+        public readonly ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteRedirectActionResult> RedirectActions;
 
         [OutputConstructor]
         private GetAlbVirtualHostRouteHttpRouteResult(
-            Outputs.GetAlbVirtualHostRouteHttpRouteDirectResponseActionResult directResponseAction,
+            ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteDirectResponseActionResult> directResponseActions,
 
             ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchResult> httpMatches,
 
-            Outputs.GetAlbVirtualHostRouteHttpRouteHttpRouteActionResult httpRouteAction,
+            ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteHttpRouteActionResult> httpRouteActions,
 
-            Outputs.GetAlbVirtualHostRouteHttpRouteRedirectActionResult redirectAction)
+            ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteRedirectActionResult> redirectActions)
         {
-            DirectResponseAction = directResponseAction;
+            DirectResponseActions = directResponseActions;
             HttpMatches = httpMatches;
-            HttpRouteAction = httpRouteAction;
-            RedirectAction = redirectAction;
+            HttpRouteActions = httpRouteActions;
+            RedirectActions = redirectActions;
         }
     }
 }

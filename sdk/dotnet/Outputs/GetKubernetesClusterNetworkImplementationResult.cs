@@ -16,12 +16,12 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Cilium network implementation configuration. No options exist.
         /// </summary>
-        public readonly Outputs.GetKubernetesClusterNetworkImplementationCiliumResult Cilium;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterNetworkImplementationCiliaResult> Cilias;
 
         [OutputConstructor]
-        private GetKubernetesClusterNetworkImplementationResult(Outputs.GetKubernetesClusterNetworkImplementationCiliumResult cilium)
+        private GetKubernetesClusterNetworkImplementationResult(ImmutableArray<Outputs.GetKubernetesClusterNetworkImplementationCiliaResult> cilias)
         {
-            Cilium = cilium;
+            Cilias = cilias;
         }
     }
 }

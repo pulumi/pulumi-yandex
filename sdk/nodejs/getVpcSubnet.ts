@@ -69,7 +69,7 @@ export interface GetVpcSubnetResult {
     /**
      * Options for DHCP client. The structure is documented below.
      */
-    readonly dhcpOptions: outputs.GetVpcSubnetDhcpOptions;
+    readonly dhcpOptions: outputs.GetVpcSubnetDhcpOption[];
     readonly folderId: string;
     /**
      * The provider-assigned unique ID for this managed resource.

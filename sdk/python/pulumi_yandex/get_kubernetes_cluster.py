@@ -21,7 +21,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, cluster_id=None, cluster_ipv4_range=None, cluster_ipv6_range=None, created_at=None, description=None, folder_id=None, health=None, id=None, kms_provider=None, labels=None, log_group_id=None, master=None, name=None, network_id=None, network_implementation=None, network_policy_provider=None, node_ipv4_cidr_mask_size=None, node_service_account_id=None, release_channel=None, service_account_id=None, service_ipv4_range=None, service_ipv6_range=None, status=None):
+    def __init__(__self__, cluster_id=None, cluster_ipv4_range=None, cluster_ipv6_range=None, created_at=None, description=None, folder_id=None, health=None, id=None, kms_providers=None, labels=None, log_group_id=None, masters=None, name=None, network_id=None, network_implementations=None, network_policy_provider=None, node_ipv4_cidr_mask_size=None, node_service_account_id=None, release_channel=None, service_account_id=None, service_ipv4_range=None, service_ipv6_range=None, status=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -46,27 +46,27 @@ class GetKubernetesClusterResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if kms_provider and not isinstance(kms_provider, dict):
-            raise TypeError("Expected argument 'kms_provider' to be a dict")
-        pulumi.set(__self__, "kms_provider", kms_provider)
+        if kms_providers and not isinstance(kms_providers, list):
+            raise TypeError("Expected argument 'kms_providers' to be a list")
+        pulumi.set(__self__, "kms_providers", kms_providers)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
         if log_group_id and not isinstance(log_group_id, str):
             raise TypeError("Expected argument 'log_group_id' to be a str")
         pulumi.set(__self__, "log_group_id", log_group_id)
-        if master and not isinstance(master, dict):
-            raise TypeError("Expected argument 'master' to be a dict")
-        pulumi.set(__self__, "master", master)
+        if masters and not isinstance(masters, list):
+            raise TypeError("Expected argument 'masters' to be a list")
+        pulumi.set(__self__, "masters", masters)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if network_id and not isinstance(network_id, str):
             raise TypeError("Expected argument 'network_id' to be a str")
         pulumi.set(__self__, "network_id", network_id)
-        if network_implementation and not isinstance(network_implementation, dict):
-            raise TypeError("Expected argument 'network_implementation' to be a dict")
-        pulumi.set(__self__, "network_implementation", network_implementation)
+        if network_implementations and not isinstance(network_implementations, list):
+            raise TypeError("Expected argument 'network_implementations' to be a list")
+        pulumi.set(__self__, "network_implementations", network_implementations)
         if network_policy_provider and not isinstance(network_policy_provider, str):
             raise TypeError("Expected argument 'network_policy_provider' to be a str")
         pulumi.set(__self__, "network_policy_provider", network_policy_provider)
@@ -151,12 +151,12 @@ class GetKubernetesClusterResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="kmsProvider")
-    def kms_provider(self) -> 'outputs.GetKubernetesClusterKmsProviderResult':
+    @pulumi.getter(name="kmsProviders")
+    def kms_providers(self) -> Sequence['outputs.GetKubernetesClusterKmsProviderResult']:
         """
         cluster KMS provider parameters.
         """
-        return pulumi.get(self, "kms_provider")
+        return pulumi.get(self, "kms_providers")
 
     @property
     @pulumi.getter
@@ -176,11 +176,11 @@ class GetKubernetesClusterResult:
 
     @property
     @pulumi.getter
-    def master(self) -> 'outputs.GetKubernetesClusterMasterResult':
+    def masters(self) -> Sequence['outputs.GetKubernetesClusterMasterResult']:
         """
         Kubernetes master configuration options. The structure is documented below.
         """
-        return pulumi.get(self, "master")
+        return pulumi.get(self, "masters")
 
     @property
     @pulumi.getter
@@ -196,12 +196,12 @@ class GetKubernetesClusterResult:
         return pulumi.get(self, "network_id")
 
     @property
-    @pulumi.getter(name="networkImplementation")
-    def network_implementation(self) -> 'outputs.GetKubernetesClusterNetworkImplementationResult':
+    @pulumi.getter(name="networkImplementations")
+    def network_implementations(self) -> Sequence['outputs.GetKubernetesClusterNetworkImplementationResult']:
         """
         (Optional) Network Implementation options. The structure is documented below.
         """
-        return pulumi.get(self, "network_implementation")
+        return pulumi.get(self, "network_implementations")
 
     @property
     @pulumi.getter(name="networkPolicyProvider")
@@ -285,13 +285,13 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             folder_id=self.folder_id,
             health=self.health,
             id=self.id,
-            kms_provider=self.kms_provider,
+            kms_providers=self.kms_providers,
             labels=self.labels,
             log_group_id=self.log_group_id,
-            master=self.master,
+            masters=self.masters,
             name=self.name,
             network_id=self.network_id,
-            network_implementation=self.network_implementation,
+            network_implementations=self.network_implementations,
             network_policy_provider=self.network_policy_provider,
             node_ipv4_cidr_mask_size=self.node_ipv4_cidr_mask_size,
             node_service_account_id=self.node_service_account_id,
@@ -316,7 +316,7 @@ def get_kubernetes_cluster(cluster_id: Optional[str] = None,
     import pulumi_yandex as yandex
 
     my_cluster = yandex.get_kubernetes_cluster(cluster_id="some_k8s_cluster_id")
-    pulumi.export("clusterExternalV4Endpoint", my_cluster.master.external_v4_endpoint)
+    pulumi.export("clusterExternalV4Endpoint", my_cluster.masters[0].external_v4_endpoint)
     ```
 
 
@@ -343,13 +343,13 @@ def get_kubernetes_cluster(cluster_id: Optional[str] = None,
         folder_id=__ret__.folder_id,
         health=__ret__.health,
         id=__ret__.id,
-        kms_provider=__ret__.kms_provider,
+        kms_providers=__ret__.kms_providers,
         labels=__ret__.labels,
         log_group_id=__ret__.log_group_id,
-        master=__ret__.master,
+        masters=__ret__.masters,
         name=__ret__.name,
         network_id=__ret__.network_id,
-        network_implementation=__ret__.network_implementation,
+        network_implementations=__ret__.network_implementations,
         network_policy_provider=__ret__.network_policy_provider,
         node_ipv4_cidr_mask_size=__ret__.node_ipv4_cidr_mask_size,
         node_service_account_id=__ret__.node_service_account_id,
@@ -375,7 +375,7 @@ def get_kubernetes_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str
     import pulumi_yandex as yandex
 
     my_cluster = yandex.get_kubernetes_cluster(cluster_id="some_k8s_cluster_id")
-    pulumi.export("clusterExternalV4Endpoint", my_cluster.master.external_v4_endpoint)
+    pulumi.export("clusterExternalV4Endpoint", my_cluster.masters[0].external_v4_endpoint)
     ```
 
 

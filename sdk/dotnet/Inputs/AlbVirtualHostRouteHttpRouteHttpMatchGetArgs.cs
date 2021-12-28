@@ -13,14 +13,14 @@ namespace Pulumi.Yandex.Inputs
     public sealed class AlbVirtualHostRouteHttpRouteHttpMatchGetArgs : Pulumi.ResourceArgs
     {
         [Input("httpMethods")]
-        private InputList<object>? _httpMethods;
+        private InputList<string>? _httpMethods;
 
         /// <summary>
         /// List of methods(strings).
         /// </summary>
-        public InputList<object> HttpMethods
+        public InputList<string> HttpMethods
         {
-            get => _httpMethods ?? (_httpMethods = new InputList<object>());
+            get => _httpMethods ?? (_httpMethods = new InputList<string>());
             set => _httpMethods = value;
         }
 

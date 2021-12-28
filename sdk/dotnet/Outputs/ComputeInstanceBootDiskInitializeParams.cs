@@ -13,6 +13,7 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class ComputeInstanceBootDiskInitializeParams
     {
+        public readonly int? BlockSize;
         /// <summary>
         /// Description of the boot disk.
         /// </summary>
@@ -40,6 +41,8 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private ComputeInstanceBootDiskInitializeParams(
+            int? blockSize,
+
             string? description,
 
             string? imageId,
@@ -52,6 +55,7 @@ namespace Pulumi.Yandex.Outputs
 
             string? type)
         {
+            BlockSize = blockSize;
             Description = description;
             ImageId = imageId;
             Name = name;

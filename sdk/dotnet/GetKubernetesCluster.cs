@@ -31,7 +31,7 @@ namespace Pulumi.Yandex
         ///         {
         ///             ClusterId = "some_k8s_cluster_id",
         ///         }));
-        ///         this.ClusterExternalV4Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Master?.ExternalV4Endpoint);
+        ///         this.ClusterExternalV4Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Masters?[0]?.ExternalV4Endpoint);
         ///     }
         /// 
         ///     [Output("clusterExternalV4Endpoint")]
@@ -63,7 +63,7 @@ namespace Pulumi.Yandex
         ///         {
         ///             ClusterId = "some_k8s_cluster_id",
         ///         }));
-        ///         this.ClusterExternalV4Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Master?.ExternalV4Endpoint);
+        ///         this.ClusterExternalV4Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Masters?[0]?.ExternalV4Endpoint);
         ///     }
         /// 
         ///     [Output("clusterExternalV4Endpoint")]
@@ -161,7 +161,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// cluster KMS provider parameters.
         /// </summary>
-        public readonly Outputs.GetKubernetesClusterKmsProviderResult KmsProvider;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterKmsProviderResult> KmsProviders;
         /// <summary>
         /// A set of key/value label pairs to assign to the Kubernetes cluster.
         /// </summary>
@@ -173,7 +173,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Kubernetes master configuration options. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesClusterMasterResult Master;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterMasterResult> Masters;
         public readonly string Name;
         /// <summary>
         /// The ID of the cluster network.
@@ -182,7 +182,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// (Optional) Network Implementation options. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesClusterNetworkImplementationResult NetworkImplementation;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterNetworkImplementationResult> NetworkImplementations;
         /// <summary>
         /// Network policy provider for the cluster, if present. Possible values: `CALICO`.
         /// </summary>
@@ -237,19 +237,19 @@ namespace Pulumi.Yandex
 
             string id,
 
-            Outputs.GetKubernetesClusterKmsProviderResult kmsProvider,
+            ImmutableArray<Outputs.GetKubernetesClusterKmsProviderResult> kmsProviders,
 
             ImmutableDictionary<string, string> labels,
 
             string logGroupId,
 
-            Outputs.GetKubernetesClusterMasterResult master,
+            ImmutableArray<Outputs.GetKubernetesClusterMasterResult> masters,
 
             string name,
 
             string networkId,
 
-            Outputs.GetKubernetesClusterNetworkImplementationResult networkImplementation,
+            ImmutableArray<Outputs.GetKubernetesClusterNetworkImplementationResult> networkImplementations,
 
             string networkPolicyProvider,
 
@@ -275,13 +275,13 @@ namespace Pulumi.Yandex
             FolderId = folderId;
             Health = health;
             Id = id;
-            KmsProvider = kmsProvider;
+            KmsProviders = kmsProviders;
             Labels = labels;
             LogGroupId = logGroupId;
-            Master = master;
+            Masters = masters;
             Name = name;
             NetworkId = networkId;
-            NetworkImplementation = networkImplementation;
+            NetworkImplementations = networkImplementations;
             NetworkPolicyProvider = networkPolicyProvider;
             NodeIpv4CidrMaskSize = nodeIpv4CidrMaskSize;
             NodeServiceAccountId = nodeServiceAccountId;

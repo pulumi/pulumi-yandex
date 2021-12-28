@@ -22,16 +22,16 @@ class GetMdbClickhouseClusterResult:
     """
     A collection of values returned by getMdbClickhouseCluster.
     """
-    def __init__(__self__, access=None, backup_window_start=None, clickhouse=None, cloud_storage=None, cluster_id=None, created_at=None, databases=None, deletion_protection=None, description=None, environment=None, folder_id=None, format_schemas=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, ml_models=None, name=None, network_id=None, security_group_ids=None, service_account_id=None, shard_groups=None, sql_database_management=None, sql_user_management=None, status=None, users=None, version=None, zookeeper=None):
-        if access and not isinstance(access, dict):
-            raise TypeError("Expected argument 'access' to be a dict")
-        pulumi.set(__self__, "access", access)
-        if backup_window_start and not isinstance(backup_window_start, dict):
-            raise TypeError("Expected argument 'backup_window_start' to be a dict")
-        pulumi.set(__self__, "backup_window_start", backup_window_start)
-        if clickhouse and not isinstance(clickhouse, dict):
-            raise TypeError("Expected argument 'clickhouse' to be a dict")
-        pulumi.set(__self__, "clickhouse", clickhouse)
+    def __init__(__self__, accesses=None, backup_window_starts=None, clickhouses=None, cloud_storage=None, cluster_id=None, created_at=None, databases=None, deletion_protection=None, description=None, environment=None, folder_id=None, format_schemas=None, health=None, hosts=None, id=None, labels=None, maintenance_windows=None, ml_models=None, name=None, network_id=None, security_group_ids=None, service_account_id=None, shard_groups=None, sql_database_management=None, sql_user_management=None, status=None, users=None, version=None, zookeepers=None):
+        if accesses and not isinstance(accesses, list):
+            raise TypeError("Expected argument 'accesses' to be a list")
+        pulumi.set(__self__, "accesses", accesses)
+        if backup_window_starts and not isinstance(backup_window_starts, list):
+            raise TypeError("Expected argument 'backup_window_starts' to be a list")
+        pulumi.set(__self__, "backup_window_starts", backup_window_starts)
+        if clickhouses and not isinstance(clickhouses, list):
+            raise TypeError("Expected argument 'clickhouses' to be a list")
+        pulumi.set(__self__, "clickhouses", clickhouses)
         if cloud_storage and not isinstance(cloud_storage, dict):
             raise TypeError("Expected argument 'cloud_storage' to be a dict")
         pulumi.set(__self__, "cloud_storage", cloud_storage)
@@ -71,9 +71,9 @@ class GetMdbClickhouseClusterResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if maintenance_window and not isinstance(maintenance_window, dict):
-            raise TypeError("Expected argument 'maintenance_window' to be a dict")
-        pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if maintenance_windows and not isinstance(maintenance_windows, list):
+            raise TypeError("Expected argument 'maintenance_windows' to be a list")
+        pulumi.set(__self__, "maintenance_windows", maintenance_windows)
         if ml_models and not isinstance(ml_models, list):
             raise TypeError("Expected argument 'ml_models' to be a list")
         pulumi.set(__self__, "ml_models", ml_models)
@@ -107,33 +107,33 @@ class GetMdbClickhouseClusterResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         pulumi.set(__self__, "version", version)
-        if zookeeper and not isinstance(zookeeper, dict):
-            raise TypeError("Expected argument 'zookeeper' to be a dict")
-        pulumi.set(__self__, "zookeeper", zookeeper)
+        if zookeepers and not isinstance(zookeepers, list):
+            raise TypeError("Expected argument 'zookeepers' to be a list")
+        pulumi.set(__self__, "zookeepers", zookeepers)
 
     @property
     @pulumi.getter
-    def access(self) -> 'outputs.GetMdbClickhouseClusterAccessResult':
+    def accesses(self) -> Sequence['outputs.GetMdbClickhouseClusterAccessResult']:
         """
         Access policy to the ClickHouse cluster. The structure is documented below.
         """
-        return pulumi.get(self, "access")
+        return pulumi.get(self, "accesses")
 
     @property
-    @pulumi.getter(name="backupWindowStart")
-    def backup_window_start(self) -> 'outputs.GetMdbClickhouseClusterBackupWindowStartResult':
+    @pulumi.getter(name="backupWindowStarts")
+    def backup_window_starts(self) -> Sequence['outputs.GetMdbClickhouseClusterBackupWindowStartResult']:
         """
         Time to start the daily backup, in the UTC timezone. The structure is documented below.
         """
-        return pulumi.get(self, "backup_window_start")
+        return pulumi.get(self, "backup_window_starts")
 
     @property
     @pulumi.getter
-    def clickhouse(self) -> 'outputs.GetMdbClickhouseClusterClickhouseResult':
+    def clickhouses(self) -> Sequence['outputs.GetMdbClickhouseClusterClickhouseResult']:
         """
         Configuration of the ClickHouse subcluster. The structure is documented below.
         """
-        return pulumi.get(self, "clickhouse")
+        return pulumi.get(self, "clickhouses")
 
     @property
     @pulumi.getter(name="cloudStorage")
@@ -228,9 +228,9 @@ class GetMdbClickhouseClusterResult:
         return pulumi.get(self, "labels")
 
     @property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> 'outputs.GetMdbClickhouseClusterMaintenanceWindowResult':
-        return pulumi.get(self, "maintenance_window")
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Sequence['outputs.GetMdbClickhouseClusterMaintenanceWindowResult']:
+        return pulumi.get(self, "maintenance_windows")
 
     @property
     @pulumi.getter(name="mlModels")
@@ -316,11 +316,11 @@ class GetMdbClickhouseClusterResult:
 
     @property
     @pulumi.getter
-    def zookeeper(self) -> 'outputs.GetMdbClickhouseClusterZookeeperResult':
+    def zookeepers(self) -> Sequence['outputs.GetMdbClickhouseClusterZookeeperResult']:
         """
         Configuration of the ZooKeeper subcluster. The structure is documented below.
         """
-        return pulumi.get(self, "zookeeper")
+        return pulumi.get(self, "zookeepers")
 
 
 class AwaitableGetMdbClickhouseClusterResult(GetMdbClickhouseClusterResult):
@@ -329,9 +329,9 @@ class AwaitableGetMdbClickhouseClusterResult(GetMdbClickhouseClusterResult):
         if False:
             yield self
         return GetMdbClickhouseClusterResult(
-            access=self.access,
-            backup_window_start=self.backup_window_start,
-            clickhouse=self.clickhouse,
+            accesses=self.accesses,
+            backup_window_starts=self.backup_window_starts,
+            clickhouses=self.clickhouses,
             cloud_storage=self.cloud_storage,
             cluster_id=self.cluster_id,
             created_at=self.created_at,
@@ -345,7 +345,7 @@ class AwaitableGetMdbClickhouseClusterResult(GetMdbClickhouseClusterResult):
             hosts=self.hosts,
             id=self.id,
             labels=self.labels,
-            maintenance_window=self.maintenance_window,
+            maintenance_windows=self.maintenance_windows,
             ml_models=self.ml_models,
             name=self.name,
             network_id=self.network_id,
@@ -357,7 +357,7 @@ class AwaitableGetMdbClickhouseClusterResult(GetMdbClickhouseClusterResult):
             status=self.status,
             users=self.users,
             version=self.version,
-            zookeeper=self.zookeeper)
+            zookeepers=self.zookeepers)
 
 
 def get_mdb_clickhouse_cluster(cloud_storage: Optional[pulumi.InputType['GetMdbClickhouseClusterCloudStorageArgs']] = None,
@@ -400,9 +400,9 @@ def get_mdb_clickhouse_cluster(cloud_storage: Optional[pulumi.InputType['GetMdbC
     __ret__ = pulumi.runtime.invoke('yandex:index/getMdbClickhouseCluster:getMdbClickhouseCluster', __args__, opts=opts, typ=GetMdbClickhouseClusterResult).value
 
     return AwaitableGetMdbClickhouseClusterResult(
-        access=__ret__.access,
-        backup_window_start=__ret__.backup_window_start,
-        clickhouse=__ret__.clickhouse,
+        accesses=__ret__.accesses,
+        backup_window_starts=__ret__.backup_window_starts,
+        clickhouses=__ret__.clickhouses,
         cloud_storage=__ret__.cloud_storage,
         cluster_id=__ret__.cluster_id,
         created_at=__ret__.created_at,
@@ -416,7 +416,7 @@ def get_mdb_clickhouse_cluster(cloud_storage: Optional[pulumi.InputType['GetMdbC
         hosts=__ret__.hosts,
         id=__ret__.id,
         labels=__ret__.labels,
-        maintenance_window=__ret__.maintenance_window,
+        maintenance_windows=__ret__.maintenance_windows,
         ml_models=__ret__.ml_models,
         name=__ret__.name,
         network_id=__ret__.network_id,
@@ -428,7 +428,7 @@ def get_mdb_clickhouse_cluster(cloud_storage: Optional[pulumi.InputType['GetMdbC
         status=__ret__.status,
         users=__ret__.users,
         version=__ret__.version,
-        zookeeper=__ret__.zookeeper)
+        zookeepers=__ret__.zookeepers)
 
 
 @_utilities.lift_output_func(get_mdb_clickhouse_cluster)

@@ -104,7 +104,13 @@ namespace Pulumi.Yandex
         public Output<string> OsType { get; private set; } = null!;
 
         /// <summary>
-        /// License IDs that indicate which licenses are 
+        /// Optimize the image to create a disk.
+        /// </summary>
+        [Output("pooled")]
+        public Output<bool> Pooled { get; private set; } = null!;
+
+        /// <summary>
+        /// License IDs that indicate which licenses are
         /// attached to this image.
         /// </summary>
         [Output("productIds")]
@@ -124,7 +130,7 @@ namespace Pulumi.Yandex
         public Output<string> SourceDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the family to use as the source of the new image. 
+        /// The name of the family to use as the source of the new image.
         /// The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
         /// a new resource to be created.
         /// </summary>
@@ -254,11 +260,17 @@ namespace Pulumi.Yandex
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        /// <summary>
+        /// Optimize the image to create a disk.
+        /// </summary>
+        [Input("pooled")]
+        public Input<bool>? Pooled { get; set; }
+
         [Input("productIds")]
         private InputList<string>? _productIds;
 
         /// <summary>
-        /// License IDs that indicate which licenses are 
+        /// License IDs that indicate which licenses are
         /// attached to this image.
         /// </summary>
         public InputList<string> ProductIds
@@ -275,7 +287,7 @@ namespace Pulumi.Yandex
         public Input<string>? SourceDisk { get; set; }
 
         /// <summary>
-        /// The name of the family to use as the source of the new image. 
+        /// The name of the family to use as the source of the new image.
         /// The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
         /// a new resource to be created.
         /// </summary>
@@ -366,11 +378,17 @@ namespace Pulumi.Yandex
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        /// <summary>
+        /// Optimize the image to create a disk.
+        /// </summary>
+        [Input("pooled")]
+        public Input<bool>? Pooled { get; set; }
+
         [Input("productIds")]
         private InputList<string>? _productIds;
 
         /// <summary>
-        /// License IDs that indicate which licenses are 
+        /// License IDs that indicate which licenses are
         /// attached to this image.
         /// </summary>
         public InputList<string> ProductIds
@@ -393,7 +411,7 @@ namespace Pulumi.Yandex
         public Input<string>? SourceDisk { get; set; }
 
         /// <summary>
-        /// The name of the family to use as the source of the new image. 
+        /// The name of the family to use as the source of the new image.
         /// The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
         /// a new resource to be created.
         /// </summary>

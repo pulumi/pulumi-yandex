@@ -20,7 +20,7 @@ class GetComputeImageResult:
     """
     A collection of values returned by getComputeImage.
     """
-    def __init__(__self__, created_at=None, description=None, family=None, folder_id=None, id=None, image_id=None, labels=None, min_disk_size=None, name=None, os_type=None, product_ids=None, size=None, status=None):
+    def __init__(__self__, created_at=None, description=None, family=None, folder_id=None, id=None, image_id=None, labels=None, min_disk_size=None, name=None, os_type=None, pooled=None, product_ids=None, size=None, status=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -51,6 +51,9 @@ class GetComputeImageResult:
         if os_type and not isinstance(os_type, str):
             raise TypeError("Expected argument 'os_type' to be a str")
         pulumi.set(__self__, "os_type", os_type)
+        if pooled and not isinstance(pooled, bool):
+            raise TypeError("Expected argument 'pooled' to be a bool")
+        pulumi.set(__self__, "pooled", pooled)
         if product_ids and not isinstance(product_ids, list):
             raise TypeError("Expected argument 'product_ids' to be a list")
         pulumi.set(__self__, "product_ids", product_ids)
@@ -133,6 +136,14 @@ class GetComputeImageResult:
         return pulumi.get(self, "os_type")
 
     @property
+    @pulumi.getter
+    def pooled(self) -> bool:
+        """
+        Optimize the image to create a disk.
+        """
+        return pulumi.get(self, "pooled")
+
+    @property
     @pulumi.getter(name="productIds")
     def product_ids(self) -> Sequence[str]:
         """
@@ -173,6 +184,7 @@ class AwaitableGetComputeImageResult(GetComputeImageResult):
             min_disk_size=self.min_disk_size,
             name=self.name,
             os_type=self.os_type,
+            pooled=self.pooled,
             product_ids=self.product_ids,
             size=self.size,
             status=self.status)
@@ -213,6 +225,7 @@ def get_compute_image(family: Optional[str] = None,
         min_disk_size=__ret__.min_disk_size,
         name=__ret__.name,
         os_type=__ret__.os_type,
+        pooled=__ret__.pooled,
         product_ids=__ret__.product_ids,
         size=__ret__.size,
         status=__ret__.status)

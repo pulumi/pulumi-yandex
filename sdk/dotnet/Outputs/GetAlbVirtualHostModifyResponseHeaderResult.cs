@@ -27,8 +27,7 @@ namespace Pulumi.Yandex.Outputs
         public readonly bool Remove;
         /// <summary>
         /// New value for a header. Header values support the following
-        /// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers)
-        /// .
+        /// [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
         /// </summary>
         public readonly string Replace;
 

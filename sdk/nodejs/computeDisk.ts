@@ -88,6 +88,7 @@ export class ComputeDisk extends pulumi.CustomResource {
         return obj['__pulumiType'] === ComputeDisk.__pulumiType;
     }
 
+    public readonly blockSize!: pulumi.Output<number | undefined>;
     /**
      * Creation timestamp of the disk.
      */
@@ -160,6 +161,7 @@ export class ComputeDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeDiskState | undefined;
+            inputs["blockSize"] = state ? state.blockSize : undefined;
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["diskPlacementPolicy"] = state ? state.diskPlacementPolicy : undefined;
@@ -175,6 +177,7 @@ export class ComputeDisk extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ComputeDiskArgs | undefined;
+            inputs["blockSize"] = args ? args.blockSize : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["diskPlacementPolicy"] = args ? args.diskPlacementPolicy : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
@@ -200,6 +203,7 @@ export class ComputeDisk extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ComputeDisk resources.
  */
 export interface ComputeDiskState {
+    blockSize?: pulumi.Input<number>;
     /**
      * Creation timestamp of the disk.
      */
@@ -264,6 +268,7 @@ export interface ComputeDiskState {
  * The set of arguments for constructing a ComputeDisk resource.
  */
 export interface ComputeDiskArgs {
+    blockSize?: pulumi.Input<number>;
     /**
      * -
      * (Optional) Description of the disk. Provide this property when

@@ -29,11 +29,11 @@ type LookupMdbKafkaTopicArgs struct {
 type LookupMdbKafkaTopicResult struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string                      `pulumi:"id"`
-	Name              string                      `pulumi:"name"`
-	Partitions        int                         `pulumi:"partitions"`
-	ReplicationFactor int                         `pulumi:"replicationFactor"`
-	TopicConfig       GetMdbKafkaTopicTopicConfig `pulumi:"topicConfig"`
+	Id                string                        `pulumi:"id"`
+	Name              string                        `pulumi:"name"`
+	Partitions        int                           `pulumi:"partitions"`
+	ReplicationFactor int                           `pulumi:"replicationFactor"`
+	TopicConfigs      []GetMdbKafkaTopicTopicConfig `pulumi:"topicConfigs"`
 }
 
 func LookupMdbKafkaTopicOutput(ctx *pulumi.Context, args LookupMdbKafkaTopicOutputArgs, opts ...pulumi.InvokeOption) LookupMdbKafkaTopicResultOutput {
@@ -91,8 +91,8 @@ func (o LookupMdbKafkaTopicResultOutput) ReplicationFactor() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMdbKafkaTopicResult) int { return v.ReplicationFactor }).(pulumi.IntOutput)
 }
 
-func (o LookupMdbKafkaTopicResultOutput) TopicConfig() GetMdbKafkaTopicTopicConfigOutput {
-	return o.ApplyT(func(v LookupMdbKafkaTopicResult) GetMdbKafkaTopicTopicConfig { return v.TopicConfig }).(GetMdbKafkaTopicTopicConfigOutput)
+func (o LookupMdbKafkaTopicResultOutput) TopicConfigs() GetMdbKafkaTopicTopicConfigArrayOutput {
+	return o.ApplyT(func(v LookupMdbKafkaTopicResult) []GetMdbKafkaTopicTopicConfig { return v.TopicConfigs }).(GetMdbKafkaTopicTopicConfigArrayOutput)
 }
 
 func init() {

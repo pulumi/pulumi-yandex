@@ -27,10 +27,10 @@ type LookupAlbLoadBalancerArgs struct {
 
 // A collection of values returned by getAlbLoadBalancer.
 type LookupAlbLoadBalancerResult struct {
-	AllocationPolicy GetAlbLoadBalancerAllocationPolicy `pulumi:"allocationPolicy"`
-	CreatedAt        string                             `pulumi:"createdAt"`
-	Description      string                             `pulumi:"description"`
-	FolderId         string                             `pulumi:"folderId"`
+	AllocationPolicies []GetAlbLoadBalancerAllocationPolicy `pulumi:"allocationPolicies"`
+	CreatedAt          string                               `pulumi:"createdAt"`
+	Description        string                               `pulumi:"description"`
+	FolderId           string                               `pulumi:"folderId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id               string                       `pulumi:"id"`
 	Labels           map[string]string            `pulumi:"labels"`
@@ -78,8 +78,8 @@ func (o LookupAlbLoadBalancerResultOutput) ToLookupAlbLoadBalancerResultOutputWi
 	return o
 }
 
-func (o LookupAlbLoadBalancerResultOutput) AllocationPolicy() GetAlbLoadBalancerAllocationPolicyOutput {
-	return o.ApplyT(func(v LookupAlbLoadBalancerResult) GetAlbLoadBalancerAllocationPolicy { return v.AllocationPolicy }).(GetAlbLoadBalancerAllocationPolicyOutput)
+func (o LookupAlbLoadBalancerResultOutput) AllocationPolicies() GetAlbLoadBalancerAllocationPolicyArrayOutput {
+	return o.ApplyT(func(v LookupAlbLoadBalancerResult) []GetAlbLoadBalancerAllocationPolicy { return v.AllocationPolicies }).(GetAlbLoadBalancerAllocationPolicyArrayOutput)
 }
 
 func (o LookupAlbLoadBalancerResultOutput) CreatedAt() pulumi.StringOutput {

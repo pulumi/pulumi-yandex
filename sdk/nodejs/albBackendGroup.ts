@@ -103,6 +103,10 @@ export class AlbBackendGroup extends pulumi.CustomResource {
      * Name of the backend.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+     */
+    public readonly streamBackends!: pulumi.Output<outputs.AlbBackendGroupStreamBackend[] | undefined>;
 
     /**
      * Create a AlbBackendGroup resource with the given unique name, arguments, and options.
@@ -124,6 +128,7 @@ export class AlbBackendGroup extends pulumi.CustomResource {
             inputs["httpBackends"] = state ? state.httpBackends : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["streamBackends"] = state ? state.streamBackends : undefined;
         } else {
             const args = argsOrState as AlbBackendGroupArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -132,6 +137,7 @@ export class AlbBackendGroup extends pulumi.CustomResource {
             inputs["httpBackends"] = args ? args.httpBackends : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["streamBackends"] = args ? args.streamBackends : undefined;
             inputs["createdAt"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -173,6 +179,10 @@ export interface AlbBackendGroupState {
      * Name of the backend.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+     */
+    streamBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupStreamBackend>[]>;
 }
 
 /**
@@ -203,4 +213,8 @@ export interface AlbBackendGroupArgs {
      * Name of the backend.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+     */
+    streamBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupStreamBackend>[]>;
 }

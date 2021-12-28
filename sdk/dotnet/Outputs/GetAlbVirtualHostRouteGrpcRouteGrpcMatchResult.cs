@@ -16,12 +16,12 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// If not set, all services/methods are assumed. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnResult Fqmn;
+        public readonly ImmutableArray<Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnResult> Fqmns;
 
         [OutputConstructor]
-        private GetAlbVirtualHostRouteGrpcRouteGrpcMatchResult(Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnResult fqmn)
+        private GetAlbVirtualHostRouteGrpcRouteGrpcMatchResult(ImmutableArray<Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchFqmnResult> fqmns)
         {
-            Fqmn = fqmn;
+            Fqmns = fqmns;
         }
     }
 }

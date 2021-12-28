@@ -32,6 +32,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlbVirtualHost{}
 	case "yandex:index/apiGateway:ApiGateway":
 		r = &ApiGateway{}
+	case "yandex:index/cdnOriginGroup:CdnOriginGroup":
+		r = &CdnOriginGroup{}
+	case "yandex:index/cdnResource:CdnResource":
+		r = &CdnResource{}
 	case "yandex:index/computeDisk:ComputeDisk":
 		r = &ComputeDisk{}
 	case "yandex:index/computeDiskPlacementGroup:ComputeDiskPlacementGroup":
@@ -138,6 +142,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ResourcemanagerFolderIamMember{}
 	case "yandex:index/resourcemanagerFolderIamPolicy:ResourcemanagerFolderIamPolicy":
 		r = &ResourcemanagerFolderIamPolicy{}
+	case "yandex:index/serverlessContainer:ServerlessContainer":
+		r = &ServerlessContainer{}
 	case "yandex:index/storageBucket:StorageBucket":
 		r = &StorageBucket{}
 	case "yandex:index/storageObject:StorageObject":
@@ -158,8 +164,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VpcSubnet{}
 	case "yandex:index/ydbDatabaseDedicated:YdbDatabaseDedicated":
 		r = &YdbDatabaseDedicated{}
-	case "yandex:index/ydbDatabaseServerless:YdbDatabaseServerless":
-		r = &YdbDatabaseServerless{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -219,6 +223,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/apiGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/cdnOriginGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/cdnResource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -488,6 +502,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"yandex",
+		"index/serverlessContainer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
 		"index/storageBucket",
 		&module{version},
 	)
@@ -534,11 +553,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/ydbDatabaseDedicated",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"yandex",
-		"index/ydbDatabaseServerless",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

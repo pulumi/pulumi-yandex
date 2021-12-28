@@ -59,7 +59,7 @@ type LookupKubernetesNodeGroupArgs struct {
 // A collection of values returned by getKubernetesNodeGroup.
 type LookupKubernetesNodeGroupResult struct {
 	// This argument specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
-	AllocationPolicy GetKubernetesNodeGroupAllocationPolicy `pulumi:"allocationPolicy"`
+	AllocationPolicies []GetKubernetesNodeGroupAllocationPolicy `pulumi:"allocationPolicies"`
 	// A list of allowed unsafe sysctl parameters for this node group. For more details see [documentation](https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/).
 	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
 	// The ID of the Kubernetes cluster that this node group belongs to.
@@ -67,7 +67,7 @@ type LookupKubernetesNodeGroupResult struct {
 	// The Kubernetes node group creation timestamp.
 	CreatedAt string `pulumi:"createdAt"`
 	// Deploy policy of the node group. The structure is documented below.
-	DeployPolicy GetKubernetesNodeGroupDeployPolicy `pulumi:"deployPolicy"`
+	DeployPolicies []GetKubernetesNodeGroupDeployPolicy `pulumi:"deployPolicies"`
 	// A description of the Kubernetes node group.
 	Description string `pulumi:"description"`
 	FolderId    string `pulumi:"folderId"`
@@ -76,7 +76,7 @@ type LookupKubernetesNodeGroupResult struct {
 	// ID of instance group that is used to manage this Kubernetes node group.
 	InstanceGroupId string `pulumi:"instanceGroupId"`
 	// Template used to create compute instances in this Kubernetes node group. The structure is documented below.
-	InstanceTemplate GetKubernetesNodeGroupInstanceTemplate `pulumi:"instanceTemplate"`
+	InstanceTemplates []GetKubernetesNodeGroupInstanceTemplate `pulumi:"instanceTemplates"`
 	// A map of labels applied to this instance.
 	// * `resources.0.memory` - The memory size allocated to the instance.
 	// * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -84,19 +84,19 @@ type LookupKubernetesNodeGroupResult struct {
 	// * `resources.0.gpus` - Number of GPU cores allocated to the instance.
 	Labels map[string]string `pulumi:"labels"`
 	// Information about maintenance policy for this Kubernetes node group. The structure is documented below.
-	MaintenancePolicy GetKubernetesNodeGroupMaintenancePolicy `pulumi:"maintenancePolicy"`
-	Name              string                                  `pulumi:"name"`
-	NodeGroupId       string                                  `pulumi:"nodeGroupId"`
+	MaintenancePolicies []GetKubernetesNodeGroupMaintenancePolicy `pulumi:"maintenancePolicies"`
+	Name                string                                    `pulumi:"name"`
+	NodeGroupId         string                                    `pulumi:"nodeGroupId"`
 	// A set of key/value label pairs, that are assigned to all the nodes of this Kubernetes node group.
 	NodeLabels map[string]string `pulumi:"nodeLabels"`
 	// A list of Kubernetes taints, that are applied to all the nodes of this Kubernetes node group.
 	NodeTaints []string `pulumi:"nodeTaints"`
 	// Scale policy of the node group. The structure is documented below.
-	ScalePolicy GetKubernetesNodeGroupScalePolicy `pulumi:"scalePolicy"`
+	ScalePolicies []GetKubernetesNodeGroupScalePolicy `pulumi:"scalePolicies"`
 	// Status of the Kubernetes node group.
 	Status string `pulumi:"status"`
 	// Information about Kubernetes node group version. The structure is documented below.
-	VersionInfo GetKubernetesNodeGroupVersionInfo `pulumi:"versionInfo"`
+	VersionInfos []GetKubernetesNodeGroupVersionInfo `pulumi:"versionInfos"`
 }
 
 func LookupKubernetesNodeGroupOutput(ctx *pulumi.Context, args LookupKubernetesNodeGroupOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesNodeGroupResultOutput {
@@ -138,10 +138,10 @@ func (o LookupKubernetesNodeGroupResultOutput) ToLookupKubernetesNodeGroupResult
 }
 
 // This argument specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
-func (o LookupKubernetesNodeGroupResultOutput) AllocationPolicy() GetKubernetesNodeGroupAllocationPolicyOutput {
-	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) GetKubernetesNodeGroupAllocationPolicy {
-		return v.AllocationPolicy
-	}).(GetKubernetesNodeGroupAllocationPolicyOutput)
+func (o LookupKubernetesNodeGroupResultOutput) AllocationPolicies() GetKubernetesNodeGroupAllocationPolicyArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) []GetKubernetesNodeGroupAllocationPolicy {
+		return v.AllocationPolicies
+	}).(GetKubernetesNodeGroupAllocationPolicyArrayOutput)
 }
 
 // A list of allowed unsafe sysctl parameters for this node group. For more details see [documentation](https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/).
@@ -160,8 +160,8 @@ func (o LookupKubernetesNodeGroupResultOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // Deploy policy of the node group. The structure is documented below.
-func (o LookupKubernetesNodeGroupResultOutput) DeployPolicy() GetKubernetesNodeGroupDeployPolicyOutput {
-	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) GetKubernetesNodeGroupDeployPolicy { return v.DeployPolicy }).(GetKubernetesNodeGroupDeployPolicyOutput)
+func (o LookupKubernetesNodeGroupResultOutput) DeployPolicies() GetKubernetesNodeGroupDeployPolicyArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) []GetKubernetesNodeGroupDeployPolicy { return v.DeployPolicies }).(GetKubernetesNodeGroupDeployPolicyArrayOutput)
 }
 
 // A description of the Kubernetes node group.
@@ -184,10 +184,10 @@ func (o LookupKubernetesNodeGroupResultOutput) InstanceGroupId() pulumi.StringOu
 }
 
 // Template used to create compute instances in this Kubernetes node group. The structure is documented below.
-func (o LookupKubernetesNodeGroupResultOutput) InstanceTemplate() GetKubernetesNodeGroupInstanceTemplateOutput {
-	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) GetKubernetesNodeGroupInstanceTemplate {
-		return v.InstanceTemplate
-	}).(GetKubernetesNodeGroupInstanceTemplateOutput)
+func (o LookupKubernetesNodeGroupResultOutput) InstanceTemplates() GetKubernetesNodeGroupInstanceTemplateArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) []GetKubernetesNodeGroupInstanceTemplate {
+		return v.InstanceTemplates
+	}).(GetKubernetesNodeGroupInstanceTemplateArrayOutput)
 }
 
 // A map of labels applied to this instance.
@@ -200,10 +200,10 @@ func (o LookupKubernetesNodeGroupResultOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Information about maintenance policy for this Kubernetes node group. The structure is documented below.
-func (o LookupKubernetesNodeGroupResultOutput) MaintenancePolicy() GetKubernetesNodeGroupMaintenancePolicyOutput {
-	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) GetKubernetesNodeGroupMaintenancePolicy {
-		return v.MaintenancePolicy
-	}).(GetKubernetesNodeGroupMaintenancePolicyOutput)
+func (o LookupKubernetesNodeGroupResultOutput) MaintenancePolicies() GetKubernetesNodeGroupMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) []GetKubernetesNodeGroupMaintenancePolicy {
+		return v.MaintenancePolicies
+	}).(GetKubernetesNodeGroupMaintenancePolicyArrayOutput)
 }
 
 func (o LookupKubernetesNodeGroupResultOutput) Name() pulumi.StringOutput {
@@ -225,8 +225,8 @@ func (o LookupKubernetesNodeGroupResultOutput) NodeTaints() pulumi.StringArrayOu
 }
 
 // Scale policy of the node group. The structure is documented below.
-func (o LookupKubernetesNodeGroupResultOutput) ScalePolicy() GetKubernetesNodeGroupScalePolicyOutput {
-	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) GetKubernetesNodeGroupScalePolicy { return v.ScalePolicy }).(GetKubernetesNodeGroupScalePolicyOutput)
+func (o LookupKubernetesNodeGroupResultOutput) ScalePolicies() GetKubernetesNodeGroupScalePolicyArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) []GetKubernetesNodeGroupScalePolicy { return v.ScalePolicies }).(GetKubernetesNodeGroupScalePolicyArrayOutput)
 }
 
 // Status of the Kubernetes node group.
@@ -235,8 +235,8 @@ func (o LookupKubernetesNodeGroupResultOutput) Status() pulumi.StringOutput {
 }
 
 // Information about Kubernetes node group version. The structure is documented below.
-func (o LookupKubernetesNodeGroupResultOutput) VersionInfo() GetKubernetesNodeGroupVersionInfoOutput {
-	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) GetKubernetesNodeGroupVersionInfo { return v.VersionInfo }).(GetKubernetesNodeGroupVersionInfoOutput)
+func (o LookupKubernetesNodeGroupResultOutput) VersionInfos() GetKubernetesNodeGroupVersionInfoArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesNodeGroupResult) []GetKubernetesNodeGroupVersionInfo { return v.VersionInfos }).(GetKubernetesNodeGroupVersionInfoArrayOutput)
 }
 
 func init() {

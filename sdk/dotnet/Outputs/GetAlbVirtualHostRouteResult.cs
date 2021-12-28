@@ -16,11 +16,11 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// GRPC route resource. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetAlbVirtualHostRouteGrpcRouteResult GrpcRoute;
+        public readonly ImmutableArray<Outputs.GetAlbVirtualHostRouteGrpcRouteResult> GrpcRoutes;
         /// <summary>
         /// HTTP route resource. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetAlbVirtualHostRouteHttpRouteResult HttpRoute;
+        public readonly ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteResult> HttpRoutes;
         /// <summary>
         /// Name of the Virtual Host.
         /// </summary>
@@ -28,14 +28,14 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetAlbVirtualHostRouteResult(
-            Outputs.GetAlbVirtualHostRouteGrpcRouteResult grpcRoute,
+            ImmutableArray<Outputs.GetAlbVirtualHostRouteGrpcRouteResult> grpcRoutes,
 
-            Outputs.GetAlbVirtualHostRouteHttpRouteResult httpRoute,
+            ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteResult> httpRoutes,
 
             string name)
         {
-            GrpcRoute = grpcRoute;
-            HttpRoute = httpRoute;
+            GrpcRoutes = grpcRoutes;
+            HttpRoutes = httpRoutes;
             Name = name;
         }
     }

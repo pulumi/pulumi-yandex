@@ -21,8 +21,8 @@ namespace Pulumi.Yandex.Inputs
         /// <summary>
         /// name of the route.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// If set, remove the header.

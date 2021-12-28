@@ -73,14 +73,14 @@ namespace Pulumi.Yandex
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly int MasterHostCount;
         public readonly ImmutableArray<Outputs.GetMdbGreenplumClusterMasterHostResult> MasterHosts;
-        public readonly Outputs.GetMdbGreenplumClusterMasterSubclusterResult MasterSubcluster;
+        public readonly ImmutableArray<Outputs.GetMdbGreenplumClusterMasterSubclusterResult> MasterSubclusters;
         public readonly string Name;
         public readonly string NetworkId;
         public readonly ImmutableArray<string> SecurityGroupIds;
         public readonly int SegmentHostCount;
         public readonly ImmutableArray<Outputs.GetMdbGreenplumClusterSegmentHostResult> SegmentHosts;
         public readonly int SegmentInHost;
-        public readonly Outputs.GetMdbGreenplumClusterSegmentSubclusterResult SegmentSubcluster;
+        public readonly ImmutableArray<Outputs.GetMdbGreenplumClusterSegmentSubclusterResult> SegmentSubclusters;
         public readonly string Status;
         public readonly string SubnetId;
         public readonly string UserName;
@@ -117,7 +117,7 @@ namespace Pulumi.Yandex
 
             ImmutableArray<Outputs.GetMdbGreenplumClusterMasterHostResult> masterHosts,
 
-            Outputs.GetMdbGreenplumClusterMasterSubclusterResult masterSubcluster,
+            ImmutableArray<Outputs.GetMdbGreenplumClusterMasterSubclusterResult> masterSubclusters,
 
             string name,
 
@@ -131,7 +131,7 @@ namespace Pulumi.Yandex
 
             int segmentInHost,
 
-            Outputs.GetMdbGreenplumClusterSegmentSubclusterResult segmentSubcluster,
+            ImmutableArray<Outputs.GetMdbGreenplumClusterSegmentSubclusterResult> segmentSubclusters,
 
             string status,
 
@@ -157,14 +157,14 @@ namespace Pulumi.Yandex
             Labels = labels;
             MasterHostCount = masterHostCount;
             MasterHosts = masterHosts;
-            MasterSubcluster = masterSubcluster;
+            MasterSubclusters = masterSubclusters;
             Name = name;
             NetworkId = networkId;
             SecurityGroupIds = securityGroupIds;
             SegmentHostCount = segmentHostCount;
             SegmentHosts = segmentHosts;
             SegmentInHost = segmentInHost;
-            SegmentSubcluster = segmentSubcluster;
+            SegmentSubclusters = segmentSubclusters;
             Status = status;
             SubnetId = subnetId;
             UserName = userName;

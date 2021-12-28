@@ -16,11 +16,11 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Access policy to MongoDB cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbMongodbClusterClusterConfigAccessResult Access;
+        public readonly ImmutableArray<Outputs.GetMdbMongodbClusterClusterConfigAccessResult> Accesses;
         /// <summary>
         /// Time to start the daily backup, in the UTC timezone. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbMongodbClusterClusterConfigBackupWindowStartResult BackupWindowStart;
+        public readonly ImmutableArray<Outputs.GetMdbMongodbClusterClusterConfigBackupWindowStartResult> BackupWindowStarts;
         /// <summary>
         /// Feature compatibility version of MongoDB.
         /// </summary>
@@ -32,16 +32,16 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetMdbMongodbClusterClusterConfigResult(
-            Outputs.GetMdbMongodbClusterClusterConfigAccessResult access,
+            ImmutableArray<Outputs.GetMdbMongodbClusterClusterConfigAccessResult> accesses,
 
-            Outputs.GetMdbMongodbClusterClusterConfigBackupWindowStartResult backupWindowStart,
+            ImmutableArray<Outputs.GetMdbMongodbClusterClusterConfigBackupWindowStartResult> backupWindowStarts,
 
             string featureCompatibilityVersion,
 
             string version)
         {
-            Access = access;
-            BackupWindowStart = backupWindowStart;
+            Accesses = accesses;
+            BackupWindowStarts = backupWindowStarts;
             FeatureCompatibilityVersion = featureCompatibilityVersion;
             Version = version;
         }

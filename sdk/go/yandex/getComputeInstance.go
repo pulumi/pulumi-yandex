@@ -55,14 +55,12 @@ type LookupComputeInstanceArgs struct {
 	// Name of the instance.
 	Name            *string                            `pulumi:"name"`
 	PlacementPolicy *GetComputeInstancePlacementPolicy `pulumi:"placementPolicy"`
-	// Scheduling policy configuration. The structure is documented below.
-	SchedulingPolicy *GetComputeInstanceSchedulingPolicy `pulumi:"schedulingPolicy"`
 }
 
 // A collection of values returned by getComputeInstance.
 type LookupComputeInstanceResult struct {
 	// The boot disk for the instance. Structure is documented below.
-	BootDisk GetComputeInstanceBootDisk `pulumi:"bootDisk"`
+	BootDisks []GetComputeInstanceBootDisk `pulumi:"bootDisks"`
 	// Instance creation timestamp.
 	CreatedAt string `pulumi:"createdAt"`
 	// Description of the boot disk.
@@ -88,10 +86,10 @@ type LookupComputeInstanceResult struct {
 	NetworkInterfaces []GetComputeInstanceNetworkInterface `pulumi:"networkInterfaces"`
 	PlacementPolicy   *GetComputeInstancePlacementPolicy   `pulumi:"placementPolicy"`
 	// Type of virtual machine to create. Default is 'standard-v1'.
-	PlatformId string                      `pulumi:"platformId"`
-	Resources  GetComputeInstanceResources `pulumi:"resources"`
+	PlatformId string                       `pulumi:"platformId"`
+	Resources  []GetComputeInstanceResource `pulumi:"resources"`
 	// Scheduling policy configuration. The structure is documented below.
-	SchedulingPolicy GetComputeInstanceSchedulingPolicy `pulumi:"schedulingPolicy"`
+	SchedulingPolicies []GetComputeInstanceSchedulingPolicy `pulumi:"schedulingPolicies"`
 	// List of secondary disks attached to the instance. Structure is documented below.
 	SecondaryDisks []GetComputeInstanceSecondaryDisk `pulumi:"secondaryDisks"`
 	// ID of the service account authorized for this instance.
@@ -124,8 +122,6 @@ type LookupComputeInstanceOutputArgs struct {
 	// Name of the instance.
 	Name            pulumi.StringPtrInput                     `pulumi:"name"`
 	PlacementPolicy GetComputeInstancePlacementPolicyPtrInput `pulumi:"placementPolicy"`
-	// Scheduling policy configuration. The structure is documented below.
-	SchedulingPolicy GetComputeInstanceSchedulingPolicyPtrInput `pulumi:"schedulingPolicy"`
 }
 
 func (LookupComputeInstanceOutputArgs) ElementType() reflect.Type {
@@ -148,8 +144,8 @@ func (o LookupComputeInstanceResultOutput) ToLookupComputeInstanceResultOutputWi
 }
 
 // The boot disk for the instance. Structure is documented below.
-func (o LookupComputeInstanceResultOutput) BootDisk() GetComputeInstanceBootDiskOutput {
-	return o.ApplyT(func(v LookupComputeInstanceResult) GetComputeInstanceBootDisk { return v.BootDisk }).(GetComputeInstanceBootDiskOutput)
+func (o LookupComputeInstanceResultOutput) BootDisks() GetComputeInstanceBootDiskArrayOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) []GetComputeInstanceBootDisk { return v.BootDisks }).(GetComputeInstanceBootDiskArrayOutput)
 }
 
 // Instance creation timestamp.
@@ -217,13 +213,13 @@ func (o LookupComputeInstanceResultOutput) PlatformId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeInstanceResult) string { return v.PlatformId }).(pulumi.StringOutput)
 }
 
-func (o LookupComputeInstanceResultOutput) Resources() GetComputeInstanceResourcesOutput {
-	return o.ApplyT(func(v LookupComputeInstanceResult) GetComputeInstanceResources { return v.Resources }).(GetComputeInstanceResourcesOutput)
+func (o LookupComputeInstanceResultOutput) Resources() GetComputeInstanceResourceArrayOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) []GetComputeInstanceResource { return v.Resources }).(GetComputeInstanceResourceArrayOutput)
 }
 
 // Scheduling policy configuration. The structure is documented below.
-func (o LookupComputeInstanceResultOutput) SchedulingPolicy() GetComputeInstanceSchedulingPolicyOutput {
-	return o.ApplyT(func(v LookupComputeInstanceResult) GetComputeInstanceSchedulingPolicy { return v.SchedulingPolicy }).(GetComputeInstanceSchedulingPolicyOutput)
+func (o LookupComputeInstanceResultOutput) SchedulingPolicies() GetComputeInstanceSchedulingPolicyArrayOutput {
+	return o.ApplyT(func(v LookupComputeInstanceResult) []GetComputeInstanceSchedulingPolicy { return v.SchedulingPolicies }).(GetComputeInstanceSchedulingPolicyArrayOutput)
 }
 
 // List of secondary disks attached to the instance. Structure is documented below.

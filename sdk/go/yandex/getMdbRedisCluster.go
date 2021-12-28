@@ -61,7 +61,7 @@ type LookupMdbRedisClusterArgs struct {
 type LookupMdbRedisClusterResult struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Configuration of the Redis cluster. The structure is documented below.
-	Config GetMdbRedisClusterConfig `pulumi:"config"`
+	Configs []GetMdbRedisClusterConfig `pulumi:"configs"`
 	// Creation timestamp of the key.
 	CreatedAt          string `pulumi:"createdAt"`
 	DeletionProtection bool   `pulumi:"deletionProtection"`
@@ -77,13 +77,13 @@ type LookupMdbRedisClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the Redis cluster.
-	Labels            map[string]string                   `pulumi:"labels"`
-	MaintenanceWindow GetMdbRedisClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
-	Name              string                              `pulumi:"name"`
+	Labels             map[string]string                     `pulumi:"labels"`
+	MaintenanceWindows []GetMdbRedisClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
+	Name               string                                `pulumi:"name"`
 	// ID of the network, to which the Redis cluster belongs.
 	NetworkId string `pulumi:"networkId"`
 	// Resources allocated to hosts of the Redis cluster. The structure is documented below.
-	Resources GetMdbRedisClusterResources `pulumi:"resources"`
+	Resources []GetMdbRedisClusterResource `pulumi:"resources"`
 	// A set of ids of security groups assigned to hosts of the cluster.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Redis Cluster mode enabled/disabled.
@@ -138,8 +138,8 @@ func (o LookupMdbRedisClusterResultOutput) ClusterId() pulumi.StringOutput {
 }
 
 // Configuration of the Redis cluster. The structure is documented below.
-func (o LookupMdbRedisClusterResultOutput) Config() GetMdbRedisClusterConfigOutput {
-	return o.ApplyT(func(v LookupMdbRedisClusterResult) GetMdbRedisClusterConfig { return v.Config }).(GetMdbRedisClusterConfigOutput)
+func (o LookupMdbRedisClusterResultOutput) Configs() GetMdbRedisClusterConfigArrayOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) []GetMdbRedisClusterConfig { return v.Configs }).(GetMdbRedisClusterConfigArrayOutput)
 }
 
 // Creation timestamp of the key.
@@ -185,8 +185,8 @@ func (o LookupMdbRedisClusterResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMdbRedisClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupMdbRedisClusterResultOutput) MaintenanceWindow() GetMdbRedisClusterMaintenanceWindowOutput {
-	return o.ApplyT(func(v LookupMdbRedisClusterResult) GetMdbRedisClusterMaintenanceWindow { return v.MaintenanceWindow }).(GetMdbRedisClusterMaintenanceWindowOutput)
+func (o LookupMdbRedisClusterResultOutput) MaintenanceWindows() GetMdbRedisClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) []GetMdbRedisClusterMaintenanceWindow { return v.MaintenanceWindows }).(GetMdbRedisClusterMaintenanceWindowArrayOutput)
 }
 
 func (o LookupMdbRedisClusterResultOutput) Name() pulumi.StringOutput {
@@ -199,8 +199,8 @@ func (o LookupMdbRedisClusterResultOutput) NetworkId() pulumi.StringOutput {
 }
 
 // Resources allocated to hosts of the Redis cluster. The structure is documented below.
-func (o LookupMdbRedisClusterResultOutput) Resources() GetMdbRedisClusterResourcesOutput {
-	return o.ApplyT(func(v LookupMdbRedisClusterResult) GetMdbRedisClusterResources { return v.Resources }).(GetMdbRedisClusterResourcesOutput)
+func (o LookupMdbRedisClusterResultOutput) Resources() GetMdbRedisClusterResourceArrayOutput {
+	return o.ApplyT(func(v LookupMdbRedisClusterResult) []GetMdbRedisClusterResource { return v.Resources }).(GetMdbRedisClusterResourceArrayOutput)
 }
 
 // A set of ids of security groups assigned to hosts of the cluster.

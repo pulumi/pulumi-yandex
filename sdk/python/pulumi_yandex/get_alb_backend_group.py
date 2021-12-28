@@ -22,7 +22,7 @@ class GetAlbBackendGroupResult:
     """
     A collection of values returned by getAlbBackendGroup.
     """
-    def __init__(__self__, backend_group_id=None, created_at=None, description=None, folder_id=None, grpc_backends=None, http_backends=None, id=None, labels=None, name=None):
+    def __init__(__self__, backend_group_id=None, created_at=None, description=None, folder_id=None, grpc_backends=None, http_backends=None, id=None, labels=None, name=None, stream_backends=None):
         if backend_group_id and not isinstance(backend_group_id, str):
             raise TypeError("Expected argument 'backend_group_id' to be a str")
         pulumi.set(__self__, "backend_group_id", backend_group_id)
@@ -50,6 +50,9 @@ class GetAlbBackendGroupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if stream_backends and not isinstance(stream_backends, list):
+            raise TypeError("Expected argument 'stream_backends' to be a list")
+        pulumi.set(__self__, "stream_backends", stream_backends)
 
     @property
     @pulumi.getter(name="backendGroupId")
@@ -117,6 +120,14 @@ class GetAlbBackendGroupResult:
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter(name="streamBackends")
+    def stream_backends(self) -> Sequence['outputs.GetAlbBackendGroupStreamBackendResult']:
+        """
+        Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        """
+        return pulumi.get(self, "stream_backends")
+
 
 class AwaitableGetAlbBackendGroupResult(GetAlbBackendGroupResult):
     # pylint: disable=using-constant-test
@@ -132,7 +143,8 @@ class AwaitableGetAlbBackendGroupResult(GetAlbBackendGroupResult):
             http_backends=self.http_backends,
             id=self.id,
             labels=self.labels,
-            name=self.name)
+            name=self.name,
+            stream_backends=self.stream_backends)
 
 
 def get_alb_backend_group(backend_group_id: Optional[str] = None,
@@ -142,6 +154,7 @@ def get_alb_backend_group(backend_group_id: Optional[str] = None,
                           http_backends: Optional[Sequence[pulumi.InputType['GetAlbBackendGroupHttpBackendArgs']]] = None,
                           labels: Optional[Mapping[str, str]] = None,
                           name: Optional[str] = None,
+                          stream_backends: Optional[Sequence[pulumi.InputType['GetAlbBackendGroupStreamBackendArgs']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlbBackendGroupResult:
     """
     Get information about a Yandex Application Load Balancer Backend Group. For more information, see
@@ -164,6 +177,7 @@ def get_alb_backend_group(backend_group_id: Optional[str] = None,
     :param Sequence[pulumi.InputType['GetAlbBackendGroupHttpBackendArgs']] http_backends: Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
     :param Mapping[str, str] labels: Labels to assign to this backend group.
     :param str name: - Name of the Backend Group.
+    :param Sequence[pulumi.InputType['GetAlbBackendGroupStreamBackendArgs']] stream_backends: Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
     """
     __args__ = dict()
     __args__['backendGroupId'] = backend_group_id
@@ -173,6 +187,7 @@ def get_alb_backend_group(backend_group_id: Optional[str] = None,
     __args__['httpBackends'] = http_backends
     __args__['labels'] = labels
     __args__['name'] = name
+    __args__['streamBackends'] = stream_backends
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -188,7 +203,8 @@ def get_alb_backend_group(backend_group_id: Optional[str] = None,
         http_backends=__ret__.http_backends,
         id=__ret__.id,
         labels=__ret__.labels,
-        name=__ret__.name)
+        name=__ret__.name,
+        stream_backends=__ret__.stream_backends)
 
 
 @_utilities.lift_output_func(get_alb_backend_group)
@@ -199,6 +215,7 @@ def get_alb_backend_group_output(backend_group_id: Optional[pulumi.Input[Optiona
                                  http_backends: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAlbBackendGroupHttpBackendArgs']]]]] = None,
                                  labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 stream_backends: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAlbBackendGroupStreamBackendArgs']]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlbBackendGroupResult]:
     """
     Get information about a Yandex Application Load Balancer Backend Group. For more information, see
@@ -221,5 +238,6 @@ def get_alb_backend_group_output(backend_group_id: Optional[pulumi.Input[Optiona
     :param Sequence[pulumi.InputType['GetAlbBackendGroupHttpBackendArgs']] http_backends: Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
     :param Mapping[str, str] labels: Labels to assign to this backend group.
     :param str name: - Name of the Backend Group.
+    :param Sequence[pulumi.InputType['GetAlbBackendGroupStreamBackendArgs']] stream_backends: Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
     """
     ...

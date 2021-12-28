@@ -137,7 +137,7 @@ type KubernetesNodeGroup struct {
 	// Version of Kubernetes that will be used for Kubernetes node group.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// Information about Kubernetes node group version. The structure is documented below.
-	VersionInfo KubernetesNodeGroupVersionInfoOutput `pulumi:"versionInfo"`
+	VersionInfos KubernetesNodeGroupVersionInfoArrayOutput `pulumi:"versionInfos"`
 }
 
 // NewKubernetesNodeGroup registers a new resource with the given unique name, arguments, and options.
@@ -214,7 +214,7 @@ type kubernetesNodeGroupState struct {
 	// Version of Kubernetes that will be used for Kubernetes node group.
 	Version *string `pulumi:"version"`
 	// Information about Kubernetes node group version. The structure is documented below.
-	VersionInfo *KubernetesNodeGroupVersionInfo `pulumi:"versionInfo"`
+	VersionInfos []KubernetesNodeGroupVersionInfo `pulumi:"versionInfos"`
 }
 
 type KubernetesNodeGroupState struct {
@@ -254,7 +254,7 @@ type KubernetesNodeGroupState struct {
 	// Version of Kubernetes that will be used for Kubernetes node group.
 	Version pulumi.StringPtrInput
 	// Information about Kubernetes node group version. The structure is documented below.
-	VersionInfo KubernetesNodeGroupVersionInfoPtrInput
+	VersionInfos KubernetesNodeGroupVersionInfoArrayInput
 }
 
 func (KubernetesNodeGroupState) ElementType() reflect.Type {

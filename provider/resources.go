@@ -19,9 +19,8 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-yandex/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/yandex-cloud/terraform-provider-yandex/yandex"
@@ -64,7 +63,7 @@ func makeResource(mod string, res string) tokens.Type {
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv1.NewProvider(yandex.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(yandex.Provider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -157,7 +156,9 @@ func Provider() tfbridge.ProviderInfo {
 			"yandex_vpc_default_security_group":         {Tok: makeResource(mainMod, "VpcDefaultSecurityGroup")},
 			"yandex_vpc_security_group_rule":            {Tok: makeResource(mainMod, "VpcSecurityGroupRule")},
 			"yandex_ydb_database_dedicated":             {Tok: makeResource(mainMod, "YdbDatabaseDedicated")},
-			"yandex_ydb_database_serverless":            {Tok: makeResource(mainMod, "YdbDatabaseServerless")},
+			"yandex_cdn_origin_group":                   {Tok: makeResource(mainMod, "CdnOriginGroup")},
+			"yandex_cdn_resource":                       {Tok: makeResource(mainMod, "CdnResource")},
+			"yandex_serverless_container":               {Tok: makeResource(mainMod, "ServerlessContainer")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"yandex_alb_target_group": {
@@ -442,6 +443,24 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeDataSource(mainMod, "getYdbDatabaseServerless"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_ydb_database_serverless.html.markdown",
+				},
+			},
+			"yandex_cdn_origin_group": {
+				Tok: makeDataSource(mainMod, "getCdnOriginGroup"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_cdn_origin_group.html.markdown",
+				},
+			},
+			"yandex_cdn_resource": {
+				Tok: makeDataSource(mainMod, "getCdnResource"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_cdn_resource.html.markdown",
+				},
+			},
+			"yandex_serverless_container": {
+				Tok: makeDataSource(mainMod, "getServerlessContainer"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_serverless_container.html.markdown",
 				},
 			},
 		},

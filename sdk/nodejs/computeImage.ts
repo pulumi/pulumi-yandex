@@ -97,7 +97,11 @@ export class ComputeImage extends pulumi.CustomResource {
      */
     public readonly osType!: pulumi.Output<string>;
     /**
-     * License IDs that indicate which licenses are 
+     * Optimize the image to create a disk.
+     */
+    public readonly pooled!: pulumi.Output<boolean>;
+    /**
+     * License IDs that indicate which licenses are
      * attached to this image.
      */
     public readonly productIds!: pulumi.Output<string[]>;
@@ -111,7 +115,7 @@ export class ComputeImage extends pulumi.CustomResource {
      */
     public readonly sourceDisk!: pulumi.Output<string>;
     /**
-     * The name of the family to use as the source of the new image. 
+     * The name of the family to use as the source of the new image.
      * The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
      * a new resource to be created.
      */
@@ -157,6 +161,7 @@ export class ComputeImage extends pulumi.CustomResource {
             inputs["minDiskSize"] = state ? state.minDiskSize : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["osType"] = state ? state.osType : undefined;
+            inputs["pooled"] = state ? state.pooled : undefined;
             inputs["productIds"] = state ? state.productIds : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["sourceDisk"] = state ? state.sourceDisk : undefined;
@@ -174,6 +179,7 @@ export class ComputeImage extends pulumi.CustomResource {
             inputs["minDiskSize"] = args ? args.minDiskSize : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["osType"] = args ? args.osType : undefined;
+            inputs["pooled"] = args ? args.pooled : undefined;
             inputs["productIds"] = args ? args.productIds : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             inputs["sourceFamily"] = args ? args.sourceFamily : undefined;
@@ -230,7 +236,11 @@ export interface ComputeImageState {
      */
     osType?: pulumi.Input<string>;
     /**
-     * License IDs that indicate which licenses are 
+     * Optimize the image to create a disk.
+     */
+    pooled?: pulumi.Input<boolean>;
+    /**
+     * License IDs that indicate which licenses are
      * attached to this image.
      */
     productIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -244,7 +254,7 @@ export interface ComputeImageState {
      */
     sourceDisk?: pulumi.Input<string>;
     /**
-     * The name of the family to use as the source of the new image. 
+     * The name of the family to use as the source of the new image.
      * The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
      * a new resource to be created.
      */
@@ -305,7 +315,11 @@ export interface ComputeImageArgs {
      */
     osType?: pulumi.Input<string>;
     /**
-     * License IDs that indicate which licenses are 
+     * Optimize the image to create a disk.
+     */
+    pooled?: pulumi.Input<boolean>;
+    /**
+     * License IDs that indicate which licenses are
      * attached to this image.
      */
     productIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -315,7 +329,7 @@ export interface ComputeImageArgs {
      */
     sourceDisk?: pulumi.Input<string>;
     /**
-     * The name of the family to use as the source of the new image. 
+     * The name of the family to use as the source of the new image.
      * The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
      * a new resource to be created.
      */

@@ -174,7 +174,7 @@ export class KubernetesNodeGroup extends pulumi.CustomResource {
     /**
      * Information about Kubernetes node group version. The structure is documented below.
      */
-    public /*out*/ readonly versionInfo!: pulumi.Output<outputs.KubernetesNodeGroupVersionInfo>;
+    public /*out*/ readonly versionInfos!: pulumi.Output<outputs.KubernetesNodeGroupVersionInfo[]>;
 
     /**
      * Create a KubernetesNodeGroup resource with the given unique name, arguments, and options.
@@ -205,7 +205,7 @@ export class KubernetesNodeGroup extends pulumi.CustomResource {
             inputs["scalePolicy"] = state ? state.scalePolicy : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["version"] = state ? state.version : undefined;
-            inputs["versionInfo"] = state ? state.versionInfo : undefined;
+            inputs["versionInfos"] = state ? state.versionInfos : undefined;
         } else {
             const args = argsOrState as KubernetesNodeGroupArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -233,7 +233,7 @@ export class KubernetesNodeGroup extends pulumi.CustomResource {
             inputs["createdAt"] = undefined /*out*/;
             inputs["instanceGroupId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["versionInfo"] = undefined /*out*/;
+            inputs["versionInfos"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -316,7 +316,7 @@ export interface KubernetesNodeGroupState {
     /**
      * Information about Kubernetes node group version. The structure is documented below.
      */
-    versionInfo?: pulumi.Input<inputs.KubernetesNodeGroupVersionInfo>;
+    versionInfos?: pulumi.Input<pulumi.Input<inputs.KubernetesNodeGroupVersionInfo>[]>;
 }
 
 /**

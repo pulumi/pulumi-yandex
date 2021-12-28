@@ -16,7 +16,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// The specifications for boot disk that will be attached to the instance. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskResult BootDisk;
+        public readonly ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskResult> BootDisks;
         /// <summary>
         /// A description of the boot disk.
         /// </summary>
@@ -55,11 +55,11 @@ namespace Pulumi.Yandex.Outputs
         /// The ID of the hardware platform configuration for the instance.
         /// </summary>
         public readonly string PlatformId;
-        public readonly Outputs.GetComputeInstanceGroupInstanceTemplateResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateResourceResult> Resources;
         /// <summary>
         /// The scheduling policy for the instance. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetComputeInstanceGroupInstanceTemplateSchedulingPolicyResult SchedulingPolicy;
+        public readonly ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateSchedulingPolicyResult> SchedulingPolicies;
         /// <summary>
         /// An array with the secondary disks that will be attached to the instance. The structure is documented below.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetComputeInstanceGroupInstanceTemplateResult(
-            Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskResult bootDisk,
+            ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskResult> bootDisks,
 
             string description,
 
@@ -91,15 +91,15 @@ namespace Pulumi.Yandex.Outputs
 
             string platformId,
 
-            Outputs.GetComputeInstanceGroupInstanceTemplateResourcesResult resources,
+            ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateResourceResult> resources,
 
-            Outputs.GetComputeInstanceGroupInstanceTemplateSchedulingPolicyResult schedulingPolicy,
+            ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateSchedulingPolicyResult> schedulingPolicies,
 
             ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateSecondaryDiskResult> secondaryDisks,
 
             string serviceAccountId)
         {
-            BootDisk = bootDisk;
+            BootDisks = bootDisks;
             Description = description;
             Hostname = hostname;
             Labels = labels;
@@ -110,7 +110,7 @@ namespace Pulumi.Yandex.Outputs
             PlacementPolicy = placementPolicy;
             PlatformId = platformId;
             Resources = resources;
-            SchedulingPolicy = schedulingPolicy;
+            SchedulingPolicies = schedulingPolicies;
             SecondaryDisks = secondaryDisks;
             ServiceAccountId = serviceAccountId;
         }

@@ -32,7 +32,7 @@ export interface GetAlbLoadBalancerArgs {
  * A collection of values returned by getAlbLoadBalancer.
  */
 export interface GetAlbLoadBalancerResult {
-    readonly allocationPolicy: outputs.GetAlbLoadBalancerAllocationPolicy;
+    readonly allocationPolicies: outputs.GetAlbLoadBalancerAllocationPolicy[];
     readonly createdAt: string;
     readonly description: string;
     readonly folderId: string;

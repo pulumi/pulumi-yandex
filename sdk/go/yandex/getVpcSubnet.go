@@ -62,8 +62,8 @@ type LookupVpcSubnetResult struct {
 	// Description of the subnet.
 	Description string `pulumi:"description"`
 	// Options for DHCP client. The structure is documented below.
-	DhcpOptions GetVpcSubnetDhcpOptions `pulumi:"dhcpOptions"`
-	FolderId    string                  `pulumi:"folderId"`
+	DhcpOptions []GetVpcSubnetDhcpOption `pulumi:"dhcpOptions"`
+	FolderId    string                   `pulumi:"folderId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Labels to assign to this subnet.
@@ -131,8 +131,8 @@ func (o LookupVpcSubnetResultOutput) Description() pulumi.StringOutput {
 }
 
 // Options for DHCP client. The structure is documented below.
-func (o LookupVpcSubnetResultOutput) DhcpOptions() GetVpcSubnetDhcpOptionsOutput {
-	return o.ApplyT(func(v LookupVpcSubnetResult) GetVpcSubnetDhcpOptions { return v.DhcpOptions }).(GetVpcSubnetDhcpOptionsOutput)
+func (o LookupVpcSubnetResultOutput) DhcpOptions() GetVpcSubnetDhcpOptionArrayOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) []GetVpcSubnetDhcpOption { return v.DhcpOptions }).(GetVpcSubnetDhcpOptionArrayOutput)
 }
 
 func (o LookupVpcSubnetResultOutput) FolderId() pulumi.StringOutput {

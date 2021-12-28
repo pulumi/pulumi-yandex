@@ -216,8 +216,8 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Information about Kubernetes node group version. The structure is documented below.
         /// </summary>
-        [Output("versionInfo")]
-        public Output<Outputs.KubernetesNodeGroupVersionInfo> VersionInfo { get; private set; } = null!;
+        [Output("versionInfos")]
+        public Output<ImmutableArray<Outputs.KubernetesNodeGroupVersionInfo>> VersionInfos { get; private set; } = null!;
 
 
         /// <summary>
@@ -500,11 +500,17 @@ namespace Pulumi.Yandex
         [Input("version")]
         public Input<string>? Version { get; set; }
 
+        [Input("versionInfos")]
+        private InputList<Inputs.KubernetesNodeGroupVersionInfoGetArgs>? _versionInfos;
+
         /// <summary>
         /// Information about Kubernetes node group version. The structure is documented below.
         /// </summary>
-        [Input("versionInfo")]
-        public Input<Inputs.KubernetesNodeGroupVersionInfoGetArgs>? VersionInfo { get; set; }
+        public InputList<Inputs.KubernetesNodeGroupVersionInfoGetArgs> VersionInfos
+        {
+            get => _versionInfos ?? (_versionInfos = new InputList<Inputs.KubernetesNodeGroupVersionInfoGetArgs>());
+            set => _versionInfos = value;
+        }
 
         public KubernetesNodeGroupState()
         {

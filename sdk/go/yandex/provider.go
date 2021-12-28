@@ -22,7 +22,8 @@ type Provider struct {
 	// The API endpoint for Yandex.Cloud SDK client.
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
 	// The default folder ID where resources will be placed.
-	FolderId pulumi.StringPtrOutput `pulumi:"folderId"`
+	FolderId       pulumi.StringPtrOutput `pulumi:"folderId"`
+	OrganizationId pulumi.StringPtrOutput `pulumi:"organizationId"`
 	// Either the path to or the contents of a Service Account key file in JSON format.
 	ServiceAccountKeyFile pulumi.StringPtrOutput `pulumi:"serviceAccountKeyFile"`
 	// Yandex.Cloud storage service access key. Used when a storage data/resource doesn't have an access key explicitly
@@ -72,7 +73,8 @@ type providerArgs struct {
 	// Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`.
 	Insecure *bool `pulumi:"insecure"`
 	// The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
-	MaxRetries *int `pulumi:"maxRetries"`
+	MaxRetries     *int    `pulumi:"maxRetries"`
+	OrganizationId *string `pulumi:"organizationId"`
 	// Disable use of TLS. Default value is `false`.
 	Plaintext *bool `pulumi:"plaintext"`
 	// Either the path to or the contents of a Service Account key file in JSON format.
@@ -110,7 +112,8 @@ type ProviderArgs struct {
 	// Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`.
 	Insecure pulumi.BoolPtrInput
 	// The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
-	MaxRetries pulumi.IntPtrInput
+	MaxRetries     pulumi.IntPtrInput
+	OrganizationId pulumi.StringPtrInput
 	// Disable use of TLS. Default value is `false`.
 	Plaintext pulumi.BoolPtrInput
 	// Either the path to or the contents of a Service Account key file in JSON format.

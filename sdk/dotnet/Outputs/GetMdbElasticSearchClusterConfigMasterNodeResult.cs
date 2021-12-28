@@ -16,10 +16,10 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbElasticSearchClusterConfigMasterNodeResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetMdbElasticSearchClusterConfigMasterNodeResourceResult> Resources;
 
         [OutputConstructor]
-        private GetMdbElasticSearchClusterConfigMasterNodeResult(Outputs.GetMdbElasticSearchClusterConfigMasterNodeResourcesResult resources)
+        private GetMdbElasticSearchClusterConfigMasterNodeResult(ImmutableArray<Outputs.GetMdbElasticSearchClusterConfigMasterNodeResourceResult> resources)
         {
             Resources = resources;
         }

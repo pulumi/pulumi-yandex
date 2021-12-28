@@ -61,6 +61,8 @@ type LookupAlbBackendGroupArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// - Name of the Backend Group.
 	Name *string `pulumi:"name"`
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends []GetAlbBackendGroupStreamBackend `pulumi:"streamBackends"`
 }
 
 // A collection of values returned by getAlbBackendGroup.
@@ -81,6 +83,8 @@ type LookupAlbBackendGroupResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the backend.
 	Name string `pulumi:"name"`
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends []GetAlbBackendGroupStreamBackend `pulumi:"streamBackends"`
 }
 
 func LookupAlbBackendGroupOutput(ctx *pulumi.Context, args LookupAlbBackendGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAlbBackendGroupResultOutput {
@@ -108,6 +112,8 @@ type LookupAlbBackendGroupOutputArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// - Name of the Backend Group.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends GetAlbBackendGroupStreamBackendArrayInput `pulumi:"streamBackends"`
 }
 
 func (LookupAlbBackendGroupOutputArgs) ElementType() reflect.Type {
@@ -170,6 +176,11 @@ func (o LookupAlbBackendGroupResultOutput) Labels() pulumi.StringMapOutput {
 // Name of the backend.
 func (o LookupAlbBackendGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlbBackendGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+func (o LookupAlbBackendGroupResultOutput) StreamBackends() GetAlbBackendGroupStreamBackendArrayOutput {
+	return o.ApplyT(func(v LookupAlbBackendGroupResult) []GetAlbBackendGroupStreamBackend { return v.StreamBackends }).(GetAlbBackendGroupStreamBackendArrayOutput)
 }
 
 func init() {

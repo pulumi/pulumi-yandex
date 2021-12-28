@@ -58,7 +58,7 @@ namespace Pulumi.Yandex
         public readonly string Name;
         public readonly int Partitions;
         public readonly int ReplicationFactor;
-        public readonly Outputs.GetMdbKafkaTopicTopicConfigResult TopicConfig;
+        public readonly ImmutableArray<Outputs.GetMdbKafkaTopicTopicConfigResult> TopicConfigs;
 
         [OutputConstructor]
         private GetMdbKafkaTopicResult(
@@ -72,14 +72,14 @@ namespace Pulumi.Yandex
 
             int replicationFactor,
 
-            Outputs.GetMdbKafkaTopicTopicConfigResult topicConfig)
+            ImmutableArray<Outputs.GetMdbKafkaTopicTopicConfigResult> topicConfigs)
         {
             ClusterId = clusterId;
             Id = id;
             Name = name;
             Partitions = partitions;
             ReplicationFactor = replicationFactor;
-            TopicConfig = topicConfig;
+            TopicConfigs = topicConfigs;
         }
     }
 }

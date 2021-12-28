@@ -79,6 +79,10 @@ export interface GetComputeImageResult {
      */
     readonly osType: string;
     /**
+     * Optimize the image to create a disk.
+     */
+    readonly pooled: boolean;
+    /**
      * License IDs that indicate which licenses are attached to this image.
      */
     readonly productIds: string[];

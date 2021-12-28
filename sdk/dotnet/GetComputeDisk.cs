@@ -89,6 +89,10 @@ namespace Pulumi.Yandex
     public sealed class GetComputeDiskResult
     {
         /// <summary>
+        /// The block size of the disk in bytes.
+        /// </summary>
+        public readonly int BlockSize;
+        /// <summary>
         /// Disk creation timestamp.
         /// </summary>
         public readonly string CreatedAt;
@@ -146,6 +150,8 @@ namespace Pulumi.Yandex
 
         [OutputConstructor]
         private GetComputeDiskResult(
+            int blockSize,
+
             string createdAt,
 
             string description,
@@ -178,6 +184,7 @@ namespace Pulumi.Yandex
 
             string zone)
         {
+            BlockSize = blockSize;
             CreatedAt = createdAt;
             Description = description;
             DiskId = diskId;

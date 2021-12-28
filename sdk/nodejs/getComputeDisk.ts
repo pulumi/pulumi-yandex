@@ -50,6 +50,10 @@ export interface GetComputeDiskArgs {
  */
 export interface GetComputeDiskResult {
     /**
+     * The block size of the disk in bytes.
+     */
+    readonly blockSize: number;
+    /**
      * Disk creation timestamp.
      */
     readonly createdAt: string;

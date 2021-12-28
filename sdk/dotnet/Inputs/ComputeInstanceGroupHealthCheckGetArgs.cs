@@ -36,17 +36,11 @@ namespace Pulumi.Yandex.Inputs
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
-        [Input("tcpOptions")]
-        private InputList<Inputs.ComputeInstanceGroupHealthCheckTcpOptionGetArgs>? _tcpOptions;
-
         /// <summary>
         /// TCP check options. The structure is documented below.
         /// </summary>
-        public InputList<Inputs.ComputeInstanceGroupHealthCheckTcpOptionGetArgs> TcpOptions
-        {
-            get => _tcpOptions ?? (_tcpOptions = new InputList<Inputs.ComputeInstanceGroupHealthCheckTcpOptionGetArgs>());
-            set => _tcpOptions = value;
-        }
+        [Input("tcpOptions")]
+        public Input<Inputs.ComputeInstanceGroupHealthCheckTcpOptionsGetArgs>? TcpOptions { get; set; }
 
         /// <summary>
         /// The length of time to wait for a response before the health check times out in seconds.

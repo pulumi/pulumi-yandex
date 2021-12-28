@@ -28,7 +28,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// TCP check options. The structure is documented below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.ComputeInstanceGroupHealthCheckTcpOption> TcpOptions;
+        public readonly Outputs.ComputeInstanceGroupHealthCheckTcpOptions? TcpOptions;
         /// <summary>
         /// The length of time to wait for a response before the health check times out in seconds.
         /// </summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Yandex.Outputs
 
             int? interval,
 
-            ImmutableArray<Outputs.ComputeInstanceGroupHealthCheckTcpOption> tcpOptions,
+            Outputs.ComputeInstanceGroupHealthCheckTcpOptions? tcpOptions,
 
             int? timeout,
 

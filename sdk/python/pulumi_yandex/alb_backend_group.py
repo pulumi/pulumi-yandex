@@ -20,7 +20,8 @@ class AlbBackendGroupArgs:
                  grpc_backends: Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupGrpcBackendArgs']]]] = None,
                  http_backends: Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupHttpBackendArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 stream_backends: Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupStreamBackendArgs']]]] = None):
         """
         The set of arguments for constructing a AlbBackendGroup resource.
         :param pulumi.Input[str] description: Description of the backend group.
@@ -29,6 +30,7 @@ class AlbBackendGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupHttpBackendArgs']]] http_backends: Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this backend group.
         :param pulumi.Input[str] name: Name of the backend.
+        :param pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupStreamBackendArgs']]] stream_backends: Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -42,6 +44,8 @@ class AlbBackendGroupArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if stream_backends is not None:
+            pulumi.set(__self__, "stream_backends", stream_backends)
 
     @property
     @pulumi.getter
@@ -115,6 +119,18 @@ class AlbBackendGroupArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="streamBackends")
+    def stream_backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupStreamBackendArgs']]]]:
+        """
+        Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        """
+        return pulumi.get(self, "stream_backends")
+
+    @stream_backends.setter
+    def stream_backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupStreamBackendArgs']]]]):
+        pulumi.set(self, "stream_backends", value)
+
 
 @pulumi.input_type
 class _AlbBackendGroupState:
@@ -125,7 +141,8 @@ class _AlbBackendGroupState:
                  grpc_backends: Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupGrpcBackendArgs']]]] = None,
                  http_backends: Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupHttpBackendArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 stream_backends: Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupStreamBackendArgs']]]] = None):
         """
         Input properties used for looking up and filtering AlbBackendGroup resources.
         :param pulumi.Input[str] created_at: The backend group creation timestamp.
@@ -135,6 +152,7 @@ class _AlbBackendGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupHttpBackendArgs']]] http_backends: Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this backend group.
         :param pulumi.Input[str] name: Name of the backend.
+        :param pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupStreamBackendArgs']]] stream_backends: Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -150,6 +168,8 @@ class _AlbBackendGroupState:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if stream_backends is not None:
+            pulumi.set(__self__, "stream_backends", stream_backends)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -235,6 +255,18 @@ class _AlbBackendGroupState:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="streamBackends")
+    def stream_backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupStreamBackendArgs']]]]:
+        """
+        Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        """
+        return pulumi.get(self, "stream_backends")
+
+    @stream_backends.setter
+    def stream_backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlbBackendGroupStreamBackendArgs']]]]):
+        pulumi.set(self, "stream_backends", value)
+
 
 class AlbBackendGroup(pulumi.CustomResource):
     @overload
@@ -247,6 +279,7 @@ class AlbBackendGroup(pulumi.CustomResource):
                  http_backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupHttpBackendArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 stream_backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupStreamBackendArgs']]]]] = None,
                  __props__=None):
         """
         Creates a backend group in the specified folder and adds the specified backends to it.
@@ -296,6 +329,7 @@ class AlbBackendGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupHttpBackendArgs']]]] http_backends: Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this backend group.
         :param pulumi.Input[str] name: Name of the backend.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupStreamBackendArgs']]]] stream_backends: Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
         """
         ...
     @overload
@@ -364,6 +398,7 @@ class AlbBackendGroup(pulumi.CustomResource):
                  http_backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupHttpBackendArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 stream_backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupStreamBackendArgs']]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -382,6 +417,7 @@ class AlbBackendGroup(pulumi.CustomResource):
             __props__.__dict__["http_backends"] = http_backends
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            __props__.__dict__["stream_backends"] = stream_backends
             __props__.__dict__["created_at"] = None
         super(AlbBackendGroup, __self__).__init__(
             'yandex:index/albBackendGroup:AlbBackendGroup',
@@ -399,7 +435,8 @@ class AlbBackendGroup(pulumi.CustomResource):
             grpc_backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupGrpcBackendArgs']]]]] = None,
             http_backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupHttpBackendArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'AlbBackendGroup':
+            name: Optional[pulumi.Input[str]] = None,
+            stream_backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupStreamBackendArgs']]]]] = None) -> 'AlbBackendGroup':
         """
         Get an existing AlbBackendGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -414,6 +451,7 @@ class AlbBackendGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupHttpBackendArgs']]]] http_backends: Http backend specification that will be used by the ALB Backend Group. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to assign to this backend group.
         :param pulumi.Input[str] name: Name of the backend.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlbBackendGroupStreamBackendArgs']]]] stream_backends: Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -426,6 +464,7 @@ class AlbBackendGroup(pulumi.CustomResource):
         __props__.__dict__["http_backends"] = http_backends
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["stream_backends"] = stream_backends
         return AlbBackendGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -483,4 +522,12 @@ class AlbBackendGroup(pulumi.CustomResource):
         Name of the backend.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="streamBackends")
+    def stream_backends(self) -> pulumi.Output[Optional[Sequence['outputs.AlbBackendGroupStreamBackend']]]:
+        """
+        Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        """
+        return pulumi.get(self, "stream_backends")
 

@@ -17,17 +17,17 @@ namespace Pulumi.Yandex.Outputs
         /// Region of the Yandex Database cluster.
         /// The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetYdbDatabaseDedicatedLocationRegionResult Region;
-        public readonly Outputs.GetYdbDatabaseDedicatedLocationZoneResult Zone;
+        public readonly ImmutableArray<Outputs.GetYdbDatabaseDedicatedLocationRegionResult> Regions;
+        public readonly ImmutableArray<Outputs.GetYdbDatabaseDedicatedLocationZoneResult> Zones;
 
         [OutputConstructor]
         private GetYdbDatabaseDedicatedLocationResult(
-            Outputs.GetYdbDatabaseDedicatedLocationRegionResult region,
+            ImmutableArray<Outputs.GetYdbDatabaseDedicatedLocationRegionResult> regions,
 
-            Outputs.GetYdbDatabaseDedicatedLocationZoneResult zone)
+            ImmutableArray<Outputs.GetYdbDatabaseDedicatedLocationZoneResult> zones)
         {
-            Region = region;
-            Zone = zone;
+            Regions = regions;
+            Zones = zones;
         }
     }
 }

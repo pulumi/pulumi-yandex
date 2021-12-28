@@ -14,6 +14,10 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetComputeInstanceBootDiskInitializeParamResult
     {
         /// <summary>
+        /// The block size of the disk in bytes.
+        /// </summary>
+        public readonly int BlockSize;
+        /// <summary>
         /// Description of the boot disk.
         /// </summary>
         public readonly string Description;
@@ -40,6 +44,8 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetComputeInstanceBootDiskInitializeParamResult(
+            int blockSize,
+
             string description,
 
             string imageId,
@@ -52,6 +58,7 @@ namespace Pulumi.Yandex.Outputs
 
             string type)
         {
+            BlockSize = blockSize;
             Description = description;
             ImageId = imageId;
             Name = name;

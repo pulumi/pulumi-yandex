@@ -20,23 +20,23 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// GRPC route action resource. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionResult GrpcRouteAction;
+        public readonly ImmutableArray<Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionResult> GrpcRouteActions;
         /// <summary>
         /// (Required) GRPC status response action resource. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionResult GrpcStatusResponseAction;
+        public readonly ImmutableArray<Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionResult> GrpcStatusResponseActions;
 
         [OutputConstructor]
         private GetAlbVirtualHostRouteGrpcRouteResult(
             ImmutableArray<Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcMatchResult> grpcMatches,
 
-            Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionResult grpcRouteAction,
+            ImmutableArray<Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcRouteActionResult> grpcRouteActions,
 
-            Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionResult grpcStatusResponseAction)
+            ImmutableArray<Outputs.GetAlbVirtualHostRouteGrpcRouteGrpcStatusResponseActionResult> grpcStatusResponseActions)
         {
             GrpcMatches = grpcMatches;
-            GrpcRouteAction = grpcRouteAction;
-            GrpcStatusResponseAction = grpcStatusResponseAction;
+            GrpcRouteActions = grpcRouteActions;
+            GrpcStatusResponseActions = grpcStatusResponseActions;
         }
     }
 }

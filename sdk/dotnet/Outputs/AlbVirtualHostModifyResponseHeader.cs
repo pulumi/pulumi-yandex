@@ -20,7 +20,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// name of the route.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// If set, remove the header.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Pulumi.Yandex.Outputs
         private AlbVirtualHostModifyResponseHeader(
             string? append,
 
-            string? name,
+            string name,
 
             bool? remove,
 

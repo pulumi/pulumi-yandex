@@ -15,6 +15,7 @@ __all__ = ['ComputeDiskArgs', 'ComputeDisk']
 @pulumi.input_type
 class ComputeDiskArgs:
     def __init__(__self__, *,
+                 block_size: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_placement_policy: Optional[pulumi.Input['ComputeDiskDiskPlacementPolicyArgs']] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,8 @@ class ComputeDiskArgs:
         :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk.
         :param pulumi.Input[str] zone: Availability zone where the disk will reside.
         """
+        if block_size is not None:
+            pulumi.set(__self__, "block_size", block_size)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_placement_policy is not None:
@@ -67,6 +70,15 @@ class ComputeDiskArgs:
             pulumi.set(__self__, "type", type)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="blockSize")
+    def block_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "block_size")
+
+    @block_size.setter
+    def block_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "block_size", value)
 
     @property
     @pulumi.getter
@@ -201,6 +213,7 @@ class ComputeDiskArgs:
 @pulumi.input_type
 class _ComputeDiskState:
     def __init__(__self__, *,
+                 block_size: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_placement_policy: Optional[pulumi.Input['ComputeDiskDiskPlacementPolicyArgs']] = None,
@@ -238,6 +251,8 @@ class _ComputeDiskState:
         :param pulumi.Input[str] type: Type of disk to create. Provide this when creating a disk.
         :param pulumi.Input[str] zone: Availability zone where the disk will reside.
         """
+        if block_size is not None:
+            pulumi.set(__self__, "block_size", block_size)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if description is not None:
@@ -264,6 +279,15 @@ class _ComputeDiskState:
             pulumi.set(__self__, "type", type)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="blockSize")
+    def block_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "block_size")
+
+    @block_size.setter
+    def block_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "block_size", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -433,6 +457,7 @@ class ComputeDisk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 block_size: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_placement_policy: Optional[pulumi.Input[pulumi.InputType['ComputeDiskDiskPlacementPolicyArgs']]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -593,6 +618,7 @@ class ComputeDisk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 block_size: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_placement_policy: Optional[pulumi.Input[pulumi.InputType['ComputeDiskDiskPlacementPolicyArgs']]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -615,6 +641,7 @@ class ComputeDisk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ComputeDiskArgs.__new__(ComputeDiskArgs)
 
+            __props__.__dict__["block_size"] = block_size
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_placement_policy"] = disk_placement_policy
             __props__.__dict__["folder_id"] = folder_id
@@ -638,6 +665,7 @@ class ComputeDisk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            block_size: Optional[pulumi.Input[int]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_placement_policy: Optional[pulumi.Input[pulumi.InputType['ComputeDiskDiskPlacementPolicyArgs']]] = None,
@@ -684,6 +712,7 @@ class ComputeDisk(pulumi.CustomResource):
 
         __props__ = _ComputeDiskState.__new__(_ComputeDiskState)
 
+        __props__.__dict__["block_size"] = block_size
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_placement_policy"] = disk_placement_policy
@@ -698,6 +727,11 @@ class ComputeDisk(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["zone"] = zone
         return ComputeDisk(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="blockSize")
+    def block_size(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "block_size")
 
     @property
     @pulumi.getter(name="createdAt")

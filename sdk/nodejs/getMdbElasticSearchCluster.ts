@@ -86,7 +86,7 @@ export interface GetMdbElasticSearchClusterResult {
     /**
      * Configuration of the Elasticsearch cluster. The structure is documented below.
      */
-    readonly config: outputs.GetMdbElasticSearchClusterConfig;
+    readonly configs: outputs.GetMdbElasticSearchClusterConfig[];
     /**
      * Creation timestamp of the key.
      */

@@ -36,6 +36,9 @@ namespace Pulumi.Yandex
         [Output("folderId")]
         public Output<string?> FolderId { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string?> OrganizationId { get; private set; } = null!;
+
         /// <summary>
         /// Either the path to or the contents of a Service Account key file in JSON format.
         /// </summary>
@@ -151,6 +154,9 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("maxRetries", json: true)]
         public Input<int>? MaxRetries { get; set; }
+
+        [Input("organizationId")]
+        public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
         /// Disable use of TLS. Default value is `false`.

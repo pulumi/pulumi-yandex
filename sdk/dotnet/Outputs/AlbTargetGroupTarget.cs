@@ -17,19 +17,23 @@ namespace Pulumi.Yandex.Outputs
         /// IP address of the target.
         /// </summary>
         public readonly string IpAddress;
+        public readonly bool? PrivateIpv4Address;
         /// <summary>
         /// ID of the subnet that targets are connected to.
         /// All targets in the target group must be connected to the same subnet within a single availability zone.
         /// </summary>
-        public readonly string SubnetId;
+        public readonly string? SubnetId;
 
         [OutputConstructor]
         private AlbTargetGroupTarget(
             string ipAddress,
 
-            string subnetId)
+            bool? privateIpv4Address,
+
+            string? subnetId)
         {
             IpAddress = ipAddress;
+            PrivateIpv4Address = privateIpv4Address;
             SubnetId = subnetId;
         }
     }

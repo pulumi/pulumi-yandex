@@ -61,7 +61,7 @@ export interface GetDataprocClusterResult {
     /**
      * Configuration and resources of the cluster. The structure is documented below.
      */
-    readonly clusterConfig: outputs.GetDataprocClusterClusterConfig;
+    readonly clusterConfigs: outputs.GetDataprocClusterClusterConfig[];
     readonly clusterId: string;
     /**
      * The Data Proc cluster creation timestamp.

@@ -59,7 +59,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// (Computed) Information about cluster version. The structure is documented below.
         /// </summary>
-        public readonly Outputs.KubernetesClusterMasterVersionInfo? VersionInfo;
+        public readonly ImmutableArray<Outputs.KubernetesClusterMasterVersionInfo> VersionInfos;
         /// <summary>
         /// (Optional) Initialize parameters for Zonal Master (single node master). The structure is documented below.
         /// </summary>
@@ -87,7 +87,7 @@ namespace Pulumi.Yandex.Outputs
 
             string? version,
 
-            Outputs.KubernetesClusterMasterVersionInfo? versionInfo,
+            ImmutableArray<Outputs.KubernetesClusterMasterVersionInfo> versionInfos,
 
             Outputs.KubernetesClusterMasterZonal? zonal)
         {
@@ -101,7 +101,7 @@ namespace Pulumi.Yandex.Outputs
             Regional = regional;
             SecurityGroupIds = securityGroupIds;
             Version = version;
-            VersionInfo = versionInfo;
+            VersionInfos = versionInfos;
             Zonal = zonal;
         }
     }

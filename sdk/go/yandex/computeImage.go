@@ -74,6 +74,8 @@ type ComputeImage struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
 	OsType pulumi.StringOutput `pulumi:"osType"`
+	// Optimize the image to create a disk.
+	Pooled pulumi.BoolOutput `pulumi:"pooled"`
 	// License IDs that indicate which licenses are
 	// attached to this image.
 	ProductIds pulumi.StringArrayOutput `pulumi:"productIds"`
@@ -146,6 +148,8 @@ type computeImageState struct {
 	Name *string `pulumi:"name"`
 	// Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
 	OsType *string `pulumi:"osType"`
+	// Optimize the image to create a disk.
+	Pooled *bool `pulumi:"pooled"`
 	// License IDs that indicate which licenses are
 	// attached to this image.
 	ProductIds []string `pulumi:"productIds"`
@@ -190,6 +194,8 @@ type ComputeImageState struct {
 	Name pulumi.StringPtrInput
 	// Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
 	OsType pulumi.StringPtrInput
+	// Optimize the image to create a disk.
+	Pooled pulumi.BoolPtrInput
 	// License IDs that indicate which licenses are
 	// attached to this image.
 	ProductIds pulumi.StringArrayInput
@@ -236,6 +242,8 @@ type computeImageArgs struct {
 	Name *string `pulumi:"name"`
 	// Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
 	OsType *string `pulumi:"osType"`
+	// Optimize the image to create a disk.
+	Pooled *bool `pulumi:"pooled"`
 	// License IDs that indicate which licenses are
 	// attached to this image.
 	ProductIds []string `pulumi:"productIds"`
@@ -275,6 +283,8 @@ type ComputeImageArgs struct {
 	Name pulumi.StringPtrInput
 	// Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
 	OsType pulumi.StringPtrInput
+	// Optimize the image to create a disk.
+	Pooled pulumi.BoolPtrInput
 	// License IDs that indicate which licenses are
 	// attached to this image.
 	ProductIds pulumi.StringArrayInput

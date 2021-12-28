@@ -22,7 +22,10 @@ class GetComputeDiskResult:
     """
     A collection of values returned by getComputeDisk.
     """
-    def __init__(__self__, created_at=None, description=None, disk_id=None, disk_placement_policy=None, folder_id=None, id=None, image_id=None, instance_ids=None, labels=None, name=None, product_ids=None, size=None, snapshot_id=None, status=None, type=None, zone=None):
+    def __init__(__self__, block_size=None, created_at=None, description=None, disk_id=None, disk_placement_policy=None, folder_id=None, id=None, image_id=None, instance_ids=None, labels=None, name=None, product_ids=None, size=None, snapshot_id=None, status=None, type=None, zone=None):
+        if block_size and not isinstance(block_size, int):
+            raise TypeError("Expected argument 'block_size' to be a int")
+        pulumi.set(__self__, "block_size", block_size)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -71,6 +74,14 @@ class GetComputeDiskResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="blockSize")
+    def block_size(self) -> int:
+        """
+        The block size of the disk in bytes.
+        """
+        return pulumi.get(self, "block_size")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -198,6 +209,7 @@ class AwaitableGetComputeDiskResult(GetComputeDiskResult):
         if False:
             yield self
         return GetComputeDiskResult(
+            block_size=self.block_size,
             created_at=self.created_at,
             description=self.description,
             disk_id=self.disk_id,
@@ -242,6 +254,7 @@ def get_compute_disk(disk_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('yandex:index/getComputeDisk:getComputeDisk', __args__, opts=opts, typ=GetComputeDiskResult).value
 
     return AwaitableGetComputeDiskResult(
+        block_size=__ret__.block_size,
         created_at=__ret__.created_at,
         description=__ret__.description,
         disk_id=__ret__.disk_id,

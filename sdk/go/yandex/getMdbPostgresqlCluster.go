@@ -64,7 +64,7 @@ type GetMdbPostgresqlClusterArgs struct {
 type GetMdbPostgresqlClusterResult struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Configuration of the PostgreSQL cluster. The structure is documented below.
-	Config GetMdbPostgresqlClusterConfig `pulumi:"config"`
+	Configs []GetMdbPostgresqlClusterConfig `pulumi:"configs"`
 	// Timestamp of cluster creation.
 	CreatedAt string `pulumi:"createdAt"`
 	// A database of the PostgreSQL cluster. The structure is documented below.
@@ -84,7 +84,7 @@ type GetMdbPostgresqlClusterResult struct {
 	// A set of key/value label pairs to assign to the PostgreSQL cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// Maintenance window settings of the PostgreSQL cluster. The structure is documented below.
-	MaintenanceWindow GetMdbPostgresqlClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
+	MaintenanceWindows []GetMdbPostgresqlClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
 	// Name of the database extension. For more information on available extensions see [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/operations/cluster-extensions).
 	Name string `pulumi:"name"`
 	// ID of the network, to which the PostgreSQL cluster belongs.
@@ -143,8 +143,8 @@ func (o GetMdbPostgresqlClusterResultOutput) ClusterId() pulumi.StringOutput {
 }
 
 // Configuration of the PostgreSQL cluster. The structure is documented below.
-func (o GetMdbPostgresqlClusterResultOutput) Config() GetMdbPostgresqlClusterConfigOutput {
-	return o.ApplyT(func(v GetMdbPostgresqlClusterResult) GetMdbPostgresqlClusterConfig { return v.Config }).(GetMdbPostgresqlClusterConfigOutput)
+func (o GetMdbPostgresqlClusterResultOutput) Configs() GetMdbPostgresqlClusterConfigArrayOutput {
+	return o.ApplyT(func(v GetMdbPostgresqlClusterResult) []GetMdbPostgresqlClusterConfig { return v.Configs }).(GetMdbPostgresqlClusterConfigArrayOutput)
 }
 
 // Timestamp of cluster creation.
@@ -196,10 +196,10 @@ func (o GetMdbPostgresqlClusterResultOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Maintenance window settings of the PostgreSQL cluster. The structure is documented below.
-func (o GetMdbPostgresqlClusterResultOutput) MaintenanceWindow() GetMdbPostgresqlClusterMaintenanceWindowOutput {
-	return o.ApplyT(func(v GetMdbPostgresqlClusterResult) GetMdbPostgresqlClusterMaintenanceWindow {
-		return v.MaintenanceWindow
-	}).(GetMdbPostgresqlClusterMaintenanceWindowOutput)
+func (o GetMdbPostgresqlClusterResultOutput) MaintenanceWindows() GetMdbPostgresqlClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v GetMdbPostgresqlClusterResult) []GetMdbPostgresqlClusterMaintenanceWindow {
+		return v.MaintenanceWindows
+	}).(GetMdbPostgresqlClusterMaintenanceWindowArrayOutput)
 }
 
 // Name of the database extension. For more information on available extensions see [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/operations/cluster-extensions).

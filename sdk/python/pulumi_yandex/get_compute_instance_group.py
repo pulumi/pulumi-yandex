@@ -21,25 +21,25 @@ class GetComputeInstanceGroupResult:
     """
     A collection of values returned by getComputeInstanceGroup.
     """
-    def __init__(__self__, allocation_policy=None, application_balancer_state=None, application_load_balancer=None, created_at=None, deletion_protection=None, deploy_policy=None, description=None, folder_id=None, health_checks=None, id=None, instance_group_id=None, instance_template=None, instances=None, labels=None, load_balancer=None, load_balancer_state=None, max_checking_health_duration=None, name=None, scale_policy=None, service_account_id=None, status=None, variables=None):
-        if allocation_policy and not isinstance(allocation_policy, dict):
-            raise TypeError("Expected argument 'allocation_policy' to be a dict")
-        pulumi.set(__self__, "allocation_policy", allocation_policy)
-        if application_balancer_state and not isinstance(application_balancer_state, dict):
-            raise TypeError("Expected argument 'application_balancer_state' to be a dict")
-        pulumi.set(__self__, "application_balancer_state", application_balancer_state)
-        if application_load_balancer and not isinstance(application_load_balancer, dict):
-            raise TypeError("Expected argument 'application_load_balancer' to be a dict")
-        pulumi.set(__self__, "application_load_balancer", application_load_balancer)
+    def __init__(__self__, allocation_policies=None, application_balancer_states=None, application_load_balancers=None, created_at=None, deletion_protection=None, deploy_policies=None, description=None, folder_id=None, health_checks=None, id=None, instance_group_id=None, instance_templates=None, instances=None, labels=None, load_balancer_states=None, load_balancers=None, max_checking_health_duration=None, name=None, scale_policies=None, service_account_id=None, status=None, variables=None):
+        if allocation_policies and not isinstance(allocation_policies, list):
+            raise TypeError("Expected argument 'allocation_policies' to be a list")
+        pulumi.set(__self__, "allocation_policies", allocation_policies)
+        if application_balancer_states and not isinstance(application_balancer_states, list):
+            raise TypeError("Expected argument 'application_balancer_states' to be a list")
+        pulumi.set(__self__, "application_balancer_states", application_balancer_states)
+        if application_load_balancers and not isinstance(application_load_balancers, list):
+            raise TypeError("Expected argument 'application_load_balancers' to be a list")
+        pulumi.set(__self__, "application_load_balancers", application_load_balancers)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
-        if deploy_policy and not isinstance(deploy_policy, dict):
-            raise TypeError("Expected argument 'deploy_policy' to be a dict")
-        pulumi.set(__self__, "deploy_policy", deploy_policy)
+        if deploy_policies and not isinstance(deploy_policies, list):
+            raise TypeError("Expected argument 'deploy_policies' to be a list")
+        pulumi.set(__self__, "deploy_policies", deploy_policies)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -55,30 +55,30 @@ class GetComputeInstanceGroupResult:
         if instance_group_id and not isinstance(instance_group_id, str):
             raise TypeError("Expected argument 'instance_group_id' to be a str")
         pulumi.set(__self__, "instance_group_id", instance_group_id)
-        if instance_template and not isinstance(instance_template, dict):
-            raise TypeError("Expected argument 'instance_template' to be a dict")
-        pulumi.set(__self__, "instance_template", instance_template)
+        if instance_templates and not isinstance(instance_templates, list):
+            raise TypeError("Expected argument 'instance_templates' to be a list")
+        pulumi.set(__self__, "instance_templates", instance_templates)
         if instances and not isinstance(instances, list):
             raise TypeError("Expected argument 'instances' to be a list")
         pulumi.set(__self__, "instances", instances)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if load_balancer and not isinstance(load_balancer, dict):
-            raise TypeError("Expected argument 'load_balancer' to be a dict")
-        pulumi.set(__self__, "load_balancer", load_balancer)
-        if load_balancer_state and not isinstance(load_balancer_state, dict):
-            raise TypeError("Expected argument 'load_balancer_state' to be a dict")
-        pulumi.set(__self__, "load_balancer_state", load_balancer_state)
+        if load_balancer_states and not isinstance(load_balancer_states, list):
+            raise TypeError("Expected argument 'load_balancer_states' to be a list")
+        pulumi.set(__self__, "load_balancer_states", load_balancer_states)
+        if load_balancers and not isinstance(load_balancers, list):
+            raise TypeError("Expected argument 'load_balancers' to be a list")
+        pulumi.set(__self__, "load_balancers", load_balancers)
         if max_checking_health_duration and not isinstance(max_checking_health_duration, int):
             raise TypeError("Expected argument 'max_checking_health_duration' to be a int")
         pulumi.set(__self__, "max_checking_health_duration", max_checking_health_duration)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if scale_policy and not isinstance(scale_policy, dict):
-            raise TypeError("Expected argument 'scale_policy' to be a dict")
-        pulumi.set(__self__, "scale_policy", scale_policy)
+        if scale_policies and not isinstance(scale_policies, list):
+            raise TypeError("Expected argument 'scale_policies' to be a list")
+        pulumi.set(__self__, "scale_policies", scale_policies)
         if service_account_id and not isinstance(service_account_id, str):
             raise TypeError("Expected argument 'service_account_id' to be a str")
         pulumi.set(__self__, "service_account_id", service_account_id)
@@ -90,25 +90,25 @@ class GetComputeInstanceGroupResult:
         pulumi.set(__self__, "variables", variables)
 
     @property
-    @pulumi.getter(name="allocationPolicy")
-    def allocation_policy(self) -> 'outputs.GetComputeInstanceGroupAllocationPolicyResult':
+    @pulumi.getter(name="allocationPolicies")
+    def allocation_policies(self) -> Sequence['outputs.GetComputeInstanceGroupAllocationPolicyResult']:
         """
         The allocation policy of the instance group by zone and region. The structure is documented below.
         """
-        return pulumi.get(self, "allocation_policy")
+        return pulumi.get(self, "allocation_policies")
 
     @property
-    @pulumi.getter(name="applicationBalancerState")
-    def application_balancer_state(self) -> 'outputs.GetComputeInstanceGroupApplicationBalancerStateResult':
-        return pulumi.get(self, "application_balancer_state")
+    @pulumi.getter(name="applicationBalancerStates")
+    def application_balancer_states(self) -> Sequence['outputs.GetComputeInstanceGroupApplicationBalancerStateResult']:
+        return pulumi.get(self, "application_balancer_states")
 
     @property
-    @pulumi.getter(name="applicationLoadBalancer")
-    def application_load_balancer(self) -> 'outputs.GetComputeInstanceGroupApplicationLoadBalancerResult':
+    @pulumi.getter(name="applicationLoadBalancers")
+    def application_load_balancers(self) -> Sequence['outputs.GetComputeInstanceGroupApplicationLoadBalancerResult']:
         """
         Application Load balancing (L7) specifications. The structure is documented below.
         """
-        return pulumi.get(self, "application_load_balancer")
+        return pulumi.get(self, "application_load_balancers")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -127,12 +127,12 @@ class GetComputeInstanceGroupResult:
         return pulumi.get(self, "deletion_protection")
 
     @property
-    @pulumi.getter(name="deployPolicy")
-    def deploy_policy(self) -> 'outputs.GetComputeInstanceGroupDeployPolicyResult':
+    @pulumi.getter(name="deployPolicies")
+    def deploy_policies(self) -> Sequence['outputs.GetComputeInstanceGroupDeployPolicyResult']:
         """
         The deployment policy of the instance group. The structure is documented below.
         """
-        return pulumi.get(self, "deploy_policy")
+        return pulumi.get(self, "deploy_policies")
 
     @property
     @pulumi.getter
@@ -172,12 +172,12 @@ class GetComputeInstanceGroupResult:
         return pulumi.get(self, "instance_group_id")
 
     @property
-    @pulumi.getter(name="instanceTemplate")
-    def instance_template(self) -> 'outputs.GetComputeInstanceGroupInstanceTemplateResult':
+    @pulumi.getter(name="instanceTemplates")
+    def instance_templates(self) -> Sequence['outputs.GetComputeInstanceGroupInstanceTemplateResult']:
         """
         The instance template that the instance group belongs to. The structure is documented below.
         """
-        return pulumi.get(self, "instance_template")
+        return pulumi.get(self, "instance_templates")
 
     @property
     @pulumi.getter
@@ -200,20 +200,20 @@ class GetComputeInstanceGroupResult:
         return pulumi.get(self, "labels")
 
     @property
-    @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> 'outputs.GetComputeInstanceGroupLoadBalancerResult':
-        """
-        Load balancing specification. The structure is documented below.
-        """
-        return pulumi.get(self, "load_balancer")
-
-    @property
-    @pulumi.getter(name="loadBalancerState")
-    def load_balancer_state(self) -> 'outputs.GetComputeInstanceGroupLoadBalancerStateResult':
+    @pulumi.getter(name="loadBalancerStates")
+    def load_balancer_states(self) -> Sequence['outputs.GetComputeInstanceGroupLoadBalancerStateResult']:
         """
         Information about which entities can be attached to this load balancer. The structure is documented below.
         """
-        return pulumi.get(self, "load_balancer_state")
+        return pulumi.get(self, "load_balancer_states")
+
+    @property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> Sequence['outputs.GetComputeInstanceGroupLoadBalancerResult']:
+        """
+        Load balancing specification. The structure is documented below.
+        """
+        return pulumi.get(self, "load_balancers")
 
     @property
     @pulumi.getter(name="maxCheckingHealthDuration")
@@ -232,12 +232,12 @@ class GetComputeInstanceGroupResult:
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="scalePolicy")
-    def scale_policy(self) -> 'outputs.GetComputeInstanceGroupScalePolicyResult':
+    @pulumi.getter(name="scalePolicies")
+    def scale_policies(self) -> Sequence['outputs.GetComputeInstanceGroupScalePolicyResult']:
         """
         The scaling policy of the instance group. The structure is documented below.
         """
-        return pulumi.get(self, "scale_policy")
+        return pulumi.get(self, "scale_policies")
 
     @property
     @pulumi.getter(name="serviceAccountId")
@@ -270,25 +270,25 @@ class AwaitableGetComputeInstanceGroupResult(GetComputeInstanceGroupResult):
         if False:
             yield self
         return GetComputeInstanceGroupResult(
-            allocation_policy=self.allocation_policy,
-            application_balancer_state=self.application_balancer_state,
-            application_load_balancer=self.application_load_balancer,
+            allocation_policies=self.allocation_policies,
+            application_balancer_states=self.application_balancer_states,
+            application_load_balancers=self.application_load_balancers,
             created_at=self.created_at,
             deletion_protection=self.deletion_protection,
-            deploy_policy=self.deploy_policy,
+            deploy_policies=self.deploy_policies,
             description=self.description,
             folder_id=self.folder_id,
             health_checks=self.health_checks,
             id=self.id,
             instance_group_id=self.instance_group_id,
-            instance_template=self.instance_template,
+            instance_templates=self.instance_templates,
             instances=self.instances,
             labels=self.labels,
-            load_balancer=self.load_balancer,
-            load_balancer_state=self.load_balancer_state,
+            load_balancer_states=self.load_balancer_states,
+            load_balancers=self.load_balancers,
             max_checking_health_duration=self.max_checking_health_duration,
             name=self.name,
-            scale_policy=self.scale_policy,
+            scale_policies=self.scale_policies,
             service_account_id=self.service_account_id,
             status=self.status,
             variables=self.variables)
@@ -311,25 +311,25 @@ def get_compute_instance_group(instance_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('yandex:index/getComputeInstanceGroup:getComputeInstanceGroup', __args__, opts=opts, typ=GetComputeInstanceGroupResult).value
 
     return AwaitableGetComputeInstanceGroupResult(
-        allocation_policy=__ret__.allocation_policy,
-        application_balancer_state=__ret__.application_balancer_state,
-        application_load_balancer=__ret__.application_load_balancer,
+        allocation_policies=__ret__.allocation_policies,
+        application_balancer_states=__ret__.application_balancer_states,
+        application_load_balancers=__ret__.application_load_balancers,
         created_at=__ret__.created_at,
         deletion_protection=__ret__.deletion_protection,
-        deploy_policy=__ret__.deploy_policy,
+        deploy_policies=__ret__.deploy_policies,
         description=__ret__.description,
         folder_id=__ret__.folder_id,
         health_checks=__ret__.health_checks,
         id=__ret__.id,
         instance_group_id=__ret__.instance_group_id,
-        instance_template=__ret__.instance_template,
+        instance_templates=__ret__.instance_templates,
         instances=__ret__.instances,
         labels=__ret__.labels,
-        load_balancer=__ret__.load_balancer,
-        load_balancer_state=__ret__.load_balancer_state,
+        load_balancer_states=__ret__.load_balancer_states,
+        load_balancers=__ret__.load_balancers,
         max_checking_health_duration=__ret__.max_checking_health_duration,
         name=__ret__.name,
-        scale_policy=__ret__.scale_policy,
+        scale_policies=__ret__.scale_policies,
         service_account_id=__ret__.service_account_id,
         status=__ret__.status,
         variables=__ret__.variables)

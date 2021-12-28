@@ -32,6 +32,9 @@ func GetInsecure(ctx *pulumi.Context) bool {
 func GetMaxRetries(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "yandex:maxRetries")
 }
+func GetOrganizationId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "yandex:organizationId")
+}
 
 // Disable use of TLS. Default value is `false`.
 func GetPlaintext(ctx *pulumi.Context) bool {

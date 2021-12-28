@@ -16,20 +16,20 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Scale policy for an autoscaled node group. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupScalePolicyAutoScaleResult AutoScale;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupScalePolicyAutoScaleResult> AutoScales;
         /// <summary>
         /// Scale policy for a fixed scale node group. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupScalePolicyFixedScaleResult FixedScale;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupScalePolicyFixedScaleResult> FixedScales;
 
         [OutputConstructor]
         private GetKubernetesNodeGroupScalePolicyResult(
-            Outputs.GetKubernetesNodeGroupScalePolicyAutoScaleResult autoScale,
+            ImmutableArray<Outputs.GetKubernetesNodeGroupScalePolicyAutoScaleResult> autoScales,
 
-            Outputs.GetKubernetesNodeGroupScalePolicyFixedScaleResult fixedScale)
+            ImmutableArray<Outputs.GetKubernetesNodeGroupScalePolicyFixedScaleResult> fixedScales)
         {
-            AutoScale = autoScale;
-            FixedScale = fixedScale;
+            AutoScales = autoScales;
+            FixedScales = fixedScales;
         }
     }
 }

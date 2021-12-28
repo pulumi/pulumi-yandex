@@ -37,6 +37,7 @@ export class Provider extends pulumi.ProviderResource {
      * The default folder ID where resources will be placed.
      */
     public readonly folderId!: pulumi.Output<string | undefined>;
+    public readonly organizationId!: pulumi.Output<string | undefined>;
     /**
      * Either the path to or the contents of a Service Account key file in JSON format.
      */
@@ -94,6 +95,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["folderId"] = args ? args.folderId : undefined;
             inputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
             inputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["plaintext"] = pulumi.output(args ? args.plaintext : undefined).apply(JSON.stringify);
             inputs["serviceAccountKeyFile"] = args ? args.serviceAccountKeyFile : undefined;
             inputs["storageAccessKey"] = args ? args.storageAccessKey : undefined;
@@ -136,6 +138,7 @@ export interface ProviderArgs {
      * The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
      */
     maxRetries?: pulumi.Input<number>;
+    organizationId?: pulumi.Input<string>;
     /**
      * Disable use of TLS. Default value is `false`.
      */

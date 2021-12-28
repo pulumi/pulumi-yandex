@@ -6,7 +6,7 @@ CHANGELOG
 *As of this notice, using CHANGELOG.md is DEPRECATED. We will be using [GitHub Releases](https://github.com/pulumi/pulumi-yandex/releases) for this repository*
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade terraform-provider-yandex to v0.69.0
 
 ---
 

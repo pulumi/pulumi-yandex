@@ -83,6 +83,8 @@ type AlbBackendGroup struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the backend.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends AlbBackendGroupStreamBackendArrayOutput `pulumi:"streamBackends"`
 }
 
 // NewAlbBackendGroup registers a new resource with the given unique name, arguments, and options.
@@ -128,6 +130,8 @@ type albBackendGroupState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the backend.
 	Name *string `pulumi:"name"`
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends []AlbBackendGroupStreamBackend `pulumi:"streamBackends"`
 }
 
 type AlbBackendGroupState struct {
@@ -145,6 +149,8 @@ type AlbBackendGroupState struct {
 	Labels pulumi.StringMapInput
 	// Name of the backend.
 	Name pulumi.StringPtrInput
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends AlbBackendGroupStreamBackendArrayInput
 }
 
 func (AlbBackendGroupState) ElementType() reflect.Type {
@@ -164,6 +170,8 @@ type albBackendGroupArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the backend.
 	Name *string `pulumi:"name"`
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends []AlbBackendGroupStreamBackend `pulumi:"streamBackends"`
 }
 
 // The set of arguments for constructing a AlbBackendGroup resource.
@@ -180,6 +188,8 @@ type AlbBackendGroupArgs struct {
 	Labels pulumi.StringMapInput
 	// Name of the backend.
 	Name pulumi.StringPtrInput
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends AlbBackendGroupStreamBackendArrayInput
 }
 
 func (AlbBackendGroupArgs) ElementType() reflect.Type {

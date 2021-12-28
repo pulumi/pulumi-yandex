@@ -65,7 +65,7 @@ export interface GetMdbMongodbClusterResult {
     /**
      * Configuration of the MongoDB cluster. The structure is documented below.
      */
-    readonly clusterConfig: outputs.GetMdbMongodbClusterClusterConfig;
+    readonly clusterConfigs: outputs.GetMdbMongodbClusterClusterConfig[];
     readonly clusterId: string;
     /**
      * Creation timestamp of the key.
@@ -101,7 +101,7 @@ export interface GetMdbMongodbClusterResult {
      * A set of key/value label pairs to assign to the MongoDB cluster.
      */
     readonly labels: {[key: string]: string};
-    readonly maintenanceWindow: outputs.GetMdbMongodbClusterMaintenanceWindow;
+    readonly maintenanceWindows: outputs.GetMdbMongodbClusterMaintenanceWindow[];
     /**
      * The name of the database.
      */
@@ -113,7 +113,7 @@ export interface GetMdbMongodbClusterResult {
     /**
      * Resources allocated to hosts of the MongoDB cluster. The structure is documented below.
      */
-    readonly resources: outputs.GetMdbMongodbClusterResources;
+    readonly resources: outputs.GetMdbMongodbClusterResource[];
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */

@@ -115,6 +115,12 @@ namespace Pulumi.Yandex
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
+        [Output("streamBackends")]
+        public Output<ImmutableArray<Outputs.AlbBackendGroupStreamBackend>> StreamBackends { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AlbBackendGroup resource with the given unique name, arguments, and options.
@@ -215,6 +221,18 @@ namespace Pulumi.Yandex
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("streamBackends")]
+        private InputList<Inputs.AlbBackendGroupStreamBackendArgs>? _streamBackends;
+
+        /// <summary>
+        /// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AlbBackendGroupStreamBackendArgs> StreamBackends
+        {
+            get => _streamBackends ?? (_streamBackends = new InputList<Inputs.AlbBackendGroupStreamBackendArgs>());
+            set => _streamBackends = value;
+        }
+
         public AlbBackendGroupArgs()
         {
         }
@@ -281,6 +299,18 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("streamBackends")]
+        private InputList<Inputs.AlbBackendGroupStreamBackendGetArgs>? _streamBackends;
+
+        /// <summary>
+        /// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AlbBackendGroupStreamBackendGetArgs> StreamBackends
+        {
+            get => _streamBackends ?? (_streamBackends = new InputList<Inputs.AlbBackendGroupStreamBackendGetArgs>());
+            set => _streamBackends = value;
+        }
 
         public AlbBackendGroupState()
         {

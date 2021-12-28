@@ -31,6 +31,12 @@ namespace Pulumi.Yandex.Inputs
         [Input("httpHandler")]
         public Input<Inputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs>? HttpHandler { get; set; }
 
+        /// <summary>
+        /// Stream handler resource. The structure is documented below.
+        /// </summary>
+        [Input("streamHandler")]
+        public Input<Inputs.AlbLoadBalancerListenerTlsDefaultHandlerStreamHandlerArgs>? StreamHandler { get; set; }
+
         public AlbLoadBalancerListenerTlsDefaultHandlerArgs()
         {
         }
