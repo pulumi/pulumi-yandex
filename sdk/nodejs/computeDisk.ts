@@ -157,45 +157,45 @@ export class ComputeDisk extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ComputeDiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeDiskArgs | ComputeDiskState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeDiskState | undefined;
-            inputs["blockSize"] = state ? state.blockSize : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskPlacementPolicy"] = state ? state.diskPlacementPolicy : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["productIds"] = state ? state.productIds : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["blockSize"] = state ? state.blockSize : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskPlacementPolicy"] = state ? state.diskPlacementPolicy : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["productIds"] = state ? state.productIds : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ComputeDiskArgs | undefined;
-            inputs["blockSize"] = args ? args.blockSize : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["diskPlacementPolicy"] = args ? args.diskPlacementPolicy : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["productIds"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["blockSize"] = args ? args.blockSize : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskPlacementPolicy"] = args ? args.diskPlacementPolicy : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["productIds"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ComputeDisk.__pulumiType, name, inputs, opts);
+        super(ComputeDisk.__pulumiType, name, resourceInputs, opts);
     }
 }
 

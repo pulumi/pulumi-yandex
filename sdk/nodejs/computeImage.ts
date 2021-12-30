@@ -149,51 +149,51 @@ export class ComputeImage extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ComputeImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeImageArgs | ComputeImageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeImageState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["family"] = state ? state.family : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["minDiskSize"] = state ? state.minDiskSize : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["osType"] = state ? state.osType : undefined;
-            inputs["pooled"] = state ? state.pooled : undefined;
-            inputs["productIds"] = state ? state.productIds : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["sourceDisk"] = state ? state.sourceDisk : undefined;
-            inputs["sourceFamily"] = state ? state.sourceFamily : undefined;
-            inputs["sourceImage"] = state ? state.sourceImage : undefined;
-            inputs["sourceSnapshot"] = state ? state.sourceSnapshot : undefined;
-            inputs["sourceUrl"] = state ? state.sourceUrl : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["family"] = state ? state.family : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["minDiskSize"] = state ? state.minDiskSize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["osType"] = state ? state.osType : undefined;
+            resourceInputs["pooled"] = state ? state.pooled : undefined;
+            resourceInputs["productIds"] = state ? state.productIds : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
+            resourceInputs["sourceFamily"] = state ? state.sourceFamily : undefined;
+            resourceInputs["sourceImage"] = state ? state.sourceImage : undefined;
+            resourceInputs["sourceSnapshot"] = state ? state.sourceSnapshot : undefined;
+            resourceInputs["sourceUrl"] = state ? state.sourceUrl : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ComputeImageArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["family"] = args ? args.family : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["minDiskSize"] = args ? args.minDiskSize : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["osType"] = args ? args.osType : undefined;
-            inputs["pooled"] = args ? args.pooled : undefined;
-            inputs["productIds"] = args ? args.productIds : undefined;
-            inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
-            inputs["sourceFamily"] = args ? args.sourceFamily : undefined;
-            inputs["sourceImage"] = args ? args.sourceImage : undefined;
-            inputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
-            inputs["sourceUrl"] = args ? args.sourceUrl : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["family"] = args ? args.family : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["minDiskSize"] = args ? args.minDiskSize : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["osType"] = args ? args.osType : undefined;
+            resourceInputs["pooled"] = args ? args.pooled : undefined;
+            resourceInputs["productIds"] = args ? args.productIds : undefined;
+            resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
+            resourceInputs["sourceFamily"] = args ? args.sourceFamily : undefined;
+            resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
+            resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
+            resourceInputs["sourceUrl"] = args ? args.sourceUrl : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ComputeImage.__pulumiType, name, inputs, opts);
+        super(ComputeImage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

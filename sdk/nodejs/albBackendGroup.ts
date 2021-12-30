@@ -117,33 +117,33 @@ export class AlbBackendGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AlbBackendGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlbBackendGroupArgs | AlbBackendGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlbBackendGroupState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["grpcBackends"] = state ? state.grpcBackends : undefined;
-            inputs["httpBackends"] = state ? state.httpBackends : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["streamBackends"] = state ? state.streamBackends : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["grpcBackends"] = state ? state.grpcBackends : undefined;
+            resourceInputs["httpBackends"] = state ? state.httpBackends : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["streamBackends"] = state ? state.streamBackends : undefined;
         } else {
             const args = argsOrState as AlbBackendGroupArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["grpcBackends"] = args ? args.grpcBackends : undefined;
-            inputs["httpBackends"] = args ? args.httpBackends : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["streamBackends"] = args ? args.streamBackends : undefined;
-            inputs["createdAt"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["grpcBackends"] = args ? args.grpcBackends : undefined;
+            resourceInputs["httpBackends"] = args ? args.httpBackends : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["streamBackends"] = args ? args.streamBackends : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AlbBackendGroup.__pulumiType, name, inputs, opts);
+        super(AlbBackendGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

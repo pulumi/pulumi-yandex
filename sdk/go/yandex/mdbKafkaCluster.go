@@ -490,7 +490,7 @@ type MdbKafkaClusterInput interface {
 }
 
 func (*MdbKafkaCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbKafkaCluster)(nil))
+	return reflect.TypeOf((**MdbKafkaCluster)(nil)).Elem()
 }
 
 func (i *MdbKafkaCluster) ToMdbKafkaClusterOutput() MdbKafkaClusterOutput {
@@ -499,35 +499,6 @@ func (i *MdbKafkaCluster) ToMdbKafkaClusterOutput() MdbKafkaClusterOutput {
 
 func (i *MdbKafkaCluster) ToMdbKafkaClusterOutputWithContext(ctx context.Context) MdbKafkaClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterOutput)
-}
-
-func (i *MdbKafkaCluster) ToMdbKafkaClusterPtrOutput() MdbKafkaClusterPtrOutput {
-	return i.ToMdbKafkaClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *MdbKafkaCluster) ToMdbKafkaClusterPtrOutputWithContext(ctx context.Context) MdbKafkaClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterPtrOutput)
-}
-
-type MdbKafkaClusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbKafkaClusterPtrOutput() MdbKafkaClusterPtrOutput
-	ToMdbKafkaClusterPtrOutputWithContext(ctx context.Context) MdbKafkaClusterPtrOutput
-}
-
-type mdbKafkaClusterPtrType MdbKafkaClusterArgs
-
-func (*mdbKafkaClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaCluster)(nil))
-}
-
-func (i *mdbKafkaClusterPtrType) ToMdbKafkaClusterPtrOutput() MdbKafkaClusterPtrOutput {
-	return i.ToMdbKafkaClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbKafkaClusterPtrType) ToMdbKafkaClusterPtrOutputWithContext(ctx context.Context) MdbKafkaClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterPtrOutput)
 }
 
 // MdbKafkaClusterArrayInput is an input type that accepts MdbKafkaClusterArray and MdbKafkaClusterArrayOutput values.
@@ -583,7 +554,7 @@ func (i MdbKafkaClusterMap) ToMdbKafkaClusterMapOutputWithContext(ctx context.Co
 type MdbKafkaClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbKafkaClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbKafkaCluster)(nil))
+	return reflect.TypeOf((**MdbKafkaCluster)(nil)).Elem()
 }
 
 func (o MdbKafkaClusterOutput) ToMdbKafkaClusterOutput() MdbKafkaClusterOutput {
@@ -594,44 +565,10 @@ func (o MdbKafkaClusterOutput) ToMdbKafkaClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MdbKafkaClusterOutput) ToMdbKafkaClusterPtrOutput() MdbKafkaClusterPtrOutput {
-	return o.ToMdbKafkaClusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbKafkaClusterOutput) ToMdbKafkaClusterPtrOutputWithContext(ctx context.Context) MdbKafkaClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaCluster) *MdbKafkaCluster {
-		return &v
-	}).(MdbKafkaClusterPtrOutput)
-}
-
-type MdbKafkaClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbKafkaClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaCluster)(nil))
-}
-
-func (o MdbKafkaClusterPtrOutput) ToMdbKafkaClusterPtrOutput() MdbKafkaClusterPtrOutput {
-	return o
-}
-
-func (o MdbKafkaClusterPtrOutput) ToMdbKafkaClusterPtrOutputWithContext(ctx context.Context) MdbKafkaClusterPtrOutput {
-	return o
-}
-
-func (o MdbKafkaClusterPtrOutput) Elem() MdbKafkaClusterOutput {
-	return o.ApplyT(func(v *MdbKafkaCluster) MdbKafkaCluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbKafkaCluster
-		return ret
-	}).(MdbKafkaClusterOutput)
-}
-
 type MdbKafkaClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (MdbKafkaClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MdbKafkaCluster)(nil))
+	return reflect.TypeOf((*[]*MdbKafkaCluster)(nil)).Elem()
 }
 
 func (o MdbKafkaClusterArrayOutput) ToMdbKafkaClusterArrayOutput() MdbKafkaClusterArrayOutput {
@@ -643,15 +580,15 @@ func (o MdbKafkaClusterArrayOutput) ToMdbKafkaClusterArrayOutputWithContext(ctx 
 }
 
 func (o MdbKafkaClusterArrayOutput) Index(i pulumi.IntInput) MdbKafkaClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbKafkaCluster {
-		return vs[0].([]MdbKafkaCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MdbKafkaCluster {
+		return vs[0].([]*MdbKafkaCluster)[vs[1].(int)]
 	}).(MdbKafkaClusterOutput)
 }
 
 type MdbKafkaClusterMapOutput struct{ *pulumi.OutputState }
 
 func (MdbKafkaClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MdbKafkaCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbKafkaCluster)(nil)).Elem()
 }
 
 func (o MdbKafkaClusterMapOutput) ToMdbKafkaClusterMapOutput() MdbKafkaClusterMapOutput {
@@ -663,18 +600,16 @@ func (o MdbKafkaClusterMapOutput) ToMdbKafkaClusterMapOutputWithContext(ctx cont
 }
 
 func (o MdbKafkaClusterMapOutput) MapIndex(k pulumi.StringInput) MdbKafkaClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MdbKafkaCluster {
-		return vs[0].(map[string]MdbKafkaCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MdbKafkaCluster {
+		return vs[0].(map[string]*MdbKafkaCluster)[vs[1].(string)]
 	}).(MdbKafkaClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterInput)(nil)).Elem(), &MdbKafkaCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterPtrInput)(nil)).Elem(), &MdbKafkaCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterArrayInput)(nil)).Elem(), MdbKafkaClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterMapInput)(nil)).Elem(), MdbKafkaClusterMap{})
 	pulumi.RegisterOutputType(MdbKafkaClusterOutput{})
-	pulumi.RegisterOutputType(MdbKafkaClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterArrayOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterMapOutput{})
 }

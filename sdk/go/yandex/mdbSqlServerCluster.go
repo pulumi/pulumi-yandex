@@ -44,7 +44,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = yandex.NewVpcSecurityGroup(ctx, "test_sg_x", &yandex.VpcSecurityGroupArgs{
+// 		_, err = yandex.NewVpcSecurityGroup(ctx, "test-sg-x", &yandex.VpcSecurityGroupArgs{
 // 			NetworkId: fooVpcNetwork.ID(),
 // 			Ingresses: VpcSecurityGroupIngressArray{
 // 				&VpcSecurityGroupIngressArgs{
@@ -445,7 +445,7 @@ type MdbSqlServerClusterInput interface {
 }
 
 func (*MdbSqlServerCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbSqlServerCluster)(nil))
+	return reflect.TypeOf((**MdbSqlServerCluster)(nil)).Elem()
 }
 
 func (i *MdbSqlServerCluster) ToMdbSqlServerClusterOutput() MdbSqlServerClusterOutput {
@@ -454,35 +454,6 @@ func (i *MdbSqlServerCluster) ToMdbSqlServerClusterOutput() MdbSqlServerClusterO
 
 func (i *MdbSqlServerCluster) ToMdbSqlServerClusterOutputWithContext(ctx context.Context) MdbSqlServerClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MdbSqlServerClusterOutput)
-}
-
-func (i *MdbSqlServerCluster) ToMdbSqlServerClusterPtrOutput() MdbSqlServerClusterPtrOutput {
-	return i.ToMdbSqlServerClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *MdbSqlServerCluster) ToMdbSqlServerClusterPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbSqlServerClusterPtrOutput)
-}
-
-type MdbSqlServerClusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbSqlServerClusterPtrOutput() MdbSqlServerClusterPtrOutput
-	ToMdbSqlServerClusterPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterPtrOutput
-}
-
-type mdbSqlServerClusterPtrType MdbSqlServerClusterArgs
-
-func (*mdbSqlServerClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbSqlServerCluster)(nil))
-}
-
-func (i *mdbSqlServerClusterPtrType) ToMdbSqlServerClusterPtrOutput() MdbSqlServerClusterPtrOutput {
-	return i.ToMdbSqlServerClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbSqlServerClusterPtrType) ToMdbSqlServerClusterPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbSqlServerClusterPtrOutput)
 }
 
 // MdbSqlServerClusterArrayInput is an input type that accepts MdbSqlServerClusterArray and MdbSqlServerClusterArrayOutput values.
@@ -538,7 +509,7 @@ func (i MdbSqlServerClusterMap) ToMdbSqlServerClusterMapOutputWithContext(ctx co
 type MdbSqlServerClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbSqlServerClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbSqlServerCluster)(nil))
+	return reflect.TypeOf((**MdbSqlServerCluster)(nil)).Elem()
 }
 
 func (o MdbSqlServerClusterOutput) ToMdbSqlServerClusterOutput() MdbSqlServerClusterOutput {
@@ -549,44 +520,10 @@ func (o MdbSqlServerClusterOutput) ToMdbSqlServerClusterOutputWithContext(ctx co
 	return o
 }
 
-func (o MdbSqlServerClusterOutput) ToMdbSqlServerClusterPtrOutput() MdbSqlServerClusterPtrOutput {
-	return o.ToMdbSqlServerClusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbSqlServerClusterOutput) ToMdbSqlServerClusterPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbSqlServerCluster) *MdbSqlServerCluster {
-		return &v
-	}).(MdbSqlServerClusterPtrOutput)
-}
-
-type MdbSqlServerClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbSqlServerClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbSqlServerCluster)(nil))
-}
-
-func (o MdbSqlServerClusterPtrOutput) ToMdbSqlServerClusterPtrOutput() MdbSqlServerClusterPtrOutput {
-	return o
-}
-
-func (o MdbSqlServerClusterPtrOutput) ToMdbSqlServerClusterPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterPtrOutput {
-	return o
-}
-
-func (o MdbSqlServerClusterPtrOutput) Elem() MdbSqlServerClusterOutput {
-	return o.ApplyT(func(v *MdbSqlServerCluster) MdbSqlServerCluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbSqlServerCluster
-		return ret
-	}).(MdbSqlServerClusterOutput)
-}
-
 type MdbSqlServerClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (MdbSqlServerClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MdbSqlServerCluster)(nil))
+	return reflect.TypeOf((*[]*MdbSqlServerCluster)(nil)).Elem()
 }
 
 func (o MdbSqlServerClusterArrayOutput) ToMdbSqlServerClusterArrayOutput() MdbSqlServerClusterArrayOutput {
@@ -598,15 +535,15 @@ func (o MdbSqlServerClusterArrayOutput) ToMdbSqlServerClusterArrayOutputWithCont
 }
 
 func (o MdbSqlServerClusterArrayOutput) Index(i pulumi.IntInput) MdbSqlServerClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbSqlServerCluster {
-		return vs[0].([]MdbSqlServerCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MdbSqlServerCluster {
+		return vs[0].([]*MdbSqlServerCluster)[vs[1].(int)]
 	}).(MdbSqlServerClusterOutput)
 }
 
 type MdbSqlServerClusterMapOutput struct{ *pulumi.OutputState }
 
 func (MdbSqlServerClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MdbSqlServerCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbSqlServerCluster)(nil)).Elem()
 }
 
 func (o MdbSqlServerClusterMapOutput) ToMdbSqlServerClusterMapOutput() MdbSqlServerClusterMapOutput {
@@ -618,18 +555,16 @@ func (o MdbSqlServerClusterMapOutput) ToMdbSqlServerClusterMapOutputWithContext(
 }
 
 func (o MdbSqlServerClusterMapOutput) MapIndex(k pulumi.StringInput) MdbSqlServerClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MdbSqlServerCluster {
-		return vs[0].(map[string]MdbSqlServerCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MdbSqlServerCluster {
+		return vs[0].(map[string]*MdbSqlServerCluster)[vs[1].(string)]
 	}).(MdbSqlServerClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterInput)(nil)).Elem(), &MdbSqlServerCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterPtrInput)(nil)).Elem(), &MdbSqlServerCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterArrayInput)(nil)).Elem(), MdbSqlServerClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterMapInput)(nil)).Elem(), MdbSqlServerClusterMap{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterOutput{})
-	pulumi.RegisterOutputType(MdbSqlServerClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterArrayOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterMapOutput{})
 }

@@ -92,28 +92,28 @@ export class CdnOriginGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: CdnOriginGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CdnOriginGroupArgs | CdnOriginGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CdnOriginGroupState | undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["origins"] = state ? state.origins : undefined;
-            inputs["useNext"] = state ? state.useNext : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["origins"] = state ? state.origins : undefined;
+            resourceInputs["useNext"] = state ? state.useNext : undefined;
         } else {
             const args = argsOrState as CdnOriginGroupArgs | undefined;
             if ((!args || args.origins === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'origins'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["origins"] = args ? args.origins : undefined;
-            inputs["useNext"] = args ? args.useNext : undefined;
-            inputs["folderId"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["origins"] = args ? args.origins : undefined;
+            resourceInputs["useNext"] = args ? args.useNext : undefined;
+            resourceInputs["folderId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CdnOriginGroup.__pulumiType, name, inputs, opts);
+        super(CdnOriginGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

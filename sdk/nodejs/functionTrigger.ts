@@ -140,46 +140,46 @@ export class FunctionTrigger extends pulumi.CustomResource {
      */
     constructor(name: string, args: FunctionTriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionTriggerArgs | FunctionTriggerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionTriggerState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dlq"] = state ? state.dlq : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["function"] = state ? state.function : undefined;
-            inputs["iot"] = state ? state.iot : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["logGroup"] = state ? state.logGroup : undefined;
-            inputs["logging"] = state ? state.logging : undefined;
-            inputs["messageQueue"] = state ? state.messageQueue : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["objectStorage"] = state ? state.objectStorage : undefined;
-            inputs["timer"] = state ? state.timer : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dlq"] = state ? state.dlq : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["function"] = state ? state.function : undefined;
+            resourceInputs["iot"] = state ? state.iot : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["logGroup"] = state ? state.logGroup : undefined;
+            resourceInputs["logging"] = state ? state.logging : undefined;
+            resourceInputs["messageQueue"] = state ? state.messageQueue : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["objectStorage"] = state ? state.objectStorage : undefined;
+            resourceInputs["timer"] = state ? state.timer : undefined;
         } else {
             const args = argsOrState as FunctionTriggerArgs | undefined;
             if ((!args || args.function === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'function'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dlq"] = args ? args.dlq : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["function"] = args ? args.function : undefined;
-            inputs["iot"] = args ? args.iot : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["logGroup"] = args ? args.logGroup : undefined;
-            inputs["logging"] = args ? args.logging : undefined;
-            inputs["messageQueue"] = args ? args.messageQueue : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["objectStorage"] = args ? args.objectStorage : undefined;
-            inputs["timer"] = args ? args.timer : undefined;
-            inputs["createdAt"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dlq"] = args ? args.dlq : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["function"] = args ? args.function : undefined;
+            resourceInputs["iot"] = args ? args.iot : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["logGroup"] = args ? args.logGroup : undefined;
+            resourceInputs["logging"] = args ? args.logging : undefined;
+            resourceInputs["messageQueue"] = args ? args.messageQueue : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["objectStorage"] = args ? args.objectStorage : undefined;
+            resourceInputs["timer"] = args ? args.timer : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FunctionTrigger.__pulumiType, name, inputs, opts);
+        super(FunctionTrigger.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -115,15 +115,15 @@ export class MdbKafkaTopic extends pulumi.CustomResource {
      */
     constructor(name: string, args: MdbKafkaTopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MdbKafkaTopicArgs | MdbKafkaTopicState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MdbKafkaTopicState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["partitions"] = state ? state.partitions : undefined;
-            inputs["replicationFactor"] = state ? state.replicationFactor : undefined;
-            inputs["topicConfig"] = state ? state.topicConfig : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["partitions"] = state ? state.partitions : undefined;
+            resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
+            resourceInputs["topicConfig"] = state ? state.topicConfig : undefined;
         } else {
             const args = argsOrState as MdbKafkaTopicArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -135,16 +135,16 @@ export class MdbKafkaTopic extends pulumi.CustomResource {
             if ((!args || args.replicationFactor === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'replicationFactor'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["partitions"] = args ? args.partitions : undefined;
-            inputs["replicationFactor"] = args ? args.replicationFactor : undefined;
-            inputs["topicConfig"] = args ? args.topicConfig : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["partitions"] = args ? args.partitions : undefined;
+            resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
+            resourceInputs["topicConfig"] = args ? args.topicConfig : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MdbKafkaTopic.__pulumiType, name, inputs, opts);
+        super(MdbKafkaTopic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

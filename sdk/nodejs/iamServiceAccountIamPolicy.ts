@@ -93,12 +93,12 @@ export class IamServiceAccountIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: IamServiceAccountIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamServiceAccountIamPolicyArgs | IamServiceAccountIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamServiceAccountIamPolicyState | undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
         } else {
             const args = argsOrState as IamServiceAccountIamPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
@@ -107,13 +107,13 @@ export class IamServiceAccountIamPolicy extends pulumi.CustomResource {
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(IamServiceAccountIamPolicy.__pulumiType, name, inputs, opts);
+        super(IamServiceAccountIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -121,21 +121,21 @@ export class VpcSubnet extends pulumi.CustomResource {
      */
     constructor(name: string, args: VpcSubnetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcSubnetArgs | VpcSubnetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcSubnetState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dhcpOptions"] = state ? state.dhcpOptions : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["routeTableId"] = state ? state.routeTableId : undefined;
-            inputs["v4CidrBlocks"] = state ? state.v4CidrBlocks : undefined;
-            inputs["v6CidrBlocks"] = state ? state.v6CidrBlocks : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dhcpOptions"] = state ? state.dhcpOptions : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
+            resourceInputs["v4CidrBlocks"] = state ? state.v4CidrBlocks : undefined;
+            resourceInputs["v6CidrBlocks"] = state ? state.v6CidrBlocks : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as VpcSubnetArgs | undefined;
             if ((!args || args.networkId === undefined) && !opts.urn) {
@@ -144,22 +144,22 @@ export class VpcSubnet extends pulumi.CustomResource {
             if ((!args || args.v4CidrBlocks === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v4CidrBlocks'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dhcpOptions"] = args ? args.dhcpOptions : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["routeTableId"] = args ? args.routeTableId : undefined;
-            inputs["v4CidrBlocks"] = args ? args.v4CidrBlocks : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["v6CidrBlocks"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dhcpOptions"] = args ? args.dhcpOptions : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["v4CidrBlocks"] = args ? args.v4CidrBlocks : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["v6CidrBlocks"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(VpcSubnet.__pulumiType, name, inputs, opts);
+        super(VpcSubnet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

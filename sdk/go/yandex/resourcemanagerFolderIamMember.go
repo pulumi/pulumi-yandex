@@ -178,7 +178,7 @@ type ResourcemanagerFolderIamMemberInput interface {
 }
 
 func (*ResourcemanagerFolderIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerFolderIamMember)(nil))
+	return reflect.TypeOf((**ResourcemanagerFolderIamMember)(nil)).Elem()
 }
 
 func (i *ResourcemanagerFolderIamMember) ToResourcemanagerFolderIamMemberOutput() ResourcemanagerFolderIamMemberOutput {
@@ -187,35 +187,6 @@ func (i *ResourcemanagerFolderIamMember) ToResourcemanagerFolderIamMemberOutput(
 
 func (i *ResourcemanagerFolderIamMember) ToResourcemanagerFolderIamMemberOutputWithContext(ctx context.Context) ResourcemanagerFolderIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderIamMemberOutput)
-}
-
-func (i *ResourcemanagerFolderIamMember) ToResourcemanagerFolderIamMemberPtrOutput() ResourcemanagerFolderIamMemberPtrOutput {
-	return i.ToResourcemanagerFolderIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *ResourcemanagerFolderIamMember) ToResourcemanagerFolderIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderIamMemberPtrOutput)
-}
-
-type ResourcemanagerFolderIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToResourcemanagerFolderIamMemberPtrOutput() ResourcemanagerFolderIamMemberPtrOutput
-	ToResourcemanagerFolderIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamMemberPtrOutput
-}
-
-type resourcemanagerFolderIamMemberPtrType ResourcemanagerFolderIamMemberArgs
-
-func (*resourcemanagerFolderIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerFolderIamMember)(nil))
-}
-
-func (i *resourcemanagerFolderIamMemberPtrType) ToResourcemanagerFolderIamMemberPtrOutput() ResourcemanagerFolderIamMemberPtrOutput {
-	return i.ToResourcemanagerFolderIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *resourcemanagerFolderIamMemberPtrType) ToResourcemanagerFolderIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderIamMemberPtrOutput)
 }
 
 // ResourcemanagerFolderIamMemberArrayInput is an input type that accepts ResourcemanagerFolderIamMemberArray and ResourcemanagerFolderIamMemberArrayOutput values.
@@ -271,7 +242,7 @@ func (i ResourcemanagerFolderIamMemberMap) ToResourcemanagerFolderIamMemberMapOu
 type ResourcemanagerFolderIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerFolderIamMember)(nil))
+	return reflect.TypeOf((**ResourcemanagerFolderIamMember)(nil)).Elem()
 }
 
 func (o ResourcemanagerFolderIamMemberOutput) ToResourcemanagerFolderIamMemberOutput() ResourcemanagerFolderIamMemberOutput {
@@ -282,44 +253,10 @@ func (o ResourcemanagerFolderIamMemberOutput) ToResourcemanagerFolderIamMemberOu
 	return o
 }
 
-func (o ResourcemanagerFolderIamMemberOutput) ToResourcemanagerFolderIamMemberPtrOutput() ResourcemanagerFolderIamMemberPtrOutput {
-	return o.ToResourcemanagerFolderIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o ResourcemanagerFolderIamMemberOutput) ToResourcemanagerFolderIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcemanagerFolderIamMember) *ResourcemanagerFolderIamMember {
-		return &v
-	}).(ResourcemanagerFolderIamMemberPtrOutput)
-}
-
-type ResourcemanagerFolderIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourcemanagerFolderIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerFolderIamMember)(nil))
-}
-
-func (o ResourcemanagerFolderIamMemberPtrOutput) ToResourcemanagerFolderIamMemberPtrOutput() ResourcemanagerFolderIamMemberPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerFolderIamMemberPtrOutput) ToResourcemanagerFolderIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamMemberPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerFolderIamMemberPtrOutput) Elem() ResourcemanagerFolderIamMemberOutput {
-	return o.ApplyT(func(v *ResourcemanagerFolderIamMember) ResourcemanagerFolderIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret ResourcemanagerFolderIamMember
-		return ret
-	}).(ResourcemanagerFolderIamMemberOutput)
-}
-
 type ResourcemanagerFolderIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourcemanagerFolderIamMember)(nil))
+	return reflect.TypeOf((*[]*ResourcemanagerFolderIamMember)(nil)).Elem()
 }
 
 func (o ResourcemanagerFolderIamMemberArrayOutput) ToResourcemanagerFolderIamMemberArrayOutput() ResourcemanagerFolderIamMemberArrayOutput {
@@ -331,15 +268,15 @@ func (o ResourcemanagerFolderIamMemberArrayOutput) ToResourcemanagerFolderIamMem
 }
 
 func (o ResourcemanagerFolderIamMemberArrayOutput) Index(i pulumi.IntInput) ResourcemanagerFolderIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourcemanagerFolderIamMember {
-		return vs[0].([]ResourcemanagerFolderIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourcemanagerFolderIamMember {
+		return vs[0].([]*ResourcemanagerFolderIamMember)[vs[1].(int)]
 	}).(ResourcemanagerFolderIamMemberOutput)
 }
 
 type ResourcemanagerFolderIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ResourcemanagerFolderIamMember)(nil))
+	return reflect.TypeOf((*map[string]*ResourcemanagerFolderIamMember)(nil)).Elem()
 }
 
 func (o ResourcemanagerFolderIamMemberMapOutput) ToResourcemanagerFolderIamMemberMapOutput() ResourcemanagerFolderIamMemberMapOutput {
@@ -351,18 +288,16 @@ func (o ResourcemanagerFolderIamMemberMapOutput) ToResourcemanagerFolderIamMembe
 }
 
 func (o ResourcemanagerFolderIamMemberMapOutput) MapIndex(k pulumi.StringInput) ResourcemanagerFolderIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourcemanagerFolderIamMember {
-		return vs[0].(map[string]ResourcemanagerFolderIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ResourcemanagerFolderIamMember {
+		return vs[0].(map[string]*ResourcemanagerFolderIamMember)[vs[1].(string)]
 	}).(ResourcemanagerFolderIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamMemberInput)(nil)).Elem(), &ResourcemanagerFolderIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamMemberPtrInput)(nil)).Elem(), &ResourcemanagerFolderIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamMemberArrayInput)(nil)).Elem(), ResourcemanagerFolderIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamMemberMapInput)(nil)).Elem(), ResourcemanagerFolderIamMemberMap{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamMemberOutput{})
-	pulumi.RegisterOutputType(ResourcemanagerFolderIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamMemberMapOutput{})
 }

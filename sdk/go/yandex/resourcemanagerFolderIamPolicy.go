@@ -150,7 +150,7 @@ type ResourcemanagerFolderIamPolicyInput interface {
 }
 
 func (*ResourcemanagerFolderIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerFolderIamPolicy)(nil))
+	return reflect.TypeOf((**ResourcemanagerFolderIamPolicy)(nil)).Elem()
 }
 
 func (i *ResourcemanagerFolderIamPolicy) ToResourcemanagerFolderIamPolicyOutput() ResourcemanagerFolderIamPolicyOutput {
@@ -159,35 +159,6 @@ func (i *ResourcemanagerFolderIamPolicy) ToResourcemanagerFolderIamPolicyOutput(
 
 func (i *ResourcemanagerFolderIamPolicy) ToResourcemanagerFolderIamPolicyOutputWithContext(ctx context.Context) ResourcemanagerFolderIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderIamPolicyOutput)
-}
-
-func (i *ResourcemanagerFolderIamPolicy) ToResourcemanagerFolderIamPolicyPtrOutput() ResourcemanagerFolderIamPolicyPtrOutput {
-	return i.ToResourcemanagerFolderIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *ResourcemanagerFolderIamPolicy) ToResourcemanagerFolderIamPolicyPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderIamPolicyPtrOutput)
-}
-
-type ResourcemanagerFolderIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToResourcemanagerFolderIamPolicyPtrOutput() ResourcemanagerFolderIamPolicyPtrOutput
-	ToResourcemanagerFolderIamPolicyPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamPolicyPtrOutput
-}
-
-type resourcemanagerFolderIamPolicyPtrType ResourcemanagerFolderIamPolicyArgs
-
-func (*resourcemanagerFolderIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerFolderIamPolicy)(nil))
-}
-
-func (i *resourcemanagerFolderIamPolicyPtrType) ToResourcemanagerFolderIamPolicyPtrOutput() ResourcemanagerFolderIamPolicyPtrOutput {
-	return i.ToResourcemanagerFolderIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *resourcemanagerFolderIamPolicyPtrType) ToResourcemanagerFolderIamPolicyPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderIamPolicyPtrOutput)
 }
 
 // ResourcemanagerFolderIamPolicyArrayInput is an input type that accepts ResourcemanagerFolderIamPolicyArray and ResourcemanagerFolderIamPolicyArrayOutput values.
@@ -243,7 +214,7 @@ func (i ResourcemanagerFolderIamPolicyMap) ToResourcemanagerFolderIamPolicyMapOu
 type ResourcemanagerFolderIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerFolderIamPolicy)(nil))
+	return reflect.TypeOf((**ResourcemanagerFolderIamPolicy)(nil)).Elem()
 }
 
 func (o ResourcemanagerFolderIamPolicyOutput) ToResourcemanagerFolderIamPolicyOutput() ResourcemanagerFolderIamPolicyOutput {
@@ -254,44 +225,10 @@ func (o ResourcemanagerFolderIamPolicyOutput) ToResourcemanagerFolderIamPolicyOu
 	return o
 }
 
-func (o ResourcemanagerFolderIamPolicyOutput) ToResourcemanagerFolderIamPolicyPtrOutput() ResourcemanagerFolderIamPolicyPtrOutput {
-	return o.ToResourcemanagerFolderIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ResourcemanagerFolderIamPolicyOutput) ToResourcemanagerFolderIamPolicyPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcemanagerFolderIamPolicy) *ResourcemanagerFolderIamPolicy {
-		return &v
-	}).(ResourcemanagerFolderIamPolicyPtrOutput)
-}
-
-type ResourcemanagerFolderIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourcemanagerFolderIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerFolderIamPolicy)(nil))
-}
-
-func (o ResourcemanagerFolderIamPolicyPtrOutput) ToResourcemanagerFolderIamPolicyPtrOutput() ResourcemanagerFolderIamPolicyPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerFolderIamPolicyPtrOutput) ToResourcemanagerFolderIamPolicyPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderIamPolicyPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerFolderIamPolicyPtrOutput) Elem() ResourcemanagerFolderIamPolicyOutput {
-	return o.ApplyT(func(v *ResourcemanagerFolderIamPolicy) ResourcemanagerFolderIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ResourcemanagerFolderIamPolicy
-		return ret
-	}).(ResourcemanagerFolderIamPolicyOutput)
-}
-
 type ResourcemanagerFolderIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourcemanagerFolderIamPolicy)(nil))
+	return reflect.TypeOf((*[]*ResourcemanagerFolderIamPolicy)(nil)).Elem()
 }
 
 func (o ResourcemanagerFolderIamPolicyArrayOutput) ToResourcemanagerFolderIamPolicyArrayOutput() ResourcemanagerFolderIamPolicyArrayOutput {
@@ -303,15 +240,15 @@ func (o ResourcemanagerFolderIamPolicyArrayOutput) ToResourcemanagerFolderIamPol
 }
 
 func (o ResourcemanagerFolderIamPolicyArrayOutput) Index(i pulumi.IntInput) ResourcemanagerFolderIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourcemanagerFolderIamPolicy {
-		return vs[0].([]ResourcemanagerFolderIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourcemanagerFolderIamPolicy {
+		return vs[0].([]*ResourcemanagerFolderIamPolicy)[vs[1].(int)]
 	}).(ResourcemanagerFolderIamPolicyOutput)
 }
 
 type ResourcemanagerFolderIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ResourcemanagerFolderIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*ResourcemanagerFolderIamPolicy)(nil)).Elem()
 }
 
 func (o ResourcemanagerFolderIamPolicyMapOutput) ToResourcemanagerFolderIamPolicyMapOutput() ResourcemanagerFolderIamPolicyMapOutput {
@@ -323,18 +260,16 @@ func (o ResourcemanagerFolderIamPolicyMapOutput) ToResourcemanagerFolderIamPolic
 }
 
 func (o ResourcemanagerFolderIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ResourcemanagerFolderIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourcemanagerFolderIamPolicy {
-		return vs[0].(map[string]ResourcemanagerFolderIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ResourcemanagerFolderIamPolicy {
+		return vs[0].(map[string]*ResourcemanagerFolderIamPolicy)[vs[1].(string)]
 	}).(ResourcemanagerFolderIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamPolicyInput)(nil)).Elem(), &ResourcemanagerFolderIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamPolicyPtrInput)(nil)).Elem(), &ResourcemanagerFolderIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamPolicyArrayInput)(nil)).Elem(), ResourcemanagerFolderIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderIamPolicyMapInput)(nil)).Elem(), ResourcemanagerFolderIamPolicyMap{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamPolicyOutput{})
-	pulumi.RegisterOutputType(ResourcemanagerFolderIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderIamPolicyMapOutput{})
 }

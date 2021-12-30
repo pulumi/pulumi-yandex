@@ -179,7 +179,7 @@ type OrganizationManagerOrganizationIamBindingInput interface {
 }
 
 func (*OrganizationManagerOrganizationIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationManagerOrganizationIamBinding)(nil))
+	return reflect.TypeOf((**OrganizationManagerOrganizationIamBinding)(nil)).Elem()
 }
 
 func (i *OrganizationManagerOrganizationIamBinding) ToOrganizationManagerOrganizationIamBindingOutput() OrganizationManagerOrganizationIamBindingOutput {
@@ -188,35 +188,6 @@ func (i *OrganizationManagerOrganizationIamBinding) ToOrganizationManagerOrganiz
 
 func (i *OrganizationManagerOrganizationIamBinding) ToOrganizationManagerOrganizationIamBindingOutputWithContext(ctx context.Context) OrganizationManagerOrganizationIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationManagerOrganizationIamBindingOutput)
-}
-
-func (i *OrganizationManagerOrganizationIamBinding) ToOrganizationManagerOrganizationIamBindingPtrOutput() OrganizationManagerOrganizationIamBindingPtrOutput {
-	return i.ToOrganizationManagerOrganizationIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *OrganizationManagerOrganizationIamBinding) ToOrganizationManagerOrganizationIamBindingPtrOutputWithContext(ctx context.Context) OrganizationManagerOrganizationIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationManagerOrganizationIamBindingPtrOutput)
-}
-
-type OrganizationManagerOrganizationIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToOrganizationManagerOrganizationIamBindingPtrOutput() OrganizationManagerOrganizationIamBindingPtrOutput
-	ToOrganizationManagerOrganizationIamBindingPtrOutputWithContext(ctx context.Context) OrganizationManagerOrganizationIamBindingPtrOutput
-}
-
-type organizationManagerOrganizationIamBindingPtrType OrganizationManagerOrganizationIamBindingArgs
-
-func (*organizationManagerOrganizationIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationManagerOrganizationIamBinding)(nil))
-}
-
-func (i *organizationManagerOrganizationIamBindingPtrType) ToOrganizationManagerOrganizationIamBindingPtrOutput() OrganizationManagerOrganizationIamBindingPtrOutput {
-	return i.ToOrganizationManagerOrganizationIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *organizationManagerOrganizationIamBindingPtrType) ToOrganizationManagerOrganizationIamBindingPtrOutputWithContext(ctx context.Context) OrganizationManagerOrganizationIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationManagerOrganizationIamBindingPtrOutput)
 }
 
 // OrganizationManagerOrganizationIamBindingArrayInput is an input type that accepts OrganizationManagerOrganizationIamBindingArray and OrganizationManagerOrganizationIamBindingArrayOutput values.
@@ -272,7 +243,7 @@ func (i OrganizationManagerOrganizationIamBindingMap) ToOrganizationManagerOrgan
 type OrganizationManagerOrganizationIamBindingOutput struct{ *pulumi.OutputState }
 
 func (OrganizationManagerOrganizationIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationManagerOrganizationIamBinding)(nil))
+	return reflect.TypeOf((**OrganizationManagerOrganizationIamBinding)(nil)).Elem()
 }
 
 func (o OrganizationManagerOrganizationIamBindingOutput) ToOrganizationManagerOrganizationIamBindingOutput() OrganizationManagerOrganizationIamBindingOutput {
@@ -283,44 +254,10 @@ func (o OrganizationManagerOrganizationIamBindingOutput) ToOrganizationManagerOr
 	return o
 }
 
-func (o OrganizationManagerOrganizationIamBindingOutput) ToOrganizationManagerOrganizationIamBindingPtrOutput() OrganizationManagerOrganizationIamBindingPtrOutput {
-	return o.ToOrganizationManagerOrganizationIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o OrganizationManagerOrganizationIamBindingOutput) ToOrganizationManagerOrganizationIamBindingPtrOutputWithContext(ctx context.Context) OrganizationManagerOrganizationIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationManagerOrganizationIamBinding) *OrganizationManagerOrganizationIamBinding {
-		return &v
-	}).(OrganizationManagerOrganizationIamBindingPtrOutput)
-}
-
-type OrganizationManagerOrganizationIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (OrganizationManagerOrganizationIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationManagerOrganizationIamBinding)(nil))
-}
-
-func (o OrganizationManagerOrganizationIamBindingPtrOutput) ToOrganizationManagerOrganizationIamBindingPtrOutput() OrganizationManagerOrganizationIamBindingPtrOutput {
-	return o
-}
-
-func (o OrganizationManagerOrganizationIamBindingPtrOutput) ToOrganizationManagerOrganizationIamBindingPtrOutputWithContext(ctx context.Context) OrganizationManagerOrganizationIamBindingPtrOutput {
-	return o
-}
-
-func (o OrganizationManagerOrganizationIamBindingPtrOutput) Elem() OrganizationManagerOrganizationIamBindingOutput {
-	return o.ApplyT(func(v *OrganizationManagerOrganizationIamBinding) OrganizationManagerOrganizationIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret OrganizationManagerOrganizationIamBinding
-		return ret
-	}).(OrganizationManagerOrganizationIamBindingOutput)
-}
-
 type OrganizationManagerOrganizationIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationManagerOrganizationIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OrganizationManagerOrganizationIamBinding)(nil))
+	return reflect.TypeOf((*[]*OrganizationManagerOrganizationIamBinding)(nil)).Elem()
 }
 
 func (o OrganizationManagerOrganizationIamBindingArrayOutput) ToOrganizationManagerOrganizationIamBindingArrayOutput() OrganizationManagerOrganizationIamBindingArrayOutput {
@@ -332,15 +269,15 @@ func (o OrganizationManagerOrganizationIamBindingArrayOutput) ToOrganizationMana
 }
 
 func (o OrganizationManagerOrganizationIamBindingArrayOutput) Index(i pulumi.IntInput) OrganizationManagerOrganizationIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationManagerOrganizationIamBinding {
-		return vs[0].([]OrganizationManagerOrganizationIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationManagerOrganizationIamBinding {
+		return vs[0].([]*OrganizationManagerOrganizationIamBinding)[vs[1].(int)]
 	}).(OrganizationManagerOrganizationIamBindingOutput)
 }
 
 type OrganizationManagerOrganizationIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (OrganizationManagerOrganizationIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OrganizationManagerOrganizationIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*OrganizationManagerOrganizationIamBinding)(nil)).Elem()
 }
 
 func (o OrganizationManagerOrganizationIamBindingMapOutput) ToOrganizationManagerOrganizationIamBindingMapOutput() OrganizationManagerOrganizationIamBindingMapOutput {
@@ -352,18 +289,16 @@ func (o OrganizationManagerOrganizationIamBindingMapOutput) ToOrganizationManage
 }
 
 func (o OrganizationManagerOrganizationIamBindingMapOutput) MapIndex(k pulumi.StringInput) OrganizationManagerOrganizationIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OrganizationManagerOrganizationIamBinding {
-		return vs[0].(map[string]OrganizationManagerOrganizationIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OrganizationManagerOrganizationIamBinding {
+		return vs[0].(map[string]*OrganizationManagerOrganizationIamBinding)[vs[1].(string)]
 	}).(OrganizationManagerOrganizationIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationManagerOrganizationIamBindingInput)(nil)).Elem(), &OrganizationManagerOrganizationIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationManagerOrganizationIamBindingPtrInput)(nil)).Elem(), &OrganizationManagerOrganizationIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationManagerOrganizationIamBindingArrayInput)(nil)).Elem(), OrganizationManagerOrganizationIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationManagerOrganizationIamBindingMapInput)(nil)).Elem(), OrganizationManagerOrganizationIamBindingMap{})
 	pulumi.RegisterOutputType(OrganizationManagerOrganizationIamBindingOutput{})
-	pulumi.RegisterOutputType(OrganizationManagerOrganizationIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationManagerOrganizationIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationManagerOrganizationIamBindingMapOutput{})
 }

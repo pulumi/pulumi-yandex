@@ -96,14 +96,14 @@ export class ContainerRepositoryIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: ContainerRepositoryIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerRepositoryIamBindingArgs | ContainerRepositoryIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerRepositoryIamBindingState | undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["repositoryId"] = state ? state.repositoryId : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["sleepAfter"] = state ? state.sleepAfter : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["sleepAfter"] = state ? state.sleepAfter : undefined;
         } else {
             const args = argsOrState as ContainerRepositoryIamBindingArgs | undefined;
             if ((!args || args.members === undefined) && !opts.urn) {
@@ -115,15 +115,15 @@ export class ContainerRepositoryIamBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["members"] = args ? args.members : undefined;
-            inputs["repositoryId"] = args ? args.repositoryId : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["sleepAfter"] = args ? args.sleepAfter : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ContainerRepositoryIamBinding.__pulumiType, name, inputs, opts);
+        super(ContainerRepositoryIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

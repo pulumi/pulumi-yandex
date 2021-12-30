@@ -155,28 +155,28 @@ export class YdbDatabaseDedicated extends pulumi.CustomResource {
      */
     constructor(name: string, args: YdbDatabaseDedicatedArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: YdbDatabaseDedicatedArgs | YdbDatabaseDedicatedState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as YdbDatabaseDedicatedState | undefined;
-            inputs["assignPublicIps"] = state ? state.assignPublicIps : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["databasePath"] = state ? state.databasePath : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["locationId"] = state ? state.locationId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["resourcePresetId"] = state ? state.resourcePresetId : undefined;
-            inputs["scalePolicy"] = state ? state.scalePolicy : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["storageConfig"] = state ? state.storageConfig : undefined;
-            inputs["subnetIds"] = state ? state.subnetIds : undefined;
-            inputs["tlsEnabled"] = state ? state.tlsEnabled : undefined;
-            inputs["ydbApiEndpoint"] = state ? state.ydbApiEndpoint : undefined;
-            inputs["ydbFullEndpoint"] = state ? state.ydbFullEndpoint : undefined;
+            resourceInputs["assignPublicIps"] = state ? state.assignPublicIps : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["databasePath"] = state ? state.databasePath : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["locationId"] = state ? state.locationId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["resourcePresetId"] = state ? state.resourcePresetId : undefined;
+            resourceInputs["scalePolicy"] = state ? state.scalePolicy : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storageConfig"] = state ? state.storageConfig : undefined;
+            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
+            resourceInputs["tlsEnabled"] = state ? state.tlsEnabled : undefined;
+            resourceInputs["ydbApiEndpoint"] = state ? state.ydbApiEndpoint : undefined;
+            resourceInputs["ydbFullEndpoint"] = state ? state.ydbFullEndpoint : undefined;
         } else {
             const args = argsOrState as YdbDatabaseDedicatedArgs | undefined;
             if ((!args || args.networkId === undefined) && !opts.urn) {
@@ -194,29 +194,29 @@ export class YdbDatabaseDedicated extends pulumi.CustomResource {
             if ((!args || args.subnetIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetIds'");
             }
-            inputs["assignPublicIps"] = args ? args.assignPublicIps : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["locationId"] = args ? args.locationId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["resourcePresetId"] = args ? args.resourcePresetId : undefined;
-            inputs["scalePolicy"] = args ? args.scalePolicy : undefined;
-            inputs["storageConfig"] = args ? args.storageConfig : undefined;
-            inputs["subnetIds"] = args ? args.subnetIds : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["databasePath"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["tlsEnabled"] = undefined /*out*/;
-            inputs["ydbApiEndpoint"] = undefined /*out*/;
-            inputs["ydbFullEndpoint"] = undefined /*out*/;
+            resourceInputs["assignPublicIps"] = args ? args.assignPublicIps : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["locationId"] = args ? args.locationId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["resourcePresetId"] = args ? args.resourcePresetId : undefined;
+            resourceInputs["scalePolicy"] = args ? args.scalePolicy : undefined;
+            resourceInputs["storageConfig"] = args ? args.storageConfig : undefined;
+            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["databasePath"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["tlsEnabled"] = undefined /*out*/;
+            resourceInputs["ydbApiEndpoint"] = undefined /*out*/;
+            resourceInputs["ydbFullEndpoint"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(YdbDatabaseDedicated.__pulumiType, name, inputs, opts);
+        super(YdbDatabaseDedicated.__pulumiType, name, resourceInputs, opts);
     }
 }
 

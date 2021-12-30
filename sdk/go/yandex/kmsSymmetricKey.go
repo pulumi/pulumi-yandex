@@ -167,7 +167,7 @@ type KmsSymmetricKeyInput interface {
 }
 
 func (*KmsSymmetricKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*KmsSymmetricKey)(nil))
+	return reflect.TypeOf((**KmsSymmetricKey)(nil)).Elem()
 }
 
 func (i *KmsSymmetricKey) ToKmsSymmetricKeyOutput() KmsSymmetricKeyOutput {
@@ -176,35 +176,6 @@ func (i *KmsSymmetricKey) ToKmsSymmetricKeyOutput() KmsSymmetricKeyOutput {
 
 func (i *KmsSymmetricKey) ToKmsSymmetricKeyOutputWithContext(ctx context.Context) KmsSymmetricKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KmsSymmetricKeyOutput)
-}
-
-func (i *KmsSymmetricKey) ToKmsSymmetricKeyPtrOutput() KmsSymmetricKeyPtrOutput {
-	return i.ToKmsSymmetricKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *KmsSymmetricKey) ToKmsSymmetricKeyPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KmsSymmetricKeyPtrOutput)
-}
-
-type KmsSymmetricKeyPtrInput interface {
-	pulumi.Input
-
-	ToKmsSymmetricKeyPtrOutput() KmsSymmetricKeyPtrOutput
-	ToKmsSymmetricKeyPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyPtrOutput
-}
-
-type kmsSymmetricKeyPtrType KmsSymmetricKeyArgs
-
-func (*kmsSymmetricKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KmsSymmetricKey)(nil))
-}
-
-func (i *kmsSymmetricKeyPtrType) ToKmsSymmetricKeyPtrOutput() KmsSymmetricKeyPtrOutput {
-	return i.ToKmsSymmetricKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *kmsSymmetricKeyPtrType) ToKmsSymmetricKeyPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KmsSymmetricKeyPtrOutput)
 }
 
 // KmsSymmetricKeyArrayInput is an input type that accepts KmsSymmetricKeyArray and KmsSymmetricKeyArrayOutput values.
@@ -260,7 +231,7 @@ func (i KmsSymmetricKeyMap) ToKmsSymmetricKeyMapOutputWithContext(ctx context.Co
 type KmsSymmetricKeyOutput struct{ *pulumi.OutputState }
 
 func (KmsSymmetricKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KmsSymmetricKey)(nil))
+	return reflect.TypeOf((**KmsSymmetricKey)(nil)).Elem()
 }
 
 func (o KmsSymmetricKeyOutput) ToKmsSymmetricKeyOutput() KmsSymmetricKeyOutput {
@@ -271,44 +242,10 @@ func (o KmsSymmetricKeyOutput) ToKmsSymmetricKeyOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o KmsSymmetricKeyOutput) ToKmsSymmetricKeyPtrOutput() KmsSymmetricKeyPtrOutput {
-	return o.ToKmsSymmetricKeyPtrOutputWithContext(context.Background())
-}
-
-func (o KmsSymmetricKeyOutput) ToKmsSymmetricKeyPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KmsSymmetricKey) *KmsSymmetricKey {
-		return &v
-	}).(KmsSymmetricKeyPtrOutput)
-}
-
-type KmsSymmetricKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (KmsSymmetricKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KmsSymmetricKey)(nil))
-}
-
-func (o KmsSymmetricKeyPtrOutput) ToKmsSymmetricKeyPtrOutput() KmsSymmetricKeyPtrOutput {
-	return o
-}
-
-func (o KmsSymmetricKeyPtrOutput) ToKmsSymmetricKeyPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyPtrOutput {
-	return o
-}
-
-func (o KmsSymmetricKeyPtrOutput) Elem() KmsSymmetricKeyOutput {
-	return o.ApplyT(func(v *KmsSymmetricKey) KmsSymmetricKey {
-		if v != nil {
-			return *v
-		}
-		var ret KmsSymmetricKey
-		return ret
-	}).(KmsSymmetricKeyOutput)
-}
-
 type KmsSymmetricKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (KmsSymmetricKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KmsSymmetricKey)(nil))
+	return reflect.TypeOf((*[]*KmsSymmetricKey)(nil)).Elem()
 }
 
 func (o KmsSymmetricKeyArrayOutput) ToKmsSymmetricKeyArrayOutput() KmsSymmetricKeyArrayOutput {
@@ -320,15 +257,15 @@ func (o KmsSymmetricKeyArrayOutput) ToKmsSymmetricKeyArrayOutputWithContext(ctx 
 }
 
 func (o KmsSymmetricKeyArrayOutput) Index(i pulumi.IntInput) KmsSymmetricKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KmsSymmetricKey {
-		return vs[0].([]KmsSymmetricKey)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KmsSymmetricKey {
+		return vs[0].([]*KmsSymmetricKey)[vs[1].(int)]
 	}).(KmsSymmetricKeyOutput)
 }
 
 type KmsSymmetricKeyMapOutput struct{ *pulumi.OutputState }
 
 func (KmsSymmetricKeyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KmsSymmetricKey)(nil))
+	return reflect.TypeOf((*map[string]*KmsSymmetricKey)(nil)).Elem()
 }
 
 func (o KmsSymmetricKeyMapOutput) ToKmsSymmetricKeyMapOutput() KmsSymmetricKeyMapOutput {
@@ -340,18 +277,16 @@ func (o KmsSymmetricKeyMapOutput) ToKmsSymmetricKeyMapOutputWithContext(ctx cont
 }
 
 func (o KmsSymmetricKeyMapOutput) MapIndex(k pulumi.StringInput) KmsSymmetricKeyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KmsSymmetricKey {
-		return vs[0].(map[string]KmsSymmetricKey)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KmsSymmetricKey {
+		return vs[0].(map[string]*KmsSymmetricKey)[vs[1].(string)]
 	}).(KmsSymmetricKeyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KmsSymmetricKeyInput)(nil)).Elem(), &KmsSymmetricKey{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KmsSymmetricKeyPtrInput)(nil)).Elem(), &KmsSymmetricKey{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KmsSymmetricKeyArrayInput)(nil)).Elem(), KmsSymmetricKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KmsSymmetricKeyMapInput)(nil)).Elem(), KmsSymmetricKeyMap{})
 	pulumi.RegisterOutputType(KmsSymmetricKeyOutput{})
-	pulumi.RegisterOutputType(KmsSymmetricKeyPtrOutput{})
 	pulumi.RegisterOutputType(KmsSymmetricKeyArrayOutput{})
 	pulumi.RegisterOutputType(KmsSymmetricKeyMapOutput{})
 }

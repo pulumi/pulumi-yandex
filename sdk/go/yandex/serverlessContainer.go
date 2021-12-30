@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewServerlessContainer(ctx, "test_container", &yandex.ServerlessContainerArgs{
+// 		_, err := yandex.NewServerlessContainer(ctx, "test-container", &yandex.ServerlessContainerArgs{
 // 			CoreFraction:     pulumi.Int(100),
 // 			Cores:            pulumi.Int(1),
 // 			Description:      pulumi.String("any description"),
@@ -53,7 +53,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewServerlessContainer(ctx, "test_container_with_digest", &yandex.ServerlessContainerArgs{
+// 		_, err := yandex.NewServerlessContainer(ctx, "test-container-with-digest", &yandex.ServerlessContainerArgs{
 // 			Image: &ServerlessContainerImageArgs{
 // 				Digest: pulumi.String("sha256:e1d772fa8795adac847a2420c87d0d2e3d38fb02f168cab8c0b5fe2fb95c47f4"),
 // 				Url:    pulumi.String("cr.yandex/yc/test-image:v1"),
@@ -303,7 +303,7 @@ type ServerlessContainerInput interface {
 }
 
 func (*ServerlessContainer) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessContainer)(nil))
+	return reflect.TypeOf((**ServerlessContainer)(nil)).Elem()
 }
 
 func (i *ServerlessContainer) ToServerlessContainerOutput() ServerlessContainerOutput {
@@ -312,35 +312,6 @@ func (i *ServerlessContainer) ToServerlessContainerOutput() ServerlessContainerO
 
 func (i *ServerlessContainer) ToServerlessContainerOutputWithContext(ctx context.Context) ServerlessContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessContainerOutput)
-}
-
-func (i *ServerlessContainer) ToServerlessContainerPtrOutput() ServerlessContainerPtrOutput {
-	return i.ToServerlessContainerPtrOutputWithContext(context.Background())
-}
-
-func (i *ServerlessContainer) ToServerlessContainerPtrOutputWithContext(ctx context.Context) ServerlessContainerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessContainerPtrOutput)
-}
-
-type ServerlessContainerPtrInput interface {
-	pulumi.Input
-
-	ToServerlessContainerPtrOutput() ServerlessContainerPtrOutput
-	ToServerlessContainerPtrOutputWithContext(ctx context.Context) ServerlessContainerPtrOutput
-}
-
-type serverlessContainerPtrType ServerlessContainerArgs
-
-func (*serverlessContainerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessContainer)(nil))
-}
-
-func (i *serverlessContainerPtrType) ToServerlessContainerPtrOutput() ServerlessContainerPtrOutput {
-	return i.ToServerlessContainerPtrOutputWithContext(context.Background())
-}
-
-func (i *serverlessContainerPtrType) ToServerlessContainerPtrOutputWithContext(ctx context.Context) ServerlessContainerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessContainerPtrOutput)
 }
 
 // ServerlessContainerArrayInput is an input type that accepts ServerlessContainerArray and ServerlessContainerArrayOutput values.
@@ -396,7 +367,7 @@ func (i ServerlessContainerMap) ToServerlessContainerMapOutputWithContext(ctx co
 type ServerlessContainerOutput struct{ *pulumi.OutputState }
 
 func (ServerlessContainerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessContainer)(nil))
+	return reflect.TypeOf((**ServerlessContainer)(nil)).Elem()
 }
 
 func (o ServerlessContainerOutput) ToServerlessContainerOutput() ServerlessContainerOutput {
@@ -407,44 +378,10 @@ func (o ServerlessContainerOutput) ToServerlessContainerOutputWithContext(ctx co
 	return o
 }
 
-func (o ServerlessContainerOutput) ToServerlessContainerPtrOutput() ServerlessContainerPtrOutput {
-	return o.ToServerlessContainerPtrOutputWithContext(context.Background())
-}
-
-func (o ServerlessContainerOutput) ToServerlessContainerPtrOutputWithContext(ctx context.Context) ServerlessContainerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessContainer) *ServerlessContainer {
-		return &v
-	}).(ServerlessContainerPtrOutput)
-}
-
-type ServerlessContainerPtrOutput struct{ *pulumi.OutputState }
-
-func (ServerlessContainerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessContainer)(nil))
-}
-
-func (o ServerlessContainerPtrOutput) ToServerlessContainerPtrOutput() ServerlessContainerPtrOutput {
-	return o
-}
-
-func (o ServerlessContainerPtrOutput) ToServerlessContainerPtrOutputWithContext(ctx context.Context) ServerlessContainerPtrOutput {
-	return o
-}
-
-func (o ServerlessContainerPtrOutput) Elem() ServerlessContainerOutput {
-	return o.ApplyT(func(v *ServerlessContainer) ServerlessContainer {
-		if v != nil {
-			return *v
-		}
-		var ret ServerlessContainer
-		return ret
-	}).(ServerlessContainerOutput)
-}
-
 type ServerlessContainerArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerlessContainerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServerlessContainer)(nil))
+	return reflect.TypeOf((*[]*ServerlessContainer)(nil)).Elem()
 }
 
 func (o ServerlessContainerArrayOutput) ToServerlessContainerArrayOutput() ServerlessContainerArrayOutput {
@@ -456,15 +393,15 @@ func (o ServerlessContainerArrayOutput) ToServerlessContainerArrayOutputWithCont
 }
 
 func (o ServerlessContainerArrayOutput) Index(i pulumi.IntInput) ServerlessContainerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerlessContainer {
-		return vs[0].([]ServerlessContainer)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerlessContainer {
+		return vs[0].([]*ServerlessContainer)[vs[1].(int)]
 	}).(ServerlessContainerOutput)
 }
 
 type ServerlessContainerMapOutput struct{ *pulumi.OutputState }
 
 func (ServerlessContainerMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServerlessContainer)(nil))
+	return reflect.TypeOf((*map[string]*ServerlessContainer)(nil)).Elem()
 }
 
 func (o ServerlessContainerMapOutput) ToServerlessContainerMapOutput() ServerlessContainerMapOutput {
@@ -476,18 +413,16 @@ func (o ServerlessContainerMapOutput) ToServerlessContainerMapOutputWithContext(
 }
 
 func (o ServerlessContainerMapOutput) MapIndex(k pulumi.StringInput) ServerlessContainerOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServerlessContainer {
-		return vs[0].(map[string]ServerlessContainer)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServerlessContainer {
+		return vs[0].(map[string]*ServerlessContainer)[vs[1].(string)]
 	}).(ServerlessContainerOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessContainerInput)(nil)).Elem(), &ServerlessContainer{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessContainerPtrInput)(nil)).Elem(), &ServerlessContainer{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessContainerArrayInput)(nil)).Elem(), ServerlessContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessContainerMapInput)(nil)).Elem(), ServerlessContainerMap{})
 	pulumi.RegisterOutputType(ServerlessContainerOutput{})
-	pulumi.RegisterOutputType(ServerlessContainerPtrOutput{})
 	pulumi.RegisterOutputType(ServerlessContainerArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessContainerMapOutput{})
 }

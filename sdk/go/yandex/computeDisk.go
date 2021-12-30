@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewComputeDisk(ctx, "_default", &yandex.ComputeDiskArgs{
+// 		_, err := yandex.NewComputeDisk(ctx, "default", &yandex.ComputeDiskArgs{
 // 			ImageId: pulumi.String("ubuntu-16.04-v20180727"),
 // 			Labels: pulumi.StringMap{
 // 				"environment": pulumi.String("test"),
@@ -319,7 +319,7 @@ type ComputeDiskInput interface {
 }
 
 func (*ComputeDisk) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeDisk)(nil))
+	return reflect.TypeOf((**ComputeDisk)(nil)).Elem()
 }
 
 func (i *ComputeDisk) ToComputeDiskOutput() ComputeDiskOutput {
@@ -328,35 +328,6 @@ func (i *ComputeDisk) ToComputeDiskOutput() ComputeDiskOutput {
 
 func (i *ComputeDisk) ToComputeDiskOutputWithContext(ctx context.Context) ComputeDiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeDiskOutput)
-}
-
-func (i *ComputeDisk) ToComputeDiskPtrOutput() ComputeDiskPtrOutput {
-	return i.ToComputeDiskPtrOutputWithContext(context.Background())
-}
-
-func (i *ComputeDisk) ToComputeDiskPtrOutputWithContext(ctx context.Context) ComputeDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeDiskPtrOutput)
-}
-
-type ComputeDiskPtrInput interface {
-	pulumi.Input
-
-	ToComputeDiskPtrOutput() ComputeDiskPtrOutput
-	ToComputeDiskPtrOutputWithContext(ctx context.Context) ComputeDiskPtrOutput
-}
-
-type computeDiskPtrType ComputeDiskArgs
-
-func (*computeDiskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeDisk)(nil))
-}
-
-func (i *computeDiskPtrType) ToComputeDiskPtrOutput() ComputeDiskPtrOutput {
-	return i.ToComputeDiskPtrOutputWithContext(context.Background())
-}
-
-func (i *computeDiskPtrType) ToComputeDiskPtrOutputWithContext(ctx context.Context) ComputeDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeDiskPtrOutput)
 }
 
 // ComputeDiskArrayInput is an input type that accepts ComputeDiskArray and ComputeDiskArrayOutput values.
@@ -412,7 +383,7 @@ func (i ComputeDiskMap) ToComputeDiskMapOutputWithContext(ctx context.Context) C
 type ComputeDiskOutput struct{ *pulumi.OutputState }
 
 func (ComputeDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeDisk)(nil))
+	return reflect.TypeOf((**ComputeDisk)(nil)).Elem()
 }
 
 func (o ComputeDiskOutput) ToComputeDiskOutput() ComputeDiskOutput {
@@ -423,44 +394,10 @@ func (o ComputeDiskOutput) ToComputeDiskOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o ComputeDiskOutput) ToComputeDiskPtrOutput() ComputeDiskPtrOutput {
-	return o.ToComputeDiskPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeDiskOutput) ToComputeDiskPtrOutputWithContext(ctx context.Context) ComputeDiskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeDisk) *ComputeDisk {
-		return &v
-	}).(ComputeDiskPtrOutput)
-}
-
-type ComputeDiskPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeDiskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeDisk)(nil))
-}
-
-func (o ComputeDiskPtrOutput) ToComputeDiskPtrOutput() ComputeDiskPtrOutput {
-	return o
-}
-
-func (o ComputeDiskPtrOutput) ToComputeDiskPtrOutputWithContext(ctx context.Context) ComputeDiskPtrOutput {
-	return o
-}
-
-func (o ComputeDiskPtrOutput) Elem() ComputeDiskOutput {
-	return o.ApplyT(func(v *ComputeDisk) ComputeDisk {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeDisk
-		return ret
-	}).(ComputeDiskOutput)
-}
-
 type ComputeDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (ComputeDiskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComputeDisk)(nil))
+	return reflect.TypeOf((*[]*ComputeDisk)(nil)).Elem()
 }
 
 func (o ComputeDiskArrayOutput) ToComputeDiskArrayOutput() ComputeDiskArrayOutput {
@@ -472,15 +409,15 @@ func (o ComputeDiskArrayOutput) ToComputeDiskArrayOutputWithContext(ctx context.
 }
 
 func (o ComputeDiskArrayOutput) Index(i pulumi.IntInput) ComputeDiskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeDisk {
-		return vs[0].([]ComputeDisk)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComputeDisk {
+		return vs[0].([]*ComputeDisk)[vs[1].(int)]
 	}).(ComputeDiskOutput)
 }
 
 type ComputeDiskMapOutput struct{ *pulumi.OutputState }
 
 func (ComputeDiskMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ComputeDisk)(nil))
+	return reflect.TypeOf((*map[string]*ComputeDisk)(nil)).Elem()
 }
 
 func (o ComputeDiskMapOutput) ToComputeDiskMapOutput() ComputeDiskMapOutput {
@@ -492,18 +429,16 @@ func (o ComputeDiskMapOutput) ToComputeDiskMapOutputWithContext(ctx context.Cont
 }
 
 func (o ComputeDiskMapOutput) MapIndex(k pulumi.StringInput) ComputeDiskOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ComputeDisk {
-		return vs[0].(map[string]ComputeDisk)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ComputeDisk {
+		return vs[0].(map[string]*ComputeDisk)[vs[1].(string)]
 	}).(ComputeDiskOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskInput)(nil)).Elem(), &ComputeDisk{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskPtrInput)(nil)).Elem(), &ComputeDisk{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskArrayInput)(nil)).Elem(), ComputeDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskMapInput)(nil)).Elem(), ComputeDiskMap{})
 	pulumi.RegisterOutputType(ComputeDiskOutput{})
-	pulumi.RegisterOutputType(ComputeDiskPtrOutput{})
 	pulumi.RegisterOutputType(ComputeDiskArrayOutput{})
 	pulumi.RegisterOutputType(ComputeDiskMapOutput{})
 }

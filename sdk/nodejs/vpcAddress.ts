@@ -120,33 +120,33 @@ export class VpcAddress extends pulumi.CustomResource {
      */
     constructor(name: string, args?: VpcAddressArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcAddressArgs | VpcAddressState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcAddressState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["externalIpv4Address"] = state ? state.externalIpv4Address : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["reserved"] = state ? state.reserved : undefined;
-            inputs["used"] = state ? state.used : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["externalIpv4Address"] = state ? state.externalIpv4Address : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["reserved"] = state ? state.reserved : undefined;
+            resourceInputs["used"] = state ? state.used : undefined;
         } else {
             const args = argsOrState as VpcAddressArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["externalIpv4Address"] = args ? args.externalIpv4Address : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["reserved"] = undefined /*out*/;
-            inputs["used"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["externalIpv4Address"] = args ? args.externalIpv4Address : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["reserved"] = undefined /*out*/;
+            resourceInputs["used"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(VpcAddress.__pulumiType, name, inputs, opts);
+        super(VpcAddress.__pulumiType, name, resourceInputs, opts);
     }
 }
 

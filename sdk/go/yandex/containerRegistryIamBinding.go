@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewContainerRegistry(ctx, "your_registry", &yandex.ContainerRegistryArgs{
+// 		_, err := yandex.NewContainerRegistry(ctx, "your-registry", &yandex.ContainerRegistryArgs{
 // 			FolderId: pulumi.String("your-folder-id"),
 // 		})
 // 		if err != nil {
@@ -182,7 +182,7 @@ type ContainerRegistryIamBindingInput interface {
 }
 
 func (*ContainerRegistryIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerRegistryIamBinding)(nil))
+	return reflect.TypeOf((**ContainerRegistryIamBinding)(nil)).Elem()
 }
 
 func (i *ContainerRegistryIamBinding) ToContainerRegistryIamBindingOutput() ContainerRegistryIamBindingOutput {
@@ -191,35 +191,6 @@ func (i *ContainerRegistryIamBinding) ToContainerRegistryIamBindingOutput() Cont
 
 func (i *ContainerRegistryIamBinding) ToContainerRegistryIamBindingOutputWithContext(ctx context.Context) ContainerRegistryIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryIamBindingOutput)
-}
-
-func (i *ContainerRegistryIamBinding) ToContainerRegistryIamBindingPtrOutput() ContainerRegistryIamBindingPtrOutput {
-	return i.ToContainerRegistryIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *ContainerRegistryIamBinding) ToContainerRegistryIamBindingPtrOutputWithContext(ctx context.Context) ContainerRegistryIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryIamBindingPtrOutput)
-}
-
-type ContainerRegistryIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToContainerRegistryIamBindingPtrOutput() ContainerRegistryIamBindingPtrOutput
-	ToContainerRegistryIamBindingPtrOutputWithContext(ctx context.Context) ContainerRegistryIamBindingPtrOutput
-}
-
-type containerRegistryIamBindingPtrType ContainerRegistryIamBindingArgs
-
-func (*containerRegistryIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerRegistryIamBinding)(nil))
-}
-
-func (i *containerRegistryIamBindingPtrType) ToContainerRegistryIamBindingPtrOutput() ContainerRegistryIamBindingPtrOutput {
-	return i.ToContainerRegistryIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *containerRegistryIamBindingPtrType) ToContainerRegistryIamBindingPtrOutputWithContext(ctx context.Context) ContainerRegistryIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryIamBindingPtrOutput)
 }
 
 // ContainerRegistryIamBindingArrayInput is an input type that accepts ContainerRegistryIamBindingArray and ContainerRegistryIamBindingArrayOutput values.
@@ -275,7 +246,7 @@ func (i ContainerRegistryIamBindingMap) ToContainerRegistryIamBindingMapOutputWi
 type ContainerRegistryIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerRegistryIamBinding)(nil))
+	return reflect.TypeOf((**ContainerRegistryIamBinding)(nil)).Elem()
 }
 
 func (o ContainerRegistryIamBindingOutput) ToContainerRegistryIamBindingOutput() ContainerRegistryIamBindingOutput {
@@ -286,44 +257,10 @@ func (o ContainerRegistryIamBindingOutput) ToContainerRegistryIamBindingOutputWi
 	return o
 }
 
-func (o ContainerRegistryIamBindingOutput) ToContainerRegistryIamBindingPtrOutput() ContainerRegistryIamBindingPtrOutput {
-	return o.ToContainerRegistryIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o ContainerRegistryIamBindingOutput) ToContainerRegistryIamBindingPtrOutputWithContext(ctx context.Context) ContainerRegistryIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerRegistryIamBinding) *ContainerRegistryIamBinding {
-		return &v
-	}).(ContainerRegistryIamBindingPtrOutput)
-}
-
-type ContainerRegistryIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (ContainerRegistryIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerRegistryIamBinding)(nil))
-}
-
-func (o ContainerRegistryIamBindingPtrOutput) ToContainerRegistryIamBindingPtrOutput() ContainerRegistryIamBindingPtrOutput {
-	return o
-}
-
-func (o ContainerRegistryIamBindingPtrOutput) ToContainerRegistryIamBindingPtrOutputWithContext(ctx context.Context) ContainerRegistryIamBindingPtrOutput {
-	return o
-}
-
-func (o ContainerRegistryIamBindingPtrOutput) Elem() ContainerRegistryIamBindingOutput {
-	return o.ApplyT(func(v *ContainerRegistryIamBinding) ContainerRegistryIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret ContainerRegistryIamBinding
-		return ret
-	}).(ContainerRegistryIamBindingOutput)
-}
-
 type ContainerRegistryIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerRegistryIamBinding)(nil))
+	return reflect.TypeOf((*[]*ContainerRegistryIamBinding)(nil)).Elem()
 }
 
 func (o ContainerRegistryIamBindingArrayOutput) ToContainerRegistryIamBindingArrayOutput() ContainerRegistryIamBindingArrayOutput {
@@ -335,15 +272,15 @@ func (o ContainerRegistryIamBindingArrayOutput) ToContainerRegistryIamBindingArr
 }
 
 func (o ContainerRegistryIamBindingArrayOutput) Index(i pulumi.IntInput) ContainerRegistryIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerRegistryIamBinding {
-		return vs[0].([]ContainerRegistryIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerRegistryIamBinding {
+		return vs[0].([]*ContainerRegistryIamBinding)[vs[1].(int)]
 	}).(ContainerRegistryIamBindingOutput)
 }
 
 type ContainerRegistryIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ContainerRegistryIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*ContainerRegistryIamBinding)(nil)).Elem()
 }
 
 func (o ContainerRegistryIamBindingMapOutput) ToContainerRegistryIamBindingMapOutput() ContainerRegistryIamBindingMapOutput {
@@ -355,18 +292,16 @@ func (o ContainerRegistryIamBindingMapOutput) ToContainerRegistryIamBindingMapOu
 }
 
 func (o ContainerRegistryIamBindingMapOutput) MapIndex(k pulumi.StringInput) ContainerRegistryIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ContainerRegistryIamBinding {
-		return vs[0].(map[string]ContainerRegistryIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ContainerRegistryIamBinding {
+		return vs[0].(map[string]*ContainerRegistryIamBinding)[vs[1].(string)]
 	}).(ContainerRegistryIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryIamBindingInput)(nil)).Elem(), &ContainerRegistryIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryIamBindingPtrInput)(nil)).Elem(), &ContainerRegistryIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryIamBindingArrayInput)(nil)).Elem(), ContainerRegistryIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerRegistryIamBindingMapInput)(nil)).Elem(), ContainerRegistryIamBindingMap{})
 	pulumi.RegisterOutputType(ContainerRegistryIamBindingOutput{})
-	pulumi.RegisterOutputType(ContainerRegistryIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryIamBindingMapOutput{})
 }

@@ -371,7 +371,7 @@ type MdbGreenplumClusterInput interface {
 }
 
 func (*MdbGreenplumCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbGreenplumCluster)(nil))
+	return reflect.TypeOf((**MdbGreenplumCluster)(nil)).Elem()
 }
 
 func (i *MdbGreenplumCluster) ToMdbGreenplumClusterOutput() MdbGreenplumClusterOutput {
@@ -380,35 +380,6 @@ func (i *MdbGreenplumCluster) ToMdbGreenplumClusterOutput() MdbGreenplumClusterO
 
 func (i *MdbGreenplumCluster) ToMdbGreenplumClusterOutputWithContext(ctx context.Context) MdbGreenplumClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterOutput)
-}
-
-func (i *MdbGreenplumCluster) ToMdbGreenplumClusterPtrOutput() MdbGreenplumClusterPtrOutput {
-	return i.ToMdbGreenplumClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *MdbGreenplumCluster) ToMdbGreenplumClusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterPtrOutput)
-}
-
-type MdbGreenplumClusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbGreenplumClusterPtrOutput() MdbGreenplumClusterPtrOutput
-	ToMdbGreenplumClusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterPtrOutput
-}
-
-type mdbGreenplumClusterPtrType MdbGreenplumClusterArgs
-
-func (*mdbGreenplumClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumCluster)(nil))
-}
-
-func (i *mdbGreenplumClusterPtrType) ToMdbGreenplumClusterPtrOutput() MdbGreenplumClusterPtrOutput {
-	return i.ToMdbGreenplumClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbGreenplumClusterPtrType) ToMdbGreenplumClusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterPtrOutput)
 }
 
 // MdbGreenplumClusterArrayInput is an input type that accepts MdbGreenplumClusterArray and MdbGreenplumClusterArrayOutput values.
@@ -464,7 +435,7 @@ func (i MdbGreenplumClusterMap) ToMdbGreenplumClusterMapOutputWithContext(ctx co
 type MdbGreenplumClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbGreenplumClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbGreenplumCluster)(nil))
+	return reflect.TypeOf((**MdbGreenplumCluster)(nil)).Elem()
 }
 
 func (o MdbGreenplumClusterOutput) ToMdbGreenplumClusterOutput() MdbGreenplumClusterOutput {
@@ -475,44 +446,10 @@ func (o MdbGreenplumClusterOutput) ToMdbGreenplumClusterOutputWithContext(ctx co
 	return o
 }
 
-func (o MdbGreenplumClusterOutput) ToMdbGreenplumClusterPtrOutput() MdbGreenplumClusterPtrOutput {
-	return o.ToMdbGreenplumClusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbGreenplumClusterOutput) ToMdbGreenplumClusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbGreenplumCluster) *MdbGreenplumCluster {
-		return &v
-	}).(MdbGreenplumClusterPtrOutput)
-}
-
-type MdbGreenplumClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbGreenplumClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumCluster)(nil))
-}
-
-func (o MdbGreenplumClusterPtrOutput) ToMdbGreenplumClusterPtrOutput() MdbGreenplumClusterPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterPtrOutput) ToMdbGreenplumClusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterPtrOutput) Elem() MdbGreenplumClusterOutput {
-	return o.ApplyT(func(v *MdbGreenplumCluster) MdbGreenplumCluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbGreenplumCluster
-		return ret
-	}).(MdbGreenplumClusterOutput)
-}
-
 type MdbGreenplumClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (MdbGreenplumClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MdbGreenplumCluster)(nil))
+	return reflect.TypeOf((*[]*MdbGreenplumCluster)(nil)).Elem()
 }
 
 func (o MdbGreenplumClusterArrayOutput) ToMdbGreenplumClusterArrayOutput() MdbGreenplumClusterArrayOutput {
@@ -524,15 +461,15 @@ func (o MdbGreenplumClusterArrayOutput) ToMdbGreenplumClusterArrayOutputWithCont
 }
 
 func (o MdbGreenplumClusterArrayOutput) Index(i pulumi.IntInput) MdbGreenplumClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbGreenplumCluster {
-		return vs[0].([]MdbGreenplumCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MdbGreenplumCluster {
+		return vs[0].([]*MdbGreenplumCluster)[vs[1].(int)]
 	}).(MdbGreenplumClusterOutput)
 }
 
 type MdbGreenplumClusterMapOutput struct{ *pulumi.OutputState }
 
 func (MdbGreenplumClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MdbGreenplumCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbGreenplumCluster)(nil)).Elem()
 }
 
 func (o MdbGreenplumClusterMapOutput) ToMdbGreenplumClusterMapOutput() MdbGreenplumClusterMapOutput {
@@ -544,18 +481,16 @@ func (o MdbGreenplumClusterMapOutput) ToMdbGreenplumClusterMapOutputWithContext(
 }
 
 func (o MdbGreenplumClusterMapOutput) MapIndex(k pulumi.StringInput) MdbGreenplumClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MdbGreenplumCluster {
-		return vs[0].(map[string]MdbGreenplumCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MdbGreenplumCluster {
+		return vs[0].(map[string]*MdbGreenplumCluster)[vs[1].(string)]
 	}).(MdbGreenplumClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterInput)(nil)).Elem(), &MdbGreenplumCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterPtrInput)(nil)).Elem(), &MdbGreenplumCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterArrayInput)(nil)).Elem(), MdbGreenplumClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMapInput)(nil)).Elem(), MdbGreenplumClusterMap{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterOutput{})
-	pulumi.RegisterOutputType(MdbGreenplumClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterArrayOutput{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterMapOutput{})
 }

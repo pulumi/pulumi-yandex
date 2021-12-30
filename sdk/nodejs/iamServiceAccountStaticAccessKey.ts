@@ -95,36 +95,36 @@ export class IamServiceAccountStaticAccessKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: IamServiceAccountStaticAccessKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamServiceAccountStaticAccessKeyArgs | IamServiceAccountStaticAccessKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamServiceAccountStaticAccessKeyState | undefined;
-            inputs["accessKey"] = state ? state.accessKey : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["encryptedSecretKey"] = state ? state.encryptedSecretKey : undefined;
-            inputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
-            inputs["pgpKey"] = state ? state.pgpKey : undefined;
-            inputs["secretKey"] = state ? state.secretKey : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptedSecretKey"] = state ? state.encryptedSecretKey : undefined;
+            resourceInputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
+            resourceInputs["pgpKey"] = state ? state.pgpKey : undefined;
+            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
         } else {
             const args = argsOrState as IamServiceAccountStaticAccessKeyArgs | undefined;
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["pgpKey"] = args ? args.pgpKey : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["accessKey"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["encryptedSecretKey"] = undefined /*out*/;
-            inputs["keyFingerprint"] = undefined /*out*/;
-            inputs["secretKey"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["pgpKey"] = args ? args.pgpKey : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["accessKey"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["encryptedSecretKey"] = undefined /*out*/;
+            resourceInputs["keyFingerprint"] = undefined /*out*/;
+            resourceInputs["secretKey"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(IamServiceAccountStaticAccessKey.__pulumiType, name, inputs, opts);
+        super(IamServiceAccountStaticAccessKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

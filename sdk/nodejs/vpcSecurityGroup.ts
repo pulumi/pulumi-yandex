@@ -127,38 +127,38 @@ export class VpcSecurityGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: VpcSecurityGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcSecurityGroupArgs | VpcSecurityGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcSecurityGroupState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["egresses"] = state ? state.egresses : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["ingresses"] = state ? state.ingresses : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["egresses"] = state ? state.egresses : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["ingresses"] = state ? state.ingresses : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as VpcSecurityGroupArgs | undefined;
             if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["egresses"] = args ? args.egresses : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["ingresses"] = args ? args.ingresses : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["egresses"] = args ? args.egresses : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["ingresses"] = args ? args.ingresses : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(VpcSecurityGroup.__pulumiType, name, inputs, opts);
+        super(VpcSecurityGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -191,7 +191,7 @@ type CdnResourceInput interface {
 }
 
 func (*CdnResource) ElementType() reflect.Type {
-	return reflect.TypeOf((*CdnResource)(nil))
+	return reflect.TypeOf((**CdnResource)(nil)).Elem()
 }
 
 func (i *CdnResource) ToCdnResourceOutput() CdnResourceOutput {
@@ -200,35 +200,6 @@ func (i *CdnResource) ToCdnResourceOutput() CdnResourceOutput {
 
 func (i *CdnResource) ToCdnResourceOutputWithContext(ctx context.Context) CdnResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CdnResourceOutput)
-}
-
-func (i *CdnResource) ToCdnResourcePtrOutput() CdnResourcePtrOutput {
-	return i.ToCdnResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *CdnResource) ToCdnResourcePtrOutputWithContext(ctx context.Context) CdnResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CdnResourcePtrOutput)
-}
-
-type CdnResourcePtrInput interface {
-	pulumi.Input
-
-	ToCdnResourcePtrOutput() CdnResourcePtrOutput
-	ToCdnResourcePtrOutputWithContext(ctx context.Context) CdnResourcePtrOutput
-}
-
-type cdnResourcePtrType CdnResourceArgs
-
-func (*cdnResourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CdnResource)(nil))
-}
-
-func (i *cdnResourcePtrType) ToCdnResourcePtrOutput() CdnResourcePtrOutput {
-	return i.ToCdnResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *cdnResourcePtrType) ToCdnResourcePtrOutputWithContext(ctx context.Context) CdnResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CdnResourcePtrOutput)
 }
 
 // CdnResourceArrayInput is an input type that accepts CdnResourceArray and CdnResourceArrayOutput values.
@@ -284,7 +255,7 @@ func (i CdnResourceMap) ToCdnResourceMapOutputWithContext(ctx context.Context) C
 type CdnResourceOutput struct{ *pulumi.OutputState }
 
 func (CdnResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CdnResource)(nil))
+	return reflect.TypeOf((**CdnResource)(nil)).Elem()
 }
 
 func (o CdnResourceOutput) ToCdnResourceOutput() CdnResourceOutput {
@@ -295,44 +266,10 @@ func (o CdnResourceOutput) ToCdnResourceOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o CdnResourceOutput) ToCdnResourcePtrOutput() CdnResourcePtrOutput {
-	return o.ToCdnResourcePtrOutputWithContext(context.Background())
-}
-
-func (o CdnResourceOutput) ToCdnResourcePtrOutputWithContext(ctx context.Context) CdnResourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnResource) *CdnResource {
-		return &v
-	}).(CdnResourcePtrOutput)
-}
-
-type CdnResourcePtrOutput struct{ *pulumi.OutputState }
-
-func (CdnResourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CdnResource)(nil))
-}
-
-func (o CdnResourcePtrOutput) ToCdnResourcePtrOutput() CdnResourcePtrOutput {
-	return o
-}
-
-func (o CdnResourcePtrOutput) ToCdnResourcePtrOutputWithContext(ctx context.Context) CdnResourcePtrOutput {
-	return o
-}
-
-func (o CdnResourcePtrOutput) Elem() CdnResourceOutput {
-	return o.ApplyT(func(v *CdnResource) CdnResource {
-		if v != nil {
-			return *v
-		}
-		var ret CdnResource
-		return ret
-	}).(CdnResourceOutput)
-}
-
 type CdnResourceArrayOutput struct{ *pulumi.OutputState }
 
 func (CdnResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CdnResource)(nil))
+	return reflect.TypeOf((*[]*CdnResource)(nil)).Elem()
 }
 
 func (o CdnResourceArrayOutput) ToCdnResourceArrayOutput() CdnResourceArrayOutput {
@@ -344,15 +281,15 @@ func (o CdnResourceArrayOutput) ToCdnResourceArrayOutputWithContext(ctx context.
 }
 
 func (o CdnResourceArrayOutput) Index(i pulumi.IntInput) CdnResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CdnResource {
-		return vs[0].([]CdnResource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CdnResource {
+		return vs[0].([]*CdnResource)[vs[1].(int)]
 	}).(CdnResourceOutput)
 }
 
 type CdnResourceMapOutput struct{ *pulumi.OutputState }
 
 func (CdnResourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CdnResource)(nil))
+	return reflect.TypeOf((*map[string]*CdnResource)(nil)).Elem()
 }
 
 func (o CdnResourceMapOutput) ToCdnResourceMapOutput() CdnResourceMapOutput {
@@ -364,18 +301,16 @@ func (o CdnResourceMapOutput) ToCdnResourceMapOutputWithContext(ctx context.Cont
 }
 
 func (o CdnResourceMapOutput) MapIndex(k pulumi.StringInput) CdnResourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CdnResource {
-		return vs[0].(map[string]CdnResource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CdnResource {
+		return vs[0].(map[string]*CdnResource)[vs[1].(string)]
 	}).(CdnResourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnResourceInput)(nil)).Elem(), &CdnResource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CdnResourcePtrInput)(nil)).Elem(), &CdnResource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnResourceArrayInput)(nil)).Elem(), CdnResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnResourceMapInput)(nil)).Elem(), CdnResourceMap{})
 	pulumi.RegisterOutputType(CdnResourceOutput{})
-	pulumi.RegisterOutputType(CdnResourcePtrOutput{})
 	pulumi.RegisterOutputType(CdnResourceArrayOutput{})
 	pulumi.RegisterOutputType(CdnResourceMapOutput{})
 }

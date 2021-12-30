@@ -219,7 +219,7 @@ type VpcAddressInput interface {
 }
 
 func (*VpcAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAddress)(nil))
+	return reflect.TypeOf((**VpcAddress)(nil)).Elem()
 }
 
 func (i *VpcAddress) ToVpcAddressOutput() VpcAddressOutput {
@@ -228,35 +228,6 @@ func (i *VpcAddress) ToVpcAddressOutput() VpcAddressOutput {
 
 func (i *VpcAddress) ToVpcAddressOutputWithContext(ctx context.Context) VpcAddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAddressOutput)
-}
-
-func (i *VpcAddress) ToVpcAddressPtrOutput() VpcAddressPtrOutput {
-	return i.ToVpcAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *VpcAddress) ToVpcAddressPtrOutputWithContext(ctx context.Context) VpcAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcAddressPtrOutput)
-}
-
-type VpcAddressPtrInput interface {
-	pulumi.Input
-
-	ToVpcAddressPtrOutput() VpcAddressPtrOutput
-	ToVpcAddressPtrOutputWithContext(ctx context.Context) VpcAddressPtrOutput
-}
-
-type vpcAddressPtrType VpcAddressArgs
-
-func (*vpcAddressPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcAddress)(nil))
-}
-
-func (i *vpcAddressPtrType) ToVpcAddressPtrOutput() VpcAddressPtrOutput {
-	return i.ToVpcAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *vpcAddressPtrType) ToVpcAddressPtrOutputWithContext(ctx context.Context) VpcAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcAddressPtrOutput)
 }
 
 // VpcAddressArrayInput is an input type that accepts VpcAddressArray and VpcAddressArrayOutput values.
@@ -312,7 +283,7 @@ func (i VpcAddressMap) ToVpcAddressMapOutputWithContext(ctx context.Context) Vpc
 type VpcAddressOutput struct{ *pulumi.OutputState }
 
 func (VpcAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAddress)(nil))
+	return reflect.TypeOf((**VpcAddress)(nil)).Elem()
 }
 
 func (o VpcAddressOutput) ToVpcAddressOutput() VpcAddressOutput {
@@ -323,44 +294,10 @@ func (o VpcAddressOutput) ToVpcAddressOutputWithContext(ctx context.Context) Vpc
 	return o
 }
 
-func (o VpcAddressOutput) ToVpcAddressPtrOutput() VpcAddressPtrOutput {
-	return o.ToVpcAddressPtrOutputWithContext(context.Background())
-}
-
-func (o VpcAddressOutput) ToVpcAddressPtrOutputWithContext(ctx context.Context) VpcAddressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcAddress) *VpcAddress {
-		return &v
-	}).(VpcAddressPtrOutput)
-}
-
-type VpcAddressPtrOutput struct{ *pulumi.OutputState }
-
-func (VpcAddressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcAddress)(nil))
-}
-
-func (o VpcAddressPtrOutput) ToVpcAddressPtrOutput() VpcAddressPtrOutput {
-	return o
-}
-
-func (o VpcAddressPtrOutput) ToVpcAddressPtrOutputWithContext(ctx context.Context) VpcAddressPtrOutput {
-	return o
-}
-
-func (o VpcAddressPtrOutput) Elem() VpcAddressOutput {
-	return o.ApplyT(func(v *VpcAddress) VpcAddress {
-		if v != nil {
-			return *v
-		}
-		var ret VpcAddress
-		return ret
-	}).(VpcAddressOutput)
-}
-
 type VpcAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcAddressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VpcAddress)(nil))
+	return reflect.TypeOf((*[]*VpcAddress)(nil)).Elem()
 }
 
 func (o VpcAddressArrayOutput) ToVpcAddressArrayOutput() VpcAddressArrayOutput {
@@ -372,15 +309,15 @@ func (o VpcAddressArrayOutput) ToVpcAddressArrayOutputWithContext(ctx context.Co
 }
 
 func (o VpcAddressArrayOutput) Index(i pulumi.IntInput) VpcAddressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcAddress {
-		return vs[0].([]VpcAddress)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcAddress {
+		return vs[0].([]*VpcAddress)[vs[1].(int)]
 	}).(VpcAddressOutput)
 }
 
 type VpcAddressMapOutput struct{ *pulumi.OutputState }
 
 func (VpcAddressMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VpcAddress)(nil))
+	return reflect.TypeOf((*map[string]*VpcAddress)(nil)).Elem()
 }
 
 func (o VpcAddressMapOutput) ToVpcAddressMapOutput() VpcAddressMapOutput {
@@ -392,18 +329,16 @@ func (o VpcAddressMapOutput) ToVpcAddressMapOutputWithContext(ctx context.Contex
 }
 
 func (o VpcAddressMapOutput) MapIndex(k pulumi.StringInput) VpcAddressOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VpcAddress {
-		return vs[0].(map[string]VpcAddress)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VpcAddress {
+		return vs[0].(map[string]*VpcAddress)[vs[1].(string)]
 	}).(VpcAddressOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressInput)(nil)).Elem(), &VpcAddress{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressPtrInput)(nil)).Elem(), &VpcAddress{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressArrayInput)(nil)).Elem(), VpcAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcAddressMapInput)(nil)).Elem(), VpcAddressMap{})
 	pulumi.RegisterOutputType(VpcAddressOutput{})
-	pulumi.RegisterOutputType(VpcAddressPtrOutput{})
 	pulumi.RegisterOutputType(VpcAddressArrayOutput{})
 	pulumi.RegisterOutputType(VpcAddressMapOutput{})
 }

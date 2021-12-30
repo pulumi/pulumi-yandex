@@ -133,22 +133,22 @@ export class VpcSecurityGroupRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: VpcSecurityGroupRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcSecurityGroupRuleArgs | VpcSecurityGroupRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcSecurityGroupRuleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["fromPort"] = state ? state.fromPort : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["predefinedTarget"] = state ? state.predefinedTarget : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["securityGroupBinding"] = state ? state.securityGroupBinding : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["toPort"] = state ? state.toPort : undefined;
-            inputs["v4CidrBlocks"] = state ? state.v4CidrBlocks : undefined;
-            inputs["v6CidrBlocks"] = state ? state.v6CidrBlocks : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["fromPort"] = state ? state.fromPort : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["predefinedTarget"] = state ? state.predefinedTarget : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["securityGroupBinding"] = state ? state.securityGroupBinding : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["toPort"] = state ? state.toPort : undefined;
+            resourceInputs["v4CidrBlocks"] = state ? state.v4CidrBlocks : undefined;
+            resourceInputs["v6CidrBlocks"] = state ? state.v6CidrBlocks : undefined;
         } else {
             const args = argsOrState as VpcSecurityGroupRuleArgs | undefined;
             if ((!args || args.direction === undefined) && !opts.urn) {
@@ -157,23 +157,23 @@ export class VpcSecurityGroupRule extends pulumi.CustomResource {
             if ((!args || args.securityGroupBinding === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupBinding'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["fromPort"] = args ? args.fromPort : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["predefinedTarget"] = args ? args.predefinedTarget : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["securityGroupBinding"] = args ? args.securityGroupBinding : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["toPort"] = args ? args.toPort : undefined;
-            inputs["v4CidrBlocks"] = args ? args.v4CidrBlocks : undefined;
-            inputs["v6CidrBlocks"] = args ? args.v6CidrBlocks : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["fromPort"] = args ? args.fromPort : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["predefinedTarget"] = args ? args.predefinedTarget : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["securityGroupBinding"] = args ? args.securityGroupBinding : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["toPort"] = args ? args.toPort : undefined;
+            resourceInputs["v4CidrBlocks"] = args ? args.v4CidrBlocks : undefined;
+            resourceInputs["v6CidrBlocks"] = args ? args.v6CidrBlocks : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(VpcSecurityGroupRule.__pulumiType, name, inputs, opts);
+        super(VpcSecurityGroupRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

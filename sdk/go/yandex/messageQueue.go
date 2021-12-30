@@ -273,7 +273,7 @@ type MessageQueueInput interface {
 }
 
 func (*MessageQueue) ElementType() reflect.Type {
-	return reflect.TypeOf((*MessageQueue)(nil))
+	return reflect.TypeOf((**MessageQueue)(nil)).Elem()
 }
 
 func (i *MessageQueue) ToMessageQueueOutput() MessageQueueOutput {
@@ -282,35 +282,6 @@ func (i *MessageQueue) ToMessageQueueOutput() MessageQueueOutput {
 
 func (i *MessageQueue) ToMessageQueueOutputWithContext(ctx context.Context) MessageQueueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MessageQueueOutput)
-}
-
-func (i *MessageQueue) ToMessageQueuePtrOutput() MessageQueuePtrOutput {
-	return i.ToMessageQueuePtrOutputWithContext(context.Background())
-}
-
-func (i *MessageQueue) ToMessageQueuePtrOutputWithContext(ctx context.Context) MessageQueuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MessageQueuePtrOutput)
-}
-
-type MessageQueuePtrInput interface {
-	pulumi.Input
-
-	ToMessageQueuePtrOutput() MessageQueuePtrOutput
-	ToMessageQueuePtrOutputWithContext(ctx context.Context) MessageQueuePtrOutput
-}
-
-type messageQueuePtrType MessageQueueArgs
-
-func (*messageQueuePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MessageQueue)(nil))
-}
-
-func (i *messageQueuePtrType) ToMessageQueuePtrOutput() MessageQueuePtrOutput {
-	return i.ToMessageQueuePtrOutputWithContext(context.Background())
-}
-
-func (i *messageQueuePtrType) ToMessageQueuePtrOutputWithContext(ctx context.Context) MessageQueuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MessageQueuePtrOutput)
 }
 
 // MessageQueueArrayInput is an input type that accepts MessageQueueArray and MessageQueueArrayOutput values.
@@ -366,7 +337,7 @@ func (i MessageQueueMap) ToMessageQueueMapOutputWithContext(ctx context.Context)
 type MessageQueueOutput struct{ *pulumi.OutputState }
 
 func (MessageQueueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MessageQueue)(nil))
+	return reflect.TypeOf((**MessageQueue)(nil)).Elem()
 }
 
 func (o MessageQueueOutput) ToMessageQueueOutput() MessageQueueOutput {
@@ -377,44 +348,10 @@ func (o MessageQueueOutput) ToMessageQueueOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o MessageQueueOutput) ToMessageQueuePtrOutput() MessageQueuePtrOutput {
-	return o.ToMessageQueuePtrOutputWithContext(context.Background())
-}
-
-func (o MessageQueueOutput) ToMessageQueuePtrOutputWithContext(ctx context.Context) MessageQueuePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MessageQueue) *MessageQueue {
-		return &v
-	}).(MessageQueuePtrOutput)
-}
-
-type MessageQueuePtrOutput struct{ *pulumi.OutputState }
-
-func (MessageQueuePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MessageQueue)(nil))
-}
-
-func (o MessageQueuePtrOutput) ToMessageQueuePtrOutput() MessageQueuePtrOutput {
-	return o
-}
-
-func (o MessageQueuePtrOutput) ToMessageQueuePtrOutputWithContext(ctx context.Context) MessageQueuePtrOutput {
-	return o
-}
-
-func (o MessageQueuePtrOutput) Elem() MessageQueueOutput {
-	return o.ApplyT(func(v *MessageQueue) MessageQueue {
-		if v != nil {
-			return *v
-		}
-		var ret MessageQueue
-		return ret
-	}).(MessageQueueOutput)
-}
-
 type MessageQueueArrayOutput struct{ *pulumi.OutputState }
 
 func (MessageQueueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MessageQueue)(nil))
+	return reflect.TypeOf((*[]*MessageQueue)(nil)).Elem()
 }
 
 func (o MessageQueueArrayOutput) ToMessageQueueArrayOutput() MessageQueueArrayOutput {
@@ -426,15 +363,15 @@ func (o MessageQueueArrayOutput) ToMessageQueueArrayOutputWithContext(ctx contex
 }
 
 func (o MessageQueueArrayOutput) Index(i pulumi.IntInput) MessageQueueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MessageQueue {
-		return vs[0].([]MessageQueue)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MessageQueue {
+		return vs[0].([]*MessageQueue)[vs[1].(int)]
 	}).(MessageQueueOutput)
 }
 
 type MessageQueueMapOutput struct{ *pulumi.OutputState }
 
 func (MessageQueueMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MessageQueue)(nil))
+	return reflect.TypeOf((*map[string]*MessageQueue)(nil)).Elem()
 }
 
 func (o MessageQueueMapOutput) ToMessageQueueMapOutput() MessageQueueMapOutput {
@@ -446,18 +383,16 @@ func (o MessageQueueMapOutput) ToMessageQueueMapOutputWithContext(ctx context.Co
 }
 
 func (o MessageQueueMapOutput) MapIndex(k pulumi.StringInput) MessageQueueOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MessageQueue {
-		return vs[0].(map[string]MessageQueue)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MessageQueue {
+		return vs[0].(map[string]*MessageQueue)[vs[1].(string)]
 	}).(MessageQueueOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageQueueInput)(nil)).Elem(), &MessageQueue{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MessageQueuePtrInput)(nil)).Elem(), &MessageQueue{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageQueueArrayInput)(nil)).Elem(), MessageQueueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageQueueMapInput)(nil)).Elem(), MessageQueueMap{})
 	pulumi.RegisterOutputType(MessageQueueOutput{})
-	pulumi.RegisterOutputType(MessageQueuePtrOutput{})
 	pulumi.RegisterOutputType(MessageQueueArrayOutput{})
 	pulumi.RegisterOutputType(MessageQueueMapOutput{})
 }

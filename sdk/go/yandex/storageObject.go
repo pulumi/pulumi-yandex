@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewStorageObject(ctx, "cute_cat_picture", &yandex.StorageObjectArgs{
+// 		_, err := yandex.NewStorageObject(ctx, "cute-cat-picture", &yandex.StorageObjectArgs{
 // 			Bucket: pulumi.String("cat-pictures"),
 // 			Key:    pulumi.String("cute-cat"),
 // 			Source: pulumi.String("/images/cats/cute-cat.jpg"),
@@ -197,7 +197,7 @@ type StorageObjectInput interface {
 }
 
 func (*StorageObject) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageObject)(nil))
+	return reflect.TypeOf((**StorageObject)(nil)).Elem()
 }
 
 func (i *StorageObject) ToStorageObjectOutput() StorageObjectOutput {
@@ -206,35 +206,6 @@ func (i *StorageObject) ToStorageObjectOutput() StorageObjectOutput {
 
 func (i *StorageObject) ToStorageObjectOutputWithContext(ctx context.Context) StorageObjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectOutput)
-}
-
-func (i *StorageObject) ToStorageObjectPtrOutput() StorageObjectPtrOutput {
-	return i.ToStorageObjectPtrOutputWithContext(context.Background())
-}
-
-func (i *StorageObject) ToStorageObjectPtrOutputWithContext(ctx context.Context) StorageObjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectPtrOutput)
-}
-
-type StorageObjectPtrInput interface {
-	pulumi.Input
-
-	ToStorageObjectPtrOutput() StorageObjectPtrOutput
-	ToStorageObjectPtrOutputWithContext(ctx context.Context) StorageObjectPtrOutput
-}
-
-type storageObjectPtrType StorageObjectArgs
-
-func (*storageObjectPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageObject)(nil))
-}
-
-func (i *storageObjectPtrType) ToStorageObjectPtrOutput() StorageObjectPtrOutput {
-	return i.ToStorageObjectPtrOutputWithContext(context.Background())
-}
-
-func (i *storageObjectPtrType) ToStorageObjectPtrOutputWithContext(ctx context.Context) StorageObjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectPtrOutput)
 }
 
 // StorageObjectArrayInput is an input type that accepts StorageObjectArray and StorageObjectArrayOutput values.
@@ -290,7 +261,7 @@ func (i StorageObjectMap) ToStorageObjectMapOutputWithContext(ctx context.Contex
 type StorageObjectOutput struct{ *pulumi.OutputState }
 
 func (StorageObjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageObject)(nil))
+	return reflect.TypeOf((**StorageObject)(nil)).Elem()
 }
 
 func (o StorageObjectOutput) ToStorageObjectOutput() StorageObjectOutput {
@@ -301,44 +272,10 @@ func (o StorageObjectOutput) ToStorageObjectOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o StorageObjectOutput) ToStorageObjectPtrOutput() StorageObjectPtrOutput {
-	return o.ToStorageObjectPtrOutputWithContext(context.Background())
-}
-
-func (o StorageObjectOutput) ToStorageObjectPtrOutputWithContext(ctx context.Context) StorageObjectPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageObject) *StorageObject {
-		return &v
-	}).(StorageObjectPtrOutput)
-}
-
-type StorageObjectPtrOutput struct{ *pulumi.OutputState }
-
-func (StorageObjectPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageObject)(nil))
-}
-
-func (o StorageObjectPtrOutput) ToStorageObjectPtrOutput() StorageObjectPtrOutput {
-	return o
-}
-
-func (o StorageObjectPtrOutput) ToStorageObjectPtrOutputWithContext(ctx context.Context) StorageObjectPtrOutput {
-	return o
-}
-
-func (o StorageObjectPtrOutput) Elem() StorageObjectOutput {
-	return o.ApplyT(func(v *StorageObject) StorageObject {
-		if v != nil {
-			return *v
-		}
-		var ret StorageObject
-		return ret
-	}).(StorageObjectOutput)
-}
-
 type StorageObjectArrayOutput struct{ *pulumi.OutputState }
 
 func (StorageObjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageObject)(nil))
+	return reflect.TypeOf((*[]*StorageObject)(nil)).Elem()
 }
 
 func (o StorageObjectArrayOutput) ToStorageObjectArrayOutput() StorageObjectArrayOutput {
@@ -350,15 +287,15 @@ func (o StorageObjectArrayOutput) ToStorageObjectArrayOutputWithContext(ctx cont
 }
 
 func (o StorageObjectArrayOutput) Index(i pulumi.IntInput) StorageObjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageObject {
-		return vs[0].([]StorageObject)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StorageObject {
+		return vs[0].([]*StorageObject)[vs[1].(int)]
 	}).(StorageObjectOutput)
 }
 
 type StorageObjectMapOutput struct{ *pulumi.OutputState }
 
 func (StorageObjectMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]StorageObject)(nil))
+	return reflect.TypeOf((*map[string]*StorageObject)(nil)).Elem()
 }
 
 func (o StorageObjectMapOutput) ToStorageObjectMapOutput() StorageObjectMapOutput {
@@ -370,18 +307,16 @@ func (o StorageObjectMapOutput) ToStorageObjectMapOutputWithContext(ctx context.
 }
 
 func (o StorageObjectMapOutput) MapIndex(k pulumi.StringInput) StorageObjectOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StorageObject {
-		return vs[0].(map[string]StorageObject)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *StorageObject {
+		return vs[0].(map[string]*StorageObject)[vs[1].(string)]
 	}).(StorageObjectOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectInput)(nil)).Elem(), &StorageObject{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectPtrInput)(nil)).Elem(), &StorageObject{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectArrayInput)(nil)).Elem(), StorageObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectMapInput)(nil)).Elem(), StorageObjectMap{})
 	pulumi.RegisterOutputType(StorageObjectOutput{})
-	pulumi.RegisterOutputType(StorageObjectPtrOutput{})
 	pulumi.RegisterOutputType(StorageObjectArrayOutput{})
 	pulumi.RegisterOutputType(StorageObjectMapOutput{})
 }

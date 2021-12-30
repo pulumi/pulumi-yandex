@@ -163,7 +163,7 @@ type LbTargetGroupInput interface {
 }
 
 func (*LbTargetGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*LbTargetGroup)(nil))
+	return reflect.TypeOf((**LbTargetGroup)(nil)).Elem()
 }
 
 func (i *LbTargetGroup) ToLbTargetGroupOutput() LbTargetGroupOutput {
@@ -172,35 +172,6 @@ func (i *LbTargetGroup) ToLbTargetGroupOutput() LbTargetGroupOutput {
 
 func (i *LbTargetGroup) ToLbTargetGroupOutputWithContext(ctx context.Context) LbTargetGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LbTargetGroupOutput)
-}
-
-func (i *LbTargetGroup) ToLbTargetGroupPtrOutput() LbTargetGroupPtrOutput {
-	return i.ToLbTargetGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *LbTargetGroup) ToLbTargetGroupPtrOutputWithContext(ctx context.Context) LbTargetGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LbTargetGroupPtrOutput)
-}
-
-type LbTargetGroupPtrInput interface {
-	pulumi.Input
-
-	ToLbTargetGroupPtrOutput() LbTargetGroupPtrOutput
-	ToLbTargetGroupPtrOutputWithContext(ctx context.Context) LbTargetGroupPtrOutput
-}
-
-type lbTargetGroupPtrType LbTargetGroupArgs
-
-func (*lbTargetGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LbTargetGroup)(nil))
-}
-
-func (i *lbTargetGroupPtrType) ToLbTargetGroupPtrOutput() LbTargetGroupPtrOutput {
-	return i.ToLbTargetGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *lbTargetGroupPtrType) ToLbTargetGroupPtrOutputWithContext(ctx context.Context) LbTargetGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LbTargetGroupPtrOutput)
 }
 
 // LbTargetGroupArrayInput is an input type that accepts LbTargetGroupArray and LbTargetGroupArrayOutput values.
@@ -256,7 +227,7 @@ func (i LbTargetGroupMap) ToLbTargetGroupMapOutputWithContext(ctx context.Contex
 type LbTargetGroupOutput struct{ *pulumi.OutputState }
 
 func (LbTargetGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LbTargetGroup)(nil))
+	return reflect.TypeOf((**LbTargetGroup)(nil)).Elem()
 }
 
 func (o LbTargetGroupOutput) ToLbTargetGroupOutput() LbTargetGroupOutput {
@@ -267,44 +238,10 @@ func (o LbTargetGroupOutput) ToLbTargetGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o LbTargetGroupOutput) ToLbTargetGroupPtrOutput() LbTargetGroupPtrOutput {
-	return o.ToLbTargetGroupPtrOutputWithContext(context.Background())
-}
-
-func (o LbTargetGroupOutput) ToLbTargetGroupPtrOutputWithContext(ctx context.Context) LbTargetGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LbTargetGroup) *LbTargetGroup {
-		return &v
-	}).(LbTargetGroupPtrOutput)
-}
-
-type LbTargetGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (LbTargetGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LbTargetGroup)(nil))
-}
-
-func (o LbTargetGroupPtrOutput) ToLbTargetGroupPtrOutput() LbTargetGroupPtrOutput {
-	return o
-}
-
-func (o LbTargetGroupPtrOutput) ToLbTargetGroupPtrOutputWithContext(ctx context.Context) LbTargetGroupPtrOutput {
-	return o
-}
-
-func (o LbTargetGroupPtrOutput) Elem() LbTargetGroupOutput {
-	return o.ApplyT(func(v *LbTargetGroup) LbTargetGroup {
-		if v != nil {
-			return *v
-		}
-		var ret LbTargetGroup
-		return ret
-	}).(LbTargetGroupOutput)
-}
-
 type LbTargetGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (LbTargetGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LbTargetGroup)(nil))
+	return reflect.TypeOf((*[]*LbTargetGroup)(nil)).Elem()
 }
 
 func (o LbTargetGroupArrayOutput) ToLbTargetGroupArrayOutput() LbTargetGroupArrayOutput {
@@ -316,15 +253,15 @@ func (o LbTargetGroupArrayOutput) ToLbTargetGroupArrayOutputWithContext(ctx cont
 }
 
 func (o LbTargetGroupArrayOutput) Index(i pulumi.IntInput) LbTargetGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LbTargetGroup {
-		return vs[0].([]LbTargetGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LbTargetGroup {
+		return vs[0].([]*LbTargetGroup)[vs[1].(int)]
 	}).(LbTargetGroupOutput)
 }
 
 type LbTargetGroupMapOutput struct{ *pulumi.OutputState }
 
 func (LbTargetGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LbTargetGroup)(nil))
+	return reflect.TypeOf((*map[string]*LbTargetGroup)(nil)).Elem()
 }
 
 func (o LbTargetGroupMapOutput) ToLbTargetGroupMapOutput() LbTargetGroupMapOutput {
@@ -336,18 +273,16 @@ func (o LbTargetGroupMapOutput) ToLbTargetGroupMapOutputWithContext(ctx context.
 }
 
 func (o LbTargetGroupMapOutput) MapIndex(k pulumi.StringInput) LbTargetGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LbTargetGroup {
-		return vs[0].(map[string]LbTargetGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *LbTargetGroup {
+		return vs[0].(map[string]*LbTargetGroup)[vs[1].(string)]
 	}).(LbTargetGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTargetGroupInput)(nil)).Elem(), &LbTargetGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LbTargetGroupPtrInput)(nil)).Elem(), &LbTargetGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTargetGroupArrayInput)(nil)).Elem(), LbTargetGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTargetGroupMapInput)(nil)).Elem(), LbTargetGroupMap{})
 	pulumi.RegisterOutputType(LbTargetGroupOutput{})
-	pulumi.RegisterOutputType(LbTargetGroupPtrOutput{})
 	pulumi.RegisterOutputType(LbTargetGroupArrayOutput{})
 	pulumi.RegisterOutputType(LbTargetGroupMapOutput{})
 }

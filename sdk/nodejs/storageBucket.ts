@@ -461,51 +461,51 @@ export class StorageBucket extends pulumi.CustomResource {
      */
     constructor(name: string, args?: StorageBucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StorageBucketArgs | StorageBucketState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageBucketState | undefined;
-            inputs["accessKey"] = state ? state.accessKey : undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
-            inputs["bucketPrefix"] = state ? state.bucketPrefix : undefined;
-            inputs["corsRules"] = state ? state.corsRules : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["grants"] = state ? state.grants : undefined;
-            inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            inputs["loggings"] = state ? state.loggings : undefined;
-            inputs["policy"] = state ? state.policy : undefined;
-            inputs["secretKey"] = state ? state.secretKey : undefined;
-            inputs["serverSideEncryptionConfiguration"] = state ? state.serverSideEncryptionConfiguration : undefined;
-            inputs["versioning"] = state ? state.versioning : undefined;
-            inputs["website"] = state ? state.website : undefined;
-            inputs["websiteDomain"] = state ? state.websiteDomain : undefined;
-            inputs["websiteEndpoint"] = state ? state.websiteEndpoint : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
+            resourceInputs["bucketPrefix"] = state ? state.bucketPrefix : undefined;
+            resourceInputs["corsRules"] = state ? state.corsRules : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["grants"] = state ? state.grants : undefined;
+            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
+            resourceInputs["loggings"] = state ? state.loggings : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["serverSideEncryptionConfiguration"] = state ? state.serverSideEncryptionConfiguration : undefined;
+            resourceInputs["versioning"] = state ? state.versioning : undefined;
+            resourceInputs["website"] = state ? state.website : undefined;
+            resourceInputs["websiteDomain"] = state ? state.websiteDomain : undefined;
+            resourceInputs["websiteEndpoint"] = state ? state.websiteEndpoint : undefined;
         } else {
             const args = argsOrState as StorageBucketArgs | undefined;
-            inputs["accessKey"] = args ? args.accessKey : undefined;
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["bucketPrefix"] = args ? args.bucketPrefix : undefined;
-            inputs["corsRules"] = args ? args.corsRules : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["grants"] = args ? args.grants : undefined;
-            inputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            inputs["loggings"] = args ? args.loggings : undefined;
-            inputs["policy"] = args ? args.policy : undefined;
-            inputs["secretKey"] = args ? args.secretKey : undefined;
-            inputs["serverSideEncryptionConfiguration"] = args ? args.serverSideEncryptionConfiguration : undefined;
-            inputs["versioning"] = args ? args.versioning : undefined;
-            inputs["website"] = args ? args.website : undefined;
-            inputs["websiteDomain"] = args ? args.websiteDomain : undefined;
-            inputs["websiteEndpoint"] = args ? args.websiteEndpoint : undefined;
-            inputs["bucketDomainName"] = undefined /*out*/;
+            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["bucketPrefix"] = args ? args.bucketPrefix : undefined;
+            resourceInputs["corsRules"] = args ? args.corsRules : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["grants"] = args ? args.grants : undefined;
+            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
+            resourceInputs["loggings"] = args ? args.loggings : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["serverSideEncryptionConfiguration"] = args ? args.serverSideEncryptionConfiguration : undefined;
+            resourceInputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["website"] = args ? args.website : undefined;
+            resourceInputs["websiteDomain"] = args ? args.websiteDomain : undefined;
+            resourceInputs["websiteEndpoint"] = args ? args.websiteEndpoint : undefined;
+            resourceInputs["bucketDomainName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(StorageBucket.__pulumiType, name, inputs, opts);
+        super(StorageBucket.__pulumiType, name, resourceInputs, opts);
     }
 }
 

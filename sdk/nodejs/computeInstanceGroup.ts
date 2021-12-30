@@ -184,28 +184,28 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ComputeInstanceGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeInstanceGroupArgs | ComputeInstanceGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeInstanceGroupState | undefined;
-            inputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
-            inputs["applicationLoadBalancer"] = state ? state.applicationLoadBalancer : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["deployPolicy"] = state ? state.deployPolicy : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["healthChecks"] = state ? state.healthChecks : undefined;
-            inputs["instanceTemplate"] = state ? state.instanceTemplate : undefined;
-            inputs["instances"] = state ? state.instances : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["loadBalancer"] = state ? state.loadBalancer : undefined;
-            inputs["maxCheckingHealthDuration"] = state ? state.maxCheckingHealthDuration : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["scalePolicy"] = state ? state.scalePolicy : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
+            resourceInputs["applicationLoadBalancer"] = state ? state.applicationLoadBalancer : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["deployPolicy"] = state ? state.deployPolicy : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
+            resourceInputs["instanceTemplate"] = state ? state.instanceTemplate : undefined;
+            resourceInputs["instances"] = state ? state.instances : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["loadBalancer"] = state ? state.loadBalancer : undefined;
+            resourceInputs["maxCheckingHealthDuration"] = state ? state.maxCheckingHealthDuration : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["scalePolicy"] = state ? state.scalePolicy : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["variables"] = state ? state.variables : undefined;
         } else {
             const args = argsOrState as ComputeInstanceGroupArgs | undefined;
             if ((!args || args.allocationPolicy === undefined) && !opts.urn) {
@@ -223,29 +223,29 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            inputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
-            inputs["applicationLoadBalancer"] = args ? args.applicationLoadBalancer : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["deployPolicy"] = args ? args.deployPolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["healthChecks"] = args ? args.healthChecks : undefined;
-            inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["loadBalancer"] = args ? args.loadBalancer : undefined;
-            inputs["maxCheckingHealthDuration"] = args ? args.maxCheckingHealthDuration : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["scalePolicy"] = args ? args.scalePolicy : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["variables"] = args ? args.variables : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["instances"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
+            resourceInputs["applicationLoadBalancer"] = args ? args.applicationLoadBalancer : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["deployPolicy"] = args ? args.deployPolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
+            resourceInputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
+            resourceInputs["maxCheckingHealthDuration"] = args ? args.maxCheckingHealthDuration : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["scalePolicy"] = args ? args.scalePolicy : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["instances"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ComputeInstanceGroup.__pulumiType, name, inputs, opts);
+        super(ComputeInstanceGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -36,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = yandex.NewResourcemanagerFolderIamMember(ctx, "sa_editor", &yandex.ResourcemanagerFolderIamMemberArgs{
+// 		_, err = yandex.NewResourcemanagerFolderIamMember(ctx, "sa-editor", &yandex.ResourcemanagerFolderIamMemberArgs{
 // 			FolderId: pulumi.String(folderId),
 // 			Role:     pulumi.String("storage.editor"),
 // 			Member: sa.ID().ApplyT(func(id string) (string, error) {
@@ -46,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = yandex.NewIamServiceAccountStaticAccessKey(ctx, "sa_static_key", &yandex.IamServiceAccountStaticAccessKeyArgs{
+// 		_, err = yandex.NewIamServiceAccountStaticAccessKey(ctx, "sa-static-key", &yandex.IamServiceAccountStaticAccessKeyArgs{
 // 			ServiceAccountId: sa.ID(),
 // 			Description:      pulumi.String("static access key for object storage"),
 // 		})
@@ -320,7 +320,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewKmsSymmetricKey(ctx, "key_a", &yandex.KmsSymmetricKeyArgs{
+// 		_, err := yandex.NewKmsSymmetricKey(ctx, "key-a", &yandex.KmsSymmetricKeyArgs{
 // 			Description:      pulumi.String("description for key"),
 // 			DefaultAlgorithm: pulumi.String("AES_128"),
 // 			RotationPeriod:   pulumi.String("8760h"),
@@ -398,7 +398,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = yandex.NewKmsSymmetricKey(ctx, "key_a", &yandex.KmsSymmetricKeyArgs{
+// 		_, err = yandex.NewKmsSymmetricKey(ctx, "key-a", &yandex.KmsSymmetricKeyArgs{
 // 			Description:      pulumi.String("description for key"),
 // 			DefaultAlgorithm: pulumi.String("AES_128"),
 // 			RotationPeriod:   pulumi.String("8760h"),
@@ -735,7 +735,7 @@ type StorageBucketInput interface {
 }
 
 func (*StorageBucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageBucket)(nil))
+	return reflect.TypeOf((**StorageBucket)(nil)).Elem()
 }
 
 func (i *StorageBucket) ToStorageBucketOutput() StorageBucketOutput {
@@ -744,35 +744,6 @@ func (i *StorageBucket) ToStorageBucketOutput() StorageBucketOutput {
 
 func (i *StorageBucket) ToStorageBucketOutputWithContext(ctx context.Context) StorageBucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBucketOutput)
-}
-
-func (i *StorageBucket) ToStorageBucketPtrOutput() StorageBucketPtrOutput {
-	return i.ToStorageBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *StorageBucket) ToStorageBucketPtrOutputWithContext(ctx context.Context) StorageBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageBucketPtrOutput)
-}
-
-type StorageBucketPtrInput interface {
-	pulumi.Input
-
-	ToStorageBucketPtrOutput() StorageBucketPtrOutput
-	ToStorageBucketPtrOutputWithContext(ctx context.Context) StorageBucketPtrOutput
-}
-
-type storageBucketPtrType StorageBucketArgs
-
-func (*storageBucketPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageBucket)(nil))
-}
-
-func (i *storageBucketPtrType) ToStorageBucketPtrOutput() StorageBucketPtrOutput {
-	return i.ToStorageBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *storageBucketPtrType) ToStorageBucketPtrOutputWithContext(ctx context.Context) StorageBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageBucketPtrOutput)
 }
 
 // StorageBucketArrayInput is an input type that accepts StorageBucketArray and StorageBucketArrayOutput values.
@@ -828,7 +799,7 @@ func (i StorageBucketMap) ToStorageBucketMapOutputWithContext(ctx context.Contex
 type StorageBucketOutput struct{ *pulumi.OutputState }
 
 func (StorageBucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageBucket)(nil))
+	return reflect.TypeOf((**StorageBucket)(nil)).Elem()
 }
 
 func (o StorageBucketOutput) ToStorageBucketOutput() StorageBucketOutput {
@@ -839,44 +810,10 @@ func (o StorageBucketOutput) ToStorageBucketOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o StorageBucketOutput) ToStorageBucketPtrOutput() StorageBucketPtrOutput {
-	return o.ToStorageBucketPtrOutputWithContext(context.Background())
-}
-
-func (o StorageBucketOutput) ToStorageBucketPtrOutputWithContext(ctx context.Context) StorageBucketPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBucket) *StorageBucket {
-		return &v
-	}).(StorageBucketPtrOutput)
-}
-
-type StorageBucketPtrOutput struct{ *pulumi.OutputState }
-
-func (StorageBucketPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageBucket)(nil))
-}
-
-func (o StorageBucketPtrOutput) ToStorageBucketPtrOutput() StorageBucketPtrOutput {
-	return o
-}
-
-func (o StorageBucketPtrOutput) ToStorageBucketPtrOutputWithContext(ctx context.Context) StorageBucketPtrOutput {
-	return o
-}
-
-func (o StorageBucketPtrOutput) Elem() StorageBucketOutput {
-	return o.ApplyT(func(v *StorageBucket) StorageBucket {
-		if v != nil {
-			return *v
-		}
-		var ret StorageBucket
-		return ret
-	}).(StorageBucketOutput)
-}
-
 type StorageBucketArrayOutput struct{ *pulumi.OutputState }
 
 func (StorageBucketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageBucket)(nil))
+	return reflect.TypeOf((*[]*StorageBucket)(nil)).Elem()
 }
 
 func (o StorageBucketArrayOutput) ToStorageBucketArrayOutput() StorageBucketArrayOutput {
@@ -888,15 +825,15 @@ func (o StorageBucketArrayOutput) ToStorageBucketArrayOutputWithContext(ctx cont
 }
 
 func (o StorageBucketArrayOutput) Index(i pulumi.IntInput) StorageBucketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageBucket {
-		return vs[0].([]StorageBucket)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StorageBucket {
+		return vs[0].([]*StorageBucket)[vs[1].(int)]
 	}).(StorageBucketOutput)
 }
 
 type StorageBucketMapOutput struct{ *pulumi.OutputState }
 
 func (StorageBucketMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]StorageBucket)(nil))
+	return reflect.TypeOf((*map[string]*StorageBucket)(nil)).Elem()
 }
 
 func (o StorageBucketMapOutput) ToStorageBucketMapOutput() StorageBucketMapOutput {
@@ -908,18 +845,16 @@ func (o StorageBucketMapOutput) ToStorageBucketMapOutputWithContext(ctx context.
 }
 
 func (o StorageBucketMapOutput) MapIndex(k pulumi.StringInput) StorageBucketOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StorageBucket {
-		return vs[0].(map[string]StorageBucket)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *StorageBucket {
+		return vs[0].(map[string]*StorageBucket)[vs[1].(string)]
 	}).(StorageBucketOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketInput)(nil)).Elem(), &StorageBucket{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketPtrInput)(nil)).Elem(), &StorageBucket{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketArrayInput)(nil)).Elem(), StorageBucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketMapInput)(nil)).Elem(), StorageBucketMap{})
 	pulumi.RegisterOutputType(StorageBucketOutput{})
-	pulumi.RegisterOutputType(StorageBucketPtrOutput{})
 	pulumi.RegisterOutputType(StorageBucketArrayOutput{})
 	pulumi.RegisterOutputType(StorageBucketMapOutput{})
 }

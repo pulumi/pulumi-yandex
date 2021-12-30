@@ -76,12 +76,12 @@ export class ResourcemanagerFolderIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ResourcemanagerFolderIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourcemanagerFolderIamPolicyArgs | ResourcemanagerFolderIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourcemanagerFolderIamPolicyState | undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as ResourcemanagerFolderIamPolicyArgs | undefined;
             if ((!args || args.folderId === undefined) && !opts.urn) {
@@ -90,13 +90,13 @@ export class ResourcemanagerFolderIamPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ResourcemanagerFolderIamPolicy.__pulumiType, name, inputs, opts);
+        super(ResourcemanagerFolderIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

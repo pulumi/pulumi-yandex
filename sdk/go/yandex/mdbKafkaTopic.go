@@ -197,7 +197,7 @@ type MdbKafkaTopicInput interface {
 }
 
 func (*MdbKafkaTopic) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbKafkaTopic)(nil))
+	return reflect.TypeOf((**MdbKafkaTopic)(nil)).Elem()
 }
 
 func (i *MdbKafkaTopic) ToMdbKafkaTopicOutput() MdbKafkaTopicOutput {
@@ -206,35 +206,6 @@ func (i *MdbKafkaTopic) ToMdbKafkaTopicOutput() MdbKafkaTopicOutput {
 
 func (i *MdbKafkaTopic) ToMdbKafkaTopicOutputWithContext(ctx context.Context) MdbKafkaTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaTopicOutput)
-}
-
-func (i *MdbKafkaTopic) ToMdbKafkaTopicPtrOutput() MdbKafkaTopicPtrOutput {
-	return i.ToMdbKafkaTopicPtrOutputWithContext(context.Background())
-}
-
-func (i *MdbKafkaTopic) ToMdbKafkaTopicPtrOutputWithContext(ctx context.Context) MdbKafkaTopicPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaTopicPtrOutput)
-}
-
-type MdbKafkaTopicPtrInput interface {
-	pulumi.Input
-
-	ToMdbKafkaTopicPtrOutput() MdbKafkaTopicPtrOutput
-	ToMdbKafkaTopicPtrOutputWithContext(ctx context.Context) MdbKafkaTopicPtrOutput
-}
-
-type mdbKafkaTopicPtrType MdbKafkaTopicArgs
-
-func (*mdbKafkaTopicPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaTopic)(nil))
-}
-
-func (i *mdbKafkaTopicPtrType) ToMdbKafkaTopicPtrOutput() MdbKafkaTopicPtrOutput {
-	return i.ToMdbKafkaTopicPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbKafkaTopicPtrType) ToMdbKafkaTopicPtrOutputWithContext(ctx context.Context) MdbKafkaTopicPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaTopicPtrOutput)
 }
 
 // MdbKafkaTopicArrayInput is an input type that accepts MdbKafkaTopicArray and MdbKafkaTopicArrayOutput values.
@@ -290,7 +261,7 @@ func (i MdbKafkaTopicMap) ToMdbKafkaTopicMapOutputWithContext(ctx context.Contex
 type MdbKafkaTopicOutput struct{ *pulumi.OutputState }
 
 func (MdbKafkaTopicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbKafkaTopic)(nil))
+	return reflect.TypeOf((**MdbKafkaTopic)(nil)).Elem()
 }
 
 func (o MdbKafkaTopicOutput) ToMdbKafkaTopicOutput() MdbKafkaTopicOutput {
@@ -301,44 +272,10 @@ func (o MdbKafkaTopicOutput) ToMdbKafkaTopicOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o MdbKafkaTopicOutput) ToMdbKafkaTopicPtrOutput() MdbKafkaTopicPtrOutput {
-	return o.ToMdbKafkaTopicPtrOutputWithContext(context.Background())
-}
-
-func (o MdbKafkaTopicOutput) ToMdbKafkaTopicPtrOutputWithContext(ctx context.Context) MdbKafkaTopicPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaTopic) *MdbKafkaTopic {
-		return &v
-	}).(MdbKafkaTopicPtrOutput)
-}
-
-type MdbKafkaTopicPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbKafkaTopicPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaTopic)(nil))
-}
-
-func (o MdbKafkaTopicPtrOutput) ToMdbKafkaTopicPtrOutput() MdbKafkaTopicPtrOutput {
-	return o
-}
-
-func (o MdbKafkaTopicPtrOutput) ToMdbKafkaTopicPtrOutputWithContext(ctx context.Context) MdbKafkaTopicPtrOutput {
-	return o
-}
-
-func (o MdbKafkaTopicPtrOutput) Elem() MdbKafkaTopicOutput {
-	return o.ApplyT(func(v *MdbKafkaTopic) MdbKafkaTopic {
-		if v != nil {
-			return *v
-		}
-		var ret MdbKafkaTopic
-		return ret
-	}).(MdbKafkaTopicOutput)
-}
-
 type MdbKafkaTopicArrayOutput struct{ *pulumi.OutputState }
 
 func (MdbKafkaTopicArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MdbKafkaTopic)(nil))
+	return reflect.TypeOf((*[]*MdbKafkaTopic)(nil)).Elem()
 }
 
 func (o MdbKafkaTopicArrayOutput) ToMdbKafkaTopicArrayOutput() MdbKafkaTopicArrayOutput {
@@ -350,15 +287,15 @@ func (o MdbKafkaTopicArrayOutput) ToMdbKafkaTopicArrayOutputWithContext(ctx cont
 }
 
 func (o MdbKafkaTopicArrayOutput) Index(i pulumi.IntInput) MdbKafkaTopicOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbKafkaTopic {
-		return vs[0].([]MdbKafkaTopic)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MdbKafkaTopic {
+		return vs[0].([]*MdbKafkaTopic)[vs[1].(int)]
 	}).(MdbKafkaTopicOutput)
 }
 
 type MdbKafkaTopicMapOutput struct{ *pulumi.OutputState }
 
 func (MdbKafkaTopicMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MdbKafkaTopic)(nil))
+	return reflect.TypeOf((*map[string]*MdbKafkaTopic)(nil)).Elem()
 }
 
 func (o MdbKafkaTopicMapOutput) ToMdbKafkaTopicMapOutput() MdbKafkaTopicMapOutput {
@@ -370,18 +307,16 @@ func (o MdbKafkaTopicMapOutput) ToMdbKafkaTopicMapOutputWithContext(ctx context.
 }
 
 func (o MdbKafkaTopicMapOutput) MapIndex(k pulumi.StringInput) MdbKafkaTopicOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MdbKafkaTopic {
-		return vs[0].(map[string]MdbKafkaTopic)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MdbKafkaTopic {
+		return vs[0].(map[string]*MdbKafkaTopic)[vs[1].(string)]
 	}).(MdbKafkaTopicOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaTopicInput)(nil)).Elem(), &MdbKafkaTopic{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaTopicPtrInput)(nil)).Elem(), &MdbKafkaTopic{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaTopicArrayInput)(nil)).Elem(), MdbKafkaTopicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaTopicMapInput)(nil)).Elem(), MdbKafkaTopicMap{})
 	pulumi.RegisterOutputType(MdbKafkaTopicOutput{})
-	pulumi.RegisterOutputType(MdbKafkaTopicPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaTopicArrayOutput{})
 	pulumi.RegisterOutputType(MdbKafkaTopicMapOutput{})
 }

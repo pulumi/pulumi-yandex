@@ -338,7 +338,7 @@ type KubernetesNodeGroupInput interface {
 }
 
 func (*KubernetesNodeGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesNodeGroup)(nil))
+	return reflect.TypeOf((**KubernetesNodeGroup)(nil)).Elem()
 }
 
 func (i *KubernetesNodeGroup) ToKubernetesNodeGroupOutput() KubernetesNodeGroupOutput {
@@ -347,35 +347,6 @@ func (i *KubernetesNodeGroup) ToKubernetesNodeGroupOutput() KubernetesNodeGroupO
 
 func (i *KubernetesNodeGroup) ToKubernetesNodeGroupOutputWithContext(ctx context.Context) KubernetesNodeGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupOutput)
-}
-
-func (i *KubernetesNodeGroup) ToKubernetesNodeGroupPtrOutput() KubernetesNodeGroupPtrOutput {
-	return i.ToKubernetesNodeGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *KubernetesNodeGroup) ToKubernetesNodeGroupPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupPtrOutput)
-}
-
-type KubernetesNodeGroupPtrInput interface {
-	pulumi.Input
-
-	ToKubernetesNodeGroupPtrOutput() KubernetesNodeGroupPtrOutput
-	ToKubernetesNodeGroupPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupPtrOutput
-}
-
-type kubernetesNodeGroupPtrType KubernetesNodeGroupArgs
-
-func (*kubernetesNodeGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesNodeGroup)(nil))
-}
-
-func (i *kubernetesNodeGroupPtrType) ToKubernetesNodeGroupPtrOutput() KubernetesNodeGroupPtrOutput {
-	return i.ToKubernetesNodeGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesNodeGroupPtrType) ToKubernetesNodeGroupPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupPtrOutput)
 }
 
 // KubernetesNodeGroupArrayInput is an input type that accepts KubernetesNodeGroupArray and KubernetesNodeGroupArrayOutput values.
@@ -431,7 +402,7 @@ func (i KubernetesNodeGroupMap) ToKubernetesNodeGroupMapOutputWithContext(ctx co
 type KubernetesNodeGroupOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodeGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesNodeGroup)(nil))
+	return reflect.TypeOf((**KubernetesNodeGroup)(nil)).Elem()
 }
 
 func (o KubernetesNodeGroupOutput) ToKubernetesNodeGroupOutput() KubernetesNodeGroupOutput {
@@ -442,44 +413,10 @@ func (o KubernetesNodeGroupOutput) ToKubernetesNodeGroupOutputWithContext(ctx co
 	return o
 }
 
-func (o KubernetesNodeGroupOutput) ToKubernetesNodeGroupPtrOutput() KubernetesNodeGroupPtrOutput {
-	return o.ToKubernetesNodeGroupPtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesNodeGroupOutput) ToKubernetesNodeGroupPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroup) *KubernetesNodeGroup {
-		return &v
-	}).(KubernetesNodeGroupPtrOutput)
-}
-
-type KubernetesNodeGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (KubernetesNodeGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesNodeGroup)(nil))
-}
-
-func (o KubernetesNodeGroupPtrOutput) ToKubernetesNodeGroupPtrOutput() KubernetesNodeGroupPtrOutput {
-	return o
-}
-
-func (o KubernetesNodeGroupPtrOutput) ToKubernetesNodeGroupPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupPtrOutput {
-	return o
-}
-
-func (o KubernetesNodeGroupPtrOutput) Elem() KubernetesNodeGroupOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroup) KubernetesNodeGroup {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesNodeGroup
-		return ret
-	}).(KubernetesNodeGroupOutput)
-}
-
 type KubernetesNodeGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodeGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesNodeGroup)(nil))
+	return reflect.TypeOf((*[]*KubernetesNodeGroup)(nil)).Elem()
 }
 
 func (o KubernetesNodeGroupArrayOutput) ToKubernetesNodeGroupArrayOutput() KubernetesNodeGroupArrayOutput {
@@ -491,15 +428,15 @@ func (o KubernetesNodeGroupArrayOutput) ToKubernetesNodeGroupArrayOutputWithCont
 }
 
 func (o KubernetesNodeGroupArrayOutput) Index(i pulumi.IntInput) KubernetesNodeGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesNodeGroup {
-		return vs[0].([]KubernetesNodeGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubernetesNodeGroup {
+		return vs[0].([]*KubernetesNodeGroup)[vs[1].(int)]
 	}).(KubernetesNodeGroupOutput)
 }
 
 type KubernetesNodeGroupMapOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodeGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KubernetesNodeGroup)(nil))
+	return reflect.TypeOf((*map[string]*KubernetesNodeGroup)(nil)).Elem()
 }
 
 func (o KubernetesNodeGroupMapOutput) ToKubernetesNodeGroupMapOutput() KubernetesNodeGroupMapOutput {
@@ -511,18 +448,16 @@ func (o KubernetesNodeGroupMapOutput) ToKubernetesNodeGroupMapOutputWithContext(
 }
 
 func (o KubernetesNodeGroupMapOutput) MapIndex(k pulumi.StringInput) KubernetesNodeGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KubernetesNodeGroup {
-		return vs[0].(map[string]KubernetesNodeGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KubernetesNodeGroup {
+		return vs[0].(map[string]*KubernetesNodeGroup)[vs[1].(string)]
 	}).(KubernetesNodeGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInput)(nil)).Elem(), &KubernetesNodeGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupPtrInput)(nil)).Elem(), &KubernetesNodeGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupArrayInput)(nil)).Elem(), KubernetesNodeGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupMapInput)(nil)).Elem(), KubernetesNodeGroupMap{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupOutput{})
-	pulumi.RegisterOutputType(KubernetesNodeGroupPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupMapOutput{})
 }

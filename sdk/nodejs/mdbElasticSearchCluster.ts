@@ -113,24 +113,24 @@ export class MdbElasticSearchCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: MdbElasticSearchClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MdbElasticSearchClusterArgs | MdbElasticSearchClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MdbElasticSearchClusterState | undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["health"] = state ? state.health : undefined;
-            inputs["hosts"] = state ? state.hosts : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["hosts"] = state ? state.hosts : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as MdbElasticSearchClusterArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -142,25 +142,25 @@ export class MdbElasticSearchCluster extends pulumi.CustomResource {
             if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["hosts"] = args ? args.hosts : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["health"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["hosts"] = args ? args.hosts : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MdbElasticSearchCluster.__pulumiType, name, inputs, opts);
+        super(MdbElasticSearchCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

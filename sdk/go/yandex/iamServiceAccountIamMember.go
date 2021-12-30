@@ -38,7 +38,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewIamServiceAccountIamMember(ctx, "admin_account_iam", &yandex.IamServiceAccountIamMemberArgs{
+// 		_, err := yandex.NewIamServiceAccountIamMember(ctx, "admin-account-iam", &yandex.IamServiceAccountIamMemberArgs{
 // 			Member:           pulumi.String("userAccount:bar_user_id"),
 // 			Role:             pulumi.String("admin"),
 // 			ServiceAccountId: pulumi.String("your-service-account-id"),
@@ -184,7 +184,7 @@ type IamServiceAccountIamMemberInput interface {
 }
 
 func (*IamServiceAccountIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamServiceAccountIamMember)(nil))
+	return reflect.TypeOf((**IamServiceAccountIamMember)(nil)).Elem()
 }
 
 func (i *IamServiceAccountIamMember) ToIamServiceAccountIamMemberOutput() IamServiceAccountIamMemberOutput {
@@ -193,35 +193,6 @@ func (i *IamServiceAccountIamMember) ToIamServiceAccountIamMemberOutput() IamSer
 
 func (i *IamServiceAccountIamMember) ToIamServiceAccountIamMemberOutputWithContext(ctx context.Context) IamServiceAccountIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamServiceAccountIamMemberOutput)
-}
-
-func (i *IamServiceAccountIamMember) ToIamServiceAccountIamMemberPtrOutput() IamServiceAccountIamMemberPtrOutput {
-	return i.ToIamServiceAccountIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *IamServiceAccountIamMember) ToIamServiceAccountIamMemberPtrOutputWithContext(ctx context.Context) IamServiceAccountIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamServiceAccountIamMemberPtrOutput)
-}
-
-type IamServiceAccountIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToIamServiceAccountIamMemberPtrOutput() IamServiceAccountIamMemberPtrOutput
-	ToIamServiceAccountIamMemberPtrOutputWithContext(ctx context.Context) IamServiceAccountIamMemberPtrOutput
-}
-
-type iamServiceAccountIamMemberPtrType IamServiceAccountIamMemberArgs
-
-func (*iamServiceAccountIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamServiceAccountIamMember)(nil))
-}
-
-func (i *iamServiceAccountIamMemberPtrType) ToIamServiceAccountIamMemberPtrOutput() IamServiceAccountIamMemberPtrOutput {
-	return i.ToIamServiceAccountIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *iamServiceAccountIamMemberPtrType) ToIamServiceAccountIamMemberPtrOutputWithContext(ctx context.Context) IamServiceAccountIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamServiceAccountIamMemberPtrOutput)
 }
 
 // IamServiceAccountIamMemberArrayInput is an input type that accepts IamServiceAccountIamMemberArray and IamServiceAccountIamMemberArrayOutput values.
@@ -277,7 +248,7 @@ func (i IamServiceAccountIamMemberMap) ToIamServiceAccountIamMemberMapOutputWith
 type IamServiceAccountIamMemberOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamServiceAccountIamMember)(nil))
+	return reflect.TypeOf((**IamServiceAccountIamMember)(nil)).Elem()
 }
 
 func (o IamServiceAccountIamMemberOutput) ToIamServiceAccountIamMemberOutput() IamServiceAccountIamMemberOutput {
@@ -288,44 +259,10 @@ func (o IamServiceAccountIamMemberOutput) ToIamServiceAccountIamMemberOutputWith
 	return o
 }
 
-func (o IamServiceAccountIamMemberOutput) ToIamServiceAccountIamMemberPtrOutput() IamServiceAccountIamMemberPtrOutput {
-	return o.ToIamServiceAccountIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o IamServiceAccountIamMemberOutput) ToIamServiceAccountIamMemberPtrOutputWithContext(ctx context.Context) IamServiceAccountIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamServiceAccountIamMember) *IamServiceAccountIamMember {
-		return &v
-	}).(IamServiceAccountIamMemberPtrOutput)
-}
-
-type IamServiceAccountIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (IamServiceAccountIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamServiceAccountIamMember)(nil))
-}
-
-func (o IamServiceAccountIamMemberPtrOutput) ToIamServiceAccountIamMemberPtrOutput() IamServiceAccountIamMemberPtrOutput {
-	return o
-}
-
-func (o IamServiceAccountIamMemberPtrOutput) ToIamServiceAccountIamMemberPtrOutputWithContext(ctx context.Context) IamServiceAccountIamMemberPtrOutput {
-	return o
-}
-
-func (o IamServiceAccountIamMemberPtrOutput) Elem() IamServiceAccountIamMemberOutput {
-	return o.ApplyT(func(v *IamServiceAccountIamMember) IamServiceAccountIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret IamServiceAccountIamMember
-		return ret
-	}).(IamServiceAccountIamMemberOutput)
-}
-
 type IamServiceAccountIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IamServiceAccountIamMember)(nil))
+	return reflect.TypeOf((*[]*IamServiceAccountIamMember)(nil)).Elem()
 }
 
 func (o IamServiceAccountIamMemberArrayOutput) ToIamServiceAccountIamMemberArrayOutput() IamServiceAccountIamMemberArrayOutput {
@@ -337,15 +274,15 @@ func (o IamServiceAccountIamMemberArrayOutput) ToIamServiceAccountIamMemberArray
 }
 
 func (o IamServiceAccountIamMemberArrayOutput) Index(i pulumi.IntInput) IamServiceAccountIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamServiceAccountIamMember {
-		return vs[0].([]IamServiceAccountIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamServiceAccountIamMember {
+		return vs[0].([]*IamServiceAccountIamMember)[vs[1].(int)]
 	}).(IamServiceAccountIamMemberOutput)
 }
 
 type IamServiceAccountIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (IamServiceAccountIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IamServiceAccountIamMember)(nil))
+	return reflect.TypeOf((*map[string]*IamServiceAccountIamMember)(nil)).Elem()
 }
 
 func (o IamServiceAccountIamMemberMapOutput) ToIamServiceAccountIamMemberMapOutput() IamServiceAccountIamMemberMapOutput {
@@ -357,18 +294,16 @@ func (o IamServiceAccountIamMemberMapOutput) ToIamServiceAccountIamMemberMapOutp
 }
 
 func (o IamServiceAccountIamMemberMapOutput) MapIndex(k pulumi.StringInput) IamServiceAccountIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IamServiceAccountIamMember {
-		return vs[0].(map[string]IamServiceAccountIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamServiceAccountIamMember {
+		return vs[0].(map[string]*IamServiceAccountIamMember)[vs[1].(string)]
 	}).(IamServiceAccountIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamMemberInput)(nil)).Elem(), &IamServiceAccountIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamMemberPtrInput)(nil)).Elem(), &IamServiceAccountIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamMemberArrayInput)(nil)).Elem(), IamServiceAccountIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamServiceAccountIamMemberMapInput)(nil)).Elem(), IamServiceAccountIamMemberMap{})
 	pulumi.RegisterOutputType(IamServiceAccountIamMemberOutput{})
-	pulumi.RegisterOutputType(IamServiceAccountIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(IamServiceAccountIamMemberMapOutput{})
 }

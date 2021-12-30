@@ -153,7 +153,7 @@ type CdnOriginGroupInput interface {
 }
 
 func (*CdnOriginGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*CdnOriginGroup)(nil))
+	return reflect.TypeOf((**CdnOriginGroup)(nil)).Elem()
 }
 
 func (i *CdnOriginGroup) ToCdnOriginGroupOutput() CdnOriginGroupOutput {
@@ -162,35 +162,6 @@ func (i *CdnOriginGroup) ToCdnOriginGroupOutput() CdnOriginGroupOutput {
 
 func (i *CdnOriginGroup) ToCdnOriginGroupOutputWithContext(ctx context.Context) CdnOriginGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CdnOriginGroupOutput)
-}
-
-func (i *CdnOriginGroup) ToCdnOriginGroupPtrOutput() CdnOriginGroupPtrOutput {
-	return i.ToCdnOriginGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *CdnOriginGroup) ToCdnOriginGroupPtrOutputWithContext(ctx context.Context) CdnOriginGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CdnOriginGroupPtrOutput)
-}
-
-type CdnOriginGroupPtrInput interface {
-	pulumi.Input
-
-	ToCdnOriginGroupPtrOutput() CdnOriginGroupPtrOutput
-	ToCdnOriginGroupPtrOutputWithContext(ctx context.Context) CdnOriginGroupPtrOutput
-}
-
-type cdnOriginGroupPtrType CdnOriginGroupArgs
-
-func (*cdnOriginGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CdnOriginGroup)(nil))
-}
-
-func (i *cdnOriginGroupPtrType) ToCdnOriginGroupPtrOutput() CdnOriginGroupPtrOutput {
-	return i.ToCdnOriginGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *cdnOriginGroupPtrType) ToCdnOriginGroupPtrOutputWithContext(ctx context.Context) CdnOriginGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CdnOriginGroupPtrOutput)
 }
 
 // CdnOriginGroupArrayInput is an input type that accepts CdnOriginGroupArray and CdnOriginGroupArrayOutput values.
@@ -246,7 +217,7 @@ func (i CdnOriginGroupMap) ToCdnOriginGroupMapOutputWithContext(ctx context.Cont
 type CdnOriginGroupOutput struct{ *pulumi.OutputState }
 
 func (CdnOriginGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CdnOriginGroup)(nil))
+	return reflect.TypeOf((**CdnOriginGroup)(nil)).Elem()
 }
 
 func (o CdnOriginGroupOutput) ToCdnOriginGroupOutput() CdnOriginGroupOutput {
@@ -257,44 +228,10 @@ func (o CdnOriginGroupOutput) ToCdnOriginGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o CdnOriginGroupOutput) ToCdnOriginGroupPtrOutput() CdnOriginGroupPtrOutput {
-	return o.ToCdnOriginGroupPtrOutputWithContext(context.Background())
-}
-
-func (o CdnOriginGroupOutput) ToCdnOriginGroupPtrOutputWithContext(ctx context.Context) CdnOriginGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnOriginGroup) *CdnOriginGroup {
-		return &v
-	}).(CdnOriginGroupPtrOutput)
-}
-
-type CdnOriginGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (CdnOriginGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CdnOriginGroup)(nil))
-}
-
-func (o CdnOriginGroupPtrOutput) ToCdnOriginGroupPtrOutput() CdnOriginGroupPtrOutput {
-	return o
-}
-
-func (o CdnOriginGroupPtrOutput) ToCdnOriginGroupPtrOutputWithContext(ctx context.Context) CdnOriginGroupPtrOutput {
-	return o
-}
-
-func (o CdnOriginGroupPtrOutput) Elem() CdnOriginGroupOutput {
-	return o.ApplyT(func(v *CdnOriginGroup) CdnOriginGroup {
-		if v != nil {
-			return *v
-		}
-		var ret CdnOriginGroup
-		return ret
-	}).(CdnOriginGroupOutput)
-}
-
 type CdnOriginGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (CdnOriginGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CdnOriginGroup)(nil))
+	return reflect.TypeOf((*[]*CdnOriginGroup)(nil)).Elem()
 }
 
 func (o CdnOriginGroupArrayOutput) ToCdnOriginGroupArrayOutput() CdnOriginGroupArrayOutput {
@@ -306,15 +243,15 @@ func (o CdnOriginGroupArrayOutput) ToCdnOriginGroupArrayOutputWithContext(ctx co
 }
 
 func (o CdnOriginGroupArrayOutput) Index(i pulumi.IntInput) CdnOriginGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CdnOriginGroup {
-		return vs[0].([]CdnOriginGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CdnOriginGroup {
+		return vs[0].([]*CdnOriginGroup)[vs[1].(int)]
 	}).(CdnOriginGroupOutput)
 }
 
 type CdnOriginGroupMapOutput struct{ *pulumi.OutputState }
 
 func (CdnOriginGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CdnOriginGroup)(nil))
+	return reflect.TypeOf((*map[string]*CdnOriginGroup)(nil)).Elem()
 }
 
 func (o CdnOriginGroupMapOutput) ToCdnOriginGroupMapOutput() CdnOriginGroupMapOutput {
@@ -326,18 +263,16 @@ func (o CdnOriginGroupMapOutput) ToCdnOriginGroupMapOutputWithContext(ctx contex
 }
 
 func (o CdnOriginGroupMapOutput) MapIndex(k pulumi.StringInput) CdnOriginGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CdnOriginGroup {
-		return vs[0].(map[string]CdnOriginGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CdnOriginGroup {
+		return vs[0].(map[string]*CdnOriginGroup)[vs[1].(string)]
 	}).(CdnOriginGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnOriginGroupInput)(nil)).Elem(), &CdnOriginGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CdnOriginGroupPtrInput)(nil)).Elem(), &CdnOriginGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnOriginGroupArrayInput)(nil)).Elem(), CdnOriginGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnOriginGroupMapInput)(nil)).Elem(), CdnOriginGroupMap{})
 	pulumi.RegisterOutputType(CdnOriginGroupOutput{})
-	pulumi.RegisterOutputType(CdnOriginGroupPtrOutput{})
 	pulumi.RegisterOutputType(CdnOriginGroupArrayOutput{})
 	pulumi.RegisterOutputType(CdnOriginGroupMapOutput{})
 }

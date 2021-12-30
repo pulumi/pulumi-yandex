@@ -403,7 +403,7 @@ type MdbRedisClusterInput interface {
 }
 
 func (*MdbRedisCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbRedisCluster)(nil))
+	return reflect.TypeOf((**MdbRedisCluster)(nil)).Elem()
 }
 
 func (i *MdbRedisCluster) ToMdbRedisClusterOutput() MdbRedisClusterOutput {
@@ -412,35 +412,6 @@ func (i *MdbRedisCluster) ToMdbRedisClusterOutput() MdbRedisClusterOutput {
 
 func (i *MdbRedisCluster) ToMdbRedisClusterOutputWithContext(ctx context.Context) MdbRedisClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterOutput)
-}
-
-func (i *MdbRedisCluster) ToMdbRedisClusterPtrOutput() MdbRedisClusterPtrOutput {
-	return i.ToMdbRedisClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *MdbRedisCluster) ToMdbRedisClusterPtrOutputWithContext(ctx context.Context) MdbRedisClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterPtrOutput)
-}
-
-type MdbRedisClusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbRedisClusterPtrOutput() MdbRedisClusterPtrOutput
-	ToMdbRedisClusterPtrOutputWithContext(ctx context.Context) MdbRedisClusterPtrOutput
-}
-
-type mdbRedisClusterPtrType MdbRedisClusterArgs
-
-func (*mdbRedisClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbRedisCluster)(nil))
-}
-
-func (i *mdbRedisClusterPtrType) ToMdbRedisClusterPtrOutput() MdbRedisClusterPtrOutput {
-	return i.ToMdbRedisClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbRedisClusterPtrType) ToMdbRedisClusterPtrOutputWithContext(ctx context.Context) MdbRedisClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterPtrOutput)
 }
 
 // MdbRedisClusterArrayInput is an input type that accepts MdbRedisClusterArray and MdbRedisClusterArrayOutput values.
@@ -496,7 +467,7 @@ func (i MdbRedisClusterMap) ToMdbRedisClusterMapOutputWithContext(ctx context.Co
 type MdbRedisClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbRedisClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbRedisCluster)(nil))
+	return reflect.TypeOf((**MdbRedisCluster)(nil)).Elem()
 }
 
 func (o MdbRedisClusterOutput) ToMdbRedisClusterOutput() MdbRedisClusterOutput {
@@ -507,44 +478,10 @@ func (o MdbRedisClusterOutput) ToMdbRedisClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MdbRedisClusterOutput) ToMdbRedisClusterPtrOutput() MdbRedisClusterPtrOutput {
-	return o.ToMdbRedisClusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbRedisClusterOutput) ToMdbRedisClusterPtrOutputWithContext(ctx context.Context) MdbRedisClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbRedisCluster) *MdbRedisCluster {
-		return &v
-	}).(MdbRedisClusterPtrOutput)
-}
-
-type MdbRedisClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbRedisClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbRedisCluster)(nil))
-}
-
-func (o MdbRedisClusterPtrOutput) ToMdbRedisClusterPtrOutput() MdbRedisClusterPtrOutput {
-	return o
-}
-
-func (o MdbRedisClusterPtrOutput) ToMdbRedisClusterPtrOutputWithContext(ctx context.Context) MdbRedisClusterPtrOutput {
-	return o
-}
-
-func (o MdbRedisClusterPtrOutput) Elem() MdbRedisClusterOutput {
-	return o.ApplyT(func(v *MdbRedisCluster) MdbRedisCluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbRedisCluster
-		return ret
-	}).(MdbRedisClusterOutput)
-}
-
 type MdbRedisClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (MdbRedisClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MdbRedisCluster)(nil))
+	return reflect.TypeOf((*[]*MdbRedisCluster)(nil)).Elem()
 }
 
 func (o MdbRedisClusterArrayOutput) ToMdbRedisClusterArrayOutput() MdbRedisClusterArrayOutput {
@@ -556,15 +493,15 @@ func (o MdbRedisClusterArrayOutput) ToMdbRedisClusterArrayOutputWithContext(ctx 
 }
 
 func (o MdbRedisClusterArrayOutput) Index(i pulumi.IntInput) MdbRedisClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbRedisCluster {
-		return vs[0].([]MdbRedisCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MdbRedisCluster {
+		return vs[0].([]*MdbRedisCluster)[vs[1].(int)]
 	}).(MdbRedisClusterOutput)
 }
 
 type MdbRedisClusterMapOutput struct{ *pulumi.OutputState }
 
 func (MdbRedisClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MdbRedisCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbRedisCluster)(nil)).Elem()
 }
 
 func (o MdbRedisClusterMapOutput) ToMdbRedisClusterMapOutput() MdbRedisClusterMapOutput {
@@ -576,18 +513,16 @@ func (o MdbRedisClusterMapOutput) ToMdbRedisClusterMapOutputWithContext(ctx cont
 }
 
 func (o MdbRedisClusterMapOutput) MapIndex(k pulumi.StringInput) MdbRedisClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MdbRedisCluster {
-		return vs[0].(map[string]MdbRedisCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MdbRedisCluster {
+		return vs[0].(map[string]*MdbRedisCluster)[vs[1].(string)]
 	}).(MdbRedisClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterInput)(nil)).Elem(), &MdbRedisCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterPtrInput)(nil)).Elem(), &MdbRedisCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterArrayInput)(nil)).Elem(), MdbRedisClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterMapInput)(nil)).Elem(), MdbRedisClusterMap{})
 	pulumi.RegisterOutputType(MdbRedisClusterOutput{})
-	pulumi.RegisterOutputType(MdbRedisClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterArrayOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterMapOutput{})
 }

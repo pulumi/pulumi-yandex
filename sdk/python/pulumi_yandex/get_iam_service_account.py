@@ -107,15 +107,10 @@ def get_iam_service_account(folder_id: Optional[str] = None,
     deployer = yandex.get_iam_service_account(name="sa_name")
     ```
 
-    ## Argument reference
 
-    * `service_account_id` - (Optional) ID of a specific service account.
-
-    * `name` - (Optional) Name of a specific service account.
-
-    > **NOTE:** One of `service_account_id` or `name` should be specified.
-
-    * `folder_id` - (Optional) Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: Name of a specific service account.
+    :param str service_account_id: ID of a specific service account.
     """
     __args__ = dict()
     __args__['folderId'] = folder_id
@@ -153,14 +148,9 @@ def get_iam_service_account_output(folder_id: Optional[pulumi.Input[Optional[str
     deployer = yandex.get_iam_service_account(name="sa_name")
     ```
 
-    ## Argument reference
 
-    * `service_account_id` - (Optional) ID of a specific service account.
-
-    * `name` - (Optional) Name of a specific service account.
-
-    > **NOTE:** One of `service_account_id` or `name` should be specified.
-
-    * `folder_id` - (Optional) Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: Name of a specific service account.
+    :param str service_account_id: ID of a specific service account.
     """
     ...

@@ -89,35 +89,35 @@ export class KmsSymmetricKey extends pulumi.CustomResource {
      */
     constructor(name: string, args?: KmsSymmetricKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KmsSymmetricKeyArgs | KmsSymmetricKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KmsSymmetricKeyState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["defaultAlgorithm"] = state ? state.defaultAlgorithm : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["rotatedAt"] = state ? state.rotatedAt : undefined;
-            inputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["defaultAlgorithm"] = state ? state.defaultAlgorithm : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["rotatedAt"] = state ? state.rotatedAt : undefined;
+            resourceInputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as KmsSymmetricKeyArgs | undefined;
-            inputs["defaultAlgorithm"] = args ? args.defaultAlgorithm : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["rotatedAt"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["defaultAlgorithm"] = args ? args.defaultAlgorithm : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["rotatedAt"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(KmsSymmetricKey.__pulumiType, name, inputs, opts);
+        super(KmsSymmetricKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -96,19 +96,19 @@ export class StorageObject extends pulumi.CustomResource {
      */
     constructor(name: string, args: StorageObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StorageObjectArgs | StorageObjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageObjectState | undefined;
-            inputs["accessKey"] = state ? state.accessKey : undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["secretKey"] = state ? state.secretKey : undefined;
-            inputs["source"] = state ? state.source : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
         } else {
             const args = argsOrState as StorageObjectArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
@@ -117,20 +117,20 @@ export class StorageObject extends pulumi.CustomResource {
             if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            inputs["accessKey"] = args ? args.accessKey : undefined;
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["content"] = args ? args.content : undefined;
-            inputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["secretKey"] = args ? args.secretKey : undefined;
-            inputs["source"] = args ? args.source : undefined;
+            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(StorageObject.__pulumiType, name, inputs, opts);
+        super(StorageObject.__pulumiType, name, resourceInputs, opts);
     }
 }
 

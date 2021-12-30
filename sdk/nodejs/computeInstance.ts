@@ -174,30 +174,30 @@ export class ComputeInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: ComputeInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeInstanceArgs | ComputeInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeInstanceState | undefined;
-            inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
-            inputs["bootDisk"] = state ? state.bootDisk : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["fqdn"] = state ? state.fqdn : undefined;
-            inputs["hostname"] = state ? state.hostname : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkAccelerationType"] = state ? state.networkAccelerationType : undefined;
-            inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            inputs["placementPolicy"] = state ? state.placementPolicy : undefined;
-            inputs["platformId"] = state ? state.platformId : undefined;
-            inputs["resources"] = state ? state.resources : undefined;
-            inputs["schedulingPolicy"] = state ? state.schedulingPolicy : undefined;
-            inputs["secondaryDisks"] = state ? state.secondaryDisks : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
+            resourceInputs["bootDisk"] = state ? state.bootDisk : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkAccelerationType"] = state ? state.networkAccelerationType : undefined;
+            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
+            resourceInputs["placementPolicy"] = state ? state.placementPolicy : undefined;
+            resourceInputs["platformId"] = state ? state.platformId : undefined;
+            resourceInputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["schedulingPolicy"] = state ? state.schedulingPolicy : undefined;
+            resourceInputs["secondaryDisks"] = state ? state.secondaryDisks : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ComputeInstanceArgs | undefined;
             if ((!args || args.bootDisk === undefined) && !opts.urn) {
@@ -209,31 +209,31 @@ export class ComputeInstance extends pulumi.CustomResource {
             if ((!args || args.resources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resources'");
             }
-            inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
-            inputs["bootDisk"] = args ? args.bootDisk : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["hostname"] = args ? args.hostname : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkAccelerationType"] = args ? args.networkAccelerationType : undefined;
-            inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            inputs["placementPolicy"] = args ? args.placementPolicy : undefined;
-            inputs["platformId"] = args ? args.platformId : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
-            inputs["schedulingPolicy"] = args ? args.schedulingPolicy : undefined;
-            inputs["secondaryDisks"] = args ? args.secondaryDisks : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["fqdn"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
+            resourceInputs["bootDisk"] = args ? args.bootDisk : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkAccelerationType"] = args ? args.networkAccelerationType : undefined;
+            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            resourceInputs["placementPolicy"] = args ? args.placementPolicy : undefined;
+            resourceInputs["platformId"] = args ? args.platformId : undefined;
+            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["schedulingPolicy"] = args ? args.schedulingPolicy : undefined;
+            resourceInputs["secondaryDisks"] = args ? args.secondaryDisks : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["fqdn"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ComputeInstance.__pulumiType, name, inputs, opts);
+        super(ComputeInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

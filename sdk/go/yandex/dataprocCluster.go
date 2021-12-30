@@ -75,7 +75,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = yandex.NewResourcemanagerFolderIamBinding(ctx, "bucket_creator", &yandex.ResourcemanagerFolderIamBindingArgs{
+// 		_, err = yandex.NewResourcemanagerFolderIamBinding(ctx, "bucket-creator", &yandex.ResourcemanagerFolderIamBindingArgs{
 // 			FolderId: pulumi.String(fooResourcemanagerFolder.Id),
 // 			Role:     pulumi.String("editor"),
 // 			Members: pulumi.StringArray{
@@ -398,7 +398,7 @@ type DataprocClusterInput interface {
 }
 
 func (*DataprocCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataprocCluster)(nil))
+	return reflect.TypeOf((**DataprocCluster)(nil)).Elem()
 }
 
 func (i *DataprocCluster) ToDataprocClusterOutput() DataprocClusterOutput {
@@ -407,35 +407,6 @@ func (i *DataprocCluster) ToDataprocClusterOutput() DataprocClusterOutput {
 
 func (i *DataprocCluster) ToDataprocClusterOutputWithContext(ctx context.Context) DataprocClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataprocClusterOutput)
-}
-
-func (i *DataprocCluster) ToDataprocClusterPtrOutput() DataprocClusterPtrOutput {
-	return i.ToDataprocClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *DataprocCluster) ToDataprocClusterPtrOutputWithContext(ctx context.Context) DataprocClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataprocClusterPtrOutput)
-}
-
-type DataprocClusterPtrInput interface {
-	pulumi.Input
-
-	ToDataprocClusterPtrOutput() DataprocClusterPtrOutput
-	ToDataprocClusterPtrOutputWithContext(ctx context.Context) DataprocClusterPtrOutput
-}
-
-type dataprocClusterPtrType DataprocClusterArgs
-
-func (*dataprocClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataprocCluster)(nil))
-}
-
-func (i *dataprocClusterPtrType) ToDataprocClusterPtrOutput() DataprocClusterPtrOutput {
-	return i.ToDataprocClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *dataprocClusterPtrType) ToDataprocClusterPtrOutputWithContext(ctx context.Context) DataprocClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataprocClusterPtrOutput)
 }
 
 // DataprocClusterArrayInput is an input type that accepts DataprocClusterArray and DataprocClusterArrayOutput values.
@@ -491,7 +462,7 @@ func (i DataprocClusterMap) ToDataprocClusterMapOutputWithContext(ctx context.Co
 type DataprocClusterOutput struct{ *pulumi.OutputState }
 
 func (DataprocClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataprocCluster)(nil))
+	return reflect.TypeOf((**DataprocCluster)(nil)).Elem()
 }
 
 func (o DataprocClusterOutput) ToDataprocClusterOutput() DataprocClusterOutput {
@@ -502,44 +473,10 @@ func (o DataprocClusterOutput) ToDataprocClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DataprocClusterOutput) ToDataprocClusterPtrOutput() DataprocClusterPtrOutput {
-	return o.ToDataprocClusterPtrOutputWithContext(context.Background())
-}
-
-func (o DataprocClusterOutput) ToDataprocClusterPtrOutputWithContext(ctx context.Context) DataprocClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataprocCluster) *DataprocCluster {
-		return &v
-	}).(DataprocClusterPtrOutput)
-}
-
-type DataprocClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (DataprocClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataprocCluster)(nil))
-}
-
-func (o DataprocClusterPtrOutput) ToDataprocClusterPtrOutput() DataprocClusterPtrOutput {
-	return o
-}
-
-func (o DataprocClusterPtrOutput) ToDataprocClusterPtrOutputWithContext(ctx context.Context) DataprocClusterPtrOutput {
-	return o
-}
-
-func (o DataprocClusterPtrOutput) Elem() DataprocClusterOutput {
-	return o.ApplyT(func(v *DataprocCluster) DataprocCluster {
-		if v != nil {
-			return *v
-		}
-		var ret DataprocCluster
-		return ret
-	}).(DataprocClusterOutput)
-}
-
 type DataprocClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (DataprocClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataprocCluster)(nil))
+	return reflect.TypeOf((*[]*DataprocCluster)(nil)).Elem()
 }
 
 func (o DataprocClusterArrayOutput) ToDataprocClusterArrayOutput() DataprocClusterArrayOutput {
@@ -551,15 +488,15 @@ func (o DataprocClusterArrayOutput) ToDataprocClusterArrayOutputWithContext(ctx 
 }
 
 func (o DataprocClusterArrayOutput) Index(i pulumi.IntInput) DataprocClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataprocCluster {
-		return vs[0].([]DataprocCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataprocCluster {
+		return vs[0].([]*DataprocCluster)[vs[1].(int)]
 	}).(DataprocClusterOutput)
 }
 
 type DataprocClusterMapOutput struct{ *pulumi.OutputState }
 
 func (DataprocClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DataprocCluster)(nil))
+	return reflect.TypeOf((*map[string]*DataprocCluster)(nil)).Elem()
 }
 
 func (o DataprocClusterMapOutput) ToDataprocClusterMapOutput() DataprocClusterMapOutput {
@@ -571,18 +508,16 @@ func (o DataprocClusterMapOutput) ToDataprocClusterMapOutputWithContext(ctx cont
 }
 
 func (o DataprocClusterMapOutput) MapIndex(k pulumi.StringInput) DataprocClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DataprocCluster {
-		return vs[0].(map[string]DataprocCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DataprocCluster {
+		return vs[0].(map[string]*DataprocCluster)[vs[1].(string)]
 	}).(DataprocClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterInput)(nil)).Elem(), &DataprocCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterPtrInput)(nil)).Elem(), &DataprocCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterArrayInput)(nil)).Elem(), DataprocClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterMapInput)(nil)).Elem(), DataprocClusterMap{})
 	pulumi.RegisterOutputType(DataprocClusterOutput{})
-	pulumi.RegisterOutputType(DataprocClusterPtrOutput{})
 	pulumi.RegisterOutputType(DataprocClusterArrayOutput{})
 	pulumi.RegisterOutputType(DataprocClusterMapOutput{})
 }

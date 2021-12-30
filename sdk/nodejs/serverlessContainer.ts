@@ -139,24 +139,24 @@ export class ServerlessContainer extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServerlessContainerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerlessContainerArgs | ServerlessContainerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerlessContainerState | undefined;
-            inputs["concurrency"] = state ? state.concurrency : undefined;
-            inputs["coreFraction"] = state ? state.coreFraction : undefined;
-            inputs["cores"] = state ? state.cores : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["executionTimeout"] = state ? state.executionTimeout : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["image"] = state ? state.image : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["memory"] = state ? state.memory : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["revisionId"] = state ? state.revisionId : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["concurrency"] = state ? state.concurrency : undefined;
+            resourceInputs["coreFraction"] = state ? state.coreFraction : undefined;
+            resourceInputs["cores"] = state ? state.cores : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["executionTimeout"] = state ? state.executionTimeout : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["image"] = state ? state.image : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["revisionId"] = state ? state.revisionId : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as ServerlessContainerArgs | undefined;
             if ((!args || args.image === undefined) && !opts.urn) {
@@ -165,25 +165,25 @@ export class ServerlessContainer extends pulumi.CustomResource {
             if ((!args || args.memory === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'memory'");
             }
-            inputs["concurrency"] = args ? args.concurrency : undefined;
-            inputs["coreFraction"] = args ? args.coreFraction : undefined;
-            inputs["cores"] = args ? args.cores : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["executionTimeout"] = args ? args.executionTimeout : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["image"] = args ? args.image : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["memory"] = args ? args.memory : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["revisionId"] = undefined /*out*/;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["concurrency"] = args ? args.concurrency : undefined;
+            resourceInputs["coreFraction"] = args ? args.coreFraction : undefined;
+            resourceInputs["cores"] = args ? args.cores : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executionTimeout"] = args ? args.executionTimeout : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["image"] = args ? args.image : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["memory"] = args ? args.memory : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServerlessContainer.__pulumiType, name, inputs, opts);
+        super(ServerlessContainer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

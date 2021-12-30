@@ -104,39 +104,39 @@ export class CdnResource extends pulumi.CustomResource {
      */
     constructor(name: string, args?: CdnResourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CdnResourceArgs | CdnResourceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CdnResourceState | undefined;
-            inputs["active"] = state ? state.active : undefined;
-            inputs["cname"] = state ? state.cname : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["options"] = state ? state.options : undefined;
-            inputs["originGroupId"] = state ? state.originGroupId : undefined;
-            inputs["originGroupName"] = state ? state.originGroupName : undefined;
-            inputs["originProtocol"] = state ? state.originProtocol : undefined;
-            inputs["secondaryHostnames"] = state ? state.secondaryHostnames : undefined;
-            inputs["sslCertificate"] = state ? state.sslCertificate : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["active"] = state ? state.active : undefined;
+            resourceInputs["cname"] = state ? state.cname : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["originGroupId"] = state ? state.originGroupId : undefined;
+            resourceInputs["originGroupName"] = state ? state.originGroupName : undefined;
+            resourceInputs["originProtocol"] = state ? state.originProtocol : undefined;
+            resourceInputs["secondaryHostnames"] = state ? state.secondaryHostnames : undefined;
+            resourceInputs["sslCertificate"] = state ? state.sslCertificate : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as CdnResourceArgs | undefined;
-            inputs["active"] = args ? args.active : undefined;
-            inputs["cname"] = args ? args.cname : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["originGroupId"] = args ? args.originGroupId : undefined;
-            inputs["originGroupName"] = args ? args.originGroupName : undefined;
-            inputs["originProtocol"] = args ? args.originProtocol : undefined;
-            inputs["secondaryHostnames"] = args ? args.secondaryHostnames : undefined;
-            inputs["sslCertificate"] = args ? args.sslCertificate : undefined;
-            inputs["updatedAt"] = args ? args.updatedAt : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["folderId"] = undefined /*out*/;
+            resourceInputs["active"] = args ? args.active : undefined;
+            resourceInputs["cname"] = args ? args.cname : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["originGroupId"] = args ? args.originGroupId : undefined;
+            resourceInputs["originGroupName"] = args ? args.originGroupName : undefined;
+            resourceInputs["originProtocol"] = args ? args.originProtocol : undefined;
+            resourceInputs["secondaryHostnames"] = args ? args.secondaryHostnames : undefined;
+            resourceInputs["sslCertificate"] = args ? args.sslCertificate : undefined;
+            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["folderId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CdnResource.__pulumiType, name, inputs, opts);
+        super(CdnResource.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -55,6 +55,7 @@ setup(name='pulumi_yandex',
       package_data={
           'pulumi_yandex': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

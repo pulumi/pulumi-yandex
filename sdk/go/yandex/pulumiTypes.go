@@ -4255,47 +4255,6 @@ func (i AlbLoadBalancerAllocationPolicyArgs) ToAlbLoadBalancerAllocationPolicyOu
 	return pulumi.ToOutputWithContext(ctx, i).(AlbLoadBalancerAllocationPolicyOutput)
 }
 
-func (i AlbLoadBalancerAllocationPolicyArgs) ToAlbLoadBalancerAllocationPolicyPtrOutput() AlbLoadBalancerAllocationPolicyPtrOutput {
-	return i.ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i AlbLoadBalancerAllocationPolicyArgs) ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(ctx context.Context) AlbLoadBalancerAllocationPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlbLoadBalancerAllocationPolicyOutput).ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(ctx)
-}
-
-// AlbLoadBalancerAllocationPolicyPtrInput is an input type that accepts AlbLoadBalancerAllocationPolicyArgs, AlbLoadBalancerAllocationPolicyPtr and AlbLoadBalancerAllocationPolicyPtrOutput values.
-// You can construct a concrete instance of `AlbLoadBalancerAllocationPolicyPtrInput` via:
-//
-//          AlbLoadBalancerAllocationPolicyArgs{...}
-//
-//  or:
-//
-//          nil
-type AlbLoadBalancerAllocationPolicyPtrInput interface {
-	pulumi.Input
-
-	ToAlbLoadBalancerAllocationPolicyPtrOutput() AlbLoadBalancerAllocationPolicyPtrOutput
-	ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(context.Context) AlbLoadBalancerAllocationPolicyPtrOutput
-}
-
-type albLoadBalancerAllocationPolicyPtrType AlbLoadBalancerAllocationPolicyArgs
-
-func AlbLoadBalancerAllocationPolicyPtr(v *AlbLoadBalancerAllocationPolicyArgs) AlbLoadBalancerAllocationPolicyPtrInput {
-	return (*albLoadBalancerAllocationPolicyPtrType)(v)
-}
-
-func (*albLoadBalancerAllocationPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlbLoadBalancerAllocationPolicy)(nil)).Elem()
-}
-
-func (i *albLoadBalancerAllocationPolicyPtrType) ToAlbLoadBalancerAllocationPolicyPtrOutput() AlbLoadBalancerAllocationPolicyPtrOutput {
-	return i.ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *albLoadBalancerAllocationPolicyPtrType) ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(ctx context.Context) AlbLoadBalancerAllocationPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlbLoadBalancerAllocationPolicyPtrOutput)
-}
-
 type AlbLoadBalancerAllocationPolicyOutput struct{ *pulumi.OutputState }
 
 func (AlbLoadBalancerAllocationPolicyOutput) ElementType() reflect.Type {
@@ -4310,53 +4269,9 @@ func (o AlbLoadBalancerAllocationPolicyOutput) ToAlbLoadBalancerAllocationPolicy
 	return o
 }
 
-func (o AlbLoadBalancerAllocationPolicyOutput) ToAlbLoadBalancerAllocationPolicyPtrOutput() AlbLoadBalancerAllocationPolicyPtrOutput {
-	return o.ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o AlbLoadBalancerAllocationPolicyOutput) ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(ctx context.Context) AlbLoadBalancerAllocationPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbLoadBalancerAllocationPolicy) *AlbLoadBalancerAllocationPolicy {
-		return &v
-	}).(AlbLoadBalancerAllocationPolicyPtrOutput)
-}
-
 // Unique set of locations. The structure is documented below.
 func (o AlbLoadBalancerAllocationPolicyOutput) Locations() AlbLoadBalancerAllocationPolicyLocationArrayOutput {
 	return o.ApplyT(func(v AlbLoadBalancerAllocationPolicy) []AlbLoadBalancerAllocationPolicyLocation { return v.Locations }).(AlbLoadBalancerAllocationPolicyLocationArrayOutput)
-}
-
-type AlbLoadBalancerAllocationPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (AlbLoadBalancerAllocationPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlbLoadBalancerAllocationPolicy)(nil)).Elem()
-}
-
-func (o AlbLoadBalancerAllocationPolicyPtrOutput) ToAlbLoadBalancerAllocationPolicyPtrOutput() AlbLoadBalancerAllocationPolicyPtrOutput {
-	return o
-}
-
-func (o AlbLoadBalancerAllocationPolicyPtrOutput) ToAlbLoadBalancerAllocationPolicyPtrOutputWithContext(ctx context.Context) AlbLoadBalancerAllocationPolicyPtrOutput {
-	return o
-}
-
-func (o AlbLoadBalancerAllocationPolicyPtrOutput) Elem() AlbLoadBalancerAllocationPolicyOutput {
-	return o.ApplyT(func(v *AlbLoadBalancerAllocationPolicy) AlbLoadBalancerAllocationPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret AlbLoadBalancerAllocationPolicy
-		return ret
-	}).(AlbLoadBalancerAllocationPolicyOutput)
-}
-
-// Unique set of locations. The structure is documented below.
-func (o AlbLoadBalancerAllocationPolicyPtrOutput) Locations() AlbLoadBalancerAllocationPolicyLocationArrayOutput {
-	return o.ApplyT(func(v *AlbLoadBalancerAllocationPolicy) []AlbLoadBalancerAllocationPolicyLocation {
-		if v == nil {
-			return nil
-		}
-		return v.Locations
-	}).(AlbLoadBalancerAllocationPolicyLocationArrayOutput)
 }
 
 type AlbLoadBalancerAllocationPolicyLocation struct {
@@ -11021,47 +10936,6 @@ func (i ComputeInstanceBootDiskArgs) ToComputeInstanceBootDiskOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceBootDiskOutput)
 }
 
-func (i ComputeInstanceBootDiskArgs) ToComputeInstanceBootDiskPtrOutput() ComputeInstanceBootDiskPtrOutput {
-	return i.ToComputeInstanceBootDiskPtrOutputWithContext(context.Background())
-}
-
-func (i ComputeInstanceBootDiskArgs) ToComputeInstanceBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceBootDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceBootDiskOutput).ToComputeInstanceBootDiskPtrOutputWithContext(ctx)
-}
-
-// ComputeInstanceBootDiskPtrInput is an input type that accepts ComputeInstanceBootDiskArgs, ComputeInstanceBootDiskPtr and ComputeInstanceBootDiskPtrOutput values.
-// You can construct a concrete instance of `ComputeInstanceBootDiskPtrInput` via:
-//
-//          ComputeInstanceBootDiskArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeInstanceBootDiskPtrInput interface {
-	pulumi.Input
-
-	ToComputeInstanceBootDiskPtrOutput() ComputeInstanceBootDiskPtrOutput
-	ToComputeInstanceBootDiskPtrOutputWithContext(context.Context) ComputeInstanceBootDiskPtrOutput
-}
-
-type computeInstanceBootDiskPtrType ComputeInstanceBootDiskArgs
-
-func ComputeInstanceBootDiskPtr(v *ComputeInstanceBootDiskArgs) ComputeInstanceBootDiskPtrInput {
-	return (*computeInstanceBootDiskPtrType)(v)
-}
-
-func (*computeInstanceBootDiskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceBootDisk)(nil)).Elem()
-}
-
-func (i *computeInstanceBootDiskPtrType) ToComputeInstanceBootDiskPtrOutput() ComputeInstanceBootDiskPtrOutput {
-	return i.ToComputeInstanceBootDiskPtrOutputWithContext(context.Background())
-}
-
-func (i *computeInstanceBootDiskPtrType) ToComputeInstanceBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceBootDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceBootDiskPtrOutput)
-}
-
 type ComputeInstanceBootDiskOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceBootDiskOutput) ElementType() reflect.Type {
@@ -11074,16 +10948,6 @@ func (o ComputeInstanceBootDiskOutput) ToComputeInstanceBootDiskOutput() Compute
 
 func (o ComputeInstanceBootDiskOutput) ToComputeInstanceBootDiskOutputWithContext(ctx context.Context) ComputeInstanceBootDiskOutput {
 	return o
-}
-
-func (o ComputeInstanceBootDiskOutput) ToComputeInstanceBootDiskPtrOutput() ComputeInstanceBootDiskPtrOutput {
-	return o.ToComputeInstanceBootDiskPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeInstanceBootDiskOutput) ToComputeInstanceBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceBootDiskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceBootDisk) *ComputeInstanceBootDisk {
-		return &v
-	}).(ComputeInstanceBootDiskPtrOutput)
 }
 
 // Whether the disk is auto-deleted when the instance
@@ -11112,83 +10976,6 @@ func (o ComputeInstanceBootDiskOutput) InitializeParams() ComputeInstanceBootDis
 // Type of access to the disk resource. By default, a disk is attached in `READ_WRITE` mode.
 func (o ComputeInstanceBootDiskOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceBootDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-type ComputeInstanceBootDiskPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeInstanceBootDiskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceBootDisk)(nil)).Elem()
-}
-
-func (o ComputeInstanceBootDiskPtrOutput) ToComputeInstanceBootDiskPtrOutput() ComputeInstanceBootDiskPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceBootDiskPtrOutput) ToComputeInstanceBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceBootDiskPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceBootDiskPtrOutput) Elem() ComputeInstanceBootDiskOutput {
-	return o.ApplyT(func(v *ComputeInstanceBootDisk) ComputeInstanceBootDisk {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeInstanceBootDisk
-		return ret
-	}).(ComputeInstanceBootDiskOutput)
-}
-
-// Whether the disk is auto-deleted when the instance
-// is deleted. The default value is false.
-func (o ComputeInstanceBootDiskPtrOutput) AutoDelete() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceBootDisk) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AutoDelete
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Name that can be used to access an attached disk
-// under `/dev/disk/by-id/`.
-func (o ComputeInstanceBootDiskPtrOutput) DeviceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceBootDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeviceName
-	}).(pulumi.StringPtrOutput)
-}
-
-// ID of the disk that is attached to the instance.
-func (o ComputeInstanceBootDiskPtrOutput) DiskId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceBootDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Parameters for a new disk that will be created
-// alongside the new instance. Either `initializeParams` or `diskId` must be set. The structure is documented below.
-func (o ComputeInstanceBootDiskPtrOutput) InitializeParams() ComputeInstanceBootDiskInitializeParamsPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceBootDisk) *ComputeInstanceBootDiskInitializeParams {
-		if v == nil {
-			return nil
-		}
-		return v.InitializeParams
-	}).(ComputeInstanceBootDiskInitializeParamsPtrOutput)
-}
-
-// Type of access to the disk resource. By default, a disk is attached in `READ_WRITE` mode.
-func (o ComputeInstanceBootDiskPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceBootDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
 }
 
 type ComputeInstanceBootDiskInitializeParams struct {
@@ -11471,47 +11258,6 @@ func (i ComputeInstanceGroupAllocationPolicyArgs) ToComputeInstanceGroupAllocati
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupAllocationPolicyOutput)
 }
 
-func (i ComputeInstanceGroupAllocationPolicyArgs) ToComputeInstanceGroupAllocationPolicyPtrOutput() ComputeInstanceGroupAllocationPolicyPtrOutput {
-	return i.ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i ComputeInstanceGroupAllocationPolicyArgs) ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupAllocationPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupAllocationPolicyOutput).ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(ctx)
-}
-
-// ComputeInstanceGroupAllocationPolicyPtrInput is an input type that accepts ComputeInstanceGroupAllocationPolicyArgs, ComputeInstanceGroupAllocationPolicyPtr and ComputeInstanceGroupAllocationPolicyPtrOutput values.
-// You can construct a concrete instance of `ComputeInstanceGroupAllocationPolicyPtrInput` via:
-//
-//          ComputeInstanceGroupAllocationPolicyArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeInstanceGroupAllocationPolicyPtrInput interface {
-	pulumi.Input
-
-	ToComputeInstanceGroupAllocationPolicyPtrOutput() ComputeInstanceGroupAllocationPolicyPtrOutput
-	ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(context.Context) ComputeInstanceGroupAllocationPolicyPtrOutput
-}
-
-type computeInstanceGroupAllocationPolicyPtrType ComputeInstanceGroupAllocationPolicyArgs
-
-func ComputeInstanceGroupAllocationPolicyPtr(v *ComputeInstanceGroupAllocationPolicyArgs) ComputeInstanceGroupAllocationPolicyPtrInput {
-	return (*computeInstanceGroupAllocationPolicyPtrType)(v)
-}
-
-func (*computeInstanceGroupAllocationPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupAllocationPolicy)(nil)).Elem()
-}
-
-func (i *computeInstanceGroupAllocationPolicyPtrType) ToComputeInstanceGroupAllocationPolicyPtrOutput() ComputeInstanceGroupAllocationPolicyPtrOutput {
-	return i.ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *computeInstanceGroupAllocationPolicyPtrType) ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupAllocationPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupAllocationPolicyPtrOutput)
-}
-
 type ComputeInstanceGroupAllocationPolicyOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceGroupAllocationPolicyOutput) ElementType() reflect.Type {
@@ -11526,53 +11272,9 @@ func (o ComputeInstanceGroupAllocationPolicyOutput) ToComputeInstanceGroupAlloca
 	return o
 }
 
-func (o ComputeInstanceGroupAllocationPolicyOutput) ToComputeInstanceGroupAllocationPolicyPtrOutput() ComputeInstanceGroupAllocationPolicyPtrOutput {
-	return o.ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeInstanceGroupAllocationPolicyOutput) ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupAllocationPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupAllocationPolicy) *ComputeInstanceGroupAllocationPolicy {
-		return &v
-	}).(ComputeInstanceGroupAllocationPolicyPtrOutput)
-}
-
 // A list of availability zones.
 func (o ComputeInstanceGroupAllocationPolicyOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeInstanceGroupAllocationPolicy) []string { return v.Zones }).(pulumi.StringArrayOutput)
-}
-
-type ComputeInstanceGroupAllocationPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeInstanceGroupAllocationPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupAllocationPolicy)(nil)).Elem()
-}
-
-func (o ComputeInstanceGroupAllocationPolicyPtrOutput) ToComputeInstanceGroupAllocationPolicyPtrOutput() ComputeInstanceGroupAllocationPolicyPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupAllocationPolicyPtrOutput) ToComputeInstanceGroupAllocationPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupAllocationPolicyPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupAllocationPolicyPtrOutput) Elem() ComputeInstanceGroupAllocationPolicyOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupAllocationPolicy) ComputeInstanceGroupAllocationPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeInstanceGroupAllocationPolicy
-		return ret
-	}).(ComputeInstanceGroupAllocationPolicyOutput)
-}
-
-// A list of availability zones.
-func (o ComputeInstanceGroupAllocationPolicyPtrOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupAllocationPolicy) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Zones
-	}).(pulumi.StringArrayOutput)
 }
 
 type ComputeInstanceGroupApplicationLoadBalancer struct {
@@ -11868,47 +11570,6 @@ func (i ComputeInstanceGroupDeployPolicyArgs) ToComputeInstanceGroupDeployPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupDeployPolicyOutput)
 }
 
-func (i ComputeInstanceGroupDeployPolicyArgs) ToComputeInstanceGroupDeployPolicyPtrOutput() ComputeInstanceGroupDeployPolicyPtrOutput {
-	return i.ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i ComputeInstanceGroupDeployPolicyArgs) ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupDeployPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupDeployPolicyOutput).ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(ctx)
-}
-
-// ComputeInstanceGroupDeployPolicyPtrInput is an input type that accepts ComputeInstanceGroupDeployPolicyArgs, ComputeInstanceGroupDeployPolicyPtr and ComputeInstanceGroupDeployPolicyPtrOutput values.
-// You can construct a concrete instance of `ComputeInstanceGroupDeployPolicyPtrInput` via:
-//
-//          ComputeInstanceGroupDeployPolicyArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeInstanceGroupDeployPolicyPtrInput interface {
-	pulumi.Input
-
-	ToComputeInstanceGroupDeployPolicyPtrOutput() ComputeInstanceGroupDeployPolicyPtrOutput
-	ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(context.Context) ComputeInstanceGroupDeployPolicyPtrOutput
-}
-
-type computeInstanceGroupDeployPolicyPtrType ComputeInstanceGroupDeployPolicyArgs
-
-func ComputeInstanceGroupDeployPolicyPtr(v *ComputeInstanceGroupDeployPolicyArgs) ComputeInstanceGroupDeployPolicyPtrInput {
-	return (*computeInstanceGroupDeployPolicyPtrType)(v)
-}
-
-func (*computeInstanceGroupDeployPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupDeployPolicy)(nil)).Elem()
-}
-
-func (i *computeInstanceGroupDeployPolicyPtrType) ToComputeInstanceGroupDeployPolicyPtrOutput() ComputeInstanceGroupDeployPolicyPtrOutput {
-	return i.ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *computeInstanceGroupDeployPolicyPtrType) ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupDeployPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupDeployPolicyPtrOutput)
-}
-
 type ComputeInstanceGroupDeployPolicyOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceGroupDeployPolicyOutput) ElementType() reflect.Type {
@@ -11921,16 +11582,6 @@ func (o ComputeInstanceGroupDeployPolicyOutput) ToComputeInstanceGroupDeployPoli
 
 func (o ComputeInstanceGroupDeployPolicyOutput) ToComputeInstanceGroupDeployPolicyOutputWithContext(ctx context.Context) ComputeInstanceGroupDeployPolicyOutput {
 	return o
-}
-
-func (o ComputeInstanceGroupDeployPolicyOutput) ToComputeInstanceGroupDeployPolicyPtrOutput() ComputeInstanceGroupDeployPolicyPtrOutput {
-	return o.ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeInstanceGroupDeployPolicyOutput) ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupDeployPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupDeployPolicy) *ComputeInstanceGroupDeployPolicy {
-		return &v
-	}).(ComputeInstanceGroupDeployPolicyPtrOutput)
 }
 
 // The maximum number of instances that can be created at the same time.
@@ -11967,96 +11618,6 @@ func (o ComputeInstanceGroupDeployPolicyOutput) StartupDuration() pulumi.IntPtrO
 // it will wait until the instance stops itself or becomes unhealthy.
 func (o ComputeInstanceGroupDeployPolicyOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceGroupDeployPolicy) *string { return v.Strategy }).(pulumi.StringPtrOutput)
-}
-
-type ComputeInstanceGroupDeployPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeInstanceGroupDeployPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupDeployPolicy)(nil)).Elem()
-}
-
-func (o ComputeInstanceGroupDeployPolicyPtrOutput) ToComputeInstanceGroupDeployPolicyPtrOutput() ComputeInstanceGroupDeployPolicyPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupDeployPolicyPtrOutput) ToComputeInstanceGroupDeployPolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupDeployPolicyPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupDeployPolicyPtrOutput) Elem() ComputeInstanceGroupDeployPolicyOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupDeployPolicy) ComputeInstanceGroupDeployPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeInstanceGroupDeployPolicy
-		return ret
-	}).(ComputeInstanceGroupDeployPolicyOutput)
-}
-
-// The maximum number of instances that can be created at the same time.
-func (o ComputeInstanceGroupDeployPolicyPtrOutput) MaxCreating() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupDeployPolicy) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxCreating
-	}).(pulumi.IntPtrOutput)
-}
-
-// The maximum number of instances that can be deleted at the same time.
-func (o ComputeInstanceGroupDeployPolicyPtrOutput) MaxDeleting() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupDeployPolicy) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxDeleting
-	}).(pulumi.IntPtrOutput)
-}
-
-// The maximum number of instances that can be temporarily allocated above the group's target size
-// during the update process.
-func (o ComputeInstanceGroupDeployPolicyPtrOutput) MaxExpansion() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupDeployPolicy) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxExpansion
-	}).(pulumi.IntPtrOutput)
-}
-
-// The maximum number of running instances that can be taken offline (stopped or deleted) at the same time
-// during the update process.
-func (o ComputeInstanceGroupDeployPolicyPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupDeployPolicy) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxUnavailable
-	}).(pulumi.IntPtrOutput)
-}
-
-// The amount of time in seconds to allow for an instance to start.
-// Instance will be considered up and running (and start receiving traffic) only after the startupDuration
-// has elapsed and all health checks are passed.
-func (o ComputeInstanceGroupDeployPolicyPtrOutput) StartupDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupDeployPolicy) *int {
-		if v == nil {
-			return nil
-		}
-		return v.StartupDuration
-	}).(pulumi.IntPtrOutput)
-}
-
-// Affects the lifecycle of the instance during deployment. If set to `proactive` (default), Instance Groups
-// can forcefully stop a running instance. If `opportunistic`, Instance Groups does not stop a running instance. Instead,
-// it will wait until the instance stops itself or becomes unhealthy.
-func (o ComputeInstanceGroupDeployPolicyPtrOutput) Strategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupDeployPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Strategy
-	}).(pulumi.StringPtrOutput)
 }
 
 type ComputeInstanceGroupHealthCheck struct {
@@ -12924,47 +12485,6 @@ func (i ComputeInstanceGroupInstanceTemplateArgs) ToComputeInstanceGroupInstance
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupInstanceTemplateOutput)
 }
 
-func (i ComputeInstanceGroupInstanceTemplateArgs) ToComputeInstanceGroupInstanceTemplatePtrOutput() ComputeInstanceGroupInstanceTemplatePtrOutput {
-	return i.ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i ComputeInstanceGroupInstanceTemplateArgs) ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupInstanceTemplateOutput).ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(ctx)
-}
-
-// ComputeInstanceGroupInstanceTemplatePtrInput is an input type that accepts ComputeInstanceGroupInstanceTemplateArgs, ComputeInstanceGroupInstanceTemplatePtr and ComputeInstanceGroupInstanceTemplatePtrOutput values.
-// You can construct a concrete instance of `ComputeInstanceGroupInstanceTemplatePtrInput` via:
-//
-//          ComputeInstanceGroupInstanceTemplateArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeInstanceGroupInstanceTemplatePtrInput interface {
-	pulumi.Input
-
-	ToComputeInstanceGroupInstanceTemplatePtrOutput() ComputeInstanceGroupInstanceTemplatePtrOutput
-	ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(context.Context) ComputeInstanceGroupInstanceTemplatePtrOutput
-}
-
-type computeInstanceGroupInstanceTemplatePtrType ComputeInstanceGroupInstanceTemplateArgs
-
-func ComputeInstanceGroupInstanceTemplatePtr(v *ComputeInstanceGroupInstanceTemplateArgs) ComputeInstanceGroupInstanceTemplatePtrInput {
-	return (*computeInstanceGroupInstanceTemplatePtrType)(v)
-}
-
-func (*computeInstanceGroupInstanceTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupInstanceTemplate)(nil)).Elem()
-}
-
-func (i *computeInstanceGroupInstanceTemplatePtrType) ToComputeInstanceGroupInstanceTemplatePtrOutput() ComputeInstanceGroupInstanceTemplatePtrOutput {
-	return i.ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *computeInstanceGroupInstanceTemplatePtrType) ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupInstanceTemplatePtrOutput)
-}
-
 type ComputeInstanceGroupInstanceTemplateOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceGroupInstanceTemplateOutput) ElementType() reflect.Type {
@@ -12977,16 +12497,6 @@ func (o ComputeInstanceGroupInstanceTemplateOutput) ToComputeInstanceGroupInstan
 
 func (o ComputeInstanceGroupInstanceTemplateOutput) ToComputeInstanceGroupInstanceTemplateOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateOutput {
 	return o
-}
-
-func (o ComputeInstanceGroupInstanceTemplateOutput) ToComputeInstanceGroupInstanceTemplatePtrOutput() ComputeInstanceGroupInstanceTemplatePtrOutput {
-	return o.ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o ComputeInstanceGroupInstanceTemplateOutput) ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplate) *ComputeInstanceGroupInstanceTemplate {
-		return &v
-	}).(ComputeInstanceGroupInstanceTemplatePtrOutput)
 }
 
 // Boot disk specifications for the instance. The structure is documented below.
@@ -13091,188 +12601,6 @@ func (o ComputeInstanceGroupInstanceTemplateOutput) ServiceAccountId() pulumi.St
 	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplate) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
 }
 
-type ComputeInstanceGroupInstanceTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeInstanceGroupInstanceTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupInstanceTemplate)(nil)).Elem()
-}
-
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) ToComputeInstanceGroupInstanceTemplatePtrOutput() ComputeInstanceGroupInstanceTemplatePtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) ToComputeInstanceGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplatePtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) Elem() ComputeInstanceGroupInstanceTemplateOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) ComputeInstanceGroupInstanceTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeInstanceGroupInstanceTemplate
-		return ret
-	}).(ComputeInstanceGroupInstanceTemplateOutput)
-}
-
-// Boot disk specifications for the instance. The structure is documented below.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) BootDisk() ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) *ComputeInstanceGroupInstanceTemplateBootDisk {
-		if v == nil {
-			return nil
-		}
-		return &v.BootDisk
-	}).(ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput)
-}
-
-// A description of the boot disk.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Hostname template for the instance.\
-// This field is used to generate the FQDN value of instance.
-// The hostname must be unique within the network and region.
-// If not specified, the hostname will be equal to id of the instance
-// and FQDN will be `<id>.auto.internal`. Otherwise FQDN will be `<hostname>.<region_id>.internal`.
-// In order to be unique it must contain at least on of instance unique placeholders:
-// {instance.short_id}
-// {instance.index}
-// combination of {instance.zone_id} and {instance.index_in_zone}
-// Example: my-instance-{instance.index}
-// If not set, `name` value will be used
-// It may also contain another placeholders, see metadata doc for full list.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// A map of labels of metric.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// A set of metadata key/value pairs to make available from within the instance.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-// Name template of the instance.\
-// In order to be unique it must contain at least one of instance unique placeholders:
-// {instance.short_id}
-// {instance.index}
-// combination of {instance.zone_id} and {instance.index_in_zone}
-// Example: my-instance-{instance.index}
-// If not set, default is used: {instance_group.id}-{instance.short_id}
-// It may also contain another placeholders, see metadata doc for full list.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Network specifications for the instance. This can be used multiple times for adding multiple interfaces. The structure is documented below.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) NetworkInterfaces() ComputeInstanceGroupInstanceTemplateNetworkInterfaceArrayOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) []ComputeInstanceGroupInstanceTemplateNetworkInterface {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkInterfaces
-	}).(ComputeInstanceGroupInstanceTemplateNetworkInterfaceArrayOutput)
-}
-
-// Network acceleration type for instance. The structure is documented below.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) NetworkSettings() ComputeInstanceGroupInstanceTemplateNetworkSettingArrayOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) []ComputeInstanceGroupInstanceTemplateNetworkSetting {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkSettings
-	}).(ComputeInstanceGroupInstanceTemplateNetworkSettingArrayOutput)
-}
-
-// The placement policy configuration. The structure is documented below.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) PlacementPolicy() ComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) *ComputeInstanceGroupInstanceTemplatePlacementPolicy {
-		if v == nil {
-			return nil
-		}
-		return v.PlacementPolicy
-	}).(ComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput)
-}
-
-// The ID of the hardware platform configuration for the instance. The default is 'standard-v1'.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) PlatformId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PlatformId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Compute resource specifications for the instance. The structure is documented below.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) Resources() ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) *ComputeInstanceGroupInstanceTemplateResources {
-		if v == nil {
-			return nil
-		}
-		return &v.Resources
-	}).(ComputeInstanceGroupInstanceTemplateResourcesPtrOutput)
-}
-
-// The scheduling policy configuration. The structure is documented below.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) SchedulingPolicy() ComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) *ComputeInstanceGroupInstanceTemplateSchedulingPolicy {
-		if v == nil {
-			return nil
-		}
-		return v.SchedulingPolicy
-	}).(ComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrOutput)
-}
-
-// A list of disks to attach to the instance. The structure is documented below.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) SecondaryDisks() ComputeInstanceGroupInstanceTemplateSecondaryDiskArrayOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) []ComputeInstanceGroupInstanceTemplateSecondaryDisk {
-		if v == nil {
-			return nil
-		}
-		return v.SecondaryDisks
-	}).(ComputeInstanceGroupInstanceTemplateSecondaryDiskArrayOutput)
-}
-
-// The ID of the service account authorized for this instance.
-func (o ComputeInstanceGroupInstanceTemplatePtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountId
-	}).(pulumi.StringPtrOutput)
-}
-
 type ComputeInstanceGroupInstanceTemplateBootDisk struct {
 	// This value can be used to reference the device under `/dev/disk/by-id/`.
 	DeviceName *string `pulumi:"deviceName"`
@@ -13318,47 +12646,6 @@ func (i ComputeInstanceGroupInstanceTemplateBootDiskArgs) ToComputeInstanceGroup
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupInstanceTemplateBootDiskOutput)
 }
 
-func (i ComputeInstanceGroupInstanceTemplateBootDiskArgs) ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutput() ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return i.ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(context.Background())
-}
-
-func (i ComputeInstanceGroupInstanceTemplateBootDiskArgs) ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupInstanceTemplateBootDiskOutput).ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(ctx)
-}
-
-// ComputeInstanceGroupInstanceTemplateBootDiskPtrInput is an input type that accepts ComputeInstanceGroupInstanceTemplateBootDiskArgs, ComputeInstanceGroupInstanceTemplateBootDiskPtr and ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput values.
-// You can construct a concrete instance of `ComputeInstanceGroupInstanceTemplateBootDiskPtrInput` via:
-//
-//          ComputeInstanceGroupInstanceTemplateBootDiskArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeInstanceGroupInstanceTemplateBootDiskPtrInput interface {
-	pulumi.Input
-
-	ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutput() ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput
-	ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(context.Context) ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput
-}
-
-type computeInstanceGroupInstanceTemplateBootDiskPtrType ComputeInstanceGroupInstanceTemplateBootDiskArgs
-
-func ComputeInstanceGroupInstanceTemplateBootDiskPtr(v *ComputeInstanceGroupInstanceTemplateBootDiskArgs) ComputeInstanceGroupInstanceTemplateBootDiskPtrInput {
-	return (*computeInstanceGroupInstanceTemplateBootDiskPtrType)(v)
-}
-
-func (*computeInstanceGroupInstanceTemplateBootDiskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupInstanceTemplateBootDisk)(nil)).Elem()
-}
-
-func (i *computeInstanceGroupInstanceTemplateBootDiskPtrType) ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutput() ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return i.ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(context.Background())
-}
-
-func (i *computeInstanceGroupInstanceTemplateBootDiskPtrType) ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput)
-}
-
 type ComputeInstanceGroupInstanceTemplateBootDiskOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceGroupInstanceTemplateBootDiskOutput) ElementType() reflect.Type {
@@ -13371,16 +12658,6 @@ func (o ComputeInstanceGroupInstanceTemplateBootDiskOutput) ToComputeInstanceGro
 
 func (o ComputeInstanceGroupInstanceTemplateBootDiskOutput) ToComputeInstanceGroupInstanceTemplateBootDiskOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateBootDiskOutput {
 	return o
-}
-
-func (o ComputeInstanceGroupInstanceTemplateBootDiskOutput) ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutput() ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return o.ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeInstanceGroupInstanceTemplateBootDiskOutput) ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplateBootDisk) *ComputeInstanceGroupInstanceTemplateBootDisk {
-		return &v
-	}).(ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput)
 }
 
 // This value can be used to reference the device under `/dev/disk/by-id/`.
@@ -13403,70 +12680,6 @@ func (o ComputeInstanceGroupInstanceTemplateBootDiskOutput) InitializeParams() C
 // The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
 func (o ComputeInstanceGroupInstanceTemplateBootDiskOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateBootDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-type ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupInstanceTemplateBootDisk)(nil)).Elem()
-}
-
-func (o ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutput() ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) ToComputeInstanceGroupInstanceTemplateBootDiskPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) Elem() ComputeInstanceGroupInstanceTemplateBootDiskOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateBootDisk) ComputeInstanceGroupInstanceTemplateBootDisk {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeInstanceGroupInstanceTemplateBootDisk
-		return ret
-	}).(ComputeInstanceGroupInstanceTemplateBootDiskOutput)
-}
-
-// This value can be used to reference the device under `/dev/disk/by-id/`.
-func (o ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) DeviceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateBootDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeviceName
-	}).(pulumi.StringPtrOutput)
-}
-
-// ID of the existing disk. To set use variables.
-func (o ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) DiskId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateBootDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Parameters for creating a disk alongside the instance. The structure is documented below.
-func (o ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) InitializeParams() ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateBootDisk) *ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams {
-		if v == nil {
-			return nil
-		}
-		return v.InitializeParams
-	}).(ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrOutput)
-}
-
-// The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
-func (o ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateBootDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
 }
 
 type ComputeInstanceGroupInstanceTemplateBootDiskInitializeParams struct {
@@ -14530,47 +13743,6 @@ func (i ComputeInstanceGroupInstanceTemplateResourcesArgs) ToComputeInstanceGrou
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupInstanceTemplateResourcesOutput)
 }
 
-func (i ComputeInstanceGroupInstanceTemplateResourcesArgs) ToComputeInstanceGroupInstanceTemplateResourcesPtrOutput() ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return i.ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i ComputeInstanceGroupInstanceTemplateResourcesArgs) ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupInstanceTemplateResourcesOutput).ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(ctx)
-}
-
-// ComputeInstanceGroupInstanceTemplateResourcesPtrInput is an input type that accepts ComputeInstanceGroupInstanceTemplateResourcesArgs, ComputeInstanceGroupInstanceTemplateResourcesPtr and ComputeInstanceGroupInstanceTemplateResourcesPtrOutput values.
-// You can construct a concrete instance of `ComputeInstanceGroupInstanceTemplateResourcesPtrInput` via:
-//
-//          ComputeInstanceGroupInstanceTemplateResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeInstanceGroupInstanceTemplateResourcesPtrInput interface {
-	pulumi.Input
-
-	ToComputeInstanceGroupInstanceTemplateResourcesPtrOutput() ComputeInstanceGroupInstanceTemplateResourcesPtrOutput
-	ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(context.Context) ComputeInstanceGroupInstanceTemplateResourcesPtrOutput
-}
-
-type computeInstanceGroupInstanceTemplateResourcesPtrType ComputeInstanceGroupInstanceTemplateResourcesArgs
-
-func ComputeInstanceGroupInstanceTemplateResourcesPtr(v *ComputeInstanceGroupInstanceTemplateResourcesArgs) ComputeInstanceGroupInstanceTemplateResourcesPtrInput {
-	return (*computeInstanceGroupInstanceTemplateResourcesPtrType)(v)
-}
-
-func (*computeInstanceGroupInstanceTemplateResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupInstanceTemplateResources)(nil)).Elem()
-}
-
-func (i *computeInstanceGroupInstanceTemplateResourcesPtrType) ToComputeInstanceGroupInstanceTemplateResourcesPtrOutput() ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return i.ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *computeInstanceGroupInstanceTemplateResourcesPtrType) ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupInstanceTemplateResourcesPtrOutput)
-}
-
 type ComputeInstanceGroupInstanceTemplateResourcesOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceGroupInstanceTemplateResourcesOutput) ElementType() reflect.Type {
@@ -14583,16 +13755,6 @@ func (o ComputeInstanceGroupInstanceTemplateResourcesOutput) ToComputeInstanceGr
 
 func (o ComputeInstanceGroupInstanceTemplateResourcesOutput) ToComputeInstanceGroupInstanceTemplateResourcesOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateResourcesOutput {
 	return o
-}
-
-func (o ComputeInstanceGroupInstanceTemplateResourcesOutput) ToComputeInstanceGroupInstanceTemplateResourcesPtrOutput() ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return o.ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeInstanceGroupInstanceTemplateResourcesOutput) ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupInstanceTemplateResources) *ComputeInstanceGroupInstanceTemplateResources {
-		return &v
-	}).(ComputeInstanceGroupInstanceTemplateResourcesPtrOutput)
 }
 
 // If provided, specifies baseline core performance as a percent.
@@ -14612,69 +13774,6 @@ func (o ComputeInstanceGroupInstanceTemplateResourcesOutput) Gpus() pulumi.IntPt
 // The memory size in GB.
 func (o ComputeInstanceGroupInstanceTemplateResourcesOutput) Memory() pulumi.Float64Output {
 	return o.ApplyT(func(v ComputeInstanceGroupInstanceTemplateResources) float64 { return v.Memory }).(pulumi.Float64Output)
-}
-
-type ComputeInstanceGroupInstanceTemplateResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupInstanceTemplateResources)(nil)).Elem()
-}
-
-func (o ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) ToComputeInstanceGroupInstanceTemplateResourcesPtrOutput() ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) ToComputeInstanceGroupInstanceTemplateResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupInstanceTemplateResourcesPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) Elem() ComputeInstanceGroupInstanceTemplateResourcesOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateResources) ComputeInstanceGroupInstanceTemplateResources {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeInstanceGroupInstanceTemplateResources
-		return ret
-	}).(ComputeInstanceGroupInstanceTemplateResourcesOutput)
-}
-
-// If provided, specifies baseline core performance as a percent.
-func (o ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) CoreFraction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateResources) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CoreFraction
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of CPU cores for the instance.
-func (o ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) Cores() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Cores
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) Gpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateResources) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Gpus
-	}).(pulumi.IntPtrOutput)
-}
-
-// The memory size in GB.
-func (o ComputeInstanceGroupInstanceTemplateResourcesPtrOutput) Memory() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupInstanceTemplateResources) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Memory
-	}).(pulumi.Float64PtrOutput)
 }
 
 type ComputeInstanceGroupInstanceTemplateSchedulingPolicy struct {
@@ -15424,47 +14523,6 @@ func (i ComputeInstanceGroupScalePolicyArgs) ToComputeInstanceGroupScalePolicyOu
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupScalePolicyOutput)
 }
 
-func (i ComputeInstanceGroupScalePolicyArgs) ToComputeInstanceGroupScalePolicyPtrOutput() ComputeInstanceGroupScalePolicyPtrOutput {
-	return i.ToComputeInstanceGroupScalePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i ComputeInstanceGroupScalePolicyArgs) ToComputeInstanceGroupScalePolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupScalePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupScalePolicyOutput).ToComputeInstanceGroupScalePolicyPtrOutputWithContext(ctx)
-}
-
-// ComputeInstanceGroupScalePolicyPtrInput is an input type that accepts ComputeInstanceGroupScalePolicyArgs, ComputeInstanceGroupScalePolicyPtr and ComputeInstanceGroupScalePolicyPtrOutput values.
-// You can construct a concrete instance of `ComputeInstanceGroupScalePolicyPtrInput` via:
-//
-//          ComputeInstanceGroupScalePolicyArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeInstanceGroupScalePolicyPtrInput interface {
-	pulumi.Input
-
-	ToComputeInstanceGroupScalePolicyPtrOutput() ComputeInstanceGroupScalePolicyPtrOutput
-	ToComputeInstanceGroupScalePolicyPtrOutputWithContext(context.Context) ComputeInstanceGroupScalePolicyPtrOutput
-}
-
-type computeInstanceGroupScalePolicyPtrType ComputeInstanceGroupScalePolicyArgs
-
-func ComputeInstanceGroupScalePolicyPtr(v *ComputeInstanceGroupScalePolicyArgs) ComputeInstanceGroupScalePolicyPtrInput {
-	return (*computeInstanceGroupScalePolicyPtrType)(v)
-}
-
-func (*computeInstanceGroupScalePolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupScalePolicy)(nil)).Elem()
-}
-
-func (i *computeInstanceGroupScalePolicyPtrType) ToComputeInstanceGroupScalePolicyPtrOutput() ComputeInstanceGroupScalePolicyPtrOutput {
-	return i.ToComputeInstanceGroupScalePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *computeInstanceGroupScalePolicyPtrType) ToComputeInstanceGroupScalePolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupScalePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceGroupScalePolicyPtrOutput)
-}
-
 type ComputeInstanceGroupScalePolicyOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceGroupScalePolicyOutput) ElementType() reflect.Type {
@@ -15477,16 +14535,6 @@ func (o ComputeInstanceGroupScalePolicyOutput) ToComputeInstanceGroupScalePolicy
 
 func (o ComputeInstanceGroupScalePolicyOutput) ToComputeInstanceGroupScalePolicyOutputWithContext(ctx context.Context) ComputeInstanceGroupScalePolicyOutput {
 	return o
-}
-
-func (o ComputeInstanceGroupScalePolicyOutput) ToComputeInstanceGroupScalePolicyPtrOutput() ComputeInstanceGroupScalePolicyPtrOutput {
-	return o.ToComputeInstanceGroupScalePolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeInstanceGroupScalePolicyOutput) ToComputeInstanceGroupScalePolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupScalePolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceGroupScalePolicy) *ComputeInstanceGroupScalePolicy {
-		return &v
-	}).(ComputeInstanceGroupScalePolicyPtrOutput)
 }
 
 // The auto scaling policy of the instance group. The structure is documented below.
@@ -15504,60 +14552,6 @@ func (o ComputeInstanceGroupScalePolicyOutput) FixedScale() ComputeInstanceGroup
 // The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
 func (o ComputeInstanceGroupScalePolicyOutput) TestAutoScale() ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput {
 	return o.ApplyT(func(v ComputeInstanceGroupScalePolicy) *ComputeInstanceGroupScalePolicyTestAutoScale {
-		return v.TestAutoScale
-	}).(ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput)
-}
-
-type ComputeInstanceGroupScalePolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeInstanceGroupScalePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceGroupScalePolicy)(nil)).Elem()
-}
-
-func (o ComputeInstanceGroupScalePolicyPtrOutput) ToComputeInstanceGroupScalePolicyPtrOutput() ComputeInstanceGroupScalePolicyPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupScalePolicyPtrOutput) ToComputeInstanceGroupScalePolicyPtrOutputWithContext(ctx context.Context) ComputeInstanceGroupScalePolicyPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceGroupScalePolicyPtrOutput) Elem() ComputeInstanceGroupScalePolicyOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicy) ComputeInstanceGroupScalePolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeInstanceGroupScalePolicy
-		return ret
-	}).(ComputeInstanceGroupScalePolicyOutput)
-}
-
-// The auto scaling policy of the instance group. The structure is documented below.
-func (o ComputeInstanceGroupScalePolicyPtrOutput) AutoScale() ComputeInstanceGroupScalePolicyAutoScalePtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicy) *ComputeInstanceGroupScalePolicyAutoScale {
-		if v == nil {
-			return nil
-		}
-		return v.AutoScale
-	}).(ComputeInstanceGroupScalePolicyAutoScalePtrOutput)
-}
-
-// The fixed scaling policy of the instance group. The structure is documented below.
-func (o ComputeInstanceGroupScalePolicyPtrOutput) FixedScale() ComputeInstanceGroupScalePolicyFixedScalePtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicy) *ComputeInstanceGroupScalePolicyFixedScale {
-		if v == nil {
-			return nil
-		}
-		return v.FixedScale
-	}).(ComputeInstanceGroupScalePolicyFixedScalePtrOutput)
-}
-
-// The test auto scaling policy of the instance group. Use it to test how the auto scale works. The structure is documented below.
-func (o ComputeInstanceGroupScalePolicyPtrOutput) TestAutoScale() ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceGroupScalePolicy) *ComputeInstanceGroupScalePolicyTestAutoScale {
-		if v == nil {
-			return nil
-		}
 		return v.TestAutoScale
 	}).(ComputeInstanceGroupScalePolicyTestAutoScalePtrOutput)
 }
@@ -17384,47 +16378,6 @@ func (i ComputeInstanceResourcesArgs) ToComputeInstanceResourcesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceResourcesOutput)
 }
 
-func (i ComputeInstanceResourcesArgs) ToComputeInstanceResourcesPtrOutput() ComputeInstanceResourcesPtrOutput {
-	return i.ToComputeInstanceResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i ComputeInstanceResourcesArgs) ToComputeInstanceResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceResourcesOutput).ToComputeInstanceResourcesPtrOutputWithContext(ctx)
-}
-
-// ComputeInstanceResourcesPtrInput is an input type that accepts ComputeInstanceResourcesArgs, ComputeInstanceResourcesPtr and ComputeInstanceResourcesPtrOutput values.
-// You can construct a concrete instance of `ComputeInstanceResourcesPtrInput` via:
-//
-//          ComputeInstanceResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type ComputeInstanceResourcesPtrInput interface {
-	pulumi.Input
-
-	ToComputeInstanceResourcesPtrOutput() ComputeInstanceResourcesPtrOutput
-	ToComputeInstanceResourcesPtrOutputWithContext(context.Context) ComputeInstanceResourcesPtrOutput
-}
-
-type computeInstanceResourcesPtrType ComputeInstanceResourcesArgs
-
-func ComputeInstanceResourcesPtr(v *ComputeInstanceResourcesArgs) ComputeInstanceResourcesPtrInput {
-	return (*computeInstanceResourcesPtrType)(v)
-}
-
-func (*computeInstanceResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceResources)(nil)).Elem()
-}
-
-func (i *computeInstanceResourcesPtrType) ToComputeInstanceResourcesPtrOutput() ComputeInstanceResourcesPtrOutput {
-	return i.ToComputeInstanceResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *computeInstanceResourcesPtrType) ToComputeInstanceResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeInstanceResourcesPtrOutput)
-}
-
 type ComputeInstanceResourcesOutput struct{ *pulumi.OutputState }
 
 func (ComputeInstanceResourcesOutput) ElementType() reflect.Type {
@@ -17437,16 +16390,6 @@ func (o ComputeInstanceResourcesOutput) ToComputeInstanceResourcesOutput() Compu
 
 func (o ComputeInstanceResourcesOutput) ToComputeInstanceResourcesOutputWithContext(ctx context.Context) ComputeInstanceResourcesOutput {
 	return o
-}
-
-func (o ComputeInstanceResourcesOutput) ToComputeInstanceResourcesPtrOutput() ComputeInstanceResourcesPtrOutput {
-	return o.ToComputeInstanceResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeInstanceResourcesOutput) ToComputeInstanceResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeInstanceResources) *ComputeInstanceResources {
-		return &v
-	}).(ComputeInstanceResourcesPtrOutput)
 }
 
 // If provided, specifies baseline performance for a core as a percent.
@@ -17466,69 +16409,6 @@ func (o ComputeInstanceResourcesOutput) Gpus() pulumi.IntPtrOutput {
 // Memory size in GB.
 func (o ComputeInstanceResourcesOutput) Memory() pulumi.Float64Output {
 	return o.ApplyT(func(v ComputeInstanceResources) float64 { return v.Memory }).(pulumi.Float64Output)
-}
-
-type ComputeInstanceResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeInstanceResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeInstanceResources)(nil)).Elem()
-}
-
-func (o ComputeInstanceResourcesPtrOutput) ToComputeInstanceResourcesPtrOutput() ComputeInstanceResourcesPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceResourcesPtrOutput) ToComputeInstanceResourcesPtrOutputWithContext(ctx context.Context) ComputeInstanceResourcesPtrOutput {
-	return o
-}
-
-func (o ComputeInstanceResourcesPtrOutput) Elem() ComputeInstanceResourcesOutput {
-	return o.ApplyT(func(v *ComputeInstanceResources) ComputeInstanceResources {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeInstanceResources
-		return ret
-	}).(ComputeInstanceResourcesOutput)
-}
-
-// If provided, specifies baseline performance for a core as a percent.
-func (o ComputeInstanceResourcesPtrOutput) CoreFraction() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceResources) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CoreFraction
-	}).(pulumi.IntPtrOutput)
-}
-
-// CPU cores for the instance.
-func (o ComputeInstanceResourcesPtrOutput) Cores() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Cores
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ComputeInstanceResourcesPtrOutput) Gpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceResources) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Gpus
-	}).(pulumi.IntPtrOutput)
-}
-
-// Memory size in GB.
-func (o ComputeInstanceResourcesPtrOutput) Memory() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ComputeInstanceResources) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Memory
-	}).(pulumi.Float64PtrOutput)
 }
 
 type ComputeInstanceSchedulingPolicy struct {
@@ -17839,47 +16719,6 @@ func (i DataprocClusterClusterConfigArgs) ToDataprocClusterClusterConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DataprocClusterClusterConfigOutput)
 }
 
-func (i DataprocClusterClusterConfigArgs) ToDataprocClusterClusterConfigPtrOutput() DataprocClusterClusterConfigPtrOutput {
-	return i.ToDataprocClusterClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i DataprocClusterClusterConfigArgs) ToDataprocClusterClusterConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataprocClusterClusterConfigOutput).ToDataprocClusterClusterConfigPtrOutputWithContext(ctx)
-}
-
-// DataprocClusterClusterConfigPtrInput is an input type that accepts DataprocClusterClusterConfigArgs, DataprocClusterClusterConfigPtr and DataprocClusterClusterConfigPtrOutput values.
-// You can construct a concrete instance of `DataprocClusterClusterConfigPtrInput` via:
-//
-//          DataprocClusterClusterConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type DataprocClusterClusterConfigPtrInput interface {
-	pulumi.Input
-
-	ToDataprocClusterClusterConfigPtrOutput() DataprocClusterClusterConfigPtrOutput
-	ToDataprocClusterClusterConfigPtrOutputWithContext(context.Context) DataprocClusterClusterConfigPtrOutput
-}
-
-type dataprocClusterClusterConfigPtrType DataprocClusterClusterConfigArgs
-
-func DataprocClusterClusterConfigPtr(v *DataprocClusterClusterConfigArgs) DataprocClusterClusterConfigPtrInput {
-	return (*dataprocClusterClusterConfigPtrType)(v)
-}
-
-func (*dataprocClusterClusterConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataprocClusterClusterConfig)(nil)).Elem()
-}
-
-func (i *dataprocClusterClusterConfigPtrType) ToDataprocClusterClusterConfigPtrOutput() DataprocClusterClusterConfigPtrOutput {
-	return i.ToDataprocClusterClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *dataprocClusterClusterConfigPtrType) ToDataprocClusterClusterConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataprocClusterClusterConfigPtrOutput)
-}
-
 type DataprocClusterClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (DataprocClusterClusterConfigOutput) ElementType() reflect.Type {
@@ -17892,16 +16731,6 @@ func (o DataprocClusterClusterConfigOutput) ToDataprocClusterClusterConfigOutput
 
 func (o DataprocClusterClusterConfigOutput) ToDataprocClusterClusterConfigOutputWithContext(ctx context.Context) DataprocClusterClusterConfigOutput {
 	return o
-}
-
-func (o DataprocClusterClusterConfigOutput) ToDataprocClusterClusterConfigPtrOutput() DataprocClusterClusterConfigPtrOutput {
-	return o.ToDataprocClusterClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DataprocClusterClusterConfigOutput) ToDataprocClusterClusterConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataprocClusterClusterConfig) *DataprocClusterClusterConfig {
-		return &v
-	}).(DataprocClusterClusterConfigPtrOutput)
 }
 
 // Data Proc specific options. The structure is documented below.
@@ -17919,60 +16748,6 @@ func (o DataprocClusterClusterConfigOutput) SubclusterSpecs() DataprocClusterClu
 // Version of Data Proc image.
 func (o DataprocClusterClusterConfigOutput) VersionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataprocClusterClusterConfig) *string { return v.VersionId }).(pulumi.StringPtrOutput)
-}
-
-type DataprocClusterClusterConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (DataprocClusterClusterConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataprocClusterClusterConfig)(nil)).Elem()
-}
-
-func (o DataprocClusterClusterConfigPtrOutput) ToDataprocClusterClusterConfigPtrOutput() DataprocClusterClusterConfigPtrOutput {
-	return o
-}
-
-func (o DataprocClusterClusterConfigPtrOutput) ToDataprocClusterClusterConfigPtrOutputWithContext(ctx context.Context) DataprocClusterClusterConfigPtrOutput {
-	return o
-}
-
-func (o DataprocClusterClusterConfigPtrOutput) Elem() DataprocClusterClusterConfigOutput {
-	return o.ApplyT(func(v *DataprocClusterClusterConfig) DataprocClusterClusterConfig {
-		if v != nil {
-			return *v
-		}
-		var ret DataprocClusterClusterConfig
-		return ret
-	}).(DataprocClusterClusterConfigOutput)
-}
-
-// Data Proc specific options. The structure is documented below.
-func (o DataprocClusterClusterConfigPtrOutput) Hadoop() DataprocClusterClusterConfigHadoopPtrOutput {
-	return o.ApplyT(func(v *DataprocClusterClusterConfig) *DataprocClusterClusterConfigHadoop {
-		if v == nil {
-			return nil
-		}
-		return v.Hadoop
-	}).(DataprocClusterClusterConfigHadoopPtrOutput)
-}
-
-// Configuration of the Data Proc subcluster. The structure is documented below.
-func (o DataprocClusterClusterConfigPtrOutput) SubclusterSpecs() DataprocClusterClusterConfigSubclusterSpecArrayOutput {
-	return o.ApplyT(func(v *DataprocClusterClusterConfig) []DataprocClusterClusterConfigSubclusterSpec {
-		if v == nil {
-			return nil
-		}
-		return v.SubclusterSpecs
-	}).(DataprocClusterClusterConfigSubclusterSpecArrayOutput)
-}
-
-// Version of Data Proc image.
-func (o DataprocClusterClusterConfigPtrOutput) VersionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataprocClusterClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VersionId
-	}).(pulumi.StringPtrOutput)
 }
 
 type DataprocClusterClusterConfigHadoop struct {
@@ -19219,47 +17994,6 @@ func (i FunctionTriggerFunctionArgs) ToFunctionTriggerFunctionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionTriggerFunctionOutput)
 }
 
-func (i FunctionTriggerFunctionArgs) ToFunctionTriggerFunctionPtrOutput() FunctionTriggerFunctionPtrOutput {
-	return i.ToFunctionTriggerFunctionPtrOutputWithContext(context.Background())
-}
-
-func (i FunctionTriggerFunctionArgs) ToFunctionTriggerFunctionPtrOutputWithContext(ctx context.Context) FunctionTriggerFunctionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionTriggerFunctionOutput).ToFunctionTriggerFunctionPtrOutputWithContext(ctx)
-}
-
-// FunctionTriggerFunctionPtrInput is an input type that accepts FunctionTriggerFunctionArgs, FunctionTriggerFunctionPtr and FunctionTriggerFunctionPtrOutput values.
-// You can construct a concrete instance of `FunctionTriggerFunctionPtrInput` via:
-//
-//          FunctionTriggerFunctionArgs{...}
-//
-//  or:
-//
-//          nil
-type FunctionTriggerFunctionPtrInput interface {
-	pulumi.Input
-
-	ToFunctionTriggerFunctionPtrOutput() FunctionTriggerFunctionPtrOutput
-	ToFunctionTriggerFunctionPtrOutputWithContext(context.Context) FunctionTriggerFunctionPtrOutput
-}
-
-type functionTriggerFunctionPtrType FunctionTriggerFunctionArgs
-
-func FunctionTriggerFunctionPtr(v *FunctionTriggerFunctionArgs) FunctionTriggerFunctionPtrInput {
-	return (*functionTriggerFunctionPtrType)(v)
-}
-
-func (*functionTriggerFunctionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FunctionTriggerFunction)(nil)).Elem()
-}
-
-func (i *functionTriggerFunctionPtrType) ToFunctionTriggerFunctionPtrOutput() FunctionTriggerFunctionPtrOutput {
-	return i.ToFunctionTriggerFunctionPtrOutputWithContext(context.Background())
-}
-
-func (i *functionTriggerFunctionPtrType) ToFunctionTriggerFunctionPtrOutputWithContext(ctx context.Context) FunctionTriggerFunctionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionTriggerFunctionPtrOutput)
-}
-
 type FunctionTriggerFunctionOutput struct{ *pulumi.OutputState }
 
 func (FunctionTriggerFunctionOutput) ElementType() reflect.Type {
@@ -19272,16 +18006,6 @@ func (o FunctionTriggerFunctionOutput) ToFunctionTriggerFunctionOutput() Functio
 
 func (o FunctionTriggerFunctionOutput) ToFunctionTriggerFunctionOutputWithContext(ctx context.Context) FunctionTriggerFunctionOutput {
 	return o
-}
-
-func (o FunctionTriggerFunctionOutput) ToFunctionTriggerFunctionPtrOutput() FunctionTriggerFunctionPtrOutput {
-	return o.ToFunctionTriggerFunctionPtrOutputWithContext(context.Background())
-}
-
-func (o FunctionTriggerFunctionOutput) ToFunctionTriggerFunctionPtrOutputWithContext(ctx context.Context) FunctionTriggerFunctionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionTriggerFunction) *FunctionTriggerFunction {
-		return &v
-	}).(FunctionTriggerFunctionPtrOutput)
 }
 
 func (o FunctionTriggerFunctionOutput) Id() pulumi.StringOutput {
@@ -19302,75 +18026,6 @@ func (o FunctionTriggerFunctionOutput) ServiceAccountId() pulumi.StringPtrOutput
 
 func (o FunctionTriggerFunctionOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionTriggerFunction) *string { return v.Tag }).(pulumi.StringPtrOutput)
-}
-
-type FunctionTriggerFunctionPtrOutput struct{ *pulumi.OutputState }
-
-func (FunctionTriggerFunctionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FunctionTriggerFunction)(nil)).Elem()
-}
-
-func (o FunctionTriggerFunctionPtrOutput) ToFunctionTriggerFunctionPtrOutput() FunctionTriggerFunctionPtrOutput {
-	return o
-}
-
-func (o FunctionTriggerFunctionPtrOutput) ToFunctionTriggerFunctionPtrOutputWithContext(ctx context.Context) FunctionTriggerFunctionPtrOutput {
-	return o
-}
-
-func (o FunctionTriggerFunctionPtrOutput) Elem() FunctionTriggerFunctionOutput {
-	return o.ApplyT(func(v *FunctionTriggerFunction) FunctionTriggerFunction {
-		if v != nil {
-			return *v
-		}
-		var ret FunctionTriggerFunction
-		return ret
-	}).(FunctionTriggerFunctionOutput)
-}
-
-func (o FunctionTriggerFunctionPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FunctionTriggerFunction) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o FunctionTriggerFunctionPtrOutput) RetryAttempts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FunctionTriggerFunction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RetryAttempts
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o FunctionTriggerFunctionPtrOutput) RetryInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FunctionTriggerFunction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RetryInterval
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o FunctionTriggerFunctionPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FunctionTriggerFunction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o FunctionTriggerFunctionPtrOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FunctionTriggerFunction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Tag
-	}).(pulumi.StringPtrOutput)
 }
 
 type FunctionTriggerIot struct {
@@ -20661,47 +19316,6 @@ func (i KubernetesClusterMasterArgs) ToKubernetesClusterMasterOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterMasterOutput)
 }
 
-func (i KubernetesClusterMasterArgs) ToKubernetesClusterMasterPtrOutput() KubernetesClusterMasterPtrOutput {
-	return i.ToKubernetesClusterMasterPtrOutputWithContext(context.Background())
-}
-
-func (i KubernetesClusterMasterArgs) ToKubernetesClusterMasterPtrOutputWithContext(ctx context.Context) KubernetesClusterMasterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterMasterOutput).ToKubernetesClusterMasterPtrOutputWithContext(ctx)
-}
-
-// KubernetesClusterMasterPtrInput is an input type that accepts KubernetesClusterMasterArgs, KubernetesClusterMasterPtr and KubernetesClusterMasterPtrOutput values.
-// You can construct a concrete instance of `KubernetesClusterMasterPtrInput` via:
-//
-//          KubernetesClusterMasterArgs{...}
-//
-//  or:
-//
-//          nil
-type KubernetesClusterMasterPtrInput interface {
-	pulumi.Input
-
-	ToKubernetesClusterMasterPtrOutput() KubernetesClusterMasterPtrOutput
-	ToKubernetesClusterMasterPtrOutputWithContext(context.Context) KubernetesClusterMasterPtrOutput
-}
-
-type kubernetesClusterMasterPtrType KubernetesClusterMasterArgs
-
-func KubernetesClusterMasterPtr(v *KubernetesClusterMasterArgs) KubernetesClusterMasterPtrInput {
-	return (*kubernetesClusterMasterPtrType)(v)
-}
-
-func (*kubernetesClusterMasterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesClusterMaster)(nil)).Elem()
-}
-
-func (i *kubernetesClusterMasterPtrType) ToKubernetesClusterMasterPtrOutput() KubernetesClusterMasterPtrOutput {
-	return i.ToKubernetesClusterMasterPtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesClusterMasterPtrType) ToKubernetesClusterMasterPtrOutputWithContext(ctx context.Context) KubernetesClusterMasterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterMasterPtrOutput)
-}
-
 type KubernetesClusterMasterOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterMasterOutput) ElementType() reflect.Type {
@@ -20714,16 +19328,6 @@ func (o KubernetesClusterMasterOutput) ToKubernetesClusterMasterOutput() Kuberne
 
 func (o KubernetesClusterMasterOutput) ToKubernetesClusterMasterOutputWithContext(ctx context.Context) KubernetesClusterMasterOutput {
 	return o
-}
-
-func (o KubernetesClusterMasterOutput) ToKubernetesClusterMasterPtrOutput() KubernetesClusterMasterPtrOutput {
-	return o.ToKubernetesClusterMasterPtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesClusterMasterOutput) ToKubernetesClusterMasterPtrOutputWithContext(ctx context.Context) KubernetesClusterMasterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterMaster) *KubernetesClusterMaster {
-		return &v
-	}).(KubernetesClusterMasterPtrOutput)
 }
 
 // (Computed) PEM-encoded public certificate that is the root of trust for the Kubernetes cluster.
@@ -20787,153 +19391,6 @@ func (o KubernetesClusterMasterOutput) VersionInfos() KubernetesClusterMasterVer
 // (Optional) Initialize parameters for Zonal Master (single node master). The structure is documented below.
 func (o KubernetesClusterMasterOutput) Zonal() KubernetesClusterMasterZonalPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterMaster) *KubernetesClusterMasterZonal { return v.Zonal }).(KubernetesClusterMasterZonalPtrOutput)
-}
-
-type KubernetesClusterMasterPtrOutput struct{ *pulumi.OutputState }
-
-func (KubernetesClusterMasterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesClusterMaster)(nil)).Elem()
-}
-
-func (o KubernetesClusterMasterPtrOutput) ToKubernetesClusterMasterPtrOutput() KubernetesClusterMasterPtrOutput {
-	return o
-}
-
-func (o KubernetesClusterMasterPtrOutput) ToKubernetesClusterMasterPtrOutputWithContext(ctx context.Context) KubernetesClusterMasterPtrOutput {
-	return o
-}
-
-func (o KubernetesClusterMasterPtrOutput) Elem() KubernetesClusterMasterOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) KubernetesClusterMaster {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesClusterMaster
-		return ret
-	}).(KubernetesClusterMasterOutput)
-}
-
-// (Computed) PEM-encoded public certificate that is the root of trust for the Kubernetes cluster.
-func (o KubernetesClusterMasterPtrOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterCaCertificate
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Computed) An IPv4 external network address that is assigned to the master.
-func (o KubernetesClusterMasterPtrOutput) ExternalV4Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalV4Address
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Computed) External endpoint that can be used to access Kubernetes cluster API from the internet (outside of the cloud).
-func (o KubernetesClusterMasterPtrOutput) ExternalV4Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalV4Endpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Computed) An IPv4 internal network address that is assigned to the master.
-func (o KubernetesClusterMasterPtrOutput) InternalV4Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InternalV4Address
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Computed) Internal endpoint that can be used to connect to the master from cloud networks.
-func (o KubernetesClusterMasterPtrOutput) InternalV4Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InternalV4Endpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional) (Computed) Maintenance policy for Kubernetes master.
-// If policy is omitted, automatic revision upgrades of the kubernetes master are enabled and could happen at any time.
-// Revision upgrades are performed only within the same minor version, e.g. 1.13.
-// Minor version upgrades (e.g. 1.13->1.14) should be performed manually. The structure is documented below.
-func (o KubernetesClusterMasterPtrOutput) MaintenancePolicy() KubernetesClusterMasterMaintenancePolicyPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *KubernetesClusterMasterMaintenancePolicy {
-		if v == nil {
-			return nil
-		}
-		return v.MaintenancePolicy
-	}).(KubernetesClusterMasterMaintenancePolicyPtrOutput)
-}
-
-// (Optional) (Computed) Boolean flag. When `true`, Kubernetes master will have visible ipv4 address.
-func (o KubernetesClusterMasterPtrOutput) PublicIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.PublicIp
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (Optional) Initialize parameters for Regional Master (highly available master). The structure is documented below.
-func (o KubernetesClusterMasterPtrOutput) Regional() KubernetesClusterMasterRegionalPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *KubernetesClusterMasterRegional {
-		if v == nil {
-			return nil
-		}
-		return v.Regional
-	}).(KubernetesClusterMasterRegionalPtrOutput)
-}
-
-// (Optional) List of security group IDs to which the Kubernetes cluster belongs.
-func (o KubernetesClusterMasterPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SecurityGroupIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// (Optional) (Computed) Version of Kubernetes that will be used for master.
-func (o KubernetesClusterMasterPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Computed) Information about cluster version. The structure is documented below.
-func (o KubernetesClusterMasterPtrOutput) VersionInfos() KubernetesClusterMasterVersionInfoArrayOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) []KubernetesClusterMasterVersionInfo {
-		if v == nil {
-			return nil
-		}
-		return v.VersionInfos
-	}).(KubernetesClusterMasterVersionInfoArrayOutput)
-}
-
-// (Optional) Initialize parameters for Zonal Master (single node master). The structure is documented below.
-func (o KubernetesClusterMasterPtrOutput) Zonal() KubernetesClusterMasterZonalPtrOutput {
-	return o.ApplyT(func(v *KubernetesClusterMaster) *KubernetesClusterMasterZonal {
-		if v == nil {
-			return nil
-		}
-		return v.Zonal
-	}).(KubernetesClusterMasterZonalPtrOutput)
 }
 
 type KubernetesClusterMasterMaintenancePolicy struct {
@@ -22504,47 +20961,6 @@ func (i KubernetesNodeGroupInstanceTemplateArgs) ToKubernetesNodeGroupInstanceTe
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupInstanceTemplateOutput)
 }
 
-func (i KubernetesNodeGroupInstanceTemplateArgs) ToKubernetesNodeGroupInstanceTemplatePtrOutput() KubernetesNodeGroupInstanceTemplatePtrOutput {
-	return i.ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i KubernetesNodeGroupInstanceTemplateArgs) ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupInstanceTemplateOutput).ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(ctx)
-}
-
-// KubernetesNodeGroupInstanceTemplatePtrInput is an input type that accepts KubernetesNodeGroupInstanceTemplateArgs, KubernetesNodeGroupInstanceTemplatePtr and KubernetesNodeGroupInstanceTemplatePtrOutput values.
-// You can construct a concrete instance of `KubernetesNodeGroupInstanceTemplatePtrInput` via:
-//
-//          KubernetesNodeGroupInstanceTemplateArgs{...}
-//
-//  or:
-//
-//          nil
-type KubernetesNodeGroupInstanceTemplatePtrInput interface {
-	pulumi.Input
-
-	ToKubernetesNodeGroupInstanceTemplatePtrOutput() KubernetesNodeGroupInstanceTemplatePtrOutput
-	ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(context.Context) KubernetesNodeGroupInstanceTemplatePtrOutput
-}
-
-type kubernetesNodeGroupInstanceTemplatePtrType KubernetesNodeGroupInstanceTemplateArgs
-
-func KubernetesNodeGroupInstanceTemplatePtr(v *KubernetesNodeGroupInstanceTemplateArgs) KubernetesNodeGroupInstanceTemplatePtrInput {
-	return (*kubernetesNodeGroupInstanceTemplatePtrType)(v)
-}
-
-func (*kubernetesNodeGroupInstanceTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesNodeGroupInstanceTemplate)(nil)).Elem()
-}
-
-func (i *kubernetesNodeGroupInstanceTemplatePtrType) ToKubernetesNodeGroupInstanceTemplatePtrOutput() KubernetesNodeGroupInstanceTemplatePtrOutput {
-	return i.ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesNodeGroupInstanceTemplatePtrType) ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupInstanceTemplatePtrOutput)
-}
-
 type KubernetesNodeGroupInstanceTemplateOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodeGroupInstanceTemplateOutput) ElementType() reflect.Type {
@@ -22557,16 +20973,6 @@ func (o KubernetesNodeGroupInstanceTemplateOutput) ToKubernetesNodeGroupInstance
 
 func (o KubernetesNodeGroupInstanceTemplateOutput) ToKubernetesNodeGroupInstanceTemplateOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplateOutput {
 	return o
-}
-
-func (o KubernetesNodeGroupInstanceTemplateOutput) ToKubernetesNodeGroupInstanceTemplatePtrOutput() KubernetesNodeGroupInstanceTemplatePtrOutput {
-	return o.ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesNodeGroupInstanceTemplateOutput) ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplate {
-		return &v
-	}).(KubernetesNodeGroupInstanceTemplatePtrOutput)
 }
 
 // The specifications for boot disks that will be attached to the instance. The structure is documented below.
@@ -22625,125 +21031,6 @@ func (o KubernetesNodeGroupInstanceTemplateOutput) Resources() KubernetesNodeGro
 // The scheduling policy for the instances in node group. The structure is documented below.
 func (o KubernetesNodeGroupInstanceTemplateOutput) SchedulingPolicy() KubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrOutput {
 	return o.ApplyT(func(v KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplateSchedulingPolicy {
-		return v.SchedulingPolicy
-	}).(KubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrOutput)
-}
-
-type KubernetesNodeGroupInstanceTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (KubernetesNodeGroupInstanceTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesNodeGroupInstanceTemplate)(nil)).Elem()
-}
-
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) ToKubernetesNodeGroupInstanceTemplatePtrOutput() KubernetesNodeGroupInstanceTemplatePtrOutput {
-	return o
-}
-
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) ToKubernetesNodeGroupInstanceTemplatePtrOutputWithContext(ctx context.Context) KubernetesNodeGroupInstanceTemplatePtrOutput {
-	return o
-}
-
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) Elem() KubernetesNodeGroupInstanceTemplateOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) KubernetesNodeGroupInstanceTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesNodeGroupInstanceTemplate
-		return ret
-	}).(KubernetesNodeGroupInstanceTemplateOutput)
-}
-
-// The specifications for boot disks that will be attached to the instance. The structure is documented below.
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) BootDisk() KubernetesNodeGroupInstanceTemplateBootDiskPtrOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplateBootDisk {
-		if v == nil {
-			return nil
-		}
-		return v.BootDisk
-	}).(KubernetesNodeGroupInstanceTemplateBootDiskPtrOutput)
-}
-
-// The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
-// * `resources.0.memory` - The memory size allocated to the instance.
-// * `resources.0.cores` - Number of CPU cores allocated to the instance.
-// * `resources.0.core_fraction` - Baseline core performance as a percent.
-// * `resources.0.gpus` - Number of GPU cores allocated to the instance.
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-// A public address that can be used to access the internet over NAT.
-//
-// Deprecated: The 'nat' field has been deprecated. Please use 'nat under network_interface' instead.
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) Nat() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Nat
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Type of network acceleration. Values: `standard`, `softwareAccelerated`.
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) NetworkAccelerationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkAccelerationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// An array with the network interfaces that will be attached to the instance. The structure is documented below.
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) NetworkInterfaces() KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) []KubernetesNodeGroupInstanceTemplateNetworkInterface {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkInterfaces
-	}).(KubernetesNodeGroupInstanceTemplateNetworkInterfaceArrayOutput)
-}
-
-// The placement policy configuration. The structure is documented below.
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) PlacementPolicy() KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplatePlacementPolicy {
-		if v == nil {
-			return nil
-		}
-		return v.PlacementPolicy
-	}).(KubernetesNodeGroupInstanceTemplatePlacementPolicyPtrOutput)
-}
-
-// The ID of the hardware platform configuration for the node group compute instances.
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) PlatformId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PlatformId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) Resources() KubernetesNodeGroupInstanceTemplateResourcesPtrOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplateResources {
-		if v == nil {
-			return nil
-		}
-		return v.Resources
-	}).(KubernetesNodeGroupInstanceTemplateResourcesPtrOutput)
-}
-
-// The scheduling policy for the instances in node group. The structure is documented below.
-func (o KubernetesNodeGroupInstanceTemplatePtrOutput) SchedulingPolicy() KubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupInstanceTemplate) *KubernetesNodeGroupInstanceTemplateSchedulingPolicy {
-		if v == nil {
-			return nil
-		}
 		return v.SchedulingPolicy
 	}).(KubernetesNodeGroupInstanceTemplateSchedulingPolicyPtrOutput)
 }
@@ -23813,47 +22100,6 @@ func (i KubernetesNodeGroupScalePolicyArgs) ToKubernetesNodeGroupScalePolicyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupScalePolicyOutput)
 }
 
-func (i KubernetesNodeGroupScalePolicyArgs) ToKubernetesNodeGroupScalePolicyPtrOutput() KubernetesNodeGroupScalePolicyPtrOutput {
-	return i.ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i KubernetesNodeGroupScalePolicyArgs) ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupScalePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupScalePolicyOutput).ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(ctx)
-}
-
-// KubernetesNodeGroupScalePolicyPtrInput is an input type that accepts KubernetesNodeGroupScalePolicyArgs, KubernetesNodeGroupScalePolicyPtr and KubernetesNodeGroupScalePolicyPtrOutput values.
-// You can construct a concrete instance of `KubernetesNodeGroupScalePolicyPtrInput` via:
-//
-//          KubernetesNodeGroupScalePolicyArgs{...}
-//
-//  or:
-//
-//          nil
-type KubernetesNodeGroupScalePolicyPtrInput interface {
-	pulumi.Input
-
-	ToKubernetesNodeGroupScalePolicyPtrOutput() KubernetesNodeGroupScalePolicyPtrOutput
-	ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(context.Context) KubernetesNodeGroupScalePolicyPtrOutput
-}
-
-type kubernetesNodeGroupScalePolicyPtrType KubernetesNodeGroupScalePolicyArgs
-
-func KubernetesNodeGroupScalePolicyPtr(v *KubernetesNodeGroupScalePolicyArgs) KubernetesNodeGroupScalePolicyPtrInput {
-	return (*kubernetesNodeGroupScalePolicyPtrType)(v)
-}
-
-func (*kubernetesNodeGroupScalePolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesNodeGroupScalePolicy)(nil)).Elem()
-}
-
-func (i *kubernetesNodeGroupScalePolicyPtrType) ToKubernetesNodeGroupScalePolicyPtrOutput() KubernetesNodeGroupScalePolicyPtrOutput {
-	return i.ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesNodeGroupScalePolicyPtrType) ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupScalePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesNodeGroupScalePolicyPtrOutput)
-}
-
 type KubernetesNodeGroupScalePolicyOutput struct{ *pulumi.OutputState }
 
 func (KubernetesNodeGroupScalePolicyOutput) ElementType() reflect.Type {
@@ -23868,16 +22114,6 @@ func (o KubernetesNodeGroupScalePolicyOutput) ToKubernetesNodeGroupScalePolicyOu
 	return o
 }
 
-func (o KubernetesNodeGroupScalePolicyOutput) ToKubernetesNodeGroupScalePolicyPtrOutput() KubernetesNodeGroupScalePolicyPtrOutput {
-	return o.ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesNodeGroupScalePolicyOutput) ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupScalePolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesNodeGroupScalePolicy) *KubernetesNodeGroupScalePolicy {
-		return &v
-	}).(KubernetesNodeGroupScalePolicyPtrOutput)
-}
-
 // Scale policy for an autoscaled node group. The structure is documented below.
 func (o KubernetesNodeGroupScalePolicyOutput) AutoScale() KubernetesNodeGroupScalePolicyAutoScalePtrOutput {
 	return o.ApplyT(func(v KubernetesNodeGroupScalePolicy) *KubernetesNodeGroupScalePolicyAutoScale { return v.AutoScale }).(KubernetesNodeGroupScalePolicyAutoScalePtrOutput)
@@ -23886,50 +22122,6 @@ func (o KubernetesNodeGroupScalePolicyOutput) AutoScale() KubernetesNodeGroupSca
 // Scale policy for a fixed scale node group. The structure is documented below.
 func (o KubernetesNodeGroupScalePolicyOutput) FixedScale() KubernetesNodeGroupScalePolicyFixedScalePtrOutput {
 	return o.ApplyT(func(v KubernetesNodeGroupScalePolicy) *KubernetesNodeGroupScalePolicyFixedScale { return v.FixedScale }).(KubernetesNodeGroupScalePolicyFixedScalePtrOutput)
-}
-
-type KubernetesNodeGroupScalePolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (KubernetesNodeGroupScalePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesNodeGroupScalePolicy)(nil)).Elem()
-}
-
-func (o KubernetesNodeGroupScalePolicyPtrOutput) ToKubernetesNodeGroupScalePolicyPtrOutput() KubernetesNodeGroupScalePolicyPtrOutput {
-	return o
-}
-
-func (o KubernetesNodeGroupScalePolicyPtrOutput) ToKubernetesNodeGroupScalePolicyPtrOutputWithContext(ctx context.Context) KubernetesNodeGroupScalePolicyPtrOutput {
-	return o
-}
-
-func (o KubernetesNodeGroupScalePolicyPtrOutput) Elem() KubernetesNodeGroupScalePolicyOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupScalePolicy) KubernetesNodeGroupScalePolicy {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesNodeGroupScalePolicy
-		return ret
-	}).(KubernetesNodeGroupScalePolicyOutput)
-}
-
-// Scale policy for an autoscaled node group. The structure is documented below.
-func (o KubernetesNodeGroupScalePolicyPtrOutput) AutoScale() KubernetesNodeGroupScalePolicyAutoScalePtrOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupScalePolicy) *KubernetesNodeGroupScalePolicyAutoScale {
-		if v == nil {
-			return nil
-		}
-		return v.AutoScale
-	}).(KubernetesNodeGroupScalePolicyAutoScalePtrOutput)
-}
-
-// Scale policy for a fixed scale node group. The structure is documented below.
-func (o KubernetesNodeGroupScalePolicyPtrOutput) FixedScale() KubernetesNodeGroupScalePolicyFixedScalePtrOutput {
-	return o.ApplyT(func(v *KubernetesNodeGroupScalePolicy) *KubernetesNodeGroupScalePolicyFixedScale {
-		if v == nil {
-			return nil
-		}
-		return v.FixedScale
-	}).(KubernetesNodeGroupScalePolicyFixedScalePtrOutput)
 }
 
 type KubernetesNodeGroupScalePolicyAutoScale struct {
@@ -25912,47 +24104,6 @@ func (i MdbClickhouseClusterClickhouseArgs) ToMdbClickhouseClusterClickhouseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterClickhouseOutput)
 }
 
-func (i MdbClickhouseClusterClickhouseArgs) ToMdbClickhouseClusterClickhousePtrOutput() MdbClickhouseClusterClickhousePtrOutput {
-	return i.ToMdbClickhouseClusterClickhousePtrOutputWithContext(context.Background())
-}
-
-func (i MdbClickhouseClusterClickhouseArgs) ToMdbClickhouseClusterClickhousePtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhousePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterClickhouseOutput).ToMdbClickhouseClusterClickhousePtrOutputWithContext(ctx)
-}
-
-// MdbClickhouseClusterClickhousePtrInput is an input type that accepts MdbClickhouseClusterClickhouseArgs, MdbClickhouseClusterClickhousePtr and MdbClickhouseClusterClickhousePtrOutput values.
-// You can construct a concrete instance of `MdbClickhouseClusterClickhousePtrInput` via:
-//
-//          MdbClickhouseClusterClickhouseArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbClickhouseClusterClickhousePtrInput interface {
-	pulumi.Input
-
-	ToMdbClickhouseClusterClickhousePtrOutput() MdbClickhouseClusterClickhousePtrOutput
-	ToMdbClickhouseClusterClickhousePtrOutputWithContext(context.Context) MdbClickhouseClusterClickhousePtrOutput
-}
-
-type mdbClickhouseClusterClickhousePtrType MdbClickhouseClusterClickhouseArgs
-
-func MdbClickhouseClusterClickhousePtr(v *MdbClickhouseClusterClickhouseArgs) MdbClickhouseClusterClickhousePtrInput {
-	return (*mdbClickhouseClusterClickhousePtrType)(v)
-}
-
-func (*mdbClickhouseClusterClickhousePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbClickhouseClusterClickhouse)(nil)).Elem()
-}
-
-func (i *mdbClickhouseClusterClickhousePtrType) ToMdbClickhouseClusterClickhousePtrOutput() MdbClickhouseClusterClickhousePtrOutput {
-	return i.ToMdbClickhouseClusterClickhousePtrOutputWithContext(context.Background())
-}
-
-func (i *mdbClickhouseClusterClickhousePtrType) ToMdbClickhouseClusterClickhousePtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhousePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterClickhousePtrOutput)
-}
-
 type MdbClickhouseClusterClickhouseOutput struct{ *pulumi.OutputState }
 
 func (MdbClickhouseClusterClickhouseOutput) ElementType() reflect.Type {
@@ -25967,16 +24118,6 @@ func (o MdbClickhouseClusterClickhouseOutput) ToMdbClickhouseClusterClickhouseOu
 	return o
 }
 
-func (o MdbClickhouseClusterClickhouseOutput) ToMdbClickhouseClusterClickhousePtrOutput() MdbClickhouseClusterClickhousePtrOutput {
-	return o.ToMdbClickhouseClusterClickhousePtrOutputWithContext(context.Background())
-}
-
-func (o MdbClickhouseClusterClickhouseOutput) ToMdbClickhouseClusterClickhousePtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhousePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterClickhouse) *MdbClickhouseClusterClickhouse {
-		return &v
-	}).(MdbClickhouseClusterClickhousePtrOutput)
-}
-
 // Main ClickHouse cluster configuration.
 func (o MdbClickhouseClusterClickhouseOutput) Config() MdbClickhouseClusterClickhouseConfigPtrOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterClickhouse) *MdbClickhouseClusterClickhouseConfig { return v.Config }).(MdbClickhouseClusterClickhouseConfigPtrOutput)
@@ -25985,50 +24126,6 @@ func (o MdbClickhouseClusterClickhouseOutput) Config() MdbClickhouseClusterClick
 // Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
 func (o MdbClickhouseClusterClickhouseOutput) Resources() MdbClickhouseClusterClickhouseResourcesOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterClickhouse) MdbClickhouseClusterClickhouseResources { return v.Resources }).(MdbClickhouseClusterClickhouseResourcesOutput)
-}
-
-type MdbClickhouseClusterClickhousePtrOutput struct{ *pulumi.OutputState }
-
-func (MdbClickhouseClusterClickhousePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbClickhouseClusterClickhouse)(nil)).Elem()
-}
-
-func (o MdbClickhouseClusterClickhousePtrOutput) ToMdbClickhouseClusterClickhousePtrOutput() MdbClickhouseClusterClickhousePtrOutput {
-	return o
-}
-
-func (o MdbClickhouseClusterClickhousePtrOutput) ToMdbClickhouseClusterClickhousePtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhousePtrOutput {
-	return o
-}
-
-func (o MdbClickhouseClusterClickhousePtrOutput) Elem() MdbClickhouseClusterClickhouseOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouse) MdbClickhouseClusterClickhouse {
-		if v != nil {
-			return *v
-		}
-		var ret MdbClickhouseClusterClickhouse
-		return ret
-	}).(MdbClickhouseClusterClickhouseOutput)
-}
-
-// Main ClickHouse cluster configuration.
-func (o MdbClickhouseClusterClickhousePtrOutput) Config() MdbClickhouseClusterClickhouseConfigPtrOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouse) *MdbClickhouseClusterClickhouseConfig {
-		if v == nil {
-			return nil
-		}
-		return v.Config
-	}).(MdbClickhouseClusterClickhouseConfigPtrOutput)
-}
-
-// Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
-func (o MdbClickhouseClusterClickhousePtrOutput) Resources() MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouse) *MdbClickhouseClusterClickhouseResources {
-		if v == nil {
-			return nil
-		}
-		return &v.Resources
-	}).(MdbClickhouseClusterClickhouseResourcesPtrOutput)
 }
 
 type MdbClickhouseClusterClickhouseConfig struct {
@@ -28104,47 +26201,6 @@ func (i MdbClickhouseClusterClickhouseResourcesArgs) ToMdbClickhouseClusterClick
 	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterClickhouseResourcesOutput)
 }
 
-func (i MdbClickhouseClusterClickhouseResourcesArgs) ToMdbClickhouseClusterClickhouseResourcesPtrOutput() MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return i.ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i MdbClickhouseClusterClickhouseResourcesArgs) ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterClickhouseResourcesOutput).ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(ctx)
-}
-
-// MdbClickhouseClusterClickhouseResourcesPtrInput is an input type that accepts MdbClickhouseClusterClickhouseResourcesArgs, MdbClickhouseClusterClickhouseResourcesPtr and MdbClickhouseClusterClickhouseResourcesPtrOutput values.
-// You can construct a concrete instance of `MdbClickhouseClusterClickhouseResourcesPtrInput` via:
-//
-//          MdbClickhouseClusterClickhouseResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbClickhouseClusterClickhouseResourcesPtrInput interface {
-	pulumi.Input
-
-	ToMdbClickhouseClusterClickhouseResourcesPtrOutput() MdbClickhouseClusterClickhouseResourcesPtrOutput
-	ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(context.Context) MdbClickhouseClusterClickhouseResourcesPtrOutput
-}
-
-type mdbClickhouseClusterClickhouseResourcesPtrType MdbClickhouseClusterClickhouseResourcesArgs
-
-func MdbClickhouseClusterClickhouseResourcesPtr(v *MdbClickhouseClusterClickhouseResourcesArgs) MdbClickhouseClusterClickhouseResourcesPtrInput {
-	return (*mdbClickhouseClusterClickhouseResourcesPtrType)(v)
-}
-
-func (*mdbClickhouseClusterClickhouseResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbClickhouseClusterClickhouseResources)(nil)).Elem()
-}
-
-func (i *mdbClickhouseClusterClickhouseResourcesPtrType) ToMdbClickhouseClusterClickhouseResourcesPtrOutput() MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return i.ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbClickhouseClusterClickhouseResourcesPtrType) ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterClickhouseResourcesPtrOutput)
-}
-
 type MdbClickhouseClusterClickhouseResourcesOutput struct{ *pulumi.OutputState }
 
 func (MdbClickhouseClusterClickhouseResourcesOutput) ElementType() reflect.Type {
@@ -28157,16 +26213,6 @@ func (o MdbClickhouseClusterClickhouseResourcesOutput) ToMdbClickhouseClusterCli
 
 func (o MdbClickhouseClusterClickhouseResourcesOutput) ToMdbClickhouseClusterClickhouseResourcesOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseResourcesOutput {
 	return o
-}
-
-func (o MdbClickhouseClusterClickhouseResourcesOutput) ToMdbClickhouseClusterClickhouseResourcesPtrOutput() MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return o.ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o MdbClickhouseClusterClickhouseResourcesOutput) ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseClusterClickhouseResources) *MdbClickhouseClusterClickhouseResources {
-		return &v
-	}).(MdbClickhouseClusterClickhouseResourcesPtrOutput)
 }
 
 // Volume of the storage available to a ZooKeeper host, in gigabytes.
@@ -28182,60 +26228,6 @@ func (o MdbClickhouseClusterClickhouseResourcesOutput) DiskTypeId() pulumi.Strin
 
 func (o MdbClickhouseClusterClickhouseResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbClickhouseClusterClickhouseResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
-}
-
-type MdbClickhouseClusterClickhouseResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbClickhouseClusterClickhouseResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbClickhouseClusterClickhouseResources)(nil)).Elem()
-}
-
-func (o MdbClickhouseClusterClickhouseResourcesPtrOutput) ToMdbClickhouseClusterClickhouseResourcesPtrOutput() MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return o
-}
-
-func (o MdbClickhouseClusterClickhouseResourcesPtrOutput) ToMdbClickhouseClusterClickhouseResourcesPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterClickhouseResourcesPtrOutput {
-	return o
-}
-
-func (o MdbClickhouseClusterClickhouseResourcesPtrOutput) Elem() MdbClickhouseClusterClickhouseResourcesOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseResources) MdbClickhouseClusterClickhouseResources {
-		if v != nil {
-			return *v
-		}
-		var ret MdbClickhouseClusterClickhouseResources
-		return ret
-	}).(MdbClickhouseClusterClickhouseResourcesOutput)
-}
-
-// Volume of the storage available to a ZooKeeper host, in gigabytes.
-func (o MdbClickhouseClusterClickhouseResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Type of the storage of ZooKeeper hosts.
-// For more information see [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/concepts/storage).
-func (o MdbClickhouseClusterClickhouseResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MdbClickhouseClusterClickhouseResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbClickhouseClusterClickhouseResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourcePresetId
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbClickhouseClusterCloudStorage struct {
@@ -31759,47 +29751,6 @@ func (i MdbElasticSearchClusterConfigArgs) ToMdbElasticSearchClusterConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigOutput)
 }
 
-func (i MdbElasticSearchClusterConfigArgs) ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput {
-	return i.ToMdbElasticSearchClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MdbElasticSearchClusterConfigArgs) ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigOutput).ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx)
-}
-
-// MdbElasticSearchClusterConfigPtrInput is an input type that accepts MdbElasticSearchClusterConfigArgs, MdbElasticSearchClusterConfigPtr and MdbElasticSearchClusterConfigPtrOutput values.
-// You can construct a concrete instance of `MdbElasticSearchClusterConfigPtrInput` via:
-//
-//          MdbElasticSearchClusterConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbElasticSearchClusterConfigPtrInput interface {
-	pulumi.Input
-
-	ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput
-	ToMdbElasticSearchClusterConfigPtrOutputWithContext(context.Context) MdbElasticSearchClusterConfigPtrOutput
-}
-
-type mdbElasticSearchClusterConfigPtrType MdbElasticSearchClusterConfigArgs
-
-func MdbElasticSearchClusterConfigPtr(v *MdbElasticSearchClusterConfigArgs) MdbElasticSearchClusterConfigPtrInput {
-	return (*mdbElasticSearchClusterConfigPtrType)(v)
-}
-
-func (*mdbElasticSearchClusterConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbElasticSearchClusterConfig)(nil)).Elem()
-}
-
-func (i *mdbElasticSearchClusterConfigPtrType) ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput {
-	return i.ToMdbElasticSearchClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbElasticSearchClusterConfigPtrType) ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigPtrOutput)
-}
-
 type MdbElasticSearchClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (MdbElasticSearchClusterConfigOutput) ElementType() reflect.Type {
@@ -31812,16 +29763,6 @@ func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigOutp
 
 func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigOutput {
 	return o
-}
-
-func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput {
-	return o.ToMdbElasticSearchClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MdbElasticSearchClusterConfigOutput) ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbElasticSearchClusterConfig) *MdbElasticSearchClusterConfig {
-		return &v
-	}).(MdbElasticSearchClusterConfigPtrOutput)
 }
 
 // Password for admin user of Elasticsearch.
@@ -31852,90 +29793,6 @@ func (o MdbElasticSearchClusterConfigOutput) Plugins() pulumi.StringArrayOutput 
 // Version of Elasticsearch.
 func (o MdbElasticSearchClusterConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MdbElasticSearchClusterConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type MdbElasticSearchClusterConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbElasticSearchClusterConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbElasticSearchClusterConfig)(nil)).Elem()
-}
-
-func (o MdbElasticSearchClusterConfigPtrOutput) ToMdbElasticSearchClusterConfigPtrOutput() MdbElasticSearchClusterConfigPtrOutput {
-	return o
-}
-
-func (o MdbElasticSearchClusterConfigPtrOutput) ToMdbElasticSearchClusterConfigPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigPtrOutput {
-	return o
-}
-
-func (o MdbElasticSearchClusterConfigPtrOutput) Elem() MdbElasticSearchClusterConfigOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) MdbElasticSearchClusterConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MdbElasticSearchClusterConfig
-		return ret
-	}).(MdbElasticSearchClusterConfigOutput)
-}
-
-// Password for admin user of Elasticsearch.
-func (o MdbElasticSearchClusterConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AdminPassword
-	}).(pulumi.StringPtrOutput)
-}
-
-// Configuration for Elasticsearch data nodes subcluster. The structure is documented below.
-func (o MdbElasticSearchClusterConfigPtrOutput) DataNode() MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *MdbElasticSearchClusterConfigDataNode {
-		if v == nil {
-			return nil
-		}
-		return &v.DataNode
-	}).(MdbElasticSearchClusterConfigDataNodePtrOutput)
-}
-
-// Edition of Elasticsearch. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/es-editions).
-func (o MdbElasticSearchClusterConfigPtrOutput) Edition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Edition
-	}).(pulumi.StringPtrOutput)
-}
-
-// Configuration for Elasticsearch master nodes subcluster. The structure is documented below.
-func (o MdbElasticSearchClusterConfigPtrOutput) MasterNode() MdbElasticSearchClusterConfigMasterNodePtrOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *MdbElasticSearchClusterConfigMasterNode {
-		if v == nil {
-			return nil
-		}
-		return v.MasterNode
-	}).(MdbElasticSearchClusterConfigMasterNodePtrOutput)
-}
-
-// A set of Elasticsearch plugins to install.
-func (o MdbElasticSearchClusterConfigPtrOutput) Plugins() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Plugins
-	}).(pulumi.StringArrayOutput)
-}
-
-// Version of Elasticsearch.
-func (o MdbElasticSearchClusterConfigPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbElasticSearchClusterConfigDataNode struct {
@@ -31971,47 +29828,6 @@ func (i MdbElasticSearchClusterConfigDataNodeArgs) ToMdbElasticSearchClusterConf
 	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeOutput)
 }
 
-func (i MdbElasticSearchClusterConfigDataNodeArgs) ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return i.ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(context.Background())
-}
-
-func (i MdbElasticSearchClusterConfigDataNodeArgs) ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeOutput).ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx)
-}
-
-// MdbElasticSearchClusterConfigDataNodePtrInput is an input type that accepts MdbElasticSearchClusterConfigDataNodeArgs, MdbElasticSearchClusterConfigDataNodePtr and MdbElasticSearchClusterConfigDataNodePtrOutput values.
-// You can construct a concrete instance of `MdbElasticSearchClusterConfigDataNodePtrInput` via:
-//
-//          MdbElasticSearchClusterConfigDataNodeArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbElasticSearchClusterConfigDataNodePtrInput interface {
-	pulumi.Input
-
-	ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput
-	ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput
-}
-
-type mdbElasticSearchClusterConfigDataNodePtrType MdbElasticSearchClusterConfigDataNodeArgs
-
-func MdbElasticSearchClusterConfigDataNodePtr(v *MdbElasticSearchClusterConfigDataNodeArgs) MdbElasticSearchClusterConfigDataNodePtrInput {
-	return (*mdbElasticSearchClusterConfigDataNodePtrType)(v)
-}
-
-func (*mdbElasticSearchClusterConfigDataNodePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbElasticSearchClusterConfigDataNode)(nil)).Elem()
-}
-
-func (i *mdbElasticSearchClusterConfigDataNodePtrType) ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return i.ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(context.Background())
-}
-
-func (i *mdbElasticSearchClusterConfigDataNodePtrType) ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodePtrOutput)
-}
-
 type MdbElasticSearchClusterConfigDataNodeOutput struct{ *pulumi.OutputState }
 
 func (MdbElasticSearchClusterConfigDataNodeOutput) ElementType() reflect.Type {
@@ -32026,55 +29842,11 @@ func (o MdbElasticSearchClusterConfigDataNodeOutput) ToMdbElasticSearchClusterCo
 	return o
 }
 
-func (o MdbElasticSearchClusterConfigDataNodeOutput) ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return o.ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(context.Background())
-}
-
-func (o MdbElasticSearchClusterConfigDataNodeOutput) ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbElasticSearchClusterConfigDataNode) *MdbElasticSearchClusterConfigDataNode {
-		return &v
-	}).(MdbElasticSearchClusterConfigDataNodePtrOutput)
-}
-
 // Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
 func (o MdbElasticSearchClusterConfigDataNodeOutput) Resources() MdbElasticSearchClusterConfigDataNodeResourcesOutput {
 	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNode) MdbElasticSearchClusterConfigDataNodeResources {
 		return v.Resources
 	}).(MdbElasticSearchClusterConfigDataNodeResourcesOutput)
-}
-
-type MdbElasticSearchClusterConfigDataNodePtrOutput struct{ *pulumi.OutputState }
-
-func (MdbElasticSearchClusterConfigDataNodePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbElasticSearchClusterConfigDataNode)(nil)).Elem()
-}
-
-func (o MdbElasticSearchClusterConfigDataNodePtrOutput) ToMdbElasticSearchClusterConfigDataNodePtrOutput() MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return o
-}
-
-func (o MdbElasticSearchClusterConfigDataNodePtrOutput) ToMdbElasticSearchClusterConfigDataNodePtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodePtrOutput {
-	return o
-}
-
-func (o MdbElasticSearchClusterConfigDataNodePtrOutput) Elem() MdbElasticSearchClusterConfigDataNodeOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNode) MdbElasticSearchClusterConfigDataNode {
-		if v != nil {
-			return *v
-		}
-		var ret MdbElasticSearchClusterConfigDataNode
-		return ret
-	}).(MdbElasticSearchClusterConfigDataNodeOutput)
-}
-
-// Resources allocated to hosts of the Elasticsearch master nodes subcluster. The structure is documented below.
-func (o MdbElasticSearchClusterConfigDataNodePtrOutput) Resources() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNode) *MdbElasticSearchClusterConfigDataNodeResources {
-		if v == nil {
-			return nil
-		}
-		return &v.Resources
-	}).(MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput)
 }
 
 type MdbElasticSearchClusterConfigDataNodeResources struct {
@@ -32116,47 +29888,6 @@ func (i MdbElasticSearchClusterConfigDataNodeResourcesArgs) ToMdbElasticSearchCl
 	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeResourcesOutput)
 }
 
-func (i MdbElasticSearchClusterConfigDataNodeResourcesArgs) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return i.ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i MdbElasticSearchClusterConfigDataNodeResourcesArgs) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeResourcesOutput).ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx)
-}
-
-// MdbElasticSearchClusterConfigDataNodeResourcesPtrInput is an input type that accepts MdbElasticSearchClusterConfigDataNodeResourcesArgs, MdbElasticSearchClusterConfigDataNodeResourcesPtr and MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput values.
-// You can construct a concrete instance of `MdbElasticSearchClusterConfigDataNodeResourcesPtrInput` via:
-//
-//          MdbElasticSearchClusterConfigDataNodeResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbElasticSearchClusterConfigDataNodeResourcesPtrInput interface {
-	pulumi.Input
-
-	ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput
-	ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput
-}
-
-type mdbElasticSearchClusterConfigDataNodeResourcesPtrType MdbElasticSearchClusterConfigDataNodeResourcesArgs
-
-func MdbElasticSearchClusterConfigDataNodeResourcesPtr(v *MdbElasticSearchClusterConfigDataNodeResourcesArgs) MdbElasticSearchClusterConfigDataNodeResourcesPtrInput {
-	return (*mdbElasticSearchClusterConfigDataNodeResourcesPtrType)(v)
-}
-
-func (*mdbElasticSearchClusterConfigDataNodeResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbElasticSearchClusterConfigDataNodeResources)(nil)).Elem()
-}
-
-func (i *mdbElasticSearchClusterConfigDataNodeResourcesPtrType) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return i.ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbElasticSearchClusterConfigDataNodeResourcesPtrType) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput)
-}
-
 type MdbElasticSearchClusterConfigDataNodeResourcesOutput struct{ *pulumi.OutputState }
 
 func (MdbElasticSearchClusterConfigDataNodeResourcesOutput) ElementType() reflect.Type {
@@ -32171,16 +29902,6 @@ func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ToMdbElasticSearch
 	return o
 }
 
-func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return o.ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbElasticSearchClusterConfigDataNodeResources) *MdbElasticSearchClusterConfigDataNodeResources {
-		return &v
-	}).(MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput)
-}
-
 // Volume of the storage available to a host, in gigabytes.
 func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNodeResources) int { return v.DiskSize }).(pulumi.IntOutput)
@@ -32193,59 +29914,6 @@ func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) DiskTypeId() pulum
 
 func (o MdbElasticSearchClusterConfigDataNodeResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbElasticSearchClusterConfigDataNodeResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
-}
-
-type MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbElasticSearchClusterConfigDataNodeResources)(nil)).Elem()
-}
-
-func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutput() MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return o
-}
-
-func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) ToMdbElasticSearchClusterConfigDataNodeResourcesPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput {
-	return o
-}
-
-func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) Elem() MdbElasticSearchClusterConfigDataNodeResourcesOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNodeResources) MdbElasticSearchClusterConfigDataNodeResources {
-		if v != nil {
-			return *v
-		}
-		var ret MdbElasticSearchClusterConfigDataNodeResources
-		return ret
-	}).(MdbElasticSearchClusterConfigDataNodeResourcesOutput)
-}
-
-// Volume of the storage available to a host, in gigabytes.
-func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNodeResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Type of the storage of Elasticsearch hosts.
-func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNodeResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbElasticSearchClusterConfigDataNodeResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourcePresetId
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbElasticSearchClusterConfigMasterNode struct {
@@ -33157,47 +30825,6 @@ func (i MdbGreenplumClusterMasterSubclusterArgs) ToMdbGreenplumClusterMasterSubc
 	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterOutput)
 }
 
-func (i MdbGreenplumClusterMasterSubclusterArgs) ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput {
-	return i.ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(context.Background())
-}
-
-func (i MdbGreenplumClusterMasterSubclusterArgs) ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterOutput).ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx)
-}
-
-// MdbGreenplumClusterMasterSubclusterPtrInput is an input type that accepts MdbGreenplumClusterMasterSubclusterArgs, MdbGreenplumClusterMasterSubclusterPtr and MdbGreenplumClusterMasterSubclusterPtrOutput values.
-// You can construct a concrete instance of `MdbGreenplumClusterMasterSubclusterPtrInput` via:
-//
-//          MdbGreenplumClusterMasterSubclusterArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbGreenplumClusterMasterSubclusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput
-	ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput
-}
-
-type mdbGreenplumClusterMasterSubclusterPtrType MdbGreenplumClusterMasterSubclusterArgs
-
-func MdbGreenplumClusterMasterSubclusterPtr(v *MdbGreenplumClusterMasterSubclusterArgs) MdbGreenplumClusterMasterSubclusterPtrInput {
-	return (*mdbGreenplumClusterMasterSubclusterPtrType)(v)
-}
-
-func (*mdbGreenplumClusterMasterSubclusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumClusterMasterSubcluster)(nil)).Elem()
-}
-
-func (i *mdbGreenplumClusterMasterSubclusterPtrType) ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput {
-	return i.ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbGreenplumClusterMasterSubclusterPtrType) ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterPtrOutput)
-}
-
 type MdbGreenplumClusterMasterSubclusterOutput struct{ *pulumi.OutputState }
 
 func (MdbGreenplumClusterMasterSubclusterOutput) ElementType() reflect.Type {
@@ -33212,55 +30839,11 @@ func (o MdbGreenplumClusterMasterSubclusterOutput) ToMdbGreenplumClusterMasterSu
 	return o
 }
 
-func (o MdbGreenplumClusterMasterSubclusterOutput) ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput {
-	return o.ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbGreenplumClusterMasterSubclusterOutput) ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbGreenplumClusterMasterSubcluster) *MdbGreenplumClusterMasterSubcluster {
-		return &v
-	}).(MdbGreenplumClusterMasterSubclusterPtrOutput)
-}
-
 // Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
 func (o MdbGreenplumClusterMasterSubclusterOutput) Resources() MdbGreenplumClusterMasterSubclusterResourcesOutput {
 	return o.ApplyT(func(v MdbGreenplumClusterMasterSubcluster) MdbGreenplumClusterMasterSubclusterResources {
 		return v.Resources
 	}).(MdbGreenplumClusterMasterSubclusterResourcesOutput)
-}
-
-type MdbGreenplumClusterMasterSubclusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbGreenplumClusterMasterSubclusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumClusterMasterSubcluster)(nil)).Elem()
-}
-
-func (o MdbGreenplumClusterMasterSubclusterPtrOutput) ToMdbGreenplumClusterMasterSubclusterPtrOutput() MdbGreenplumClusterMasterSubclusterPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterMasterSubclusterPtrOutput) ToMdbGreenplumClusterMasterSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterMasterSubclusterPtrOutput) Elem() MdbGreenplumClusterMasterSubclusterOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubcluster) MdbGreenplumClusterMasterSubcluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbGreenplumClusterMasterSubcluster
-		return ret
-	}).(MdbGreenplumClusterMasterSubclusterOutput)
-}
-
-// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
-func (o MdbGreenplumClusterMasterSubclusterPtrOutput) Resources() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubcluster) *MdbGreenplumClusterMasterSubclusterResources {
-		if v == nil {
-			return nil
-		}
-		return &v.Resources
-	}).(MdbGreenplumClusterMasterSubclusterResourcesPtrOutput)
 }
 
 type MdbGreenplumClusterMasterSubclusterResources struct {
@@ -33298,47 +30881,6 @@ func (i MdbGreenplumClusterMasterSubclusterResourcesArgs) ToMdbGreenplumClusterM
 	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterResourcesOutput)
 }
 
-func (i MdbGreenplumClusterMasterSubclusterResourcesArgs) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return i.ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i MdbGreenplumClusterMasterSubclusterResourcesArgs) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterResourcesOutput).ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx)
-}
-
-// MdbGreenplumClusterMasterSubclusterResourcesPtrInput is an input type that accepts MdbGreenplumClusterMasterSubclusterResourcesArgs, MdbGreenplumClusterMasterSubclusterResourcesPtr and MdbGreenplumClusterMasterSubclusterResourcesPtrOutput values.
-// You can construct a concrete instance of `MdbGreenplumClusterMasterSubclusterResourcesPtrInput` via:
-//
-//          MdbGreenplumClusterMasterSubclusterResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbGreenplumClusterMasterSubclusterResourcesPtrInput interface {
-	pulumi.Input
-
-	ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput
-	ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput
-}
-
-type mdbGreenplumClusterMasterSubclusterResourcesPtrType MdbGreenplumClusterMasterSubclusterResourcesArgs
-
-func MdbGreenplumClusterMasterSubclusterResourcesPtr(v *MdbGreenplumClusterMasterSubclusterResourcesArgs) MdbGreenplumClusterMasterSubclusterResourcesPtrInput {
-	return (*mdbGreenplumClusterMasterSubclusterResourcesPtrType)(v)
-}
-
-func (*mdbGreenplumClusterMasterSubclusterResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumClusterMasterSubclusterResources)(nil)).Elem()
-}
-
-func (i *mdbGreenplumClusterMasterSubclusterResourcesPtrType) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return i.ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbGreenplumClusterMasterSubclusterResourcesPtrType) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterMasterSubclusterResourcesPtrOutput)
-}
-
 type MdbGreenplumClusterMasterSubclusterResourcesOutput struct{ *pulumi.OutputState }
 
 func (MdbGreenplumClusterMasterSubclusterResourcesOutput) ElementType() reflect.Type {
@@ -33353,16 +30895,6 @@ func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ToMdbGreenplumCluste
 	return o
 }
 
-func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return o.ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbGreenplumClusterMasterSubclusterResources) *MdbGreenplumClusterMasterSubclusterResources {
-		return &v
-	}).(MdbGreenplumClusterMasterSubclusterResourcesPtrOutput)
-}
-
 func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v MdbGreenplumClusterMasterSubclusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
 }
@@ -33373,57 +30905,6 @@ func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) DiskTypeId() pulumi.
 
 func (o MdbGreenplumClusterMasterSubclusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbGreenplumClusterMasterSubclusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
-}
-
-type MdbGreenplumClusterMasterSubclusterResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumClusterMasterSubclusterResources)(nil)).Elem()
-}
-
-func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutput() MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) ToMdbGreenplumClusterMasterSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterMasterSubclusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) Elem() MdbGreenplumClusterMasterSubclusterResourcesOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubclusterResources) MdbGreenplumClusterMasterSubclusterResources {
-		if v != nil {
-			return *v
-		}
-		var ret MdbGreenplumClusterMasterSubclusterResources
-		return ret
-	}).(MdbGreenplumClusterMasterSubclusterResourcesOutput)
-}
-
-func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubclusterResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubclusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MdbGreenplumClusterMasterSubclusterResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterMasterSubclusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourcePresetId
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbGreenplumClusterSegmentHost struct {
@@ -33556,47 +31037,6 @@ func (i MdbGreenplumClusterSegmentSubclusterArgs) ToMdbGreenplumClusterSegmentSu
 	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterOutput)
 }
 
-func (i MdbGreenplumClusterSegmentSubclusterArgs) ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput {
-	return i.ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(context.Background())
-}
-
-func (i MdbGreenplumClusterSegmentSubclusterArgs) ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterOutput).ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx)
-}
-
-// MdbGreenplumClusterSegmentSubclusterPtrInput is an input type that accepts MdbGreenplumClusterSegmentSubclusterArgs, MdbGreenplumClusterSegmentSubclusterPtr and MdbGreenplumClusterSegmentSubclusterPtrOutput values.
-// You can construct a concrete instance of `MdbGreenplumClusterSegmentSubclusterPtrInput` via:
-//
-//          MdbGreenplumClusterSegmentSubclusterArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbGreenplumClusterSegmentSubclusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput
-	ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput
-}
-
-type mdbGreenplumClusterSegmentSubclusterPtrType MdbGreenplumClusterSegmentSubclusterArgs
-
-func MdbGreenplumClusterSegmentSubclusterPtr(v *MdbGreenplumClusterSegmentSubclusterArgs) MdbGreenplumClusterSegmentSubclusterPtrInput {
-	return (*mdbGreenplumClusterSegmentSubclusterPtrType)(v)
-}
-
-func (*mdbGreenplumClusterSegmentSubclusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumClusterSegmentSubcluster)(nil)).Elem()
-}
-
-func (i *mdbGreenplumClusterSegmentSubclusterPtrType) ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput {
-	return i.ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbGreenplumClusterSegmentSubclusterPtrType) ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterPtrOutput)
-}
-
 type MdbGreenplumClusterSegmentSubclusterOutput struct{ *pulumi.OutputState }
 
 func (MdbGreenplumClusterSegmentSubclusterOutput) ElementType() reflect.Type {
@@ -33611,55 +31051,11 @@ func (o MdbGreenplumClusterSegmentSubclusterOutput) ToMdbGreenplumClusterSegment
 	return o
 }
 
-func (o MdbGreenplumClusterSegmentSubclusterOutput) ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput {
-	return o.ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterOutput) ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbGreenplumClusterSegmentSubcluster) *MdbGreenplumClusterSegmentSubcluster {
-		return &v
-	}).(MdbGreenplumClusterSegmentSubclusterPtrOutput)
-}
-
 // Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
 func (o MdbGreenplumClusterSegmentSubclusterOutput) Resources() MdbGreenplumClusterSegmentSubclusterResourcesOutput {
 	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubcluster) MdbGreenplumClusterSegmentSubclusterResources {
 		return v.Resources
 	}).(MdbGreenplumClusterSegmentSubclusterResourcesOutput)
-}
-
-type MdbGreenplumClusterSegmentSubclusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbGreenplumClusterSegmentSubclusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumClusterSegmentSubcluster)(nil)).Elem()
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) ToMdbGreenplumClusterSegmentSubclusterPtrOutput() MdbGreenplumClusterSegmentSubclusterPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) ToMdbGreenplumClusterSegmentSubclusterPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) Elem() MdbGreenplumClusterSegmentSubclusterOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubcluster) MdbGreenplumClusterSegmentSubcluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbGreenplumClusterSegmentSubcluster
-		return ret
-	}).(MdbGreenplumClusterSegmentSubclusterOutput)
-}
-
-// Resources allocated to hosts for segment subcluster of the Greenplum cluster. The structure is documented below.
-func (o MdbGreenplumClusterSegmentSubclusterPtrOutput) Resources() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubcluster) *MdbGreenplumClusterSegmentSubclusterResources {
-		if v == nil {
-			return nil
-		}
-		return &v.Resources
-	}).(MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput)
 }
 
 type MdbGreenplumClusterSegmentSubclusterResources struct {
@@ -33697,47 +31093,6 @@ func (i MdbGreenplumClusterSegmentSubclusterResourcesArgs) ToMdbGreenplumCluster
 	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterResourcesOutput)
 }
 
-func (i MdbGreenplumClusterSegmentSubclusterResourcesArgs) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return i.ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i MdbGreenplumClusterSegmentSubclusterResourcesArgs) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterResourcesOutput).ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx)
-}
-
-// MdbGreenplumClusterSegmentSubclusterResourcesPtrInput is an input type that accepts MdbGreenplumClusterSegmentSubclusterResourcesArgs, MdbGreenplumClusterSegmentSubclusterResourcesPtr and MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput values.
-// You can construct a concrete instance of `MdbGreenplumClusterSegmentSubclusterResourcesPtrInput` via:
-//
-//          MdbGreenplumClusterSegmentSubclusterResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbGreenplumClusterSegmentSubclusterResourcesPtrInput interface {
-	pulumi.Input
-
-	ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput
-	ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput
-}
-
-type mdbGreenplumClusterSegmentSubclusterResourcesPtrType MdbGreenplumClusterSegmentSubclusterResourcesArgs
-
-func MdbGreenplumClusterSegmentSubclusterResourcesPtr(v *MdbGreenplumClusterSegmentSubclusterResourcesArgs) MdbGreenplumClusterSegmentSubclusterResourcesPtrInput {
-	return (*mdbGreenplumClusterSegmentSubclusterResourcesPtrType)(v)
-}
-
-func (*mdbGreenplumClusterSegmentSubclusterResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumClusterSegmentSubclusterResources)(nil)).Elem()
-}
-
-func (i *mdbGreenplumClusterSegmentSubclusterResourcesPtrType) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return i.ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbGreenplumClusterSegmentSubclusterResourcesPtrType) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput)
-}
-
 type MdbGreenplumClusterSegmentSubclusterResourcesOutput struct{ *pulumi.OutputState }
 
 func (MdbGreenplumClusterSegmentSubclusterResourcesOutput) ElementType() reflect.Type {
@@ -33752,16 +31107,6 @@ func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ToMdbGreenplumClust
 	return o
 }
 
-func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return o.ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbGreenplumClusterSegmentSubclusterResources) *MdbGreenplumClusterSegmentSubclusterResources {
-		return &v
-	}).(MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput)
-}
-
 func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubclusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
 }
@@ -33772,57 +31117,6 @@ func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) DiskTypeId() pulumi
 
 func (o MdbGreenplumClusterSegmentSubclusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbGreenplumClusterSegmentSubclusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
-}
-
-type MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbGreenplumClusterSegmentSubclusterResources)(nil)).Elem()
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutput() MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) ToMdbGreenplumClusterSegmentSubclusterResourcesPtrOutputWithContext(ctx context.Context) MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) Elem() MdbGreenplumClusterSegmentSubclusterResourcesOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubclusterResources) MdbGreenplumClusterSegmentSubclusterResources {
-		if v != nil {
-			return *v
-		}
-		var ret MdbGreenplumClusterSegmentSubclusterResources
-		return ret
-	}).(MdbGreenplumClusterSegmentSubclusterResourcesOutput)
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubclusterResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubclusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbGreenplumClusterSegmentSubclusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourcePresetId
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbKafkaClusterConfig struct {
@@ -33886,47 +31180,6 @@ func (i MdbKafkaClusterConfigArgs) ToMdbKafkaClusterConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterConfigOutput)
 }
 
-func (i MdbKafkaClusterConfigArgs) ToMdbKafkaClusterConfigPtrOutput() MdbKafkaClusterConfigPtrOutput {
-	return i.ToMdbKafkaClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MdbKafkaClusterConfigArgs) ToMdbKafkaClusterConfigPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterConfigOutput).ToMdbKafkaClusterConfigPtrOutputWithContext(ctx)
-}
-
-// MdbKafkaClusterConfigPtrInput is an input type that accepts MdbKafkaClusterConfigArgs, MdbKafkaClusterConfigPtr and MdbKafkaClusterConfigPtrOutput values.
-// You can construct a concrete instance of `MdbKafkaClusterConfigPtrInput` via:
-//
-//          MdbKafkaClusterConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbKafkaClusterConfigPtrInput interface {
-	pulumi.Input
-
-	ToMdbKafkaClusterConfigPtrOutput() MdbKafkaClusterConfigPtrOutput
-	ToMdbKafkaClusterConfigPtrOutputWithContext(context.Context) MdbKafkaClusterConfigPtrOutput
-}
-
-type mdbKafkaClusterConfigPtrType MdbKafkaClusterConfigArgs
-
-func MdbKafkaClusterConfigPtr(v *MdbKafkaClusterConfigArgs) MdbKafkaClusterConfigPtrInput {
-	return (*mdbKafkaClusterConfigPtrType)(v)
-}
-
-func (*mdbKafkaClusterConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaClusterConfig)(nil)).Elem()
-}
-
-func (i *mdbKafkaClusterConfigPtrType) ToMdbKafkaClusterConfigPtrOutput() MdbKafkaClusterConfigPtrOutput {
-	return i.ToMdbKafkaClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbKafkaClusterConfigPtrType) ToMdbKafkaClusterConfigPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterConfigPtrOutput)
-}
-
 type MdbKafkaClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (MdbKafkaClusterConfigOutput) ElementType() reflect.Type {
@@ -33939,16 +31192,6 @@ func (o MdbKafkaClusterConfigOutput) ToMdbKafkaClusterConfigOutput() MdbKafkaClu
 
 func (o MdbKafkaClusterConfigOutput) ToMdbKafkaClusterConfigOutputWithContext(ctx context.Context) MdbKafkaClusterConfigOutput {
 	return o
-}
-
-func (o MdbKafkaClusterConfigOutput) ToMdbKafkaClusterConfigPtrOutput() MdbKafkaClusterConfigPtrOutput {
-	return o.ToMdbKafkaClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MdbKafkaClusterConfigOutput) ToMdbKafkaClusterConfigPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterConfig) *MdbKafkaClusterConfig {
-		return &v
-	}).(MdbKafkaClusterConfigPtrOutput)
 }
 
 // Determines whether each broker will be assigned a public IP address. The default is `false`.
@@ -33991,110 +31234,6 @@ func (o MdbKafkaClusterConfigOutput) Zookeeper() MdbKafkaClusterConfigZookeeperP
 	return o.ApplyT(func(v MdbKafkaClusterConfig) *MdbKafkaClusterConfigZookeeper { return v.Zookeeper }).(MdbKafkaClusterConfigZookeeperPtrOutput)
 }
 
-type MdbKafkaClusterConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbKafkaClusterConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaClusterConfig)(nil)).Elem()
-}
-
-func (o MdbKafkaClusterConfigPtrOutput) ToMdbKafkaClusterConfigPtrOutput() MdbKafkaClusterConfigPtrOutput {
-	return o
-}
-
-func (o MdbKafkaClusterConfigPtrOutput) ToMdbKafkaClusterConfigPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigPtrOutput {
-	return o
-}
-
-func (o MdbKafkaClusterConfigPtrOutput) Elem() MdbKafkaClusterConfigOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) MdbKafkaClusterConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MdbKafkaClusterConfig
-		return ret
-	}).(MdbKafkaClusterConfigOutput)
-}
-
-// Determines whether each broker will be assigned a public IP address. The default is `false`.
-func (o MdbKafkaClusterConfigPtrOutput) AssignPublicIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AssignPublicIp
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Count of brokers per availability zone. The default is `1`.
-func (o MdbKafkaClusterConfigPtrOutput) BrokersCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.BrokersCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Configuration of the Kafka subcluster. The structure is documented below.
-func (o MdbKafkaClusterConfigPtrOutput) Kafka() MdbKafkaClusterConfigKafkaPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) *MdbKafkaClusterConfigKafka {
-		if v == nil {
-			return nil
-		}
-		return &v.Kafka
-	}).(MdbKafkaClusterConfigKafkaPtrOutput)
-}
-
-// Enables managed schema registry on cluster. The default is `false`.
-func (o MdbKafkaClusterConfigPtrOutput) SchemaRegistry() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SchemaRegistry
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Allows to use Kafka AdminAPI to manage topics. The default is `false`.
-func (o MdbKafkaClusterConfigPtrOutput) UnmanagedTopics() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UnmanagedTopics
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Version of the Kafka server software.
-func (o MdbKafkaClusterConfigPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// List of availability zones.
-func (o MdbKafkaClusterConfigPtrOutput) Zones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Zones
-	}).(pulumi.StringArrayOutput)
-}
-
-// Configuration of the ZooKeeper subcluster. The structure is documented below.
-func (o MdbKafkaClusterConfigPtrOutput) Zookeeper() MdbKafkaClusterConfigZookeeperPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfig) *MdbKafkaClusterConfigZookeeper {
-		if v == nil {
-			return nil
-		}
-		return v.Zookeeper
-	}).(MdbKafkaClusterConfigZookeeperPtrOutput)
-}
-
 type MdbKafkaClusterConfigKafka struct {
 	// User-defined settings for the Kafka cluster. The structure is documented below.
 	KafkaConfig *MdbKafkaClusterConfigKafkaKafkaConfig `pulumi:"kafkaConfig"`
@@ -34132,47 +31271,6 @@ func (i MdbKafkaClusterConfigKafkaArgs) ToMdbKafkaClusterConfigKafkaOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterConfigKafkaOutput)
 }
 
-func (i MdbKafkaClusterConfigKafkaArgs) ToMdbKafkaClusterConfigKafkaPtrOutput() MdbKafkaClusterConfigKafkaPtrOutput {
-	return i.ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(context.Background())
-}
-
-func (i MdbKafkaClusterConfigKafkaArgs) ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterConfigKafkaOutput).ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx)
-}
-
-// MdbKafkaClusterConfigKafkaPtrInput is an input type that accepts MdbKafkaClusterConfigKafkaArgs, MdbKafkaClusterConfigKafkaPtr and MdbKafkaClusterConfigKafkaPtrOutput values.
-// You can construct a concrete instance of `MdbKafkaClusterConfigKafkaPtrInput` via:
-//
-//          MdbKafkaClusterConfigKafkaArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbKafkaClusterConfigKafkaPtrInput interface {
-	pulumi.Input
-
-	ToMdbKafkaClusterConfigKafkaPtrOutput() MdbKafkaClusterConfigKafkaPtrOutput
-	ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(context.Context) MdbKafkaClusterConfigKafkaPtrOutput
-}
-
-type mdbKafkaClusterConfigKafkaPtrType MdbKafkaClusterConfigKafkaArgs
-
-func MdbKafkaClusterConfigKafkaPtr(v *MdbKafkaClusterConfigKafkaArgs) MdbKafkaClusterConfigKafkaPtrInput {
-	return (*mdbKafkaClusterConfigKafkaPtrType)(v)
-}
-
-func (*mdbKafkaClusterConfigKafkaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaClusterConfigKafka)(nil)).Elem()
-}
-
-func (i *mdbKafkaClusterConfigKafkaPtrType) ToMdbKafkaClusterConfigKafkaPtrOutput() MdbKafkaClusterConfigKafkaPtrOutput {
-	return i.ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbKafkaClusterConfigKafkaPtrType) ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterConfigKafkaPtrOutput)
-}
-
 type MdbKafkaClusterConfigKafkaOutput struct{ *pulumi.OutputState }
 
 func (MdbKafkaClusterConfigKafkaOutput) ElementType() reflect.Type {
@@ -34187,16 +31285,6 @@ func (o MdbKafkaClusterConfigKafkaOutput) ToMdbKafkaClusterConfigKafkaOutputWith
 	return o
 }
 
-func (o MdbKafkaClusterConfigKafkaOutput) ToMdbKafkaClusterConfigKafkaPtrOutput() MdbKafkaClusterConfigKafkaPtrOutput {
-	return o.ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(context.Background())
-}
-
-func (o MdbKafkaClusterConfigKafkaOutput) ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterConfigKafka) *MdbKafkaClusterConfigKafka {
-		return &v
-	}).(MdbKafkaClusterConfigKafkaPtrOutput)
-}
-
 // User-defined settings for the Kafka cluster. The structure is documented below.
 func (o MdbKafkaClusterConfigKafkaOutput) KafkaConfig() MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput {
 	return o.ApplyT(func(v MdbKafkaClusterConfigKafka) *MdbKafkaClusterConfigKafkaKafkaConfig { return v.KafkaConfig }).(MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput)
@@ -34205,50 +31293,6 @@ func (o MdbKafkaClusterConfigKafkaOutput) KafkaConfig() MdbKafkaClusterConfigKaf
 // Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
 func (o MdbKafkaClusterConfigKafkaOutput) Resources() MdbKafkaClusterConfigKafkaResourcesOutput {
 	return o.ApplyT(func(v MdbKafkaClusterConfigKafka) MdbKafkaClusterConfigKafkaResources { return v.Resources }).(MdbKafkaClusterConfigKafkaResourcesOutput)
-}
-
-type MdbKafkaClusterConfigKafkaPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbKafkaClusterConfigKafkaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaClusterConfigKafka)(nil)).Elem()
-}
-
-func (o MdbKafkaClusterConfigKafkaPtrOutput) ToMdbKafkaClusterConfigKafkaPtrOutput() MdbKafkaClusterConfigKafkaPtrOutput {
-	return o
-}
-
-func (o MdbKafkaClusterConfigKafkaPtrOutput) ToMdbKafkaClusterConfigKafkaPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaPtrOutput {
-	return o
-}
-
-func (o MdbKafkaClusterConfigKafkaPtrOutput) Elem() MdbKafkaClusterConfigKafkaOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafka) MdbKafkaClusterConfigKafka {
-		if v != nil {
-			return *v
-		}
-		var ret MdbKafkaClusterConfigKafka
-		return ret
-	}).(MdbKafkaClusterConfigKafkaOutput)
-}
-
-// User-defined settings for the Kafka cluster. The structure is documented below.
-func (o MdbKafkaClusterConfigKafkaPtrOutput) KafkaConfig() MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafka) *MdbKafkaClusterConfigKafkaKafkaConfig {
-		if v == nil {
-			return nil
-		}
-		return v.KafkaConfig
-	}).(MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput)
-}
-
-// Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
-func (o MdbKafkaClusterConfigKafkaPtrOutput) Resources() MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafka) *MdbKafkaClusterConfigKafkaResources {
-		if v == nil {
-			return nil
-		}
-		return &v.Resources
-	}).(MdbKafkaClusterConfigKafkaResourcesPtrOutput)
 }
 
 type MdbKafkaClusterConfigKafkaKafkaConfig struct {
@@ -34635,47 +31679,6 @@ func (i MdbKafkaClusterConfigKafkaResourcesArgs) ToMdbKafkaClusterConfigKafkaRes
 	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterConfigKafkaResourcesOutput)
 }
 
-func (i MdbKafkaClusterConfigKafkaResourcesArgs) ToMdbKafkaClusterConfigKafkaResourcesPtrOutput() MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return i.ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i MdbKafkaClusterConfigKafkaResourcesArgs) ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterConfigKafkaResourcesOutput).ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx)
-}
-
-// MdbKafkaClusterConfigKafkaResourcesPtrInput is an input type that accepts MdbKafkaClusterConfigKafkaResourcesArgs, MdbKafkaClusterConfigKafkaResourcesPtr and MdbKafkaClusterConfigKafkaResourcesPtrOutput values.
-// You can construct a concrete instance of `MdbKafkaClusterConfigKafkaResourcesPtrInput` via:
-//
-//          MdbKafkaClusterConfigKafkaResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbKafkaClusterConfigKafkaResourcesPtrInput interface {
-	pulumi.Input
-
-	ToMdbKafkaClusterConfigKafkaResourcesPtrOutput() MdbKafkaClusterConfigKafkaResourcesPtrOutput
-	ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(context.Context) MdbKafkaClusterConfigKafkaResourcesPtrOutput
-}
-
-type mdbKafkaClusterConfigKafkaResourcesPtrType MdbKafkaClusterConfigKafkaResourcesArgs
-
-func MdbKafkaClusterConfigKafkaResourcesPtr(v *MdbKafkaClusterConfigKafkaResourcesArgs) MdbKafkaClusterConfigKafkaResourcesPtrInput {
-	return (*mdbKafkaClusterConfigKafkaResourcesPtrType)(v)
-}
-
-func (*mdbKafkaClusterConfigKafkaResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaClusterConfigKafkaResources)(nil)).Elem()
-}
-
-func (i *mdbKafkaClusterConfigKafkaResourcesPtrType) ToMdbKafkaClusterConfigKafkaResourcesPtrOutput() MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return i.ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbKafkaClusterConfigKafkaResourcesPtrType) ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbKafkaClusterConfigKafkaResourcesPtrOutput)
-}
-
 type MdbKafkaClusterConfigKafkaResourcesOutput struct{ *pulumi.OutputState }
 
 func (MdbKafkaClusterConfigKafkaResourcesOutput) ElementType() reflect.Type {
@@ -34688,16 +31691,6 @@ func (o MdbKafkaClusterConfigKafkaResourcesOutput) ToMdbKafkaClusterConfigKafkaR
 
 func (o MdbKafkaClusterConfigKafkaResourcesOutput) ToMdbKafkaClusterConfigKafkaResourcesOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaResourcesOutput {
 	return o
-}
-
-func (o MdbKafkaClusterConfigKafkaResourcesOutput) ToMdbKafkaClusterConfigKafkaResourcesPtrOutput() MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return o.ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o MdbKafkaClusterConfigKafkaResourcesOutput) ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbKafkaClusterConfigKafkaResources) *MdbKafkaClusterConfigKafkaResources {
-		return &v
-	}).(MdbKafkaClusterConfigKafkaResourcesPtrOutput)
 }
 
 // Volume of the storage available to a ZooKeeper host, in gigabytes.
@@ -34713,60 +31706,6 @@ func (o MdbKafkaClusterConfigKafkaResourcesOutput) DiskTypeId() pulumi.StringOut
 
 func (o MdbKafkaClusterConfigKafkaResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbKafkaClusterConfigKafkaResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
-}
-
-type MdbKafkaClusterConfigKafkaResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbKafkaClusterConfigKafkaResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbKafkaClusterConfigKafkaResources)(nil)).Elem()
-}
-
-func (o MdbKafkaClusterConfigKafkaResourcesPtrOutput) ToMdbKafkaClusterConfigKafkaResourcesPtrOutput() MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return o
-}
-
-func (o MdbKafkaClusterConfigKafkaResourcesPtrOutput) ToMdbKafkaClusterConfigKafkaResourcesPtrOutputWithContext(ctx context.Context) MdbKafkaClusterConfigKafkaResourcesPtrOutput {
-	return o
-}
-
-func (o MdbKafkaClusterConfigKafkaResourcesPtrOutput) Elem() MdbKafkaClusterConfigKafkaResourcesOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaResources) MdbKafkaClusterConfigKafkaResources {
-		if v != nil {
-			return *v
-		}
-		var ret MdbKafkaClusterConfigKafkaResources
-		return ret
-	}).(MdbKafkaClusterConfigKafkaResourcesOutput)
-}
-
-// Volume of the storage available to a ZooKeeper host, in gigabytes.
-func (o MdbKafkaClusterConfigKafkaResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Type of the storage of ZooKeeper hosts.
-// For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
-func (o MdbKafkaClusterConfigKafkaResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MdbKafkaClusterConfigKafkaResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbKafkaClusterConfigKafkaResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourcePresetId
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbKafkaClusterConfigZookeeper struct {
@@ -36239,47 +33178,6 @@ func (i MdbMongodbClusterClusterConfigArgs) ToMdbMongodbClusterClusterConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterClusterConfigOutput)
 }
 
-func (i MdbMongodbClusterClusterConfigArgs) ToMdbMongodbClusterClusterConfigPtrOutput() MdbMongodbClusterClusterConfigPtrOutput {
-	return i.ToMdbMongodbClusterClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MdbMongodbClusterClusterConfigArgs) ToMdbMongodbClusterClusterConfigPtrOutputWithContext(ctx context.Context) MdbMongodbClusterClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterClusterConfigOutput).ToMdbMongodbClusterClusterConfigPtrOutputWithContext(ctx)
-}
-
-// MdbMongodbClusterClusterConfigPtrInput is an input type that accepts MdbMongodbClusterClusterConfigArgs, MdbMongodbClusterClusterConfigPtr and MdbMongodbClusterClusterConfigPtrOutput values.
-// You can construct a concrete instance of `MdbMongodbClusterClusterConfigPtrInput` via:
-//
-//          MdbMongodbClusterClusterConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbMongodbClusterClusterConfigPtrInput interface {
-	pulumi.Input
-
-	ToMdbMongodbClusterClusterConfigPtrOutput() MdbMongodbClusterClusterConfigPtrOutput
-	ToMdbMongodbClusterClusterConfigPtrOutputWithContext(context.Context) MdbMongodbClusterClusterConfigPtrOutput
-}
-
-type mdbMongodbClusterClusterConfigPtrType MdbMongodbClusterClusterConfigArgs
-
-func MdbMongodbClusterClusterConfigPtr(v *MdbMongodbClusterClusterConfigArgs) MdbMongodbClusterClusterConfigPtrInput {
-	return (*mdbMongodbClusterClusterConfigPtrType)(v)
-}
-
-func (*mdbMongodbClusterClusterConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMongodbClusterClusterConfig)(nil)).Elem()
-}
-
-func (i *mdbMongodbClusterClusterConfigPtrType) ToMdbMongodbClusterClusterConfigPtrOutput() MdbMongodbClusterClusterConfigPtrOutput {
-	return i.ToMdbMongodbClusterClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbMongodbClusterClusterConfigPtrType) ToMdbMongodbClusterClusterConfigPtrOutputWithContext(ctx context.Context) MdbMongodbClusterClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterClusterConfigPtrOutput)
-}
-
 type MdbMongodbClusterClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (MdbMongodbClusterClusterConfigOutput) ElementType() reflect.Type {
@@ -36292,16 +33190,6 @@ func (o MdbMongodbClusterClusterConfigOutput) ToMdbMongodbClusterClusterConfigOu
 
 func (o MdbMongodbClusterClusterConfigOutput) ToMdbMongodbClusterClusterConfigOutputWithContext(ctx context.Context) MdbMongodbClusterClusterConfigOutput {
 	return o
-}
-
-func (o MdbMongodbClusterClusterConfigOutput) ToMdbMongodbClusterClusterConfigPtrOutput() MdbMongodbClusterClusterConfigPtrOutput {
-	return o.ToMdbMongodbClusterClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MdbMongodbClusterClusterConfigOutput) ToMdbMongodbClusterClusterConfigPtrOutputWithContext(ctx context.Context) MdbMongodbClusterClusterConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMongodbClusterClusterConfig) *MdbMongodbClusterClusterConfig {
-		return &v
-	}).(MdbMongodbClusterClusterConfigPtrOutput)
 }
 
 // Shows whether cluster has access to data lens. The structure is documented below.
@@ -36324,70 +33212,6 @@ func (o MdbMongodbClusterClusterConfigOutput) FeatureCompatibilityVersion() pulu
 // Version of MongoDB (either 5.0, 4.4, 4.2 or 4.0).
 func (o MdbMongodbClusterClusterConfigOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbMongodbClusterClusterConfig) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type MdbMongodbClusterClusterConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbMongodbClusterClusterConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMongodbClusterClusterConfig)(nil)).Elem()
-}
-
-func (o MdbMongodbClusterClusterConfigPtrOutput) ToMdbMongodbClusterClusterConfigPtrOutput() MdbMongodbClusterClusterConfigPtrOutput {
-	return o
-}
-
-func (o MdbMongodbClusterClusterConfigPtrOutput) ToMdbMongodbClusterClusterConfigPtrOutputWithContext(ctx context.Context) MdbMongodbClusterClusterConfigPtrOutput {
-	return o
-}
-
-func (o MdbMongodbClusterClusterConfigPtrOutput) Elem() MdbMongodbClusterClusterConfigOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterClusterConfig) MdbMongodbClusterClusterConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MdbMongodbClusterClusterConfig
-		return ret
-	}).(MdbMongodbClusterClusterConfigOutput)
-}
-
-// Shows whether cluster has access to data lens. The structure is documented below.
-func (o MdbMongodbClusterClusterConfigPtrOutput) Access() MdbMongodbClusterClusterConfigAccessPtrOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterClusterConfig) *MdbMongodbClusterClusterConfigAccess {
-		if v == nil {
-			return nil
-		}
-		return v.Access
-	}).(MdbMongodbClusterClusterConfigAccessPtrOutput)
-}
-
-// Time to start the daily backup, in the UTC timezone. The structure is documented below.
-func (o MdbMongodbClusterClusterConfigPtrOutput) BackupWindowStart() MdbMongodbClusterClusterConfigBackupWindowStartPtrOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterClusterConfig) *MdbMongodbClusterClusterConfigBackupWindowStart {
-		if v == nil {
-			return nil
-		}
-		return v.BackupWindowStart
-	}).(MdbMongodbClusterClusterConfigBackupWindowStartPtrOutput)
-}
-
-// Feature compatibility version of MongoDB. If not provided version is taken. Can be either `5.0`, `4.4`, `4.2` and `4.0`.
-func (o MdbMongodbClusterClusterConfigPtrOutput) FeatureCompatibilityVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FeatureCompatibilityVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Version of MongoDB (either 5.0, 4.4, 4.2 or 4.0).
-func (o MdbMongodbClusterClusterConfigPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbMongodbClusterClusterConfigAccess struct {
@@ -37162,47 +33986,6 @@ func (i MdbMongodbClusterResourcesArgs) ToMdbMongodbClusterResourcesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterResourcesOutput)
 }
 
-func (i MdbMongodbClusterResourcesArgs) ToMdbMongodbClusterResourcesPtrOutput() MdbMongodbClusterResourcesPtrOutput {
-	return i.ToMdbMongodbClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i MdbMongodbClusterResourcesArgs) ToMdbMongodbClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMongodbClusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterResourcesOutput).ToMdbMongodbClusterResourcesPtrOutputWithContext(ctx)
-}
-
-// MdbMongodbClusterResourcesPtrInput is an input type that accepts MdbMongodbClusterResourcesArgs, MdbMongodbClusterResourcesPtr and MdbMongodbClusterResourcesPtrOutput values.
-// You can construct a concrete instance of `MdbMongodbClusterResourcesPtrInput` via:
-//
-//          MdbMongodbClusterResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbMongodbClusterResourcesPtrInput interface {
-	pulumi.Input
-
-	ToMdbMongodbClusterResourcesPtrOutput() MdbMongodbClusterResourcesPtrOutput
-	ToMdbMongodbClusterResourcesPtrOutputWithContext(context.Context) MdbMongodbClusterResourcesPtrOutput
-}
-
-type mdbMongodbClusterResourcesPtrType MdbMongodbClusterResourcesArgs
-
-func MdbMongodbClusterResourcesPtr(v *MdbMongodbClusterResourcesArgs) MdbMongodbClusterResourcesPtrInput {
-	return (*mdbMongodbClusterResourcesPtrType)(v)
-}
-
-func (*mdbMongodbClusterResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMongodbClusterResources)(nil)).Elem()
-}
-
-func (i *mdbMongodbClusterResourcesPtrType) ToMdbMongodbClusterResourcesPtrOutput() MdbMongodbClusterResourcesPtrOutput {
-	return i.ToMdbMongodbClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbMongodbClusterResourcesPtrType) ToMdbMongodbClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMongodbClusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterResourcesPtrOutput)
-}
-
 type MdbMongodbClusterResourcesOutput struct{ *pulumi.OutputState }
 
 func (MdbMongodbClusterResourcesOutput) ElementType() reflect.Type {
@@ -37215,16 +33998,6 @@ func (o MdbMongodbClusterResourcesOutput) ToMdbMongodbClusterResourcesOutput() M
 
 func (o MdbMongodbClusterResourcesOutput) ToMdbMongodbClusterResourcesOutputWithContext(ctx context.Context) MdbMongodbClusterResourcesOutput {
 	return o
-}
-
-func (o MdbMongodbClusterResourcesOutput) ToMdbMongodbClusterResourcesPtrOutput() MdbMongodbClusterResourcesPtrOutput {
-	return o.ToMdbMongodbClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o MdbMongodbClusterResourcesOutput) ToMdbMongodbClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMongodbClusterResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMongodbClusterResources) *MdbMongodbClusterResources {
-		return &v
-	}).(MdbMongodbClusterResourcesPtrOutput)
 }
 
 // Volume of the storage available to a MongoDB host, in gigabytes.
@@ -37240,60 +34013,6 @@ func (o MdbMongodbClusterResourcesOutput) DiskTypeId() pulumi.StringOutput {
 
 func (o MdbMongodbClusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbMongodbClusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
-}
-
-type MdbMongodbClusterResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbMongodbClusterResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMongodbClusterResources)(nil)).Elem()
-}
-
-func (o MdbMongodbClusterResourcesPtrOutput) ToMdbMongodbClusterResourcesPtrOutput() MdbMongodbClusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbMongodbClusterResourcesPtrOutput) ToMdbMongodbClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMongodbClusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbMongodbClusterResourcesPtrOutput) Elem() MdbMongodbClusterResourcesOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterResources) MdbMongodbClusterResources {
-		if v != nil {
-			return *v
-		}
-		var ret MdbMongodbClusterResources
-		return ret
-	}).(MdbMongodbClusterResourcesOutput)
-}
-
-// Volume of the storage available to a MongoDB host, in gigabytes.
-func (o MdbMongodbClusterResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Type of the storage of MongoDB hosts.
-// For more information see [the official documentation](https://cloud.yandex.com/docs/managed-clickhouse/concepts/storage).
-func (o MdbMongodbClusterResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MdbMongodbClusterResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbMongodbClusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourcePresetId
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbMongodbClusterUser struct {
@@ -38288,47 +35007,6 @@ func (i MdbMysqlClusterResourcesArgs) ToMdbMysqlClusterResourcesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterResourcesOutput)
 }
 
-func (i MdbMysqlClusterResourcesArgs) ToMdbMysqlClusterResourcesPtrOutput() MdbMysqlClusterResourcesPtrOutput {
-	return i.ToMdbMysqlClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i MdbMysqlClusterResourcesArgs) ToMdbMysqlClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMysqlClusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterResourcesOutput).ToMdbMysqlClusterResourcesPtrOutputWithContext(ctx)
-}
-
-// MdbMysqlClusterResourcesPtrInput is an input type that accepts MdbMysqlClusterResourcesArgs, MdbMysqlClusterResourcesPtr and MdbMysqlClusterResourcesPtrOutput values.
-// You can construct a concrete instance of `MdbMysqlClusterResourcesPtrInput` via:
-//
-//          MdbMysqlClusterResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbMysqlClusterResourcesPtrInput interface {
-	pulumi.Input
-
-	ToMdbMysqlClusterResourcesPtrOutput() MdbMysqlClusterResourcesPtrOutput
-	ToMdbMysqlClusterResourcesPtrOutputWithContext(context.Context) MdbMysqlClusterResourcesPtrOutput
-}
-
-type mdbMysqlClusterResourcesPtrType MdbMysqlClusterResourcesArgs
-
-func MdbMysqlClusterResourcesPtr(v *MdbMysqlClusterResourcesArgs) MdbMysqlClusterResourcesPtrInput {
-	return (*mdbMysqlClusterResourcesPtrType)(v)
-}
-
-func (*mdbMysqlClusterResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMysqlClusterResources)(nil)).Elem()
-}
-
-func (i *mdbMysqlClusterResourcesPtrType) ToMdbMysqlClusterResourcesPtrOutput() MdbMysqlClusterResourcesPtrOutput {
-	return i.ToMdbMysqlClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbMysqlClusterResourcesPtrType) ToMdbMysqlClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMysqlClusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterResourcesPtrOutput)
-}
-
 type MdbMysqlClusterResourcesOutput struct{ *pulumi.OutputState }
 
 func (MdbMysqlClusterResourcesOutput) ElementType() reflect.Type {
@@ -38343,16 +35021,6 @@ func (o MdbMysqlClusterResourcesOutput) ToMdbMysqlClusterResourcesOutputWithCont
 	return o
 }
 
-func (o MdbMysqlClusterResourcesOutput) ToMdbMysqlClusterResourcesPtrOutput() MdbMysqlClusterResourcesPtrOutput {
-	return o.ToMdbMysqlClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o MdbMysqlClusterResourcesOutput) ToMdbMysqlClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMysqlClusterResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMysqlClusterResources) *MdbMysqlClusterResources {
-		return &v
-	}).(MdbMysqlClusterResourcesPtrOutput)
-}
-
 // Volume of the storage available to a MySQL host, in gigabytes.
 func (o MdbMysqlClusterResourcesOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v MdbMysqlClusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
@@ -38365,59 +35033,6 @@ func (o MdbMysqlClusterResourcesOutput) DiskTypeId() pulumi.StringOutput {
 
 func (o MdbMysqlClusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbMysqlClusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
-}
-
-type MdbMysqlClusterResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbMysqlClusterResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMysqlClusterResources)(nil)).Elem()
-}
-
-func (o MdbMysqlClusterResourcesPtrOutput) ToMdbMysqlClusterResourcesPtrOutput() MdbMysqlClusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbMysqlClusterResourcesPtrOutput) ToMdbMysqlClusterResourcesPtrOutputWithContext(ctx context.Context) MdbMysqlClusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbMysqlClusterResourcesPtrOutput) Elem() MdbMysqlClusterResourcesOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterResources) MdbMysqlClusterResources {
-		if v != nil {
-			return *v
-		}
-		var ret MdbMysqlClusterResources
-		return ret
-	}).(MdbMysqlClusterResourcesOutput)
-}
-
-// Volume of the storage available to a MySQL host, in gigabytes.
-func (o MdbMysqlClusterResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Type of the storage of MySQL hosts.
-func (o MdbMysqlClusterResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MdbMysqlClusterResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbMysqlClusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourcePresetId
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbMysqlClusterRestore struct {
@@ -39096,47 +35711,6 @@ func (i MdbRedisClusterConfigArgs) ToMdbRedisClusterConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterConfigOutput)
 }
 
-func (i MdbRedisClusterConfigArgs) ToMdbRedisClusterConfigPtrOutput() MdbRedisClusterConfigPtrOutput {
-	return i.ToMdbRedisClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MdbRedisClusterConfigArgs) ToMdbRedisClusterConfigPtrOutputWithContext(ctx context.Context) MdbRedisClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterConfigOutput).ToMdbRedisClusterConfigPtrOutputWithContext(ctx)
-}
-
-// MdbRedisClusterConfigPtrInput is an input type that accepts MdbRedisClusterConfigArgs, MdbRedisClusterConfigPtr and MdbRedisClusterConfigPtrOutput values.
-// You can construct a concrete instance of `MdbRedisClusterConfigPtrInput` via:
-//
-//          MdbRedisClusterConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbRedisClusterConfigPtrInput interface {
-	pulumi.Input
-
-	ToMdbRedisClusterConfigPtrOutput() MdbRedisClusterConfigPtrOutput
-	ToMdbRedisClusterConfigPtrOutputWithContext(context.Context) MdbRedisClusterConfigPtrOutput
-}
-
-type mdbRedisClusterConfigPtrType MdbRedisClusterConfigArgs
-
-func MdbRedisClusterConfigPtr(v *MdbRedisClusterConfigArgs) MdbRedisClusterConfigPtrInput {
-	return (*mdbRedisClusterConfigPtrType)(v)
-}
-
-func (*mdbRedisClusterConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbRedisClusterConfig)(nil)).Elem()
-}
-
-func (i *mdbRedisClusterConfigPtrType) ToMdbRedisClusterConfigPtrOutput() MdbRedisClusterConfigPtrOutput {
-	return i.ToMdbRedisClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbRedisClusterConfigPtrType) ToMdbRedisClusterConfigPtrOutputWithContext(ctx context.Context) MdbRedisClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterConfigPtrOutput)
-}
-
 type MdbRedisClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (MdbRedisClusterConfigOutput) ElementType() reflect.Type {
@@ -39149,16 +35723,6 @@ func (o MdbRedisClusterConfigOutput) ToMdbRedisClusterConfigOutput() MdbRedisClu
 
 func (o MdbRedisClusterConfigOutput) ToMdbRedisClusterConfigOutputWithContext(ctx context.Context) MdbRedisClusterConfigOutput {
 	return o
-}
-
-func (o MdbRedisClusterConfigOutput) ToMdbRedisClusterConfigPtrOutput() MdbRedisClusterConfigPtrOutput {
-	return o.ToMdbRedisClusterConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MdbRedisClusterConfigOutput) ToMdbRedisClusterConfigPtrOutputWithContext(ctx context.Context) MdbRedisClusterConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbRedisClusterConfig) *MdbRedisClusterConfig {
-		return &v
-	}).(MdbRedisClusterConfigPtrOutput)
 }
 
 // Number of databases (changing requires redis-server restart).
@@ -39200,111 +35764,6 @@ func (o MdbRedisClusterConfigOutput) Timeout() pulumi.IntPtrOutput {
 // Version of Redis (5.0, 6.0 or 6.2).
 func (o MdbRedisClusterConfigOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbRedisClusterConfig) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type MdbRedisClusterConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbRedisClusterConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbRedisClusterConfig)(nil)).Elem()
-}
-
-func (o MdbRedisClusterConfigPtrOutput) ToMdbRedisClusterConfigPtrOutput() MdbRedisClusterConfigPtrOutput {
-	return o
-}
-
-func (o MdbRedisClusterConfigPtrOutput) ToMdbRedisClusterConfigPtrOutputWithContext(ctx context.Context) MdbRedisClusterConfigPtrOutput {
-	return o
-}
-
-func (o MdbRedisClusterConfigPtrOutput) Elem() MdbRedisClusterConfigOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) MdbRedisClusterConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MdbRedisClusterConfig
-		return ret
-	}).(MdbRedisClusterConfigOutput)
-}
-
-// Number of databases (changing requires redis-server restart).
-func (o MdbRedisClusterConfigPtrOutput) Databases() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Databases
-	}).(pulumi.IntPtrOutput)
-}
-
-// Redis key eviction policy for a dataset that reaches maximum memory.
-// Can be any of the listed in [the official RedisDB documentation](https://docs.redislabs.com/latest/rs/administering/database-operations/eviction-policy/).
-func (o MdbRedisClusterConfigPtrOutput) MaxmemoryPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MaxmemoryPolicy
-	}).(pulumi.StringPtrOutput)
-}
-
-// Select the events that Redis will notify among a set of classes.
-func (o MdbRedisClusterConfigPtrOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NotifyKeyspaceEvents
-	}).(pulumi.StringPtrOutput)
-}
-
-// Password for the Redis cluster.
-func (o MdbRedisClusterConfigPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Log slow queries below this number in microseconds.
-func (o MdbRedisClusterConfigPtrOutput) SlowlogLogSlowerThan() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SlowlogLogSlowerThan
-	}).(pulumi.IntPtrOutput)
-}
-
-// Slow queries log length.
-func (o MdbRedisClusterConfigPtrOutput) SlowlogMaxLen() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SlowlogMaxLen
-	}).(pulumi.IntPtrOutput)
-}
-
-// Close the connection after a client is idle for N seconds.
-func (o MdbRedisClusterConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.IntPtrOutput)
-}
-
-// Version of Redis (5.0, 6.0 or 6.2).
-func (o MdbRedisClusterConfigPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbRedisClusterHost struct {
@@ -39651,47 +36110,6 @@ func (i MdbRedisClusterResourcesArgs) ToMdbRedisClusterResourcesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterResourcesOutput)
 }
 
-func (i MdbRedisClusterResourcesArgs) ToMdbRedisClusterResourcesPtrOutput() MdbRedisClusterResourcesPtrOutput {
-	return i.ToMdbRedisClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i MdbRedisClusterResourcesArgs) ToMdbRedisClusterResourcesPtrOutputWithContext(ctx context.Context) MdbRedisClusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterResourcesOutput).ToMdbRedisClusterResourcesPtrOutputWithContext(ctx)
-}
-
-// MdbRedisClusterResourcesPtrInput is an input type that accepts MdbRedisClusterResourcesArgs, MdbRedisClusterResourcesPtr and MdbRedisClusterResourcesPtrOutput values.
-// You can construct a concrete instance of `MdbRedisClusterResourcesPtrInput` via:
-//
-//          MdbRedisClusterResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbRedisClusterResourcesPtrInput interface {
-	pulumi.Input
-
-	ToMdbRedisClusterResourcesPtrOutput() MdbRedisClusterResourcesPtrOutput
-	ToMdbRedisClusterResourcesPtrOutputWithContext(context.Context) MdbRedisClusterResourcesPtrOutput
-}
-
-type mdbRedisClusterResourcesPtrType MdbRedisClusterResourcesArgs
-
-func MdbRedisClusterResourcesPtr(v *MdbRedisClusterResourcesArgs) MdbRedisClusterResourcesPtrInput {
-	return (*mdbRedisClusterResourcesPtrType)(v)
-}
-
-func (*mdbRedisClusterResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbRedisClusterResources)(nil)).Elem()
-}
-
-func (i *mdbRedisClusterResourcesPtrType) ToMdbRedisClusterResourcesPtrOutput() MdbRedisClusterResourcesPtrOutput {
-	return i.ToMdbRedisClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbRedisClusterResourcesPtrType) ToMdbRedisClusterResourcesPtrOutputWithContext(ctx context.Context) MdbRedisClusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbRedisClusterResourcesPtrOutput)
-}
-
 type MdbRedisClusterResourcesOutput struct{ *pulumi.OutputState }
 
 func (MdbRedisClusterResourcesOutput) ElementType() reflect.Type {
@@ -39706,16 +36124,6 @@ func (o MdbRedisClusterResourcesOutput) ToMdbRedisClusterResourcesOutputWithCont
 	return o
 }
 
-func (o MdbRedisClusterResourcesOutput) ToMdbRedisClusterResourcesPtrOutput() MdbRedisClusterResourcesPtrOutput {
-	return o.ToMdbRedisClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o MdbRedisClusterResourcesOutput) ToMdbRedisClusterResourcesPtrOutputWithContext(ctx context.Context) MdbRedisClusterResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbRedisClusterResources) *MdbRedisClusterResources {
-		return &v
-	}).(MdbRedisClusterResourcesPtrOutput)
-}
-
 // Volume of the storage available to a host, in gigabytes.
 func (o MdbRedisClusterResourcesOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v MdbRedisClusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
@@ -39728,59 +36136,6 @@ func (o MdbRedisClusterResourcesOutput) DiskTypeId() pulumi.StringPtrOutput {
 
 func (o MdbRedisClusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbRedisClusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
-}
-
-type MdbRedisClusterResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbRedisClusterResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbRedisClusterResources)(nil)).Elem()
-}
-
-func (o MdbRedisClusterResourcesPtrOutput) ToMdbRedisClusterResourcesPtrOutput() MdbRedisClusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbRedisClusterResourcesPtrOutput) ToMdbRedisClusterResourcesPtrOutputWithContext(ctx context.Context) MdbRedisClusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbRedisClusterResourcesPtrOutput) Elem() MdbRedisClusterResourcesOutput {
-	return o.ApplyT(func(v *MdbRedisClusterResources) MdbRedisClusterResources {
-		if v != nil {
-			return *v
-		}
-		var ret MdbRedisClusterResources
-		return ret
-	}).(MdbRedisClusterResourcesOutput)
-}
-
-// Volume of the storage available to a host, in gigabytes.
-func (o MdbRedisClusterResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Type of the storage of Redis hosts - environment default is used if missing.
-func (o MdbRedisClusterResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DiskTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MdbRedisClusterResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbRedisClusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourcePresetId
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbSqlServerClusterBackupWindowStart struct {
@@ -40199,47 +36554,6 @@ func (i MdbSqlServerClusterResourcesArgs) ToMdbSqlServerClusterResourcesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MdbSqlServerClusterResourcesOutput)
 }
 
-func (i MdbSqlServerClusterResourcesArgs) ToMdbSqlServerClusterResourcesPtrOutput() MdbSqlServerClusterResourcesPtrOutput {
-	return i.ToMdbSqlServerClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i MdbSqlServerClusterResourcesArgs) ToMdbSqlServerClusterResourcesPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbSqlServerClusterResourcesOutput).ToMdbSqlServerClusterResourcesPtrOutputWithContext(ctx)
-}
-
-// MdbSqlServerClusterResourcesPtrInput is an input type that accepts MdbSqlServerClusterResourcesArgs, MdbSqlServerClusterResourcesPtr and MdbSqlServerClusterResourcesPtrOutput values.
-// You can construct a concrete instance of `MdbSqlServerClusterResourcesPtrInput` via:
-//
-//          MdbSqlServerClusterResourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type MdbSqlServerClusterResourcesPtrInput interface {
-	pulumi.Input
-
-	ToMdbSqlServerClusterResourcesPtrOutput() MdbSqlServerClusterResourcesPtrOutput
-	ToMdbSqlServerClusterResourcesPtrOutputWithContext(context.Context) MdbSqlServerClusterResourcesPtrOutput
-}
-
-type mdbSqlServerClusterResourcesPtrType MdbSqlServerClusterResourcesArgs
-
-func MdbSqlServerClusterResourcesPtr(v *MdbSqlServerClusterResourcesArgs) MdbSqlServerClusterResourcesPtrInput {
-	return (*mdbSqlServerClusterResourcesPtrType)(v)
-}
-
-func (*mdbSqlServerClusterResourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbSqlServerClusterResources)(nil)).Elem()
-}
-
-func (i *mdbSqlServerClusterResourcesPtrType) ToMdbSqlServerClusterResourcesPtrOutput() MdbSqlServerClusterResourcesPtrOutput {
-	return i.ToMdbSqlServerClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbSqlServerClusterResourcesPtrType) ToMdbSqlServerClusterResourcesPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbSqlServerClusterResourcesPtrOutput)
-}
-
 type MdbSqlServerClusterResourcesOutput struct{ *pulumi.OutputState }
 
 func (MdbSqlServerClusterResourcesOutput) ElementType() reflect.Type {
@@ -40254,16 +36568,6 @@ func (o MdbSqlServerClusterResourcesOutput) ToMdbSqlServerClusterResourcesOutput
 	return o
 }
 
-func (o MdbSqlServerClusterResourcesOutput) ToMdbSqlServerClusterResourcesPtrOutput() MdbSqlServerClusterResourcesPtrOutput {
-	return o.ToMdbSqlServerClusterResourcesPtrOutputWithContext(context.Background())
-}
-
-func (o MdbSqlServerClusterResourcesOutput) ToMdbSqlServerClusterResourcesPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterResourcesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbSqlServerClusterResources) *MdbSqlServerClusterResources {
-		return &v
-	}).(MdbSqlServerClusterResourcesPtrOutput)
-}
-
 // Volume of the storage available to a SQLServer host, in gigabytes.
 func (o MdbSqlServerClusterResourcesOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v MdbSqlServerClusterResources) int { return v.DiskSize }).(pulumi.IntOutput)
@@ -40276,59 +36580,6 @@ func (o MdbSqlServerClusterResourcesOutput) DiskTypeId() pulumi.StringOutput {
 
 func (o MdbSqlServerClusterResourcesOutput) ResourcePresetId() pulumi.StringOutput {
 	return o.ApplyT(func(v MdbSqlServerClusterResources) string { return v.ResourcePresetId }).(pulumi.StringOutput)
-}
-
-type MdbSqlServerClusterResourcesPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbSqlServerClusterResourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbSqlServerClusterResources)(nil)).Elem()
-}
-
-func (o MdbSqlServerClusterResourcesPtrOutput) ToMdbSqlServerClusterResourcesPtrOutput() MdbSqlServerClusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbSqlServerClusterResourcesPtrOutput) ToMdbSqlServerClusterResourcesPtrOutputWithContext(ctx context.Context) MdbSqlServerClusterResourcesPtrOutput {
-	return o
-}
-
-func (o MdbSqlServerClusterResourcesPtrOutput) Elem() MdbSqlServerClusterResourcesOutput {
-	return o.ApplyT(func(v *MdbSqlServerClusterResources) MdbSqlServerClusterResources {
-		if v != nil {
-			return *v
-		}
-		var ret MdbSqlServerClusterResources
-		return ret
-	}).(MdbSqlServerClusterResourcesOutput)
-}
-
-// Volume of the storage available to a SQLServer host, in gigabytes.
-func (o MdbSqlServerClusterResourcesPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MdbSqlServerClusterResources) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Type of the storage of SQLServer hosts.
-func (o MdbSqlServerClusterResourcesPtrOutput) DiskTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbSqlServerClusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskTypeId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MdbSqlServerClusterResourcesPtrOutput) ResourcePresetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MdbSqlServerClusterResources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourcePresetId
-	}).(pulumi.StringPtrOutput)
 }
 
 type MdbSqlServerClusterUser struct {
@@ -40598,47 +36849,6 @@ func (i ServerlessContainerImageArgs) ToServerlessContainerImageOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessContainerImageOutput)
 }
 
-func (i ServerlessContainerImageArgs) ToServerlessContainerImagePtrOutput() ServerlessContainerImagePtrOutput {
-	return i.ToServerlessContainerImagePtrOutputWithContext(context.Background())
-}
-
-func (i ServerlessContainerImageArgs) ToServerlessContainerImagePtrOutputWithContext(ctx context.Context) ServerlessContainerImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessContainerImageOutput).ToServerlessContainerImagePtrOutputWithContext(ctx)
-}
-
-// ServerlessContainerImagePtrInput is an input type that accepts ServerlessContainerImageArgs, ServerlessContainerImagePtr and ServerlessContainerImagePtrOutput values.
-// You can construct a concrete instance of `ServerlessContainerImagePtrInput` via:
-//
-//          ServerlessContainerImageArgs{...}
-//
-//  or:
-//
-//          nil
-type ServerlessContainerImagePtrInput interface {
-	pulumi.Input
-
-	ToServerlessContainerImagePtrOutput() ServerlessContainerImagePtrOutput
-	ToServerlessContainerImagePtrOutputWithContext(context.Context) ServerlessContainerImagePtrOutput
-}
-
-type serverlessContainerImagePtrType ServerlessContainerImageArgs
-
-func ServerlessContainerImagePtr(v *ServerlessContainerImageArgs) ServerlessContainerImagePtrInput {
-	return (*serverlessContainerImagePtrType)(v)
-}
-
-func (*serverlessContainerImagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessContainerImage)(nil)).Elem()
-}
-
-func (i *serverlessContainerImagePtrType) ToServerlessContainerImagePtrOutput() ServerlessContainerImagePtrOutput {
-	return i.ToServerlessContainerImagePtrOutputWithContext(context.Background())
-}
-
-func (i *serverlessContainerImagePtrType) ToServerlessContainerImagePtrOutputWithContext(ctx context.Context) ServerlessContainerImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessContainerImagePtrOutput)
-}
-
 type ServerlessContainerImageOutput struct{ *pulumi.OutputState }
 
 func (ServerlessContainerImageOutput) ElementType() reflect.Type {
@@ -40651,16 +36861,6 @@ func (o ServerlessContainerImageOutput) ToServerlessContainerImageOutput() Serve
 
 func (o ServerlessContainerImageOutput) ToServerlessContainerImageOutputWithContext(ctx context.Context) ServerlessContainerImageOutput {
 	return o
-}
-
-func (o ServerlessContainerImageOutput) ToServerlessContainerImagePtrOutput() ServerlessContainerImagePtrOutput {
-	return o.ToServerlessContainerImagePtrOutputWithContext(context.Background())
-}
-
-func (o ServerlessContainerImageOutput) ToServerlessContainerImagePtrOutputWithContext(ctx context.Context) ServerlessContainerImagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessContainerImage) *ServerlessContainerImage {
-		return &v
-	}).(ServerlessContainerImagePtrOutput)
 }
 
 func (o ServerlessContainerImageOutput) Args() pulumi.StringArrayOutput {
@@ -40686,85 +36886,6 @@ func (o ServerlessContainerImageOutput) Url() pulumi.StringOutput {
 
 func (o ServerlessContainerImageOutput) WorkDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessContainerImage) *string { return v.WorkDir }).(pulumi.StringPtrOutput)
-}
-
-type ServerlessContainerImagePtrOutput struct{ *pulumi.OutputState }
-
-func (ServerlessContainerImagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessContainerImage)(nil)).Elem()
-}
-
-func (o ServerlessContainerImagePtrOutput) ToServerlessContainerImagePtrOutput() ServerlessContainerImagePtrOutput {
-	return o
-}
-
-func (o ServerlessContainerImagePtrOutput) ToServerlessContainerImagePtrOutputWithContext(ctx context.Context) ServerlessContainerImagePtrOutput {
-	return o
-}
-
-func (o ServerlessContainerImagePtrOutput) Elem() ServerlessContainerImageOutput {
-	return o.ApplyT(func(v *ServerlessContainerImage) ServerlessContainerImage {
-		if v != nil {
-			return *v
-		}
-		var ret ServerlessContainerImage
-		return ret
-	}).(ServerlessContainerImageOutput)
-}
-
-func (o ServerlessContainerImagePtrOutput) Args() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServerlessContainerImage) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Args
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o ServerlessContainerImagePtrOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServerlessContainerImage) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Commands
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o ServerlessContainerImagePtrOutput) Digest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerlessContainerImage) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Digest
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServerlessContainerImagePtrOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ServerlessContainerImage) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Environment
-	}).(pulumi.StringMapOutput)
-}
-
-// Invoke URL for the Yandex Cloud Serverless Container
-func (o ServerlessContainerImagePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerlessContainerImage) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServerlessContainerImagePtrOutput) WorkDir() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerlessContainerImage) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkDir
-	}).(pulumi.StringPtrOutput)
 }
 
 type StorageBucketCorsRule struct {
@@ -44027,47 +40148,6 @@ func (i YdbDatabaseDedicatedScalePolicyArgs) ToYdbDatabaseDedicatedScalePolicyOu
 	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedScalePolicyOutput)
 }
 
-func (i YdbDatabaseDedicatedScalePolicyArgs) ToYdbDatabaseDedicatedScalePolicyPtrOutput() YdbDatabaseDedicatedScalePolicyPtrOutput {
-	return i.ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i YdbDatabaseDedicatedScalePolicyArgs) ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedScalePolicyOutput).ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(ctx)
-}
-
-// YdbDatabaseDedicatedScalePolicyPtrInput is an input type that accepts YdbDatabaseDedicatedScalePolicyArgs, YdbDatabaseDedicatedScalePolicyPtr and YdbDatabaseDedicatedScalePolicyPtrOutput values.
-// You can construct a concrete instance of `YdbDatabaseDedicatedScalePolicyPtrInput` via:
-//
-//          YdbDatabaseDedicatedScalePolicyArgs{...}
-//
-//  or:
-//
-//          nil
-type YdbDatabaseDedicatedScalePolicyPtrInput interface {
-	pulumi.Input
-
-	ToYdbDatabaseDedicatedScalePolicyPtrOutput() YdbDatabaseDedicatedScalePolicyPtrOutput
-	ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(context.Context) YdbDatabaseDedicatedScalePolicyPtrOutput
-}
-
-type ydbDatabaseDedicatedScalePolicyPtrType YdbDatabaseDedicatedScalePolicyArgs
-
-func YdbDatabaseDedicatedScalePolicyPtr(v *YdbDatabaseDedicatedScalePolicyArgs) YdbDatabaseDedicatedScalePolicyPtrInput {
-	return (*ydbDatabaseDedicatedScalePolicyPtrType)(v)
-}
-
-func (*ydbDatabaseDedicatedScalePolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**YdbDatabaseDedicatedScalePolicy)(nil)).Elem()
-}
-
-func (i *ydbDatabaseDedicatedScalePolicyPtrType) ToYdbDatabaseDedicatedScalePolicyPtrOutput() YdbDatabaseDedicatedScalePolicyPtrOutput {
-	return i.ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *ydbDatabaseDedicatedScalePolicyPtrType) ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedScalePolicyPtrOutput)
-}
-
 type YdbDatabaseDedicatedScalePolicyOutput struct{ *pulumi.OutputState }
 
 func (YdbDatabaseDedicatedScalePolicyOutput) ElementType() reflect.Type {
@@ -44082,55 +40162,10 @@ func (o YdbDatabaseDedicatedScalePolicyOutput) ToYdbDatabaseDedicatedScalePolicy
 	return o
 }
 
-func (o YdbDatabaseDedicatedScalePolicyOutput) ToYdbDatabaseDedicatedScalePolicyPtrOutput() YdbDatabaseDedicatedScalePolicyPtrOutput {
-	return o.ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(context.Background())
-}
-
-func (o YdbDatabaseDedicatedScalePolicyOutput) ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseDedicatedScalePolicy) *YdbDatabaseDedicatedScalePolicy {
-		return &v
-	}).(YdbDatabaseDedicatedScalePolicyPtrOutput)
-}
-
 // Fixed scaling policy for the Yandex Database cluster.
 // The structure is documented below.
 func (o YdbDatabaseDedicatedScalePolicyOutput) FixedScale() YdbDatabaseDedicatedScalePolicyFixedScaleOutput {
 	return o.ApplyT(func(v YdbDatabaseDedicatedScalePolicy) YdbDatabaseDedicatedScalePolicyFixedScale { return v.FixedScale }).(YdbDatabaseDedicatedScalePolicyFixedScaleOutput)
-}
-
-type YdbDatabaseDedicatedScalePolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (YdbDatabaseDedicatedScalePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**YdbDatabaseDedicatedScalePolicy)(nil)).Elem()
-}
-
-func (o YdbDatabaseDedicatedScalePolicyPtrOutput) ToYdbDatabaseDedicatedScalePolicyPtrOutput() YdbDatabaseDedicatedScalePolicyPtrOutput {
-	return o
-}
-
-func (o YdbDatabaseDedicatedScalePolicyPtrOutput) ToYdbDatabaseDedicatedScalePolicyPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyPtrOutput {
-	return o
-}
-
-func (o YdbDatabaseDedicatedScalePolicyPtrOutput) Elem() YdbDatabaseDedicatedScalePolicyOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedScalePolicy) YdbDatabaseDedicatedScalePolicy {
-		if v != nil {
-			return *v
-		}
-		var ret YdbDatabaseDedicatedScalePolicy
-		return ret
-	}).(YdbDatabaseDedicatedScalePolicyOutput)
-}
-
-// Fixed scaling policy for the Yandex Database cluster.
-// The structure is documented below.
-func (o YdbDatabaseDedicatedScalePolicyPtrOutput) FixedScale() YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedScalePolicy) *YdbDatabaseDedicatedScalePolicyFixedScale {
-		if v == nil {
-			return nil
-		}
-		return &v.FixedScale
-	}).(YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput)
 }
 
 type YdbDatabaseDedicatedScalePolicyFixedScale struct {
@@ -44166,47 +40201,6 @@ func (i YdbDatabaseDedicatedScalePolicyFixedScaleArgs) ToYdbDatabaseDedicatedSca
 	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedScalePolicyFixedScaleOutput)
 }
 
-func (i YdbDatabaseDedicatedScalePolicyFixedScaleArgs) ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutput() YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return i.ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(context.Background())
-}
-
-func (i YdbDatabaseDedicatedScalePolicyFixedScaleArgs) ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedScalePolicyFixedScaleOutput).ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(ctx)
-}
-
-// YdbDatabaseDedicatedScalePolicyFixedScalePtrInput is an input type that accepts YdbDatabaseDedicatedScalePolicyFixedScaleArgs, YdbDatabaseDedicatedScalePolicyFixedScalePtr and YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput values.
-// You can construct a concrete instance of `YdbDatabaseDedicatedScalePolicyFixedScalePtrInput` via:
-//
-//          YdbDatabaseDedicatedScalePolicyFixedScaleArgs{...}
-//
-//  or:
-//
-//          nil
-type YdbDatabaseDedicatedScalePolicyFixedScalePtrInput interface {
-	pulumi.Input
-
-	ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutput() YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput
-	ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(context.Context) YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput
-}
-
-type ydbDatabaseDedicatedScalePolicyFixedScalePtrType YdbDatabaseDedicatedScalePolicyFixedScaleArgs
-
-func YdbDatabaseDedicatedScalePolicyFixedScalePtr(v *YdbDatabaseDedicatedScalePolicyFixedScaleArgs) YdbDatabaseDedicatedScalePolicyFixedScalePtrInput {
-	return (*ydbDatabaseDedicatedScalePolicyFixedScalePtrType)(v)
-}
-
-func (*ydbDatabaseDedicatedScalePolicyFixedScalePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**YdbDatabaseDedicatedScalePolicyFixedScale)(nil)).Elem()
-}
-
-func (i *ydbDatabaseDedicatedScalePolicyFixedScalePtrType) ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutput() YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return i.ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(context.Background())
-}
-
-func (i *ydbDatabaseDedicatedScalePolicyFixedScalePtrType) ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput)
-}
-
 type YdbDatabaseDedicatedScalePolicyFixedScaleOutput struct{ *pulumi.OutputState }
 
 func (YdbDatabaseDedicatedScalePolicyFixedScaleOutput) ElementType() reflect.Type {
@@ -44221,53 +40215,9 @@ func (o YdbDatabaseDedicatedScalePolicyFixedScaleOutput) ToYdbDatabaseDedicatedS
 	return o
 }
 
-func (o YdbDatabaseDedicatedScalePolicyFixedScaleOutput) ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutput() YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return o.ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(context.Background())
-}
-
-func (o YdbDatabaseDedicatedScalePolicyFixedScaleOutput) ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseDedicatedScalePolicyFixedScale) *YdbDatabaseDedicatedScalePolicyFixedScale {
-		return &v
-	}).(YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput)
-}
-
 // Number of instances for the Yandex Database cluster.
 func (o YdbDatabaseDedicatedScalePolicyFixedScaleOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v YdbDatabaseDedicatedScalePolicyFixedScale) int { return v.Size }).(pulumi.IntOutput)
-}
-
-type YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput struct{ *pulumi.OutputState }
-
-func (YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**YdbDatabaseDedicatedScalePolicyFixedScale)(nil)).Elem()
-}
-
-func (o YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput) ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutput() YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return o
-}
-
-func (o YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput) ToYdbDatabaseDedicatedScalePolicyFixedScalePtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput {
-	return o
-}
-
-func (o YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput) Elem() YdbDatabaseDedicatedScalePolicyFixedScaleOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedScalePolicyFixedScale) YdbDatabaseDedicatedScalePolicyFixedScale {
-		if v != nil {
-			return *v
-		}
-		var ret YdbDatabaseDedicatedScalePolicyFixedScale
-		return ret
-	}).(YdbDatabaseDedicatedScalePolicyFixedScaleOutput)
-}
-
-// Number of instances for the Yandex Database cluster.
-func (o YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedScalePolicyFixedScale) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Size
-	}).(pulumi.IntPtrOutput)
 }
 
 type YdbDatabaseDedicatedStorageConfig struct {
@@ -44309,47 +40259,6 @@ func (i YdbDatabaseDedicatedStorageConfigArgs) ToYdbDatabaseDedicatedStorageConf
 	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedStorageConfigOutput)
 }
 
-func (i YdbDatabaseDedicatedStorageConfigArgs) ToYdbDatabaseDedicatedStorageConfigPtrOutput() YdbDatabaseDedicatedStorageConfigPtrOutput {
-	return i.ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(context.Background())
-}
-
-func (i YdbDatabaseDedicatedStorageConfigArgs) ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedStorageConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedStorageConfigOutput).ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(ctx)
-}
-
-// YdbDatabaseDedicatedStorageConfigPtrInput is an input type that accepts YdbDatabaseDedicatedStorageConfigArgs, YdbDatabaseDedicatedStorageConfigPtr and YdbDatabaseDedicatedStorageConfigPtrOutput values.
-// You can construct a concrete instance of `YdbDatabaseDedicatedStorageConfigPtrInput` via:
-//
-//          YdbDatabaseDedicatedStorageConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type YdbDatabaseDedicatedStorageConfigPtrInput interface {
-	pulumi.Input
-
-	ToYdbDatabaseDedicatedStorageConfigPtrOutput() YdbDatabaseDedicatedStorageConfigPtrOutput
-	ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(context.Context) YdbDatabaseDedicatedStorageConfigPtrOutput
-}
-
-type ydbDatabaseDedicatedStorageConfigPtrType YdbDatabaseDedicatedStorageConfigArgs
-
-func YdbDatabaseDedicatedStorageConfigPtr(v *YdbDatabaseDedicatedStorageConfigArgs) YdbDatabaseDedicatedStorageConfigPtrInput {
-	return (*ydbDatabaseDedicatedStorageConfigPtrType)(v)
-}
-
-func (*ydbDatabaseDedicatedStorageConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**YdbDatabaseDedicatedStorageConfig)(nil)).Elem()
-}
-
-func (i *ydbDatabaseDedicatedStorageConfigPtrType) ToYdbDatabaseDedicatedStorageConfigPtrOutput() YdbDatabaseDedicatedStorageConfigPtrOutput {
-	return i.ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *ydbDatabaseDedicatedStorageConfigPtrType) ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedStorageConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(YdbDatabaseDedicatedStorageConfigPtrOutput)
-}
-
 type YdbDatabaseDedicatedStorageConfigOutput struct{ *pulumi.OutputState }
 
 func (YdbDatabaseDedicatedStorageConfigOutput) ElementType() reflect.Type {
@@ -44364,16 +40273,6 @@ func (o YdbDatabaseDedicatedStorageConfigOutput) ToYdbDatabaseDedicatedStorageCo
 	return o
 }
 
-func (o YdbDatabaseDedicatedStorageConfigOutput) ToYdbDatabaseDedicatedStorageConfigPtrOutput() YdbDatabaseDedicatedStorageConfigPtrOutput {
-	return o.ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(context.Background())
-}
-
-func (o YdbDatabaseDedicatedStorageConfigOutput) ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedStorageConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v YdbDatabaseDedicatedStorageConfig) *YdbDatabaseDedicatedStorageConfig {
-		return &v
-	}).(YdbDatabaseDedicatedStorageConfigPtrOutput)
-}
-
 // Amount of storage groups of selected type for the Yandex Database cluster.
 func (o YdbDatabaseDedicatedStorageConfigOutput) GroupCount() pulumi.IntOutput {
 	return o.ApplyT(func(v YdbDatabaseDedicatedStorageConfig) int { return v.GroupCount }).(pulumi.IntOutput)
@@ -44383,51 +40282,6 @@ func (o YdbDatabaseDedicatedStorageConfigOutput) GroupCount() pulumi.IntOutput {
 // Available presets can be obtained via `yc ydb storage-type list` command.
 func (o YdbDatabaseDedicatedStorageConfigOutput) StorageTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v YdbDatabaseDedicatedStorageConfig) string { return v.StorageTypeId }).(pulumi.StringOutput)
-}
-
-type YdbDatabaseDedicatedStorageConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (YdbDatabaseDedicatedStorageConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**YdbDatabaseDedicatedStorageConfig)(nil)).Elem()
-}
-
-func (o YdbDatabaseDedicatedStorageConfigPtrOutput) ToYdbDatabaseDedicatedStorageConfigPtrOutput() YdbDatabaseDedicatedStorageConfigPtrOutput {
-	return o
-}
-
-func (o YdbDatabaseDedicatedStorageConfigPtrOutput) ToYdbDatabaseDedicatedStorageConfigPtrOutputWithContext(ctx context.Context) YdbDatabaseDedicatedStorageConfigPtrOutput {
-	return o
-}
-
-func (o YdbDatabaseDedicatedStorageConfigPtrOutput) Elem() YdbDatabaseDedicatedStorageConfigOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedStorageConfig) YdbDatabaseDedicatedStorageConfig {
-		if v != nil {
-			return *v
-		}
-		var ret YdbDatabaseDedicatedStorageConfig
-		return ret
-	}).(YdbDatabaseDedicatedStorageConfigOutput)
-}
-
-// Amount of storage groups of selected type for the Yandex Database cluster.
-func (o YdbDatabaseDedicatedStorageConfigPtrOutput) GroupCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedStorageConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.GroupCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Storage type ID for the Yandex Database cluster.
-// Available presets can be obtained via `yc ydb storage-type list` command.
-func (o YdbDatabaseDedicatedStorageConfigPtrOutput) StorageTypeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *YdbDatabaseDedicatedStorageConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageTypeId
-	}).(pulumi.StringPtrOutput)
 }
 
 type GetAlbBackendGroupGrpcBackend struct {
@@ -76587,7 +72441,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupStreamBackendTlsValidationContextInput)(nil)).Elem(), AlbBackendGroupStreamBackendTlsValidationContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupStreamBackendTlsValidationContextPtrInput)(nil)).Elem(), AlbBackendGroupStreamBackendTlsValidationContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerAllocationPolicyInput)(nil)).Elem(), AlbLoadBalancerAllocationPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerAllocationPolicyPtrInput)(nil)).Elem(), AlbLoadBalancerAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerAllocationPolicyLocationInput)(nil)).Elem(), AlbLoadBalancerAllocationPolicyLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerAllocationPolicyLocationArrayInput)(nil)).Elem(), AlbLoadBalancerAllocationPolicyLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbLoadBalancerListenerInput)(nil)).Elem(), AlbLoadBalancerListenerArgs{})
@@ -76672,15 +72525,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskDiskPlacementPolicyInput)(nil)).Elem(), ComputeDiskDiskPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeDiskDiskPlacementPolicyPtrInput)(nil)).Elem(), ComputeDiskDiskPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceBootDiskInput)(nil)).Elem(), ComputeInstanceBootDiskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceBootDiskPtrInput)(nil)).Elem(), ComputeInstanceBootDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceBootDiskInitializeParamsInput)(nil)).Elem(), ComputeInstanceBootDiskInitializeParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceBootDiskInitializeParamsPtrInput)(nil)).Elem(), ComputeInstanceBootDiskInitializeParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupAllocationPolicyInput)(nil)).Elem(), ComputeInstanceGroupAllocationPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupAllocationPolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupApplicationLoadBalancerInput)(nil)).Elem(), ComputeInstanceGroupApplicationLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupApplicationLoadBalancerPtrInput)(nil)).Elem(), ComputeInstanceGroupApplicationLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupDeployPolicyInput)(nil)).Elem(), ComputeInstanceGroupDeployPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupDeployPolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupDeployPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupHealthCheckInput)(nil)).Elem(), ComputeInstanceGroupHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupHealthCheckArrayInput)(nil)).Elem(), ComputeInstanceGroupHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupHealthCheckHttpOptionInput)(nil)).Elem(), ComputeInstanceGroupHealthCheckHttpOptionArgs{})
@@ -76692,9 +72542,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceNetworkInterfaceInput)(nil)).Elem(), ComputeInstanceGroupInstanceNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceNetworkInterfaceArrayInput)(nil)).Elem(), ComputeInstanceGroupInstanceNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplatePtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateBootDiskInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateBootDiskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateBootDiskPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateBootDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateNetworkInterfaceArgs{})
@@ -76710,7 +72558,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplatePlacementPolicyInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplatePlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplatePlacementPolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplatePlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateResourcesInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateResourcesPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateSchedulingPolicyInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateSchedulingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateSchedulingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupInstanceTemplateSecondaryDiskInput)(nil)).Elem(), ComputeInstanceGroupInstanceTemplateSecondaryDiskArgs{})
@@ -76720,7 +72567,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupLoadBalancerInput)(nil)).Elem(), ComputeInstanceGroupLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupLoadBalancerPtrInput)(nil)).Elem(), ComputeInstanceGroupLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyPtrInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyAutoScaleInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyAutoScaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyAutoScalePtrInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyAutoScaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceGroupScalePolicyAutoScaleCustomRuleInput)(nil)).Elem(), ComputeInstanceGroupScalePolicyAutoScaleCustomRuleArgs{})
@@ -76742,13 +72588,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstancePlacementPolicyInput)(nil)).Elem(), ComputeInstancePlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstancePlacementPolicyPtrInput)(nil)).Elem(), ComputeInstancePlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceResourcesInput)(nil)).Elem(), ComputeInstanceResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceResourcesPtrInput)(nil)).Elem(), ComputeInstanceResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceSchedulingPolicyInput)(nil)).Elem(), ComputeInstanceSchedulingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceSchedulingPolicyPtrInput)(nil)).Elem(), ComputeInstanceSchedulingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceSecondaryDiskInput)(nil)).Elem(), ComputeInstanceSecondaryDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeInstanceSecondaryDiskArrayInput)(nil)).Elem(), ComputeInstanceSecondaryDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigInput)(nil)).Elem(), DataprocClusterClusterConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigPtrInput)(nil)).Elem(), DataprocClusterClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigHadoopInput)(nil)).Elem(), DataprocClusterClusterConfigHadoopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigHadoopPtrInput)(nil)).Elem(), DataprocClusterClusterConfigHadoopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataprocClusterClusterConfigSubclusterSpecInput)(nil)).Elem(), DataprocClusterClusterConfigSubclusterSpecArgs{})
@@ -76765,7 +72609,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerDlqInput)(nil)).Elem(), FunctionTriggerDlqArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerDlqPtrInput)(nil)).Elem(), FunctionTriggerDlqArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerFunctionInput)(nil)).Elem(), FunctionTriggerFunctionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerFunctionPtrInput)(nil)).Elem(), FunctionTriggerFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerIotInput)(nil)).Elem(), FunctionTriggerIotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerIotPtrInput)(nil)).Elem(), FunctionTriggerIotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionTriggerLogGroupInput)(nil)).Elem(), FunctionTriggerLogGroupArgs{})
@@ -76781,7 +72624,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKmsProviderInput)(nil)).Elem(), KubernetesClusterKmsProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKmsProviderPtrInput)(nil)).Elem(), KubernetesClusterKmsProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterInput)(nil)).Elem(), KubernetesClusterMasterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterPtrInput)(nil)).Elem(), KubernetesClusterMasterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterMaintenancePolicyInput)(nil)).Elem(), KubernetesClusterMasterMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterMaintenancePolicyPtrInput)(nil)).Elem(), KubernetesClusterMasterMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMasterMaintenancePolicyMaintenanceWindowInput)(nil)).Elem(), KubernetesClusterMasterMaintenancePolicyMaintenanceWindowArgs{})
@@ -76805,7 +72647,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupDeployPolicyInput)(nil)).Elem(), KubernetesNodeGroupDeployPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupDeployPolicyPtrInput)(nil)).Elem(), KubernetesNodeGroupDeployPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplatePtrInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateBootDiskInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateBootDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateBootDiskPtrInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateBootDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs{})
@@ -76821,7 +72662,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupMaintenancePolicyMaintenanceWindowInput)(nil)).Elem(), KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArrayInput)(nil)).Elem(), KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyPtrInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyAutoScaleInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyAutoScaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyAutoScalePtrInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyAutoScaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodeGroupScalePolicyFixedScaleInput)(nil)).Elem(), KubernetesNodeGroupScalePolicyFixedScaleArgs{})
@@ -76849,7 +72689,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterBackupWindowStartInput)(nil)).Elem(), MdbClickhouseClusterBackupWindowStartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterBackupWindowStartPtrInput)(nil)).Elem(), MdbClickhouseClusterBackupWindowStartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseInput)(nil)).Elem(), MdbClickhouseClusterClickhouseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhousePtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigPtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigCompressionInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigCompressionArgs{})
@@ -76871,7 +72710,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigRabbitmqInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigRabbitmqArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseConfigRabbitmqPtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseConfigRabbitmqArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseResourcesInput)(nil)).Elem(), MdbClickhouseClusterClickhouseResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterClickhouseResourcesPtrInput)(nil)).Elem(), MdbClickhouseClusterClickhouseResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterCloudStorageInput)(nil)).Elem(), MdbClickhouseClusterCloudStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterCloudStoragePtrInput)(nil)).Elem(), MdbClickhouseClusterCloudStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterDatabaseInput)(nil)).Elem(), MdbClickhouseClusterDatabaseArgs{})
@@ -76899,11 +72737,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterZookeeperResourcesInput)(nil)).Elem(), MdbClickhouseClusterZookeeperResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterZookeeperResourcesPtrInput)(nil)).Elem(), MdbClickhouseClusterZookeeperResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigInput)(nil)).Elem(), MdbElasticSearchClusterConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigPtrInput)(nil)).Elem(), MdbElasticSearchClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodeInput)(nil)).Elem(), MdbElasticSearchClusterConfigDataNodeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodePtrInput)(nil)).Elem(), MdbElasticSearchClusterConfigDataNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodeResourcesInput)(nil)).Elem(), MdbElasticSearchClusterConfigDataNodeResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigDataNodeResourcesPtrInput)(nil)).Elem(), MdbElasticSearchClusterConfigDataNodeResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNodeInput)(nil)).Elem(), MdbElasticSearchClusterConfigMasterNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNodePtrInput)(nil)).Elem(), MdbElasticSearchClusterConfigMasterNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterConfigMasterNodeResourcesInput)(nil)).Elem(), MdbElasticSearchClusterConfigMasterNodeResourcesArgs{})
@@ -76917,23 +72752,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterHostInput)(nil)).Elem(), MdbGreenplumClusterMasterHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterHostArrayInput)(nil)).Elem(), MdbGreenplumClusterMasterHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterInput)(nil)).Elem(), MdbGreenplumClusterMasterSubclusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterPtrInput)(nil)).Elem(), MdbGreenplumClusterMasterSubclusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterResourcesInput)(nil)).Elem(), MdbGreenplumClusterMasterSubclusterResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterMasterSubclusterResourcesPtrInput)(nil)).Elem(), MdbGreenplumClusterMasterSubclusterResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentHostInput)(nil)).Elem(), MdbGreenplumClusterSegmentHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentHostArrayInput)(nil)).Elem(), MdbGreenplumClusterSegmentHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterInput)(nil)).Elem(), MdbGreenplumClusterSegmentSubclusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterPtrInput)(nil)).Elem(), MdbGreenplumClusterSegmentSubclusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterResourcesInput)(nil)).Elem(), MdbGreenplumClusterSegmentSubclusterResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbGreenplumClusterSegmentSubclusterResourcesPtrInput)(nil)).Elem(), MdbGreenplumClusterSegmentSubclusterResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigInput)(nil)).Elem(), MdbKafkaClusterConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigPtrInput)(nil)).Elem(), MdbKafkaClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaPtrInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaKafkaConfigInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaKafkaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaKafkaConfigPtrInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaKafkaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaResourcesInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigKafkaResourcesPtrInput)(nil)).Elem(), MdbKafkaClusterConfigKafkaResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigZookeeperInput)(nil)).Elem(), MdbKafkaClusterConfigZookeeperArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigZookeeperPtrInput)(nil)).Elem(), MdbKafkaClusterConfigZookeeperArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaClusterConfigZookeeperResourcesInput)(nil)).Elem(), MdbKafkaClusterConfigZookeeperResourcesArgs{})
@@ -76951,7 +72779,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaTopicTopicConfigInput)(nil)).Elem(), MdbKafkaTopicTopicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbKafkaTopicTopicConfigPtrInput)(nil)).Elem(), MdbKafkaTopicTopicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigInput)(nil)).Elem(), MdbMongodbClusterClusterConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigPtrInput)(nil)).Elem(), MdbMongodbClusterClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigAccessInput)(nil)).Elem(), MdbMongodbClusterClusterConfigAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigAccessPtrInput)(nil)).Elem(), MdbMongodbClusterClusterConfigAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterClusterConfigBackupWindowStartInput)(nil)).Elem(), MdbMongodbClusterClusterConfigBackupWindowStartArgs{})
@@ -76963,7 +72790,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterMaintenanceWindowInput)(nil)).Elem(), MdbMongodbClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterMaintenanceWindowPtrInput)(nil)).Elem(), MdbMongodbClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterResourcesInput)(nil)).Elem(), MdbMongodbClusterResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterResourcesPtrInput)(nil)).Elem(), MdbMongodbClusterResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterUserInput)(nil)).Elem(), MdbMongodbClusterUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterUserArrayInput)(nil)).Elem(), MdbMongodbClusterUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterUserPermissionInput)(nil)).Elem(), MdbMongodbClusterUserPermissionArgs{})
@@ -76979,7 +72805,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterMaintenanceWindowInput)(nil)).Elem(), MdbMysqlClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterMaintenanceWindowPtrInput)(nil)).Elem(), MdbMysqlClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterResourcesInput)(nil)).Elem(), MdbMysqlClusterResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterResourcesPtrInput)(nil)).Elem(), MdbMysqlClusterResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterRestoreInput)(nil)).Elem(), MdbMysqlClusterRestoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterRestorePtrInput)(nil)).Elem(), MdbMysqlClusterRestoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterUserInput)(nil)).Elem(), MdbMysqlClusterUserArgs{})
@@ -76989,13 +72814,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterUserPermissionInput)(nil)).Elem(), MdbMysqlClusterUserPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterUserPermissionArrayInput)(nil)).Elem(), MdbMysqlClusterUserPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterConfigInput)(nil)).Elem(), MdbRedisClusterConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterConfigPtrInput)(nil)).Elem(), MdbRedisClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterHostInput)(nil)).Elem(), MdbRedisClusterHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterHostArrayInput)(nil)).Elem(), MdbRedisClusterHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterMaintenanceWindowInput)(nil)).Elem(), MdbRedisClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterMaintenanceWindowPtrInput)(nil)).Elem(), MdbRedisClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterResourcesInput)(nil)).Elem(), MdbRedisClusterResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbRedisClusterResourcesPtrInput)(nil)).Elem(), MdbRedisClusterResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterBackupWindowStartInput)(nil)).Elem(), MdbSqlServerClusterBackupWindowStartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterBackupWindowStartPtrInput)(nil)).Elem(), MdbSqlServerClusterBackupWindowStartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterDatabaseInput)(nil)).Elem(), MdbSqlServerClusterDatabaseArgs{})
@@ -77003,13 +72826,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterHostInput)(nil)).Elem(), MdbSqlServerClusterHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterHostArrayInput)(nil)).Elem(), MdbSqlServerClusterHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterResourcesInput)(nil)).Elem(), MdbSqlServerClusterResourcesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterResourcesPtrInput)(nil)).Elem(), MdbSqlServerClusterResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterUserInput)(nil)).Elem(), MdbSqlServerClusterUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterUserArrayInput)(nil)).Elem(), MdbSqlServerClusterUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterUserPermissionInput)(nil)).Elem(), MdbSqlServerClusterUserPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbSqlServerClusterUserPermissionArrayInput)(nil)).Elem(), MdbSqlServerClusterUserPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessContainerImageInput)(nil)).Elem(), ServerlessContainerImageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessContainerImagePtrInput)(nil)).Elem(), ServerlessContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketCorsRuleInput)(nil)).Elem(), StorageBucketCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketCorsRuleArrayInput)(nil)).Elem(), StorageBucketCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageBucketGrantInput)(nil)).Elem(), StorageBucketGrantArgs{})
@@ -77055,11 +72876,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedLocationRegionInput)(nil)).Elem(), YdbDatabaseDedicatedLocationRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedLocationRegionPtrInput)(nil)).Elem(), YdbDatabaseDedicatedLocationRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedScalePolicyInput)(nil)).Elem(), YdbDatabaseDedicatedScalePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedScalePolicyPtrInput)(nil)).Elem(), YdbDatabaseDedicatedScalePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedScalePolicyFixedScaleInput)(nil)).Elem(), YdbDatabaseDedicatedScalePolicyFixedScaleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedScalePolicyFixedScalePtrInput)(nil)).Elem(), YdbDatabaseDedicatedScalePolicyFixedScaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedStorageConfigInput)(nil)).Elem(), YdbDatabaseDedicatedStorageConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*YdbDatabaseDedicatedStorageConfigPtrInput)(nil)).Elem(), YdbDatabaseDedicatedStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendArrayInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbBackendGroupGrpcBackendHealthcheckInput)(nil)).Elem(), GetAlbBackendGroupGrpcBackendHealthcheckArgs{})
@@ -77601,7 +73419,6 @@ func init() {
 	pulumi.RegisterOutputType(AlbBackendGroupStreamBackendTlsValidationContextOutput{})
 	pulumi.RegisterOutputType(AlbBackendGroupStreamBackendTlsValidationContextPtrOutput{})
 	pulumi.RegisterOutputType(AlbLoadBalancerAllocationPolicyOutput{})
-	pulumi.RegisterOutputType(AlbLoadBalancerAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AlbLoadBalancerAllocationPolicyLocationOutput{})
 	pulumi.RegisterOutputType(AlbLoadBalancerAllocationPolicyLocationArrayOutput{})
 	pulumi.RegisterOutputType(AlbLoadBalancerListenerOutput{})
@@ -77686,15 +73503,12 @@ func init() {
 	pulumi.RegisterOutputType(ComputeDiskDiskPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ComputeDiskDiskPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceBootDiskOutput{})
-	pulumi.RegisterOutputType(ComputeInstanceBootDiskPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceBootDiskInitializeParamsOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceBootDiskInitializeParamsPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupAllocationPolicyOutput{})
-	pulumi.RegisterOutputType(ComputeInstanceGroupAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupApplicationLoadBalancerOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupApplicationLoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupDeployPolicyOutput{})
-	pulumi.RegisterOutputType(ComputeInstanceGroupDeployPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupHealthCheckOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupHealthCheckHttpOptionOutput{})
@@ -77706,9 +73520,7 @@ func init() {
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateOutput{})
-	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateBootDiskOutput{})
-	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateBootDiskPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateNetworkInterfaceOutput{})
@@ -77724,7 +73536,6 @@ func init() {
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplatePlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplatePlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateResourcesOutput{})
-	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateResourcesPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateSchedulingPolicyOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateSchedulingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupInstanceTemplateSecondaryDiskOutput{})
@@ -77734,7 +73545,6 @@ func init() {
 	pulumi.RegisterOutputType(ComputeInstanceGroupLoadBalancerOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupLoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupScalePolicyOutput{})
-	pulumi.RegisterOutputType(ComputeInstanceGroupScalePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupScalePolicyAutoScaleOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupScalePolicyAutoScalePtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceGroupScalePolicyAutoScaleCustomRuleOutput{})
@@ -77756,13 +73566,11 @@ func init() {
 	pulumi.RegisterOutputType(ComputeInstancePlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ComputeInstancePlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceResourcesOutput{})
-	pulumi.RegisterOutputType(ComputeInstanceResourcesPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceSchedulingPolicyOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceSchedulingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceSecondaryDiskOutput{})
 	pulumi.RegisterOutputType(ComputeInstanceSecondaryDiskArrayOutput{})
 	pulumi.RegisterOutputType(DataprocClusterClusterConfigOutput{})
-	pulumi.RegisterOutputType(DataprocClusterClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataprocClusterClusterConfigHadoopOutput{})
 	pulumi.RegisterOutputType(DataprocClusterClusterConfigHadoopPtrOutput{})
 	pulumi.RegisterOutputType(DataprocClusterClusterConfigSubclusterSpecOutput{})
@@ -77779,7 +73587,6 @@ func init() {
 	pulumi.RegisterOutputType(FunctionTriggerDlqOutput{})
 	pulumi.RegisterOutputType(FunctionTriggerDlqPtrOutput{})
 	pulumi.RegisterOutputType(FunctionTriggerFunctionOutput{})
-	pulumi.RegisterOutputType(FunctionTriggerFunctionPtrOutput{})
 	pulumi.RegisterOutputType(FunctionTriggerIotOutput{})
 	pulumi.RegisterOutputType(FunctionTriggerIotPtrOutput{})
 	pulumi.RegisterOutputType(FunctionTriggerLogGroupOutput{})
@@ -77795,7 +73602,6 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterKmsProviderOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterKmsProviderPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterMasterOutput{})
-	pulumi.RegisterOutputType(KubernetesClusterMasterPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterMasterMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterMasterMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterMasterMaintenancePolicyMaintenanceWindowOutput{})
@@ -77819,7 +73625,6 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesNodeGroupDeployPolicyOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupDeployPolicyPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateOutput{})
-	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplatePtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateBootDiskOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateBootDiskPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupInstanceTemplateNetworkInterfaceOutput{})
@@ -77835,7 +73640,6 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesNodeGroupMaintenancePolicyMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupScalePolicyOutput{})
-	pulumi.RegisterOutputType(KubernetesNodeGroupScalePolicyPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupScalePolicyAutoScaleOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupScalePolicyAutoScalePtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodeGroupScalePolicyFixedScaleOutput{})
@@ -77863,7 +73667,6 @@ func init() {
 	pulumi.RegisterOutputType(MdbClickhouseClusterBackupWindowStartOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterBackupWindowStartPtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterClickhouseOutput{})
-	pulumi.RegisterOutputType(MdbClickhouseClusterClickhousePtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterClickhouseConfigOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterClickhouseConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterClickhouseConfigCompressionOutput{})
@@ -77885,7 +73688,6 @@ func init() {
 	pulumi.RegisterOutputType(MdbClickhouseClusterClickhouseConfigRabbitmqOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterClickhouseConfigRabbitmqPtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterClickhouseResourcesOutput{})
-	pulumi.RegisterOutputType(MdbClickhouseClusterClickhouseResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterCloudStorageOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterCloudStoragePtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterDatabaseOutput{})
@@ -77913,11 +73715,8 @@ func init() {
 	pulumi.RegisterOutputType(MdbClickhouseClusterZookeeperResourcesOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterZookeeperResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigOutput{})
-	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigDataNodeOutput{})
-	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigDataNodePtrOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigDataNodeResourcesOutput{})
-	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigDataNodeResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigMasterNodeOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigMasterNodePtrOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterConfigMasterNodeResourcesOutput{})
@@ -77931,23 +73730,16 @@ func init() {
 	pulumi.RegisterOutputType(MdbGreenplumClusterMasterHostOutput{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterMasterHostArrayOutput{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterMasterSubclusterOutput{})
-	pulumi.RegisterOutputType(MdbGreenplumClusterMasterSubclusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterMasterSubclusterResourcesOutput{})
-	pulumi.RegisterOutputType(MdbGreenplumClusterMasterSubclusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentHostOutput{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentHostArrayOutput{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentSubclusterOutput{})
-	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentSubclusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentSubclusterResourcesOutput{})
-	pulumi.RegisterOutputType(MdbGreenplumClusterSegmentSubclusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigOutput{})
-	pulumi.RegisterOutputType(MdbKafkaClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigKafkaOutput{})
-	pulumi.RegisterOutputType(MdbKafkaClusterConfigKafkaPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigKafkaKafkaConfigOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigKafkaKafkaConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigKafkaResourcesOutput{})
-	pulumi.RegisterOutputType(MdbKafkaClusterConfigKafkaResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigZookeeperOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigZookeeperPtrOutput{})
 	pulumi.RegisterOutputType(MdbKafkaClusterConfigZookeeperResourcesOutput{})
@@ -77965,7 +73757,6 @@ func init() {
 	pulumi.RegisterOutputType(MdbKafkaTopicTopicConfigOutput{})
 	pulumi.RegisterOutputType(MdbKafkaTopicTopicConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterClusterConfigOutput{})
-	pulumi.RegisterOutputType(MdbMongodbClusterClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterClusterConfigAccessOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterClusterConfigAccessPtrOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterClusterConfigBackupWindowStartOutput{})
@@ -77977,7 +73768,6 @@ func init() {
 	pulumi.RegisterOutputType(MdbMongodbClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterResourcesOutput{})
-	pulumi.RegisterOutputType(MdbMongodbClusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterUserOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterUserArrayOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterUserPermissionOutput{})
@@ -77993,7 +73783,6 @@ func init() {
 	pulumi.RegisterOutputType(MdbMysqlClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterResourcesOutput{})
-	pulumi.RegisterOutputType(MdbMysqlClusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterRestoreOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterRestorePtrOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterUserOutput{})
@@ -78003,13 +73792,11 @@ func init() {
 	pulumi.RegisterOutputType(MdbMysqlClusterUserPermissionOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterUserPermissionArrayOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterConfigOutput{})
-	pulumi.RegisterOutputType(MdbRedisClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterHostOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterHostArrayOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MdbRedisClusterResourcesOutput{})
-	pulumi.RegisterOutputType(MdbRedisClusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterBackupWindowStartOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterBackupWindowStartPtrOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterDatabaseOutput{})
@@ -78017,13 +73804,11 @@ func init() {
 	pulumi.RegisterOutputType(MdbSqlServerClusterHostOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterHostArrayOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterResourcesOutput{})
-	pulumi.RegisterOutputType(MdbSqlServerClusterResourcesPtrOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterUserOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterUserArrayOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterUserPermissionOutput{})
 	pulumi.RegisterOutputType(MdbSqlServerClusterUserPermissionArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessContainerImageOutput{})
-	pulumi.RegisterOutputType(ServerlessContainerImagePtrOutput{})
 	pulumi.RegisterOutputType(StorageBucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(StorageBucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(StorageBucketGrantOutput{})
@@ -78069,11 +73854,8 @@ func init() {
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedLocationRegionOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedLocationRegionPtrOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedScalePolicyOutput{})
-	pulumi.RegisterOutputType(YdbDatabaseDedicatedScalePolicyPtrOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedScalePolicyFixedScaleOutput{})
-	pulumi.RegisterOutputType(YdbDatabaseDedicatedScalePolicyFixedScalePtrOutput{})
 	pulumi.RegisterOutputType(YdbDatabaseDedicatedStorageConfigOutput{})
-	pulumi.RegisterOutputType(YdbDatabaseDedicatedStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendOutput{})
 	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendArrayOutput{})
 	pulumi.RegisterOutputType(GetAlbBackendGroupGrpcBackendHealthcheckOutput{})

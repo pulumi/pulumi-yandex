@@ -180,7 +180,7 @@ type ResourcemanagerCloudIamMemberInput interface {
 }
 
 func (*ResourcemanagerCloudIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerCloudIamMember)(nil))
+	return reflect.TypeOf((**ResourcemanagerCloudIamMember)(nil)).Elem()
 }
 
 func (i *ResourcemanagerCloudIamMember) ToResourcemanagerCloudIamMemberOutput() ResourcemanagerCloudIamMemberOutput {
@@ -189,35 +189,6 @@ func (i *ResourcemanagerCloudIamMember) ToResourcemanagerCloudIamMemberOutput() 
 
 func (i *ResourcemanagerCloudIamMember) ToResourcemanagerCloudIamMemberOutputWithContext(ctx context.Context) ResourcemanagerCloudIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerCloudIamMemberOutput)
-}
-
-func (i *ResourcemanagerCloudIamMember) ToResourcemanagerCloudIamMemberPtrOutput() ResourcemanagerCloudIamMemberPtrOutput {
-	return i.ToResourcemanagerCloudIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *ResourcemanagerCloudIamMember) ToResourcemanagerCloudIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerCloudIamMemberPtrOutput)
-}
-
-type ResourcemanagerCloudIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToResourcemanagerCloudIamMemberPtrOutput() ResourcemanagerCloudIamMemberPtrOutput
-	ToResourcemanagerCloudIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamMemberPtrOutput
-}
-
-type resourcemanagerCloudIamMemberPtrType ResourcemanagerCloudIamMemberArgs
-
-func (*resourcemanagerCloudIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerCloudIamMember)(nil))
-}
-
-func (i *resourcemanagerCloudIamMemberPtrType) ToResourcemanagerCloudIamMemberPtrOutput() ResourcemanagerCloudIamMemberPtrOutput {
-	return i.ToResourcemanagerCloudIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *resourcemanagerCloudIamMemberPtrType) ToResourcemanagerCloudIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerCloudIamMemberPtrOutput)
 }
 
 // ResourcemanagerCloudIamMemberArrayInput is an input type that accepts ResourcemanagerCloudIamMemberArray and ResourcemanagerCloudIamMemberArrayOutput values.
@@ -273,7 +244,7 @@ func (i ResourcemanagerCloudIamMemberMap) ToResourcemanagerCloudIamMemberMapOutp
 type ResourcemanagerCloudIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerCloudIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerCloudIamMember)(nil))
+	return reflect.TypeOf((**ResourcemanagerCloudIamMember)(nil)).Elem()
 }
 
 func (o ResourcemanagerCloudIamMemberOutput) ToResourcemanagerCloudIamMemberOutput() ResourcemanagerCloudIamMemberOutput {
@@ -284,44 +255,10 @@ func (o ResourcemanagerCloudIamMemberOutput) ToResourcemanagerCloudIamMemberOutp
 	return o
 }
 
-func (o ResourcemanagerCloudIamMemberOutput) ToResourcemanagerCloudIamMemberPtrOutput() ResourcemanagerCloudIamMemberPtrOutput {
-	return o.ToResourcemanagerCloudIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o ResourcemanagerCloudIamMemberOutput) ToResourcemanagerCloudIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcemanagerCloudIamMember) *ResourcemanagerCloudIamMember {
-		return &v
-	}).(ResourcemanagerCloudIamMemberPtrOutput)
-}
-
-type ResourcemanagerCloudIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourcemanagerCloudIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerCloudIamMember)(nil))
-}
-
-func (o ResourcemanagerCloudIamMemberPtrOutput) ToResourcemanagerCloudIamMemberPtrOutput() ResourcemanagerCloudIamMemberPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerCloudIamMemberPtrOutput) ToResourcemanagerCloudIamMemberPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamMemberPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerCloudIamMemberPtrOutput) Elem() ResourcemanagerCloudIamMemberOutput {
-	return o.ApplyT(func(v *ResourcemanagerCloudIamMember) ResourcemanagerCloudIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret ResourcemanagerCloudIamMember
-		return ret
-	}).(ResourcemanagerCloudIamMemberOutput)
-}
-
 type ResourcemanagerCloudIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerCloudIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourcemanagerCloudIamMember)(nil))
+	return reflect.TypeOf((*[]*ResourcemanagerCloudIamMember)(nil)).Elem()
 }
 
 func (o ResourcemanagerCloudIamMemberArrayOutput) ToResourcemanagerCloudIamMemberArrayOutput() ResourcemanagerCloudIamMemberArrayOutput {
@@ -333,15 +270,15 @@ func (o ResourcemanagerCloudIamMemberArrayOutput) ToResourcemanagerCloudIamMembe
 }
 
 func (o ResourcemanagerCloudIamMemberArrayOutput) Index(i pulumi.IntInput) ResourcemanagerCloudIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourcemanagerCloudIamMember {
-		return vs[0].([]ResourcemanagerCloudIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourcemanagerCloudIamMember {
+		return vs[0].([]*ResourcemanagerCloudIamMember)[vs[1].(int)]
 	}).(ResourcemanagerCloudIamMemberOutput)
 }
 
 type ResourcemanagerCloudIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerCloudIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ResourcemanagerCloudIamMember)(nil))
+	return reflect.TypeOf((*map[string]*ResourcemanagerCloudIamMember)(nil)).Elem()
 }
 
 func (o ResourcemanagerCloudIamMemberMapOutput) ToResourcemanagerCloudIamMemberMapOutput() ResourcemanagerCloudIamMemberMapOutput {
@@ -353,18 +290,16 @@ func (o ResourcemanagerCloudIamMemberMapOutput) ToResourcemanagerCloudIamMemberM
 }
 
 func (o ResourcemanagerCloudIamMemberMapOutput) MapIndex(k pulumi.StringInput) ResourcemanagerCloudIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourcemanagerCloudIamMember {
-		return vs[0].(map[string]ResourcemanagerCloudIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ResourcemanagerCloudIamMember {
+		return vs[0].(map[string]*ResourcemanagerCloudIamMember)[vs[1].(string)]
 	}).(ResourcemanagerCloudIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerCloudIamMemberInput)(nil)).Elem(), &ResourcemanagerCloudIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerCloudIamMemberPtrInput)(nil)).Elem(), &ResourcemanagerCloudIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerCloudIamMemberArrayInput)(nil)).Elem(), ResourcemanagerCloudIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerCloudIamMemberMapInput)(nil)).Elem(), ResourcemanagerCloudIamMemberMap{})
 	pulumi.RegisterOutputType(ResourcemanagerCloudIamMemberOutput{})
-	pulumi.RegisterOutputType(ResourcemanagerCloudIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerCloudIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerCloudIamMemberMapOutput{})
 }

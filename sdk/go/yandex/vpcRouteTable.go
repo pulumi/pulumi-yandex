@@ -29,11 +29,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewVpcNetwork(ctx, "lab_net", nil)
+// 		_, err := yandex.NewVpcNetwork(ctx, "lab-net", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = yandex.NewVpcRouteTable(ctx, "lab_rt_a", &yandex.VpcRouteTableArgs{
+// 		_, err = yandex.NewVpcRouteTable(ctx, "lab-rt-a", &yandex.VpcRouteTableArgs{
 // 			NetworkId: lab_net.ID(),
 // 			StaticRoutes: VpcRouteTableStaticRouteArray{
 // 				&VpcRouteTableStaticRouteArgs{
@@ -198,7 +198,7 @@ type VpcRouteTableInput interface {
 }
 
 func (*VpcRouteTable) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcRouteTable)(nil))
+	return reflect.TypeOf((**VpcRouteTable)(nil)).Elem()
 }
 
 func (i *VpcRouteTable) ToVpcRouteTableOutput() VpcRouteTableOutput {
@@ -207,35 +207,6 @@ func (i *VpcRouteTable) ToVpcRouteTableOutput() VpcRouteTableOutput {
 
 func (i *VpcRouteTable) ToVpcRouteTableOutputWithContext(ctx context.Context) VpcRouteTableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcRouteTableOutput)
-}
-
-func (i *VpcRouteTable) ToVpcRouteTablePtrOutput() VpcRouteTablePtrOutput {
-	return i.ToVpcRouteTablePtrOutputWithContext(context.Background())
-}
-
-func (i *VpcRouteTable) ToVpcRouteTablePtrOutputWithContext(ctx context.Context) VpcRouteTablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcRouteTablePtrOutput)
-}
-
-type VpcRouteTablePtrInput interface {
-	pulumi.Input
-
-	ToVpcRouteTablePtrOutput() VpcRouteTablePtrOutput
-	ToVpcRouteTablePtrOutputWithContext(ctx context.Context) VpcRouteTablePtrOutput
-}
-
-type vpcRouteTablePtrType VpcRouteTableArgs
-
-func (*vpcRouteTablePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcRouteTable)(nil))
-}
-
-func (i *vpcRouteTablePtrType) ToVpcRouteTablePtrOutput() VpcRouteTablePtrOutput {
-	return i.ToVpcRouteTablePtrOutputWithContext(context.Background())
-}
-
-func (i *vpcRouteTablePtrType) ToVpcRouteTablePtrOutputWithContext(ctx context.Context) VpcRouteTablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcRouteTablePtrOutput)
 }
 
 // VpcRouteTableArrayInput is an input type that accepts VpcRouteTableArray and VpcRouteTableArrayOutput values.
@@ -291,7 +262,7 @@ func (i VpcRouteTableMap) ToVpcRouteTableMapOutputWithContext(ctx context.Contex
 type VpcRouteTableOutput struct{ *pulumi.OutputState }
 
 func (VpcRouteTableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcRouteTable)(nil))
+	return reflect.TypeOf((**VpcRouteTable)(nil)).Elem()
 }
 
 func (o VpcRouteTableOutput) ToVpcRouteTableOutput() VpcRouteTableOutput {
@@ -302,44 +273,10 @@ func (o VpcRouteTableOutput) ToVpcRouteTableOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o VpcRouteTableOutput) ToVpcRouteTablePtrOutput() VpcRouteTablePtrOutput {
-	return o.ToVpcRouteTablePtrOutputWithContext(context.Background())
-}
-
-func (o VpcRouteTableOutput) ToVpcRouteTablePtrOutputWithContext(ctx context.Context) VpcRouteTablePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcRouteTable) *VpcRouteTable {
-		return &v
-	}).(VpcRouteTablePtrOutput)
-}
-
-type VpcRouteTablePtrOutput struct{ *pulumi.OutputState }
-
-func (VpcRouteTablePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcRouteTable)(nil))
-}
-
-func (o VpcRouteTablePtrOutput) ToVpcRouteTablePtrOutput() VpcRouteTablePtrOutput {
-	return o
-}
-
-func (o VpcRouteTablePtrOutput) ToVpcRouteTablePtrOutputWithContext(ctx context.Context) VpcRouteTablePtrOutput {
-	return o
-}
-
-func (o VpcRouteTablePtrOutput) Elem() VpcRouteTableOutput {
-	return o.ApplyT(func(v *VpcRouteTable) VpcRouteTable {
-		if v != nil {
-			return *v
-		}
-		var ret VpcRouteTable
-		return ret
-	}).(VpcRouteTableOutput)
-}
-
 type VpcRouteTableArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcRouteTableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VpcRouteTable)(nil))
+	return reflect.TypeOf((*[]*VpcRouteTable)(nil)).Elem()
 }
 
 func (o VpcRouteTableArrayOutput) ToVpcRouteTableArrayOutput() VpcRouteTableArrayOutput {
@@ -351,15 +288,15 @@ func (o VpcRouteTableArrayOutput) ToVpcRouteTableArrayOutputWithContext(ctx cont
 }
 
 func (o VpcRouteTableArrayOutput) Index(i pulumi.IntInput) VpcRouteTableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcRouteTable {
-		return vs[0].([]VpcRouteTable)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcRouteTable {
+		return vs[0].([]*VpcRouteTable)[vs[1].(int)]
 	}).(VpcRouteTableOutput)
 }
 
 type VpcRouteTableMapOutput struct{ *pulumi.OutputState }
 
 func (VpcRouteTableMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VpcRouteTable)(nil))
+	return reflect.TypeOf((*map[string]*VpcRouteTable)(nil)).Elem()
 }
 
 func (o VpcRouteTableMapOutput) ToVpcRouteTableMapOutput() VpcRouteTableMapOutput {
@@ -371,18 +308,16 @@ func (o VpcRouteTableMapOutput) ToVpcRouteTableMapOutputWithContext(ctx context.
 }
 
 func (o VpcRouteTableMapOutput) MapIndex(k pulumi.StringInput) VpcRouteTableOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VpcRouteTable {
-		return vs[0].(map[string]VpcRouteTable)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VpcRouteTable {
+		return vs[0].(map[string]*VpcRouteTable)[vs[1].(string)]
 	}).(VpcRouteTableOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcRouteTableInput)(nil)).Elem(), &VpcRouteTable{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcRouteTablePtrInput)(nil)).Elem(), &VpcRouteTable{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcRouteTableArrayInput)(nil)).Elem(), VpcRouteTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcRouteTableMapInput)(nil)).Elem(), VpcRouteTableMap{})
 	pulumi.RegisterOutputType(VpcRouteTableOutput{})
-	pulumi.RegisterOutputType(VpcRouteTablePtrOutput{})
 	pulumi.RegisterOutputType(VpcRouteTableArrayOutput{})
 	pulumi.RegisterOutputType(VpcRouteTableMapOutput{})
 }

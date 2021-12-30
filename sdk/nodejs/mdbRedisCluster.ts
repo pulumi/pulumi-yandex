@@ -212,27 +212,27 @@ export class MdbRedisCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: MdbRedisClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MdbRedisClusterArgs | MdbRedisClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MdbRedisClusterState | undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["health"] = state ? state.health : undefined;
-            inputs["hosts"] = state ? state.hosts : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["resources"] = state ? state.resources : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["sharded"] = state ? state.sharded : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tlsEnabled"] = state ? state.tlsEnabled : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["hosts"] = state ? state.hosts : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["sharded"] = state ? state.sharded : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tlsEnabled"] = state ? state.tlsEnabled : undefined;
         } else {
             const args = argsOrState as MdbRedisClusterArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -250,28 +250,28 @@ export class MdbRedisCluster extends pulumi.CustomResource {
             if ((!args || args.resources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resources'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["hosts"] = args ? args.hosts : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["sharded"] = args ? args.sharded : undefined;
-            inputs["tlsEnabled"] = args ? args.tlsEnabled : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["health"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["hosts"] = args ? args.hosts : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["sharded"] = args ? args.sharded : undefined;
+            resourceInputs["tlsEnabled"] = args ? args.tlsEnabled : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MdbRedisCluster.__pulumiType, name, inputs, opts);
+        super(MdbRedisCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 
