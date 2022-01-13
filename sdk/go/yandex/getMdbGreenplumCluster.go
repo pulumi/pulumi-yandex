@@ -39,23 +39,23 @@ type LookupMdbGreenplumClusterResult struct {
 	FolderId           string                                    `pulumi:"folderId"`
 	Health             string                                    `pulumi:"health"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string                                  `pulumi:"id"`
-	Labels            map[string]string                       `pulumi:"labels"`
-	MasterHostCount   int                                     `pulumi:"masterHostCount"`
-	MasterHosts       []GetMdbGreenplumClusterMasterHost      `pulumi:"masterHosts"`
-	MasterSubcluster  GetMdbGreenplumClusterMasterSubcluster  `pulumi:"masterSubcluster"`
-	Name              string                                  `pulumi:"name"`
-	NetworkId         string                                  `pulumi:"networkId"`
-	SecurityGroupIds  []string                                `pulumi:"securityGroupIds"`
-	SegmentHostCount  int                                     `pulumi:"segmentHostCount"`
-	SegmentHosts      []GetMdbGreenplumClusterSegmentHost     `pulumi:"segmentHosts"`
-	SegmentInHost     int                                     `pulumi:"segmentInHost"`
-	SegmentSubcluster GetMdbGreenplumClusterSegmentSubcluster `pulumi:"segmentSubcluster"`
-	Status            string                                  `pulumi:"status"`
-	SubnetId          string                                  `pulumi:"subnetId"`
-	UserName          string                                  `pulumi:"userName"`
-	Version           string                                  `pulumi:"version"`
-	Zone              string                                  `pulumi:"zone"`
+	Id                 string                                    `pulumi:"id"`
+	Labels             map[string]string                         `pulumi:"labels"`
+	MasterHostCount    int                                       `pulumi:"masterHostCount"`
+	MasterHosts        []GetMdbGreenplumClusterMasterHost        `pulumi:"masterHosts"`
+	MasterSubclusters  []GetMdbGreenplumClusterMasterSubcluster  `pulumi:"masterSubclusters"`
+	Name               string                                    `pulumi:"name"`
+	NetworkId          string                                    `pulumi:"networkId"`
+	SecurityGroupIds   []string                                  `pulumi:"securityGroupIds"`
+	SegmentHostCount   int                                       `pulumi:"segmentHostCount"`
+	SegmentHosts       []GetMdbGreenplumClusterSegmentHost       `pulumi:"segmentHosts"`
+	SegmentInHost      int                                       `pulumi:"segmentInHost"`
+	SegmentSubclusters []GetMdbGreenplumClusterSegmentSubcluster `pulumi:"segmentSubclusters"`
+	Status             string                                    `pulumi:"status"`
+	SubnetId           string                                    `pulumi:"subnetId"`
+	UserName           string                                    `pulumi:"userName"`
+	Version            string                                    `pulumi:"version"`
+	Zone               string                                    `pulumi:"zone"`
 }
 
 func LookupMdbGreenplumClusterOutput(ctx *pulumi.Context, args LookupMdbGreenplumClusterOutputArgs, opts ...pulumi.InvokeOption) LookupMdbGreenplumClusterResultOutput {
@@ -152,10 +152,10 @@ func (o LookupMdbGreenplumClusterResultOutput) MasterHosts() GetMdbGreenplumClus
 	return o.ApplyT(func(v LookupMdbGreenplumClusterResult) []GetMdbGreenplumClusterMasterHost { return v.MasterHosts }).(GetMdbGreenplumClusterMasterHostArrayOutput)
 }
 
-func (o LookupMdbGreenplumClusterResultOutput) MasterSubcluster() GetMdbGreenplumClusterMasterSubclusterOutput {
-	return o.ApplyT(func(v LookupMdbGreenplumClusterResult) GetMdbGreenplumClusterMasterSubcluster {
-		return v.MasterSubcluster
-	}).(GetMdbGreenplumClusterMasterSubclusterOutput)
+func (o LookupMdbGreenplumClusterResultOutput) MasterSubclusters() GetMdbGreenplumClusterMasterSubclusterArrayOutput {
+	return o.ApplyT(func(v LookupMdbGreenplumClusterResult) []GetMdbGreenplumClusterMasterSubcluster {
+		return v.MasterSubclusters
+	}).(GetMdbGreenplumClusterMasterSubclusterArrayOutput)
 }
 
 func (o LookupMdbGreenplumClusterResultOutput) Name() pulumi.StringOutput {
@@ -182,10 +182,10 @@ func (o LookupMdbGreenplumClusterResultOutput) SegmentInHost() pulumi.IntOutput 
 	return o.ApplyT(func(v LookupMdbGreenplumClusterResult) int { return v.SegmentInHost }).(pulumi.IntOutput)
 }
 
-func (o LookupMdbGreenplumClusterResultOutput) SegmentSubcluster() GetMdbGreenplumClusterSegmentSubclusterOutput {
-	return o.ApplyT(func(v LookupMdbGreenplumClusterResult) GetMdbGreenplumClusterSegmentSubcluster {
-		return v.SegmentSubcluster
-	}).(GetMdbGreenplumClusterSegmentSubclusterOutput)
+func (o LookupMdbGreenplumClusterResultOutput) SegmentSubclusters() GetMdbGreenplumClusterSegmentSubclusterArrayOutput {
+	return o.ApplyT(func(v LookupMdbGreenplumClusterResult) []GetMdbGreenplumClusterSegmentSubcluster {
+		return v.SegmentSubclusters
+	}).(GetMdbGreenplumClusterSegmentSubclusterArrayOutput)
 }
 
 func (o LookupMdbGreenplumClusterResultOutput) Status() pulumi.StringOutput {

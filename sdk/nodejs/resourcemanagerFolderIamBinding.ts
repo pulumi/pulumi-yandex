@@ -94,14 +94,14 @@ export class ResourcemanagerFolderIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: ResourcemanagerFolderIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourcemanagerFolderIamBindingArgs | ResourcemanagerFolderIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourcemanagerFolderIamBindingState | undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["sleepAfter"] = state ? state.sleepAfter : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["sleepAfter"] = state ? state.sleepAfter : undefined;
         } else {
             const args = argsOrState as ResourcemanagerFolderIamBindingArgs | undefined;
             if ((!args || args.folderId === undefined) && !opts.urn) {
@@ -113,15 +113,13 @@ export class ResourcemanagerFolderIamBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["sleepAfter"] = args ? args.sleepAfter : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ResourcemanagerFolderIamBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ResourcemanagerFolderIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

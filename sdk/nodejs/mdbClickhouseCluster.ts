@@ -549,39 +549,39 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: MdbClickhouseClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MdbClickhouseClusterArgs | MdbClickhouseClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MdbClickhouseClusterState | undefined;
-            inputs["access"] = state ? state.access : undefined;
-            inputs["adminPassword"] = state ? state.adminPassword : undefined;
-            inputs["backupWindowStart"] = state ? state.backupWindowStart : undefined;
-            inputs["clickhouse"] = state ? state.clickhouse : undefined;
-            inputs["cloudStorage"] = state ? state.cloudStorage : undefined;
-            inputs["copySchemaOnNewHosts"] = state ? state.copySchemaOnNewHosts : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["databases"] = state ? state.databases : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["formatSchemas"] = state ? state.formatSchemas : undefined;
-            inputs["health"] = state ? state.health : undefined;
-            inputs["hosts"] = state ? state.hosts : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            inputs["mlModels"] = state ? state.mlModels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            inputs["shardGroups"] = state ? state.shardGroups : undefined;
-            inputs["sqlDatabaseManagement"] = state ? state.sqlDatabaseManagement : undefined;
-            inputs["sqlUserManagement"] = state ? state.sqlUserManagement : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["users"] = state ? state.users : undefined;
-            inputs["version"] = state ? state.version : undefined;
-            inputs["zookeeper"] = state ? state.zookeeper : undefined;
+            resourceInputs["access"] = state ? state.access : undefined;
+            resourceInputs["adminPassword"] = state ? state.adminPassword : undefined;
+            resourceInputs["backupWindowStart"] = state ? state.backupWindowStart : undefined;
+            resourceInputs["clickhouse"] = state ? state.clickhouse : undefined;
+            resourceInputs["cloudStorage"] = state ? state.cloudStorage : undefined;
+            resourceInputs["copySchemaOnNewHosts"] = state ? state.copySchemaOnNewHosts : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["databases"] = state ? state.databases : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["formatSchemas"] = state ? state.formatSchemas : undefined;
+            resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["hosts"] = state ? state.hosts : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
+            resourceInputs["mlModels"] = state ? state.mlModels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["shardGroups"] = state ? state.shardGroups : undefined;
+            resourceInputs["sqlDatabaseManagement"] = state ? state.sqlDatabaseManagement : undefined;
+            resourceInputs["sqlUserManagement"] = state ? state.sqlUserManagement : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["zookeeper"] = state ? state.zookeeper : undefined;
         } else {
             const args = argsOrState as MdbClickhouseClusterArgs | undefined;
             if ((!args || args.clickhouse === undefined) && !opts.urn) {
@@ -596,40 +596,38 @@ export class MdbClickhouseCluster extends pulumi.CustomResource {
             if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            inputs["access"] = args ? args.access : undefined;
-            inputs["adminPassword"] = args ? args.adminPassword : undefined;
-            inputs["backupWindowStart"] = args ? args.backupWindowStart : undefined;
-            inputs["clickhouse"] = args ? args.clickhouse : undefined;
-            inputs["cloudStorage"] = args ? args.cloudStorage : undefined;
-            inputs["copySchemaOnNewHosts"] = args ? args.copySchemaOnNewHosts : undefined;
-            inputs["databases"] = args ? args.databases : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["formatSchemas"] = args ? args.formatSchemas : undefined;
-            inputs["hosts"] = args ? args.hosts : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            inputs["mlModels"] = args ? args.mlModels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["shardGroups"] = args ? args.shardGroups : undefined;
-            inputs["sqlDatabaseManagement"] = args ? args.sqlDatabaseManagement : undefined;
-            inputs["sqlUserManagement"] = args ? args.sqlUserManagement : undefined;
-            inputs["users"] = args ? args.users : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["zookeeper"] = args ? args.zookeeper : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["health"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["access"] = args ? args.access : undefined;
+            resourceInputs["adminPassword"] = args ? args.adminPassword : undefined;
+            resourceInputs["backupWindowStart"] = args ? args.backupWindowStart : undefined;
+            resourceInputs["clickhouse"] = args ? args.clickhouse : undefined;
+            resourceInputs["cloudStorage"] = args ? args.cloudStorage : undefined;
+            resourceInputs["copySchemaOnNewHosts"] = args ? args.copySchemaOnNewHosts : undefined;
+            resourceInputs["databases"] = args ? args.databases : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["formatSchemas"] = args ? args.formatSchemas : undefined;
+            resourceInputs["hosts"] = args ? args.hosts : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
+            resourceInputs["mlModels"] = args ? args.mlModels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["shardGroups"] = args ? args.shardGroups : undefined;
+            resourceInputs["sqlDatabaseManagement"] = args ? args.sqlDatabaseManagement : undefined;
+            resourceInputs["sqlUserManagement"] = args ? args.sqlUserManagement : undefined;
+            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["zookeeper"] = args ? args.zookeeper : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MdbClickhouseCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MdbClickhouseCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

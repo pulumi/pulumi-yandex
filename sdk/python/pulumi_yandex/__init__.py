@@ -11,6 +11,8 @@ from .alb_load_balancer import *
 from .alb_target_group import *
 from .alb_virtual_host import *
 from .api_gateway import *
+from .cdn_origin_group import *
+from .cdn_resource import *
 from .compute_disk import *
 from .compute_disk_placement_group import *
 from .compute_image import *
@@ -35,6 +37,8 @@ from .get_alb_load_balancer import *
 from .get_alb_target_group import *
 from .get_alb_virtual_host import *
 from .get_api_gateway import *
+from .get_cdn_origin_group import *
+from .get_cdn_resource import *
 from .get_client_config import *
 from .get_compute_disk import *
 from .get_compute_disk_placement_group import *
@@ -74,6 +78,7 @@ from .get_mdb_sqlserver_cluster import *
 from .get_message_queue import *
 from .get_resourcemanager_cloud import *
 from .get_resourcemanager_folder import *
+from .get_serverless_container import *
 from .get_vpc_address import *
 from .get_vpc_network import *
 from .get_vpc_route_table import *
@@ -118,6 +123,7 @@ from .resourcemanager_folder import *
 from .resourcemanager_folder_iam_binding import *
 from .resourcemanager_folder_iam_member import *
 from .resourcemanager_folder_iam_policy import *
+from .serverless_container import *
 from .storage_bucket import *
 from .storage_object import *
 from .vpc_address import *
@@ -128,7 +134,6 @@ from .vpc_security_group import *
 from .vpc_security_group_rule import *
 from .vpc_subnet import *
 from .ydb_database_dedicated import *
-from .ydb_database_serverless import *
 from ._inputs import *
 from . import outputs
 
@@ -188,6 +193,22 @@ _utilities.register(
   "fqn": "pulumi_yandex",
   "classes": {
    "yandex:index/apiGateway:ApiGateway": "ApiGateway"
+  }
+ },
+ {
+  "pkg": "yandex",
+  "mod": "index/cdnOriginGroup",
+  "fqn": "pulumi_yandex",
+  "classes": {
+   "yandex:index/cdnOriginGroup:CdnOriginGroup": "CdnOriginGroup"
+  }
+ },
+ {
+  "pkg": "yandex",
+  "mod": "index/cdnResource",
+  "fqn": "pulumi_yandex",
+  "classes": {
+   "yandex:index/cdnResource:CdnResource": "CdnResource"
   }
  },
  {
@@ -616,6 +637,14 @@ _utilities.register(
  },
  {
   "pkg": "yandex",
+  "mod": "index/serverlessContainer",
+  "fqn": "pulumi_yandex",
+  "classes": {
+   "yandex:index/serverlessContainer:ServerlessContainer": "ServerlessContainer"
+  }
+ },
+ {
+  "pkg": "yandex",
   "mod": "index/storageBucket",
   "fqn": "pulumi_yandex",
   "classes": {
@@ -692,14 +721,6 @@ _utilities.register(
   "fqn": "pulumi_yandex",
   "classes": {
    "yandex:index/ydbDatabaseDedicated:YdbDatabaseDedicated": "YdbDatabaseDedicated"
-  }
- },
- {
-  "pkg": "yandex",
-  "mod": "index/ydbDatabaseServerless",
-  "fqn": "pulumi_yandex",
-  "classes": {
-   "yandex:index/ydbDatabaseServerless:YdbDatabaseServerless": "YdbDatabaseServerless"
   }
  }
 ]

@@ -103,12 +103,6 @@ namespace Pulumi.Yandex
         [Input("placementPolicy")]
         public Inputs.GetComputeInstancePlacementPolicyArgs? PlacementPolicy { get; set; }
 
-        /// <summary>
-        /// Scheduling policy configuration. The structure is documented below.
-        /// </summary>
-        [Input("schedulingPolicy")]
-        public Inputs.GetComputeInstanceSchedulingPolicyArgs? SchedulingPolicy { get; set; }
-
         public GetComputeInstanceArgs()
         {
         }
@@ -137,12 +131,6 @@ namespace Pulumi.Yandex
         [Input("placementPolicy")]
         public Input<Inputs.GetComputeInstancePlacementPolicyInputArgs>? PlacementPolicy { get; set; }
 
-        /// <summary>
-        /// Scheduling policy configuration. The structure is documented below.
-        /// </summary>
-        [Input("schedulingPolicy")]
-        public Input<Inputs.GetComputeInstanceSchedulingPolicyInputArgs>? SchedulingPolicy { get; set; }
-
         public GetComputeInstanceInvokeArgs()
         {
         }
@@ -155,7 +143,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// The boot disk for the instance. Structure is documented below.
         /// </summary>
-        public readonly Outputs.GetComputeInstanceBootDiskResult BootDisk;
+        public readonly ImmutableArray<Outputs.GetComputeInstanceBootDiskResult> BootDisks;
         /// <summary>
         /// Instance creation timestamp.
         /// </summary>
@@ -202,11 +190,11 @@ namespace Pulumi.Yandex
         /// Type of virtual machine to create. Default is 'standard-v1'.
         /// </summary>
         public readonly string PlatformId;
-        public readonly Outputs.GetComputeInstanceResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetComputeInstanceResourceResult> Resources;
         /// <summary>
         /// Scheduling policy configuration. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetComputeInstanceSchedulingPolicyResult SchedulingPolicy;
+        public readonly ImmutableArray<Outputs.GetComputeInstanceSchedulingPolicyResult> SchedulingPolicies;
         /// <summary>
         /// List of secondary disks attached to the instance. Structure is documented below.
         /// </summary>
@@ -230,7 +218,7 @@ namespace Pulumi.Yandex
 
         [OutputConstructor]
         private GetComputeInstanceResult(
-            Outputs.GetComputeInstanceBootDiskResult bootDisk,
+            ImmutableArray<Outputs.GetComputeInstanceBootDiskResult> bootDisks,
 
             string createdAt,
 
@@ -258,9 +246,9 @@ namespace Pulumi.Yandex
 
             string platformId,
 
-            Outputs.GetComputeInstanceResourcesResult resources,
+            ImmutableArray<Outputs.GetComputeInstanceResourceResult> resources,
 
-            Outputs.GetComputeInstanceSchedulingPolicyResult schedulingPolicy,
+            ImmutableArray<Outputs.GetComputeInstanceSchedulingPolicyResult> schedulingPolicies,
 
             ImmutableArray<Outputs.GetComputeInstanceSecondaryDiskResult> secondaryDisks,
 
@@ -270,7 +258,7 @@ namespace Pulumi.Yandex
 
             string zone)
         {
-            BootDisk = bootDisk;
+            BootDisks = bootDisks;
             CreatedAt = createdAt;
             Description = description;
             FolderId = folderId;
@@ -285,7 +273,7 @@ namespace Pulumi.Yandex
             PlacementPolicy = placementPolicy;
             PlatformId = platformId;
             Resources = resources;
-            SchedulingPolicy = schedulingPolicy;
+            SchedulingPolicies = schedulingPolicies;
             SecondaryDisks = secondaryDisks;
             ServiceAccountId = serviceAccountId;
             Status = status;

@@ -28,9 +28,7 @@ export function getYdbDatabaseDedicated(args?: GetYdbDatabaseDedicatedArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getYdbDatabaseDedicated:getYdbDatabaseDedicated", {
         "databaseId": args.databaseId,
         "folderId": args.folderId,
@@ -89,14 +87,14 @@ export interface GetYdbDatabaseDedicatedResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Location of the Yandex Database cluster.
-     * The structure is documented below.
-     */
-    readonly location: outputs.GetYdbDatabaseDedicatedLocation;
-    /**
      * Location ID of the Yandex Database cluster.
      */
     readonly locationId: string;
+    /**
+     * Location of the Yandex Database cluster.
+     * The structure is documented below.
+     */
+    readonly locations: outputs.GetYdbDatabaseDedicatedLocation[];
     readonly name?: string;
     /**
      * ID of the network the Yandex Database cluster is attached to.
@@ -110,7 +108,7 @@ export interface GetYdbDatabaseDedicatedResult {
      * Scaling policy of the Yandex Database cluster.
      * The structure is documented below.
      */
-    readonly scalePolicy: outputs.GetYdbDatabaseDedicatedScalePolicy;
+    readonly scalePolicies: outputs.GetYdbDatabaseDedicatedScalePolicy[];
     /**
      * Status of the Yandex Database cluster.
      */

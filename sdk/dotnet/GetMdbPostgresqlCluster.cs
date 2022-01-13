@@ -158,7 +158,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Configuration of the PostgreSQL cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbPostgresqlClusterConfigResult Config;
+        public readonly ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigResult> Configs;
         /// <summary>
         /// Timestamp of cluster creation.
         /// </summary>
@@ -196,7 +196,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Maintenance window settings of the PostgreSQL cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbPostgresqlClusterMaintenanceWindowResult MaintenanceWindow;
+        public readonly ImmutableArray<Outputs.GetMdbPostgresqlClusterMaintenanceWindowResult> MaintenanceWindows;
         /// <summary>
         /// Name of the database extension. For more information on available extensions see [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/operations/cluster-extensions).
         /// </summary>
@@ -222,7 +222,7 @@ namespace Pulumi.Yandex
         private GetMdbPostgresqlClusterResult(
             string clusterId,
 
-            Outputs.GetMdbPostgresqlClusterConfigResult config,
+            ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigResult> configs,
 
             string createdAt,
 
@@ -244,7 +244,7 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
-            Outputs.GetMdbPostgresqlClusterMaintenanceWindowResult maintenanceWindow,
+            ImmutableArray<Outputs.GetMdbPostgresqlClusterMaintenanceWindowResult> maintenanceWindows,
 
             string name,
 
@@ -257,7 +257,7 @@ namespace Pulumi.Yandex
             ImmutableArray<Outputs.GetMdbPostgresqlClusterUserResult> users)
         {
             ClusterId = clusterId;
-            Config = config;
+            Configs = configs;
             CreatedAt = createdAt;
             Databases = databases;
             DeletionProtection = deletionProtection;
@@ -268,7 +268,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
-            MaintenanceWindow = maintenanceWindow;
+            MaintenanceWindows = maintenanceWindows;
             Name = name;
             NetworkId = networkId;
             SecurityGroupIds = securityGroupIds;

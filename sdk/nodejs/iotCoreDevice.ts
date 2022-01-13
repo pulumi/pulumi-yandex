@@ -97,34 +97,32 @@ export class IotCoreDevice extends pulumi.CustomResource {
      */
     constructor(name: string, args: IotCoreDeviceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IotCoreDeviceArgs | IotCoreDeviceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IotCoreDeviceState | undefined;
-            inputs["aliases"] = state ? state.aliases : undefined;
-            inputs["certificates"] = state ? state.certificates : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["passwords"] = state ? state.passwords : undefined;
-            inputs["registryId"] = state ? state.registryId : undefined;
+            resourceInputs["aliases"] = state ? state.aliases : undefined;
+            resourceInputs["certificates"] = state ? state.certificates : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["passwords"] = state ? state.passwords : undefined;
+            resourceInputs["registryId"] = state ? state.registryId : undefined;
         } else {
             const args = argsOrState as IotCoreDeviceArgs | undefined;
             if ((!args || args.registryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'registryId'");
             }
-            inputs["aliases"] = args ? args.aliases : undefined;
-            inputs["certificates"] = args ? args.certificates : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["passwords"] = args ? args.passwords : undefined;
-            inputs["registryId"] = args ? args.registryId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
+            resourceInputs["aliases"] = args ? args.aliases : undefined;
+            resourceInputs["certificates"] = args ? args.certificates : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["passwords"] = args ? args.passwords : undefined;
+            resourceInputs["registryId"] = args ? args.registryId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IotCoreDevice.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IotCoreDevice.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -100,32 +100,30 @@ export class AlbVirtualHost extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlbVirtualHostArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlbVirtualHostArgs | AlbVirtualHostState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlbVirtualHostState | undefined;
-            inputs["authorities"] = state ? state.authorities : undefined;
-            inputs["httpRouterId"] = state ? state.httpRouterId : undefined;
-            inputs["modifyRequestHeaders"] = state ? state.modifyRequestHeaders : undefined;
-            inputs["modifyResponseHeaders"] = state ? state.modifyResponseHeaders : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["routes"] = state ? state.routes : undefined;
+            resourceInputs["authorities"] = state ? state.authorities : undefined;
+            resourceInputs["httpRouterId"] = state ? state.httpRouterId : undefined;
+            resourceInputs["modifyRequestHeaders"] = state ? state.modifyRequestHeaders : undefined;
+            resourceInputs["modifyResponseHeaders"] = state ? state.modifyResponseHeaders : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["routes"] = state ? state.routes : undefined;
         } else {
             const args = argsOrState as AlbVirtualHostArgs | undefined;
             if ((!args || args.httpRouterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'httpRouterId'");
             }
-            inputs["authorities"] = args ? args.authorities : undefined;
-            inputs["httpRouterId"] = args ? args.httpRouterId : undefined;
-            inputs["modifyRequestHeaders"] = args ? args.modifyRequestHeaders : undefined;
-            inputs["modifyResponseHeaders"] = args ? args.modifyResponseHeaders : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["routes"] = args ? args.routes : undefined;
+            resourceInputs["authorities"] = args ? args.authorities : undefined;
+            resourceInputs["httpRouterId"] = args ? args.httpRouterId : undefined;
+            resourceInputs["modifyRequestHeaders"] = args ? args.modifyRequestHeaders : undefined;
+            resourceInputs["modifyResponseHeaders"] = args ? args.modifyResponseHeaders : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["routes"] = args ? args.routes : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlbVirtualHost.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlbVirtualHost.__pulumiType, name, resourceInputs, opts);
     }
 }
 

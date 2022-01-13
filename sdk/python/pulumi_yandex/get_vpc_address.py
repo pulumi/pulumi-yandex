@@ -21,7 +21,7 @@ class GetVpcAddressResult:
     """
     A collection of values returned by getVpcAddress.
     """
-    def __init__(__self__, address_id=None, created_at=None, description=None, external_ipv4_address=None, folder_id=None, id=None, labels=None, name=None, reserved=None, used=None):
+    def __init__(__self__, address_id=None, created_at=None, description=None, external_ipv4_addresses=None, folder_id=None, id=None, labels=None, name=None, reserved=None, used=None):
         if address_id and not isinstance(address_id, str):
             raise TypeError("Expected argument 'address_id' to be a str")
         pulumi.set(__self__, "address_id", address_id)
@@ -31,9 +31,9 @@ class GetVpcAddressResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if external_ipv4_address and not isinstance(external_ipv4_address, dict):
-            raise TypeError("Expected argument 'external_ipv4_address' to be a dict")
-        pulumi.set(__self__, "external_ipv4_address", external_ipv4_address)
+        if external_ipv4_addresses and not isinstance(external_ipv4_addresses, list):
+            raise TypeError("Expected argument 'external_ipv4_addresses' to be a list")
+        pulumi.set(__self__, "external_ipv4_addresses", external_ipv4_addresses)
         if folder_id and not isinstance(folder_id, str):
             raise TypeError("Expected argument 'folder_id' to be a str")
         pulumi.set(__self__, "folder_id", folder_id)
@@ -75,12 +75,12 @@ class GetVpcAddressResult:
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="externalIpv4Address")
-    def external_ipv4_address(self) -> 'outputs.GetVpcAddressExternalIpv4AddressResult':
+    @pulumi.getter(name="externalIpv4Addresses")
+    def external_ipv4_addresses(self) -> Sequence['outputs.GetVpcAddressExternalIpv4AddressResult']:
         """
         spec of IP v4 address.
         """
-        return pulumi.get(self, "external_ipv4_address")
+        return pulumi.get(self, "external_ipv4_addresses")
 
     @property
     @pulumi.getter(name="folderId")
@@ -134,7 +134,7 @@ class AwaitableGetVpcAddressResult(GetVpcAddressResult):
             address_id=self.address_id,
             created_at=self.created_at,
             description=self.description,
-            external_ipv4_address=self.external_ipv4_address,
+            external_ipv4_addresses=self.external_ipv4_addresses,
             folder_id=self.folder_id,
             id=self.id,
             labels=self.labels,
@@ -179,7 +179,7 @@ def get_vpc_address(address_id: Optional[str] = None,
         address_id=__ret__.address_id,
         created_at=__ret__.created_at,
         description=__ret__.description,
-        external_ipv4_address=__ret__.external_ipv4_address,
+        external_ipv4_addresses=__ret__.external_ipv4_addresses,
         folder_id=__ret__.folder_id,
         id=__ret__.id,
         labels=__ret__.labels,

@@ -68,19 +68,17 @@ export class ContainerRepository extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ContainerRepositoryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerRepositoryArgs | ContainerRepositoryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerRepositoryState | undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ContainerRepositoryArgs | undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ContainerRepository.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ContainerRepository.__pulumiType, name, resourceInputs, opts);
     }
 }
 

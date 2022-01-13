@@ -103,15 +103,15 @@ export class DnsRecordSet extends pulumi.CustomResource {
      */
     constructor(name: string, args: DnsRecordSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DnsRecordSetArgs | DnsRecordSetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsRecordSetState | undefined;
-            inputs["datas"] = state ? state.datas : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["datas"] = state ? state.datas : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DnsRecordSetArgs | undefined;
             if ((!args || args.datas === undefined) && !opts.urn) {
@@ -126,16 +126,14 @@ export class DnsRecordSet extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["datas"] = args ? args.datas : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["datas"] = args ? args.datas : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DnsRecordSet.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DnsRecordSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

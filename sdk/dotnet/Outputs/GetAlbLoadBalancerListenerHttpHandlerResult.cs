@@ -14,14 +14,14 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetAlbLoadBalancerListenerHttpHandlerResult
     {
         public readonly bool? AllowHttp10;
-        public readonly Outputs.GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsResult Http2Options;
+        public readonly ImmutableArray<Outputs.GetAlbLoadBalancerListenerHttpHandlerHttp2OptionResult> Http2Options;
         public readonly string HttpRouterId;
 
         [OutputConstructor]
         private GetAlbLoadBalancerListenerHttpHandlerResult(
             bool? allowHttp10,
 
-            Outputs.GetAlbLoadBalancerListenerHttpHandlerHttp2OptionsResult http2Options,
+            ImmutableArray<Outputs.GetAlbLoadBalancerListenerHttpHandlerHttp2OptionResult> http2Options,
 
             string httpRouterId)
         {

@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewKmsSymmetricKey(ctx, "your_key", &yandex.KmsSymmetricKeyArgs{
+// 		_, err := yandex.NewKmsSymmetricKey(ctx, "your-key", &yandex.KmsSymmetricKeyArgs{
 // 			FolderId: pulumi.String("your-folder-id"),
 // 		})
 // 		if err != nil {
@@ -182,7 +182,7 @@ type KmsSymmetricKeyIamBindingInput interface {
 }
 
 func (*KmsSymmetricKeyIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*KmsSymmetricKeyIamBinding)(nil))
+	return reflect.TypeOf((**KmsSymmetricKeyIamBinding)(nil)).Elem()
 }
 
 func (i *KmsSymmetricKeyIamBinding) ToKmsSymmetricKeyIamBindingOutput() KmsSymmetricKeyIamBindingOutput {
@@ -191,35 +191,6 @@ func (i *KmsSymmetricKeyIamBinding) ToKmsSymmetricKeyIamBindingOutput() KmsSymme
 
 func (i *KmsSymmetricKeyIamBinding) ToKmsSymmetricKeyIamBindingOutputWithContext(ctx context.Context) KmsSymmetricKeyIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KmsSymmetricKeyIamBindingOutput)
-}
-
-func (i *KmsSymmetricKeyIamBinding) ToKmsSymmetricKeyIamBindingPtrOutput() KmsSymmetricKeyIamBindingPtrOutput {
-	return i.ToKmsSymmetricKeyIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *KmsSymmetricKeyIamBinding) ToKmsSymmetricKeyIamBindingPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KmsSymmetricKeyIamBindingPtrOutput)
-}
-
-type KmsSymmetricKeyIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToKmsSymmetricKeyIamBindingPtrOutput() KmsSymmetricKeyIamBindingPtrOutput
-	ToKmsSymmetricKeyIamBindingPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyIamBindingPtrOutput
-}
-
-type kmsSymmetricKeyIamBindingPtrType KmsSymmetricKeyIamBindingArgs
-
-func (*kmsSymmetricKeyIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KmsSymmetricKeyIamBinding)(nil))
-}
-
-func (i *kmsSymmetricKeyIamBindingPtrType) ToKmsSymmetricKeyIamBindingPtrOutput() KmsSymmetricKeyIamBindingPtrOutput {
-	return i.ToKmsSymmetricKeyIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *kmsSymmetricKeyIamBindingPtrType) ToKmsSymmetricKeyIamBindingPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KmsSymmetricKeyIamBindingPtrOutput)
 }
 
 // KmsSymmetricKeyIamBindingArrayInput is an input type that accepts KmsSymmetricKeyIamBindingArray and KmsSymmetricKeyIamBindingArrayOutput values.
@@ -275,7 +246,7 @@ func (i KmsSymmetricKeyIamBindingMap) ToKmsSymmetricKeyIamBindingMapOutputWithCo
 type KmsSymmetricKeyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (KmsSymmetricKeyIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KmsSymmetricKeyIamBinding)(nil))
+	return reflect.TypeOf((**KmsSymmetricKeyIamBinding)(nil)).Elem()
 }
 
 func (o KmsSymmetricKeyIamBindingOutput) ToKmsSymmetricKeyIamBindingOutput() KmsSymmetricKeyIamBindingOutput {
@@ -286,44 +257,10 @@ func (o KmsSymmetricKeyIamBindingOutput) ToKmsSymmetricKeyIamBindingOutputWithCo
 	return o
 }
 
-func (o KmsSymmetricKeyIamBindingOutput) ToKmsSymmetricKeyIamBindingPtrOutput() KmsSymmetricKeyIamBindingPtrOutput {
-	return o.ToKmsSymmetricKeyIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o KmsSymmetricKeyIamBindingOutput) ToKmsSymmetricKeyIamBindingPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KmsSymmetricKeyIamBinding) *KmsSymmetricKeyIamBinding {
-		return &v
-	}).(KmsSymmetricKeyIamBindingPtrOutput)
-}
-
-type KmsSymmetricKeyIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (KmsSymmetricKeyIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KmsSymmetricKeyIamBinding)(nil))
-}
-
-func (o KmsSymmetricKeyIamBindingPtrOutput) ToKmsSymmetricKeyIamBindingPtrOutput() KmsSymmetricKeyIamBindingPtrOutput {
-	return o
-}
-
-func (o KmsSymmetricKeyIamBindingPtrOutput) ToKmsSymmetricKeyIamBindingPtrOutputWithContext(ctx context.Context) KmsSymmetricKeyIamBindingPtrOutput {
-	return o
-}
-
-func (o KmsSymmetricKeyIamBindingPtrOutput) Elem() KmsSymmetricKeyIamBindingOutput {
-	return o.ApplyT(func(v *KmsSymmetricKeyIamBinding) KmsSymmetricKeyIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret KmsSymmetricKeyIamBinding
-		return ret
-	}).(KmsSymmetricKeyIamBindingOutput)
-}
-
 type KmsSymmetricKeyIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (KmsSymmetricKeyIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KmsSymmetricKeyIamBinding)(nil))
+	return reflect.TypeOf((*[]*KmsSymmetricKeyIamBinding)(nil)).Elem()
 }
 
 func (o KmsSymmetricKeyIamBindingArrayOutput) ToKmsSymmetricKeyIamBindingArrayOutput() KmsSymmetricKeyIamBindingArrayOutput {
@@ -335,15 +272,15 @@ func (o KmsSymmetricKeyIamBindingArrayOutput) ToKmsSymmetricKeyIamBindingArrayOu
 }
 
 func (o KmsSymmetricKeyIamBindingArrayOutput) Index(i pulumi.IntInput) KmsSymmetricKeyIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KmsSymmetricKeyIamBinding {
-		return vs[0].([]KmsSymmetricKeyIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KmsSymmetricKeyIamBinding {
+		return vs[0].([]*KmsSymmetricKeyIamBinding)[vs[1].(int)]
 	}).(KmsSymmetricKeyIamBindingOutput)
 }
 
 type KmsSymmetricKeyIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (KmsSymmetricKeyIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KmsSymmetricKeyIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*KmsSymmetricKeyIamBinding)(nil)).Elem()
 }
 
 func (o KmsSymmetricKeyIamBindingMapOutput) ToKmsSymmetricKeyIamBindingMapOutput() KmsSymmetricKeyIamBindingMapOutput {
@@ -355,18 +292,16 @@ func (o KmsSymmetricKeyIamBindingMapOutput) ToKmsSymmetricKeyIamBindingMapOutput
 }
 
 func (o KmsSymmetricKeyIamBindingMapOutput) MapIndex(k pulumi.StringInput) KmsSymmetricKeyIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KmsSymmetricKeyIamBinding {
-		return vs[0].(map[string]KmsSymmetricKeyIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KmsSymmetricKeyIamBinding {
+		return vs[0].(map[string]*KmsSymmetricKeyIamBinding)[vs[1].(string)]
 	}).(KmsSymmetricKeyIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KmsSymmetricKeyIamBindingInput)(nil)).Elem(), &KmsSymmetricKeyIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KmsSymmetricKeyIamBindingPtrInput)(nil)).Elem(), &KmsSymmetricKeyIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KmsSymmetricKeyIamBindingArrayInput)(nil)).Elem(), KmsSymmetricKeyIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KmsSymmetricKeyIamBindingMapInput)(nil)).Elem(), KmsSymmetricKeyIamBindingMap{})
 	pulumi.RegisterOutputType(KmsSymmetricKeyIamBindingOutput{})
-	pulumi.RegisterOutputType(KmsSymmetricKeyIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(KmsSymmetricKeyIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(KmsSymmetricKeyIamBindingMapOutput{})
 }

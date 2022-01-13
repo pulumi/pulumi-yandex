@@ -16,7 +16,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Access policy to the PostgreSQL cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbPostgresqlClusterConfigAccessResult Access;
+        public readonly ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigAccessResult> Accesses;
         /// <summary>
         /// Configuration setting which enables/disables autofailover in cluster.
         /// </summary>
@@ -28,15 +28,15 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Time to start the daily backup, in the UTC timezone. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbPostgresqlClusterConfigBackupWindowStartResult BackupWindowStart;
+        public readonly ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigBackupWindowStartResult> BackupWindowStarts;
         /// <summary>
         /// Cluster performance diagnostics settings. The structure is documented below. [YC Documentation](https://cloud.yandex.com/docs/managed-postgresql/grpc/cluster_service#PerformanceDiagnostics)
         /// </summary>
-        public readonly Outputs.GetMdbPostgresqlClusterConfigPerformanceDiagnosticsResult PerformanceDiagnostics;
+        public readonly ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigPerformanceDiagnosticResult> PerformanceDiagnostics;
         /// <summary>
         /// Configuration of the connection pooler. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbPostgresqlClusterConfigPoolerConfigResult PoolerConfig;
+        public readonly ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigPoolerConfigResult> PoolerConfigs;
         /// <summary>
         /// PostgreSQL cluster config.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Resources allocated to hosts of the PostgreSQL cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbPostgresqlClusterConfigResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigResourceResult> Resources;
         /// <summary>
         /// Version of the extension.
         /// </summary>
@@ -52,30 +52,30 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetMdbPostgresqlClusterConfigResult(
-            Outputs.GetMdbPostgresqlClusterConfigAccessResult access,
+            ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigAccessResult> accesses,
 
             bool autofailover,
 
             int backupRetainPeriodDays,
 
-            Outputs.GetMdbPostgresqlClusterConfigBackupWindowStartResult backupWindowStart,
+            ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigBackupWindowStartResult> backupWindowStarts,
 
-            Outputs.GetMdbPostgresqlClusterConfigPerformanceDiagnosticsResult performanceDiagnostics,
+            ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigPerformanceDiagnosticResult> performanceDiagnostics,
 
-            Outputs.GetMdbPostgresqlClusterConfigPoolerConfigResult poolerConfig,
+            ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigPoolerConfigResult> poolerConfigs,
 
             ImmutableDictionary<string, string> postgresqlConfig,
 
-            Outputs.GetMdbPostgresqlClusterConfigResourcesResult resources,
+            ImmutableArray<Outputs.GetMdbPostgresqlClusterConfigResourceResult> resources,
 
             string version)
         {
-            Access = access;
+            Accesses = accesses;
             Autofailover = autofailover;
             BackupRetainPeriodDays = backupRetainPeriodDays;
-            BackupWindowStart = backupWindowStart;
+            BackupWindowStarts = backupWindowStarts;
             PerformanceDiagnostics = performanceDiagnostics;
-            PoolerConfig = poolerConfig;
+            PoolerConfigs = poolerConfigs;
             PostgresqlConfig = postgresqlConfig;
             Resources = resources;
             Version = version;

@@ -87,14 +87,14 @@ export class KmsSymmetricKeyIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: KmsSymmetricKeyIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KmsSymmetricKeyIamBindingArgs | KmsSymmetricKeyIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KmsSymmetricKeyIamBindingState | undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["sleepAfter"] = state ? state.sleepAfter : undefined;
-            inputs["symmetricKeyId"] = state ? state.symmetricKeyId : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["sleepAfter"] = state ? state.sleepAfter : undefined;
+            resourceInputs["symmetricKeyId"] = state ? state.symmetricKeyId : undefined;
         } else {
             const args = argsOrState as KmsSymmetricKeyIamBindingArgs | undefined;
             if ((!args || args.members === undefined) && !opts.urn) {
@@ -106,15 +106,13 @@ export class KmsSymmetricKeyIamBinding extends pulumi.CustomResource {
             if ((!args || args.symmetricKeyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'symmetricKeyId'");
             }
-            inputs["members"] = args ? args.members : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["sleepAfter"] = args ? args.sleepAfter : undefined;
-            inputs["symmetricKeyId"] = args ? args.symmetricKeyId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
+            resourceInputs["symmetricKeyId"] = args ? args.symmetricKeyId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KmsSymmetricKeyIamBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KmsSymmetricKeyIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

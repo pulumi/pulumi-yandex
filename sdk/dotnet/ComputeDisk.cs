@@ -88,6 +88,9 @@ namespace Pulumi.Yandex
     [YandexResourceType("yandex:index/computeDisk:ComputeDisk")]
     public partial class ComputeDisk : Pulumi.CustomResource
     {
+        [Output("blockSize")]
+        public Output<int?> BlockSize { get; private set; } = null!;
+
         /// <summary>
         /// Creation timestamp of the disk.
         /// </summary>
@@ -218,6 +221,9 @@ namespace Pulumi.Yandex
 
     public sealed class ComputeDiskArgs : Pulumi.ResourceArgs
     {
+        [Input("blockSize")]
+        public Input<int>? BlockSize { get; set; }
+
         /// <summary>
         /// -
         /// (Optional) Description of the disk. Provide this property when
@@ -300,6 +306,9 @@ namespace Pulumi.Yandex
 
     public sealed class ComputeDiskState : Pulumi.ResourceArgs
     {
+        [Input("blockSize")]
+        public Input<int>? BlockSize { get; set; }
+
         /// <summary>
         /// Creation timestamp of the disk.
         /// </summary>

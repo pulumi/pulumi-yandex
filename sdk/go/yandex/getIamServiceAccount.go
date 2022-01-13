@@ -41,16 +41,6 @@ import (
 // 	})
 // }
 // ```
-//
-// ## Argument reference
-//
-// * `serviceAccountId` - (Optional) ID of a specific service account.
-//
-// * `name` - (Optional) Name of a specific service account.
-//
-// > **NOTE:** One of `serviceAccountId` or `name` should be specified.
-//
-// * `folderId` - (Optional) Folder that the resource belongs to. If value is omitted, the default provider folder is used.
 func LookupIamServiceAccount(ctx *pulumi.Context, args *LookupIamServiceAccountArgs, opts ...pulumi.InvokeOption) (*LookupIamServiceAccountResult, error) {
 	var rv LookupIamServiceAccountResult
 	err := ctx.Invoke("yandex:index/getIamServiceAccount:getIamServiceAccount", args, &rv, opts...)
@@ -62,8 +52,11 @@ func LookupIamServiceAccount(ctx *pulumi.Context, args *LookupIamServiceAccountA
 
 // A collection of arguments for invoking getIamServiceAccount.
 type LookupIamServiceAccountArgs struct {
-	FolderId         *string `pulumi:"folderId"`
-	Name             *string `pulumi:"name"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId *string `pulumi:"folderId"`
+	// Name of a specific service account.
+	Name *string `pulumi:"name"`
+	// ID of a specific service account.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
 
@@ -90,8 +83,11 @@ func LookupIamServiceAccountOutput(ctx *pulumi.Context, args LookupIamServiceAcc
 
 // A collection of arguments for invoking getIamServiceAccount.
 type LookupIamServiceAccountOutputArgs struct {
-	FolderId         pulumi.StringPtrInput `pulumi:"folderId"`
-	Name             pulumi.StringPtrInput `pulumi:"name"`
+	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
+	// Name of a specific service account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// ID of a specific service account.
 	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
 }
 

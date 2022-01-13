@@ -871,7 +871,7 @@ type MdbClickhouseClusterInput interface {
 }
 
 func (*MdbClickhouseCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbClickhouseCluster)(nil))
+	return reflect.TypeOf((**MdbClickhouseCluster)(nil)).Elem()
 }
 
 func (i *MdbClickhouseCluster) ToMdbClickhouseClusterOutput() MdbClickhouseClusterOutput {
@@ -880,35 +880,6 @@ func (i *MdbClickhouseCluster) ToMdbClickhouseClusterOutput() MdbClickhouseClust
 
 func (i *MdbClickhouseCluster) ToMdbClickhouseClusterOutputWithContext(ctx context.Context) MdbClickhouseClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterOutput)
-}
-
-func (i *MdbClickhouseCluster) ToMdbClickhouseClusterPtrOutput() MdbClickhouseClusterPtrOutput {
-	return i.ToMdbClickhouseClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *MdbClickhouseCluster) ToMdbClickhouseClusterPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterPtrOutput)
-}
-
-type MdbClickhouseClusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbClickhouseClusterPtrOutput() MdbClickhouseClusterPtrOutput
-	ToMdbClickhouseClusterPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterPtrOutput
-}
-
-type mdbClickhouseClusterPtrType MdbClickhouseClusterArgs
-
-func (*mdbClickhouseClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbClickhouseCluster)(nil))
-}
-
-func (i *mdbClickhouseClusterPtrType) ToMdbClickhouseClusterPtrOutput() MdbClickhouseClusterPtrOutput {
-	return i.ToMdbClickhouseClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbClickhouseClusterPtrType) ToMdbClickhouseClusterPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbClickhouseClusterPtrOutput)
 }
 
 // MdbClickhouseClusterArrayInput is an input type that accepts MdbClickhouseClusterArray and MdbClickhouseClusterArrayOutput values.
@@ -964,7 +935,7 @@ func (i MdbClickhouseClusterMap) ToMdbClickhouseClusterMapOutputWithContext(ctx 
 type MdbClickhouseClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbClickhouseClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbClickhouseCluster)(nil))
+	return reflect.TypeOf((**MdbClickhouseCluster)(nil)).Elem()
 }
 
 func (o MdbClickhouseClusterOutput) ToMdbClickhouseClusterOutput() MdbClickhouseClusterOutput {
@@ -975,44 +946,10 @@ func (o MdbClickhouseClusterOutput) ToMdbClickhouseClusterOutputWithContext(ctx 
 	return o
 }
 
-func (o MdbClickhouseClusterOutput) ToMdbClickhouseClusterPtrOutput() MdbClickhouseClusterPtrOutput {
-	return o.ToMdbClickhouseClusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbClickhouseClusterOutput) ToMdbClickhouseClusterPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbClickhouseCluster) *MdbClickhouseCluster {
-		return &v
-	}).(MdbClickhouseClusterPtrOutput)
-}
-
-type MdbClickhouseClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbClickhouseClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbClickhouseCluster)(nil))
-}
-
-func (o MdbClickhouseClusterPtrOutput) ToMdbClickhouseClusterPtrOutput() MdbClickhouseClusterPtrOutput {
-	return o
-}
-
-func (o MdbClickhouseClusterPtrOutput) ToMdbClickhouseClusterPtrOutputWithContext(ctx context.Context) MdbClickhouseClusterPtrOutput {
-	return o
-}
-
-func (o MdbClickhouseClusterPtrOutput) Elem() MdbClickhouseClusterOutput {
-	return o.ApplyT(func(v *MdbClickhouseCluster) MdbClickhouseCluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbClickhouseCluster
-		return ret
-	}).(MdbClickhouseClusterOutput)
-}
-
 type MdbClickhouseClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (MdbClickhouseClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MdbClickhouseCluster)(nil))
+	return reflect.TypeOf((*[]*MdbClickhouseCluster)(nil)).Elem()
 }
 
 func (o MdbClickhouseClusterArrayOutput) ToMdbClickhouseClusterArrayOutput() MdbClickhouseClusterArrayOutput {
@@ -1024,15 +961,15 @@ func (o MdbClickhouseClusterArrayOutput) ToMdbClickhouseClusterArrayOutputWithCo
 }
 
 func (o MdbClickhouseClusterArrayOutput) Index(i pulumi.IntInput) MdbClickhouseClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbClickhouseCluster {
-		return vs[0].([]MdbClickhouseCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MdbClickhouseCluster {
+		return vs[0].([]*MdbClickhouseCluster)[vs[1].(int)]
 	}).(MdbClickhouseClusterOutput)
 }
 
 type MdbClickhouseClusterMapOutput struct{ *pulumi.OutputState }
 
 func (MdbClickhouseClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MdbClickhouseCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbClickhouseCluster)(nil)).Elem()
 }
 
 func (o MdbClickhouseClusterMapOutput) ToMdbClickhouseClusterMapOutput() MdbClickhouseClusterMapOutput {
@@ -1044,18 +981,16 @@ func (o MdbClickhouseClusterMapOutput) ToMdbClickhouseClusterMapOutputWithContex
 }
 
 func (o MdbClickhouseClusterMapOutput) MapIndex(k pulumi.StringInput) MdbClickhouseClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MdbClickhouseCluster {
-		return vs[0].(map[string]MdbClickhouseCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MdbClickhouseCluster {
+		return vs[0].(map[string]*MdbClickhouseCluster)[vs[1].(string)]
 	}).(MdbClickhouseClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterInput)(nil)).Elem(), &MdbClickhouseCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterPtrInput)(nil)).Elem(), &MdbClickhouseCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterArrayInput)(nil)).Elem(), MdbClickhouseClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbClickhouseClusterMapInput)(nil)).Elem(), MdbClickhouseClusterMap{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterOutput{})
-	pulumi.RegisterOutputType(MdbClickhouseClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterArrayOutput{})
 	pulumi.RegisterOutputType(MdbClickhouseClusterMapOutput{})
 }

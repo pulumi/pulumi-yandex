@@ -29,9 +29,7 @@ export function getAlbVirtualHost(args?: GetAlbVirtualHostArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getAlbVirtualHost:getAlbVirtualHost", {
         "httpRouterId": args.httpRouterId,
         "name": args.name,

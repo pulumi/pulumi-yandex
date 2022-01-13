@@ -21,13 +21,13 @@ class GetMdbRedisClusterResult:
     """
     A collection of values returned by getMdbRedisCluster.
     """
-    def __init__(__self__, cluster_id=None, config=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, tls_enabled=None):
+    def __init__(__self__, cluster_id=None, configs=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_windows=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, tls_enabled=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
-        if config and not isinstance(config, dict):
-            raise TypeError("Expected argument 'config' to be a dict")
-        pulumi.set(__self__, "config", config)
+        if configs and not isinstance(configs, list):
+            raise TypeError("Expected argument 'configs' to be a list")
+        pulumi.set(__self__, "configs", configs)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -55,17 +55,17 @@ class GetMdbRedisClusterResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if maintenance_window and not isinstance(maintenance_window, dict):
-            raise TypeError("Expected argument 'maintenance_window' to be a dict")
-        pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if maintenance_windows and not isinstance(maintenance_windows, list):
+            raise TypeError("Expected argument 'maintenance_windows' to be a list")
+        pulumi.set(__self__, "maintenance_windows", maintenance_windows)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if network_id and not isinstance(network_id, str):
             raise TypeError("Expected argument 'network_id' to be a str")
         pulumi.set(__self__, "network_id", network_id)
-        if resources and not isinstance(resources, dict):
-            raise TypeError("Expected argument 'resources' to be a dict")
+        if resources and not isinstance(resources, list):
+            raise TypeError("Expected argument 'resources' to be a list")
         pulumi.set(__self__, "resources", resources)
         if security_group_ids and not isinstance(security_group_ids, list):
             raise TypeError("Expected argument 'security_group_ids' to be a list")
@@ -87,11 +87,11 @@ class GetMdbRedisClusterResult:
 
     @property
     @pulumi.getter
-    def config(self) -> 'outputs.GetMdbRedisClusterConfigResult':
+    def configs(self) -> Sequence['outputs.GetMdbRedisClusterConfigResult']:
         """
         Configuration of the Redis cluster. The structure is documented below.
         """
-        return pulumi.get(self, "config")
+        return pulumi.get(self, "configs")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -160,9 +160,9 @@ class GetMdbRedisClusterResult:
         return pulumi.get(self, "labels")
 
     @property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> 'outputs.GetMdbRedisClusterMaintenanceWindowResult':
-        return pulumi.get(self, "maintenance_window")
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Sequence['outputs.GetMdbRedisClusterMaintenanceWindowResult']:
+        return pulumi.get(self, "maintenance_windows")
 
     @property
     @pulumi.getter
@@ -179,7 +179,7 @@ class GetMdbRedisClusterResult:
 
     @property
     @pulumi.getter
-    def resources(self) -> 'outputs.GetMdbRedisClusterResourcesResult':
+    def resources(self) -> Sequence['outputs.GetMdbRedisClusterResourceResult']:
         """
         Resources allocated to hosts of the Redis cluster. The structure is documented below.
         """
@@ -225,7 +225,7 @@ class AwaitableGetMdbRedisClusterResult(GetMdbRedisClusterResult):
             yield self
         return GetMdbRedisClusterResult(
             cluster_id=self.cluster_id,
-            config=self.config,
+            configs=self.configs,
             created_at=self.created_at,
             deletion_protection=self.deletion_protection,
             description=self.description,
@@ -235,7 +235,7 @@ class AwaitableGetMdbRedisClusterResult(GetMdbRedisClusterResult):
             hosts=self.hosts,
             id=self.id,
             labels=self.labels,
-            maintenance_window=self.maintenance_window,
+            maintenance_windows=self.maintenance_windows,
             name=self.name,
             network_id=self.network_id,
             resources=self.resources,
@@ -282,7 +282,7 @@ def get_mdb_redis_cluster(cluster_id: Optional[str] = None,
 
     return AwaitableGetMdbRedisClusterResult(
         cluster_id=__ret__.cluster_id,
-        config=__ret__.config,
+        configs=__ret__.configs,
         created_at=__ret__.created_at,
         deletion_protection=__ret__.deletion_protection,
         description=__ret__.description,
@@ -292,7 +292,7 @@ def get_mdb_redis_cluster(cluster_id: Optional[str] = None,
         hosts=__ret__.hosts,
         id=__ret__.id,
         labels=__ret__.labels,
-        maintenance_window=__ret__.maintenance_window,
+        maintenance_windows=__ret__.maintenance_windows,
         name=__ret__.name,
         network_id=__ret__.network_id,
         resources=__ret__.resources,

@@ -101,36 +101,34 @@ export class DnsZone extends pulumi.CustomResource {
      */
     constructor(name: string, args: DnsZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DnsZoneArgs | DnsZoneState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsZoneState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["privateNetworks"] = state ? state.privateNetworks : undefined;
-            inputs["public"] = state ? state.public : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privateNetworks"] = state ? state.privateNetworks : undefined;
+            resourceInputs["public"] = state ? state.public : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as DnsZoneArgs | undefined;
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["privateNetworks"] = args ? args.privateNetworks : undefined;
-            inputs["public"] = args ? args.public : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["createdAt"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["privateNetworks"] = args ? args.privateNetworks : undefined;
+            resourceInputs["public"] = args ? args.public : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DnsZone.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DnsZone.__pulumiType, name, resourceInputs, opts);
     }
 }
 

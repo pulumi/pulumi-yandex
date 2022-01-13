@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewAlbHttpRouter(ctx, "tf_router", &yandex.AlbHttpRouterArgs{
+// 		_, err := yandex.NewAlbHttpRouter(ctx, "tf-router", &yandex.AlbHttpRouterArgs{
 // 			Labels: pulumi.StringMap{
 // 				"empty-label": pulumi.String(""),
 // 				"s": pulumi.String{
@@ -167,7 +167,7 @@ type AlbHttpRouterInput interface {
 }
 
 func (*AlbHttpRouter) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlbHttpRouter)(nil))
+	return reflect.TypeOf((**AlbHttpRouter)(nil)).Elem()
 }
 
 func (i *AlbHttpRouter) ToAlbHttpRouterOutput() AlbHttpRouterOutput {
@@ -176,35 +176,6 @@ func (i *AlbHttpRouter) ToAlbHttpRouterOutput() AlbHttpRouterOutput {
 
 func (i *AlbHttpRouter) ToAlbHttpRouterOutputWithContext(ctx context.Context) AlbHttpRouterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlbHttpRouterOutput)
-}
-
-func (i *AlbHttpRouter) ToAlbHttpRouterPtrOutput() AlbHttpRouterPtrOutput {
-	return i.ToAlbHttpRouterPtrOutputWithContext(context.Background())
-}
-
-func (i *AlbHttpRouter) ToAlbHttpRouterPtrOutputWithContext(ctx context.Context) AlbHttpRouterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlbHttpRouterPtrOutput)
-}
-
-type AlbHttpRouterPtrInput interface {
-	pulumi.Input
-
-	ToAlbHttpRouterPtrOutput() AlbHttpRouterPtrOutput
-	ToAlbHttpRouterPtrOutputWithContext(ctx context.Context) AlbHttpRouterPtrOutput
-}
-
-type albHttpRouterPtrType AlbHttpRouterArgs
-
-func (*albHttpRouterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlbHttpRouter)(nil))
-}
-
-func (i *albHttpRouterPtrType) ToAlbHttpRouterPtrOutput() AlbHttpRouterPtrOutput {
-	return i.ToAlbHttpRouterPtrOutputWithContext(context.Background())
-}
-
-func (i *albHttpRouterPtrType) ToAlbHttpRouterPtrOutputWithContext(ctx context.Context) AlbHttpRouterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlbHttpRouterPtrOutput)
 }
 
 // AlbHttpRouterArrayInput is an input type that accepts AlbHttpRouterArray and AlbHttpRouterArrayOutput values.
@@ -260,7 +231,7 @@ func (i AlbHttpRouterMap) ToAlbHttpRouterMapOutputWithContext(ctx context.Contex
 type AlbHttpRouterOutput struct{ *pulumi.OutputState }
 
 func (AlbHttpRouterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlbHttpRouter)(nil))
+	return reflect.TypeOf((**AlbHttpRouter)(nil)).Elem()
 }
 
 func (o AlbHttpRouterOutput) ToAlbHttpRouterOutput() AlbHttpRouterOutput {
@@ -271,44 +242,10 @@ func (o AlbHttpRouterOutput) ToAlbHttpRouterOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AlbHttpRouterOutput) ToAlbHttpRouterPtrOutput() AlbHttpRouterPtrOutput {
-	return o.ToAlbHttpRouterPtrOutputWithContext(context.Background())
-}
-
-func (o AlbHttpRouterOutput) ToAlbHttpRouterPtrOutputWithContext(ctx context.Context) AlbHttpRouterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbHttpRouter) *AlbHttpRouter {
-		return &v
-	}).(AlbHttpRouterPtrOutput)
-}
-
-type AlbHttpRouterPtrOutput struct{ *pulumi.OutputState }
-
-func (AlbHttpRouterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlbHttpRouter)(nil))
-}
-
-func (o AlbHttpRouterPtrOutput) ToAlbHttpRouterPtrOutput() AlbHttpRouterPtrOutput {
-	return o
-}
-
-func (o AlbHttpRouterPtrOutput) ToAlbHttpRouterPtrOutputWithContext(ctx context.Context) AlbHttpRouterPtrOutput {
-	return o
-}
-
-func (o AlbHttpRouterPtrOutput) Elem() AlbHttpRouterOutput {
-	return o.ApplyT(func(v *AlbHttpRouter) AlbHttpRouter {
-		if v != nil {
-			return *v
-		}
-		var ret AlbHttpRouter
-		return ret
-	}).(AlbHttpRouterOutput)
-}
-
 type AlbHttpRouterArrayOutput struct{ *pulumi.OutputState }
 
 func (AlbHttpRouterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AlbHttpRouter)(nil))
+	return reflect.TypeOf((*[]*AlbHttpRouter)(nil)).Elem()
 }
 
 func (o AlbHttpRouterArrayOutput) ToAlbHttpRouterArrayOutput() AlbHttpRouterArrayOutput {
@@ -320,15 +257,15 @@ func (o AlbHttpRouterArrayOutput) ToAlbHttpRouterArrayOutputWithContext(ctx cont
 }
 
 func (o AlbHttpRouterArrayOutput) Index(i pulumi.IntInput) AlbHttpRouterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbHttpRouter {
-		return vs[0].([]AlbHttpRouter)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlbHttpRouter {
+		return vs[0].([]*AlbHttpRouter)[vs[1].(int)]
 	}).(AlbHttpRouterOutput)
 }
 
 type AlbHttpRouterMapOutput struct{ *pulumi.OutputState }
 
 func (AlbHttpRouterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AlbHttpRouter)(nil))
+	return reflect.TypeOf((*map[string]*AlbHttpRouter)(nil)).Elem()
 }
 
 func (o AlbHttpRouterMapOutput) ToAlbHttpRouterMapOutput() AlbHttpRouterMapOutput {
@@ -340,18 +277,16 @@ func (o AlbHttpRouterMapOutput) ToAlbHttpRouterMapOutputWithContext(ctx context.
 }
 
 func (o AlbHttpRouterMapOutput) MapIndex(k pulumi.StringInput) AlbHttpRouterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlbHttpRouter {
-		return vs[0].(map[string]AlbHttpRouter)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AlbHttpRouter {
+		return vs[0].(map[string]*AlbHttpRouter)[vs[1].(string)]
 	}).(AlbHttpRouterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbHttpRouterInput)(nil)).Elem(), &AlbHttpRouter{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AlbHttpRouterPtrInput)(nil)).Elem(), &AlbHttpRouter{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbHttpRouterArrayInput)(nil)).Elem(), AlbHttpRouterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbHttpRouterMapInput)(nil)).Elem(), AlbHttpRouterMap{})
 	pulumi.RegisterOutputType(AlbHttpRouterOutput{})
-	pulumi.RegisterOutputType(AlbHttpRouterPtrOutput{})
 	pulumi.RegisterOutputType(AlbHttpRouterArrayOutput{})
 	pulumi.RegisterOutputType(AlbHttpRouterMapOutput{})
 }

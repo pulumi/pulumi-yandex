@@ -19,16 +19,6 @@ import * as utilities from "./utilities";
  *     name: "sa_name",
  * }));
  * ```
- *
- * ## Argument reference
- *
- * * `serviceAccountId` - (Optional) ID of a specific service account.
- *
- * * `name` - (Optional) Name of a specific service account.
- *
- * > **NOTE:** One of `serviceAccountId` or `name` should be specified.
- *
- * * `folderId` - (Optional) Folder that the resource belongs to. If value is omitted, the default provider folder is used.
  */
 export function getIamServiceAccount(args?: GetIamServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetIamServiceAccountResult> {
     args = args || {};
@@ -36,9 +26,7 @@ export function getIamServiceAccount(args?: GetIamServiceAccountArgs, opts?: pul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getIamServiceAccount:getIamServiceAccount", {
         "folderId": args.folderId,
         "name": args.name,
@@ -50,8 +38,17 @@ export function getIamServiceAccount(args?: GetIamServiceAccountArgs, opts?: pul
  * A collection of arguments for invoking getIamServiceAccount.
  */
 export interface GetIamServiceAccountArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
     folderId?: string;
+    /**
+     * Name of a specific service account.
+     */
     name?: string;
+    /**
+     * ID of a specific service account.
+     */
     serviceAccountId?: string;
 }
 
@@ -81,7 +78,16 @@ export function getIamServiceAccountOutput(args?: GetIamServiceAccountOutputArgs
  * A collection of arguments for invoking getIamServiceAccount.
  */
 export interface GetIamServiceAccountOutputArgs {
+    /**
+     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+     */
     folderId?: pulumi.Input<string>;
+    /**
+     * Name of a specific service account.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * ID of a specific service account.
+     */
     serviceAccountId?: pulumi.Input<string>;
 }

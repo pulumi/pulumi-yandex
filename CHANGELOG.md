@@ -5,9 +5,6 @@ CHANGELOG
 
 *As of this notice, using CHANGELOG.md is DEPRECATED. We will be using [GitHub Releases](https://github.com/pulumi/pulumi-yandex/releases) for this repository*
 
-## HEAD (Unreleased)
-_(none)_
-
 ---
 
 ## 0.10.0 (2021-11-18)

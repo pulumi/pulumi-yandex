@@ -143,28 +143,28 @@ export class Function extends pulumi.CustomResource {
      */
     constructor(name: string, args: FunctionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionArgs | FunctionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["entrypoint"] = state ? state.entrypoint : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["executionTimeout"] = state ? state.executionTimeout : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["imageSize"] = state ? state.imageSize : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["loggroupId"] = state ? state.loggroupId : undefined;
-            inputs["memory"] = state ? state.memory : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["package"] = state ? state.package : undefined;
-            inputs["runtime"] = state ? state.runtime : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["userHash"] = state ? state.userHash : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["entrypoint"] = state ? state.entrypoint : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["executionTimeout"] = state ? state.executionTimeout : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["imageSize"] = state ? state.imageSize : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["loggroupId"] = state ? state.loggroupId : undefined;
+            resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["package"] = state ? state.package : undefined;
+            resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["userHash"] = state ? state.userHash : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
             if ((!args || args.entrypoint === undefined) && !opts.urn) {
@@ -179,29 +179,27 @@ export class Function extends pulumi.CustomResource {
             if ((!args || args.userHash === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userHash'");
             }
-            inputs["content"] = args ? args.content : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["entrypoint"] = args ? args.entrypoint : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["executionTimeout"] = args ? args.executionTimeout : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["memory"] = args ? args.memory : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["package"] = args ? args.package : undefined;
-            inputs["runtime"] = args ? args.runtime : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["userHash"] = args ? args.userHash : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["imageSize"] = undefined /*out*/;
-            inputs["loggroupId"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["entrypoint"] = args ? args.entrypoint : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["executionTimeout"] = args ? args.executionTimeout : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["memory"] = args ? args.memory : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["package"] = args ? args.package : undefined;
+            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userHash"] = args ? args.userHash : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["imageSize"] = undefined /*out*/;
+            resourceInputs["loggroupId"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Function.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Function.__pulumiType, name, resourceInputs, opts);
     }
 }
 

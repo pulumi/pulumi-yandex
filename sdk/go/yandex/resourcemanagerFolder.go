@@ -140,7 +140,7 @@ type ResourcemanagerFolderInput interface {
 }
 
 func (*ResourcemanagerFolder) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerFolder)(nil))
+	return reflect.TypeOf((**ResourcemanagerFolder)(nil)).Elem()
 }
 
 func (i *ResourcemanagerFolder) ToResourcemanagerFolderOutput() ResourcemanagerFolderOutput {
@@ -149,35 +149,6 @@ func (i *ResourcemanagerFolder) ToResourcemanagerFolderOutput() ResourcemanagerF
 
 func (i *ResourcemanagerFolder) ToResourcemanagerFolderOutputWithContext(ctx context.Context) ResourcemanagerFolderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderOutput)
-}
-
-func (i *ResourcemanagerFolder) ToResourcemanagerFolderPtrOutput() ResourcemanagerFolderPtrOutput {
-	return i.ToResourcemanagerFolderPtrOutputWithContext(context.Background())
-}
-
-func (i *ResourcemanagerFolder) ToResourcemanagerFolderPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderPtrOutput)
-}
-
-type ResourcemanagerFolderPtrInput interface {
-	pulumi.Input
-
-	ToResourcemanagerFolderPtrOutput() ResourcemanagerFolderPtrOutput
-	ToResourcemanagerFolderPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderPtrOutput
-}
-
-type resourcemanagerFolderPtrType ResourcemanagerFolderArgs
-
-func (*resourcemanagerFolderPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerFolder)(nil))
-}
-
-func (i *resourcemanagerFolderPtrType) ToResourcemanagerFolderPtrOutput() ResourcemanagerFolderPtrOutput {
-	return i.ToResourcemanagerFolderPtrOutputWithContext(context.Background())
-}
-
-func (i *resourcemanagerFolderPtrType) ToResourcemanagerFolderPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerFolderPtrOutput)
 }
 
 // ResourcemanagerFolderArrayInput is an input type that accepts ResourcemanagerFolderArray and ResourcemanagerFolderArrayOutput values.
@@ -233,7 +204,7 @@ func (i ResourcemanagerFolderMap) ToResourcemanagerFolderMapOutputWithContext(ct
 type ResourcemanagerFolderOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerFolder)(nil))
+	return reflect.TypeOf((**ResourcemanagerFolder)(nil)).Elem()
 }
 
 func (o ResourcemanagerFolderOutput) ToResourcemanagerFolderOutput() ResourcemanagerFolderOutput {
@@ -244,44 +215,10 @@ func (o ResourcemanagerFolderOutput) ToResourcemanagerFolderOutputWithContext(ct
 	return o
 }
 
-func (o ResourcemanagerFolderOutput) ToResourcemanagerFolderPtrOutput() ResourcemanagerFolderPtrOutput {
-	return o.ToResourcemanagerFolderPtrOutputWithContext(context.Background())
-}
-
-func (o ResourcemanagerFolderOutput) ToResourcemanagerFolderPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcemanagerFolder) *ResourcemanagerFolder {
-		return &v
-	}).(ResourcemanagerFolderPtrOutput)
-}
-
-type ResourcemanagerFolderPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourcemanagerFolderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerFolder)(nil))
-}
-
-func (o ResourcemanagerFolderPtrOutput) ToResourcemanagerFolderPtrOutput() ResourcemanagerFolderPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerFolderPtrOutput) ToResourcemanagerFolderPtrOutputWithContext(ctx context.Context) ResourcemanagerFolderPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerFolderPtrOutput) Elem() ResourcemanagerFolderOutput {
-	return o.ApplyT(func(v *ResourcemanagerFolder) ResourcemanagerFolder {
-		if v != nil {
-			return *v
-		}
-		var ret ResourcemanagerFolder
-		return ret
-	}).(ResourcemanagerFolderOutput)
-}
-
 type ResourcemanagerFolderArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourcemanagerFolder)(nil))
+	return reflect.TypeOf((*[]*ResourcemanagerFolder)(nil)).Elem()
 }
 
 func (o ResourcemanagerFolderArrayOutput) ToResourcemanagerFolderArrayOutput() ResourcemanagerFolderArrayOutput {
@@ -293,15 +230,15 @@ func (o ResourcemanagerFolderArrayOutput) ToResourcemanagerFolderArrayOutputWith
 }
 
 func (o ResourcemanagerFolderArrayOutput) Index(i pulumi.IntInput) ResourcemanagerFolderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourcemanagerFolder {
-		return vs[0].([]ResourcemanagerFolder)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourcemanagerFolder {
+		return vs[0].([]*ResourcemanagerFolder)[vs[1].(int)]
 	}).(ResourcemanagerFolderOutput)
 }
 
 type ResourcemanagerFolderMapOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerFolderMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ResourcemanagerFolder)(nil))
+	return reflect.TypeOf((*map[string]*ResourcemanagerFolder)(nil)).Elem()
 }
 
 func (o ResourcemanagerFolderMapOutput) ToResourcemanagerFolderMapOutput() ResourcemanagerFolderMapOutput {
@@ -313,18 +250,16 @@ func (o ResourcemanagerFolderMapOutput) ToResourcemanagerFolderMapOutputWithCont
 }
 
 func (o ResourcemanagerFolderMapOutput) MapIndex(k pulumi.StringInput) ResourcemanagerFolderOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourcemanagerFolder {
-		return vs[0].(map[string]ResourcemanagerFolder)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ResourcemanagerFolder {
+		return vs[0].(map[string]*ResourcemanagerFolder)[vs[1].(string)]
 	}).(ResourcemanagerFolderOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderInput)(nil)).Elem(), &ResourcemanagerFolder{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderPtrInput)(nil)).Elem(), &ResourcemanagerFolder{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderArrayInput)(nil)).Elem(), ResourcemanagerFolderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerFolderMapInput)(nil)).Elem(), ResourcemanagerFolderMap{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderOutput{})
-	pulumi.RegisterOutputType(ResourcemanagerFolderPtrOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderArrayOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerFolderMapOutput{})
 }

@@ -131,7 +131,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Options for DHCP client. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetVpcSubnetDhcpOptionsResult DhcpOptions;
+        public readonly ImmutableArray<Outputs.GetVpcSubnetDhcpOptionResult> DhcpOptions;
         public readonly string FolderId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -170,7 +170,7 @@ namespace Pulumi.Yandex
 
             string description,
 
-            Outputs.GetVpcSubnetDhcpOptionsResult dhcpOptions,
+            ImmutableArray<Outputs.GetVpcSubnetDhcpOptionResult> dhcpOptions,
 
             string folderId,
 

@@ -68,9 +68,9 @@ type LookupMdbMysqlClusterArgs struct {
 // A collection of values returned by getMdbMysqlCluster.
 type LookupMdbMysqlClusterResult struct {
 	// Access policy to the MySQL cluster. The structure is documented below.
-	Access            GetMdbMysqlClusterAccess            `pulumi:"access"`
-	BackupWindowStart GetMdbMysqlClusterBackupWindowStart `pulumi:"backupWindowStart"`
-	ClusterId         string                              `pulumi:"clusterId"`
+	Access             GetMdbMysqlClusterAccess              `pulumi:"access"`
+	BackupWindowStarts []GetMdbMysqlClusterBackupWindowStart `pulumi:"backupWindowStarts"`
+	ClusterId          string                                `pulumi:"clusterId"`
 	// Creation timestamp of the key.
 	CreatedAt string `pulumi:"createdAt"`
 	// A database of the MySQL cluster. The structure is documented below.
@@ -90,7 +90,7 @@ type LookupMdbMysqlClusterResult struct {
 	// A set of key/value label pairs to assign to the MySQL cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// Maintenance window settings of the MySQL cluster. The structure is documented below.
-	MaintenanceWindow GetMdbMysqlClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
+	MaintenanceWindows []GetMdbMysqlClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
 	// MySQL cluster config.
 	MysqlConfig map[string]string `pulumi:"mysqlConfig"`
 	// The name of the database.
@@ -98,7 +98,7 @@ type LookupMdbMysqlClusterResult struct {
 	// ID of the network, to which the MySQL cluster belongs.
 	NetworkId string `pulumi:"networkId"`
 	// Resources allocated to hosts of the MySQL cluster. The structure is documented below.
-	Resources GetMdbMysqlClusterResources `pulumi:"resources"`
+	Resources []GetMdbMysqlClusterResource `pulumi:"resources"`
 	// A set of ids of security groups assigned to hosts of the cluster.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Status of the cluster.
@@ -161,8 +161,8 @@ func (o LookupMdbMysqlClusterResultOutput) Access() GetMdbMysqlClusterAccessOutp
 	return o.ApplyT(func(v LookupMdbMysqlClusterResult) GetMdbMysqlClusterAccess { return v.Access }).(GetMdbMysqlClusterAccessOutput)
 }
 
-func (o LookupMdbMysqlClusterResultOutput) BackupWindowStart() GetMdbMysqlClusterBackupWindowStartOutput {
-	return o.ApplyT(func(v LookupMdbMysqlClusterResult) GetMdbMysqlClusterBackupWindowStart { return v.BackupWindowStart }).(GetMdbMysqlClusterBackupWindowStartOutput)
+func (o LookupMdbMysqlClusterResultOutput) BackupWindowStarts() GetMdbMysqlClusterBackupWindowStartArrayOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) []GetMdbMysqlClusterBackupWindowStart { return v.BackupWindowStarts }).(GetMdbMysqlClusterBackupWindowStartArrayOutput)
 }
 
 func (o LookupMdbMysqlClusterResultOutput) ClusterId() pulumi.StringOutput {
@@ -218,8 +218,8 @@ func (o LookupMdbMysqlClusterResultOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Maintenance window settings of the MySQL cluster. The structure is documented below.
-func (o LookupMdbMysqlClusterResultOutput) MaintenanceWindow() GetMdbMysqlClusterMaintenanceWindowOutput {
-	return o.ApplyT(func(v LookupMdbMysqlClusterResult) GetMdbMysqlClusterMaintenanceWindow { return v.MaintenanceWindow }).(GetMdbMysqlClusterMaintenanceWindowOutput)
+func (o LookupMdbMysqlClusterResultOutput) MaintenanceWindows() GetMdbMysqlClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) []GetMdbMysqlClusterMaintenanceWindow { return v.MaintenanceWindows }).(GetMdbMysqlClusterMaintenanceWindowArrayOutput)
 }
 
 // MySQL cluster config.
@@ -238,8 +238,8 @@ func (o LookupMdbMysqlClusterResultOutput) NetworkId() pulumi.StringOutput {
 }
 
 // Resources allocated to hosts of the MySQL cluster. The structure is documented below.
-func (o LookupMdbMysqlClusterResultOutput) Resources() GetMdbMysqlClusterResourcesOutput {
-	return o.ApplyT(func(v LookupMdbMysqlClusterResult) GetMdbMysqlClusterResources { return v.Resources }).(GetMdbMysqlClusterResourcesOutput)
+func (o LookupMdbMysqlClusterResultOutput) Resources() GetMdbMysqlClusterResourceArrayOutput {
+	return o.ApplyT(func(v LookupMdbMysqlClusterResult) []GetMdbMysqlClusterResource { return v.Resources }).(GetMdbMysqlClusterResourceArrayOutput)
 }
 
 // A set of ids of security groups assigned to hosts of the cluster.

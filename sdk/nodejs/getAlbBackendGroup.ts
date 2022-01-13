@@ -26,9 +26,7 @@ export function getAlbBackendGroup(args?: GetAlbBackendGroupArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getAlbBackendGroup:getAlbBackendGroup", {
         "backendGroupId": args.backendGroupId,
         "description": args.description,
@@ -37,6 +35,7 @@ export function getAlbBackendGroup(args?: GetAlbBackendGroupArgs, opts?: pulumi.
         "httpBackends": args.httpBackends,
         "labels": args.labels,
         "name": args.name,
+        "streamBackends": args.streamBackends,
     }, opts);
 }
 
@@ -72,6 +71,10 @@ export interface GetAlbBackendGroupArgs {
      * - Name of the Backend Group.
      */
     name?: string;
+    /**
+     * Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+     */
+    streamBackends?: inputs.GetAlbBackendGroupStreamBackend[];
 }
 
 /**
@@ -108,6 +111,10 @@ export interface GetAlbBackendGroupResult {
      * Name of the backend.
      */
     readonly name: string;
+    /**
+     * Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+     */
+    readonly streamBackends: outputs.GetAlbBackendGroupStreamBackend[];
 }
 
 export function getAlbBackendGroupOutput(args?: GetAlbBackendGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlbBackendGroupResult> {
@@ -146,4 +153,8 @@ export interface GetAlbBackendGroupOutputArgs {
      * - Name of the Backend Group.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+     */
+    streamBackends?: pulumi.Input<pulumi.Input<inputs.GetAlbBackendGroupStreamBackendArgs>[]>;
 }

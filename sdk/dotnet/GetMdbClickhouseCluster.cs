@@ -155,15 +155,15 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Access policy to the ClickHouse cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbClickhouseClusterAccessResult Access;
+        public readonly ImmutableArray<Outputs.GetMdbClickhouseClusterAccessResult> Accesses;
         /// <summary>
         /// Time to start the daily backup, in the UTC timezone. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbClickhouseClusterBackupWindowStartResult BackupWindowStart;
+        public readonly ImmutableArray<Outputs.GetMdbClickhouseClusterBackupWindowStartResult> BackupWindowStarts;
         /// <summary>
         /// Configuration of the ClickHouse subcluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbClickhouseClusterClickhouseResult Clickhouse;
+        public readonly ImmutableArray<Outputs.GetMdbClickhouseClusterClickhouseResult> Clickhouses;
         public readonly Outputs.GetMdbClickhouseClusterCloudStorageResult? CloudStorage;
         public readonly string ClusterId;
         /// <summary>
@@ -204,7 +204,7 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the ClickHouse cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
-        public readonly Outputs.GetMdbClickhouseClusterMaintenanceWindowResult MaintenanceWindow;
+        public readonly ImmutableArray<Outputs.GetMdbClickhouseClusterMaintenanceWindowResult> MaintenanceWindows;
         /// <summary>
         /// A group of machine learning models. The structure is documented below.
         /// </summary>
@@ -246,15 +246,15 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Configuration of the ZooKeeper subcluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbClickhouseClusterZookeeperResult Zookeeper;
+        public readonly ImmutableArray<Outputs.GetMdbClickhouseClusterZookeeperResult> Zookeepers;
 
         [OutputConstructor]
         private GetMdbClickhouseClusterResult(
-            Outputs.GetMdbClickhouseClusterAccessResult access,
+            ImmutableArray<Outputs.GetMdbClickhouseClusterAccessResult> accesses,
 
-            Outputs.GetMdbClickhouseClusterBackupWindowStartResult backupWindowStart,
+            ImmutableArray<Outputs.GetMdbClickhouseClusterBackupWindowStartResult> backupWindowStarts,
 
-            Outputs.GetMdbClickhouseClusterClickhouseResult clickhouse,
+            ImmutableArray<Outputs.GetMdbClickhouseClusterClickhouseResult> clickhouses,
 
             Outputs.GetMdbClickhouseClusterCloudStorageResult? cloudStorage,
 
@@ -282,7 +282,7 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
-            Outputs.GetMdbClickhouseClusterMaintenanceWindowResult maintenanceWindow,
+            ImmutableArray<Outputs.GetMdbClickhouseClusterMaintenanceWindowResult> maintenanceWindows,
 
             ImmutableArray<Outputs.GetMdbClickhouseClusterMlModelResult> mlModels,
 
@@ -306,11 +306,11 @@ namespace Pulumi.Yandex
 
             string version,
 
-            Outputs.GetMdbClickhouseClusterZookeeperResult zookeeper)
+            ImmutableArray<Outputs.GetMdbClickhouseClusterZookeeperResult> zookeepers)
         {
-            Access = access;
-            BackupWindowStart = backupWindowStart;
-            Clickhouse = clickhouse;
+            Accesses = accesses;
+            BackupWindowStarts = backupWindowStarts;
+            Clickhouses = clickhouses;
             CloudStorage = cloudStorage;
             ClusterId = clusterId;
             CreatedAt = createdAt;
@@ -324,7 +324,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
-            MaintenanceWindow = maintenanceWindow;
+            MaintenanceWindows = maintenanceWindows;
             MlModels = mlModels;
             Name = name;
             NetworkId = networkId;
@@ -336,7 +336,7 @@ namespace Pulumi.Yandex
             Status = status;
             Users = users;
             Version = version;
-            Zookeeper = zookeeper;
+            Zookeepers = zookeepers;
         }
     }
 }

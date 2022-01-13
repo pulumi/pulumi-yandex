@@ -16,7 +16,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Optional autoscaling configuration for compute subclusters.
         /// </summary>
-        public readonly Outputs.GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigResult AutoscalingConfig;
+        public readonly ImmutableArray<Outputs.GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigResult> AutoscalingConfigs;
         /// <summary>
         /// Number of hosts within Data Proc subcluster.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Resources allocated to each host of the Data Proc subcluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetDataprocClusterClusterConfigSubclusterSpecResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetDataprocClusterClusterConfigSubclusterSpecResourceResult> Resources;
         /// <summary>
         /// Role of the subcluster in the Data Proc cluster.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetDataprocClusterClusterConfigSubclusterSpecResult(
-            Outputs.GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigResult autoscalingConfig,
+            ImmutableArray<Outputs.GetDataprocClusterClusterConfigSubclusterSpecAutoscalingConfigResult> autoscalingConfigs,
 
             int hostsCount,
 
@@ -52,13 +52,13 @@ namespace Pulumi.Yandex.Outputs
 
             string name,
 
-            Outputs.GetDataprocClusterClusterConfigSubclusterSpecResourcesResult resources,
+            ImmutableArray<Outputs.GetDataprocClusterClusterConfigSubclusterSpecResourceResult> resources,
 
             string role,
 
             string subnetId)
         {
-            AutoscalingConfig = autoscalingConfig;
+            AutoscalingConfigs = autoscalingConfigs;
             HostsCount = hostsCount;
             Id = id;
             Name = name;

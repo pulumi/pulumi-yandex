@@ -74,19 +74,19 @@ type LookupYdbDatabaseDedicatedResult struct {
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs assigned to the Yandex Database cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Location ID of the Yandex Database cluster.
+	LocationId string `pulumi:"locationId"`
 	// Location of the Yandex Database cluster.
 	// The structure is documented below.
-	Location GetYdbDatabaseDedicatedLocation `pulumi:"location"`
-	// Location ID of the Yandex Database cluster.
-	LocationId string  `pulumi:"locationId"`
-	Name       *string `pulumi:"name"`
+	Locations []GetYdbDatabaseDedicatedLocation `pulumi:"locations"`
+	Name      *string                           `pulumi:"name"`
 	// ID of the network the Yandex Database cluster is attached to.
 	NetworkId string `pulumi:"networkId"`
 	// The Yandex Database cluster preset.
 	ResourcePresetId string `pulumi:"resourcePresetId"`
 	// Scaling policy of the Yandex Database cluster.
 	// The structure is documented below.
-	ScalePolicy GetYdbDatabaseDedicatedScalePolicy `pulumi:"scalePolicy"`
+	ScalePolicies []GetYdbDatabaseDedicatedScalePolicy `pulumi:"scalePolicies"`
 	// Status of the Yandex Database cluster.
 	Status string `pulumi:"status"`
 	// A list of storage configuration options of the Yandex Database cluster.
@@ -182,15 +182,15 @@ func (o LookupYdbDatabaseDedicatedResultOutput) Labels() pulumi.StringMapOutput 
 	return o.ApplyT(func(v LookupYdbDatabaseDedicatedResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Location of the Yandex Database cluster.
-// The structure is documented below.
-func (o LookupYdbDatabaseDedicatedResultOutput) Location() GetYdbDatabaseDedicatedLocationOutput {
-	return o.ApplyT(func(v LookupYdbDatabaseDedicatedResult) GetYdbDatabaseDedicatedLocation { return v.Location }).(GetYdbDatabaseDedicatedLocationOutput)
-}
-
 // Location ID of the Yandex Database cluster.
 func (o LookupYdbDatabaseDedicatedResultOutput) LocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupYdbDatabaseDedicatedResult) string { return v.LocationId }).(pulumi.StringOutput)
+}
+
+// Location of the Yandex Database cluster.
+// The structure is documented below.
+func (o LookupYdbDatabaseDedicatedResultOutput) Locations() GetYdbDatabaseDedicatedLocationArrayOutput {
+	return o.ApplyT(func(v LookupYdbDatabaseDedicatedResult) []GetYdbDatabaseDedicatedLocation { return v.Locations }).(GetYdbDatabaseDedicatedLocationArrayOutput)
 }
 
 func (o LookupYdbDatabaseDedicatedResultOutput) Name() pulumi.StringPtrOutput {
@@ -209,8 +209,8 @@ func (o LookupYdbDatabaseDedicatedResultOutput) ResourcePresetId() pulumi.String
 
 // Scaling policy of the Yandex Database cluster.
 // The structure is documented below.
-func (o LookupYdbDatabaseDedicatedResultOutput) ScalePolicy() GetYdbDatabaseDedicatedScalePolicyOutput {
-	return o.ApplyT(func(v LookupYdbDatabaseDedicatedResult) GetYdbDatabaseDedicatedScalePolicy { return v.ScalePolicy }).(GetYdbDatabaseDedicatedScalePolicyOutput)
+func (o LookupYdbDatabaseDedicatedResultOutput) ScalePolicies() GetYdbDatabaseDedicatedScalePolicyArrayOutput {
+	return o.ApplyT(func(v LookupYdbDatabaseDedicatedResult) []GetYdbDatabaseDedicatedScalePolicy { return v.ScalePolicies }).(GetYdbDatabaseDedicatedScalePolicyArrayOutput)
 }
 
 // Status of the Yandex Database cluster.

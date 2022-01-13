@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewAlbBackendGroup(ctx, "test_backend_group", &yandex.AlbBackendGroupArgs{
+// 		_, err := yandex.NewAlbBackendGroup(ctx, "test-backend-group", &yandex.AlbBackendGroupArgs{
 // 			HttpBackends: AlbBackendGroupHttpBackendArray{
 // 				&AlbBackendGroupHttpBackendArgs{
 // 					Healthcheck: &AlbBackendGroupHttpBackendHealthcheckArgs{
@@ -83,6 +83,8 @@ type AlbBackendGroup struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the backend.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends AlbBackendGroupStreamBackendArrayOutput `pulumi:"streamBackends"`
 }
 
 // NewAlbBackendGroup registers a new resource with the given unique name, arguments, and options.
@@ -128,6 +130,8 @@ type albBackendGroupState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the backend.
 	Name *string `pulumi:"name"`
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends []AlbBackendGroupStreamBackend `pulumi:"streamBackends"`
 }
 
 type AlbBackendGroupState struct {
@@ -145,6 +149,8 @@ type AlbBackendGroupState struct {
 	Labels pulumi.StringMapInput
 	// Name of the backend.
 	Name pulumi.StringPtrInput
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends AlbBackendGroupStreamBackendArrayInput
 }
 
 func (AlbBackendGroupState) ElementType() reflect.Type {
@@ -164,6 +170,8 @@ type albBackendGroupArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the backend.
 	Name *string `pulumi:"name"`
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends []AlbBackendGroupStreamBackend `pulumi:"streamBackends"`
 }
 
 // The set of arguments for constructing a AlbBackendGroup resource.
@@ -180,6 +188,8 @@ type AlbBackendGroupArgs struct {
 	Labels pulumi.StringMapInput
 	// Name of the backend.
 	Name pulumi.StringPtrInput
+	// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+	StreamBackends AlbBackendGroupStreamBackendArrayInput
 }
 
 func (AlbBackendGroupArgs) ElementType() reflect.Type {
@@ -194,7 +204,7 @@ type AlbBackendGroupInput interface {
 }
 
 func (*AlbBackendGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlbBackendGroup)(nil))
+	return reflect.TypeOf((**AlbBackendGroup)(nil)).Elem()
 }
 
 func (i *AlbBackendGroup) ToAlbBackendGroupOutput() AlbBackendGroupOutput {
@@ -203,35 +213,6 @@ func (i *AlbBackendGroup) ToAlbBackendGroupOutput() AlbBackendGroupOutput {
 
 func (i *AlbBackendGroup) ToAlbBackendGroupOutputWithContext(ctx context.Context) AlbBackendGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupOutput)
-}
-
-func (i *AlbBackendGroup) ToAlbBackendGroupPtrOutput() AlbBackendGroupPtrOutput {
-	return i.ToAlbBackendGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *AlbBackendGroup) ToAlbBackendGroupPtrOutputWithContext(ctx context.Context) AlbBackendGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupPtrOutput)
-}
-
-type AlbBackendGroupPtrInput interface {
-	pulumi.Input
-
-	ToAlbBackendGroupPtrOutput() AlbBackendGroupPtrOutput
-	ToAlbBackendGroupPtrOutputWithContext(ctx context.Context) AlbBackendGroupPtrOutput
-}
-
-type albBackendGroupPtrType AlbBackendGroupArgs
-
-func (*albBackendGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlbBackendGroup)(nil))
-}
-
-func (i *albBackendGroupPtrType) ToAlbBackendGroupPtrOutput() AlbBackendGroupPtrOutput {
-	return i.ToAlbBackendGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *albBackendGroupPtrType) ToAlbBackendGroupPtrOutputWithContext(ctx context.Context) AlbBackendGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlbBackendGroupPtrOutput)
 }
 
 // AlbBackendGroupArrayInput is an input type that accepts AlbBackendGroupArray and AlbBackendGroupArrayOutput values.
@@ -287,7 +268,7 @@ func (i AlbBackendGroupMap) ToAlbBackendGroupMapOutputWithContext(ctx context.Co
 type AlbBackendGroupOutput struct{ *pulumi.OutputState }
 
 func (AlbBackendGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlbBackendGroup)(nil))
+	return reflect.TypeOf((**AlbBackendGroup)(nil)).Elem()
 }
 
 func (o AlbBackendGroupOutput) ToAlbBackendGroupOutput() AlbBackendGroupOutput {
@@ -298,44 +279,10 @@ func (o AlbBackendGroupOutput) ToAlbBackendGroupOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AlbBackendGroupOutput) ToAlbBackendGroupPtrOutput() AlbBackendGroupPtrOutput {
-	return o.ToAlbBackendGroupPtrOutputWithContext(context.Background())
-}
-
-func (o AlbBackendGroupOutput) ToAlbBackendGroupPtrOutputWithContext(ctx context.Context) AlbBackendGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbBackendGroup) *AlbBackendGroup {
-		return &v
-	}).(AlbBackendGroupPtrOutput)
-}
-
-type AlbBackendGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (AlbBackendGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlbBackendGroup)(nil))
-}
-
-func (o AlbBackendGroupPtrOutput) ToAlbBackendGroupPtrOutput() AlbBackendGroupPtrOutput {
-	return o
-}
-
-func (o AlbBackendGroupPtrOutput) ToAlbBackendGroupPtrOutputWithContext(ctx context.Context) AlbBackendGroupPtrOutput {
-	return o
-}
-
-func (o AlbBackendGroupPtrOutput) Elem() AlbBackendGroupOutput {
-	return o.ApplyT(func(v *AlbBackendGroup) AlbBackendGroup {
-		if v != nil {
-			return *v
-		}
-		var ret AlbBackendGroup
-		return ret
-	}).(AlbBackendGroupOutput)
-}
-
 type AlbBackendGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AlbBackendGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AlbBackendGroup)(nil))
+	return reflect.TypeOf((*[]*AlbBackendGroup)(nil)).Elem()
 }
 
 func (o AlbBackendGroupArrayOutput) ToAlbBackendGroupArrayOutput() AlbBackendGroupArrayOutput {
@@ -347,15 +294,15 @@ func (o AlbBackendGroupArrayOutput) ToAlbBackendGroupArrayOutputWithContext(ctx 
 }
 
 func (o AlbBackendGroupArrayOutput) Index(i pulumi.IntInput) AlbBackendGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbBackendGroup {
-		return vs[0].([]AlbBackendGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlbBackendGroup {
+		return vs[0].([]*AlbBackendGroup)[vs[1].(int)]
 	}).(AlbBackendGroupOutput)
 }
 
 type AlbBackendGroupMapOutput struct{ *pulumi.OutputState }
 
 func (AlbBackendGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AlbBackendGroup)(nil))
+	return reflect.TypeOf((*map[string]*AlbBackendGroup)(nil)).Elem()
 }
 
 func (o AlbBackendGroupMapOutput) ToAlbBackendGroupMapOutput() AlbBackendGroupMapOutput {
@@ -367,18 +314,16 @@ func (o AlbBackendGroupMapOutput) ToAlbBackendGroupMapOutputWithContext(ctx cont
 }
 
 func (o AlbBackendGroupMapOutput) MapIndex(k pulumi.StringInput) AlbBackendGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlbBackendGroup {
-		return vs[0].(map[string]AlbBackendGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AlbBackendGroup {
+		return vs[0].(map[string]*AlbBackendGroup)[vs[1].(string)]
 	}).(AlbBackendGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupInput)(nil)).Elem(), &AlbBackendGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupPtrInput)(nil)).Elem(), &AlbBackendGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupArrayInput)(nil)).Elem(), AlbBackendGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbBackendGroupMapInput)(nil)).Elem(), AlbBackendGroupMap{})
 	pulumi.RegisterOutputType(AlbBackendGroupOutput{})
-	pulumi.RegisterOutputType(AlbBackendGroupPtrOutput{})
 	pulumi.RegisterOutputType(AlbBackendGroupArrayOutput{})
 	pulumi.RegisterOutputType(AlbBackendGroupMapOutput{})
 }

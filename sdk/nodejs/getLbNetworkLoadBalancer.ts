@@ -26,9 +26,7 @@ export function getLbNetworkLoadBalancer(args?: GetLbNetworkLoadBalancerArgs, op
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getLbNetworkLoadBalancer:getLbNetworkLoadBalancer", {
         "folderId": args.folderId,
         "name": args.name,

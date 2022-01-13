@@ -50,6 +50,8 @@ type LookupComputeImageResult struct {
 	Name        string `pulumi:"name"`
 	// Operating system type that the image contains.
 	OsType string `pulumi:"osType"`
+	// Optimize the image to create a disk.
+	Pooled bool `pulumi:"pooled"`
 	// License IDs that indicate which licenses are attached to this image.
 	ProductIds []string `pulumi:"productIds"`
 	// The size of the image, specified in Gb.
@@ -143,6 +145,11 @@ func (o LookupComputeImageResultOutput) Name() pulumi.StringOutput {
 // Operating system type that the image contains.
 func (o LookupComputeImageResultOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeImageResult) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// Optimize the image to create a disk.
+func (o LookupComputeImageResultOutput) Pooled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupComputeImageResult) bool { return v.Pooled }).(pulumi.BoolOutput)
 }
 
 // License IDs that indicate which licenses are attached to this image.

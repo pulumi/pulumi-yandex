@@ -28,9 +28,7 @@ export function getMdbRedisCluster(args?: GetMdbRedisClusterArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbRedisCluster:getMdbRedisCluster", {
         "clusterId": args.clusterId,
         "deletionProtection": args.deletionProtection,
@@ -66,7 +64,7 @@ export interface GetMdbRedisClusterResult {
     /**
      * Configuration of the Redis cluster. The structure is documented below.
      */
-    readonly config: outputs.GetMdbRedisClusterConfig;
+    readonly configs: outputs.GetMdbRedisClusterConfig[];
     /**
      * Creation timestamp of the key.
      */
@@ -97,7 +95,7 @@ export interface GetMdbRedisClusterResult {
      * A set of key/value label pairs to assign to the Redis cluster.
      */
     readonly labels: {[key: string]: string};
-    readonly maintenanceWindow: outputs.GetMdbRedisClusterMaintenanceWindow;
+    readonly maintenanceWindows: outputs.GetMdbRedisClusterMaintenanceWindow[];
     readonly name: string;
     /**
      * ID of the network, to which the Redis cluster belongs.
@@ -106,7 +104,7 @@ export interface GetMdbRedisClusterResult {
     /**
      * Resources allocated to hosts of the Redis cluster. The structure is documented below.
      */
-    readonly resources: outputs.GetMdbRedisClusterResources;
+    readonly resources: outputs.GetMdbRedisClusterResource[];
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */

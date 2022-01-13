@@ -25,6 +25,14 @@ __all__ = [
     'AlbBackendGroupHttpBackendLoadBalancingConfigArgs',
     'AlbBackendGroupHttpBackendTlsArgs',
     'AlbBackendGroupHttpBackendTlsValidationContextArgs',
+    'AlbBackendGroupStreamBackendArgs',
+    'AlbBackendGroupStreamBackendHealthcheckArgs',
+    'AlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs',
+    'AlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs',
+    'AlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs',
+    'AlbBackendGroupStreamBackendLoadBalancingConfigArgs',
+    'AlbBackendGroupStreamBackendTlsArgs',
+    'AlbBackendGroupStreamBackendTlsValidationContextArgs',
     'AlbLoadBalancerAllocationPolicyArgs',
     'AlbLoadBalancerAllocationPolicyLocationArgs',
     'AlbLoadBalancerListenerArgs',
@@ -37,14 +45,18 @@ __all__ = [
     'AlbLoadBalancerListenerHttpHandlerArgs',
     'AlbLoadBalancerListenerHttpHandlerHttp2OptionsArgs',
     'AlbLoadBalancerListenerHttpRedirectsArgs',
+    'AlbLoadBalancerListenerStreamArgs',
+    'AlbLoadBalancerListenerStreamHandlerArgs',
     'AlbLoadBalancerListenerTlsArgs',
     'AlbLoadBalancerListenerTlsDefaultHandlerArgs',
     'AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs',
     'AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs',
+    'AlbLoadBalancerListenerTlsDefaultHandlerStreamHandlerArgs',
     'AlbLoadBalancerListenerTlsSniHandlerArgs',
     'AlbLoadBalancerListenerTlsSniHandlerHandlerArgs',
     'AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs',
     'AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs',
+    'AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandlerArgs',
     'AlbTargetGroupTargetArgs',
     'AlbVirtualHostModifyRequestHeaderArgs',
     'AlbVirtualHostModifyResponseHeaderArgs',
@@ -60,6 +72,9 @@ __all__ = [
     'AlbVirtualHostRouteHttpRouteHttpMatchPathArgs',
     'AlbVirtualHostRouteHttpRouteHttpRouteActionArgs',
     'AlbVirtualHostRouteHttpRouteRedirectActionArgs',
+    'CdnOriginGroupOriginArgs',
+    'CdnResourceOptionsArgs',
+    'CdnResourceSslCertificateArgs',
     'ComputeDiskDiskPlacementPolicyArgs',
     'ComputeInstanceBootDiskArgs',
     'ComputeInstanceBootDiskInitializeParamsArgs',
@@ -68,7 +83,7 @@ __all__ = [
     'ComputeInstanceGroupDeployPolicyArgs',
     'ComputeInstanceGroupHealthCheckArgs',
     'ComputeInstanceGroupHealthCheckHttpOptionArgs',
-    'ComputeInstanceGroupHealthCheckTcpOptionArgs',
+    'ComputeInstanceGroupHealthCheckTcpOptionsArgs',
     'ComputeInstanceGroupInstanceArgs',
     'ComputeInstanceGroupInstanceNetworkInterfaceArgs',
     'ComputeInstanceGroupInstanceTemplateArgs',
@@ -230,6 +245,7 @@ __all__ = [
     'MdbSqlServerClusterResourcesArgs',
     'MdbSqlServerClusterUserArgs',
     'MdbSqlServerClusterUserPermissionArgs',
+    'ServerlessContainerImageArgs',
     'StorageBucketCorsRuleArgs',
     'StorageBucketGrantArgs',
     'StorageBucketLifecycleRuleArgs',
@@ -271,9 +287,18 @@ __all__ = [
     'GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs',
     'GetAlbBackendGroupHttpBackendTlsArgs',
     'GetAlbBackendGroupHttpBackendTlsValidationContextArgs',
+    'GetAlbBackendGroupStreamBackendArgs',
+    'GetAlbBackendGroupStreamBackendHealthcheckArgs',
+    'GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs',
+    'GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs',
+    'GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs',
+    'GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs',
+    'GetAlbBackendGroupStreamBackendTlsArgs',
+    'GetAlbBackendGroupStreamBackendTlsValidationContextArgs',
+    'GetCdnResourceOptionsArgs',
+    'GetCdnResourceSslCertificateArgs',
     'GetComputeDiskDiskPlacementPolicyArgs',
     'GetComputeInstancePlacementPolicyArgs',
-    'GetComputeInstanceSchedulingPolicyArgs',
     'GetFunctionScalingPolicyPolicyArgs',
     'GetIamPolicyBindingArgs',
     'GetMdbClickhouseClusterCloudStorageArgs',
@@ -1317,6 +1342,511 @@ class AlbBackendGroupHttpBackendTlsValidationContextArgs:
 
 
 @pulumi.input_type
+class AlbBackendGroupStreamBackendArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 target_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 healthcheck: Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckArgs']] = None,
+                 load_balancing_config: Optional[pulumi.Input['AlbBackendGroupStreamBackendLoadBalancingConfigArgs']] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 tls: Optional[pulumi.Input['AlbBackendGroupStreamBackendTlsArgs']] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the backend.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_ids: References target groups for the backend.
+        :param pulumi.Input['AlbBackendGroupStreamBackendHealthcheckArgs'] healthcheck: Healthcheck specification that will be used by this backend. Structure is documented below.
+        :param pulumi.Input['AlbBackendGroupStreamBackendLoadBalancingConfigArgs'] load_balancing_config: Load Balancing Config specification that will be used by this backend. Structure is documented below.
+        :param pulumi.Input[int] port: Port for incoming traffic.
+        :param pulumi.Input['AlbBackendGroupStreamBackendTlsArgs'] tls: Tls specification that will be used by this backend. Structure is documented below.
+        :param pulumi.Input[int] weight: Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "target_group_ids", target_group_ids)
+        if healthcheck is not None:
+            pulumi.set(__self__, "healthcheck", healthcheck)
+        if load_balancing_config is not None:
+            pulumi.set(__self__, "load_balancing_config", load_balancing_config)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if tls is not None:
+            pulumi.set(__self__, "tls", tls)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the backend.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="targetGroupIds")
+    def target_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        References target groups for the backend.
+        """
+        return pulumi.get(self, "target_group_ids")
+
+    @target_group_ids.setter
+    def target_group_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "target_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def healthcheck(self) -> Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckArgs']]:
+        """
+        Healthcheck specification that will be used by this backend. Structure is documented below.
+        """
+        return pulumi.get(self, "healthcheck")
+
+    @healthcheck.setter
+    def healthcheck(self, value: Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckArgs']]):
+        pulumi.set(self, "healthcheck", value)
+
+    @property
+    @pulumi.getter(name="loadBalancingConfig")
+    def load_balancing_config(self) -> Optional[pulumi.Input['AlbBackendGroupStreamBackendLoadBalancingConfigArgs']]:
+        """
+        Load Balancing Config specification that will be used by this backend. Structure is documented below.
+        """
+        return pulumi.get(self, "load_balancing_config")
+
+    @load_balancing_config.setter
+    def load_balancing_config(self, value: Optional[pulumi.Input['AlbBackendGroupStreamBackendLoadBalancingConfigArgs']]):
+        pulumi.set(self, "load_balancing_config", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port for incoming traffic.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def tls(self) -> Optional[pulumi.Input['AlbBackendGroupStreamBackendTlsArgs']]:
+        """
+        Tls specification that will be used by this backend. Structure is documented below.
+        """
+        return pulumi.get(self, "tls")
+
+    @tls.setter
+    def tls(self, value: Optional[pulumi.Input['AlbBackendGroupStreamBackendTlsArgs']]):
+        pulumi.set(self, "tls", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class AlbBackendGroupStreamBackendHealthcheckArgs:
+    def __init__(__self__, *,
+                 interval: pulumi.Input[str],
+                 timeout: pulumi.Input[str],
+                 grpc_healthcheck: Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs']] = None,
+                 healthcheck_port: Optional[pulumi.Input[int]] = None,
+                 healthy_threshold: Optional[pulumi.Input[int]] = None,
+                 http_healthcheck: Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs']] = None,
+                 interval_jitter_percent: Optional[pulumi.Input[float]] = None,
+                 stream_healthcheck: Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs']] = None,
+                 unhealthy_threshold: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] interval: Interval between health checks.
+        :param pulumi.Input[str] timeout: Time to wait for a health check response.
+        :param pulumi.Input['AlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs'] grpc_healthcheck: Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param pulumi.Input[int] healthcheck_port: Optional alternative port for health checking.
+        :param pulumi.Input[int] healthy_threshold: Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+        :param pulumi.Input['AlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs'] http_healthcheck: Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param pulumi.Input[float] interval_jitter_percent: An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * interval_jitter_percent / 100) will be added to the wait time.
+        :param pulumi.Input['AlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs'] stream_healthcheck: Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param pulumi.Input[int] unhealthy_threshold: Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+        """
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "timeout", timeout)
+        if grpc_healthcheck is not None:
+            pulumi.set(__self__, "grpc_healthcheck", grpc_healthcheck)
+        if healthcheck_port is not None:
+            pulumi.set(__self__, "healthcheck_port", healthcheck_port)
+        if healthy_threshold is not None:
+            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        if http_healthcheck is not None:
+            pulumi.set(__self__, "http_healthcheck", http_healthcheck)
+        if interval_jitter_percent is not None:
+            pulumi.set(__self__, "interval_jitter_percent", interval_jitter_percent)
+        if stream_healthcheck is not None:
+            pulumi.set(__self__, "stream_healthcheck", stream_healthcheck)
+        if unhealthy_threshold is not None:
+            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> pulumi.Input[str]:
+        """
+        Interval between health checks.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: pulumi.Input[str]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[str]:
+        """
+        Time to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[str]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter(name="grpcHealthcheck")
+    def grpc_healthcheck(self) -> Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs']]:
+        """
+        Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
+        return pulumi.get(self, "grpc_healthcheck")
+
+    @grpc_healthcheck.setter
+    def grpc_healthcheck(self, value: Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs']]):
+        pulumi.set(self, "grpc_healthcheck", value)
+
+    @property
+    @pulumi.getter(name="healthcheckPort")
+    def healthcheck_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional alternative port for health checking.
+        """
+        return pulumi.get(self, "healthcheck_port")
+
+    @healthcheck_port.setter
+    def healthcheck_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "healthcheck_port", value)
+
+    @property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @healthy_threshold.setter
+    def healthy_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "healthy_threshold", value)
+
+    @property
+    @pulumi.getter(name="httpHealthcheck")
+    def http_healthcheck(self) -> Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs']]:
+        """
+        Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
+        return pulumi.get(self, "http_healthcheck")
+
+    @http_healthcheck.setter
+    def http_healthcheck(self, value: Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs']]):
+        pulumi.set(self, "http_healthcheck", value)
+
+    @property
+    @pulumi.getter(name="intervalJitterPercent")
+    def interval_jitter_percent(self) -> Optional[pulumi.Input[float]]:
+        """
+        An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * interval_jitter_percent / 100) will be added to the wait time.
+        """
+        return pulumi.get(self, "interval_jitter_percent")
+
+    @interval_jitter_percent.setter
+    def interval_jitter_percent(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "interval_jitter_percent", value)
+
+    @property
+    @pulumi.getter(name="streamHealthcheck")
+    def stream_healthcheck(self) -> Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs']]:
+        """
+        Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
+        return pulumi.get(self, "stream_healthcheck")
+
+    @stream_healthcheck.setter
+    def stream_healthcheck(self, value: Optional[pulumi.Input['AlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs']]):
+        pulumi.set(self, "stream_healthcheck", value)
+
+    @property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+        """
+        return pulumi.get(self, "unhealthy_threshold")
+
+    @unhealthy_threshold.setter
+    def unhealthy_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "unhealthy_threshold", value)
+
+
+@pulumi.input_type
+class AlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs:
+    def __init__(__self__, *,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service_name: Service name for grpc.health.v1.HealthCheckRequest message.
+        """
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service name for grpc.health.v1.HealthCheckRequest message.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class AlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 host: Optional[pulumi.Input[str]] = None,
+                 http2: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] path: HTTP path.
+        :param pulumi.Input[str] host: "Host" HTTP header value.
+        :param pulumi.Input[bool] http2: If set, health checks will use HTTP2.
+        """
+        pulumi.set(__self__, "path", path)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http2 is not None:
+            pulumi.set(__self__, "http2", http2)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        HTTP path.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        "Host" HTTP header value.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def http2(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, health checks will use HTTP2.
+        """
+        return pulumi.get(self, "http2")
+
+    @http2.setter
+    def http2(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "http2", value)
+
+
+@pulumi.input_type
+class AlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs:
+    def __init__(__self__, *,
+                 receive: Optional[pulumi.Input[str]] = None,
+                 send: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] receive: Text to search in reply.
+        :param pulumi.Input[str] send: Message to send. If empty, it's a connect-only health check.
+        """
+        if receive is not None:
+            pulumi.set(__self__, "receive", receive)
+        if send is not None:
+            pulumi.set(__self__, "send", send)
+
+    @property
+    @pulumi.getter
+    def receive(self) -> Optional[pulumi.Input[str]]:
+        """
+        Text to search in reply.
+        """
+        return pulumi.get(self, "receive")
+
+    @receive.setter
+    def receive(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "receive", value)
+
+    @property
+    @pulumi.getter
+    def send(self) -> Optional[pulumi.Input[str]]:
+        """
+        Message to send. If empty, it's a connect-only health check.
+        """
+        return pulumi.get(self, "send")
+
+    @send.setter
+    def send(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "send", value)
+
+
+@pulumi.input_type
+class AlbBackendGroupStreamBackendLoadBalancingConfigArgs:
+    def __init__(__self__, *,
+                 locality_aware_routing_percent: Optional[pulumi.Input[int]] = None,
+                 panic_threshold: Optional[pulumi.Input[int]] = None,
+                 strict_locality: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] locality_aware_routing_percent: Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+        :param pulumi.Input[int] panic_threshold: If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+        :param pulumi.Input[bool] strict_locality: If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+        """
+        if locality_aware_routing_percent is not None:
+            pulumi.set(__self__, "locality_aware_routing_percent", locality_aware_routing_percent)
+        if panic_threshold is not None:
+            pulumi.set(__self__, "panic_threshold", panic_threshold)
+        if strict_locality is not None:
+            pulumi.set(__self__, "strict_locality", strict_locality)
+
+    @property
+    @pulumi.getter(name="localityAwareRoutingPercent")
+    def locality_aware_routing_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+        """
+        return pulumi.get(self, "locality_aware_routing_percent")
+
+    @locality_aware_routing_percent.setter
+    def locality_aware_routing_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "locality_aware_routing_percent", value)
+
+    @property
+    @pulumi.getter(name="panicThreshold")
+    def panic_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+        """
+        return pulumi.get(self, "panic_threshold")
+
+    @panic_threshold.setter
+    def panic_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "panic_threshold", value)
+
+    @property
+    @pulumi.getter(name="strictLocality")
+    def strict_locality(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+        """
+        return pulumi.get(self, "strict_locality")
+
+    @strict_locality.setter
+    def strict_locality(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_locality", value)
+
+
+@pulumi.input_type
+class AlbBackendGroupStreamBackendTlsArgs:
+    def __init__(__self__, *,
+                 sni: Optional[pulumi.Input[str]] = None,
+                 validation_context: Optional[pulumi.Input['AlbBackendGroupStreamBackendTlsValidationContextArgs']] = None):
+        """
+        :param pulumi.Input[str] sni: [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+               * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+               * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+        """
+        if sni is not None:
+            pulumi.set(__self__, "sni", sni)
+        if validation_context is not None:
+            pulumi.set(__self__, "validation_context", validation_context)
+
+    @property
+    @pulumi.getter
+    def sni(self) -> Optional[pulumi.Input[str]]:
+        """
+        [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+        * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+        * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+        """
+        return pulumi.get(self, "sni")
+
+    @sni.setter
+    def sni(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sni", value)
+
+    @property
+    @pulumi.getter(name="validationContext")
+    def validation_context(self) -> Optional[pulumi.Input['AlbBackendGroupStreamBackendTlsValidationContextArgs']]:
+        return pulumi.get(self, "validation_context")
+
+    @validation_context.setter
+    def validation_context(self, value: Optional[pulumi.Input['AlbBackendGroupStreamBackendTlsValidationContextArgs']]):
+        pulumi.set(self, "validation_context", value)
+
+
+@pulumi.input_type
+class AlbBackendGroupStreamBackendTlsValidationContextArgs:
+    def __init__(__self__, *,
+                 trusted_ca_bytes: Optional[pulumi.Input[str]] = None,
+                 trusted_ca_id: Optional[pulumi.Input[str]] = None):
+        if trusted_ca_bytes is not None:
+            pulumi.set(__self__, "trusted_ca_bytes", trusted_ca_bytes)
+        if trusted_ca_id is not None:
+            pulumi.set(__self__, "trusted_ca_id", trusted_ca_id)
+
+    @property
+    @pulumi.getter(name="trustedCaBytes")
+    def trusted_ca_bytes(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "trusted_ca_bytes")
+
+    @trusted_ca_bytes.setter
+    def trusted_ca_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trusted_ca_bytes", value)
+
+    @property
+    @pulumi.getter(name="trustedCaId")
+    def trusted_ca_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "trusted_ca_id")
+
+    @trusted_ca_id.setter
+    def trusted_ca_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trusted_ca_id", value)
+
+
+@pulumi.input_type
 class AlbLoadBalancerAllocationPolicyArgs:
     def __init__(__self__, *,
                  locations: pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerAllocationPolicyLocationArgs']]]):
@@ -1397,11 +1927,13 @@ class AlbLoadBalancerListenerArgs:
                  name: pulumi.Input[str],
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointArgs']]]] = None,
                  http: Optional[pulumi.Input['AlbLoadBalancerListenerHttpArgs']] = None,
+                 stream: Optional[pulumi.Input['AlbLoadBalancerListenerStreamArgs']] = None,
                  tls: Optional[pulumi.Input['AlbLoadBalancerListenerTlsArgs']] = None):
         """
         :param pulumi.Input[str] name: name of SNI match.
         :param pulumi.Input[Sequence[pulumi.Input['AlbLoadBalancerListenerEndpointArgs']]] endpoints: Network endpoints (addresses and ports) of the listener. The structure is documented below.
         :param pulumi.Input['AlbLoadBalancerListenerHttpArgs'] http: HTTP listener resource. The structure is documented below.
+        :param pulumi.Input['AlbLoadBalancerListenerStreamArgs'] stream: Stream listener resource. The structure is documented below.
         :param pulumi.Input['AlbLoadBalancerListenerTlsArgs'] tls: TLS listener resource. The structure is documented below.
         """
         pulumi.set(__self__, "name", name)
@@ -1409,6 +1941,8 @@ class AlbLoadBalancerListenerArgs:
             pulumi.set(__self__, "endpoints", endpoints)
         if http is not None:
             pulumi.set(__self__, "http", http)
+        if stream is not None:
+            pulumi.set(__self__, "stream", stream)
         if tls is not None:
             pulumi.set(__self__, "tls", tls)
 
@@ -1447,6 +1981,18 @@ class AlbLoadBalancerListenerArgs:
     @http.setter
     def http(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerHttpArgs']]):
         pulumi.set(self, "http", value)
+
+    @property
+    @pulumi.getter
+    def stream(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerStreamArgs']]:
+        """
+        Stream listener resource. The structure is documented below.
+        """
+        return pulumi.get(self, "stream")
+
+    @stream.setter
+    def stream(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerStreamArgs']]):
+        pulumi.set(self, "stream", value)
 
     @property
     @pulumi.getter
@@ -1773,6 +2319,52 @@ class AlbLoadBalancerListenerHttpRedirectsArgs:
 
 
 @pulumi.input_type
+class AlbLoadBalancerListenerStreamArgs:
+    def __init__(__self__, *,
+                 handler: Optional[pulumi.Input['AlbLoadBalancerListenerStreamHandlerArgs']] = None):
+        """
+        :param pulumi.Input['AlbLoadBalancerListenerStreamHandlerArgs'] handler: HTTP handler that sets plaintext HTTP router. The structure is documented below.
+        """
+        if handler is not None:
+            pulumi.set(__self__, "handler", handler)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerStreamHandlerArgs']]:
+        """
+        HTTP handler that sets plaintext HTTP router. The structure is documented below.
+        """
+        return pulumi.get(self, "handler")
+
+    @handler.setter
+    def handler(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerStreamHandlerArgs']]):
+        pulumi.set(self, "handler", value)
+
+
+@pulumi.input_type
+class AlbLoadBalancerListenerStreamHandlerArgs:
+    def __init__(__self__, *,
+                 backend_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] backend_group_id: Backend group id.
+        """
+        if backend_group_id is not None:
+            pulumi.set(__self__, "backend_group_id", backend_group_id)
+
+    @property
+    @pulumi.getter(name="backendGroupId")
+    def backend_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backend group id.
+        """
+        return pulumi.get(self, "backend_group_id")
+
+    @backend_group_id.setter
+    def backend_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backend_group_id", value)
+
+
+@pulumi.input_type
 class AlbLoadBalancerListenerTlsArgs:
     def __init__(__self__, *,
                  default_handler: pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerArgs'],
@@ -1814,15 +2406,19 @@ class AlbLoadBalancerListenerTlsArgs:
 class AlbLoadBalancerListenerTlsDefaultHandlerArgs:
     def __init__(__self__, *,
                  certificate_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 http_handler: Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs']] = None):
+                 http_handler: Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs']] = None,
+                 stream_handler: Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerStreamHandlerArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
                with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
         :param pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs'] http_handler: HTTP handler resource. The structure is documented below.
+        :param pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerStreamHandlerArgs'] stream_handler: Stream handler resource. The structure is documented below.
         """
         pulumi.set(__self__, "certificate_ids", certificate_ids)
         if http_handler is not None:
             pulumi.set(__self__, "http_handler", http_handler)
+        if stream_handler is not None:
+            pulumi.set(__self__, "stream_handler", stream_handler)
 
     @property
     @pulumi.getter(name="certificateIds")
@@ -1848,6 +2444,18 @@ class AlbLoadBalancerListenerTlsDefaultHandlerArgs:
     @http_handler.setter
     def http_handler(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerArgs']]):
         pulumi.set(self, "http_handler", value)
+
+    @property
+    @pulumi.getter(name="streamHandler")
+    def stream_handler(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerStreamHandlerArgs']]:
+        """
+        Stream handler resource. The structure is documented below.
+        """
+        return pulumi.get(self, "stream_handler")
+
+    @stream_handler.setter
+    def stream_handler(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerTlsDefaultHandlerStreamHandlerArgs']]):
+        pulumi.set(self, "stream_handler", value)
 
 
 @pulumi.input_type
@@ -1929,6 +2537,29 @@ class AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2OptionsArgs:
 
 
 @pulumi.input_type
+class AlbLoadBalancerListenerTlsDefaultHandlerStreamHandlerArgs:
+    def __init__(__self__, *,
+                 backend_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] backend_group_id: Backend group id.
+        """
+        if backend_group_id is not None:
+            pulumi.set(__self__, "backend_group_id", backend_group_id)
+
+    @property
+    @pulumi.getter(name="backendGroupId")
+    def backend_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backend group id.
+        """
+        return pulumi.get(self, "backend_group_id")
+
+    @backend_group_id.setter
+    def backend_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backend_group_id", value)
+
+
+@pulumi.input_type
 class AlbLoadBalancerListenerTlsSniHandlerArgs:
     def __init__(__self__, *,
                  handler: pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerArgs'],
@@ -1984,15 +2615,19 @@ class AlbLoadBalancerListenerTlsSniHandlerArgs:
 class AlbLoadBalancerListenerTlsSniHandlerHandlerArgs:
     def __init__(__self__, *,
                  certificate_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 http_handler: Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs']] = None):
+                 http_handler: Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs']] = None,
+                 stream_handler: Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandlerArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: Certificate IDs in the Certificate Manager. Multiple TLS certificates can be associated
                with the same context to allow both RSA and ECDSA certificates. Only the first certificate of each type will be used.
         :param pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs'] http_handler: HTTP handler resource. The structure is documented below.
+        :param pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandlerArgs'] stream_handler: Stream handler resource. The structure is documented below.
         """
         pulumi.set(__self__, "certificate_ids", certificate_ids)
         if http_handler is not None:
             pulumi.set(__self__, "http_handler", http_handler)
+        if stream_handler is not None:
+            pulumi.set(__self__, "stream_handler", stream_handler)
 
     @property
     @pulumi.getter(name="certificateIds")
@@ -2018,6 +2653,18 @@ class AlbLoadBalancerListenerTlsSniHandlerHandlerArgs:
     @http_handler.setter
     def http_handler(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerArgs']]):
         pulumi.set(self, "http_handler", value)
+
+    @property
+    @pulumi.getter(name="streamHandler")
+    def stream_handler(self) -> Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandlerArgs']]:
+        """
+        Stream handler resource. The structure is documented below.
+        """
+        return pulumi.get(self, "stream_handler")
+
+    @stream_handler.setter
+    def stream_handler(self, value: Optional[pulumi.Input['AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandlerArgs']]):
+        pulumi.set(self, "stream_handler", value)
 
 
 @pulumi.input_type
@@ -2099,17 +2746,44 @@ class AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2OptionsArgs:
 
 
 @pulumi.input_type
+class AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandlerArgs:
+    def __init__(__self__, *,
+                 backend_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] backend_group_id: Backend group id.
+        """
+        if backend_group_id is not None:
+            pulumi.set(__self__, "backend_group_id", backend_group_id)
+
+    @property
+    @pulumi.getter(name="backendGroupId")
+    def backend_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backend group id.
+        """
+        return pulumi.get(self, "backend_group_id")
+
+    @backend_group_id.setter
+    def backend_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backend_group_id", value)
+
+
+@pulumi.input_type
 class AlbTargetGroupTargetArgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
-                 subnet_id: pulumi.Input[str]):
+                 private_ipv4_address: Optional[pulumi.Input[bool]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ip_address: IP address of the target.
         :param pulumi.Input[str] subnet_id: ID of the subnet that targets are connected to.
                All targets in the target group must be connected to the same subnet within a single availability zone.
         """
         pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "subnet_id", subnet_id)
+        if private_ipv4_address is not None:
+            pulumi.set(__self__, "private_ipv4_address", private_ipv4_address)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -2124,8 +2798,17 @@ class AlbTargetGroupTargetArgs:
         pulumi.set(self, "ip_address", value)
 
     @property
+    @pulumi.getter(name="privateIpv4Address")
+    def private_ipv4_address(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "private_ipv4_address")
+
+    @private_ipv4_address.setter
+    def private_ipv4_address(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private_ipv4_address", value)
+
+    @property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> pulumi.Input[str]:
+    def subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
         ID of the subnet that targets are connected to.
         All targets in the target group must be connected to the same subnet within a single availability zone.
@@ -2133,32 +2816,43 @@ class AlbTargetGroupTargetArgs:
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: pulumi.Input[str]):
+    def subnet_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnet_id", value)
 
 
 @pulumi.input_type
 class AlbVirtualHostModifyRequestHeaderArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  append: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  remove: Optional[pulumi.Input[bool]] = None,
                  replace: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] append: Append string to the header value.
         :param pulumi.Input[str] name: name of the route.
+        :param pulumi.Input[str] append: Append string to the header value.
         :param pulumi.Input[bool] remove: If set, remove the header.
         :param pulumi.Input[str] replace: New value for a header. Header values support the following 
                [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
         """
+        pulumi.set(__self__, "name", name)
         if append is not None:
             pulumi.set(__self__, "append", append)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if remove is not None:
             pulumi.set(__self__, "remove", remove)
         if replace is not None:
             pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        name of the route.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -2171,18 +2865,6 @@ class AlbVirtualHostModifyRequestHeaderArgs:
     @append.setter
     def append(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "append", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the route.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -2213,25 +2895,36 @@ class AlbVirtualHostModifyRequestHeaderArgs:
 @pulumi.input_type
 class AlbVirtualHostModifyResponseHeaderArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  append: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  remove: Optional[pulumi.Input[bool]] = None,
                  replace: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] append: Append string to the header value.
         :param pulumi.Input[str] name: name of the route.
+        :param pulumi.Input[str] append: Append string to the header value.
         :param pulumi.Input[bool] remove: If set, remove the header.
         :param pulumi.Input[str] replace: New value for a header. Header values support the following 
                [formatters](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#custom-request-response-headers).
         """
+        pulumi.set(__self__, "name", name)
         if append is not None:
             pulumi.set(__self__, "append", append)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if remove is not None:
             pulumi.set(__self__, "remove", remove)
         if replace is not None:
             pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        name of the route.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -2244,18 +2937,6 @@ class AlbVirtualHostModifyResponseHeaderArgs:
     @append.setter
     def append(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "append", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the route.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -2421,6 +3102,10 @@ class AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs:
     def __init__(__self__, *,
                  exact: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] exact: Match exactly.
+        :param pulumi.Input[str] prefix: Match prefix.
+        """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
         if prefix is not None:
@@ -2429,6 +3114,9 @@ class AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs:
     @property
     @pulumi.getter
     def exact(self) -> Optional[pulumi.Input[str]]:
+        """
+        Match exactly.
+        """
         return pulumi.get(self, "exact")
 
     @exact.setter
@@ -2438,6 +3126,9 @@ class AlbVirtualHostRouteGrpcRouteGrpcMatchFqmnArgs:
     @property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Match prefix.
+        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -2679,10 +3370,10 @@ class AlbVirtualHostRouteHttpRouteDirectResponseActionArgs:
 @pulumi.input_type
 class AlbVirtualHostRouteHttpRouteHttpMatchArgs:
     def __init__(__self__, *,
-                 http_methods: Optional[pulumi.Input[Sequence[Any]]] = None,
+                 http_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  path: Optional[pulumi.Input['AlbVirtualHostRouteHttpRouteHttpMatchPathArgs']] = None):
         """
-        :param pulumi.Input[Sequence[Any]] http_methods: List of methods(strings).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] http_methods: List of methods(strings).
         :param pulumi.Input['AlbVirtualHostRouteHttpRouteHttpMatchPathArgs'] path: If not set, '/' is assumed. The structure is documented below.
         """
         if http_methods is not None:
@@ -2692,14 +3383,14 @@ class AlbVirtualHostRouteHttpRouteHttpMatchArgs:
 
     @property
     @pulumi.getter(name="httpMethods")
-    def http_methods(self) -> Optional[pulumi.Input[Sequence[Any]]]:
+    def http_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of methods(strings).
         """
         return pulumi.get(self, "http_methods")
 
     @http_methods.setter
-    def http_methods(self, value: Optional[pulumi.Input[Sequence[Any]]]):
+    def http_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "http_methods", value)
 
     @property
@@ -2720,6 +3411,10 @@ class AlbVirtualHostRouteHttpRouteHttpMatchPathArgs:
     def __init__(__self__, *,
                  exact: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] exact: Match exactly.
+        :param pulumi.Input[str] prefix: Match prefix.
+        """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
         if prefix is not None:
@@ -2728,6 +3423,9 @@ class AlbVirtualHostRouteHttpRouteHttpMatchPathArgs:
     @property
     @pulumi.getter
     def exact(self) -> Optional[pulumi.Input[str]]:
+        """
+        Match exactly.
+        """
         return pulumi.get(self, "exact")
 
     @exact.setter
@@ -2737,6 +3435,9 @@ class AlbVirtualHostRouteHttpRouteHttpMatchPathArgs:
     @property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Match prefix.
+        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -2994,6 +3695,453 @@ class AlbVirtualHostRouteHttpRouteRedirectActionArgs:
 
 
 @pulumi.input_type
+class CdnOriginGroupOriginArgs:
+    def __init__(__self__, *,
+                 source: pulumi.Input[str],
+                 backup: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 origin_group_id: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "source", source)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if origin_group_id is not None:
+            pulumi.set(__self__, "origin_group_id", origin_group_id)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "backup", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="originGroupId")
+    def origin_group_id(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "origin_group_id")
+
+    @origin_group_id.setter
+    def origin_group_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "origin_group_id", value)
+
+
+@pulumi.input_type
+class CdnResourceOptionsArgs:
+    def __init__(__self__, *,
+                 allowed_http_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 browser_cache_settings: Optional[pulumi.Input[int]] = None,
+                 cache_http_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 custom_host_header: Optional[pulumi.Input[str]] = None,
+                 custom_server_name: Optional[pulumi.Input[str]] = None,
+                 disable_cache: Optional[pulumi.Input[bool]] = None,
+                 disable_proxy_force_ranges: Optional[pulumi.Input[bool]] = None,
+                 edge_cache_settings: Optional[pulumi.Input[int]] = None,
+                 fetched_compressed: Optional[pulumi.Input[bool]] = None,
+                 forward_host_header: Optional[pulumi.Input[bool]] = None,
+                 gzip_on: Optional[pulumi.Input[bool]] = None,
+                 ignore_cookie: Optional[pulumi.Input[bool]] = None,
+                 ignore_query_params: Optional[pulumi.Input[bool]] = None,
+                 proxy_cache_methods_set: Optional[pulumi.Input[bool]] = None,
+                 query_params_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 query_params_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
+                 redirect_https_to_http: Optional[pulumi.Input[bool]] = None,
+                 slice: Optional[pulumi.Input[bool]] = None,
+                 static_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 static_response_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_http_methods: HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
+        :param pulumi.Input[int] browser_cache_settings: set up a cache period for the end-users browser. Content will be cached due to origin settings. If there are no cache settings on your origin, the content will not be cached. The list of HTTP response codes that can be cached in browsers: 200, 201, 204, 206, 301, 302, 303, 304, 307, 308. Other response codes will not be cached. The default value is 4 days.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cache_http_headers: list HTTP headers that must be included in responses to clients.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cors: parameter that lets browsers get access to selected resources from a domain different to a domain from which the request is received.
+        :param pulumi.Input[str] custom_host_header: custom value for the Host header. Your server must be able to process requests with the chosen header.
+        :param pulumi.Input[str] custom_server_name: wildcard additional CNAME. If a resource has a wildcard additional CNAME, you can use your own certificate for content delivery via HTTPS. Read-only.
+        :param pulumi.Input[bool] disable_cache: setup a cache status.
+        :param pulumi.Input[bool] disable_proxy_force_ranges: disabling proxy force ranges.
+        :param pulumi.Input[int] edge_cache_settings: content will be cached according to origin cache settings. The value applies for a response with codes 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 if an origin server does not have caching HTTP headers. Responses with other codes will not be cached.
+        :param pulumi.Input[bool] fetched_compressed: option helps you to reduce the bandwidth between origin and CDN servers. Also, content delivery speed becomes higher because of reducing the time for compressing files in a CDN.
+        :param pulumi.Input[bool] forward_host_header: choose the Forward Host header option if is important to send in the request to the Origin the same Host header as was sent in the request to CDN server.
+        :param pulumi.Input[bool] gzip_on: GZip compression at CDN servers reduces file size by 70% and can be as high as 90%.
+        :param pulumi.Input[bool] ignore_cookie: set for ignoring cookie.
+        :param pulumi.Input[bool] ignore_query_params: files with different query parameters are cached as objects with the same key regardless of the parameter value. selected by default.
+        :param pulumi.Input[bool] proxy_cache_methods_set: allows caching for GET, HEAD and POST requests.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] query_params_blacklists: files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] query_params_whitelists: files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
+        :param pulumi.Input[bool] redirect_http_to_https: set up a redirect from HTTPS to HTTP.
+        :param pulumi.Input[bool] redirect_https_to_http: set up a redirect from HTTP to HTTPS.
+        :param pulumi.Input[bool] slice: files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_request_headers: set up custom headers that CDN servers send in requests to origins.
+        """
+        if allowed_http_methods is not None:
+            pulumi.set(__self__, "allowed_http_methods", allowed_http_methods)
+        if browser_cache_settings is not None:
+            pulumi.set(__self__, "browser_cache_settings", browser_cache_settings)
+        if cache_http_headers is not None:
+            pulumi.set(__self__, "cache_http_headers", cache_http_headers)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
+        if custom_host_header is not None:
+            pulumi.set(__self__, "custom_host_header", custom_host_header)
+        if custom_server_name is not None:
+            pulumi.set(__self__, "custom_server_name", custom_server_name)
+        if disable_cache is not None:
+            pulumi.set(__self__, "disable_cache", disable_cache)
+        if disable_proxy_force_ranges is not None:
+            pulumi.set(__self__, "disable_proxy_force_ranges", disable_proxy_force_ranges)
+        if edge_cache_settings is not None:
+            pulumi.set(__self__, "edge_cache_settings", edge_cache_settings)
+        if fetched_compressed is not None:
+            pulumi.set(__self__, "fetched_compressed", fetched_compressed)
+        if forward_host_header is not None:
+            pulumi.set(__self__, "forward_host_header", forward_host_header)
+        if gzip_on is not None:
+            pulumi.set(__self__, "gzip_on", gzip_on)
+        if ignore_cookie is not None:
+            pulumi.set(__self__, "ignore_cookie", ignore_cookie)
+        if ignore_query_params is not None:
+            pulumi.set(__self__, "ignore_query_params", ignore_query_params)
+        if proxy_cache_methods_set is not None:
+            pulumi.set(__self__, "proxy_cache_methods_set", proxy_cache_methods_set)
+        if query_params_blacklists is not None:
+            pulumi.set(__self__, "query_params_blacklists", query_params_blacklists)
+        if query_params_whitelists is not None:
+            pulumi.set(__self__, "query_params_whitelists", query_params_whitelists)
+        if redirect_http_to_https is not None:
+            pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
+        if redirect_https_to_http is not None:
+            pulumi.set(__self__, "redirect_https_to_http", redirect_https_to_http)
+        if slice is not None:
+            pulumi.set(__self__, "slice", slice)
+        if static_request_headers is not None:
+            pulumi.set(__self__, "static_request_headers", static_request_headers)
+        if static_response_headers is not None:
+            pulumi.set(__self__, "static_response_headers", static_response_headers)
+
+    @property
+    @pulumi.getter(name="allowedHttpMethods")
+    def allowed_http_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
+        """
+        return pulumi.get(self, "allowed_http_methods")
+
+    @allowed_http_methods.setter
+    def allowed_http_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_http_methods", value)
+
+    @property
+    @pulumi.getter(name="browserCacheSettings")
+    def browser_cache_settings(self) -> Optional[pulumi.Input[int]]:
+        """
+        set up a cache period for the end-users browser. Content will be cached due to origin settings. If there are no cache settings on your origin, the content will not be cached. The list of HTTP response codes that can be cached in browsers: 200, 201, 204, 206, 301, 302, 303, 304, 307, 308. Other response codes will not be cached. The default value is 4 days.
+        """
+        return pulumi.get(self, "browser_cache_settings")
+
+    @browser_cache_settings.setter
+    def browser_cache_settings(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "browser_cache_settings", value)
+
+    @property
+    @pulumi.getter(name="cacheHttpHeaders")
+    def cache_http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        list HTTP headers that must be included in responses to clients.
+        """
+        return pulumi.get(self, "cache_http_headers")
+
+    @cache_http_headers.setter
+    def cache_http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cache_http_headers", value)
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        parameter that lets browsers get access to selected resources from a domain different to a domain from which the request is received.
+        """
+        return pulumi.get(self, "cors")
+
+    @cors.setter
+    def cors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cors", value)
+
+    @property
+    @pulumi.getter(name="customHostHeader")
+    def custom_host_header(self) -> Optional[pulumi.Input[str]]:
+        """
+        custom value for the Host header. Your server must be able to process requests with the chosen header.
+        """
+        return pulumi.get(self, "custom_host_header")
+
+    @custom_host_header.setter
+    def custom_host_header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_host_header", value)
+
+    @property
+    @pulumi.getter(name="customServerName")
+    def custom_server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        wildcard additional CNAME. If a resource has a wildcard additional CNAME, you can use your own certificate for content delivery via HTTPS. Read-only.
+        """
+        return pulumi.get(self, "custom_server_name")
+
+    @custom_server_name.setter
+    def custom_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_server_name", value)
+
+    @property
+    @pulumi.getter(name="disableCache")
+    def disable_cache(self) -> Optional[pulumi.Input[bool]]:
+        """
+        setup a cache status.
+        """
+        return pulumi.get(self, "disable_cache")
+
+    @disable_cache.setter
+    def disable_cache(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_cache", value)
+
+    @property
+    @pulumi.getter(name="disableProxyForceRanges")
+    def disable_proxy_force_ranges(self) -> Optional[pulumi.Input[bool]]:
+        """
+        disabling proxy force ranges.
+        """
+        return pulumi.get(self, "disable_proxy_force_ranges")
+
+    @disable_proxy_force_ranges.setter
+    def disable_proxy_force_ranges(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_proxy_force_ranges", value)
+
+    @property
+    @pulumi.getter(name="edgeCacheSettings")
+    def edge_cache_settings(self) -> Optional[pulumi.Input[int]]:
+        """
+        content will be cached according to origin cache settings. The value applies for a response with codes 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 if an origin server does not have caching HTTP headers. Responses with other codes will not be cached.
+        """
+        return pulumi.get(self, "edge_cache_settings")
+
+    @edge_cache_settings.setter
+    def edge_cache_settings(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "edge_cache_settings", value)
+
+    @property
+    @pulumi.getter(name="fetchedCompressed")
+    def fetched_compressed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        option helps you to reduce the bandwidth between origin and CDN servers. Also, content delivery speed becomes higher because of reducing the time for compressing files in a CDN.
+        """
+        return pulumi.get(self, "fetched_compressed")
+
+    @fetched_compressed.setter
+    def fetched_compressed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fetched_compressed", value)
+
+    @property
+    @pulumi.getter(name="forwardHostHeader")
+    def forward_host_header(self) -> Optional[pulumi.Input[bool]]:
+        """
+        choose the Forward Host header option if is important to send in the request to the Origin the same Host header as was sent in the request to CDN server.
+        """
+        return pulumi.get(self, "forward_host_header")
+
+    @forward_host_header.setter
+    def forward_host_header(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "forward_host_header", value)
+
+    @property
+    @pulumi.getter(name="gzipOn")
+    def gzip_on(self) -> Optional[pulumi.Input[bool]]:
+        """
+        GZip compression at CDN servers reduces file size by 70% and can be as high as 90%.
+        """
+        return pulumi.get(self, "gzip_on")
+
+    @gzip_on.setter
+    def gzip_on(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gzip_on", value)
+
+    @property
+    @pulumi.getter(name="ignoreCookie")
+    def ignore_cookie(self) -> Optional[pulumi.Input[bool]]:
+        """
+        set for ignoring cookie.
+        """
+        return pulumi.get(self, "ignore_cookie")
+
+    @ignore_cookie.setter
+    def ignore_cookie(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_cookie", value)
+
+    @property
+    @pulumi.getter(name="ignoreQueryParams")
+    def ignore_query_params(self) -> Optional[pulumi.Input[bool]]:
+        """
+        files with different query parameters are cached as objects with the same key regardless of the parameter value. selected by default.
+        """
+        return pulumi.get(self, "ignore_query_params")
+
+    @ignore_query_params.setter
+    def ignore_query_params(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_query_params", value)
+
+    @property
+    @pulumi.getter(name="proxyCacheMethodsSet")
+    def proxy_cache_methods_set(self) -> Optional[pulumi.Input[bool]]:
+        """
+        allows caching for GET, HEAD and POST requests.
+        """
+        return pulumi.get(self, "proxy_cache_methods_set")
+
+    @proxy_cache_methods_set.setter
+    def proxy_cache_methods_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxy_cache_methods_set", value)
+
+    @property
+    @pulumi.getter(name="queryParamsBlacklists")
+    def query_params_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
+        """
+        return pulumi.get(self, "query_params_blacklists")
+
+    @query_params_blacklists.setter
+    def query_params_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_params_blacklists", value)
+
+    @property
+    @pulumi.getter(name="queryParamsWhitelists")
+    def query_params_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
+        """
+        return pulumi.get(self, "query_params_whitelists")
+
+    @query_params_whitelists.setter
+    def query_params_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_params_whitelists", value)
+
+    @property
+    @pulumi.getter(name="redirectHttpToHttps")
+    def redirect_http_to_https(self) -> Optional[pulumi.Input[bool]]:
+        """
+        set up a redirect from HTTPS to HTTP.
+        """
+        return pulumi.get(self, "redirect_http_to_https")
+
+    @redirect_http_to_https.setter
+    def redirect_http_to_https(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "redirect_http_to_https", value)
+
+    @property
+    @pulumi.getter(name="redirectHttpsToHttp")
+    def redirect_https_to_http(self) -> Optional[pulumi.Input[bool]]:
+        """
+        set up a redirect from HTTP to HTTPS.
+        """
+        return pulumi.get(self, "redirect_https_to_http")
+
+    @redirect_https_to_http.setter
+    def redirect_https_to_http(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "redirect_https_to_http", value)
+
+    @property
+    @pulumi.getter
+    def slice(self) -> Optional[pulumi.Input[bool]]:
+        """
+        files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
+        """
+        return pulumi.get(self, "slice")
+
+    @slice.setter
+    def slice(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "slice", value)
+
+    @property
+    @pulumi.getter(name="staticRequestHeaders")
+    def static_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        set up custom headers that CDN servers send in requests to origins.
+        """
+        return pulumi.get(self, "static_request_headers")
+
+    @static_request_headers.setter
+    def static_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "static_request_headers", value)
+
+    @property
+    @pulumi.getter(name="staticResponseHeaders")
+    def static_response_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "static_response_headers")
+
+    @static_response_headers.setter
+    def static_response_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "static_response_headers", value)
+
+
+@pulumi.input_type
+class CdnResourceSslCertificateArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 certificate_manager_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "type", type)
+        if certificate_manager_id is not None:
+            pulumi.set(__self__, "certificate_manager_id", certificate_manager_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="certificateManagerId")
+    def certificate_manager_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_manager_id")
+
+    @certificate_manager_id.setter
+    def certificate_manager_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_manager_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
 class ComputeDiskDiskPlacementPolicyArgs:
     def __init__(__self__, *,
                  disk_placement_group_id: pulumi.Input[str]):
@@ -3111,6 +4259,7 @@ class ComputeInstanceBootDiskArgs:
 @pulumi.input_type
 class ComputeInstanceBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
+                 block_size: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -3125,6 +4274,8 @@ class ComputeInstanceBootDiskInitializeParamsArgs:
         :param pulumi.Input[str] snapshot_id: A snapshot to initialize this disk from.
         :param pulumi.Input[str] type: Disk type.
         """
+        if block_size is not None:
+            pulumi.set(__self__, "block_size", block_size)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if image_id is not None:
@@ -3137,6 +4288,15 @@ class ComputeInstanceBootDiskInitializeParamsArgs:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="blockSize")
+    def block_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "block_size")
+
+    @block_size.setter
+    def block_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "block_size", value)
 
     @property
     @pulumi.getter
@@ -3451,14 +4611,14 @@ class ComputeInstanceGroupHealthCheckArgs:
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  http_options: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupHealthCheckHttpOptionArgs']]]] = None,
                  interval: Optional[pulumi.Input[int]] = None,
-                 tcp_options: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupHealthCheckTcpOptionArgs']]]] = None,
+                 tcp_options: Optional[pulumi.Input['ComputeInstanceGroupHealthCheckTcpOptionsArgs']] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] healthy_threshold: The number of successful health checks before the managed instance is declared healthy.
         :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupHealthCheckHttpOptionArgs']]] http_options: HTTP check options. The structure is documented below.
         :param pulumi.Input[int] interval: The interval to wait between health checks in seconds.
-        :param pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupHealthCheckTcpOptionArgs']]] tcp_options: TCP check options. The structure is documented below.
+        :param pulumi.Input['ComputeInstanceGroupHealthCheckTcpOptionsArgs'] tcp_options: TCP check options. The structure is documented below.
         :param pulumi.Input[int] timeout: The length of time to wait for a response before the health check times out in seconds.
         :param pulumi.Input[int] unhealthy_threshold: The number of failed health checks before the managed instance is declared unhealthy.
         """
@@ -3513,14 +4673,14 @@ class ComputeInstanceGroupHealthCheckArgs:
 
     @property
     @pulumi.getter(name="tcpOptions")
-    def tcp_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupHealthCheckTcpOptionArgs']]]]:
+    def tcp_options(self) -> Optional[pulumi.Input['ComputeInstanceGroupHealthCheckTcpOptionsArgs']]:
         """
         TCP check options. The structure is documented below.
         """
         return pulumi.get(self, "tcp_options")
 
     @tcp_options.setter
-    def tcp_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeInstanceGroupHealthCheckTcpOptionArgs']]]]):
+    def tcp_options(self, value: Optional[pulumi.Input['ComputeInstanceGroupHealthCheckTcpOptionsArgs']]):
         pulumi.set(self, "tcp_options", value)
 
     @property
@@ -3586,7 +4746,7 @@ class ComputeInstanceGroupHealthCheckHttpOptionArgs:
 
 
 @pulumi.input_type
-class ComputeInstanceGroupHealthCheckTcpOptionArgs:
+class ComputeInstanceGroupHealthCheckTcpOptionsArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[int]):
         """
@@ -7282,7 +8442,7 @@ class KubernetesClusterMasterArgs:
                  regional: Optional[pulumi.Input['KubernetesClusterMasterRegionalArgs']] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
-                 version_info: Optional[pulumi.Input['KubernetesClusterMasterVersionInfoArgs']] = None,
+                 version_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterMasterVersionInfoArgs']]]] = None,
                  zonal: Optional[pulumi.Input['KubernetesClusterMasterZonalArgs']] = None):
         """
         :param pulumi.Input[str] cluster_ca_certificate: (Computed) PEM-encoded public certificate that is the root of trust for the Kubernetes cluster.
@@ -7298,7 +8458,7 @@ class KubernetesClusterMasterArgs:
         :param pulumi.Input['KubernetesClusterMasterRegionalArgs'] regional: (Optional) Initialize parameters for Regional Master (highly available master). The structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: (Optional) List of security group IDs to which the Kubernetes cluster belongs.
         :param pulumi.Input[str] version: (Optional) (Computed) Version of Kubernetes that will be used for master.
-        :param pulumi.Input['KubernetesClusterMasterVersionInfoArgs'] version_info: (Computed) Information about cluster version. The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterMasterVersionInfoArgs']]] version_infos: (Computed) Information about cluster version. The structure is documented below.
         :param pulumi.Input['KubernetesClusterMasterZonalArgs'] zonal: (Optional) Initialize parameters for Zonal Master (single node master). The structure is documented below.
         """
         if cluster_ca_certificate is not None:
@@ -7321,8 +8481,8 @@ class KubernetesClusterMasterArgs:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if version is not None:
             pulumi.set(__self__, "version", version)
-        if version_info is not None:
-            pulumi.set(__self__, "version_info", version_info)
+        if version_infos is not None:
+            pulumi.set(__self__, "version_infos", version_infos)
         if zonal is not None:
             pulumi.set(__self__, "zonal", zonal)
 
@@ -7450,16 +8610,16 @@ class KubernetesClusterMasterArgs:
         pulumi.set(self, "version", value)
 
     @property
-    @pulumi.getter(name="versionInfo")
-    def version_info(self) -> Optional[pulumi.Input['KubernetesClusterMasterVersionInfoArgs']]:
+    @pulumi.getter(name="versionInfos")
+    def version_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterMasterVersionInfoArgs']]]]:
         """
         (Computed) Information about cluster version. The structure is documented below.
         """
-        return pulumi.get(self, "version_info")
+        return pulumi.get(self, "version_infos")
 
-    @version_info.setter
-    def version_info(self, value: Optional[pulumi.Input['KubernetesClusterMasterVersionInfoArgs']]):
-        pulumi.set(self, "version_info", value)
+    @version_infos.setter
+    def version_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterMasterVersionInfoArgs']]]]):
+        pulumi.set(self, "version_infos", value)
 
     @property
     @pulumi.getter
@@ -15621,6 +16781,88 @@ class MdbSqlServerClusterUserPermissionArgs:
 
 
 @pulumi.input_type
+class ServerlessContainerImageArgs:
+    def __init__(__self__, *,
+                 url: pulumi.Input[str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 work_dir: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] url: Invoke URL for the Yandex Cloud Serverless Container
+        """
+        pulumi.set(__self__, "url", url)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if work_dir is not None:
+            pulumi.set(__self__, "work_dir", work_dir)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        Invoke URL for the Yandex Cloud Serverless Container
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter(name="workDir")
+    def work_dir(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "work_dir")
+
+    @work_dir.setter
+    def work_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "work_dir", value)
+
+
+@pulumi.input_type
 class StorageBucketCorsRuleArgs:
     def __init__(__self__, *,
                  allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -18154,6 +19396,859 @@ class GetAlbBackendGroupHttpBackendTlsValidationContextArgs:
 
 
 @pulumi.input_type
+class GetAlbBackendGroupStreamBackendArgs:
+    def __init__(__self__, *,
+                 healthcheck: 'GetAlbBackendGroupStreamBackendHealthcheckArgs',
+                 load_balancing_config: 'GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs',
+                 name: str,
+                 port: int,
+                 target_group_ids: Sequence[str],
+                 tls: 'GetAlbBackendGroupStreamBackendTlsArgs',
+                 weight: int):
+        """
+        :param 'GetAlbBackendGroupStreamBackendHealthcheckArgs' healthcheck: Healthcheck specification that will be used by this backend. Structure is documented below.
+        :param 'GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs' load_balancing_config: Load Balancing Config specification that will be used by this backend. Structure is documented below.
+        :param str name: - Name of the Backend Group.
+        :param int port: Port for incoming traffic.
+        :param Sequence[str] target_group_ids: References target groups for the backend.
+        :param 'GetAlbBackendGroupStreamBackendTlsArgs' tls: Tls specification that will be used by this backend. Structure is documented below.
+        :param int weight: Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+        """
+        pulumi.set(__self__, "healthcheck", healthcheck)
+        pulumi.set(__self__, "load_balancing_config", load_balancing_config)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "target_group_ids", target_group_ids)
+        pulumi.set(__self__, "tls", tls)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def healthcheck(self) -> 'GetAlbBackendGroupStreamBackendHealthcheckArgs':
+        """
+        Healthcheck specification that will be used by this backend. Structure is documented below.
+        """
+        return pulumi.get(self, "healthcheck")
+
+    @healthcheck.setter
+    def healthcheck(self, value: 'GetAlbBackendGroupStreamBackendHealthcheckArgs'):
+        pulumi.set(self, "healthcheck", value)
+
+    @property
+    @pulumi.getter(name="loadBalancingConfig")
+    def load_balancing_config(self) -> 'GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs':
+        """
+        Load Balancing Config specification that will be used by this backend. Structure is documented below.
+        """
+        return pulumi.get(self, "load_balancing_config")
+
+    @load_balancing_config.setter
+    def load_balancing_config(self, value: 'GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs'):
+        pulumi.set(self, "load_balancing_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        - Name of the Backend Group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port for incoming traffic.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: int):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="targetGroupIds")
+    def target_group_ids(self) -> Sequence[str]:
+        """
+        References target groups for the backend.
+        """
+        return pulumi.get(self, "target_group_ids")
+
+    @target_group_ids.setter
+    def target_group_ids(self, value: Sequence[str]):
+        pulumi.set(self, "target_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def tls(self) -> 'GetAlbBackendGroupStreamBackendTlsArgs':
+        """
+        Tls specification that will be used by this backend. Structure is documented below.
+        """
+        return pulumi.get(self, "tls")
+
+    @tls.setter
+    def tls(self, value: 'GetAlbBackendGroupStreamBackendTlsArgs'):
+        pulumi.set(self, "tls", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: int):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class GetAlbBackendGroupStreamBackendHealthcheckArgs:
+    def __init__(__self__, *,
+                 grpc_healthcheck: 'GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs',
+                 healthcheck_port: int,
+                 healthy_threshold: int,
+                 http_healthcheck: 'GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs',
+                 interval: str,
+                 interval_jitter_percent: float,
+                 stream_healthcheck: 'GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs',
+                 timeout: str,
+                 unhealthy_threshold: int):
+        """
+        :param 'GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs' grpc_healthcheck: Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param int healthcheck_port: Optional alternative port for health checking.
+        :param int healthy_threshold: Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+        :param 'GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs' http_healthcheck: Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param str interval: Interval between health checks.
+        :param float interval_jitter_percent: An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * interval_jitter_percent / 100) will be added to the wait time.
+        :param 'GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs' stream_healthcheck: Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        :param str timeout: Time to wait for a health check response.
+        :param int unhealthy_threshold: Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+        """
+        pulumi.set(__self__, "grpc_healthcheck", grpc_healthcheck)
+        pulumi.set(__self__, "healthcheck_port", healthcheck_port)
+        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        pulumi.set(__self__, "http_healthcheck", http_healthcheck)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "interval_jitter_percent", interval_jitter_percent)
+        pulumi.set(__self__, "stream_healthcheck", stream_healthcheck)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+
+    @property
+    @pulumi.getter(name="grpcHealthcheck")
+    def grpc_healthcheck(self) -> 'GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs':
+        """
+        Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
+        return pulumi.get(self, "grpc_healthcheck")
+
+    @grpc_healthcheck.setter
+    def grpc_healthcheck(self, value: 'GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs'):
+        pulumi.set(self, "grpc_healthcheck", value)
+
+    @property
+    @pulumi.getter(name="healthcheckPort")
+    def healthcheck_port(self) -> int:
+        """
+        Optional alternative port for health checking.
+        """
+        return pulumi.get(self, "healthcheck_port")
+
+    @healthcheck_port.setter
+    def healthcheck_port(self, value: int):
+        pulumi.set(self, "healthcheck_port", value)
+
+    @property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> int:
+        """
+        Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @healthy_threshold.setter
+    def healthy_threshold(self, value: int):
+        pulumi.set(self, "healthy_threshold", value)
+
+    @property
+    @pulumi.getter(name="httpHealthcheck")
+    def http_healthcheck(self) -> 'GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs':
+        """
+        Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
+        return pulumi.get(self, "http_healthcheck")
+
+    @http_healthcheck.setter
+    def http_healthcheck(self, value: 'GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs'):
+        pulumi.set(self, "http_healthcheck", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> str:
+        """
+        Interval between health checks.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: str):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter(name="intervalJitterPercent")
+    def interval_jitter_percent(self) -> float:
+        """
+        An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * interval_jitter_percent / 100) will be added to the wait time.
+        """
+        return pulumi.get(self, "interval_jitter_percent")
+
+    @interval_jitter_percent.setter
+    def interval_jitter_percent(self, value: float):
+        pulumi.set(self, "interval_jitter_percent", value)
+
+    @property
+    @pulumi.getter(name="streamHealthcheck")
+    def stream_healthcheck(self) -> 'GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs':
+        """
+        Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+        """
+        return pulumi.get(self, "stream_healthcheck")
+
+    @stream_healthcheck.setter
+    def stream_healthcheck(self, value: 'GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs'):
+        pulumi.set(self, "stream_healthcheck", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> str:
+        """
+        Time to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: str):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> int:
+        """
+        Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+        """
+        return pulumi.get(self, "unhealthy_threshold")
+
+    @unhealthy_threshold.setter
+    def unhealthy_threshold(self, value: int):
+        pulumi.set(self, "unhealthy_threshold", value)
+
+
+@pulumi.input_type
+class GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs:
+    def __init__(__self__, *,
+                 service_name: str):
+        """
+        :param str service_name: Optional service name for grpc.health.v1.HealthCheckRequest message.
+        """
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Optional service name for grpc.health.v1.HealthCheckRequest message.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: str):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs:
+    def __init__(__self__, *,
+                 host: str,
+                 http2: bool,
+                 path: str):
+        """
+        :param str host: Optional "Host" HTTP header value.
+        :param bool http2: If set, health checks will use HTTP2.
+        :param str path: HTTP path.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "http2", http2)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Optional "Host" HTTP header value.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: str):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def http2(self) -> bool:
+        """
+        If set, health checks will use HTTP2.
+        """
+        return pulumi.get(self, "http2")
+
+    @http2.setter
+    def http2(self, value: bool):
+        pulumi.set(self, "http2", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        HTTP path.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: str):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs:
+    def __init__(__self__, *,
+                 receive: str,
+                 send: str):
+        """
+        :param str receive: Optional text to search in reply.
+        :param str send: Optional message to send. If empty, it's a connect-only health check.
+        """
+        pulumi.set(__self__, "receive", receive)
+        pulumi.set(__self__, "send", send)
+
+    @property
+    @pulumi.getter
+    def receive(self) -> str:
+        """
+        Optional text to search in reply.
+        """
+        return pulumi.get(self, "receive")
+
+    @receive.setter
+    def receive(self, value: str):
+        pulumi.set(self, "receive", value)
+
+    @property
+    @pulumi.getter
+    def send(self) -> str:
+        """
+        Optional message to send. If empty, it's a connect-only health check.
+        """
+        return pulumi.get(self, "send")
+
+    @send.setter
+    def send(self, value: str):
+        pulumi.set(self, "send", value)
+
+
+@pulumi.input_type
+class GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs:
+    def __init__(__self__, *,
+                 locality_aware_routing_percent: int,
+                 panic_threshold: int,
+                 strict_locality: bool):
+        """
+        :param int locality_aware_routing_percent: Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+        :param int panic_threshold: If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+        :param bool strict_locality: If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+        """
+        pulumi.set(__self__, "locality_aware_routing_percent", locality_aware_routing_percent)
+        pulumi.set(__self__, "panic_threshold", panic_threshold)
+        pulumi.set(__self__, "strict_locality", strict_locality)
+
+    @property
+    @pulumi.getter(name="localityAwareRoutingPercent")
+    def locality_aware_routing_percent(self) -> int:
+        """
+        Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+        """
+        return pulumi.get(self, "locality_aware_routing_percent")
+
+    @locality_aware_routing_percent.setter
+    def locality_aware_routing_percent(self, value: int):
+        pulumi.set(self, "locality_aware_routing_percent", value)
+
+    @property
+    @pulumi.getter(name="panicThreshold")
+    def panic_threshold(self) -> int:
+        """
+        If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+        """
+        return pulumi.get(self, "panic_threshold")
+
+    @panic_threshold.setter
+    def panic_threshold(self, value: int):
+        pulumi.set(self, "panic_threshold", value)
+
+    @property
+    @pulumi.getter(name="strictLocality")
+    def strict_locality(self) -> bool:
+        """
+        If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+        """
+        return pulumi.get(self, "strict_locality")
+
+    @strict_locality.setter
+    def strict_locality(self, value: bool):
+        pulumi.set(self, "strict_locality", value)
+
+
+@pulumi.input_type
+class GetAlbBackendGroupStreamBackendTlsArgs:
+    def __init__(__self__, *,
+                 sni: str,
+                 validation_context: 'GetAlbBackendGroupStreamBackendTlsValidationContextArgs'):
+        """
+        :param str sni: [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+               * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+               * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+        """
+        pulumi.set(__self__, "sni", sni)
+        pulumi.set(__self__, "validation_context", validation_context)
+
+    @property
+    @pulumi.getter
+    def sni(self) -> str:
+        """
+        [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+        * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+        * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+        """
+        return pulumi.get(self, "sni")
+
+    @sni.setter
+    def sni(self, value: str):
+        pulumi.set(self, "sni", value)
+
+    @property
+    @pulumi.getter(name="validationContext")
+    def validation_context(self) -> 'GetAlbBackendGroupStreamBackendTlsValidationContextArgs':
+        return pulumi.get(self, "validation_context")
+
+    @validation_context.setter
+    def validation_context(self, value: 'GetAlbBackendGroupStreamBackendTlsValidationContextArgs'):
+        pulumi.set(self, "validation_context", value)
+
+
+@pulumi.input_type
+class GetAlbBackendGroupStreamBackendTlsValidationContextArgs:
+    def __init__(__self__, *,
+                 trusted_ca_bytes: str,
+                 trusted_ca_id: str):
+        pulumi.set(__self__, "trusted_ca_bytes", trusted_ca_bytes)
+        pulumi.set(__self__, "trusted_ca_id", trusted_ca_id)
+
+    @property
+    @pulumi.getter(name="trustedCaBytes")
+    def trusted_ca_bytes(self) -> str:
+        return pulumi.get(self, "trusted_ca_bytes")
+
+    @trusted_ca_bytes.setter
+    def trusted_ca_bytes(self, value: str):
+        pulumi.set(self, "trusted_ca_bytes", value)
+
+    @property
+    @pulumi.getter(name="trustedCaId")
+    def trusted_ca_id(self) -> str:
+        return pulumi.get(self, "trusted_ca_id")
+
+    @trusted_ca_id.setter
+    def trusted_ca_id(self, value: str):
+        pulumi.set(self, "trusted_ca_id", value)
+
+
+@pulumi.input_type
+class GetCdnResourceOptionsArgs:
+    def __init__(__self__, *,
+                 allowed_http_methods: Sequence[str],
+                 browser_cache_settings: int,
+                 cache_http_headers: Sequence[str],
+                 cors: Sequence[str],
+                 custom_host_header: str,
+                 custom_server_name: str,
+                 disable_cache: bool,
+                 disable_proxy_force_ranges: bool,
+                 edge_cache_settings: int,
+                 fetched_compressed: bool,
+                 forward_host_header: bool,
+                 gzip_on: bool,
+                 ignore_cookie: bool,
+                 ignore_query_params: bool,
+                 proxy_cache_methods_set: bool,
+                 query_params_blacklists: Sequence[str],
+                 query_params_whitelists: Sequence[str],
+                 redirect_http_to_https: bool,
+                 redirect_https_to_http: bool,
+                 slice: bool,
+                 static_request_headers: Sequence[str],
+                 static_response_headers: Mapping[str, str]):
+        """
+        :param Sequence[str] allowed_http_methods: HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
+        :param int browser_cache_settings: set up a cache period for the end-users browser. Content will be cached due to origin settings. If there are no cache settings on your origin, the content will not be cached. The list of HTTP response codes that can be cached in browsers: 200, 201, 204, 206, 301, 302, 303, 304, 307, 308. Other response codes will not be cached. The default value is 4 days.
+        :param Sequence[str] cache_http_headers: list HTTP headers that must be included in responses to clients.
+        :param Sequence[str] cors: parameter that lets browsers get access to selected resources from a domain different to a domain from which the request is received.
+        :param str custom_host_header: custom value for the Host header. Your server must be able to process requests with the chosen header.
+        :param str custom_server_name: wildcard additional CNAME. If a resource has a wildcard additional CNAME, you can use your own certificate for content delivery via HTTPS. Read-only.
+        :param bool disable_cache: setup a cache status.
+        :param bool disable_proxy_force_ranges: disabling proxy force ranges.
+        :param int edge_cache_settings: content will be cached according to origin cache settings. The value applies for a response with codes 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 if an origin server does not have caching HTTP headers. Responses with other codes will not be cached.
+        :param bool fetched_compressed: option helps you to reduce the bandwidth between origin and CDN servers. Also, content delivery speed becomes higher because of reducing the time for compressing files in a CDN.
+        :param bool forward_host_header: choose the Forward Host header option if is important to send in the request to the Origin the same Host header as was sent in the request to CDN server.
+        :param bool gzip_on: GZip compression at CDN servers reduces file size by 70% and can be as high as 90%.
+        :param bool ignore_cookie: set for ignoring cookie.
+        :param bool ignore_query_params: files with different query parameters are cached as objects with the same key regardless of the parameter value. selected by default.
+        :param bool proxy_cache_methods_set: allows caching for GET, HEAD and POST requests.
+        :param Sequence[str] query_params_blacklists: files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
+        :param Sequence[str] query_params_whitelists: files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
+        :param bool redirect_http_to_https: set up a redirect from HTTPS to HTTP.
+        :param bool redirect_https_to_http: set up a redirect from HTTP to HTTPS.
+        :param bool slice: files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
+        :param Sequence[str] static_request_headers: set up custom headers that CDN servers send in requests to origins.
+        """
+        pulumi.set(__self__, "allowed_http_methods", allowed_http_methods)
+        pulumi.set(__self__, "browser_cache_settings", browser_cache_settings)
+        pulumi.set(__self__, "cache_http_headers", cache_http_headers)
+        pulumi.set(__self__, "cors", cors)
+        pulumi.set(__self__, "custom_host_header", custom_host_header)
+        pulumi.set(__self__, "custom_server_name", custom_server_name)
+        pulumi.set(__self__, "disable_cache", disable_cache)
+        pulumi.set(__self__, "disable_proxy_force_ranges", disable_proxy_force_ranges)
+        pulumi.set(__self__, "edge_cache_settings", edge_cache_settings)
+        pulumi.set(__self__, "fetched_compressed", fetched_compressed)
+        pulumi.set(__self__, "forward_host_header", forward_host_header)
+        pulumi.set(__self__, "gzip_on", gzip_on)
+        pulumi.set(__self__, "ignore_cookie", ignore_cookie)
+        pulumi.set(__self__, "ignore_query_params", ignore_query_params)
+        pulumi.set(__self__, "proxy_cache_methods_set", proxy_cache_methods_set)
+        pulumi.set(__self__, "query_params_blacklists", query_params_blacklists)
+        pulumi.set(__self__, "query_params_whitelists", query_params_whitelists)
+        pulumi.set(__self__, "redirect_http_to_https", redirect_http_to_https)
+        pulumi.set(__self__, "redirect_https_to_http", redirect_https_to_http)
+        pulumi.set(__self__, "slice", slice)
+        pulumi.set(__self__, "static_request_headers", static_request_headers)
+        pulumi.set(__self__, "static_response_headers", static_response_headers)
+
+    @property
+    @pulumi.getter(name="allowedHttpMethods")
+    def allowed_http_methods(self) -> Sequence[str]:
+        """
+        HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
+        """
+        return pulumi.get(self, "allowed_http_methods")
+
+    @allowed_http_methods.setter
+    def allowed_http_methods(self, value: Sequence[str]):
+        pulumi.set(self, "allowed_http_methods", value)
+
+    @property
+    @pulumi.getter(name="browserCacheSettings")
+    def browser_cache_settings(self) -> int:
+        """
+        set up a cache period for the end-users browser. Content will be cached due to origin settings. If there are no cache settings on your origin, the content will not be cached. The list of HTTP response codes that can be cached in browsers: 200, 201, 204, 206, 301, 302, 303, 304, 307, 308. Other response codes will not be cached. The default value is 4 days.
+        """
+        return pulumi.get(self, "browser_cache_settings")
+
+    @browser_cache_settings.setter
+    def browser_cache_settings(self, value: int):
+        pulumi.set(self, "browser_cache_settings", value)
+
+    @property
+    @pulumi.getter(name="cacheHttpHeaders")
+    def cache_http_headers(self) -> Sequence[str]:
+        """
+        list HTTP headers that must be included in responses to clients.
+        """
+        return pulumi.get(self, "cache_http_headers")
+
+    @cache_http_headers.setter
+    def cache_http_headers(self, value: Sequence[str]):
+        pulumi.set(self, "cache_http_headers", value)
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Sequence[str]:
+        """
+        parameter that lets browsers get access to selected resources from a domain different to a domain from which the request is received.
+        """
+        return pulumi.get(self, "cors")
+
+    @cors.setter
+    def cors(self, value: Sequence[str]):
+        pulumi.set(self, "cors", value)
+
+    @property
+    @pulumi.getter(name="customHostHeader")
+    def custom_host_header(self) -> str:
+        """
+        custom value for the Host header. Your server must be able to process requests with the chosen header.
+        """
+        return pulumi.get(self, "custom_host_header")
+
+    @custom_host_header.setter
+    def custom_host_header(self, value: str):
+        pulumi.set(self, "custom_host_header", value)
+
+    @property
+    @pulumi.getter(name="customServerName")
+    def custom_server_name(self) -> str:
+        """
+        wildcard additional CNAME. If a resource has a wildcard additional CNAME, you can use your own certificate for content delivery via HTTPS. Read-only.
+        """
+        return pulumi.get(self, "custom_server_name")
+
+    @custom_server_name.setter
+    def custom_server_name(self, value: str):
+        pulumi.set(self, "custom_server_name", value)
+
+    @property
+    @pulumi.getter(name="disableCache")
+    def disable_cache(self) -> bool:
+        """
+        setup a cache status.
+        """
+        return pulumi.get(self, "disable_cache")
+
+    @disable_cache.setter
+    def disable_cache(self, value: bool):
+        pulumi.set(self, "disable_cache", value)
+
+    @property
+    @pulumi.getter(name="disableProxyForceRanges")
+    def disable_proxy_force_ranges(self) -> bool:
+        """
+        disabling proxy force ranges.
+        """
+        return pulumi.get(self, "disable_proxy_force_ranges")
+
+    @disable_proxy_force_ranges.setter
+    def disable_proxy_force_ranges(self, value: bool):
+        pulumi.set(self, "disable_proxy_force_ranges", value)
+
+    @property
+    @pulumi.getter(name="edgeCacheSettings")
+    def edge_cache_settings(self) -> int:
+        """
+        content will be cached according to origin cache settings. The value applies for a response with codes 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 if an origin server does not have caching HTTP headers. Responses with other codes will not be cached.
+        """
+        return pulumi.get(self, "edge_cache_settings")
+
+    @edge_cache_settings.setter
+    def edge_cache_settings(self, value: int):
+        pulumi.set(self, "edge_cache_settings", value)
+
+    @property
+    @pulumi.getter(name="fetchedCompressed")
+    def fetched_compressed(self) -> bool:
+        """
+        option helps you to reduce the bandwidth between origin and CDN servers. Also, content delivery speed becomes higher because of reducing the time for compressing files in a CDN.
+        """
+        return pulumi.get(self, "fetched_compressed")
+
+    @fetched_compressed.setter
+    def fetched_compressed(self, value: bool):
+        pulumi.set(self, "fetched_compressed", value)
+
+    @property
+    @pulumi.getter(name="forwardHostHeader")
+    def forward_host_header(self) -> bool:
+        """
+        choose the Forward Host header option if is important to send in the request to the Origin the same Host header as was sent in the request to CDN server.
+        """
+        return pulumi.get(self, "forward_host_header")
+
+    @forward_host_header.setter
+    def forward_host_header(self, value: bool):
+        pulumi.set(self, "forward_host_header", value)
+
+    @property
+    @pulumi.getter(name="gzipOn")
+    def gzip_on(self) -> bool:
+        """
+        GZip compression at CDN servers reduces file size by 70% and can be as high as 90%.
+        """
+        return pulumi.get(self, "gzip_on")
+
+    @gzip_on.setter
+    def gzip_on(self, value: bool):
+        pulumi.set(self, "gzip_on", value)
+
+    @property
+    @pulumi.getter(name="ignoreCookie")
+    def ignore_cookie(self) -> bool:
+        """
+        set for ignoring cookie.
+        """
+        return pulumi.get(self, "ignore_cookie")
+
+    @ignore_cookie.setter
+    def ignore_cookie(self, value: bool):
+        pulumi.set(self, "ignore_cookie", value)
+
+    @property
+    @pulumi.getter(name="ignoreQueryParams")
+    def ignore_query_params(self) -> bool:
+        """
+        files with different query parameters are cached as objects with the same key regardless of the parameter value. selected by default.
+        """
+        return pulumi.get(self, "ignore_query_params")
+
+    @ignore_query_params.setter
+    def ignore_query_params(self, value: bool):
+        pulumi.set(self, "ignore_query_params", value)
+
+    @property
+    @pulumi.getter(name="proxyCacheMethodsSet")
+    def proxy_cache_methods_set(self) -> bool:
+        """
+        allows caching for GET, HEAD and POST requests.
+        """
+        return pulumi.get(self, "proxy_cache_methods_set")
+
+    @proxy_cache_methods_set.setter
+    def proxy_cache_methods_set(self, value: bool):
+        pulumi.set(self, "proxy_cache_methods_set", value)
+
+    @property
+    @pulumi.getter(name="queryParamsBlacklists")
+    def query_params_blacklists(self) -> Sequence[str]:
+        """
+        files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
+        """
+        return pulumi.get(self, "query_params_blacklists")
+
+    @query_params_blacklists.setter
+    def query_params_blacklists(self, value: Sequence[str]):
+        pulumi.set(self, "query_params_blacklists", value)
+
+    @property
+    @pulumi.getter(name="queryParamsWhitelists")
+    def query_params_whitelists(self) -> Sequence[str]:
+        """
+        files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
+        """
+        return pulumi.get(self, "query_params_whitelists")
+
+    @query_params_whitelists.setter
+    def query_params_whitelists(self, value: Sequence[str]):
+        pulumi.set(self, "query_params_whitelists", value)
+
+    @property
+    @pulumi.getter(name="redirectHttpToHttps")
+    def redirect_http_to_https(self) -> bool:
+        """
+        set up a redirect from HTTPS to HTTP.
+        """
+        return pulumi.get(self, "redirect_http_to_https")
+
+    @redirect_http_to_https.setter
+    def redirect_http_to_https(self, value: bool):
+        pulumi.set(self, "redirect_http_to_https", value)
+
+    @property
+    @pulumi.getter(name="redirectHttpsToHttp")
+    def redirect_https_to_http(self) -> bool:
+        """
+        set up a redirect from HTTP to HTTPS.
+        """
+        return pulumi.get(self, "redirect_https_to_http")
+
+    @redirect_https_to_http.setter
+    def redirect_https_to_http(self, value: bool):
+        pulumi.set(self, "redirect_https_to_http", value)
+
+    @property
+    @pulumi.getter
+    def slice(self) -> bool:
+        """
+        files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
+        """
+        return pulumi.get(self, "slice")
+
+    @slice.setter
+    def slice(self, value: bool):
+        pulumi.set(self, "slice", value)
+
+    @property
+    @pulumi.getter(name="staticRequestHeaders")
+    def static_request_headers(self) -> Sequence[str]:
+        """
+        set up custom headers that CDN servers send in requests to origins.
+        """
+        return pulumi.get(self, "static_request_headers")
+
+    @static_request_headers.setter
+    def static_request_headers(self, value: Sequence[str]):
+        pulumi.set(self, "static_request_headers", value)
+
+    @property
+    @pulumi.getter(name="staticResponseHeaders")
+    def static_response_headers(self) -> Mapping[str, str]:
+        return pulumi.get(self, "static_response_headers")
+
+    @static_response_headers.setter
+    def static_response_headers(self, value: Mapping[str, str]):
+        pulumi.set(self, "static_response_headers", value)
+
+
+@pulumi.input_type
+class GetCdnResourceSslCertificateArgs:
+    def __init__(__self__, *,
+                 status: str,
+                 type: str,
+                 certificate_manager_id: Optional[str] = None):
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        if certificate_manager_id is not None:
+            pulumi.set(__self__, "certificate_manager_id", certificate_manager_id)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="certificateManagerId")
+    def certificate_manager_id(self) -> Optional[str]:
+        return pulumi.get(self, "certificate_manager_id")
+
+    @certificate_manager_id.setter
+    def certificate_manager_id(self, value: Optional[str]):
+        pulumi.set(self, "certificate_manager_id", value)
+
+
+@pulumi.input_type
 class GetComputeDiskDiskPlacementPolicyArgs:
     def __init__(__self__, *,
                  disk_placement_group_id: str):
@@ -18183,29 +20278,6 @@ class GetComputeInstancePlacementPolicyArgs:
     @placement_group_id.setter
     def placement_group_id(self, value: str):
         pulumi.set(self, "placement_group_id", value)
-
-
-@pulumi.input_type
-class GetComputeInstanceSchedulingPolicyArgs:
-    def __init__(__self__, *,
-                 preemptible: Optional[bool] = None):
-        """
-        :param bool preemptible: (Optional) Specifies if the instance is preemptible. Defaults to false.
-        """
-        if preemptible is not None:
-            pulumi.set(__self__, "preemptible", preemptible)
-
-    @property
-    @pulumi.getter
-    def preemptible(self) -> Optional[bool]:
-        """
-        (Optional) Specifies if the instance is preemptible. Defaults to false.
-        """
-        return pulumi.get(self, "preemptible")
-
-    @preemptible.setter
-    def preemptible(self, value: Optional[bool]):
-        pulumi.set(self, "preemptible", value)
 
 
 @pulumi.input_type

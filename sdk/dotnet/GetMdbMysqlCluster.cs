@@ -216,7 +216,7 @@ namespace Pulumi.Yandex
         /// Access policy to the MySQL cluster. The structure is documented below.
         /// </summary>
         public readonly Outputs.GetMdbMysqlClusterAccessResult Access;
-        public readonly Outputs.GetMdbMysqlClusterBackupWindowStartResult BackupWindowStart;
+        public readonly ImmutableArray<Outputs.GetMdbMysqlClusterBackupWindowStartResult> BackupWindowStarts;
         public readonly string ClusterId;
         /// <summary>
         /// Creation timestamp of the key.
@@ -255,7 +255,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Maintenance window settings of the MySQL cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbMysqlClusterMaintenanceWindowResult MaintenanceWindow;
+        public readonly ImmutableArray<Outputs.GetMdbMysqlClusterMaintenanceWindowResult> MaintenanceWindows;
         /// <summary>
         /// MySQL cluster config.
         /// </summary>
@@ -271,7 +271,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Resources allocated to hosts of the MySQL cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbMysqlClusterResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetMdbMysqlClusterResourceResult> Resources;
         /// <summary>
         /// A set of ids of security groups assigned to hosts of the cluster.
         /// </summary>
@@ -293,7 +293,7 @@ namespace Pulumi.Yandex
         private GetMdbMysqlClusterResult(
             Outputs.GetMdbMysqlClusterAccessResult access,
 
-            Outputs.GetMdbMysqlClusterBackupWindowStartResult backupWindowStart,
+            ImmutableArray<Outputs.GetMdbMysqlClusterBackupWindowStartResult> backupWindowStarts,
 
             string clusterId,
 
@@ -317,7 +317,7 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string>? labels,
 
-            Outputs.GetMdbMysqlClusterMaintenanceWindowResult maintenanceWindow,
+            ImmutableArray<Outputs.GetMdbMysqlClusterMaintenanceWindowResult> maintenanceWindows,
 
             ImmutableDictionary<string, string> mysqlConfig,
 
@@ -325,7 +325,7 @@ namespace Pulumi.Yandex
 
             string networkId,
 
-            Outputs.GetMdbMysqlClusterResourcesResult resources,
+            ImmutableArray<Outputs.GetMdbMysqlClusterResourceResult> resources,
 
             ImmutableArray<string> securityGroupIds,
 
@@ -336,7 +336,7 @@ namespace Pulumi.Yandex
             string version)
         {
             Access = access;
-            BackupWindowStart = backupWindowStart;
+            BackupWindowStarts = backupWindowStarts;
             ClusterId = clusterId;
             CreatedAt = createdAt;
             Databases = databases;
@@ -348,7 +348,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
-            MaintenanceWindow = maintenanceWindow;
+            MaintenanceWindows = maintenanceWindows;
             MysqlConfig = mysqlConfig;
             Name = name;
             NetworkId = networkId;

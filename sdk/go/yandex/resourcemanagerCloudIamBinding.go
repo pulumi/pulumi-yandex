@@ -186,7 +186,7 @@ type ResourcemanagerCloudIamBindingInput interface {
 }
 
 func (*ResourcemanagerCloudIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerCloudIamBinding)(nil))
+	return reflect.TypeOf((**ResourcemanagerCloudIamBinding)(nil)).Elem()
 }
 
 func (i *ResourcemanagerCloudIamBinding) ToResourcemanagerCloudIamBindingOutput() ResourcemanagerCloudIamBindingOutput {
@@ -195,35 +195,6 @@ func (i *ResourcemanagerCloudIamBinding) ToResourcemanagerCloudIamBindingOutput(
 
 func (i *ResourcemanagerCloudIamBinding) ToResourcemanagerCloudIamBindingOutputWithContext(ctx context.Context) ResourcemanagerCloudIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerCloudIamBindingOutput)
-}
-
-func (i *ResourcemanagerCloudIamBinding) ToResourcemanagerCloudIamBindingPtrOutput() ResourcemanagerCloudIamBindingPtrOutput {
-	return i.ToResourcemanagerCloudIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *ResourcemanagerCloudIamBinding) ToResourcemanagerCloudIamBindingPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerCloudIamBindingPtrOutput)
-}
-
-type ResourcemanagerCloudIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToResourcemanagerCloudIamBindingPtrOutput() ResourcemanagerCloudIamBindingPtrOutput
-	ToResourcemanagerCloudIamBindingPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamBindingPtrOutput
-}
-
-type resourcemanagerCloudIamBindingPtrType ResourcemanagerCloudIamBindingArgs
-
-func (*resourcemanagerCloudIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerCloudIamBinding)(nil))
-}
-
-func (i *resourcemanagerCloudIamBindingPtrType) ToResourcemanagerCloudIamBindingPtrOutput() ResourcemanagerCloudIamBindingPtrOutput {
-	return i.ToResourcemanagerCloudIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *resourcemanagerCloudIamBindingPtrType) ToResourcemanagerCloudIamBindingPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourcemanagerCloudIamBindingPtrOutput)
 }
 
 // ResourcemanagerCloudIamBindingArrayInput is an input type that accepts ResourcemanagerCloudIamBindingArray and ResourcemanagerCloudIamBindingArrayOutput values.
@@ -279,7 +250,7 @@ func (i ResourcemanagerCloudIamBindingMap) ToResourcemanagerCloudIamBindingMapOu
 type ResourcemanagerCloudIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerCloudIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcemanagerCloudIamBinding)(nil))
+	return reflect.TypeOf((**ResourcemanagerCloudIamBinding)(nil)).Elem()
 }
 
 func (o ResourcemanagerCloudIamBindingOutput) ToResourcemanagerCloudIamBindingOutput() ResourcemanagerCloudIamBindingOutput {
@@ -290,44 +261,10 @@ func (o ResourcemanagerCloudIamBindingOutput) ToResourcemanagerCloudIamBindingOu
 	return o
 }
 
-func (o ResourcemanagerCloudIamBindingOutput) ToResourcemanagerCloudIamBindingPtrOutput() ResourcemanagerCloudIamBindingPtrOutput {
-	return o.ToResourcemanagerCloudIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o ResourcemanagerCloudIamBindingOutput) ToResourcemanagerCloudIamBindingPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcemanagerCloudIamBinding) *ResourcemanagerCloudIamBinding {
-		return &v
-	}).(ResourcemanagerCloudIamBindingPtrOutput)
-}
-
-type ResourcemanagerCloudIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (ResourcemanagerCloudIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourcemanagerCloudIamBinding)(nil))
-}
-
-func (o ResourcemanagerCloudIamBindingPtrOutput) ToResourcemanagerCloudIamBindingPtrOutput() ResourcemanagerCloudIamBindingPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerCloudIamBindingPtrOutput) ToResourcemanagerCloudIamBindingPtrOutputWithContext(ctx context.Context) ResourcemanagerCloudIamBindingPtrOutput {
-	return o
-}
-
-func (o ResourcemanagerCloudIamBindingPtrOutput) Elem() ResourcemanagerCloudIamBindingOutput {
-	return o.ApplyT(func(v *ResourcemanagerCloudIamBinding) ResourcemanagerCloudIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret ResourcemanagerCloudIamBinding
-		return ret
-	}).(ResourcemanagerCloudIamBindingOutput)
-}
-
 type ResourcemanagerCloudIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerCloudIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourcemanagerCloudIamBinding)(nil))
+	return reflect.TypeOf((*[]*ResourcemanagerCloudIamBinding)(nil)).Elem()
 }
 
 func (o ResourcemanagerCloudIamBindingArrayOutput) ToResourcemanagerCloudIamBindingArrayOutput() ResourcemanagerCloudIamBindingArrayOutput {
@@ -339,15 +276,15 @@ func (o ResourcemanagerCloudIamBindingArrayOutput) ToResourcemanagerCloudIamBind
 }
 
 func (o ResourcemanagerCloudIamBindingArrayOutput) Index(i pulumi.IntInput) ResourcemanagerCloudIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourcemanagerCloudIamBinding {
-		return vs[0].([]ResourcemanagerCloudIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourcemanagerCloudIamBinding {
+		return vs[0].([]*ResourcemanagerCloudIamBinding)[vs[1].(int)]
 	}).(ResourcemanagerCloudIamBindingOutput)
 }
 
 type ResourcemanagerCloudIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (ResourcemanagerCloudIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ResourcemanagerCloudIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*ResourcemanagerCloudIamBinding)(nil)).Elem()
 }
 
 func (o ResourcemanagerCloudIamBindingMapOutput) ToResourcemanagerCloudIamBindingMapOutput() ResourcemanagerCloudIamBindingMapOutput {
@@ -359,18 +296,16 @@ func (o ResourcemanagerCloudIamBindingMapOutput) ToResourcemanagerCloudIamBindin
 }
 
 func (o ResourcemanagerCloudIamBindingMapOutput) MapIndex(k pulumi.StringInput) ResourcemanagerCloudIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourcemanagerCloudIamBinding {
-		return vs[0].(map[string]ResourcemanagerCloudIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ResourcemanagerCloudIamBinding {
+		return vs[0].(map[string]*ResourcemanagerCloudIamBinding)[vs[1].(string)]
 	}).(ResourcemanagerCloudIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerCloudIamBindingInput)(nil)).Elem(), &ResourcemanagerCloudIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerCloudIamBindingPtrInput)(nil)).Elem(), &ResourcemanagerCloudIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerCloudIamBindingArrayInput)(nil)).Elem(), ResourcemanagerCloudIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcemanagerCloudIamBindingMapInput)(nil)).Elem(), ResourcemanagerCloudIamBindingMap{})
 	pulumi.RegisterOutputType(ResourcemanagerCloudIamBindingOutput{})
-	pulumi.RegisterOutputType(ResourcemanagerCloudIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerCloudIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(ResourcemanagerCloudIamBindingMapOutput{})
 }

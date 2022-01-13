@@ -72,14 +72,14 @@ export class FunctionIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: FunctionIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionIamBindingArgs | FunctionIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionIamBindingState | undefined;
-            inputs["functionId"] = state ? state.functionId : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["sleepAfter"] = state ? state.sleepAfter : undefined;
+            resourceInputs["functionId"] = state ? state.functionId : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["sleepAfter"] = state ? state.sleepAfter : undefined;
         } else {
             const args = argsOrState as FunctionIamBindingArgs | undefined;
             if ((!args || args.functionId === undefined) && !opts.urn) {
@@ -91,15 +91,13 @@ export class FunctionIamBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["functionId"] = args ? args.functionId : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["sleepAfter"] = args ? args.sleepAfter : undefined;
+            resourceInputs["functionId"] = args ? args.functionId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FunctionIamBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FunctionIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

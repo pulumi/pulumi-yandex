@@ -27,9 +27,7 @@ export function getComputePlacementGroup(args?: GetComputePlacementGroupArgs, op
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getComputePlacementGroup:getComputePlacementGroup", {
         "description": args.description,
         "folderId": args.folderId,

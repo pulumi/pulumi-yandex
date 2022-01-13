@@ -11,9 +11,7 @@ export function getMdbGreenplumCluster(args?: GetMdbGreenplumClusterArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbGreenplumCluster:getMdbGreenplumCluster", {
         "clusterId": args.clusterId,
         "folderId": args.folderId,
@@ -51,14 +49,14 @@ export interface GetMdbGreenplumClusterResult {
     readonly labels: {[key: string]: string};
     readonly masterHostCount: number;
     readonly masterHosts: outputs.GetMdbGreenplumClusterMasterHost[];
-    readonly masterSubcluster: outputs.GetMdbGreenplumClusterMasterSubcluster;
+    readonly masterSubclusters: outputs.GetMdbGreenplumClusterMasterSubcluster[];
     readonly name: string;
     readonly networkId: string;
     readonly securityGroupIds: string[];
     readonly segmentHostCount: number;
     readonly segmentHosts: outputs.GetMdbGreenplumClusterSegmentHost[];
     readonly segmentInHost: number;
-    readonly segmentSubcluster: outputs.GetMdbGreenplumClusterSegmentSubcluster;
+    readonly segmentSubclusters: outputs.GetMdbGreenplumClusterSegmentSubcluster[];
     readonly status: string;
     readonly subnetId: string;
     readonly userName: string;

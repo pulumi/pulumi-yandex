@@ -24,7 +24,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// The parameters used for creating a disk alongside the instance. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsResult InitializeParams;
+        public readonly ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParamResult> InitializeParams;
         /// <summary>
         /// The access mode to the disk resource. By default a disk is attached in `READ_WRITE` mode.
         /// </summary>
@@ -36,7 +36,7 @@ namespace Pulumi.Yandex.Outputs
 
             string diskId,
 
-            Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParamsResult initializeParams,
+            ImmutableArray<Outputs.GetComputeInstanceGroupInstanceTemplateBootDiskInitializeParamResult> initializeParams,
 
             string mode)
         {

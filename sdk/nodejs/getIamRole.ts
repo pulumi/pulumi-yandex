@@ -31,9 +31,7 @@ export function getIamRole(args?: GetIamRoleArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getIamRole:getIamRole", {
         "description": args.description,
         "roleId": args.roleId,

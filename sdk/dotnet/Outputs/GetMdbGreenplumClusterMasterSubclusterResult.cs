@@ -13,10 +13,10 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetMdbGreenplumClusterMasterSubclusterResult
     {
-        public readonly Outputs.GetMdbGreenplumClusterMasterSubclusterResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetMdbGreenplumClusterMasterSubclusterResourceResult> Resources;
 
         [OutputConstructor]
-        private GetMdbGreenplumClusterMasterSubclusterResult(Outputs.GetMdbGreenplumClusterMasterSubclusterResourcesResult resources)
+        private GetMdbGreenplumClusterMasterSubclusterResult(ImmutableArray<Outputs.GetMdbGreenplumClusterMasterSubclusterResourceResult> resources)
         {
             Resources = resources;
         }

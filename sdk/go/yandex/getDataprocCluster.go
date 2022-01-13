@@ -58,8 +58,8 @@ type LookupDataprocClusterResult struct {
 	// Name of the Object Storage bucket used for Data Proc jobs.
 	Bucket string `pulumi:"bucket"`
 	// Configuration and resources of the cluster. The structure is documented below.
-	ClusterConfig GetDataprocClusterClusterConfig `pulumi:"clusterConfig"`
-	ClusterId     string                          `pulumi:"clusterId"`
+	ClusterConfigs []GetDataprocClusterClusterConfig `pulumi:"clusterConfigs"`
+	ClusterId      string                            `pulumi:"clusterId"`
 	// The Data Proc cluster creation timestamp.
 	CreatedAt          string `pulumi:"createdAt"`
 	DeletionProtection bool   `pulumi:"deletionProtection"`
@@ -125,8 +125,8 @@ func (o LookupDataprocClusterResultOutput) Bucket() pulumi.StringOutput {
 }
 
 // Configuration and resources of the cluster. The structure is documented below.
-func (o LookupDataprocClusterResultOutput) ClusterConfig() GetDataprocClusterClusterConfigOutput {
-	return o.ApplyT(func(v LookupDataprocClusterResult) GetDataprocClusterClusterConfig { return v.ClusterConfig }).(GetDataprocClusterClusterConfigOutput)
+func (o LookupDataprocClusterResultOutput) ClusterConfigs() GetDataprocClusterClusterConfigArrayOutput {
+	return o.ApplyT(func(v LookupDataprocClusterResult) []GetDataprocClusterClusterConfig { return v.ClusterConfigs }).(GetDataprocClusterClusterConfigArrayOutput)
 }
 
 func (o LookupDataprocClusterResultOutput) ClusterId() pulumi.StringOutput {

@@ -11,6 +11,8 @@ export * from "./albLoadBalancer";
 export * from "./albTargetGroup";
 export * from "./albVirtualHost";
 export * from "./apiGateway";
+export * from "./cdnOriginGroup";
+export * from "./cdnResource";
 export * from "./computeDisk";
 export * from "./computeDiskPlacementGroup";
 export * from "./computeImage";
@@ -35,6 +37,8 @@ export * from "./getAlbLoadBalancer";
 export * from "./getAlbTargetGroup";
 export * from "./getAlbVirtualHost";
 export * from "./getApiGateway";
+export * from "./getCdnOriginGroup";
+export * from "./getCdnResource";
 export * from "./getClientConfig";
 export * from "./getComputeDisk";
 export * from "./getComputeDiskPlacementGroup";
@@ -74,6 +78,7 @@ export * from "./getMdbSqlserverCluster";
 export * from "./getMessageQueue";
 export * from "./getResourcemanagerCloud";
 export * from "./getResourcemanagerFolder";
+export * from "./getServerlessContainer";
 export * from "./getVpcAddress";
 export * from "./getVpcNetwork";
 export * from "./getVpcRouteTable";
@@ -118,6 +123,7 @@ export * from "./resourcemanagerFolder";
 export * from "./resourcemanagerFolderIamBinding";
 export * from "./resourcemanagerFolderIamMember";
 export * from "./resourcemanagerFolderIamPolicy";
+export * from "./serverlessContainer";
 export * from "./storageBucket";
 export * from "./storageObject";
 export * from "./vpcAddress";
@@ -128,7 +134,6 @@ export * from "./vpcSecurityGroup";
 export * from "./vpcSecurityGroupRule";
 export * from "./vpcSubnet";
 export * from "./ydbDatabaseDedicated";
-export * from "./ydbDatabaseServerless";
 
 // Export sub-modules:
 import * as config from "./config";
@@ -146,6 +151,8 @@ import { AlbLoadBalancer } from "./albLoadBalancer";
 import { AlbTargetGroup } from "./albTargetGroup";
 import { AlbVirtualHost } from "./albVirtualHost";
 import { ApiGateway } from "./apiGateway";
+import { CdnOriginGroup } from "./cdnOriginGroup";
+import { CdnResource } from "./cdnResource";
 import { ComputeDisk } from "./computeDisk";
 import { ComputeDiskPlacementGroup } from "./computeDiskPlacementGroup";
 import { ComputeImage } from "./computeImage";
@@ -199,6 +206,7 @@ import { ResourcemanagerFolder } from "./resourcemanagerFolder";
 import { ResourcemanagerFolderIamBinding } from "./resourcemanagerFolderIamBinding";
 import { ResourcemanagerFolderIamMember } from "./resourcemanagerFolderIamMember";
 import { ResourcemanagerFolderIamPolicy } from "./resourcemanagerFolderIamPolicy";
+import { ServerlessContainer } from "./serverlessContainer";
 import { StorageBucket } from "./storageBucket";
 import { StorageObject } from "./storageObject";
 import { VpcAddress } from "./vpcAddress";
@@ -209,7 +217,6 @@ import { VpcSecurityGroup } from "./vpcSecurityGroup";
 import { VpcSecurityGroupRule } from "./vpcSecurityGroupRule";
 import { VpcSubnet } from "./vpcSubnet";
 import { YdbDatabaseDedicated } from "./ydbDatabaseDedicated";
-import { YdbDatabaseServerless } from "./ydbDatabaseServerless";
 
 const _module = {
     version: utilities.getVersion(),
@@ -227,6 +234,10 @@ const _module = {
                 return new AlbVirtualHost(name, <any>undefined, { urn })
             case "yandex:index/apiGateway:ApiGateway":
                 return new ApiGateway(name, <any>undefined, { urn })
+            case "yandex:index/cdnOriginGroup:CdnOriginGroup":
+                return new CdnOriginGroup(name, <any>undefined, { urn })
+            case "yandex:index/cdnResource:CdnResource":
+                return new CdnResource(name, <any>undefined, { urn })
             case "yandex:index/computeDisk:ComputeDisk":
                 return new ComputeDisk(name, <any>undefined, { urn })
             case "yandex:index/computeDiskPlacementGroup:ComputeDiskPlacementGroup":
@@ -333,6 +344,8 @@ const _module = {
                 return new ResourcemanagerFolderIamMember(name, <any>undefined, { urn })
             case "yandex:index/resourcemanagerFolderIamPolicy:ResourcemanagerFolderIamPolicy":
                 return new ResourcemanagerFolderIamPolicy(name, <any>undefined, { urn })
+            case "yandex:index/serverlessContainer:ServerlessContainer":
+                return new ServerlessContainer(name, <any>undefined, { urn })
             case "yandex:index/storageBucket:StorageBucket":
                 return new StorageBucket(name, <any>undefined, { urn })
             case "yandex:index/storageObject:StorageObject":
@@ -353,8 +366,6 @@ const _module = {
                 return new VpcSubnet(name, <any>undefined, { urn })
             case "yandex:index/ydbDatabaseDedicated:YdbDatabaseDedicated":
                 return new YdbDatabaseDedicated(name, <any>undefined, { urn })
-            case "yandex:index/ydbDatabaseServerless:YdbDatabaseServerless":
-                return new YdbDatabaseServerless(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -366,6 +377,8 @@ pulumi.runtime.registerResourceModule("yandex", "index/albLoadBalancer", _module
 pulumi.runtime.registerResourceModule("yandex", "index/albTargetGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/albVirtualHost", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/apiGateway", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/cdnOriginGroup", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/cdnResource", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeDisk", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeDiskPlacementGroup", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/computeImage", _module)
@@ -419,6 +432,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolder", _
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolderIamBinding", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolderIamMember", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolderIamPolicy", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/serverlessContainer", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/storageBucket", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/storageObject", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcAddress", _module)
@@ -429,7 +443,6 @@ pulumi.runtime.registerResourceModule("yandex", "index/vpcSecurityGroup", _modul
 pulumi.runtime.registerResourceModule("yandex", "index/vpcSecurityGroupRule", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcSubnet", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/ydbDatabaseDedicated", _module)
-pulumi.runtime.registerResourceModule("yandex", "index/ydbDatabaseServerless", _module)
 
 import { Provider } from "./provider";
 

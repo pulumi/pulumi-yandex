@@ -226,23 +226,23 @@ export class DataprocCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: DataprocClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DataprocClusterArgs | DataprocClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataprocClusterState | undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["clusterConfig"] = state ? state.clusterConfig : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["hostGroupIds"] = state ? state.hostGroupIds : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            inputs["uiProxy"] = state ? state.uiProxy : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["clusterConfig"] = state ? state.clusterConfig : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["hostGroupIds"] = state ? state.hostGroupIds : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["uiProxy"] = state ? state.uiProxy : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DataprocClusterArgs | undefined;
             if ((!args || args.clusterConfig === undefined) && !opts.urn) {
@@ -251,24 +251,22 @@ export class DataprocCluster extends pulumi.CustomResource {
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["clusterConfig"] = args ? args.clusterConfig : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["hostGroupIds"] = args ? args.hostGroupIds : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["uiProxy"] = args ? args.uiProxy : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["clusterConfig"] = args ? args.clusterConfig : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["hostGroupIds"] = args ? args.hostGroupIds : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["uiProxy"] = args ? args.uiProxy : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DataprocCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DataprocCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

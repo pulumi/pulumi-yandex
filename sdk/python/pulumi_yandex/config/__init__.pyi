@@ -33,6 +33,8 @@ maxRetries: Optional[int]
 The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
 """
 
+organizationId: Optional[str]
+
 plaintext: Optional[bool]
 """
 Disable use of TLS. Default value is `false`.

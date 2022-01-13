@@ -50,6 +50,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('maxRetries')
 
     @property
+    def organization_id(self) -> Optional[str]:
+        return __config__.get('organizationId')
+
+    @property
     def plaintext(self) -> Optional[bool]:
         """
         Disable use of TLS. Default value is `false`.

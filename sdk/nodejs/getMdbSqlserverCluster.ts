@@ -28,9 +28,7 @@ export function getMdbSqlserverCluster(args?: GetMdbSqlserverClusterArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbSqlserverCluster:getMdbSqlserverCluster", {
         "clusterId": args.clusterId,
         "deletionProtection": args.deletionProtection,

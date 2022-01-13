@@ -50,7 +50,7 @@ namespace Pulumi.Yandex
     [OutputType]
     public sealed class GetAlbLoadBalancerResult
     {
-        public readonly Outputs.GetAlbLoadBalancerAllocationPolicyResult AllocationPolicy;
+        public readonly ImmutableArray<Outputs.GetAlbLoadBalancerAllocationPolicyResult> AllocationPolicies;
         public readonly string CreatedAt;
         public readonly string Description;
         public readonly string FolderId;
@@ -70,7 +70,7 @@ namespace Pulumi.Yandex
 
         [OutputConstructor]
         private GetAlbLoadBalancerResult(
-            Outputs.GetAlbLoadBalancerAllocationPolicyResult allocationPolicy,
+            ImmutableArray<Outputs.GetAlbLoadBalancerAllocationPolicyResult> allocationPolicies,
 
             string createdAt,
 
@@ -98,7 +98,7 @@ namespace Pulumi.Yandex
 
             string status)
         {
-            AllocationPolicy = allocationPolicy;
+            AllocationPolicies = allocationPolicies;
             CreatedAt = createdAt;
             Description = description;
             FolderId = folderId;

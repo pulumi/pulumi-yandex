@@ -127,7 +127,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Configuration and resources of the cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetDataprocClusterClusterConfigResult ClusterConfig;
+        public readonly ImmutableArray<Outputs.GetDataprocClusterClusterConfigResult> ClusterConfigs;
         public readonly string ClusterId;
         /// <summary>
         /// The Data Proc cluster creation timestamp.
@@ -173,7 +173,7 @@ namespace Pulumi.Yandex
         private GetDataprocClusterResult(
             string bucket,
 
-            Outputs.GetDataprocClusterClusterConfigResult clusterConfig,
+            ImmutableArray<Outputs.GetDataprocClusterClusterConfigResult> clusterConfigs,
 
             string clusterId,
 
@@ -202,7 +202,7 @@ namespace Pulumi.Yandex
             string zoneId)
         {
             Bucket = bucket;
-            ClusterConfig = clusterConfig;
+            ClusterConfigs = clusterConfigs;
             ClusterId = clusterId;
             CreatedAt = createdAt;
             DeletionProtection = deletionProtection;

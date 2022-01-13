@@ -103,6 +103,10 @@ export class AlbBackendGroup extends pulumi.CustomResource {
      * Name of the backend.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+     */
+    public readonly streamBackends!: pulumi.Output<outputs.AlbBackendGroupStreamBackend[] | undefined>;
 
     /**
      * Create a AlbBackendGroup resource with the given unique name, arguments, and options.
@@ -113,31 +117,31 @@ export class AlbBackendGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AlbBackendGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlbBackendGroupArgs | AlbBackendGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlbBackendGroupState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["grpcBackends"] = state ? state.grpcBackends : undefined;
-            inputs["httpBackends"] = state ? state.httpBackends : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["grpcBackends"] = state ? state.grpcBackends : undefined;
+            resourceInputs["httpBackends"] = state ? state.httpBackends : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["streamBackends"] = state ? state.streamBackends : undefined;
         } else {
             const args = argsOrState as AlbBackendGroupArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["grpcBackends"] = args ? args.grpcBackends : undefined;
-            inputs["httpBackends"] = args ? args.httpBackends : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["createdAt"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["grpcBackends"] = args ? args.grpcBackends : undefined;
+            resourceInputs["httpBackends"] = args ? args.httpBackends : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["streamBackends"] = args ? args.streamBackends : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlbBackendGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlbBackendGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -173,6 +177,10 @@ export interface AlbBackendGroupState {
      * Name of the backend.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+     */
+    streamBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupStreamBackend>[]>;
 }
 
 /**
@@ -203,4 +211,8 @@ export interface AlbBackendGroupArgs {
      * Name of the backend.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+     */
+    streamBackends?: pulumi.Input<pulumi.Input<inputs.AlbBackendGroupStreamBackend>[]>;
 }

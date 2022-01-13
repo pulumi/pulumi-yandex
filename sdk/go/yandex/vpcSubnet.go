@@ -30,11 +30,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewVpcNetwork(ctx, "lab_net", nil)
+// 		_, err := yandex.NewVpcNetwork(ctx, "lab-net", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = yandex.NewVpcSubnet(ctx, "lab_subnet_a", &yandex.VpcSubnetArgs{
+// 		_, err = yandex.NewVpcSubnet(ctx, "lab-subnet-a", &yandex.VpcSubnetArgs{
 // 			NetworkId: lab_net.ID(),
 // 			V4CidrBlocks: pulumi.StringArray{
 // 				pulumi.String("10.2.0.0/16"),
@@ -258,7 +258,7 @@ type VpcSubnetInput interface {
 }
 
 func (*VpcSubnet) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcSubnet)(nil))
+	return reflect.TypeOf((**VpcSubnet)(nil)).Elem()
 }
 
 func (i *VpcSubnet) ToVpcSubnetOutput() VpcSubnetOutput {
@@ -267,35 +267,6 @@ func (i *VpcSubnet) ToVpcSubnetOutput() VpcSubnetOutput {
 
 func (i *VpcSubnet) ToVpcSubnetOutputWithContext(ctx context.Context) VpcSubnetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetOutput)
-}
-
-func (i *VpcSubnet) ToVpcSubnetPtrOutput() VpcSubnetPtrOutput {
-	return i.ToVpcSubnetPtrOutputWithContext(context.Background())
-}
-
-func (i *VpcSubnet) ToVpcSubnetPtrOutputWithContext(ctx context.Context) VpcSubnetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetPtrOutput)
-}
-
-type VpcSubnetPtrInput interface {
-	pulumi.Input
-
-	ToVpcSubnetPtrOutput() VpcSubnetPtrOutput
-	ToVpcSubnetPtrOutputWithContext(ctx context.Context) VpcSubnetPtrOutput
-}
-
-type vpcSubnetPtrType VpcSubnetArgs
-
-func (*vpcSubnetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcSubnet)(nil))
-}
-
-func (i *vpcSubnetPtrType) ToVpcSubnetPtrOutput() VpcSubnetPtrOutput {
-	return i.ToVpcSubnetPtrOutputWithContext(context.Background())
-}
-
-func (i *vpcSubnetPtrType) ToVpcSubnetPtrOutputWithContext(ctx context.Context) VpcSubnetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetPtrOutput)
 }
 
 // VpcSubnetArrayInput is an input type that accepts VpcSubnetArray and VpcSubnetArrayOutput values.
@@ -351,7 +322,7 @@ func (i VpcSubnetMap) ToVpcSubnetMapOutputWithContext(ctx context.Context) VpcSu
 type VpcSubnetOutput struct{ *pulumi.OutputState }
 
 func (VpcSubnetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcSubnet)(nil))
+	return reflect.TypeOf((**VpcSubnet)(nil)).Elem()
 }
 
 func (o VpcSubnetOutput) ToVpcSubnetOutput() VpcSubnetOutput {
@@ -362,44 +333,10 @@ func (o VpcSubnetOutput) ToVpcSubnetOutputWithContext(ctx context.Context) VpcSu
 	return o
 }
 
-func (o VpcSubnetOutput) ToVpcSubnetPtrOutput() VpcSubnetPtrOutput {
-	return o.ToVpcSubnetPtrOutputWithContext(context.Background())
-}
-
-func (o VpcSubnetOutput) ToVpcSubnetPtrOutputWithContext(ctx context.Context) VpcSubnetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcSubnet) *VpcSubnet {
-		return &v
-	}).(VpcSubnetPtrOutput)
-}
-
-type VpcSubnetPtrOutput struct{ *pulumi.OutputState }
-
-func (VpcSubnetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcSubnet)(nil))
-}
-
-func (o VpcSubnetPtrOutput) ToVpcSubnetPtrOutput() VpcSubnetPtrOutput {
-	return o
-}
-
-func (o VpcSubnetPtrOutput) ToVpcSubnetPtrOutputWithContext(ctx context.Context) VpcSubnetPtrOutput {
-	return o
-}
-
-func (o VpcSubnetPtrOutput) Elem() VpcSubnetOutput {
-	return o.ApplyT(func(v *VpcSubnet) VpcSubnet {
-		if v != nil {
-			return *v
-		}
-		var ret VpcSubnet
-		return ret
-	}).(VpcSubnetOutput)
-}
-
 type VpcSubnetArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcSubnetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VpcSubnet)(nil))
+	return reflect.TypeOf((*[]*VpcSubnet)(nil)).Elem()
 }
 
 func (o VpcSubnetArrayOutput) ToVpcSubnetArrayOutput() VpcSubnetArrayOutput {
@@ -411,15 +348,15 @@ func (o VpcSubnetArrayOutput) ToVpcSubnetArrayOutputWithContext(ctx context.Cont
 }
 
 func (o VpcSubnetArrayOutput) Index(i pulumi.IntInput) VpcSubnetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcSubnet {
-		return vs[0].([]VpcSubnet)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcSubnet {
+		return vs[0].([]*VpcSubnet)[vs[1].(int)]
 	}).(VpcSubnetOutput)
 }
 
 type VpcSubnetMapOutput struct{ *pulumi.OutputState }
 
 func (VpcSubnetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VpcSubnet)(nil))
+	return reflect.TypeOf((*map[string]*VpcSubnet)(nil)).Elem()
 }
 
 func (o VpcSubnetMapOutput) ToVpcSubnetMapOutput() VpcSubnetMapOutput {
@@ -431,18 +368,16 @@ func (o VpcSubnetMapOutput) ToVpcSubnetMapOutputWithContext(ctx context.Context)
 }
 
 func (o VpcSubnetMapOutput) MapIndex(k pulumi.StringInput) VpcSubnetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VpcSubnet {
-		return vs[0].(map[string]VpcSubnet)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VpcSubnet {
+		return vs[0].(map[string]*VpcSubnet)[vs[1].(string)]
 	}).(VpcSubnetOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetInput)(nil)).Elem(), &VpcSubnet{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetPtrInput)(nil)).Elem(), &VpcSubnet{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetArrayInput)(nil)).Elem(), VpcSubnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetMapInput)(nil)).Elem(), VpcSubnetMap{})
 	pulumi.RegisterOutputType(VpcSubnetOutput{})
-	pulumi.RegisterOutputType(VpcSubnetPtrOutput{})
 	pulumi.RegisterOutputType(VpcSubnetArrayOutput{})
 	pulumi.RegisterOutputType(VpcSubnetMapOutput{})
 }

@@ -84,25 +84,23 @@ export class IamServiceAccount extends pulumi.CustomResource {
      */
     constructor(name: string, args?: IamServiceAccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamServiceAccountArgs | IamServiceAccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamServiceAccountState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as IamServiceAccountArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["createdAt"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IamServiceAccount.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IamServiceAccount.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -82,6 +82,13 @@ namespace Pulumi.Yandex
             set => _maxRetries.Set(value);
         }
 
+        private static readonly __Value<string?> _organizationId = new __Value<string?>(() => __config.Get("organizationId"));
+        public static string? OrganizationId
+        {
+            get => _organizationId.Get();
+            set => _organizationId.Set(value);
+        }
+
         private static readonly __Value<bool?> _plaintext = new __Value<bool?>(() => __config.GetBoolean("plaintext"));
         /// <summary>
         /// Disable use of TLS. Default value is `false`.

@@ -81,24 +81,22 @@ export class FunctionScalingPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: FunctionScalingPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionScalingPolicyArgs | FunctionScalingPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionScalingPolicyState | undefined;
-            inputs["functionId"] = state ? state.functionId : undefined;
-            inputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["functionId"] = state ? state.functionId : undefined;
+            resourceInputs["policies"] = state ? state.policies : undefined;
         } else {
             const args = argsOrState as FunctionScalingPolicyArgs | undefined;
             if ((!args || args.functionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionId'");
             }
-            inputs["functionId"] = args ? args.functionId : undefined;
-            inputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["functionId"] = args ? args.functionId : undefined;
+            resourceInputs["policies"] = args ? args.policies : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FunctionScalingPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FunctionScalingPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

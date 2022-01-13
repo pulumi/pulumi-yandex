@@ -164,14 +164,14 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Location of the Yandex Database cluster.
-        /// The structure is documented below.
-        /// </summary>
-        public readonly Outputs.GetYdbDatabaseDedicatedLocationResult Location;
-        /// <summary>
         /// Location ID of the Yandex Database cluster.
         /// </summary>
         public readonly string LocationId;
+        /// <summary>
+        /// Location of the Yandex Database cluster.
+        /// The structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetYdbDatabaseDedicatedLocationResult> Locations;
         public readonly string? Name;
         /// <summary>
         /// ID of the network the Yandex Database cluster is attached to.
@@ -185,7 +185,7 @@ namespace Pulumi.Yandex
         /// Scaling policy of the Yandex Database cluster.
         /// The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetYdbDatabaseDedicatedScalePolicyResult ScalePolicy;
+        public readonly ImmutableArray<Outputs.GetYdbDatabaseDedicatedScalePolicyResult> ScalePolicies;
         /// <summary>
         /// Status of the Yandex Database cluster.
         /// </summary>
@@ -232,9 +232,9 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
-            Outputs.GetYdbDatabaseDedicatedLocationResult location,
-
             string locationId,
+
+            ImmutableArray<Outputs.GetYdbDatabaseDedicatedLocationResult> locations,
 
             string? name,
 
@@ -242,7 +242,7 @@ namespace Pulumi.Yandex
 
             string resourcePresetId,
 
-            Outputs.GetYdbDatabaseDedicatedScalePolicyResult scalePolicy,
+            ImmutableArray<Outputs.GetYdbDatabaseDedicatedScalePolicyResult> scalePolicies,
 
             string status,
 
@@ -264,12 +264,12 @@ namespace Pulumi.Yandex
             FolderId = folderId;
             Id = id;
             Labels = labels;
-            Location = location;
             LocationId = locationId;
+            Locations = locations;
             Name = name;
             NetworkId = networkId;
             ResourcePresetId = resourcePresetId;
-            ScalePolicy = scalePolicy;
+            ScalePolicies = scalePolicies;
             Status = status;
             StorageConfigs = storageConfigs;
             SubnetIds = subnetIds;

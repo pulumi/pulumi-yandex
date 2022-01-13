@@ -101,36 +101,34 @@ export class ComputeSnapshot extends pulumi.CustomResource {
      */
     constructor(name: string, args: ComputeSnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeSnapshotArgs | ComputeSnapshotState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeSnapshotState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskSize"] = state ? state.diskSize : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["sourceDiskId"] = state ? state.sourceDiskId : undefined;
-            inputs["storageSize"] = state ? state.storageSize : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["sourceDiskId"] = state ? state.sourceDiskId : undefined;
+            resourceInputs["storageSize"] = state ? state.storageSize : undefined;
         } else {
             const args = argsOrState as ComputeSnapshotArgs | undefined;
             if ((!args || args.sourceDiskId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceDiskId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["sourceDiskId"] = args ? args.sourceDiskId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["diskSize"] = undefined /*out*/;
-            inputs["storageSize"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["sourceDiskId"] = args ? args.sourceDiskId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["diskSize"] = undefined /*out*/;
+            resourceInputs["storageSize"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ComputeSnapshot.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ComputeSnapshot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

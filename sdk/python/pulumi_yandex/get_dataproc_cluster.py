@@ -21,13 +21,13 @@ class GetDataprocClusterResult:
     """
     A collection of values returned by getDataprocCluster.
     """
-    def __init__(__self__, bucket=None, cluster_config=None, cluster_id=None, created_at=None, deletion_protection=None, description=None, folder_id=None, host_group_ids=None, id=None, labels=None, name=None, security_group_ids=None, service_account_id=None, ui_proxy=None, zone_id=None):
+    def __init__(__self__, bucket=None, cluster_configs=None, cluster_id=None, created_at=None, deletion_protection=None, description=None, folder_id=None, host_group_ids=None, id=None, labels=None, name=None, security_group_ids=None, service_account_id=None, ui_proxy=None, zone_id=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
-        if cluster_config and not isinstance(cluster_config, dict):
-            raise TypeError("Expected argument 'cluster_config' to be a dict")
-        pulumi.set(__self__, "cluster_config", cluster_config)
+        if cluster_configs and not isinstance(cluster_configs, list):
+            raise TypeError("Expected argument 'cluster_configs' to be a list")
+        pulumi.set(__self__, "cluster_configs", cluster_configs)
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -77,12 +77,12 @@ class GetDataprocClusterResult:
         return pulumi.get(self, "bucket")
 
     @property
-    @pulumi.getter(name="clusterConfig")
-    def cluster_config(self) -> 'outputs.GetDataprocClusterClusterConfigResult':
+    @pulumi.getter(name="clusterConfigs")
+    def cluster_configs(self) -> Sequence['outputs.GetDataprocClusterClusterConfigResult']:
         """
         Configuration and resources of the cluster. The structure is documented below.
         """
-        return pulumi.get(self, "cluster_config")
+        return pulumi.get(self, "cluster_configs")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -184,7 +184,7 @@ class AwaitableGetDataprocClusterResult(GetDataprocClusterResult):
             yield self
         return GetDataprocClusterResult(
             bucket=self.bucket,
-            cluster_config=self.cluster_config,
+            cluster_configs=self.cluster_configs,
             cluster_id=self.cluster_id,
             created_at=self.created_at,
             deletion_protection=self.deletion_protection,
@@ -231,7 +231,7 @@ def get_dataproc_cluster(cluster_id: Optional[str] = None,
 
     return AwaitableGetDataprocClusterResult(
         bucket=__ret__.bucket,
-        cluster_config=__ret__.cluster_config,
+        cluster_configs=__ret__.cluster_configs,
         cluster_id=__ret__.cluster_id,
         created_at=__ret__.created_at,
         deletion_protection=__ret__.deletion_protection,

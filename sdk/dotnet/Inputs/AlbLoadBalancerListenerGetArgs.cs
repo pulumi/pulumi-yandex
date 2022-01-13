@@ -37,6 +37,12 @@ namespace Pulumi.Yandex.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Stream listener resource. The structure is documented below.
+        /// </summary>
+        [Input("stream")]
+        public Input<Inputs.AlbLoadBalancerListenerStreamGetArgs>? Stream { get; set; }
+
+        /// <summary>
         /// TLS listener resource. The structure is documented below.
         /// </summary>
         [Input("tls")]

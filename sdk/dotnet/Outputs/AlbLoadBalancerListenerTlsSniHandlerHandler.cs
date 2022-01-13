@@ -22,15 +22,22 @@ namespace Pulumi.Yandex.Outputs
         /// HTTP handler resource. The structure is documented below.
         /// </summary>
         public readonly Outputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler? HttpHandler;
+        /// <summary>
+        /// Stream handler resource. The structure is documented below.
+        /// </summary>
+        public readonly Outputs.AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandler? StreamHandler;
 
         [OutputConstructor]
         private AlbLoadBalancerListenerTlsSniHandlerHandler(
             ImmutableArray<string> certificateIds,
 
-            Outputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler? httpHandler)
+            Outputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler? httpHandler,
+
+            Outputs.AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandler? streamHandler)
         {
             CertificateIds = certificateIds;
             HttpHandler = httpHandler;
+            StreamHandler = streamHandler;
         }
     }
 }

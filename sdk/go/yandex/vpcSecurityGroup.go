@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewVpcNetwork(ctx, "lab_net", nil)
+// 		_, err := yandex.NewVpcNetwork(ctx, "lab-net", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -223,7 +223,7 @@ type VpcSecurityGroupInput interface {
 }
 
 func (*VpcSecurityGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcSecurityGroup)(nil))
+	return reflect.TypeOf((**VpcSecurityGroup)(nil)).Elem()
 }
 
 func (i *VpcSecurityGroup) ToVpcSecurityGroupOutput() VpcSecurityGroupOutput {
@@ -232,35 +232,6 @@ func (i *VpcSecurityGroup) ToVpcSecurityGroupOutput() VpcSecurityGroupOutput {
 
 func (i *VpcSecurityGroup) ToVpcSecurityGroupOutputWithContext(ctx context.Context) VpcSecurityGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcSecurityGroupOutput)
-}
-
-func (i *VpcSecurityGroup) ToVpcSecurityGroupPtrOutput() VpcSecurityGroupPtrOutput {
-	return i.ToVpcSecurityGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *VpcSecurityGroup) ToVpcSecurityGroupPtrOutputWithContext(ctx context.Context) VpcSecurityGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcSecurityGroupPtrOutput)
-}
-
-type VpcSecurityGroupPtrInput interface {
-	pulumi.Input
-
-	ToVpcSecurityGroupPtrOutput() VpcSecurityGroupPtrOutput
-	ToVpcSecurityGroupPtrOutputWithContext(ctx context.Context) VpcSecurityGroupPtrOutput
-}
-
-type vpcSecurityGroupPtrType VpcSecurityGroupArgs
-
-func (*vpcSecurityGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcSecurityGroup)(nil))
-}
-
-func (i *vpcSecurityGroupPtrType) ToVpcSecurityGroupPtrOutput() VpcSecurityGroupPtrOutput {
-	return i.ToVpcSecurityGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *vpcSecurityGroupPtrType) ToVpcSecurityGroupPtrOutputWithContext(ctx context.Context) VpcSecurityGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcSecurityGroupPtrOutput)
 }
 
 // VpcSecurityGroupArrayInput is an input type that accepts VpcSecurityGroupArray and VpcSecurityGroupArrayOutput values.
@@ -316,7 +287,7 @@ func (i VpcSecurityGroupMap) ToVpcSecurityGroupMapOutputWithContext(ctx context.
 type VpcSecurityGroupOutput struct{ *pulumi.OutputState }
 
 func (VpcSecurityGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcSecurityGroup)(nil))
+	return reflect.TypeOf((**VpcSecurityGroup)(nil)).Elem()
 }
 
 func (o VpcSecurityGroupOutput) ToVpcSecurityGroupOutput() VpcSecurityGroupOutput {
@@ -327,44 +298,10 @@ func (o VpcSecurityGroupOutput) ToVpcSecurityGroupOutputWithContext(ctx context.
 	return o
 }
 
-func (o VpcSecurityGroupOutput) ToVpcSecurityGroupPtrOutput() VpcSecurityGroupPtrOutput {
-	return o.ToVpcSecurityGroupPtrOutputWithContext(context.Background())
-}
-
-func (o VpcSecurityGroupOutput) ToVpcSecurityGroupPtrOutputWithContext(ctx context.Context) VpcSecurityGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcSecurityGroup) *VpcSecurityGroup {
-		return &v
-	}).(VpcSecurityGroupPtrOutput)
-}
-
-type VpcSecurityGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (VpcSecurityGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcSecurityGroup)(nil))
-}
-
-func (o VpcSecurityGroupPtrOutput) ToVpcSecurityGroupPtrOutput() VpcSecurityGroupPtrOutput {
-	return o
-}
-
-func (o VpcSecurityGroupPtrOutput) ToVpcSecurityGroupPtrOutputWithContext(ctx context.Context) VpcSecurityGroupPtrOutput {
-	return o
-}
-
-func (o VpcSecurityGroupPtrOutput) Elem() VpcSecurityGroupOutput {
-	return o.ApplyT(func(v *VpcSecurityGroup) VpcSecurityGroup {
-		if v != nil {
-			return *v
-		}
-		var ret VpcSecurityGroup
-		return ret
-	}).(VpcSecurityGroupOutput)
-}
-
 type VpcSecurityGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcSecurityGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VpcSecurityGroup)(nil))
+	return reflect.TypeOf((*[]*VpcSecurityGroup)(nil)).Elem()
 }
 
 func (o VpcSecurityGroupArrayOutput) ToVpcSecurityGroupArrayOutput() VpcSecurityGroupArrayOutput {
@@ -376,15 +313,15 @@ func (o VpcSecurityGroupArrayOutput) ToVpcSecurityGroupArrayOutputWithContext(ct
 }
 
 func (o VpcSecurityGroupArrayOutput) Index(i pulumi.IntInput) VpcSecurityGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcSecurityGroup {
-		return vs[0].([]VpcSecurityGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcSecurityGroup {
+		return vs[0].([]*VpcSecurityGroup)[vs[1].(int)]
 	}).(VpcSecurityGroupOutput)
 }
 
 type VpcSecurityGroupMapOutput struct{ *pulumi.OutputState }
 
 func (VpcSecurityGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VpcSecurityGroup)(nil))
+	return reflect.TypeOf((*map[string]*VpcSecurityGroup)(nil)).Elem()
 }
 
 func (o VpcSecurityGroupMapOutput) ToVpcSecurityGroupMapOutput() VpcSecurityGroupMapOutput {
@@ -396,18 +333,16 @@ func (o VpcSecurityGroupMapOutput) ToVpcSecurityGroupMapOutputWithContext(ctx co
 }
 
 func (o VpcSecurityGroupMapOutput) MapIndex(k pulumi.StringInput) VpcSecurityGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VpcSecurityGroup {
-		return vs[0].(map[string]VpcSecurityGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VpcSecurityGroup {
+		return vs[0].(map[string]*VpcSecurityGroup)[vs[1].(string)]
 	}).(VpcSecurityGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupInput)(nil)).Elem(), &VpcSecurityGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupPtrInput)(nil)).Elem(), &VpcSecurityGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupArrayInput)(nil)).Elem(), VpcSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSecurityGroupMapInput)(nil)).Elem(), VpcSecurityGroupMap{})
 	pulumi.RegisterOutputType(VpcSecurityGroupOutput{})
-	pulumi.RegisterOutputType(VpcSecurityGroupPtrOutput{})
 	pulumi.RegisterOutputType(VpcSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(VpcSecurityGroupMapOutput{})
 }

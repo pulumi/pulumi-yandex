@@ -21,10 +21,10 @@ class GetAlbLoadBalancerResult:
     """
     A collection of values returned by getAlbLoadBalancer.
     """
-    def __init__(__self__, allocation_policy=None, created_at=None, description=None, folder_id=None, id=None, labels=None, listeners=None, load_balancer_id=None, log_group_id=None, name=None, network_id=None, region_id=None, security_group_ids=None, status=None):
-        if allocation_policy and not isinstance(allocation_policy, dict):
-            raise TypeError("Expected argument 'allocation_policy' to be a dict")
-        pulumi.set(__self__, "allocation_policy", allocation_policy)
+    def __init__(__self__, allocation_policies=None, created_at=None, description=None, folder_id=None, id=None, labels=None, listeners=None, load_balancer_id=None, log_group_id=None, name=None, network_id=None, region_id=None, security_group_ids=None, status=None):
+        if allocation_policies and not isinstance(allocation_policies, list):
+            raise TypeError("Expected argument 'allocation_policies' to be a list")
+        pulumi.set(__self__, "allocation_policies", allocation_policies)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -66,9 +66,9 @@ class GetAlbLoadBalancerResult:
         pulumi.set(__self__, "status", status)
 
     @property
-    @pulumi.getter(name="allocationPolicy")
-    def allocation_policy(self) -> 'outputs.GetAlbLoadBalancerAllocationPolicyResult':
-        return pulumi.get(self, "allocation_policy")
+    @pulumi.getter(name="allocationPolicies")
+    def allocation_policies(self) -> Sequence['outputs.GetAlbLoadBalancerAllocationPolicyResult']:
+        return pulumi.get(self, "allocation_policies")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -145,7 +145,7 @@ class AwaitableGetAlbLoadBalancerResult(GetAlbLoadBalancerResult):
         if False:
             yield self
         return GetAlbLoadBalancerResult(
-            allocation_policy=self.allocation_policy,
+            allocation_policies=self.allocation_policies,
             created_at=self.created_at,
             description=self.description,
             folder_id=self.folder_id,
@@ -177,7 +177,7 @@ def get_alb_load_balancer(load_balancer_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('yandex:index/getAlbLoadBalancer:getAlbLoadBalancer', __args__, opts=opts, typ=GetAlbLoadBalancerResult).value
 
     return AwaitableGetAlbLoadBalancerResult(
-        allocation_policy=__ret__.allocation_policy,
+        allocation_policies=__ret__.allocation_policies,
         created_at=__ret__.created_at,
         description=__ret__.description,
         folder_id=__ret__.folder_id,

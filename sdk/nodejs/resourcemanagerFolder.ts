@@ -74,27 +74,25 @@ export class ResourcemanagerFolder extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ResourcemanagerFolderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourcemanagerFolderArgs | ResourcemanagerFolderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourcemanagerFolderState | undefined;
-            inputs["cloudId"] = state ? state.cloudId : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["cloudId"] = state ? state.cloudId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ResourcemanagerFolderArgs | undefined;
-            inputs["cloudId"] = args ? args.cloudId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["createdAt"] = undefined /*out*/;
+            resourceInputs["cloudId"] = args ? args.cloudId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ResourcemanagerFolder.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ResourcemanagerFolder.__pulumiType, name, resourceInputs, opts);
     }
 }
 

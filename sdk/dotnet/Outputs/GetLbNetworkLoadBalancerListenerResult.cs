@@ -13,8 +13,8 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetLbNetworkLoadBalancerListenerResult
     {
-        public readonly Outputs.GetLbNetworkLoadBalancerListenerExternalAddressSpecResult ExternalAddressSpec;
-        public readonly Outputs.GetLbNetworkLoadBalancerListenerInternalAddressSpecResult InternalAddressSpec;
+        public readonly ImmutableArray<Outputs.GetLbNetworkLoadBalancerListenerExternalAddressSpecResult> ExternalAddressSpecs;
+        public readonly ImmutableArray<Outputs.GetLbNetworkLoadBalancerListenerInternalAddressSpecResult> InternalAddressSpecs;
         /// <summary>
         /// - Name of the network load balancer.
         /// </summary>
@@ -39,9 +39,9 @@ namespace Pulumi.Yandex.Outputs
 
         [OutputConstructor]
         private GetLbNetworkLoadBalancerListenerResult(
-            Outputs.GetLbNetworkLoadBalancerListenerExternalAddressSpecResult externalAddressSpec,
+            ImmutableArray<Outputs.GetLbNetworkLoadBalancerListenerExternalAddressSpecResult> externalAddressSpecs,
 
-            Outputs.GetLbNetworkLoadBalancerListenerInternalAddressSpecResult internalAddressSpec,
+            ImmutableArray<Outputs.GetLbNetworkLoadBalancerListenerInternalAddressSpecResult> internalAddressSpecs,
 
             string name,
 
@@ -51,8 +51,8 @@ namespace Pulumi.Yandex.Outputs
 
             int targetPort)
         {
-            ExternalAddressSpec = externalAddressSpec;
-            InternalAddressSpec = internalAddressSpec;
+            ExternalAddressSpecs = externalAddressSpecs;
+            InternalAddressSpecs = internalAddressSpecs;
             Name = name;
             Port = port;
             Protocol = protocol;

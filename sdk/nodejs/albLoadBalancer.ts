@@ -135,22 +135,22 @@ export class AlbLoadBalancer extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlbLoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlbLoadBalancerArgs | AlbLoadBalancerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlbLoadBalancerState | undefined;
-            inputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["listeners"] = state ? state.listeners : undefined;
-            inputs["logGroupId"] = state ? state.logGroupId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["regionId"] = state ? state.regionId : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["listeners"] = state ? state.listeners : undefined;
+            resourceInputs["logGroupId"] = state ? state.logGroupId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AlbLoadBalancerArgs | undefined;
             if ((!args || args.allocationPolicy === undefined) && !opts.urn) {
@@ -159,23 +159,21 @@ export class AlbLoadBalancer extends pulumi.CustomResource {
             if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            inputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["listeners"] = args ? args.listeners : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["regionId"] = args ? args.regionId : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["logGroupId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["listeners"] = args ? args.listeners : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["regionId"] = args ? args.regionId : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["logGroupId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlbLoadBalancer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlbLoadBalancer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

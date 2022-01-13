@@ -90,14 +90,14 @@ export class OrganizationManagerOrganizationIamMember extends pulumi.CustomResou
      */
     constructor(name: string, args: OrganizationManagerOrganizationIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationManagerOrganizationIamMemberArgs | OrganizationManagerOrganizationIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationManagerOrganizationIamMemberState | undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["organizationId"] = state ? state.organizationId : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["sleepAfter"] = state ? state.sleepAfter : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["sleepAfter"] = state ? state.sleepAfter : undefined;
         } else {
             const args = argsOrState as OrganizationManagerOrganizationIamMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
@@ -109,15 +109,13 @@ export class OrganizationManagerOrganizationIamMember extends pulumi.CustomResou
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["member"] = args ? args.member : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["sleepAfter"] = args ? args.sleepAfter : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OrganizationManagerOrganizationIamMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OrganizationManagerOrganizationIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

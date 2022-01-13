@@ -199,7 +199,7 @@ type DnsZoneInput interface {
 }
 
 func (*DnsZone) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsZone)(nil))
+	return reflect.TypeOf((**DnsZone)(nil)).Elem()
 }
 
 func (i *DnsZone) ToDnsZoneOutput() DnsZoneOutput {
@@ -208,35 +208,6 @@ func (i *DnsZone) ToDnsZoneOutput() DnsZoneOutput {
 
 func (i *DnsZone) ToDnsZoneOutputWithContext(ctx context.Context) DnsZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsZoneOutput)
-}
-
-func (i *DnsZone) ToDnsZonePtrOutput() DnsZonePtrOutput {
-	return i.ToDnsZonePtrOutputWithContext(context.Background())
-}
-
-func (i *DnsZone) ToDnsZonePtrOutputWithContext(ctx context.Context) DnsZonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnsZonePtrOutput)
-}
-
-type DnsZonePtrInput interface {
-	pulumi.Input
-
-	ToDnsZonePtrOutput() DnsZonePtrOutput
-	ToDnsZonePtrOutputWithContext(ctx context.Context) DnsZonePtrOutput
-}
-
-type dnsZonePtrType DnsZoneArgs
-
-func (*dnsZonePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnsZone)(nil))
-}
-
-func (i *dnsZonePtrType) ToDnsZonePtrOutput() DnsZonePtrOutput {
-	return i.ToDnsZonePtrOutputWithContext(context.Background())
-}
-
-func (i *dnsZonePtrType) ToDnsZonePtrOutputWithContext(ctx context.Context) DnsZonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnsZonePtrOutput)
 }
 
 // DnsZoneArrayInput is an input type that accepts DnsZoneArray and DnsZoneArrayOutput values.
@@ -292,7 +263,7 @@ func (i DnsZoneMap) ToDnsZoneMapOutputWithContext(ctx context.Context) DnsZoneMa
 type DnsZoneOutput struct{ *pulumi.OutputState }
 
 func (DnsZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsZone)(nil))
+	return reflect.TypeOf((**DnsZone)(nil)).Elem()
 }
 
 func (o DnsZoneOutput) ToDnsZoneOutput() DnsZoneOutput {
@@ -303,44 +274,10 @@ func (o DnsZoneOutput) ToDnsZoneOutputWithContext(ctx context.Context) DnsZoneOu
 	return o
 }
 
-func (o DnsZoneOutput) ToDnsZonePtrOutput() DnsZonePtrOutput {
-	return o.ToDnsZonePtrOutputWithContext(context.Background())
-}
-
-func (o DnsZoneOutput) ToDnsZonePtrOutputWithContext(ctx context.Context) DnsZonePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsZone) *DnsZone {
-		return &v
-	}).(DnsZonePtrOutput)
-}
-
-type DnsZonePtrOutput struct{ *pulumi.OutputState }
-
-func (DnsZonePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnsZone)(nil))
-}
-
-func (o DnsZonePtrOutput) ToDnsZonePtrOutput() DnsZonePtrOutput {
-	return o
-}
-
-func (o DnsZonePtrOutput) ToDnsZonePtrOutputWithContext(ctx context.Context) DnsZonePtrOutput {
-	return o
-}
-
-func (o DnsZonePtrOutput) Elem() DnsZoneOutput {
-	return o.ApplyT(func(v *DnsZone) DnsZone {
-		if v != nil {
-			return *v
-		}
-		var ret DnsZone
-		return ret
-	}).(DnsZoneOutput)
-}
-
 type DnsZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (DnsZoneArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DnsZone)(nil))
+	return reflect.TypeOf((*[]*DnsZone)(nil)).Elem()
 }
 
 func (o DnsZoneArrayOutput) ToDnsZoneArrayOutput() DnsZoneArrayOutput {
@@ -352,15 +289,15 @@ func (o DnsZoneArrayOutput) ToDnsZoneArrayOutputWithContext(ctx context.Context)
 }
 
 func (o DnsZoneArrayOutput) Index(i pulumi.IntInput) DnsZoneOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsZone {
-		return vs[0].([]DnsZone)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnsZone {
+		return vs[0].([]*DnsZone)[vs[1].(int)]
 	}).(DnsZoneOutput)
 }
 
 type DnsZoneMapOutput struct{ *pulumi.OutputState }
 
 func (DnsZoneMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DnsZone)(nil))
+	return reflect.TypeOf((*map[string]*DnsZone)(nil)).Elem()
 }
 
 func (o DnsZoneMapOutput) ToDnsZoneMapOutput() DnsZoneMapOutput {
@@ -372,18 +309,16 @@ func (o DnsZoneMapOutput) ToDnsZoneMapOutputWithContext(ctx context.Context) Dns
 }
 
 func (o DnsZoneMapOutput) MapIndex(k pulumi.StringInput) DnsZoneOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DnsZone {
-		return vs[0].(map[string]DnsZone)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DnsZone {
+		return vs[0].(map[string]*DnsZone)[vs[1].(string)]
 	}).(DnsZoneOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsZoneInput)(nil)).Elem(), &DnsZone{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DnsZonePtrInput)(nil)).Elem(), &DnsZone{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsZoneArrayInput)(nil)).Elem(), DnsZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsZoneMapInput)(nil)).Elem(), DnsZoneMap{})
 	pulumi.RegisterOutputType(DnsZoneOutput{})
-	pulumi.RegisterOutputType(DnsZonePtrOutput{})
 	pulumi.RegisterOutputType(DnsZoneArrayOutput{})
 	pulumi.RegisterOutputType(DnsZoneMapOutput{})
 }

@@ -14,13 +14,13 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckResult
     {
         public readonly int HealthyThreshold;
-        public readonly Outputs.GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsResult HttpOptions;
+        public readonly ImmutableArray<Outputs.GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionResult> HttpOptions;
         public readonly int Interval;
         /// <summary>
         /// - Name of the network load balancer.
         /// </summary>
         public readonly string Name;
-        public readonly Outputs.GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsResult TcpOptions;
+        public readonly ImmutableArray<Outputs.GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionResult> TcpOptions;
         public readonly int Timeout;
         public readonly int UnhealthyThreshold;
 
@@ -28,13 +28,13 @@ namespace Pulumi.Yandex.Outputs
         private GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckResult(
             int healthyThreshold,
 
-            Outputs.GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionsResult httpOptions,
+            ImmutableArray<Outputs.GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckHttpOptionResult> httpOptions,
 
             int interval,
 
             string name,
 
-            Outputs.GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionsResult tcpOptions,
+            ImmutableArray<Outputs.GetLbNetworkLoadBalancerAttachedTargetGroupHealthcheckTcpOptionResult> tcpOptions,
 
             int timeout,
 

@@ -28,9 +28,7 @@ export function getKubernetesNodeGroup(args?: GetKubernetesNodeGroupArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getKubernetesNodeGroup:getKubernetesNodeGroup", {
         "folderId": args.folderId,
         "name": args.name,
@@ -63,7 +61,7 @@ export interface GetKubernetesNodeGroupResult {
     /**
      * This argument specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
      */
-    readonly allocationPolicy: outputs.GetKubernetesNodeGroupAllocationPolicy;
+    readonly allocationPolicies: outputs.GetKubernetesNodeGroupAllocationPolicy[];
     /**
      * A list of allowed unsafe sysctl parameters for this node group. For more details see [documentation](https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/).
      */
@@ -79,7 +77,7 @@ export interface GetKubernetesNodeGroupResult {
     /**
      * Deploy policy of the node group. The structure is documented below.
      */
-    readonly deployPolicy: outputs.GetKubernetesNodeGroupDeployPolicy;
+    readonly deployPolicies: outputs.GetKubernetesNodeGroupDeployPolicy[];
     /**
      * A description of the Kubernetes node group.
      */
@@ -96,7 +94,7 @@ export interface GetKubernetesNodeGroupResult {
     /**
      * Template used to create compute instances in this Kubernetes node group. The structure is documented below.
      */
-    readonly instanceTemplate: outputs.GetKubernetesNodeGroupInstanceTemplate;
+    readonly instanceTemplates: outputs.GetKubernetesNodeGroupInstanceTemplate[];
     /**
      * A map of labels applied to this instance.
      * * `resources.0.memory` - The memory size allocated to the instance.
@@ -108,7 +106,7 @@ export interface GetKubernetesNodeGroupResult {
     /**
      * Information about maintenance policy for this Kubernetes node group. The structure is documented below.
      */
-    readonly maintenancePolicy: outputs.GetKubernetesNodeGroupMaintenancePolicy;
+    readonly maintenancePolicies: outputs.GetKubernetesNodeGroupMaintenancePolicy[];
     readonly name: string;
     readonly nodeGroupId: string;
     /**
@@ -122,7 +120,7 @@ export interface GetKubernetesNodeGroupResult {
     /**
      * Scale policy of the node group. The structure is documented below.
      */
-    readonly scalePolicy: outputs.GetKubernetesNodeGroupScalePolicy;
+    readonly scalePolicies: outputs.GetKubernetesNodeGroupScalePolicy[];
     /**
      * Status of the Kubernetes node group.
      */
@@ -130,7 +128,7 @@ export interface GetKubernetesNodeGroupResult {
     /**
      * Information about Kubernetes node group version. The structure is documented below.
      */
-    readonly versionInfo: outputs.GetKubernetesNodeGroupVersionInfo;
+    readonly versionInfos: outputs.GetKubernetesNodeGroupVersionInfo[];
 }
 
 export function getKubernetesNodeGroupOutput(args?: GetKubernetesNodeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesNodeGroupResult> {

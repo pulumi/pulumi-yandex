@@ -63,8 +63,8 @@ type LookupVpcAddressResult struct {
 	// Description of the address.
 	Description string `pulumi:"description"`
 	// spec of IP v4 address.
-	ExternalIpv4Address GetVpcAddressExternalIpv4Address `pulumi:"externalIpv4Address"`
-	FolderId            string                           `pulumi:"folderId"`
+	ExternalIpv4Addresses []GetVpcAddressExternalIpv4Address `pulumi:"externalIpv4Addresses"`
+	FolderId              string                             `pulumi:"folderId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Labels assigned to this address.
@@ -129,8 +129,8 @@ func (o LookupVpcAddressResultOutput) Description() pulumi.StringOutput {
 }
 
 // spec of IP v4 address.
-func (o LookupVpcAddressResultOutput) ExternalIpv4Address() GetVpcAddressExternalIpv4AddressOutput {
-	return o.ApplyT(func(v LookupVpcAddressResult) GetVpcAddressExternalIpv4Address { return v.ExternalIpv4Address }).(GetVpcAddressExternalIpv4AddressOutput)
+func (o LookupVpcAddressResultOutput) ExternalIpv4Addresses() GetVpcAddressExternalIpv4AddressArrayOutput {
+	return o.ApplyT(func(v LookupVpcAddressResult) []GetVpcAddressExternalIpv4Address { return v.ExternalIpv4Addresses }).(GetVpcAddressExternalIpv4AddressArrayOutput)
 }
 
 func (o LookupVpcAddressResultOutput) FolderId() pulumi.StringOutput {

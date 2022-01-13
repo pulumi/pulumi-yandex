@@ -27,9 +27,7 @@ export function getDataprocCluster(args?: GetDataprocClusterArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getDataprocCluster:getDataprocCluster", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -61,7 +59,7 @@ export interface GetDataprocClusterResult {
     /**
      * Configuration and resources of the cluster. The structure is documented below.
      */
-    readonly clusterConfig: outputs.GetDataprocClusterClusterConfig;
+    readonly clusterConfigs: outputs.GetDataprocClusterClusterConfig[];
     readonly clusterId: string;
     /**
      * The Data Proc cluster creation timestamp.

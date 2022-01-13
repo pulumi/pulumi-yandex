@@ -229,36 +229,36 @@ export class MdbGreenplumCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: MdbGreenplumClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MdbGreenplumClusterArgs | MdbGreenplumClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MdbGreenplumClusterState | undefined;
-            inputs["access"] = state ? state.access : undefined;
-            inputs["assignPublicIp"] = state ? state.assignPublicIp : undefined;
-            inputs["backupWindowStart"] = state ? state.backupWindowStart : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["health"] = state ? state.health : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["masterHostCount"] = state ? state.masterHostCount : undefined;
-            inputs["masterHosts"] = state ? state.masterHosts : undefined;
-            inputs["masterSubcluster"] = state ? state.masterSubcluster : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["segmentHostCount"] = state ? state.segmentHostCount : undefined;
-            inputs["segmentHosts"] = state ? state.segmentHosts : undefined;
-            inputs["segmentInHost"] = state ? state.segmentInHost : undefined;
-            inputs["segmentSubcluster"] = state ? state.segmentSubcluster : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["subnetId"] = state ? state.subnetId : undefined;
-            inputs["userName"] = state ? state.userName : undefined;
-            inputs["userPassword"] = state ? state.userPassword : undefined;
-            inputs["version"] = state ? state.version : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["access"] = state ? state.access : undefined;
+            resourceInputs["assignPublicIp"] = state ? state.assignPublicIp : undefined;
+            resourceInputs["backupWindowStart"] = state ? state.backupWindowStart : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["masterHostCount"] = state ? state.masterHostCount : undefined;
+            resourceInputs["masterHosts"] = state ? state.masterHosts : undefined;
+            resourceInputs["masterSubcluster"] = state ? state.masterSubcluster : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["segmentHostCount"] = state ? state.segmentHostCount : undefined;
+            resourceInputs["segmentHosts"] = state ? state.segmentHosts : undefined;
+            resourceInputs["segmentInHost"] = state ? state.segmentInHost : undefined;
+            resourceInputs["segmentSubcluster"] = state ? state.segmentSubcluster : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["userPassword"] = state ? state.userPassword : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as MdbGreenplumClusterArgs | undefined;
             if ((!args || args.assignPublicIp === undefined) && !opts.urn) {
@@ -300,37 +300,35 @@ export class MdbGreenplumCluster extends pulumi.CustomResource {
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            inputs["access"] = args ? args.access : undefined;
-            inputs["assignPublicIp"] = args ? args.assignPublicIp : undefined;
-            inputs["backupWindowStart"] = args ? args.backupWindowStart : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["masterHostCount"] = args ? args.masterHostCount : undefined;
-            inputs["masterSubcluster"] = args ? args.masterSubcluster : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["segmentHostCount"] = args ? args.segmentHostCount : undefined;
-            inputs["segmentInHost"] = args ? args.segmentInHost : undefined;
-            inputs["segmentSubcluster"] = args ? args.segmentSubcluster : undefined;
-            inputs["subnetId"] = args ? args.subnetId : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
-            inputs["userPassword"] = args ? args.userPassword : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["health"] = undefined /*out*/;
-            inputs["masterHosts"] = undefined /*out*/;
-            inputs["segmentHosts"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["access"] = args ? args.access : undefined;
+            resourceInputs["assignPublicIp"] = args ? args.assignPublicIp : undefined;
+            resourceInputs["backupWindowStart"] = args ? args.backupWindowStart : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["masterHostCount"] = args ? args.masterHostCount : undefined;
+            resourceInputs["masterSubcluster"] = args ? args.masterSubcluster : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["segmentHostCount"] = args ? args.segmentHostCount : undefined;
+            resourceInputs["segmentInHost"] = args ? args.segmentInHost : undefined;
+            resourceInputs["segmentSubcluster"] = args ? args.segmentSubcluster : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["userPassword"] = args ? args.userPassword : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
+            resourceInputs["masterHosts"] = undefined /*out*/;
+            resourceInputs["segmentHosts"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MdbGreenplumCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MdbGreenplumCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewApiGateway(ctx, "test_api_gateway", &yandex.ApiGatewayArgs{
+// 		_, err := yandex.NewApiGateway(ctx, "test-api-gateway", &yandex.ApiGatewayArgs{
 // 			Description: pulumi.String("any description"),
 // 			Labels: pulumi.StringMap{
 // 				"label":       pulumi.String("label"),
@@ -184,7 +184,7 @@ type ApiGatewayInput interface {
 }
 
 func (*ApiGateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiGateway)(nil))
+	return reflect.TypeOf((**ApiGateway)(nil)).Elem()
 }
 
 func (i *ApiGateway) ToApiGatewayOutput() ApiGatewayOutput {
@@ -193,35 +193,6 @@ func (i *ApiGateway) ToApiGatewayOutput() ApiGatewayOutput {
 
 func (i *ApiGateway) ToApiGatewayOutputWithContext(ctx context.Context) ApiGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiGatewayOutput)
-}
-
-func (i *ApiGateway) ToApiGatewayPtrOutput() ApiGatewayPtrOutput {
-	return i.ToApiGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i *ApiGateway) ToApiGatewayPtrOutputWithContext(ctx context.Context) ApiGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiGatewayPtrOutput)
-}
-
-type ApiGatewayPtrInput interface {
-	pulumi.Input
-
-	ToApiGatewayPtrOutput() ApiGatewayPtrOutput
-	ToApiGatewayPtrOutputWithContext(ctx context.Context) ApiGatewayPtrOutput
-}
-
-type apiGatewayPtrType ApiGatewayArgs
-
-func (*apiGatewayPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiGateway)(nil))
-}
-
-func (i *apiGatewayPtrType) ToApiGatewayPtrOutput() ApiGatewayPtrOutput {
-	return i.ToApiGatewayPtrOutputWithContext(context.Background())
-}
-
-func (i *apiGatewayPtrType) ToApiGatewayPtrOutputWithContext(ctx context.Context) ApiGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiGatewayPtrOutput)
 }
 
 // ApiGatewayArrayInput is an input type that accepts ApiGatewayArray and ApiGatewayArrayOutput values.
@@ -277,7 +248,7 @@ func (i ApiGatewayMap) ToApiGatewayMapOutputWithContext(ctx context.Context) Api
 type ApiGatewayOutput struct{ *pulumi.OutputState }
 
 func (ApiGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiGateway)(nil))
+	return reflect.TypeOf((**ApiGateway)(nil)).Elem()
 }
 
 func (o ApiGatewayOutput) ToApiGatewayOutput() ApiGatewayOutput {
@@ -288,44 +259,10 @@ func (o ApiGatewayOutput) ToApiGatewayOutputWithContext(ctx context.Context) Api
 	return o
 }
 
-func (o ApiGatewayOutput) ToApiGatewayPtrOutput() ApiGatewayPtrOutput {
-	return o.ToApiGatewayPtrOutputWithContext(context.Background())
-}
-
-func (o ApiGatewayOutput) ToApiGatewayPtrOutputWithContext(ctx context.Context) ApiGatewayPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiGateway) *ApiGateway {
-		return &v
-	}).(ApiGatewayPtrOutput)
-}
-
-type ApiGatewayPtrOutput struct{ *pulumi.OutputState }
-
-func (ApiGatewayPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiGateway)(nil))
-}
-
-func (o ApiGatewayPtrOutput) ToApiGatewayPtrOutput() ApiGatewayPtrOutput {
-	return o
-}
-
-func (o ApiGatewayPtrOutput) ToApiGatewayPtrOutputWithContext(ctx context.Context) ApiGatewayPtrOutput {
-	return o
-}
-
-func (o ApiGatewayPtrOutput) Elem() ApiGatewayOutput {
-	return o.ApplyT(func(v *ApiGateway) ApiGateway {
-		if v != nil {
-			return *v
-		}
-		var ret ApiGateway
-		return ret
-	}).(ApiGatewayOutput)
-}
-
 type ApiGatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (ApiGatewayArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApiGateway)(nil))
+	return reflect.TypeOf((*[]*ApiGateway)(nil)).Elem()
 }
 
 func (o ApiGatewayArrayOutput) ToApiGatewayArrayOutput() ApiGatewayArrayOutput {
@@ -337,15 +274,15 @@ func (o ApiGatewayArrayOutput) ToApiGatewayArrayOutputWithContext(ctx context.Co
 }
 
 func (o ApiGatewayArrayOutput) Index(i pulumi.IntInput) ApiGatewayOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiGateway {
-		return vs[0].([]ApiGateway)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiGateway {
+		return vs[0].([]*ApiGateway)[vs[1].(int)]
 	}).(ApiGatewayOutput)
 }
 
 type ApiGatewayMapOutput struct{ *pulumi.OutputState }
 
 func (ApiGatewayMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ApiGateway)(nil))
+	return reflect.TypeOf((*map[string]*ApiGateway)(nil)).Elem()
 }
 
 func (o ApiGatewayMapOutput) ToApiGatewayMapOutput() ApiGatewayMapOutput {
@@ -357,18 +294,16 @@ func (o ApiGatewayMapOutput) ToApiGatewayMapOutputWithContext(ctx context.Contex
 }
 
 func (o ApiGatewayMapOutput) MapIndex(k pulumi.StringInput) ApiGatewayOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApiGateway {
-		return vs[0].(map[string]ApiGateway)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ApiGateway {
+		return vs[0].(map[string]*ApiGateway)[vs[1].(string)]
 	}).(ApiGatewayOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiGatewayInput)(nil)).Elem(), &ApiGateway{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApiGatewayPtrInput)(nil)).Elem(), &ApiGateway{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiGatewayArrayInput)(nil)).Elem(), ApiGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiGatewayMapInput)(nil)).Elem(), ApiGatewayMap{})
 	pulumi.RegisterOutputType(ApiGatewayOutput{})
-	pulumi.RegisterOutputType(ApiGatewayPtrOutput{})
 	pulumi.RegisterOutputType(ApiGatewayArrayOutput{})
 	pulumi.RegisterOutputType(ApiGatewayMapOutput{})
 }

@@ -28,9 +28,7 @@ export function getMdbElasticSearchCluster(args?: GetMdbElasticSearchClusterArgs
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbElasticSearchCluster:getMdbElasticSearchCluster", {
         "clusterId": args.clusterId,
         "deletionProtection": args.deletionProtection,
@@ -86,7 +84,7 @@ export interface GetMdbElasticSearchClusterResult {
     /**
      * Configuration of the Elasticsearch cluster. The structure is documented below.
      */
-    readonly config: outputs.GetMdbElasticSearchClusterConfig;
+    readonly configs: outputs.GetMdbElasticSearchClusterConfig[];
     /**
      * Creation timestamp of the key.
      */

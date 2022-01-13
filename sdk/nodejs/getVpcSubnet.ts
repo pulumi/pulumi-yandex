@@ -26,9 +26,7 @@ export function getVpcSubnet(args?: GetVpcSubnetArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getVpcSubnet:getVpcSubnet", {
         "folderId": args.folderId,
         "name": args.name,
@@ -69,7 +67,7 @@ export interface GetVpcSubnetResult {
     /**
      * Options for DHCP client. The structure is documented below.
      */
-    readonly dhcpOptions: outputs.GetVpcSubnetDhcpOptions;
+    readonly dhcpOptions: outputs.GetVpcSubnetDhcpOption[];
     readonly folderId: string;
     /**
      * The provider-assigned unique ID for this managed resource.

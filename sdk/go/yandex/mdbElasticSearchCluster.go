@@ -226,7 +226,7 @@ type MdbElasticSearchClusterInput interface {
 }
 
 func (*MdbElasticSearchCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbElasticSearchCluster)(nil))
+	return reflect.TypeOf((**MdbElasticSearchCluster)(nil)).Elem()
 }
 
 func (i *MdbElasticSearchCluster) ToMdbElasticSearchClusterOutput() MdbElasticSearchClusterOutput {
@@ -235,35 +235,6 @@ func (i *MdbElasticSearchCluster) ToMdbElasticSearchClusterOutput() MdbElasticSe
 
 func (i *MdbElasticSearchCluster) ToMdbElasticSearchClusterOutputWithContext(ctx context.Context) MdbElasticSearchClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterOutput)
-}
-
-func (i *MdbElasticSearchCluster) ToMdbElasticSearchClusterPtrOutput() MdbElasticSearchClusterPtrOutput {
-	return i.ToMdbElasticSearchClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *MdbElasticSearchCluster) ToMdbElasticSearchClusterPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterPtrOutput)
-}
-
-type MdbElasticSearchClusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbElasticSearchClusterPtrOutput() MdbElasticSearchClusterPtrOutput
-	ToMdbElasticSearchClusterPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterPtrOutput
-}
-
-type mdbElasticSearchClusterPtrType MdbElasticSearchClusterArgs
-
-func (*mdbElasticSearchClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbElasticSearchCluster)(nil))
-}
-
-func (i *mdbElasticSearchClusterPtrType) ToMdbElasticSearchClusterPtrOutput() MdbElasticSearchClusterPtrOutput {
-	return i.ToMdbElasticSearchClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbElasticSearchClusterPtrType) ToMdbElasticSearchClusterPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbElasticSearchClusterPtrOutput)
 }
 
 // MdbElasticSearchClusterArrayInput is an input type that accepts MdbElasticSearchClusterArray and MdbElasticSearchClusterArrayOutput values.
@@ -319,7 +290,7 @@ func (i MdbElasticSearchClusterMap) ToMdbElasticSearchClusterMapOutputWithContex
 type MdbElasticSearchClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbElasticSearchClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbElasticSearchCluster)(nil))
+	return reflect.TypeOf((**MdbElasticSearchCluster)(nil)).Elem()
 }
 
 func (o MdbElasticSearchClusterOutput) ToMdbElasticSearchClusterOutput() MdbElasticSearchClusterOutput {
@@ -330,44 +301,10 @@ func (o MdbElasticSearchClusterOutput) ToMdbElasticSearchClusterOutputWithContex
 	return o
 }
 
-func (o MdbElasticSearchClusterOutput) ToMdbElasticSearchClusterPtrOutput() MdbElasticSearchClusterPtrOutput {
-	return o.ToMdbElasticSearchClusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbElasticSearchClusterOutput) ToMdbElasticSearchClusterPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbElasticSearchCluster) *MdbElasticSearchCluster {
-		return &v
-	}).(MdbElasticSearchClusterPtrOutput)
-}
-
-type MdbElasticSearchClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbElasticSearchClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbElasticSearchCluster)(nil))
-}
-
-func (o MdbElasticSearchClusterPtrOutput) ToMdbElasticSearchClusterPtrOutput() MdbElasticSearchClusterPtrOutput {
-	return o
-}
-
-func (o MdbElasticSearchClusterPtrOutput) ToMdbElasticSearchClusterPtrOutputWithContext(ctx context.Context) MdbElasticSearchClusterPtrOutput {
-	return o
-}
-
-func (o MdbElasticSearchClusterPtrOutput) Elem() MdbElasticSearchClusterOutput {
-	return o.ApplyT(func(v *MdbElasticSearchCluster) MdbElasticSearchCluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbElasticSearchCluster
-		return ret
-	}).(MdbElasticSearchClusterOutput)
-}
-
 type MdbElasticSearchClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (MdbElasticSearchClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MdbElasticSearchCluster)(nil))
+	return reflect.TypeOf((*[]*MdbElasticSearchCluster)(nil)).Elem()
 }
 
 func (o MdbElasticSearchClusterArrayOutput) ToMdbElasticSearchClusterArrayOutput() MdbElasticSearchClusterArrayOutput {
@@ -379,15 +316,15 @@ func (o MdbElasticSearchClusterArrayOutput) ToMdbElasticSearchClusterArrayOutput
 }
 
 func (o MdbElasticSearchClusterArrayOutput) Index(i pulumi.IntInput) MdbElasticSearchClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbElasticSearchCluster {
-		return vs[0].([]MdbElasticSearchCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MdbElasticSearchCluster {
+		return vs[0].([]*MdbElasticSearchCluster)[vs[1].(int)]
 	}).(MdbElasticSearchClusterOutput)
 }
 
 type MdbElasticSearchClusterMapOutput struct{ *pulumi.OutputState }
 
 func (MdbElasticSearchClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MdbElasticSearchCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbElasticSearchCluster)(nil)).Elem()
 }
 
 func (o MdbElasticSearchClusterMapOutput) ToMdbElasticSearchClusterMapOutput() MdbElasticSearchClusterMapOutput {
@@ -399,18 +336,16 @@ func (o MdbElasticSearchClusterMapOutput) ToMdbElasticSearchClusterMapOutputWith
 }
 
 func (o MdbElasticSearchClusterMapOutput) MapIndex(k pulumi.StringInput) MdbElasticSearchClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MdbElasticSearchCluster {
-		return vs[0].(map[string]MdbElasticSearchCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MdbElasticSearchCluster {
+		return vs[0].(map[string]*MdbElasticSearchCluster)[vs[1].(string)]
 	}).(MdbElasticSearchClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterInput)(nil)).Elem(), &MdbElasticSearchCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterPtrInput)(nil)).Elem(), &MdbElasticSearchCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterArrayInput)(nil)).Elem(), MdbElasticSearchClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbElasticSearchClusterMapInput)(nil)).Elem(), MdbElasticSearchClusterMap{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterOutput{})
-	pulumi.RegisterOutputType(MdbElasticSearchClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterArrayOutput{})
 	pulumi.RegisterOutputType(MdbElasticSearchClusterMapOutput{})
 }

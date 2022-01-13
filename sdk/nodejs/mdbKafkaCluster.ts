@@ -298,27 +298,27 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: MdbKafkaClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MdbKafkaClusterArgs | MdbKafkaClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MdbKafkaClusterState | undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["health"] = state ? state.health : undefined;
-            inputs["hostGroupIds"] = state ? state.hostGroupIds : undefined;
-            inputs["hosts"] = state ? state.hosts : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["subnetIds"] = state ? state.subnetIds : undefined;
-            inputs["topics"] = state ? state.topics : undefined;
-            inputs["users"] = state ? state.users : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["hostGroupIds"] = state ? state.hostGroupIds : undefined;
+            resourceInputs["hosts"] = state ? state.hosts : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
+            resourceInputs["topics"] = state ? state.topics : undefined;
+            resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as MdbKafkaClusterArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -327,28 +327,26 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
             if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["hostGroupIds"] = args ? args.hostGroupIds : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["subnetIds"] = args ? args.subnetIds : undefined;
-            inputs["topics"] = args ? args.topics : undefined;
-            inputs["users"] = args ? args.users : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["health"] = undefined /*out*/;
-            inputs["hosts"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["hostGroupIds"] = args ? args.hostGroupIds : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
+            resourceInputs["topics"] = args ? args.topics : undefined;
+            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
+            resourceInputs["hosts"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MdbKafkaCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MdbKafkaCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

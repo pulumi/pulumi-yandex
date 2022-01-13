@@ -132,7 +132,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// spec of IP v4 address.
         /// </summary>
-        public readonly Outputs.GetVpcAddressExternalIpv4AddressResult ExternalIpv4Address;
+        public readonly ImmutableArray<Outputs.GetVpcAddressExternalIpv4AddressResult> ExternalIpv4Addresses;
         public readonly string FolderId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -160,7 +160,7 @@ namespace Pulumi.Yandex
 
             string description,
 
-            Outputs.GetVpcAddressExternalIpv4AddressResult externalIpv4Address,
+            ImmutableArray<Outputs.GetVpcAddressExternalIpv4AddressResult> externalIpv4Addresses,
 
             string folderId,
 
@@ -177,7 +177,7 @@ namespace Pulumi.Yandex
             AddressId = addressId;
             CreatedAt = createdAt;
             Description = description;
-            ExternalIpv4Address = externalIpv4Address;
+            ExternalIpv4Addresses = externalIpv4Addresses;
             FolderId = folderId;
             Id = id;
             Labels = labels;

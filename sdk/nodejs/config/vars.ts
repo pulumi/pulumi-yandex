@@ -62,6 +62,14 @@ Object.defineProperty(exports, "maxRetries", {
     enumerable: true,
 });
 
+export declare const organizationId: string | undefined;
+Object.defineProperty(exports, "organizationId", {
+    get() {
+        return __config.get("organizationId");
+    },
+    enumerable: true,
+});
+
 /**
  * Disable use of TLS. Default value is `false`.
  */

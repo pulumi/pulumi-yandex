@@ -238,31 +238,31 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: KubernetesClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesClusterArgs | KubernetesClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesClusterState | undefined;
-            inputs["clusterIpv4Range"] = state ? state.clusterIpv4Range : undefined;
-            inputs["clusterIpv6Range"] = state ? state.clusterIpv6Range : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["health"] = state ? state.health : undefined;
-            inputs["kmsProvider"] = state ? state.kmsProvider : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["logGroupId"] = state ? state.logGroupId : undefined;
-            inputs["master"] = state ? state.master : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["networkImplementation"] = state ? state.networkImplementation : undefined;
-            inputs["networkPolicyProvider"] = state ? state.networkPolicyProvider : undefined;
-            inputs["nodeIpv4CidrMaskSize"] = state ? state.nodeIpv4CidrMaskSize : undefined;
-            inputs["nodeServiceAccountId"] = state ? state.nodeServiceAccountId : undefined;
-            inputs["releaseChannel"] = state ? state.releaseChannel : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            inputs["serviceIpv4Range"] = state ? state.serviceIpv4Range : undefined;
-            inputs["serviceIpv6Range"] = state ? state.serviceIpv6Range : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["clusterIpv4Range"] = state ? state.clusterIpv4Range : undefined;
+            resourceInputs["clusterIpv6Range"] = state ? state.clusterIpv6Range : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["kmsProvider"] = state ? state.kmsProvider : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["logGroupId"] = state ? state.logGroupId : undefined;
+            resourceInputs["master"] = state ? state.master : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["networkImplementation"] = state ? state.networkImplementation : undefined;
+            resourceInputs["networkPolicyProvider"] = state ? state.networkPolicyProvider : undefined;
+            resourceInputs["nodeIpv4CidrMaskSize"] = state ? state.nodeIpv4CidrMaskSize : undefined;
+            resourceInputs["nodeServiceAccountId"] = state ? state.nodeServiceAccountId : undefined;
+            resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["serviceIpv4Range"] = state ? state.serviceIpv4Range : undefined;
+            resourceInputs["serviceIpv6Range"] = state ? state.serviceIpv6Range : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as KubernetesClusterArgs | undefined;
             if ((!args || args.master === undefined) && !opts.urn) {
@@ -277,32 +277,30 @@ export class KubernetesCluster extends pulumi.CustomResource {
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            inputs["clusterIpv4Range"] = args ? args.clusterIpv4Range : undefined;
-            inputs["clusterIpv6Range"] = args ? args.clusterIpv6Range : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["kmsProvider"] = args ? args.kmsProvider : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["master"] = args ? args.master : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["networkImplementation"] = args ? args.networkImplementation : undefined;
-            inputs["networkPolicyProvider"] = args ? args.networkPolicyProvider : undefined;
-            inputs["nodeIpv4CidrMaskSize"] = args ? args.nodeIpv4CidrMaskSize : undefined;
-            inputs["nodeServiceAccountId"] = args ? args.nodeServiceAccountId : undefined;
-            inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["serviceIpv4Range"] = args ? args.serviceIpv4Range : undefined;
-            inputs["serviceIpv6Range"] = args ? args.serviceIpv6Range : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["health"] = undefined /*out*/;
-            inputs["logGroupId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["clusterIpv4Range"] = args ? args.clusterIpv4Range : undefined;
+            resourceInputs["clusterIpv6Range"] = args ? args.clusterIpv6Range : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["kmsProvider"] = args ? args.kmsProvider : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["master"] = args ? args.master : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["networkImplementation"] = args ? args.networkImplementation : undefined;
+            resourceInputs["networkPolicyProvider"] = args ? args.networkPolicyProvider : undefined;
+            resourceInputs["nodeIpv4CidrMaskSize"] = args ? args.nodeIpv4CidrMaskSize : undefined;
+            resourceInputs["nodeServiceAccountId"] = args ? args.nodeServiceAccountId : undefined;
+            resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["serviceIpv4Range"] = args ? args.serviceIpv4Range : undefined;
+            resourceInputs["serviceIpv6Range"] = args ? args.serviceIpv6Range : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
+            resourceInputs["logGroupId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KubernetesCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KubernetesCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

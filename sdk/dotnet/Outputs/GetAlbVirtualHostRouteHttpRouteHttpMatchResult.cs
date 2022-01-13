@@ -16,20 +16,20 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// List of methods(strings).
         /// </summary>
-        public readonly ImmutableArray<object> HttpMethods;
+        public readonly ImmutableArray<string> HttpMethods;
         /// <summary>
         /// If not set, '/' is assumed. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchPathResult Path;
+        public readonly ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchPathResult> Paths;
 
         [OutputConstructor]
         private GetAlbVirtualHostRouteHttpRouteHttpMatchResult(
-            ImmutableArray<object> httpMethods,
+            ImmutableArray<string> httpMethods,
 
-            Outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchPathResult path)
+            ImmutableArray<Outputs.GetAlbVirtualHostRouteHttpRouteHttpMatchPathResult> paths)
         {
             HttpMethods = httpMethods;
-            Path = path;
+            Paths = paths;
         }
     }
 }

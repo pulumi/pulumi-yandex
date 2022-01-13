@@ -20,13 +20,13 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbClickhouseClusterClickhouseResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetMdbClickhouseClusterClickhouseResourceResult> Resources;
 
         [OutputConstructor]
         private GetMdbClickhouseClusterClickhouseResult(
             Outputs.GetMdbClickhouseClusterClickhouseConfigResult config,
 
-            Outputs.GetMdbClickhouseClusterClickhouseResourcesResult resources)
+            ImmutableArray<Outputs.GetMdbClickhouseClusterClickhouseResourceResult> resources)
         {
             Config = config;
             Resources = resources;

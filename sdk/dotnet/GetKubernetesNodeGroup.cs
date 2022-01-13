@@ -137,7 +137,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// This argument specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupAllocationPolicyResult AllocationPolicy;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupAllocationPolicyResult> AllocationPolicies;
         /// <summary>
         /// A list of allowed unsafe sysctl parameters for this node group. For more details see [documentation](https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/).
         /// </summary>
@@ -153,7 +153,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Deploy policy of the node group. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupDeployPolicyResult DeployPolicy;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupDeployPolicyResult> DeployPolicies;
         /// <summary>
         /// A description of the Kubernetes node group.
         /// </summary>
@@ -170,7 +170,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Template used to create compute instances in this Kubernetes node group. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupInstanceTemplateResult InstanceTemplate;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateResult> InstanceTemplates;
         /// <summary>
         /// A map of labels applied to this instance.
         /// * `resources.0.memory` - The memory size allocated to the instance.
@@ -182,7 +182,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Information about maintenance policy for this Kubernetes node group. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupMaintenancePolicyResult MaintenancePolicy;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupMaintenancePolicyResult> MaintenancePolicies;
         public readonly string Name;
         public readonly string NodeGroupId;
         /// <summary>
@@ -196,7 +196,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Scale policy of the node group. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupScalePolicyResult ScalePolicy;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupScalePolicyResult> ScalePolicies;
         /// <summary>
         /// Status of the Kubernetes node group.
         /// </summary>
@@ -204,11 +204,11 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Information about Kubernetes node group version. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupVersionInfoResult VersionInfo;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupVersionInfoResult> VersionInfos;
 
         [OutputConstructor]
         private GetKubernetesNodeGroupResult(
-            Outputs.GetKubernetesNodeGroupAllocationPolicyResult allocationPolicy,
+            ImmutableArray<Outputs.GetKubernetesNodeGroupAllocationPolicyResult> allocationPolicies,
 
             ImmutableArray<string> allowedUnsafeSysctls,
 
@@ -216,7 +216,7 @@ namespace Pulumi.Yandex
 
             string createdAt,
 
-            Outputs.GetKubernetesNodeGroupDeployPolicyResult deployPolicy,
+            ImmutableArray<Outputs.GetKubernetesNodeGroupDeployPolicyResult> deployPolicies,
 
             string description,
 
@@ -226,11 +226,11 @@ namespace Pulumi.Yandex
 
             string instanceGroupId,
 
-            Outputs.GetKubernetesNodeGroupInstanceTemplateResult instanceTemplate,
+            ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateResult> instanceTemplates,
 
             ImmutableDictionary<string, string> labels,
 
-            Outputs.GetKubernetesNodeGroupMaintenancePolicyResult maintenancePolicy,
+            ImmutableArray<Outputs.GetKubernetesNodeGroupMaintenancePolicyResult> maintenancePolicies,
 
             string name,
 
@@ -240,31 +240,31 @@ namespace Pulumi.Yandex
 
             ImmutableArray<string> nodeTaints,
 
-            Outputs.GetKubernetesNodeGroupScalePolicyResult scalePolicy,
+            ImmutableArray<Outputs.GetKubernetesNodeGroupScalePolicyResult> scalePolicies,
 
             string status,
 
-            Outputs.GetKubernetesNodeGroupVersionInfoResult versionInfo)
+            ImmutableArray<Outputs.GetKubernetesNodeGroupVersionInfoResult> versionInfos)
         {
-            AllocationPolicy = allocationPolicy;
+            AllocationPolicies = allocationPolicies;
             AllowedUnsafeSysctls = allowedUnsafeSysctls;
             ClusterId = clusterId;
             CreatedAt = createdAt;
-            DeployPolicy = deployPolicy;
+            DeployPolicies = deployPolicies;
             Description = description;
             FolderId = folderId;
             Id = id;
             InstanceGroupId = instanceGroupId;
-            InstanceTemplate = instanceTemplate;
+            InstanceTemplates = instanceTemplates;
             Labels = labels;
-            MaintenancePolicy = maintenancePolicy;
+            MaintenancePolicies = maintenancePolicies;
             Name = name;
             NodeGroupId = nodeGroupId;
             NodeLabels = nodeLabels;
             NodeTaints = nodeTaints;
-            ScalePolicy = scalePolicy;
+            ScalePolicies = scalePolicies;
             Status = status;
-            VersionInfo = versionInfo;
+            VersionInfos = versionInfos;
         }
     }
 }

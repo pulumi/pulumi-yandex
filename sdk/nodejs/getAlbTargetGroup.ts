@@ -26,9 +26,7 @@ export function getAlbTargetGroup(args?: GetAlbTargetGroupArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getAlbTargetGroup:getAlbTargetGroup", {
         "description": args.description,
         "folderId": args.folderId,

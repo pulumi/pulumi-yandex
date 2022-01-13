@@ -274,6 +274,139 @@ export interface AlbBackendGroupHttpBackendTlsValidationContext {
     trustedCaId?: pulumi.Input<string>;
 }
 
+export interface AlbBackendGroupStreamBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: pulumi.Input<inputs.AlbBackendGroupStreamBackendHealthcheck>;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: pulumi.Input<inputs.AlbBackendGroupStreamBackendLoadBalancingConfig>;
+    /**
+     * Name of the backend.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: pulumi.Input<inputs.AlbBackendGroupStreamBackendTls>;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface AlbBackendGroupStreamBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    grpcHealthcheck?: pulumi.Input<inputs.AlbBackendGroupStreamBackendHealthcheckGrpcHealthcheck>;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: pulumi.Input<number>;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: pulumi.Input<number>;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: pulumi.Input<inputs.AlbBackendGroupStreamBackendHealthcheckHttpHealthcheck>;
+    /**
+     * Interval between health checks.
+     */
+    interval: pulumi.Input<string>;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: pulumi.Input<number>;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: pulumi.Input<inputs.AlbBackendGroupStreamBackendHealthcheckStreamHealthcheck>;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout: pulumi.Input<string>;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: pulumi.Input<number>;
+}
+
+export interface AlbBackendGroupStreamBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupStreamBackendHealthcheckHttpHealthcheck {
+    /**
+     * "Host" HTTP header value.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: pulumi.Input<boolean>;
+    /**
+     * HTTP path.
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupStreamBackendHealthcheckStreamHealthcheck {
+    /**
+     * Text to search in reply.
+     */
+    receive?: pulumi.Input<string>;
+    /**
+     * Message to send. If empty, it's a connect-only health check.
+     */
+    send?: pulumi.Input<string>;
+}
+
+export interface AlbBackendGroupStreamBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: pulumi.Input<number>;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: pulumi.Input<number>;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: pulumi.Input<boolean>;
+}
+
+export interface AlbBackendGroupStreamBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - (Optional) Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - (Optional) PEM-encoded trusted CA certificate chain.
+     */
+    sni?: pulumi.Input<string>;
+    validationContext?: pulumi.Input<inputs.AlbBackendGroupStreamBackendTlsValidationContext>;
+}
+
+export interface AlbBackendGroupStreamBackendTlsValidationContext {
+    trustedCaBytes?: pulumi.Input<string>;
+    trustedCaId?: pulumi.Input<string>;
+}
+
 export interface AlbLoadBalancerAllocationPolicy {
     /**
      * Unique set of locations. The structure is documented below.
@@ -309,6 +442,10 @@ export interface AlbLoadBalancerListener {
      * name of SNI match.
      */
     name: pulumi.Input<string>;
+    /**
+     * Stream listener resource. The structure is documented below.
+     */
+    stream?: pulumi.Input<inputs.AlbLoadBalancerListenerStream>;
     /**
      * TLS listener resource. The structure is documented below.
      */
@@ -403,6 +540,20 @@ export interface AlbLoadBalancerListenerHttpRedirects {
     httpToHttps?: pulumi.Input<boolean>;
 }
 
+export interface AlbLoadBalancerListenerStream {
+    /**
+     * HTTP handler that sets plaintext HTTP router. The structure is documented below.
+     */
+    handler?: pulumi.Input<inputs.AlbLoadBalancerListenerStreamHandler>;
+}
+
+export interface AlbLoadBalancerListenerStreamHandler {
+    /**
+     * Backend group id.
+     */
+    backendGroupId?: pulumi.Input<string>;
+}
+
 export interface AlbLoadBalancerListenerTls {
     /**
      * TLS handler resource. The structure is documented below.
@@ -424,6 +575,10 @@ export interface AlbLoadBalancerListenerTlsDefaultHandler {
      * HTTP handler resource. The structure is documented below.
      */
     httpHandler?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler>;
+    /**
+     * Stream handler resource. The structure is documented below.
+     */
+    streamHandler?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsDefaultHandlerStreamHandler>;
 }
 
 export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandler {
@@ -446,6 +601,13 @@ export interface AlbLoadBalancerListenerTlsDefaultHandlerHttpHandlerHttp2Options
      * Maximum number of concurrent streams.
      */
     maxConcurrentStreams?: pulumi.Input<number>;
+}
+
+export interface AlbLoadBalancerListenerTlsDefaultHandlerStreamHandler {
+    /**
+     * Backend group id.
+     */
+    backendGroupId?: pulumi.Input<string>;
 }
 
 export interface AlbLoadBalancerListenerTlsSniHandler {
@@ -473,6 +635,10 @@ export interface AlbLoadBalancerListenerTlsSniHandlerHandler {
      * HTTP handler resource. The structure is documented below.
      */
     httpHandler?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler>;
+    /**
+     * Stream handler resource. The structure is documented below.
+     */
+    streamHandler?: pulumi.Input<inputs.AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandler>;
 }
 
 export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandler {
@@ -497,16 +663,24 @@ export interface AlbLoadBalancerListenerTlsSniHandlerHandlerHttpHandlerHttp2Opti
     maxConcurrentStreams?: pulumi.Input<number>;
 }
 
+export interface AlbLoadBalancerListenerTlsSniHandlerHandlerStreamHandler {
+    /**
+     * Backend group id.
+     */
+    backendGroupId?: pulumi.Input<string>;
+}
+
 export interface AlbTargetGroupTarget {
     /**
      * IP address of the target.
      */
     ipAddress: pulumi.Input<string>;
+    privateIpv4Address?: pulumi.Input<boolean>;
     /**
      * ID of the subnet that targets are connected to.
      * All targets in the target group must be connected to the same subnet within a single availability zone.
      */
-    subnetId: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
 }
 
 export interface AlbVirtualHostModifyRequestHeader {
@@ -517,7 +691,7 @@ export interface AlbVirtualHostModifyRequestHeader {
     /**
      * name of the route.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * If set, remove the header.
      */
@@ -537,7 +711,7 @@ export interface AlbVirtualHostModifyResponseHeader {
     /**
      * name of the route.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * If set, remove the header.
      */
@@ -587,7 +761,13 @@ export interface AlbVirtualHostRouteGrpcRouteGrpcMatch {
 }
 
 export interface AlbVirtualHostRouteGrpcRouteGrpcMatchFqmn {
+    /**
+     * Match exactly.
+     */
     exact?: pulumi.Input<string>;
+    /**
+     * Match prefix.
+     */
     prefix?: pulumi.Input<string>;
 }
 
@@ -661,7 +841,7 @@ export interface AlbVirtualHostRouteHttpRouteHttpMatch {
     /**
      * List of methods(strings).
      */
-    httpMethods?: pulumi.Input<any[]>;
+    httpMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If not set, '/' is assumed. The structure is documented below.
      */
@@ -669,7 +849,13 @@ export interface AlbVirtualHostRouteHttpRouteHttpMatch {
 }
 
 export interface AlbVirtualHostRouteHttpRouteHttpMatchPath {
+    /**
+     * Match exactly.
+     */
     exact?: pulumi.Input<string>;
+    /**
+     * Match prefix.
+     */
     prefix?: pulumi.Input<string>;
 }
 
@@ -740,6 +926,107 @@ export interface AlbVirtualHostRouteHttpRouteRedirectAction {
     responseCode?: pulumi.Input<string>;
 }
 
+export interface CdnOriginGroupOrigin {
+    backup?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    originGroupId?: pulumi.Input<number>;
+    source: pulumi.Input<string>;
+}
+
+export interface CdnResourceOptions {
+    /**
+     * HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
+     */
+    allowedHttpMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * set up a cache period for the end-users browser. Content will be cached due to origin settings. If there are no cache settings on your origin, the content will not be cached. The list of HTTP response codes that can be cached in browsers: 200, 201, 204, 206, 301, 302, 303, 304, 307, 308. Other response codes will not be cached. The default value is 4 days.
+     */
+    browserCacheSettings?: pulumi.Input<number>;
+    /**
+     * list HTTP headers that must be included in responses to clients.
+     */
+    cacheHttpHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * parameter that lets browsers get access to selected resources from a domain different to a domain from which the request is received.
+     */
+    cors?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * custom value for the Host header. Your server must be able to process requests with the chosen header.
+     */
+    customHostHeader?: pulumi.Input<string>;
+    /**
+     * wildcard additional CNAME. If a resource has a wildcard additional CNAME, you can use your own certificate for content delivery via HTTPS. Read-only.
+     */
+    customServerName?: pulumi.Input<string>;
+    /**
+     * setup a cache status.
+     */
+    disableCache?: pulumi.Input<boolean>;
+    /**
+     * disabling proxy force ranges.
+     */
+    disableProxyForceRanges?: pulumi.Input<boolean>;
+    /**
+     * content will be cached according to origin cache settings. The value applies for a response with codes 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 if an origin server does not have caching HTTP headers. Responses with other codes will not be cached.
+     */
+    edgeCacheSettings?: pulumi.Input<number>;
+    /**
+     * option helps you to reduce the bandwidth between origin and CDN servers. Also, content delivery speed becomes higher because of reducing the time for compressing files in a CDN.
+     */
+    fetchedCompressed?: pulumi.Input<boolean>;
+    /**
+     * choose the Forward Host header option if is important to send in the request to the Origin the same Host header as was sent in the request to CDN server.
+     */
+    forwardHostHeader?: pulumi.Input<boolean>;
+    /**
+     * GZip compression at CDN servers reduces file size by 70% and can be as high as 90%.
+     */
+    gzipOn?: pulumi.Input<boolean>;
+    /**
+     * set for ignoring cookie.
+     */
+    ignoreCookie?: pulumi.Input<boolean>;
+    /**
+     * files with different query parameters are cached as objects with the same key regardless of the parameter value. selected by default.
+     */
+    ignoreQueryParams?: pulumi.Input<boolean>;
+    /**
+     * allows caching for GET, HEAD and POST requests.
+     */
+    proxyCacheMethodsSet?: pulumi.Input<boolean>;
+    /**
+     * files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
+     */
+    queryParamsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
+     */
+    queryParamsWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * set up a redirect from HTTPS to HTTP.
+     */
+    redirectHttpToHttps?: pulumi.Input<boolean>;
+    /**
+     * set up a redirect from HTTP to HTTPS.
+     */
+    redirectHttpsToHttp?: pulumi.Input<boolean>;
+    /**
+     * files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
+     */
+    slice?: pulumi.Input<boolean>;
+    /**
+     * set up custom headers that CDN servers send in requests to origins.
+     */
+    staticRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    staticResponseHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface CdnResourceSslCertificate {
+    certificateManagerId?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
 export interface ComputeDiskDiskPlacementPolicy {
     /**
      * Specifies Disk Placement Group id.
@@ -774,6 +1061,7 @@ export interface ComputeInstanceBootDisk {
 }
 
 export interface ComputeInstanceBootDiskInitializeParams {
+    blockSize?: pulumi.Input<number>;
     /**
      * Description of the boot disk.
      */
@@ -880,7 +1168,7 @@ export interface ComputeInstanceGroupHealthCheck {
     /**
      * TCP check options. The structure is documented below.
      */
-    tcpOptions?: pulumi.Input<pulumi.Input<inputs.ComputeInstanceGroupHealthCheckTcpOption>[]>;
+    tcpOptions?: pulumi.Input<inputs.ComputeInstanceGroupHealthCheckTcpOptions>;
     /**
      * The length of time to wait for a response before the health check times out in seconds.
      */
@@ -902,7 +1190,7 @@ export interface ComputeInstanceGroupHealthCheckHttpOption {
     port: pulumi.Input<number>;
 }
 
-export interface ComputeInstanceGroupHealthCheckTcpOption {
+export interface ComputeInstanceGroupHealthCheckTcpOptions {
     /**
      * The port used for TCP health checks.
      */
@@ -1889,45 +2177,6 @@ export interface GetAlbBackendGroupGrpcBackend {
     weight?: number;
 }
 
-export interface GetAlbBackendGroupGrpcBackendHealthcheck {
-    /**
-     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
-     */
-    grpcHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck;
-    /**
-     * Optional alternative port for health checking.
-     */
-    healthcheckPort?: number;
-    /**
-     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
-     */
-    healthyThreshold?: number;
-    /**
-     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
-     */
-    httpHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck;
-    /**
-     * Interval between health checks.
-     */
-    interval?: string;
-    /**
-     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
-     */
-    intervalJitterPercent?: number;
-    /**
-     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
-     */
-    streamHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck;
-    /**
-     * Time to wait for a health check response.
-     */
-    timeout?: string;
-    /**
-     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
-     */
-    unhealthyThreshold?: number;
-}
-
 export interface GetAlbBackendGroupGrpcBackendHealthcheckArgs {
     /**
      * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
@@ -1967,11 +2216,43 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheckArgs {
     unhealthyThreshold?: pulumi.Input<number>;
 }
 
-export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+export interface GetAlbBackendGroupGrpcBackendHealthcheck {
     /**
-     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
      */
-    serviceName?: string;
+    grpcHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: number;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: number;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck;
+    /**
+     * Interval between health checks.
+     */
+    interval?: string;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: number;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: inputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout?: string;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: number;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs {
@@ -1979,6 +2260,13 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs {
      * Optional service name for grpc.health.v1.HealthCheckRequest message.
      */
     serviceName?: pulumi.Input<string>;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: string;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
@@ -2011,17 +2299,6 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs {
     path?: pulumi.Input<string>;
 }
 
-export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs {
-    /**
-     * Optional text to search in reply.
-     */
-    receive?: pulumi.Input<string>;
-    /**
-     * Optional message to send. If empty, it's a connect-only health check.
-     */
-    send?: pulumi.Input<string>;
-}
-
 export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
     /**
      * Optional text to search in reply.
@@ -2033,19 +2310,15 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
     send?: string;
 }
 
-export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs {
+export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs {
     /**
-     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     * Optional text to search in reply.
      */
-    localityAwareRoutingPercent?: pulumi.Input<number>;
+    receive?: pulumi.Input<string>;
     /**
-     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     * Optional message to send. If empty, it's a connect-only health check.
      */
-    panicThreshold?: pulumi.Input<number>;
-    /**
-     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
-     */
-    strictLocality?: pulumi.Input<boolean>;
+    send?: pulumi.Input<string>;
 }
 
 export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
@@ -2061,6 +2334,21 @@ export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
      * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
      */
     strictLocality?: boolean;
+}
+
+export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: pulumi.Input<number>;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: pulumi.Input<number>;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: pulumi.Input<boolean>;
 }
 
 export interface GetAlbBackendGroupGrpcBackendTls {
@@ -2083,49 +2371,14 @@ export interface GetAlbBackendGroupGrpcBackendTlsArgs {
     validationContext?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendTlsValidationContextArgs>;
 }
 
-export interface GetAlbBackendGroupGrpcBackendTlsValidationContextArgs {
-    trustedCaBytes?: pulumi.Input<string>;
-    trustedCaId?: pulumi.Input<string>;
-}
-
 export interface GetAlbBackendGroupGrpcBackendTlsValidationContext {
     trustedCaBytes?: string;
     trustedCaId?: string;
 }
 
-export interface GetAlbBackendGroupHttpBackend {
-    /**
-     * Healthcheck specification that will be used by this backend. Structure is documented below.
-     */
-    healthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheck;
-    /**
-     * If set, health checks will use HTTP2.
-     */
-    http2?: boolean;
-    /**
-     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
-     */
-    loadBalancingConfig?: inputs.GetAlbBackendGroupHttpBackendLoadBalancingConfig;
-    /**
-     * - Name of the Backend Group.
-     */
-    name?: string;
-    /**
-     * Port for incoming traffic.
-     */
-    port?: number;
-    /**
-     * References target groups for the backend.
-     */
-    targetGroupIds?: string[];
-    /**
-     * Tls specification that will be used by this backend. Structure is documented below.
-     */
-    tls?: inputs.GetAlbBackendGroupHttpBackendTls;
-    /**
-     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
-     */
-    weight?: number;
+export interface GetAlbBackendGroupGrpcBackendTlsValidationContextArgs {
+    trustedCaBytes?: pulumi.Input<string>;
+    trustedCaId?: pulumi.Input<string>;
 }
 
 export interface GetAlbBackendGroupHttpBackendArgs {
@@ -2161,6 +2414,41 @@ export interface GetAlbBackendGroupHttpBackendArgs {
      * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
      */
     weight?: pulumi.Input<number>;
+}
+
+export interface GetAlbBackendGroupHttpBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: inputs.GetAlbBackendGroupHttpBackendHealthcheck;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: boolean;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: inputs.GetAlbBackendGroupHttpBackendLoadBalancingConfig;
+    /**
+     * - Name of the Backend Group.
+     */
+    name?: string;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: number;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds?: string[];
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: inputs.GetAlbBackendGroupHttpBackendTls;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: number;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheck {
@@ -2241,18 +2529,18 @@ export interface GetAlbBackendGroupHttpBackendHealthcheckArgs {
     unhealthyThreshold?: pulumi.Input<number>;
 }
 
-export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
-    /**
-     * Optional service name for grpc.health.v1.HealthCheckRequest message.
-     */
-    serviceName?: string;
-}
-
 export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs {
     /**
      * Optional service name for grpc.health.v1.HealthCheckRequest message.
      */
     serviceName?: pulumi.Input<string>;
+}
+
+export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: string;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
@@ -2337,16 +2625,6 @@ export interface GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs {
     strictLocality?: pulumi.Input<boolean>;
 }
 
-export interface GetAlbBackendGroupHttpBackendTls {
-    /**
-     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
-     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
-     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
-     */
-    sni?: string;
-    validationContext?: inputs.GetAlbBackendGroupHttpBackendTlsValidationContext;
-}
-
 export interface GetAlbBackendGroupHttpBackendTlsArgs {
     /**
      * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
@@ -2357,6 +2635,16 @@ export interface GetAlbBackendGroupHttpBackendTlsArgs {
     validationContext?: pulumi.Input<inputs.GetAlbBackendGroupHttpBackendTlsValidationContextArgs>;
 }
 
+export interface GetAlbBackendGroupHttpBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+     */
+    sni?: string;
+    validationContext?: inputs.GetAlbBackendGroupHttpBackendTlsValidationContext;
+}
+
 export interface GetAlbBackendGroupHttpBackendTlsValidationContext {
     trustedCaBytes?: string;
     trustedCaId?: string;
@@ -2365,6 +2653,460 @@ export interface GetAlbBackendGroupHttpBackendTlsValidationContext {
 export interface GetAlbBackendGroupHttpBackendTlsValidationContextArgs {
     trustedCaBytes?: pulumi.Input<string>;
     trustedCaId?: pulumi.Input<string>;
+}
+
+export interface GetAlbBackendGroupStreamBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: inputs.GetAlbBackendGroupStreamBackendHealthcheck;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: inputs.GetAlbBackendGroupStreamBackendLoadBalancingConfig;
+    /**
+     * - Name of the Backend Group.
+     */
+    name?: string;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: number;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds?: string[];
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: inputs.GetAlbBackendGroupStreamBackendTls;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: number;
+}
+
+export interface GetAlbBackendGroupStreamBackendArgs {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: pulumi.Input<inputs.GetAlbBackendGroupStreamBackendHealthcheckArgs>;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: pulumi.Input<inputs.GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs>;
+    /**
+     * - Name of the Backend Group.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: pulumi.Input<inputs.GetAlbBackendGroupStreamBackendTlsArgs>;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface GetAlbBackendGroupStreamBackendHealthcheck {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    grpcHealthcheck?: inputs.GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheck;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: number;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: number;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: inputs.GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheck;
+    /**
+     * Interval between health checks.
+     */
+    interval?: string;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: number;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: inputs.GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheck;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout?: string;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: number;
+}
+
+export interface GetAlbBackendGroupStreamBackendHealthcheckArgs {
+    /**
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    grpcHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs>;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: pulumi.Input<number>;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: pulumi.Input<number>;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs>;
+    /**
+     * Interval between health checks.
+     */
+    interval?: pulumi.Input<string>;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: pulumi.Input<number>;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs>;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout?: pulumi.Input<string>;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: pulumi.Input<number>;
+}
+
+export interface GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheck {
+    /**
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: string;
+}
+
+export interface GetAlbBackendGroupStreamBackendHealthcheckGrpcHealthcheckArgs {
+    /**
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: pulumi.Input<string>;
+}
+
+export interface GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheck {
+    /**
+     * Optional "Host" HTTP header value.
+     */
+    host?: string;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: boolean;
+    /**
+     * HTTP path.
+     */
+    path?: string;
+}
+
+export interface GetAlbBackendGroupStreamBackendHealthcheckHttpHealthcheckArgs {
+    /**
+     * Optional "Host" HTTP header value.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: pulumi.Input<boolean>;
+    /**
+     * HTTP path.
+     */
+    path?: pulumi.Input<string>;
+}
+
+export interface GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheck {
+    /**
+     * Optional text to search in reply.
+     */
+    receive?: string;
+    /**
+     * Optional message to send. If empty, it's a connect-only health check.
+     */
+    send?: string;
+}
+
+export interface GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs {
+    /**
+     * Optional text to search in reply.
+     */
+    receive?: pulumi.Input<string>;
+    /**
+     * Optional message to send. If empty, it's a connect-only health check.
+     */
+    send?: pulumi.Input<string>;
+}
+
+export interface GetAlbBackendGroupStreamBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: boolean;
+}
+
+export interface GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: pulumi.Input<number>;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: pulumi.Input<number>;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: pulumi.Input<boolean>;
+}
+
+export interface GetAlbBackendGroupStreamBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+     */
+    sni?: string;
+    validationContext?: inputs.GetAlbBackendGroupStreamBackendTlsValidationContext;
+}
+
+export interface GetAlbBackendGroupStreamBackendTlsArgs {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+     */
+    sni?: pulumi.Input<string>;
+    validationContext?: pulumi.Input<inputs.GetAlbBackendGroupStreamBackendTlsValidationContextArgs>;
+}
+
+export interface GetAlbBackendGroupStreamBackendTlsValidationContextArgs {
+    trustedCaBytes?: pulumi.Input<string>;
+    trustedCaId?: pulumi.Input<string>;
+}
+
+export interface GetAlbBackendGroupStreamBackendTlsValidationContext {
+    trustedCaBytes?: string;
+    trustedCaId?: string;
+}
+
+export interface GetCdnResourceOptionsArgs {
+    /**
+     * HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
+     */
+    allowedHttpMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * set up a cache period for the end-users browser. Content will be cached due to origin settings. If there are no cache settings on your origin, the content will not be cached. The list of HTTP response codes that can be cached in browsers: 200, 201, 204, 206, 301, 302, 303, 304, 307, 308. Other response codes will not be cached. The default value is 4 days.
+     */
+    browserCacheSettings?: pulumi.Input<number>;
+    /**
+     * list HTTP headers that must be included in responses to clients.
+     */
+    cacheHttpHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * parameter that lets browsers get access to selected resources from a domain different to a domain from which the request is received.
+     */
+    cors?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * custom value for the Host header. Your server must be able to process requests with the chosen header.
+     */
+    customHostHeader?: pulumi.Input<string>;
+    /**
+     * wildcard additional CNAME. If a resource has a wildcard additional CNAME, you can use your own certificate for content delivery via HTTPS. Read-only.
+     */
+    customServerName?: pulumi.Input<string>;
+    /**
+     * setup a cache status.
+     */
+    disableCache?: pulumi.Input<boolean>;
+    /**
+     * disabling proxy force ranges.
+     */
+    disableProxyForceRanges?: pulumi.Input<boolean>;
+    /**
+     * content will be cached according to origin cache settings. The value applies for a response with codes 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 if an origin server does not have caching HTTP headers. Responses with other codes will not be cached.
+     */
+    edgeCacheSettings?: pulumi.Input<number>;
+    /**
+     * option helps you to reduce the bandwidth between origin and CDN servers. Also, content delivery speed becomes higher because of reducing the time for compressing files in a CDN.
+     */
+    fetchedCompressed?: pulumi.Input<boolean>;
+    /**
+     * choose the Forward Host header option if is important to send in the request to the Origin the same Host header as was sent in the request to CDN server.
+     */
+    forwardHostHeader?: pulumi.Input<boolean>;
+    /**
+     * GZip compression at CDN servers reduces file size by 70% and can be as high as 90%.
+     */
+    gzipOn?: pulumi.Input<boolean>;
+    /**
+     * set for ignoring cookie.
+     */
+    ignoreCookie?: pulumi.Input<boolean>;
+    /**
+     * files with different query parameters are cached as objects with the same key regardless of the parameter value. selected by default.
+     */
+    ignoreQueryParams?: pulumi.Input<boolean>;
+    /**
+     * allows caching for GET, HEAD and POST requests.
+     */
+    proxyCacheMethodsSet?: pulumi.Input<boolean>;
+    /**
+     * files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
+     */
+    queryParamsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
+     */
+    queryParamsWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * set up a redirect from HTTPS to HTTP.
+     */
+    redirectHttpToHttps?: pulumi.Input<boolean>;
+    /**
+     * set up a redirect from HTTP to HTTPS.
+     */
+    redirectHttpsToHttp?: pulumi.Input<boolean>;
+    /**
+     * files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
+     */
+    slice?: pulumi.Input<boolean>;
+    /**
+     * set up custom headers that CDN servers send in requests to origins.
+     */
+    staticRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    staticResponseHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface GetCdnResourceOptions {
+    /**
+     * HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
+     */
+    allowedHttpMethods?: string[];
+    /**
+     * set up a cache period for the end-users browser. Content will be cached due to origin settings. If there are no cache settings on your origin, the content will not be cached. The list of HTTP response codes that can be cached in browsers: 200, 201, 204, 206, 301, 302, 303, 304, 307, 308. Other response codes will not be cached. The default value is 4 days.
+     */
+    browserCacheSettings?: number;
+    /**
+     * list HTTP headers that must be included in responses to clients.
+     */
+    cacheHttpHeaders?: string[];
+    /**
+     * parameter that lets browsers get access to selected resources from a domain different to a domain from which the request is received.
+     */
+    cors?: string[];
+    /**
+     * custom value for the Host header. Your server must be able to process requests with the chosen header.
+     */
+    customHostHeader?: string;
+    /**
+     * wildcard additional CNAME. If a resource has a wildcard additional CNAME, you can use your own certificate for content delivery via HTTPS. Read-only.
+     */
+    customServerName?: string;
+    /**
+     * setup a cache status.
+     */
+    disableCache?: boolean;
+    /**
+     * disabling proxy force ranges.
+     */
+    disableProxyForceRanges?: boolean;
+    /**
+     * content will be cached according to origin cache settings. The value applies for a response with codes 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 if an origin server does not have caching HTTP headers. Responses with other codes will not be cached.
+     */
+    edgeCacheSettings?: number;
+    /**
+     * option helps you to reduce the bandwidth between origin and CDN servers. Also, content delivery speed becomes higher because of reducing the time for compressing files in a CDN.
+     */
+    fetchedCompressed?: boolean;
+    /**
+     * choose the Forward Host header option if is important to send in the request to the Origin the same Host header as was sent in the request to CDN server.
+     */
+    forwardHostHeader?: boolean;
+    /**
+     * GZip compression at CDN servers reduces file size by 70% and can be as high as 90%.
+     */
+    gzipOn?: boolean;
+    /**
+     * set for ignoring cookie.
+     */
+    ignoreCookie?: boolean;
+    /**
+     * files with different query parameters are cached as objects with the same key regardless of the parameter value. selected by default.
+     */
+    ignoreQueryParams?: boolean;
+    /**
+     * allows caching for GET, HEAD and POST requests.
+     */
+    proxyCacheMethodsSet?: boolean;
+    /**
+     * files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
+     */
+    queryParamsBlacklists?: string[];
+    /**
+     * files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
+     */
+    queryParamsWhitelists?: string[];
+    /**
+     * set up a redirect from HTTPS to HTTP.
+     */
+    redirectHttpToHttps?: boolean;
+    /**
+     * set up a redirect from HTTP to HTTPS.
+     */
+    redirectHttpsToHttp?: boolean;
+    /**
+     * files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
+     */
+    slice?: boolean;
+    /**
+     * set up custom headers that CDN servers send in requests to origins.
+     */
+    staticRequestHeaders?: string[];
+    staticResponseHeaders?: {[key: string]: string};
+}
+
+export interface GetCdnResourceSslCertificateArgs {
+    certificateManagerId?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface GetCdnResourceSslCertificate {
+    certificateManagerId?: string;
+    status?: string;
+    type: string;
 }
 
 export interface GetComputeDiskDiskPlacementPolicyArgs {
@@ -2381,20 +3123,6 @@ export interface GetComputeInstancePlacementPolicy {
 
 export interface GetComputeInstancePlacementPolicyArgs {
     placementGroupId: pulumi.Input<string>;
-}
-
-export interface GetComputeInstanceSchedulingPolicyArgs {
-    /**
-     * (Optional) Specifies if the instance is preemptible. Defaults to false.
-     */
-    preemptible?: pulumi.Input<boolean>;
-}
-
-export interface GetComputeInstanceSchedulingPolicy {
-    /**
-     * (Optional) Specifies if the instance is preemptible. Defaults to false.
-     */
-    preemptible?: boolean;
 }
 
 export interface GetFunctionScalingPolicyPolicy {
@@ -2439,18 +3167,18 @@ export interface GetIamPolicyBinding {
     role: string;
 }
 
-export interface GetMdbClickhouseClusterCloudStorageArgs {
-    /**
-     * (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
-     */
-    enabled: pulumi.Input<boolean>;
-}
-
 export interface GetMdbClickhouseClusterCloudStorage {
     /**
      * (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
      */
     enabled: boolean;
+}
+
+export interface GetMdbClickhouseClusterCloudStorageArgs {
+    /**
+     * (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
+     */
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface GetMdbKafkaClusterConfig {
@@ -2523,17 +3251,6 @@ export interface GetMdbKafkaClusterConfigArgs {
     zookeeper?: pulumi.Input<inputs.GetMdbKafkaClusterConfigZookeeperArgs>;
 }
 
-export interface GetMdbKafkaClusterConfigKafka {
-    /**
-     * (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
-     */
-    kafkaConfig?: inputs.GetMdbKafkaClusterConfigKafkaKafkaConfig;
-    /**
-     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
-     */
-    resources: inputs.GetMdbKafkaClusterConfigKafkaResources;
-}
-
 export interface GetMdbKafkaClusterConfigKafkaArgs {
     /**
      * (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
@@ -2543,6 +3260,17 @@ export interface GetMdbKafkaClusterConfigKafkaArgs {
      * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
      */
     resources: pulumi.Input<inputs.GetMdbKafkaClusterConfigKafkaResourcesArgs>;
+}
+
+export interface GetMdbKafkaClusterConfigKafka {
+    /**
+     * (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
+     */
+    kafkaConfig?: inputs.GetMdbKafkaClusterConfigKafkaKafkaConfig;
+    /**
+     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
+     */
+    resources: inputs.GetMdbKafkaClusterConfigKafkaResources;
 }
 
 export interface GetMdbKafkaClusterConfigKafkaKafkaConfig {
@@ -2621,19 +3349,6 @@ export interface GetMdbKafkaClusterConfigZookeeper {
     resources?: inputs.GetMdbKafkaClusterConfigZookeeperResources;
 }
 
-export interface GetMdbKafkaClusterConfigZookeeperResources {
-    /**
-     * (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
-     */
-    diskSize?: number;
-    /**
-     * (Optional) Type of the storage of ZooKeeper hosts.
-     * For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
-     */
-    diskTypeId?: string;
-    resourcePresetId?: string;
-}
-
 export interface GetMdbKafkaClusterConfigZookeeperResourcesArgs {
     /**
      * (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
@@ -2645,6 +3360,19 @@ export interface GetMdbKafkaClusterConfigZookeeperResourcesArgs {
      */
     diskTypeId?: pulumi.Input<string>;
     resourcePresetId?: pulumi.Input<string>;
+}
+
+export interface GetMdbKafkaClusterConfigZookeeperResources {
+    /**
+     * (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
+     */
+    diskSize?: number;
+    /**
+     * (Optional) Type of the storage of ZooKeeper hosts.
+     * For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
+     */
+    diskTypeId?: string;
+    resourcePresetId?: string;
 }
 
 export interface GetMdbKafkaClusterTopicArgs {
@@ -2725,21 +3453,6 @@ export interface GetMdbKafkaClusterTopicTopicConfig {
     segmentBytes?: string;
 }
 
-export interface GetMdbKafkaClusterUserArgs {
-    /**
-     * The name of the Kafka cluster.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * (Required) The password of the user.
-     */
-    password: pulumi.Input<string>;
-    /**
-     * (Optional) Set of permissions granted to the user. The structure is documented below.
-     */
-    permissions?: pulumi.Input<pulumi.Input<inputs.GetMdbKafkaClusterUserPermissionArgs>[]>;
-}
-
 export interface GetMdbKafkaClusterUser {
     /**
      * The name of the Kafka cluster.
@@ -2755,15 +3468,19 @@ export interface GetMdbKafkaClusterUser {
     permissions?: inputs.GetMdbKafkaClusterUserPermission[];
 }
 
-export interface GetMdbKafkaClusterUserPermissionArgs {
+export interface GetMdbKafkaClusterUserArgs {
     /**
-     * Role of the host in the cluster.
+     * The name of the Kafka cluster.
      */
-    role: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
-     * (Required) The name of the topic that the permission grants access to.
+     * (Required) The password of the user.
      */
-    topicName: pulumi.Input<string>;
+    password: pulumi.Input<string>;
+    /**
+     * (Optional) Set of permissions granted to the user. The structure is documented below.
+     */
+    permissions?: pulumi.Input<pulumi.Input<inputs.GetMdbKafkaClusterUserPermissionArgs>[]>;
 }
 
 export interface GetMdbKafkaClusterUserPermission {
@@ -2777,15 +3494,15 @@ export interface GetMdbKafkaClusterUserPermission {
     topicName: string;
 }
 
-export interface GetMdbMysqlClusterAccess {
+export interface GetMdbKafkaClusterUserPermissionArgs {
     /**
-     * Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
+     * Role of the host in the cluster.
      */
-    dataLens?: boolean;
+    role: pulumi.Input<string>;
     /**
-     * Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
+     * (Required) The name of the topic that the permission grants access to.
      */
-    webSql?: boolean;
+    topicName: pulumi.Input<string>;
 }
 
 export interface GetMdbMysqlClusterAccessArgs {
@@ -2797,6 +3514,17 @@ export interface GetMdbMysqlClusterAccessArgs {
      * Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
      */
     webSql?: pulumi.Input<boolean>;
+}
+
+export interface GetMdbMysqlClusterAccess {
+    /**
+     * Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
+     */
+    dataLens?: boolean;
+    /**
+     * Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
+     */
+    webSql?: boolean;
 }
 
 export interface KubernetesClusterKmsProvider {
@@ -2853,7 +3581,7 @@ export interface KubernetesClusterMaster {
     /**
      * (Computed) Information about cluster version. The structure is documented below.
      */
-    versionInfo?: pulumi.Input<inputs.KubernetesClusterMasterVersionInfo>;
+    versionInfos?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterMasterVersionInfo>[]>;
     /**
      * (Optional) Initialize parameters for Zonal Master (single node master). The structure is documented below.
      */
@@ -4896,6 +5624,18 @@ export interface MdbSqlServerClusterUserPermission {
      * Allowed roles: `OWNER`, `SECURITYADMIN`, `ACCESSADMIN`, `BACKUPOPERATOR`, `DDLADMIN`, `DATAWRITER`, `DATAREADER`, `DENYDATAWRITER`, `DENYDATAREADER`.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ServerlessContainerImage {
+    args?: pulumi.Input<pulumi.Input<string>[]>;
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
+    digest?: pulumi.Input<string>;
+    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Invoke URL for the Yandex Cloud Serverless Container
+     */
+    url: pulumi.Input<string>;
+    workDir?: pulumi.Input<string>;
 }
 
 export interface StorageBucketCorsRule {

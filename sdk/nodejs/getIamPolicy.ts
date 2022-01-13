@@ -36,9 +36,7 @@ export function getIamPolicy(args: GetIamPolicyArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getIamPolicy:getIamPolicy", {
         "bindings": args.bindings,
     }, opts);

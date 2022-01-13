@@ -129,40 +129,38 @@ export class ApiGateway extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApiGatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiGatewayArgs | ApiGatewayState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiGatewayState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["logGroupId"] = state ? state.logGroupId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["spec"] = state ? state.spec : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["userDomains"] = state ? state.userDomains : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["logGroupId"] = state ? state.logGroupId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["userDomains"] = state ? state.userDomains : undefined;
         } else {
             const args = argsOrState as ApiGatewayArgs | undefined;
             if ((!args || args.spec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["domain"] = undefined /*out*/;
-            inputs["logGroupId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["userDomains"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["domain"] = undefined /*out*/;
+            resourceInputs["logGroupId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["userDomains"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ApiGateway.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ApiGateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

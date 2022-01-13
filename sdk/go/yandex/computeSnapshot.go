@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yandex.NewComputeSnapshot(ctx, "_default", &yandex.ComputeSnapshotArgs{
+// 		_, err := yandex.NewComputeSnapshot(ctx, "default", &yandex.ComputeSnapshotArgs{
 // 			Labels: pulumi.StringMap{
 // 				"my-label": pulumi.String("my-label-value"),
 // 			},
@@ -185,7 +185,7 @@ type ComputeSnapshotInput interface {
 }
 
 func (*ComputeSnapshot) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeSnapshot)(nil))
+	return reflect.TypeOf((**ComputeSnapshot)(nil)).Elem()
 }
 
 func (i *ComputeSnapshot) ToComputeSnapshotOutput() ComputeSnapshotOutput {
@@ -194,35 +194,6 @@ func (i *ComputeSnapshot) ToComputeSnapshotOutput() ComputeSnapshotOutput {
 
 func (i *ComputeSnapshot) ToComputeSnapshotOutputWithContext(ctx context.Context) ComputeSnapshotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeSnapshotOutput)
-}
-
-func (i *ComputeSnapshot) ToComputeSnapshotPtrOutput() ComputeSnapshotPtrOutput {
-	return i.ToComputeSnapshotPtrOutputWithContext(context.Background())
-}
-
-func (i *ComputeSnapshot) ToComputeSnapshotPtrOutputWithContext(ctx context.Context) ComputeSnapshotPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeSnapshotPtrOutput)
-}
-
-type ComputeSnapshotPtrInput interface {
-	pulumi.Input
-
-	ToComputeSnapshotPtrOutput() ComputeSnapshotPtrOutput
-	ToComputeSnapshotPtrOutputWithContext(ctx context.Context) ComputeSnapshotPtrOutput
-}
-
-type computeSnapshotPtrType ComputeSnapshotArgs
-
-func (*computeSnapshotPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeSnapshot)(nil))
-}
-
-func (i *computeSnapshotPtrType) ToComputeSnapshotPtrOutput() ComputeSnapshotPtrOutput {
-	return i.ToComputeSnapshotPtrOutputWithContext(context.Background())
-}
-
-func (i *computeSnapshotPtrType) ToComputeSnapshotPtrOutputWithContext(ctx context.Context) ComputeSnapshotPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeSnapshotPtrOutput)
 }
 
 // ComputeSnapshotArrayInput is an input type that accepts ComputeSnapshotArray and ComputeSnapshotArrayOutput values.
@@ -278,7 +249,7 @@ func (i ComputeSnapshotMap) ToComputeSnapshotMapOutputWithContext(ctx context.Co
 type ComputeSnapshotOutput struct{ *pulumi.OutputState }
 
 func (ComputeSnapshotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeSnapshot)(nil))
+	return reflect.TypeOf((**ComputeSnapshot)(nil)).Elem()
 }
 
 func (o ComputeSnapshotOutput) ToComputeSnapshotOutput() ComputeSnapshotOutput {
@@ -289,44 +260,10 @@ func (o ComputeSnapshotOutput) ToComputeSnapshotOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ComputeSnapshotOutput) ToComputeSnapshotPtrOutput() ComputeSnapshotPtrOutput {
-	return o.ToComputeSnapshotPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeSnapshotOutput) ToComputeSnapshotPtrOutputWithContext(ctx context.Context) ComputeSnapshotPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeSnapshot) *ComputeSnapshot {
-		return &v
-	}).(ComputeSnapshotPtrOutput)
-}
-
-type ComputeSnapshotPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeSnapshotPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeSnapshot)(nil))
-}
-
-func (o ComputeSnapshotPtrOutput) ToComputeSnapshotPtrOutput() ComputeSnapshotPtrOutput {
-	return o
-}
-
-func (o ComputeSnapshotPtrOutput) ToComputeSnapshotPtrOutputWithContext(ctx context.Context) ComputeSnapshotPtrOutput {
-	return o
-}
-
-func (o ComputeSnapshotPtrOutput) Elem() ComputeSnapshotOutput {
-	return o.ApplyT(func(v *ComputeSnapshot) ComputeSnapshot {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeSnapshot
-		return ret
-	}).(ComputeSnapshotOutput)
-}
-
 type ComputeSnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (ComputeSnapshotArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComputeSnapshot)(nil))
+	return reflect.TypeOf((*[]*ComputeSnapshot)(nil)).Elem()
 }
 
 func (o ComputeSnapshotArrayOutput) ToComputeSnapshotArrayOutput() ComputeSnapshotArrayOutput {
@@ -338,15 +275,15 @@ func (o ComputeSnapshotArrayOutput) ToComputeSnapshotArrayOutputWithContext(ctx 
 }
 
 func (o ComputeSnapshotArrayOutput) Index(i pulumi.IntInput) ComputeSnapshotOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeSnapshot {
-		return vs[0].([]ComputeSnapshot)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComputeSnapshot {
+		return vs[0].([]*ComputeSnapshot)[vs[1].(int)]
 	}).(ComputeSnapshotOutput)
 }
 
 type ComputeSnapshotMapOutput struct{ *pulumi.OutputState }
 
 func (ComputeSnapshotMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ComputeSnapshot)(nil))
+	return reflect.TypeOf((*map[string]*ComputeSnapshot)(nil)).Elem()
 }
 
 func (o ComputeSnapshotMapOutput) ToComputeSnapshotMapOutput() ComputeSnapshotMapOutput {
@@ -358,18 +295,16 @@ func (o ComputeSnapshotMapOutput) ToComputeSnapshotMapOutputWithContext(ctx cont
 }
 
 func (o ComputeSnapshotMapOutput) MapIndex(k pulumi.StringInput) ComputeSnapshotOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ComputeSnapshot {
-		return vs[0].(map[string]ComputeSnapshot)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ComputeSnapshot {
+		return vs[0].(map[string]*ComputeSnapshot)[vs[1].(string)]
 	}).(ComputeSnapshotOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSnapshotInput)(nil)).Elem(), &ComputeSnapshot{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSnapshotPtrInput)(nil)).Elem(), &ComputeSnapshot{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSnapshotArrayInput)(nil)).Elem(), ComputeSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSnapshotMapInput)(nil)).Elem(), ComputeSnapshotMap{})
 	pulumi.RegisterOutputType(ComputeSnapshotOutput{})
-	pulumi.RegisterOutputType(ComputeSnapshotPtrOutput{})
 	pulumi.RegisterOutputType(ComputeSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(ComputeSnapshotMapOutput{})
 }

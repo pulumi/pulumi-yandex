@@ -134,43 +134,41 @@ export class MessageQueue extends pulumi.CustomResource {
      */
     constructor(name: string, args?: MessageQueueArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MessageQueueArgs | MessageQueueState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MessageQueueState | undefined;
-            inputs["accessKey"] = state ? state.accessKey : undefined;
-            inputs["arn"] = state ? state.arn : undefined;
-            inputs["contentBasedDeduplication"] = state ? state.contentBasedDeduplication : undefined;
-            inputs["delaySeconds"] = state ? state.delaySeconds : undefined;
-            inputs["fifoQueue"] = state ? state.fifoQueue : undefined;
-            inputs["maxMessageSize"] = state ? state.maxMessageSize : undefined;
-            inputs["messageRetentionSeconds"] = state ? state.messageRetentionSeconds : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namePrefix"] = state ? state.namePrefix : undefined;
-            inputs["receiveWaitTimeSeconds"] = state ? state.receiveWaitTimeSeconds : undefined;
-            inputs["redrivePolicy"] = state ? state.redrivePolicy : undefined;
-            inputs["secretKey"] = state ? state.secretKey : undefined;
-            inputs["visibilityTimeoutSeconds"] = state ? state.visibilityTimeoutSeconds : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["arn"] = state ? state.arn : undefined;
+            resourceInputs["contentBasedDeduplication"] = state ? state.contentBasedDeduplication : undefined;
+            resourceInputs["delaySeconds"] = state ? state.delaySeconds : undefined;
+            resourceInputs["fifoQueue"] = state ? state.fifoQueue : undefined;
+            resourceInputs["maxMessageSize"] = state ? state.maxMessageSize : undefined;
+            resourceInputs["messageRetentionSeconds"] = state ? state.messageRetentionSeconds : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
+            resourceInputs["receiveWaitTimeSeconds"] = state ? state.receiveWaitTimeSeconds : undefined;
+            resourceInputs["redrivePolicy"] = state ? state.redrivePolicy : undefined;
+            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["visibilityTimeoutSeconds"] = state ? state.visibilityTimeoutSeconds : undefined;
         } else {
             const args = argsOrState as MessageQueueArgs | undefined;
-            inputs["accessKey"] = args ? args.accessKey : undefined;
-            inputs["contentBasedDeduplication"] = args ? args.contentBasedDeduplication : undefined;
-            inputs["delaySeconds"] = args ? args.delaySeconds : undefined;
-            inputs["fifoQueue"] = args ? args.fifoQueue : undefined;
-            inputs["maxMessageSize"] = args ? args.maxMessageSize : undefined;
-            inputs["messageRetentionSeconds"] = args ? args.messageRetentionSeconds : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["receiveWaitTimeSeconds"] = args ? args.receiveWaitTimeSeconds : undefined;
-            inputs["redrivePolicy"] = args ? args.redrivePolicy : undefined;
-            inputs["secretKey"] = args ? args.secretKey : undefined;
-            inputs["visibilityTimeoutSeconds"] = args ? args.visibilityTimeoutSeconds : undefined;
-            inputs["arn"] = undefined /*out*/;
+            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["contentBasedDeduplication"] = args ? args.contentBasedDeduplication : undefined;
+            resourceInputs["delaySeconds"] = args ? args.delaySeconds : undefined;
+            resourceInputs["fifoQueue"] = args ? args.fifoQueue : undefined;
+            resourceInputs["maxMessageSize"] = args ? args.maxMessageSize : undefined;
+            resourceInputs["messageRetentionSeconds"] = args ? args.messageRetentionSeconds : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["receiveWaitTimeSeconds"] = args ? args.receiveWaitTimeSeconds : undefined;
+            resourceInputs["redrivePolicy"] = args ? args.redrivePolicy : undefined;
+            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["visibilityTimeoutSeconds"] = args ? args.visibilityTimeoutSeconds : undefined;
+            resourceInputs["arn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MessageQueue.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MessageQueue.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -28,9 +28,7 @@ export function getMdbMysqlCluster(args?: GetMdbMysqlClusterArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbMysqlCluster:getMdbMysqlCluster", {
         "access": args.access,
         "clusterId": args.clusterId,
@@ -86,7 +84,7 @@ export interface GetMdbMysqlClusterResult {
      * Access policy to the MySQL cluster. The structure is documented below.
      */
     readonly access: outputs.GetMdbMysqlClusterAccess;
-    readonly backupWindowStart: outputs.GetMdbMysqlClusterBackupWindowStart;
+    readonly backupWindowStarts: outputs.GetMdbMysqlClusterBackupWindowStart[];
     readonly clusterId: string;
     /**
      * Creation timestamp of the key.
@@ -125,7 +123,7 @@ export interface GetMdbMysqlClusterResult {
     /**
      * Maintenance window settings of the MySQL cluster. The structure is documented below.
      */
-    readonly maintenanceWindow: outputs.GetMdbMysqlClusterMaintenanceWindow;
+    readonly maintenanceWindows: outputs.GetMdbMysqlClusterMaintenanceWindow[];
     /**
      * MySQL cluster config.
      */
@@ -141,7 +139,7 @@ export interface GetMdbMysqlClusterResult {
     /**
      * Resources allocated to hosts of the MySQL cluster. The structure is documented below.
      */
-    readonly resources: outputs.GetMdbMysqlClusterResources;
+    readonly resources: outputs.GetMdbMysqlClusterResource[];
     /**
      * A set of ids of security groups assigned to hosts of the cluster.
      */

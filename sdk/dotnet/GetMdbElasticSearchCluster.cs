@@ -216,7 +216,7 @@ namespace Pulumi.Yandex
         /// <summary>
         /// Configuration of the Elasticsearch cluster. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbElasticSearchClusterConfigResult Config;
+        public readonly ImmutableArray<Outputs.GetMdbElasticSearchClusterConfigResult> Configs;
         /// <summary>
         /// Creation timestamp of the key.
         /// </summary>
@@ -269,7 +269,7 @@ namespace Pulumi.Yandex
         private GetMdbElasticSearchClusterResult(
             string clusterId,
 
-            Outputs.GetMdbElasticSearchClusterConfigResult config,
+            ImmutableArray<Outputs.GetMdbElasticSearchClusterConfigResult> configs,
 
             string createdAt,
 
@@ -300,7 +300,7 @@ namespace Pulumi.Yandex
             string status)
         {
             ClusterId = clusterId;
-            Config = config;
+            Configs = configs;
             CreatedAt = createdAt;
             DeletionProtection = deletionProtection;
             Description = description;

@@ -201,7 +201,7 @@ type DnsRecordSetInput interface {
 }
 
 func (*DnsRecordSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsRecordSet)(nil))
+	return reflect.TypeOf((**DnsRecordSet)(nil)).Elem()
 }
 
 func (i *DnsRecordSet) ToDnsRecordSetOutput() DnsRecordSetOutput {
@@ -210,35 +210,6 @@ func (i *DnsRecordSet) ToDnsRecordSetOutput() DnsRecordSetOutput {
 
 func (i *DnsRecordSet) ToDnsRecordSetOutputWithContext(ctx context.Context) DnsRecordSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordSetOutput)
-}
-
-func (i *DnsRecordSet) ToDnsRecordSetPtrOutput() DnsRecordSetPtrOutput {
-	return i.ToDnsRecordSetPtrOutputWithContext(context.Background())
-}
-
-func (i *DnsRecordSet) ToDnsRecordSetPtrOutputWithContext(ctx context.Context) DnsRecordSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordSetPtrOutput)
-}
-
-type DnsRecordSetPtrInput interface {
-	pulumi.Input
-
-	ToDnsRecordSetPtrOutput() DnsRecordSetPtrOutput
-	ToDnsRecordSetPtrOutputWithContext(ctx context.Context) DnsRecordSetPtrOutput
-}
-
-type dnsRecordSetPtrType DnsRecordSetArgs
-
-func (*dnsRecordSetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnsRecordSet)(nil))
-}
-
-func (i *dnsRecordSetPtrType) ToDnsRecordSetPtrOutput() DnsRecordSetPtrOutput {
-	return i.ToDnsRecordSetPtrOutputWithContext(context.Background())
-}
-
-func (i *dnsRecordSetPtrType) ToDnsRecordSetPtrOutputWithContext(ctx context.Context) DnsRecordSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordSetPtrOutput)
 }
 
 // DnsRecordSetArrayInput is an input type that accepts DnsRecordSetArray and DnsRecordSetArrayOutput values.
@@ -294,7 +265,7 @@ func (i DnsRecordSetMap) ToDnsRecordSetMapOutputWithContext(ctx context.Context)
 type DnsRecordSetOutput struct{ *pulumi.OutputState }
 
 func (DnsRecordSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsRecordSet)(nil))
+	return reflect.TypeOf((**DnsRecordSet)(nil)).Elem()
 }
 
 func (o DnsRecordSetOutput) ToDnsRecordSetOutput() DnsRecordSetOutput {
@@ -305,44 +276,10 @@ func (o DnsRecordSetOutput) ToDnsRecordSetOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DnsRecordSetOutput) ToDnsRecordSetPtrOutput() DnsRecordSetPtrOutput {
-	return o.ToDnsRecordSetPtrOutputWithContext(context.Background())
-}
-
-func (o DnsRecordSetOutput) ToDnsRecordSetPtrOutputWithContext(ctx context.Context) DnsRecordSetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsRecordSet) *DnsRecordSet {
-		return &v
-	}).(DnsRecordSetPtrOutput)
-}
-
-type DnsRecordSetPtrOutput struct{ *pulumi.OutputState }
-
-func (DnsRecordSetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnsRecordSet)(nil))
-}
-
-func (o DnsRecordSetPtrOutput) ToDnsRecordSetPtrOutput() DnsRecordSetPtrOutput {
-	return o
-}
-
-func (o DnsRecordSetPtrOutput) ToDnsRecordSetPtrOutputWithContext(ctx context.Context) DnsRecordSetPtrOutput {
-	return o
-}
-
-func (o DnsRecordSetPtrOutput) Elem() DnsRecordSetOutput {
-	return o.ApplyT(func(v *DnsRecordSet) DnsRecordSet {
-		if v != nil {
-			return *v
-		}
-		var ret DnsRecordSet
-		return ret
-	}).(DnsRecordSetOutput)
-}
-
 type DnsRecordSetArrayOutput struct{ *pulumi.OutputState }
 
 func (DnsRecordSetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DnsRecordSet)(nil))
+	return reflect.TypeOf((*[]*DnsRecordSet)(nil)).Elem()
 }
 
 func (o DnsRecordSetArrayOutput) ToDnsRecordSetArrayOutput() DnsRecordSetArrayOutput {
@@ -354,15 +291,15 @@ func (o DnsRecordSetArrayOutput) ToDnsRecordSetArrayOutputWithContext(ctx contex
 }
 
 func (o DnsRecordSetArrayOutput) Index(i pulumi.IntInput) DnsRecordSetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsRecordSet {
-		return vs[0].([]DnsRecordSet)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnsRecordSet {
+		return vs[0].([]*DnsRecordSet)[vs[1].(int)]
 	}).(DnsRecordSetOutput)
 }
 
 type DnsRecordSetMapOutput struct{ *pulumi.OutputState }
 
 func (DnsRecordSetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DnsRecordSet)(nil))
+	return reflect.TypeOf((*map[string]*DnsRecordSet)(nil)).Elem()
 }
 
 func (o DnsRecordSetMapOutput) ToDnsRecordSetMapOutput() DnsRecordSetMapOutput {
@@ -374,18 +311,16 @@ func (o DnsRecordSetMapOutput) ToDnsRecordSetMapOutputWithContext(ctx context.Co
 }
 
 func (o DnsRecordSetMapOutput) MapIndex(k pulumi.StringInput) DnsRecordSetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DnsRecordSet {
-		return vs[0].(map[string]DnsRecordSet)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DnsRecordSet {
+		return vs[0].(map[string]*DnsRecordSet)[vs[1].(string)]
 	}).(DnsRecordSetOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordSetInput)(nil)).Elem(), &DnsRecordSet{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordSetPtrInput)(nil)).Elem(), &DnsRecordSet{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordSetArrayInput)(nil)).Elem(), DnsRecordSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordSetMapInput)(nil)).Elem(), DnsRecordSetMap{})
 	pulumi.RegisterOutputType(DnsRecordSetOutput{})
-	pulumi.RegisterOutputType(DnsRecordSetPtrOutput{})
 	pulumi.RegisterOutputType(DnsRecordSetArrayOutput{})
 	pulumi.RegisterOutputType(DnsRecordSetMapOutput{})
 }

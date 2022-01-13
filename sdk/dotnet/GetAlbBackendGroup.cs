@@ -128,6 +128,18 @@ namespace Pulumi.Yandex
         [Input("name")]
         public string? Name { get; set; }
 
+        [Input("streamBackends")]
+        private List<Inputs.GetAlbBackendGroupStreamBackendArgs>? _streamBackends;
+
+        /// <summary>
+        /// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
+        public List<Inputs.GetAlbBackendGroupStreamBackendArgs> StreamBackends
+        {
+            get => _streamBackends ?? (_streamBackends = new List<Inputs.GetAlbBackendGroupStreamBackendArgs>());
+            set => _streamBackends = value;
+        }
+
         public GetAlbBackendGroupArgs()
         {
         }
@@ -195,6 +207,18 @@ namespace Pulumi.Yandex
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("streamBackends")]
+        private InputList<Inputs.GetAlbBackendGroupStreamBackendInputArgs>? _streamBackends;
+
+        /// <summary>
+        /// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.GetAlbBackendGroupStreamBackendInputArgs> StreamBackends
+        {
+            get => _streamBackends ?? (_streamBackends = new InputList<Inputs.GetAlbBackendGroupStreamBackendInputArgs>());
+            set => _streamBackends = value;
+        }
+
         public GetAlbBackendGroupInvokeArgs()
         {
         }
@@ -234,6 +258,10 @@ namespace Pulumi.Yandex
         /// Name of the backend.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Stream backend specification that will be used by the ALB Backend Group. Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAlbBackendGroupStreamBackendResult> StreamBackends;
 
         [OutputConstructor]
         private GetAlbBackendGroupResult(
@@ -253,7 +281,9 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
-            string name)
+            string name,
+
+            ImmutableArray<Outputs.GetAlbBackendGroupStreamBackendResult> streamBackends)
         {
             BackendGroupId = backendGroupId;
             CreatedAt = createdAt;
@@ -264,6 +294,7 @@ namespace Pulumi.Yandex
             Id = id;
             Labels = labels;
             Name = name;
+            StreamBackends = streamBackends;
         }
     }
 }

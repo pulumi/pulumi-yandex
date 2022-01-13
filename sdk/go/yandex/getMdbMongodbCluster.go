@@ -60,8 +60,8 @@ type LookupMdbMongodbClusterArgs struct {
 // A collection of values returned by getMdbMongodbCluster.
 type LookupMdbMongodbClusterResult struct {
 	// Configuration of the MongoDB cluster. The structure is documented below.
-	ClusterConfig GetMdbMongodbClusterClusterConfig `pulumi:"clusterConfig"`
-	ClusterId     string                            `pulumi:"clusterId"`
+	ClusterConfigs []GetMdbMongodbClusterClusterConfig `pulumi:"clusterConfigs"`
+	ClusterId      string                              `pulumi:"clusterId"`
 	// Creation timestamp of the key.
 	CreatedAt string `pulumi:"createdAt"`
 	// A database of the MongoDB cluster. The structure is documented below.
@@ -79,14 +79,14 @@ type LookupMdbMongodbClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the MongoDB cluster.
-	Labels            map[string]string                     `pulumi:"labels"`
-	MaintenanceWindow GetMdbMongodbClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
+	Labels             map[string]string                       `pulumi:"labels"`
+	MaintenanceWindows []GetMdbMongodbClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
 	// The name of the database.
 	Name string `pulumi:"name"`
 	// ID of the network, to which the MongoDB cluster belongs.
 	NetworkId string `pulumi:"networkId"`
 	// Resources allocated to hosts of the MongoDB cluster. The structure is documented below.
-	Resources GetMdbMongodbClusterResources `pulumi:"resources"`
+	Resources []GetMdbMongodbClusterResource `pulumi:"resources"`
 	// A set of ids of security groups assigned to hosts of the cluster.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// MongoDB Cluster mode enabled/disabled.
@@ -137,8 +137,8 @@ func (o LookupMdbMongodbClusterResultOutput) ToLookupMdbMongodbClusterResultOutp
 }
 
 // Configuration of the MongoDB cluster. The structure is documented below.
-func (o LookupMdbMongodbClusterResultOutput) ClusterConfig() GetMdbMongodbClusterClusterConfigOutput {
-	return o.ApplyT(func(v LookupMdbMongodbClusterResult) GetMdbMongodbClusterClusterConfig { return v.ClusterConfig }).(GetMdbMongodbClusterClusterConfigOutput)
+func (o LookupMdbMongodbClusterResultOutput) ClusterConfigs() GetMdbMongodbClusterClusterConfigArrayOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) []GetMdbMongodbClusterClusterConfig { return v.ClusterConfigs }).(GetMdbMongodbClusterClusterConfigArrayOutput)
 }
 
 func (o LookupMdbMongodbClusterResultOutput) ClusterId() pulumi.StringOutput {
@@ -193,10 +193,10 @@ func (o LookupMdbMongodbClusterResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMdbMongodbClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupMdbMongodbClusterResultOutput) MaintenanceWindow() GetMdbMongodbClusterMaintenanceWindowOutput {
-	return o.ApplyT(func(v LookupMdbMongodbClusterResult) GetMdbMongodbClusterMaintenanceWindow {
-		return v.MaintenanceWindow
-	}).(GetMdbMongodbClusterMaintenanceWindowOutput)
+func (o LookupMdbMongodbClusterResultOutput) MaintenanceWindows() GetMdbMongodbClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) []GetMdbMongodbClusterMaintenanceWindow {
+		return v.MaintenanceWindows
+	}).(GetMdbMongodbClusterMaintenanceWindowArrayOutput)
 }
 
 // The name of the database.
@@ -210,8 +210,8 @@ func (o LookupMdbMongodbClusterResultOutput) NetworkId() pulumi.StringOutput {
 }
 
 // Resources allocated to hosts of the MongoDB cluster. The structure is documented below.
-func (o LookupMdbMongodbClusterResultOutput) Resources() GetMdbMongodbClusterResourcesOutput {
-	return o.ApplyT(func(v LookupMdbMongodbClusterResult) GetMdbMongodbClusterResources { return v.Resources }).(GetMdbMongodbClusterResourcesOutput)
+func (o LookupMdbMongodbClusterResultOutput) Resources() GetMdbMongodbClusterResourceArrayOutput {
+	return o.ApplyT(func(v LookupMdbMongodbClusterResult) []GetMdbMongodbClusterResource { return v.Resources }).(GetMdbMongodbClusterResourceArrayOutput)
 }
 
 // A set of ids of security groups assigned to hosts of the cluster.

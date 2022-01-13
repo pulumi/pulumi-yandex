@@ -21,10 +21,10 @@ class GetMdbMongodbClusterResult:
     """
     A collection of values returned by getMdbMongodbCluster.
     """
-    def __init__(__self__, cluster_config=None, cluster_id=None, created_at=None, databases=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_window=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, users=None):
-        if cluster_config and not isinstance(cluster_config, dict):
-            raise TypeError("Expected argument 'cluster_config' to be a dict")
-        pulumi.set(__self__, "cluster_config", cluster_config)
+    def __init__(__self__, cluster_configs=None, cluster_id=None, created_at=None, databases=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, maintenance_windows=None, name=None, network_id=None, resources=None, security_group_ids=None, sharded=None, status=None, users=None):
+        if cluster_configs and not isinstance(cluster_configs, list):
+            raise TypeError("Expected argument 'cluster_configs' to be a list")
+        pulumi.set(__self__, "cluster_configs", cluster_configs)
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -58,17 +58,17 @@ class GetMdbMongodbClusterResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if maintenance_window and not isinstance(maintenance_window, dict):
-            raise TypeError("Expected argument 'maintenance_window' to be a dict")
-        pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if maintenance_windows and not isinstance(maintenance_windows, list):
+            raise TypeError("Expected argument 'maintenance_windows' to be a list")
+        pulumi.set(__self__, "maintenance_windows", maintenance_windows)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if network_id and not isinstance(network_id, str):
             raise TypeError("Expected argument 'network_id' to be a str")
         pulumi.set(__self__, "network_id", network_id)
-        if resources and not isinstance(resources, dict):
-            raise TypeError("Expected argument 'resources' to be a dict")
+        if resources and not isinstance(resources, list):
+            raise TypeError("Expected argument 'resources' to be a list")
         pulumi.set(__self__, "resources", resources)
         if security_group_ids and not isinstance(security_group_ids, list):
             raise TypeError("Expected argument 'security_group_ids' to be a list")
@@ -84,12 +84,12 @@ class GetMdbMongodbClusterResult:
         pulumi.set(__self__, "users", users)
 
     @property
-    @pulumi.getter(name="clusterConfig")
-    def cluster_config(self) -> 'outputs.GetMdbMongodbClusterClusterConfigResult':
+    @pulumi.getter(name="clusterConfigs")
+    def cluster_configs(self) -> Sequence['outputs.GetMdbMongodbClusterClusterConfigResult']:
         """
         Configuration of the MongoDB cluster. The structure is documented below.
         """
-        return pulumi.get(self, "cluster_config")
+        return pulumi.get(self, "cluster_configs")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -171,9 +171,9 @@ class GetMdbMongodbClusterResult:
         return pulumi.get(self, "labels")
 
     @property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> 'outputs.GetMdbMongodbClusterMaintenanceWindowResult':
-        return pulumi.get(self, "maintenance_window")
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Sequence['outputs.GetMdbMongodbClusterMaintenanceWindowResult']:
+        return pulumi.get(self, "maintenance_windows")
 
     @property
     @pulumi.getter
@@ -193,7 +193,7 @@ class GetMdbMongodbClusterResult:
 
     @property
     @pulumi.getter
-    def resources(self) -> 'outputs.GetMdbMongodbClusterResourcesResult':
+    def resources(self) -> Sequence['outputs.GetMdbMongodbClusterResourceResult']:
         """
         Resources allocated to hosts of the MongoDB cluster. The structure is documented below.
         """
@@ -238,7 +238,7 @@ class AwaitableGetMdbMongodbClusterResult(GetMdbMongodbClusterResult):
         if False:
             yield self
         return GetMdbMongodbClusterResult(
-            cluster_config=self.cluster_config,
+            cluster_configs=self.cluster_configs,
             cluster_id=self.cluster_id,
             created_at=self.created_at,
             databases=self.databases,
@@ -250,7 +250,7 @@ class AwaitableGetMdbMongodbClusterResult(GetMdbMongodbClusterResult):
             hosts=self.hosts,
             id=self.id,
             labels=self.labels,
-            maintenance_window=self.maintenance_window,
+            maintenance_windows=self.maintenance_windows,
             name=self.name,
             network_id=self.network_id,
             resources=self.resources,
@@ -296,7 +296,7 @@ def get_mdb_mongodb_cluster(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('yandex:index/getMdbMongodbCluster:getMdbMongodbCluster', __args__, opts=opts, typ=GetMdbMongodbClusterResult).value
 
     return AwaitableGetMdbMongodbClusterResult(
-        cluster_config=__ret__.cluster_config,
+        cluster_configs=__ret__.cluster_configs,
         cluster_id=__ret__.cluster_id,
         created_at=__ret__.created_at,
         databases=__ret__.databases,
@@ -308,7 +308,7 @@ def get_mdb_mongodb_cluster(cluster_id: Optional[str] = None,
         hosts=__ret__.hosts,
         id=__ret__.id,
         labels=__ret__.labels,
-        maintenance_window=__ret__.maintenance_window,
+        maintenance_windows=__ret__.maintenance_windows,
         name=__ret__.name,
         network_id=__ret__.network_id,
         resources=__ret__.resources,

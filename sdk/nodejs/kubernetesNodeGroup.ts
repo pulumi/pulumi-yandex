@@ -174,7 +174,7 @@ export class KubernetesNodeGroup extends pulumi.CustomResource {
     /**
      * Information about Kubernetes node group version. The structure is documented below.
      */
-    public /*out*/ readonly versionInfo!: pulumi.Output<outputs.KubernetesNodeGroupVersionInfo>;
+    public /*out*/ readonly versionInfos!: pulumi.Output<outputs.KubernetesNodeGroupVersionInfo[]>;
 
     /**
      * Create a KubernetesNodeGroup resource with the given unique name, arguments, and options.
@@ -185,27 +185,27 @@ export class KubernetesNodeGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: KubernetesNodeGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesNodeGroupArgs | KubernetesNodeGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesNodeGroupState | undefined;
-            inputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
-            inputs["allowedUnsafeSysctls"] = state ? state.allowedUnsafeSysctls : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["deployPolicy"] = state ? state.deployPolicy : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["instanceGroupId"] = state ? state.instanceGroupId : undefined;
-            inputs["instanceTemplate"] = state ? state.instanceTemplate : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodeLabels"] = state ? state.nodeLabels : undefined;
-            inputs["nodeTaints"] = state ? state.nodeTaints : undefined;
-            inputs["scalePolicy"] = state ? state.scalePolicy : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["version"] = state ? state.version : undefined;
-            inputs["versionInfo"] = state ? state.versionInfo : undefined;
+            resourceInputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
+            resourceInputs["allowedUnsafeSysctls"] = state ? state.allowedUnsafeSysctls : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deployPolicy"] = state ? state.deployPolicy : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceGroupId"] = state ? state.instanceGroupId : undefined;
+            resourceInputs["instanceTemplate"] = state ? state.instanceTemplate : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeLabels"] = state ? state.nodeLabels : undefined;
+            resourceInputs["nodeTaints"] = state ? state.nodeTaints : undefined;
+            resourceInputs["scalePolicy"] = state ? state.scalePolicy : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["versionInfos"] = state ? state.versionInfos : undefined;
         } else {
             const args = argsOrState as KubernetesNodeGroupArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -217,28 +217,26 @@ export class KubernetesNodeGroup extends pulumi.CustomResource {
             if ((!args || args.scalePolicy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalePolicy'");
             }
-            inputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
-            inputs["allowedUnsafeSysctls"] = args ? args.allowedUnsafeSysctls : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["deployPolicy"] = args ? args.deployPolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeLabels"] = args ? args.nodeLabels : undefined;
-            inputs["nodeTaints"] = args ? args.nodeTaints : undefined;
-            inputs["scalePolicy"] = args ? args.scalePolicy : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["instanceGroupId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["versionInfo"] = undefined /*out*/;
+            resourceInputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
+            resourceInputs["allowedUnsafeSysctls"] = args ? args.allowedUnsafeSysctls : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["deployPolicy"] = args ? args.deployPolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeLabels"] = args ? args.nodeLabels : undefined;
+            resourceInputs["nodeTaints"] = args ? args.nodeTaints : undefined;
+            resourceInputs["scalePolicy"] = args ? args.scalePolicy : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["instanceGroupId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["versionInfos"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KubernetesNodeGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KubernetesNodeGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -316,7 +314,7 @@ export interface KubernetesNodeGroupState {
     /**
      * Information about Kubernetes node group version. The structure is documented below.
      */
-    versionInfo?: pulumi.Input<inputs.KubernetesNodeGroupVersionInfo>;
+    versionInfos?: pulumi.Input<pulumi.Input<inputs.KubernetesNodeGroupVersionInfo>[]>;
 }
 
 /**

@@ -10,9 +10,7 @@ export function getComputeImage(args?: GetComputeImageArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getComputeImage:getComputeImage", {
         "family": args.family,
         "folderId": args.folderId,
@@ -78,6 +76,10 @@ export interface GetComputeImageResult {
      * Operating system type that the image contains.
      */
     readonly osType: string;
+    /**
+     * Optimize the image to create a disk.
+     */
+    readonly pooled: boolean;
     /**
      * License IDs that indicate which licenses are attached to this image.
      */

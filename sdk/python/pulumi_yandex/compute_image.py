@@ -20,6 +20,7 @@ class ComputeImageArgs:
                  min_disk_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pooled: Optional[pulumi.Input[bool]] = None,
                  product_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_family: Optional[pulumi.Input[str]] = None,
@@ -37,11 +38,12 @@ class ComputeImageArgs:
         :param pulumi.Input[int] min_disk_size: Minimum size in GB of the disk that will be created from this image.
         :param pulumi.Input[str] name: Name of the disk.
         :param pulumi.Input[str] os_type: Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_ids: License IDs that indicate which licenses are 
+        :param pulumi.Input[bool] pooled: Optimize the image to create a disk.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_ids: License IDs that indicate which licenses are
                attached to this image.
         :param pulumi.Input[str] source_disk: The ID of a disk to use as the source of the
                image. Changing this ID forces a new resource to be created.
-        :param pulumi.Input[str] source_family: The name of the family to use as the source of the new image. 
+        :param pulumi.Input[str] source_family: The name of the family to use as the source of the new image.
                The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
                a new resource to be created.
         :param pulumi.Input[str] source_image: The ID of an existing image to use as the source of the
@@ -65,6 +67,8 @@ class ComputeImageArgs:
             pulumi.set(__self__, "name", name)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
+        if pooled is not None:
+            pulumi.set(__self__, "pooled", pooled)
         if product_ids is not None:
             pulumi.set(__self__, "product_ids", product_ids)
         if source_disk is not None:
@@ -165,10 +169,22 @@ class ComputeImageArgs:
         pulumi.set(self, "os_type", value)
 
     @property
+    @pulumi.getter
+    def pooled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optimize the image to create a disk.
+        """
+        return pulumi.get(self, "pooled")
+
+    @pooled.setter
+    def pooled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pooled", value)
+
+    @property
     @pulumi.getter(name="productIds")
     def product_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        License IDs that indicate which licenses are 
+        License IDs that indicate which licenses are
         attached to this image.
         """
         return pulumi.get(self, "product_ids")
@@ -194,7 +210,7 @@ class ComputeImageArgs:
     @pulumi.getter(name="sourceFamily")
     def source_family(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the family to use as the source of the new image. 
+        The name of the family to use as the source of the new image.
         The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
         a new resource to be created.
         """
@@ -255,6 +271,7 @@ class _ComputeImageState:
                  min_disk_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pooled: Optional[pulumi.Input[bool]] = None,
                  product_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
@@ -275,12 +292,13 @@ class _ComputeImageState:
         :param pulumi.Input[int] min_disk_size: Minimum size in GB of the disk that will be created from this image.
         :param pulumi.Input[str] name: Name of the disk.
         :param pulumi.Input[str] os_type: Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_ids: License IDs that indicate which licenses are 
+        :param pulumi.Input[bool] pooled: Optimize the image to create a disk.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_ids: License IDs that indicate which licenses are
                attached to this image.
         :param pulumi.Input[int] size: The size of the image, specified in GB.
         :param pulumi.Input[str] source_disk: The ID of a disk to use as the source of the
                image. Changing this ID forces a new resource to be created.
-        :param pulumi.Input[str] source_family: The name of the family to use as the source of the new image. 
+        :param pulumi.Input[str] source_family: The name of the family to use as the source of the new image.
                The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
                a new resource to be created.
         :param pulumi.Input[str] source_image: The ID of an existing image to use as the source of the
@@ -307,6 +325,8 @@ class _ComputeImageState:
             pulumi.set(__self__, "name", name)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
+        if pooled is not None:
+            pulumi.set(__self__, "pooled", pooled)
         if product_ids is not None:
             pulumi.set(__self__, "product_ids", product_ids)
         if size is not None:
@@ -423,10 +443,22 @@ class _ComputeImageState:
         pulumi.set(self, "os_type", value)
 
     @property
+    @pulumi.getter
+    def pooled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optimize the image to create a disk.
+        """
+        return pulumi.get(self, "pooled")
+
+    @pooled.setter
+    def pooled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pooled", value)
+
+    @property
     @pulumi.getter(name="productIds")
     def product_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        License IDs that indicate which licenses are 
+        License IDs that indicate which licenses are
         attached to this image.
         """
         return pulumi.get(self, "product_ids")
@@ -464,7 +496,7 @@ class _ComputeImageState:
     @pulumi.getter(name="sourceFamily")
     def source_family(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the family to use as the source of the new image. 
+        The name of the family to use as the source of the new image.
         The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
         a new resource to be created.
         """
@@ -538,6 +570,7 @@ class ComputeImage(pulumi.CustomResource):
                  min_disk_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pooled: Optional[pulumi.Input[bool]] = None,
                  product_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_family: Optional[pulumi.Input[str]] = None,
@@ -582,11 +615,12 @@ class ComputeImage(pulumi.CustomResource):
         :param pulumi.Input[int] min_disk_size: Minimum size in GB of the disk that will be created from this image.
         :param pulumi.Input[str] name: Name of the disk.
         :param pulumi.Input[str] os_type: Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_ids: License IDs that indicate which licenses are 
+        :param pulumi.Input[bool] pooled: Optimize the image to create a disk.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_ids: License IDs that indicate which licenses are
                attached to this image.
         :param pulumi.Input[str] source_disk: The ID of a disk to use as the source of the
                image. Changing this ID forces a new resource to be created.
-        :param pulumi.Input[str] source_family: The name of the family to use as the source of the new image. 
+        :param pulumi.Input[str] source_family: The name of the family to use as the source of the new image.
                The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
                a new resource to be created.
         :param pulumi.Input[str] source_image: The ID of an existing image to use as the source of the
@@ -650,6 +684,7 @@ class ComputeImage(pulumi.CustomResource):
                  min_disk_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pooled: Optional[pulumi.Input[bool]] = None,
                  product_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_family: Optional[pulumi.Input[str]] = None,
@@ -675,6 +710,7 @@ class ComputeImage(pulumi.CustomResource):
             __props__.__dict__["min_disk_size"] = min_disk_size
             __props__.__dict__["name"] = name
             __props__.__dict__["os_type"] = os_type
+            __props__.__dict__["pooled"] = pooled
             __props__.__dict__["product_ids"] = product_ids
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_family"] = source_family
@@ -702,6 +738,7 @@ class ComputeImage(pulumi.CustomResource):
             min_disk_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
+            pooled: Optional[pulumi.Input[bool]] = None,
             product_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             size: Optional[pulumi.Input[int]] = None,
             source_disk: Optional[pulumi.Input[str]] = None,
@@ -727,12 +764,13 @@ class ComputeImage(pulumi.CustomResource):
         :param pulumi.Input[int] min_disk_size: Minimum size in GB of the disk that will be created from this image.
         :param pulumi.Input[str] name: Name of the disk.
         :param pulumi.Input[str] os_type: Operating system type that is contained in the image. Possible values: "LINUX", "WINDOWS".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_ids: License IDs that indicate which licenses are 
+        :param pulumi.Input[bool] pooled: Optimize the image to create a disk.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_ids: License IDs that indicate which licenses are
                attached to this image.
         :param pulumi.Input[int] size: The size of the image, specified in GB.
         :param pulumi.Input[str] source_disk: The ID of a disk to use as the source of the
                image. Changing this ID forces a new resource to be created.
-        :param pulumi.Input[str] source_family: The name of the family to use as the source of the new image. 
+        :param pulumi.Input[str] source_family: The name of the family to use as the source of the new image.
                The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
                a new resource to be created.
         :param pulumi.Input[str] source_image: The ID of an existing image to use as the source of the
@@ -755,6 +793,7 @@ class ComputeImage(pulumi.CustomResource):
         __props__.__dict__["min_disk_size"] = min_disk_size
         __props__.__dict__["name"] = name
         __props__.__dict__["os_type"] = os_type
+        __props__.__dict__["pooled"] = pooled
         __props__.__dict__["product_ids"] = product_ids
         __props__.__dict__["size"] = size
         __props__.__dict__["source_disk"] = source_disk
@@ -832,10 +871,18 @@ class ComputeImage(pulumi.CustomResource):
         return pulumi.get(self, "os_type")
 
     @property
+    @pulumi.getter
+    def pooled(self) -> pulumi.Output[bool]:
+        """
+        Optimize the image to create a disk.
+        """
+        return pulumi.get(self, "pooled")
+
+    @property
     @pulumi.getter(name="productIds")
     def product_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        License IDs that indicate which licenses are 
+        License IDs that indicate which licenses are
         attached to this image.
         """
         return pulumi.get(self, "product_ids")
@@ -861,7 +908,7 @@ class ComputeImage(pulumi.CustomResource):
     @pulumi.getter(name="sourceFamily")
     def source_family(self) -> pulumi.Output[str]:
         """
-        The name of the family to use as the source of the new image. 
+        The name of the family to use as the source of the new image.
         The ID of the latest image is taken from the "standard-images" folder. Changing the family forces
         a new resource to be created.
         """

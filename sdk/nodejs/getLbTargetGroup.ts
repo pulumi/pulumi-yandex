@@ -26,9 +26,7 @@ export function getLbTargetGroup(args?: GetLbTargetGroupArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getLbTargetGroup:getLbTargetGroup", {
         "folderId": args.folderId,
         "name": args.name,

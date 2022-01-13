@@ -36,7 +36,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Maintenance policy for Kubernetes master. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesClusterMasterMaintenancePolicyResult MaintenancePolicy;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterMasterMaintenancePolicyResult> MaintenancePolicies;
         /// <summary>
         /// Boolean flag. When `true`, Kubernetes master have visible ipv4 address.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Information about cluster regional master. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesClusterMasterRegionalResult Regional;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterMasterRegionalResult> Regionals;
         /// <summary>
         /// A list of security groups IDs of the Kubernetes cluster.
         /// </summary>
@@ -56,11 +56,11 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// Information about cluster version. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesClusterMasterVersionInfoResult VersionInfo;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterMasterVersionInfoResult> VersionInfos;
         /// <summary>
         /// Information about cluster zonal master. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesClusterMasterZonalResult Zonal;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterMasterZonalResult> Zonals;
 
         [OutputConstructor]
         private GetKubernetesClusterMasterResult(
@@ -74,32 +74,32 @@ namespace Pulumi.Yandex.Outputs
 
             string internalV4Endpoint,
 
-            Outputs.GetKubernetesClusterMasterMaintenancePolicyResult maintenancePolicy,
+            ImmutableArray<Outputs.GetKubernetesClusterMasterMaintenancePolicyResult> maintenancePolicies,
 
             bool publicIp,
 
-            Outputs.GetKubernetesClusterMasterRegionalResult regional,
+            ImmutableArray<Outputs.GetKubernetesClusterMasterRegionalResult> regionals,
 
             ImmutableArray<string> securityGroupIds,
 
             string version,
 
-            Outputs.GetKubernetesClusterMasterVersionInfoResult versionInfo,
+            ImmutableArray<Outputs.GetKubernetesClusterMasterVersionInfoResult> versionInfos,
 
-            Outputs.GetKubernetesClusterMasterZonalResult zonal)
+            ImmutableArray<Outputs.GetKubernetesClusterMasterZonalResult> zonals)
         {
             ClusterCaCertificate = clusterCaCertificate;
             ExternalV4Address = externalV4Address;
             ExternalV4Endpoint = externalV4Endpoint;
             InternalV4Address = internalV4Address;
             InternalV4Endpoint = internalV4Endpoint;
-            MaintenancePolicy = maintenancePolicy;
+            MaintenancePolicies = maintenancePolicies;
             PublicIp = publicIp;
-            Regional = regional;
+            Regionals = regionals;
             SecurityGroupIds = securityGroupIds;
             Version = version;
-            VersionInfo = versionInfo;
-            Zonal = zonal;
+            VersionInfos = versionInfos;
+            Zonals = zonals;
         }
     }
 }

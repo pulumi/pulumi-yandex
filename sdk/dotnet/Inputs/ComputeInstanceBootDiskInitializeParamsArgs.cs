@@ -12,6 +12,9 @@ namespace Pulumi.Yandex.Inputs
 
     public sealed class ComputeInstanceBootDiskInitializeParamsArgs : Pulumi.ResourceArgs
     {
+        [Input("blockSize")]
+        public Input<int>? BlockSize { get; set; }
+
         /// <summary>
         /// Description of the boot disk.
         /// </summary>

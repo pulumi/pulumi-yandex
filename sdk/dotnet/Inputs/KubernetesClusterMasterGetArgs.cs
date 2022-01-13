@@ -81,11 +81,17 @@ namespace Pulumi.Yandex.Inputs
         [Input("version")]
         public Input<string>? Version { get; set; }
 
+        [Input("versionInfos")]
+        private InputList<Inputs.KubernetesClusterMasterVersionInfoGetArgs>? _versionInfos;
+
         /// <summary>
         /// (Computed) Information about cluster version. The structure is documented below.
         /// </summary>
-        [Input("versionInfo")]
-        public Input<Inputs.KubernetesClusterMasterVersionInfoGetArgs>? VersionInfo { get; set; }
+        public InputList<Inputs.KubernetesClusterMasterVersionInfoGetArgs> VersionInfos
+        {
+            get => _versionInfos ?? (_versionInfos = new InputList<Inputs.KubernetesClusterMasterVersionInfoGetArgs>());
+            set => _versionInfos = value;
+        }
 
         /// <summary>
         /// (Optional) Initialize parameters for Zonal Master (single node master). The structure is documented below.

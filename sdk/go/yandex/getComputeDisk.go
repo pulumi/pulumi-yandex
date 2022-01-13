@@ -34,6 +34,8 @@ type LookupComputeDiskArgs struct {
 
 // A collection of values returned by getComputeDisk.
 type LookupComputeDiskResult struct {
+	// The block size of the disk in bytes.
+	BlockSize int `pulumi:"blockSize"`
 	// Disk creation timestamp.
 	CreatedAt string `pulumi:"createdAt"`
 	// Optional description of this disk.
@@ -102,6 +104,11 @@ func (o LookupComputeDiskResultOutput) ToLookupComputeDiskResultOutput() LookupC
 
 func (o LookupComputeDiskResultOutput) ToLookupComputeDiskResultOutputWithContext(ctx context.Context) LookupComputeDiskResultOutput {
 	return o
+}
+
+// The block size of the disk in bytes.
+func (o LookupComputeDiskResultOutput) BlockSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupComputeDiskResult) int { return v.BlockSize }).(pulumi.IntOutput)
 }
 
 // Disk creation timestamp.

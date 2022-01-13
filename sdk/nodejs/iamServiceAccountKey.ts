@@ -103,40 +103,38 @@ export class IamServiceAccountKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: IamServiceAccountKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamServiceAccountKeyArgs | IamServiceAccountKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamServiceAccountKeyState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["encryptedPrivateKey"] = state ? state.encryptedPrivateKey : undefined;
-            inputs["format"] = state ? state.format : undefined;
-            inputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
-            inputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
-            inputs["pgpKey"] = state ? state.pgpKey : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["publicKey"] = state ? state.publicKey : undefined;
-            inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptedPrivateKey"] = state ? state.encryptedPrivateKey : undefined;
+            resourceInputs["format"] = state ? state.format : undefined;
+            resourceInputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
+            resourceInputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
+            resourceInputs["pgpKey"] = state ? state.pgpKey : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
+            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
         } else {
             const args = argsOrState as IamServiceAccountKeyArgs | undefined;
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["format"] = args ? args.format : undefined;
-            inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            inputs["pgpKey"] = args ? args.pgpKey : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["encryptedPrivateKey"] = undefined /*out*/;
-            inputs["keyFingerprint"] = undefined /*out*/;
-            inputs["privateKey"] = undefined /*out*/;
-            inputs["publicKey"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["format"] = args ? args.format : undefined;
+            resourceInputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
+            resourceInputs["pgpKey"] = args ? args.pgpKey : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["encryptedPrivateKey"] = undefined /*out*/;
+            resourceInputs["keyFingerprint"] = undefined /*out*/;
+            resourceInputs["privateKey"] = undefined /*out*/;
+            resourceInputs["publicKey"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IamServiceAccountKey.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IamServiceAccountKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

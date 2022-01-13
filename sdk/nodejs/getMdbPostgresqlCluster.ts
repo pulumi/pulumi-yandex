@@ -29,9 +29,7 @@ export function getMdbPostgresqlCluster(args?: GetMdbPostgresqlClusterArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbPostgresqlCluster:getMdbPostgresqlCluster", {
         "clusterId": args.clusterId,
         "deletionProtection": args.deletionProtection,
@@ -72,7 +70,7 @@ export interface GetMdbPostgresqlClusterResult {
     /**
      * Configuration of the PostgreSQL cluster. The structure is documented below.
      */
-    readonly config: outputs.GetMdbPostgresqlClusterConfig;
+    readonly configs: outputs.GetMdbPostgresqlClusterConfig[];
     /**
      * Timestamp of cluster creation.
      */
@@ -110,7 +108,7 @@ export interface GetMdbPostgresqlClusterResult {
     /**
      * Maintenance window settings of the PostgreSQL cluster. The structure is documented below.
      */
-    readonly maintenanceWindow: outputs.GetMdbPostgresqlClusterMaintenanceWindow;
+    readonly maintenanceWindows: outputs.GetMdbPostgresqlClusterMaintenanceWindow[];
     /**
      * Name of the database extension. For more information on available extensions see [the official documentation](https://cloud.yandex.com/docs/managed-postgresql/operations/cluster-extensions).
      */

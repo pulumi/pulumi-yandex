@@ -20,7 +20,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// User's connection limits. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetMdbMysqlClusterUserConnectionLimitsResult ConnectionLimits;
+        public readonly ImmutableArray<Outputs.GetMdbMysqlClusterUserConnectionLimitResult> ConnectionLimits;
         /// <summary>
         /// List user's global permissions. Allowed values: `REPLICATION_CLIENT`, `REPLICATION_SLAVE`, `PROCESS` or empty list.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Yandex.Outputs
         private GetMdbMysqlClusterUserResult(
             string authenticationPlugin,
 
-            Outputs.GetMdbMysqlClusterUserConnectionLimitsResult connectionLimits,
+            ImmutableArray<Outputs.GetMdbMysqlClusterUserConnectionLimitResult> connectionLimits,
 
             ImmutableArray<string> globalPermissions,
 

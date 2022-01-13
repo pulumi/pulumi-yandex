@@ -21,13 +21,13 @@ class GetMdbElasticSearchClusterResult:
     """
     A collection of values returned by getMdbElasticSearchCluster.
     """
-    def __init__(__self__, cluster_id=None, config=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, name=None, network_id=None, security_group_ids=None, service_account_id=None, status=None):
+    def __init__(__self__, cluster_id=None, configs=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, name=None, network_id=None, security_group_ids=None, service_account_id=None, status=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
-        if config and not isinstance(config, dict):
-            raise TypeError("Expected argument 'config' to be a dict")
-        pulumi.set(__self__, "config", config)
+        if configs and not isinstance(configs, list):
+            raise TypeError("Expected argument 'configs' to be a list")
+        pulumi.set(__self__, "configs", configs)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -78,11 +78,11 @@ class GetMdbElasticSearchClusterResult:
 
     @property
     @pulumi.getter
-    def config(self) -> 'outputs.GetMdbElasticSearchClusterConfigResult':
+    def configs(self) -> Sequence['outputs.GetMdbElasticSearchClusterConfigResult']:
         """
         Configuration of the Elasticsearch cluster. The structure is documented below.
         """
-        return pulumi.get(self, "config")
+        return pulumi.get(self, "configs")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -195,7 +195,7 @@ class AwaitableGetMdbElasticSearchClusterResult(GetMdbElasticSearchClusterResult
             yield self
         return GetMdbElasticSearchClusterResult(
             cluster_id=self.cluster_id,
-            config=self.config,
+            configs=self.configs,
             created_at=self.created_at,
             deletion_protection=self.deletion_protection,
             description=self.description,
@@ -261,7 +261,7 @@ def get_mdb_elastic_search_cluster(cluster_id: Optional[str] = None,
 
     return AwaitableGetMdbElasticSearchClusterResult(
         cluster_id=__ret__.cluster_id,
-        config=__ret__.config,
+        configs=__ret__.configs,
         created_at=__ret__.created_at,
         deletion_protection=__ret__.deletion_protection,
         description=__ret__.description,

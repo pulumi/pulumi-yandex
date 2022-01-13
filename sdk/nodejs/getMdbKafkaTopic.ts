@@ -10,9 +10,7 @@ export function getMdbKafkaTopic(args: GetMdbKafkaTopicArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbKafkaTopic:getMdbKafkaTopic", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -39,7 +37,7 @@ export interface GetMdbKafkaTopicResult {
     readonly name: string;
     readonly partitions: number;
     readonly replicationFactor: number;
-    readonly topicConfig: outputs.GetMdbKafkaTopicTopicConfig;
+    readonly topicConfigs: outputs.GetMdbKafkaTopicTopicConfig[];
 }
 
 export function getMdbKafkaTopicOutput(args: GetMdbKafkaTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbKafkaTopicResult> {

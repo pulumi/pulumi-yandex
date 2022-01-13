@@ -16,7 +16,7 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// The specifications for boot disks that will be attached to the instance. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupInstanceTemplateBootDiskResult BootDisk;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateBootDiskResult> BootDisks;
         /// <summary>
         /// The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
         /// </summary>
@@ -36,20 +36,20 @@ namespace Pulumi.Yandex.Outputs
         /// <summary>
         /// (Optional) The placement policy configuration. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult? PlacementPolicy;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult> PlacementPolicies;
         /// <summary>
         /// The ID of the hardware platform configuration for the instance.
         /// </summary>
         public readonly string PlatformId;
-        public readonly Outputs.GetKubernetesNodeGroupInstanceTemplateResourcesResult Resources;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateResourceResult> Resources;
         /// <summary>
         /// The scheduling policy for the instances in node group. The structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyResult SchedulingPolicy;
+        public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyResult> SchedulingPolicies;
 
         [OutputConstructor]
         private GetKubernetesNodeGroupInstanceTemplateResult(
-            Outputs.GetKubernetesNodeGroupInstanceTemplateBootDiskResult bootDisk,
+            ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateBootDiskResult> bootDisks,
 
             ImmutableDictionary<string, string> metadata,
 
@@ -59,23 +59,23 @@ namespace Pulumi.Yandex.Outputs
 
             ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateNetworkInterfaceResult> networkInterfaces,
 
-            Outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult? placementPolicy,
+            ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplatePlacementPolicyResult> placementPolicies,
 
             string platformId,
 
-            Outputs.GetKubernetesNodeGroupInstanceTemplateResourcesResult resources,
+            ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateResourceResult> resources,
 
-            Outputs.GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyResult schedulingPolicy)
+            ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyResult> schedulingPolicies)
         {
-            BootDisk = bootDisk;
+            BootDisks = bootDisks;
             Metadata = metadata;
             Nat = nat;
             NetworkAccelerationType = networkAccelerationType;
             NetworkInterfaces = networkInterfaces;
-            PlacementPolicy = placementPolicy;
+            PlacementPolicies = placementPolicies;
             PlatformId = platformId;
             Resources = resources;
-            SchedulingPolicy = schedulingPolicy;
+            SchedulingPolicies = schedulingPolicies;
         }
     }
 }

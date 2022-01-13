@@ -37,6 +37,7 @@ export class Provider extends pulumi.ProviderResource {
      * The default folder ID where resources will be placed.
      */
     public readonly folderId!: pulumi.Output<string | undefined>;
+    public readonly organizationId!: pulumi.Output<string | undefined>;
     /**
      * Either the path to or the contents of a Service Account key file in JSON format.
      */
@@ -86,29 +87,28 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            inputs["cloudId"] = args ? args.cloudId : undefined;
-            inputs["endpoint"] = args ? args.endpoint : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
-            inputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
-            inputs["plaintext"] = pulumi.output(args ? args.plaintext : undefined).apply(JSON.stringify);
-            inputs["serviceAccountKeyFile"] = args ? args.serviceAccountKeyFile : undefined;
-            inputs["storageAccessKey"] = args ? args.storageAccessKey : undefined;
-            inputs["storageEndpoint"] = args ? args.storageEndpoint : undefined;
-            inputs["storageSecretKey"] = args ? args.storageSecretKey : undefined;
-            inputs["token"] = args ? args.token : undefined;
-            inputs["ymqAccessKey"] = args ? args.ymqAccessKey : undefined;
-            inputs["ymqEndpoint"] = args ? args.ymqEndpoint : undefined;
-            inputs["ymqSecretKey"] = args ? args.ymqSecretKey : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["cloudId"] = args ? args.cloudId : undefined;
+            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
+            resourceInputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["plaintext"] = pulumi.output(args ? args.plaintext : undefined).apply(JSON.stringify);
+            resourceInputs["serviceAccountKeyFile"] = args ? args.serviceAccountKeyFile : undefined;
+            resourceInputs["storageAccessKey"] = args ? args.storageAccessKey : undefined;
+            resourceInputs["storageEndpoint"] = args ? args.storageEndpoint : undefined;
+            resourceInputs["storageSecretKey"] = args ? args.storageSecretKey : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["ymqAccessKey"] = args ? args.ymqAccessKey : undefined;
+            resourceInputs["ymqEndpoint"] = args ? args.ymqEndpoint : undefined;
+            resourceInputs["ymqSecretKey"] = args ? args.ymqSecretKey : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 
@@ -136,6 +136,7 @@ export interface ProviderArgs {
      * The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
      */
     maxRetries?: pulumi.Input<number>;
+    organizationId?: pulumi.Input<string>;
     /**
      * Disable use of TLS. Default value is `false`.
      */

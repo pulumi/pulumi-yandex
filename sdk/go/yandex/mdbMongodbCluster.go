@@ -362,7 +362,7 @@ type MdbMongodbClusterInput interface {
 }
 
 func (*MdbMongodbCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbMongodbCluster)(nil))
+	return reflect.TypeOf((**MdbMongodbCluster)(nil)).Elem()
 }
 
 func (i *MdbMongodbCluster) ToMdbMongodbClusterOutput() MdbMongodbClusterOutput {
@@ -371,35 +371,6 @@ func (i *MdbMongodbCluster) ToMdbMongodbClusterOutput() MdbMongodbClusterOutput 
 
 func (i *MdbMongodbCluster) ToMdbMongodbClusterOutputWithContext(ctx context.Context) MdbMongodbClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterOutput)
-}
-
-func (i *MdbMongodbCluster) ToMdbMongodbClusterPtrOutput() MdbMongodbClusterPtrOutput {
-	return i.ToMdbMongodbClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *MdbMongodbCluster) ToMdbMongodbClusterPtrOutputWithContext(ctx context.Context) MdbMongodbClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterPtrOutput)
-}
-
-type MdbMongodbClusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbMongodbClusterPtrOutput() MdbMongodbClusterPtrOutput
-	ToMdbMongodbClusterPtrOutputWithContext(ctx context.Context) MdbMongodbClusterPtrOutput
-}
-
-type mdbMongodbClusterPtrType MdbMongodbClusterArgs
-
-func (*mdbMongodbClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMongodbCluster)(nil))
-}
-
-func (i *mdbMongodbClusterPtrType) ToMdbMongodbClusterPtrOutput() MdbMongodbClusterPtrOutput {
-	return i.ToMdbMongodbClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbMongodbClusterPtrType) ToMdbMongodbClusterPtrOutputWithContext(ctx context.Context) MdbMongodbClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMongodbClusterPtrOutput)
 }
 
 // MdbMongodbClusterArrayInput is an input type that accepts MdbMongodbClusterArray and MdbMongodbClusterArrayOutput values.
@@ -455,7 +426,7 @@ func (i MdbMongodbClusterMap) ToMdbMongodbClusterMapOutputWithContext(ctx contex
 type MdbMongodbClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbMongodbClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbMongodbCluster)(nil))
+	return reflect.TypeOf((**MdbMongodbCluster)(nil)).Elem()
 }
 
 func (o MdbMongodbClusterOutput) ToMdbMongodbClusterOutput() MdbMongodbClusterOutput {
@@ -466,44 +437,10 @@ func (o MdbMongodbClusterOutput) ToMdbMongodbClusterOutputWithContext(ctx contex
 	return o
 }
 
-func (o MdbMongodbClusterOutput) ToMdbMongodbClusterPtrOutput() MdbMongodbClusterPtrOutput {
-	return o.ToMdbMongodbClusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbMongodbClusterOutput) ToMdbMongodbClusterPtrOutputWithContext(ctx context.Context) MdbMongodbClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMongodbCluster) *MdbMongodbCluster {
-		return &v
-	}).(MdbMongodbClusterPtrOutput)
-}
-
-type MdbMongodbClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbMongodbClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMongodbCluster)(nil))
-}
-
-func (o MdbMongodbClusterPtrOutput) ToMdbMongodbClusterPtrOutput() MdbMongodbClusterPtrOutput {
-	return o
-}
-
-func (o MdbMongodbClusterPtrOutput) ToMdbMongodbClusterPtrOutputWithContext(ctx context.Context) MdbMongodbClusterPtrOutput {
-	return o
-}
-
-func (o MdbMongodbClusterPtrOutput) Elem() MdbMongodbClusterOutput {
-	return o.ApplyT(func(v *MdbMongodbCluster) MdbMongodbCluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbMongodbCluster
-		return ret
-	}).(MdbMongodbClusterOutput)
-}
-
 type MdbMongodbClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (MdbMongodbClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MdbMongodbCluster)(nil))
+	return reflect.TypeOf((*[]*MdbMongodbCluster)(nil)).Elem()
 }
 
 func (o MdbMongodbClusterArrayOutput) ToMdbMongodbClusterArrayOutput() MdbMongodbClusterArrayOutput {
@@ -515,15 +452,15 @@ func (o MdbMongodbClusterArrayOutput) ToMdbMongodbClusterArrayOutputWithContext(
 }
 
 func (o MdbMongodbClusterArrayOutput) Index(i pulumi.IntInput) MdbMongodbClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbMongodbCluster {
-		return vs[0].([]MdbMongodbCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MdbMongodbCluster {
+		return vs[0].([]*MdbMongodbCluster)[vs[1].(int)]
 	}).(MdbMongodbClusterOutput)
 }
 
 type MdbMongodbClusterMapOutput struct{ *pulumi.OutputState }
 
 func (MdbMongodbClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MdbMongodbCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbMongodbCluster)(nil)).Elem()
 }
 
 func (o MdbMongodbClusterMapOutput) ToMdbMongodbClusterMapOutput() MdbMongodbClusterMapOutput {
@@ -535,18 +472,16 @@ func (o MdbMongodbClusterMapOutput) ToMdbMongodbClusterMapOutputWithContext(ctx 
 }
 
 func (o MdbMongodbClusterMapOutput) MapIndex(k pulumi.StringInput) MdbMongodbClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MdbMongodbCluster {
-		return vs[0].(map[string]MdbMongodbCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MdbMongodbCluster {
+		return vs[0].(map[string]*MdbMongodbCluster)[vs[1].(string)]
 	}).(MdbMongodbClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterInput)(nil)).Elem(), &MdbMongodbCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterPtrInput)(nil)).Elem(), &MdbMongodbCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterArrayInput)(nil)).Elem(), MdbMongodbClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMongodbClusterMapInput)(nil)).Elem(), MdbMongodbClusterMap{})
 	pulumi.RegisterOutputType(MdbMongodbClusterOutput{})
-	pulumi.RegisterOutputType(MdbMongodbClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterArrayOutput{})
 	pulumi.RegisterOutputType(MdbMongodbClusterMapOutput{})
 }

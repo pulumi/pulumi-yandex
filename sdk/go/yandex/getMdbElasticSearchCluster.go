@@ -69,7 +69,7 @@ type LookupMdbElasticSearchClusterArgs struct {
 type LookupMdbElasticSearchClusterResult struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Configuration of the Elasticsearch cluster. The structure is documented below.
-	Config GetMdbElasticSearchClusterConfig `pulumi:"config"`
+	Configs []GetMdbElasticSearchClusterConfig `pulumi:"configs"`
 	// Creation timestamp of the key.
 	CreatedAt          string `pulumi:"createdAt"`
 	DeletionProtection bool   `pulumi:"deletionProtection"`
@@ -149,8 +149,8 @@ func (o LookupMdbElasticSearchClusterResultOutput) ClusterId() pulumi.StringOutp
 }
 
 // Configuration of the Elasticsearch cluster. The structure is documented below.
-func (o LookupMdbElasticSearchClusterResultOutput) Config() GetMdbElasticSearchClusterConfigOutput {
-	return o.ApplyT(func(v LookupMdbElasticSearchClusterResult) GetMdbElasticSearchClusterConfig { return v.Config }).(GetMdbElasticSearchClusterConfigOutput)
+func (o LookupMdbElasticSearchClusterResultOutput) Configs() GetMdbElasticSearchClusterConfigArrayOutput {
+	return o.ApplyT(func(v LookupMdbElasticSearchClusterResult) []GetMdbElasticSearchClusterConfig { return v.Configs }).(GetMdbElasticSearchClusterConfigArrayOutput)
 }
 
 // Creation timestamp of the key.

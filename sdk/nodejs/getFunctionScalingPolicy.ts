@@ -10,9 +10,7 @@ export function getFunctionScalingPolicy(args: GetFunctionScalingPolicyArgs, opt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getFunctionScalingPolicy:getFunctionScalingPolicy", {
         "functionId": args.functionId,
         "policies": args.policies,

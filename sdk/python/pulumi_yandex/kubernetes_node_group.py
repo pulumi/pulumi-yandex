@@ -250,7 +250,7 @@ class _KubernetesNodeGroupState:
                  scale_policy: Optional[pulumi.Input['KubernetesNodeGroupScalePolicyArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
-                 version_info: Optional[pulumi.Input['KubernetesNodeGroupVersionInfoArgs']] = None):
+                 version_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodeGroupVersionInfoArgs']]]] = None):
         """
         Input properties used for looking up and filtering KubernetesNodeGroup resources.
         :param pulumi.Input['KubernetesNodeGroupAllocationPolicyArgs'] allocation_policy: This argument specify subnets (zones), that will be used by node group compute instances. The structure is documented below.
@@ -272,7 +272,7 @@ class _KubernetesNodeGroupState:
         :param pulumi.Input['KubernetesNodeGroupScalePolicyArgs'] scale_policy: Scale policy of the node group. The structure is documented below.
         :param pulumi.Input[str] status: (Computed) Status of the Kubernetes node group.
         :param pulumi.Input[str] version: Version of Kubernetes that will be used for Kubernetes node group.
-        :param pulumi.Input['KubernetesNodeGroupVersionInfoArgs'] version_info: Information about Kubernetes node group version. The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesNodeGroupVersionInfoArgs']]] version_infos: Information about Kubernetes node group version. The structure is documented below.
         """
         if allocation_policy is not None:
             pulumi.set(__self__, "allocation_policy", allocation_policy)
@@ -306,8 +306,8 @@ class _KubernetesNodeGroupState:
             pulumi.set(__self__, "status", status)
         if version is not None:
             pulumi.set(__self__, "version", version)
-        if version_info is not None:
-            pulumi.set(__self__, "version_info", version_info)
+        if version_infos is not None:
+            pulumi.set(__self__, "version_infos", version_infos)
 
     @property
     @pulumi.getter(name="allocationPolicy")
@@ -505,16 +505,16 @@ class _KubernetesNodeGroupState:
         pulumi.set(self, "version", value)
 
     @property
-    @pulumi.getter(name="versionInfo")
-    def version_info(self) -> Optional[pulumi.Input['KubernetesNodeGroupVersionInfoArgs']]:
+    @pulumi.getter(name="versionInfos")
+    def version_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodeGroupVersionInfoArgs']]]]:
         """
         Information about Kubernetes node group version. The structure is documented below.
         """
-        return pulumi.get(self, "version_info")
+        return pulumi.get(self, "version_infos")
 
-    @version_info.setter
-    def version_info(self, value: Optional[pulumi.Input['KubernetesNodeGroupVersionInfoArgs']]):
-        pulumi.set(self, "version_info", value)
+    @version_infos.setter
+    def version_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodeGroupVersionInfoArgs']]]]):
+        pulumi.set(self, "version_infos", value)
 
 
 class KubernetesNodeGroup(pulumi.CustomResource):
@@ -763,7 +763,7 @@ class KubernetesNodeGroup(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["instance_group_id"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["version_info"] = None
+            __props__.__dict__["version_infos"] = None
         super(KubernetesNodeGroup, __self__).__init__(
             'yandex:index/kubernetesNodeGroup:KubernetesNodeGroup',
             resource_name,
@@ -790,7 +790,7 @@ class KubernetesNodeGroup(pulumi.CustomResource):
             scale_policy: Optional[pulumi.Input[pulumi.InputType['KubernetesNodeGroupScalePolicyArgs']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
-            version_info: Optional[pulumi.Input[pulumi.InputType['KubernetesNodeGroupVersionInfoArgs']]] = None) -> 'KubernetesNodeGroup':
+            version_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodeGroupVersionInfoArgs']]]]] = None) -> 'KubernetesNodeGroup':
         """
         Get an existing KubernetesNodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -817,7 +817,7 @@ class KubernetesNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KubernetesNodeGroupScalePolicyArgs']] scale_policy: Scale policy of the node group. The structure is documented below.
         :param pulumi.Input[str] status: (Computed) Status of the Kubernetes node group.
         :param pulumi.Input[str] version: Version of Kubernetes that will be used for Kubernetes node group.
-        :param pulumi.Input[pulumi.InputType['KubernetesNodeGroupVersionInfoArgs']] version_info: Information about Kubernetes node group version. The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesNodeGroupVersionInfoArgs']]]] version_infos: Information about Kubernetes node group version. The structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -839,7 +839,7 @@ class KubernetesNodeGroup(pulumi.CustomResource):
         __props__.__dict__["scale_policy"] = scale_policy
         __props__.__dict__["status"] = status
         __props__.__dict__["version"] = version
-        __props__.__dict__["version_info"] = version_info
+        __props__.__dict__["version_infos"] = version_infos
         return KubernetesNodeGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -974,10 +974,10 @@ class KubernetesNodeGroup(pulumi.CustomResource):
         return pulumi.get(self, "version")
 
     @property
-    @pulumi.getter(name="versionInfo")
-    def version_info(self) -> pulumi.Output['outputs.KubernetesNodeGroupVersionInfo']:
+    @pulumi.getter(name="versionInfos")
+    def version_infos(self) -> pulumi.Output[Sequence['outputs.KubernetesNodeGroupVersionInfo']]:
         """
         Information about Kubernetes node group version. The structure is documented below.
         """
-        return pulumi.get(self, "version_info")
+        return pulumi.get(self, "version_infos")
 

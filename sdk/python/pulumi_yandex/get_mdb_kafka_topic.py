@@ -21,7 +21,7 @@ class GetMdbKafkaTopicResult:
     """
     A collection of values returned by getMdbKafkaTopic.
     """
-    def __init__(__self__, cluster_id=None, id=None, name=None, partitions=None, replication_factor=None, topic_config=None):
+    def __init__(__self__, cluster_id=None, id=None, name=None, partitions=None, replication_factor=None, topic_configs=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -37,9 +37,9 @@ class GetMdbKafkaTopicResult:
         if replication_factor and not isinstance(replication_factor, int):
             raise TypeError("Expected argument 'replication_factor' to be a int")
         pulumi.set(__self__, "replication_factor", replication_factor)
-        if topic_config and not isinstance(topic_config, dict):
-            raise TypeError("Expected argument 'topic_config' to be a dict")
-        pulumi.set(__self__, "topic_config", topic_config)
+        if topic_configs and not isinstance(topic_configs, list):
+            raise TypeError("Expected argument 'topic_configs' to be a list")
+        pulumi.set(__self__, "topic_configs", topic_configs)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -70,9 +70,9 @@ class GetMdbKafkaTopicResult:
         return pulumi.get(self, "replication_factor")
 
     @property
-    @pulumi.getter(name="topicConfig")
-    def topic_config(self) -> 'outputs.GetMdbKafkaTopicTopicConfigResult':
-        return pulumi.get(self, "topic_config")
+    @pulumi.getter(name="topicConfigs")
+    def topic_configs(self) -> Sequence['outputs.GetMdbKafkaTopicTopicConfigResult']:
+        return pulumi.get(self, "topic_configs")
 
 
 class AwaitableGetMdbKafkaTopicResult(GetMdbKafkaTopicResult):
@@ -86,7 +86,7 @@ class AwaitableGetMdbKafkaTopicResult(GetMdbKafkaTopicResult):
             name=self.name,
             partitions=self.partitions,
             replication_factor=self.replication_factor,
-            topic_config=self.topic_config)
+            topic_configs=self.topic_configs)
 
 
 def get_mdb_kafka_topic(cluster_id: Optional[str] = None,
@@ -110,7 +110,7 @@ def get_mdb_kafka_topic(cluster_id: Optional[str] = None,
         name=__ret__.name,
         partitions=__ret__.partitions,
         replication_factor=__ret__.replication_factor,
-        topic_config=__ret__.topic_config)
+        topic_configs=__ret__.topic_configs)
 
 
 @_utilities.lift_output_func(get_mdb_kafka_topic)

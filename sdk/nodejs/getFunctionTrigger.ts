@@ -26,9 +26,7 @@ export function getFunctionTrigger(args?: GetFunctionTriggerArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getFunctionTrigger:getFunctionTrigger", {
         "folderId": args.folderId,
         "name": args.name,
@@ -71,7 +69,7 @@ export interface GetFunctionTriggerResult {
      * * `dlq.0.queue_id` - ID of Dead Letter Queue for Trigger (Queue ARN)
      * * `dlq.0.service_account_id` - Service Account ID for Dead Letter Queue for Yandex Cloud Functions Trigger
      */
-    readonly dlq: outputs.GetFunctionTriggerDlq;
+    readonly dlqs: outputs.GetFunctionTriggerDlq[];
     /**
      * Folder ID for the Yandex Cloud Functions Trigger
      */
@@ -84,7 +82,7 @@ export interface GetFunctionTriggerResult {
      * * `function.0.retry_attempts` - Retry attempts for Yandex.Cloud Function for Yandex Cloud Functions Trigger
      * * `function.0.retry_interval` - Retry interval in seconds for Yandex.Cloud Function for Yandex Cloud Functions Trigger
      */
-    readonly function: outputs.GetFunctionTriggerFunction;
+    readonly functions: outputs.GetFunctionTriggerFunction[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -95,13 +93,13 @@ export interface GetFunctionTriggerResult {
      * * `iot.0.device_id` - IoT Device ID for Yandex Cloud Functions Trigger
      * * `iot.0.topic` - IoT Topic for Yandex Cloud Functions Trigger
      */
-    readonly iot: outputs.GetFunctionTriggerIot;
+    readonly iots: outputs.GetFunctionTriggerIot[];
     /**
      * A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
      */
     readonly labels: {[key: string]: string};
-    readonly logGroup: outputs.GetFunctionTriggerLogGroup;
-    readonly logging: outputs.GetFunctionTriggerLogging;
+    readonly logGroups: outputs.GetFunctionTriggerLogGroup[];
+    readonly loggings: outputs.GetFunctionTriggerLogging[];
     /**
      * [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
      * * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
@@ -110,7 +108,7 @@ export interface GetFunctionTriggerResult {
      * * `message_queue.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
      * * `message_queue.0.visibility_timeout` - Visibility timeout for Yandex Cloud Functions Trigger
      */
-    readonly messageQueue: outputs.GetFunctionTriggerMessageQueue;
+    readonly messageQueues: outputs.GetFunctionTriggerMessageQueue[];
     readonly name?: string;
     /**
      * [Object Storage](https://cloud.yandex.com/docs/functions/concepts/trigger/os-trigger) settings definition for Yandex Cloud Functions Trigger, if present
@@ -121,12 +119,12 @@ export interface GetFunctionTriggerResult {
      * * `object_storage.0.update` - Boolean flag for setting update event for Yandex Cloud Functions Trigger
      * * `object_storage.0.delete` - Boolean flag for setting delete event for Yandex Cloud Functions Trigger
      */
-    readonly objectStorage: outputs.GetFunctionTriggerObjectStorage;
+    readonly objectStorages: outputs.GetFunctionTriggerObjectStorage[];
     /**
      * [Timer](https://cloud.yandex.com/docs/functions/concepts/trigger/timer) settings definition for Yandex Cloud Functions Trigger, if present
      * * `timer.0.cron_expression` - Cron expression for timer for Yandex Cloud Functions Trigger
      */
-    readonly timer: outputs.GetFunctionTriggerTimer;
+    readonly timers: outputs.GetFunctionTriggerTimer[];
     readonly triggerId?: string;
 }
 

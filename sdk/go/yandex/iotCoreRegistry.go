@@ -173,7 +173,7 @@ type IotCoreRegistryInput interface {
 }
 
 func (*IotCoreRegistry) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotCoreRegistry)(nil))
+	return reflect.TypeOf((**IotCoreRegistry)(nil)).Elem()
 }
 
 func (i *IotCoreRegistry) ToIotCoreRegistryOutput() IotCoreRegistryOutput {
@@ -182,35 +182,6 @@ func (i *IotCoreRegistry) ToIotCoreRegistryOutput() IotCoreRegistryOutput {
 
 func (i *IotCoreRegistry) ToIotCoreRegistryOutputWithContext(ctx context.Context) IotCoreRegistryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IotCoreRegistryOutput)
-}
-
-func (i *IotCoreRegistry) ToIotCoreRegistryPtrOutput() IotCoreRegistryPtrOutput {
-	return i.ToIotCoreRegistryPtrOutputWithContext(context.Background())
-}
-
-func (i *IotCoreRegistry) ToIotCoreRegistryPtrOutputWithContext(ctx context.Context) IotCoreRegistryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IotCoreRegistryPtrOutput)
-}
-
-type IotCoreRegistryPtrInput interface {
-	pulumi.Input
-
-	ToIotCoreRegistryPtrOutput() IotCoreRegistryPtrOutput
-	ToIotCoreRegistryPtrOutputWithContext(ctx context.Context) IotCoreRegistryPtrOutput
-}
-
-type iotCoreRegistryPtrType IotCoreRegistryArgs
-
-func (*iotCoreRegistryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IotCoreRegistry)(nil))
-}
-
-func (i *iotCoreRegistryPtrType) ToIotCoreRegistryPtrOutput() IotCoreRegistryPtrOutput {
-	return i.ToIotCoreRegistryPtrOutputWithContext(context.Background())
-}
-
-func (i *iotCoreRegistryPtrType) ToIotCoreRegistryPtrOutputWithContext(ctx context.Context) IotCoreRegistryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IotCoreRegistryPtrOutput)
 }
 
 // IotCoreRegistryArrayInput is an input type that accepts IotCoreRegistryArray and IotCoreRegistryArrayOutput values.
@@ -266,7 +237,7 @@ func (i IotCoreRegistryMap) ToIotCoreRegistryMapOutputWithContext(ctx context.Co
 type IotCoreRegistryOutput struct{ *pulumi.OutputState }
 
 func (IotCoreRegistryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IotCoreRegistry)(nil))
+	return reflect.TypeOf((**IotCoreRegistry)(nil)).Elem()
 }
 
 func (o IotCoreRegistryOutput) ToIotCoreRegistryOutput() IotCoreRegistryOutput {
@@ -277,44 +248,10 @@ func (o IotCoreRegistryOutput) ToIotCoreRegistryOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o IotCoreRegistryOutput) ToIotCoreRegistryPtrOutput() IotCoreRegistryPtrOutput {
-	return o.ToIotCoreRegistryPtrOutputWithContext(context.Background())
-}
-
-func (o IotCoreRegistryOutput) ToIotCoreRegistryPtrOutputWithContext(ctx context.Context) IotCoreRegistryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IotCoreRegistry) *IotCoreRegistry {
-		return &v
-	}).(IotCoreRegistryPtrOutput)
-}
-
-type IotCoreRegistryPtrOutput struct{ *pulumi.OutputState }
-
-func (IotCoreRegistryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IotCoreRegistry)(nil))
-}
-
-func (o IotCoreRegistryPtrOutput) ToIotCoreRegistryPtrOutput() IotCoreRegistryPtrOutput {
-	return o
-}
-
-func (o IotCoreRegistryPtrOutput) ToIotCoreRegistryPtrOutputWithContext(ctx context.Context) IotCoreRegistryPtrOutput {
-	return o
-}
-
-func (o IotCoreRegistryPtrOutput) Elem() IotCoreRegistryOutput {
-	return o.ApplyT(func(v *IotCoreRegistry) IotCoreRegistry {
-		if v != nil {
-			return *v
-		}
-		var ret IotCoreRegistry
-		return ret
-	}).(IotCoreRegistryOutput)
-}
-
 type IotCoreRegistryArrayOutput struct{ *pulumi.OutputState }
 
 func (IotCoreRegistryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IotCoreRegistry)(nil))
+	return reflect.TypeOf((*[]*IotCoreRegistry)(nil)).Elem()
 }
 
 func (o IotCoreRegistryArrayOutput) ToIotCoreRegistryArrayOutput() IotCoreRegistryArrayOutput {
@@ -326,15 +263,15 @@ func (o IotCoreRegistryArrayOutput) ToIotCoreRegistryArrayOutputWithContext(ctx 
 }
 
 func (o IotCoreRegistryArrayOutput) Index(i pulumi.IntInput) IotCoreRegistryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IotCoreRegistry {
-		return vs[0].([]IotCoreRegistry)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IotCoreRegistry {
+		return vs[0].([]*IotCoreRegistry)[vs[1].(int)]
 	}).(IotCoreRegistryOutput)
 }
 
 type IotCoreRegistryMapOutput struct{ *pulumi.OutputState }
 
 func (IotCoreRegistryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IotCoreRegistry)(nil))
+	return reflect.TypeOf((*map[string]*IotCoreRegistry)(nil)).Elem()
 }
 
 func (o IotCoreRegistryMapOutput) ToIotCoreRegistryMapOutput() IotCoreRegistryMapOutput {
@@ -346,18 +283,16 @@ func (o IotCoreRegistryMapOutput) ToIotCoreRegistryMapOutputWithContext(ctx cont
 }
 
 func (o IotCoreRegistryMapOutput) MapIndex(k pulumi.StringInput) IotCoreRegistryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IotCoreRegistry {
-		return vs[0].(map[string]IotCoreRegistry)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IotCoreRegistry {
+		return vs[0].(map[string]*IotCoreRegistry)[vs[1].(string)]
 	}).(IotCoreRegistryOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IotCoreRegistryInput)(nil)).Elem(), &IotCoreRegistry{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IotCoreRegistryPtrInput)(nil)).Elem(), &IotCoreRegistry{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IotCoreRegistryArrayInput)(nil)).Elem(), IotCoreRegistryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IotCoreRegistryMapInput)(nil)).Elem(), IotCoreRegistryMap{})
 	pulumi.RegisterOutputType(IotCoreRegistryOutput{})
-	pulumi.RegisterOutputType(IotCoreRegistryPtrOutput{})
 	pulumi.RegisterOutputType(IotCoreRegistryArrayOutput{})
 	pulumi.RegisterOutputType(IotCoreRegistryMapOutput{})
 }

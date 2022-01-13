@@ -31,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("clusterExternalV4Endpoint", myCluster.Master.ExternalV4Endpoint)
+// 		ctx.Export("clusterExternalV4Endpoint", myCluster.Masters[0].ExternalV4Endpoint)
 // 		return nil
 // 	})
 // }
@@ -72,18 +72,18 @@ type LookupKubernetesClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// cluster KMS provider parameters.
-	KmsProvider GetKubernetesClusterKmsProvider `pulumi:"kmsProvider"`
+	KmsProviders []GetKubernetesClusterKmsProvider `pulumi:"kmsProviders"`
 	// A set of key/value label pairs to assign to the Kubernetes cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// Log group where cluster stores cluster system logs, like audit, events, or controlplane logs.
 	LogGroupId string `pulumi:"logGroupId"`
 	// Kubernetes master configuration options. The structure is documented below.
-	Master GetKubernetesClusterMaster `pulumi:"master"`
-	Name   string                     `pulumi:"name"`
+	Masters []GetKubernetesClusterMaster `pulumi:"masters"`
+	Name    string                       `pulumi:"name"`
 	// The ID of the cluster network.
 	NetworkId string `pulumi:"networkId"`
 	// (Optional) Network Implementation options. The structure is documented below.
-	NetworkImplementation GetKubernetesClusterNetworkImplementation `pulumi:"networkImplementation"`
+	NetworkImplementations []GetKubernetesClusterNetworkImplementation `pulumi:"networkImplementations"`
 	// Network policy provider for the cluster, if present. Possible values: `CALICO`.
 	NetworkPolicyProvider string `pulumi:"networkPolicyProvider"`
 	// Size of the masks that are assigned to each node in the cluster.
@@ -182,8 +182,8 @@ func (o LookupKubernetesClusterResultOutput) Id() pulumi.StringOutput {
 }
 
 // cluster KMS provider parameters.
-func (o LookupKubernetesClusterResultOutput) KmsProvider() GetKubernetesClusterKmsProviderOutput {
-	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterKmsProvider { return v.KmsProvider }).(GetKubernetesClusterKmsProviderOutput)
+func (o LookupKubernetesClusterResultOutput) KmsProviders() GetKubernetesClusterKmsProviderArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterKmsProvider { return v.KmsProviders }).(GetKubernetesClusterKmsProviderArrayOutput)
 }
 
 // A set of key/value label pairs to assign to the Kubernetes cluster.
@@ -197,8 +197,8 @@ func (o LookupKubernetesClusterResultOutput) LogGroupId() pulumi.StringOutput {
 }
 
 // Kubernetes master configuration options. The structure is documented below.
-func (o LookupKubernetesClusterResultOutput) Master() GetKubernetesClusterMasterOutput {
-	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterMaster { return v.Master }).(GetKubernetesClusterMasterOutput)
+func (o LookupKubernetesClusterResultOutput) Masters() GetKubernetesClusterMasterArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterMaster { return v.Masters }).(GetKubernetesClusterMasterArrayOutput)
 }
 
 func (o LookupKubernetesClusterResultOutput) Name() pulumi.StringOutput {
@@ -211,10 +211,10 @@ func (o LookupKubernetesClusterResultOutput) NetworkId() pulumi.StringOutput {
 }
 
 // (Optional) Network Implementation options. The structure is documented below.
-func (o LookupKubernetesClusterResultOutput) NetworkImplementation() GetKubernetesClusterNetworkImplementationOutput {
-	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterNetworkImplementation {
-		return v.NetworkImplementation
-	}).(GetKubernetesClusterNetworkImplementationOutput)
+func (o LookupKubernetesClusterResultOutput) NetworkImplementations() GetKubernetesClusterNetworkImplementationArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterNetworkImplementation {
+		return v.NetworkImplementations
+	}).(GetKubernetesClusterNetworkImplementationArrayOutput)
 }
 
 // Network policy provider for the cluster, if present. Possible values: `CALICO`.

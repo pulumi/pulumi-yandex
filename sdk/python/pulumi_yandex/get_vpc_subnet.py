@@ -28,8 +28,8 @@ class GetVpcSubnetResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if dhcp_options and not isinstance(dhcp_options, dict):
-            raise TypeError("Expected argument 'dhcp_options' to be a dict")
+        if dhcp_options and not isinstance(dhcp_options, list):
+            raise TypeError("Expected argument 'dhcp_options' to be a list")
         pulumi.set(__self__, "dhcp_options", dhcp_options)
         if folder_id and not isinstance(folder_id, str):
             raise TypeError("Expected argument 'folder_id' to be a str")
@@ -80,7 +80,7 @@ class GetVpcSubnetResult:
 
     @property
     @pulumi.getter(name="dhcpOptions")
-    def dhcp_options(self) -> 'outputs.GetVpcSubnetDhcpOptionsResult':
+    def dhcp_options(self) -> Sequence['outputs.GetVpcSubnetDhcpOptionResult']:
         """
         Options for DHCP client. The structure is documented below.
         """

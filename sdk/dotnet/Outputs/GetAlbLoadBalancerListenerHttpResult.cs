@@ -13,16 +13,16 @@ namespace Pulumi.Yandex.Outputs
     [OutputType]
     public sealed class GetAlbLoadBalancerListenerHttpResult
     {
-        public readonly Outputs.GetAlbLoadBalancerListenerHttpHandlerResult? Handler;
-        public readonly Outputs.GetAlbLoadBalancerListenerHttpRedirectsResult? Redirects;
+        public readonly ImmutableArray<Outputs.GetAlbLoadBalancerListenerHttpHandlerResult> Handlers;
+        public readonly ImmutableArray<Outputs.GetAlbLoadBalancerListenerHttpRedirectResult> Redirects;
 
         [OutputConstructor]
         private GetAlbLoadBalancerListenerHttpResult(
-            Outputs.GetAlbLoadBalancerListenerHttpHandlerResult? handler,
+            ImmutableArray<Outputs.GetAlbLoadBalancerListenerHttpHandlerResult> handlers,
 
-            Outputs.GetAlbLoadBalancerListenerHttpRedirectsResult? redirects)
+            ImmutableArray<Outputs.GetAlbLoadBalancerListenerHttpRedirectResult> redirects)
         {
-            Handler = handler;
+            Handlers = handlers;
             Redirects = redirects;
         }
     }

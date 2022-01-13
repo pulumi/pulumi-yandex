@@ -30,9 +30,7 @@ export function getResourcemanagerFolder(args?: GetResourcemanagerFolderArgs, op
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getResourcemanagerFolder:getResourcemanagerFolder", {
         "cloudId": args.cloudId,
         "folderId": args.folderId,

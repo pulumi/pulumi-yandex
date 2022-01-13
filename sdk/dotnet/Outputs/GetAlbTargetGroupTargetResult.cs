@@ -14,15 +14,19 @@ namespace Pulumi.Yandex.Outputs
     public sealed class GetAlbTargetGroupTargetResult
     {
         public readonly string IpAddress;
-        public readonly string SubnetId;
+        public readonly bool? PrivateIpv4Address;
+        public readonly string? SubnetId;
 
         [OutputConstructor]
         private GetAlbTargetGroupTargetResult(
             string ipAddress,
 
-            string subnetId)
+            bool? privateIpv4Address,
+
+            string? subnetId)
         {
             IpAddress = ipAddress;
+            PrivateIpv4Address = privateIpv4Address;
             SubnetId = subnetId;
         }
     }

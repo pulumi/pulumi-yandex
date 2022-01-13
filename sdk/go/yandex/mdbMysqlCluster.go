@@ -996,7 +996,7 @@ type MdbMysqlClusterInput interface {
 }
 
 func (*MdbMysqlCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbMysqlCluster)(nil))
+	return reflect.TypeOf((**MdbMysqlCluster)(nil)).Elem()
 }
 
 func (i *MdbMysqlCluster) ToMdbMysqlClusterOutput() MdbMysqlClusterOutput {
@@ -1005,35 +1005,6 @@ func (i *MdbMysqlCluster) ToMdbMysqlClusterOutput() MdbMysqlClusterOutput {
 
 func (i *MdbMysqlCluster) ToMdbMysqlClusterOutputWithContext(ctx context.Context) MdbMysqlClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterOutput)
-}
-
-func (i *MdbMysqlCluster) ToMdbMysqlClusterPtrOutput() MdbMysqlClusterPtrOutput {
-	return i.ToMdbMysqlClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *MdbMysqlCluster) ToMdbMysqlClusterPtrOutputWithContext(ctx context.Context) MdbMysqlClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterPtrOutput)
-}
-
-type MdbMysqlClusterPtrInput interface {
-	pulumi.Input
-
-	ToMdbMysqlClusterPtrOutput() MdbMysqlClusterPtrOutput
-	ToMdbMysqlClusterPtrOutputWithContext(ctx context.Context) MdbMysqlClusterPtrOutput
-}
-
-type mdbMysqlClusterPtrType MdbMysqlClusterArgs
-
-func (*mdbMysqlClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMysqlCluster)(nil))
-}
-
-func (i *mdbMysqlClusterPtrType) ToMdbMysqlClusterPtrOutput() MdbMysqlClusterPtrOutput {
-	return i.ToMdbMysqlClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *mdbMysqlClusterPtrType) ToMdbMysqlClusterPtrOutputWithContext(ctx context.Context) MdbMysqlClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MdbMysqlClusterPtrOutput)
 }
 
 // MdbMysqlClusterArrayInput is an input type that accepts MdbMysqlClusterArray and MdbMysqlClusterArrayOutput values.
@@ -1089,7 +1060,7 @@ func (i MdbMysqlClusterMap) ToMdbMysqlClusterMapOutputWithContext(ctx context.Co
 type MdbMysqlClusterOutput struct{ *pulumi.OutputState }
 
 func (MdbMysqlClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MdbMysqlCluster)(nil))
+	return reflect.TypeOf((**MdbMysqlCluster)(nil)).Elem()
 }
 
 func (o MdbMysqlClusterOutput) ToMdbMysqlClusterOutput() MdbMysqlClusterOutput {
@@ -1100,44 +1071,10 @@ func (o MdbMysqlClusterOutput) ToMdbMysqlClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MdbMysqlClusterOutput) ToMdbMysqlClusterPtrOutput() MdbMysqlClusterPtrOutput {
-	return o.ToMdbMysqlClusterPtrOutputWithContext(context.Background())
-}
-
-func (o MdbMysqlClusterOutput) ToMdbMysqlClusterPtrOutputWithContext(ctx context.Context) MdbMysqlClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MdbMysqlCluster) *MdbMysqlCluster {
-		return &v
-	}).(MdbMysqlClusterPtrOutput)
-}
-
-type MdbMysqlClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (MdbMysqlClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MdbMysqlCluster)(nil))
-}
-
-func (o MdbMysqlClusterPtrOutput) ToMdbMysqlClusterPtrOutput() MdbMysqlClusterPtrOutput {
-	return o
-}
-
-func (o MdbMysqlClusterPtrOutput) ToMdbMysqlClusterPtrOutputWithContext(ctx context.Context) MdbMysqlClusterPtrOutput {
-	return o
-}
-
-func (o MdbMysqlClusterPtrOutput) Elem() MdbMysqlClusterOutput {
-	return o.ApplyT(func(v *MdbMysqlCluster) MdbMysqlCluster {
-		if v != nil {
-			return *v
-		}
-		var ret MdbMysqlCluster
-		return ret
-	}).(MdbMysqlClusterOutput)
-}
-
 type MdbMysqlClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (MdbMysqlClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MdbMysqlCluster)(nil))
+	return reflect.TypeOf((*[]*MdbMysqlCluster)(nil)).Elem()
 }
 
 func (o MdbMysqlClusterArrayOutput) ToMdbMysqlClusterArrayOutput() MdbMysqlClusterArrayOutput {
@@ -1149,15 +1086,15 @@ func (o MdbMysqlClusterArrayOutput) ToMdbMysqlClusterArrayOutputWithContext(ctx 
 }
 
 func (o MdbMysqlClusterArrayOutput) Index(i pulumi.IntInput) MdbMysqlClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MdbMysqlCluster {
-		return vs[0].([]MdbMysqlCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MdbMysqlCluster {
+		return vs[0].([]*MdbMysqlCluster)[vs[1].(int)]
 	}).(MdbMysqlClusterOutput)
 }
 
 type MdbMysqlClusterMapOutput struct{ *pulumi.OutputState }
 
 func (MdbMysqlClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MdbMysqlCluster)(nil))
+	return reflect.TypeOf((*map[string]*MdbMysqlCluster)(nil)).Elem()
 }
 
 func (o MdbMysqlClusterMapOutput) ToMdbMysqlClusterMapOutput() MdbMysqlClusterMapOutput {
@@ -1169,18 +1106,16 @@ func (o MdbMysqlClusterMapOutput) ToMdbMysqlClusterMapOutputWithContext(ctx cont
 }
 
 func (o MdbMysqlClusterMapOutput) MapIndex(k pulumi.StringInput) MdbMysqlClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MdbMysqlCluster {
-		return vs[0].(map[string]MdbMysqlCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MdbMysqlCluster {
+		return vs[0].(map[string]*MdbMysqlCluster)[vs[1].(string)]
 	}).(MdbMysqlClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterInput)(nil)).Elem(), &MdbMysqlCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterPtrInput)(nil)).Elem(), &MdbMysqlCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterArrayInput)(nil)).Elem(), MdbMysqlClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MdbMysqlClusterMapInput)(nil)).Elem(), MdbMysqlClusterMap{})
 	pulumi.RegisterOutputType(MdbMysqlClusterOutput{})
-	pulumi.RegisterOutputType(MdbMysqlClusterPtrOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterArrayOutput{})
 	pulumi.RegisterOutputType(MdbMysqlClusterMapOutput{})
 }

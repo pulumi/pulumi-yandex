@@ -22,7 +22,8 @@ type Provider struct {
 	// The API endpoint for Yandex.Cloud SDK client.
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
 	// The default folder ID where resources will be placed.
-	FolderId pulumi.StringPtrOutput `pulumi:"folderId"`
+	FolderId       pulumi.StringPtrOutput `pulumi:"folderId"`
+	OrganizationId pulumi.StringPtrOutput `pulumi:"organizationId"`
 	// Either the path to or the contents of a Service Account key file in JSON format.
 	ServiceAccountKeyFile pulumi.StringPtrOutput `pulumi:"serviceAccountKeyFile"`
 	// Yandex.Cloud storage service access key. Used when a storage data/resource doesn't have an access key explicitly
@@ -72,7 +73,8 @@ type providerArgs struct {
 	// Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`.
 	Insecure *bool `pulumi:"insecure"`
 	// The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
-	MaxRetries *int `pulumi:"maxRetries"`
+	MaxRetries     *int    `pulumi:"maxRetries"`
+	OrganizationId *string `pulumi:"organizationId"`
 	// Disable use of TLS. Default value is `false`.
 	Plaintext *bool `pulumi:"plaintext"`
 	// Either the path to or the contents of a Service Account key file in JSON format.
@@ -110,7 +112,8 @@ type ProviderArgs struct {
 	// Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`.
 	Insecure pulumi.BoolPtrInput
 	// The maximum number of times an API request is being executed. If the API request still fails, an error is thrown.
-	MaxRetries pulumi.IntPtrInput
+	MaxRetries     pulumi.IntPtrInput
+	OrganizationId pulumi.StringPtrInput
 	// Disable use of TLS. Default value is `false`.
 	Plaintext pulumi.BoolPtrInput
 	// Either the path to or the contents of a Service Account key file in JSON format.
@@ -149,7 +152,7 @@ type ProviderInput interface {
 }
 
 func (*Provider) ElementType() reflect.Type {
-	return reflect.TypeOf((*Provider)(nil))
+	return reflect.TypeOf((**Provider)(nil)).Elem()
 }
 
 func (i *Provider) ToProviderOutput() ProviderOutput {
@@ -160,39 +163,10 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
-func (i *Provider) ToProviderPtrOutput() ProviderPtrOutput {
-	return i.ToProviderPtrOutputWithContext(context.Background())
-}
-
-func (i *Provider) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
-}
-
-type ProviderPtrInput interface {
-	pulumi.Input
-
-	ToProviderPtrOutput() ProviderPtrOutput
-	ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput
-}
-
-type providerPtrType ProviderArgs
-
-func (*providerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Provider)(nil))
-}
-
-func (i *providerPtrType) ToProviderPtrOutput() ProviderPtrOutput {
-	return i.ToProviderPtrOutputWithContext(context.Background())
-}
-
-func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
-}
-
 type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Provider)(nil))
+	return reflect.TypeOf((**Provider)(nil)).Elem()
 }
 
 func (o ProviderOutput) ToProviderOutput() ProviderOutput {
@@ -203,43 +177,7 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
-	return o.ToProviderPtrOutputWithContext(context.Background())
-}
-
-func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Provider) *Provider {
-		return &v
-	}).(ProviderPtrOutput)
-}
-
-type ProviderPtrOutput struct{ *pulumi.OutputState }
-
-func (ProviderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Provider)(nil))
-}
-
-func (o ProviderPtrOutput) ToProviderPtrOutput() ProviderPtrOutput {
-	return o
-}
-
-func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
-	return o
-}
-
-func (o ProviderPtrOutput) Elem() ProviderOutput {
-	return o.ApplyT(func(v *Provider) Provider {
-		if v != nil {
-			return *v
-		}
-		var ret Provider
-		return ret
-	}).(ProviderOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProviderPtrInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
-	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

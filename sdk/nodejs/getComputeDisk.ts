@@ -15,9 +15,7 @@ export function getComputeDisk(args?: GetComputeDiskArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getComputeDisk:getComputeDisk", {
         "diskId": args.diskId,
         "diskPlacementPolicy": args.diskPlacementPolicy,
@@ -49,6 +47,10 @@ export interface GetComputeDiskArgs {
  * A collection of values returned by getComputeDisk.
  */
 export interface GetComputeDiskResult {
+    /**
+     * The block size of the disk in bytes.
+     */
+    readonly blockSize: number;
     /**
      * Disk creation timestamp.
      */

@@ -133,7 +133,7 @@ namespace Pulumi.Yandex
         /// * `dlq.0.queue_id` - ID of Dead Letter Queue for Trigger (Queue ARN)
         /// * `dlq.0.service_account_id` - Service Account ID for Dead Letter Queue for Yandex Cloud Functions Trigger
         /// </summary>
-        public readonly Outputs.GetFunctionTriggerDlqResult Dlq;
+        public readonly ImmutableArray<Outputs.GetFunctionTriggerDlqResult> Dlqs;
         /// <summary>
         /// Folder ID for the Yandex Cloud Functions Trigger
         /// </summary>
@@ -146,7 +146,7 @@ namespace Pulumi.Yandex
         /// * `function.0.retry_attempts` - Retry attempts for Yandex.Cloud Function for Yandex Cloud Functions Trigger
         /// * `function.0.retry_interval` - Retry interval in seconds for Yandex.Cloud Function for Yandex Cloud Functions Trigger
         /// </summary>
-        public readonly Outputs.GetFunctionTriggerFunctionResult Function;
+        public readonly ImmutableArray<Outputs.GetFunctionTriggerFunctionResult> Functions;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -157,13 +157,13 @@ namespace Pulumi.Yandex
         /// * `iot.0.device_id` - IoT Device ID for Yandex Cloud Functions Trigger
         /// * `iot.0.topic` - IoT Topic for Yandex Cloud Functions Trigger
         /// </summary>
-        public readonly Outputs.GetFunctionTriggerIotResult Iot;
+        public readonly ImmutableArray<Outputs.GetFunctionTriggerIotResult> Iots;
         /// <summary>
         /// A set of key/value label pairs to assign to the Yandex Cloud Functions Trigger
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
-        public readonly Outputs.GetFunctionTriggerLogGroupResult LogGroup;
-        public readonly Outputs.GetFunctionTriggerLoggingResult Logging;
+        public readonly ImmutableArray<Outputs.GetFunctionTriggerLogGroupResult> LogGroups;
+        public readonly ImmutableArray<Outputs.GetFunctionTriggerLoggingResult> Loggings;
         /// <summary>
         /// [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
         /// * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
@@ -172,7 +172,7 @@ namespace Pulumi.Yandex
         /// * `message_queue.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
         /// * `message_queue.0.visibility_timeout` - Visibility timeout for Yandex Cloud Functions Trigger
         /// </summary>
-        public readonly Outputs.GetFunctionTriggerMessageQueueResult MessageQueue;
+        public readonly ImmutableArray<Outputs.GetFunctionTriggerMessageQueueResult> MessageQueues;
         public readonly string? Name;
         /// <summary>
         /// [Object Storage](https://cloud.yandex.com/docs/functions/concepts/trigger/os-trigger) settings definition for Yandex Cloud Functions Trigger, if present
@@ -183,12 +183,12 @@ namespace Pulumi.Yandex
         /// * `object_storage.0.update` - Boolean flag for setting update event for Yandex Cloud Functions Trigger
         /// * `object_storage.0.delete` - Boolean flag for setting delete event for Yandex Cloud Functions Trigger
         /// </summary>
-        public readonly Outputs.GetFunctionTriggerObjectStorageResult ObjectStorage;
+        public readonly ImmutableArray<Outputs.GetFunctionTriggerObjectStorageResult> ObjectStorages;
         /// <summary>
         /// [Timer](https://cloud.yandex.com/docs/functions/concepts/trigger/timer) settings definition for Yandex Cloud Functions Trigger, if present
         /// * `timer.0.cron_expression` - Cron expression for timer for Yandex Cloud Functions Trigger
         /// </summary>
-        public readonly Outputs.GetFunctionTriggerTimerResult Timer;
+        public readonly ImmutableArray<Outputs.GetFunctionTriggerTimerResult> Timers;
         public readonly string? TriggerId;
 
         [OutputConstructor]
@@ -197,46 +197,46 @@ namespace Pulumi.Yandex
 
             string description,
 
-            Outputs.GetFunctionTriggerDlqResult dlq,
+            ImmutableArray<Outputs.GetFunctionTriggerDlqResult> dlqs,
 
             string? folderId,
 
-            Outputs.GetFunctionTriggerFunctionResult function,
+            ImmutableArray<Outputs.GetFunctionTriggerFunctionResult> functions,
 
             string id,
 
-            Outputs.GetFunctionTriggerIotResult iot,
+            ImmutableArray<Outputs.GetFunctionTriggerIotResult> iots,
 
             ImmutableDictionary<string, string> labels,
 
-            Outputs.GetFunctionTriggerLogGroupResult logGroup,
+            ImmutableArray<Outputs.GetFunctionTriggerLogGroupResult> logGroups,
 
-            Outputs.GetFunctionTriggerLoggingResult logging,
+            ImmutableArray<Outputs.GetFunctionTriggerLoggingResult> loggings,
 
-            Outputs.GetFunctionTriggerMessageQueueResult messageQueue,
+            ImmutableArray<Outputs.GetFunctionTriggerMessageQueueResult> messageQueues,
 
             string? name,
 
-            Outputs.GetFunctionTriggerObjectStorageResult objectStorage,
+            ImmutableArray<Outputs.GetFunctionTriggerObjectStorageResult> objectStorages,
 
-            Outputs.GetFunctionTriggerTimerResult timer,
+            ImmutableArray<Outputs.GetFunctionTriggerTimerResult> timers,
 
             string? triggerId)
         {
             CreatedAt = createdAt;
             Description = description;
-            Dlq = dlq;
+            Dlqs = dlqs;
             FolderId = folderId;
-            Function = function;
+            Functions = functions;
             Id = id;
-            Iot = iot;
+            Iots = iots;
             Labels = labels;
-            LogGroup = logGroup;
-            Logging = logging;
-            MessageQueue = messageQueue;
+            LogGroups = logGroups;
+            Loggings = loggings;
+            MessageQueues = messageQueues;
             Name = name;
-            ObjectStorage = objectStorage;
-            Timer = timer;
+            ObjectStorages = objectStorages;
+            Timers = timers;
             TriggerId = triggerId;
         }
     }

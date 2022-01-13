@@ -28,9 +28,7 @@ export function getMdbClickhouseCluster(args?: GetMdbClickhouseClusterArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbClickhouseCluster:getMdbClickhouseCluster", {
         "cloudStorage": args.cloudStorage,
         "clusterId": args.clusterId,
@@ -69,15 +67,15 @@ export interface GetMdbClickhouseClusterResult {
     /**
      * Access policy to the ClickHouse cluster. The structure is documented below.
      */
-    readonly access: outputs.GetMdbClickhouseClusterAccess;
+    readonly accesses: outputs.GetMdbClickhouseClusterAccess[];
     /**
      * Time to start the daily backup, in the UTC timezone. The structure is documented below.
      */
-    readonly backupWindowStart: outputs.GetMdbClickhouseClusterBackupWindowStart;
+    readonly backupWindowStarts: outputs.GetMdbClickhouseClusterBackupWindowStart[];
     /**
      * Configuration of the ClickHouse subcluster. The structure is documented below.
      */
-    readonly clickhouse: outputs.GetMdbClickhouseClusterClickhouse;
+    readonly clickhouses: outputs.GetMdbClickhouseClusterClickhouse[];
     readonly cloudStorage?: outputs.GetMdbClickhouseClusterCloudStorage;
     readonly clusterId: string;
     /**
@@ -118,7 +116,7 @@ export interface GetMdbClickhouseClusterResult {
      * A set of key/value label pairs to assign to the ClickHouse cluster.
      */
     readonly labels: {[key: string]: string};
-    readonly maintenanceWindow: outputs.GetMdbClickhouseClusterMaintenanceWindow;
+    readonly maintenanceWindows: outputs.GetMdbClickhouseClusterMaintenanceWindow[];
     /**
      * A group of machine learning models. The structure is documented below.
      */
@@ -160,7 +158,7 @@ export interface GetMdbClickhouseClusterResult {
     /**
      * Configuration of the ZooKeeper subcluster. The structure is documented below.
      */
-    readonly zookeeper: outputs.GetMdbClickhouseClusterZookeeper;
+    readonly zookeepers: outputs.GetMdbClickhouseClusterZookeeper[];
 }
 
 export function getMdbClickhouseClusterOutput(args?: GetMdbClickhouseClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMdbClickhouseClusterResult> {

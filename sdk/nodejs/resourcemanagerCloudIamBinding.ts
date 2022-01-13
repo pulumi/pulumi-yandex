@@ -88,14 +88,14 @@ export class ResourcemanagerCloudIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: ResourcemanagerCloudIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourcemanagerCloudIamBindingArgs | ResourcemanagerCloudIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourcemanagerCloudIamBindingState | undefined;
-            inputs["cloudId"] = state ? state.cloudId : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["sleepAfter"] = state ? state.sleepAfter : undefined;
+            resourceInputs["cloudId"] = state ? state.cloudId : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["sleepAfter"] = state ? state.sleepAfter : undefined;
         } else {
             const args = argsOrState as ResourcemanagerCloudIamBindingArgs | undefined;
             if ((!args || args.cloudId === undefined) && !opts.urn) {
@@ -107,15 +107,13 @@ export class ResourcemanagerCloudIamBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["cloudId"] = args ? args.cloudId : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["sleepAfter"] = args ? args.sleepAfter : undefined;
+            resourceInputs["cloudId"] = args ? args.cloudId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ResourcemanagerCloudIamBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ResourcemanagerCloudIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

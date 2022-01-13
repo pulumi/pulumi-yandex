@@ -148,7 +148,7 @@ type AlbTargetGroupInput interface {
 }
 
 func (*AlbTargetGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlbTargetGroup)(nil))
+	return reflect.TypeOf((**AlbTargetGroup)(nil)).Elem()
 }
 
 func (i *AlbTargetGroup) ToAlbTargetGroupOutput() AlbTargetGroupOutput {
@@ -157,35 +157,6 @@ func (i *AlbTargetGroup) ToAlbTargetGroupOutput() AlbTargetGroupOutput {
 
 func (i *AlbTargetGroup) ToAlbTargetGroupOutputWithContext(ctx context.Context) AlbTargetGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlbTargetGroupOutput)
-}
-
-func (i *AlbTargetGroup) ToAlbTargetGroupPtrOutput() AlbTargetGroupPtrOutput {
-	return i.ToAlbTargetGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *AlbTargetGroup) ToAlbTargetGroupPtrOutputWithContext(ctx context.Context) AlbTargetGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlbTargetGroupPtrOutput)
-}
-
-type AlbTargetGroupPtrInput interface {
-	pulumi.Input
-
-	ToAlbTargetGroupPtrOutput() AlbTargetGroupPtrOutput
-	ToAlbTargetGroupPtrOutputWithContext(ctx context.Context) AlbTargetGroupPtrOutput
-}
-
-type albTargetGroupPtrType AlbTargetGroupArgs
-
-func (*albTargetGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlbTargetGroup)(nil))
-}
-
-func (i *albTargetGroupPtrType) ToAlbTargetGroupPtrOutput() AlbTargetGroupPtrOutput {
-	return i.ToAlbTargetGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *albTargetGroupPtrType) ToAlbTargetGroupPtrOutputWithContext(ctx context.Context) AlbTargetGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlbTargetGroupPtrOutput)
 }
 
 // AlbTargetGroupArrayInput is an input type that accepts AlbTargetGroupArray and AlbTargetGroupArrayOutput values.
@@ -241,7 +212,7 @@ func (i AlbTargetGroupMap) ToAlbTargetGroupMapOutputWithContext(ctx context.Cont
 type AlbTargetGroupOutput struct{ *pulumi.OutputState }
 
 func (AlbTargetGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlbTargetGroup)(nil))
+	return reflect.TypeOf((**AlbTargetGroup)(nil)).Elem()
 }
 
 func (o AlbTargetGroupOutput) ToAlbTargetGroupOutput() AlbTargetGroupOutput {
@@ -252,44 +223,10 @@ func (o AlbTargetGroupOutput) ToAlbTargetGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o AlbTargetGroupOutput) ToAlbTargetGroupPtrOutput() AlbTargetGroupPtrOutput {
-	return o.ToAlbTargetGroupPtrOutputWithContext(context.Background())
-}
-
-func (o AlbTargetGroupOutput) ToAlbTargetGroupPtrOutputWithContext(ctx context.Context) AlbTargetGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlbTargetGroup) *AlbTargetGroup {
-		return &v
-	}).(AlbTargetGroupPtrOutput)
-}
-
-type AlbTargetGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (AlbTargetGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlbTargetGroup)(nil))
-}
-
-func (o AlbTargetGroupPtrOutput) ToAlbTargetGroupPtrOutput() AlbTargetGroupPtrOutput {
-	return o
-}
-
-func (o AlbTargetGroupPtrOutput) ToAlbTargetGroupPtrOutputWithContext(ctx context.Context) AlbTargetGroupPtrOutput {
-	return o
-}
-
-func (o AlbTargetGroupPtrOutput) Elem() AlbTargetGroupOutput {
-	return o.ApplyT(func(v *AlbTargetGroup) AlbTargetGroup {
-		if v != nil {
-			return *v
-		}
-		var ret AlbTargetGroup
-		return ret
-	}).(AlbTargetGroupOutput)
-}
-
 type AlbTargetGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AlbTargetGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AlbTargetGroup)(nil))
+	return reflect.TypeOf((*[]*AlbTargetGroup)(nil)).Elem()
 }
 
 func (o AlbTargetGroupArrayOutput) ToAlbTargetGroupArrayOutput() AlbTargetGroupArrayOutput {
@@ -301,15 +238,15 @@ func (o AlbTargetGroupArrayOutput) ToAlbTargetGroupArrayOutputWithContext(ctx co
 }
 
 func (o AlbTargetGroupArrayOutput) Index(i pulumi.IntInput) AlbTargetGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbTargetGroup {
-		return vs[0].([]AlbTargetGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlbTargetGroup {
+		return vs[0].([]*AlbTargetGroup)[vs[1].(int)]
 	}).(AlbTargetGroupOutput)
 }
 
 type AlbTargetGroupMapOutput struct{ *pulumi.OutputState }
 
 func (AlbTargetGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AlbTargetGroup)(nil))
+	return reflect.TypeOf((*map[string]*AlbTargetGroup)(nil)).Elem()
 }
 
 func (o AlbTargetGroupMapOutput) ToAlbTargetGroupMapOutput() AlbTargetGroupMapOutput {
@@ -321,18 +258,16 @@ func (o AlbTargetGroupMapOutput) ToAlbTargetGroupMapOutputWithContext(ctx contex
 }
 
 func (o AlbTargetGroupMapOutput) MapIndex(k pulumi.StringInput) AlbTargetGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlbTargetGroup {
-		return vs[0].(map[string]AlbTargetGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AlbTargetGroup {
+		return vs[0].(map[string]*AlbTargetGroup)[vs[1].(string)]
 	}).(AlbTargetGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbTargetGroupInput)(nil)).Elem(), &AlbTargetGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AlbTargetGroupPtrInput)(nil)).Elem(), &AlbTargetGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbTargetGroupArrayInput)(nil)).Elem(), AlbTargetGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbTargetGroupMapInput)(nil)).Elem(), AlbTargetGroupMap{})
 	pulumi.RegisterOutputType(AlbTargetGroupOutput{})
-	pulumi.RegisterOutputType(AlbTargetGroupPtrOutput{})
 	pulumi.RegisterOutputType(AlbTargetGroupArrayOutput{})
 	pulumi.RegisterOutputType(AlbTargetGroupMapOutput{})
 }

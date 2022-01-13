@@ -21,49 +21,49 @@ class GetFunctionTriggerResult:
     """
     A collection of values returned by getFunctionTrigger.
     """
-    def __init__(__self__, created_at=None, description=None, dlq=None, folder_id=None, function=None, id=None, iot=None, labels=None, log_group=None, logging=None, message_queue=None, name=None, object_storage=None, timer=None, trigger_id=None):
+    def __init__(__self__, created_at=None, description=None, dlqs=None, folder_id=None, functions=None, id=None, iots=None, labels=None, log_groups=None, loggings=None, message_queues=None, name=None, object_storages=None, timers=None, trigger_id=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if dlq and not isinstance(dlq, dict):
-            raise TypeError("Expected argument 'dlq' to be a dict")
-        pulumi.set(__self__, "dlq", dlq)
+        if dlqs and not isinstance(dlqs, list):
+            raise TypeError("Expected argument 'dlqs' to be a list")
+        pulumi.set(__self__, "dlqs", dlqs)
         if folder_id and not isinstance(folder_id, str):
             raise TypeError("Expected argument 'folder_id' to be a str")
         pulumi.set(__self__, "folder_id", folder_id)
-        if function and not isinstance(function, dict):
-            raise TypeError("Expected argument 'function' to be a dict")
-        pulumi.set(__self__, "function", function)
+        if functions and not isinstance(functions, list):
+            raise TypeError("Expected argument 'functions' to be a list")
+        pulumi.set(__self__, "functions", functions)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if iot and not isinstance(iot, dict):
-            raise TypeError("Expected argument 'iot' to be a dict")
-        pulumi.set(__self__, "iot", iot)
+        if iots and not isinstance(iots, list):
+            raise TypeError("Expected argument 'iots' to be a list")
+        pulumi.set(__self__, "iots", iots)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if log_group and not isinstance(log_group, dict):
-            raise TypeError("Expected argument 'log_group' to be a dict")
-        pulumi.set(__self__, "log_group", log_group)
-        if logging and not isinstance(logging, dict):
-            raise TypeError("Expected argument 'logging' to be a dict")
-        pulumi.set(__self__, "logging", logging)
-        if message_queue and not isinstance(message_queue, dict):
-            raise TypeError("Expected argument 'message_queue' to be a dict")
-        pulumi.set(__self__, "message_queue", message_queue)
+        if log_groups and not isinstance(log_groups, list):
+            raise TypeError("Expected argument 'log_groups' to be a list")
+        pulumi.set(__self__, "log_groups", log_groups)
+        if loggings and not isinstance(loggings, list):
+            raise TypeError("Expected argument 'loggings' to be a list")
+        pulumi.set(__self__, "loggings", loggings)
+        if message_queues and not isinstance(message_queues, list):
+            raise TypeError("Expected argument 'message_queues' to be a list")
+        pulumi.set(__self__, "message_queues", message_queues)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if object_storage and not isinstance(object_storage, dict):
-            raise TypeError("Expected argument 'object_storage' to be a dict")
-        pulumi.set(__self__, "object_storage", object_storage)
-        if timer and not isinstance(timer, dict):
-            raise TypeError("Expected argument 'timer' to be a dict")
-        pulumi.set(__self__, "timer", timer)
+        if object_storages and not isinstance(object_storages, list):
+            raise TypeError("Expected argument 'object_storages' to be a list")
+        pulumi.set(__self__, "object_storages", object_storages)
+        if timers and not isinstance(timers, list):
+            raise TypeError("Expected argument 'timers' to be a list")
+        pulumi.set(__self__, "timers", timers)
         if trigger_id and not isinstance(trigger_id, str):
             raise TypeError("Expected argument 'trigger_id' to be a str")
         pulumi.set(__self__, "trigger_id", trigger_id)
@@ -86,13 +86,13 @@ class GetFunctionTriggerResult:
 
     @property
     @pulumi.getter
-    def dlq(self) -> 'outputs.GetFunctionTriggerDlqResult':
+    def dlqs(self) -> Sequence['outputs.GetFunctionTriggerDlqResult']:
         """
         Dead Letter Queue settings definition for Yandex Cloud Functions Trigger
         * `dlq.0.queue_id` - ID of Dead Letter Queue for Trigger (Queue ARN)
         * `dlq.0.service_account_id` - Service Account ID for Dead Letter Queue for Yandex Cloud Functions Trigger
         """
-        return pulumi.get(self, "dlq")
+        return pulumi.get(self, "dlqs")
 
     @property
     @pulumi.getter(name="folderId")
@@ -104,7 +104,7 @@ class GetFunctionTriggerResult:
 
     @property
     @pulumi.getter
-    def function(self) -> 'outputs.GetFunctionTriggerFunctionResult':
+    def functions(self) -> Sequence['outputs.GetFunctionTriggerFunctionResult']:
         """
         [Yandex.Cloud Function](https://cloud.yandex.com/docs/functions/concepts/function) settings definition for Yandex Cloud Functions Trigger
         * `function.0.id` - Yandex.Cloud Function ID for Yandex Cloud Functions Trigger
@@ -113,7 +113,7 @@ class GetFunctionTriggerResult:
         * `function.0.retry_attempts` - Retry attempts for Yandex.Cloud Function for Yandex Cloud Functions Trigger
         * `function.0.retry_interval` - Retry interval in seconds for Yandex.Cloud Function for Yandex Cloud Functions Trigger
         """
-        return pulumi.get(self, "function")
+        return pulumi.get(self, "functions")
 
     @property
     @pulumi.getter
@@ -125,14 +125,14 @@ class GetFunctionTriggerResult:
 
     @property
     @pulumi.getter
-    def iot(self) -> 'outputs.GetFunctionTriggerIotResult':
+    def iots(self) -> Sequence['outputs.GetFunctionTriggerIotResult']:
         """
         [IoT](https://cloud.yandex.com/docs/functions/concepts/trigger/iot-core-trigger) settings definition for Yandex Cloud Functions Trigger, if present
         * `iot.0.registry_id` - IoT Registry ID for Yandex Cloud Functions Trigger
         * `iot.0.device_id` - IoT Device ID for Yandex Cloud Functions Trigger
         * `iot.0.topic` - IoT Topic for Yandex Cloud Functions Trigger
         """
-        return pulumi.get(self, "iot")
+        return pulumi.get(self, "iots")
 
     @property
     @pulumi.getter
@@ -143,18 +143,18 @@ class GetFunctionTriggerResult:
         return pulumi.get(self, "labels")
 
     @property
-    @pulumi.getter(name="logGroup")
-    def log_group(self) -> 'outputs.GetFunctionTriggerLogGroupResult':
-        return pulumi.get(self, "log_group")
+    @pulumi.getter(name="logGroups")
+    def log_groups(self) -> Sequence['outputs.GetFunctionTriggerLogGroupResult']:
+        return pulumi.get(self, "log_groups")
 
     @property
     @pulumi.getter
-    def logging(self) -> 'outputs.GetFunctionTriggerLoggingResult':
-        return pulumi.get(self, "logging")
+    def loggings(self) -> Sequence['outputs.GetFunctionTriggerLoggingResult']:
+        return pulumi.get(self, "loggings")
 
     @property
-    @pulumi.getter(name="messageQueue")
-    def message_queue(self) -> 'outputs.GetFunctionTriggerMessageQueueResult':
+    @pulumi.getter(name="messageQueues")
+    def message_queues(self) -> Sequence['outputs.GetFunctionTriggerMessageQueueResult']:
         """
         [Message Queue](https://cloud.yandex.com/docs/functions/concepts/trigger/ymq-trigger) settings definition for Yandex Cloud Functions Trigger, if present
         * `message_queue.0.queue_id` - Message Queue ID for Yandex Cloud Functions Trigger
@@ -163,7 +163,7 @@ class GetFunctionTriggerResult:
         * `message_queue.0.batch_size` - Batch Size for Yandex Cloud Functions Trigger
         * `message_queue.0.visibility_timeout` - Visibility timeout for Yandex Cloud Functions Trigger
         """
-        return pulumi.get(self, "message_queue")
+        return pulumi.get(self, "message_queues")
 
     @property
     @pulumi.getter
@@ -171,8 +171,8 @@ class GetFunctionTriggerResult:
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="objectStorage")
-    def object_storage(self) -> 'outputs.GetFunctionTriggerObjectStorageResult':
+    @pulumi.getter(name="objectStorages")
+    def object_storages(self) -> Sequence['outputs.GetFunctionTriggerObjectStorageResult']:
         """
         [Object Storage](https://cloud.yandex.com/docs/functions/concepts/trigger/os-trigger) settings definition for Yandex Cloud Functions Trigger, if present
         * `object_storage.0.bucket_id` - Object Storage Bucket ID for Yandex Cloud Functions Trigger
@@ -182,16 +182,16 @@ class GetFunctionTriggerResult:
         * `object_storage.0.update` - Boolean flag for setting update event for Yandex Cloud Functions Trigger
         * `object_storage.0.delete` - Boolean flag for setting delete event for Yandex Cloud Functions Trigger
         """
-        return pulumi.get(self, "object_storage")
+        return pulumi.get(self, "object_storages")
 
     @property
     @pulumi.getter
-    def timer(self) -> 'outputs.GetFunctionTriggerTimerResult':
+    def timers(self) -> Sequence['outputs.GetFunctionTriggerTimerResult']:
         """
         [Timer](https://cloud.yandex.com/docs/functions/concepts/trigger/timer) settings definition for Yandex Cloud Functions Trigger, if present
         * `timer.0.cron_expression` - Cron expression for timer for Yandex Cloud Functions Trigger
         """
-        return pulumi.get(self, "timer")
+        return pulumi.get(self, "timers")
 
     @property
     @pulumi.getter(name="triggerId")
@@ -207,18 +207,18 @@ class AwaitableGetFunctionTriggerResult(GetFunctionTriggerResult):
         return GetFunctionTriggerResult(
             created_at=self.created_at,
             description=self.description,
-            dlq=self.dlq,
+            dlqs=self.dlqs,
             folder_id=self.folder_id,
-            function=self.function,
+            functions=self.functions,
             id=self.id,
-            iot=self.iot,
+            iots=self.iots,
             labels=self.labels,
-            log_group=self.log_group,
-            logging=self.logging,
-            message_queue=self.message_queue,
+            log_groups=self.log_groups,
+            loggings=self.loggings,
+            message_queues=self.message_queues,
             name=self.name,
-            object_storage=self.object_storage,
-            timer=self.timer,
+            object_storages=self.object_storages,
+            timers=self.timers,
             trigger_id=self.trigger_id)
 
 
@@ -257,18 +257,18 @@ def get_function_trigger(folder_id: Optional[str] = None,
     return AwaitableGetFunctionTriggerResult(
         created_at=__ret__.created_at,
         description=__ret__.description,
-        dlq=__ret__.dlq,
+        dlqs=__ret__.dlqs,
         folder_id=__ret__.folder_id,
-        function=__ret__.function,
+        functions=__ret__.functions,
         id=__ret__.id,
-        iot=__ret__.iot,
+        iots=__ret__.iots,
         labels=__ret__.labels,
-        log_group=__ret__.log_group,
-        logging=__ret__.logging,
-        message_queue=__ret__.message_queue,
+        log_groups=__ret__.log_groups,
+        loggings=__ret__.loggings,
+        message_queues=__ret__.message_queues,
         name=__ret__.name,
-        object_storage=__ret__.object_storage,
-        timer=__ret__.timer,
+        object_storages=__ret__.object_storages,
+        timers=__ret__.timers,
         trigger_id=__ret__.trigger_id)
 
 
