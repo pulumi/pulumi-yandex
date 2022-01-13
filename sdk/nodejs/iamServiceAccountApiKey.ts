@@ -115,9 +115,7 @@ export class IamServiceAccountApiKey extends pulumi.CustomResource {
             resourceInputs["keyFingerprint"] = undefined /*out*/;
             resourceInputs["secretKey"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IamServiceAccountApiKey.__pulumiType, name, resourceInputs, opts);
     }
 }

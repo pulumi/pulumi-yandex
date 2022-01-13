@@ -26,9 +26,7 @@ export function getVpcRouteTable(args?: GetVpcRouteTableArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getVpcRouteTable:getVpcRouteTable", {
         "folderId": args.folderId,
         "name": args.name,

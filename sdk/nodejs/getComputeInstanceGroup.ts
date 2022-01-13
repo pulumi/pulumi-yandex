@@ -26,9 +26,7 @@ export function getComputeInstanceGroup(args: GetComputeInstanceGroupArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getComputeInstanceGroup:getComputeInstanceGroup", {
         "instanceGroupId": args.instanceGroupId,
     }, opts);

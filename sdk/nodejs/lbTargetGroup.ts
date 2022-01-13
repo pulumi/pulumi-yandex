@@ -128,9 +128,7 @@ export class LbTargetGroup extends pulumi.CustomResource {
             resourceInputs["targets"] = args ? args.targets : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LbTargetGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

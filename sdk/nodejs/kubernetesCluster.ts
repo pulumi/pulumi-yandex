@@ -299,9 +299,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["logGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KubernetesCluster.__pulumiType, name, resourceInputs, opts);
     }
 }

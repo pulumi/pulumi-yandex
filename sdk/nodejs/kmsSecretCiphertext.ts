@@ -105,9 +105,7 @@ export class KmsSecretCiphertext extends pulumi.CustomResource {
             resourceInputs["plaintext"] = args ? args.plaintext : undefined;
             resourceInputs["ciphertext"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KmsSecretCiphertext.__pulumiType, name, resourceInputs, opts);
     }
 }

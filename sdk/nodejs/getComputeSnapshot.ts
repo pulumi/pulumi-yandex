@@ -14,9 +14,7 @@ export function getComputeSnapshot(args?: GetComputeSnapshotArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getComputeSnapshot:getComputeSnapshot", {
         "folderId": args.folderId,
         "name": args.name,

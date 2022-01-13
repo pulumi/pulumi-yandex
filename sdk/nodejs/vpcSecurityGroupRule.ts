@@ -170,9 +170,7 @@ export class VpcSecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["v4CidrBlocks"] = args ? args.v4CidrBlocks : undefined;
             resourceInputs["v6CidrBlocks"] = args ? args.v6CidrBlocks : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcSecurityGroupRule.__pulumiType, name, resourceInputs, opts);
     }
 }

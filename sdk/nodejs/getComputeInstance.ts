@@ -28,9 +28,7 @@ export function getComputeInstance(args?: GetComputeInstanceArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getComputeInstance:getComputeInstance", {
         "folderId": args.folderId,
         "instanceId": args.instanceId,

@@ -176,9 +176,7 @@ export class FunctionTrigger extends pulumi.CustomResource {
             resourceInputs["timer"] = args ? args.timer : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FunctionTrigger.__pulumiType, name, resourceInputs, opts);
     }
 }

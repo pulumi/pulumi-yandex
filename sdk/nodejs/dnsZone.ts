@@ -127,9 +127,7 @@ export class DnsZone extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DnsZone.__pulumiType, name, resourceInputs, opts);
     }
 }

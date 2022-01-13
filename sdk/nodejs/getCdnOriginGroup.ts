@@ -30,9 +30,7 @@ export function getCdnOriginGroup(args?: GetCdnOriginGroupArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getCdnOriginGroup:getCdnOriginGroup", {
         "folderId": args.folderId,
         "name": args.name,

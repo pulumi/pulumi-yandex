@@ -10,9 +10,7 @@ export function getLoggingGroup(args?: GetLoggingGroupArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getLoggingGroup:getLoggingGroup", {
         "folderId": args.folderId,
         "groupId": args.groupId,

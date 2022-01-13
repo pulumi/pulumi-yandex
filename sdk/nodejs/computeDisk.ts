@@ -192,9 +192,7 @@ export class ComputeDisk extends pulumi.CustomResource {
             resourceInputs["productIds"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeDisk.__pulumiType, name, resourceInputs, opts);
     }
 }

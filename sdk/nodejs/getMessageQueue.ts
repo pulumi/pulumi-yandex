@@ -24,9 +24,7 @@ export function getMessageQueue(args: GetMessageQueueArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMessageQueue:getMessageQueue", {
         "accessKey": args.accessKey,
         "name": args.name,

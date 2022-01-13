@@ -104,9 +104,7 @@ export class ComputeDiskPlacementGroup extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeDiskPlacementGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

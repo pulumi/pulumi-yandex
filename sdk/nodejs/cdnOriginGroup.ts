@@ -110,9 +110,7 @@ export class CdnOriginGroup extends pulumi.CustomResource {
             resourceInputs["useNext"] = args ? args.useNext : undefined;
             resourceInputs["folderId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CdnOriginGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

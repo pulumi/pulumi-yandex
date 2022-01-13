@@ -93,9 +93,7 @@ export class ResourcemanagerFolderIamPolicy extends pulumi.CustomResource {
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["policyData"] = args ? args.policyData : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResourcemanagerFolderIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

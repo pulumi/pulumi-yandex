@@ -27,9 +27,7 @@ export function getResourcemanagerCloud(args?: GetResourcemanagerCloudArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getResourcemanagerCloud:getResourcemanagerCloud", {
         "cloudId": args.cloudId,
         "description": args.description,

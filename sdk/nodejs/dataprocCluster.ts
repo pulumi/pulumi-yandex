@@ -265,9 +265,7 @@ export class DataprocCluster extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DataprocCluster.__pulumiType, name, resourceInputs, opts);
     }
 }

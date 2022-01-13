@@ -26,9 +26,7 @@ export function getIamServiceAccount(args?: GetIamServiceAccountArgs, opts?: pul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getIamServiceAccount:getIamServiceAccount", {
         "folderId": args.folderId,
         "name": args.name,

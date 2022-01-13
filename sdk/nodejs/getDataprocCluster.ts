@@ -27,9 +27,7 @@ export function getDataprocCluster(args?: GetDataprocClusterArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getDataprocCluster:getDataprocCluster", {
         "clusterId": args.clusterId,
         "name": args.name,

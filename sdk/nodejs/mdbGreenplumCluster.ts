@@ -327,9 +327,7 @@ export class MdbGreenplumCluster extends pulumi.CustomResource {
             resourceInputs["segmentHosts"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MdbGreenplumCluster.__pulumiType, name, resourceInputs, opts);
     }
 }

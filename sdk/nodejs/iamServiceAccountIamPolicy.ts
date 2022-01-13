@@ -110,9 +110,7 @@ export class IamServiceAccountIamPolicy extends pulumi.CustomResource {
             resourceInputs["policyData"] = args ? args.policyData : undefined;
             resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IamServiceAccountIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -245,9 +245,7 @@ export class MdbMongodbCluster extends pulumi.CustomResource {
             resourceInputs["sharded"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MdbMongodbCluster.__pulumiType, name, resourceInputs, opts);
     }
 }

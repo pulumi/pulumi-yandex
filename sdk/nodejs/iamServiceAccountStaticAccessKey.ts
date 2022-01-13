@@ -121,9 +121,7 @@ export class IamServiceAccountStaticAccessKey extends pulumi.CustomResource {
             resourceInputs["keyFingerprint"] = undefined /*out*/;
             resourceInputs["secretKey"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IamServiceAccountStaticAccessKey.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -127,9 +127,7 @@ export class ComputeSnapshot extends pulumi.CustomResource {
             resourceInputs["diskSize"] = undefined /*out*/;
             resourceInputs["storageSize"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeSnapshot.__pulumiType, name, resourceInputs, opts);
     }
 }

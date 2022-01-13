@@ -190,9 +190,7 @@ export class ComputeImage extends pulumi.CustomResource {
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeImage.__pulumiType, name, resourceInputs, opts);
     }
 }

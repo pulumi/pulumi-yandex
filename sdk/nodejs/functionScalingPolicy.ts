@@ -95,9 +95,7 @@ export class FunctionScalingPolicy extends pulumi.CustomResource {
             resourceInputs["functionId"] = args ? args.functionId : undefined;
             resourceInputs["policies"] = args ? args.policies : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FunctionScalingPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

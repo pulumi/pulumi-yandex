@@ -198,9 +198,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["loggroupId"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Function.__pulumiType, name, resourceInputs, opts);
     }
 }

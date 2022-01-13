@@ -167,9 +167,7 @@ export class MessageQueue extends pulumi.CustomResource {
             resourceInputs["visibilityTimeoutSeconds"] = args ? args.visibilityTimeoutSeconds : undefined;
             resourceInputs["arn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MessageQueue.__pulumiType, name, resourceInputs, opts);
     }
 }

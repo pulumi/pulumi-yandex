@@ -28,9 +28,7 @@ export function getMdbClickhouseCluster(args?: GetMdbClickhouseClusterArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbClickhouseCluster:getMdbClickhouseCluster", {
         "cloudStorage": args.cloudStorage,
         "clusterId": args.clusterId,

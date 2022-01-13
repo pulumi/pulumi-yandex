@@ -25,9 +25,7 @@ export function getIotCoreDevice(args?: GetIotCoreDeviceArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getIotCoreDevice:getIotCoreDevice", {
         "deviceId": args.deviceId,
         "name": args.name,

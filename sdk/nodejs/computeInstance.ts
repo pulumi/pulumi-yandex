@@ -230,9 +230,7 @@ export class ComputeInstance extends pulumi.CustomResource {
             resourceInputs["fqdn"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeInstance.__pulumiType, name, resourceInputs, opts);
     }
 }

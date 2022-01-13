@@ -109,9 +109,7 @@ export class OrganizationManagerOrganizationIamBinding extends pulumi.CustomReso
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationManagerOrganizationIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }

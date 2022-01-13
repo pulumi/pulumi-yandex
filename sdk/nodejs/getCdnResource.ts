@@ -30,9 +30,7 @@ export function getCdnResource(args?: GetCdnResourceArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getCdnResource:getCdnResource", {
         "active": args.active,
         "cname": args.cname,

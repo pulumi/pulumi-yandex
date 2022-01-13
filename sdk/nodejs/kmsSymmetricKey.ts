@@ -114,9 +114,7 @@ export class KmsSymmetricKey extends pulumi.CustomResource {
             resourceInputs["rotatedAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KmsSymmetricKey.__pulumiType, name, resourceInputs, opts);
     }
 }

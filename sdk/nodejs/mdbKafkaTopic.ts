@@ -141,9 +141,7 @@ export class MdbKafkaTopic extends pulumi.CustomResource {
             resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
             resourceInputs["topicConfig"] = args ? args.topicConfig : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MdbKafkaTopic.__pulumiType, name, resourceInputs, opts);
     }
 }

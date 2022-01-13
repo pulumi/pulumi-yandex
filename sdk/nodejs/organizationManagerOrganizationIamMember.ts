@@ -114,9 +114,7 @@ export class OrganizationManagerOrganizationIamMember extends pulumi.CustomResou
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationManagerOrganizationIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }

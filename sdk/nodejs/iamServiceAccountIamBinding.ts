@@ -120,9 +120,7 @@ export class IamServiceAccountIamBinding extends pulumi.CustomResource {
             resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IamServiceAccountIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }

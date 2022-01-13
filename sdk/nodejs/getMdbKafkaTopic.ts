@@ -10,9 +10,7 @@ export function getMdbKafkaTopic(args: GetMdbKafkaTopicArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbKafkaTopic:getMdbKafkaTopic", {
         "clusterId": args.clusterId,
         "name": args.name,

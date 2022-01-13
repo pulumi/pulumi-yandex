@@ -77,9 +77,7 @@ export class ContainerRepository extends pulumi.CustomResource {
             const args = argsOrState as ContainerRepositoryArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ContainerRepository.__pulumiType, name, resourceInputs, opts);
     }
 }

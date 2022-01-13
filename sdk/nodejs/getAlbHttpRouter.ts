@@ -25,9 +25,7 @@ export function getAlbHttpRouter(args?: GetAlbHttpRouterArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getAlbHttpRouter:getAlbHttpRouter", {
         "description": args.description,
         "folderId": args.folderId,

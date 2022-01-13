@@ -502,9 +502,7 @@ export class StorageBucket extends pulumi.CustomResource {
             resourceInputs["websiteEndpoint"] = args ? args.websiteEndpoint : undefined;
             resourceInputs["bucketDomainName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StorageBucket.__pulumiType, name, resourceInputs, opts);
     }
 }

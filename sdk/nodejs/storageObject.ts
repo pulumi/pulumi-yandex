@@ -127,9 +127,7 @@ export class StorageObject extends pulumi.CustomResource {
             resourceInputs["secretKey"] = args ? args.secretKey : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StorageObject.__pulumiType, name, resourceInputs, opts);
     }
 }

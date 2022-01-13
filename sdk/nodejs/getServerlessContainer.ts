@@ -25,9 +25,7 @@ export function getServerlessContainer(args?: GetServerlessContainerArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getServerlessContainer:getServerlessContainer", {
         "containerId": args.containerId,
         "folderId": args.folderId,

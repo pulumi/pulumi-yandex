@@ -111,9 +111,7 @@ export class KmsSymmetricKeyIamBinding extends pulumi.CustomResource {
             resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
             resourceInputs["symmetricKeyId"] = args ? args.symmetricKeyId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KmsSymmetricKeyIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }

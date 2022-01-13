@@ -11,9 +11,7 @@ export function getAlbLoadBalancer(args?: GetAlbLoadBalancerArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getAlbLoadBalancer:getAlbLoadBalancer", {
         "loadBalancerId": args.loadBalancerId,
         "name": args.name,

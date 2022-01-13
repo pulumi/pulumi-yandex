@@ -739,9 +739,7 @@ export class MdbMysqlCluster extends pulumi.CustomResource {
             resourceInputs["health"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MdbMysqlCluster.__pulumiType, name, resourceInputs, opts);
     }
 }

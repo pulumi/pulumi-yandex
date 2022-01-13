@@ -242,9 +242,7 @@ export class ComputeInstanceGroup extends pulumi.CustomResource {
             resourceInputs["instances"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeInstanceGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

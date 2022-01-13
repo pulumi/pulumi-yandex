@@ -11,9 +11,7 @@ export function getMdbGreenplumCluster(args?: GetMdbGreenplumClusterArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbGreenplumCluster:getMdbGreenplumCluster", {
         "clusterId": args.clusterId,
         "folderId": args.folderId,

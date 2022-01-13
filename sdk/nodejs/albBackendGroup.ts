@@ -140,9 +140,7 @@ export class AlbBackendGroup extends pulumi.CustomResource {
             resourceInputs["streamBackends"] = args ? args.streamBackends : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlbBackendGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

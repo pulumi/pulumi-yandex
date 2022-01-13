@@ -213,9 +213,7 @@ export class YdbDatabaseDedicated extends pulumi.CustomResource {
             resourceInputs["ydbApiEndpoint"] = undefined /*out*/;
             resourceInputs["ydbFullEndpoint"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(YdbDatabaseDedicated.__pulumiType, name, resourceInputs, opts);
     }
 }

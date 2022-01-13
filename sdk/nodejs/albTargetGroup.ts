@@ -120,9 +120,7 @@ export class AlbTargetGroup extends pulumi.CustomResource {
             resourceInputs["targets"] = args ? args.targets : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlbTargetGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

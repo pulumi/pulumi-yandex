@@ -159,9 +159,7 @@ export class ApiGateway extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["userDomains"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiGateway.__pulumiType, name, resourceInputs, opts);
     }
 }

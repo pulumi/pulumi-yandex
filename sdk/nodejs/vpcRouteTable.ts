@@ -128,9 +128,7 @@ export class VpcRouteTable extends pulumi.CustomResource {
             resourceInputs["staticRoutes"] = args ? args.staticRoutes : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcRouteTable.__pulumiType, name, resourceInputs, opts);
     }
 }

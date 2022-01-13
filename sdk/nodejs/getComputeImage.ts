@@ -10,9 +10,7 @@ export function getComputeImage(args?: GetComputeImageArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getComputeImage:getComputeImage", {
         "family": args.family,
         "folderId": args.folderId,

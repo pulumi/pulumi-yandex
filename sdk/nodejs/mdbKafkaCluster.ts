@@ -345,9 +345,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
             resourceInputs["hosts"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MdbKafkaCluster.__pulumiType, name, resourceInputs, opts);
     }
 }

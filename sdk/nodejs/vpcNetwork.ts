@@ -115,9 +115,7 @@ export class VpcNetwork extends pulumi.CustomResource {
             resourceInputs["defaultSecurityGroupId"] = undefined /*out*/;
             resourceInputs["subnetIds"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcNetwork.__pulumiType, name, resourceInputs, opts);
     }
 }

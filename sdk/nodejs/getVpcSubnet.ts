@@ -26,9 +26,7 @@ export function getVpcSubnet(args?: GetVpcSubnetArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getVpcSubnet:getVpcSubnet", {
         "folderId": args.folderId,
         "name": args.name,

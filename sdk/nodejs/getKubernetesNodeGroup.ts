@@ -28,9 +28,7 @@ export function getKubernetesNodeGroup(args?: GetKubernetesNodeGroupArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getKubernetesNodeGroup:getKubernetesNodeGroup", {
         "folderId": args.folderId,
         "name": args.name,

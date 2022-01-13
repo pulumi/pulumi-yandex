@@ -107,9 +107,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["ymqSecretKey"] = args ? args.ymqSecretKey : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -116,9 +116,7 @@ export class IotCoreRegistry extends pulumi.CustomResource {
             resourceInputs["passwords"] = args ? args.passwords : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IotCoreRegistry.__pulumiType, name, resourceInputs, opts);
     }
 }

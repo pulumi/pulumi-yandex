@@ -25,9 +25,7 @@ export function getVpcNetwork(args?: GetVpcNetworkArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getVpcNetwork:getVpcNetwork", {
         "folderId": args.folderId,
         "name": args.name,

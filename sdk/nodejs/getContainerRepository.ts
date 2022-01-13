@@ -28,9 +28,7 @@ export function getContainerRepository(args?: GetContainerRepositoryArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getContainerRepository:getContainerRepository", {
         "name": args.name,
         "repositoryId": args.repositoryId,

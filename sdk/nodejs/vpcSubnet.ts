@@ -156,9 +156,7 @@ export class VpcSubnet extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["v6CidrBlocks"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcSubnet.__pulumiType, name, resourceInputs, opts);
     }
 }

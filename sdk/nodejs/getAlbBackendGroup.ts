@@ -26,9 +26,7 @@ export function getAlbBackendGroup(args?: GetAlbBackendGroupArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getAlbBackendGroup:getAlbBackendGroup", {
         "backendGroupId": args.backendGroupId,
         "description": args.description,

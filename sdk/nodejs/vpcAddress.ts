@@ -143,9 +143,7 @@ export class VpcAddress extends pulumi.CustomResource {
             resourceInputs["reserved"] = undefined /*out*/;
             resourceInputs["used"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcAddress.__pulumiType, name, resourceInputs, opts);
     }
 }

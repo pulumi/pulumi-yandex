@@ -121,9 +121,7 @@ export class IotCoreDevice extends pulumi.CustomResource {
             resourceInputs["registryId"] = args ? args.registryId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IotCoreDevice.__pulumiType, name, resourceInputs, opts);
     }
 }

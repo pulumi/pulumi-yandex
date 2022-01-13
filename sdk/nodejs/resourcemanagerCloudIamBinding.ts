@@ -112,9 +112,7 @@ export class ResourcemanagerCloudIamBinding extends pulumi.CustomResource {
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["sleepAfter"] = args ? args.sleepAfter : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResourcemanagerCloudIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }

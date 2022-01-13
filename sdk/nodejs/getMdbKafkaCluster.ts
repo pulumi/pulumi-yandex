@@ -28,9 +28,7 @@ export function getMdbKafkaCluster(args?: GetMdbKafkaClusterArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getMdbKafkaCluster:getMdbKafkaCluster", {
         "clusterId": args.clusterId,
         "config": args.config,

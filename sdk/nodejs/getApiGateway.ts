@@ -10,9 +10,7 @@ export function getApiGateway(args?: GetApiGatewayArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getApiGateway:getApiGateway", {
         "apiGatewayId": args.apiGatewayId,
         "folderId": args.folderId,

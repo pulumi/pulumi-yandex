@@ -146,9 +146,7 @@ export class LbNetworkLoadBalancer extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LbNetworkLoadBalancer.__pulumiType, name, resourceInputs, opts);
     }
 }
