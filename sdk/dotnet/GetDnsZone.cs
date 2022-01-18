@@ -41,7 +41,7 @@ namespace Pulumi.Yandex
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetDnsZoneResult> InvokeAsync(GetDnsZoneArgs args, InvokeOptions? options = null)
+        public static Task<GetDnsZoneResult> InvokeAsync(GetDnsZoneArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("yandex:index/getDnsZone:getDnsZone", args ?? new GetDnsZoneArgs(), options.WithVersion());
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Pulumi.Yandex
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetDnsZoneResult> Invoke(GetDnsZoneInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetDnsZoneResult> Invoke(GetDnsZoneInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDnsZoneResult>("yandex:index/getDnsZone:getDnsZone", args ?? new GetDnsZoneInvokeArgs(), options.WithVersion());
     }
 
@@ -83,8 +83,20 @@ namespace Pulumi.Yandex
         /// <summary>
         /// The ID of the DNS Zone.
         /// </summary>
-        [Input("dnsZoneId", required: true)]
-        public string DnsZoneId { get; set; } = null!;
+        [Input("dnsZoneId")]
+        public string? DnsZoneId { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public string? FolderId { get; set; }
+
+        /// <summary>
+        /// - Name of the DNS Zone.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetDnsZoneArgs()
         {
@@ -96,8 +108,20 @@ namespace Pulumi.Yandex
         /// <summary>
         /// The ID of the DNS Zone.
         /// </summary>
-        [Input("dnsZoneId", required: true)]
-        public Input<string> DnsZoneId { get; set; } = null!;
+        [Input("dnsZoneId")]
+        public Input<string>? DnsZoneId { get; set; }
+
+        /// <summary>
+        /// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// - Name of the DNS Zone.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetDnsZoneInvokeArgs()
         {

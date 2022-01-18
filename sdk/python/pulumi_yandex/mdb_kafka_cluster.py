@@ -23,6 +23,7 @@ class MdbKafkaClusterArgs:
                  folder_id: Optional[pulumi.Input[str]] = None,
                  host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input['MdbKafkaClusterMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -39,6 +40,7 @@ class MdbKafkaClusterArgs:
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
+        :param pulumi.Input['MdbKafkaClusterMaintenanceWindowArgs'] maintenance_window: Maintenance policy of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: IDs of the subnets, to which the Kafka cluster belongs.
@@ -59,6 +61,8 @@ class MdbKafkaClusterArgs:
             pulumi.set(__self__, "host_group_ids", host_group_ids)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if security_group_ids is not None:
@@ -171,6 +175,18 @@ class MdbKafkaClusterArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MdbKafkaClusterMaintenanceWindowArgs']]:
+        """
+        Maintenance policy of the Kafka cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MdbKafkaClusterMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -244,6 +260,7 @@ class _MdbKafkaClusterState:
                  host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterHostArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input['MdbKafkaClusterMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -264,6 +281,7 @@ class _MdbKafkaClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Sequence[pulumi.Input['MdbKafkaClusterHostArgs']]] hosts: A host of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
+        :param pulumi.Input['MdbKafkaClusterMaintenanceWindowArgs'] maintenance_window: Maintenance policy of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[str] network_id: ID of the network, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
@@ -293,6 +311,8 @@ class _MdbKafkaClusterState:
             pulumi.set(__self__, "hosts", hosts)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_id is not None:
@@ -433,6 +453,18 @@ class _MdbKafkaClusterState:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MdbKafkaClusterMaintenanceWindowArgs']]:
+        """
+        Maintenance policy of the Kafka cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MdbKafkaClusterMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -530,6 +562,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbKafkaClusterMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -724,6 +757,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it is not provided, the default provider folder is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
+        :param pulumi.Input[pulumi.InputType['MdbKafkaClusterMaintenanceWindowArgs']] maintenance_window: Maintenance policy of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[str] network_id: ID of the network, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
@@ -936,6 +970,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbKafkaClusterMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -963,6 +998,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["host_group_ids"] = host_group_ids
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
             if network_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_id'")
@@ -998,6 +1034,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
             host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterHostArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbKafkaClusterMaintenanceWindowArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1023,6 +1060,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups to place VMs of the cluster on.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbKafkaClusterHostArgs']]]] hosts: A host of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the Kafka cluster.
+        :param pulumi.Input[pulumi.InputType['MdbKafkaClusterMaintenanceWindowArgs']] maintenance_window: Maintenance policy of the Kafka cluster. The structure is documented below.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[str] network_id: ID of the network, to which the Kafka cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Security group ids, to which the Kafka cluster belongs.
@@ -1046,6 +1084,7 @@ class MdbKafkaCluster(pulumi.CustomResource):
         __props__.__dict__["host_group_ids"] = host_group_ids
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["maintenance_window"] = maintenance_window
         __props__.__dict__["name"] = name
         __props__.__dict__["network_id"] = network_id
         __props__.__dict__["security_group_ids"] = security_group_ids
@@ -1135,6 +1174,14 @@ class MdbKafkaCluster(pulumi.CustomResource):
         A set of key/value label pairs to assign to the Kafka cluster.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Output['outputs.MdbKafkaClusterMaintenanceWindow']:
+        """
+        Maintenance policy of the Kafka cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter

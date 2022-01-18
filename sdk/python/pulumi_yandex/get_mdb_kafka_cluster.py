@@ -22,7 +22,7 @@ class GetMdbKafkaClusterResult:
     """
     A collection of values returned by getMdbKafkaCluster.
     """
-    def __init__(__self__, cluster_id=None, config=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, host_group_ids=None, hosts=None, id=None, labels=None, name=None, network_id=None, security_group_ids=None, status=None, subnet_ids=None, topics=None, users=None):
+    def __init__(__self__, cluster_id=None, config=None, created_at=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, host_group_ids=None, hosts=None, id=None, labels=None, maintenance_windows=None, name=None, network_id=None, security_group_ids=None, status=None, subnet_ids=None, topics=None, users=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -59,6 +59,9 @@ class GetMdbKafkaClusterResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if maintenance_windows and not isinstance(maintenance_windows, list):
+            raise TypeError("Expected argument 'maintenance_windows' to be a list")
+        pulumi.set(__self__, "maintenance_windows", maintenance_windows)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -169,6 +172,14 @@ class GetMdbKafkaClusterResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Sequence['outputs.GetMdbKafkaClusterMaintenanceWindowResult']:
+        """
+        Maintenance window settings of the Kafka cluster. The structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -240,6 +251,7 @@ class AwaitableGetMdbKafkaClusterResult(GetMdbKafkaClusterResult):
             hosts=self.hosts,
             id=self.id,
             labels=self.labels,
+            maintenance_windows=self.maintenance_windows,
             name=self.name,
             network_id=self.network_id,
             security_group_ids=self.security_group_ids,
@@ -308,6 +320,7 @@ def get_mdb_kafka_cluster(cluster_id: Optional[str] = None,
         hosts=__ret__.hosts,
         id=__ret__.id,
         labels=__ret__.labels,
+        maintenance_windows=__ret__.maintenance_windows,
         name=__ret__.name,
         network_id=__ret__.network_id,
         security_group_ids=__ret__.security_group_ids,

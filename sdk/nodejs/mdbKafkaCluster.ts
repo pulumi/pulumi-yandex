@@ -258,6 +258,10 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Maintenance policy of the Kafka cluster. The structure is documented below.
+     */
+    public readonly maintenanceWindow!: pulumi.Output<outputs.MdbKafkaClusterMaintenanceWindow>;
+    /**
      * The name of the topic.
      */
     public readonly name!: pulumi.Output<string>;
@@ -312,6 +316,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
             resourceInputs["hostGroupIds"] = state ? state.hostGroupIds : undefined;
             resourceInputs["hosts"] = state ? state.hosts : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkId"] = state ? state.networkId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -334,6 +339,7 @@ export class MdbKafkaCluster extends pulumi.CustomResource {
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["hostGroupIds"] = args ? args.hostGroupIds : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkId"] = args ? args.networkId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
@@ -395,6 +401,10 @@ export interface MdbKafkaClusterState {
      * A set of key/value label pairs to assign to the Kafka cluster.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Maintenance policy of the Kafka cluster. The structure is documented below.
+     */
+    maintenanceWindow?: pulumi.Input<inputs.MdbKafkaClusterMaintenanceWindow>;
     /**
      * The name of the topic.
      */
@@ -461,6 +471,10 @@ export interface MdbKafkaClusterArgs {
      * A set of key/value label pairs to assign to the Kafka cluster.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Maintenance policy of the Kafka cluster. The structure is documented below.
+     */
+    maintenanceWindow?: pulumi.Input<inputs.MdbKafkaClusterMaintenanceWindow>;
     /**
      * The name of the topic.
      */

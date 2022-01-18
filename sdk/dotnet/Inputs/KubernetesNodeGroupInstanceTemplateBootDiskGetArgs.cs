@@ -19,7 +19,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The disk type.
+        /// Type of container runtime. Values: `docker`, `containerd`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

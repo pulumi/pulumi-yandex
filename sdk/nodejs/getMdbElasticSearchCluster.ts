@@ -115,6 +115,7 @@ export interface GetMdbElasticSearchClusterResult {
      * A set of key/value label pairs to assign to the Elasticsearch cluster.
      */
     readonly labels: {[key: string]: string};
+    readonly maintenanceWindows: outputs.GetMdbElasticSearchClusterMaintenanceWindow[];
     readonly name: string;
     /**
      * ID of the network, to which the Elasticsearch cluster belongs.

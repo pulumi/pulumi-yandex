@@ -145,6 +145,7 @@ __all__ = [
     'KubernetesNodeGroupDeployPolicyArgs',
     'KubernetesNodeGroupInstanceTemplateArgs',
     'KubernetesNodeGroupInstanceTemplateBootDiskArgs',
+    'KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs',
     'KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs',
     'KubernetesNodeGroupInstanceTemplatePlacementPolicyArgs',
     'KubernetesNodeGroupInstanceTemplateResourcesArgs',
@@ -196,6 +197,7 @@ __all__ = [
     'MdbElasticSearchClusterConfigMasterNodeArgs',
     'MdbElasticSearchClusterConfigMasterNodeResourcesArgs',
     'MdbElasticSearchClusterHostArgs',
+    'MdbElasticSearchClusterMaintenanceWindowArgs',
     'MdbGreenplumClusterAccessArgs',
     'MdbGreenplumClusterBackupWindowStartArgs',
     'MdbGreenplumClusterMasterHostArgs',
@@ -211,6 +213,7 @@ __all__ = [
     'MdbKafkaClusterConfigZookeeperArgs',
     'MdbKafkaClusterConfigZookeeperResourcesArgs',
     'MdbKafkaClusterHostArgs',
+    'MdbKafkaClusterMaintenanceWindowArgs',
     'MdbKafkaClusterTopicArgs',
     'MdbKafkaClusterTopicTopicConfigArgs',
     'MdbKafkaClusterUserArgs',
@@ -9047,6 +9050,7 @@ class KubernetesNodeGroupDeployPolicyArgs:
 class KubernetesNodeGroupInstanceTemplateArgs:
     def __init__(__self__, *,
                  boot_disk: Optional[pulumi.Input['KubernetesNodeGroupInstanceTemplateBootDiskArgs']] = None,
+                 container_runtime: Optional[pulumi.Input['KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  nat: Optional[pulumi.Input[bool]] = None,
                  network_acceleration_type: Optional[pulumi.Input[str]] = None,
@@ -9057,6 +9061,8 @@ class KubernetesNodeGroupInstanceTemplateArgs:
                  scheduling_policy: Optional[pulumi.Input['KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs']] = None):
         """
         :param pulumi.Input['KubernetesNodeGroupInstanceTemplateBootDiskArgs'] boot_disk: The specifications for boot disks that will be attached to the instance. The structure is documented below.
+        :param pulumi.Input['KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs'] container_runtime: Container runtime configuration. The structure is documented below.
+               ---
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
                * `resources.0.memory` - The memory size allocated to the instance.
                * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -9071,6 +9077,8 @@ class KubernetesNodeGroupInstanceTemplateArgs:
         """
         if boot_disk is not None:
             pulumi.set(__self__, "boot_disk", boot_disk)
+        if container_runtime is not None:
+            pulumi.set(__self__, "container_runtime", container_runtime)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if nat is not None:
@@ -9102,6 +9110,19 @@ class KubernetesNodeGroupInstanceTemplateArgs:
     @boot_disk.setter
     def boot_disk(self, value: Optional[pulumi.Input['KubernetesNodeGroupInstanceTemplateBootDiskArgs']]):
         pulumi.set(self, "boot_disk", value)
+
+    @property
+    @pulumi.getter(name="containerRuntime")
+    def container_runtime(self) -> Optional[pulumi.Input['KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs']]:
+        """
+        Container runtime configuration. The structure is documented below.
+        ---
+        """
+        return pulumi.get(self, "container_runtime")
+
+    @container_runtime.setter
+    def container_runtime(self, value: Optional[pulumi.Input['KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs']]):
+        pulumi.set(self, "container_runtime", value)
 
     @property
     @pulumi.getter
@@ -9208,7 +9229,7 @@ class KubernetesNodeGroupInstanceTemplateBootDiskArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] size: The number of instances in the node group.
-        :param pulumi.Input[str] type: The disk type.
+        :param pulumi.Input[str] type: Type of container runtime. Values: `docker`, `containerd`.
         """
         if size is not None:
             pulumi.set(__self__, "size", size)
@@ -9231,12 +9252,34 @@ class KubernetesNodeGroupInstanceTemplateBootDiskArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The disk type.
+        Type of container runtime. Values: `docker`, `containerd`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] type: Type of container runtime. Values: `docker`, `containerd`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of container runtime. Values: `docker`, `containerd`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
 
@@ -13719,7 +13762,7 @@ class MdbElasticSearchClusterHostArgs:
                  subnet_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: User defined host name.
-        :param pulumi.Input[str] type: The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+        :param pulumi.Input[str] type: Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
         :param pulumi.Input[str] zone: The availability zone where the Elasticsearch host will be created.
                For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
         :param pulumi.Input[bool] assign_public_ip: Sets whether the host should get a public IP address on creation. Can be either `true` or `false`.
@@ -13753,7 +13796,7 @@ class MdbElasticSearchClusterHostArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+        Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
         """
         return pulumi.get(self, "type")
 
@@ -13810,6 +13853,60 @@ class MdbElasticSearchClusterHostArgs:
     @subnet_id.setter
     def subnet_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnet_id", value)
+
+
+@pulumi.input_type
+class MdbElasticSearchClusterMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 day: Optional[pulumi.Input[str]] = None,
+                 hour: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] type: Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        :param pulumi.Input[str] day: Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+        :param pulumi.Input[int] hour: Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+        """
+        pulumi.set(__self__, "type", type)
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[str]]:
+        """
+        Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def hour(self) -> Optional[pulumi.Input[int]]:
+        """
+        Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+        """
+        return pulumi.get(self, "hour")
+
+    @hour.setter
+    def hour(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hour", value)
 
 
 @pulumi.input_type
@@ -14654,6 +14751,60 @@ class MdbKafkaClusterHostArgs:
     @zone_id.setter
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
+
+
+@pulumi.input_type
+class MdbKafkaClusterMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 day: Optional[pulumi.Input[str]] = None,
+                 hour: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] type: Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        :param pulumi.Input[str] day: Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+        :param pulumi.Input[int] hour: Hour of the day in UTC (in `HH` format). Allowed value is between 1 and 24.
+        """
+        pulumi.set(__self__, "type", type)
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[str]]:
+        """
+        Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def hour(self) -> Optional[pulumi.Input[int]]:
+        """
+        Hour of the day in UTC (in `HH` format). Allowed value is between 1 and 24.
+        """
+        return pulumi.get(self, "hour")
+
+    @hour.setter
+    def hour(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hour", value)
 
 
 @pulumi.input_type

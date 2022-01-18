@@ -30,7 +30,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string SubnetId;
         /// <summary>
-        /// The type of the host to be deployed. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/hosts-roles).
+        /// Type of a maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour need to be specified with the weekly window.
         /// </summary>
         public readonly string Type;
         /// <summary>

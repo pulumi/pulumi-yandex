@@ -18,6 +18,11 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly Outputs.KubernetesNodeGroupInstanceTemplateBootDisk? BootDisk;
         /// <summary>
+        /// Container runtime configuration. The structure is documented below.
+        /// ---
+        /// </summary>
+        public readonly Outputs.KubernetesNodeGroupInstanceTemplateContainerRuntime? ContainerRuntime;
+        /// <summary>
         /// The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
         /// * `resources.0.memory` - The memory size allocated to the instance.
         /// * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -55,6 +60,8 @@ namespace Pulumi.Yandex.Outputs
         private KubernetesNodeGroupInstanceTemplate(
             Outputs.KubernetesNodeGroupInstanceTemplateBootDisk? bootDisk,
 
+            Outputs.KubernetesNodeGroupInstanceTemplateContainerRuntime? containerRuntime,
+
             ImmutableDictionary<string, string>? metadata,
 
             bool? nat,
@@ -72,6 +79,7 @@ namespace Pulumi.Yandex.Outputs
             Outputs.KubernetesNodeGroupInstanceTemplateSchedulingPolicy? schedulingPolicy)
         {
             BootDisk = bootDisk;
+            ContainerRuntime = containerRuntime;
             Metadata = metadata;
             Nat = nat;
             NetworkAccelerationType = networkAccelerationType;

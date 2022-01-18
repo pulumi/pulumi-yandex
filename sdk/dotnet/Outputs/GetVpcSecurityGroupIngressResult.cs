@@ -34,7 +34,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// Special-purpose targets such as "self_security_group". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+        /// Special-purpose targets. `self_security_group` refers to this particular security group. `loadbalancer_healthchecks` represents [loadbalancer health check nodes](https://cloud.yandex.com/docs/network-load-balancer/concepts/health-check).
         /// </summary>
         public readonly string PredefinedTarget;
         /// <summary>

@@ -79,6 +79,9 @@ namespace Pulumi.Yandex
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        [Output("maintenanceWindow")]
+        public Output<Outputs.MdbElasticSearchClusterMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
+
         /// <summary>
         /// User defined host name.
         /// </summary>
@@ -210,6 +213,9 @@ namespace Pulumi.Yandex
             set => _labels = value;
         }
 
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbElasticSearchClusterMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
+
         /// <summary>
         /// User defined host name.
         /// </summary>
@@ -313,6 +319,9 @@ namespace Pulumi.Yandex
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("maintenanceWindow")]
+        public Input<Inputs.MdbElasticSearchClusterMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// User defined host name.
