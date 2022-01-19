@@ -87,6 +87,8 @@ type LookupMdbKafkaClusterResult struct {
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the Kafka cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Maintenance window settings of the Kafka cluster. The structure is documented below.
+	MaintenanceWindows []GetMdbKafkaClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
 	// The fully qualified domain name of the host.
 	Name string `pulumi:"name"`
 	// ID of the network, to which the Kafka cluster belongs.
@@ -203,6 +205,11 @@ func (o LookupMdbKafkaClusterResultOutput) Id() pulumi.StringOutput {
 // A set of key/value label pairs to assign to the Kafka cluster.
 func (o LookupMdbKafkaClusterResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMdbKafkaClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Maintenance window settings of the Kafka cluster. The structure is documented below.
+func (o LookupMdbKafkaClusterResultOutput) MaintenanceWindows() GetMdbKafkaClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v LookupMdbKafkaClusterResult) []GetMdbKafkaClusterMaintenanceWindow { return v.MaintenanceWindows }).(GetMdbKafkaClusterMaintenanceWindowArrayOutput)
 }
 
 // The fully qualified domain name of the host.

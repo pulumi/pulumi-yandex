@@ -256,6 +256,10 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Maintenance window settings of the Kafka cluster. The structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetMdbKafkaClusterMaintenanceWindowResult> MaintenanceWindows;
+        /// <summary>
         /// The fully qualified domain name of the host.
         /// </summary>
         public readonly string Name;
@@ -307,6 +311,8 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
+            ImmutableArray<Outputs.GetMdbKafkaClusterMaintenanceWindowResult> maintenanceWindows,
+
             string name,
 
             string networkId,
@@ -333,6 +339,7 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
+            MaintenanceWindows = maintenanceWindows;
             Name = name;
             NetworkId = networkId;
             SecurityGroupIds = securityGroupIds;

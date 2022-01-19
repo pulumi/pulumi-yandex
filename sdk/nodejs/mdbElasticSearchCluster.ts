@@ -82,6 +82,7 @@ export class MdbElasticSearchCluster extends pulumi.CustomResource {
      * A set of key/value label pairs to assign to the Elasticsearch cluster.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly maintenanceWindow!: pulumi.Output<outputs.MdbElasticSearchClusterMaintenanceWindow>;
     /**
      * User defined host name.
      */
@@ -126,6 +127,7 @@ export class MdbElasticSearchCluster extends pulumi.CustomResource {
             resourceInputs["health"] = state ? state.health : undefined;
             resourceInputs["hosts"] = state ? state.hosts : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkId"] = state ? state.networkId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -149,6 +151,7 @@ export class MdbElasticSearchCluster extends pulumi.CustomResource {
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["hosts"] = args ? args.hosts : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkId"] = args ? args.networkId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
@@ -203,6 +206,7 @@ export interface MdbElasticSearchClusterState {
      * A set of key/value label pairs to assign to the Elasticsearch cluster.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    maintenanceWindow?: pulumi.Input<inputs.MdbElasticSearchClusterMaintenanceWindow>;
     /**
      * User defined host name.
      */
@@ -258,6 +262,7 @@ export interface MdbElasticSearchClusterArgs {
      * A set of key/value label pairs to assign to the Elasticsearch cluster.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    maintenanceWindow?: pulumi.Input<inputs.MdbElasticSearchClusterMaintenanceWindow>;
     /**
      * User defined host name.
      */

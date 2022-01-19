@@ -274,6 +274,8 @@ type MdbKafkaCluster struct {
 	Hosts MdbKafkaClusterHostArrayOutput `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Kafka cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Maintenance policy of the Kafka cluster. The structure is documented below.
+	MaintenanceWindow MdbKafkaClusterMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// The name of the topic.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ID of the network, to which the Kafka cluster belongs.
@@ -349,6 +351,8 @@ type mdbKafkaClusterState struct {
 	Hosts []MdbKafkaClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Kafka cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Maintenance policy of the Kafka cluster. The structure is documented below.
+	MaintenanceWindow *MdbKafkaClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the Kafka cluster belongs.
@@ -390,6 +394,8 @@ type MdbKafkaClusterState struct {
 	Hosts MdbKafkaClusterHostArrayInput
 	// A set of key/value label pairs to assign to the Kafka cluster.
 	Labels pulumi.StringMapInput
+	// Maintenance policy of the Kafka cluster. The structure is documented below.
+	MaintenanceWindow MdbKafkaClusterMaintenanceWindowPtrInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the Kafka cluster belongs.
@@ -429,6 +435,8 @@ type mdbKafkaClusterArgs struct {
 	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// A set of key/value label pairs to assign to the Kafka cluster.
 	Labels map[string]string `pulumi:"labels"`
+	// Maintenance policy of the Kafka cluster. The structure is documented below.
+	MaintenanceWindow *MdbKafkaClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the Kafka cluster belongs.
@@ -462,6 +470,8 @@ type MdbKafkaClusterArgs struct {
 	HostGroupIds pulumi.StringArrayInput
 	// A set of key/value label pairs to assign to the Kafka cluster.
 	Labels pulumi.StringMapInput
+	// Maintenance policy of the Kafka cluster. The structure is documented below.
+	MaintenanceWindow MdbKafkaClusterMaintenanceWindowPtrInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the Kafka cluster belongs.

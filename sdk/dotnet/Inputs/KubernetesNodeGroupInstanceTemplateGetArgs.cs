@@ -18,6 +18,13 @@ namespace Pulumi.Yandex.Inputs
         [Input("bootDisk")]
         public Input<Inputs.KubernetesNodeGroupInstanceTemplateBootDiskGetArgs>? BootDisk { get; set; }
 
+        /// <summary>
+        /// Container runtime configuration. The structure is documented below.
+        /// ---
+        /// </summary>
+        [Input("containerRuntime")]
+        public Input<Inputs.KubernetesNodeGroupInstanceTemplateContainerRuntimeGetArgs>? ContainerRuntime { get; set; }
+
         [Input("metadata")]
         private InputMap<string>? _metadata;
 

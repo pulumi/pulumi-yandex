@@ -5960,6 +5960,15 @@
                         }
                     }
                 },
+                "containerRuntime": {
+                    "$ref": "#/types/yandex:index/KubernetesNodeGroupInstanceTemplateContainerRuntime:KubernetesNodeGroupInstanceTemplateContainerRuntime",
+                    "description": "Container runtime configuration. The structure is documented below.\n---\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "metadata": {
                     "type": "object",
                     "additionalProperties": {
@@ -6044,6 +6053,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bootDisk",
+                        "containerRuntime",
                         "metadata",
                         "nat",
                         "networkAccelerationType",
@@ -6068,7 +6078,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The disk type.\n",
+                    "description": "Type of container runtime. Values: `docker`, `containerd`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6085,6 +6095,23 @@
                     ]
                 }
             }
+        },
+        "yandex:index/KubernetesNodeGroupInstanceTemplateContainerRuntime:KubernetesNodeGroupInstanceTemplateContainerRuntime": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Type of container runtime. Values: `docker`, `containerd`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
         },
         "yandex:index/KubernetesNodeGroupInstanceTemplateNetworkInterface:KubernetesNodeGroupInstanceTemplateNetworkInterface": {
             "properties": {
@@ -9251,7 +9278,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.\n",
+                    "description": "Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9285,6 +9312,41 @@
                     ]
                 }
             }
+        },
+        "yandex:index/MdbElasticSearchClusterMaintenanceWindow:MdbElasticSearchClusterMaintenanceWindow": {
+            "properties": {
+                "day": {
+                    "type": "string",
+                    "description": "Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hour": {
+                    "type": "integer",
+                    "description": "Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
         },
         "yandex:index/MdbGreenplumClusterAccess:MdbGreenplumClusterAccess": {
             "properties": {
@@ -9899,6 +9961,41 @@
                     ]
                 }
             }
+        },
+        "yandex:index/MdbKafkaClusterMaintenanceWindow:MdbKafkaClusterMaintenanceWindow": {
+            "properties": {
+                "day": {
+                    "type": "string",
+                    "description": "Day of the week (in `DDD` format). Allowed values: \"MON\", \"TUE\", \"WED\", \"THU\", \"FRI\", \"SAT\", \"SUN\"\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hour": {
+                    "type": "integer",
+                    "description": "Hour of the day in UTC (in `HH` format). Allowed value is between 1 and 24.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
         },
         "yandex:index/MdbKafkaClusterTopic:MdbKafkaClusterTopic": {
             "properties": {
@@ -19355,6 +19452,15 @@
                         }
                     }
                 },
+                "containerRuntime": {
+                    "$ref": "#/types/yandex:index/getKubernetesNodeGroupInstanceTemplateContainerRuntime:getKubernetesNodeGroupInstanceTemplateContainerRuntime",
+                    "description": "Container runtime configuration. The structure is documented below.\n---\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "metadata": {
                     "type": "object",
                     "additionalProperties": {
@@ -19445,6 +19551,7 @@
             "type": "object",
             "required": [
                 "bootDisks",
+                "containerRuntime",
                 "metadata",
                 "nat",
                 "networkAccelerationType",
@@ -19472,7 +19579,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The disk type.\n",
+                    "description": "Type of container runtime. Values: `docker`, `containerd`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19483,6 +19590,28 @@
             "type": "object",
             "required": [
                 "size",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getKubernetesNodeGroupInstanceTemplateContainerRuntime:getKubernetesNodeGroupInstanceTemplateContainerRuntime": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Type of container runtime. Values: `docker`, `containerd`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
                 "type"
             ],
             "language": {
@@ -22752,7 +22881,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the host to be deployed. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/hosts-roles).\n",
+                    "description": "Type of a maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour need to be specified with the weekly window.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -22777,6 +22906,48 @@
                 "subnetId",
                 "type",
                 "zone"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getMdbElasticSearchClusterMaintenanceWindow:getMdbElasticSearchClusterMaintenanceWindow": {
+            "properties": {
+                "day": {
+                    "type": "string",
+                    "description": "Day of the week for a maintenance window if the window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hour": {
+                    "type": "integer",
+                    "description": "Hour of the day in UTC time zone (1-24) for a maintenance window if the window type is weekly.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of a maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour need to be specified with the weekly window.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "day",
+                "hour",
+                "type"
             ],
             "language": {
                 "nodejs": {
@@ -23431,6 +23602,48 @@
                 "role",
                 "subnetId",
                 "zoneId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "yandex:index/getMdbKafkaClusterMaintenanceWindow:getMdbKafkaClusterMaintenanceWindow": {
+            "properties": {
+                "day": {
+                    "type": "string",
+                    "description": "Day of the week (in `DDD` format). Value is one of: \"MON\", \"TUE\", \"WED\", \"THU\", \"FRI\", \"SAT\", \"SUN\"\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hour": {
+                    "type": "integer",
+                    "description": "Hour of the day in UTC (in `HH` format). Value is between 1 and 24.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "day",
+                "hour",
+                "type"
             ],
             "language": {
                 "nodejs": {
@@ -24318,7 +24531,7 @@
                 },
                 "hour": {
                     "type": "integer",
-                    "description": "Hour of the day in UTC (in `HH` format). Values is between 0 and 23.\n",
+                    "description": "Hour of the day in UTC (in `HH` format). Value is between 1 and 24.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -24327,7 +24540,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.\n",
+                    "description": "Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -25046,7 +25259,7 @@
                 },
                 "hour": {
                     "type": "integer",
-                    "description": "Hour of the day in UTC (in `HH` format). Values is between 0 and 23.\n",
+                    "description": "Hour of the day in UTC (in `HH` format). Value is between 1 and 24.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -25055,7 +25268,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.\n",
+                    "description": "Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -25842,7 +26055,7 @@
                 },
                 "predefinedTarget": {
                     "type": "string",
-                    "description": "Special-purpose targets such as \"self_security_group\". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.\n",
+                    "description": "Special-purpose targets. `self_security_group` refers to this particular security group. `loadbalancer_healthchecks` represents [loadbalancer health check nodes](https://cloud.yandex.com/docs/network-load-balancer/concepts/health-check).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -25973,7 +26186,7 @@
                 },
                 "predefinedTarget": {
                     "type": "string",
-                    "description": "Special-purpose targets such as \"self_security_group\". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.\n",
+                    "description": "Special-purpose targets. `self_security_group` refers to this particular security group. `loadbalancer_healthchecks` represents [loadbalancer health check nodes](https://cloud.yandex.com/docs/network-load-balancer/concepts/health-check).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -31304,7 +31517,7 @@
             }
         },
         "yandex:index/kubernetesNodeGroup:KubernetesNodeGroup": {
-            "description": "Creates a Yandex Kubernetes Node Group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myNodeGroup = new yandex.KubernetesNodeGroup(\"my_node_group\", {\n    allocationPolicy: {\n        locations: [{\n            zone: \"ru-central1-a\",\n        }],\n    },\n    clusterId: yandex_kubernetes_cluster_my_cluster.id,\n    description: \"description\",\n    instanceTemplate: {\n        bootDisk: {\n            size: 64,\n            type: \"network-hdd\",\n        },\n        networkInterfaces: [{\n            nat: true,\n            subnetIds: [yandex_vpc_subnet_my_subnet.id],\n        }],\n        platformId: \"standard-v2\",\n        resources: {\n            cores: 2,\n            memory: 2,\n        },\n        schedulingPolicy: {\n            preemptible: false,\n        },\n    },\n    labels: {\n        key: \"value\",\n    },\n    maintenancePolicy: {\n        autoRepair: true,\n        autoUpgrade: true,\n        maintenanceWindows: [\n            {\n                day: \"monday\",\n                duration: \"3h\",\n                startTime: \"15:00\",\n            },\n            {\n                day: \"friday\",\n                duration: \"4h30m\",\n                startTime: \"10:00\",\n            },\n        ],\n    },\n    scalePolicy: {\n        fixedScale: {\n            size: 1,\n        },\n    },\n    version: \"1.17\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_node_group = yandex.KubernetesNodeGroup(\"myNodeGroup\",\n    allocation_policy=yandex.KubernetesNodeGroupAllocationPolicyArgs(\n        locations=[yandex.KubernetesNodeGroupAllocationPolicyLocationArgs(\n            zone=\"ru-central1-a\",\n        )],\n    ),\n    cluster_id=yandex_kubernetes_cluster[\"my_cluster\"][\"id\"],\n    description=\"description\",\n    instance_template=yandex.KubernetesNodeGroupInstanceTemplateArgs(\n        boot_disk=yandex.KubernetesNodeGroupInstanceTemplateBootDiskArgs(\n            size=64,\n            type=\"network-hdd\",\n        ),\n        network_interfaces=[yandex.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs(\n            nat=True,\n            subnet_ids=[yandex_vpc_subnet[\"my_subnet\"][\"id\"]],\n        )],\n        platform_id=\"standard-v2\",\n        resources=yandex.KubernetesNodeGroupInstanceTemplateResourcesArgs(\n            cores=2,\n            memory=2,\n        ),\n        scheduling_policy=yandex.KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs(\n            preemptible=False,\n        ),\n    ),\n    labels={\n        \"key\": \"value\",\n    },\n    maintenance_policy=yandex.KubernetesNodeGroupMaintenancePolicyArgs(\n        auto_repair=True,\n        auto_upgrade=True,\n        maintenance_windows=[\n            yandex.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs(\n                day=\"monday\",\n                duration=\"3h\",\n                start_time=\"15:00\",\n            ),\n            yandex.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs(\n                day=\"friday\",\n                duration=\"4h30m\",\n                start_time=\"10:00\",\n            ),\n        ],\n    ),\n    scale_policy=yandex.KubernetesNodeGroupScalePolicyArgs(\n        fixed_scale=yandex.KubernetesNodeGroupScalePolicyFixedScaleArgs(\n            size=1,\n        ),\n    ),\n    version=\"1.17\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myNodeGroup = new Yandex.KubernetesNodeGroup(\"myNodeGroup\", new Yandex.KubernetesNodeGroupArgs\n        {\n            AllocationPolicy = new Yandex.Inputs.KubernetesNodeGroupAllocationPolicyArgs\n            {\n                Locations = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupAllocationPolicyLocationArgs\n                    {\n                        Zone = \"ru-central1-a\",\n                    },\n                },\n            },\n            ClusterId = yandex_kubernetes_cluster.My_cluster.Id,\n            Description = \"description\",\n            InstanceTemplate = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateArgs\n            {\n                BootDisk = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateBootDiskArgs\n                {\n                    Size = 64,\n                    Type = \"network-hdd\",\n                },\n                NetworkInterfaces = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs\n                    {\n                        Nat = true,\n                        SubnetIds = \n                        {\n                            yandex_vpc_subnet.My_subnet.Id,\n                        },\n                    },\n                },\n                PlatformId = \"standard-v2\",\n                Resources = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateResourcesArgs\n                {\n                    Cores = 2,\n                    Memory = 2,\n                },\n                SchedulingPolicy = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs\n                {\n                    Preemptible = false,\n                },\n            },\n            Labels = \n            {\n                { \"key\", \"value\" },\n            },\n            MaintenancePolicy = new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyArgs\n            {\n                AutoRepair = true,\n                AutoUpgrade = true,\n                MaintenanceWindows = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs\n                    {\n                        Day = \"monday\",\n                        Duration = \"3h\",\n                        StartTime = \"15:00\",\n                    },\n                    new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs\n                    {\n                        Day = \"friday\",\n                        Duration = \"4h30m\",\n                        StartTime = \"10:00\",\n                    },\n                },\n            },\n            ScalePolicy = new Yandex.Inputs.KubernetesNodeGroupScalePolicyArgs\n            {\n                FixedScale = new Yandex.Inputs.KubernetesNodeGroupScalePolicyFixedScaleArgs\n                {\n                    Size = 1,\n                },\n            },\n            Version = \"1.17\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.NewKubernetesNodeGroup(ctx, \"myNodeGroup\", \u0026yandex.KubernetesNodeGroupArgs{\n\t\t\tAllocationPolicy: \u0026KubernetesNodeGroupAllocationPolicyArgs{\n\t\t\t\tLocations: KubernetesNodeGroupAllocationPolicyLocationArray{\n\t\t\t\t\t\u0026KubernetesNodeGroupAllocationPolicyLocationArgs{\n\t\t\t\t\t\tZone: pulumi.String(\"ru-central1-a\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tClusterId:   pulumi.Any(yandex_kubernetes_cluster.My_cluster.Id),\n\t\t\tDescription: pulumi.String(\"description\"),\n\t\t\tInstanceTemplate: \u0026KubernetesNodeGroupInstanceTemplateArgs{\n\t\t\t\tBootDisk: \u0026KubernetesNodeGroupInstanceTemplateBootDiskArgs{\n\t\t\t\t\tSize: pulumi.Int(64),\n\t\t\t\t\tType: pulumi.String(\"network-hdd\"),\n\t\t\t\t},\n\t\t\t\tNetworkInterfaces: KubernetesNodeGroupInstanceTemplateNetworkInterfaceArray{\n\t\t\t\t\t\u0026KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs{\n\t\t\t\t\t\tNat: pulumi.Bool(true),\n\t\t\t\t\t\tSubnetIds: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.Any(yandex_vpc_subnet.My_subnet.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tPlatformId: pulumi.String(\"standard-v2\"),\n\t\t\t\tResources: \u0026KubernetesNodeGroupInstanceTemplateResourcesArgs{\n\t\t\t\t\tCores:  pulumi.Int(2),\n\t\t\t\t\tMemory: pulumi.Float64(2),\n\t\t\t\t},\n\t\t\t\tSchedulingPolicy: \u0026KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs{\n\t\t\t\t\tPreemptible: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\"key\": pulumi.String(\"value\"),\n\t\t\t},\n\t\t\tMaintenancePolicy: \u0026KubernetesNodeGroupMaintenancePolicyArgs{\n\t\t\t\tAutoRepair:  pulumi.Bool(true),\n\t\t\t\tAutoUpgrade: pulumi.Bool(true),\n\t\t\t\tMaintenanceWindows: KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArray{\n\t\t\t\t\t\u0026KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs{\n\t\t\t\t\t\tDay:       pulumi.String(\"monday\"),\n\t\t\t\t\t\tDuration:  pulumi.String(\"3h\"),\n\t\t\t\t\t\tStartTime: pulumi.String(\"15:00\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs{\n\t\t\t\t\t\tDay:       pulumi.String(\"friday\"),\n\t\t\t\t\t\tDuration:  pulumi.String(\"4h30m\"),\n\t\t\t\t\t\tStartTime: pulumi.String(\"10:00\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tScalePolicy: \u0026KubernetesNodeGroupScalePolicyArgs{\n\t\t\t\tFixedScale: \u0026KubernetesNodeGroupScalePolicyFixedScaleArgs{\n\t\t\t\t\tSize: pulumi.Int(1),\n\t\t\t\t},\n\t\t\t},\n\t\t\tVersion: pulumi.String(\"1.17\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA Yandex Kubernetes Node Group can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/kubernetesNodeGroup:KubernetesNodeGroup default node_group_id\n```\n\n ",
+            "description": "Creates a Yandex Kubernetes Node Group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myNodeGroup = new yandex.KubernetesNodeGroup(\"my_node_group\", {\n    allocationPolicy: {\n        locations: [{\n            zone: \"ru-central1-a\",\n        }],\n    },\n    clusterId: yandex_kubernetes_cluster_my_cluster.id,\n    description: \"description\",\n    instanceTemplate: {\n        bootDisk: {\n            size: 64,\n            type: \"network-hdd\",\n        },\n        containerRuntime: {\n            type: \"containerd\",\n        },\n        networkInterfaces: [{\n            nat: true,\n            subnetIds: [yandex_vpc_subnet_my_subnet.id],\n        }],\n        platformId: \"standard-v2\",\n        resources: {\n            cores: 2,\n            memory: 2,\n        },\n        schedulingPolicy: {\n            preemptible: false,\n        },\n    },\n    labels: {\n        key: \"value\",\n    },\n    maintenancePolicy: {\n        autoRepair: true,\n        autoUpgrade: true,\n        maintenanceWindows: [\n            {\n                day: \"monday\",\n                duration: \"3h\",\n                startTime: \"15:00\",\n            },\n            {\n                day: \"friday\",\n                duration: \"4h30m\",\n                startTime: \"10:00\",\n            },\n        ],\n    },\n    scalePolicy: {\n        fixedScale: {\n            size: 1,\n        },\n    },\n    version: \"1.17\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_node_group = yandex.KubernetesNodeGroup(\"myNodeGroup\",\n    allocation_policy=yandex.KubernetesNodeGroupAllocationPolicyArgs(\n        locations=[yandex.KubernetesNodeGroupAllocationPolicyLocationArgs(\n            zone=\"ru-central1-a\",\n        )],\n    ),\n    cluster_id=yandex_kubernetes_cluster[\"my_cluster\"][\"id\"],\n    description=\"description\",\n    instance_template=yandex.KubernetesNodeGroupInstanceTemplateArgs(\n        boot_disk=yandex.KubernetesNodeGroupInstanceTemplateBootDiskArgs(\n            size=64,\n            type=\"network-hdd\",\n        ),\n        container_runtime=yandex.KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs(\n            type=\"containerd\",\n        ),\n        network_interfaces=[yandex.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs(\n            nat=True,\n            subnet_ids=[yandex_vpc_subnet[\"my_subnet\"][\"id\"]],\n        )],\n        platform_id=\"standard-v2\",\n        resources=yandex.KubernetesNodeGroupInstanceTemplateResourcesArgs(\n            cores=2,\n            memory=2,\n        ),\n        scheduling_policy=yandex.KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs(\n            preemptible=False,\n        ),\n    ),\n    labels={\n        \"key\": \"value\",\n    },\n    maintenance_policy=yandex.KubernetesNodeGroupMaintenancePolicyArgs(\n        auto_repair=True,\n        auto_upgrade=True,\n        maintenance_windows=[\n            yandex.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs(\n                day=\"monday\",\n                duration=\"3h\",\n                start_time=\"15:00\",\n            ),\n            yandex.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs(\n                day=\"friday\",\n                duration=\"4h30m\",\n                start_time=\"10:00\",\n            ),\n        ],\n    ),\n    scale_policy=yandex.KubernetesNodeGroupScalePolicyArgs(\n        fixed_scale=yandex.KubernetesNodeGroupScalePolicyFixedScaleArgs(\n            size=1,\n        ),\n    ),\n    version=\"1.17\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myNodeGroup = new Yandex.KubernetesNodeGroup(\"myNodeGroup\", new Yandex.KubernetesNodeGroupArgs\n        {\n            AllocationPolicy = new Yandex.Inputs.KubernetesNodeGroupAllocationPolicyArgs\n            {\n                Locations = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupAllocationPolicyLocationArgs\n                    {\n                        Zone = \"ru-central1-a\",\n                    },\n                },\n            },\n            ClusterId = yandex_kubernetes_cluster.My_cluster.Id,\n            Description = \"description\",\n            InstanceTemplate = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateArgs\n            {\n                BootDisk = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateBootDiskArgs\n                {\n                    Size = 64,\n                    Type = \"network-hdd\",\n                },\n                ContainerRuntime = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs\n                {\n                    Type = \"containerd\",\n                },\n                NetworkInterfaces = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs\n                    {\n                        Nat = true,\n                        SubnetIds = \n                        {\n                            yandex_vpc_subnet.My_subnet.Id,\n                        },\n                    },\n                },\n                PlatformId = \"standard-v2\",\n                Resources = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateResourcesArgs\n                {\n                    Cores = 2,\n                    Memory = 2,\n                },\n                SchedulingPolicy = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs\n                {\n                    Preemptible = false,\n                },\n            },\n            Labels = \n            {\n                { \"key\", \"value\" },\n            },\n            MaintenancePolicy = new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyArgs\n            {\n                AutoRepair = true,\n                AutoUpgrade = true,\n                MaintenanceWindows = \n                {\n                    new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs\n                    {\n                        Day = \"monday\",\n                        Duration = \"3h\",\n                        StartTime = \"15:00\",\n                    },\n                    new Yandex.Inputs.KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs\n                    {\n                        Day = \"friday\",\n                        Duration = \"4h30m\",\n                        StartTime = \"10:00\",\n                    },\n                },\n            },\n            ScalePolicy = new Yandex.Inputs.KubernetesNodeGroupScalePolicyArgs\n            {\n                FixedScale = new Yandex.Inputs.KubernetesNodeGroupScalePolicyFixedScaleArgs\n                {\n                    Size = 1,\n                },\n            },\n            Version = \"1.17\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.NewKubernetesNodeGroup(ctx, \"myNodeGroup\", \u0026yandex.KubernetesNodeGroupArgs{\n\t\t\tAllocationPolicy: \u0026KubernetesNodeGroupAllocationPolicyArgs{\n\t\t\t\tLocations: KubernetesNodeGroupAllocationPolicyLocationArray{\n\t\t\t\t\t\u0026KubernetesNodeGroupAllocationPolicyLocationArgs{\n\t\t\t\t\t\tZone: pulumi.String(\"ru-central1-a\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tClusterId:   pulumi.Any(yandex_kubernetes_cluster.My_cluster.Id),\n\t\t\tDescription: pulumi.String(\"description\"),\n\t\t\tInstanceTemplate: \u0026KubernetesNodeGroupInstanceTemplateArgs{\n\t\t\t\tBootDisk: \u0026KubernetesNodeGroupInstanceTemplateBootDiskArgs{\n\t\t\t\t\tSize: pulumi.Int(64),\n\t\t\t\t\tType: pulumi.String(\"network-hdd\"),\n\t\t\t\t},\n\t\t\t\tContainerRuntime: \u0026KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs{\n\t\t\t\t\tType: pulumi.String(\"containerd\"),\n\t\t\t\t},\n\t\t\t\tNetworkInterfaces: KubernetesNodeGroupInstanceTemplateNetworkInterfaceArray{\n\t\t\t\t\t\u0026KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs{\n\t\t\t\t\t\tNat: pulumi.Bool(true),\n\t\t\t\t\t\tSubnetIds: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.Any(yandex_vpc_subnet.My_subnet.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tPlatformId: pulumi.String(\"standard-v2\"),\n\t\t\t\tResources: \u0026KubernetesNodeGroupInstanceTemplateResourcesArgs{\n\t\t\t\t\tCores:  pulumi.Int(2),\n\t\t\t\t\tMemory: pulumi.Float64(2),\n\t\t\t\t},\n\t\t\t\tSchedulingPolicy: \u0026KubernetesNodeGroupInstanceTemplateSchedulingPolicyArgs{\n\t\t\t\t\tPreemptible: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\"key\": pulumi.String(\"value\"),\n\t\t\t},\n\t\t\tMaintenancePolicy: \u0026KubernetesNodeGroupMaintenancePolicyArgs{\n\t\t\t\tAutoRepair:  pulumi.Bool(true),\n\t\t\t\tAutoUpgrade: pulumi.Bool(true),\n\t\t\t\tMaintenanceWindows: KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArray{\n\t\t\t\t\t\u0026KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs{\n\t\t\t\t\t\tDay:       pulumi.String(\"monday\"),\n\t\t\t\t\t\tDuration:  pulumi.String(\"3h\"),\n\t\t\t\t\t\tStartTime: pulumi.String(\"15:00\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026KubernetesNodeGroupMaintenancePolicyMaintenanceWindowArgs{\n\t\t\t\t\t\tDay:       pulumi.String(\"friday\"),\n\t\t\t\t\t\tDuration:  pulumi.String(\"4h30m\"),\n\t\t\t\t\t\tStartTime: pulumi.String(\"10:00\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tScalePolicy: \u0026KubernetesNodeGroupScalePolicyArgs{\n\t\t\t\tFixedScale: \u0026KubernetesNodeGroupScalePolicyFixedScaleArgs{\n\t\t\t\t\tSize: pulumi.Int(1),\n\t\t\t\t},\n\t\t\t},\n\t\t\tVersion: pulumi.String(\"1.17\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA Yandex Kubernetes Node Group can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/kubernetesNodeGroup:KubernetesNodeGroup default node_group_id\n```\n\n ",
             "properties": {
                 "allocationPolicy": {
                     "$ref": "#/types/yandex:index/KubernetesNodeGroupAllocationPolicy:KubernetesNodeGroupAllocationPolicy",
@@ -32434,6 +32647,9 @@
                     },
                     "description": "A set of key/value label pairs to assign to the Elasticsearch cluster.\n"
                 },
+                "maintenanceWindow": {
+                    "$ref": "#/types/yandex:index/MdbElasticSearchClusterMaintenanceWindow:MdbElasticSearchClusterMaintenanceWindow"
+                },
                 "name": {
                     "type": "string",
                     "description": "User defined host name.\n"
@@ -32466,6 +32682,7 @@
                 "folderId",
                 "health",
                 "hosts",
+                "maintenanceWindow",
                 "name",
                 "networkId",
                 "status"
@@ -32504,6 +32721,9 @@
                         "type": "string"
                     },
                     "description": "A set of key/value label pairs to assign to the Elasticsearch cluster.\n"
+                },
+                "maintenanceWindow": {
+                    "$ref": "#/types/yandex:index/MdbElasticSearchClusterMaintenanceWindow:MdbElasticSearchClusterMaintenanceWindow"
                 },
                 "name": {
                     "type": "string",
@@ -32574,6 +32794,9 @@
                             "type": "string"
                         },
                         "description": "A set of key/value label pairs to assign to the Elasticsearch cluster.\n"
+                    },
+                    "maintenanceWindow": {
+                        "$ref": "#/types/yandex:index/MdbElasticSearchClusterMaintenanceWindow:MdbElasticSearchClusterMaintenanceWindow"
                     },
                     "name": {
                         "type": "string",
@@ -33029,6 +33252,10 @@
                     },
                     "description": "A set of key/value label pairs to assign to the Kafka cluster.\n"
                 },
+                "maintenanceWindow": {
+                    "$ref": "#/types/yandex:index/MdbKafkaClusterMaintenanceWindow:MdbKafkaClusterMaintenanceWindow",
+                    "description": "Maintenance policy of the Kafka cluster. The structure is documented below.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the topic.\n"
@@ -33080,6 +33307,7 @@
                 "hosts",
                 "hostGroupIds",
                 "labels",
+                "maintenanceWindow",
                 "name",
                 "networkId",
                 "securityGroupIds",
@@ -33119,6 +33347,10 @@
                         "type": "string"
                     },
                     "description": "A set of key/value label pairs to assign to the Kafka cluster.\n"
+                },
+                "maintenanceWindow": {
+                    "$ref": "#/types/yandex:index/MdbKafkaClusterMaintenanceWindow:MdbKafkaClusterMaintenanceWindow",
+                    "description": "Maintenance policy of the Kafka cluster. The structure is documented below.\n"
                 },
                 "name": {
                     "type": "string",
@@ -33213,6 +33445,10 @@
                             "type": "string"
                         },
                         "description": "A set of key/value label pairs to assign to the Kafka cluster.\n"
+                    },
+                    "maintenanceWindow": {
+                        "$ref": "#/types/yandex:index/MdbKafkaClusterMaintenanceWindow:MdbKafkaClusterMaintenanceWindow",
+                        "description": "Maintenance policy of the Kafka cluster. The structure is documented below.\n"
                     },
                     "name": {
                         "type": "string",
@@ -38801,19 +39037,24 @@
             }
         },
         "yandex:index/getDnsZone:getDnsZone": {
-            "description": "Get information about a DNS Zone.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst foo = yandex.getDnsZone({\n    dnsZoneId: yandex_dns_zone.zone1.id,\n});\nexport const zone = foo.then(foo =\u003e foo.zone);\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nfoo = yandex.get_dns_zone(dns_zone_id=yandex_dns_zone[\"zone1\"][\"id\"])\npulumi.export(\"zone\", foo.zone)\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Yandex.GetDnsZone.InvokeAsync(new Yandex.GetDnsZoneArgs\n        {\n            DnsZoneId = yandex_dns_zone.Zone1.Id,\n        }));\n        this.Zone = foo.Apply(foo =\u003e foo.Zone);\n    }\n\n    [Output(\"zone\")]\n    public Output\u003cstring\u003e Zone { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := yandex.LookupDnsZone(ctx, \u0026GetDnsZoneArgs{\n\t\t\tDnsZoneId: yandex_dns_zone.Zone1.Id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"zone\", foo.Zone)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Get information about a DNS Zone.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst foo = yandex.getDnsZone({\n    dnsZoneId: yandex_dns_zone.zone1.id,\n});\nexport const zone = foo.then(foo =\u003e foo.zone);\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nfoo = yandex.get_dns_zone(dns_zone_id=yandex_dns_zone[\"zone1\"][\"id\"])\npulumi.export(\"zone\", foo.zone)\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = Output.Create(Yandex.GetDnsZone.InvokeAsync(new Yandex.GetDnsZoneArgs\n        {\n            DnsZoneId = yandex_dns_zone.Zone1.Id,\n        }));\n        this.Zone = foo.Apply(foo =\u003e foo.Zone);\n    }\n\n    [Output(\"zone\")]\n    public Output\u003cstring\u003e Zone { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := yandex_dns_zone.Zone1.Id\n\t\tfoo, err := yandex.LookupDnsZone(ctx, \u0026GetDnsZoneArgs{\n\t\t\tDnsZoneId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"zone\", foo.Zone)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getDnsZone.\n",
                 "properties": {
                     "dnsZoneId": {
                         "type": "string",
                         "description": "The ID of the DNS Zone.\n"
+                    },
+                    "folderId": {
+                        "type": "string",
+                        "description": "Folder that the resource belongs to. If value is omitted, the default provider folder is used.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "- Name of the DNS Zone.\n"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "dnsZoneId"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getDnsZone.\n",
@@ -40342,6 +40583,12 @@
                         },
                         "description": "A set of key/value label pairs to assign to the Elasticsearch cluster.\n"
                     },
+                    "maintenanceWindows": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/yandex:index/getMdbElasticSearchClusterMaintenanceWindow:getMdbElasticSearchClusterMaintenanceWindow"
+                        }
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -40377,6 +40624,7 @@
                     "health",
                     "hosts",
                     "labels",
+                    "maintenanceWindows",
                     "name",
                     "networkId",
                     "securityGroupIds",
@@ -40648,6 +40896,13 @@
                         },
                         "description": "A set of key/value label pairs to assign to the Kafka cluster.\n"
                     },
+                    "maintenanceWindows": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/yandex:index/getMdbKafkaClusterMaintenanceWindow:getMdbKafkaClusterMaintenanceWindow"
+                        },
+                        "description": "Maintenance window settings of the Kafka cluster. The structure is documented below.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The fully qualified domain name of the host.\n"
@@ -40700,6 +40955,7 @@
                     "hosts",
                     "hostGroupIds",
                     "labels",
+                    "maintenanceWindows",
                     "name",
                     "networkId",
                     "securityGroupIds",

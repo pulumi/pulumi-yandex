@@ -4208,6 +4208,11 @@ export interface GetKubernetesNodeGroupInstanceTemplate {
      */
     bootDisks: outputs.GetKubernetesNodeGroupInstanceTemplateBootDisk[];
     /**
+     * Container runtime configuration. The structure is documented below.
+     * ---
+     */
+    containerRuntime: outputs.GetKubernetesNodeGroupInstanceTemplateContainerRuntime;
+    /**
      * The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
      */
     metadata: {[key: string]: string};
@@ -4244,7 +4249,14 @@ export interface GetKubernetesNodeGroupInstanceTemplateBootDisk {
      */
     size: number;
     /**
-     * The disk type.
+     * Type of container runtime. Values: `docker`, `containerd`.
+     */
+    type: string;
+}
+
+export interface GetKubernetesNodeGroupInstanceTemplateContainerRuntime {
+    /**
+     * Type of container runtime. Values: `docker`, `containerd`.
      */
     type: string;
 }
@@ -5339,13 +5351,28 @@ export interface GetMdbElasticSearchClusterHost {
      */
     subnetId: string;
     /**
-     * The type of the host to be deployed. For more information, see [the official documentation](https://cloud.yandex.com/en-ru/docs/managed-elasticsearch/concepts/hosts-roles).
+     * Type of a maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour need to be specified with the weekly window.
      */
     type: string;
     /**
      * The availability zone where the Elasticsearch host will be created.
      */
     zone: string;
+}
+
+export interface GetMdbElasticSearchClusterMaintenanceWindow {
+    /**
+     * Day of the week for a maintenance window if the window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day: string;
+    /**
+     * Hour of the day in UTC time zone (1-24) for a maintenance window if the window type is weekly.
+     */
+    hour: number;
+    /**
+     * Type of a maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour need to be specified with the weekly window.
+     */
+    type: string;
 }
 
 export interface GetMdbGreenplumClusterAccess {
@@ -5509,6 +5536,21 @@ export interface GetMdbKafkaClusterHost {
      * The availability zone where the Kafka host was created.
      */
     zoneId: string;
+}
+
+export interface GetMdbKafkaClusterMaintenanceWindow {
+    /**
+     * Day of the week (in `DDD` format). Value is one of: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+     */
+    day: string;
+    /**
+     * Hour of the day in UTC (in `HH` format). Value is between 1 and 24.
+     */
+    hour: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`.
+     */
+    type: string;
 }
 
 export interface GetMdbKafkaClusterTopic {
@@ -5779,11 +5821,11 @@ export interface GetMdbMysqlClusterMaintenanceWindow {
      */
     day: string;
     /**
-     * Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+     * Hour of the day in UTC (in `HH` format). Value is between 1 and 24.
      */
     hour: number;
     /**
-     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`.
      */
     type: string;
 }
@@ -6029,11 +6071,11 @@ export interface GetMdbPostgresqlClusterMaintenanceWindow {
      */
     day: string;
     /**
-     * Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
+     * Hour of the day in UTC (in `HH` format). Value is between 1 and 24.
      */
     hour: number;
     /**
-     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`.
      */
     type: string;
 }
@@ -6294,7 +6336,7 @@ export interface GetVpcSecurityGroupEgress {
      */
     port: number;
     /**
-     * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+     * Special-purpose targets. `selfSecurityGroup` refers to this particular security group. `loadbalancerHealthchecks` represents [loadbalancer health check nodes](https://cloud.yandex.com/docs/network-load-balancer/concepts/health-check).
      */
     predefinedTarget: string;
     /**
@@ -6341,7 +6383,7 @@ export interface GetVpcSecurityGroupIngress {
      */
     port: number;
     /**
-     * Special-purpose targets such as "selfSecurityGroup". [See docs](https://cloud.yandex.ru/docs/vpc/concepts/security-groups) for possible options.
+     * Special-purpose targets. `selfSecurityGroup` refers to this particular security group. `loadbalancerHealthchecks` represents [loadbalancer health check nodes](https://cloud.yandex.com/docs/network-load-balancer/concepts/health-check).
      */
     predefinedTarget: string;
     /**
@@ -6614,6 +6656,11 @@ export interface KubernetesNodeGroupInstanceTemplate {
      */
     bootDisk: outputs.KubernetesNodeGroupInstanceTemplateBootDisk;
     /**
+     * Container runtime configuration. The structure is documented below.
+     * ---
+     */
+    containerRuntime: outputs.KubernetesNodeGroupInstanceTemplateContainerRuntime;
+    /**
      * The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
      * * `resources.0.memory` - The memory size allocated to the instance.
      * * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -6656,7 +6703,14 @@ export interface KubernetesNodeGroupInstanceTemplateBootDisk {
      */
     size: number;
     /**
-     * The disk type.
+     * Type of container runtime. Values: `docker`, `containerd`.
+     */
+    type: string;
+}
+
+export interface KubernetesNodeGroupInstanceTemplateContainerRuntime {
+    /**
+     * Type of container runtime. Values: `docker`, `containerd`.
      */
     type: string;
 }
@@ -7800,7 +7854,7 @@ export interface MdbElasticSearchClusterHost {
      */
     subnetId: string;
     /**
-     * The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
      */
     type: string;
     /**
@@ -7808,6 +7862,21 @@ export interface MdbElasticSearchClusterHost {
      * For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
      */
     zone: string;
+}
+
+export interface MdbElasticSearchClusterMaintenanceWindow {
+    /**
+     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
+     */
+    day?: string;
+    /**
+     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
+     */
+    hour?: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
 }
 
 export interface MdbGreenplumClusterAccess {
@@ -7998,6 +8067,21 @@ export interface MdbKafkaClusterHost {
      * The availability zone where the Kafka host was created.
      */
     zoneId: string;
+}
+
+export interface MdbKafkaClusterMaintenanceWindow {
+    /**
+     * Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
+     */
+    day?: string;
+    /**
+     * Hour of the day in UTC (in `HH` format). Allowed value is between 1 and 24.
+     */
+    hour?: number;
+    /**
+     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     */
+    type: string;
 }
 
 export interface MdbKafkaClusterTopic {

@@ -149,6 +149,8 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
 
 
 def get_dns_zone(dns_zone_id: Optional[str] = None,
+                 folder_id: Optional[str] = None,
+                 name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsZoneResult:
     """
     Get information about a DNS Zone.
@@ -165,9 +167,13 @@ def get_dns_zone(dns_zone_id: Optional[str] = None,
 
 
     :param str dns_zone_id: The ID of the DNS Zone.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: - Name of the DNS Zone.
     """
     __args__ = dict()
     __args__['dnsZoneId'] = dns_zone_id
+    __args__['folderId'] = folder_id
+    __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -188,7 +194,9 @@ def get_dns_zone(dns_zone_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_dns_zone)
-def get_dns_zone_output(dns_zone_id: Optional[pulumi.Input[str]] = None,
+def get_dns_zone_output(dns_zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        folder_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        name: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDnsZoneResult]:
     """
     Get information about a DNS Zone.
@@ -205,5 +213,7 @@ def get_dns_zone_output(dns_zone_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str dns_zone_id: The ID of the DNS Zone.
+    :param str folder_id: Folder that the resource belongs to. If value is omitted, the default provider folder is used.
+    :param str name: - Name of the DNS Zone.
     """
     ...
