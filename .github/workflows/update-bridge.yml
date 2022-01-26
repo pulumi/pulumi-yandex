@@ -1,23 +1,8 @@
 env:
-  GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
-  PULUMI_PROVIDER_MAP_ERROR: true
-  # NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  # NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
-  # PROVIDER: yandex
-  # PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-  # PULUMI_API: https://api.pulumi-staging.io
-  # PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
-  # PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-  # PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-  # SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-  # TRAVIS_OS_NAME: linux
-  # YC_CLOUD_ID: ${{ secrets.YC_CLOUD_ID }}
-  # YC_FOLDER_ID: ${{ secrets.YC_FOLDER_ID }}
-  # YC_SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.YC_SERVICE_ACCOUNT_KEY_FILE }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   update_bridge:
-    name: Update bridge
+    name: update-bridge
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
@@ -48,25 +33,31 @@ jobs:
       with:
         python-version: ${{matrix.pythonversion}}
     - name: Update pulumi-terraform-bridge
-      run: cd provider && go mod edit -require github.com/pulumi/pulumi-terraform-bridge/v3@v${{ github.event.inputs.bridge_version }} && go mod tidy
+      run: cd provider && go mod edit -require github.com/pulumi/pulumi-terraform-bridge/v3@v${{
+        github.event.inputs.bridge_version }} && go mod tidy
     - name: Update Pulumi SDK (provider/go.mod)
-      run: cd provider && go mod edit -require github.com/pulumi/pulumi/sdk/v3@v${{ github.event.inputs.sdk_version }} && go mod tidy
+      run: cd provider && go mod edit -require github.com/pulumi/pulumi/sdk/v3@v${{
+        github.event.inputs.sdk_version }} && go mod tidy
     - name: Update Pulumi SDK (sdk/go.mod)
-      run: cd sdk && go mod edit -require github.com/pulumi/pulumi/sdk/v3@v${{ github.event.inputs.sdk_version }} && go mod tidy
+      run: cd sdk && go mod edit -require github.com/pulumi/pulumi/sdk/v3@v${{ github.event.inputs.sdk_version
+        }} && go mod tidy
     - run: make tfgen
     - run: make build_sdks
     - name: Create PR
       uses: peter-evans/create-pull-request@v3.12.0
       with:
-        commit-message: Update pulumi-terraform-bridge to v${{ github.event.inputs.bridge_version }}
-        committer: pulumi-bot <bot@pulumi.com>
         author: pulumi-bot <bot@pulumi.com>
-        branch: pulumi-bot/bridge-v${{ github.event.inputs.bridge_version }}-${{ github.run_id}}
         base: master
+        body: This pull request was generated automatically by the update-bridge workflow
+          in this repository.
+        branch: pulumi-bot/bridge-v${{ github.event.inputs.bridge_version }}-${{ github.run_id}}
+        commit-message: Update pulumi-terraform-bridge to v${{ github.event.inputs.bridge_version
+          }}
+        committer: pulumi-bot <bot@pulumi.com>
         labels: impact/no-changelog-required
-        title: Update pulumi-terraform-bridge to v${{ github.event.inputs.bridge_version }}
-        body: This pull request was generated automatically by the update-bridge workflow in this repository.
         reviewers: pulumi/platform-integrations
+        title: Update pulumi-terraform-bridge to v${{ github.event.inputs.bridge_version
+          }}
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
     strategy:
       fail-fast: true
@@ -74,7 +65,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.16.x
+        - 1.17.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -83,10 +74,12 @@ jobs:
   workflow_dispatch:
     inputs:
       bridge_version:
+        description: The version of pulumi/pulumi-terraform-bridge to update to. Do
+          not include the 'v' prefix. Must be major version 3.
         required: true
-        description: "The version of pulumi/pulumi-terraform-bridge to update to. Do not include the 'v' prefix. Must be major version 3."
         type: string
       sdk_version:
+        description: The version of pulumi/pulumi/sdk to update to. Do not include
+          the 'v' prefix. Must be major version 3.
         required: true
-        description: "The version of pulumi/pulumi/sdk to update to. Do not include the 'v' prefix. Must be major version 3."
         type: string
