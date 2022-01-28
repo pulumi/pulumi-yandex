@@ -40,9 +40,6 @@ import (
 // 					Size: pulumi.Int(64),
 // 					Type: pulumi.String("network-hdd"),
 // 				},
-// 				ContainerRuntime: &KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs{
-// 					Type: pulumi.String("containerd"),
-// 				},
 // 				NetworkInterfaces: KubernetesNodeGroupInstanceTemplateNetworkInterfaceArray{
 // 					&KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs{
 // 						Nat: pulumi.Bool(true),

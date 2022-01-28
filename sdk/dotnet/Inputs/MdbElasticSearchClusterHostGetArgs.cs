@@ -38,7 +38,7 @@ namespace Pulumi.Yandex.Inputs
         public Input<string>? SubnetId { get; set; }
 
         /// <summary>
-        /// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+        /// The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

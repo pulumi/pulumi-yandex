@@ -85,9 +85,8 @@ type LookupMdbElasticSearchClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A set of key/value label pairs to assign to the Elasticsearch cluster.
-	Labels             map[string]string                             `pulumi:"labels"`
-	MaintenanceWindows []GetMdbElasticSearchClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
-	Name               string                                        `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// ID of the network, to which the Elasticsearch cluster belongs.
 	NetworkId string `pulumi:"networkId"`
 	// A set of ids of security groups assigned to hosts of the cluster.
@@ -195,12 +194,6 @@ func (o LookupMdbElasticSearchClusterResultOutput) Id() pulumi.StringOutput {
 // A set of key/value label pairs to assign to the Elasticsearch cluster.
 func (o LookupMdbElasticSearchClusterResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMdbElasticSearchClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-func (o LookupMdbElasticSearchClusterResultOutput) MaintenanceWindows() GetMdbElasticSearchClusterMaintenanceWindowArrayOutput {
-	return o.ApplyT(func(v LookupMdbElasticSearchClusterResult) []GetMdbElasticSearchClusterMaintenanceWindow {
-		return v.MaintenanceWindows
-	}).(GetMdbElasticSearchClusterMaintenanceWindowArrayOutput)
 }
 
 func (o LookupMdbElasticSearchClusterResultOutput) Name() pulumi.StringOutput {
