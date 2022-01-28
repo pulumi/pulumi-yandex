@@ -117,10 +117,6 @@ export interface GetMdbKafkaClusterResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Maintenance window settings of the Kafka cluster. The structure is documented below.
-     */
-    readonly maintenanceWindows: outputs.GetMdbKafkaClusterMaintenanceWindow[];
-    /**
      * The fully qualified domain name of the host.
      */
     readonly name: string;

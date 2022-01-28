@@ -18,7 +18,7 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly int? Size;
         /// <summary>
-        /// Type of container runtime. Values: `docker`, `containerd`.
+        /// The disk type.
         /// </summary>
         public readonly string? Type;
 

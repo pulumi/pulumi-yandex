@@ -18,11 +18,6 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateBootDiskResult> BootDisks;
         /// <summary>
-        /// Container runtime configuration. The structure is documented below.
-        /// ---
-        /// </summary>
-        public readonly Outputs.GetKubernetesNodeGroupInstanceTemplateContainerRuntimeResult ContainerRuntime;
-        /// <summary>
         /// The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
@@ -56,8 +51,6 @@ namespace Pulumi.Yandex.Outputs
         private GetKubernetesNodeGroupInstanceTemplateResult(
             ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateBootDiskResult> bootDisks,
 
-            Outputs.GetKubernetesNodeGroupInstanceTemplateContainerRuntimeResult containerRuntime,
-
             ImmutableDictionary<string, string> metadata,
 
             bool nat,
@@ -75,7 +68,6 @@ namespace Pulumi.Yandex.Outputs
             ImmutableArray<Outputs.GetKubernetesNodeGroupInstanceTemplateSchedulingPolicyResult> schedulingPolicies)
         {
             BootDisks = bootDisks;
-            ContainerRuntime = containerRuntime;
             Metadata = metadata;
             Nat = nat;
             NetworkAccelerationType = networkAccelerationType;

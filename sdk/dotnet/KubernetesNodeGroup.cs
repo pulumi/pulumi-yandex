@@ -43,10 +43,6 @@ namespace Pulumi.Yandex
     ///                     Size = 64,
     ///                     Type = "network-hdd",
     ///                 },
-    ///                 ContainerRuntime = new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs
-    ///                 {
-    ///                     Type = "containerd",
-    ///                 },
     ///                 NetworkInterfaces = 
     ///                 {
     ///                     new Yandex.Inputs.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs

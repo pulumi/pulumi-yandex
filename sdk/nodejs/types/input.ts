@@ -2921,94 +2921,6 @@ export interface GetAlbBackendGroupStreamBackendTlsValidationContext {
     trustedCaId?: string;
 }
 
-export interface GetCdnResourceOptions {
-    /**
-     * HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
-     */
-    allowedHttpMethods?: string[];
-    /**
-     * set up a cache period for the end-users browser. Content will be cached due to origin settings. If there are no cache settings on your origin, the content will not be cached. The list of HTTP response codes that can be cached in browsers: 200, 201, 204, 206, 301, 302, 303, 304, 307, 308. Other response codes will not be cached. The default value is 4 days.
-     */
-    browserCacheSettings?: number;
-    /**
-     * list HTTP headers that must be included in responses to clients.
-     */
-    cacheHttpHeaders?: string[];
-    /**
-     * parameter that lets browsers get access to selected resources from a domain different to a domain from which the request is received.
-     */
-    cors?: string[];
-    /**
-     * custom value for the Host header. Your server must be able to process requests with the chosen header.
-     */
-    customHostHeader?: string;
-    /**
-     * wildcard additional CNAME. If a resource has a wildcard additional CNAME, you can use your own certificate for content delivery via HTTPS. Read-only.
-     */
-    customServerName?: string;
-    /**
-     * setup a cache status.
-     */
-    disableCache?: boolean;
-    /**
-     * disabling proxy force ranges.
-     */
-    disableProxyForceRanges?: boolean;
-    /**
-     * content will be cached according to origin cache settings. The value applies for a response with codes 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 if an origin server does not have caching HTTP headers. Responses with other codes will not be cached.
-     */
-    edgeCacheSettings?: number;
-    /**
-     * option helps you to reduce the bandwidth between origin and CDN servers. Also, content delivery speed becomes higher because of reducing the time for compressing files in a CDN.
-     */
-    fetchedCompressed?: boolean;
-    /**
-     * choose the Forward Host header option if is important to send in the request to the Origin the same Host header as was sent in the request to CDN server.
-     */
-    forwardHostHeader?: boolean;
-    /**
-     * GZip compression at CDN servers reduces file size by 70% and can be as high as 90%.
-     */
-    gzipOn?: boolean;
-    /**
-     * set for ignoring cookie.
-     */
-    ignoreCookie?: boolean;
-    /**
-     * files with different query parameters are cached as objects with the same key regardless of the parameter value. selected by default.
-     */
-    ignoreQueryParams?: boolean;
-    /**
-     * allows caching for GET, HEAD and POST requests.
-     */
-    proxyCacheMethodsSet?: boolean;
-    /**
-     * files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
-     */
-    queryParamsBlacklists?: string[];
-    /**
-     * files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
-     */
-    queryParamsWhitelists?: string[];
-    /**
-     * set up a redirect from HTTPS to HTTP.
-     */
-    redirectHttpToHttps?: boolean;
-    /**
-     * set up a redirect from HTTP to HTTPS.
-     */
-    redirectHttpsToHttp?: boolean;
-    /**
-     * files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
-     */
-    slice?: boolean;
-    /**
-     * set up custom headers that CDN servers send in requests to origins.
-     */
-    staticRequestHeaders?: string[];
-    staticResponseHeaders?: {[key: string]: string};
-}
-
 export interface GetCdnResourceOptionsArgs {
     /**
      * HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
@@ -3097,6 +3009,94 @@ export interface GetCdnResourceOptionsArgs {
     staticResponseHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface GetCdnResourceOptions {
+    /**
+     * HTTP methods for your CDN content. By default the following methods are allowed: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS. In case some methods are not allowed to the user, they will get the 405 (Method Not Allowed) response. If the method is not supported, the user gets the 501 (Not Implemented) response.
+     */
+    allowedHttpMethods?: string[];
+    /**
+     * set up a cache period for the end-users browser. Content will be cached due to origin settings. If there are no cache settings on your origin, the content will not be cached. The list of HTTP response codes that can be cached in browsers: 200, 201, 204, 206, 301, 302, 303, 304, 307, 308. Other response codes will not be cached. The default value is 4 days.
+     */
+    browserCacheSettings?: number;
+    /**
+     * list HTTP headers that must be included in responses to clients.
+     */
+    cacheHttpHeaders?: string[];
+    /**
+     * parameter that lets browsers get access to selected resources from a domain different to a domain from which the request is received.
+     */
+    cors?: string[];
+    /**
+     * custom value for the Host header. Your server must be able to process requests with the chosen header.
+     */
+    customHostHeader?: string;
+    /**
+     * wildcard additional CNAME. If a resource has a wildcard additional CNAME, you can use your own certificate for content delivery via HTTPS. Read-only.
+     */
+    customServerName?: string;
+    /**
+     * setup a cache status.
+     */
+    disableCache?: boolean;
+    /**
+     * disabling proxy force ranges.
+     */
+    disableProxyForceRanges?: boolean;
+    /**
+     * content will be cached according to origin cache settings. The value applies for a response with codes 200, 201, 204, 206, 301, 302, 303, 304, 307, 308 if an origin server does not have caching HTTP headers. Responses with other codes will not be cached.
+     */
+    edgeCacheSettings?: number;
+    /**
+     * option helps you to reduce the bandwidth between origin and CDN servers. Also, content delivery speed becomes higher because of reducing the time for compressing files in a CDN.
+     */
+    fetchedCompressed?: boolean;
+    /**
+     * choose the Forward Host header option if is important to send in the request to the Origin the same Host header as was sent in the request to CDN server.
+     */
+    forwardHostHeader?: boolean;
+    /**
+     * GZip compression at CDN servers reduces file size by 70% and can be as high as 90%.
+     */
+    gzipOn?: boolean;
+    /**
+     * set for ignoring cookie.
+     */
+    ignoreCookie?: boolean;
+    /**
+     * files with different query parameters are cached as objects with the same key regardless of the parameter value. selected by default.
+     */
+    ignoreQueryParams?: boolean;
+    /**
+     * allows caching for GET, HEAD and POST requests.
+     */
+    proxyCacheMethodsSet?: boolean;
+    /**
+     * files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
+     */
+    queryParamsBlacklists?: string[];
+    /**
+     * files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
+     */
+    queryParamsWhitelists?: string[];
+    /**
+     * set up a redirect from HTTPS to HTTP.
+     */
+    redirectHttpToHttps?: boolean;
+    /**
+     * set up a redirect from HTTP to HTTPS.
+     */
+    redirectHttpsToHttp?: boolean;
+    /**
+     * files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
+     */
+    slice?: boolean;
+    /**
+     * set up custom headers that CDN servers send in requests to origins.
+     */
+    staticRequestHeaders?: string[];
+    staticResponseHeaders?: {[key: string]: string};
+}
+
 export interface GetCdnResourceSslCertificateArgs {
     certificateManagerId?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
@@ -3117,12 +3117,12 @@ export interface GetComputeDiskDiskPlacementPolicy {
     diskPlacementGroupId: string;
 }
 
-export interface GetComputeInstancePlacementPolicyArgs {
-    placementGroupId: pulumi.Input<string>;
-}
-
 export interface GetComputeInstancePlacementPolicy {
     placementGroupId: string;
+}
+
+export interface GetComputeInstancePlacementPolicyArgs {
+    placementGroupId: pulumi.Input<string>;
 }
 
 export interface GetFunctionScalingPolicyPolicy {
@@ -3135,21 +3135,6 @@ export interface GetFunctionScalingPolicyPolicyArgs {
     tag?: pulumi.Input<string>;
     zoneInstancesLimit?: pulumi.Input<number>;
     zoneRequestsLimit?: pulumi.Input<number>;
-}
-
-export interface GetIamPolicyBinding {
-    /**
-     * An array of identities that will be granted the privilege in the `role`.
-     * Each entry can have one of the following values:
-     * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
-     * * **serviceAccount:{service_account_id}**: A unique service account ID.
-     */
-    members: string[];
-    /**
-     * The role/permission that will be granted to the members.
-     * See the [IAM Roles] documentation for a complete list of roles.
-     */
-    role: string;
 }
 
 export interface GetIamPolicyBindingArgs {
@@ -3165,6 +3150,21 @@ export interface GetIamPolicyBindingArgs {
      * See the [IAM Roles] documentation for a complete list of roles.
      */
     role: pulumi.Input<string>;
+}
+
+export interface GetIamPolicyBinding {
+    /**
+     * An array of identities that will be granted the privilege in the `role`.
+     * Each entry can have one of the following values:
+     * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
+     * * **serviceAccount:{service_account_id}**: A unique service account ID.
+     */
+    members: string[];
+    /**
+     * The role/permission that will be granted to the members.
+     * See the [IAM Roles] documentation for a complete list of roles.
+     */
+    role: string;
 }
 
 export interface GetMdbClickhouseClusterCloudStorage {
@@ -3251,17 +3251,6 @@ export interface GetMdbKafkaClusterConfigArgs {
     zookeeper?: pulumi.Input<inputs.GetMdbKafkaClusterConfigZookeeperArgs>;
 }
 
-export interface GetMdbKafkaClusterConfigKafka {
-    /**
-     * (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
-     */
-    kafkaConfig?: inputs.GetMdbKafkaClusterConfigKafkaKafkaConfig;
-    /**
-     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
-     */
-    resources: inputs.GetMdbKafkaClusterConfigKafkaResources;
-}
-
 export interface GetMdbKafkaClusterConfigKafkaArgs {
     /**
      * (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
@@ -3273,22 +3262,15 @@ export interface GetMdbKafkaClusterConfigKafkaArgs {
     resources: pulumi.Input<inputs.GetMdbKafkaClusterConfigKafkaResourcesArgs>;
 }
 
-export interface GetMdbKafkaClusterConfigKafkaKafkaConfigArgs {
-    autoCreateTopicsEnable?: pulumi.Input<boolean>;
-    compressionType?: pulumi.Input<string>;
-    defaultReplicationFactor?: pulumi.Input<string>;
-    logFlushIntervalMessages?: pulumi.Input<string>;
-    logFlushIntervalMs?: pulumi.Input<string>;
-    logFlushSchedulerIntervalMs?: pulumi.Input<string>;
-    logPreallocate?: pulumi.Input<boolean>;
-    logRetentionBytes?: pulumi.Input<string>;
-    logRetentionHours?: pulumi.Input<string>;
-    logRetentionMinutes?: pulumi.Input<string>;
-    logRetentionMs?: pulumi.Input<string>;
-    logSegmentBytes?: pulumi.Input<string>;
-    numPartitions?: pulumi.Input<string>;
-    socketReceiveBufferBytes?: pulumi.Input<string>;
-    socketSendBufferBytes?: pulumi.Input<string>;
+export interface GetMdbKafkaClusterConfigKafka {
+    /**
+     * (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
+     */
+    kafkaConfig?: inputs.GetMdbKafkaClusterConfigKafkaKafkaConfig;
+    /**
+     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
+     */
+    resources: inputs.GetMdbKafkaClusterConfigKafkaResources;
 }
 
 export interface GetMdbKafkaClusterConfigKafkaKafkaConfig {
@@ -3307,6 +3289,24 @@ export interface GetMdbKafkaClusterConfigKafkaKafkaConfig {
     numPartitions?: string;
     socketReceiveBufferBytes?: string;
     socketSendBufferBytes?: string;
+}
+
+export interface GetMdbKafkaClusterConfigKafkaKafkaConfigArgs {
+    autoCreateTopicsEnable?: pulumi.Input<boolean>;
+    compressionType?: pulumi.Input<string>;
+    defaultReplicationFactor?: pulumi.Input<string>;
+    logFlushIntervalMessages?: pulumi.Input<string>;
+    logFlushIntervalMs?: pulumi.Input<string>;
+    logFlushSchedulerIntervalMs?: pulumi.Input<string>;
+    logPreallocate?: pulumi.Input<boolean>;
+    logRetentionBytes?: pulumi.Input<string>;
+    logRetentionHours?: pulumi.Input<string>;
+    logRetentionMinutes?: pulumi.Input<string>;
+    logRetentionMs?: pulumi.Input<string>;
+    logSegmentBytes?: pulumi.Input<string>;
+    numPartitions?: pulumi.Input<string>;
+    socketReceiveBufferBytes?: pulumi.Input<string>;
+    socketSendBufferBytes?: pulumi.Input<string>;
 }
 
 export interface GetMdbKafkaClusterConfigKafkaResources {
@@ -3335,18 +3335,18 @@ export interface GetMdbKafkaClusterConfigKafkaResourcesArgs {
     resourcePresetId: pulumi.Input<string>;
 }
 
-export interface GetMdbKafkaClusterConfigZookeeper {
-    /**
-     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
-     */
-    resources?: inputs.GetMdbKafkaClusterConfigZookeeperResources;
-}
-
 export interface GetMdbKafkaClusterConfigZookeeperArgs {
     /**
      * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
      */
     resources?: pulumi.Input<inputs.GetMdbKafkaClusterConfigZookeeperResourcesArgs>;
+}
+
+export interface GetMdbKafkaClusterConfigZookeeper {
+    /**
+     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
+     */
+    resources?: inputs.GetMdbKafkaClusterConfigZookeeperResources;
 }
 
 export interface GetMdbKafkaClusterConfigZookeeperResourcesArgs {
@@ -3375,29 +3375,6 @@ export interface GetMdbKafkaClusterConfigZookeeperResources {
     resourcePresetId?: string;
 }
 
-export interface GetMdbKafkaClusterTopic {
-    /**
-     * The ID of the Kafka cluster.
-     */
-    clusterId: string;
-    /**
-     * The name of the Kafka cluster.
-     */
-    name: string;
-    /**
-     * (Required) The number of the topic's partitions.
-     */
-    partitions: number;
-    /**
-     * (Required) Amount of data copies (replicas) for the topic in the cluster.
-     */
-    replicationFactor: number;
-    /**
-     * (Required) User-defined settings for the topic. The structure is documented below.
-     */
-    topicConfig?: inputs.GetMdbKafkaClusterTopicTopicConfig;
-}
-
 export interface GetMdbKafkaClusterTopicArgs {
     /**
      * The ID of the Kafka cluster.
@@ -3421,20 +3398,27 @@ export interface GetMdbKafkaClusterTopicArgs {
     topicConfig?: pulumi.Input<inputs.GetMdbKafkaClusterTopicTopicConfigArgs>;
 }
 
-export interface GetMdbKafkaClusterTopicTopicConfig {
-    cleanupPolicy?: string;
-    compressionType?: string;
-    deleteRetentionMs?: string;
-    fileDeleteDelayMs?: string;
-    flushMessages?: string;
-    flushMs?: string;
-    maxMessageBytes?: string;
-    minCompactionLagMs?: string;
-    minInsyncReplicas?: string;
-    preallocate?: boolean;
-    retentionBytes?: string;
-    retentionMs?: string;
-    segmentBytes?: string;
+export interface GetMdbKafkaClusterTopic {
+    /**
+     * The ID of the Kafka cluster.
+     */
+    clusterId: string;
+    /**
+     * The name of the Kafka cluster.
+     */
+    name: string;
+    /**
+     * (Required) The number of the topic's partitions.
+     */
+    partitions: number;
+    /**
+     * (Required) Amount of data copies (replicas) for the topic in the cluster.
+     */
+    replicationFactor: number;
+    /**
+     * (Required) User-defined settings for the topic. The structure is documented below.
+     */
+    topicConfig?: inputs.GetMdbKafkaClusterTopicTopicConfig;
 }
 
 export interface GetMdbKafkaClusterTopicTopicConfigArgs {
@@ -3451,6 +3435,22 @@ export interface GetMdbKafkaClusterTopicTopicConfigArgs {
     retentionBytes?: pulumi.Input<string>;
     retentionMs?: pulumi.Input<string>;
     segmentBytes?: pulumi.Input<string>;
+}
+
+export interface GetMdbKafkaClusterTopicTopicConfig {
+    cleanupPolicy?: string;
+    compressionType?: string;
+    deleteRetentionMs?: string;
+    fileDeleteDelayMs?: string;
+    flushMessages?: string;
+    flushMs?: string;
+    maxMessageBytes?: string;
+    minCompactionLagMs?: string;
+    minInsyncReplicas?: string;
+    preallocate?: boolean;
+    retentionBytes?: string;
+    retentionMs?: string;
+    segmentBytes?: string;
 }
 
 export interface GetMdbKafkaClusterUser {
@@ -3483,17 +3483,6 @@ export interface GetMdbKafkaClusterUserArgs {
     permissions?: pulumi.Input<pulumi.Input<inputs.GetMdbKafkaClusterUserPermissionArgs>[]>;
 }
 
-export interface GetMdbKafkaClusterUserPermissionArgs {
-    /**
-     * Role of the host in the cluster.
-     */
-    role: pulumi.Input<string>;
-    /**
-     * (Required) The name of the topic that the permission grants access to.
-     */
-    topicName: pulumi.Input<string>;
-}
-
 export interface GetMdbKafkaClusterUserPermission {
     /**
      * Role of the host in the cluster.
@@ -3505,15 +3494,15 @@ export interface GetMdbKafkaClusterUserPermission {
     topicName: string;
 }
 
-export interface GetMdbMysqlClusterAccess {
+export interface GetMdbKafkaClusterUserPermissionArgs {
     /**
-     * Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
+     * Role of the host in the cluster.
      */
-    dataLens?: boolean;
+    role: pulumi.Input<string>;
     /**
-     * Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
+     * (Required) The name of the topic that the permission grants access to.
      */
-    webSql?: boolean;
+    topicName: pulumi.Input<string>;
 }
 
 export interface GetMdbMysqlClusterAccessArgs {
@@ -3525,6 +3514,17 @@ export interface GetMdbMysqlClusterAccessArgs {
      * Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
      */
     webSql?: pulumi.Input<boolean>;
+}
+
+export interface GetMdbMysqlClusterAccess {
+    /**
+     * Allow access for [Yandex DataLens](https://cloud.yandex.com/services/datalens).
+     */
+    dataLens?: boolean;
+    /**
+     * Allows access for [SQL queries in the management console](https://cloud.yandex.com/docs/managed-mysql/operations/web-sql-query).
+     */
+    webSql?: boolean;
 }
 
 export interface KubernetesClusterKmsProvider {
@@ -3711,11 +3711,6 @@ export interface KubernetesNodeGroupInstanceTemplate {
      */
     bootDisk?: pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplateBootDisk>;
     /**
-     * Container runtime configuration. The structure is documented below.
-     * ---
-     */
-    containerRuntime?: pulumi.Input<inputs.KubernetesNodeGroupInstanceTemplateContainerRuntime>;
-    /**
      * The set of metadata `key:value` pairs assigned to this instance template. This includes custom metadata and predefined keys.
      * * `resources.0.memory` - The memory size allocated to the instance.
      * * `resources.0.cores` - Number of CPU cores allocated to the instance.
@@ -3758,16 +3753,9 @@ export interface KubernetesNodeGroupInstanceTemplateBootDisk {
      */
     size?: pulumi.Input<number>;
     /**
-     * Type of container runtime. Values: `docker`, `containerd`.
+     * The disk type.
      */
     type?: pulumi.Input<string>;
-}
-
-export interface KubernetesNodeGroupInstanceTemplateContainerRuntime {
-    /**
-     * Type of container runtime. Values: `docker`, `containerd`.
-     */
-    type: pulumi.Input<string>;
 }
 
 export interface KubernetesNodeGroupInstanceTemplateNetworkInterface {
@@ -4909,7 +4897,7 @@ export interface MdbElasticSearchClusterHost {
      */
     subnetId?: pulumi.Input<string>;
     /**
-     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
+     * The type of the host to be deployed. Can be either `DATA_NODE` or `MASTER_NODE`.
      */
     type: pulumi.Input<string>;
     /**
@@ -4917,21 +4905,6 @@ export interface MdbElasticSearchClusterHost {
      * For more information see [the official documentation](https://cloud.yandex.com/docs/overview/concepts/geo-scope).
      */
     zone: pulumi.Input<string>;
-}
-
-export interface MdbElasticSearchClusterMaintenanceWindow {
-    /**
-     * Day of week for maintenance window if window type is weekly. Possible values: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `SUN`.
-     */
-    day?: pulumi.Input<string>;
-    /**
-     * Hour of day in UTC time zone (1-24) for maintenance window if window type is weekly.
-     */
-    hour?: pulumi.Input<number>;
-    /**
-     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
-     */
-    type: pulumi.Input<string>;
 }
 
 export interface MdbGreenplumClusterAccess {
@@ -5122,21 +5095,6 @@ export interface MdbKafkaClusterHost {
      * The availability zone where the Kafka host was created.
      */
     zoneId?: pulumi.Input<string>;
-}
-
-export interface MdbKafkaClusterMaintenanceWindow {
-    /**
-     * Day of the week (in `DDD` format). Allowed values: "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"
-     */
-    day?: pulumi.Input<string>;
-    /**
-     * Hour of the day in UTC (in `HH` format). Allowed value is between 1 and 24.
-     */
-    hour?: pulumi.Input<number>;
-    /**
-     * Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
-     */
-    type: pulumi.Input<string>;
 }
 
 export interface MdbKafkaClusterTopic {
@@ -6036,3 +5994,4 @@ export interface YdbDatabaseDedicatedStorageConfig {
      */
     storageTypeId: pulumi.Input<string>;
 }
+
