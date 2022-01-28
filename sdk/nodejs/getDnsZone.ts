@@ -19,8 +19,7 @@ import * as utilities from "./utilities";
  * export const zone = foo.then(foo => foo.zone);
  * ```
  */
-export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> {
-    args = args || {};
+export function getDnsZone(args: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> {
     if (!opts) {
         opts = {}
     }
@@ -28,8 +27,6 @@ export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("yandex:index/getDnsZone:getDnsZone", {
         "dnsZoneId": args.dnsZoneId,
-        "folderId": args.folderId,
-        "name": args.name,
     }, opts);
 }
 
@@ -40,15 +37,7 @@ export interface GetDnsZoneArgs {
     /**
      * The ID of the DNS Zone.
      */
-    dnsZoneId?: string;
-    /**
-     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
-     */
-    folderId?: string;
-    /**
-     * - Name of the DNS Zone.
-     */
-    name?: string;
+    dnsZoneId: string;
 }
 
 /**
@@ -94,7 +83,7 @@ export interface GetDnsZoneResult {
     readonly zone: string;
 }
 
-export function getDnsZoneOutput(args?: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsZoneResult> {
+export function getDnsZoneOutput(args: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsZoneResult> {
     return pulumi.output(args).apply(a => getDnsZone(a, opts))
 }
 
@@ -105,13 +94,5 @@ export interface GetDnsZoneOutputArgs {
     /**
      * The ID of the DNS Zone.
      */
-    dnsZoneId?: pulumi.Input<string>;
-    /**
-     * Folder that the resource belongs to. If value is omitted, the default provider folder is used.
-     */
-    folderId?: pulumi.Input<string>;
-    /**
-     * - Name of the DNS Zone.
-     */
-    name?: pulumi.Input<string>;
+    dnsZoneId: pulumi.Input<string>;
 }

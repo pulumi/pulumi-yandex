@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := yandex_dns_zone.Zone1.Id
 // 		foo, err := yandex.LookupDnsZone(ctx, &GetDnsZoneArgs{
-// 			DnsZoneId: &opt0,
+// 			DnsZoneId: yandex_dns_zone.Zone1.Id,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -48,11 +47,7 @@ func LookupDnsZone(ctx *pulumi.Context, args *LookupDnsZoneArgs, opts ...pulumi.
 // A collection of arguments for invoking getDnsZone.
 type LookupDnsZoneArgs struct {
 	// The ID of the DNS Zone.
-	DnsZoneId *string `pulumi:"dnsZoneId"`
-	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
-	FolderId *string `pulumi:"folderId"`
-	// - Name of the DNS Zone.
-	Name *string `pulumi:"name"`
+	DnsZoneId string `pulumi:"dnsZoneId"`
 }
 
 // A collection of values returned by getDnsZone.
@@ -90,11 +85,7 @@ func LookupDnsZoneOutput(ctx *pulumi.Context, args LookupDnsZoneOutputArgs, opts
 // A collection of arguments for invoking getDnsZone.
 type LookupDnsZoneOutputArgs struct {
 	// The ID of the DNS Zone.
-	DnsZoneId pulumi.StringPtrInput `pulumi:"dnsZoneId"`
-	// Folder that the resource belongs to. If value is omitted, the default provider folder is used.
-	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
-	// - Name of the DNS Zone.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	DnsZoneId pulumi.StringInput `pulumi:"dnsZoneId"`
 }
 
 func (LookupDnsZoneOutputArgs) ElementType() reflect.Type {

@@ -558,9 +558,6 @@ class KubernetesNodeGroup(pulumi.CustomResource):
                     size=64,
                     type="network-hdd",
                 ),
-                container_runtime=yandex.KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs(
-                    type="containerd",
-                ),
                 network_interfaces=[yandex.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs(
                     nat=True,
                     subnet_ids=[yandex_vpc_subnet["my_subnet"]["id"]],
@@ -655,9 +652,6 @@ class KubernetesNodeGroup(pulumi.CustomResource):
                 boot_disk=yandex.KubernetesNodeGroupInstanceTemplateBootDiskArgs(
                     size=64,
                     type="network-hdd",
-                ),
-                container_runtime=yandex.KubernetesNodeGroupInstanceTemplateContainerRuntimeArgs(
-                    type="containerd",
                 ),
                 network_interfaces=[yandex.KubernetesNodeGroupInstanceTemplateNetworkInterfaceArgs(
                     nat=True,

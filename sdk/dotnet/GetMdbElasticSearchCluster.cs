@@ -247,7 +247,6 @@ namespace Pulumi.Yandex
         /// A set of key/value label pairs to assign to the Elasticsearch cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
-        public readonly ImmutableArray<Outputs.GetMdbElasticSearchClusterMaintenanceWindowResult> MaintenanceWindows;
         public readonly string Name;
         /// <summary>
         /// ID of the network, to which the Elasticsearch cluster belongs.
@@ -290,8 +289,6 @@ namespace Pulumi.Yandex
 
             ImmutableDictionary<string, string> labels,
 
-            ImmutableArray<Outputs.GetMdbElasticSearchClusterMaintenanceWindowResult> maintenanceWindows,
-
             string name,
 
             string networkId,
@@ -313,7 +310,6 @@ namespace Pulumi.Yandex
             Hosts = hosts;
             Id = id;
             Labels = labels;
-            MaintenanceWindows = maintenanceWindows;
             Name = name;
             NetworkId = networkId;
             SecurityGroupIds = securityGroupIds;

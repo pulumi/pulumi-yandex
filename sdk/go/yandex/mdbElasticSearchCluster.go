@@ -42,8 +42,7 @@ type MdbElasticSearchCluster struct {
 	// A host of the Elasticsearch cluster. The structure is documented below.
 	Hosts MdbElasticSearchClusterHostArrayOutput `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Elasticsearch cluster.
-	Labels            pulumi.StringMapOutput                         `pulumi:"labels"`
-	MaintenanceWindow MdbElasticSearchClusterMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// User defined host name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ID of the network, to which the Elasticsearch cluster belongs.
@@ -113,8 +112,7 @@ type mdbElasticSearchClusterState struct {
 	// A host of the Elasticsearch cluster. The structure is documented below.
 	Hosts []MdbElasticSearchClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Elasticsearch cluster.
-	Labels            map[string]string                         `pulumi:"labels"`
-	MaintenanceWindow *MdbElasticSearchClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
+	Labels map[string]string `pulumi:"labels"`
 	// User defined host name.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the Elasticsearch cluster belongs.
@@ -147,8 +145,7 @@ type MdbElasticSearchClusterState struct {
 	// A host of the Elasticsearch cluster. The structure is documented below.
 	Hosts MdbElasticSearchClusterHostArrayInput
 	// A set of key/value label pairs to assign to the Elasticsearch cluster.
-	Labels            pulumi.StringMapInput
-	MaintenanceWindow MdbElasticSearchClusterMaintenanceWindowPtrInput
+	Labels pulumi.StringMapInput
 	// User defined host name.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the Elasticsearch cluster belongs.
@@ -180,8 +177,7 @@ type mdbElasticSearchClusterArgs struct {
 	// A host of the Elasticsearch cluster. The structure is documented below.
 	Hosts []MdbElasticSearchClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the Elasticsearch cluster.
-	Labels            map[string]string                         `pulumi:"labels"`
-	MaintenanceWindow *MdbElasticSearchClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
+	Labels map[string]string `pulumi:"labels"`
 	// User defined host name.
 	Name *string `pulumi:"name"`
 	// ID of the network, to which the Elasticsearch cluster belongs.
@@ -207,8 +203,7 @@ type MdbElasticSearchClusterArgs struct {
 	// A host of the Elasticsearch cluster. The structure is documented below.
 	Hosts MdbElasticSearchClusterHostArrayInput
 	// A set of key/value label pairs to assign to the Elasticsearch cluster.
-	Labels            pulumi.StringMapInput
-	MaintenanceWindow MdbElasticSearchClusterMaintenanceWindowPtrInput
+	Labels pulumi.StringMapInput
 	// User defined host name.
 	Name pulumi.StringPtrInput
 	// ID of the network, to which the Elasticsearch cluster belongs.
