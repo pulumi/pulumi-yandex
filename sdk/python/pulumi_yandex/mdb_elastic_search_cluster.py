@@ -23,7 +23,6 @@ class MdbElasticSearchClusterArgs:
                  folder_id: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['MdbElasticSearchClusterHostArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 maintenance_window: Optional[pulumi.Input['MdbElasticSearchClusterMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None):
@@ -54,8 +53,6 @@ class MdbElasticSearchClusterArgs:
             pulumi.set(__self__, "hosts", hosts)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if maintenance_window is not None:
-            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if security_group_ids is not None:
@@ -160,15 +157,6 @@ class MdbElasticSearchClusterArgs:
         pulumi.set(self, "labels", value)
 
     @property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['MdbElasticSearchClusterMaintenanceWindowArgs']]:
-        return pulumi.get(self, "maintenance_window")
-
-    @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['MdbElasticSearchClusterMaintenanceWindowArgs']]):
-        pulumi.set(self, "maintenance_window", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -217,7 +205,6 @@ class _MdbElasticSearchClusterState:
                  health: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['MdbElasticSearchClusterHostArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 maintenance_window: Optional[pulumi.Input['MdbElasticSearchClusterMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -260,8 +247,6 @@ class _MdbElasticSearchClusterState:
             pulumi.set(__self__, "hosts", hosts)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if maintenance_window is not None:
-            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_id is not None:
@@ -383,15 +368,6 @@ class _MdbElasticSearchClusterState:
         pulumi.set(self, "labels", value)
 
     @property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['MdbElasticSearchClusterMaintenanceWindowArgs']]:
-        return pulumi.get(self, "maintenance_window")
-
-    @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['MdbElasticSearchClusterMaintenanceWindowArgs']]):
-        pulumi.set(self, "maintenance_window", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -465,7 +441,6 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbElasticSearchClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbElasticSearchClusterMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -537,7 +512,6 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbElasticSearchClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbElasticSearchClusterMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -565,7 +539,6 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["hosts"] = hosts
             __props__.__dict__["labels"] = labels
-            __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
             if network_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_id'")
@@ -594,7 +567,6 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
             health: Optional[pulumi.Input[str]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbElasticSearchClusterHostArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            maintenance_window: Optional[pulumi.Input[pulumi.InputType['MdbElasticSearchClusterMaintenanceWindowArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -637,7 +609,6 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
         __props__.__dict__["health"] = health
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["labels"] = labels
-        __props__.__dict__["maintenance_window"] = maintenance_window
         __props__.__dict__["name"] = name
         __props__.__dict__["network_id"] = network_id
         __props__.__dict__["security_group_ids"] = security_group_ids
@@ -717,11 +688,6 @@ class MdbElasticSearchCluster(pulumi.CustomResource):
         A set of key/value label pairs to assign to the Elasticsearch cluster.
         """
         return pulumi.get(self, "labels")
-
-    @property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> pulumi.Output['outputs.MdbElasticSearchClusterMaintenanceWindow']:
-        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter

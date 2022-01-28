@@ -18,11 +18,11 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly string Day;
         /// <summary>
-        /// Hour of the day in UTC (in `HH` format). Value is between 1 and 24.
+        /// Hour of the day in UTC (in `HH` format). Values is between 0 and 23.
         /// </summary>
         public readonly int Hour;
         /// <summary>
-        /// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`.
+        /// Type of maintenance window. Can be either `ANYTIME` or `WEEKLY`. A day and hour of window need to be specified with weekly window.
         /// </summary>
         public readonly string Type;
 

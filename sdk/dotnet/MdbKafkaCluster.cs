@@ -331,12 +331,6 @@ namespace Pulumi.Yandex
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Maintenance policy of the Kafka cluster. The structure is documented below.
-        /// </summary>
-        [Output("maintenanceWindow")]
-        public Output<Outputs.MdbKafkaClusterMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
-
-        /// <summary>
         /// The name of the topic.
         /// </summary>
         [Output("name")]
@@ -479,12 +473,6 @@ namespace Pulumi.Yandex
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
-
-        /// <summary>
-        /// Maintenance policy of the Kafka cluster. The structure is documented below.
-        /// </summary>
-        [Input("maintenanceWindow")]
-        public Input<Inputs.MdbKafkaClusterMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// The name of the topic.
@@ -632,12 +620,6 @@ namespace Pulumi.Yandex
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
-
-        /// <summary>
-        /// Maintenance policy of the Kafka cluster. The structure is documented below.
-        /// </summary>
-        [Input("maintenanceWindow")]
-        public Input<Inputs.MdbKafkaClusterMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// The name of the topic.

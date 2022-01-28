@@ -27,9 +27,6 @@ import * as utilities from "./utilities";
  *             size: 64,
  *             type: "network-hdd",
  *         },
- *         containerRuntime: {
- *             type: "containerd",
- *         },
  *         networkInterfaces: [{
  *             nat: true,
  *             subnetIds: [yandex_vpc_subnet_my_subnet.id],
