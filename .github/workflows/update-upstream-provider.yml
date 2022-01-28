@@ -78,7 +78,6 @@ jobs:
         committer: pulumi-bot <bot@pulumi.com>
         labels: impact/no-changelog-required
         reviewers: platform-integrations
-        team-reviewers: platform-integrations
         title: Update ${{ env.UPSTREAM_PROVIDER_REPO }} to v${{ github.event.inputs.version
           }}
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
@@ -98,7 +97,6 @@ jobs:
         committer: pulumi-bot <bot@pulumi.com>
         labels: impact/no-changelog-required
         reviewers: platform-integrations
-        team-reviewers: platform-integrations
         title: Update ${{ env.UPSTREAM_PROVIDER_REPO }} to v${{ github.event.inputs.version
           }}
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
