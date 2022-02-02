@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -44,7 +43,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRepositoryResult> InvokeAsync(GetContainerRepositoryArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerRepositoryResult>("yandex:index/getContainerRepository:getContainerRepository", args ?? new GetContainerRepositoryArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerRepositoryResult>("yandex:index/getContainerRepository:getContainerRepository", args ?? new GetContainerRepositoryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Container Repository. For more information, see
@@ -78,7 +77,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRepositoryResult> Invoke(GetContainerRepositoryInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContainerRepositoryResult>("yandex:index/getContainerRepository:getContainerRepository", args ?? new GetContainerRepositoryInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetContainerRepositoryResult>("yandex:index/getContainerRepository:getContainerRepository", args ?? new GetContainerRepositoryInvokeArgs(), options.WithDefaults());
     }
 
 

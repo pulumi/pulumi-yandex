@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
     public static class GetFunctionScalingPolicy
     {
         public static Task<GetFunctionScalingPolicyResult> InvokeAsync(GetFunctionScalingPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionScalingPolicyResult>("yandex:index/getFunctionScalingPolicy:getFunctionScalingPolicy", args ?? new GetFunctionScalingPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionScalingPolicyResult>("yandex:index/getFunctionScalingPolicy:getFunctionScalingPolicy", args ?? new GetFunctionScalingPolicyArgs(), options.WithDefaults());
 
         public static Output<GetFunctionScalingPolicyResult> Invoke(GetFunctionScalingPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFunctionScalingPolicyResult>("yandex:index/getFunctionScalingPolicy:getFunctionScalingPolicy", args ?? new GetFunctionScalingPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFunctionScalingPolicyResult>("yandex:index/getFunctionScalingPolicy:getFunctionScalingPolicy", args ?? new GetFunctionScalingPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

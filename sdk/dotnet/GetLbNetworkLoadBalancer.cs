@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [Load Balancer Network Load Balancers] that can be used by other resources.
         /// </summary>
         public static Task<GetLbNetworkLoadBalancerResult> InvokeAsync(GetLbNetworkLoadBalancerArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLbNetworkLoadBalancerResult>("yandex:index/getLbNetworkLoadBalancer:getLbNetworkLoadBalancer", args ?? new GetLbNetworkLoadBalancerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLbNetworkLoadBalancerResult>("yandex:index/getLbNetworkLoadBalancer:getLbNetworkLoadBalancer", args ?? new GetLbNetworkLoadBalancerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Load Balancer network load balancer. For more information, see
@@ -62,7 +61,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [Load Balancer Network Load Balancers] that can be used by other resources.
         /// </summary>
         public static Output<GetLbNetworkLoadBalancerResult> Invoke(GetLbNetworkLoadBalancerInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLbNetworkLoadBalancerResult>("yandex:index/getLbNetworkLoadBalancer:getLbNetworkLoadBalancer", args ?? new GetLbNetworkLoadBalancerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetLbNetworkLoadBalancerResult>("yandex:index/getLbNetworkLoadBalancer:getLbNetworkLoadBalancer", args ?? new GetLbNetworkLoadBalancerInvokeArgs(), options.WithDefaults());
     }
 
 

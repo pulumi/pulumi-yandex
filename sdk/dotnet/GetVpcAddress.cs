@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [VPC Address] that can be used by other resources.
         /// </summary>
         public static Task<GetVpcAddressResult> InvokeAsync(GetVpcAddressArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcAddressResult>("yandex:index/getVpcAddress:getVpcAddress", args ?? new GetVpcAddressArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcAddressResult>("yandex:index/getVpcAddress:getVpcAddress", args ?? new GetVpcAddressArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex VPC address. For more information, see
@@ -62,7 +61,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [VPC Address] that can be used by other resources.
         /// </summary>
         public static Output<GetVpcAddressResult> Invoke(GetVpcAddressInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcAddressResult>("yandex:index/getVpcAddress:getVpcAddress", args ?? new GetVpcAddressInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVpcAddressResult>("yandex:index/getVpcAddress:getVpcAddress", args ?? new GetVpcAddressInvokeArgs(), options.WithDefaults());
     }
 
 

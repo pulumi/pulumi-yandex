@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMdbSqlserverClusterResult> InvokeAsync(GetMdbSqlserverClusterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbSqlserverClusterResult>("yandex:index/getMdbSqlserverCluster:getMdbSqlserverCluster", args ?? new GetMdbSqlserverClusterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbSqlserverClusterResult>("yandex:index/getMdbSqlserverCluster:getMdbSqlserverCluster", args ?? new GetMdbSqlserverClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Managed SQLServer cluster. For more information, see
@@ -76,7 +75,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMdbSqlserverClusterResult> Invoke(GetMdbSqlserverClusterInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMdbSqlserverClusterResult>("yandex:index/getMdbSqlserverCluster:getMdbSqlserverCluster", args ?? new GetMdbSqlserverClusterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMdbSqlserverClusterResult>("yandex:index/getMdbSqlserverCluster:getMdbSqlserverCluster", args ?? new GetMdbSqlserverClusterInvokeArgs(), options.WithDefaults());
     }
 
 

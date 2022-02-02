@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -44,7 +43,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMdbPostgresqlClusterResult> InvokeAsync(GetMdbPostgresqlClusterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbPostgresqlClusterResult>("yandex:index/getMdbPostgresqlCluster:getMdbPostgresqlCluster", args ?? new GetMdbPostgresqlClusterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbPostgresqlClusterResult>("yandex:index/getMdbPostgresqlCluster:getMdbPostgresqlCluster", args ?? new GetMdbPostgresqlClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Managed PostgreSQL cluster. For more information, see
@@ -78,7 +77,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMdbPostgresqlClusterResult> Invoke(GetMdbPostgresqlClusterInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMdbPostgresqlClusterResult>("yandex:index/getMdbPostgresqlCluster:getMdbPostgresqlCluster", args ?? new GetMdbPostgresqlClusterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMdbPostgresqlClusterResult>("yandex:index/getMdbPostgresqlCluster:getMdbPostgresqlCluster", args ?? new GetMdbPostgresqlClusterInvokeArgs(), options.WithDefaults());
     }
 
 

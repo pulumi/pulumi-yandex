@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourcemanagerCloudResult> InvokeAsync(GetResourcemanagerCloudArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcemanagerCloudResult>("yandex:index/getResourcemanagerCloud:getResourcemanagerCloud", args ?? new GetResourcemanagerCloudArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcemanagerCloudResult>("yandex:index/getResourcemanagerCloud:getResourcemanagerCloud", args ?? new GetResourcemanagerCloudArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get cloud details.
@@ -76,7 +75,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourcemanagerCloudResult> Invoke(GetResourcemanagerCloudInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourcemanagerCloudResult>("yandex:index/getResourcemanagerCloud:getResourcemanagerCloud", args ?? new GetResourcemanagerCloudInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetResourcemanagerCloudResult>("yandex:index/getResourcemanagerCloud:getResourcemanagerCloud", args ?? new GetResourcemanagerCloudInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [Application Load Balancer Target Groups] that can be used by other resources.
         /// </summary>
         public static Task<GetAlbTargetGroupResult> InvokeAsync(GetAlbTargetGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlbTargetGroupResult>("yandex:index/getAlbTargetGroup:getAlbTargetGroup", args ?? new GetAlbTargetGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAlbTargetGroupResult>("yandex:index/getAlbTargetGroup:getAlbTargetGroup", args ?? new GetAlbTargetGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Application Load Balancer target group. For more information, see
@@ -62,7 +61,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [Application Load Balancer Target Groups] that can be used by other resources.
         /// </summary>
         public static Output<GetAlbTargetGroupResult> Invoke(GetAlbTargetGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlbTargetGroupResult>("yandex:index/getAlbTargetGroup:getAlbTargetGroup", args ?? new GetAlbTargetGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAlbTargetGroupResult>("yandex:index/getAlbTargetGroup:getAlbTargetGroup", args ?? new GetAlbTargetGroupInvokeArgs(), options.WithDefaults());
     }
 
 

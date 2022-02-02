@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -45,7 +44,7 @@ namespace Pulumi.Yandex
         /// ```
         /// </summary>
         public static Task<GetResourcemanagerFolderResult> InvokeAsync(GetResourcemanagerFolderArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcemanagerFolderResult>("yandex:index/getResourcemanagerFolder:getResourcemanagerFolder", args ?? new GetResourcemanagerFolderArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcemanagerFolderResult>("yandex:index/getResourcemanagerFolder:getResourcemanagerFolder", args ?? new GetResourcemanagerFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a Yandex Resource Manager Folder. For more information, see
@@ -80,7 +79,7 @@ namespace Pulumi.Yandex
         /// ```
         /// </summary>
         public static Output<GetResourcemanagerFolderResult> Invoke(GetResourcemanagerFolderInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourcemanagerFolderResult>("yandex:index/getResourcemanagerFolder:getResourcemanagerFolder", args ?? new GetResourcemanagerFolderInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetResourcemanagerFolderResult>("yandex:index/getResourcemanagerFolder:getResourcemanagerFolder", args ?? new GetResourcemanagerFolderInvokeArgs(), options.WithDefaults());
     }
 
 

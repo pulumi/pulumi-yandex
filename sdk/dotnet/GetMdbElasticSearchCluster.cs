@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMdbElasticSearchClusterResult> InvokeAsync(GetMdbElasticSearchClusterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbElasticSearchClusterResult>("yandex:index/getMdbElasticSearchCluster:getMdbElasticSearchCluster", args ?? new GetMdbElasticSearchClusterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbElasticSearchClusterResult>("yandex:index/getMdbElasticSearchCluster:getMdbElasticSearchCluster", args ?? new GetMdbElasticSearchClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Managed Elasticsearch cluster. For more information, see
@@ -76,7 +75,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMdbElasticSearchClusterResult> Invoke(GetMdbElasticSearchClusterInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMdbElasticSearchClusterResult>("yandex:index/getMdbElasticSearchCluster:getMdbElasticSearchCluster", args ?? new GetMdbElasticSearchClusterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMdbElasticSearchClusterResult>("yandex:index/getMdbElasticSearchCluster:getMdbElasticSearchCluster", args ?? new GetMdbElasticSearchClusterInvokeArgs(), options.WithDefaults());
     }
 
 

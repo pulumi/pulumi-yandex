@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDataprocClusterResult> InvokeAsync(GetDataprocClusterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataprocClusterResult>("yandex:index/getDataprocCluster:getDataprocCluster", args ?? new GetDataprocClusterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDataprocClusterResult>("yandex:index/getDataprocCluster:getDataprocCluster", args ?? new GetDataprocClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Data Proc cluster. For more information, see [the official documentation](https://cloud.yandex.com/docs/data-proc/).
@@ -74,7 +73,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDataprocClusterResult> Invoke(GetDataprocClusterInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataprocClusterResult>("yandex:index/getDataprocCluster:getDataprocCluster", args ?? new GetDataprocClusterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDataprocClusterResult>("yandex:index/getDataprocCluster:getDataprocCluster", args ?? new GetDataprocClusterInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -39,7 +39,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("yandex:index/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("yandex:index/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

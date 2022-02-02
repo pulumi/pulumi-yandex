@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMessageQueueResult> InvokeAsync(GetMessageQueueArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMessageQueueResult>("yandex:index/getMessageQueue:getMessageQueue", args ?? new GetMessageQueueArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMessageQueueResult>("yandex:index/getMessageQueue:getMessageQueue", args ?? new GetMessageQueueArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Message Queue. For more information about Yandex Message Queue, see
@@ -70,7 +69,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMessageQueueResult> Invoke(GetMessageQueueInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMessageQueueResult>("yandex:index/getMessageQueue:getMessageQueue", args ?? new GetMessageQueueInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMessageQueueResult>("yandex:index/getMessageQueue:getMessageQueue", args ?? new GetMessageQueueInvokeArgs(), options.WithDefaults());
     }
 
 
