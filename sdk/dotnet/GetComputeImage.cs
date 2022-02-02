@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
     public static class GetComputeImage
     {
         public static Task<GetComputeImageResult> InvokeAsync(GetComputeImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeImageResult>("yandex:index/getComputeImage:getComputeImage", args ?? new GetComputeImageArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeImageResult>("yandex:index/getComputeImage:getComputeImage", args ?? new GetComputeImageArgs(), options.WithDefaults());
 
         public static Output<GetComputeImageResult> Invoke(GetComputeImageInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetComputeImageResult>("yandex:index/getComputeImage:getComputeImage", args ?? new GetComputeImageInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetComputeImageResult>("yandex:index/getComputeImage:getComputeImage", args ?? new GetComputeImageInvokeArgs(), options.WithDefaults());
     }
 
 

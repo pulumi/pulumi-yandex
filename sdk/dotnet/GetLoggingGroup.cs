@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
     public static class GetLoggingGroup
     {
         public static Task<GetLoggingGroupResult> InvokeAsync(GetLoggingGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoggingGroupResult>("yandex:index/getLoggingGroup:getLoggingGroup", args ?? new GetLoggingGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLoggingGroupResult>("yandex:index/getLoggingGroup:getLoggingGroup", args ?? new GetLoggingGroupArgs(), options.WithDefaults());
 
         public static Output<GetLoggingGroupResult> Invoke(GetLoggingGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLoggingGroupResult>("yandex:index/getLoggingGroup:getLoggingGroup", args ?? new GetLoggingGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetLoggingGroupResult>("yandex:index/getLoggingGroup:getLoggingGroup", args ?? new GetLoggingGroupInvokeArgs(), options.WithDefaults());
     }
 
 

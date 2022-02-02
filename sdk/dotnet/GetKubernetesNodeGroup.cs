@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesNodeGroupResult> InvokeAsync(GetKubernetesNodeGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesNodeGroupResult>("yandex:index/getKubernetesNodeGroup:getKubernetesNodeGroup", args ?? new GetKubernetesNodeGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesNodeGroupResult>("yandex:index/getKubernetesNodeGroup:getKubernetesNodeGroup", args ?? new GetKubernetesNodeGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Kubernetes Node Group. For more information, see
@@ -76,7 +75,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubernetesNodeGroupResult> Invoke(GetKubernetesNodeGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKubernetesNodeGroupResult>("yandex:index/getKubernetesNodeGroup:getKubernetesNodeGroup", args ?? new GetKubernetesNodeGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKubernetesNodeGroupResult>("yandex:index/getKubernetesNodeGroup:getKubernetesNodeGroup", args ?? new GetKubernetesNodeGroupInvokeArgs(), options.WithDefaults());
     }
 
 

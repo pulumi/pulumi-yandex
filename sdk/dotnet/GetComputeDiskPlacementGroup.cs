@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetComputeDiskPlacementGroupResult> InvokeAsync(GetComputeDiskPlacementGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeDiskPlacementGroupResult>("yandex:index/getComputeDiskPlacementGroup:getComputeDiskPlacementGroup", args ?? new GetComputeDiskPlacementGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeDiskPlacementGroupResult>("yandex:index/getComputeDiskPlacementGroup:getComputeDiskPlacementGroup", args ?? new GetComputeDiskPlacementGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Compute Disk Placement group. For more information, see
@@ -76,7 +75,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetComputeDiskPlacementGroupResult> Invoke(GetComputeDiskPlacementGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetComputeDiskPlacementGroupResult>("yandex:index/getComputeDiskPlacementGroup:getComputeDiskPlacementGroup", args ?? new GetComputeDiskPlacementGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetComputeDiskPlacementGroupResult>("yandex:index/getComputeDiskPlacementGroup:getComputeDiskPlacementGroup", args ?? new GetComputeDiskPlacementGroupInvokeArgs(), options.WithDefaults());
     }
 
 

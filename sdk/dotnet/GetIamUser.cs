@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [IAM User] that can be used by other resources.
         /// </summary>
         public static Task<GetIamUserResult> InvokeAsync(GetIamUserArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIamUserResult>("yandex:index/getIamUser:getIamUser", args ?? new GetIamUserArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIamUserResult>("yandex:index/getIamUser:getIamUser", args ?? new GetIamUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex IAM user account. For more information about accounts, see 
@@ -62,7 +61,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [IAM User] that can be used by other resources.
         /// </summary>
         public static Output<GetIamUserResult> Invoke(GetIamUserInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIamUserResult>("yandex:index/getIamUser:getIamUser", args ?? new GetIamUserInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIamUserResult>("yandex:index/getIamUser:getIamUser", args ?? new GetIamUserInvokeArgs(), options.WithDefaults());
     }
 
 

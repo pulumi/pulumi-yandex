@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [VPC Subnets] that can be used by other resources.
         /// </summary>
         public static Task<GetVpcSubnetResult> InvokeAsync(GetVpcSubnetArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcSubnetResult>("yandex:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcSubnetResult>("yandex:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex VPC subnet. For more information, see
@@ -62,7 +61,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [VPC Subnets] that can be used by other resources.
         /// </summary>
         public static Output<GetVpcSubnetResult> Invoke(GetVpcSubnetInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcSubnetResult>("yandex:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVpcSubnetResult>("yandex:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetInvokeArgs(), options.WithDefaults());
     }
 
 

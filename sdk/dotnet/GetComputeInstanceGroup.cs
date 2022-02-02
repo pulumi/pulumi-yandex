@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -16,13 +15,13 @@ namespace Pulumi.Yandex
         /// Get information about a Yandex Compute instance group.
         /// </summary>
         public static Task<GetComputeInstanceGroupResult> InvokeAsync(GetComputeInstanceGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeInstanceGroupResult>("yandex:index/getComputeInstanceGroup:getComputeInstanceGroup", args ?? new GetComputeInstanceGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeInstanceGroupResult>("yandex:index/getComputeInstanceGroup:getComputeInstanceGroup", args ?? new GetComputeInstanceGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Compute instance group.
         /// </summary>
         public static Output<GetComputeInstanceGroupResult> Invoke(GetComputeInstanceGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetComputeInstanceGroupResult>("yandex:index/getComputeInstanceGroup:getComputeInstanceGroup", args ?? new GetComputeInstanceGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetComputeInstanceGroupResult>("yandex:index/getComputeInstanceGroup:getComputeInstanceGroup", args ?? new GetComputeInstanceGroupInvokeArgs(), options.WithDefaults());
     }
 
 

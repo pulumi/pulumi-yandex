@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [Application Load Balancer HTTP Router] that can be used by other resources.
         /// </summary>
         public static Task<GetAlbHttpRouterResult> InvokeAsync(GetAlbHttpRouterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlbHttpRouterResult>("yandex:index/getAlbHttpRouter:getAlbHttpRouter", args ?? new GetAlbHttpRouterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAlbHttpRouterResult>("yandex:index/getAlbHttpRouter:getAlbHttpRouter", args ?? new GetAlbHttpRouterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Application Load Balancer HTTP Router. For more information, see
@@ -62,7 +61,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [Application Load Balancer HTTP Router] that can be used by other resources.
         /// </summary>
         public static Output<GetAlbHttpRouterResult> Invoke(GetAlbHttpRouterInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlbHttpRouterResult>("yandex:index/getAlbHttpRouter:getAlbHttpRouter", args ?? new GetAlbHttpRouterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAlbHttpRouterResult>("yandex:index/getAlbHttpRouter:getAlbHttpRouter", args ?? new GetAlbHttpRouterInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMdbRedisClusterResult> InvokeAsync(GetMdbRedisClusterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbRedisClusterResult>("yandex:index/getMdbRedisCluster:getMdbRedisCluster", args ?? new GetMdbRedisClusterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbRedisClusterResult>("yandex:index/getMdbRedisCluster:getMdbRedisCluster", args ?? new GetMdbRedisClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Managed Redis cluster. For more information, see
@@ -76,7 +75,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMdbRedisClusterResult> Invoke(GetMdbRedisClusterInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMdbRedisClusterResult>("yandex:index/getMdbRedisCluster:getMdbRedisCluster", args ?? new GetMdbRedisClusterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMdbRedisClusterResult>("yandex:index/getMdbRedisCluster:getMdbRedisCluster", args ?? new GetMdbRedisClusterInvokeArgs(), options.WithDefaults());
     }
 
 

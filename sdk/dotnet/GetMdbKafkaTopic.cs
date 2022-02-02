@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
     public static class GetMdbKafkaTopic
     {
         public static Task<GetMdbKafkaTopicResult> InvokeAsync(GetMdbKafkaTopicArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbKafkaTopicResult>("yandex:index/getMdbKafkaTopic:getMdbKafkaTopic", args ?? new GetMdbKafkaTopicArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbKafkaTopicResult>("yandex:index/getMdbKafkaTopic:getMdbKafkaTopic", args ?? new GetMdbKafkaTopicArgs(), options.WithDefaults());
 
         public static Output<GetMdbKafkaTopicResult> Invoke(GetMdbKafkaTopicInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMdbKafkaTopicResult>("yandex:index/getMdbKafkaTopic:getMdbKafkaTopic", args ?? new GetMdbKafkaTopicInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMdbKafkaTopicResult>("yandex:index/getMdbKafkaTopic:getMdbKafkaTopic", args ?? new GetMdbKafkaTopicInvokeArgs(), options.WithDefaults());
     }
 
 

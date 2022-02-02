@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetYdbDatabaseDedicatedResult> InvokeAsync(GetYdbDatabaseDedicatedArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetYdbDatabaseDedicatedResult>("yandex:index/getYdbDatabaseDedicated:getYdbDatabaseDedicated", args ?? new GetYdbDatabaseDedicatedArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetYdbDatabaseDedicatedResult>("yandex:index/getYdbDatabaseDedicated:getYdbDatabaseDedicated", args ?? new GetYdbDatabaseDedicatedArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Database (dedicated) cluster.
@@ -76,7 +75,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetYdbDatabaseDedicatedResult> Invoke(GetYdbDatabaseDedicatedInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetYdbDatabaseDedicatedResult>("yandex:index/getYdbDatabaseDedicated:getYdbDatabaseDedicated", args ?? new GetYdbDatabaseDedicatedInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetYdbDatabaseDedicatedResult>("yandex:index/getYdbDatabaseDedicated:getYdbDatabaseDedicated", args ?? new GetYdbDatabaseDedicatedInvokeArgs(), options.WithDefaults());
     }
 
 

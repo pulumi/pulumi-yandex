@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -53,7 +52,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define Security Group that can be used by other resources.
         /// </summary>
         public static Task<GetVpcSecurityGroupResult> InvokeAsync(GetVpcSecurityGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcSecurityGroupResult>("yandex:index/getVpcSecurityGroup:getVpcSecurityGroup", args ?? new GetVpcSecurityGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcSecurityGroupResult>("yandex:index/getVpcSecurityGroup:getVpcSecurityGroup", args ?? new GetVpcSecurityGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex VPC Security Group. For more information, see
@@ -96,7 +95,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define Security Group that can be used by other resources.
         /// </summary>
         public static Output<GetVpcSecurityGroupResult> Invoke(GetVpcSecurityGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcSecurityGroupResult>("yandex:index/getVpcSecurityGroup:getVpcSecurityGroup", args ?? new GetVpcSecurityGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVpcSecurityGroupResult>("yandex:index/getVpcSecurityGroup:getVpcSecurityGroup", args ?? new GetVpcSecurityGroupInvokeArgs(), options.WithDefaults());
     }
 
 

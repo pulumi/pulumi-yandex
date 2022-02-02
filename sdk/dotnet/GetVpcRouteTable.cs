@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [VPC Route Table] that can be used by other resources.
         /// </summary>
         public static Task<GetVpcRouteTableResult> InvokeAsync(GetVpcRouteTableArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcRouteTableResult>("yandex:index/getVpcRouteTable:getVpcRouteTable", args ?? new GetVpcRouteTableArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcRouteTableResult>("yandex:index/getVpcRouteTable:getVpcRouteTable", args ?? new GetVpcRouteTableArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex VPC route table. For more information, see
@@ -62,7 +61,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [VPC Route Table] that can be used by other resources.
         /// </summary>
         public static Output<GetVpcRouteTableResult> Invoke(GetVpcRouteTableInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcRouteTableResult>("yandex:index/getVpcRouteTable:getVpcRouteTable", args ?? new GetVpcRouteTableInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVpcRouteTableResult>("yandex:index/getVpcRouteTable:getVpcRouteTable", args ?? new GetVpcRouteTableInvokeArgs(), options.WithDefaults());
     }
 
 

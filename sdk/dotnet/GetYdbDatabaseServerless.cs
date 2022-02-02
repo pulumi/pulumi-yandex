@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetYdbDatabaseServerlessResult> InvokeAsync(GetYdbDatabaseServerlessArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetYdbDatabaseServerlessResult>("yandex:index/getYdbDatabaseServerless:getYdbDatabaseServerless", args ?? new GetYdbDatabaseServerlessArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetYdbDatabaseServerlessResult>("yandex:index/getYdbDatabaseServerless:getYdbDatabaseServerless", args ?? new GetYdbDatabaseServerlessArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex Database serverless cluster.
@@ -76,7 +75,7 @@ namespace Pulumi.Yandex
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetYdbDatabaseServerlessResult> Invoke(GetYdbDatabaseServerlessInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetYdbDatabaseServerlessResult>("yandex:index/getYdbDatabaseServerless:getYdbDatabaseServerless", args ?? new GetYdbDatabaseServerlessInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetYdbDatabaseServerlessResult>("yandex:index/getYdbDatabaseServerless:getYdbDatabaseServerless", args ?? new GetYdbDatabaseServerlessInvokeArgs(), options.WithDefaults());
     }
 
 

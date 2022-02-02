@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
     public static class GetMdbGreenplumCluster
     {
         public static Task<GetMdbGreenplumClusterResult> InvokeAsync(GetMdbGreenplumClusterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbGreenplumClusterResult>("yandex:index/getMdbGreenplumCluster:getMdbGreenplumCluster", args ?? new GetMdbGreenplumClusterArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMdbGreenplumClusterResult>("yandex:index/getMdbGreenplumCluster:getMdbGreenplumCluster", args ?? new GetMdbGreenplumClusterArgs(), options.WithDefaults());
 
         public static Output<GetMdbGreenplumClusterResult> Invoke(GetMdbGreenplumClusterInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMdbGreenplumClusterResult>("yandex:index/getMdbGreenplumCluster:getMdbGreenplumCluster", args ?? new GetMdbGreenplumClusterInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMdbGreenplumClusterResult>("yandex:index/getMdbGreenplumCluster:getMdbGreenplumCluster", args ?? new GetMdbGreenplumClusterInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Yandex
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [VPC Networks] that can be used by other resources.
         /// </summary>
         public static Task<GetVpcNetworkResult> InvokeAsync(GetVpcNetworkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcNetworkResult>("yandex:index/getVpcNetwork:getVpcNetwork", args ?? new GetVpcNetworkArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcNetworkResult>("yandex:index/getVpcNetwork:getVpcNetwork", args ?? new GetVpcNetworkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Yandex VPC network. For more information, see
@@ -62,7 +61,7 @@ namespace Pulumi.Yandex
         /// This data source is used to define [VPC Networks] that can be used by other resources.
         /// </summary>
         public static Output<GetVpcNetworkResult> Invoke(GetVpcNetworkInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcNetworkResult>("yandex:index/getVpcNetwork:getVpcNetwork", args ?? new GetVpcNetworkInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVpcNetworkResult>("yandex:index/getVpcNetwork:getVpcNetwork", args ?? new GetVpcNetworkInvokeArgs(), options.WithDefaults());
     }
 
 
