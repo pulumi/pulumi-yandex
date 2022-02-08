@@ -2044,6 +2044,415 @@ export interface DataprocClusterClusterConfigSubclusterSpecResources {
     resourcePresetId: pulumi.Input<string>;
 }
 
+export interface DatatransferEndpointSettings {
+    /**
+     * Settings specific to the MySQL source endpoint.
+     */
+    mysqlSource?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlSource>;
+    /**
+     * Settings specific to the MySQL target endpoint.
+     */
+    mysqlTarget?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlTarget>;
+    /**
+     * Settings specific to the PostgreSQL source endpoint.
+     */
+    postgresSource?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresSource>;
+    /**
+     * Settings specific to the PostgreSQL target endpoint.
+     */
+    postgresTarget?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresTarget>;
+}
+
+export interface DatatransferEndpointSettingsMysqlSource {
+    /**
+     * Connection settings. The structure is documented below.
+     */
+    connection?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlSourceConnection>;
+    /**
+     * Name of the database to transfer.
+     */
+    database?: pulumi.Input<string>;
+    /**
+     * Opposite of `includeTableRegex`. The tables matching the specified regular expressions will not be transferred.
+     */
+    excludeTablesRegexes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of regular expressions of table names which should be transferred. A table name is formatted as schemaname.tablename. For example, a single regular expression may look like `^mydb.employees$`.
+     */
+    includeTablesRegexes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines which database schema objects should be transferred, e.g. views, functions, etc.
+     */
+    objectTransferSettings?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlSourceObjectTransferSettings>;
+    /**
+     * Password for the database access. This is a block with a single field named `raw` which should contain the password.
+     */
+    password?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlSourcePassword>;
+    /**
+     * Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.
+     */
+    timezone?: pulumi.Input<string>;
+    /**
+     * User for the database access.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnection {
+    /**
+     * Identifier of the Managed MySQL cluster.
+     */
+    mdbClusterId?: pulumi.Input<string>;
+    /**
+     * Connection settings of the on-premise MySQL server.
+     */
+    onPremise?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremise>;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnectionOnPremise {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: pulumi.Input<string>;
+    /**
+     * List of host names of the PostgreSQL server. Exactly one host is expected currently.
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Port for the database connection.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+     */
+    tlsMode?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode>;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode {
+    /**
+     * Empty block designating that the connection is not secured, i.e. plaintext connection.
+     */
+    disabled?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled>;
+    /**
+     * If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+     */
+    enabled?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled>;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled {
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceObjectTransferSettings {
+    routine?: pulumi.Input<string>;
+    trigger?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourcePassword {
+    raw?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsMysqlTarget {
+    /**
+     * Connection settings. The structure is documented below.
+     */
+    connection?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlTargetConnection>;
+    /**
+     * Name of the database to transfer.
+     */
+    database?: pulumi.Input<string>;
+    /**
+     * Password for the database access. This is a block with a single field named `raw` which should contain the password.
+     */
+    password?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlTargetPassword>;
+    /**
+     * Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `serviceSchema` implies schema "public".
+     */
+    serviceSchema?: pulumi.Input<string>;
+    /**
+     * When true, disables foreign key checks. See [foreignKeyChecks](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_foreign_key_checks). False by default.
+     */
+    skipConstraintChecks?: pulumi.Input<boolean>;
+    /**
+     * [sqlMode](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html) to use when interacting with the server. Defaults to "NO_AUTO_VALUE_ON_ZERO,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION".
+     */
+    sqlMode?: pulumi.Input<string>;
+    /**
+     * Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.
+     */
+    timezone?: pulumi.Input<string>;
+    /**
+     * User for the database access.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnection {
+    /**
+     * Identifier of the Managed MySQL cluster.
+     */
+    mdbClusterId?: pulumi.Input<string>;
+    /**
+     * Connection settings of the on-premise MySQL server.
+     */
+    onPremise?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremise>;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnectionOnPremise {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: pulumi.Input<string>;
+    /**
+     * List of host names of the PostgreSQL server. Exactly one host is expected currently.
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Port for the database connection.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+     */
+    tlsMode?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode>;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode {
+    /**
+     * Empty block designating that the connection is not secured, i.e. plaintext connection.
+     */
+    disabled?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled>;
+    /**
+     * If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+     */
+    enabled?: pulumi.Input<inputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled>;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled {
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetPassword {
+    raw?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsPostgresSource {
+    collapseInheritTable?: pulumi.Input<boolean>;
+    /**
+     * Connection settings. The structure is documented below.
+     */
+    connection?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresSourceConnection>;
+    /**
+     * Name of the database to transfer.
+     */
+    database?: pulumi.Input<string>;
+    /**
+     * List of tables which will not be transfered, formatted as `schemaname.tablename`.
+     */
+    excludeTables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of tables to transfer, formatted as `schemaname.tablename`. If omitted or an empty list is specified, all tables will be transferred.
+     */
+    includeTables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines which database schema objects should be transferred, e.g. views, functions, etc.
+     */
+    objectTransferSettings?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresSourceObjectTransferSettings>;
+    /**
+     * Password for the database access. This is a block with a single field named `raw` which should contain the password.
+     */
+    password?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresSourcePassword>;
+    /**
+     * Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `serviceSchema` implies schema "public".
+     */
+    serviceSchema?: pulumi.Input<string>;
+    /**
+     * Maximum WAL size held by the replication slot, in gigabytes. Exceeding this limit will result in a replication failure and deletion of the replication slot. Unlimited by default.
+     */
+    slotGigabyteLagLimit?: pulumi.Input<number>;
+    /**
+     * User for the database access.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnection {
+    /**
+     * Identifier of the Managed MySQL cluster.
+     */
+    mdbClusterId?: pulumi.Input<string>;
+    /**
+     * Connection settings of the on-premise MySQL server.
+     */
+    onPremise?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremise>;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnectionOnPremise {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: pulumi.Input<string>;
+    /**
+     * List of host names of the PostgreSQL server. Exactly one host is expected currently.
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Port for the database connection.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+     */
+    tlsMode?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode>;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode {
+    /**
+     * Empty block designating that the connection is not secured, i.e. plaintext connection.
+     */
+    disabled?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled>;
+    /**
+     * If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+     */
+    enabled?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled>;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled {
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceObjectTransferSettings {
+    cast?: pulumi.Input<string>;
+    collation?: pulumi.Input<string>;
+    constraint?: pulumi.Input<string>;
+    defaultValues?: pulumi.Input<string>;
+    fkConstraint?: pulumi.Input<string>;
+    function?: pulumi.Input<string>;
+    index?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string>;
+    rule?: pulumi.Input<string>;
+    sequence?: pulumi.Input<string>;
+    sequenceOwnedBy?: pulumi.Input<string>;
+    table?: pulumi.Input<string>;
+    trigger?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourcePassword {
+    raw?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsPostgresTarget {
+    /**
+     * Connection settings. The structure is documented below.
+     */
+    connection?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresTargetConnection>;
+    /**
+     * Name of the database to transfer.
+     */
+    database?: pulumi.Input<string>;
+    /**
+     * Password for the database access. This is a block with a single field named `raw` which should contain the password.
+     */
+    password?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresTargetPassword>;
+    /**
+     * User for the database access.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnection {
+    /**
+     * Identifier of the Managed MySQL cluster.
+     */
+    mdbClusterId?: pulumi.Input<string>;
+    /**
+     * Connection settings of the on-premise MySQL server.
+     */
+    onPremise?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremise>;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnectionOnPremise {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: pulumi.Input<string>;
+    /**
+     * List of host names of the PostgreSQL server. Exactly one host is expected currently.
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Port for the database connection.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+     */
+    tlsMode?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode>;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode {
+    /**
+     * Empty block designating that the connection is not secured, i.e. plaintext connection.
+     */
+    disabled?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled>;
+    /**
+     * If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+     */
+    enabled?: pulumi.Input<inputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled>;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled {
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: pulumi.Input<string>;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetPassword {
+    raw?: pulumi.Input<string>;
+}
+
 export interface FunctionContent {
     zipFilename: pulumi.Input<string>;
 }
@@ -2115,37 +2524,6 @@ export interface FunctionTriggerTimer {
     cronExpression: pulumi.Input<string>;
 }
 
-export interface GetAlbBackendGroupGrpcBackendArgs {
-    /**
-     * Healthcheck specification that will be used by this backend. Structure is documented below.
-     */
-    healthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckArgs>;
-    /**
-     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
-     */
-    loadBalancingConfig?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs>;
-    /**
-     * - Name of the Backend Group.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Port for incoming traffic.
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * References target groups for the backend.
-     */
-    targetGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Tls specification that will be used by this backend. Structure is documented below.
-     */
-    tls?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendTlsArgs>;
-    /**
-     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
-     */
-    weight?: pulumi.Input<number>;
-}
-
 export interface GetAlbBackendGroupGrpcBackend {
     /**
      * Healthcheck specification that will be used by this backend. Structure is documented below.
@@ -2177,43 +2555,35 @@ export interface GetAlbBackendGroupGrpcBackend {
     weight?: number;
 }
 
-export interface GetAlbBackendGroupGrpcBackendHealthcheckArgs {
+export interface GetAlbBackendGroupGrpcBackendArgs {
     /**
-     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
      */
-    grpcHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs>;
+    healthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckArgs>;
     /**
-     * Optional alternative port for health checking.
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
      */
-    healthcheckPort?: pulumi.Input<number>;
+    loadBalancingConfig?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs>;
     /**
-     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     * - Name of the Backend Group.
      */
-    healthyThreshold?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
     /**
-     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     * Port for incoming traffic.
      */
-    httpHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs>;
+    port?: pulumi.Input<number>;
     /**
-     * Interval between health checks.
+     * References target groups for the backend.
      */
-    interval?: pulumi.Input<string>;
+    targetGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     * Tls specification that will be used by this backend. Structure is documented below.
      */
-    intervalJitterPercent?: pulumi.Input<number>;
+    tls?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendTlsArgs>;
     /**
-     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
      */
-    streamHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs>;
-    /**
-     * Time to wait for a health check response.
-     */
-    timeout?: pulumi.Input<string>;
-    /**
-     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
-     */
-    unhealthyThreshold?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheck {
@@ -2255,11 +2625,43 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheck {
     unhealthyThreshold?: number;
 }
 
-export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs {
+export interface GetAlbBackendGroupGrpcBackendHealthcheckArgs {
     /**
-     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     * Grpc Healthcheck specification that will be used by this healthcheck. Structure is documented below.
      */
-    serviceName?: pulumi.Input<string>;
+    grpcHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs>;
+    /**
+     * Optional alternative port for health checking.
+     */
+    healthcheckPort?: pulumi.Input<number>;
+    /**
+     * Number of consecutive successful health checks required to promote endpoint into the healthy state. 0 means 1. Note that during startup, only a single successful health check is required to mark a host healthy.
+     */
+    healthyThreshold?: pulumi.Input<number>;
+    /**
+     * Http Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    httpHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs>;
+    /**
+     * Interval between health checks.
+     */
+    interval?: pulumi.Input<string>;
+    /**
+     * An optional jitter amount as a percentage of interval. If specified, during every interval value of (interval_ms * intervalJitterPercent / 100) will be added to the wait time.
+     */
+    intervalJitterPercent?: pulumi.Input<number>;
+    /**
+     * Stream Healthcheck specification that will be used by this healthcheck. Structure is documented below.
+     */
+    streamHealthcheck?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs>;
+    /**
+     * Time to wait for a health check response.
+     */
+    timeout?: pulumi.Input<string>;
+    /**
+     * Number of consecutive failed health checks required to demote endpoint into the unhealthy state. 0 means 1. Note that for HTTP health checks, a single 503 immediately makes endpoint unhealthy.
+     */
+    unhealthyThreshold?: pulumi.Input<number>;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
@@ -2267,6 +2669,13 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheck {
      * Optional service name for grpc.health.v1.HealthCheckRequest message.
      */
     serviceName?: string;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckGrpcHealthcheckArgs {
+    /**
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
+     */
+    serviceName?: pulumi.Input<string>;
 }
 
 export interface GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheck {
@@ -2299,17 +2708,6 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheckHttpHealthcheckArgs {
     path?: pulumi.Input<string>;
 }
 
-export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
-    /**
-     * Optional text to search in reply.
-     */
-    receive?: string;
-    /**
-     * Optional message to send. If empty, it's a connect-only health check.
-     */
-    send?: string;
-}
-
 export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs {
     /**
      * Optional text to search in reply.
@@ -2319,6 +2717,17 @@ export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheckArgs {
      * Optional message to send. If empty, it's a connect-only health check.
      */
     send?: pulumi.Input<string>;
+}
+
+export interface GetAlbBackendGroupGrpcBackendHealthcheckStreamHealthcheck {
+    /**
+     * Optional text to search in reply.
+     */
+    receive?: string;
+    /**
+     * Optional message to send. If empty, it's a connect-only health check.
+     */
+    send?: string;
 }
 
 export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfig {
@@ -2351,16 +2760,6 @@ export interface GetAlbBackendGroupGrpcBackendLoadBalancingConfigArgs {
     strictLocality?: pulumi.Input<boolean>;
 }
 
-export interface GetAlbBackendGroupGrpcBackendTls {
-    /**
-     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
-     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
-     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
-     */
-    sni?: string;
-    validationContext?: inputs.GetAlbBackendGroupGrpcBackendTlsValidationContext;
-}
-
 export interface GetAlbBackendGroupGrpcBackendTlsArgs {
     /**
      * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
@@ -2371,6 +2770,16 @@ export interface GetAlbBackendGroupGrpcBackendTlsArgs {
     validationContext?: pulumi.Input<inputs.GetAlbBackendGroupGrpcBackendTlsValidationContextArgs>;
 }
 
+export interface GetAlbBackendGroupGrpcBackendTls {
+    /**
+     * [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) string for TLS connections.
+     * * `validation_context.0.trusted_ca_id` - Trusted CA certificate ID in the Certificate Manager.
+     * * `validation_context.0.trusted_ca_bytes` - PEM-encoded trusted CA certificate chain.
+     */
+    sni?: string;
+    validationContext?: inputs.GetAlbBackendGroupGrpcBackendTlsValidationContext;
+}
+
 export interface GetAlbBackendGroupGrpcBackendTlsValidationContext {
     trustedCaBytes?: string;
     trustedCaId?: string;
@@ -2379,41 +2788,6 @@ export interface GetAlbBackendGroupGrpcBackendTlsValidationContext {
 export interface GetAlbBackendGroupGrpcBackendTlsValidationContextArgs {
     trustedCaBytes?: pulumi.Input<string>;
     trustedCaId?: pulumi.Input<string>;
-}
-
-export interface GetAlbBackendGroupHttpBackendArgs {
-    /**
-     * Healthcheck specification that will be used by this backend. Structure is documented below.
-     */
-    healthcheck?: pulumi.Input<inputs.GetAlbBackendGroupHttpBackendHealthcheckArgs>;
-    /**
-     * If set, health checks will use HTTP2.
-     */
-    http2?: pulumi.Input<boolean>;
-    /**
-     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
-     */
-    loadBalancingConfig?: pulumi.Input<inputs.GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs>;
-    /**
-     * - Name of the Backend Group.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Port for incoming traffic.
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * References target groups for the backend.
-     */
-    targetGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Tls specification that will be used by this backend. Structure is documented below.
-     */
-    tls?: pulumi.Input<inputs.GetAlbBackendGroupHttpBackendTlsArgs>;
-    /**
-     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
-     */
-    weight?: pulumi.Input<number>;
 }
 
 export interface GetAlbBackendGroupHttpBackend {
@@ -2449,6 +2823,41 @@ export interface GetAlbBackendGroupHttpBackend {
      * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
      */
     weight?: number;
+}
+
+export interface GetAlbBackendGroupHttpBackendArgs {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: pulumi.Input<inputs.GetAlbBackendGroupHttpBackendHealthcheckArgs>;
+    /**
+     * If set, health checks will use HTTP2.
+     */
+    http2?: pulumi.Input<boolean>;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: pulumi.Input<inputs.GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs>;
+    /**
+     * - Name of the Backend Group.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: pulumi.Input<inputs.GetAlbBackendGroupHttpBackendTlsArgs>;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: pulumi.Input<number>;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheck {
@@ -2529,13 +2938,6 @@ export interface GetAlbBackendGroupHttpBackendHealthcheckArgs {
     unhealthyThreshold?: pulumi.Input<number>;
 }
 
-export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs {
-    /**
-     * Optional service name for grpc.health.v1.HealthCheckRequest message.
-     */
-    serviceName?: pulumi.Input<string>;
-}
-
 export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
     /**
      * Optional service name for grpc.health.v1.HealthCheckRequest message.
@@ -2543,19 +2945,11 @@ export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheck {
     serviceName?: string;
 }
 
-export interface GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
+export interface GetAlbBackendGroupHttpBackendHealthcheckGrpcHealthcheckArgs {
     /**
-     * Optional "Host" HTTP header value.
+     * Optional service name for grpc.health.v1.HealthCheckRequest message.
      */
-    host?: string;
-    /**
-     * If set, health checks will use HTTP2.
-     */
-    http2?: boolean;
-    /**
-     * HTTP path.
-     */
-    path?: string;
+    serviceName?: pulumi.Input<string>;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs {
@@ -2573,15 +2967,19 @@ export interface GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheckArgs {
     path?: pulumi.Input<string>;
 }
 
-export interface GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
+export interface GetAlbBackendGroupHttpBackendHealthcheckHttpHealthcheck {
     /**
-     * Optional text to search in reply.
+     * Optional "Host" HTTP header value.
      */
-    receive?: string;
+    host?: string;
     /**
-     * Optional message to send. If empty, it's a connect-only health check.
+     * If set, health checks will use HTTP2.
      */
-    send?: string;
+    http2?: boolean;
+    /**
+     * HTTP path.
+     */
+    path?: string;
 }
 
 export interface GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs {
@@ -2595,19 +2993,15 @@ export interface GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheckArgs {
     send?: pulumi.Input<string>;
 }
 
-export interface GetAlbBackendGroupHttpBackendLoadBalancingConfig {
+export interface GetAlbBackendGroupHttpBackendHealthcheckStreamHealthcheck {
     /**
-     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     * Optional text to search in reply.
      */
-    localityAwareRoutingPercent?: number;
+    receive?: string;
     /**
-     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     * Optional message to send. If empty, it's a connect-only health check.
      */
-    panicThreshold?: number;
-    /**
-     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
-     */
-    strictLocality?: boolean;
+    send?: string;
 }
 
 export interface GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs {
@@ -2623,6 +3017,21 @@ export interface GetAlbBackendGroupHttpBackendLoadBalancingConfigArgs {
      * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
      */
     strictLocality?: pulumi.Input<boolean>;
+}
+
+export interface GetAlbBackendGroupHttpBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: boolean;
 }
 
 export interface GetAlbBackendGroupHttpBackendTlsArgs {
@@ -2645,45 +3054,14 @@ export interface GetAlbBackendGroupHttpBackendTls {
     validationContext?: inputs.GetAlbBackendGroupHttpBackendTlsValidationContext;
 }
 
-export interface GetAlbBackendGroupHttpBackendTlsValidationContext {
-    trustedCaBytes?: string;
-    trustedCaId?: string;
-}
-
 export interface GetAlbBackendGroupHttpBackendTlsValidationContextArgs {
     trustedCaBytes?: pulumi.Input<string>;
     trustedCaId?: pulumi.Input<string>;
 }
 
-export interface GetAlbBackendGroupStreamBackend {
-    /**
-     * Healthcheck specification that will be used by this backend. Structure is documented below.
-     */
-    healthcheck?: inputs.GetAlbBackendGroupStreamBackendHealthcheck;
-    /**
-     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
-     */
-    loadBalancingConfig?: inputs.GetAlbBackendGroupStreamBackendLoadBalancingConfig;
-    /**
-     * - Name of the Backend Group.
-     */
-    name?: string;
-    /**
-     * Port for incoming traffic.
-     */
-    port?: number;
-    /**
-     * References target groups for the backend.
-     */
-    targetGroupIds?: string[];
-    /**
-     * Tls specification that will be used by this backend. Structure is documented below.
-     */
-    tls?: inputs.GetAlbBackendGroupStreamBackendTls;
-    /**
-     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
-     */
-    weight?: number;
+export interface GetAlbBackendGroupHttpBackendTlsValidationContext {
+    trustedCaBytes?: string;
+    trustedCaId?: string;
 }
 
 export interface GetAlbBackendGroupStreamBackendArgs {
@@ -2715,6 +3093,37 @@ export interface GetAlbBackendGroupStreamBackendArgs {
      * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
      */
     weight?: pulumi.Input<number>;
+}
+
+export interface GetAlbBackendGroupStreamBackend {
+    /**
+     * Healthcheck specification that will be used by this backend. Structure is documented below.
+     */
+    healthcheck?: inputs.GetAlbBackendGroupStreamBackendHealthcheck;
+    /**
+     * Load Balancing Config specification that will be used by this backend. Structure is documented below.
+     */
+    loadBalancingConfig?: inputs.GetAlbBackendGroupStreamBackendLoadBalancingConfig;
+    /**
+     * - Name of the Backend Group.
+     */
+    name?: string;
+    /**
+     * Port for incoming traffic.
+     */
+    port?: number;
+    /**
+     * References target groups for the backend.
+     */
+    targetGroupIds?: string[];
+    /**
+     * Tls specification that will be used by this backend. Structure is documented below.
+     */
+    tls?: inputs.GetAlbBackendGroupStreamBackendTls;
+    /**
+     * Weight of the backend. Traffic will be split between backends of the same BackendGroup according to their weights.
+     */
+    weight?: number;
 }
 
 export interface GetAlbBackendGroupStreamBackendHealthcheck {
@@ -2861,21 +3270,6 @@ export interface GetAlbBackendGroupStreamBackendHealthcheckStreamHealthcheckArgs
     send?: pulumi.Input<string>;
 }
 
-export interface GetAlbBackendGroupStreamBackendLoadBalancingConfig {
-    /**
-     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
-     */
-    localityAwareRoutingPercent?: number;
-    /**
-     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
-     */
-    panicThreshold?: number;
-    /**
-     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
-     */
-    strictLocality?: boolean;
-}
-
 export interface GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs {
     /**
      * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
@@ -2889,6 +3283,21 @@ export interface GetAlbBackendGroupStreamBackendLoadBalancingConfigArgs {
      * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
      */
     strictLocality?: pulumi.Input<boolean>;
+}
+
+export interface GetAlbBackendGroupStreamBackendLoadBalancingConfig {
+    /**
+     * Percent of traffic to be sent to the same availability zone. The rest will be equally divided between other zones.
+     */
+    localityAwareRoutingPercent?: number;
+    /**
+     * If percentage of healthy hosts in the backend is lower than panic_threshold, traffic will be routed to all backends no matter what the health status is. This helps to avoid healthy backends overloading  when everything is bad. Zero means no panic threshold.
+     */
+    panicThreshold?: number;
+    /**
+     * If set, will route requests only to the same availability zone. Balancer won't know about endpoints in other zones.
+     */
+    strictLocality?: boolean;
 }
 
 export interface GetAlbBackendGroupStreamBackendTls {
@@ -2911,14 +3320,14 @@ export interface GetAlbBackendGroupStreamBackendTlsArgs {
     validationContext?: pulumi.Input<inputs.GetAlbBackendGroupStreamBackendTlsValidationContextArgs>;
 }
 
-export interface GetAlbBackendGroupStreamBackendTlsValidationContextArgs {
-    trustedCaBytes?: pulumi.Input<string>;
-    trustedCaId?: pulumi.Input<string>;
-}
-
 export interface GetAlbBackendGroupStreamBackendTlsValidationContext {
     trustedCaBytes?: string;
     trustedCaId?: string;
+}
+
+export interface GetAlbBackendGroupStreamBackendTlsValidationContextArgs {
+    trustedCaBytes?: pulumi.Input<string>;
+    trustedCaId?: pulumi.Input<string>;
 }
 
 export interface GetCdnResourceOptions {
@@ -3097,38 +3506,32 @@ export interface GetCdnResourceOptionsArgs {
     staticResponseHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
-export interface GetCdnResourceSslCertificateArgs {
-    certificateManagerId?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    type: pulumi.Input<string>;
-}
-
 export interface GetCdnResourceSslCertificate {
     certificateManagerId?: string;
     status?: string;
     type: string;
 }
 
-export interface GetComputeDiskDiskPlacementPolicyArgs {
-    diskPlacementGroupId: pulumi.Input<string>;
+export interface GetCdnResourceSslCertificateArgs {
+    certificateManagerId?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }
 
 export interface GetComputeDiskDiskPlacementPolicy {
     diskPlacementGroupId: string;
 }
 
-export interface GetComputeInstancePlacementPolicyArgs {
-    placementGroupId: pulumi.Input<string>;
+export interface GetComputeDiskDiskPlacementPolicyArgs {
+    diskPlacementGroupId: pulumi.Input<string>;
 }
 
 export interface GetComputeInstancePlacementPolicy {
     placementGroupId: string;
 }
 
-export interface GetFunctionScalingPolicyPolicy {
-    tag?: string;
-    zoneInstancesLimit?: number;
-    zoneRequestsLimit?: number;
+export interface GetComputeInstancePlacementPolicyArgs {
+    placementGroupId: pulumi.Input<string>;
 }
 
 export interface GetFunctionScalingPolicyPolicyArgs {
@@ -3137,19 +3540,10 @@ export interface GetFunctionScalingPolicyPolicyArgs {
     zoneRequestsLimit?: pulumi.Input<number>;
 }
 
-export interface GetIamPolicyBinding {
-    /**
-     * An array of identities that will be granted the privilege in the `role`.
-     * Each entry can have one of the following values:
-     * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
-     * * **serviceAccount:{service_account_id}**: A unique service account ID.
-     */
-    members: string[];
-    /**
-     * The role/permission that will be granted to the members.
-     * See the [IAM Roles] documentation for a complete list of roles.
-     */
-    role: string;
+export interface GetFunctionScalingPolicyPolicy {
+    tag?: string;
+    zoneInstancesLimit?: number;
+    zoneRequestsLimit?: number;
 }
 
 export interface GetIamPolicyBindingArgs {
@@ -3167,11 +3561,19 @@ export interface GetIamPolicyBindingArgs {
     role: pulumi.Input<string>;
 }
 
-export interface GetMdbClickhouseClusterCloudStorage {
+export interface GetIamPolicyBinding {
     /**
-     * (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
+     * An array of identities that will be granted the privilege in the `role`.
+     * Each entry can have one of the following values:
+     * * **userAccount:{user_id}**: A unique user ID that represents a specific Yandex account.
+     * * **serviceAccount:{service_account_id}**: A unique service account ID.
      */
-    enabled: boolean;
+    members: string[];
+    /**
+     * The role/permission that will be granted to the members.
+     * See the [IAM Roles] documentation for a complete list of roles.
+     */
+    role: string;
 }
 
 export interface GetMdbClickhouseClusterCloudStorageArgs {
@@ -3179,6 +3581,13 @@ export interface GetMdbClickhouseClusterCloudStorageArgs {
      * (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
      */
     enabled: pulumi.Input<boolean>;
+}
+
+export interface GetMdbClickhouseClusterCloudStorage {
+    /**
+     * (Required) Whether to use Yandex Object Storage for storing ClickHouse data. Can be either `true` or `false`.
+     */
+    enabled: boolean;
 }
 
 export interface GetMdbKafkaClusterConfig {
@@ -3251,17 +3660,6 @@ export interface GetMdbKafkaClusterConfigArgs {
     zookeeper?: pulumi.Input<inputs.GetMdbKafkaClusterConfigZookeeperArgs>;
 }
 
-export interface GetMdbKafkaClusterConfigKafka {
-    /**
-     * (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
-     */
-    kafkaConfig?: inputs.GetMdbKafkaClusterConfigKafkaKafkaConfig;
-    /**
-     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
-     */
-    resources: inputs.GetMdbKafkaClusterConfigKafkaResources;
-}
-
 export interface GetMdbKafkaClusterConfigKafkaArgs {
     /**
      * (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
@@ -3271,6 +3669,17 @@ export interface GetMdbKafkaClusterConfigKafkaArgs {
      * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
      */
     resources: pulumi.Input<inputs.GetMdbKafkaClusterConfigKafkaResourcesArgs>;
+}
+
+export interface GetMdbKafkaClusterConfigKafka {
+    /**
+     * (Optional) User-defined settings for the Kafka cluster. The structure is documented below.
+     */
+    kafkaConfig?: inputs.GetMdbKafkaClusterConfigKafkaKafkaConfig;
+    /**
+     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
+     */
+    resources: inputs.GetMdbKafkaClusterConfigKafkaResources;
 }
 
 export interface GetMdbKafkaClusterConfigKafkaKafkaConfigArgs {
@@ -3309,19 +3718,6 @@ export interface GetMdbKafkaClusterConfigKafkaKafkaConfig {
     socketSendBufferBytes?: string;
 }
 
-export interface GetMdbKafkaClusterConfigKafkaResources {
-    /**
-     * (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
-     */
-    diskSize: number;
-    /**
-     * (Optional) Type of the storage of ZooKeeper hosts.
-     * For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
-     */
-    diskTypeId: string;
-    resourcePresetId: string;
-}
-
 export interface GetMdbKafkaClusterConfigKafkaResourcesArgs {
     /**
      * (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
@@ -3335,11 +3731,17 @@ export interface GetMdbKafkaClusterConfigKafkaResourcesArgs {
     resourcePresetId: pulumi.Input<string>;
 }
 
-export interface GetMdbKafkaClusterConfigZookeeper {
+export interface GetMdbKafkaClusterConfigKafkaResources {
     /**
-     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
+     * (Optional) Volume of the storage available to a ZooKeeper host, in gigabytes.
      */
-    resources?: inputs.GetMdbKafkaClusterConfigZookeeperResources;
+    diskSize: number;
+    /**
+     * (Optional) Type of the storage of ZooKeeper hosts.
+     * For more information see [the official documentation](https://cloud.yandex.com/docs/managed-kafka/concepts/storage).
+     */
+    diskTypeId: string;
+    resourcePresetId: string;
 }
 
 export interface GetMdbKafkaClusterConfigZookeeperArgs {
@@ -3347,6 +3749,13 @@ export interface GetMdbKafkaClusterConfigZookeeperArgs {
      * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
      */
     resources?: pulumi.Input<inputs.GetMdbKafkaClusterConfigZookeeperResourcesArgs>;
+}
+
+export interface GetMdbKafkaClusterConfigZookeeper {
+    /**
+     * (Optional) Resources allocated to hosts of the ZooKeeper subcluster. The structure is documented below.
+     */
+    resources?: inputs.GetMdbKafkaClusterConfigZookeeperResources;
 }
 
 export interface GetMdbKafkaClusterConfigZookeeperResourcesArgs {
@@ -3375,29 +3784,6 @@ export interface GetMdbKafkaClusterConfigZookeeperResources {
     resourcePresetId?: string;
 }
 
-export interface GetMdbKafkaClusterTopic {
-    /**
-     * The ID of the Kafka cluster.
-     */
-    clusterId: string;
-    /**
-     * The name of the Kafka cluster.
-     */
-    name: string;
-    /**
-     * (Required) The number of the topic's partitions.
-     */
-    partitions: number;
-    /**
-     * (Required) Amount of data copies (replicas) for the topic in the cluster.
-     */
-    replicationFactor: number;
-    /**
-     * (Required) User-defined settings for the topic. The structure is documented below.
-     */
-    topicConfig?: inputs.GetMdbKafkaClusterTopicTopicConfig;
-}
-
 export interface GetMdbKafkaClusterTopicArgs {
     /**
      * The ID of the Kafka cluster.
@@ -3419,6 +3805,29 @@ export interface GetMdbKafkaClusterTopicArgs {
      * (Required) User-defined settings for the topic. The structure is documented below.
      */
     topicConfig?: pulumi.Input<inputs.GetMdbKafkaClusterTopicTopicConfigArgs>;
+}
+
+export interface GetMdbKafkaClusterTopic {
+    /**
+     * The ID of the Kafka cluster.
+     */
+    clusterId: string;
+    /**
+     * The name of the Kafka cluster.
+     */
+    name: string;
+    /**
+     * (Required) The number of the topic's partitions.
+     */
+    partitions: number;
+    /**
+     * (Required) Amount of data copies (replicas) for the topic in the cluster.
+     */
+    replicationFactor: number;
+    /**
+     * (Required) User-defined settings for the topic. The structure is documented below.
+     */
+    topicConfig?: inputs.GetMdbKafkaClusterTopicTopicConfig;
 }
 
 export interface GetMdbKafkaClusterTopicTopicConfig {
@@ -5668,6 +6077,13 @@ export interface MdbSqlServerClusterUserPermission {
     roles?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface OrganizationmanagerSamlFederationSecuritySettings {
+    /**
+     * Enable encrypted assertions.
+     */
+    encryptedAssertions: pulumi.Input<boolean>;
+}
+
 export interface ServerlessContainerImage {
     args?: pulumi.Input<pulumi.Input<string>[]>;
     commands?: pulumi.Input<pulumi.Input<string>[]>;
@@ -6036,3 +6452,4 @@ export interface YdbDatabaseDedicatedStorageConfig {
      */
     storageTypeId: pulumi.Input<string>;
 }
+

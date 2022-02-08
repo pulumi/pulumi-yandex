@@ -35,6 +35,8 @@
         "containerRepository.ts",
         "containerRepositoryIamBinding.ts",
         "dataprocCluster.ts",
+        "datatransferEndpoint.ts",
+        "datatransferTransfer.ts",
         "dnsRecordSet.ts",
         "dnsZone.ts",
         "function.ts",
@@ -127,6 +129,7 @@
         "messageQueue.ts",
         "organizationManagerOrganizationIamBinding.ts",
         "organizationManagerOrganizationIamMember.ts",
+        "organizationmanagerSamlFederation.ts",
         "provider.ts",
         "resourcemanagerCloudIamBinding.ts",
         "resourcemanagerCloudIamMember.ts",
@@ -148,6 +151,7 @@
         "vpcSecurityGroup.ts",
         "vpcSecurityGroupRule.ts",
         "vpcSubnet.ts",
-        "ydbDatabaseDedicated.ts"
+        "ydbDatabaseDedicated.ts",
+        "ydbDatabaseServerless.ts"
     ]
 }

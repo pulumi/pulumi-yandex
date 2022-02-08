@@ -5074,6 +5074,1073 @@
                 "resourcePresetId"
             ]
         },
+        "yandex:index/DatatransferEndpointSettings:DatatransferEndpointSettings": {
+            "properties": {
+                "mysqlSource": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlSource:DatatransferEndpointSettingsMysqlSource",
+                    "description": "Settings specific to the MySQL source endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mysqlTarget": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlTarget:DatatransferEndpointSettingsMysqlTarget",
+                    "description": "Settings specific to the MySQL target endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "postgresSource": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresSource:DatatransferEndpointSettingsPostgresSource",
+                    "description": "Settings specific to the PostgreSQL source endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "postgresTarget": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresTarget:DatatransferEndpointSettingsPostgresTarget",
+                    "description": "Settings specific to the PostgreSQL target endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlSource:DatatransferEndpointSettingsMysqlSource": {
+            "properties": {
+                "connection": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlSourceConnection:DatatransferEndpointSettingsMysqlSourceConnection",
+                    "description": "Connection settings. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Name of the database to transfer.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeTablesRegexes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Opposite of `include_table_regex`. The tables matching the specified regular expressions will not be transferred.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includeTablesRegexes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of regular expressions of table names which should be transferred. A table name is formatted as schemaname.tablename. For example, a single regular expression may look like `^mydb.employees$`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "objectTransferSettings": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlSourceObjectTransferSettings:DatatransferEndpointSettingsMysqlSourceObjectTransferSettings",
+                    "description": "Defines which database schema objects should be transferred, e.g. views, functions, etc.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlSourcePassword:DatatransferEndpointSettingsMysqlSourcePassword",
+                    "description": "Password for the database access. This is a block with a single field named `raw` which should contain the password.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "user": {
+                    "type": "string",
+                    "description": "User for the database access.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "excludeTablesRegexes",
+                        "includeTablesRegexes",
+                        "objectTransferSettings",
+                        "timezone"
+                    ]
+                }
+            }
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlSourceConnection:DatatransferEndpointSettingsMysqlSourceConnection": {
+            "properties": {
+                "mdbClusterId": {
+                    "type": "string",
+                    "description": "Identifier of the Managed MySQL cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onPremise": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlSourceConnectionOnPremise:DatatransferEndpointSettingsMysqlSourceConnectionOnPremise",
+                    "description": "Connection settings of the on-premise MySQL server.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlSourceConnectionOnPremise:DatatransferEndpointSettingsMysqlSourceConnectionOnPremise": {
+            "properties": {
+                "caCertificate": {
+                    "type": "string",
+                    "description": "X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of host names of the PostgreSQL server. Exactly one host is expected currently.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port for the database connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsMode": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode:DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode",
+                    "description": "TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "tlsMode"
+                    ]
+                }
+            }
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode:DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode": {
+            "properties": {
+                "disabled": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled:DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled",
+                    "description": "Empty block designating that the connection is not secured, i.e. plaintext connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled:DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled",
+                    "description": "If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled:DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled": {
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled:DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled": {
+            "properties": {
+                "caCertificate": {
+                    "type": "string",
+                    "description": "X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlSourceObjectTransferSettings:DatatransferEndpointSettingsMysqlSourceObjectTransferSettings": {
+            "properties": {
+                "routine": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trigger": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "view": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlSourcePassword:DatatransferEndpointSettingsMysqlSourcePassword": {
+            "properties": {
+                "raw": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlTarget:DatatransferEndpointSettingsMysqlTarget": {
+            "properties": {
+                "connection": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlTargetConnection:DatatransferEndpointSettingsMysqlTargetConnection",
+                    "description": "Connection settings. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Name of the database to transfer.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlTargetPassword:DatatransferEndpointSettingsMysqlTargetPassword",
+                    "description": "Password for the database access. This is a block with a single field named `raw` which should contain the password.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceSchema": {
+                    "type": "string",
+                    "description": "Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `service_schema` implies schema \"public\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "skipConstraintChecks": {
+                    "type": "boolean",
+                    "description": "When true, disables foreign key checks. See [foreign_key_checks](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_foreign_key_checks). False by default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sqlMode": {
+                    "type": "string",
+                    "description": "[sql_mode](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html) to use when interacting with the server. Defaults to \"NO_AUTO_VALUE_ON_ZERO,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "user": {
+                    "type": "string",
+                    "description": "User for the database access.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlTargetConnection:DatatransferEndpointSettingsMysqlTargetConnection": {
+            "properties": {
+                "mdbClusterId": {
+                    "type": "string",
+                    "description": "Identifier of the Managed MySQL cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onPremise": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlTargetConnectionOnPremise:DatatransferEndpointSettingsMysqlTargetConnectionOnPremise",
+                    "description": "Connection settings of the on-premise MySQL server.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlTargetConnectionOnPremise:DatatransferEndpointSettingsMysqlTargetConnectionOnPremise": {
+            "properties": {
+                "caCertificate": {
+                    "type": "string",
+                    "description": "X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of host names of the PostgreSQL server. Exactly one host is expected currently.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port for the database connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsMode": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode:DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode",
+                    "description": "TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "tlsMode"
+                    ]
+                }
+            }
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode:DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode": {
+            "properties": {
+                "disabled": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled:DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled",
+                    "description": "Empty block designating that the connection is not secured, i.e. plaintext connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled:DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled",
+                    "description": "If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled:DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled": {
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled:DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled": {
+            "properties": {
+                "caCertificate": {
+                    "type": "string",
+                    "description": "X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsMysqlTargetPassword:DatatransferEndpointSettingsMysqlTargetPassword": {
+            "properties": {
+                "raw": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresSource:DatatransferEndpointSettingsPostgresSource": {
+            "properties": {
+                "collapseInheritTable": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "connection": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresSourceConnection:DatatransferEndpointSettingsPostgresSourceConnection",
+                    "description": "Connection settings. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Name of the database to transfer.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeTables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of tables which will not be transfered, formatted as `schemaname.tablename`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includeTables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of tables to transfer, formatted as `schemaname.tablename`. If omitted or an empty list is specified, all tables will be transferred.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "objectTransferSettings": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresSourceObjectTransferSettings:DatatransferEndpointSettingsPostgresSourceObjectTransferSettings",
+                    "description": "Defines which database schema objects should be transferred, e.g. views, functions, etc.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresSourcePassword:DatatransferEndpointSettingsPostgresSourcePassword",
+                    "description": "Password for the database access. This is a block with a single field named `raw` which should contain the password.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceSchema": {
+                    "type": "string",
+                    "description": "Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `service_schema` implies schema \"public\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "slotGigabyteLagLimit": {
+                    "type": "integer",
+                    "description": "Maximum WAL size held by the replication slot, in gigabytes. Exceeding this limit will result in a replication failure and deletion of the replication slot. Unlimited by default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "user": {
+                    "type": "string",
+                    "description": "User for the database access.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "objectTransferSettings",
+                        "serviceSchema",
+                        "slotGigabyteLagLimit"
+                    ]
+                }
+            }
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresSourceConnection:DatatransferEndpointSettingsPostgresSourceConnection": {
+            "properties": {
+                "mdbClusterId": {
+                    "type": "string",
+                    "description": "Identifier of the Managed MySQL cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onPremise": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresSourceConnectionOnPremise:DatatransferEndpointSettingsPostgresSourceConnectionOnPremise",
+                    "description": "Connection settings of the on-premise MySQL server.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresSourceConnectionOnPremise:DatatransferEndpointSettingsPostgresSourceConnectionOnPremise": {
+            "properties": {
+                "caCertificate": {
+                    "type": "string",
+                    "description": "X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of host names of the PostgreSQL server. Exactly one host is expected currently.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port for the database connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsMode": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode:DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode",
+                    "description": "TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "tlsMode"
+                    ]
+                }
+            }
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode:DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode": {
+            "properties": {
+                "disabled": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled:DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled",
+                    "description": "Empty block designating that the connection is not secured, i.e. plaintext connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled:DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled",
+                    "description": "If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled:DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled": {
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled:DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled": {
+            "properties": {
+                "caCertificate": {
+                    "type": "string",
+                    "description": "X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresSourceObjectTransferSettings:DatatransferEndpointSettingsPostgresSourceObjectTransferSettings": {
+            "properties": {
+                "cast": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "collation": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "constraint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultValues": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fkConstraint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "function": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "index": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "policy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "primaryKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rule": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sequence": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sequenceOwnedBy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "table": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trigger": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "view": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresSourcePassword:DatatransferEndpointSettingsPostgresSourcePassword": {
+            "properties": {
+                "raw": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresTarget:DatatransferEndpointSettingsPostgresTarget": {
+            "properties": {
+                "connection": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresTargetConnection:DatatransferEndpointSettingsPostgresTargetConnection",
+                    "description": "Connection settings. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Name of the database to transfer.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresTargetPassword:DatatransferEndpointSettingsPostgresTargetPassword",
+                    "description": "Password for the database access. This is a block with a single field named `raw` which should contain the password.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "user": {
+                    "type": "string",
+                    "description": "User for the database access.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresTargetConnection:DatatransferEndpointSettingsPostgresTargetConnection": {
+            "properties": {
+                "mdbClusterId": {
+                    "type": "string",
+                    "description": "Identifier of the Managed MySQL cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onPremise": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresTargetConnectionOnPremise:DatatransferEndpointSettingsPostgresTargetConnectionOnPremise",
+                    "description": "Connection settings of the on-premise MySQL server.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresTargetConnectionOnPremise:DatatransferEndpointSettingsPostgresTargetConnectionOnPremise": {
+            "properties": {
+                "caCertificate": {
+                    "type": "string",
+                    "description": "X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of host names of the PostgreSQL server. Exactly one host is expected currently.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port for the database connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsMode": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode:DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode",
+                    "description": "TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "tlsMode"
+                    ]
+                }
+            }
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode:DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode": {
+            "properties": {
+                "disabled": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled:DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled",
+                    "description": "Empty block designating that the connection is not secured, i.e. plaintext connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled:DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled",
+                    "description": "If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled:DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled": {
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled:DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled": {
+            "properties": {
+                "caCertificate": {
+                    "type": "string",
+                    "description": "X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "yandex:index/DatatransferEndpointSettingsPostgresTargetPassword:DatatransferEndpointSettingsPostgresTargetPassword": {
+            "properties": {
+                "raw": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "yandex:index/FunctionContent:FunctionContent": {
             "properties": {
                 "zipFilename": {
@@ -11499,6 +12566,23 @@
             "type": "object",
             "required": [
                 "databaseName"
+            ]
+        },
+        "yandex:index/OrganizationmanagerSamlFederationSecuritySettings:OrganizationmanagerSamlFederationSecuritySettings": {
+            "properties": {
+                "encryptedAssertions": {
+                    "type": "boolean",
+                    "description": "Enable encrypted assertions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "encryptedAssertions"
             ]
         },
         "yandex:index/ServerlessContainerImage:ServerlessContainerImage": {
@@ -29350,6 +30434,220 @@
                 "type": "object"
             }
         },
+        "yandex:index/datatransferEndpoint:DatatransferEndpoint": {
+            "description": "Manages a Data Transfer endpoint. For more information, see [the official documentation](https://cloud.yandex.com/docs/data-transfer/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst pgSource = new yandex.DatatransferEndpoint(\"pg_source\", {\n    settings: {\n        postgresSource: {\n            connection: {\n                onPremise: {\n                    hosts: [\"example.org\"],\n                    port: 5432,\n                },\n            },\n            database: \"db1\",\n            password: {\n                raw: \"123\",\n            },\n            slotGigabyteLagLimit: 100,\n            user: \"user1\",\n        },\n    },\n});\nconst pgTarget = new yandex.DatatransferEndpoint(\"pg_target\", {\n    folderId: \"some_folder_id\",\n    settings: {\n        postgresTarget: {\n            connection: {\n                mdbClusterId: \"some_cluster_id\",\n            },\n            database: \"db2\",\n            password: {\n                raw: \"321\",\n            },\n            user: \"user2\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\npg_source = yandex.DatatransferEndpoint(\"pgSource\", settings=yandex.DatatransferEndpointSettingsArgs(\n    postgres_source=yandex.DatatransferEndpointSettingsPostgresSourceArgs(\n        connection=yandex.DatatransferEndpointSettingsPostgresSourceConnectionArgs(\n            on_premise=yandex.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseArgs(\n                hosts=[\"example.org\"],\n                port=5432,\n            ),\n        ),\n        database=\"db1\",\n        password=yandex.DatatransferEndpointSettingsPostgresSourcePasswordArgs(\n            raw=\"123\",\n        ),\n        slot_gigabyte_lag_limit=100,\n        user=\"user1\",\n    ),\n))\npg_target = yandex.DatatransferEndpoint(\"pgTarget\",\n    folder_id=\"some_folder_id\",\n    settings=yandex.DatatransferEndpointSettingsArgs(\n        postgres_target=yandex.DatatransferEndpointSettingsPostgresTargetArgs(\n            connection=yandex.DatatransferEndpointSettingsPostgresTargetConnectionArgs(\n                mdb_cluster_id=\"some_cluster_id\",\n            ),\n            database=\"db2\",\n            password=yandex.DatatransferEndpointSettingsPostgresTargetPasswordArgs(\n                raw=\"321\",\n            ),\n            user=\"user2\",\n        ),\n    ))\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var pgSource = new Yandex.DatatransferEndpoint(\"pgSource\", new Yandex.DatatransferEndpointArgs\n        {\n            Settings = new Yandex.Inputs.DatatransferEndpointSettingsArgs\n            {\n                PostgresSource = new Yandex.Inputs.DatatransferEndpointSettingsPostgresSourceArgs\n                {\n                    Connection = new Yandex.Inputs.DatatransferEndpointSettingsPostgresSourceConnectionArgs\n                    {\n                        OnPremise = new Yandex.Inputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseArgs\n                        {\n                            Hosts = \n                            {\n                                \"example.org\",\n                            },\n                            Port = 5432,\n                        },\n                    },\n                    Database = \"db1\",\n                    Password = new Yandex.Inputs.DatatransferEndpointSettingsPostgresSourcePasswordArgs\n                    {\n                        Raw = \"123\",\n                    },\n                    SlotGigabyteLagLimit = 100,\n                    User = \"user1\",\n                },\n            },\n        });\n        var pgTarget = new Yandex.DatatransferEndpoint(\"pgTarget\", new Yandex.DatatransferEndpointArgs\n        {\n            FolderId = \"some_folder_id\",\n            Settings = new Yandex.Inputs.DatatransferEndpointSettingsArgs\n            {\n                PostgresTarget = new Yandex.Inputs.DatatransferEndpointSettingsPostgresTargetArgs\n                {\n                    Connection = new Yandex.Inputs.DatatransferEndpointSettingsPostgresTargetConnectionArgs\n                    {\n                        MdbClusterId = \"some_cluster_id\",\n                    },\n                    Database = \"db2\",\n                    Password = new Yandex.Inputs.DatatransferEndpointSettingsPostgresTargetPasswordArgs\n                    {\n                        Raw = \"321\",\n                    },\n                    User = \"user2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.NewDatatransferEndpoint(ctx, \"pgSource\", \u0026yandex.DatatransferEndpointArgs{\n\t\t\tSettings: \u0026DatatransferEndpointSettingsArgs{\n\t\t\t\tPostgresSource: \u0026DatatransferEndpointSettingsPostgresSourceArgs{\n\t\t\t\t\tConnection: \u0026DatatransferEndpointSettingsPostgresSourceConnectionArgs{\n\t\t\t\t\t\tOnPremise: \u0026DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseArgs{\n\t\t\t\t\t\t\tHosts: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"example.org\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tPort: pulumi.Int(5432),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDatabase: pulumi.String(\"db1\"),\n\t\t\t\t\tPassword: \u0026DatatransferEndpointSettingsPostgresSourcePasswordArgs{\n\t\t\t\t\t\tRaw: pulumi.String(\"123\"),\n\t\t\t\t\t},\n\t\t\t\t\tSlotGigabyteLagLimit: pulumi.Int(100),\n\t\t\t\t\tUser:                 pulumi.String(\"user1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewDatatransferEndpoint(ctx, \"pgTarget\", \u0026yandex.DatatransferEndpointArgs{\n\t\t\tFolderId: pulumi.String(\"some_folder_id\"),\n\t\t\tSettings: \u0026DatatransferEndpointSettingsArgs{\n\t\t\t\tPostgresTarget: \u0026DatatransferEndpointSettingsPostgresTargetArgs{\n\t\t\t\t\tConnection: \u0026DatatransferEndpointSettingsPostgresTargetConnectionArgs{\n\t\t\t\t\t\tMdbClusterId: pulumi.String(\"some_cluster_id\"),\n\t\t\t\t\t},\n\t\t\t\t\tDatabase: pulumi.String(\"db2\"),\n\t\t\t\t\tPassword: \u0026DatatransferEndpointSettingsPostgresTargetPasswordArgs{\n\t\t\t\t\t\tRaw: pulumi.String(\"321\"),\n\t\t\t\t\t},\n\t\t\t\t\tUser: pulumi.String(\"user2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn endpoint can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/datatransferEndpoint:DatatransferEndpoint foo endpoint_id\n```\n\n ",
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "description": "(Computed) Identifier of the IAM user account of the user who created the endpoint.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Arbitrary description text for the endpoint.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "ID of the folder to create the endpoint in. If it is not provided, the default provider folder is used.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Data Transfer endpoint.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the endpoint.\n"
+                },
+                "settings": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettings:DatatransferEndpointSettings",
+                    "description": "Settings for the endpoint. The structure is documented below.\n"
+                }
+            },
+            "required": [
+                "author",
+                "folderId",
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Arbitrary description text for the endpoint.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "ID of the folder to create the endpoint in. If it is not provided, the default provider folder is used.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Data Transfer endpoint.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the endpoint.\n"
+                },
+                "settings": {
+                    "$ref": "#/types/yandex:index/DatatransferEndpointSettings:DatatransferEndpointSettings",
+                    "description": "Settings for the endpoint. The structure is documented below.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DatatransferEndpoint resources.\n",
+                "properties": {
+                    "author": {
+                        "type": "string",
+                        "description": "(Computed) Identifier of the IAM user account of the user who created the endpoint.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Arbitrary description text for the endpoint.\n"
+                    },
+                    "folderId": {
+                        "type": "string",
+                        "description": "ID of the folder to create the endpoint in. If it is not provided, the default provider folder is used.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A set of key/value label pairs to assign to the Data Transfer endpoint.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the endpoint.\n"
+                    },
+                    "settings": {
+                        "$ref": "#/types/yandex:index/DatatransferEndpointSettings:DatatransferEndpointSettings",
+                        "description": "Settings for the endpoint. The structure is documented below.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "yandex:index/datatransferTransfer:DatatransferTransfer": {
+            "description": "Manages a Data Transfer transfer. For more information, see [the official documentation](https://cloud.yandex.com/docs/data-transfer/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst pgSource = new yandex.DatatransferEndpoint(\"pgSource\", {settings: {\n    postgresSource: {\n        connection: {\n            onPremise: {\n                hosts: [\"example.org\"],\n                port: 5432,\n            },\n        },\n        slotGigabyteLagLimit: 100,\n        database: \"db1\",\n        user: \"user1\",\n        password: {\n            raw: \"123\",\n        },\n    },\n}});\nconst pgTarget = new yandex.DatatransferEndpoint(\"pgTarget\", {\n    folderId: \"some_folder_id\",\n    settings: {\n        postgresTarget: {\n            connection: {\n                mdbClusterId: \"some_cluster_id\",\n            },\n            database: \"db2\",\n            user: \"user2\",\n            password: {\n                raw: \"321\",\n            },\n        },\n    },\n});\nconst pgpgTransfer = new yandex.DatatransferTransfer(\"pgpgTransfer\", {\n    folderId: \"some_folder_id\",\n    sourceId: pgSource.id,\n    targetId: pgTarget.id,\n    type: \"SNAPSHOT_AND_INCREMENT\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\npg_source = yandex.DatatransferEndpoint(\"pgSource\", settings=yandex.DatatransferEndpointSettingsArgs(\n    postgres_source=yandex.DatatransferEndpointSettingsPostgresSourceArgs(\n        connection=yandex.DatatransferEndpointSettingsPostgresSourceConnectionArgs(\n            on_premise=yandex.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseArgs(\n                hosts=[\"example.org\"],\n                port=5432,\n            ),\n        ),\n        slot_gigabyte_lag_limit=100,\n        database=\"db1\",\n        user=\"user1\",\n        password=yandex.DatatransferEndpointSettingsPostgresSourcePasswordArgs(\n            raw=\"123\",\n        ),\n    ),\n))\npg_target = yandex.DatatransferEndpoint(\"pgTarget\",\n    folder_id=\"some_folder_id\",\n    settings=yandex.DatatransferEndpointSettingsArgs(\n        postgres_target=yandex.DatatransferEndpointSettingsPostgresTargetArgs(\n            connection=yandex.DatatransferEndpointSettingsPostgresTargetConnectionArgs(\n                mdb_cluster_id=\"some_cluster_id\",\n            ),\n            database=\"db2\",\n            user=\"user2\",\n            password=yandex.DatatransferEndpointSettingsPostgresTargetPasswordArgs(\n                raw=\"321\",\n            ),\n        ),\n    ))\npgpg_transfer = yandex.DatatransferTransfer(\"pgpgTransfer\",\n    folder_id=\"some_folder_id\",\n    source_id=pg_source.id,\n    target_id=pg_target.id,\n    type=\"SNAPSHOT_AND_INCREMENT\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var pgSource = new Yandex.DatatransferEndpoint(\"pgSource\", new Yandex.DatatransferEndpointArgs\n        {\n            Settings = new Yandex.Inputs.DatatransferEndpointSettingsArgs\n            {\n                PostgresSource = new Yandex.Inputs.DatatransferEndpointSettingsPostgresSourceArgs\n                {\n                    Connection = new Yandex.Inputs.DatatransferEndpointSettingsPostgresSourceConnectionArgs\n                    {\n                        OnPremise = new Yandex.Inputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseArgs\n                        {\n                            Hosts = \n                            {\n                                \"example.org\",\n                            },\n                            Port = 5432,\n                        },\n                    },\n                    SlotGigabyteLagLimit = 100,\n                    Database = \"db1\",\n                    User = \"user1\",\n                    Password = new Yandex.Inputs.DatatransferEndpointSettingsPostgresSourcePasswordArgs\n                    {\n                        Raw = \"123\",\n                    },\n                },\n            },\n        });\n        var pgTarget = new Yandex.DatatransferEndpoint(\"pgTarget\", new Yandex.DatatransferEndpointArgs\n        {\n            FolderId = \"some_folder_id\",\n            Settings = new Yandex.Inputs.DatatransferEndpointSettingsArgs\n            {\n                PostgresTarget = new Yandex.Inputs.DatatransferEndpointSettingsPostgresTargetArgs\n                {\n                    Connection = new Yandex.Inputs.DatatransferEndpointSettingsPostgresTargetConnectionArgs\n                    {\n                        MdbClusterId = \"some_cluster_id\",\n                    },\n                    Database = \"db2\",\n                    User = \"user2\",\n                    Password = new Yandex.Inputs.DatatransferEndpointSettingsPostgresTargetPasswordArgs\n                    {\n                        Raw = \"321\",\n                    },\n                },\n            },\n        });\n        var pgpgTransfer = new Yandex.DatatransferTransfer(\"pgpgTransfer\", new Yandex.DatatransferTransferArgs\n        {\n            FolderId = \"some_folder_id\",\n            SourceId = pgSource.Id,\n            TargetId = pgTarget.Id,\n            Type = \"SNAPSHOT_AND_INCREMENT\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tpgSource, err := yandex.NewDatatransferEndpoint(ctx, \"pgSource\", \u0026yandex.DatatransferEndpointArgs{\n\t\t\tSettings: \u0026DatatransferEndpointSettingsArgs{\n\t\t\t\tPostgresSource: \u0026DatatransferEndpointSettingsPostgresSourceArgs{\n\t\t\t\t\tConnection: \u0026DatatransferEndpointSettingsPostgresSourceConnectionArgs{\n\t\t\t\t\t\tOnPremise: \u0026DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseArgs{\n\t\t\t\t\t\t\tHosts: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"example.org\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tPort: pulumi.Int(5432),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tSlotGigabyteLagLimit: pulumi.Int(100),\n\t\t\t\t\tDatabase:             pulumi.String(\"db1\"),\n\t\t\t\t\tUser:                 pulumi.String(\"user1\"),\n\t\t\t\t\tPassword: \u0026DatatransferEndpointSettingsPostgresSourcePasswordArgs{\n\t\t\t\t\t\tRaw: pulumi.String(\"123\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tpgTarget, err := yandex.NewDatatransferEndpoint(ctx, \"pgTarget\", \u0026yandex.DatatransferEndpointArgs{\n\t\t\tFolderId: pulumi.String(\"some_folder_id\"),\n\t\t\tSettings: \u0026DatatransferEndpointSettingsArgs{\n\t\t\t\tPostgresTarget: \u0026DatatransferEndpointSettingsPostgresTargetArgs{\n\t\t\t\t\tConnection: \u0026DatatransferEndpointSettingsPostgresTargetConnectionArgs{\n\t\t\t\t\t\tMdbClusterId: pulumi.String(\"some_cluster_id\"),\n\t\t\t\t\t},\n\t\t\t\t\tDatabase: pulumi.String(\"db2\"),\n\t\t\t\t\tUser:     pulumi.String(\"user2\"),\n\t\t\t\t\tPassword: \u0026DatatransferEndpointSettingsPostgresTargetPasswordArgs{\n\t\t\t\t\t\tRaw: pulumi.String(\"321\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewDatatransferTransfer(ctx, \"pgpgTransfer\", \u0026yandex.DatatransferTransferArgs{\n\t\t\tFolderId: pulumi.String(\"some_folder_id\"),\n\t\t\tSourceId: pgSource.ID(),\n\t\t\tTargetId: pgTarget.ID(),\n\t\t\tType:     pulumi.String(\"SNAPSHOT_AND_INCREMENT\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA transfer can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/datatransferTransfer:DatatransferTransfer foo transfer_id\n```\n\n ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Arbitrary description text for the transfer.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "ID of the folder to create the transfer in. If it is not provided, the default provider folder is used.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Data Transfer transfer.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the transfer.\n"
+                },
+                "sourceId": {
+                    "type": "string",
+                    "description": "ID of the source endpoint for the transfer.\n"
+                },
+                "targetId": {
+                    "type": "string",
+                    "description": "ID of the target endpoint for the transfer.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the transfer. One of \"SNAPSHOT_ONLY\", \"INCREMENT_ONLY\", \"SNAPSHOT_AND_INCREMENT\".\n"
+                },
+                "warning": {
+                    "type": "string",
+                    "description": "(Computed) Error description if transfer has any errors.\n"
+                }
+            },
+            "required": [
+                "folderId",
+                "name",
+                "warning"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Arbitrary description text for the transfer.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "ID of the folder to create the transfer in. If it is not provided, the default provider folder is used.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Data Transfer transfer.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the transfer.\n"
+                },
+                "sourceId": {
+                    "type": "string",
+                    "description": "ID of the source endpoint for the transfer.\n"
+                },
+                "targetId": {
+                    "type": "string",
+                    "description": "ID of the target endpoint for the transfer.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the transfer. One of \"SNAPSHOT_ONLY\", \"INCREMENT_ONLY\", \"SNAPSHOT_AND_INCREMENT\".\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DatatransferTransfer resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Arbitrary description text for the transfer.\n"
+                    },
+                    "folderId": {
+                        "type": "string",
+                        "description": "ID of the folder to create the transfer in. If it is not provided, the default provider folder is used.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A set of key/value label pairs to assign to the Data Transfer transfer.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the transfer.\n"
+                    },
+                    "sourceId": {
+                        "type": "string",
+                        "description": "ID of the source endpoint for the transfer.\n"
+                    },
+                    "targetId": {
+                        "type": "string",
+                        "description": "ID of the target endpoint for the transfer.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the transfer. One of \"SNAPSHOT_ONLY\", \"INCREMENT_ONLY\", \"SNAPSHOT_AND_INCREMENT\".\n"
+                    },
+                    "warning": {
+                        "type": "string",
+                        "description": "(Computed) Error description if transfer has any errors.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "yandex:index/dnsRecordSet:DnsRecordSet": {
             "description": "Manages a DNS Recordset.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst foo = new yandex.VpcNetwork(\"foo\", {});\nconst zone1 = new yandex.DnsZone(\"zone1\", {\n    description: \"desc\",\n    labels: {\n        label1: \"label-1-value\",\n    },\n    zone: \"example.com.\",\n    \"public\": false,\n    privateNetworks: [foo.id],\n});\nconst rs1 = new yandex.DnsRecordSet(\"rs1\", {\n    zoneId: zone1.id,\n    type: \"A\",\n    ttl: 200,\n    datas: [\"10.1.0.1\"],\n});\nconst rs2 = new yandex.DnsRecordSet(\"rs2\", {\n    zoneId: zone1.id,\n    type: \"A\",\n    ttl: 200,\n    datas: [\"10.1.0.2\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nfoo = yandex.VpcNetwork(\"foo\")\nzone1 = yandex.DnsZone(\"zone1\",\n    description=\"desc\",\n    labels={\n        \"label1\": \"label-1-value\",\n    },\n    zone=\"example.com.\",\n    public=False,\n    private_networks=[foo.id])\nrs1 = yandex.DnsRecordSet(\"rs1\",\n    zone_id=zone1.id,\n    type=\"A\",\n    ttl=200,\n    datas=[\"10.1.0.1\"])\nrs2 = yandex.DnsRecordSet(\"rs2\",\n    zone_id=zone1.id,\n    type=\"A\",\n    ttl=200,\n    datas=[\"10.1.0.2\"])\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Yandex.VpcNetwork(\"foo\", new Yandex.VpcNetworkArgs\n        {\n        });\n        var zone1 = new Yandex.DnsZone(\"zone1\", new Yandex.DnsZoneArgs\n        {\n            Description = \"desc\",\n            Labels = \n            {\n                { \"label1\", \"label-1-value\" },\n            },\n            Zone = \"example.com.\",\n            Public = false,\n            PrivateNetworks = \n            {\n                foo.Id,\n            },\n        });\n        var rs1 = new Yandex.DnsRecordSet(\"rs1\", new Yandex.DnsRecordSetArgs\n        {\n            ZoneId = zone1.Id,\n            Type = \"A\",\n            Ttl = 200,\n            Datas = \n            {\n                \"10.1.0.1\",\n            },\n        });\n        var rs2 = new Yandex.DnsRecordSet(\"rs2\", new Yandex.DnsRecordSetArgs\n        {\n            ZoneId = zone1.Id,\n            Type = \"A\",\n            Ttl = 200,\n            Datas = \n            {\n                \"10.1.0.2\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := yandex.NewVpcNetwork(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tzone1, err := yandex.NewDnsZone(ctx, \"zone1\", \u0026yandex.DnsZoneArgs{\n\t\t\tDescription: pulumi.String(\"desc\"),\n\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\"label1\": pulumi.String(\"label-1-value\"),\n\t\t\t},\n\t\t\tZone:   pulumi.String(\"example.com.\"),\n\t\t\tPublic: pulumi.Bool(false),\n\t\t\tPrivateNetworks: pulumi.StringArray{\n\t\t\t\tfoo.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewDnsRecordSet(ctx, \"rs1\", \u0026yandex.DnsRecordSetArgs{\n\t\t\tZoneId: zone1.ID(),\n\t\t\tType:   pulumi.String(\"A\"),\n\t\t\tTtl:    pulumi.Int(200),\n\t\t\tDatas: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"10.1.0.1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewDnsRecordSet(ctx, \"rs2\", \u0026yandex.DnsRecordSetArgs{\n\t\t\tZoneId: zone1.ID(),\n\t\t\tType:   pulumi.String(\"A\"),\n\t\t\tTtl:    pulumi.Int(200),\n\t\t\tDatas: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"10.1.0.2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDNS recordset can be imported using this format\n\n```sh\n $ pulumi import yandex:index/dnsRecordSet:DnsRecordSet rs1 {{zone_id}}/{{name}}/{{type}}\n```\n\n ",
             "properties": {
@@ -35081,6 +36379,186 @@
                 "type": "object"
             }
         },
+        "yandex:index/organizationmanagerSamlFederation:OrganizationmanagerSamlFederation": {
+            "description": "Allows management of a single SAML Federation within an existing Yandex.Cloud Organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst federation = new yandex.OrganizationmanagerSamlFederation(\"federation\", {\n    description: \"My new SAML federation\",\n    issuer: \"my-issuer\",\n    organizationId: \"sdf4*********3fr\",\n    ssoBinding: \"POST\",\n    ssoUrl: \"https://my-sso.url\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nfederation = yandex.OrganizationmanagerSamlFederation(\"federation\",\n    description=\"My new SAML federation\",\n    issuer=\"my-issuer\",\n    organization_id=\"sdf4*********3fr\",\n    sso_binding=\"POST\",\n    sso_url=\"https://my-sso.url\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var federation = new Yandex.OrganizationmanagerSamlFederation(\"federation\", new Yandex.OrganizationmanagerSamlFederationArgs\n        {\n            Description = \"My new SAML federation\",\n            Issuer = \"my-issuer\",\n            OrganizationId = \"sdf4*********3fr\",\n            SsoBinding = \"POST\",\n            SsoUrl = \"https://my-sso.url\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.NewOrganizationmanagerSamlFederation(ctx, \"federation\", \u0026yandex.OrganizationmanagerSamlFederationArgs{\n\t\t\tDescription:    pulumi.String(\"My new SAML federation\"),\n\t\t\tIssuer:         pulumi.String(\"my-issuer\"),\n\t\t\tOrganizationId: pulumi.String(\"sdf4*********3fr\"),\n\t\t\tSsoBinding:     pulumi.String(\"POST\"),\n\t\t\tSsoUrl:         pulumi.String(\"https://my-sso.url\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA Yandex SAML Federation can be imported using the `id` of the resource, e.g.\n\n```sh\n $ pulumi import yandex:index/organizationmanagerSamlFederation:OrganizationmanagerSamlFederation federation \"federation_id\"\n```\n\n ",
+            "properties": {
+                "autoCreateAccountOnLogin": {
+                    "type": "boolean",
+                    "description": "Add new users automatically on successful authentication. The user will get the `resource-manager.clouds.member` role automatically, but you need to grant other roles to them. If the value is `false`, users who aren't added to the cloud can't log in, even if they have authenticated on your server.\n"
+                },
+                "caseInsensitiveNameIds": {
+                    "type": "boolean",
+                    "description": "Use case-insensitive name ids.\n"
+                },
+                "cookieMaxAge": {
+                    "type": "string",
+                    "description": "The lifetime of a Browser cookie in seconds. If the cookie is still valid, the management console authenticates the user immediately and redirects them to the home page. The default value is `8h`.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "(Computed) The SAML Federation creation timestamp.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the SAML Federation.\n"
+                },
+                "issuer": {
+                    "type": "string",
+                    "description": "The ID of the IdP server to be used for authentication. The IdP server also responds to IAM with this ID after the user authenticates.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs assigned to the SAML Federation.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the SAML Federation.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The organization to attach this SAML Federation to.\n"
+                },
+                "securitySettings": {
+                    "$ref": "#/types/yandex:index/OrganizationmanagerSamlFederationSecuritySettings:OrganizationmanagerSamlFederationSecuritySettings",
+                    "description": "Federation security settings, structure is documented below.\n"
+                },
+                "ssoBinding": {
+                    "type": "string",
+                    "description": "Single sign-on endpoint binding type. Most Identity Providers support the `POST` binding type. SAML Binding is a mapping of a SAML protocol message onto standard messaging formats and/or communications protocols.\n"
+                },
+                "ssoUrl": {
+                    "type": "string",
+                    "description": "Single sign-on endpoint URL. Specify the link to the IdP login page here.\n"
+                }
+            },
+            "required": [
+                "autoCreateAccountOnLogin",
+                "caseInsensitiveNameIds",
+                "cookieMaxAge",
+                "createdAt",
+                "issuer",
+                "name",
+                "organizationId",
+                "securitySettings",
+                "ssoBinding",
+                "ssoUrl"
+            ],
+            "inputProperties": {
+                "autoCreateAccountOnLogin": {
+                    "type": "boolean",
+                    "description": "Add new users automatically on successful authentication. The user will get the `resource-manager.clouds.member` role automatically, but you need to grant other roles to them. If the value is `false`, users who aren't added to the cloud can't log in, even if they have authenticated on your server.\n"
+                },
+                "caseInsensitiveNameIds": {
+                    "type": "boolean",
+                    "description": "Use case-insensitive name ids.\n"
+                },
+                "cookieMaxAge": {
+                    "type": "string",
+                    "description": "The lifetime of a Browser cookie in seconds. If the cookie is still valid, the management console authenticates the user immediately and redirects them to the home page. The default value is `8h`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the SAML Federation.\n"
+                },
+                "issuer": {
+                    "type": "string",
+                    "description": "The ID of the IdP server to be used for authentication. The IdP server also responds to IAM with this ID after the user authenticates.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs assigned to the SAML Federation.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the SAML Federation.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The organization to attach this SAML Federation to.\n"
+                },
+                "securitySettings": {
+                    "$ref": "#/types/yandex:index/OrganizationmanagerSamlFederationSecuritySettings:OrganizationmanagerSamlFederationSecuritySettings",
+                    "description": "Federation security settings, structure is documented below.\n"
+                },
+                "ssoBinding": {
+                    "type": "string",
+                    "description": "Single sign-on endpoint binding type. Most Identity Providers support the `POST` binding type. SAML Binding is a mapping of a SAML protocol message onto standard messaging formats and/or communications protocols.\n"
+                },
+                "ssoUrl": {
+                    "type": "string",
+                    "description": "Single sign-on endpoint URL. Specify the link to the IdP login page here.\n"
+                }
+            },
+            "requiredInputs": [
+                "issuer",
+                "organizationId",
+                "ssoBinding",
+                "ssoUrl"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrganizationmanagerSamlFederation resources.\n",
+                "properties": {
+                    "autoCreateAccountOnLogin": {
+                        "type": "boolean",
+                        "description": "Add new users automatically on successful authentication. The user will get the `resource-manager.clouds.member` role automatically, but you need to grant other roles to them. If the value is `false`, users who aren't added to the cloud can't log in, even if they have authenticated on your server.\n"
+                    },
+                    "caseInsensitiveNameIds": {
+                        "type": "boolean",
+                        "description": "Use case-insensitive name ids.\n"
+                    },
+                    "cookieMaxAge": {
+                        "type": "string",
+                        "description": "The lifetime of a Browser cookie in seconds. If the cookie is still valid, the management console authenticates the user immediately and redirects them to the home page. The default value is `8h`.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "(Computed) The SAML Federation creation timestamp.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the SAML Federation.\n"
+                    },
+                    "issuer": {
+                        "type": "string",
+                        "description": "The ID of the IdP server to be used for authentication. The IdP server also responds to IAM with this ID after the user authenticates.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A set of key/value label pairs assigned to the SAML Federation.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the SAML Federation.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The organization to attach this SAML Federation to.\n"
+                    },
+                    "securitySettings": {
+                        "$ref": "#/types/yandex:index/OrganizationmanagerSamlFederationSecuritySettings:OrganizationmanagerSamlFederationSecuritySettings",
+                        "description": "Federation security settings, structure is documented below.\n"
+                    },
+                    "ssoBinding": {
+                        "type": "string",
+                        "description": "Single sign-on endpoint binding type. Most Identity Providers support the `POST` binding type. SAML Binding is a mapping of a SAML protocol message onto standard messaging formats and/or communications protocols.\n"
+                    },
+                    "ssoUrl": {
+                        "type": "string",
+                        "description": "Single sign-on endpoint URL. Specify the link to the IdP login page here.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "yandex:index/resourcemanagerCloudIamBinding:ResourcemanagerCloudIamBinding": {
             "description": "Allows creation and management of a single binding within IAM policy for\nan existing Yandex Resource Manager cloud.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst project1 = pulumi.output(yandex.getResourcemanagerCloud({\n    name: \"Project 1\",\n}));\nconst admin = new yandex.ResourcemanagerCloudIamBinding(\"admin\", {\n    cloudId: project1.id,\n    members: [\"userAccount:some_user_id\"],\n    role: \"editor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nproject1 = yandex.get_resourcemanager_cloud(name=\"Project 1\")\nadmin = yandex.ResourcemanagerCloudIamBinding(\"admin\",\n    cloud_id=project1.id,\n    members=[\"userAccount:some_user_id\"],\n    role=\"editor\")\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var project1 = Output.Create(Yandex.GetResourcemanagerCloud.InvokeAsync(new Yandex.GetResourcemanagerCloudArgs\n        {\n            Name = \"Project 1\",\n        }));\n        var admin = new Yandex.ResourcemanagerCloudIamBinding(\"admin\", new Yandex.ResourcemanagerCloudIamBindingArgs\n        {\n            CloudId = project1.Apply(project1 =\u003e project1.Id),\n            Members = \n            {\n                \"userAccount:some_user_id\",\n            },\n            Role = \"editor\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"Project 1\"\n\t\tproject1, err := yandex.GetResourcemanagerCloud(ctx, \u0026GetResourcemanagerCloudArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = yandex.NewResourcemanagerCloudIamBinding(ctx, \"admin\", \u0026yandex.ResourcemanagerCloudIamBindingArgs{\n\t\t\tCloudId: pulumi.String(project1.Id),\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"userAccount:some_user_id\"),\n\t\t\t},\n\t\t\tRole: pulumi.String(\"editor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nIAM binding imports use space-delimited identifiers; first the resource in question and then the role. These bindings can be imported using the `cloud_id` and role, e.g.\n\n```sh\n $ pulumi import yandex:index/resourcemanagerCloudIamBinding:ResourcemanagerCloudIamBinding viewer \"cloud_id viewer\"\n```\n\n ",
             "properties": {
@@ -37316,6 +38794,156 @@
                     "ydbFullEndpoint": {
                         "type": "string",
                         "description": "Full endpoint of the Yandex Database cluster.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "yandex:index/ydbDatabaseServerless:YdbDatabaseServerless": {
+            "description": "Yandex Database (serverless) resource. For more information, see\n    [the official documentation](https://cloud.yandex.com/en/docs/ydb/concepts/serverless_and_dedicated).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst database1 = new yandex.YdbDatabaseServerless(\"database1\", {\n    folderId: yandex_resourcemanager_folder_test_folder.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\ndatabase1 = yandex.YdbDatabaseServerless(\"database1\", folder_id=data[\"yandex_resourcemanager_folder\"][\"test_folder\"][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var database1 = new Yandex.YdbDatabaseServerless(\"database1\", new Yandex.YdbDatabaseServerlessArgs\n        {\n            FolderId = data.Yandex_resourcemanager_folder.Test_folder.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := yandex.NewYdbDatabaseServerless(ctx, \"database1\", \u0026yandex.YdbDatabaseServerlessArgs{\n\t\t\tFolderId: pulumi.Any(data.Yandex_resourcemanager_folder.Test_folder.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The Yandex Database serverless cluster creation timestamp.\n"
+                },
+                "databasePath": {
+                    "type": "string",
+                    "description": "Full database path of the Yandex Database serverless cluster.\nUseful for SDK configuration.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the Yandex Database serverless cluster.\n"
+                },
+                "documentApiEndpoint": {
+                    "type": "string",
+                    "description": "Document API endpoint of the Yandex Database serverless cluster.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "ID of the folder that the Yandex Database serverless cluster belongs to.\nIt will be deduced from provider configuration if not set explicitly.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Yandex Database serverless cluster.\n"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID for the Yandex Database serverless cluster.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the Yandex Database serverless cluster.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the Yandex Database serverless cluster.\n"
+                },
+                "tlsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether TLS is enabled for the Yandex Database serverless cluster.\nUseful for SDK configuration.\n"
+                },
+                "ydbApiEndpoint": {
+                    "type": "string",
+                    "description": "API endpoint of the Yandex Database serverless cluster.\nUseful for SDK configuration.\n"
+                },
+                "ydbFullEndpoint": {
+                    "type": "string",
+                    "description": "Full endpoint of the Yandex Database serverless cluster.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "databasePath",
+                "documentApiEndpoint",
+                "folderId",
+                "locationId",
+                "name",
+                "status",
+                "tlsEnabled",
+                "ydbApiEndpoint",
+                "ydbFullEndpoint"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description for the Yandex Database serverless cluster.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "ID of the folder that the Yandex Database serverless cluster belongs to.\nIt will be deduced from provider configuration if not set explicitly.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of key/value label pairs to assign to the Yandex Database serverless cluster.\n"
+                },
+                "locationId": {
+                    "type": "string",
+                    "description": "Location ID for the Yandex Database serverless cluster.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name for the Yandex Database serverless cluster.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering YdbDatabaseServerless resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The Yandex Database serverless cluster creation timestamp.\n"
+                    },
+                    "databasePath": {
+                        "type": "string",
+                        "description": "Full database path of the Yandex Database serverless cluster.\nUseful for SDK configuration.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description for the Yandex Database serverless cluster.\n"
+                    },
+                    "documentApiEndpoint": {
+                        "type": "string",
+                        "description": "Document API endpoint of the Yandex Database serverless cluster.\n"
+                    },
+                    "folderId": {
+                        "type": "string",
+                        "description": "ID of the folder that the Yandex Database serverless cluster belongs to.\nIt will be deduced from provider configuration if not set explicitly.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A set of key/value label pairs to assign to the Yandex Database serverless cluster.\n"
+                    },
+                    "locationId": {
+                        "type": "string",
+                        "description": "Location ID for the Yandex Database serverless cluster.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name for the Yandex Database serverless cluster.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the Yandex Database serverless cluster.\n"
+                    },
+                    "tlsEnabled": {
+                        "type": "boolean",
+                        "description": "Whether TLS is enabled for the Yandex Database serverless cluster.\nUseful for SDK configuration.\n"
+                    },
+                    "ydbApiEndpoint": {
+                        "type": "string",
+                        "description": "API endpoint of the Yandex Database serverless cluster.\nUseful for SDK configuration.\n"
+                    },
+                    "ydbFullEndpoint": {
+                        "type": "string",
+                        "description": "Full endpoint of the Yandex Database serverless cluster.\n"
                     }
                 },
                 "type": "object"
@@ -42749,7 +44377,7 @@
             }
         },
         "yandex:index/getYdbDatabaseServerless:getYdbDatabaseServerless": {
-            "description": "Get information about a Yandex Database serverless cluster.\nFor more information, see [the official documentation](https://cloud.yandex.com/en/docs/ydb/concepts/serverless_and_dedicated).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myDatabase = pulumi.output(yandex.getYdbDatabaseServerless({\n    databaseId: \"some_ydb_serverless_database_id\",\n}));\n\nexport const ydbApiEndpoint = myDatabase.ydbApiEndpoint;\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_database = yandex.get_ydb_database_serverless(database_id=\"some_ydb_serverless_database_id\")\npulumi.export(\"ydbApiEndpoint\", my_database.ydb_api_endpoint)\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myDatabase = Output.Create(Yandex.GetYdbDatabaseServerless.InvokeAsync(new Yandex.GetYdbDatabaseServerlessArgs\n        {\n            DatabaseId = \"some_ydb_serverless_database_id\",\n        }));\n        this.YdbApiEndpoint = myDatabase.Apply(myDatabase =\u003e myDatabase.YdbApiEndpoint);\n    }\n\n    [Output(\"ydbApiEndpoint\")]\n    public Output\u003cstring\u003e YdbApiEndpoint { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"some_ydb_serverless_database_id\"\n\t\tmyDatabase, err := yandex.GetYdbDatabaseServerless(ctx, \u0026GetYdbDatabaseServerlessArgs{\n\t\t\tDatabaseId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ydbApiEndpoint\", myDatabase.YdbApiEndpoint)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Get information about a Yandex Database serverless cluster.\nFor more information, see [the official documentation](https://cloud.yandex.com/en/docs/ydb/concepts/serverless_and_dedicated).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as yandex from \"@pulumi/yandex\";\n\nconst myDatabase = pulumi.output(yandex.getYdbDatabaseServerless({\n    databaseId: \"some_ydb_serverless_database_id\",\n}));\n\nexport const ydbApiEndpoint = myDatabase.ydbApiEndpoint;\n```\n```python\nimport pulumi\nimport pulumi_yandex as yandex\n\nmy_database = yandex.get_ydb_database_serverless(database_id=\"some_ydb_serverless_database_id\")\npulumi.export(\"ydbApiEndpoint\", my_database.ydb_api_endpoint)\n```\n```csharp\nusing Pulumi;\nusing Yandex = Pulumi.Yandex;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myDatabase = Output.Create(Yandex.GetYdbDatabaseServerless.InvokeAsync(new Yandex.GetYdbDatabaseServerlessArgs\n        {\n            DatabaseId = \"some_ydb_serverless_database_id\",\n        }));\n        this.YdbApiEndpoint = myDatabase.Apply(myDatabase =\u003e myDatabase.YdbApiEndpoint);\n    }\n\n    [Output(\"ydbApiEndpoint\")]\n    public Output\u003cstring\u003e YdbApiEndpoint { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-yandex/sdk/go/yandex\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"some_ydb_serverless_database_id\"\n\t\tmyDatabase, err := yandex.LookupYdbDatabaseServerless(ctx, \u0026GetYdbDatabaseServerlessArgs{\n\t\t\tDatabaseId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ydbApiEndpoint\", myDatabase.YdbApiEndpoint)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getYdbDatabaseServerless.\n",
                 "properties": {

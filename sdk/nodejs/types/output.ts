@@ -2044,6 +2044,415 @@ export interface DataprocClusterClusterConfigSubclusterSpecResources {
     resourcePresetId: string;
 }
 
+export interface DatatransferEndpointSettings {
+    /**
+     * Settings specific to the MySQL source endpoint.
+     */
+    mysqlSource?: outputs.DatatransferEndpointSettingsMysqlSource;
+    /**
+     * Settings specific to the MySQL target endpoint.
+     */
+    mysqlTarget?: outputs.DatatransferEndpointSettingsMysqlTarget;
+    /**
+     * Settings specific to the PostgreSQL source endpoint.
+     */
+    postgresSource?: outputs.DatatransferEndpointSettingsPostgresSource;
+    /**
+     * Settings specific to the PostgreSQL target endpoint.
+     */
+    postgresTarget?: outputs.DatatransferEndpointSettingsPostgresTarget;
+}
+
+export interface DatatransferEndpointSettingsMysqlSource {
+    /**
+     * Connection settings. The structure is documented below.
+     */
+    connection?: outputs.DatatransferEndpointSettingsMysqlSourceConnection;
+    /**
+     * Name of the database to transfer.
+     */
+    database?: string;
+    /**
+     * Opposite of `includeTableRegex`. The tables matching the specified regular expressions will not be transferred.
+     */
+    excludeTablesRegexes: string[];
+    /**
+     * List of regular expressions of table names which should be transferred. A table name is formatted as schemaname.tablename. For example, a single regular expression may look like `^mydb.employees$`.
+     */
+    includeTablesRegexes: string[];
+    /**
+     * Defines which database schema objects should be transferred, e.g. views, functions, etc.
+     */
+    objectTransferSettings: outputs.DatatransferEndpointSettingsMysqlSourceObjectTransferSettings;
+    /**
+     * Password for the database access. This is a block with a single field named `raw` which should contain the password.
+     */
+    password?: outputs.DatatransferEndpointSettingsMysqlSourcePassword;
+    /**
+     * Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.
+     */
+    timezone: string;
+    /**
+     * User for the database access.
+     */
+    user?: string;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnection {
+    /**
+     * Identifier of the Managed MySQL cluster.
+     */
+    mdbClusterId?: string;
+    /**
+     * Connection settings of the on-premise MySQL server.
+     */
+    onPremise?: outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremise;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnectionOnPremise {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: string;
+    /**
+     * List of host names of the PostgreSQL server. Exactly one host is expected currently.
+     */
+    hosts?: string[];
+    /**
+     * Port for the database connection.
+     */
+    port?: number;
+    /**
+     * Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+     */
+    subnetId?: string;
+    /**
+     * TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+     */
+    tlsMode: outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode {
+    /**
+     * Empty block designating that the connection is not secured, i.e. plaintext connection.
+     */
+    disabled?: outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled;
+    /**
+     * If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+     */
+    enabled?: outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled {
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: string;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourceObjectTransferSettings {
+    routine?: string;
+    trigger?: string;
+    view?: string;
+}
+
+export interface DatatransferEndpointSettingsMysqlSourcePassword {
+    raw?: string;
+}
+
+export interface DatatransferEndpointSettingsMysqlTarget {
+    /**
+     * Connection settings. The structure is documented below.
+     */
+    connection?: outputs.DatatransferEndpointSettingsMysqlTargetConnection;
+    /**
+     * Name of the database to transfer.
+     */
+    database?: string;
+    /**
+     * Password for the database access. This is a block with a single field named `raw` which should contain the password.
+     */
+    password?: outputs.DatatransferEndpointSettingsMysqlTargetPassword;
+    /**
+     * Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `serviceSchema` implies schema "public".
+     */
+    serviceSchema?: string;
+    /**
+     * When true, disables foreign key checks. See [foreignKeyChecks](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_foreign_key_checks). False by default.
+     */
+    skipConstraintChecks?: boolean;
+    /**
+     * [sqlMode](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html) to use when interacting with the server. Defaults to "NO_AUTO_VALUE_ON_ZERO,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION".
+     */
+    sqlMode?: string;
+    /**
+     * Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.
+     */
+    timezone?: string;
+    /**
+     * User for the database access.
+     */
+    user?: string;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnection {
+    /**
+     * Identifier of the Managed MySQL cluster.
+     */
+    mdbClusterId?: string;
+    /**
+     * Connection settings of the on-premise MySQL server.
+     */
+    onPremise?: outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremise;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnectionOnPremise {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: string;
+    /**
+     * List of host names of the PostgreSQL server. Exactly one host is expected currently.
+     */
+    hosts?: string[];
+    /**
+     * Port for the database connection.
+     */
+    port?: number;
+    /**
+     * Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+     */
+    subnetId?: string;
+    /**
+     * TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+     */
+    tlsMode: outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode {
+    /**
+     * Empty block designating that the connection is not secured, i.e. plaintext connection.
+     */
+    disabled?: outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled;
+    /**
+     * If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+     */
+    enabled?: outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled {
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: string;
+}
+
+export interface DatatransferEndpointSettingsMysqlTargetPassword {
+    raw?: string;
+}
+
+export interface DatatransferEndpointSettingsPostgresSource {
+    collapseInheritTable?: boolean;
+    /**
+     * Connection settings. The structure is documented below.
+     */
+    connection?: outputs.DatatransferEndpointSettingsPostgresSourceConnection;
+    /**
+     * Name of the database to transfer.
+     */
+    database?: string;
+    /**
+     * List of tables which will not be transfered, formatted as `schemaname.tablename`.
+     */
+    excludeTables?: string[];
+    /**
+     * List of tables to transfer, formatted as `schemaname.tablename`. If omitted or an empty list is specified, all tables will be transferred.
+     */
+    includeTables?: string[];
+    /**
+     * Defines which database schema objects should be transferred, e.g. views, functions, etc.
+     */
+    objectTransferSettings: outputs.DatatransferEndpointSettingsPostgresSourceObjectTransferSettings;
+    /**
+     * Password for the database access. This is a block with a single field named `raw` which should contain the password.
+     */
+    password?: outputs.DatatransferEndpointSettingsPostgresSourcePassword;
+    /**
+     * Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `serviceSchema` implies schema "public".
+     */
+    serviceSchema: string;
+    /**
+     * Maximum WAL size held by the replication slot, in gigabytes. Exceeding this limit will result in a replication failure and deletion of the replication slot. Unlimited by default.
+     */
+    slotGigabyteLagLimit: number;
+    /**
+     * User for the database access.
+     */
+    user?: string;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnection {
+    /**
+     * Identifier of the Managed MySQL cluster.
+     */
+    mdbClusterId?: string;
+    /**
+     * Connection settings of the on-premise MySQL server.
+     */
+    onPremise?: outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremise;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnectionOnPremise {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: string;
+    /**
+     * List of host names of the PostgreSQL server. Exactly one host is expected currently.
+     */
+    hosts?: string[];
+    /**
+     * Port for the database connection.
+     */
+    port?: number;
+    /**
+     * Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+     */
+    subnetId?: string;
+    /**
+     * TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+     */
+    tlsMode: outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode {
+    /**
+     * Empty block designating that the connection is not secured, i.e. plaintext connection.
+     */
+    disabled?: outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled;
+    /**
+     * If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+     */
+    enabled?: outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled {
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: string;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourceObjectTransferSettings {
+    cast?: string;
+    collation?: string;
+    constraint?: string;
+    defaultValues?: string;
+    fkConstraint?: string;
+    function?: string;
+    index?: string;
+    policy?: string;
+    primaryKey?: string;
+    rule?: string;
+    sequence?: string;
+    sequenceOwnedBy?: string;
+    table?: string;
+    trigger?: string;
+    type?: string;
+    view?: string;
+}
+
+export interface DatatransferEndpointSettingsPostgresSourcePassword {
+    raw?: string;
+}
+
+export interface DatatransferEndpointSettingsPostgresTarget {
+    /**
+     * Connection settings. The structure is documented below.
+     */
+    connection?: outputs.DatatransferEndpointSettingsPostgresTargetConnection;
+    /**
+     * Name of the database to transfer.
+     */
+    database?: string;
+    /**
+     * Password for the database access. This is a block with a single field named `raw` which should contain the password.
+     */
+    password?: outputs.DatatransferEndpointSettingsPostgresTargetPassword;
+    /**
+     * User for the database access.
+     */
+    user?: string;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnection {
+    /**
+     * Identifier of the Managed MySQL cluster.
+     */
+    mdbClusterId?: string;
+    /**
+     * Connection settings of the on-premise MySQL server.
+     */
+    onPremise?: outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremise;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnectionOnPremise {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: string;
+    /**
+     * List of host names of the PostgreSQL server. Exactly one host is expected currently.
+     */
+    hosts?: string[];
+    /**
+     * Port for the database connection.
+     */
+    port?: number;
+    /**
+     * Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+     */
+    subnetId?: string;
+    /**
+     * TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+     */
+    tlsMode: outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode {
+    /**
+     * Empty block designating that the connection is not secured, i.e. plaintext connection.
+     */
+    disabled?: outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled;
+    /**
+     * If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+     */
+    enabled?: outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled {
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled {
+    /**
+     * X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+     */
+    caCertificate?: string;
+}
+
+export interface DatatransferEndpointSettingsPostgresTargetPassword {
+    raw?: string;
+}
+
 export interface FunctionContent {
     zipFilename: string;
 }
@@ -8611,6 +9020,13 @@ export interface MdbSqlServerClusterUserPermission {
      * Allowed roles: `OWNER`, `SECURITYADMIN`, `ACCESSADMIN`, `BACKUPOPERATOR`, `DDLADMIN`, `DATAWRITER`, `DATAREADER`, `DENYDATAWRITER`, `DENYDATAREADER`.
      */
     roles?: string[];
+}
+
+export interface OrganizationmanagerSamlFederationSecuritySettings {
+    /**
+     * Enable encrypted assertions.
+     */
+    encryptedAssertions: boolean;
 }
 
 export interface ServerlessContainerImage {
