@@ -120,6 +120,37 @@ __all__ = [
     'DataprocClusterClusterConfigSubclusterSpec',
     'DataprocClusterClusterConfigSubclusterSpecAutoscalingConfig',
     'DataprocClusterClusterConfigSubclusterSpecResources',
+    'DatatransferEndpointSettings',
+    'DatatransferEndpointSettingsMysqlSource',
+    'DatatransferEndpointSettingsMysqlSourceConnection',
+    'DatatransferEndpointSettingsMysqlSourceConnectionOnPremise',
+    'DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode',
+    'DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled',
+    'DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled',
+    'DatatransferEndpointSettingsMysqlSourceObjectTransferSettings',
+    'DatatransferEndpointSettingsMysqlSourcePassword',
+    'DatatransferEndpointSettingsMysqlTarget',
+    'DatatransferEndpointSettingsMysqlTargetConnection',
+    'DatatransferEndpointSettingsMysqlTargetConnectionOnPremise',
+    'DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode',
+    'DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled',
+    'DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled',
+    'DatatransferEndpointSettingsMysqlTargetPassword',
+    'DatatransferEndpointSettingsPostgresSource',
+    'DatatransferEndpointSettingsPostgresSourceConnection',
+    'DatatransferEndpointSettingsPostgresSourceConnectionOnPremise',
+    'DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode',
+    'DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled',
+    'DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled',
+    'DatatransferEndpointSettingsPostgresSourceObjectTransferSettings',
+    'DatatransferEndpointSettingsPostgresSourcePassword',
+    'DatatransferEndpointSettingsPostgresTarget',
+    'DatatransferEndpointSettingsPostgresTargetConnection',
+    'DatatransferEndpointSettingsPostgresTargetConnectionOnPremise',
+    'DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode',
+    'DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled',
+    'DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled',
+    'DatatransferEndpointSettingsPostgresTargetPassword',
     'FunctionContent',
     'FunctionPackage',
     'FunctionScalingPolicyPolicy',
@@ -249,6 +280,7 @@ __all__ = [
     'MdbSqlServerClusterResources',
     'MdbSqlServerClusterUser',
     'MdbSqlServerClusterUserPermission',
+    'OrganizationmanagerSamlFederationSecuritySettings',
     'ServerlessContainerImage',
     'StorageBucketCorsRule',
     'StorageBucketGrant',
@@ -8192,6 +8224,1618 @@ class DataprocClusterClusterConfigSubclusterSpecResources(dict):
         Type of the storage of a host. One of `network-hdd` (default) or `network-ssd`.
         """
         return pulumi.get(self, "disk_type_id")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlSource":
+            suggest = "mysql_source"
+        elif key == "mysqlTarget":
+            suggest = "mysql_target"
+        elif key == "postgresSource":
+            suggest = "postgres_source"
+        elif key == "postgresTarget":
+            suggest = "postgres_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mysql_source: Optional['outputs.DatatransferEndpointSettingsMysqlSource'] = None,
+                 mysql_target: Optional['outputs.DatatransferEndpointSettingsMysqlTarget'] = None,
+                 postgres_source: Optional['outputs.DatatransferEndpointSettingsPostgresSource'] = None,
+                 postgres_target: Optional['outputs.DatatransferEndpointSettingsPostgresTarget'] = None):
+        """
+        :param 'DatatransferEndpointSettingsMysqlSourceArgs' mysql_source: Settings specific to the MySQL source endpoint.
+        :param 'DatatransferEndpointSettingsMysqlTargetArgs' mysql_target: Settings specific to the MySQL target endpoint.
+        :param 'DatatransferEndpointSettingsPostgresSourceArgs' postgres_source: Settings specific to the PostgreSQL source endpoint.
+        :param 'DatatransferEndpointSettingsPostgresTargetArgs' postgres_target: Settings specific to the PostgreSQL target endpoint.
+        """
+        if mysql_source is not None:
+            pulumi.set(__self__, "mysql_source", mysql_source)
+        if mysql_target is not None:
+            pulumi.set(__self__, "mysql_target", mysql_target)
+        if postgres_source is not None:
+            pulumi.set(__self__, "postgres_source", postgres_source)
+        if postgres_target is not None:
+            pulumi.set(__self__, "postgres_target", postgres_target)
+
+    @property
+    @pulumi.getter(name="mysqlSource")
+    def mysql_source(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlSource']:
+        """
+        Settings specific to the MySQL source endpoint.
+        """
+        return pulumi.get(self, "mysql_source")
+
+    @property
+    @pulumi.getter(name="mysqlTarget")
+    def mysql_target(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlTarget']:
+        """
+        Settings specific to the MySQL target endpoint.
+        """
+        return pulumi.get(self, "mysql_target")
+
+    @property
+    @pulumi.getter(name="postgresSource")
+    def postgres_source(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresSource']:
+        """
+        Settings specific to the PostgreSQL source endpoint.
+        """
+        return pulumi.get(self, "postgres_source")
+
+    @property
+    @pulumi.getter(name="postgresTarget")
+    def postgres_target(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresTarget']:
+        """
+        Settings specific to the PostgreSQL target endpoint.
+        """
+        return pulumi.get(self, "postgres_target")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeTablesRegexes":
+            suggest = "exclude_tables_regexes"
+        elif key == "includeTablesRegexes":
+            suggest = "include_tables_regexes"
+        elif key == "objectTransferSettings":
+            suggest = "object_transfer_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsMysqlSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsMysqlSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsMysqlSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection: Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnection'] = None,
+                 database: Optional[str] = None,
+                 exclude_tables_regexes: Optional[Sequence[str]] = None,
+                 include_tables_regexes: Optional[Sequence[str]] = None,
+                 object_transfer_settings: Optional['outputs.DatatransferEndpointSettingsMysqlSourceObjectTransferSettings'] = None,
+                 password: Optional['outputs.DatatransferEndpointSettingsMysqlSourcePassword'] = None,
+                 timezone: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param 'DatatransferEndpointSettingsMysqlSourceConnectionArgs' connection: Connection settings. The structure is documented below.
+        :param str database: Name of the database to transfer.
+        :param Sequence[str] exclude_tables_regexes: Opposite of `include_table_regex`. The tables matching the specified regular expressions will not be transferred.
+        :param Sequence[str] include_tables_regexes: List of regular expressions of table names which should be transferred. A table name is formatted as schemaname.tablename. For example, a single regular expression may look like `^mydb.employees$`.
+        :param 'DatatransferEndpointSettingsMysqlSourceObjectTransferSettingsArgs' object_transfer_settings: Defines which database schema objects should be transferred, e.g. views, functions, etc.
+        :param 'DatatransferEndpointSettingsMysqlSourcePasswordArgs' password: Password for the database access. This is a block with a single field named `raw` which should contain the password.
+        :param str timezone: Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.
+        :param str user: User for the database access.
+        """
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if exclude_tables_regexes is not None:
+            pulumi.set(__self__, "exclude_tables_regexes", exclude_tables_regexes)
+        if include_tables_regexes is not None:
+            pulumi.set(__self__, "include_tables_regexes", include_tables_regexes)
+        if object_transfer_settings is not None:
+            pulumi.set(__self__, "object_transfer_settings", object_transfer_settings)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnection']:
+        """
+        Connection settings. The structure is documented below.
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        Name of the database to transfer.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="excludeTablesRegexes")
+    def exclude_tables_regexes(self) -> Optional[Sequence[str]]:
+        """
+        Opposite of `include_table_regex`. The tables matching the specified regular expressions will not be transferred.
+        """
+        return pulumi.get(self, "exclude_tables_regexes")
+
+    @property
+    @pulumi.getter(name="includeTablesRegexes")
+    def include_tables_regexes(self) -> Optional[Sequence[str]]:
+        """
+        List of regular expressions of table names which should be transferred. A table name is formatted as schemaname.tablename. For example, a single regular expression may look like `^mydb.employees$`.
+        """
+        return pulumi.get(self, "include_tables_regexes")
+
+    @property
+    @pulumi.getter(name="objectTransferSettings")
+    def object_transfer_settings(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlSourceObjectTransferSettings']:
+        """
+        Defines which database schema objects should be transferred, e.g. views, functions, etc.
+        """
+        return pulumi.get(self, "object_transfer_settings")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlSourcePassword']:
+        """
+        Password for the database access. This is a block with a single field named `raw` which should contain the password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[str]:
+        """
+        Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.
+        """
+        return pulumi.get(self, "timezone")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        User for the database access.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlSourceConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mdbClusterId":
+            suggest = "mdb_cluster_id"
+        elif key == "onPremise":
+            suggest = "on_premise"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsMysqlSourceConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsMysqlSourceConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsMysqlSourceConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mdb_cluster_id: Optional[str] = None,
+                 on_premise: Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremise'] = None):
+        """
+        :param str mdb_cluster_id: Identifier of the Managed MySQL cluster.
+        :param 'DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseArgs' on_premise: Connection settings of the on-premise MySQL server.
+        """
+        if mdb_cluster_id is not None:
+            pulumi.set(__self__, "mdb_cluster_id", mdb_cluster_id)
+        if on_premise is not None:
+            pulumi.set(__self__, "on_premise", on_premise)
+
+    @property
+    @pulumi.getter(name="mdbClusterId")
+    def mdb_cluster_id(self) -> Optional[str]:
+        """
+        Identifier of the Managed MySQL cluster.
+        """
+        return pulumi.get(self, "mdb_cluster_id")
+
+    @property
+    @pulumi.getter(name="onPremise")
+    def on_premise(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremise']:
+        """
+        Connection settings of the on-premise MySQL server.
+        """
+        return pulumi.get(self, "on_premise")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlSourceConnectionOnPremise(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "tlsMode":
+            suggest = "tls_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsMysqlSourceConnectionOnPremise. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsMysqlSourceConnectionOnPremise.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsMysqlSourceConnectionOnPremise.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[str] = None,
+                 hosts: Optional[Sequence[str]] = None,
+                 port: Optional[int] = None,
+                 subnet_id: Optional[str] = None,
+                 tls_mode: Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode'] = None):
+        """
+        :param str ca_certificate: X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        :param Sequence[str] hosts: List of host names of the PostgreSQL server. Exactly one host is expected currently.
+        :param int port: Port for the database connection.
+        :param str subnet_id: Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+        :param 'DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeArgs' tls_mode: TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[str]:
+        """
+        X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Optional[Sequence[str]]:
+        """
+        List of host names of the PostgreSQL server. Exactly one host is expected currently.
+        """
+        return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port for the database connection.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[str]:
+        """
+        Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode']:
+        """
+        TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+        """
+        return pulumi.get(self, "tls_mode")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsMode(dict):
+    def __init__(__self__, *,
+                 disabled: Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled'] = None,
+                 enabled: Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled'] = None):
+        """
+        :param 'DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabledArgs' disabled: Empty block designating that the connection is not secured, i.e. plaintext connection.
+        :param 'DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabledArgs' enabled: If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled']:
+        """
+        Empty block designating that the connection is not secured, i.e. plaintext connection.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled']:
+        """
+        If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeDisabled(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsMysqlSourceConnectionOnPremiseTlsModeEnabled.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[str] = None):
+        """
+        :param str ca_certificate: X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[str]:
+        """
+        X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlSourceObjectTransferSettings(dict):
+    def __init__(__self__, *,
+                 routine: Optional[str] = None,
+                 trigger: Optional[str] = None,
+                 view: Optional[str] = None):
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
+        if trigger is not None:
+            pulumi.set(__self__, "trigger", trigger)
+        if view is not None:
+            pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter
+    def routine(self) -> Optional[str]:
+        return pulumi.get(self, "routine")
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> Optional[str]:
+        return pulumi.get(self, "trigger")
+
+    @property
+    @pulumi.getter
+    def view(self) -> Optional[str]:
+        return pulumi.get(self, "view")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlSourcePassword(dict):
+    def __init__(__self__, *,
+                 raw: Optional[str] = None):
+        if raw is not None:
+            pulumi.set(__self__, "raw", raw)
+
+    @property
+    @pulumi.getter
+    def raw(self) -> Optional[str]:
+        return pulumi.get(self, "raw")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceSchema":
+            suggest = "service_schema"
+        elif key == "skipConstraintChecks":
+            suggest = "skip_constraint_checks"
+        elif key == "sqlMode":
+            suggest = "sql_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsMysqlTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsMysqlTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsMysqlTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection: Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnection'] = None,
+                 database: Optional[str] = None,
+                 password: Optional['outputs.DatatransferEndpointSettingsMysqlTargetPassword'] = None,
+                 service_schema: Optional[str] = None,
+                 skip_constraint_checks: Optional[bool] = None,
+                 sql_mode: Optional[str] = None,
+                 timezone: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param 'DatatransferEndpointSettingsMysqlTargetConnectionArgs' connection: Connection settings. The structure is documented below.
+        :param str database: Name of the database to transfer.
+        :param 'DatatransferEndpointSettingsMysqlTargetPasswordArgs' password: Password for the database access. This is a block with a single field named `raw` which should contain the password.
+        :param str service_schema: Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `service_schema` implies schema "public".
+        :param bool skip_constraint_checks: When true, disables foreign key checks. See [foreign_key_checks](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_foreign_key_checks). False by default.
+        :param str sql_mode: [sql_mode](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html) to use when interacting with the server. Defaults to "NO_AUTO_VALUE_ON_ZERO,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION".
+        :param str timezone: Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.
+        :param str user: User for the database access.
+        """
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if service_schema is not None:
+            pulumi.set(__self__, "service_schema", service_schema)
+        if skip_constraint_checks is not None:
+            pulumi.set(__self__, "skip_constraint_checks", skip_constraint_checks)
+        if sql_mode is not None:
+            pulumi.set(__self__, "sql_mode", sql_mode)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnection']:
+        """
+        Connection settings. The structure is documented below.
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        Name of the database to transfer.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlTargetPassword']:
+        """
+        Password for the database access. This is a block with a single field named `raw` which should contain the password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="serviceSchema")
+    def service_schema(self) -> Optional[str]:
+        """
+        Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `service_schema` implies schema "public".
+        """
+        return pulumi.get(self, "service_schema")
+
+    @property
+    @pulumi.getter(name="skipConstraintChecks")
+    def skip_constraint_checks(self) -> Optional[bool]:
+        """
+        When true, disables foreign key checks. See [foreign_key_checks](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_foreign_key_checks). False by default.
+        """
+        return pulumi.get(self, "skip_constraint_checks")
+
+    @property
+    @pulumi.getter(name="sqlMode")
+    def sql_mode(self) -> Optional[str]:
+        """
+        [sql_mode](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html) to use when interacting with the server. Defaults to "NO_AUTO_VALUE_ON_ZERO,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION".
+        """
+        return pulumi.get(self, "sql_mode")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[str]:
+        """
+        Timezone to use for parsing timestamps for saving source timezones. Accepts values from IANA timezone database. Default: local timezone.
+        """
+        return pulumi.get(self, "timezone")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        User for the database access.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlTargetConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mdbClusterId":
+            suggest = "mdb_cluster_id"
+        elif key == "onPremise":
+            suggest = "on_premise"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsMysqlTargetConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsMysqlTargetConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsMysqlTargetConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mdb_cluster_id: Optional[str] = None,
+                 on_premise: Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremise'] = None):
+        """
+        :param str mdb_cluster_id: Identifier of the Managed MySQL cluster.
+        :param 'DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseArgs' on_premise: Connection settings of the on-premise MySQL server.
+        """
+        if mdb_cluster_id is not None:
+            pulumi.set(__self__, "mdb_cluster_id", mdb_cluster_id)
+        if on_premise is not None:
+            pulumi.set(__self__, "on_premise", on_premise)
+
+    @property
+    @pulumi.getter(name="mdbClusterId")
+    def mdb_cluster_id(self) -> Optional[str]:
+        """
+        Identifier of the Managed MySQL cluster.
+        """
+        return pulumi.get(self, "mdb_cluster_id")
+
+    @property
+    @pulumi.getter(name="onPremise")
+    def on_premise(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremise']:
+        """
+        Connection settings of the on-premise MySQL server.
+        """
+        return pulumi.get(self, "on_premise")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlTargetConnectionOnPremise(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "tlsMode":
+            suggest = "tls_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsMysqlTargetConnectionOnPremise. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsMysqlTargetConnectionOnPremise.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsMysqlTargetConnectionOnPremise.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[str] = None,
+                 hosts: Optional[Sequence[str]] = None,
+                 port: Optional[int] = None,
+                 subnet_id: Optional[str] = None,
+                 tls_mode: Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode'] = None):
+        """
+        :param str ca_certificate: X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        :param Sequence[str] hosts: List of host names of the PostgreSQL server. Exactly one host is expected currently.
+        :param int port: Port for the database connection.
+        :param str subnet_id: Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+        :param 'DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeArgs' tls_mode: TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[str]:
+        """
+        X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Optional[Sequence[str]]:
+        """
+        List of host names of the PostgreSQL server. Exactly one host is expected currently.
+        """
+        return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port for the database connection.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[str]:
+        """
+        Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode']:
+        """
+        TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+        """
+        return pulumi.get(self, "tls_mode")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsMode(dict):
+    def __init__(__self__, *,
+                 disabled: Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled'] = None,
+                 enabled: Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled'] = None):
+        """
+        :param 'DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabledArgs' disabled: Empty block designating that the connection is not secured, i.e. plaintext connection.
+        :param 'DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabledArgs' enabled: If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled']:
+        """
+        Empty block designating that the connection is not secured, i.e. plaintext connection.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional['outputs.DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled']:
+        """
+        If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeDisabled(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsMysqlTargetConnectionOnPremiseTlsModeEnabled.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[str] = None):
+        """
+        :param str ca_certificate: X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[str]:
+        """
+        X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsMysqlTargetPassword(dict):
+    def __init__(__self__, *,
+                 raw: Optional[str] = None):
+        if raw is not None:
+            pulumi.set(__self__, "raw", raw)
+
+    @property
+    @pulumi.getter
+    def raw(self) -> Optional[str]:
+        return pulumi.get(self, "raw")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collapseInheritTable":
+            suggest = "collapse_inherit_table"
+        elif key == "excludeTables":
+            suggest = "exclude_tables"
+        elif key == "includeTables":
+            suggest = "include_tables"
+        elif key == "objectTransferSettings":
+            suggest = "object_transfer_settings"
+        elif key == "serviceSchema":
+            suggest = "service_schema"
+        elif key == "slotGigabyteLagLimit":
+            suggest = "slot_gigabyte_lag_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsPostgresSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsPostgresSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsPostgresSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collapse_inherit_table: Optional[bool] = None,
+                 connection: Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnection'] = None,
+                 database: Optional[str] = None,
+                 exclude_tables: Optional[Sequence[str]] = None,
+                 include_tables: Optional[Sequence[str]] = None,
+                 object_transfer_settings: Optional['outputs.DatatransferEndpointSettingsPostgresSourceObjectTransferSettings'] = None,
+                 password: Optional['outputs.DatatransferEndpointSettingsPostgresSourcePassword'] = None,
+                 service_schema: Optional[str] = None,
+                 slot_gigabyte_lag_limit: Optional[int] = None,
+                 user: Optional[str] = None):
+        """
+        :param 'DatatransferEndpointSettingsPostgresSourceConnectionArgs' connection: Connection settings. The structure is documented below.
+        :param str database: Name of the database to transfer.
+        :param Sequence[str] exclude_tables: List of tables which will not be transfered, formatted as `schemaname.tablename`.
+        :param Sequence[str] include_tables: List of tables to transfer, formatted as `schemaname.tablename`. If omitted or an empty list is specified, all tables will be transferred.
+        :param 'DatatransferEndpointSettingsPostgresSourceObjectTransferSettingsArgs' object_transfer_settings: Defines which database schema objects should be transferred, e.g. views, functions, etc.
+        :param 'DatatransferEndpointSettingsPostgresSourcePasswordArgs' password: Password for the database access. This is a block with a single field named `raw` which should contain the password.
+        :param str service_schema: Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `service_schema` implies schema "public".
+        :param int slot_gigabyte_lag_limit: Maximum WAL size held by the replication slot, in gigabytes. Exceeding this limit will result in a replication failure and deletion of the replication slot. Unlimited by default.
+        :param str user: User for the database access.
+        """
+        if collapse_inherit_table is not None:
+            pulumi.set(__self__, "collapse_inherit_table", collapse_inherit_table)
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if exclude_tables is not None:
+            pulumi.set(__self__, "exclude_tables", exclude_tables)
+        if include_tables is not None:
+            pulumi.set(__self__, "include_tables", include_tables)
+        if object_transfer_settings is not None:
+            pulumi.set(__self__, "object_transfer_settings", object_transfer_settings)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if service_schema is not None:
+            pulumi.set(__self__, "service_schema", service_schema)
+        if slot_gigabyte_lag_limit is not None:
+            pulumi.set(__self__, "slot_gigabyte_lag_limit", slot_gigabyte_lag_limit)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter(name="collapseInheritTable")
+    def collapse_inherit_table(self) -> Optional[bool]:
+        return pulumi.get(self, "collapse_inherit_table")
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnection']:
+        """
+        Connection settings. The structure is documented below.
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        Name of the database to transfer.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="excludeTables")
+    def exclude_tables(self) -> Optional[Sequence[str]]:
+        """
+        List of tables which will not be transfered, formatted as `schemaname.tablename`.
+        """
+        return pulumi.get(self, "exclude_tables")
+
+    @property
+    @pulumi.getter(name="includeTables")
+    def include_tables(self) -> Optional[Sequence[str]]:
+        """
+        List of tables to transfer, formatted as `schemaname.tablename`. If omitted or an empty list is specified, all tables will be transferred.
+        """
+        return pulumi.get(self, "include_tables")
+
+    @property
+    @pulumi.getter(name="objectTransferSettings")
+    def object_transfer_settings(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresSourceObjectTransferSettings']:
+        """
+        Defines which database schema objects should be transferred, e.g. views, functions, etc.
+        """
+        return pulumi.get(self, "object_transfer_settings")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresSourcePassword']:
+        """
+        Password for the database access. This is a block with a single field named `raw` which should contain the password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="serviceSchema")
+    def service_schema(self) -> Optional[str]:
+        """
+        Name of the database schema in which auxiliary tables needed for the transfer will be created. Empty `service_schema` implies schema "public".
+        """
+        return pulumi.get(self, "service_schema")
+
+    @property
+    @pulumi.getter(name="slotGigabyteLagLimit")
+    def slot_gigabyte_lag_limit(self) -> Optional[int]:
+        """
+        Maximum WAL size held by the replication slot, in gigabytes. Exceeding this limit will result in a replication failure and deletion of the replication slot. Unlimited by default.
+        """
+        return pulumi.get(self, "slot_gigabyte_lag_limit")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        User for the database access.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresSourceConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mdbClusterId":
+            suggest = "mdb_cluster_id"
+        elif key == "onPremise":
+            suggest = "on_premise"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsPostgresSourceConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsPostgresSourceConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsPostgresSourceConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mdb_cluster_id: Optional[str] = None,
+                 on_premise: Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremise'] = None):
+        """
+        :param str mdb_cluster_id: Identifier of the Managed MySQL cluster.
+        :param 'DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseArgs' on_premise: Connection settings of the on-premise MySQL server.
+        """
+        if mdb_cluster_id is not None:
+            pulumi.set(__self__, "mdb_cluster_id", mdb_cluster_id)
+        if on_premise is not None:
+            pulumi.set(__self__, "on_premise", on_premise)
+
+    @property
+    @pulumi.getter(name="mdbClusterId")
+    def mdb_cluster_id(self) -> Optional[str]:
+        """
+        Identifier of the Managed MySQL cluster.
+        """
+        return pulumi.get(self, "mdb_cluster_id")
+
+    @property
+    @pulumi.getter(name="onPremise")
+    def on_premise(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremise']:
+        """
+        Connection settings of the on-premise MySQL server.
+        """
+        return pulumi.get(self, "on_premise")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresSourceConnectionOnPremise(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "tlsMode":
+            suggest = "tls_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsPostgresSourceConnectionOnPremise. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsPostgresSourceConnectionOnPremise.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsPostgresSourceConnectionOnPremise.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[str] = None,
+                 hosts: Optional[Sequence[str]] = None,
+                 port: Optional[int] = None,
+                 subnet_id: Optional[str] = None,
+                 tls_mode: Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode'] = None):
+        """
+        :param str ca_certificate: X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        :param Sequence[str] hosts: List of host names of the PostgreSQL server. Exactly one host is expected currently.
+        :param int port: Port for the database connection.
+        :param str subnet_id: Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+        :param 'DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeArgs' tls_mode: TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[str]:
+        """
+        X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Optional[Sequence[str]]:
+        """
+        List of host names of the PostgreSQL server. Exactly one host is expected currently.
+        """
+        return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port for the database connection.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[str]:
+        """
+        Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode']:
+        """
+        TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+        """
+        return pulumi.get(self, "tls_mode")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsMode(dict):
+    def __init__(__self__, *,
+                 disabled: Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled'] = None,
+                 enabled: Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled'] = None):
+        """
+        :param 'DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabledArgs' disabled: Empty block designating that the connection is not secured, i.e. plaintext connection.
+        :param 'DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabledArgs' enabled: If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled']:
+        """
+        Empty block designating that the connection is not secured, i.e. plaintext connection.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled']:
+        """
+        If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeDisabled(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsPostgresSourceConnectionOnPremiseTlsModeEnabled.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[str] = None):
+        """
+        :param str ca_certificate: X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[str]:
+        """
+        X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresSourceObjectTransferSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValues":
+            suggest = "default_values"
+        elif key == "fkConstraint":
+            suggest = "fk_constraint"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+        elif key == "sequenceOwnedBy":
+            suggest = "sequence_owned_by"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsPostgresSourceObjectTransferSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsPostgresSourceObjectTransferSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsPostgresSourceObjectTransferSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cast: Optional[str] = None,
+                 collation: Optional[str] = None,
+                 constraint: Optional[str] = None,
+                 default_values: Optional[str] = None,
+                 fk_constraint: Optional[str] = None,
+                 function: Optional[str] = None,
+                 index: Optional[str] = None,
+                 policy: Optional[str] = None,
+                 primary_key: Optional[str] = None,
+                 rule: Optional[str] = None,
+                 sequence: Optional[str] = None,
+                 sequence_owned_by: Optional[str] = None,
+                 table: Optional[str] = None,
+                 trigger: Optional[str] = None,
+                 type: Optional[str] = None,
+                 view: Optional[str] = None):
+        if cast is not None:
+            pulumi.set(__self__, "cast", cast)
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if constraint is not None:
+            pulumi.set(__self__, "constraint", constraint)
+        if default_values is not None:
+            pulumi.set(__self__, "default_values", default_values)
+        if fk_constraint is not None:
+            pulumi.set(__self__, "fk_constraint", fk_constraint)
+        if function is not None:
+            pulumi.set(__self__, "function", function)
+        if index is not None:
+            pulumi.set(__self__, "index", index)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if rule is not None:
+            pulumi.set(__self__, "rule", rule)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
+        if sequence_owned_by is not None:
+            pulumi.set(__self__, "sequence_owned_by", sequence_owned_by)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+        if trigger is not None:
+            pulumi.set(__self__, "trigger", trigger)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if view is not None:
+            pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter
+    def cast(self) -> Optional[str]:
+        return pulumi.get(self, "cast")
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[str]:
+        return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter
+    def constraint(self) -> Optional[str]:
+        return pulumi.get(self, "constraint")
+
+    @property
+    @pulumi.getter(name="defaultValues")
+    def default_values(self) -> Optional[str]:
+        return pulumi.get(self, "default_values")
+
+    @property
+    @pulumi.getter(name="fkConstraint")
+    def fk_constraint(self) -> Optional[str]:
+        return pulumi.get(self, "fk_constraint")
+
+    @property
+    @pulumi.getter
+    def function(self) -> Optional[str]:
+        return pulumi.get(self, "function")
+
+    @property
+    @pulumi.getter
+    def index(self) -> Optional[str]:
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[str]:
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def rule(self) -> Optional[str]:
+        return pulumi.get(self, "rule")
+
+    @property
+    @pulumi.getter
+    def sequence(self) -> Optional[str]:
+        return pulumi.get(self, "sequence")
+
+    @property
+    @pulumi.getter(name="sequenceOwnedBy")
+    def sequence_owned_by(self) -> Optional[str]:
+        return pulumi.get(self, "sequence_owned_by")
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[str]:
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> Optional[str]:
+        return pulumi.get(self, "trigger")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def view(self) -> Optional[str]:
+        return pulumi.get(self, "view")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresSourcePassword(dict):
+    def __init__(__self__, *,
+                 raw: Optional[str] = None):
+        if raw is not None:
+            pulumi.set(__self__, "raw", raw)
+
+    @property
+    @pulumi.getter
+    def raw(self) -> Optional[str]:
+        return pulumi.get(self, "raw")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresTarget(dict):
+    def __init__(__self__, *,
+                 connection: Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnection'] = None,
+                 database: Optional[str] = None,
+                 password: Optional['outputs.DatatransferEndpointSettingsPostgresTargetPassword'] = None,
+                 user: Optional[str] = None):
+        """
+        :param 'DatatransferEndpointSettingsPostgresTargetConnectionArgs' connection: Connection settings. The structure is documented below.
+        :param str database: Name of the database to transfer.
+        :param 'DatatransferEndpointSettingsPostgresTargetPasswordArgs' password: Password for the database access. This is a block with a single field named `raw` which should contain the password.
+        :param str user: User for the database access.
+        """
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnection']:
+        """
+        Connection settings. The structure is documented below.
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        Name of the database to transfer.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresTargetPassword']:
+        """
+        Password for the database access. This is a block with a single field named `raw` which should contain the password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        User for the database access.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresTargetConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mdbClusterId":
+            suggest = "mdb_cluster_id"
+        elif key == "onPremise":
+            suggest = "on_premise"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsPostgresTargetConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsPostgresTargetConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsPostgresTargetConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mdb_cluster_id: Optional[str] = None,
+                 on_premise: Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremise'] = None):
+        """
+        :param str mdb_cluster_id: Identifier of the Managed MySQL cluster.
+        :param 'DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseArgs' on_premise: Connection settings of the on-premise MySQL server.
+        """
+        if mdb_cluster_id is not None:
+            pulumi.set(__self__, "mdb_cluster_id", mdb_cluster_id)
+        if on_premise is not None:
+            pulumi.set(__self__, "on_premise", on_premise)
+
+    @property
+    @pulumi.getter(name="mdbClusterId")
+    def mdb_cluster_id(self) -> Optional[str]:
+        """
+        Identifier of the Managed MySQL cluster.
+        """
+        return pulumi.get(self, "mdb_cluster_id")
+
+    @property
+    @pulumi.getter(name="onPremise")
+    def on_premise(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremise']:
+        """
+        Connection settings of the on-premise MySQL server.
+        """
+        return pulumi.get(self, "on_premise")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresTargetConnectionOnPremise(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "tlsMode":
+            suggest = "tls_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsPostgresTargetConnectionOnPremise. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsPostgresTargetConnectionOnPremise.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsPostgresTargetConnectionOnPremise.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[str] = None,
+                 hosts: Optional[Sequence[str]] = None,
+                 port: Optional[int] = None,
+                 subnet_id: Optional[str] = None,
+                 tls_mode: Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode'] = None):
+        """
+        :param str ca_certificate: X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        :param Sequence[str] hosts: List of host names of the PostgreSQL server. Exactly one host is expected currently.
+        :param int port: Port for the database connection.
+        :param str subnet_id: Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+        :param 'DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeArgs' tls_mode: TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if tls_mode is not None:
+            pulumi.set(__self__, "tls_mode", tls_mode)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[str]:
+        """
+        X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Optional[Sequence[str]]:
+        """
+        List of host names of the PostgreSQL server. Exactly one host is expected currently.
+        """
+        return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port for the database connection.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[str]:
+        """
+        Identifier of the Yandex Cloud VPC subnetwork to user for accessing the database. If omitted, the server has to be accessible via Internet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="tlsMode")
+    def tls_mode(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode']:
+        """
+        TLS settings for the server connection. Empty implies plaintext connection. The structure is documented below.
+        """
+        return pulumi.get(self, "tls_mode")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsMode(dict):
+    def __init__(__self__, *,
+                 disabled: Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled'] = None,
+                 enabled: Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled'] = None):
+        """
+        :param 'DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabledArgs' disabled: Empty block designating that the connection is not secured, i.e. plaintext connection.
+        :param 'DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabledArgs' enabled: If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled']:
+        """
+        Empty block designating that the connection is not secured, i.e. plaintext connection.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional['outputs.DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled']:
+        """
+        If this attribute is not an empty block, then TLS is used for the server connection. The structure is documented below.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeDisabled(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatatransferEndpointSettingsPostgresTargetConnectionOnPremiseTlsModeEnabled.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: Optional[str] = None):
+        """
+        :param str ca_certificate: X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[str]:
+        """
+        X.509 certificate of the certificate authority which issued the server's certificate, in PEM format. If empty, the server's certificate must be signed by a well-known CA.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+
+@pulumi.output_type
+class DatatransferEndpointSettingsPostgresTargetPassword(dict):
+    def __init__(__self__, *,
+                 raw: Optional[str] = None):
+        if raw is not None:
+            pulumi.set(__self__, "raw", raw)
+
+    @property
+    @pulumi.getter
+    def raw(self) -> Optional[str]:
+        return pulumi.get(self, "raw")
 
 
 @pulumi.output_type
@@ -16970,6 +18614,41 @@ class MdbSqlServerClusterUserPermission(dict):
         Allowed roles: `OWNER`, `SECURITYADMIN`, `ACCESSADMIN`, `BACKUPOPERATOR`, `DDLADMIN`, `DATAWRITER`, `DATAREADER`, `DENYDATAWRITER`, `DENYDATAREADER`.
         """
         return pulumi.get(self, "roles")
+
+
+@pulumi.output_type
+class OrganizationmanagerSamlFederationSecuritySettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptedAssertions":
+            suggest = "encrypted_assertions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationmanagerSamlFederationSecuritySettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationmanagerSamlFederationSecuritySettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationmanagerSamlFederationSecuritySettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encrypted_assertions: bool):
+        """
+        :param bool encrypted_assertions: Enable encrypted assertions.
+        """
+        pulumi.set(__self__, "encrypted_assertions", encrypted_assertions)
+
+    @property
+    @pulumi.getter(name="encryptedAssertions")
+    def encrypted_assertions(self) -> bool:
+        """
+        Enable encrypted assertions.
+        """
+        return pulumi.get(self, "encrypted_assertions")
 
 
 @pulumi.output_type

@@ -25,6 +25,8 @@ export * from "./containerRegistryIamBinding";
 export * from "./containerRepository";
 export * from "./containerRepositoryIamBinding";
 export * from "./dataprocCluster";
+export * from "./datatransferEndpoint";
+export * from "./datatransferTransfer";
 export * from "./dnsRecordSet";
 export * from "./dnsZone";
 export * from "./function";
@@ -116,6 +118,7 @@ export * from "./mdbSqlServerCluster";
 export * from "./messageQueue";
 export * from "./organizationManagerOrganizationIamBinding";
 export * from "./organizationManagerOrganizationIamMember";
+export * from "./organizationmanagerSamlFederation";
 export * from "./provider";
 export * from "./resourcemanagerCloudIamBinding";
 export * from "./resourcemanagerCloudIamMember";
@@ -134,6 +137,7 @@ export * from "./vpcSecurityGroup";
 export * from "./vpcSecurityGroupRule";
 export * from "./vpcSubnet";
 export * from "./ydbDatabaseDedicated";
+export * from "./ydbDatabaseServerless";
 
 // Export sub-modules:
 import * as config from "./config";
@@ -165,6 +169,8 @@ import { ContainerRegistryIamBinding } from "./containerRegistryIamBinding";
 import { ContainerRepository } from "./containerRepository";
 import { ContainerRepositoryIamBinding } from "./containerRepositoryIamBinding";
 import { DataprocCluster } from "./dataprocCluster";
+import { DatatransferEndpoint } from "./datatransferEndpoint";
+import { DatatransferTransfer } from "./datatransferTransfer";
 import { DnsRecordSet } from "./dnsRecordSet";
 import { DnsZone } from "./dnsZone";
 import { Function } from "./function";
@@ -200,6 +206,7 @@ import { MdbSqlServerCluster } from "./mdbSqlServerCluster";
 import { MessageQueue } from "./messageQueue";
 import { OrganizationManagerOrganizationIamBinding } from "./organizationManagerOrganizationIamBinding";
 import { OrganizationManagerOrganizationIamMember } from "./organizationManagerOrganizationIamMember";
+import { OrganizationmanagerSamlFederation } from "./organizationmanagerSamlFederation";
 import { ResourcemanagerCloudIamBinding } from "./resourcemanagerCloudIamBinding";
 import { ResourcemanagerCloudIamMember } from "./resourcemanagerCloudIamMember";
 import { ResourcemanagerFolder } from "./resourcemanagerFolder";
@@ -217,6 +224,7 @@ import { VpcSecurityGroup } from "./vpcSecurityGroup";
 import { VpcSecurityGroupRule } from "./vpcSecurityGroupRule";
 import { VpcSubnet } from "./vpcSubnet";
 import { YdbDatabaseDedicated } from "./ydbDatabaseDedicated";
+import { YdbDatabaseServerless } from "./ydbDatabaseServerless";
 
 const _module = {
     version: utilities.getVersion(),
@@ -262,6 +270,10 @@ const _module = {
                 return new ContainerRepositoryIamBinding(name, <any>undefined, { urn })
             case "yandex:index/dataprocCluster:DataprocCluster":
                 return new DataprocCluster(name, <any>undefined, { urn })
+            case "yandex:index/datatransferEndpoint:DatatransferEndpoint":
+                return new DatatransferEndpoint(name, <any>undefined, { urn })
+            case "yandex:index/datatransferTransfer:DatatransferTransfer":
+                return new DatatransferTransfer(name, <any>undefined, { urn })
             case "yandex:index/dnsRecordSet:DnsRecordSet":
                 return new DnsRecordSet(name, <any>undefined, { urn })
             case "yandex:index/dnsZone:DnsZone":
@@ -332,6 +344,8 @@ const _module = {
                 return new OrganizationManagerOrganizationIamBinding(name, <any>undefined, { urn })
             case "yandex:index/organizationManagerOrganizationIamMember:OrganizationManagerOrganizationIamMember":
                 return new OrganizationManagerOrganizationIamMember(name, <any>undefined, { urn })
+            case "yandex:index/organizationmanagerSamlFederation:OrganizationmanagerSamlFederation":
+                return new OrganizationmanagerSamlFederation(name, <any>undefined, { urn })
             case "yandex:index/resourcemanagerCloudIamBinding:ResourcemanagerCloudIamBinding":
                 return new ResourcemanagerCloudIamBinding(name, <any>undefined, { urn })
             case "yandex:index/resourcemanagerCloudIamMember:ResourcemanagerCloudIamMember":
@@ -366,6 +380,8 @@ const _module = {
                 return new VpcSubnet(name, <any>undefined, { urn })
             case "yandex:index/ydbDatabaseDedicated:YdbDatabaseDedicated":
                 return new YdbDatabaseDedicated(name, <any>undefined, { urn })
+            case "yandex:index/ydbDatabaseServerless:YdbDatabaseServerless":
+                return new YdbDatabaseServerless(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -391,6 +407,8 @@ pulumi.runtime.registerResourceModule("yandex", "index/containerRegistryIamBindi
 pulumi.runtime.registerResourceModule("yandex", "index/containerRepository", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/containerRepositoryIamBinding", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/dataprocCluster", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/datatransferEndpoint", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/datatransferTransfer", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/dnsRecordSet", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/dnsZone", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/function", _module)
@@ -426,6 +444,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/mdbSqlServerCluster", _mo
 pulumi.runtime.registerResourceModule("yandex", "index/messageQueue", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/organizationManagerOrganizationIamBinding", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/organizationManagerOrganizationIamMember", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/organizationmanagerSamlFederation", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerCloudIamBinding", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerCloudIamMember", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/resourcemanagerFolder", _module)
@@ -443,6 +462,7 @@ pulumi.runtime.registerResourceModule("yandex", "index/vpcSecurityGroup", _modul
 pulumi.runtime.registerResourceModule("yandex", "index/vpcSecurityGroupRule", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/vpcSubnet", _module)
 pulumi.runtime.registerResourceModule("yandex", "index/ydbDatabaseDedicated", _module)
+pulumi.runtime.registerResourceModule("yandex", "index/ydbDatabaseServerless", _module)
 
 import { Provider } from "./provider";
 

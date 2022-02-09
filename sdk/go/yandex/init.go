@@ -60,6 +60,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContainerRepositoryIamBinding{}
 	case "yandex:index/dataprocCluster:DataprocCluster":
 		r = &DataprocCluster{}
+	case "yandex:index/datatransferEndpoint:DatatransferEndpoint":
+		r = &DatatransferEndpoint{}
+	case "yandex:index/datatransferTransfer:DatatransferTransfer":
+		r = &DatatransferTransfer{}
 	case "yandex:index/dnsRecordSet:DnsRecordSet":
 		r = &DnsRecordSet{}
 	case "yandex:index/dnsZone:DnsZone":
@@ -130,6 +134,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationManagerOrganizationIamBinding{}
 	case "yandex:index/organizationManagerOrganizationIamMember:OrganizationManagerOrganizationIamMember":
 		r = &OrganizationManagerOrganizationIamMember{}
+	case "yandex:index/organizationmanagerSamlFederation:OrganizationmanagerSamlFederation":
+		r = &OrganizationmanagerSamlFederation{}
 	case "yandex:index/resourcemanagerCloudIamBinding:ResourcemanagerCloudIamBinding":
 		r = &ResourcemanagerCloudIamBinding{}
 	case "yandex:index/resourcemanagerCloudIamMember:ResourcemanagerCloudIamMember":
@@ -164,6 +170,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VpcSubnet{}
 	case "yandex:index/ydbDatabaseDedicated:YdbDatabaseDedicated":
 		r = &YdbDatabaseDedicated{}
+	case "yandex:index/ydbDatabaseServerless:YdbDatabaseServerless":
+		r = &YdbDatabaseServerless{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -293,6 +301,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/dataprocCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/datatransferEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/datatransferTransfer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -472,6 +490,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"yandex",
+		"index/organizationmanagerSamlFederation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
 		"index/resourcemanagerCloudIamBinding",
 		&module{version},
 	)
@@ -553,6 +576,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"yandex",
 		"index/ydbDatabaseDedicated",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"yandex",
+		"index/ydbDatabaseServerless",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

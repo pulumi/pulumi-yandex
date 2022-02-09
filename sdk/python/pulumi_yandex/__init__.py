@@ -25,6 +25,8 @@ from .container_registry_iam_binding import *
 from .container_repository import *
 from .container_repository_iam_binding import *
 from .dataproc_cluster import *
+from .datatransfer_endpoint import *
+from .datatransfer_transfer import *
 from .dns_record_set import *
 from .dns_zone import *
 from .function import *
@@ -116,6 +118,7 @@ from .mdb_sql_server_cluster import *
 from .message_queue import *
 from .organization_manager_organization_iam_binding import *
 from .organization_manager_organization_iam_member import *
+from .organizationmanager_saml_federation import *
 from .provider import *
 from .resourcemanager_cloud_iam_binding import *
 from .resourcemanager_cloud_iam_member import *
@@ -134,6 +137,7 @@ from .vpc_security_group import *
 from .vpc_security_group_rule import *
 from .vpc_subnet import *
 from .ydb_database_dedicated import *
+from .ydb_database_serverless import *
 from ._inputs import *
 from . import outputs
 
@@ -305,6 +309,22 @@ _utilities.register(
   "fqn": "pulumi_yandex",
   "classes": {
    "yandex:index/dataprocCluster:DataprocCluster": "DataprocCluster"
+  }
+ },
+ {
+  "pkg": "yandex",
+  "mod": "index/datatransferEndpoint",
+  "fqn": "pulumi_yandex",
+  "classes": {
+   "yandex:index/datatransferEndpoint:DatatransferEndpoint": "DatatransferEndpoint"
+  }
+ },
+ {
+  "pkg": "yandex",
+  "mod": "index/datatransferTransfer",
+  "fqn": "pulumi_yandex",
+  "classes": {
+   "yandex:index/datatransferTransfer:DatatransferTransfer": "DatatransferTransfer"
   }
  },
  {
@@ -589,6 +609,14 @@ _utilities.register(
  },
  {
   "pkg": "yandex",
+  "mod": "index/organizationmanagerSamlFederation",
+  "fqn": "pulumi_yandex",
+  "classes": {
+   "yandex:index/organizationmanagerSamlFederation:OrganizationmanagerSamlFederation": "OrganizationmanagerSamlFederation"
+  }
+ },
+ {
+  "pkg": "yandex",
   "mod": "index/resourcemanagerCloudIamBinding",
   "fqn": "pulumi_yandex",
   "classes": {
@@ -721,6 +749,14 @@ _utilities.register(
   "fqn": "pulumi_yandex",
   "classes": {
    "yandex:index/ydbDatabaseDedicated:YdbDatabaseDedicated": "YdbDatabaseDedicated"
+  }
+ },
+ {
+  "pkg": "yandex",
+  "mod": "index/ydbDatabaseServerless",
+  "fqn": "pulumi_yandex",
+  "classes": {
+   "yandex:index/ydbDatabaseServerless:YdbDatabaseServerless": "YdbDatabaseServerless"
   }
  }
 ]
