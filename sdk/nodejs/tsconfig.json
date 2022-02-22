@@ -88,6 +88,8 @@
         "getMdbRedisCluster.ts",
         "getMdbSqlserverCluster.ts",
         "getMessageQueue.ts",
+        "getOrganizationmanagerSamlFederation.ts",
+        "getOrganizationmanagerSamlFederationUserAccount.ts",
         "getResourcemanagerCloud.ts",
         "getResourcemanagerFolder.ts",
         "getServerlessContainer.ts",

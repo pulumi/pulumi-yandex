@@ -75,6 +75,8 @@ type GetMdbSqlserverClusterResult struct {
 	FolderId    string `pulumi:"folderId"`
 	// Aggregated health of the cluster.
 	Health string `pulumi:"health"`
+	// A list of IDs of the host groups hosting VMs of the cluster.
+	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// A host of the SQLServer cluster. The structure is documented below.
 	Hosts []GetMdbSqlserverClusterHost `pulumi:"hosts"`
 	// The provider-assigned unique ID for this managed resource.
@@ -181,6 +183,11 @@ func (o GetMdbSqlserverClusterResultOutput) FolderId() pulumi.StringOutput {
 // Aggregated health of the cluster.
 func (o GetMdbSqlserverClusterResultOutput) Health() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMdbSqlserverClusterResult) string { return v.Health }).(pulumi.StringOutput)
+}
+
+// A list of IDs of the host groups hosting VMs of the cluster.
+func (o GetMdbSqlserverClusterResultOutput) HostGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMdbSqlserverClusterResult) []string { return v.HostGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // A host of the SQLServer cluster. The structure is documented below.

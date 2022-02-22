@@ -18,11 +18,11 @@ import * as utilities from "./utilities";
  * const foo = new yandex.AlbTargetGroup("foo", {
  *     targets: [
  *         {
- *             address: yandex_compute_instance_my_instance_1.networkInterface.0.ipAddress,
+ *             ipAddress: yandex_compute_instance_my_instance_1.networkInterface.0.ipAddress,
  *             subnetId: yandex_vpc_subnet_my_subnet.id,
  *         },
  *         {
- *             address: yandex_compute_instance_my_instance_2.networkInterface.0.ipAddress,
+ *             ipAddress: yandex_compute_instance_my_instance_2.networkInterface.0.ipAddress,
  *             subnetId: yandex_vpc_subnet_my_subnet.id,
  *         },
  *     ],

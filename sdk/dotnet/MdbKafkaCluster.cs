@@ -69,7 +69,7 @@ namespace Pulumi.Yandex
     ///                 },
     ///                 SchemaRegistry = false,
     ///                 UnmanagedTopics = false,
-    ///                 Version = "2.6",
+    ///                 Version = "2.8",
     ///                 Zones = 
     ///                 {
     ///                     "ru-central1-a",
@@ -193,7 +193,7 @@ namespace Pulumi.Yandex
     ///                 },
     ///                 SchemaRegistry = false,
     ///                 UnmanagedTopics = false,
-    ///                 Version = "2.6",
+    ///                 Version = "2.8",
     ///                 Zones = 
     ///                 {
     ///                     "ru-central1-a",

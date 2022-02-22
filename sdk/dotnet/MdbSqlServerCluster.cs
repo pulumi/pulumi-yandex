@@ -181,6 +181,11 @@ namespace Pulumi.Yandex
     ///             {
     ///                 test_sg_x.Id,
     ///             },
+    ///             HostGroupIds = 
+    ///             {
+    ///                 "host_group_1",
+    ///                 "host_group_2",
+    ///             },
     ///         });
     ///     }
     /// 
@@ -263,6 +268,12 @@ namespace Pulumi.Yandex
         /// </summary>
         [Output("health")]
         public Output<string> Health { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of IDs of the host groups hosting VMs of the cluster.
+        /// </summary>
+        [Output("hostGroupIds")]
+        public Output<ImmutableArray<string>> HostGroupIds { get; private set; } = null!;
 
         /// <summary>
         /// A host of the SQLServer cluster. The structure is documented below.
@@ -413,6 +424,18 @@ namespace Pulumi.Yandex
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
+        [Input("hostGroupIds")]
+        private InputList<string>? _hostGroupIds;
+
+        /// <summary>
+        /// A list of IDs of the host groups hosting VMs of the cluster.
+        /// </summary>
+        public InputList<string> HostGroupIds
+        {
+            get => _hostGroupIds ?? (_hostGroupIds = new InputList<string>());
+            set => _hostGroupIds = value;
+        }
+
         [Input("hosts", required: true)]
         private InputList<Inputs.MdbSqlServerClusterHostArgs>? _hosts;
 
@@ -558,6 +581,18 @@ namespace Pulumi.Yandex
         /// </summary>
         [Input("health")]
         public Input<string>? Health { get; set; }
+
+        [Input("hostGroupIds")]
+        private InputList<string>? _hostGroupIds;
+
+        /// <summary>
+        /// A list of IDs of the host groups hosting VMs of the cluster.
+        /// </summary>
+        public InputList<string> HostGroupIds
+        {
+            get => _hostGroupIds ?? (_hostGroupIds = new InputList<string>());
+            set => _hostGroupIds = value;
+        }
 
         [Input("hosts")]
         private InputList<Inputs.MdbSqlServerClusterHostGetArgs>? _hosts;

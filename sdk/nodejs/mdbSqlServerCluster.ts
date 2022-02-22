@@ -116,6 +116,10 @@ import * as utilities from "./utilities";
  *         subnetId: fooVpcSubnet.id,
  *     }],
  *     securityGroupIds: [test_sg_x.id],
+ *     hostGroupIds: [
+ *         "host_group_1",
+ *         "host_group_2",
+ *     ],
  * });
  * ```
  * ## SQLServer config
@@ -206,6 +210,10 @@ export class MdbSqlServerCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly health!: pulumi.Output<string>;
     /**
+     * A list of IDs of the host groups hosting VMs of the cluster.
+     */
+    public readonly hostGroupIds!: pulumi.Output<string[]>;
+    /**
      * A host of the SQLServer cluster. The structure is documented below.
      */
     public readonly hosts!: pulumi.Output<outputs.MdbSqlServerClusterHost[]>;
@@ -267,6 +275,7 @@ export class MdbSqlServerCluster extends pulumi.CustomResource {
             resourceInputs["environment"] = state ? state.environment : undefined;
             resourceInputs["folderId"] = state ? state.folderId : undefined;
             resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["hostGroupIds"] = state ? state.hostGroupIds : undefined;
             resourceInputs["hosts"] = state ? state.hosts : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -306,6 +315,7 @@ export class MdbSqlServerCluster extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["hostGroupIds"] = args ? args.hostGroupIds : undefined;
             resourceInputs["hosts"] = args ? args.hosts : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -361,6 +371,10 @@ export interface MdbSqlServerClusterState {
      * Aggregated health of the cluster.
      */
     health?: pulumi.Input<string>;
+    /**
+     * A list of IDs of the host groups hosting VMs of the cluster.
+     */
+    hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A host of the SQLServer cluster. The structure is documented below.
      */
@@ -432,6 +446,10 @@ export interface MdbSqlServerClusterArgs {
      * is not provided, the default provider folder is used.
      */
     folderId?: pulumi.Input<string>;
+    /**
+     * A list of IDs of the host groups hosting VMs of the cluster.
+     */
+    hostGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A host of the SQLServer cluster. The structure is documented below.
      */

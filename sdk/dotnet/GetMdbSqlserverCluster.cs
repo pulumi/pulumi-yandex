@@ -188,6 +188,10 @@ namespace Pulumi.Yandex
         /// </summary>
         public readonly string Health;
         /// <summary>
+        /// A list of IDs of the host groups hosting VMs of the cluster.
+        /// </summary>
+        public readonly ImmutableArray<string> HostGroupIds;
+        /// <summary>
         /// A host of the SQLServer cluster. The structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMdbSqlserverClusterHostResult> Hosts;
@@ -252,6 +256,8 @@ namespace Pulumi.Yandex
 
             string health,
 
+            ImmutableArray<string> hostGroupIds,
+
             ImmutableArray<Outputs.GetMdbSqlserverClusterHostResult> hosts,
 
             string id,
@@ -283,6 +289,7 @@ namespace Pulumi.Yandex
             Environment = environment;
             FolderId = folderId;
             Health = health;
+            HostGroupIds = hostGroupIds;
             Hosts = hosts;
             Id = id;
             Labels = labels;

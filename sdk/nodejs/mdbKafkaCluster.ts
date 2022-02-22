@@ -50,7 +50,7 @@ import * as utilities from "./utilities";
  *         },
  *         schemaRegistry: false,
  *         unmanagedTopics: false,
- *         version: "2.6",
+ *         version: "2.8",
  *         zones: ["ru-central1-a"],
  *     },
  *     environment: "PRESTABLE",
@@ -132,7 +132,7 @@ import * as utilities from "./utilities";
  *         },
  *         schemaRegistry: false,
  *         unmanagedTopics: false,
- *         version: "2.6",
+ *         version: "2.8",
  *         zones: [
  *             "ru-central1-a",
  *             "ru-central1-b",

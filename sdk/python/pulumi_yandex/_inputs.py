@@ -3824,8 +3824,8 @@ class CdnResourceOptionsArgs:
         :param pulumi.Input[bool] proxy_cache_methods_set: allows caching for GET, HEAD and POST requests.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] query_params_blacklists: files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] query_params_whitelists: files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
-        :param pulumi.Input[bool] redirect_http_to_https: set up a redirect from HTTPS to HTTP.
-        :param pulumi.Input[bool] redirect_https_to_http: set up a redirect from HTTP to HTTPS.
+        :param pulumi.Input[bool] redirect_http_to_https: set up a redirect from HTTP to HTTPS.
+        :param pulumi.Input[bool] redirect_https_to_http: set up a redirect from HTTPS to HTTP.
         :param pulumi.Input[bool] slice: files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_request_headers: set up custom headers that CDN servers send in requests to origins.
         """
@@ -4082,7 +4082,7 @@ class CdnResourceOptionsArgs:
     @pulumi.getter(name="redirectHttpToHttps")
     def redirect_http_to_https(self) -> Optional[pulumi.Input[bool]]:
         """
-        set up a redirect from HTTPS to HTTP.
+        set up a redirect from HTTP to HTTPS.
         """
         return pulumi.get(self, "redirect_http_to_https")
 
@@ -4094,7 +4094,7 @@ class CdnResourceOptionsArgs:
     @pulumi.getter(name="redirectHttpsToHttp")
     def redirect_https_to_http(self) -> Optional[pulumi.Input[bool]]:
         """
-        set up a redirect from HTTP to HTTPS.
+        set up a redirect from HTTPS to HTTP.
         """
         return pulumi.get(self, "redirect_https_to_http")
 
@@ -17431,6 +17431,7 @@ class MdbMongodbClusterUserPermissionArgs:
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] database_name: The name of the database that the permission grants access to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The roles of the user in this database. For more information see [the official documentation](https://cloud.yandex.com/docs/managed-mongodb/concepts/users-and-roles).
         """
         pulumi.set(__self__, "database_name", database_name)
         if roles is not None:
@@ -17451,6 +17452,9 @@ class MdbMongodbClusterUserPermissionArgs:
     @property
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The roles of the user in this database. For more information see [the official documentation](https://cloud.yandex.com/docs/managed-mongodb/concepts/users-and-roles).
+        """
         return pulumi.get(self, "roles")
 
     @roles.setter

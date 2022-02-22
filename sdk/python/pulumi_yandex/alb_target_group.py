@@ -235,11 +235,11 @@ class AlbTargetGroup(pulumi.CustomResource):
 
         foo = yandex.AlbTargetGroup("foo", targets=[
             yandex.AlbTargetGroupTargetArgs(
-                address=yandex_compute_instance["my-instance-1"]["network_interface"][0]["ip_address"],
+                ip_address=yandex_compute_instance["my-instance-1"]["network_interface"][0]["ip_address"],
                 subnet_id=yandex_vpc_subnet["my-subnet"]["id"],
             ),
             yandex.AlbTargetGroupTargetArgs(
-                address=yandex_compute_instance["my-instance-2"]["network_interface"][0]["ip_address"],
+                ip_address=yandex_compute_instance["my-instance-2"]["network_interface"][0]["ip_address"],
                 subnet_id=yandex_vpc_subnet["my-subnet"]["id"],
             ),
         ])
@@ -281,11 +281,11 @@ class AlbTargetGroup(pulumi.CustomResource):
 
         foo = yandex.AlbTargetGroup("foo", targets=[
             yandex.AlbTargetGroupTargetArgs(
-                address=yandex_compute_instance["my-instance-1"]["network_interface"][0]["ip_address"],
+                ip_address=yandex_compute_instance["my-instance-1"]["network_interface"][0]["ip_address"],
                 subnet_id=yandex_vpc_subnet["my-subnet"]["id"],
             ),
             yandex.AlbTargetGroupTargetArgs(
-                address=yandex_compute_instance["my-instance-2"]["network_interface"][0]["ip_address"],
+                ip_address=yandex_compute_instance["my-instance-2"]["network_interface"][0]["ip_address"],
                 subnet_id=yandex_vpc_subnet["my-subnet"]["id"],
             ),
         ])

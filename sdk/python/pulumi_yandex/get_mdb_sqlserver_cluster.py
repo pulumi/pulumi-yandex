@@ -21,7 +21,7 @@ class GetMdbSqlserverClusterResult:
     """
     A collection of values returned by getMdbSqlserverCluster.
     """
-    def __init__(__self__, backup_window_starts=None, cluster_id=None, created_at=None, databases=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, hosts=None, id=None, labels=None, name=None, network_id=None, resources=None, security_group_ids=None, sqlserver_config=None, status=None, users=None, version=None):
+    def __init__(__self__, backup_window_starts=None, cluster_id=None, created_at=None, databases=None, deletion_protection=None, description=None, environment=None, folder_id=None, health=None, host_group_ids=None, hosts=None, id=None, labels=None, name=None, network_id=None, resources=None, security_group_ids=None, sqlserver_config=None, status=None, users=None, version=None):
         if backup_window_starts and not isinstance(backup_window_starts, list):
             raise TypeError("Expected argument 'backup_window_starts' to be a list")
         pulumi.set(__self__, "backup_window_starts", backup_window_starts)
@@ -49,6 +49,9 @@ class GetMdbSqlserverClusterResult:
         if health and not isinstance(health, str):
             raise TypeError("Expected argument 'health' to be a str")
         pulumi.set(__self__, "health", health)
+        if host_group_ids and not isinstance(host_group_ids, list):
+            raise TypeError("Expected argument 'host_group_ids' to be a list")
+        pulumi.set(__self__, "host_group_ids", host_group_ids)
         if hosts and not isinstance(hosts, list):
             raise TypeError("Expected argument 'hosts' to be a list")
         pulumi.set(__self__, "hosts", hosts)
@@ -142,6 +145,14 @@ class GetMdbSqlserverClusterResult:
         Aggregated health of the cluster.
         """
         return pulumi.get(self, "health")
+
+    @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> Sequence[str]:
+        """
+        A list of IDs of the host groups hosting VMs of the cluster.
+        """
+        return pulumi.get(self, "host_group_ids")
 
     @property
     @pulumi.getter
@@ -247,6 +258,7 @@ class AwaitableGetMdbSqlserverClusterResult(GetMdbSqlserverClusterResult):
             environment=self.environment,
             folder_id=self.folder_id,
             health=self.health,
+            host_group_ids=self.host_group_ids,
             hosts=self.hosts,
             id=self.id,
             labels=self.labels,
@@ -308,6 +320,7 @@ def get_mdb_sqlserver_cluster(cluster_id: Optional[str] = None,
         environment=__ret__.environment,
         folder_id=__ret__.folder_id,
         health=__ret__.health,
+        host_group_ids=__ret__.host_group_ids,
         hosts=__ret__.hosts,
         id=__ret__.id,
         labels=__ret__.labels,

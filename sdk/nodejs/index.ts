@@ -78,6 +78,8 @@ export * from "./getMdbPostgresqlCluster";
 export * from "./getMdbRedisCluster";
 export * from "./getMdbSqlserverCluster";
 export * from "./getMessageQueue";
+export * from "./getOrganizationmanagerSamlFederation";
+export * from "./getOrganizationmanagerSamlFederationUserAccount";
 export * from "./getResourcemanagerCloud";
 export * from "./getResourcemanagerFolder";
 export * from "./getServerlessContainer";

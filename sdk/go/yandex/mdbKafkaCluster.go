@@ -69,7 +69,7 @@ import (
 // 				},
 // 				SchemaRegistry:  pulumi.Bool(false),
 // 				UnmanagedTopics: pulumi.Bool(false),
-// 				Version:         pulumi.String("2.6"),
+// 				Version:         pulumi.String("2.8"),
 // 				Zones: pulumi.StringArray{
 // 					pulumi.String("ru-central1-a"),
 // 				},
@@ -187,7 +187,7 @@ import (
 // 				},
 // 				SchemaRegistry:  pulumi.Bool(false),
 // 				UnmanagedTopics: pulumi.Bool(false),
-// 				Version:         pulumi.String("2.6"),
+// 				Version:         pulumi.String("2.8"),
 // 				Zones: pulumi.StringArray{
 // 					pulumi.String("ru-central1-a"),
 // 					pulumi.String("ru-central1-b"),
