@@ -557,6 +557,7 @@ __all__ = [
     'GetMdbSqlserverClusterResourceResult',
     'GetMdbSqlserverClusterUserResult',
     'GetMdbSqlserverClusterUserPermissionResult',
+    'GetOrganizationmanagerSamlFederationSecuritySettingResult',
     'GetServerlessContainerImageResult',
     'GetVpcAddressExternalIpv4AddressResult',
     'GetVpcRouteTableStaticRouteResult',
@@ -4224,8 +4225,8 @@ class CdnResourceOptions(dict):
         :param bool proxy_cache_methods_set: allows caching for GET, HEAD and POST requests.
         :param Sequence[str] query_params_blacklists: files with the specified query parameters are cached as objects with the same key, files with other parameters are cached as objects with different keys.
         :param Sequence[str] query_params_whitelists: files with the specified query parameters are cached as objects with different keys, files with other parameters are cached as objects with the same key.
-        :param bool redirect_http_to_https: set up a redirect from HTTPS to HTTP.
-        :param bool redirect_https_to_http: set up a redirect from HTTP to HTTPS.
+        :param bool redirect_http_to_https: set up a redirect from HTTP to HTTPS.
+        :param bool redirect_https_to_http: set up a redirect from HTTPS to HTTP.
         :param bool slice: files larger than 10 MB will be requested and cached in parts (no larger than 10 MB each part). It reduces time to first byte. The origin must support HTTP Range requests.
         :param Sequence[str] static_request_headers: set up custom headers that CDN servers send in requests to origins.
         """
@@ -4414,7 +4415,7 @@ class CdnResourceOptions(dict):
     @pulumi.getter(name="redirectHttpToHttps")
     def redirect_http_to_https(self) -> Optional[bool]:
         """
-        set up a redirect from HTTPS to HTTP.
+        set up a redirect from HTTP to HTTPS.
         """
         return pulumi.get(self, "redirect_http_to_https")
 
@@ -4422,7 +4423,7 @@ class CdnResourceOptions(dict):
     @pulumi.getter(name="redirectHttpsToHttp")
     def redirect_https_to_http(self) -> Optional[bool]:
         """
-        set up a redirect from HTTP to HTTPS.
+        set up a redirect from HTTPS to HTTP.
         """
         return pulumi.get(self, "redirect_https_to_http")
 
@@ -17434,6 +17435,7 @@ class MdbMongodbClusterUserPermission(dict):
                  roles: Optional[Sequence[str]] = None):
         """
         :param str database_name: The name of the database that the permission grants access to.
+        :param Sequence[str] roles: The roles of the user in this database. For more information see [the official documentation](https://cloud.yandex.com/docs/managed-mongodb/concepts/users-and-roles).
         """
         pulumi.set(__self__, "database_name", database_name)
         if roles is not None:
@@ -17450,6 +17452,9 @@ class MdbMongodbClusterUserPermission(dict):
     @property
     @pulumi.getter
     def roles(self) -> Optional[Sequence[str]]:
+        """
+        The roles of the user in this database. For more information see [the official documentation](https://cloud.yandex.com/docs/managed-mongodb/concepts/users-and-roles).
+        """
         return pulumi.get(self, "roles")
 
 
@@ -32382,6 +32387,24 @@ class GetMdbSqlserverClusterUserPermissionResult(dict):
         Allowed roles: `OWNER`, `SECURITYADMIN`, `ACCESSADMIN`, `BACKUPOPERATOR`, `DDLADMIN`, `DATAWRITER`, `DATAREADER`, `DENYDATAWRITER`, `DENYDATAREADER`.
         """
         return pulumi.get(self, "roles")
+
+
+@pulumi.output_type
+class GetOrganizationmanagerSamlFederationSecuritySettingResult(dict):
+    def __init__(__self__, *,
+                 encrypted_assertions: bool):
+        """
+        :param bool encrypted_assertions: Indicates whether encrypted assertions are enabled.
+        """
+        pulumi.set(__self__, "encrypted_assertions", encrypted_assertions)
+
+    @property
+    @pulumi.getter(name="encryptedAssertions")
+    def encrypted_assertions(self) -> bool:
+        """
+        Indicates whether encrypted assertions are enabled.
+        """
+        return pulumi.get(self, "encrypted_assertions")
 
 
 @pulumi.output_type

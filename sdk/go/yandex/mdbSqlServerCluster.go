@@ -156,6 +156,10 @@ import (
 // 			SecurityGroupIds: pulumi.StringArray{
 // 				test_sg_x.ID(),
 // 			},
+// 			HostGroupIds: pulumi.StringArray{
+// 				pulumi.String("host_group_1"),
+// 				pulumi.String("host_group_2"),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -209,6 +213,8 @@ type MdbSqlServerCluster struct {
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// Aggregated health of the cluster.
 	Health pulumi.StringOutput `pulumi:"health"`
+	// A list of IDs of the host groups hosting VMs of the cluster.
+	HostGroupIds pulumi.StringArrayOutput `pulumi:"hostGroupIds"`
 	// A host of the SQLServer cluster. The structure is documented below.
 	Hosts MdbSqlServerClusterHostArrayOutput `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the SQLServer cluster.
@@ -298,6 +304,8 @@ type mdbSqlServerClusterState struct {
 	FolderId *string `pulumi:"folderId"`
 	// Aggregated health of the cluster.
 	Health *string `pulumi:"health"`
+	// A list of IDs of the host groups hosting VMs of the cluster.
+	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// A host of the SQLServer cluster. The structure is documented below.
 	Hosts []MdbSqlServerClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the SQLServer cluster.
@@ -338,6 +346,8 @@ type MdbSqlServerClusterState struct {
 	FolderId pulumi.StringPtrInput
 	// Aggregated health of the cluster.
 	Health pulumi.StringPtrInput
+	// A list of IDs of the host groups hosting VMs of the cluster.
+	HostGroupIds pulumi.StringArrayInput
 	// A host of the SQLServer cluster. The structure is documented below.
 	Hosts MdbSqlServerClusterHostArrayInput
 	// A set of key/value label pairs to assign to the SQLServer cluster.
@@ -378,6 +388,8 @@ type mdbSqlServerClusterArgs struct {
 	// The ID of the folder that the resource belongs to. If it
 	// is not provided, the default provider folder is used.
 	FolderId *string `pulumi:"folderId"`
+	// A list of IDs of the host groups hosting VMs of the cluster.
+	HostGroupIds []string `pulumi:"hostGroupIds"`
 	// A host of the SQLServer cluster. The structure is documented below.
 	Hosts []MdbSqlServerClusterHost `pulumi:"hosts"`
 	// A set of key/value label pairs to assign to the SQLServer cluster.
@@ -413,6 +425,8 @@ type MdbSqlServerClusterArgs struct {
 	// The ID of the folder that the resource belongs to. If it
 	// is not provided, the default provider folder is used.
 	FolderId pulumi.StringPtrInput
+	// A list of IDs of the host groups hosting VMs of the cluster.
+	HostGroupIds pulumi.StringArrayInput
 	// A host of the SQLServer cluster. The structure is documented below.
 	Hosts MdbSqlServerClusterHostArrayInput
 	// A set of key/value label pairs to assign to the SQLServer cluster.

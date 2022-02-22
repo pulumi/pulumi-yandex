@@ -26,6 +26,7 @@ class MdbSqlServerClusterArgs:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -44,6 +45,7 @@ class MdbSqlServerClusterArgs:
         :param pulumi.Input[str] description: Description of the SQLServer cluster.
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups hosting VMs of the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the SQLServer cluster.
         :param pulumi.Input[str] name: The name of the database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A set of ids of security groups assigned to hosts of the cluster.
@@ -64,6 +66,8 @@ class MdbSqlServerClusterArgs:
             pulumi.set(__self__, "description", description)
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
+        if host_group_ids is not None:
+            pulumi.set(__self__, "host_group_ids", host_group_ids)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -207,6 +211,18 @@ class MdbSqlServerClusterArgs:
         pulumi.set(self, "folder_id", value)
 
     @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IDs of the host groups hosting VMs of the cluster.
+        """
+        return pulumi.get(self, "host_group_ids")
+
+    @host_group_ids.setter
+    def host_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_group_ids", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -266,6 +282,7 @@ class _MdbSqlServerClusterState:
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  health: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input['MdbSqlServerClusterHostArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -287,6 +304,7 @@ class _MdbSqlServerClusterState:
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
         :param pulumi.Input[str] health: Aggregated health of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups hosting VMs of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['MdbSqlServerClusterHostArgs']]] hosts: A host of the SQLServer cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the SQLServer cluster.
         :param pulumi.Input[str] name: The name of the database.
@@ -314,6 +332,8 @@ class _MdbSqlServerClusterState:
             pulumi.set(__self__, "folder_id", folder_id)
         if health is not None:
             pulumi.set(__self__, "health", health)
+        if host_group_ids is not None:
+            pulumi.set(__self__, "host_group_ids", host_group_ids)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
         if labels is not None:
@@ -431,6 +451,18 @@ class _MdbSqlServerClusterState:
     @health.setter
     def health(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "health", value)
+
+    @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IDs of the host groups hosting VMs of the cluster.
+        """
+        return pulumi.get(self, "host_group_ids")
+
+    @host_group_ids.setter
+    def host_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_group_ids", value)
 
     @property
     @pulumi.getter
@@ -564,6 +596,7 @@ class MdbSqlServerCluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbSqlServerClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -682,7 +715,11 @@ class MdbSqlServerCluster(pulumi.CustomResource):
                 zone="ru-central1-a",
                 subnet_id=foo_vpc_subnet.id,
             )],
-            security_group_ids=[test_sg_x.id])
+            security_group_ids=[test_sg_x.id],
+            host_group_ids=[
+                "host_group_1",
+                "host_group_2",
+            ])
         ```
         ## SQLServer config
 
@@ -719,6 +756,7 @@ class MdbSqlServerCluster(pulumi.CustomResource):
         :param pulumi.Input[str] environment: Deployment environment of the SQLServer cluster. (PRODUCTION, PRESTABLE)
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups hosting VMs of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbSqlServerClusterHostArgs']]]] hosts: A host of the SQLServer cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the SQLServer cluster.
         :param pulumi.Input[str] name: The name of the database.
@@ -843,7 +881,11 @@ class MdbSqlServerCluster(pulumi.CustomResource):
                 zone="ru-central1-a",
                 subnet_id=foo_vpc_subnet.id,
             )],
-            security_group_ids=[test_sg_x.id])
+            security_group_ids=[test_sg_x.id],
+            host_group_ids=[
+                "host_group_1",
+                "host_group_2",
+            ])
         ```
         ## SQLServer config
 
@@ -892,6 +934,7 @@ class MdbSqlServerCluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
+                 host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbSqlServerClusterHostArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -923,6 +966,7 @@ class MdbSqlServerCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'environment'")
             __props__.__dict__["environment"] = environment
             __props__.__dict__["folder_id"] = folder_id
+            __props__.__dict__["host_group_ids"] = host_group_ids
             if hosts is None and not opts.urn:
                 raise TypeError("Missing required property 'hosts'")
             __props__.__dict__["hosts"] = hosts
@@ -963,6 +1007,7 @@ class MdbSqlServerCluster(pulumi.CustomResource):
             environment: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             health: Optional[pulumi.Input[str]] = None,
+            host_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbSqlServerClusterHostArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -989,6 +1034,7 @@ class MdbSqlServerCluster(pulumi.CustomResource):
         :param pulumi.Input[str] folder_id: The ID of the folder that the resource belongs to. If it
                is not provided, the default provider folder is used.
         :param pulumi.Input[str] health: Aggregated health of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_group_ids: A list of IDs of the host groups hosting VMs of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MdbSqlServerClusterHostArgs']]]] hosts: A host of the SQLServer cluster. The structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the SQLServer cluster.
         :param pulumi.Input[str] name: The name of the database.
@@ -1012,6 +1058,7 @@ class MdbSqlServerCluster(pulumi.CustomResource):
         __props__.__dict__["environment"] = environment
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["health"] = health
+        __props__.__dict__["host_group_ids"] = host_group_ids
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -1088,6 +1135,14 @@ class MdbSqlServerCluster(pulumi.CustomResource):
         Aggregated health of the cluster.
         """
         return pulumi.get(self, "health")
+
+    @property
+    @pulumi.getter(name="hostGroupIds")
+    def host_group_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of IDs of the host groups hosting VMs of the cluster.
+        """
+        return pulumi.get(self, "host_group_ids")
 
     @property
     @pulumi.getter

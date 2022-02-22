@@ -82,11 +82,11 @@ namespace Pulumi.Yandex.Outputs
         /// </summary>
         public readonly ImmutableArray<string> QueryParamsWhitelists;
         /// <summary>
-        /// set up a redirect from HTTPS to HTTP.
+        /// set up a redirect from HTTP to HTTPS.
         /// </summary>
         public readonly bool? RedirectHttpToHttps;
         /// <summary>
-        /// set up a redirect from HTTP to HTTPS.
+        /// set up a redirect from HTTPS to HTTP.
         /// </summary>
         public readonly bool? RedirectHttpsToHttp;
         /// <summary>

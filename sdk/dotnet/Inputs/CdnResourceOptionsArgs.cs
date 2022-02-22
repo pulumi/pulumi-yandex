@@ -145,13 +145,13 @@ namespace Pulumi.Yandex.Inputs
         }
 
         /// <summary>
-        /// set up a redirect from HTTPS to HTTP.
+        /// set up a redirect from HTTP to HTTPS.
         /// </summary>
         [Input("redirectHttpToHttps")]
         public Input<bool>? RedirectHttpToHttps { get; set; }
 
         /// <summary>
-        /// set up a redirect from HTTP to HTTPS.
+        /// set up a redirect from HTTPS to HTTP.
         /// </summary>
         [Input("redirectHttpsToHttp")]
         public Input<bool>? RedirectHttpsToHttp { get; set; }

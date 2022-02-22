@@ -29,12 +29,12 @@ namespace Pulumi.Yandex
     ///             {
     ///                 new Yandex.Inputs.AlbTargetGroupTargetArgs
     ///                 {
-    ///                     Address = yandex_compute_instance.My_instance_1.Network_interface[0].Ip_address,
+    ///                     IpAddress = yandex_compute_instance.My_instance_1.Network_interface[0].Ip_address,
     ///                     SubnetId = yandex_vpc_subnet.My_subnet.Id,
     ///                 },
     ///                 new Yandex.Inputs.AlbTargetGroupTargetArgs
     ///                 {
-    ///                     Address = yandex_compute_instance.My_instance_2.Network_interface[0].Ip_address,
+    ///                     IpAddress = yandex_compute_instance.My_instance_2.Network_interface[0].Ip_address,
     ///                     SubnetId = yandex_vpc_subnet.My_subnet.Id,
     ///                 },
     ///             },

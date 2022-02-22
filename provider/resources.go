@@ -469,6 +469,18 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_serverless_container.html.markdown",
 				},
 			},
+			"yandex_organizationmanager_saml_federation": {
+				Tok: makeDataSource(mainMod, "getOrganizationmanagerSamlFederation"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_organizationmanager_saml_federation.html.markdown",
+				},
+			},
+			"yandex_organizationmanager_saml_federation_user_account": {
+				Tok: makeDataSource(mainMod, "getOrganizationmanagerSamlFederationUserAccount"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_organizationmanager_saml_federation_user_account.html.markdown",
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

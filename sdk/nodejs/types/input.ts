@@ -1003,11 +1003,11 @@ export interface CdnResourceOptions {
      */
     queryParamsWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * set up a redirect from HTTPS to HTTP.
+     * set up a redirect from HTTP to HTTPS.
      */
     redirectHttpToHttps?: pulumi.Input<boolean>;
     /**
-     * set up a redirect from HTTP to HTTPS.
+     * set up a redirect from HTTPS to HTTP.
      */
     redirectHttpsToHttp?: pulumi.Input<boolean>;
     /**
@@ -3830,22 +3830,6 @@ export interface GetMdbKafkaClusterTopic {
     topicConfig?: inputs.GetMdbKafkaClusterTopicTopicConfig;
 }
 
-export interface GetMdbKafkaClusterTopicTopicConfig {
-    cleanupPolicy?: string;
-    compressionType?: string;
-    deleteRetentionMs?: string;
-    fileDeleteDelayMs?: string;
-    flushMessages?: string;
-    flushMs?: string;
-    maxMessageBytes?: string;
-    minCompactionLagMs?: string;
-    minInsyncReplicas?: string;
-    preallocate?: boolean;
-    retentionBytes?: string;
-    retentionMs?: string;
-    segmentBytes?: string;
-}
-
 export interface GetMdbKafkaClusterTopicTopicConfigArgs {
     cleanupPolicy?: pulumi.Input<string>;
     compressionType?: pulumi.Input<string>;
@@ -3862,19 +3846,20 @@ export interface GetMdbKafkaClusterTopicTopicConfigArgs {
     segmentBytes?: pulumi.Input<string>;
 }
 
-export interface GetMdbKafkaClusterUser {
-    /**
-     * The name of the Kafka cluster.
-     */
-    name: string;
-    /**
-     * (Required) The password of the user.
-     */
-    password: string;
-    /**
-     * (Optional) Set of permissions granted to the user. The structure is documented below.
-     */
-    permissions?: inputs.GetMdbKafkaClusterUserPermission[];
+export interface GetMdbKafkaClusterTopicTopicConfig {
+    cleanupPolicy?: string;
+    compressionType?: string;
+    deleteRetentionMs?: string;
+    fileDeleteDelayMs?: string;
+    flushMessages?: string;
+    flushMs?: string;
+    maxMessageBytes?: string;
+    minCompactionLagMs?: string;
+    minInsyncReplicas?: string;
+    preallocate?: boolean;
+    retentionBytes?: string;
+    retentionMs?: string;
+    segmentBytes?: string;
 }
 
 export interface GetMdbKafkaClusterUserArgs {
@@ -3890,6 +3875,21 @@ export interface GetMdbKafkaClusterUserArgs {
      * (Optional) Set of permissions granted to the user. The structure is documented below.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.GetMdbKafkaClusterUserPermissionArgs>[]>;
+}
+
+export interface GetMdbKafkaClusterUser {
+    /**
+     * The name of the Kafka cluster.
+     */
+    name: string;
+    /**
+     * (Required) The password of the user.
+     */
+    password: string;
+    /**
+     * (Optional) Set of permissions granted to the user. The structure is documented below.
+     */
+    permissions?: inputs.GetMdbKafkaClusterUserPermission[];
 }
 
 export interface GetMdbKafkaClusterUserPermissionArgs {
@@ -5754,6 +5754,9 @@ export interface MdbMongodbClusterUserPermission {
      * The name of the database that the permission grants access to.
      */
     databaseName: pulumi.Input<string>;
+    /**
+     * The roles of the user in this database. For more information see [the official documentation](https://cloud.yandex.com/docs/managed-mongodb/concepts/users-and-roles).
+     */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
 }
 

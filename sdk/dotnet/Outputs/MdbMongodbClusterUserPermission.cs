@@ -17,6 +17,9 @@ namespace Pulumi.Yandex.Outputs
         /// The name of the database that the permission grants access to.
         /// </summary>
         public readonly string DatabaseName;
+        /// <summary>
+        /// The roles of the user in this database. For more information see [the official documentation](https://cloud.yandex.com/docs/managed-mongodb/concepts/users-and-roles).
+        /// </summary>
         public readonly ImmutableArray<string> Roles;
 
         [OutputConstructor]

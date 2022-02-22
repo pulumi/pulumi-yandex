@@ -1003,11 +1003,11 @@ export interface CdnResourceOptions {
      */
     queryParamsWhitelists: string[];
     /**
-     * set up a redirect from HTTPS to HTTP.
+     * set up a redirect from HTTP to HTTPS.
      */
     redirectHttpToHttps: boolean;
     /**
-     * set up a redirect from HTTP to HTTPS.
+     * set up a redirect from HTTPS to HTTP.
      */
     redirectHttpsToHttp: boolean;
     /**
@@ -6681,6 +6681,13 @@ export interface GetMdbSqlserverClusterUserPermission {
     roles: string[];
 }
 
+export interface GetOrganizationmanagerSamlFederationSecuritySetting {
+    /**
+     * Indicates whether encrypted assertions are enabled.
+     */
+    encryptedAssertions: boolean;
+}
+
 export interface GetServerlessContainerImage {
     args: string[];
     commands: string[];
@@ -8699,6 +8706,9 @@ export interface MdbMongodbClusterUserPermission {
      * The name of the database that the permission grants access to.
      */
     databaseName: string;
+    /**
+     * The roles of the user in this database. For more information see [the official documentation](https://cloud.yandex.com/docs/managed-mongodb/concepts/users-and-roles).
+     */
     roles?: string[];
 }
 

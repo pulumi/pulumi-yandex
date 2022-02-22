@@ -78,6 +78,8 @@ from .get_mdb_postgresql_cluster import *
 from .get_mdb_redis_cluster import *
 from .get_mdb_sqlserver_cluster import *
 from .get_message_queue import *
+from .get_organizationmanager_saml_federation import *
+from .get_organizationmanager_saml_federation_user_account import *
 from .get_resourcemanager_cloud import *
 from .get_resourcemanager_folder import *
 from .get_serverless_container import *
