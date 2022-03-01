@@ -23,9 +23,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-yandex-login"
 // 		_, err := yandex.GetIamUser(ctx, &GetIamUserArgs{
-// 			Login: &opt0,
+// 			Login: pulumi.StringRef("my-yandex-login"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

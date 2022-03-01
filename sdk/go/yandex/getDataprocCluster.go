@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "test"
 // 		foo, err := yandex.LookupDataprocCluster(ctx, &GetDataprocClusterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("test"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

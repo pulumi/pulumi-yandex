@@ -23,18 +23,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "folder_id_number_1"
 // 		myFolder1, err := yandex.LookupResourcemanagerFolder(ctx, &GetResourcemanagerFolderArgs{
-// 			FolderId: &opt0,
+// 			FolderId: pulumi.StringRef("folder_id_number_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "some_cloud_id"
-// 		opt2 := "folder_name"
 // 		myFolder2, err := yandex.LookupResourcemanagerFolder(ctx, &GetResourcemanagerFolderArgs{
-// 			CloudId: &opt1,
-// 			Name:    &opt2,
+// 			CloudId: pulumi.StringRef("some_cloud_id"),
+// 			Name:    pulumi.StringRef("folder_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

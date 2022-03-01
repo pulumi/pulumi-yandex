@@ -56,9 +56,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "some_folder_id"
 // 		fooResourcemanagerFolder, err := yandex.LookupResourcemanagerFolder(ctx, &GetResourcemanagerFolderArgs{
-// 			FolderId: &opt0,
+// 			FolderId: pulumi.StringRef("some_folder_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

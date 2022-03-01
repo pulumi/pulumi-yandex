@@ -23,9 +23,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-subnet-id"
 // 		_, err := yandex.LookupVpcSubnet(ctx, &GetVpcSubnetArgs{
-// 			SubnetId: &opt0,
+// 			SubnetId: pulumi.StringRef("my-subnet-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

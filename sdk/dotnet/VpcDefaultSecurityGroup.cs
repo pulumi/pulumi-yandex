@@ -9,6 +9,74 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Yandex
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Yandex = Pulumi.Yandex;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var lab_net = new Yandex.VpcNetwork("lab-net", new Yandex.VpcNetworkArgs
+    ///         {
+    ///         });
+    ///         var default_sg = new Yandex.VpcDefaultSecurityGroup("default-sg", new Yandex.VpcDefaultSecurityGroupArgs
+    ///         {
+    ///             Description = "description for default security group",
+    ///             Egresses = 
+    ///             {
+    ///                 new Yandex.Inputs.VpcDefaultSecurityGroupEgressArgs
+    ///                 {
+    ///                     Description = "rule2 description",
+    ///                     FromPort = 8090,
+    ///                     Protocol = "ANY",
+    ///                     ToPort = 8099,
+    ///                     V4CidrBlocks = 
+    ///                     {
+    ///                         "10.0.1.0/24",
+    ///                         "10.0.2.0/24",
+    ///                     },
+    ///                 },
+    ///                 new Yandex.Inputs.VpcDefaultSecurityGroupEgressArgs
+    ///                 {
+    ///                     Description = "rule3 description",
+    ///                     FromPort = 8090,
+    ///                     Protocol = "UDP",
+    ///                     ToPort = 8099,
+    ///                     V4CidrBlocks = 
+    ///                     {
+    ///                         "10.0.1.0/24",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Ingresses = 
+    ///             {
+    ///                 new Yandex.Inputs.VpcDefaultSecurityGroupIngressArgs
+    ///                 {
+    ///                     Description = "rule1 description",
+    ///                     Port = 8080,
+    ///                     Protocol = "TCP",
+    ///                     V4CidrBlocks = 
+    ///                     {
+    ///                         "10.0.1.0/24",
+    ///                         "10.0.2.0/24",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "my-label", "my-label-value" },
+    ///             },
+    ///             NetworkId = lab_net.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [YandexResourceType("yandex:index/vpcDefaultSecurityGroup:VpcDefaultSecurityGroup")]
     public partial class VpcDefaultSecurityGroup : Pulumi.CustomResource
     {

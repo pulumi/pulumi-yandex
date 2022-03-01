@@ -48,9 +48,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "some_repository_name"
 // 		repo_2, err := yandex.LookupContainerRepository(ctx, &GetContainerRepositoryArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("some_repository_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

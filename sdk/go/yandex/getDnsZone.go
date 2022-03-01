@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := yandex_dns_zone.Zone1.Id
 // 		foo, err := yandex.LookupDnsZone(ctx, &GetDnsZoneArgs{
-// 			DnsZoneId: &opt0,
+// 			DnsZoneId: pulumi.StringRef(yandex_dns_zone.Zone1.Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

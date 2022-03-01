@@ -25,9 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_instance_id"
 // 		myInstance, err := yandex.LookupComputeInstance(ctx, &GetComputeInstanceArgs{
-// 			InstanceId: &opt0,
+// 			InstanceId: pulumi.StringRef("some_instance_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

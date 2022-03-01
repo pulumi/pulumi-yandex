@@ -5,6 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as yandex from "@pulumi/yandex";
+ *
+ * const lab_net = new yandex.VpcNetwork("lab-net", {});
+ * const default_sg = new yandex.VpcDefaultSecurityGroup("default-sg", {
+ *     description: "description for default security group",
+ *     egresses: [
+ *         {
+ *             description: "rule2 description",
+ *             fromPort: 8090,
+ *             protocol: "ANY",
+ *             toPort: 8099,
+ *             v4CidrBlocks: [
+ *                 "10.0.1.0/24",
+ *                 "10.0.2.0/24",
+ *             ],
+ *         },
+ *         {
+ *             description: "rule3 description",
+ *             fromPort: 8090,
+ *             protocol: "UDP",
+ *             toPort: 8099,
+ *             v4CidrBlocks: ["10.0.1.0/24"],
+ *         },
+ *     ],
+ *     ingresses: [{
+ *         description: "rule1 description",
+ *         port: 8080,
+ *         protocol: "TCP",
+ *         v4CidrBlocks: [
+ *             "10.0.1.0/24",
+ *             "10.0.2.0/24",
+ *         ],
+ *     }],
+ *     labels: {
+ *         "my-label": "my-label-value",
+ *     },
+ *     networkId: lab_net.id,
+ * });
+ * ```
+ */
 export class VpcDefaultSecurityGroup extends pulumi.CustomResource {
     /**
      * Get an existing VpcDefaultSecurityGroup resource's state with the given name, ID, and optional extra

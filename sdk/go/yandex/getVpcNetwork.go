@@ -23,9 +23,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-network-id"
 // 		_, err := yandex.LookupVpcNetwork(ctx, &GetVpcNetworkArgs{
-// 			NetworkId: &opt0,
+// 			NetworkId: pulumi.StringRef("my-network-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

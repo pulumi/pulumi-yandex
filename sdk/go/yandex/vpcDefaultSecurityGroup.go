@@ -11,6 +11,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yandex.NewVpcNetwork(ctx, "lab-net", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = yandex.NewVpcDefaultSecurityGroup(ctx, "default-sg", &yandex.VpcDefaultSecurityGroupArgs{
+// 			Description: pulumi.String("description for default security group"),
+// 			Egresses: VpcDefaultSecurityGroupEgressArray{
+// 				&VpcDefaultSecurityGroupEgressArgs{
+// 					Description: pulumi.String("rule2 description"),
+// 					FromPort:    pulumi.Int(8090),
+// 					Protocol:    pulumi.String("ANY"),
+// 					ToPort:      pulumi.Int(8099),
+// 					V4CidrBlocks: pulumi.StringArray{
+// 						pulumi.String("10.0.1.0/24"),
+// 						pulumi.String("10.0.2.0/24"),
+// 					},
+// 				},
+// 				&VpcDefaultSecurityGroupEgressArgs{
+// 					Description: pulumi.String("rule3 description"),
+// 					FromPort:    pulumi.Int(8090),
+// 					Protocol:    pulumi.String("UDP"),
+// 					ToPort:      pulumi.Int(8099),
+// 					V4CidrBlocks: pulumi.StringArray{
+// 						pulumi.String("10.0.1.0/24"),
+// 					},
+// 				},
+// 			},
+// 			Ingresses: VpcDefaultSecurityGroupIngressArray{
+// 				&VpcDefaultSecurityGroupIngressArgs{
+// 					Description: pulumi.String("rule1 description"),
+// 					Port:        pulumi.Int(8080),
+// 					Protocol:    pulumi.String("TCP"),
+// 					V4CidrBlocks: pulumi.StringArray{
+// 						pulumi.String("10.0.1.0/24"),
+// 						pulumi.String("10.0.2.0/24"),
+// 					},
+// 				},
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"my-label": pulumi.String("my-label-value"),
+// 			},
+// 			NetworkId: lab_net.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type VpcDefaultSecurityGroup struct {
 	pulumi.CustomResourceState
 

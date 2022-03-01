@@ -23,9 +23,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-backend-group-id"
 // 		_, err := yandex.LookupAlbBackendGroup(ctx, &GetAlbBackendGroupArgs{
-// 			BackendGroupId: &opt0,
+// 			BackendGroupId: pulumi.StringRef("my-backend-group-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

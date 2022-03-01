@@ -25,9 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_group_id"
 // 		myGroup, err := yandex.LookupComputeDiskPlacementGroup(ctx, &GetComputeDiskPlacementGroupArgs{
-// 			GroupId: &opt0,
+// 			GroupId: pulumi.StringRef("some_group_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

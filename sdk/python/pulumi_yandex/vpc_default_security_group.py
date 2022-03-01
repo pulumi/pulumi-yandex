@@ -280,7 +280,49 @@ class VpcDefaultSecurityGroup(pulumi.CustomResource):
                  network_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a VpcDefaultSecurityGroup resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        lab_net = yandex.VpcNetwork("lab-net")
+        default_sg = yandex.VpcDefaultSecurityGroup("default-sg",
+            description="description for default security group",
+            egresses=[
+                yandex.VpcDefaultSecurityGroupEgressArgs(
+                    description="rule2 description",
+                    from_port=8090,
+                    protocol="ANY",
+                    to_port=8099,
+                    v4_cidr_blocks=[
+                        "10.0.1.0/24",
+                        "10.0.2.0/24",
+                    ],
+                ),
+                yandex.VpcDefaultSecurityGroupEgressArgs(
+                    description="rule3 description",
+                    from_port=8090,
+                    protocol="UDP",
+                    to_port=8099,
+                    v4_cidr_blocks=["10.0.1.0/24"],
+                ),
+            ],
+            ingresses=[yandex.VpcDefaultSecurityGroupIngressArgs(
+                description="rule1 description",
+                port=8080,
+                protocol="TCP",
+                v4_cidr_blocks=[
+                    "10.0.1.0/24",
+                    "10.0.2.0/24",
+                ],
+            )],
+            labels={
+                "my-label": "my-label-value",
+            },
+            network_id=lab_net.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the security group.
@@ -297,7 +339,49 @@ class VpcDefaultSecurityGroup(pulumi.CustomResource):
                  args: VpcDefaultSecurityGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VpcDefaultSecurityGroup resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        lab_net = yandex.VpcNetwork("lab-net")
+        default_sg = yandex.VpcDefaultSecurityGroup("default-sg",
+            description="description for default security group",
+            egresses=[
+                yandex.VpcDefaultSecurityGroupEgressArgs(
+                    description="rule2 description",
+                    from_port=8090,
+                    protocol="ANY",
+                    to_port=8099,
+                    v4_cidr_blocks=[
+                        "10.0.1.0/24",
+                        "10.0.2.0/24",
+                    ],
+                ),
+                yandex.VpcDefaultSecurityGroupEgressArgs(
+                    description="rule3 description",
+                    from_port=8090,
+                    protocol="UDP",
+                    to_port=8099,
+                    v4_cidr_blocks=["10.0.1.0/24"],
+                ),
+            ],
+            ingresses=[yandex.VpcDefaultSecurityGroupIngressArgs(
+                description="rule1 description",
+                port=8080,
+                protocol="TCP",
+                v4_cidr_blocks=[
+                    "10.0.1.0/24",
+                    "10.0.2.0/24",
+                ],
+            )],
+            labels={
+                "my-label": "my-label-value",
+            },
+            network_id=lab_net.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param VpcDefaultSecurityGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

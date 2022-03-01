@@ -10,6 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.Yandex
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Yandex = Pulumi.Yandex;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var key_a = new Yandex.KmsSymmetricKey("key-a", new Yandex.KmsSymmetricKeyArgs
+    ///         {
+    ///             DefaultAlgorithm = "AES_128",
+    ///             Description = "description for key",
+    ///             RotationPeriod = "8760h",
+    ///         });
+    ///         // equal to 1 year
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A KMS symmetric key can be imported using the `id` of the resource, e.g.

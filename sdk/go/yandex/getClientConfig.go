@@ -25,9 +25,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "kubernetes"
 // 		_, err = yandex.LookupKubernetesCluster(ctx, &GetKubernetesClusterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("kubernetes"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

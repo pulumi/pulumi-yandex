@@ -23,9 +23,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "are1sampletrigger11"
 // 		_, err := yandex.LookupFunctionTrigger(ctx, &GetFunctionTriggerArgs{
-// 			TriggerId: &opt0,
+// 			TriggerId: pulumi.StringRef("are1sampletrigger11"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -10,6 +10,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-yandex/sdk/go/yandex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := yandex.NewKmsSymmetricKey(ctx, "key-a", &yandex.KmsSymmetricKeyArgs{
+// 			DefaultAlgorithm: pulumi.String("AES_128"),
+// 			Description:      pulumi.String("description for key"),
+// 			RotationPeriod:   pulumi.String("8760h"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // A KMS symmetric key can be imported using the `id` of the resource, e.g.
