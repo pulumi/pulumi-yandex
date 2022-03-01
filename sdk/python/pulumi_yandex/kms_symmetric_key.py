@@ -287,6 +287,19 @@ class KmsSymmetricKey(pulumi.CustomResource):
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        key_a = yandex.KmsSymmetricKey("key-a",
+            default_algorithm="AES_128",
+            description="description for key",
+            rotation_period="8760h")
+        # equal to 1 year
+        ```
+
         ## Import
 
         A KMS symmetric key can be imported using the `id` of the resource, e.g.
@@ -313,6 +326,19 @@ class KmsSymmetricKey(pulumi.CustomResource):
                  args: Optional[KmsSymmetricKeyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_yandex as yandex
+
+        key_a = yandex.KmsSymmetricKey("key-a",
+            default_algorithm="AES_128",
+            description="description for key",
+            rotation_period="8760h")
+        # equal to 1 year
+        ```
+
         ## Import
 
         A KMS symmetric key can be imported using the `id` of the resource, e.g.

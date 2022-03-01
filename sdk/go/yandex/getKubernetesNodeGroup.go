@@ -25,9 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_k8s_node_group_id"
 // 		myNodeGroup, err := yandex.LookupKubernetesNodeGroup(ctx, &GetKubernetesNodeGroupArgs{
-// 			NodeGroupId: &opt0,
+// 			NodeGroupId: pulumi.StringRef("some_k8s_node_group_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

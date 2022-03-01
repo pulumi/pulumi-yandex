@@ -23,9 +23,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-address-id"
 // 		_, err := yandex.LookupVpcAddress(ctx, &GetVpcAddressArgs{
-// 			AddressId: &opt0,
+// 			AddressId: pulumi.StringRef("my-address-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

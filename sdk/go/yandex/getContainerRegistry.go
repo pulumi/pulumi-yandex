@@ -25,9 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_registry_id"
 // 		_, err := yandex.LookupContainerRegistry(ctx, &GetContainerRegistryArgs{
-// 			RegistryId: &opt0,
+// 			RegistryId: pulumi.StringRef("some_registry_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

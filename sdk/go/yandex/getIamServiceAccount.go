@@ -23,16 +23,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sa_id"
 // 		_, err := yandex.LookupIamServiceAccount(ctx, &GetIamServiceAccountArgs{
-// 			ServiceAccountId: &opt0,
+// 			ServiceAccountId: pulumi.StringRef("sa_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "sa_name"
 // 		_, err = yandex.LookupIamServiceAccount(ctx, &GetIamServiceAccountArgs{
-// 			Name: &opt1,
+// 			Name: pulumi.StringRef("sa_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

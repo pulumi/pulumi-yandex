@@ -27,9 +27,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_instance_id"
 // 		myGroup, err := yandex.LookupCdnOriginGroup(ctx, &GetCdnOriginGroupArgs{
-// 			OriginGroupId: &opt0,
+// 			OriginGroupId: pulumi.IntRef("some_instance_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

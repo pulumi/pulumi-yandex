@@ -23,9 +23,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-rt-id"
 // 		_, err := yandex.LookupVpcRouteTable(ctx, &GetVpcRouteTableArgs{
-// 			RouteTableId: &opt0,
+// 			RouteTableId: pulumi.StringRef("my-rt-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -23,9 +23,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-target-group-id"
 // 		_, err := yandex.LookupAlbTargetGroup(ctx, &GetAlbTargetGroupArgs{
-// 			TargetGroupId: &opt0,
+// 			TargetGroupId: pulumi.StringRef("my-target-group-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

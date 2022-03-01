@@ -23,9 +23,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-http-router-id"
 // 		_, err := yandex.LookupAlbHttpRouter(ctx, &GetAlbHttpRouterArgs{
-// 			HttpRouterId: &opt0,
+// 			HttpRouterId: pulumi.StringRef("my-http-router-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

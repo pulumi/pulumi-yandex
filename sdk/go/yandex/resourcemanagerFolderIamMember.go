@@ -30,9 +30,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_folder_id"
 // 		_, err := yandex.LookupResourcemanagerFolder(ctx, &GetResourcemanagerFolderArgs{
-// 			FolderId: &opt0,
+// 			FolderId: pulumi.StringRef("some_folder_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

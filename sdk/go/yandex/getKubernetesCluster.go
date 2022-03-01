@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_k8s_cluster_id"
 // 		myCluster, err := yandex.LookupKubernetesCluster(ctx, &GetKubernetesClusterArgs{
-// 			ClusterId: &opt0,
+// 			ClusterId: pulumi.StringRef("some_k8s_cluster_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

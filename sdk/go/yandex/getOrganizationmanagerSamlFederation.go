@@ -25,11 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_federation_id"
-// 		opt1 := "some_organization_id"
 // 		federation, err := yandex.LookupOrganizationmanagerSamlFederation(ctx, &GetOrganizationmanagerSamlFederationArgs{
-// 			FederationId:   &opt0,
-// 			OrganizationId: &opt1,
+// 			FederationId:   pulumi.StringRef("some_federation_id"),
+// 			OrganizationId: pulumi.StringRef("some_organization_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

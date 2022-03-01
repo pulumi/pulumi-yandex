@@ -25,11 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := yandex_alb_virtual_host.My - vh.Name
-// 		opt1 := yandex_alb_virtual_host.My - router.Id
 // 		_, err := yandex.LookupAlbVirtualHost(ctx, &GetAlbVirtualHostArgs{
-// 			Name:         &opt0,
-// 			HttpRouterId: &opt1,
+// 			Name:         pulumi.StringRef(yandex_alb_virtual_host.My - vh.Name),
+// 			HttpRouterId: pulumi.StringRef(yandex_alb_virtual_host.My - router.Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

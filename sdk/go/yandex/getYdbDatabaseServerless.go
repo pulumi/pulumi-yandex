@@ -25,9 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_ydb_serverless_database_id"
 // 		myDatabase, err := yandex.LookupYdbDatabaseServerless(ctx, &GetYdbDatabaseServerlessArgs{
-// 			DatabaseId: &opt0,
+// 			DatabaseId: pulumi.StringRef("some_ydb_serverless_database_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

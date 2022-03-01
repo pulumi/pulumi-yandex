@@ -27,9 +27,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some resource id"
 // 		myResource, err := yandex.LookupCdnResource(ctx, &GetCdnResourceArgs{
-// 			ResourceId: &opt0,
+// 			ResourceId: pulumi.StringRef("some resource id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

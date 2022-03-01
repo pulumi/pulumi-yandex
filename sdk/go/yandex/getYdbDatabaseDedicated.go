@@ -25,9 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_ydb_dedicated_database_id"
 // 		myDatabase, err := yandex.LookupYdbDatabaseDedicated(ctx, &GetYdbDatabaseDedicatedArgs{
-// 			DatabaseId: &opt0,
+// 			DatabaseId: pulumi.StringRef("some_ydb_dedicated_database_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -25,16 +25,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "some_repository_name"
 // 		_, err := yandex.LookupContainerRepository(ctx, &GetContainerRepositoryArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("some_repository_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "some_repository_id"
 // 		_, err = yandex.LookupContainerRepository(ctx, &GetContainerRepositoryArgs{
-// 			RepositoryId: &opt1,
+// 			RepositoryId: pulumi.StringRef("some_repository_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

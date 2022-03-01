@@ -5,6 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as yandex from "@pulumi/yandex";
+ *
+ * const key_a = new yandex.KmsSymmetricKey("key-a", {
+ *     defaultAlgorithm: "AES_128",
+ *     description: "description for key",
+ *     rotationPeriod: "8760h", // equal to 1 year
+ * });
+ * ```
+ *
  * ## Import
  *
  * A KMS symmetric key can be imported using the `id` of the resource, e.g.

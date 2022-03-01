@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "Project 1"
 // 		project1, err := yandex.GetResourcemanagerCloud(ctx, &GetResourcemanagerCloudArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("Project 1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
