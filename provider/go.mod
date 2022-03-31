@@ -10,7 +10,7 @@ replace (
 
 require (
 	cloud.google.com/go/kms v1.1.0 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.19.1
-	github.com/pulumi/pulumi/sdk/v3 v3.25.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.20.0
+	github.com/pulumi/pulumi/sdk/v3 v3.27.0
 	github.com/yandex-cloud/terraform-provider-yandex v0.71.0
 )
