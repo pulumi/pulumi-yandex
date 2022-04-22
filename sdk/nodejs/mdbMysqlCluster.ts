@@ -34,9 +34,9 @@ import * as utilities from "./utilities";
  *     },
  *     mysqlConfig: {
  *         sql_mode: "ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION",
- *         max_connections: 100,
+ *         max_connections: "100",
  *         default_authentication_plugin: "MYSQL_NATIVE_PASSWORD",
- *         innodb_print_all_deadlocks: true,
+ *         innodb_print_all_deadlocks: "true",
  *     },
  *     access: {
  *         webSql: true,

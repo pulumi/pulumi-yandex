@@ -59,8 +59,8 @@ import * as utilities from "./utilities";
  *         minutes: 30,
  *     },
  *     sqlserverConfig: {
- *         fill_factor_percent: 49,
- *         optimize_for_ad_hoc_workloads: true,
+ *         fill_factor_percent: "49",
+ *         optimize_for_ad_hoc_workloads: "true",
  *     },
  *     databases: [
  *         {
