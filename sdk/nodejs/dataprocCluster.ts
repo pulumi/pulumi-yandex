@@ -63,7 +63,7 @@ import * as utilities from "./utilities";
  *                 "HIVE",
  *             ],
  *             properties: {
- *                 "yarn:yarn.resourcemanager.am.max-attempts": 5,
+ *                 "yarn:yarn.resourcemanager.am.max-attempts": "5",
  *             },
  *             sshPublicKeys: [fs.readFileSync("~/.ssh/id_rsa.pub")],
  *         },
